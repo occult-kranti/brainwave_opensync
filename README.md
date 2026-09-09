@@ -96,5 +96,11 @@ src/
 
 ## License
 
-Released for research/educational use. Third-party research citations remain the
-property of their authors. Not medical advice; not a medical device.
+Code is released under the **MIT License** (see `LICENSE`). Third-party research
+citations remain the property of their authors. Dependency-license audit: runtime
+dependencies are MIT-class; GPL-licensed references (e.g., SuperCollider, Strudel)
+were studied as documentation only and re-implemented, not copied.
+
+**Freedom-to-operate:** professional FTO opinion pending — this is a wellness-tier,
+claims-clean release; no medical claims are made. Not medical advice; not a medical
+device.

@@ -49,6 +49,7 @@ const ALL_ROUTE_PATHS = [
   '/quicklab',
   '/theory',
   '/sonic-lab',
+  '/sample-lab',
 ];
 
 type ChangeFn = () => void;

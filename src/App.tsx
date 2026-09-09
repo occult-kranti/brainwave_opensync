@@ -8,6 +8,7 @@ import Home from './pages/Home'
 
 const Guide = lazy(() => import('./pages/Guide'))
 const Studio = lazy(() => import('./pages/Studio'))
+const SampleLab = lazy(() => import('./pages/SampleLab'))
 const Library = lazy(() => import('./pages/Library'))
 const Presets = lazy(() => import('./pages/Presets'))
 const Levels = lazy(() => import('./pages/Levels'))
@@ -65,7 +66,8 @@ export default function App() {
             <Route path="/dream" element={<Dream />} />
             <Route path="/quicklab" element={<QuickLab />} />
             <Route path="/theory" element={<TheoryExplorer />} />
-            <Route path="/sonic-lab" element={<SonicLab />} />
+            <Route path="/sample-lab" element={<SampleLab />} />
+          <Route path="/sonic-lab" element={<SonicLab />} />
             <Route path="/replication" element={<Replication />} />
             <Route path="/safety" element={<Safety />} />
             <Route path="/knowledge" element={<Knowledge />} />

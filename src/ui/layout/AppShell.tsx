@@ -26,6 +26,7 @@ import {
   Compass,
   FlaskConical,
   Gauge,
+  FileAudio,
   GitFork,
   Home,
   Info,
@@ -76,6 +77,7 @@ const RESEARCH_MODULES = [
   { path: '/quicklab', label: 'QUICK LAB', icon: Zap },
   { path: '/theory', label: 'THEORY EXPLORER', icon: GitFork },
   { path: '/sonic-lab', label: 'SONIC LAB', icon: Orbit },
+  { path: '/sample-lab', label: 'SAMPLE LAB', icon: FileAudio },
 ] as const;
 
 const ALL_ROUTES = [...MODULES, ...RESEARCH_MODULES];

@@ -68,6 +68,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/quicklab', label: 'Quick Lab' },
   { route: '/theory', label: 'Theory Explorer' },
   { route: '/sonic-lab', label: 'Sonic Lab' },
+  { route: '/sample-lab', label: 'Sample Lab' },
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
@@ -861,6 +862,162 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
       'Orbital period ratios become pitch intervals (TRAPPIST-1 ladder anchored to h = C3 = 130.81 Hz; Earth-year tone 136.10 Hz with the sidereal/tropical convention explicitly selected — the two differ by 0.067¢, a 189-second slow beat). Every entry carries the split grade: arithmetic A, meaning D. NASA-style sonification practice is the reference frame; mystical claims are excluded by design.',
     howTo: ['Open Astro-Tuned.', 'Toggle sidereal/tropical to hear the tiny difference.', 'Read the honesty label before playing anything.'],
   },
+// ------------------------------------------------------------- Sample Lab
+{
+  id: 'samplelab-upload',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Local file upload',
+  simple:
+    'Drop or pick any audio file and the Lab dissects it: tones, tempo, loudness, stereo construction, tuning, and loops. Everything is decoded and analyzed on your device. The file is never uploaded or stored anywhere else.',
+  deep:
+    'Files are decoded with AudioContext.decodeAudioData (WAV, MP3, OGG, M4A) into per-channel Float32 arrays at the native sample rate. All DSP runs in chunked, cancellable passes that yield between chunks so the page stays responsive, and long files are analyzed on a widened frame grid so memory and time stay bounded. No network call exists anywhere in the path; closing the tab discards everything.',
+  howTo: [
+    'Drop an audio file anywhere on the page, or click to pick one.',
+    'Watch the progress bar; cancel any time.',
+    'Read the report top to bottom — each plot has an ⓘ explainer.',
+  ],
+},
+{
+  id: 'samplelab-overview',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Analysis overview',
+  simple:
+    'The headline numbers of the loaded file in one row: how long, how loud, how hot the peaks are, and whether a tempo or a stereo carrier offset was found. Start here, then dig into the plot that matches your question.',
+  deep:
+    'Duration, sample rate, and channel count come from the decoded buffer. Loudness is ITU-R BS.1770-4 gated integrated (K-weighted); true peak is 4× oversampled per Annex 2. Tempo comes from the onset-envelope autocorrelation; Δf appears only when the stereo module flags an isolated, decorrelated carrier pair with a matching L·R product-spectrum peak. Every value is a measurement of the file — none of them, alone or together, say anything about effects on a listener.',
+  plot: {
+    axes: 'Readouts: duration (m:ss), sample rate (kHz), channels, LUFS-I, true peak (dBTP), tempo (BPM), beat offset Δf (Hz).',
+    good: 'Values consistent with what the file claims to be — e.g. a quiet, steady, long-form session file.',
+    bad: 'True peak at 0 dBTP, or a loudness reading closer to a loudness-war master than a relaxation file.',
+  },
+  howTo: ['Load a file.', 'Compare the readouts against whatever the source claimed about the file.'],
+},
+{
+  id: 'samplelab-spectrogram',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Spectrogram',
+  simple:
+    'A map of the whole file: time runs left to right, pitch runs bottom to top, brightness means loudness. Steady tones draw flat lines; drum hits draw vertical smears. Two close lines that drift apart or together reveal a detuned stereo pair.',
+  deep:
+    'Short-time Fourier transform with a 2048-sample Hann window at 75% overlap (hop widens for very long files). Power per bin is shown in dB with a 90 dB display floor on a warm perceptual ramp. The frequency axis is logarithmic (30 Hz – 16 kHz) because low-frequency detail is where carrier pairs and slow modulations live. A genuine two-carrier construction shows up as two constant-Q ridges whose spacing equals the claimed beat frequency.',
+  plot: {
+    axes: 'x = time, y = frequency (log, Hz), color = power (dB, warm ramp, −90…0 dB).',
+    good: 'Crisp horizontal ridges for steady tones; smooth band shapes for music; quiet floor elsewhere.',
+    bad: 'Broadband vertical stripes (clicks or clipping), a hard energy shelf at 15–20 kHz (lossy re-encode), or nothing near a frequency the product label claims.',
+  },
+  howTo: [
+    'Load a file and look for horizontal lines near any claimed carrier frequency.',
+    'Check for vertical smears that indicate clicks or clipping.',
+    'Compare the top of the energy band against the file\u2019s claimed format quality.',
+  ],
+},
+{
+  id: 'samplelab-spectral-stats',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Spectral statistics',
+  simple:
+    'Four small graphs that track the file\u2019s brightness, width, high-end reach, and noisiness over time. They answer "is this a tone or a hiss?" and "did the character change halfway through?" at a glance.',
+  deep:
+    'Per STFT frame: centroid C = Σf·p (brightness), spread S = √Σ(f−C)²·p, rolloff = smallest frequency holding 85% of power, flatness = geometric/arithmetic mean ratio of a lightly time-smoothed spectrum (0 = pure tone, →1 = noise), plus positive-only spectral flux F = Σ max(0, P − P_prev) which feeds onset detection. Rolloff is the lossy-encoder detector: mp3 re-encodes show a hard shelf at 15–20 kHz. All five are O(N) per frame on top of the shared STFT.',
+  plot: {
+    axes: 'Four time series: centroid (Hz, log), spread (Hz, log), rolloff-85 (Hz, log), flatness (0–1).',
+    good: 'Flatness near 0 with stable centroid = clean tones; flatness near 1 with low centroid = a noise bed — both fine if labeled honestly.',
+    bad: 'A flatness or rolloff step midway = spliced or re-encoded material; rolloff glued below 16 kHz in a "lossless" file = mp3 in disguise.',
+  },
+  howTo: ['Load a file.', 'Scan flatness to classify tone vs noise.', 'Scan rolloff for codec shelves and splices.'],
+},
+{
+  id: 'samplelab-band-energy',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Octave band energy',
+  simple:
+    'Bars showing where the file\u2019s energy lives, from sub-bass to the top octave. A calm sleep file should concentrate below 1 kHz. Surprise energy in the top bands means hiss — or content some listeners cannot hear at all.',
+  deep:
+    'STFT power is integrated over ANSI octave bands (centers 31.25 Hz – 16 kHz, edges at fc/√2 … fc·√2) and averaged across the file; bars show dB and the percentage of total spectral energy. Dominance of the 250/500 Hz bands with an empty top end is the classic profile of a clean carrier-pair file. Energy above 8 kHz in content marketed for sleep is a red flag: inaudible to many adults, potentially uncomfortable for young listeners.',
+  plot: {
+    axes: 'Bars: one per octave band (31.25 Hz – 16 kHz); length = mean band power (dB), label = share of total energy.',
+    good: 'Most energy below 1 kHz for relaxation or carrier content; a smooth musical slope for songs.',
+    bad: 'A tall 8 kHz or 16 kHz bar in a "sleep" file, or an empty low end where a product claims deep carriers.',
+  },
+  howTo: ['Load a file.', 'Check which bands dominate.', 'Question any band the label doesn\u2019t mention.'],
+},
+{
+  id: 'samplelab-stereo-ms',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Stereo field & carrier-offset check',
+  grade: 'B',
+  gradeScope: 'The measurement itself (M/S decomposition, correlation, Δf detection) is standard DSP. Grade B covers only the percept: binaural beats are a real, well-replicated auditory illusion — what they do beyond that is not claimed here.',
+  simple:
+    'Splits the file into what both ears share (mid) and what differs between them (side), and measures how similar the two channels are. If the file hides one steady tone per ear, slightly detuned, this panel finds it and reports the offset. Finding that pattern says how the file was built — not what it does to you.',
+  deep:
+    'M = (L+R)/2, S = (L−R)/2; windowed Pearson correlation ρ over 100 ms frames. The construction check requires three independent agreements: low inter-channel correlation (ρ < 0.4), an isolated prominent carrier peak in each channel (30–1500 Hz) whose spacing sits in the 0.5–35 Hz beat range, and a corroborating peak at that exact offset in the spectrum of the product signal L·R (which contains a real component at |fL − fR| by the sum-and-difference identity). ρ ≈ +1 is mono-compatible; ρ < 0 disappears in mono mixdown.',
+  plot: {
+    axes: 'M/S level bars (dB), correlation meter (−1…+1) with ρ-over-time trace, and a verdict chip with Δf, carrier pair, and reason.',
+    good: 'Verdict chip matches the file\u2019s own description; ρ near +1 for normal music; a clean low-ρ carrier pair for a labeled dichotic file.',
+    bad: 'A "binaural" product with ρ ≈ 1 (no dichotic pair present), ρ < 0 (anti-phase; vanishes in mono), or a Δf that contradicts the label.',
+  },
+  howTo: [
+    'Load a stereo file.',
+    'Read the verdict chip: detected pair, Δf, and carrier frequencies.',
+    'Cross-check the claimed beat frequency against the measured Δf.',
+  ],
+},
+{
+  id: 'samplelab-loudness-history',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Loudness history',
+  grade: 'A',
+  gradeScope: 'ITU-R BS.1770-4 standardized measurement, unit-tested implementation (shared dsp/loudness.ts).',
+  simple:
+    'How loud the file actually feels over its whole length, in LUFS, not how tall the waveform looks. A flat, quiet line is what a calm session should look like. Sawteeth and jumps mean aggressive mastering.',
+  deep:
+    'K-weighted loudness per ITU-R BS.1770-4: momentary (400 ms) and short-term (3 s) traces, gated integrated value, loudness range LRA (10th–95th percentile of gated short-term), and 4×-oversampled true peak. Reference lines include −23 LUFS (broadcast) and 0 dBTP (digital ceiling). As a sanity rule of thumb, sleep-class content should read LRA under ~3 LU and integrated well under −30 LUFS; a "relaxation" track at −8 LUFS is a loudness-war master in disguise.',
+  plot: {
+    axes: 'x = time, y = LUFS (−60…0); teal = momentary 400 ms, amber = short-term 3 s. Summary: LRA and true peak (dBTP).',
+    good: 'A calm, flat trace in a quiet range with true peak below −1 dBTP.',
+    bad: 'A hot trace near 0 LUFS, audible jumps, or any true peak touching 0 dBTP.',
+  },
+  howTo: ['Load a file.', 'Compare integrated LUFS and LRA against the calm-file rule of thumb.', 'Check true peak before playing loud.'],
+},
+{
+  id: 'samplelab-pitch-track',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Pitch track & tuning',
+  simple:
+    'Follows the musical note through the file and tells you what the whole file is tuned to, within a fraction of a cent. This is the fact-check for tuning claims: a file labeled 432 Hz should measure at 432 Hz, not 440.',
+  deep:
+    'YIN (de Cheveigné & Kawahara 2002), browser subset: FFT-based difference function, cumulative-mean normalization, 0.1 absolute threshold with deepest-dip selection, and a float64 direct recomputation of the dip for sub-sample, sub-cent refinement. The whole-file tuning readout is the median f₀ over voiced frames, mapped to the nearest equal-tempered note with signed cents (n = 12·log₂(f/440) + 69). Every estimate carries a clarity score; unvoiced or noisy frames are excluded rather than guessed.',
+  plot: {
+    axes: 'Amber dots: f₀ contour (log Hz, 40–1200) over time; dot opacity = clarity. Table: median f₀, nearest note, cents, voiced percentage.',
+    good: 'A stable plateau with high clarity and a cents value matching the file\u2019s tuning claim (±1¢ for synthetic tones).',
+    bad: 'A jittery, low-clarity contour (no real pitch), or a measured plateau that contradicts the label — e.g. 440 Hz in a "432 Hz" product.',
+  },
+  howTo: ['Load a tonal file.', 'Read the median f₀ and cents in the tuning table.', 'Compare with any tuning the product claims.'],
+},
+{
+  id: 'samplelab-loop-detect',
+  module: 'Sample Lab',
+  route: '/sample-lab',
+  name: 'Loop detection',
+  simple:
+    'Answers the uncomfortable question: is this hour-long session actually an hour of content, or a five-minute loop repeated twelve times? If the material repeats exactly, this panel finds the period and shows you the evidence.',
+  deep:
+    'The STFT is folded into 1-second, 16-band log-frequency energy fingerprints; every pair of fingerprints at every whole-second lag is compared by cosine similarity. An exact loop produces an off-diagonal ridge at the loop period (and its multiples); the smallest lag above 0.92 is reported as the period. Spectrally stationary content (flat noise, a single held tone) is genuinely ambiguous — any segment matches any other — so the detector abstains rather than inventing a period.',
+  plot: {
+    axes: 'x = lag (seconds), y = self-similarity (0–1); dashed amber line = 0.92 detection threshold; amber marker = reported period.',
+    good: 'A single dominant ridge at one lag = a loop with that period; a flat low curve = genuinely evolving content.',
+    bad: 'Not applicable — abstains ("not evaluated") on silence, constant spectra, or files under 6 s instead of guessing.',
+  },
+  howTo: ['Load a long session file.', 'Read the verdict: loop period or "no exact loop".', 'Check the ridge on the curve for yourself.'],
+},
 ];
 
 /** Full feature list — the single import surface for Home, Guide, and tests. */

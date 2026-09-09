@@ -69,6 +69,14 @@ describe('StudioCymatics', () => {
     expect(html).toContain('href="/cymatics"');
     expect(html).toContain('About cymatic patterns');
   });
+
+  it('carries the LINES/SAND render-mode toggle (LINES default) on the fixed square plate', () => {
+    const html = ssr(<StudioCymatics analyser={null} />);
+    expect(html).toContain('data-render-mode="lines"');
+    expect(html).toContain('data-testid="cymatics-render-lines"');
+    expect(html).toContain('data-testid="cymatics-render-sand"');
+    expect(html).toContain('STEEL PLATE 30×30 CM');
+  });
 });
 
 describe('Studio page — visualization row', () => {
@@ -107,6 +115,16 @@ describe('Studio page — visualization row', () => {
     expect(iEngine).toBeGreaterThanOrEqual(0);
     expect(iScope).toBeGreaterThan(iEngine);
     expect(iMixer).toBeGreaterThan(iScope);
+  });
+
+  it('noise mixer + layers sections carry master bypass toggles (LED + label, enabled by default)', () => {
+    const html = ssr(<Studio />);
+    expect(html).toContain('data-testid="noise-mixer-toggle"');
+    expect(html).toContain('data-testid="layers-toggle"');
+    expect(html).toContain('MIX ON');
+    expect(html).toContain('LAYERS ON');
+    // Enabled by default: sections are not dimmed.
+    expect(html).not.toContain('data-dimmed');
   });
 });
 

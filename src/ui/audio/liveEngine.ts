@@ -56,6 +56,13 @@ export class LiveEngine {
   private anaSpectrum: AnalyserNode | null = null;
   private anaL: AnalyserNode | null = null;
   private anaR: AnalyserNode | null = null;
+  /** Section buses: noise colors and nature/bowl layers each sum into their
+   * own gain stage before the main bus, so the Studio's master bypass
+   * toggles can ramp a whole section to true 0 without stopping sources. */
+  private noiseBus: GainNode | null = null;
+  private layerBus: GainNode | null = null;
+  private noiseBypassed = false;
+  private layersBypassed = false;
   private noiseNodes = new Map<NoiseColor, { src: AudioBufferSourceNode; gain: GainNode }>();
   private noiseBuffers = new Map<NoiseColor, AudioBuffer>();
   private layerNodes: { nature?: AudioBufferSourceNode; bowl?: AudioBufferSourceNode } = {};
@@ -104,6 +111,14 @@ export class LiveEngine {
     this.bus.connect(this.master);
     this.master.connect(this.anaSpectrum);
     this.anaSpectrum.connect(ctx.destination);
+    // Section buses (start at the current bypass state — set at graph build,
+    // before any source flows, so this is not an audible step).
+    this.noiseBus = ctx.createGain();
+    this.noiseBus.gain.value = this.noiseBypassed ? 0 : 1;
+    this.noiseBus.connect(this.bus);
+    this.layerBus = ctx.createGain();
+    this.layerBus.gain.value = this.layersBypassed ? 0 : 1;
+    this.layerBus.connect(this.bus);
     const splitter = ctx.createChannelSplitter(2);
     this.master.connect(splitter);
     this.anaL = ctx.createAnalyser();
@@ -388,6 +403,29 @@ export class LiveEngine {
     }
   }
 
+  /**
+   * Click-free master bypass for a whole section (noise mixer / nature+bowl
+   * layers): ramps the section bus with a 50 ms time constant. No
+   * gain.value step, no source stop/start — toggling mid-session cannot
+   * click, and re-enable is phase-continuous (buffers keep looping).
+   */
+  private rampSection(section: GainNode | null, on: boolean): void {
+    if (!this.ctx || !section) return;
+    section.gain.setTargetAtTime(on ? 1 : 0, this.ctx.currentTime, 0.05);
+  }
+
+  /** Bypass (false) or enable (true) the noise mixer section. */
+  setNoiseBypass(on: boolean): void {
+    this.noiseBypassed = !on;
+    this.rampSection(this.noiseBus, on);
+  }
+
+  /** Bypass (false) or enable (true) the nature/bowl layers section. */
+  setLayersBypass(on: boolean): void {
+    this.layersBypassed = !on;
+    this.rampSection(this.layerBus, on);
+  }
+
   /** Set one noise color's level in dB (−Infinity = off). Loops an engine-rendered buffer. */
   setNoiseLevel(color: NoiseColor, db: number): void {
     const ctx = this.ctx;
@@ -420,7 +458,7 @@ export class LiveEngine {
       const gain = ctx.createGain();
       gain.gain.value = dbToLin(db) * NOISE_SCALE;
       src.connect(gain);
-      gain.connect(this.bus);
+      gain.connect(this.noiseBus ?? this.bus);
       src.start();
       this.noiseNodes.set(color, { src, gain });
     } else {

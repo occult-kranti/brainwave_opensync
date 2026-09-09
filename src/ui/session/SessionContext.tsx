@@ -63,8 +63,12 @@ export interface SessionSnapshot {
   band: BandName | null;
   warnings: string[];
   noiseDb: Record<NoiseColor, number>;
+  /** Master bypass for the noise mixer section (false = all colors silent live, omitted from export). */
+  noiseOn: boolean;
   nature: { on: boolean; kind: NatureKind; db: number };
   bowl: { on: boolean; baseHz: number; db: number; lock: boolean };
+  /** Master bypass for the nature/bowl layers section (false = layers silent live, omitted from export). */
+  layersOn: boolean;
   phases: UiPhase[];
   activePhaseIdx: number;
   dosePercent: number;
@@ -112,8 +116,12 @@ interface SessionActions {
   setGateDuty: (duty: number) => void;
   setGateShape: (s: GateShape) => void;
   setNoiseDb: (color: NoiseColor, db: number) => void;
+  /** Master bypass toggle for the noise mixer (click-free section ramp). */
+  setNoiseOn: (on: boolean) => void;
   setNature: (patch: Partial<SessionSnapshot['nature']>) => void;
   setBowl: (patch: Partial<SessionSnapshot['bowl']>) => void;
+  /** Master bypass toggle for the nature/bowl layers (click-free section ramp). */
+  setLayersOn: (on: boolean) => void;
   setVolumeDb: (db: number) => void;
   setMuted: (m: boolean) => void;
   setLimitMin: (min: number) => void;
@@ -171,6 +179,54 @@ export function truncatePhases(phases: readonly EnginePhase[], maxSec: number): 
     remaining -= d;
   }
   return out;
+}
+
+/** Layer/bypass mix state that gates noise/bowl/nature into the WAV export. */
+export interface ExportLayers {
+  noiseDb: Record<NoiseColor, number>;
+  noiseOn: boolean;
+  nature: SessionSnapshot['nature'];
+  bowl: SessionSnapshot['bowl'];
+  layersOn: boolean;
+}
+
+/**
+ * Build the engine phase list for a WAV export. Bypassed sections are
+ * OMITTED from the phases entirely — the exported file contains no noise /
+ * bowl / nature content at all (not merely a zero-gain render of it).
+ * (Export flattens the mixer to the loudest noise color, as before.)
+ */
+export function buildExportPhases(
+  phases: readonly UiPhase[],
+  carrierHz: number,
+  mode: EntrainmentMode,
+  layers: ExportLayers,
+): EnginePhase[] {
+  const enginePhases: EnginePhase[] = phases.map((p) => ({
+    durationSec: p.durationSec,
+    carrierHz,
+    beatHz: p.beatHz,
+    mode,
+    gainDb: 0,
+  }));
+  const loudestNoise = (Object.entries(layers.noiseDb) as [NoiseColor, number][]).reduce(
+    (best, [c, db]) => (db > best[1] ? [c, db] : best),
+    ['pink', -Infinity] as [NoiseColor, number],
+  );
+  if (layers.noiseOn && Number.isFinite(loudestNoise[1])) {
+    for (const p of enginePhases) {
+      p.noise = { color: loudestNoise[0], level: Math.min(1, Math.pow(10, loudestNoise[1] / 20) * 4) };
+    }
+  }
+  if (layers.layersOn && layers.bowl.on) {
+    for (const p of enginePhases) {
+      p.bowl = { baseHz: layers.bowl.lock ? carrierHz : layers.bowl.baseHz, level: 0.5 };
+    }
+  }
+  if (layers.layersOn && layers.nature.on) {
+    for (const p of enginePhases) p.nature = { kind: layers.nature.kind, level: 0.5 };
+  }
+  return enginePhases;
 }
 
 /** First ~`maxSec` of a data-layer preset as engine phases (binaural, per-phase gain). */
@@ -231,8 +287,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [volumeDb, setVolumeDbState] = useState(-12);
   const [muted, setMutedState] = useState(false);
   const [noiseDb, setNoiseDbState] = useState<Record<NoiseColor, number>>(ALL_NOISE_OFF);
+  const [noiseOn, setNoiseOnState] = useState(true);
   const [nature, setNatureState] = useState<SessionSnapshot['nature']>({ on: false, kind: 'rain', db: -30 });
   const [bowl, setBowlState] = useState<SessionSnapshot['bowl']>({ on: false, baseHz: 136.1, db: -30, lock: false });
+  const [layersOn, setLayersOnState] = useState(true);
   const [phases, setPhasesState] = useState<UiPhase[]>(DEFAULT_PHASES);
   const [activePhaseIdx, setActivePhaseIdx] = useState(0);
   const [dosePercent, setDosePercent] = useState(0);
@@ -403,6 +461,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     engineRef.current.setNoiseLevel(color, db);
     setDirty(true);
   }, []);
+  // Section bypass: a click-free ramp on the engine's section bus — fader
+  // positions are kept, so re-enabling restores the exact mix.
+  const setNoiseOn = useCallback((on: boolean) => {
+    setNoiseOnState(on);
+    engineRef.current.setNoiseBypass(on);
+    setDirty(true);
+  }, []);
   const setNature = useCallback((patch: Partial<SessionSnapshot['nature']>) => {
     setNatureState((cur) => {
       const next = { ...cur, ...patch };
@@ -417,6 +482,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       engineRef.current.setBowl(next.on, next.lock ? 0 : next.baseHz, next.db);
       return next;
     });
+    setDirty(true);
+  }, []);
+  // Section bypass for the nature/bowl layers: click-free ramp on the
+  // engine's layer bus; per-layer settings are kept for re-enable.
+  const setLayersOn = useCallback((on: boolean) => {
+    setLayersOnState(on);
+    engineRef.current.setLayersBypass(on);
     setDirty(true);
   }, []);
   // Bowl "detune to carrier" lock.
@@ -637,24 +709,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       phases.reduce((a, p) => a + p.durationSec, 0),
       limitMin * 60,
     );
-    const enginePhases: EnginePhase[] = phases.map((p) => ({
-      durationSec: p.durationSec,
-      carrierHz,
-      beatHz: p.beatHz,
-      mode,
-      gainDb: 0,
-    }));
-    const loudestNoise = (Object.entries(noiseDb) as [NoiseColor, number][]).reduce(
-      (best, [c, db]) => (db > best[1] ? [c, db] : best),
-      ['pink', -Infinity] as [NoiseColor, number],
-    );
-    if (Number.isFinite(loudestNoise[1])) {
-      for (const p of enginePhases) {
-        p.noise = { color: loudestNoise[0], level: Math.min(1, Math.pow(10, loudestNoise[1] / 20) * 4) };
-      }
-    }
-    if (bowl.on) for (const p of enginePhases) p.bowl = { baseHz: bowl.lock ? carrierHz : bowl.baseHz, level: 0.5 };
-    if (nature.on) for (const p of enginePhases) p.nature = { kind: nature.kind, level: 0.5 };
+    // Bypassed sections are omitted from the export (see buildExportPhases).
+    const enginePhases = buildExportPhases(phases, carrierHz, mode, { noiseDb, noiseOn, nature, bowl, layersOn });
     const spec: SessionSpec = { name: presetName ?? 'Open Sync session', phases: enginePhases, masterGainDb: -6 };
     void totalSec;
     const rendered = renderSession(spec);
@@ -666,7 +722,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     a.download = `${(presetName ?? 'open-sync').replace(/\s+/g, '-').toLowerCase()}.wav`;
     a.click();
     URL.revokeObjectURL(url);
-  }, [phases, carrierHz, mode, noiseDb, bowl, nature, presetName, limitMin]);
+  }, [phases, carrierHz, mode, noiseDb, noiseOn, bowl, nature, layersOn, presetName, limitMin]);
 
   // ---- warnings (engine guardrails) ------------------------------------------
   const warnings = useMemo(() => {
@@ -697,8 +753,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       band: bandForBeat(beatHz),
       warnings,
       noiseDb,
+      noiseOn,
       nature,
       bowl,
+      layersOn,
       phases,
       activePhaseIdx,
       dosePercent,
@@ -730,8 +788,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setGateDuty,
       setGateShape,
       setNoiseDb,
+      setNoiseOn,
       setNature,
       setBowl,
+      setLayersOn,
       setVolumeDb,
       setMuted,
       setLimitMin,
@@ -747,11 +807,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     }),
     [
       mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, running, paused, panicked,
-      elapsedSec, limitMin, volumeDb, muted, warnings, noiseDb, nature, bowl, phases,
+      elapsedSec, limitMin, volumeDb, muted, warnings, noiseDb, noiseOn, nature, bowl, layersOn, phases,
       activePhaseIdx, dosePercent, governor, presetName, presetGrade, dirty, userPresets,
       previewId, togglePreview, stopPreview, previewPreset, previewPhases, previewUrl, previewTone,
       start, stop, togglePause, panic, rehearsePanic, resumeSafely, dismissPanic, setMode, setCarrierHz, setBeatHz,
-      setWaveform, setGateDuty, setGateShape, setNoiseDb, setNature, setBowl, setVolumeDb,
+      setWaveform, setGateDuty, setGateShape, setNoiseDb, setNoiseOn, setNature, setBowl, setLayersOn, setVolumeDb,
       setMuted, setLimitMin, setGovernor, setPhases, saveCurrentAsPreset, deleteUserPresetById,
       loadPreset, loadFrequency, previewHz, exportWav,
     ],

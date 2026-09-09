@@ -4,7 +4,7 @@
  *    tooltips / 0px hidden with a 16px amber-edge reopen handle
  *  - chevron toggle + `[` keyboard shortcut cycle the states
  *  - localStorage persistence round-trip
- *  - all 20 routes present in full AND icon states
+ *  - all 21 routes present in full AND icon states
  *  - panic reachable in every state; rail footer carries density toggle +
  *    collapse control; a11y attributes on the toggles
  *  - mobile shell (bottom bar) is unaffected by sidebar state
@@ -49,6 +49,7 @@ const ALL_ROUTE_PATHS = [
   '/quicklab',
   '/theory',
   '/sonic-lab',
+  '/sample-lab',
 ];
 
 const STORAGE_KEY = 'open-sync:sidebar';
@@ -131,7 +132,7 @@ afterEach(async () => {
 });
 
 describe('V3 collapsible sidebar — three states', () => {
-  it('full state (default): 240px rail, labels, all 20 routes, footer controls, panic', async () => {
+  it('full state (default): 240px rail, labels, all 21 routes, footer controls, panic', async () => {
     const c = await renderShell(1280);
     const rail = railOf(c)!;
     expect(rail).toBeTruthy();
@@ -159,7 +160,7 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(c.querySelector('[data-testid="rail-reopen-handle"]')).toBeNull();
   });
 
-  it('icon state: 64px strip, no labels, tooltip + aria-label per item, all 20 routes, panic reachable', async () => {
+  it('icon state: 64px strip, no labels, tooltip + aria-label per item, all 21 routes, panic reachable', async () => {
     window.localStorage.setItem(STORAGE_KEY, 'icon');
     const c = await renderShell(1280);
     const rail = railOf(c)!;

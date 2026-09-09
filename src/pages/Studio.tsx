@@ -408,27 +408,79 @@ export default function Studio() {
           <StudioCymatics height={260} />
         </motion.div>
 
-        {/* ROW D — Noise mixer */}
+        {/* ROW D — Noise mixer (master bypass: LED + label; bypassed = silent live, omitted from export) */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.22 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 5' }}>
-          <Panel title="NOISE MIXER">
-            <div className="flex justify-between" style={{ gap: 8 }}>
-              {(Object.keys(NOISE_COLOR) as NoiseColor[]).map((c) => (
-                <div key={c} className="flex flex-col items-center gap-2" title={NOISE_SLOPE[c]}>
-                  <span style={{ width: 10, height: 10, borderRadius: 2, background: NOISE_COLOR[c] }} />
-                  <Fader db={s.noiseDb[c]} onChange={(db) => s.setNoiseDb(c, db)} color={NOISE_COLOR[c]} label={c.toUpperCase()} height={110} />
-                </div>
-              ))}
+          <Panel
+            title="NOISE MIXER"
+            right={
+              <button
+                type="button"
+                data-testid="noise-mixer-toggle"
+                aria-pressed={s.noiseOn}
+                onClick={() => s.setNoiseOn(!s.noiseOn)}
+                className="chip flex items-center gap-2"
+                style={{ height: 22, fontSize: 10 }}
+                title={
+                  s.noiseOn
+                    ? 'Bypass the whole noise mixer — silent live and omitted from the WAV export (click-free ramp)'
+                    : 'Enable the noise mixer — fader positions were kept'
+                }
+              >
+                <Led state={s.noiseOn ? 'amber' : 'off'} />
+                {s.noiseOn ? 'MIX ON' : 'BYPASSED'}
+              </button>
+            }
+          >
+            <div
+              data-testid="noise-mixer-body"
+              data-dimmed={s.noiseOn ? undefined : 'true'}
+              style={{ opacity: s.noiseOn ? 1 : 0.45, transition: 'opacity 160ms' }}
+            >
+              <div className="flex justify-between" style={{ gap: 8 }}>
+                {(Object.keys(NOISE_COLOR) as NoiseColor[]).map((c) => (
+                  <div key={c} className="flex flex-col items-center gap-2" title={NOISE_SLOPE[c]}>
+                    <span style={{ width: 10, height: 10, borderRadius: 2, background: NOISE_COLOR[c] }} />
+                    <Fader db={s.noiseDb[c]} onChange={(db) => s.setNoiseDb(c, db)} color={NOISE_COLOR[c]} label={c.toUpperCase()} height={110} />
+                  </div>
+                ))}
+              </div>
+              <p className="t-caption text-3" style={{ marginTop: 12 }}>
+                Masking/relaxation aid — no entrainment claim. Double-click a fader to turn it off.
+                {s.noiseOn ? '' : ' Bypassed: faders kept, but the mixer is silent live and excluded from export.'}
+              </p>
             </div>
-            <p className="t-caption text-3" style={{ marginTop: 12 }}>
-              Masking/relaxation aid — no entrainment claim. Double-click a fader to turn it off.
-            </p>
           </Panel>
         </motion.div>
 
         {/* ROW D — Layers + phases */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.25 }} className="flex flex-col gap-4" style={{ gridColumn: isMobile ? 'span 1' : 'span 7' }}>
-          <Panel title="LAYERS">
-            <div className="flex flex-col gap-3">
+          <Panel
+            title="LAYERS"
+            right={
+              <button
+                type="button"
+                data-testid="layers-toggle"
+                aria-pressed={s.layersOn}
+                onClick={() => s.setLayersOn(!s.layersOn)}
+                className="chip flex items-center gap-2"
+                style={{ height: 22, fontSize: 10 }}
+                title={
+                  s.layersOn
+                    ? 'Bypass both layers — silent live and omitted from the WAV export (click-free ramp)'
+                    : 'Enable the layers — per-layer settings were kept'
+                }
+              >
+                <Led state={s.layersOn ? 'teal' : 'off'} />
+                {s.layersOn ? 'LAYERS ON' : 'BYPASSED'}
+              </button>
+            }
+          >
+            <div
+              data-testid="layers-body"
+              data-dimmed={s.layersOn ? undefined : 'true'}
+              className="flex flex-col gap-3"
+              style={{ opacity: s.layersOn ? 1 : 0.45, transition: 'opacity 160ms' }}
+            >
               <div className="flex items-center gap-3">
                 <button type="button" onClick={() => s.setNature({ on: !s.nature.on })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
                   <Led state={s.nature.on ? 'teal' : 'off'} />
@@ -487,6 +539,11 @@ export default function Studio() {
                 />
                 <GradeBadge grade="D" compact citation={{ verdict: 'Traditional use; no controlled evidence — included as texture.', summary: 'Singing bowls are a cultural practice; physiological claims are unevidenced.', source: 'Evidence audit — see Knowledge Base' }} />
               </div>
+              {s.layersOn ? null : (
+                <p className="t-caption text-3">
+                  Bypassed: per-layer settings kept, but nature and bowls are silent live and excluded from export.
+                </p>
+              )}
             </div>
           </Panel>
           <Panel title="SESSION PHASES" right={<InfoPopover featureId="phase-timeline" label="About the phase timeline" />}>

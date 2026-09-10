@@ -108,9 +108,9 @@ npm run icons:render   # regenerates public/icons/*.png and the Open Graph image
 ## Deploy
 
 The **Pages** workflow (`.github/workflows/pages.yml`) builds with `VITE_BASE=/brainwave_opensync/`,
-copies `index.html` to `404.html` for deep links, and publishes `dist/` on every push to `master`.
-Set *Settings → Pages → Source* to **GitHub Actions** once. To host under a different path, change
-`VITE_BASE`; to host at a domain root, drop it.
+copies `index.html` to `404.html` for deep links, and publishes `dist/` to the `gh-pages` branch on
+every push to `master` (the repository's Pages source is "Deploy from a branch: gh-pages"). To host
+under a different path, change `VITE_BASE`; to host at a domain root, drop it.
 
 ## Project layout
 

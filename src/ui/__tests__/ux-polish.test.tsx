@@ -27,6 +27,7 @@ import knobSrc from '../components/Knob.tsx?raw';
 import guideSrc from '../../pages/Guide.tsx?raw';
 // @ts-expect-error -- node types excluded from tsconfig.app on purpose
 import { readFileSync } from 'node:fs';
+import { BANNED_PHRASES } from '@/docs/vocabulary';
 
 // vitest runs from the project root.
 const cssText: string = readFileSync('src/index.css', 'utf8');
@@ -370,7 +371,7 @@ describe('W13 motion + focus tokens in index.css', () => {
 });
 
 describe('W13 no banned overclaim phrases in new UI copy', () => {
-  const BANNED = ['induces', 'synchronizes', 'attunes', 'cia-validated', 'digital drug'];
+  const BANNED = BANNED_PHRASES;
   const files: [string, string][] = [
     ['CommandPalette.tsx', paletteSrc as string],
     ['Knob.tsx', knobSrc as string],

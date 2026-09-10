@@ -10,53 +10,25 @@ import { useNavigate } from 'react-router';
 import { Command } from 'cmdk';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  Activity,
-  Archive,
-  AudioWaveform,
-  BookMarked,
-  BookOpen,
   Compass,
+  Keyboard,
+  Link2,
+  MoonStar,
+  RotateCcw,
   Download,
-  FlaskConical,
-  Gauge,
-  Home,
-  Info,
-  Layers,
-  ListChecks,
-  MessageSquareWarning,
-  Moon,
   OctagonX,
   PanelLeft,
   Pause,
   Play,
-  Repeat2,
-  ShieldAlert,
   Baby,
   Square,
-  Waves,
 } from 'lucide-react';
-import { useSession } from '../session/SessionContext';
+import { useSession } from '../session/useSession';
 import { useModalA11y } from '../hooks';
+import { ROUTES } from '../../app/routes';
 
-const MODULE_ENTRIES = [
-  { path: '/', label: 'HOME', icon: Home },
-  { path: '/studio', label: 'STUDIO', icon: AudioWaveform },
-  { path: '/library', label: 'LIBRARY', icon: BookOpen },
-  { path: '/presets', label: 'PRESETS', icon: Layers },
-  { path: '/levels', label: 'LEVELS', icon: Gauge },
-  { path: '/analyzer', label: 'ANALYZER', icon: Activity },
-  { path: '/cymatics', label: 'CYMATICS', icon: Waves },
-  { path: '/dream', label: 'SLEEP & DREAM', icon: Moon },
-  { path: '/replication', label: 'REPLICATION BAY', icon: Repeat2 },
-  { path: '/safety', label: 'SAFETY', icon: ShieldAlert },
-  { path: '/knowledge', label: 'KNOWLEDGE', icon: BookMarked },
-  { path: '/about', label: 'ABOUT', icon: Info },
-  { path: '/guide', label: 'GUIDE', icon: Compass },
-  { path: '/lab', label: 'EXPERIMENT LAB', icon: FlaskConical },
-  { path: '/critique', label: 'CRITIQUE LIBRARY', icon: MessageSquareWarning },
-  { path: '/hypotheses', label: 'HYPOTHESIS TRACKER', icon: ListChecks },
-  { path: '/programs', label: 'PROGRAMS ARCHIVE', icon: Archive },
-] as const;
+/** Every registered screen, in rail order (src/app/routes.tsx). */
+const MODULE_ENTRIES = ROUTES;
 
 /** Hint chip for the status bar: visible, focusable, opens the palette. */
 export function PaletteHint({ onOpen }: { onOpen: () => void }) {
@@ -78,12 +50,15 @@ export function PaletteHint({ onOpen }: { onOpen: () => void }) {
 export function CommandPalette({
   open,
   onClose,
+  onShowShortcuts,
   onToggleSidebar,
 }: {
   open: boolean;
   onClose: () => void;
   /** Desktop shell only: cycles the collapsible module rail (full → icon → hidden). */
   onToggleSidebar?: () => void;
+  /** Open the `?` keyboard-shortcuts sheet. */
+  onShowShortcuts?: () => void;
 }) {
   const s = useSession();
   const navigate = useNavigate();
@@ -131,9 +106,50 @@ export function CommandPalette({
           id: 'export',
           label: 'EXPORT SESSION AS WAV',
           icon: Download,
-          hint: 'offline render',
-          run: () => s.exportWav(),
+          hint: 'worker render · capped at the limit',
+          run: () => void s.exportWav(),
         },
+        {
+          id: 'share',
+          label: 'COPY SHARE LINK FOR THIS SETUP',
+          icon: Link2,
+          hint: 'reproduces the front panel anywhere',
+          run: () => {
+            const url = s.getShareLink();
+            void navigator.clipboard?.writeText?.(url).catch(() => window.prompt('Share link', url));
+          },
+        },
+        ...(s.running && !s.fading
+          ? [
+              {
+                id: 'fade',
+                label: 'SLEEP FADE NOW',
+                icon: MoonStar,
+                hint: 'F · ramp to silence, then stop',
+                run: () => void s.startSleepFade(),
+              } as const,
+            ]
+          : []),
+        {
+          id: 'reset-panel',
+          label: 'RESET FRONT PANEL TO DEFAULTS',
+          icon: RotateCcw,
+          hint: s.running ? 'stop the session first' : 'presets and dose are kept',
+          run: () => {
+            if (!s.running) s.resetFrontPanel();
+          },
+        },
+        ...(onShowShortcuts
+          ? [
+              {
+                id: 'shortcuts',
+                label: 'KEYBOARD SHORTCUTS',
+                icon: Keyboard,
+                hint: '?',
+                run: onShowShortcuts,
+              } as const,
+            ]
+          : []),
         {
           id: 'infant',
           label: s.governor.infantMode ? 'INFANT MODE: OFF' : 'INFANT MODE: ON',
@@ -149,7 +165,7 @@ export function CommandPalette({
           run: () => navigate('/guide'),
         },
       ],
-    [s, navigate, onToggleSidebar],
+    [s, navigate, onToggleSidebar, onShowShortcuts],
   );
 
   const runAndClose = (run: () => void) => {

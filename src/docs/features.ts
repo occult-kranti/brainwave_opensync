@@ -259,13 +259,58 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/studio',
     name: 'WAV export',
     simple:
-      'Renders your entire session — phases, noise, layers — into a standard WAV file you can keep or share. Press the WAV button in the Studio transport. The render runs offline at full quality.',
+      'Renders your entire session — phases, noise, layers — into a standard WAV file you can keep or share. Choose 16-bit, 24-bit or float, then press the WAV button in the Studio transport. The render runs in the background and stops at your session limit.',
     deep:
-      'exportWav() runs the same synthesis graph through an offline render at the session sample rate and encodes 16-bit PCM WAV (engine/wav.ts, unit-tested for header layout and round-trip fidelity). Offline rendering decouples export quality from real-time CPU load. The safety governor gain cap still applies to the render. The file carries no metadata claims — what you heard is exactly what is in the file.',
+      'exportWav() runs the same synthesis graph through an offline render at the session sample rate inside a Web Worker and encodes PCM-16, PCM-24 or float-32 WAV (engine/wav.ts, unit-tested for header layout and round-trip fidelity). The phase plan is truncated to the session limit before rendering, so the file can never outlast the cap. Offline rendering decouples export quality from real-time CPU load, and the −6 dBFS master gain still applies. The file carries no metadata claims — what you heard is exactly what is in the file.',
     howTo: [
       'Build or load the session you want in the Studio.',
       'Press the WAV button in the transport bar.',
       'Wait for the offline render, then save the downloaded file.',
+    ],
+  },
+  {
+    id: 'sleep-fade',
+    module: 'Studio',
+    route: '/studio',
+    name: 'Sleep fade',
+    simple:
+      'Ends a session gently instead of cutting it off. Choose how long the fade lasts before the limit, or press FADE NOW to fade immediately. The default is 30 seconds.',
+    deep:
+      'The engine schedules a piecewise-linear approximation of an exponential (dB-linear) gain ramp on the master AudioParam: twelve segments down to −60 dBFS, then a snap to true zero. The session stays running until the ramp lands, so the clock and the H.870 dose tracker keep counting real output. Volume changes during the fade are deferred so they never fight the ramp; stop, pause and panic cancel it instantly. The same ramp replaces the hard stop when the session limit is reached.',
+    howTo: [
+      'Pick a fade length in the SLEEP FADE row (OFF, 30 s, 2, 5 or 10 minutes).',
+      'Let the session reach its limit, or press FADE NOW (F) to fade right away.',
+      'Press CANCEL during a fade to restore the volume and keep going.',
+    ],
+  },
+  {
+    id: 'share-link',
+    module: 'Studio',
+    route: '/studio',
+    name: 'Share links',
+    simple:
+      'SHARE copies a link that recreates your whole setup on another device. Modality, carrier, phase plan, mixer and layers all travel inside the link itself. Nothing is uploaded — there is no server.',
+    deep:
+      'The front panel is serialized to a compact JSON wire format and base64url-encoded into the URL hash, so it never reaches a server log. Decoding validates and clamps every field to the same ranges the Studio setters enforce, ignores unknown keys, and rejects malformed or empty plans. Applying a link marks the panel dirty and names it Shared session until you save it as a preset. Links open on any deploy base because the router and asset paths follow the configured base URL.',
+    howTo: [
+      'Build the session you want in the Studio.',
+      'Press SHARE — the link is copied (or shown to copy by hand).',
+      'Open the link anywhere; the Studio loads with the same setup.',
+    ],
+  },
+  {
+    id: 'front-panel-memory',
+    module: 'Studio',
+    route: '/studio',
+    name: 'Front-panel memory',
+    simple:
+      'The Studio remembers your last setup across reloads. RESET restores the factory panel whenever the engine is stopped. Saved presets and your dose history are kept separately.',
+    deep:
+      'State is written to localStorage as a versioned envelope through the shared storage helper, debounced 250 ms after the last change. On boot every field is sanitized against the defaults, so a corrupt or out-of-range blob degrades to defaults rather than crashing. The engine receives the restored mixer and layer state before any AudioContext exists and materializes it on the first start. Persisted keys are registered in one place to prevent drift.',
+    howTo: [
+      'Set up the Studio and close the tab.',
+      'Reopen the app — the same panel is back.',
+      'Press RESET (engine stopped) to return to defaults.',
     ],
   },
 ];
@@ -1018,12 +1063,64 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
   },
   howTo: ['Load a long session file.', 'Read the verdict: loop period or "no exact loop".', 'Check the ridge on the curve for yourself.'],
 },
+  {
+    id: 'advisory-gate',
+    module: 'Safety',
+    route: '/safety',
+    name: 'First-run advisory & START gate',
+    simple:
+      'Before your first session, a short safety advisory must be acknowledged once per device. It covers headphones and level, driving, seizure history, medication precaution and crisis resources. You can review it again here at any time.',
+    deep:
+      'The SafetyGovernor refuses every session until the driving/machinery warning is acknowledged, and START calls authorizeSession() on the live front panel. Infant mode adds a live 1 kHz low-pass path, a 50 dBA level ceiling mapped to −26 dBFS on the headphone estimate, an automatic shutoff and a 45-minute cap; refusals are listed inline in the Studio. The acknowledgment is stored as a versioned record and re-checked at every start. The advisory copy is the governor text itself, never paraphrased.',
+    grade: 'B',
+    gradeScope: 'Driving impairment during binaural listening: Klichowski et al. 2023 (n=1000). The rest is precaution.',
+    howTo: [
+      'Press START in the Studio; read the advisory once and confirm.',
+      'Open the Safety Center to review it again or check why a start would be refused.',
+      'Turn on infant mode here to apply the tighter level, low-pass and time caps.',
+    ],
+  },
+  {
+    id: 'dose-log',
+    module: 'Safety',
+    route: '/safety',
+    name: 'Seven-day dose log',
+    simple:
+      'The weekly dose meter now really covers seven days. Every second of session output is logged with its estimated level and replayed when the app starts. Muted time is not counted.',
+    deep:
+      'Exposures are coalesced per level into a rolling 7-day log persisted every 30 seconds and at stop, then replayed into the H.870 tracker at boot. The equal-energy 3 dB exchange model and the 80 dBA / 40 h reference are unchanged. The level is a headphone estimate (−18 dBFS ≈ 58 dBA), not a calibrated measurement, so the meter is conservative guidance rather than a dosimeter.',
+    howTo: [
+      'Run sessions as usual; the DOSE THIS WEEK readout accumulates across days.',
+      'Lower the fader to slow the dose rate (3 dB halves it).',
+      'Reset the week from the Safety Center if you change headphones or calibration.',
+    ],
+  },
+  {
+    id: 'install-offline',
+    module: 'Home',
+    route: '/',
+    name: 'Install & offline use',
+    simple:
+      'Open Sync can be installed like an app and keeps working without a network. Lock-screen controls and a wake lock keep long sessions running on phones. Updates are offered, never forced.',
+    deep:
+      'A service worker precaches the app shell (about 1.4 MB) and caches preview audio on first play; the 100 MB of preset previews and stimulus files are never precached. The Media Session API exposes PLAY, PAUSE and STOP with the session title, and a silent keep-alive element keeps the tab treated as playing so mobile browsers do not throttle it. The Screen Wake Lock is held while a session runs and re-acquired when the tab returns. A waiting build shows an UPDATE chip in the status bar; applying it reloads the page, so stop your session first.',
+    howTo: [
+      'Use your browser menu → Install (or Add to Home Screen).',
+      'Start a session, then lock the phone — controls appear on the lock screen.',
+      'When an UPDATE chip appears, stop the session and tap it.',
+    ],
+  },
 ];
 
 /** Full feature list — the single import surface for Home, Guide, and tests. */
 export const FEATURES: readonly FeatureEntry[] = [...FEATURES_CORE, ...FEATURES_MODULES];
 
 /** Features grouped by module, preserving data order. */
+/** Feature doc by id (InfoPopover explainers, catalog cards). */
+export function getFeatureDoc(id: string, features: readonly FeatureEntry[] = FEATURES): FeatureEntry | undefined {
+  return features.find((f) => f.id === id);
+}
+
 export function featuresByModule(features: readonly FeatureEntry[] = FEATURES): Map<string, FeatureEntry[]> {
   const map = new Map<string, FeatureEntry[]>();
   for (const f of features) {

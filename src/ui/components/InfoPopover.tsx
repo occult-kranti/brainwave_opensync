@@ -13,9 +13,9 @@
  * panic is never covered.
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { X } from 'lucide-react';
-import { FEATURES, type FeatureEntry } from '@/docs/features';
+import { getFeatureDoc, type FeatureEntry } from '@/docs/features';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { useModalA11y } from '../hooks';
 import { GradeBadge } from './GradeBadge';
@@ -24,10 +24,6 @@ import { GradeBadge } from './GradeBadge';
 const POPOVER_Z = 75;
 /** Max panel width — never overflows a 360 px viewport. */
 const PANEL_MAX_W = 360;
-
-export function featureById(id: string): FeatureEntry | undefined {
-  return FEATURES.find((f) => f.id === id);
-}
 
 function ExplainerBody({ entry }: { entry: FeatureEntry }) {
   return (
@@ -79,7 +75,7 @@ function ExplainerBody({ entry }: { entry: FeatureEntry }) {
 }
 
 export function InfoPopover({ featureId, label }: { featureId: string; label?: string }) {
-  const entry = featureById(featureId);
+  const entry = getFeatureDoc(featureId);
   const [open, setOpen] = useState(false);
   const [pos, setPos] = useState<{ left: number; top: number; above: boolean } | null>(null);
   const isMobile = useIsMobile();
@@ -104,18 +100,25 @@ export function InfoPopover({ featureId, label }: { featureId: string; label?: s
   }, [open]);
 
   // Desktop anchored position with viewport clamps + open-upward fallback.
-  useEffect(() => {
-    if (!open || isMobile) return;
+  // Computed when the popover opens (and on resize) rather than inside an
+  // effect, so there is no setState-in-effect render cascade.
+  const measure = useCallback(() => {
     const rect = triggerRef.current?.getBoundingClientRect();
-    if (!rect) return;
+    if (!rect) return null;
     const vw = window.innerWidth;
     const vh = window.innerHeight;
     const w = Math.min(PANEL_MAX_W, vw - 24);
     const left = Math.max(12, Math.min(rect.left, vw - w - 12));
     const estH = 320;
     const above = rect.bottom + 8 + estH > vh && rect.top - 8 - estH > 12;
-    setPos({ left, top: above ? Math.max(12, rect.top - 8 - estH) : rect.bottom + 8, above });
-  }, [open, isMobile]);
+    return { left, top: above ? Math.max(12, rect.top - 8 - estH) : rect.bottom + 8, above };
+  }, []);
+  useEffect(() => {
+    if (!open || isMobile) return;
+    const onResize = () => setPos(measure());
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [open, isMobile, measure]);
 
   if (!entry) return null;
 
@@ -130,7 +133,10 @@ export function InfoPopover({ featureId, label }: { featureId: string; label?: s
         title={label ?? `About: ${title}`}
         onClick={(e) => {
           e.stopPropagation();
-          setOpen((v) => !v);
+          setOpen((v) => {
+            if (!v && !isMobile) setPos(measure());
+            return !v;
+          });
         }}
         className="font-mono2"
         style={{

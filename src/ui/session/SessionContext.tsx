@@ -1,32 +1,41 @@
 /**
  * Global session state (UI layer): live engine config, transport, session
- * timer with limit enforcement, WHO-ITU H.870 dose tracking (src/safety),
- * governor config (src/safety), panic flow, and preset/frequency loading.
+ * timer with limit enforcement + sleep fade, WHO-ITU H.870 dose tracking
+ * (src/safety, persisted across reloads), safety governor enforcement at
+ * START, panic flow, preset/frequency loading, share links, and the
+ * off-thread WAV export.
+ *
+ * v2 changes at a glance:
+ *   - The front panel is remembered across reloads (sessionPersistence.ts).
+ *   - START is gated by the SafetyGovernor: one-time advisory acknowledgment,
+ *     the gain cap, the session cap, and — in infant mode — the live 1 kHz
+ *     low-pass, a ≤50 dBA level and the 45-minute cap.
+ *   - The limit ends with a dB-linear sleep fade (default 30 s) instead of a
+ *     hard stop; a manual sleep fade is one click away.
+ *   - OS audio interruptions flip the session to PAUSED instead of leaving a
+ *     silent "running" state; Media Session + Wake Lock keep long sessions
+ *     controllable and alive on phones.
+ *   - Share links reproduce the whole setup on another device.
  */
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import {
   checkPhaseGuardrails,
-  encodeWav,
   renderPhase,
   renderSession,
   type EntrainmentMode,
-  type NatureKind,
   type NoiseColor,
   type Phase as EnginePhase,
-  type SessionSpec,
 } from '@/engine';
 import { SoundDoseTracker } from '@/safety/dose';
-import { DEFAULT_GOVERNOR_CONFIG, type GovernorConfig } from '@/safety/governor';
+import {
+  DEFAULT_GOVERNOR_CONFIG,
+  INFANT_MAX_LOWPASS_HZ,
+  INFANT_MAX_SESSION_MIN,
+  SafetyGovernor,
+  type AuthorizationResult,
+  type GovernorConfig,
+} from '@/safety/governor';
 import type { Preset, SessionSpec as DataSessionSpec } from '@/data/presets';
 import type { Grade } from '@/data/frequencies';
 import {
@@ -36,273 +45,179 @@ import {
   type UserPreset,
 } from './userPresets';
 import { LiveEngine, type GateShape, type Waveform } from '../audio/liveEngine';
-import { bandForBeat, type BandName } from '../theme';
+import { MediaSessionBridge } from '../audio/mediaSession';
+import {
+  buildExportSpec,
+  downloadBytes,
+  exportFileName,
+  renderExportAsync,
+} from '../audio/renderExport';
+import { useWakeLock } from '../hooks';
+import { bandForBeat } from '../theme';
+import {
+  DBFS_TO_DBA_OFFSET,
+  PREVIEW_MAX_SEC,
+  beatAtTime,
+  buildExportPhases,
+  newUiPhase as newPhase,
+  presetPreviewPhases,
+  truncatePhases,
+  type BowlLayer,
+  type NatureLayer,
+  type UiPhase,
+} from './sessionMath';
+import { ALL_NOISE_OFF, DEFAULT_FRONT_PANEL, INFANT_MAX_VOLUME_DB } from './sessionDefaults';
+import { SessionCtx } from './useSession';
+import type { ExportWavOptions, SessionActions, SessionSnapshot } from './types';
+import {
+  appendDose,
+  loadDoseLog,
+  loadFrontPanel,
+  readAdvisoryAck,
+  saveDoseLog,
+  saveFrontPanel,
+  writeAdvisoryAck,
+  type DoseLogEntry,
+  type FrontPanel,
+} from './sessionPersistence';
+import { encodeShare, shareFromHash, shareUrl, type ShareState } from './shareLink';
 
-export interface UiPhase {
-  id: string;
-  durationSec: number;
-  beatHz: number;
+/** Merge a share payload over a front panel. */
+function panelFromShare(base: FrontPanel, s: ShareState): FrontPanel {
+  return {
+    ...base,
+    mode: s.mode,
+    carrierHz: s.carrierHz,
+    beatHz: s.phases[0]?.beatHz ?? base.beatHz,
+    waveform: s.waveform,
+    phases: s.phases.map((p) => newPhase(p.durationSec, p.beatHz)),
+    noiseDb: { ...ALL_NOISE_OFF, ...s.noiseDb },
+    noiseOn: s.noiseOn,
+    nature: { ...s.nature },
+    bowl: { ...s.bowl },
+    layersOn: s.layersOn,
+    limitMin: s.limitMin,
+    fadeOutSec: s.fadeOutSec,
+    presetName: s.presetName ?? 'Shared session',
+    presetGrade: null,
+  };
 }
 
-export interface SessionSnapshot {
-  mode: EntrainmentMode;
-  carrierHz: number;
-  beatHz: number;
-  waveform: Waveform;
-  phaseLock: boolean;
-  gateDuty: number;
-  gateShape: GateShape;
-  running: boolean;
-  /** True while a running session is paused (audio frozen, clock held). */
-  paused: boolean;
-  panicked: boolean;
-  elapsedSec: number;
-  limitMin: number;
-  volumeDb: number;
-  muted: boolean;
-  band: BandName | null;
-  warnings: string[];
-  noiseDb: Record<NoiseColor, number>;
-  /** Master bypass for the noise mixer section (false = all colors silent live, omitted from export). */
-  noiseOn: boolean;
-  nature: { on: boolean; kind: NatureKind; db: number };
-  bowl: { on: boolean; baseHz: number; db: number; lock: boolean };
-  /** Master bypass for the nature/bowl layers section (false = layers silent live, omitted from export). */
-  layersOn: boolean;
-  phases: UiPhase[];
-  activePhaseIdx: number;
-  dosePercent: number;
-  estDbA: number;
-  governor: GovernorConfig;
-  presetName: string | null;
-  presetGrade: Grade | null;
-  dirty: boolean;
-  /** Saved "MY PRESETS" entries (localStorage-backed, versioned). */
-  userPresets: UserPreset[];
+interface BootState {
+  panel: FrontPanel;
+  fromShare: boolean;
+  advisoryAck: boolean;
+  doseLog: DoseLogEntry[];
 }
 
-interface SessionActions {
-  /** Id of the currently playing preview (null = none; one at a time). */
-  previewId: string | null;
-  /** Toggle an arbitrary preview; `start` may return a stop function (e.g. HTMLAudio.pause). */
-  togglePreview: (id: string, start: () => (() => void) | void) => void;
-  /** Stop any active preview (second tap / new preview / panic). */
-  stopPreview: () => void;
-  /** Preview the first ~10 s of a preset's phase plan through the engine preview path. */
-  previewPreset: (preset: Preset) => void;
-  /** Preview the first `maxSec` seconds of an engine phase list (id-keyed, toggle on repeat). */
-  previewPhases: (id: string, phases: readonly EnginePhase[], maxSec?: number) => void;
-  /** Play a pre-rendered preview file (public/previews/<id>.wav) via HTMLAudio; toggle on repeat. */
-  previewUrl: (id: string, url: string) => void;
-  /** Play a plain tone at `hz` for up to 30 s (cymatics "hear this pattern"). */
-  previewTone: (id: string, hz: number, durSec?: number) => void;
-  start: () => void;
-  stop: () => void;
-  /**
-   * Global pause/resume (Space hotkey, status-bar chip, palette). Freezes the
-   * live engine phase-coherently (suspend, no click/jump) and holds the
-   * session clock. No-op while idle or panicked.
-   */
-  togglePause: () => void;
-  panic: () => void;
-  rehearsePanic: () => void;
-  resumeSafely: () => void;
-  dismissPanic: () => void;
-  setMode: (m: EntrainmentMode) => void;
-  setCarrierHz: (hz: number) => void;
-  setBeatHz: (hz: number) => void;
-  setWaveform: (w: Waveform) => void;
-  setPhaseLock: (on: boolean) => void;
-  setGateDuty: (duty: number) => void;
-  setGateShape: (s: GateShape) => void;
-  setNoiseDb: (color: NoiseColor, db: number) => void;
-  /** Master bypass toggle for the noise mixer (click-free section ramp). */
-  setNoiseOn: (on: boolean) => void;
-  setNature: (patch: Partial<SessionSnapshot['nature']>) => void;
-  setBowl: (patch: Partial<SessionSnapshot['bowl']>) => void;
-  /** Master bypass toggle for the nature/bowl layers (click-free section ramp). */
-  setLayersOn: (on: boolean) => void;
-  setVolumeDb: (db: number) => void;
-  setMuted: (m: boolean) => void;
-  setLimitMin: (min: number) => void;
-  setGovernor: (patch: Partial<GovernorConfig>) => void;
-  setPhases: (phases: UiPhase[]) => void;
-  /**
-   * Persist the current front-panel config as a named user preset
-   * (Studio "SAVE AS PRESET"). Duplicate names replace in place.
-   * Returns the stored entry.
-   */
-  saveCurrentAsPreset: (name: string) => UserPreset;
-  /** Delete a user preset by id. */
-  deleteUserPreset: (id: string) => void;
-  loadPreset: (preset: Preset) => void;
-  loadFrequency: (hz: number, name?: string) => void;
-  previewHz: (hz: number) => void;
-  exportWav: () => void;
-  engineRef: React.RefObject<LiveEngine>;
-}
-
-const SessionCtx = createContext<(SessionSnapshot & SessionActions) | null>(null);
-
-let phaseSeq = 0;
-const newPhase = (durationSec: number, beatHz: number): UiPhase => ({
-  id: `ph-${++phaseSeq}`,
-  durationSec,
-  beatHz,
-});
-
-const DEFAULT_PHASES: UiPhase[] = [newPhase(8 * 60, 10), newPhase(20 * 60, 6), newPhase(62 * 60, 4)];
-
-const ALL_NOISE_OFF: Record<NoiseColor, number> = {
-  white: -Infinity,
-  pink: -Infinity,
-  brown: -Infinity,
-  blue: -Infinity,
-  violet: -Infinity,
-  grey: -Infinity,
-};
-
-/** Headphone estimate: design reference point −18 dBFS ≈ 58 dBA (±6 dB). */
-export const DBFS_TO_DBA_OFFSET = 76;
-
-/** Preview renders are capped at 30 s — previews never debit the H.870 dose tracker (sessions do). */
-export const PREVIEW_MAX_SEC = 10;
-
-/** Truncate a phase list to a total of `maxSec` seconds (preview renders). */
-export function truncatePhases(phases: readonly EnginePhase[], maxSec: number): EnginePhase[] {
-  const out: EnginePhase[] = [];
-  let remaining = maxSec;
-  for (const p of phases) {
-    if (remaining <= 0) break;
-    const d = Math.min(p.durationSec, remaining);
-    if (d > 0) out.push({ ...p, durationSec: d });
-    remaining -= d;
-  }
-  return out;
-}
-
-/** Layer/bypass mix state that gates noise/bowl/nature into the WAV export. */
-export interface ExportLayers {
-  noiseDb: Record<NoiseColor, number>;
-  noiseOn: boolean;
-  nature: SessionSnapshot['nature'];
-  bowl: SessionSnapshot['bowl'];
-  layersOn: boolean;
-}
-
-/**
- * Build the engine phase list for a WAV export. Bypassed sections are
- * OMITTED from the phases entirely — the exported file contains no noise /
- * bowl / nature content at all (not merely a zero-gain render of it).
- * (Export flattens the mixer to the loudest noise color, as before.)
- */
-export function buildExportPhases(
-  phases: readonly UiPhase[],
-  carrierHz: number,
-  mode: EntrainmentMode,
-  layers: ExportLayers,
-): EnginePhase[] {
-  const enginePhases: EnginePhase[] = phases.map((p) => ({
-    durationSec: p.durationSec,
-    carrierHz,
-    beatHz: p.beatHz,
-    mode,
-    gainDb: 0,
-  }));
-  const loudestNoise = (Object.entries(layers.noiseDb) as [NoiseColor, number][]).reduce(
-    (best, [c, db]) => (db > best[1] ? [c, db] : best),
-    ['pink', -Infinity] as [NoiseColor, number],
-  );
-  if (layers.noiseOn && Number.isFinite(loudestNoise[1])) {
-    for (const p of enginePhases) {
-      p.noise = { color: loudestNoise[0], level: Math.min(1, Math.pow(10, loudestNoise[1] / 20) * 4) };
-    }
-  }
-  if (layers.layersOn && layers.bowl.on) {
-    for (const p of enginePhases) {
-      p.bowl = { baseHz: layers.bowl.lock ? carrierHz : layers.bowl.baseHz, level: 0.5 };
-    }
-  }
-  if (layers.layersOn && layers.nature.on) {
-    for (const p of enginePhases) p.nature = { kind: layers.nature.kind, level: 0.5 };
-  }
-  return enginePhases;
-}
-
-/** First ~`maxSec` of a data-layer preset as engine phases (binaural, per-phase gain). */
-export function presetPreviewPhases(preset: Preset, maxSec: number = PREVIEW_MAX_SEC): EnginePhase[] {
-  return truncatePhases(
-    preset.spec.phases.map((p) => ({
-      durationSec: p.durationSec,
-      carrierHz: p.carrierHz,
-      beatHz: p.beatHz,
-      mode: 'binaural' as const,
-      gainDb: Math.min(0, p.gainDbFs),
-    })),
-    maxSec,
-  );
-}
-
-/** Beat at time t given the phase plan, with a 60 s linear glide between beats. */
-export function beatAtTime(phases: UiPhase[], tSec: number): { beat: number; idx: number } {
-  let acc = 0;
-  let prevBeat: number | null = null;
-  for (let i = 0; i < phases.length; i++) {
-    const p = phases[i];
-    if (tSec < acc + p.durationSec || i === phases.length - 1) {
-      const local = Math.max(0, tSec - acc);
-      if (prevBeat !== null && prevBeat !== p.beatHz) {
-        const ramp = Math.min(60, p.durationSec * 0.5);
-        if (local < ramp) {
-          const k = local / ramp;
-          return { beat: prevBeat + (p.beatHz - prevBeat) * k, idx: i };
-        }
-      }
-      return { beat: p.beatHz, idx: i };
-    }
-    acc += p.durationSec;
-    prevBeat = p.beatHz;
-  }
-  return { beat: phases[phases.length - 1]?.beatHz ?? 10, idx: phases.length - 1 };
+/** One-time boot: restore the persisted panel (or a share link), the dose log and the advisory flag. */
+function boot(): BootState {
+  const restored = loadFrontPanel(DEFAULT_FRONT_PANEL);
+  const shared = typeof window !== 'undefined' ? shareFromHash(window.location.hash) : null;
+  return {
+    panel: shared ? panelFromShare(restored, shared) : restored,
+    fromShare: shared !== null,
+    advisoryAck: readAdvisoryAck(),
+    doseLog: loadDoseLog(Date.now()),
+  };
 }
 
 export function SessionProvider({ children }: { children: ReactNode }) {
-  const engineRef = useRef<LiveEngine>(null as unknown as LiveEngine);
-  if (!engineRef.current) engineRef.current = new LiveEngine();
-  const doseRef = useRef<SoundDoseTracker>(null as unknown as SoundDoseTracker);
-  if (!doseRef.current) doseRef.current = new SoundDoseTracker('adult');
+  const bootRef = useRef<BootState | null>(null);
+  if (!bootRef.current) bootRef.current = boot();
+  const init = bootRef.current.panel;
 
-  const [mode, setModeState] = useState<EntrainmentMode>('binaural');
-  const [carrierHz, setCarrierState] = useState(200);
-  const [beatHz, setBeatState] = useState(10);
-  const [waveform, setWaveformState] = useState<Waveform>('sine');
-  const [phaseLock, setPhaseLock] = useState(true);
-  const [gateDuty, setGateDutyState] = useState(0.5);
-  const [gateShape, setGateShapeState] = useState<GateShape>('raised-cosine');
+  const engineRef = useRef<LiveEngine>(null as unknown as LiveEngine);
+  const doseRef = useRef<SoundDoseTracker>(null as unknown as SoundDoseTracker);
+  const doseLogRef = useRef<DoseLogEntry[]>(bootRef.current.doseLog);
+  if (!engineRef.current) {
+    const eng = new LiveEngine();
+    // Push the restored panel into the engine before any node exists — it
+    // remembers mixer/layer state and materializes it on the first start().
+    eng.updateConfig({
+      mode: init.mode,
+      carrierHz: init.carrierHz,
+      beatHz: init.beatHz,
+      waveform: init.waveform,
+      gateDuty: init.gateDuty,
+      gateShape: init.gateShape,
+    });
+    eng.setOutputDb(init.volumeDb);
+    for (const [color, db] of Object.entries(init.noiseDb) as [NoiseColor, number][]) eng.setNoiseLevel(color, db);
+    eng.setNature(init.nature.on ? init.nature.kind : null, init.nature.db);
+    eng.setBowl(init.bowl.on, init.bowl.lock ? init.carrierHz : init.bowl.baseHz, init.bowl.db);
+    eng.setNoiseBypass(init.noiseOn);
+    eng.setLayersBypass(init.layersOn);
+    eng.setInfantFilter(init.infantMode);
+    engineRef.current = eng;
+  }
+  if (!doseRef.current) {
+    const tracker = new SoundDoseTracker('adult');
+    for (const e of doseLogRef.current) {
+      try {
+        tracker.addExposure(e.dbA, e.seconds);
+      } catch {
+        /* a bad row never poisons the tracker */
+      }
+    }
+    doseRef.current = tracker;
+  }
+
+  const [mode, setModeState] = useState<EntrainmentMode>(init.mode);
+  const [carrierHz, setCarrierState] = useState(init.carrierHz);
+  const [beatHz, setBeatState] = useState(init.beatHz);
+  const [waveform, setWaveformState] = useState<Waveform>(init.waveform);
+  const [phaseLock, setPhaseLock] = useState(init.phaseLock);
+  const [gateDuty, setGateDutyState] = useState(init.gateDuty);
+  const [gateShape, setGateShapeState] = useState<GateShape>(init.gateShape);
   const [running, setRunning] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [interrupted, setInterrupted] = useState(false);
+  const [fading, setFading] = useState(false);
   const [panicked, setPanicked] = useState(false);
   const [elapsedSec, setElapsedSec] = useState(0);
-  const [limitMin, setLimitMinState] = useState(90);
-  const [volumeDb, setVolumeDbState] = useState(-12);
+  const [limitMin, setLimitMinState] = useState(init.limitMin);
+  const [fadeOutSec, setFadeOutSecState] = useState(init.fadeOutSec);
+  const [volumeDb, setVolumeDbState] = useState(init.volumeDb);
   const [muted, setMutedState] = useState(false);
-  const [noiseDb, setNoiseDbState] = useState<Record<NoiseColor, number>>(ALL_NOISE_OFF);
-  const [noiseOn, setNoiseOnState] = useState(true);
-  const [nature, setNatureState] = useState<SessionSnapshot['nature']>({ on: false, kind: 'rain', db: -30 });
-  const [bowl, setBowlState] = useState<SessionSnapshot['bowl']>({ on: false, baseHz: 136.1, db: -30, lock: false });
-  const [layersOn, setLayersOnState] = useState(true);
-  const [phases, setPhasesState] = useState<UiPhase[]>(DEFAULT_PHASES);
+  const [noiseDb, setNoiseDbState] = useState<Record<NoiseColor, number>>(init.noiseDb);
+  const [noiseOn, setNoiseOnState] = useState(init.noiseOn);
+  const [nature, setNatureState] = useState<NatureLayer>(init.nature);
+  const [bowl, setBowlState] = useState<BowlLayer>(init.bowl);
+  const [layersOn, setLayersOnState] = useState(init.layersOn);
+  const [phases, setPhasesState] = useState<UiPhase[]>(init.phases);
   const [activePhaseIdx, setActivePhaseIdx] = useState(0);
-  const [dosePercent, setDosePercent] = useState(0);
-  const [governor, setGovernorState] = useState<GovernorConfig>({ ...DEFAULT_GOVERNOR_CONFIG });
-  const [presetName, setPresetName] = useState<string | null>(null);
-  const [presetGrade, setPresetGrade] = useState<Grade | null>(null);
-  const [dirty, setDirty] = useState(false);
+  const [dosePercent, setDosePercent] = useState(() => doseRef.current.weeklyDosePercent());
+  const [governor, setGovernorState] = useState<GovernorConfig>({
+    ...DEFAULT_GOVERNOR_CONFIG,
+    infantMode: init.infantMode,
+    drivingWarningAcknowledged: bootRef.current.advisoryAck,
+  });
+  const [startBlocked, setStartBlocked] = useState<string[]>([]);
+  const [advisoryOpen, setAdvisoryOpen] = useState(false);
+  const [presetName, setPresetName] = useState<string | null>(init.presetName);
+  const [presetGrade, setPresetGrade] = useState<Grade | null>(init.presetGrade);
+  const [dirty, setDirty] = useState(bootRef.current.fromShare);
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
   // MY PRESETS: localStorage-backed user saves (salvaged on corrupt reads).
   const [userPresets, setUserPresets] = useState<UserPreset[]>(() => loadUserPresets());
   // One-at-a-time preview playback (preset/experiment/cymatics previews).
   const [previewId, setPreviewId] = useState<string | null>(null);
   const previewStopRef = useRef<(() => void) | null>(null);
+  const exportingRef = useRef(false);
+
+  // Latest-value refs for the 1 s clock (avoids the v1 stale-closure limit bug).
+  const limitRef = useRef(limitMin);
+  limitRef.current = limitMin;
+  const fadeRef = useRef(fadeOutSec);
+  fadeRef.current = fadeOutSec;
+  const phasesRef = useRef(phases);
+  phasesRef.current = phases;
+  const volumeRef = useRef(volumeDb);
+  volumeRef.current = volumeDb;
+  const mutedRef = useRef(muted);
+  mutedRef.current = muted;
 
   const markDirty = useCallback(() => setDirty(true), []);
 
@@ -313,21 +228,76 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     [],
   );
 
+  // Clear a consumed share hash so a reload does not re-apply it.
+  useEffect(() => {
+    if (!bootRef.current?.fromShare || typeof window === 'undefined') return;
+    try {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  const persistDose = useCallback(() => {
+    saveDoseLog(doseLogRef.current, Date.now());
+  }, []);
+
+  // ---- governor -------------------------------------------------------------
+  const authorization = useMemo<AuthorizationResult>(() => {
+    const gov = new SafetyGovernor(governor);
+    return gov.authorizeSession({
+      durationMin: limitMin,
+      gainDbFs: muted ? -60 : volumeDb,
+      lowpassHz: governor.infantMode ? INFANT_MAX_LOWPASS_HZ : undefined,
+      autoShutoff: true,
+      targetDbA: governor.infantMode ? volumeDb + DBFS_TO_DBA_OFFSET : undefined,
+    });
+  }, [governor, limitMin, volumeDb, muted]);
+
   // ---- transport -----------------------------------------------------------
-  const start = useCallback(() => {
+  const start = useCallback((): boolean => {
     const eng = engineRef.current;
+    if (!governor.drivingWarningAcknowledged) {
+      setAdvisoryOpen(true);
+      return false;
+    }
+    eng.prepare();
+    const gov = new SafetyGovernor(governor);
+    const auth = gov.authorizeSession({
+      durationMin: limitMin,
+      gainDbFs: muted ? -60 : volumeDb,
+      lowpassHz: governor.infantMode && eng.hasInfantFilter ? INFANT_MAX_LOWPASS_HZ : undefined,
+      autoShutoff: true,
+      targetDbA: governor.infantMode ? volumeDb + DBFS_TO_DBA_OFFSET : undefined,
+    });
+    if (!auth.ok) {
+      setStartBlocked(auth.reasons);
+      return false;
+    }
     eng.setOutputDb(volumeDb);
     eng.setMuted(muted);
-    if (!eng.start()) return;
+    eng.setInfantFilter(governor.infantMode);
+    if (!eng.start()) {
+      setStartBlocked(['Web Audio is unavailable in this browser.']);
+      return false;
+    }
+    setStartBlocked([]);
     setRunning(true);
+    setPaused(false);
+    setInterrupted(false);
+    setFading(false);
     setPanicked(false);
-  }, [volumeDb, muted]);
+    return true;
+  }, [governor, limitMin, volumeDb, muted]);
 
   const stop = useCallback(() => {
     engineRef.current.stop(0.3);
     setRunning(false);
     setPaused(false);
-  }, []);
+    setInterrupted(false);
+    setFading(false);
+    persistDose();
+  }, [persistDose]);
 
   const togglePause = useCallback(() => {
     // Idle/panicked: nothing live to pause — no-op (Space stays inert).
@@ -335,6 +305,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     if (paused) {
       engineRef.current.resume();
       setPaused(false);
+      setInterrupted(false);
     } else {
       engineRef.current.pause();
       setPaused(true);
@@ -350,8 +321,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     engineRef.current.panic();
     setRunning(false);
     setPaused(false);
+    setInterrupted(false);
+    setFading(false);
     setPanicked(true);
-  }, []);
+    persistDose();
+  }, [persistDose]);
 
   const rehearsePanic = useCallback(() => {
     // Test mode: same visual sequence, no engine bus is touched.
@@ -368,22 +342,68 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const dismissPanic = useCallback(() => setPanicked(false), []);
 
-  // ---- session clock / dose / limit ----------------------------------------
+  const startSleepFade = useCallback(
+    (sec?: number): boolean => {
+      const s = sec ?? fadeRef.current;
+      if (s <= 0) {
+        stop();
+        return true;
+      }
+      const ok = engineRef.current.fadeOut(s);
+      if (ok) setFading(true);
+      return ok;
+    },
+    [stop],
+  );
+
+  const cancelSleepFade = useCallback(() => {
+    engineRef.current.cancelFadeOut();
+    setFading(false);
+  }, []);
+
+  const setFadeOutSec = useCallback((sec: number) => {
+    setFadeOutSecState(Math.max(0, Math.min(600, Math.round(sec))));
+  }, []);
+
+  // ---- engine events: OS interruptions, fade landing ------------------------
+  useEffect(() => {
+    return engineRef.current.subscribe((ev) => {
+      if (ev === 'interrupted') {
+        setPaused(true);
+        setInterrupted(true);
+      } else if (ev === 'fade-done') {
+        setRunning(false);
+        setPaused(false);
+        setFading(false);
+        setElapsedSec(0);
+        saveDoseLog(doseLogRef.current, Date.now());
+      }
+    });
+  }, []);
+
+  // ---- session clock / dose / limit / fade ----------------------------------
   useEffect(() => {
     // Paused: clock held (elapsed/dose freeze); resumes from `elapsedSec`.
     if (!running || paused) return;
     const t0 = Date.now();
+    const base = elapsedSec;
+    let ticks = 0;
     const iv = window.setInterval(() => {
-      const next = elapsedSec + (Date.now() - t0) / 1000;
-      // Limit enforcement: 30 s gentle fade then stop (safety.md).
-      const limitSec = limitMin * 60;
+      const now = Date.now();
+      const next = base + (now - t0) / 1000;
+      const limitSec = limitRef.current * 60;
+      // Limit enforcement: sleep fade over the last `fadeOutSec`, then stop.
       if (next >= limitSec) {
         stop();
         setElapsedSec(0);
         return;
       }
+      const fade = fadeRef.current;
+      if (fade > 0 && !engineRef.current.isFading && next >= limitSec - fade) {
+        if (engineRef.current.fadeOut(Math.max(1, limitSec - next))) setFading(true);
+      }
       // Phase plan drives the live beat.
-      const { beat, idx } = beatAtTime(phases, next);
+      const { beat, idx } = beatAtTime(phasesRef.current, next);
       setBeatState((cur) => {
         if (Math.abs(cur - beat) > 0.005) {
           pushConfig({ beatHz: beat });
@@ -393,18 +413,100 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       });
       setActivePhaseIdx(idx);
       // H.870 dose accumulation (1 s tick at the current estimated level).
-      const dbA = volumeDb + DBFS_TO_DBA_OFFSET;
-      try {
-        doseRef.current.addExposure(dbA, 1);
-      } catch {
-        /* guard: never crash the clock */
+      if (!mutedRef.current) {
+        const dbA = volumeRef.current + DBFS_TO_DBA_OFFSET;
+        try {
+          doseRef.current.addExposure(dbA, 1);
+          appendDose(doseLogRef.current, dbA, 1, now);
+        } catch {
+          /* guard: never crash the clock */
+        }
       }
       setDosePercent(doseRef.current.weeklyDosePercent());
       setElapsedSec(Math.floor(next));
+      if (++ticks % 30 === 0) saveDoseLog(doseLogRef.current, now);
     }, 1000);
     return () => window.clearInterval(iv);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [running, paused]);
+
+  // ---- platform integrations ------------------------------------------------
+  useWakeLock(running && !paused);
+
+  const startRef = useRef(start);
+  startRef.current = start;
+  const stopRef = useRef(stop);
+  stopRef.current = stop;
+  const togglePauseRef = useRef(togglePause);
+  togglePauseRef.current = togglePause;
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
+  const runningRef = useRef(running);
+  runningRef.current = running;
+  const mediaRef = useRef<MediaSessionBridge | null>(null);
+  if (!mediaRef.current) {
+    mediaRef.current = new MediaSessionBridge({
+      play: () => {
+        if (runningRef.current && pausedRef.current) togglePauseRef.current();
+        else if (!runningRef.current) startRef.current();
+      },
+      pause: () => {
+        if (runningRef.current && !pausedRef.current) togglePauseRef.current();
+      },
+      stop: () => stopRef.current(),
+    });
+  }
+  useEffect(() => {
+    const m = mediaRef.current!;
+    const info = {
+      title: presetName ?? 'Open Sync session',
+      artist: `${mode.toUpperCase()} · ${beatHz.toFixed(2)} Hz`,
+    };
+    if (running && !paused) m.activate(info);
+    else if (running && paused) m.pause(info);
+    else m.deactivate();
+  }, [running, paused, presetName, mode, beatHz]);
+  useEffect(() => () => mediaRef.current?.deactivate(), []);
+
+  // ---- front-panel persistence (debounced) -----------------------------------
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      saveFrontPanel({
+        mode,
+        carrierHz,
+        beatHz,
+        waveform,
+        phaseLock,
+        gateDuty,
+        gateShape,
+        limitMin,
+        volumeDb,
+        noiseDb,
+        noiseOn,
+        nature,
+        bowl,
+        layersOn,
+        phases,
+        presetName,
+        presetGrade,
+        fadeOutSec,
+        infantMode: governor.infantMode,
+      });
+    }, 250);
+    return () => window.clearTimeout(t);
+  }, [
+    mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, limitMin, volumeDb, noiseDb, noiseOn,
+    nature, bowl, layersOn, phases, presetName, presetGrade, fadeOutSec, governor.infantMode,
+  ]);
+
+  // ---- advisory -----------------------------------------------------------------
+  const acknowledgeAdvisory = useCallback(() => {
+    writeAdvisoryAck();
+    setGovernorState((cur) => ({ ...cur, drivingWarningAcknowledged: true }));
+    setAdvisoryOpen(false);
+  }, []);
+  const openAdvisory = useCallback(() => setAdvisoryOpen(true), []);
+  const closeAdvisory = useCallback(() => setAdvisoryOpen(false), []);
 
   // ---- config setters -------------------------------------------------------
   const setMode = useCallback(
@@ -429,7 +531,6 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       const clamped = Math.min(80, Math.max(0.1, hz));
       setBeatState(clamped);
       pushConfig({ beatHz: clamped });
-      // Keep the first phase in sync when not running a plan edit.
       markDirty();
     },
     [pushConfig, markDirty],
@@ -468,7 +569,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     engineRef.current.setNoiseBypass(on);
     setDirty(true);
   }, []);
-  const setNature = useCallback((patch: Partial<SessionSnapshot['nature']>) => {
+  const setNature = useCallback((patch: Partial<NatureLayer>) => {
     setNatureState((cur) => {
       const next = { ...cur, ...patch };
       engineRef.current.setNature(next.on ? next.kind : null, next.db);
@@ -476,7 +577,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     });
     setDirty(true);
   }, []);
-  const setBowl = useCallback((patch: Partial<SessionSnapshot['bowl']>) => {
+  const setBowl = useCallback((patch: Partial<BowlLayer>) => {
     setBowlState((cur) => {
       const next = { ...cur, ...patch };
       engineRef.current.setBowl(next.on, next.lock ? 0 : next.baseHz, next.db);
@@ -496,23 +597,54 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     if (bowl.on && bowl.lock) engineRef.current.setBowl(true, carrierHz, bowl.db);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [carrierHz, bowl.lock, bowl.on]);
-  const setVolumeDb = useCallback((db: number) => {
-    setVolumeDbState(db);
-    engineRef.current.setOutputDb(db);
-  }, []);
+  const setVolumeDb = useCallback(
+    (db: number) => {
+      // The governor gain cap (−6 dBFS default) and the infant ceiling are
+      // enforced at the fader, not only at START.
+      const cap = governor.infantMode ? Math.min(governor.maxGainDbFs, INFANT_MAX_VOLUME_DB) : governor.maxGainDbFs;
+      const clamped = Math.max(-60, Math.min(cap, db));
+      setVolumeDbState(clamped);
+      engineRef.current.setOutputDb(clamped);
+    },
+    [governor.infantMode, governor.maxGainDbFs],
+  );
   const setMuted = useCallback((m: boolean) => {
     setMutedState(m);
     engineRef.current.setMuted(m);
   }, []);
   const setLimitMin = useCallback(
     (min: number) => {
-      // Limits only tighten live; loosening applies next session (safety.md).
-      if (!running || min < limitMin) setLimitMinState(min);
+      // Limits only tighten live; loosening applies next session (safety spec).
+      const cap = governor.infantMode ? Math.min(governor.maxSessionMin, INFANT_MAX_SESSION_MIN) : governor.maxSessionMin;
+      const clamped = Math.max(1, Math.min(cap, Math.round(min)));
+      if (!running || clamped < limitMin) setLimitMinState(clamped);
     },
-    [running, limitMin],
+    [running, limitMin, governor.infantMode, governor.maxSessionMin],
   );
   const setGovernor = useCallback((patch: Partial<GovernorConfig>) => {
-    setGovernorState((cur) => ({ ...cur, ...patch }));
+    setGovernorState((cur) => {
+      const next = { ...cur, ...patch };
+      if (patch.infantMode !== undefined && patch.infantMode !== cur.infantMode) {
+        engineRef.current.setInfantFilter(patch.infantMode);
+        if (patch.infantMode) {
+          // Infant mode tightens the level and session caps immediately.
+          setVolumeDbState((v) => {
+            const clamped = Math.min(v, INFANT_MAX_VOLUME_DB);
+            engineRef.current.setOutputDb(clamped);
+            return clamped;
+          });
+          setLimitMinState((l) => Math.min(l, INFANT_MAX_SESSION_MIN));
+        }
+      }
+      if (patch.maxGainDbFs !== undefined) {
+        setVolumeDbState((v) => {
+          const clamped = Math.min(v, next.maxGainDbFs);
+          engineRef.current.setOutputDb(clamped);
+          return clamped;
+        });
+      }
+      return next;
+    });
   }, []);
   const setPhases = useCallback((p: UiPhase[]) => {
     setPhasesState(p.slice(0, 8));
@@ -587,6 +719,83 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     },
     [pushConfig],
   );
+
+  const applyShare = useCallback(
+    (s: ShareState) => {
+      const panel = panelFromShare(DEFAULT_FRONT_PANEL, s);
+      setModeState(panel.mode);
+      setCarrierState(panel.carrierHz);
+      setBeatState(panel.beatHz);
+      setWaveformState(panel.waveform);
+      pushConfig({ mode: panel.mode, carrierHz: panel.carrierHz, beatHz: panel.beatHz, waveform: panel.waveform });
+      setPhasesState(panel.phases);
+      setNoiseDbState(panel.noiseDb);
+      for (const [color, db] of Object.entries(panel.noiseDb) as [NoiseColor, number][]) engineRef.current.setNoiseLevel(color, db);
+      setNoiseOnState(panel.noiseOn);
+      engineRef.current.setNoiseBypass(panel.noiseOn);
+      setNatureState(panel.nature);
+      engineRef.current.setNature(panel.nature.on ? panel.nature.kind : null, panel.nature.db);
+      setBowlState(panel.bowl);
+      engineRef.current.setBowl(panel.bowl.on, panel.bowl.lock ? panel.carrierHz : panel.bowl.baseHz, panel.bowl.db);
+      setLayersOnState(panel.layersOn);
+      engineRef.current.setLayersBypass(panel.layersOn);
+      if (!running) setLimitMinState(panel.limitMin);
+      setFadeOutSecState(panel.fadeOutSec);
+      setPresetName(panel.presetName);
+      setPresetGrade(null);
+      setDirty(true);
+    },
+    [pushConfig, running],
+  );
+
+  const resetFrontPanel = useCallback(() => {
+    const d = DEFAULT_FRONT_PANEL;
+    setModeState(d.mode);
+    setCarrierState(d.carrierHz);
+    setBeatState(d.beatHz);
+    setWaveformState(d.waveform);
+    setPhaseLock(d.phaseLock);
+    setGateDutyState(d.gateDuty);
+    setGateShapeState(d.gateShape);
+    pushConfig({ mode: d.mode, carrierHz: d.carrierHz, beatHz: d.beatHz, waveform: d.waveform, gateDuty: d.gateDuty, gateShape: d.gateShape });
+    setPhasesState([newPhase(8 * 60, 10), newPhase(20 * 60, 6), newPhase(62 * 60, 4)]);
+    setNoiseDbState(ALL_NOISE_OFF);
+    for (const color of Object.keys(ALL_NOISE_OFF) as NoiseColor[]) engineRef.current.setNoiseLevel(color, -Infinity);
+    setNoiseOnState(true);
+    engineRef.current.setNoiseBypass(true);
+    setNatureState(d.nature);
+    engineRef.current.setNature(null, d.nature.db);
+    setBowlState(d.bowl);
+    engineRef.current.setBowl(false, d.bowl.baseHz, d.bowl.db);
+    setLayersOnState(true);
+    engineRef.current.setLayersBypass(true);
+    if (!running) setLimitMinState(d.limitMin);
+    setFadeOutSecState(d.fadeOutSec);
+    setVolumeDbState(d.volumeDb);
+    engineRef.current.setOutputDb(d.volumeDb);
+    setPresetName(null);
+    setPresetGrade(null);
+    setDirty(false);
+  }, [pushConfig, running]);
+
+  const getShareLink = useCallback((): string => {
+    const state: ShareState = {
+      mode,
+      carrierHz,
+      waveform,
+      phases: phases.map((p) => ({ durationSec: p.durationSec, beatHz: p.beatHz })),
+      noiseDb: Object.fromEntries(Object.entries(noiseDb).filter(([, db]) => Number.isFinite(db))) as Partial<Record<NoiseColor, number>>,
+      noiseOn,
+      nature,
+      bowl,
+      layersOn,
+      limitMin,
+      fadeOutSec,
+      presetName: presetName ?? undefined,
+    };
+    if (typeof window === 'undefined') return `#s=${encodeShare(state)}`;
+    return shareUrl(state, window.location.origin, import.meta.env.BASE_URL);
+  }, [mode, carrierHz, waveform, phases, noiseDb, noiseOn, nature, bowl, layersOn, limitMin, fadeOutSec, presetName]);
 
   const previewHz = useCallback((hz: number) => {
     // Inaudible values (< 40 Hz) preview as a binaural beat on a 200 Hz carrier.
@@ -704,25 +913,31 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     [previewId, governor.maxGainDbFs, startPreview, stopPreview],
   );
 
-  const exportWav = useCallback(() => {
-    const totalSec = Math.min(
-      phases.reduce((a, p) => a + p.durationSec, 0),
-      limitMin * 60,
-    );
-    // Bypassed sections are omitted from the export (see buildExportPhases).
-    const enginePhases = buildExportPhases(phases, carrierHz, mode, { noiseDb, noiseOn, nature, bowl, layersOn });
-    const spec: SessionSpec = { name: presetName ?? 'Open Sync session', phases: enginePhases, masterGainDb: -6 };
-    void totalSec;
-    const rendered = renderSession(spec);
-    const wav = encodeWav(rendered.left, rendered.right, rendered.manifest.sampleRate, 'pcm16');
-    const blob = new Blob([wav.buffer as ArrayBuffer], { type: 'audio/wav' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${(presetName ?? 'open-sync').replace(/\s+/g, '-').toLowerCase()}.wav`;
-    a.click();
-    URL.revokeObjectURL(url);
-  }, [phases, carrierHz, mode, noiseDb, noiseOn, bowl, nature, layersOn, presetName, limitMin]);
+  // ---- export (off-thread; honors the session limit) --------------------------
+  const exportWav = useCallback(
+    async (options: ExportWavOptions = {}): Promise<boolean> => {
+      if (exportingRef.current) return false;
+      exportingRef.current = true;
+      setExporting(true);
+      setExportError(null);
+      try {
+        // Bypassed sections are omitted from the export (see buildExportPhases).
+        const enginePhases = buildExportPhases(phases, carrierHz, mode, { noiseDb, noiseOn, nature, bowl, layersOn });
+        const spec = buildExportSpec(presetName ?? 'Open Sync session', enginePhases, { maxSec: limitMin * 60, masterGainDb: -6 });
+        const format = options.format ?? 'pcm16';
+        const result = await renderExportAsync(spec, format);
+        downloadBytes(result.wav, exportFileName(presetName, format));
+        return true;
+      } catch (e) {
+        setExportError(e instanceof Error ? e.message : 'Export failed');
+        return false;
+      } finally {
+        exportingRef.current = false;
+        setExporting(false);
+      }
+    },
+    [phases, carrierHz, mode, noiseDb, noiseOn, bowl, nature, layersOn, presetName, limitMin],
+  );
 
   // ---- warnings (engine guardrails) ------------------------------------------
   const warnings = useMemo(() => {
@@ -745,9 +960,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       gateShape,
       running,
       paused,
+      interrupted,
+      fading,
       panicked,
       elapsedSec,
       limitMin,
+      fadeOutSec,
       volumeDb,
       muted,
       band: bandForBeat(beatHz),
@@ -762,10 +980,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       dosePercent,
       estDbA: volumeDb + DBFS_TO_DBA_OFFSET,
       governor,
+      authorization,
+      startBlocked,
+      advisoryAcknowledged: governor.drivingWarningAcknowledged,
+      advisoryOpen,
       presetName,
       presetGrade,
       dirty,
       userPresets,
+      exporting,
+      exportError,
       previewId,
       togglePreview,
       stopPreview,
@@ -780,6 +1004,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       rehearsePanic,
       resumeSafely,
       dismissPanic,
+      startSleepFade,
+      cancelSleepFade,
+      setFadeOutSec,
+      acknowledgeAdvisory,
+      openAdvisory,
+      closeAdvisory,
       setMode,
       setCarrierHz,
       setBeatHz,
@@ -803,41 +1033,23 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       loadFrequency,
       previewHz,
       exportWav,
+      getShareLink,
+      applyShare,
+      resetFrontPanel,
       engineRef,
     }),
     [
-      mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, running, paused, panicked,
-      elapsedSec, limitMin, volumeDb, muted, warnings, noiseDb, noiseOn, nature, bowl, layersOn, phases,
-      activePhaseIdx, dosePercent, governor, presetName, presetGrade, dirty, userPresets,
-      previewId, togglePreview, stopPreview, previewPreset, previewPhases, previewUrl, previewTone,
-      start, stop, togglePause, panic, rehearsePanic, resumeSafely, dismissPanic, setMode, setCarrierHz, setBeatHz,
-      setWaveform, setGateDuty, setGateShape, setNoiseDb, setNoiseOn, setNature, setBowl, setLayersOn, setVolumeDb,
-      setMuted, setLimitMin, setGovernor, setPhases, saveCurrentAsPreset, deleteUserPresetById,
-      loadPreset, loadFrequency, previewHz, exportWav,
+      mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, running, paused, interrupted, fading, panicked,
+      elapsedSec, limitMin, fadeOutSec, volumeDb, muted, warnings, noiseDb, noiseOn, nature, bowl, layersOn, phases,
+      activePhaseIdx, dosePercent, governor, authorization, startBlocked, advisoryOpen, presetName, presetGrade, dirty,
+      userPresets, exporting, exportError, previewId, togglePreview, stopPreview, previewPreset, previewPhases,
+      previewUrl, previewTone, start, stop, togglePause, panic, rehearsePanic, resumeSafely, dismissPanic,
+      startSleepFade, cancelSleepFade, setFadeOutSec, acknowledgeAdvisory, openAdvisory, closeAdvisory, setMode,
+      setCarrierHz, setBeatHz, setWaveform, setGateDuty, setGateShape, setNoiseDb, setNoiseOn, setNature, setBowl,
+      setLayersOn, setVolumeDb, setMuted, setLimitMin, setGovernor, setPhases, saveCurrentAsPreset,
+      deleteUserPresetById, loadPreset, loadFrequency, previewHz, exportWav, getShareLink, applyShare, resetFrontPanel,
     ],
   );
 
   return <SessionCtx.Provider value={value}>{children}</SessionCtx.Provider>;
-}
-
-export function useSession(): SessionSnapshot & SessionActions {
-  const ctx = useContext(SessionCtx);
-  if (!ctx) throw new Error('useSession must be used inside SessionProvider');
-  return ctx;
-}
-
-/** Like useSession but returns null outside a provider (SSR smoke renders). */
-export function useSessionOptional(): (SessionSnapshot & SessionActions) | null {
-  return useContext(SessionCtx);
-}
-
-/** mm:ss or hh:mm:ss mono formatting for timers. */
-export function fmtClock(totalSec: number): string {
-  const s = Math.max(0, Math.floor(totalSec));
-  const h = Math.floor(s / 3600);
-  const m = Math.floor((s % 3600) / 60);
-  const sec = s % 60;
-  const mm = String(m).padStart(2, '0');
-  const ss = String(sec).padStart(2, '0');
-  return h > 0 ? `${String(h).padStart(2, '0')}:${mm}:${ss}` : `${mm}:${ss}`;
 }

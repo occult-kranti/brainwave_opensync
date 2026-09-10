@@ -8,8 +8,8 @@
  */
 
 import { describe, expect, it } from 'vitest';
-import { MIN_PHASE_SEC, movePhase, parseBeatDraft } from '../components/PhaseTimeline';
-import type { UiPhase } from '../session/SessionContext';
+import { MIN_PHASE_SEC, movePhase, parseBeatDraft } from '../components/phaseTimelineLogic';
+import type { UiPhase } from '../session/sessionMath';
 
 const P = (id: string, durationSec: number, beatHz = 10): UiPhase => ({ id, durationSec, beatHz });
 

@@ -17,6 +17,7 @@ import SampleLab from '@/pages/SampleLab';
 // vite `?raw` sources for the banned-claim lint on new UI copy.
 import pageSrc from '@/pages/SampleLab.tsx?raw';
 import analysisSrc from '../analysis.ts?raw';
+import { BANNED_PHRASES } from '@/docs/vocabulary';
 
 const mobileState = vi.hoisted(() => ({ mobile: false }));
 vi.mock('@/hooks/use-mobile', () => ({ useIsMobile: () => mobileState.mobile }));
@@ -76,7 +77,7 @@ describe('InfoPopover wiring', () => {
 });
 
 describe('no banned overclaim phrases in new UI copy', () => {
-  const BANNED = ['induces', 'synchronizes', 'attunes', 'cia-validated', 'digital drug'];
+  const BANNED = BANNED_PHRASES;
   const files: [string, string][] = [
     ['SampleLab.tsx', pageSrc as string],
     ['analysis.ts', analysisSrc as string],

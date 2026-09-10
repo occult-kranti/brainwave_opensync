@@ -16,7 +16,7 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import { Download, Play, Square } from 'lucide-react';
-import { useSession } from '@/ui/session/SessionContext';
+import { useSession } from '@/ui/session/useSession';
 import { Panel, WarningChip, Chip } from '@/ui/components/primitives';
 import { Knob } from '@/ui/components/Knob';
 import { GradeBadge } from '@/ui/components/GradeBadge';

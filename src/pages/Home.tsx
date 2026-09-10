@@ -9,47 +9,13 @@ import { useEffect, useMemo, useRef } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import {
-  Activity,
-  Archive,
   ArrowRight,
-  AudioWaveform,
-  BookMarked,
-  BookOpen,
-  Compass,
-  FlaskConical,
-  Gauge,
-  Grid3x3,
-  Info,
-  Layers,
-  ListChecks,
-  MessageSquareWarning,
-  Moon,
-  Repeat,
-  ShieldAlert,
 } from 'lucide-react';
 import { FEATURES, featuresByModule, type FeatureEntry } from '@/docs/features';
+import { iconForModule } from '@/app/routes';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { GRADE_COLOR, LINE, TEXT, AMBER, TEAL, MONO, type GradeLetter } from '@/ui/theme';
-
-const MODULE_ICON: Record<string, typeof Info> = {
-  Guide: Compass,
-  Studio: AudioWaveform,
-  Library: BookOpen,
-  Presets: Layers,
-  Levels: Gauge,
-  Analyzer: Activity,
-  Safety: ShieldAlert,
-  Knowledge: BookMarked,
-  About: Info,
-  'Experiment Lab': FlaskConical,
-  'Critique Library': MessageSquareWarning,
-  'Hypothesis Tracker': ListChecks,
-  'Programs Archive': Archive,
-  'Cymatic Studio': Grid3x3,
-  'Sleep & Dream': Moon,
-  'Replication Bay': Repeat,
-};
 
 const GRADE_ORDER: GradeLetter[] = ['A', 'B', 'C', 'D'];
 
@@ -351,7 +317,7 @@ export default function Home() {
           <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))' }}>
             {groups.map(([module, entries], gi) => {
               const rep = entries[0];
-              const Icon = MODULE_ICON[module] ?? Info;
+              const Icon = iconForModule(module);
               const grade = weakestGrade(entries);
               const pending = entries.every((e) => e.status === 'in-verification');
               return (

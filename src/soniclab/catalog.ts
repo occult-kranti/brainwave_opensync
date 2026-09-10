@@ -165,4 +165,4 @@ export const ASTRO_MEANING_LABEL =
   'Astronomically derived frequencies: the arithmetic is exact, but there is no evidence of any special effect on listeners.';
 
 /** Banned overclaim phrases — mirror of the program-wide lint lists. */
-export const BANNED_PHRASES = ['induces', 'synchronizes', 'attunes', 'cia-validated', 'digital drug'];
+export { BANNED_PHRASES } from '@/docs/vocabulary';

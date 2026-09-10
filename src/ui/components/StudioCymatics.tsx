@@ -32,7 +32,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { TEXT } from '../theme';
-import { useSession } from '../session/SessionContext';
+import { useSession } from '../session/useSession';
 import { InfoPopover } from './InfoPopover';
 import {
   VIRTUAL_PLATES,

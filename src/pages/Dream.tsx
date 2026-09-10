@@ -14,7 +14,7 @@ import { Bell, BookOpen, Moon, Play, Plus, ShieldAlert, Trash2 } from 'lucide-re
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { InfoPopover } from '@/ui/components/InfoPopover';
 import { Chip, Panel, WarningChip } from '@/ui/components/primitives';
-import { useSession } from '@/ui/session/SessionContext';
+import { useSession } from '@/ui/session/useSession';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   REALITY_CHECK,
@@ -42,9 +42,10 @@ import {
   type DreamJournalEntry,
 } from '@/dream/journal';
 import { renderTlrCue } from '@/dream/cue';
+import { STORAGE_KEYS } from '@/lib/storage';
 
-const WBTB_STORAGE_KEY = 'open-sync.wbtb-nights.v1';
-const RC_STORAGE_KEY = 'open-sync.reality-check.v1';
+const WBTB_STORAGE_KEY = STORAGE_KEYS.wbtbNights;
+const RC_STORAGE_KEY = STORAGE_KEYS.realityCheck;
 
 const storage = (): Storage | null => (typeof window === 'undefined' ? null : window.localStorage);
 

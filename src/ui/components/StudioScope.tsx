@@ -25,9 +25,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { AMBER, INK, MONO, TEAL, TEXT } from '../theme';
-import { useSession } from '../session/SessionContext';
+import { useSession } from '../session/useSession';
 import { InfoPopover } from './InfoPopover';
-import { drawGrid, trace } from './Visualizer';
+import { drawGrid, trace } from './canvasDraw';
 import type { LiveEngine } from '../audio/liveEngine';
 
 type Analysers = ReturnType<LiveEngine['analysers']>;

@@ -13,7 +13,8 @@ import { Cpu, Landmark, ShieldAlert } from 'lucide-react';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { WarningChip } from '@/ui/components/primitives';
 import { MiniPhaseBar } from '@/ui/components/PhaseTimeline';
-import { fmtClock, useSession } from '@/ui/session/SessionContext';
+import { fmtClock } from '@/ui/session/sessionMath';
+import { useSession } from '@/ui/session/useSession';
 import type { GradeLetter } from '@/ui/theme';
 import {
   REPLICATION_BANNER,

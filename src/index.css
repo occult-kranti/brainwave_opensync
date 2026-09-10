@@ -371,3 +371,74 @@
     border-left-color: var(--amber);
   }
 }
+
+/* v2 shared buttons (Studio transport, dialogs, error boundary). */
+@layer components {
+  .btn-amber,
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 2px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background var(--motion-2), border-color var(--motion-2), color var(--motion-2), opacity var(--motion-2);
+  }
+  .btn-amber {
+    background: var(--amber);
+    color: var(--text-inv);
+    border: 1px solid var(--amber);
+  }
+  .btn-amber:hover { background: var(--amber-hi); border-color: var(--amber-hi); }
+  .btn-amber:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-1);
+    border: 1px solid var(--line-2);
+  }
+  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+  .btn-ghost:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  /* Skip link (a11y): hidden until focused, then pinned top-left above the rail. */
+  .skip-link {
+    position: fixed;
+    top: -48px;
+    left: 8px;
+    z-index: 200;
+    padding: 8px 12px;
+    background: var(--amber);
+    color: var(--text-inv);
+    border-radius: 2px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: top var(--motion-2);
+  }
+  .skip-link:focus { top: 8px; }
+
+  /* Keyboard key cap for the shortcuts overlay. */
+  .kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 20px;
+    padding: 0 6px;
+    border: 1px solid var(--line-2);
+    border-bottom-width: 2px;
+    border-radius: 3px;
+    background: var(--ink-3);
+    color: var(--text-1);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+  }
+}

@@ -18,12 +18,9 @@ import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { MemoryRouter } from 'react-router';
 import { renderSession, type NoiseColor } from '@/engine';
-import {
-  SessionProvider,
-  buildExportPhases,
-  useSession,
-  type UiPhase,
-} from '../session/SessionContext';
+import { SessionProvider } from '../session/SessionContext';
+import { buildExportPhases, type UiPhase } from '../session/sessionMath';
+import { useSession } from '../session/useSession';
 import { LiveEngine } from '../audio/liveEngine';
 import Studio from '@/pages/Studio';
 

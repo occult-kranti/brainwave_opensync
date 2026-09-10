@@ -109,3 +109,8 @@ export function depthColor(t: number): string {
   const c = a.map((v, i) => Math.round(v + (b[i] - v) * Math.min(1, Math.max(0, t))));
   return `#${c.map((v) => v.toString(16).padStart(2, '0')).join('')}`;
 }
+
+/** Engine LED states, consistent everywhere: off = idle, amber = playing, teal = paused. */
+export function engineLedState(running: boolean, paused: boolean): 'off' | 'amber' | 'teal' {
+  return running ? (paused ? 'teal' : 'amber') : 'off';
+}

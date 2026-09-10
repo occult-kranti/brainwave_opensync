@@ -15,48 +15,15 @@ import {
 import { EXPERIMENTS, EXPERIMENT_STATUS_LABEL, REGISTRY_RULES, KILL_PROMOTE_MATRIX } from '@/research/experiments';
 import { PACK_FILES, PACK_RENDER_CONTRACT, PACK_NOTE } from '@/research/stimulusPack';
 import type { Experiment, ExperimentStatus, PackFile } from '@/research/types';
-import type { Phase as EnginePhase } from '@/engine';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { FilterChip, Led, VerdictChip } from '@/research/components/chips';
 import { ClaimDisciplineNote, Field, HonestyBar, ResearchPage, Section } from '@/research/components/common';
-import { useSessionOptional } from '@/ui/session/SessionContext';
+import { useSessionOptional } from '@/ui/session/useSession';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { stimulusPlan } from '@/research/stimulusPlan';
+import { assetUrl } from '@/lib/assetUrl';
 
 type StatusFilter = ExperimentStatus | 'all' | 'decisive';
-
-// ---------------------------------------------------------------------------
-// Stimulus preview (S10.3): play the shipped reference WAV when one exists in
-// /public/stimulus_pack, otherwise render the experiment's reference stimulus
-// through the engine preview path. A preview is never an experiment run.
-// ---------------------------------------------------------------------------
-
-export type StimulusPlan =
-  | { kind: 'wav'; url: string; file: string }
-  | { kind: 'render'; phase: EnginePhase };
-
-/** Derive the reference stimulus from the pack filename grammar (ospx_xNN_<kind>_c<carrier>_d<beat>_…). */
-function referencePhaseFor(f: PackFile): EnginePhase {
-  const m = f.file.match(/_(bb|mb|iso)_c([\d.]+)_d([\d.]+)_/);
-  if (m) {
-    const mode = m[1] === 'bb' ? 'binaural' : m[1] === 'mb' ? 'monaural' : 'isochronic';
-    return { durationSec: 10, carrierHz: Number(m[2]), beatHz: Number(m[3]), mode, gainDb: -20 };
-  }
-  const tone = f.file.match(/_tone_([\d.]+)hz/i);
-  if (tone) {
-    return { durationSec: 10, carrierHz: Number(tone[1]), beatHz: 0, mode: 'monaural', gainDb: -20 };
-  }
-  // Canonical screening stimulus — matches the pack's 400 Hz / Δf 10 reference.
-  return { durationSec: 10, carrierHz: 400, beatHz: 10, mode: 'binaural', gainDb: -20 };
-}
-
-/** Preview plan for an experiment: shipped WAV when listed, else engine render. */
-export function stimulusPlan(expId: string): StimulusPlan | null {
-  const files = PACK_FILES.filter((f) => f.serves.includes(expId));
-  if (files.length === 0) return null;
-  const rendered = files.find((f) => f.url);
-  if (rendered?.url) return { kind: 'wav', url: rendered.url, file: rendered.file };
-  return { kind: 'render', phase: referencePhaseFor(files[0]) };
-}
 
 function PlayStimulusButton({ exp }: { exp: Experiment }) {
   // Optional context: the page SSR-smoke-renders without a SessionProvider.
@@ -121,7 +88,7 @@ function PackFileRow({ f }: { f: PackFile }) {
       <div className="min-w-0 flex-1">
         <div className="font-mono2 text-[12px] leading-4" style={{ color: 'var(--text-1)' }}>
           {f.url ? (
-            <a href={f.url} download style={{ color: 'var(--teal-hi)' }} className="hover:underline">
+            <a href={assetUrl(f.url)} download style={{ color: 'var(--teal-hi)' }} className="hover:underline">
               {f.file} ↓
             </a>
           ) : (

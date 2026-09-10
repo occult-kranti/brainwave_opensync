@@ -3,10 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0B0C0D" />
     <title>Open Sync — Evidence-Honest Brainwave Audio Lab</title>
+    <meta
+      name="description"
+      content="Open-source binaural / monaural / isochronic audio laboratory. Every frequency, preset and claim carries an A–D evidence grade; run blinded n-of-1 experiments on yourself. Runs entirely in your browser — no account, no server."
+    />
+    <meta name="application-name" content="Open Sync" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Open Sync" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Open Sync" />
+    <meta property="og:title" content="Open Sync — Evidence-Honest Brainwave Audio Lab" />
+    <meta
+      property="og:description"
+      content="A brainwave-audio instrument that grades its own claims. Binaural, monaural and isochronic sessions, sleep fade, blinded self-experiments, graded research archive. Free, open source, browser-only."
+    />
+    <meta property="og:url" content="https://occult-kranti.github.io/brainwave_opensync/" />
+    <meta property="og:image" content="https://occult-kranti.github.io/brainwave_opensync/icons/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Open Sync — Evidence-Honest Brainwave Audio Lab" />
+    <meta name="twitter:description" content="Binaural / monaural / isochronic audio lab with A–D evidence grades and blinded self-experiments. Browser-only, open source." />
+    <meta name="twitter:image" content="https://occult-kranti.github.io/brainwave_opensync/icons/og-image.png" />
+    <link rel="icon" href="%BASE_URL%favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="%BASE_URL%icons/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Open Sync",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "license": "https://opensource.org/licenses/MIT",
+        "description": "Evidence-honest brainwave audio laboratory: binaural, monaural and isochronic sessions with A–D evidence grades, blinded self-experiments and a graded research archive. Not a medical device."
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>Open Sync is a browser audio laboratory and needs JavaScript (Web Audio) to run.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

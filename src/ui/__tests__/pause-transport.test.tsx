@@ -20,8 +20,10 @@ import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { MemoryRouter } from 'react-router';
 import { LiveEngine } from '../audio/liveEngine';
-import { SessionProvider, useSession } from '../session/SessionContext';
+import { SessionProvider } from '../session/SessionContext';
+import { useSession } from '../session/useSession';
 import { AppShell } from '../layout/AppShell';
+import { seedAdvisoryAck } from '@/test/helpers';
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -81,6 +83,7 @@ beforeEach(() => {
   roots = [];
   containers = [];
   window.localStorage.clear();
+  seedAdvisoryAck();
   // No AudioContext in happy-dom: stub the transport edge so start() succeeds.
   vi.spyOn(LiveEngine.prototype, 'start').mockReturnValue(true);
   vi.spyOn(LiveEngine.prototype, 'pause').mockImplementation(() => {});

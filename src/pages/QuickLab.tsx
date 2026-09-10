@@ -29,7 +29,7 @@ import {
 } from '@/quicklab/engine';
 import { getProtocol, PROTOCOLS, PROTOCOL_CITATIONS } from '@/quicklab/protocols';
 import type { ArmSpec, QuickLabProtocol } from '@/quicklab/types';
-import { useSession } from '@/ui/session/SessionContext';
+import { useSession } from '@/ui/session/useSession';
 import { InfoPopover } from '@/ui/components/InfoPopover';
 import { ResearchPage, Section } from '@/research/components/common';
 import type { NoiseColor } from '@/engine';

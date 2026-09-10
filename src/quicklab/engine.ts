@@ -17,6 +17,7 @@
 
 import { SoundDoseTracker } from '@/safety/dose';
 import type { QuickLabProtocol } from './types';
+import { STORAGE_KEYS } from '@/lib/storage';
 
 // ---------------------------------------------------------------------------
 // RNG
@@ -230,7 +231,7 @@ export interface StorageLike {
   removeItem(key: string): void;
 }
 
-export const STORAGE_KEY = 'opensync.quicklab.v1';
+export const STORAGE_KEY = STORAGE_KEYS.quicklab;
 
 /** In-memory StorageLike (tests / SSR). */
 export function memoryStorage(): StorageLike {

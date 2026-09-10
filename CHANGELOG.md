@@ -35,6 +35,8 @@ The v2 release reorganizes the project, fixes several silent v1 defects found in
 - **Muted time was debited to the dose meter** — no longer.
 - **Typing `p` in the preset-name field could trigger panic** in some focus states — shortcuts are now inert in every typing context.
 - **Space double-fired on focused buttons** — guarded in the registry.
+- **Phone layout could desync and overflow** — `useIsMobile()` read `window.innerWidth`, which grows when desktop-width content overflows on a phone, so a lazily-loaded page could mount in desktop mode under the mobile shell. The hook now trusts the media query, and a phone-width CSS guard keeps every route inside the viewport (verified on all 21 routes at 390 px, emulated and plain).
+- **START after the first-run advisory** re-opened the gate (stale closure); acknowledgment and start now happen in one tick.
 
 ### Changed
 - `package.json` identity (`open-sync` 2.0.0, MIT, repository, engines), pruned 40 unused dependencies (radix kits, gsap, lenis, zod, recharts, forms, carousels …); one shadcn component (`sheet`) remains.

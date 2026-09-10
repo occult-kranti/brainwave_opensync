@@ -442,3 +442,28 @@
     letter-spacing: 0.04em;
   }
 }
+
+/* v2 phone layout guard: a page must never widen the layout viewport. Grid
+   tracks may shrink below their content (min-width: 0), and a panel whose
+   content is intrinsically wider scrolls inside itself instead of pushing
+   the whole app sideways (which also desynced the mobile breakpoint). */
+@layer utilities {
+  @media (max-width: 767px) {
+    main {
+      overflow-x: hidden;
+    }
+    main .grid > * {
+      min-width: 0;
+    }
+    main .panel {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    main canvas,
+    main svg,
+    main img,
+    main table {
+      max-width: 100%;
+    }
+  }
+}

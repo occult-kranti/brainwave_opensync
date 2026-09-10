@@ -1,7 +1,14 @@
 name: Deploy to GitHub Pages
 
-# Builds with the project base path and publishes dist/ via the Pages API.
-# Repository Settings → Pages → Source must be set to "GitHub Actions".
+# Builds with the project base path and publishes dist/ to the `gh-pages`
+# branch, which is the repository's Pages source ("Deploy from a branch").
+# The gh-pages checkout is updated in place (not force-orphaned) so only the
+# files that changed are pushed — the 108 MB of preview / stimulus WAVs are
+# re-uploaded only when they change.
+#
+# If Pages is ever switched to the "GitHub Actions" source, replace the
+# publish step with actions/upload-pages-artifact + actions/deploy-pages and
+# allow `master` in the github-pages environment's deployment branch policy.
 
 on:
   push:
@@ -9,18 +16,16 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,17 +39,27 @@ jobs:
           VITE_BASE: /brainwave_opensync/
       - name: SPA fallback for deep links
         run: cp dist/index.html dist/404.html
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish dist/ to gh-pages
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git clone --quiet --depth 1 --branch gh-pages "$REMOTE" site 2>/dev/null; then
+            echo "updating existing gh-pages"
+          else
+            echo "creating gh-pages"
+            mkdir site && git -C site init --quiet -b gh-pages && git -C site remote add origin "$REMOTE"
+          fi
+          rsync -a --delete --exclude .git dist/ site/
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "nothing changed — site already up to date"
+            exit 0
+          fi
+          git commit --quiet -m "Deploy ${GITHUB_SHA::7} to GitHub Pages"
+          git push --quiet origin gh-pages
+          echo "published $(git rev-parse --short HEAD)"

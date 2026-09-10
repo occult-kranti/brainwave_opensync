@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml/badge.svg)](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-2.2.0-amber)
+![Version](https://img.shields.io/badge/version-2.3.0-amber)
 
 An open, evidence-graded replication **and correction** of commercial brainwave-entrainment
 platforms, rebuilt as a browser app where every frequency, protocol and claim carries an
@@ -26,6 +26,18 @@ A "neural audio instrument" that refuses to overclaim:
 - Safety rails are contracts, not advisories: a −6 dBFS gain cap, a session cap you set yourself, a
   WHO-ITU H.870 weekly dose meter that really spans seven days, an infant mode with a live 1 kHz
   low-pass, a panic button on every screen, and a one-time advisory gate before the first START.
+
+## Everyday app (phone-first, no captions)
+
+**https://occult-kranti.github.io/brainwave_opensync/app/** — the calm half of Open Sync. Three tabs
+(Play, Sounds, Settings), four one-tap intents (Sleep, Focus, Relax, Meditate) built on the graded
+presets, a breathing-ring player, radio-style pickers for noise, nature, bowl sets and the interval
+bell, and a settings screen for the session cap, sleep fade, infant mode and theme. Every visible
+string is at most twelve words (a test enforces it); the evidence layer is one pill with four
+one-line grades and a link to the lab. Installs as its own icon and works offline; it shares the
+engine, the session layer and the safety rails with the lab. The plan behind it, written from
+marketing, engineering, documentation, visual-design and UX perspectives, is in
+[`docs/EVERYDAY-PLAN.md`](docs/EVERYDAY-PLAN.md).
 
 ## What's new in v2
 

@@ -236,6 +236,26 @@ export default function Home() {
             >
               READ THE GUIDE
             </button>
+            {/* The Everyday app is a second entry outside this router: a plain link. */}
+            <a
+              href={`${import.meta.env.BASE_URL}app/`}
+              className="t-label"
+              data-testid="everyday-link"
+              title="Open Sync Everyday — the simple, phone-first player"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                height: 36,
+                padding: '0 16px',
+                background: 'transparent',
+                color: 'var(--teal-hi)',
+                border: '1px solid var(--teal-dim)',
+                borderRadius: 2,
+                textDecoration: 'none',
+              }}
+            >
+              EVERYDAY APP
+            </a>
           </motion.div>
         </div>
       </div>

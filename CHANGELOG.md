@@ -2,6 +2,15 @@
 
 All notable changes to Open Sync. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/).
 
+## [2.3.0] — 2026-09-10
+
+### Added
+- **Open Sync Everyday** — a second, simplified, phone-first app at `/app/` (https://occult-kranti.github.io/brainwave_opensync/app/): three tabs (Play, Sounds, Settings), four one-tap intents (Sleep, Focus, Relax, Meditate) built on the graded presets, a breathing-ring player with duration chips, volume and layer toggles, radio-style sound pickers (noise, nature, bowl sets, interval bell), a compact first-run advisory, and a settings screen for the session cap, sleep fade, infant mode and theme. No captions: every visible string is at most twelve words (enforced by a test); the evidence layer is one pill that opens four one-line grades and a link to the lab. Installs as its own icon (own manifest, id and scope) and shares the root service worker, the engine, the session layer and the safety rails with the lab. Plan: `docs/EVERYDAY-PLAN.md`.
+- The lab's Home links to the Everyday app; the sitemap lists it.
+
+### Changed
+- `@vitejs/plugin-react` 5.2.0 (Dependabot #15). Inter is self-hosted via `@fontsource-variable/inter` for the Everyday app.
+
 ## [2.2.0] — 2026-09-10
 
 ### Changed

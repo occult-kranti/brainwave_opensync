@@ -20,6 +20,7 @@ import { StudioScope } from '@/ui/components/StudioScope';
 import { StudioCymatics } from '@/ui/components/StudioCymatics';
 import { PhaseTimeline } from '@/ui/components/PhaseTimeline';
 import { InfoPopover } from '@/ui/components/InfoPopover';
+import { BowlSet } from '@/ui/components/BowlSet';
 import { BANDS, BAND_COLOR, NOISE_COLOR, NOISE_SLOPE, bandForBeat } from '@/ui/theme';
 import { useIsMobile } from '@/hooks/use-mobile';
 import type { EntrainmentMode, NoiseColor } from '@/engine';
@@ -678,36 +679,8 @@ export default function Studio() {
                 />
                 <GradeBadge grade="B" compact citation={{ verdict: 'Relaxation evidence, not entrainment.', summary: 'Nature soundscapes have small human relaxation studies; no entrainment claim.', source: 'Evidence synthesis — see Knowledge Base' }} />
               </div>
-              <div className="flex items-center gap-3">
-                <button type="button" onClick={() => s.setBowl({ on: !s.bowl.on })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                  <Led state={s.bowl.on ? 'amber' : 'off'} />
-                </button>
-                <span className="t-label" style={{ width: 110 }}>SINGING BOWLS</span>
-                <Readout
-                  value={(s.bowl.lock ? s.carrierHz : s.bowl.baseHz).toFixed(2)}
-                  unit="Hz"
-                  size="sm"
-                  editable={!s.bowl.lock}
-                  onCommit={(raw) => {
-                    const v = parseFloat(raw);
-                    if (Number.isFinite(v) && v > 20 && v < 1000) s.setBowl({ baseHz: v });
-                    return Number.isFinite(v);
-                  }}
-                />
-                <button type="button" className={`chip ${s.bowl.lock ? 'chip-active' : ''}`} onClick={() => s.setBowl({ lock: !s.bowl.lock })} title="Detune to carrier">
-                  LOCK
-                </button>
-                <input
-                  type="range"
-                  min={-60}
-                  max={0}
-                  value={s.bowl.db}
-                  onChange={(e) => s.setBowl({ db: parseFloat(e.target.value) })}
-                  aria-label="Bowl level"
-                  style={{ flex: 1, accentColor: '#D9A441' }}
-                />
-                <GradeBadge grade="D" compact citation={{ verdict: 'Traditional use; no controlled evidence — included as texture.', summary: 'Singing bowls are a cultural practice; physiological claims are unevidenced.', source: 'Evidence audit — see Knowledge Base' }} />
-              </div>
+              {/* Singing-bowl set (up to MAX_BOWLS rows) + the interval bell. */}
+              <BowlSet />
               {s.layersOn ? null : (
                 <p className="t-caption text-3">
                   Bypassed: per-layer settings kept, but nature and bowls are silent live and excluded from export.

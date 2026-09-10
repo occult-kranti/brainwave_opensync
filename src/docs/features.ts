@@ -196,15 +196,65 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/studio',
     name: 'Singing bowls layer',
     grade: 'D',
-    gradeScope: 'Traditional/cultural use documented; no controlled physiological evidence.',
+    gradeScope: 'Traditional/cultural use documented; no controlled physiological evidence. Materials and sets are sound models, not effects.',
     simple:
-      'A singing-bowl-like drone you can add for texture. It is included because people enjoy the sound, not because it does anything proven. Healing claims about bowls are folklore, and the badge says so.',
+      'A set of up to seven modelled singing bowls you can add for texture, each with its own material, strike, pitch, pan and interval. It is included because people enjoy the sound, not because it does anything proven. Wellness claims about bowls are folklore, and the D badge says so.',
     deep:
-      'The bowl voice models a struck metal bowl as a sum of inharmonic partials with independent exponential decays, producing the slow internal beating of real bowls. LOCK detunes the base partial onto the session carrier so the texture stays consonant with the engine. Traditional meditative use is well documented; controlled physiological evidence is absent, so the layer ships with a D badge and is labeled texture. Nothing is hidden — the honesty is the feature.',
+      'Each bowl is a physical-model voice: a sum of inharmonic partials with independent exponential decays, a slow shimmer and a split mode doublet that beats the way a hand-hammered bowl does. The five materials and three strikes are profiles chosen by ear against published partial measurements (Inácio 2006; Terwagne & Bush 2011); they change the sound, and nothing else is claimed. Every bowl has a pitch (note picker or typed Hz), a stereo pan, a re-strike interval and its own level, and LOCK ties a bowl to the session carrier so the texture stays consonant with the engine. Ready-made sets load a whole arrangement at once; the seven-note set is the C-major layout sold as a "chakra set", and its note-to-body mapping is folklore. Traditional meditative use is documented; controlled physiological evidence is absent, so the layer ships with a D badge and is labeled texture.',
     howTo: [
-      'Click the Singing Bowls LED in the Layers panel.',
-      'Set a base frequency, or press LOCK to tie it to the carrier.',
-      'Keep the level modest; the drone is a texture, not a floor.',
+      'Click a bowl LED in the Layers panel, or press + ADD BOWL (up to seven bowls).',
+      'Pick a material and a strike, then a note or a typed Hz — or press LOCK to follow the carrier.',
+      'Pan each bowl, choose its interval, and keep levels modest; the set is a texture, not a floor.',
+      'Use LOAD SET for a ready-made arrangement, then edit it freely.',
+    ],
+  },
+  {
+    id: 'bowl-materials',
+    module: 'Studio',
+    route: '/studio',
+    name: 'Bowl materials and strikes',
+    grade: 'D',
+    gradeScope: 'Sound-model profiles tuned by ear against published partial measurements; no physiological claim.',
+    simple:
+      'Five bowl materials and three ways of striking them, each a different sound model. Materials set the partials, ring length and shimmer; strikes set how bright the attack is or whether the bowl sings continuously. They change how the bowl sounds and claim nothing else.',
+    deep:
+      'A material is a profile of partial ratios, relative amplitudes, decay time, slow FM shimmer and a mode-doublet split: Tibetan bronze is the original three-partial voice, Himalayan antique adds a fourth partial and a long warm ring, bell bronze is bright with five partials, brass is thin and percussive, and crystal quartz is a near-pure fundamental with very long sustain. A strike weights those partials and shapes the onset: mallet lets every partial speak at once, soft mallet rolls off the highs behind a 12 ms bloom, and rim is a sustained voice that swells in and releases over its cycle length. The ratios sit inside the 1 : 2.7–2.9 : 4.9–5.7 : 7.9–9.1 range measured on struck metal bowls (Inácio, Henrique & Antunes 2006) and were tuned by ear, so they are sound models rather than measurements of any particular bowl. No profile carries a physiological claim; the D badge covers the whole layer.',
+    howTo: [
+      'Open a bowl row in the Layers panel and pick a material from its first menu.',
+      'Pick a strike: MALLET or SOFT MALLET for a ring-down, RIM (SINGING) for a continuous voice.',
+      'Read the one-line caption under the row — it describes the model, never an effect.',
+    ],
+  },
+  {
+    id: 'bowl-sets',
+    module: 'Studio',
+    route: '/studio',
+    name: 'Bowl sets',
+    grade: 'D',
+    gradeScope: 'Ready-made arrangements described by sound only; the "chakra set" note-to-body mapping is folklore.',
+    simple:
+      'Ready-made bowl arrangements you can load from one menu. Loading a set replaces every bowl currently in the panel. Each set is described by how it sounds, nothing more.',
+    deep:
+      'A set is pure data: a list of bowls with material, strike, pitch, level, pan and re-strike interval, capped at seven. LOAD SET replaces the whole set with fresh rows (all switched on, intervals snapped to the offered choices), so the previous bowls are gone rather than merged. The five sets range from a Himalayan trio and a rim-sung crystal pair to a seven-bowl C-major scale; that last layout is what shops sell as a "chakra set", and its note-to-body mapping is folklore while the scale itself is real. Sets carry the layer\'s D badge — an arrangement is a matter of taste, not evidence.',
+    howTo: [
+      'Open the LOAD SET… menu in the Singing Bowls header.',
+      'Choose a set; the current bowls are replaced and the set blurb appears under the header.',
+      'Edit any bowl afterwards — a set is only a starting point.',
+    ],
+  },
+  {
+    id: 'interval-bell',
+    module: 'Studio',
+    route: '/studio',
+    name: 'Interval bell',
+    simple:
+      'A timer bell that rings the first bowl of the set once when the session starts and again every few minutes. Use it to mark meditation intervals or to remind yourself to check posture and breath. It is a clock, not a stimulus, and carries no claim.',
+    deep:
+      'The bell is a single strike of the first bowl\'s voice (its material, strike and pitch, with LOCK resolved to the carrier); a rim-sung bowl is struck with a mallet instead, and an empty set falls back to an A3 antique bowl. Live, the session clock rings it at the first tick and at every period boundary, so it survives pause and resume without drift. In the export the bell is rendered as a bowl re-struck every N minutes, which rings at each phase start and every N minutes within a phase — a single-phase export therefore matches the live session, while a multi-phase export also rings at each phase boundary. Its level is fixed at −18 dB on the layer bus, and it is silent whenever the layers are bypassed.',
+    howTo: [
+      'Choose a period under INTERVAL BELL in the Layers panel (OFF turns it off).',
+      'Make sure the first bowl row has the voice you want to hear — the bell copies it.',
+      'Start the session; the bell rings once at the start and then once per period.',
     ],
   },
   {

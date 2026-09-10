@@ -319,6 +319,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       return false;
     }
     // A fresh session starts its clock, phase plan and limit fade from zero.
+    runningRef.current = true;
+    pausedRef.current = false;
     limitFadeIssuedRef.current = false;
     elapsedRef.current = 0;
     setElapsedSec(0);
@@ -335,6 +337,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const stop = useCallback(() => {
     engineRef.current.stop(0.3);
+    runningRef.current = false;
+    pausedRef.current = false;
     setRunning(false);
     setPaused(false);
     setInterrupted(false);
@@ -350,11 +354,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     if (!running || panicked) return;
     if (paused) {
       engineRef.current.resume();
+      pausedRef.current = false;
       setPaused(false);
       setInterrupted(false);
     } else {
       // The engine drops an active fade on pause (fade-cancelled) — mirror it.
       engineRef.current.pause();
+      pausedRef.current = true;
       setPaused(true);
       setFading(false);
       setFadeEndsAtSec(null);
@@ -368,6 +374,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     previewStopRef.current = null;
     setPreviewId(null);
     engineRef.current.panic();
+    runningRef.current = false;
+    pausedRef.current = false;
     setRunning(false);
     setPaused(false);
     setInterrupted(false);
@@ -407,6 +415,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     engineRef.current.setInfantFilter(governorRef.current.infantMode);
     const db = engineRef.current.resumeSafely();
     volumeRef.current = db;
+    runningRef.current = true;
+    pausedRef.current = false;
     setVolumeDbState(db);
     setStartBlocked([]);
     setRunning(true);
@@ -448,6 +458,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     return engineRef.current.subscribe((ev) => {
       if (ev === 'interrupted') {
+        pausedRef.current = true;
         setPaused(true);
         setInterrupted(true);
         setFading(false);
@@ -456,6 +467,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setFading(false);
         setFadeEndsAtSec(null);
       } else if (ev === 'fade-done') {
+        runningRef.current = false;
+        pausedRef.current = false;
         setRunning(false);
         setPaused(false);
         setFading(false);
@@ -475,6 +488,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     const base = elapsedSec;
     let ticks = 0;
     const iv = window.setInterval(() => {
+      // A tick that fires after stop/panic/fade-done but before React has
+      // torn this effect down must not touch the clock.
+      if (!runningRef.current || pausedRef.current) return;
       const now = Date.now();
       const next = base + (now - t0) / 1000;
       const limitSec = limitRef.current * 60;
@@ -937,6 +953,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setDirty(false);
   }, [pushConfig, running]);
 
+  const resetDoseLog = useCallback(() => {
+    doseRef.current.reset();
+    doseLogRef.current = [];
+    removeKey(STORAGE_KEYS.doseHistory);
+    setDosePercent(0);
+  }, []);
+
   const getShareLink = useCallback((): string => {
     const state: ShareState = {
       mode,
@@ -1048,7 +1071,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       const db = previewLevelDb(-12);
       startPreview(id, () => {
         const audio = new Audio(url);
-        audio.volume = Math.min(1, Math.pow(10, db / 20));
+        // Through the engine's preview path when Web Audio is available (so the
+        // infant low-pass applies to pre-rendered files too); the element's own
+        // volume is the fallback.
+        const detach = engineRef.current.attachMediaElement(audio, db);
+        audio.volume = detach ? 1 : Math.min(1, Math.pow(10, db / 20));
         const clearIfCurrent = () => setPreviewId((cur) => (cur === id ? null : cur));
         audio.onended = clearIfCurrent;
         audio.onerror = clearIfCurrent;
@@ -1057,6 +1084,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           audio.onended = null;
           audio.onerror = null;
           audio.pause();
+          detach?.();
           audio.src = '';
         };
       });
@@ -1211,6 +1239,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       getShareLink,
       applyShare,
       resetFrontPanel,
+      resetDoseLog,
       engineRef,
     }),
     [
@@ -1222,7 +1251,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       startSleepFade, cancelSleepFade, setFadeOutSec, acknowledgeAdvisory, openAdvisory, closeAdvisory, setMode,
       setCarrierHz, setBeatHz, setWaveform, setGateDuty, setGateShape, setNoiseDb, setNoiseOn, setNature, setBowl,
       setLayersOn, setVolumeDb, setMuted, setLimitMin, setGovernor, setPhases, saveCurrentAsPreset,
-      deleteUserPresetById, loadPreset, loadFrequency, previewHz, exportWav, getShareLink, applyShare, resetFrontPanel,
+      deleteUserPresetById, loadPreset, loadFrequency, previewHz, exportWav, getShareLink, applyShare, resetFrontPanel, resetDoseLog,
     ],
   );
 

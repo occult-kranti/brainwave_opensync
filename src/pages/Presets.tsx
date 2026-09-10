@@ -29,7 +29,8 @@ export default function Presets() {
   const [showDimmed, setShowDimmed] = useState(false);
   const [drawer, setDrawer] = useState<Preset | null>(null);
   const [loadedId, setLoadedId] = useState<string | null>(null);
-  const { loadPreset, previewPreset, previewUrl, previewId, userPresets, deleteUserPreset } = useSession();
+  const { loadPreset, previewPreset, previewUrl, previewId, userPresets, deleteUserPreset, governor } = useSession();
+  const infantOnly = governor.infantMode;
   // Pre-rendered preview files (public/previews); null while the manifest
   // loads or when absent → preview buttons use the live engine fallback.
   const previewManifest = usePreviewManifest();
@@ -44,11 +45,11 @@ export default function Presets() {
 
   const filtered = useMemo(
     () =>
-      PRESETS.filter((p) => cat === 'All' || p.category === cat).map((p) => ({
+      PRESETS.filter((p) => (infantOnly ? p.category === 'Infant' : cat === 'All' || p.category === cat)).map((p) => ({
         preset: p,
         hidden: minGrade !== null && GRADE_RANK[p.grade] < GRADE_RANK[minGrade],
       })),
-    [cat, minGrade],
+    [cat, minGrade, infantOnly],
   );
   const hiddenCount = filtered.filter((f) => f.hidden).length;
 

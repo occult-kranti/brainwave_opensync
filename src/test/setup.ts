@@ -27,3 +27,14 @@ function reset() {
 
 reset();
 beforeEach(reset);
+
+// DOM suites mount pages that fetch the preview manifest; there is no server
+// in tests, so answer with a 404 instead of a real socket (ECONNREFUSED noise).
+if (typeof window !== 'undefined' && typeof fetch === 'function') {
+  const realFetch = fetch;
+  globalThis.fetch = ((input: RequestInfo | URL, init?: RequestInit) => {
+    const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+    if (/previews\/manifest\.json/.test(url)) return Promise.resolve(new Response(null, { status: 404 }));
+    return realFetch(input, init);
+  }) as typeof fetch;
+}

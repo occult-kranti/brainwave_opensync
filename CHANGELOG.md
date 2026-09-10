@@ -11,7 +11,7 @@ Deploy fix plus the first round of an adversarial multi-agent review of the v2 d
 - **OS interruption left audio live.** A call or audio-session steal flipped the session to PAUSED but left the master gain at full level, so a platform auto-resume played audio while the UI said PAUSED and the clock/dose/limit were frozen. The engine now hard-mutes on interruption; RESUME ramps back.
 - **Lock-screen controls missing on Chrome/Android.** The keep-alive clip was 0.1 s; Chromium treats media under 5 s as transient and refuses to make the session controllable. The clip is now 6 s.
 - **MUTE was ignored during a sleep fade** (up to 10 minutes). Mute now cuts the curve immediately; unmuting re-issues the remainder of the fade.
-- **Previews bypassed infant mode** (no 1 kHz low-pass, no level ceiling). Previews now run through a dedicated preview path with its own low-pass split and are capped at the infant ceiling.
+- **Previews bypassed infant mode** (no 1 kHz low-pass, no level ceiling). Engine previews and pre-rendered preview files now run through a dedicated preview path with its own low-pass split and are capped at the infant ceiling.
 - **Fade re-trigger could jump the volume up** (curve anchored at the nominal level rather than the current one). Fades start from the current level and a muted engine fades straight to 0.
 - **pause → resume race** could misreport the engine's own suspend as an OS interruption; **STOP → START within 360 ms** could tear down the new tone chain. Both timers are now tracked.
 - **`resumeSafely()` bypassed the advisory gate and the governor** and was reachable from a panic rehearsal on a fresh device. It now goes through the same checks as START at the lowered level.
@@ -34,6 +34,10 @@ Deploy fix plus the first round of an adversarial multi-agent review of the v2 d
 - **One Escape closed every stacked overlay.** A modal stack lets only the top-most sheet answer Escape; sheets also trap Tab and give initial focus to the sheet (a held Enter can no longer accept the advisory by key repeat).
 - **Phone layout guard** used `overflow-x: hidden` on `main` (which disabled `position: sticky` inside pages) and made every panel a scroll container (clipping citation popovers). It now uses `overflow-x: clip` and scopes inner scrolling to tables and scopes.
 - Share fallback (no clipboard) now stays on screen until dismissed, receives focus, and announces via a live region; the WAV format note is visible text; disabled chips look disabled; fade-length chips are toggle buttons instead of half-implemented radios.
+- **Pre-rendered preset previews ignored infant mode's low-pass** (they played through a bare `<audio>` element). They now run through the engine's preview path via a media-element source when Web Audio is available.
+- **Safety Center showed controls that did nothing**: an "AUTO-FADE SLEEP" row with a lit LED (removed — the real sleep fade lives in the Studio) and a "QUIET HOURS 22:00–07:00" chip that only capped the output (relabelled as the −30 dBFS cap it is). Its infant-mode paragraph now states the enforced rails.
+- **Docs claimed things the app did not do**: a dose-week reset (now a real RESET DOSE WEEK action in the Safety Center), an infant-only preset list (now implemented on the Presets screen), "updates never forced" (qualified: a live session is never interrupted), a driving-impairment citation that studied fluid intelligence (rescoped), and "<0.001 Hz" beat accuracy with no test (now measured by a 60 s zero-crossing test).
+- Tests: the stop→start teardown and restart tests now actually fail on the bug they guard; new tests for the route registry, the media-query breakpoint hook, provider-level engine events on a fake AudioContext, an infant session on a capable platform, and share-link boot from the URL hash. DOM suites stub the preview-manifest fetch (no more ECONNREFUSED noise). CI runs once per PR.
 
 ### Changed
 - Dependabot: minors and patches arrive grouped; majors are excluded and reviewed by hand (ESLint 10 and Vite plugin-react 6 broke CI); GitHub Actions bumps are grouped. `actions/checkout` and `actions/setup-node` moved to v7.
@@ -53,7 +57,7 @@ The v2 release reorganizes the project, fixes several silent v1 defects found in
 - **OS interruption recovery.** A phone call or audio-session steal flips the session to PAUSED with a visible notice instead of leaving a silent "running" state.
 - **Media Session + keep-alive.** Lock-screen / hardware-key PLAY · PAUSE · STOP, session title and mode metadata; a silent keep-alive keeps the tab "playing" so mobile browsers do not throttle a long session.
 - **Screen Wake Lock** while a session runs (re-acquired when the tab returns to the foreground).
-- **Installable PWA** with offline app shell (Workbox precache), runtime caching for preview WAVs, update chip in the status bar (never a forced reload), PNG/maskable icons and an Open Graph image rendered by `scripts/render-icons.py`.
+- **Installable PWA** with offline app shell (Workbox precache), runtime caching for preview WAVs, update chip in the status bar (a running session is never interrupted by an update), PNG/maskable icons and an Open Graph image rendered by `scripts/render-icons.py`.
 - **Off-thread WAV export** in a Web Worker (sync fallback), **format choice** (PCM-16 / PCM-24 / float-32), and the export now **honors the session limit** (v1 computed the cap and discarded it).
 - **Keyboard shortcut registry** (`src/app/shortcuts.ts`) driving one global handler and a `?` help sheet: `⌘/Ctrl K`, `[`, `Space`, `M` mute, `F` fade, `P` panic, `Shift P` rehearse, `?` help.
 - **Route error boundary**: a crashing screen no longer blanks the app — the shell, audio and panic button stay up.

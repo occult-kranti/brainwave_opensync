@@ -165,11 +165,8 @@ describe('shortcut registry in the shell', () => {
     expect(document.querySelector('[data-testid="shortcuts-overlay"]')).not.toBeNull();
     expect(document.body.textContent).toContain('PANIC');
     press('Escape');
-    // AnimatePresence keeps the node for its exit transition; give it a tick.
-    await act(async () => {
-      await new Promise((r) => setTimeout(r, 350));
-    });
-    expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull();
+    // AnimatePresence keeps the node for its exit transition.
+    await vi.waitFor(() => expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull(), { timeout: 2000 });
     press('m');
     expect(session.muted).toBe(true);
     press('m');
@@ -440,12 +437,143 @@ describe('advisory review vs. START gate (v2.0.1)', () => {
     press('?');
     expect(document.querySelector('[data-testid="shortcuts-overlay"]')).not.toBeNull();
     press('Escape');
-    await act(async () => {
-      await new Promise((r) => setTimeout(r, 350));
-    });
-    expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull();
+    await vi.waitFor(() => expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull(), { timeout: 2000 });
     expect(session.advisoryOpen).toBe(true); // the advisory underneath stayed open
     press('Escape');
     expect(session.advisoryOpen).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Provider ⇄ real engine (fake AudioContext, LiveEngine.start NOT mocked)
+// ---------------------------------------------------------------------------
+
+class FakeParam2 {
+  value = 1;
+  setTargetAtTime() {}
+  cancelScheduledValues() {}
+  setValueAtTime() {}
+  linearRampToValueAtTime() {}
+}
+class FakeNode2 {
+  connect() {}
+  disconnect() {}
+}
+function installFakeAudio(withFilter: boolean) {
+  (globalThis as Record<string, unknown>).AudioContext = class {
+    state = 'running';
+    currentTime = 0;
+    sampleRate = 48000;
+    destination = new FakeNode2();
+    onstatechange: (() => void) | null = null;
+    createGain() {
+      return Object.assign(new FakeNode2(), { gain: new FakeParam2() });
+    }
+    createAnalyser() {
+      return Object.assign(new FakeNode2(), { fftSize: 2048, frequencyBinCount: 1024, smoothingTimeConstant: 0 });
+    }
+    createChannelSplitter() {
+      return new FakeNode2();
+    }
+    createChannelMerger() {
+      return new FakeNode2();
+    }
+    createOscillator() {
+      return Object.assign(new FakeNode2(), { type: 'sine', frequency: new FakeParam2(), start() {}, stop() {} });
+    }
+    createBufferSource() {
+      return Object.assign(new FakeNode2(), { buffer: null, loop: false, start() {}, stop() {}, onended: null });
+    }
+    createBuffer(_c: number, len: number) {
+      return { getChannelData: () => new Float32Array(len) };
+    }
+    createBiquadFilter = withFilter ? () => Object.assign(new FakeNode2(), { type: 'lowpass', frequency: new FakeParam2(), Q: new FakeParam2() }) : undefined;
+    resume() {}
+    suspend() {}
+  };
+}
+
+describe('provider ⇄ engine events (real LiveEngine on a fake AudioContext)', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks(); // undo the start/pause/resume/fadeOut stubs from the outer beforeEach
+    installFakeAudio(true);
+  });
+  afterEach(() => {
+    delete (globalThis as Record<string, unknown>).AudioContext;
+  });
+
+  it('an OS interruption pauses the session with a notice; fade-done ends it and resets the clock', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    expect(session.running).toBe(true);
+    const ctx = session.engineRef.current.context as unknown as { state: string; onstatechange: (() => void) | null };
+    await act(async () => {
+      vi.advanceTimersByTime(2_000);
+    });
+    act(() => {
+      ctx.state = 'interrupted';
+      ctx.onstatechange?.();
+    });
+    expect(session.paused).toBe(true);
+    expect(session.interrupted).toBe(true);
+    expect(session.elapsedSec).toBe(2);
+    act(() => {
+      ctx.state = 'running';
+      session.togglePause(); // user presses RESUME
+    });
+    expect(session.paused).toBe(false);
+    expect(session.interrupted).toBe(false);
+    act(() => void session.startSleepFade(5));
+    expect(session.fading).toBe(true);
+    await act(async () => {
+      vi.advanceTimersByTime(6_000);
+    });
+    expect(session.running).toBe(false);
+    expect(session.fading).toBe(false);
+    expect(session.elapsedSec).toBe(0);
+  });
+
+  it('an infant session starts on a platform that can build the low-pass path', async () => {
+    const filterSpy = vi.spyOn(LiveEngine.prototype, 'setInfantFilter');
+    await mountShell();
+    act(() => session.setGovernor({ infantMode: true }));
+    let ok = false;
+    act(() => {
+      ok = session.start();
+    });
+    expect(ok).toBe(true);
+    expect(session.running).toBe(true);
+    expect(session.startBlocked).toEqual([]);
+    expect(filterSpy).toHaveBeenLastCalledWith(true);
+    expect(session.volumeDb).toBeLessThanOrEqual(INFANT_MAX_VOLUME_DB);
+  });
+});
+
+describe('share link boot from the URL hash', () => {
+  it('applies the shared panel on mount, marks it dirty, and clears the hash', async () => {
+    const { encodeShare } = await import('../session/shareLink');
+    const enc = encodeShare({
+      mode: 'monaural',
+      carrierHz: 250,
+      waveform: 'triangle',
+      phases: [{ durationSec: 120, beatHz: 6 }],
+      noiseDb: {},
+      noiseOn: true,
+      nature: { on: false, kind: 'rain', db: -30 },
+      bowl: { on: false, baseHz: 136.1, db: -30, lock: false },
+      layersOn: true,
+      limitMin: 30,
+      fadeOutSec: 60,
+      presetName: 'From a friend',
+    });
+    window.location.hash = `#s=${enc}`;
+    await mountShell();
+    expect(session.mode).toBe('monaural');
+    expect(session.carrierHz).toBe(250);
+    expect(session.limitMin).toBe(30);
+    expect(session.presetName).toBe('From a friend');
+    expect(session.dirty).toBe(true);
+    expect(window.location.hash).toBe('');
   });
 });

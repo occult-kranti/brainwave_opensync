@@ -8,8 +8,8 @@
  *  2. Mobile browsers throttle or suspend background tabs that are not
  *     "playing media".
  *
- * So while a session runs we loop a tiny silent WAV in an <audio> element
- * (inaudible, ~0.1 s, muted-level PCM) which (a) activates the media
+ * So while a session runs we loop a silent WAV in an <audio> element
+ * (~6 s — Chromium treats media under 5 s as transient — inaudible PCM) which (a) activates the media
  * session so PLAY / PAUSE / STOP work from the lock screen and (b) marks the
  * tab as playing audio. The element is created lazily and removed on stop.
  * Everything is feature-detected and try/catch-guarded: on platforms without

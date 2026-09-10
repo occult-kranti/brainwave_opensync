@@ -888,6 +888,37 @@ export class LiveEngine {
     return true;
   }
 
+  /**
+   * Route an HTMLMediaElement (pre-rendered preview file) through the preview
+   * path so it honors infant mode's low-pass like engine previews do. Returns
+   * a detach function, or null when Web Audio is unavailable (the caller then
+   * falls back to the element's own volume). A media element can only be
+   * attached once per element, so callers pass a fresh Audio() each time.
+   */
+  attachMediaElement(el: HTMLMediaElement, db: number): (() => void) | null {
+    const ctx = this.ensureGraph();
+    if (!ctx || !this.previewBus || typeof ctx.createMediaElementSource !== 'function') return null;
+    if (ctx.state === 'suspended') void ctx.resume();
+    let src: MediaElementAudioSourceNode;
+    try {
+      src = ctx.createMediaElementSource(el);
+    } catch {
+      return null; // already attached elsewhere / cross-origin without CORS
+    }
+    const gain = ctx.createGain();
+    gain.gain.value = dbToLin(db);
+    src.connect(gain);
+    gain.connect(this.previewBus);
+    return () => {
+      try {
+        src.disconnect();
+        gain.disconnect();
+      } catch {
+        /* already gone */
+      }
+    };
+  }
+
   /** Nature texture layer (engine-rendered loop) — routed via layerBus. kind null = off. */
   setNature(kind: NatureKind | null, db: number): void {
     this.natureState = { kind: kind && Number.isFinite(db) ? kind : null, db };

@@ -146,5 +146,7 @@ export interface SessionActions {
   applyShare: (state: ShareState) => void;
   /** Restore factory defaults for the front panel (does not touch presets or dose). */
   resetFrontPanel: () => void;
+  /** Start a new dose week: clears the tracker and the persisted 7-day log. */
+  resetDoseLog: () => void;
   engineRef: React.RefObject<LiveEngine>;
 }

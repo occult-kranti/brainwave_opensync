@@ -34,6 +34,7 @@ class FakeNode {
 
 const gains: (FakeNode & { gain: FakeParam })[] = [];
 const filters: (FakeNode & { type: string; frequency: FakeParam; Q: FakeParam })[] = [];
+const oscillators: (FakeNode & { stopped: boolean })[] = [];
 
 function makeCtx(withFilter: boolean) {
   return class FakeAudioContext {
@@ -57,7 +58,17 @@ function makeCtx(withFilter: boolean) {
       return new FakeNode();
     }
     createOscillator() {
-      return Object.assign(new FakeNode(), { type: 'sine', frequency: new FakeParam(), start() {}, stop() {} });
+      const o = Object.assign(new FakeNode(), {
+        type: 'sine',
+        frequency: new FakeParam(),
+        stopped: false,
+        start() {},
+        stop() {
+          o.stopped = true;
+        },
+      });
+      oscillators.push(o);
+      return o;
     }
     createBufferSource() {
       return Object.assign(new FakeNode(), { buffer: null as unknown, loop: false, start() {}, stop() {}, onended: null });
@@ -80,6 +91,7 @@ function makeCtx(withFilter: boolean) {
 function install(withFilter = true) {
   gains.length = 0;
   filters.length = 0;
+  oscillators.length = 0;
   (globalThis as Record<string, unknown>).AudioContext = makeCtx(withFilter);
 }
 
@@ -271,11 +283,13 @@ describe('LiveEngine v2 — mixer memory before first start', () => {
     expect(gains[before + 2].connections).toContain(gains[2]); // pink → noiseBus
     expect(gains[before + 3].connections).toContain(gains[3]); // nature → layerBus
     expect(gains[before + 4].connections).toContain(gains[3]); // bowl → layerBus
-    // Restarting does not duplicate nodes.
+    // Restarting rebuilds exactly the tone chain (gL, gR + two oscillators) and no layer nodes.
     eng.stop();
     const afterStop = gains.length;
+    const oscBefore = oscillators.length;
     eng.start();
-    expect(gains.length - afterStop).toBeLessThanOrEqual(2); // tone chain gains only (gL, gR)
+    expect(gains.length - afterStop).toBe(2);
+    expect(oscillators.length - oscBefore).toBe(2);
   });
 });
 
@@ -375,16 +389,17 @@ describe('LiveEngine v2.0.1 — interruption, timers, mute vs fade, previews, re
   it('a start() inside the stop fade window survives the delayed teardown', () => {
     const eng = new LiveEngine();
     eng.start();
+    const firstChain = oscillators.slice();
     eng.stop(0.3);
     eng.start();
+    const secondChain = oscillators.slice(firstChain.length);
+    expect(secondChain.length).toBe(2);
     expect(eng.isRunning).toBe(true);
-    const oscStops: number[] = [];
-    // count oscillator stop() calls after the timer by instrumenting the fake nodes created so far
-    vi.advanceTimersByTime(500);
-    expect(eng.isRunning).toBe(true);
-    expect(oscStops.length).toBe(0);
-    // the live chain is still connected: updateConfig can address oscillators without throwing
-    expect(() => eng.updateConfig({ beatHz: 7 })).not.toThrow();
+    vi.advanceTimersByTime(500); // the delayed teardown from stop() fires now
+    expect(firstChain.every((o) => o.stopped)).toBe(true); // old chain torn down …
+    expect(secondChain.some((o) => o.stopped)).toBe(false); // … the live chain untouched
+    eng.updateConfig({ beatHz: 7 });
+    expect((secondChain[1] as unknown as { frequency: FakeParam }).frequency.value).toBe(207);
   });
 
   it('routes previews through the preview bus (infant low-pass path), not straight to destination', () => {

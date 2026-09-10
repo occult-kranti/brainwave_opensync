@@ -27,6 +27,9 @@ FFT, RBJ biquads, ITU-R BS.1770-4 loudness (K-weighting, gating, LRA, 4× true-p
 tone chain ─┐
 noiseBus  ──┼─▶ bus ─┬─▶ directGain ────────────┬─▶ master ─▶ spectrum analyser ─▶ destination
 layerBus  ──┘        └─▶ infantFilter ─▶ filterGain ┘       └─▶ splitter ─▶ L/R analysers
+
+previews ──▶ previewBus ─┬─▶ previewDirect ─────────────────┬─▶ destination
+                         └─▶ previewFilter ─▶ previewFiltered ┘
 ```
 - Oscillators (binaural: hard-panned pair; monaural: summed pair; isochronic: one carrier gated by a looped raised-cosine envelope buffer).
 - Noise / nature / bowl are engine-rendered loops on their **section buses**; a bypass ramps a bus with a 50 ms time constant instead of stopping sources (click-free, phase-continuous). The engine **remembers** layer state set while idle and materializes it on `start()`.
@@ -34,7 +37,7 @@ layerBus  ──┘        └─▶ infantFilter ─▶ filterGain ┘       �
 - **Sleep fade**: `fadeOut(sec)` schedules a 12-segment piecewise-linear (dB-linear) ramp to −60 dBFS then 0, keeps `running` true until it lands, then stops and emits `fade-done`.
 - **Pause** ramps master to 0 and suspends the context (phase accumulators freeze; resume is click-free). **Panic** is a 0 ms hard cut of everything, including previews.
 - `ctx.onstatechange` distinguishes our own suspend from an **OS interruption** and emits `interrupted`.
-- Previews (`playBuffer`) go straight to the destination so they are audible while the session is stopped; they are tracked so panic cuts them.
+- Previews (`playBuffer`, and pre-rendered files via `attachMediaElement`) run through a **preview path** — `previewBus → {previewDirect | previewFilter → previewFiltered} → destination` — so they are audible while the session is stopped (master is 0) yet still honor infant mode's low-pass; they bypass master, so panic cuts them explicitly.
 - Gain creation order (bus, master, noiseBus, layerBus, directGain, filterGain) is part of the test contract.
 
 ### `src/ui/session` — application state
@@ -61,7 +64,7 @@ Export builds a spec truncated to the session limit, renders in a module Worker 
 ### `src/app`
 - `routes.ts` — **the** route table: path, label, feature-docs module, icon, group, lazy component, bottom-tab flag. App, rail, bottom bar, MORE drawer, palette and Home icons all derive from it.
 - `shortcuts.ts` — the shortcut registry; `AppShell` binds one handler from it and `ShortcutsOverlay` renders it.
-- `pwa.ts` — service-worker registration with an "update available" event (never a forced reload).
+- `pwa.ts` — service-worker registration with an "update available" event; a cross-tab update never reloads a tab while its session is running.
 
 ### `src/lib`
 - `storage.ts` — `STORAGE_KEYS` registry + versioned `{version, data}` envelope read/write, try/catch-guarded, injectable for tests. Historical key strings are preserved.

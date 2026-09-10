@@ -28,7 +28,9 @@ export function useModalA11y(
   root?: React.RefObject<HTMLElement | null>,
 ) {
   const onCloseRef = useRef(onClose);
-  onCloseRef.current = onClose;
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  });
   useEffect(() => {
     if (!open) return;
     const id = Symbol('modal');

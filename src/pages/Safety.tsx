@@ -6,7 +6,7 @@
 
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { SafetyGovernor } from '@/safety/governor';
+import { INFANT_MAX_SESSION_MIN, MAX_SESSION_MIN, MIN_SESSION_CAP_MIN, SafetyGovernor } from '@/safety/governor';
 import { INFANT_CEILING_DBA, NICU_LEQ_DBA } from '@/safety/dose';
 import { Panel, Led, WarningChip, Chip } from '@/ui/components/primitives';
 import { PanicButtonLarge } from '@/ui/components/Panic';
@@ -53,6 +53,14 @@ export default function Safety() {
   const [openAdv, setOpenAdv] = useState<number | null>(0);
   const [toast, setToast] = useState<string | null>(null);
   const [customMin, setCustomMin] = useState('');
+  const [customCap, setCustomCap] = useState('');
+  // The effective cap: the user's own, tightened to 45 min in infant mode.
+  const capMin = s.governor.infantMode ? Math.min(s.governor.maxSessionMin, INFANT_MAX_SESSION_MIN) : s.governor.maxSessionMin;
+  const noCap = s.governor.maxSessionMin >= MAX_SESSION_MIN;
+  const setCap = (m: number) => {
+    s.setGovernor({ maxSessionMin: m });
+    confirm(m >= MAX_SESSION_MIN ? 'SESSION CAP OFF' : `SESSION CAP ${fmtClock(m * 60)}${s.running && m < s.limitMin ? ' · TIGHTENS NOW' : ''}`);
+  };
   const isMobile = useIsMobile();
 
   const levelZone = s.volumeDb > -6 ? 'LOUD' : s.volumeDb > -18 ? 'CAUTION' : 'SAFE';
@@ -202,44 +210,89 @@ export default function Safety() {
         {/* Session limits */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 7' }}>
           <Panel title="SESSION LIMITS">
-            <div className="flex items-center gap-4 flex-wrap" style={{ marginBottom: 20 }}>
+            <div className="flex items-center gap-2" style={{ marginBottom: 6 }}>
+              <span className="t-label">SESSION LENGTH</span>
+            </div>
+            <div className="flex items-center gap-4 flex-wrap" style={{ marginBottom: 10 }} data-testid="session-length">
               <span className="t-readout-lg">{fmtClock(s.limitMin * 60)}</span>
-              {[30, 60, 90, 120].map((m) => (
-                <Chip
-                  key={m}
-                  active={s.limitMin === m}
-                  onClick={() => {
-                    if (s.running && m > s.limitMin) {
-                      // Nothing is queued: the click is simply refused. Say so.
-                      confirm('LOOSENING REFUSED WHILE RUNNING — SET IT AFTER STOP');
-                      return;
-                    }
-                    s.setLimitMin(m);
-                    if (s.running) confirm(`LIMIT ${fmtClock(s.limitMin * 60)} → ${fmtClock(m * 60)} · APPLIES NOW`);
-                  }}
-                >
-                  {m}
-                </Chip>
-              ))}
+              {[30, 60, 90, 120, 180, 240]
+                .filter((m) => m <= capMin)
+                .map((m) => (
+                  <Chip
+                    key={m}
+                    active={s.limitMin === m}
+                    onClick={() => {
+                      if (s.running && m > s.limitMin) {
+                        // Nothing is queued: the click is simply refused. Say so.
+                        confirm('LOOSENING REFUSED WHILE RUNNING — SET IT AFTER STOP');
+                        return;
+                      }
+                      s.setLimitMin(m);
+                      if (s.running) confirm(`LIMIT ${fmtClock(s.limitMin * 60)} → ${fmtClock(m * 60)} · APPLIES NOW`);
+                    }}
+                  >
+                    {m}
+                  </Chip>
+                ))}
               <input
                 value={customMin}
                 onChange={(e) => setCustomMin(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     const v = parseInt(customMin, 10);
-                    if (Number.isFinite(v) && v >= 5 && v <= 240) s.setLimitMin(v);
+                    if (Number.isFinite(v) && v >= 1 && v <= capMin) s.setLimitMin(v);
+                    else confirm(`SESSION LENGTH MUST BE 1–${capMin} MIN`);
                     setCustomMin('');
                   }
                 }}
                 placeholder="custom min"
+                aria-label="Custom session length (minutes)"
+                className="font-mono2"
+                style={{ width: 100, background: 'var(--ink-3)', border: '1px solid var(--line-1)', borderRadius: 2, color: 'var(--text-1)', padding: '5px 8px', fontSize: 12 }}
+              />
+            </div>
+            <p className="t-caption text-3" style={{ marginBottom: 16 }}>
+              Studio ends the session here with a gentle fade-out (30 s by default), not a hard cut (except panic).
+              Lengths only tighten live; loosening takes effect next session.
+            </p>
+            <div className="flex items-center gap-2" style={{ marginBottom: 6 }}>
+              <span className="t-label">SESSION CAP</span>
+              <InfoPopover featureId="session-cap" label="About the session cap" />
+            </div>
+            <div className="flex items-center gap-4 flex-wrap" style={{ marginBottom: 10 }} data-testid="session-cap">
+              <span className="t-readout-lg" data-testid="session-cap-readout">
+                {noCap ? 'NO CAP' : fmtClock(s.governor.maxSessionMin * 60)}
+              </span>
+              <Chip active={noCap} onClick={() => setCap(MAX_SESSION_MIN)} title="No cap beyond the 24-hour bound">
+                OFF
+              </Chip>
+              {[30, 60, 90, 120, 180, 240, 480].map((m) => (
+                <Chip key={m} active={s.governor.maxSessionMin === m} onClick={() => setCap(m)}>
+                  {m}
+                </Chip>
+              ))}
+              <input
+                value={customCap}
+                onChange={(e) => setCustomCap(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    const v = parseInt(customCap, 10);
+                    if (Number.isFinite(v) && v >= MIN_SESSION_CAP_MIN && v <= MAX_SESSION_MIN) setCap(v);
+                    else confirm(`CAP MUST BE ${MIN_SESSION_CAP_MIN}–${MAX_SESSION_MIN} MIN`);
+                    setCustomCap('');
+                  }
+                }}
+                placeholder="custom cap"
+                aria-label="Custom session cap (minutes)"
                 className="font-mono2"
                 style={{ width: 100, background: 'var(--ink-3)', border: '1px solid var(--line-1)', borderRadius: 2, color: 'var(--text-1)', padding: '5px 8px', fontSize: 12 }}
               />
             </div>
             <p className="t-caption text-3" style={{ marginBottom: 20 }}>
-              Default 90:00. Not a magic number — a ceiling against habituation and dose creep. Studio enforces it with a
-              gentle fade-out over 30 s at limit, not a hard cut (except panic). Limits only tighten live; loosening
-              takes effect next session.
+              No fixed ceiling any more (2.1 had a 90-minute one). Set your own cap and the session length can never
+              exceed it: lowering the cap applies at once, even mid-session; raising it never loosens a running
+              session. Infant mode keeps its 45-minute cap regardless, and the H.870 dose meter keeps counting
+              whatever the cap. Remembered with your front panel.
             </p>
             <div className="flex items-start gap-6 flex-wrap">
               <div>

@@ -161,7 +161,7 @@ export default function Studio() {
         <span className="t-readout-lg" style={{ color: s.running ? 'var(--text-1)' : 'var(--text-3)' }}>
           {fmtClock(s.elapsedSec)}
         </span>
-        <div title="Default 90-minute limit — change in Safety Center">
+        <div title="Session length — set it (and your own cap) in Safety Center">
           <div className="t-readout-sm" style={{ color: limitPct >= 80 ? 'var(--danger)' : 'var(--text-3)' }}>
             LIMIT {fmtClock(s.limitMin * 60)}
           </div>

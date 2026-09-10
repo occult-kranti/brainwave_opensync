@@ -522,6 +522,21 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
   },
   // ------------------------------------------------------------------- Safety
   {
+    id: 'session-cap',
+    module: 'Safety',
+    route: '/safety',
+    name: 'Session cap',
+    simple:
+      'There is no fixed session cap any more; you set your own in the Safety Center. The session length can never exceed the cap you set. Lowering the cap applies at once, raising it waits for the next session.',
+    deep:
+      'The cap is a SafetyGovernor setting (maxSessionMin) checked by authorizeSession() at every START and enforced by the session setters: the length is clamped to the cap, a lower cap tightens a running session immediately, and a higher cap never loosens one. It defaults to the 24-hour engineering bound, which is a limit of the clock and the export, not a health claim. Infant mode keeps its 45-minute cap whatever the setting, and a share link lands under the receiver\'s cap. The cap is remembered with the front panel and shown in the Studio readout next to the session length. The WHO-ITU H.870 dose meter remains the evidence-anchored limit and counts regardless.',
+    howTo: [
+      'Open the Safety Center and find SESSION CAP under Session Limits.',
+      'Press OFF for no cap, a chip for a common value, or type a custom cap and press Enter.',
+      'Set the session length below it; the length chips only offer values inside the cap.',
+    ],
+  },
+  {
     id: 'dose-gauge',
     module: 'Safety',
     route: '/safety',
@@ -531,7 +546,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     simple:
       'Tracks how much sound your ears have absorbed, like a fuel gauge for listening. It fills faster when you listen louder. Green is fine, amber means ease off, red means stop for today.',
     deep:
-      'Dose follows WHO-ITU H.870 safe-listening practice: 80 dBA for 40 hours per 7 days for adults (75 dBA for children and sensitive listeners), accumulated with the 3 dB equal-energy exchange rate — every +3 dB doubles the dose rate and halves the allowed time. Digital dBFS is mapped to an estimated dBA with a fixed calibration offset, an approximation that cannot replace measuring your own headphones. The default 90-minute session cap is conservative relative to the NIOSH 85 dBA / 8 h criterion.',
+      'Dose follows WHO-ITU H.870 safe-listening practice: 80 dBA for 40 hours per 7 days for adults (75 dBA for children and sensitive listeners), accumulated with the 3 dB equal-energy exchange rate — every +3 dB doubles the dose rate and halves the allowed time. Digital dBFS is mapped to an estimated dBA with a fixed calibration offset, an approximation that cannot replace measuring your own headphones. There is no fixed session cap; you set your own in the Safety Center, and the dose meter keeps counting whatever the cap.',
     plot: {
       axes: 'Radial gauge: 0–100% of the weekly reference dose; the status bar mirrors the same percentage live.',
       good: 'Green zone with slow growth during moderate sessions.',

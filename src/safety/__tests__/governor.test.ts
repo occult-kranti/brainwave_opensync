@@ -7,6 +7,9 @@ import {
   INFANT_HEARTBEAT_BPM_MAX,
   INFANT_MAX_SESSION_MIN,
   type GovernorSessionSpec,
+  MAX_SESSION_MIN,
+  MIN_SESSION_CAP_MIN,
+  clampSessionCap,
 } from '../governor';
 import { INFANT_CEILING_DBA } from '../dose';
 
@@ -36,17 +39,28 @@ describe('general authorization', () => {
     expect(g.authorizeSession(goodAdult).ok).toBe(true);
   });
 
-  it('enforces the default 90-minute cap', () => {
+  it('has no fixed cap by default — only the 24-hour engineering bound', () => {
     const g = new SafetyGovernor(ack);
-    const r = g.authorizeSession({ ...goodAdult, durationMin: 91 });
+    expect(g.authorizeSession({ ...goodAdult, durationMin: 91 }).ok).toBe(true);
+    expect(g.authorizeSession({ ...goodAdult, durationMin: MAX_SESSION_MIN }).ok).toBe(true);
+    const r = g.authorizeSession({ ...goodAdult, durationMin: MAX_SESSION_MIN + 1 });
     expect(r.ok).toBe(false);
-    expect(r.reasons.some((s) => s.includes('90-minute limit'))).toBe(true);
+    expect(r.reasons.some((s) => s.includes('24 hours'))).toBe(true);
   });
 
   it('respects a custom session cap', () => {
     const g = new SafetyGovernor({ ...ack, maxSessionMin: 20 });
-    expect(g.authorizeSession({ ...goodAdult, durationMin: 21 }).ok).toBe(false);
+    const r = g.authorizeSession({ ...goodAdult, durationMin: 21 });
+    expect(r.ok).toBe(false);
+    expect(r.reasons.some((s) => s.includes('your 20-minute cap'))).toBe(true);
     expect(g.authorizeSession({ ...goodAdult, durationMin: 20 }).ok).toBe(true);
+  });
+
+  it('clampSessionCap bounds a user-entered cap and reads NaN as no cap', () => {
+    expect(clampSessionCap(0)).toBe(MIN_SESSION_CAP_MIN);
+    expect(clampSessionCap(90.4)).toBe(90);
+    expect(clampSessionCap(99999)).toBe(MAX_SESSION_MIN);
+    expect(clampSessionCap(Number.NaN)).toBe(MAX_SESSION_MIN);
   });
 
   it('enforces the -6 dBFS gain cap', () => {
@@ -157,8 +171,8 @@ describe('advisory texts', () => {
 });
 
 describe('config', () => {
-  it('defaults: 90 min, -6 dBFS, adult mode, unacknowledged', () => {
-    expect(DEFAULT_GOVERNOR_CONFIG.maxSessionMin).toBe(90);
+  it('defaults: no cap (24 h bound), -6 dBFS, adult mode, unacknowledged', () => {
+    expect(DEFAULT_GOVERNOR_CONFIG.maxSessionMin).toBe(MAX_SESSION_MIN);
     expect(DEFAULT_GOVERNOR_CONFIG.maxGainDbFs).toBe(-6);
     expect(DEFAULT_GOVERNOR_CONFIG.infantMode).toBe(false);
     expect(DEFAULT_GOVERNOR_CONFIG.drivingWarningAcknowledged).toBe(false);

@@ -14,10 +14,10 @@ Every effect statement here and in the app carries the grade of the preset it co
 
 | Audience | Job to be done | Intent | Default session |
 |---|---|---|---|
-| Light sleepers | Mask the room, drift off, have it stop by itself | Sleep | `sleep-slow-wave-cue` (B) + brown noise, fade 10 min, 60 min |
-| Deep-work blocks | A steady bed of sound for one work block | Focus | `focus-alpha-flow` (C) + pink noise, 45 min |
-| Evening wind-down | Twenty minutes of something soft, no decisions | Relax | `relax-alpha-ease` (B) + pink noise + rain, 30 min |
-| Meditators | A timer with a bell and a bed of sound | Meditate | `meditate-theta-garden` (C) + `himalayan-trio` bowls, bell every 10 min, 20 min |
+| Light sleepers | Mask the room, drift off, have it stop by itself | Sleep | `sleep-slow-wave-cue` (B) + brown noise, fade 10 min, 45 min |
+| Deep-work blocks | A steady bed of sound for one work block | Focus | `focus-alpha-flow` (C), tones only, fade 30 s, 30 min |
+| Evening wind-down | Twenty minutes of something soft, no decisions | Relax | `relax-alpha-ease` (B) + pink noise + rain, fade 2 min, 30 min |
+| Meditators | A timer with a bell and a bed of sound | Meditate | `meditate-theta-garden` (C) + `himalayan-trio` bowls, bell every 10 min, fade 1 min, 20 min |
 
 ### The wedge
 
@@ -91,7 +91,7 @@ Every visible string ≤ 12 words; headings ≤ 3 words; sentence case; no excla
 
 | Where | Label |
 |---|---|
-| Intent card | Sleep · Brown noise · 60 min |
+| Intent card | Sleep · Brown noise · 45 min |
 | Running | 42 min left |
 | Running | Ends 23:10 |
 | Button | Fade & stop |
@@ -297,7 +297,7 @@ Same `ci.yml` (`npm run check` now includes the size gate) and same `pages.yml`:
 
 **v1 (this release).** Play, Sounds, Settings, About; four intents; advisory sheet; breathing ring; duration chips; layer toggles; bell chip; fade & stop; evidence pill; dark/light; installable; offline; copy contract; size gate; Playwright; README, CONTRIBUTING and CHANGELOG updates.
 
-**v1.1.** Breath pacer on the ring (a "Breathe" chip with 4-4, 4-6 and 5-5 patterns using the engine's breath cue, no effect claim); session history read from the shared dose log as a 7-day list ("Sleep · 60 min · Tue"); a "Same as last time" card on Play.
+**v1.1.** Breath pacer on the ring (a "Breathe" chip with 4-4, 4-6 and 5-5 patterns using the engine's breath cue, no effect claim); session history read from the shared dose log as a 7-day list ("Sleep · 45 min · Tue"); a "Same as last time" card on Play.
 
 **v1.2.** Manifest `shortcuts` (Sleep, Focus, Relax, Meditate → `#/?intent=`) so long-press on the icon starts an intent; Web Share of a lab share link ("Open in the lab") from Settings; per-intent duration memory.
 

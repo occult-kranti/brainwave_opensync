@@ -54,6 +54,9 @@ function everydayManifest(): Plugin {
   const json = JSON.stringify(manifest, null, 2)
   return {
     name: 'open-sync-everyday-manifest',
+    // vite-plugin-pwa's build plugin is `enforce: 'post'`; this one is too and
+    // sits after it in the plugin list, so its transform sees the injected tag.
+    enforce: 'post',
     // Dev/preview: serve the manifest from memory at <base>app/manifest.webmanifest.
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
@@ -65,8 +68,18 @@ function everydayManifest(): Plugin {
         next()
       })
     },
-    generateBundle() {
+    generateBundle(_options, bundle) {
       this.emitFile({ type: 'asset', fileName: 'app/manifest.webmanifest', source: json })
+      // vite-plugin-pwa injects its <link rel="manifest"> as a tag, which Vite
+      // appends after every string transform has run — so the lab link is
+      // stripped here, on the emitted HTML asset, before the service-worker
+      // precache manifest is computed in closeBundle.
+      const html = bundle['app/index.html']
+      if (html && html.type === 'asset' && typeof html.source === 'string') {
+        html.source = html.source.replace(/<link rel="manifest" href="[^"]*manifest\.webmanifest"[^>]*>\s*/g, (m) =>
+          m.includes('app/manifest.webmanifest') ? m : '',
+        )
+      }
     },
     transformIndexHtml: {
       order: 'post',

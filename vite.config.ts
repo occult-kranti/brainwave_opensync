@@ -1,8 +1,11 @@
 /// <reference types="vitest/config" />
 import path from 'path'
+import { readFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import { defineConfig, type Plugin } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
+
+const pkg = JSON.parse(readFileSync(path.resolve(__dirname, 'package.json'), 'utf8')) as { version: string }
 
 /**
  * Deploy base path. Local dev/preview serve from `/`; the GitHub Pages
@@ -15,9 +18,75 @@ const base = (() => {
   return withLead.endsWith('/') ? withLead : `${withLead}/`
 })()
 
+/**
+ * Open Sync Everyday — the second entry (`app/index.html` → src/everyday/)
+ * — gets its own web-app manifest so it installs as a separate icon with its
+ * own scope/start_url under the same origin. Public files are copied
+ * verbatim, so the manifest is emitted here with the deploy base baked in.
+ * vite-plugin-pwa injects the LAB manifest link into every HTML entry; for
+ * the everyday page that link is removed so the page keeps only its own.
+ */
+function everydayManifest(): Plugin {
+  const manifest = {
+    id: `${base}app/`,
+    name: 'Open Sync Everyday',
+    short_name: 'Open Sync',
+    description: 'Sleep, focus, relax, meditate. A calm one-tap sound player: tones, noise, nature and singing bowls. Free, open source, offline, no account.',
+    start_url: `${base}app/`,
+    scope: `${base}app/`,
+    display: 'standalone',
+    orientation: 'portrait',
+    theme_color: '#0B0C0D',
+    background_color: '#0B0C0D',
+    categories: ['health', 'music', 'lifestyle'],
+    icons: [
+      { src: `${base}icons/icon-192.png`, sizes: '192x192', type: 'image/png' },
+      { src: `${base}icons/icon-512.png`, sizes: '512x512', type: 'image/png' },
+      { src: `${base}icons/icon-512-maskable.png`, sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+    ],
+    shortcuts: [
+      { name: 'Sleep', url: `${base}app/#/?intent=sleep` },
+      { name: 'Focus', url: `${base}app/#/?intent=focus` },
+      { name: 'Relax', url: `${base}app/#/?intent=relax` },
+      { name: 'Meditate', url: `${base}app/#/?intent=meditate` },
+    ],
+  }
+  const json = JSON.stringify(manifest, null, 2)
+  return {
+    name: 'open-sync-everyday-manifest',
+    // Dev/preview: serve the manifest from memory at <base>app/manifest.webmanifest.
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (req.url?.split('?')[0] === `${base}app/manifest.webmanifest`) {
+          res.setHeader('Content-Type', 'application/manifest+json')
+          res.end(json)
+          return
+        }
+        next()
+      })
+    },
+    generateBundle() {
+      this.emitFile({ type: 'asset', fileName: 'app/manifest.webmanifest', source: json })
+    },
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, ctx) {
+        const file = (ctx.filename ?? '').replace(/\\/g, '/')
+        const isEveryday = ctx.path.startsWith('/app') || /(^|\/)app\/index\.html$/.test(file)
+        if (!isEveryday) return html
+        // Drop the lab manifest link injected by vite-plugin-pwa; keep ours.
+        return html.replace(/<link rel="manifest" href="[^"]*manifest\.webmanifest"[^>]*>\s*/g, (m) => (m.includes('app/manifest.webmanifest') ? m : ''))
+      },
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
   base,
+  define: {
+    'import.meta.env.VITE_APP_VERSION': JSON.stringify(pkg.version),
+  },
   plugins: [
     react(),
     VitePWA({
@@ -77,12 +146,18 @@ export default defineConfig({
         ],
       },
     }),
+    // After VitePWA on purpose: its manifest-link injection must run first.
+    everydayManifest(),
   ],
   server: {
     port: 3000,
   },
   build: {
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        app: path.resolve(__dirname, 'app/index.html'),
+      },
       output: {
         manualChunks: {
           // Framework + interaction vendor chunks shared by all route chunks.

@@ -9,7 +9,11 @@ import { VitePWA } from 'vite-plugin-pwa'
  * workflow sets VITE_BASE=/brainwave_opensync/ so router basename, asset
  * URLs (previews, stimulus pack) and the PWA scope all agree.
  */
-const base = process.env.VITE_BASE ?? '/'
+const base = (() => {
+  const raw = (process.env.VITE_BASE ?? '/').trim()
+  const withLead = raw.startsWith('/') ? raw : `/${raw}`
+  return withLead.endsWith('/') ? withLead : `${withLead}/`
+})()
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -20,7 +24,8 @@ export default defineConfig({
       registerType: 'prompt',
       // Serve/precache the app shell only; the ~100 MB of preview and stimulus
       // WAVs are cached at runtime (cache-first, capped) when first played.
-      includeAssets: ['favicon.svg', 'icons/*.png', 'robots.txt'],
+      // globPatterns already covers icons/favicon; social/crawler files are not
+      // part of the offline shell.
       manifest: {
         name: 'Open Sync — Evidence-Honest Brainwave Audio Lab',
         short_name: 'Open Sync',
@@ -41,7 +46,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,json,woff2}'],
-        globIgnores: ['previews/**', 'stimulus_pack/**'],
+        globIgnores: ['previews/**', 'stimulus_pack/**', 'icons/og-image.png', 'robots.txt', 'sitemap.xml'],
         navigateFallback: `${base}index.html`,
         navigateFallbackDenylist: [/\/previews\//, /\/stimulus_pack\//],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
@@ -53,6 +58,9 @@ export default defineConfig({
               cacheName: 'open-sync-audio',
               expiration: { maxEntries: 24, maxAgeSeconds: 30 * 24 * 3600 },
               cacheableResponse: { statuses: [0, 200] },
+              // HTMLAudioElement fetches WAVs with Range headers; without this
+              // plugin a cached full copy is never served to ranged requests.
+              rangeRequests: true,
             },
           },
           {

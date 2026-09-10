@@ -143,6 +143,18 @@ export default function Safety() {
           <button type="button" className="chip" onClick={s.openAdvisory} data-testid="review-advisory">
             REVIEW ADVISORY
           </button>
+          <button
+            type="button"
+            className="chip"
+            data-testid="reset-dose"
+            onClick={() => {
+              s.resetDoseLog();
+              confirm('DOSE WEEK RESET — 0%');
+            }}
+            title="Start a new 7-day dose window (after changing headphones or calibration)"
+          >
+            RESET DOSE WEEK
+          </button>
         </div>
         {!s.authorization.ok && (
           <ul className="t-caption font-mono2" style={{ margin: '10px 0 0', paddingLeft: 16, color: 'var(--danger)' }}>
@@ -258,21 +270,16 @@ export default function Safety() {
               </div>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2">
-                  <span className="t-label" style={{ width: 110 }}>QUIET HOURS</span>
+                  <span className="t-label" style={{ width: 110 }}>QUIET CAP</span>
                   <Chip active={s.governor.maxGainDbFs <= -30} onClick={() => {
                     const enabling = s.governor.maxGainDbFs > -30;
                     s.setGovernor({ maxGainDbFs: enabling ? -30 : -6 });
                     if (enabling && s.volumeDb > -30) s.setVolumeDb(-30);
-                    confirm(enabling ? 'QUIET HOURS 22:00–07:00 · CAPPED −30 dBFS' : 'QUIET HOURS OFF');
+                    confirm(enabling ? 'OUTPUT CAPPED AT −30 dBFS' : 'CAP BACK TO −6 dBFS');
                   }}>
-                    22:00–07:00
+                    CAP −30 dBFS
                   </Chip>
                   <Led state={s.governor.maxGainDbFs <= -30 ? 'amber' : 'off'} />
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="t-label" style={{ width: 110 }}>AUTO-FADE SLEEP</span>
-                  <Chip onClick={() => confirm('AUTO-FADE ON SLEEP PRESETS ENABLED')}>20 MIN IDLE → FADE 10 MIN</Chip>
-                  <Led state="teal" />
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="t-label" style={{ width: 110 }}>DRIVING ACK</span>
@@ -306,15 +313,17 @@ export default function Safety() {
                   s.setVolumeDb(Math.min(s.volumeDb, -40));
                   s.setLimitMin(20);
                 }
-                confirm(!s.governor.infantMode ? 'INFANT MODE ON — CAPPED −40 dBFS / 20:00' : 'INFANT MODE OFF');
+                confirm(!s.governor.infantMode ? 'INFANT MODE ON — SET −40 dBFS / 20:00 · CEILING −26 dBFS / 45:00' : 'INFANT MODE OFF');
               }}
             >
               {s.governor.infantMode ? 'ON' : 'OFF'}
             </button>
             <p className="t-body-sm text-2" style={{ margin: '12px 0' }}>
-              For playback in a room with an infant present. Output hard-capped at −40 dBFS, carriers limited to 40–500
-              Hz, isochronic gating disabled, sessions capped at 20:00. Corrected spec: ≤{INFANT_CEILING_DBA} dBA at the
-              infant's ear position (AAP-aligned; NICU hourly Leq ≤ {NICU_LEQ_DBA} dBA).
+              For playback in a room with an infant present. Enforced: a ≤1 kHz low-pass in the live signal path, a
+              level ceiling of −26 dBFS (≈{INFANT_CEILING_DBA} dBA at the infant's ear on the headphone estimate; AAP-aligned,
+              NICU hourly Leq ≤ {NICU_LEQ_DBA} dBA), an automatic stop and a 45-minute cap. Turning it on also sets the
+              fader to −40 dBFS and the limit to 20:00 as gentler starting points, and the Presets screen shows only
+              the Infant category.
             </p>
             <div className="flex gap-2" style={{ marginBottom: 8 }}>
               <GradeBadge grade="D" compact citation={{ verdict: "Grade D as a 'feature'.", summary: 'There is no evidence binaural audio benefits infants, and no safety trials either.', source: 'Hugh et al., Pediatrics 2014 (PMID 24590753)' }} />

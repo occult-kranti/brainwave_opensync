@@ -14,12 +14,24 @@ export interface Shortcut {
   group: 'Navigation' | 'Transport' | 'Safety' | 'Help';
   /** Matcher against a KeyboardEvent (already filtered for typing contexts). */
   match: (e: KeyboardEvent) => boolean;
-  /** Allow the binding to fire even while an input is focused (none today; kept for the registry contract). */
-  alwaysActive?: boolean;
+  /**
+   * Where the binding is live. `plain` (default): inert in any typing or
+   * value-editing context. `controls`: fires from selects / sliders / knobs,
+   * inert only in real text entry (the emergency stop). `anywhere`: modifier
+   * chords, which cannot collide with typing.
+   */
+  scope?: 'plain' | 'controls' | 'anywhere';
 }
 
+const ACTIVATABLE_ROLES = new Set(['button', 'link', 'checkbox', 'radio', 'slider', 'switch', 'tab', 'menuitem', 'option']);
+
+/** Elements that Space/Enter activate natively or by ARIA contract. */
 function isActivatable(target: EventTarget | null): boolean {
-  return target instanceof HTMLElement && (target.tagName === 'BUTTON' || target.tagName === 'A');
+  if (!(target instanceof HTMLElement)) return false;
+  const tag = target.tagName;
+  if (tag === 'BUTTON' || tag === 'A' || tag === 'SUMMARY' || tag === 'INPUT') return true;
+  const role = target.getAttribute('role');
+  return !!role && ACTIVATABLE_ROLES.has(role);
 }
 
 const noMods = (e: KeyboardEvent) => !e.metaKey && !e.ctrlKey && !e.altKey;
@@ -31,6 +43,7 @@ export const SHORTCUTS: readonly Shortcut[] = [
     label: 'Command palette — jump to any screen, run any action',
     group: 'Navigation',
     match: (e) => (e.metaKey || e.ctrlKey) && !e.altKey && (e.key === 'k' || e.key === 'K'),
+    scope: 'anywhere',
   },
   {
     id: 'sidebar',
@@ -44,8 +57,8 @@ export const SHORTCUTS: readonly Shortcut[] = [
     keys: ['Space'],
     label: 'Pause / resume the running session',
     group: 'Transport',
-    // Space is the activation key for focused buttons/links — never double-fire there.
-    match: (e) => noMods(e) && !e.repeat && (e.key === ' ' || e.code === 'Space') && !isActivatable(e.target),
+    // Space activates focused buttons/links/ARIA widgets — never double-fire there.
+    match: (e) => noMods(e) && !e.repeat && !e.defaultPrevented && (e.key === ' ' || e.code === 'Space') && !isActivatable(e.target),
   },
   {
     id: 'mute',
@@ -64,9 +77,10 @@ export const SHORTCUTS: readonly Shortcut[] = [
   {
     id: 'panic',
     keys: ['P'],
-    label: 'PANIC — hard-stop every sound, no confirmation',
+    label: 'PANIC — hard-stop every sound, no confirmation (works from any control, not while typing)',
     group: 'Safety',
     match: (e) => noMods(e) && !e.shiftKey && (e.key === 'p' || e.key === 'P'),
+    scope: 'controls',
   },
   {
     id: 'panic-rehearse',
@@ -91,25 +105,32 @@ export const SHORTCUTS: readonly Shortcut[] = [
   },
 ];
 
-/** True when the event target is a typing context (shortcuts must stay inert). */
-export function isTypingTarget(target: EventTarget | null): boolean {
+const TEXT_INPUT_TYPES = new Set(['text', 'search', 'url', 'email', 'password', 'number', 'tel', '']);
+
+/** True for real text entry: typing letters here must never trigger a letter binding (P included). */
+export function isTextEntryTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
   const tag = target.tagName;
-  return (
-    tag === 'INPUT' ||
-    tag === 'TEXTAREA' ||
-    tag === 'SELECT' ||
-    target.isContentEditable ||
-    target.getAttribute('role') === 'textbox' ||
-    target.getAttribute('role') === 'slider'
-  );
+  if (tag === 'TEXTAREA') return true;
+  if (tag === 'INPUT') return TEXT_INPUT_TYPES.has(((target as HTMLInputElement).type || '').toLowerCase());
+  return target.isContentEditable || target.getAttribute('role') === 'textbox';
+}
+
+/** True when the event target is any typing/value-editing context (plain-letter shortcuts stay inert). */
+export function isTypingTarget(target: EventTarget | null): boolean {
+  if (isTextEntryTarget(target)) return true;
+  if (!(target instanceof HTMLElement)) return false;
+  return target.tagName === 'SELECT' || target.getAttribute('role') === 'slider' || target.getAttribute('role') === 'spinbutton';
 }
 
 /** Resolve a keydown to a shortcut id, honoring typing contexts. */
 export function matchShortcut(e: KeyboardEvent, shortcuts: readonly Shortcut[] = SHORTCUTS): Shortcut | null {
-  const typing = isTypingTarget(e.target);
+  const textEntry = isTextEntryTarget(e.target);
+  const typing = textEntry || isTypingTarget(e.target);
   for (const s of shortcuts) {
-    if (typing && !s.alwaysActive) continue;
+    const scope = s.scope ?? 'plain';
+    if (scope === 'plain' && typing) continue;
+    if (scope === 'controls' && textEntry) continue;
     if (s.match(e)) return s;
   }
   return null;

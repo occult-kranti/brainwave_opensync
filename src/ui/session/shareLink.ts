@@ -59,10 +59,15 @@ interface Wire {
   t?: string;
 }
 
+/** Strict: only finite JSON numbers count — null/strings/booleans fall back (never coerce null → 0 dB). */
 function clamp(v: unknown, lo: number, hi: number, fallback: number): number {
-  const n = typeof v === 'number' ? v : Number(v);
-  if (!Number.isFinite(n)) return fallback;
-  return Math.min(hi, Math.max(lo, n));
+  if (typeof v !== 'number' || !Number.isFinite(v)) return fallback;
+  return Math.min(hi, Math.max(lo, v));
+}
+
+/** Truncate by code points so a surrogate pair is never split into a lone surrogate. */
+export function truncateCodePoints(s: string, max: number): string {
+  return Array.from(s).slice(0, max).join('');
 }
 
 function round(v: number, places: number): number {
@@ -103,12 +108,13 @@ export function encodeShare(state: ShareState): string {
   }
   if (Object.keys(noise).length) wire.n = noise;
   if (!state.noiseOn) wire.no = 0;
-  if (state.nature.on) wire.na = [1, state.nature.kind, round(state.nature.db, 1)];
-  if (state.bowl.on) wire.b = [1, round(state.bowl.baseHz, 2), round(state.bowl.db, 1), state.bowl.lock ? 1 : 0];
+  // A layer whose fader sits at −∞ is simply off — JSON has no −Infinity.
+  if (state.nature.on && Number.isFinite(state.nature.db)) wire.na = [1, state.nature.kind, round(state.nature.db, 1)];
+  if (state.bowl.on && Number.isFinite(state.bowl.db)) wire.b = [1, round(state.bowl.baseHz, 2), round(state.bowl.db, 1), state.bowl.lock ? 1 : 0];
   if (!state.layersOn) wire.lo = 0;
   if (state.limitMin !== 90) wire.l = Math.round(state.limitMin);
   if (state.fadeOutSec !== 30) wire.f = Math.round(state.fadeOutSec);
-  if (state.presetName) wire.t = state.presetName.slice(0, 60);
+  if (state.presetName) wire.t = truncateCodePoints(state.presetName, 60);
   return toBase64Url(JSON.stringify(wire));
 }
 
@@ -166,7 +172,7 @@ export function decodeShare(encoded: string): ShareState | null {
     layersOn: wire.lo !== 0,
     limitMin: clamp(wire.l, 1, 90, 90),
     fadeOutSec: clamp(wire.f, 0, 600, 30),
-    presetName: typeof wire.t === 'string' && wire.t.trim() ? wire.t.trim().slice(0, 60) : undefined,
+    presetName: typeof wire.t === 'string' && wire.t.trim() ? truncateCodePoints(wire.t.trim(), 60) : undefined,
   };
 }
 

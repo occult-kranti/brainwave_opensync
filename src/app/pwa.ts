@@ -8,6 +8,26 @@
 export const PWA_UPDATE_EVENT = 'open-sync:pwa-update';
 
 let applyUpdate: (() => void) | null = null;
+let pending = false;
+/** Returns true while a reload would interrupt a live session (registered by the session provider). */
+let reloadGuard: (() => boolean) | null = null;
+let deferredReload = false;
+
+export function setPwaReloadGuard(guard: (() => boolean) | null): void {
+  reloadGuard = guard;
+}
+
+/** Called by the session layer when a session ends: perform a reload that was held back. */
+export function flushDeferredPwaReload(): void {
+  if (!deferredReload) return;
+  deferredReload = false;
+  window.location.reload();
+}
+
+/** True once a new build is waiting (survives chip remounts across breakpoints). */
+export function hasPendingPwaUpdate(): boolean {
+  return pending;
+}
 
 export function registerPwa(): void {
   if (typeof window === 'undefined' || !('serviceWorker' in navigator) || import.meta.env.DEV) return;
@@ -17,8 +37,16 @@ export function registerPwa(): void {
       const update = registerSW({
         immediate: true,
         onNeedRefresh() {
+          pending = true;
           applyUpdate = () => update(true);
           window.dispatchEvent(new CustomEvent(PWA_UPDATE_EVENT));
+        },
+        // Another tab applied the update: the new worker now controls this
+        // tab too. Reload only when no session is running here; otherwise
+        // wait for it to end (the old assets keep working until then).
+        onNeedReload() {
+          if (reloadGuard?.()) deferredReload = true;
+          else window.location.reload();
         },
       });
     })

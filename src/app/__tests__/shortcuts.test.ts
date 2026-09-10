@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { SHORTCUTS, isTypingTarget, matchShortcut } from '../shortcuts';
 
 function key(init: KeyboardEventInit, target?: HTMLElement): KeyboardEvent {
-  const e = new KeyboardEvent('keydown', init);
+  const e = new KeyboardEvent('keydown', { cancelable: true, ...init });
   if (target) Object.defineProperty(e, 'target', { value: target });
   return e;
 }
@@ -42,5 +42,39 @@ describe('shortcut registry', () => {
     expect(matchShortcut(key({ key: '[' }, div))).toBeNull();
     expect(matchShortcut(key({ key: ' ' }, document.createElement('button')))).toBeNull();
     expect(matchShortcut(key({ key: 'm' }, document.createElement('button')))?.id).toBe('mute');
+  });
+});
+
+describe('shortcut registry — v2.0.1 scoping', () => {
+  it('PANIC and the palette chord fire from selects, sliders and knobs; letters stay inert in text entry', () => {
+    const select = document.createElement('select');
+    const slider = document.createElement('div');
+    slider.setAttribute('role', 'slider');
+    const input = document.createElement('input');
+    input.type = 'text';
+    const editable = document.createElement('div');
+    editable.contentEditable = 'true';
+    expect(matchShortcut(key({ key: 'p' }, select))?.id).toBe('panic');
+    expect(matchShortcut(key({ key: 'p' }, slider))?.id).toBe('panic');
+    expect(matchShortcut(key({ key: 'k', ctrlKey: true }, input))?.id).toBe('palette');
+    expect(matchShortcut(key({ key: 'p' }, input))).toBeNull();
+    expect(matchShortcut(key({ key: 'p' }, editable))).toBeNull();
+    // plain letters remain inert on value-editing widgets
+    expect(matchShortcut(key({ key: 'm' }, select))).toBeNull();
+    expect(matchShortcut(key({ key: 'f' }, slider))).toBeNull();
+  });
+
+  it('Space never double-fires on ARIA-activatable widgets or after preventDefault', () => {
+    const span = document.createElement('span');
+    span.setAttribute('role', 'button');
+    expect(matchShortcut(key({ key: ' ' }, span))).toBeNull();
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    expect(matchShortcut(key({ key: ' ' }, checkbox))).toBeNull();
+    const div = document.createElement('div');
+    const e = key({ key: ' ' }, div);
+    e.preventDefault();
+    expect(matchShortcut(e)).toBeNull();
+    expect(matchShortcut(key({ key: ' ' }, div))?.id).toBe('pause');
   });
 });

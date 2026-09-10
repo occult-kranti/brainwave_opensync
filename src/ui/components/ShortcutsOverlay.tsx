@@ -9,12 +9,14 @@ import { Keyboard, X } from 'lucide-react';
 import { SHORTCUTS } from '@/app/shortcuts';
 import { useModalA11y } from '../hooks';
 
-const OVERLAY_Z = 108;
+/** Below the phone bottom bar (z-100) so PANIC stays tappable; above the panic overlay (z-90). */
+const OVERLAY_Z = 96;
 const GROUPS = ['Navigation', 'Transport', 'Safety', 'Help'] as const;
 
 export function ShortcutsOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
-  useModalA11y(open, onClose, closeRef);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  useModalA11y(open, onClose, closeRef, sheetRef);
   return (
     <AnimatePresence>
       {open && (
@@ -37,10 +39,11 @@ export function ShortcutsOverlay({ open, onClose }: { open: boolean; onClose: ()
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: 16,
+            padding: '16px 16px calc(16px + 56px + env(safe-area-inset-bottom, 0px))',
           }}
         >
           <motion.div
+            ref={sheetRef}
             className="panel"
             onClick={(e) => e.stopPropagation()}
             initial={{ y: 12, opacity: 0 }}

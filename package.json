@@ -1,6 +1,6 @@
 {
   "name": "open-sync",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Open Sync — evidence-honest brainwave audio laboratory (binaural / monaural / isochronic engine, blinded self-experiments, graded research archive). Browser-only, no server.",
   "private": true,
   "license": "MIT",
@@ -11,7 +11,7 @@
     "url": "https://github.com/occult-kranti/brainwave_opensync.git"
   },
   "engines": {
-    "node": ">=20"
+    "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
     "dev": "vite",
@@ -25,6 +25,7 @@
     "test:coverage": "vitest run --coverage",
     "check": "npm run lint && npm run typecheck && npm run test && npm run build",
     "previews:render": "node scripts/render-previews.mjs",
+    "build:pages": "VITE_BASE=/brainwave_opensync/ vite build && node scripts/emit-route-shells.mjs dist",
     "icons:render": "python3 scripts/render-icons.py"
   },
   "dependencies": {

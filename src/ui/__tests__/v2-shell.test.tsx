@@ -165,11 +165,8 @@ describe('shortcut registry in the shell', () => {
     expect(document.querySelector('[data-testid="shortcuts-overlay"]')).not.toBeNull();
     expect(document.body.textContent).toContain('PANIC');
     press('Escape');
-    // AnimatePresence keeps the node for its exit transition; give it a tick.
-    await act(async () => {
-      await new Promise((r) => setTimeout(r, 350));
-    });
-    expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull();
+    // AnimatePresence keeps the node for its exit transition.
+    await vi.waitFor(() => expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull(), { timeout: 2000 });
     press('m');
     expect(session.muted).toBe(true);
     press('m');
@@ -261,5 +258,322 @@ describe('Studio session tools (SSR smoke)', () => {
     expect(html).toContain('data-testid="share-link"');
     expect(html).toContain('id="export-format"');
     expect(html).toContain('HEADPHONES REQUIRED');
+  });
+});
+
+describe('v2.0.1 session-state fixes', () => {
+  it('start() honors a same-tick setVolumeDb/setLimitMin (Quick Lab launcher)', async () => {
+    const outSpy = vi.spyOn(LiveEngine.prototype, 'setOutputDb');
+    await mountShell();
+    act(() => {
+      session.setVolumeDb(-40);
+      session.setLimitMin(12);
+      session.start();
+    });
+    expect(session.running).toBe(true);
+    expect(outSpy).toHaveBeenLastCalledWith(-40);
+    expect(session.volumeDb).toBe(-40);
+    expect(session.limitMin).toBe(12);
+  });
+
+  it('resumeSafely goes through the advisory gate and the governor', async () => {
+    clearAdvisoryAck();
+    await mountShell();
+    act(() => session.rehearsePanic());
+    expect(session.panicked).toBe(true);
+    act(() => session.resumeSafely());
+    expect(session.running).toBe(false);
+    expect(session.advisoryOpen).toBe(true);
+    expect(session.panicked).toBe(false);
+    act(() => session.acknowledgeAdvisory());
+    act(() => session.setGovernor({ infantMode: true })); // no low-pass path in happy-dom → refused
+    act(() => session.rehearsePanic());
+    act(() => session.resumeSafely());
+    expect(session.running).toBe(false);
+    expect(session.startBlocked.join(' ')).toMatch(/low-pass/i);
+  });
+
+  it('a rehearsal is inert while a session runs, and STOP clears a rehearsal', async () => {
+    await mountShell();
+    act(() => void session.start());
+    act(() => session.rehearsePanic());
+    expect(session.panicked).toBe(false);
+    act(() => session.togglePause());
+    expect(session.paused).toBe(true);
+    act(() => session.togglePause());
+    act(() => session.stop());
+    act(() => session.rehearsePanic());
+    expect(session.panicked).toBe(true);
+    act(() => void session.start());
+    expect(session.panicked).toBe(false);
+  });
+
+  it('a fresh START begins at 00:00 even after a manual STOP mid-session', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(3_000);
+    });
+    expect(session.elapsedSec).toBe(3);
+    act(() => session.stop());
+    expect(session.elapsedSec).toBe(3); // readout keeps the last value while stopped
+    act(() => void session.start());
+    expect(session.elapsedSec).toBe(0);
+    expect(session.activePhaseIdx).toBe(0);
+  });
+
+  it('the limit fade is issued once — cancelling it does not re-arm a volume pump', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => {
+      session.setLimitMin(1);
+      session.setFadeOutSec(30);
+    });
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(31_000);
+    });
+    expect(session.fading).toBe(true);
+    expect(session.fadeEndsAtSec).toBe(60);
+    expect(LiveEngine.prototype.fadeOut).toHaveBeenCalledTimes(1);
+    act(() => session.cancelSleepFade());
+    await act(async () => {
+      vi.advanceTimersByTime(5_000);
+    });
+    expect(session.fading).toBe(false);
+    expect(LiveEngine.prototype.fadeOut).toHaveBeenCalledTimes(1);
+    // the limit still ends the session on time
+    await act(async () => {
+      vi.advanceTimersByTime(30_000);
+    });
+    expect(session.running).toBe(false);
+  });
+
+  it('pause drops an active manual fade in the UI too, and the countdown targets the fade end', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(2_000);
+    });
+    act(() => void session.startSleepFade(20));
+    expect(session.fading).toBe(true);
+    expect(session.fadeEndsAtSec).toBe(22);
+    act(() => session.togglePause());
+    expect(session.fading).toBe(false);
+    expect(session.fadeEndsAtSec).toBeNull();
+  });
+
+  it('the Safety Center acknowledgment chip and the START gate share one source of truth', async () => {
+    await mountShell();
+    act(() => session.setGovernor({ drivingWarningAcknowledged: false }));
+    expect(window.localStorage.getItem(STORAGE_KEYS.advisoryAck)).toBeNull();
+    let ok = true;
+    act(() => {
+      ok = session.start();
+    });
+    expect(ok).toBe(false);
+    expect(session.advisoryOpen).toBe(true);
+    act(() => session.closeAdvisory());
+    act(() => session.setGovernor({ drivingWarningAcknowledged: true }));
+    expect(window.localStorage.getItem(STORAGE_KEYS.advisoryAck)).toContain('"at"');
+    act(() => {
+      ok = session.start();
+    });
+    expect(ok).toBe(true);
+  });
+
+  it('previews are held under the infant ceiling and the low-pass path', async () => {
+    const play = vi.spyOn(LiveEngine.prototype, 'playBuffer').mockReturnValue(true);
+    await mountShell();
+    act(() => session.setGovernor({ infantMode: true }));
+    act(() => session.previewHz(440));
+    expect(play).toHaveBeenCalled();
+    const db = play.mock.calls[play.mock.calls.length - 1][3];
+    expect(db).toBeLessThanOrEqual(INFANT_MAX_VOLUME_DB);
+  });
+
+  it('a locked bowl keeps ringing at the carrier when only its level changes', async () => {
+    const bowlSpy = vi.spyOn(LiveEngine.prototype, 'setBowl');
+    await mountShell();
+    act(() => session.setCarrierHz(300));
+    act(() => session.setBowl({ on: true, lock: true }));
+    act(() => session.setBowl({ db: -20 }));
+    const last = bowlSpy.mock.calls[bowlSpy.mock.calls.length - 1];
+    expect(last[0]).toBe(true);
+    expect(last[1]).toBe(300); // never 0
+    expect(last[2]).toBe(-20);
+  });
+});
+
+describe('advisory review vs. START gate (v2.0.1)', () => {
+  it('reviewing the advisory from the Safety Center during a live session never restarts it', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(4_000);
+    });
+    expect(session.elapsedSec).toBe(4);
+    act(() => session.openAdvisory());
+    expect(session.advisoryOpen).toBe(true);
+    expect(session.advisoryPendingStart).toBe(false);
+    expect(document.body.textContent).toContain('I UNDERSTAND');
+    expect(document.body.textContent).not.toContain('I UNDERSTAND — START');
+    const accept = document.querySelector('[data-testid="advisory-accept"]') as HTMLButtonElement;
+    act(() => accept.click());
+    expect(session.advisoryOpen).toBe(false);
+    expect(session.running).toBe(true);
+    expect(session.elapsedSec).toBe(4); // clock untouched
+    // START while already running is a no-op too
+    act(() => void session.start());
+    expect(session.elapsedSec).toBe(4);
+  });
+
+  it('only the top-most overlay answers Escape', async () => {
+    await mountShell();
+    act(() => session.openAdvisory());
+    press('?');
+    expect(document.querySelector('[data-testid="shortcuts-overlay"]')).not.toBeNull();
+    press('Escape');
+    await vi.waitFor(() => expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull(), { timeout: 2000 });
+    expect(session.advisoryOpen).toBe(true); // the advisory underneath stayed open
+    press('Escape');
+    expect(session.advisoryOpen).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Provider ⇄ real engine (fake AudioContext, LiveEngine.start NOT mocked)
+// ---------------------------------------------------------------------------
+
+class FakeParam2 {
+  value = 1;
+  setTargetAtTime() {}
+  cancelScheduledValues() {}
+  setValueAtTime() {}
+  linearRampToValueAtTime() {}
+}
+class FakeNode2 {
+  connect() {}
+  disconnect() {}
+}
+function installFakeAudio(withFilter: boolean) {
+  (globalThis as Record<string, unknown>).AudioContext = class {
+    state = 'running';
+    currentTime = 0;
+    sampleRate = 48000;
+    destination = new FakeNode2();
+    onstatechange: (() => void) | null = null;
+    createGain() {
+      return Object.assign(new FakeNode2(), { gain: new FakeParam2() });
+    }
+    createAnalyser() {
+      return Object.assign(new FakeNode2(), { fftSize: 2048, frequencyBinCount: 1024, smoothingTimeConstant: 0 });
+    }
+    createChannelSplitter() {
+      return new FakeNode2();
+    }
+    createChannelMerger() {
+      return new FakeNode2();
+    }
+    createOscillator() {
+      return Object.assign(new FakeNode2(), { type: 'sine', frequency: new FakeParam2(), start() {}, stop() {} });
+    }
+    createBufferSource() {
+      return Object.assign(new FakeNode2(), { buffer: null, loop: false, start() {}, stop() {}, onended: null });
+    }
+    createBuffer(_c: number, len: number) {
+      return { getChannelData: () => new Float32Array(len) };
+    }
+    createBiquadFilter = withFilter ? () => Object.assign(new FakeNode2(), { type: 'lowpass', frequency: new FakeParam2(), Q: new FakeParam2() }) : undefined;
+    resume() {}
+    suspend() {}
+  };
+}
+
+describe('provider ⇄ engine events (real LiveEngine on a fake AudioContext)', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks(); // undo the start/pause/resume/fadeOut stubs from the outer beforeEach
+    installFakeAudio(true);
+  });
+  afterEach(() => {
+    delete (globalThis as Record<string, unknown>).AudioContext;
+  });
+
+  it('an OS interruption pauses the session with a notice; fade-done ends it and resets the clock', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    expect(session.running).toBe(true);
+    const ctx = session.engineRef.current.context as unknown as { state: string; onstatechange: (() => void) | null };
+    await act(async () => {
+      vi.advanceTimersByTime(2_000);
+    });
+    act(() => {
+      ctx.state = 'interrupted';
+      ctx.onstatechange?.();
+    });
+    expect(session.paused).toBe(true);
+    expect(session.interrupted).toBe(true);
+    expect(session.elapsedSec).toBe(2);
+    act(() => {
+      ctx.state = 'running';
+      session.togglePause(); // user presses RESUME
+    });
+    expect(session.paused).toBe(false);
+    expect(session.interrupted).toBe(false);
+    act(() => void session.startSleepFade(5));
+    expect(session.fading).toBe(true);
+    await act(async () => {
+      vi.advanceTimersByTime(6_000);
+    });
+    expect(session.running).toBe(false);
+    expect(session.fading).toBe(false);
+    expect(session.elapsedSec).toBe(0);
+  });
+
+  it('an infant session starts on a platform that can build the low-pass path', async () => {
+    const filterSpy = vi.spyOn(LiveEngine.prototype, 'setInfantFilter');
+    await mountShell();
+    act(() => session.setGovernor({ infantMode: true }));
+    let ok = false;
+    act(() => {
+      ok = session.start();
+    });
+    expect(ok).toBe(true);
+    expect(session.running).toBe(true);
+    expect(session.startBlocked).toEqual([]);
+    expect(filterSpy).toHaveBeenLastCalledWith(true);
+    expect(session.volumeDb).toBeLessThanOrEqual(INFANT_MAX_VOLUME_DB);
+  });
+});
+
+describe('share link boot from the URL hash', () => {
+  it('applies the shared panel on mount, marks it dirty, and clears the hash', async () => {
+    const { encodeShare } = await import('../session/shareLink');
+    const enc = encodeShare({
+      mode: 'monaural',
+      carrierHz: 250,
+      waveform: 'triangle',
+      phases: [{ durationSec: 120, beatHz: 6 }],
+      noiseDb: {},
+      noiseOn: true,
+      nature: { on: false, kind: 'rain', db: -30 },
+      bowl: { on: false, baseHz: 136.1, db: -30, lock: false },
+      layersOn: true,
+      limitMin: 30,
+      fadeOutSec: 60,
+      presetName: 'From a friend',
+    });
+    window.location.hash = `#s=${enc}`;
+    await mountShell();
+    expect(session.mode).toBe('monaural');
+    expect(session.carrierHz).toBe(250);
+    expect(session.limitMin).toBe(30);
+    expect(session.presetName).toBe('From a friend');
+    expect(session.dirty).toBe(true);
+    expect(window.location.hash).toBe('');
   });
 });

@@ -14,6 +14,10 @@ import { STORAGE_KEYS, readJson, writeJson, type StorageLike, defaultStorage } f
 import type { Grade } from '@/data/frequencies';
 import type { GateShape, Waveform } from '../audio/liveEngine';
 import type { BowlLayer, NatureLayer, UiPhase } from './sessionMath';
+import { INFANT_MAX_SESSION_MIN } from '@/safety/governor';
+import { INFANT_CEILING_DBA } from '@/safety/dose';
+import { DBFS_TO_DBA_OFFSET } from './sessionMath';
+import { truncateCodePoints } from './shareLink';
 
 export const FRONT_PANEL_VERSION = 2;
 export const DOSE_LOG_VERSION = 2;
@@ -81,6 +85,10 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
     const beatHz = num(q.beatHz, 0.1, 80, 10);
     phases.push({ id: typeof q.id === 'string' && q.id ? q.id : `p${phases.length}-${Math.round(durationSec)}`, durationSec, beatHz });
   }
+  const infantMode = typeof r.infantMode === 'boolean' ? r.infantMode : defaults.infantMode;
+  // A persisted panel can never loosen the infant caps (rails only tighten).
+  const limitCap = infantMode ? INFANT_MAX_SESSION_MIN : 90;
+  const volumeCap = infantMode ? INFANT_CEILING_DBA - DBFS_TO_DBA_OFFSET : 0;
   return {
     mode: oneOf(r.mode, MODES, defaults.mode),
     carrierHz: num(r.carrierHz, 20, 1000, defaults.carrierHz),
@@ -89,8 +97,8 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
     phaseLock: typeof r.phaseLock === 'boolean' ? r.phaseLock : defaults.phaseLock,
     gateDuty: num(r.gateDuty, 0.05, 0.95, defaults.gateDuty),
     gateShape: oneOf(r.gateShape, GATES, defaults.gateShape),
-    limitMin: num(r.limitMin, 1, 90, defaults.limitMin),
-    volumeDb: num(r.volumeDb, -60, 0, defaults.volumeDb),
+    limitMin: num(r.limitMin, 1, limitCap, Math.min(defaults.limitMin, limitCap)),
+    volumeDb: num(r.volumeDb, -60, volumeCap, Math.min(defaults.volumeDb, volumeCap)),
     noiseDb,
     noiseOn: typeof r.noiseOn === 'boolean' ? r.noiseOn : defaults.noiseOn,
     nature: {
@@ -106,10 +114,10 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
     },
     layersOn: typeof r.layersOn === 'boolean' ? r.layersOn : defaults.layersOn,
     phases: phases.length ? phases : defaults.phases,
-    presetName: typeof r.presetName === 'string' && r.presetName.trim() ? r.presetName.slice(0, 80) : null,
+    presetName: typeof r.presetName === 'string' && r.presetName.trim() ? truncateCodePoints(r.presetName.trim(), 80) : null,
     presetGrade: GRADES.includes(r.presetGrade as string) ? (r.presetGrade as Grade) : null,
     fadeOutSec: num(r.fadeOutSec, 0, 600, defaults.fadeOutSec),
-    infantMode: typeof r.infantMode === 'boolean' ? r.infantMode : defaults.infantMode,
+    infantMode,
   };
 }
 
@@ -152,10 +160,19 @@ export function appendDose(log: DoseLogEntry[], dbA: number, seconds: number, no
   return log;
 }
 
-/** Drop entries that ended before the 7-day window. */
+/** Clock-skew slack: rows that claim to start later than this are phantoms. */
+const FUTURE_SLACK_MS = 60_000;
+
+/**
+ * Drop entries that ended before the 7-day window, entries that start in the
+ * future (a clock jump must not leave phantom dose behind), and cap any
+ * single row at the window length.
+ */
 export function pruneDose(log: readonly DoseLogEntry[], now: number): DoseLogEntry[] {
   const cutoff = now - DOSE_WINDOW_MS;
-  return log.filter((e) => e.t + e.seconds * 1000 >= cutoff);
+  return log
+    .filter((e) => e.t <= now + FUTURE_SLACK_MS && e.t + e.seconds * 1000 >= cutoff)
+    .map((e) => (e.seconds * 1000 > DOSE_WINDOW_MS ? { ...e, seconds: DOSE_WINDOW_MS / 1000 } : e));
 }
 
 export function loadDoseLog(now: number, storage: StorageLike | null = defaultStorage()): DoseLogEntry[] {

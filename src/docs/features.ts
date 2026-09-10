@@ -518,7 +518,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     simple:
       'A locked-down mode for use around babies: very quiet, bass-only sound with hard limits you cannot override. Turn it on in the Safety Center. The status bar shows INFANT whenever it is active.',
     deep:
-      'The safety governor enforces a mandatory lowpass at or below 1000 Hz (approximating intrauterine acoustics) and a gain path targeting no more than 50 dBA at the crib, aligned with AAP guidance and measured NICU Leq recommendations. Consumer white-noise machines have been measured exceeding occupational limits at crib distance (Hugh 2014), which is why these limits are hard constraints, not advisories. Infant mode also restricts the preset list to the gentlest entries. It is a set of guardrails, not a claim of benefit.',
+      'The safety governor enforces a mandatory lowpass at or below 1000 Hz (approximating intrauterine acoustics) and a gain path targeting no more than 50 dBA at the crib, aligned with AAP guidance and measured NICU Leq recommendations. Consumer white-noise machines have been measured exceeding occupational limits at crib distance (Hugh 2014), which is why these limits are hard constraints, not advisories. While infant mode is on, the Presets screen shows only the Infant category. It is a set of guardrails, not a claim of benefit.',
     howTo: [
       'Open the Safety Center and enable Infant Mode.',
       'Place the speaker away from the crib and keep sessions short.',
@@ -1071,9 +1071,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     simple:
       'Before your first session, a short safety advisory must be acknowledged once per device. It covers headphones and level, driving, seizure history, medication precaution and crisis resources. You can review it again here at any time.',
     deep:
-      'The SafetyGovernor refuses every session until the driving/machinery warning is acknowledged, and START calls authorizeSession() on the live front panel. Infant mode adds a live 1 kHz low-pass path, a 50 dBA level ceiling mapped to −26 dBFS on the headphone estimate, an automatic shutoff and a 45-minute cap; refusals are listed inline in the Studio. The acknowledgment is stored as a versioned record and re-checked at every start. The advisory copy is the governor text itself, never paraphrased.',
+      'The SafetyGovernor refuses every session until the driving/machinery warning is acknowledged, and START calls authorizeSession() on the live front panel. Infant mode adds a live 1 kHz low-pass path, a 50 dBA level ceiling mapped to −26 dBFS on the headphone estimate, an automatic shutoff and a 45-minute cap; refusals are listed inline in the Studio. The acknowledgment is stored as a versioned record and re-checked at every start. The driving, seizure, medication and crisis items are the governor text verbatim; only the headphones-and-level item is authored in the dialog.',
     grade: 'B',
-    gradeScope: 'Driving impairment during binaural listening: Klichowski et al. 2023 (n=1000). The rest is precaution.',
+    gradeScope: 'Cognitive-task impairment during binaural listening: Klichowski et al. 2023 (n=1000, fluid-intelligence scores). Driving is an inferred precaution, not a tested outcome.',
     howTo: [
       'Press START in the Studio; read the advisory once and confirm.',
       'Open the Safety Center to review it again or check why a start would be refused.',
@@ -1092,7 +1092,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     howTo: [
       'Run sessions as usual; the DOSE THIS WEEK readout accumulates across days.',
       'Lower the fader to slow the dose rate (3 dB halves it).',
-      'Reset the week from the Safety Center if you change headphones or calibration.',
+      'Press RESET DOSE WEEK in the Safety Center if you change headphones or calibration.',
     ],
   },
   {
@@ -1101,9 +1101,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/',
     name: 'Install & offline use',
     simple:
-      'Open Sync can be installed like an app and keeps working without a network. Lock-screen controls and a wake lock keep long sessions running on phones. Updates are offered, never forced.',
+      'Open Sync can be installed like an app and keeps working without a network. Lock-screen controls and a wake lock keep long sessions running on phones. Updates are offered, and a running session is never interrupted by one.',
     deep:
-      'A service worker precaches the app shell (about 1.4 MB) and caches preview audio on first play; the 100 MB of preset previews and stimulus files are never precached. The Media Session API exposes PLAY, PAUSE and STOP with the session title, and a silent keep-alive element keeps the tab treated as playing so mobile browsers do not throttle it. The Screen Wake Lock is held while a session runs and re-acquired when the tab returns. A waiting build shows an UPDATE chip in the status bar; applying it reloads the page, so stop your session first.',
+      'A service worker precaches the app shell (about 1.4 MB) and caches preview audio on first play; the 100 MB of preset previews and stimulus files are never precached. The Media Session API exposes PLAY, PAUSE and STOP with the session title, and a silent keep-alive element keeps the tab treated as playing so mobile browsers do not throttle it. The Screen Wake Lock is held while a session runs and re-acquired when the tab returns. A waiting build shows an UPDATE chip in the status bar; applying it reloads the page, and a tab with a live session holds its reload until the session ends.',
     howTo: [
       'Use your browser menu → Install (or Add to Home Screen).',
       'Start a session, then lock the phone — controls appear on the lock screen.',

@@ -11,7 +11,7 @@ npm ci
 npm run dev            # http://localhost:3000
 ```
 
-Node 20+ is required. Python (3.11+) is only needed for `scripts/render-icons.py`; use a virtualenv:
+Node 20.19+ or 22.12+ is required (Vite 7). Python (3.11+) is only needed for `scripts/render-icons.py`; use a virtualenv:
 
 ```bash
 uv venv .venv && source .venv/bin/activate && uv pip install pillow

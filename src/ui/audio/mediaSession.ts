@@ -8,8 +8,8 @@
  *  2. Mobile browsers throttle or suspend background tabs that are not
  *     "playing media".
  *
- * So while a session runs we loop a tiny silent WAV in an <audio> element
- * (inaudible, ~0.1 s, muted-level PCM) which (a) activates the media
+ * So while a session runs we loop a silent WAV in an <audio> element
+ * (~6 s — Chromium treats media under 5 s as transient — inaudible PCM) which (a) activates the media
  * session so PLAY / PAUSE / STOP work from the lock screen and (b) marks the
  * tab as playing audio. The element is created lazily and removed on stop.
  * Everything is feature-detected and try/catch-guarded: on platforms without
@@ -34,8 +34,17 @@ interface SessionLike {
   setActionHandler(action: string, handler: (() => void) | null): void;
 }
 
-/** 0.1 s of 8 kHz mono 8-bit silence (0x80 = zero for unsigned PCM8) as a data URI. */
-export function silentWavDataUri(seconds = 0.1, sampleRate = 8000): string {
+/**
+ * Keep-alive clip length. Chromium classifies media shorter than 5 s as
+ * transient content and refuses to make its media session controllable
+ * (no lock-screen / notification / hardware-key controls, and the tab is not
+ * treated as persistently playing). 6 s of 8 kHz 8-bit silence is ~48 KB of
+ * PCM (~64 KB as a data URI) — cheap, and comfortably past the threshold.
+ */
+export const KEEPALIVE_SEC = 6;
+
+/** `seconds` of 8 kHz mono 8-bit silence (0x80 = zero for unsigned PCM8) as a data URI. */
+export function silentWavDataUri(seconds = KEEPALIVE_SEC, sampleRate = 8000): string {
   const frames = Math.max(1, Math.round(seconds * sampleRate));
   const bytes = new Uint8Array(44 + frames);
   const dv = new DataView(bytes.buffer);
@@ -73,6 +82,8 @@ function getSession(nav: Navigator | undefined = typeof navigator !== 'undefined
 export class MediaSessionBridge {
   private audio: HTMLAudioElement | null = null;
   private handlersBound = false;
+  private lastInfo: string | null = null;
+  private lastState: 'playing' | 'paused' | null = null;
   private readonly handlers: MediaSessionHandlers;
 
   constructor(handlers: MediaSessionHandlers) {
@@ -87,11 +98,16 @@ export class MediaSessionBridge {
   activate(info: MediaSessionInfo): void {
     if (!this.isSupported) return;
     try {
-      const p = this.ensureAudio()?.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(() => {
-          /* autoplay policy — the OS controls simply won't appear */
-        });
+      const a = this.ensureAudio();
+      // Only (re)start the keep-alive when it is not already playing — the
+      // metadata may update many times during one session.
+      if (a && (a.paused || this.lastState !== 'playing')) {
+        const p = a.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(() => {
+            /* autoplay policy — the OS controls simply won't appear */
+          });
+        }
       }
     } catch {
       /* platforms without media playback */
@@ -122,6 +138,8 @@ export class MediaSessionBridge {
       }
       this.audio = null;
     }
+    this.lastInfo = null;
+    this.lastState = null;
     const s = getSession();
     if (!s) return;
     try {
@@ -157,9 +175,16 @@ export class MediaSessionBridge {
     const s = getSession();
     if (!s) return;
     try {
-      const Meta = (globalThis as { MediaMetadata?: new (init: MediaSessionInfo) => unknown }).MediaMetadata;
-      s.metadata = Meta ? new Meta({ title: info.title, artist: info.artist ?? 'Open Sync', album: info.album ?? 'Evidence-honest audio lab' }) : null;
-      s.playbackState = state;
+      const key = `${info.title}\u0000${info.artist ?? ''}\u0000${info.album ?? ''}`;
+      if (key !== this.lastInfo) {
+        const Meta = (globalThis as { MediaMetadata?: new (init: MediaSessionInfo) => unknown }).MediaMetadata;
+        s.metadata = Meta ? new Meta({ title: info.title, artist: info.artist ?? 'Open Sync', album: info.album ?? 'Evidence-honest audio lab' }) : null;
+        this.lastInfo = key;
+      }
+      if (state !== this.lastState) {
+        s.playbackState = state;
+        this.lastState = state;
+      }
       if (!this.handlersBound) {
         s.setActionHandler('play', () => this.handlers.play());
         s.setActionHandler('pause', () => this.handlers.pause());

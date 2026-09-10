@@ -82,23 +82,36 @@ export default function Studio() {
   // Share link: copy to clipboard with a brief inline confirm.
   const [shared, setShared] = useState<'idle' | 'copied' | 'shown'>('idle');
   const [shareText, setShareText] = useState('');
+  const shareFieldRef = useRef<HTMLInputElement>(null);
   const copyShareLink = () => {
     const url = s.getShareLink();
     setShareText(url);
     const clip = typeof navigator !== 'undefined' ? navigator.clipboard : undefined;
+    const showField = () => {
+      // Clipboard unavailable: keep the link on screen until dismissed, and put focus on it.
+      setShared('shown');
+      window.setTimeout(() => {
+        shareFieldRef.current?.focus();
+        shareFieldRef.current?.select();
+      }, 0);
+    };
     if (clip && typeof clip.writeText === 'function') {
       clip
         .writeText(url)
-        .then(() => setShared('copied'))
-        .catch(() => setShared('shown'));
+        .then(() => {
+          setShared('copied');
+          window.setTimeout(() => setShared((v) => (v === 'copied' ? 'idle' : v)), 4000);
+        })
+        .catch(showField);
     } else {
-      setShared('shown');
+      showField();
     }
-    window.setTimeout(() => setShared('idle'), 4000);
   };
+  const formatNote = EXPORT_FORMATS.find((f) => f.id === exportFormat)?.note ?? '';
 
   const fadeStartsAtSec = Math.max(0, s.limitMin * 60 - s.fadeOutSec);
-  const remainingSec = Math.max(0, s.limitMin * 60 - s.elapsedSec);
+  // Countdown to silence: the fade's own end (manual or limit), not the limit.
+  const remainingSec = Math.max(0, (s.fadeEndsAtSec ?? s.limitMin * 60) - s.elapsedSec);
 
   const limitPct = Math.min(100, (s.elapsedSec / (s.limitMin * 60)) * 100);
 
@@ -247,13 +260,12 @@ export default function Studio() {
             <MoonStar size={11} style={{ display: 'inline', marginRight: 6, verticalAlign: '-1px' }} />
             SLEEP FADE
           </span>
-          <div className="flex gap-1" role="radiogroup" aria-label="Sleep fade length before the limit">
+          <div className="flex gap-1" role="group" aria-label="Sleep fade length before the limit">
             {FADE_OUT_CHOICES.map((c) => (
               <button
                 key={c.sec}
                 type="button"
-                role="radio"
-                aria-checked={s.fadeOutSec === c.sec}
+                aria-pressed={s.fadeOutSec === c.sec}
                 className={`chip${s.fadeOutSec === c.sec ? ' chip-active' : ''}`}
                 style={{ height: 24, padding: '0 8px', fontSize: 10 }}
                 onClick={() => s.setFadeOutSec(c.sec)}
@@ -299,11 +311,14 @@ export default function Studio() {
               style={{ height: 24, background: 'var(--ink-3)', color: 'var(--text-1)', border: '1px solid var(--line-1)', borderRadius: 2, fontSize: 10, padding: '0 6px' }}
             >
               {EXPORT_FORMATS.map((f) => (
-                <option key={f.id} value={f.id} title={f.note}>
+                <option key={f.id} value={f.id}>
                   {f.label}
                 </option>
               ))}
             </select>
+            <span className="t-caption" style={{ color: 'var(--text-3)' }} data-testid="export-format-note">
+              {formatNote}
+            </span>
             <button
               type="button"
               className="chip"
@@ -314,6 +329,9 @@ export default function Studio() {
             >
               {shared === 'copied' ? <Check size={11} /> : <Link2 size={11} />} {shared === 'copied' ? 'LINK COPIED' : 'SHARE'}
             </button>
+            <span role="status" aria-live="polite" className="sr-only">
+              {shared === 'copied' ? 'Share link copied to the clipboard' : shared === 'shown' ? 'Clipboard unavailable — the share link is shown below' : ''}
+            </span>
             <button
               type="button"
               className="chip"
@@ -327,14 +345,20 @@ export default function Studio() {
           </div>
         </div>
         {shared === 'shown' && (
-          <input
-            readOnly
-            value={shareText}
-            aria-label="Share link"
-            onFocus={(e) => e.currentTarget.select()}
-            className="font-mono2"
-            style={{ width: '100%', height: 28, background: 'var(--ink-0)', color: 'var(--text-2)', border: '1px solid var(--line-1)', borderRadius: 2, fontSize: 11, padding: '0 8px' }}
-          />
+          <div className="flex items-center gap-2">
+            <input
+              ref={shareFieldRef}
+              readOnly
+              value={shareText}
+              aria-label="Share link (copy it by hand)"
+              onFocus={(e) => e.currentTarget.select()}
+              className="font-mono2"
+              style={{ flex: 1, minWidth: 0, height: 28, background: 'var(--ink-0)', color: 'var(--text-2)', border: '1px solid var(--line-1)', borderRadius: 2, fontSize: 11, padding: '0 8px' }}
+            />
+            <button type="button" className="chip" style={{ height: 24, padding: '0 8px', fontSize: 10 }} onClick={() => setShared('idle')} aria-label="Dismiss the share link">
+              ✕
+            </button>
+          </div>
         )}
         {(s.mode === 'binaural' || s.startBlocked.length > 0 || s.interrupted || s.exportError) && (
           <div className="flex items-center gap-2" style={{ flexWrap: 'wrap' }}>

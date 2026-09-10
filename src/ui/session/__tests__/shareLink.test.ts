@@ -61,3 +61,28 @@ describe('share links', () => {
     expect(decodeShare(encodeShare(many))!.phases).toHaveLength(8);
   });
 });
+
+describe('share links — v2.0.1 hardening', () => {
+  it('a layer at −∞ dB encodes as OFF and decodes as OFF, never as 0 dB', () => {
+    const enc = encodeShare({ ...state, nature: { on: true, kind: 'rain', db: -Infinity }, bowl: { on: true, baseHz: 136.1, db: -Infinity, lock: false } });
+    const d = decodeShare(enc)!;
+    expect(d.nature.on).toBe(false);
+    expect(d.bowl.on).toBe(false);
+    expect(d.nature.db).toBe(-30); // default, not 0
+  });
+
+  it('null / string wire numbers fall back instead of coercing to 0', () => {
+    const enc = toBase64Url(JSON.stringify({ v: 2, m: 'binaural', c: null, w: 'sine', p: [[60, '10']], na: [1, 'rain', null], l: '5' }));
+    const d = decodeShare(enc)!;
+    expect(d.carrierHz).toBe(200);
+    expect(d.phases).toEqual([{ durationSec: 60, beatHz: 10 }]); // pair values go through Number() by design
+    expect(d.nature.db).toBe(-30);
+    expect(d.limitMin).toBe(90);
+  });
+
+  it('truncates preset names by code point (no lone surrogates)', () => {
+    const name = '🎧'.repeat(70);
+    const d = decodeShare(encodeShare({ ...state, presetName: name }))!;
+    expect(d.presetName).toBe('🎧'.repeat(60));
+  });
+});

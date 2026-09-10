@@ -9,7 +9,7 @@ Open Sync — an evidence-honest brainwave-audio laboratory: a static React 19 +
 ## Commands
 
 ```bash
-npm ci                       # install (Node 20+)
+npm ci                       # install (Node 20.19+ / 22.12+)
 npm run dev                  # http://localhost:3000
 npm run check                # lint → typecheck → tests → build (what CI runs)
 npm run lint                 # eslint; 0 errors is the bar

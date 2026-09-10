@@ -29,6 +29,8 @@ export interface SessionSnapshot {
   interrupted: boolean;
   /** True while the sleep fade is ramping the output to silence. */
   fading: boolean;
+  /** Session-clock second at which the active fade reaches silence (null when not fading). */
+  fadeEndsAtSec: number | null;
   panicked: boolean;
   elapsedSec: number;
   limitMin: number;
@@ -57,6 +59,8 @@ export interface SessionSnapshot {
   /** One-time safety advisory (driving / seizure / headphones). */
   advisoryAcknowledged: boolean;
   advisoryOpen: boolean;
+  /** True when the open advisory was raised by START (accepting continues into the session). */
+  advisoryPendingStart: boolean;
   presetName: string | null;
   presetGrade: Grade | null;
   dirty: boolean;
@@ -142,5 +146,7 @@ export interface SessionActions {
   applyShare: (state: ShareState) => void;
   /** Restore factory defaults for the front panel (does not touch presets or dose). */
   resetFrontPanel: () => void;
+  /** Start a new dose week: clears the tracker and the persisted 7-day log. */
+  resetDoseLog: () => void;
   engineRef: React.RefObject<LiveEngine>;
 }

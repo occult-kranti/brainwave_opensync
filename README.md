@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml/badge.svg)](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-2.0.0-amber)
+![Version](https://img.shields.io/badge/version-2.0.1-amber)
 
 An open, evidence-graded replication **and correction** of commercial brainwave-entrainment
 platforms, rebuilt as a browser app where every frequency, protocol and claim carries an
@@ -17,7 +17,7 @@ yourself**. No account, no server, nothing phones home.
 
 A "neural audio instrument" that refuses to overclaim:
 
-- The beat-generation math is real and sample-accurate (verified to <0.001 Hz in tests).
+- The beat-generation math is real and sample-accurate (rendered beat frequency verified to <0.001 Hz in tests, renders bit-exact).
 - Cortical entrainment by binaural beats is *unproven* (8 of 14 rigorous EEG studies contradict
   it) — so the app leads with **measurement and self-verification**, not promises.
 - Solfeggio / chakra / "angel number" frequencies ship with their audited origins (1970s–90s
@@ -36,7 +36,7 @@ A "neural audio instrument" that refuses to overclaim:
 | **Memory** | The Studio remembers your last setup; dose exposures persist as a rolling 7-day log |
 | **Safety enforcement** | The governor now actually gates START (it existed in v1 but was never called): advisory acknowledgment, gain cap, session cap, infant rules with a live low-pass |
 | **Phone-grade playback** | Media Session lock-screen controls, Screen Wake Lock, OS-interruption recovery (a call pauses the session instead of leaving it silently "running") |
-| **PWA** | Installable, offline app shell, update chip, icons, Open Graph card |
+| **PWA** | Installable, offline app shell, update chip (a live session is never interrupted by an update), icons, Open Graph card |
 | **Export v2** | Web-Worker render, PCM-16 / PCM-24 / float-32, capped at the session limit |
 | **Keyboard** | One shortcut registry and a `?` help sheet: `⌘K` · `[` · `Space` · `M` · `F` · `P` · `Shift P` |
 | **Fixes** | Preview audio 404'd on GitHub Pages; layer bypass was a no-op live; mixer moves before START were lost; limit changes mid-session were ignored |
@@ -59,7 +59,7 @@ Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-sour
 | **Sample Lab** | 9-module analysis of your own audio files: STFT, spectral shape, octave bands, tempo, mid/side + binaural-construction detection, loudness over time, pitch, loop detection |
 | **Sleep & Dream** | MILD/WBTB/SSILD techniques, Targeted Lucidity Reactivation cueing (Carr et al. 2023), dream journal, WBTB weekly caps |
 | **Replication Bay** | Government-program stimulus replications (Gateway, GENUS 40 Hz, TMR, closed-loop sleep) with "stimulus replication ≠ claim validation" banners; non-replicable items (MEDUSA, LRAD) as museum cards |
-| **Experiment Lab** | Pre-registration-grade registry X01–X14 with power analyses, null-handling rules and a 67-file stimulus pack |
+| **Experiment Lab** | Pre-registration-grade registry X01–X14 with power analyses, null-handling rules and a 67-entry stimulus plan (20 reference files shipped) |
 | **Quick Lab** | Blinded n-of-1 self-experiments: seeded block randomization, sealed arms, results only as n + estimate + 95% CI — "inconclusive" when it's inconclusive |
 | **Theory Explorer** | Step-by-step audits of the big claims — weakest inference links highlighted, verdicts from REPAIRABLE to DISCARD |
 | **Programs Archive** | 42 global government programs, documented-vs-validated two-axis grading |
@@ -69,7 +69,7 @@ Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-sour
 
 ## Run it locally
 
-Requirements: **Node.js 20+** (22 recommended).
+Requirements: **Node.js 20.19+ or 22.12+** (22 LTS recommended — Vite 7 needs it).
 
 ```bash
 git clone https://github.com/occult-kranti/brainwave_opensync.git

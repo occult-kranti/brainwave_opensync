@@ -1,6 +1,6 @@
 {
   "name": "open-sync",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Open Sync — evidence-honest brainwave audio laboratory (binaural / monaural / isochronic engine, blinded self-experiments, graded research archive). Browser-only, no server.",
   "private": true,
   "license": "MIT",

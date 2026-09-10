@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml/badge.svg)](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-2.0.1-amber)
+![Version](https://img.shields.io/badge/version-2.0.2-amber)
 
 An open, evidence-graded replication **and correction** of commercial brainwave-entrainment
 platforms, rebuilt as a browser app where every frequency, protocol and claim carries an

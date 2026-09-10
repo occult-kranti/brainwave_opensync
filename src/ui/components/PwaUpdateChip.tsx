@@ -7,9 +7,11 @@
 import { useEffect, useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import { PWA_UPDATE_EVENT, applyPwaUpdate, hasPendingPwaUpdate } from '@/app/pwa';
+import { useSessionOptional } from '../session/useSession';
 
 export function PwaUpdateChip() {
   const [ready, setReady] = useState(hasPendingPwaUpdate);
+  const running = useSessionOptional()?.running ?? false;
   useEffect(() => {
     const on = () => setReady(true);
     window.addEventListener(PWA_UPDATE_EVENT, on);
@@ -22,7 +24,8 @@ export function PwaUpdateChip() {
       className="chip chip-active"
       data-testid="pwa-update"
       onClick={applyPwaUpdate}
-      title="A new version is ready — reloads the app (stop your session first)"
+      disabled={running}
+      title={running ? 'A new version is ready — stop the session to apply it (applying reloads the app)' : 'A new version is ready — reloads the app'}
       style={{ height: 24, padding: '0 8px', fontSize: 10 }}
     >
       <RefreshCw size={11} /> UPDATE

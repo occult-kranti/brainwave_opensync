@@ -461,7 +461,7 @@ export class LiveEngine {
     if (!ctx) return false;
     this.clearPauseTimer();
     this.suspendPending = false;
-    if (ctx.state === 'suspended') void ctx.resume();
+    if (ctx.state !== 'running') void ctx.resume(); // 'suspended' (autoplay) or WebKit 'interrupted'
     this.clearFade();
     if (!this.running) {
       this.buildTone();
@@ -628,6 +628,17 @@ export class LiveEngine {
     this.master.gain.value = 0;
     this.running = false;
     this.teardownTone();
+    // Panic empties the bus: every layer loop is released too (the remembered
+    // mixer state re-materializes them on the next start()).
+    this.releaseAllLayers();
+  }
+
+  private releaseAllLayers(): void {
+    for (const node of this.noiseNodes.values()) this.releaseLayer(node);
+    this.noiseNodes.clear();
+    if (this.layerNodes.nature) this.releaseLayer(this.layerNodes.nature);
+    if (this.layerNodes.bowl) this.releaseLayer(this.layerNodes.bowl);
+    this.layerNodes = {};
   }
 
   /** Hard-stop all one-shot preview buffers (second tap / panic / new preview). */
@@ -660,7 +671,10 @@ export class LiveEngine {
 
   private applyMasterGain(rampSec = 0.05): void {
     if (!this.ctx || !this.master || this.fading) return;
-    const target = this.muted ? 0 : dbToLin(this.outDb);
+    // Nothing may reach the output unless a session is live: layer loops stay
+    // connected while idle, so an unmute while STOPPED (or after a PANIC)
+    // must resolve to silence, not to the fader level.
+    const target = this.muted || !this.running || this.paused ? 0 : dbToLin(this.outDb);
     const t = this.ctx.currentTime;
     this.master.gain.cancelScheduledValues(t);
     this.master.gain.setValueAtTime(this.master.gain.value, t);
@@ -866,7 +880,7 @@ export class LiveEngine {
   playBuffer(left: Float32Array, right: Float32Array, sampleRate: number, db = -18, onEnded?: () => void): boolean {
     const ctx = this.ensureGraph();
     if (!ctx || !this.bus) return false;
-    if (ctx.state === 'suspended') void ctx.resume();
+    if (ctx.state !== 'running') void ctx.resume(); // 'suspended' (autoplay) or WebKit 'interrupted'
     const frames = Math.min(left.length, right.length);
     if (frames === 0) return false;
     const buffer = ctx.createBuffer(2, frames, sampleRate);
@@ -898,7 +912,7 @@ export class LiveEngine {
   attachMediaElement(el: HTMLMediaElement, db: number): (() => void) | null {
     const ctx = this.ensureGraph();
     if (!ctx || !this.previewBus || typeof ctx.createMediaElementSource !== 'function') return null;
-    if (ctx.state === 'suspended') void ctx.resume();
+    if (ctx.state !== 'running') void ctx.resume(); // 'suspended' (autoplay) or WebKit 'interrupted'
     let src: MediaElementAudioSourceNode;
     try {
       src = ctx.createMediaElementSource(el);

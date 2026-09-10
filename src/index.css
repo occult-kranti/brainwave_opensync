@@ -217,6 +217,8 @@
     transition: border-color var(--motion-2), color var(--motion-2), background var(--motion-2);
   }
   .chip:hover { border-color: var(--line-2); color: var(--text-1); }
+  .chip:disabled { opacity: 0.45; cursor: not-allowed; }
+  .chip:disabled:hover { border-color: var(--line-1); color: var(--text-2); }
   .chip-active {
     border-color: var(--amber); color: var(--amber);
     background: rgba(217, 164, 65, 0.08);
@@ -449,14 +451,22 @@
    the whole app sideways (which also desynced the mobile breakpoint). */
 @layer utilities {
   @media (max-width: 767px) {
+    /* clip, not hidden: no scroll container is created, so position: sticky
+       inside pages keeps working and popovers are not clipped by <main>. */
     main {
-      overflow-x: hidden;
+      overflow-x: clip;
     }
     main .grid > * {
       min-width: 0;
     }
     main .panel {
       max-width: 100%;
+    }
+    /* Only intrinsically wide widgets scroll inside their panel; ordinary
+       panels stay overflow-visible so absolutely positioned popovers escape. */
+    main .panel:has(table),
+    main .panel:has(.scroll-x),
+    main .scope-well {
       overflow-x: auto;
     }
     main canvas,

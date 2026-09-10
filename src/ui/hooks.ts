@@ -14,30 +14,64 @@ import { STORAGE_KEYS } from '@/lib/storage';
  * evidence sheet, MORE drawer, command palette). Pair with role="dialog" +
  * aria-modal.
  */
+/** Open modals, bottom = oldest. Only the top-most one answers Escape and traps Tab. */
+const modalStack: symbol[] = [];
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export function useModalA11y(
   open: boolean,
   onClose: () => void,
   initialFocus?: React.RefObject<HTMLElement | null>,
+  /** Dialog root: when given, Tab / Shift+Tab wrap inside it (focus trap). */
+  root?: React.RefObject<HTMLElement | null>,
 ) {
   const onCloseRef = useRef(onClose);
   onCloseRef.current = onClose;
   useEffect(() => {
     if (!open) return;
+    const id = Symbol('modal');
+    modalStack.push(id);
+    const isTop = () => modalStack[modalStack.length - 1] === id;
     const restore = document.activeElement as HTMLElement | null;
     const t = window.setTimeout(() => {
-      const target = initialFocus?.current;
+      const target = initialFocus?.current ?? root?.current;
       if (target) target.focus();
     }, 0);
     const onKey = (e: KeyboardEvent) => {
+      if (!isTop()) return;
       if (e.key === 'Escape') {
         e.stopPropagation();
         onCloseRef.current();
+        return;
+      }
+      if (e.key === 'Tab' && root?.current) {
+        const nodes = Array.from(root.current.querySelectorAll<HTMLElement>(FOCUSABLE)).filter((n) => n.offsetParent !== null || n === document.activeElement);
+        if (nodes.length === 0) {
+          e.preventDefault();
+          root.current.focus();
+          return;
+        }
+        const first = nodes[0];
+        const last = nodes[nodes.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+        const inside = !!active && root.current.contains(active);
+        if (e.shiftKey && (!inside || active === first)) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && (!inside || active === last)) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     };
     window.addEventListener('keydown', onKey);
     return () => {
       window.clearTimeout(t);
       window.removeEventListener('keydown', onKey);
+      const i = modalStack.indexOf(id);
+      if (i >= 0) modalStack.splice(i, 1);
       if (restore && document.contains(restore)) restore.focus();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

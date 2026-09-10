@@ -27,6 +27,13 @@ Deploy fix plus the first round of an adversarial multi-agent review of the v2 d
 - **Wake lock could outlive the session** when the request resolved after STOP; a lock resolved after disposal is released immediately.
 - Lock-screen metadata no longer churns every second during a phase glide (the beat readout was in the artist field).
 - Infant-mode toast in the Safety Center now states both the one-shot setting (−40 dBFS / 20:00) and the enforced ceiling (−26 dBFS / 45:00).
+- **Reviewing the advisory from the Safety Center during a live session restarted it** (the dialog always started). The dialog now knows whether START raised it; reviewing never starts, and START is a no-op while running.
+- **The advisory and shortcut sheets covered the phone PANIC button.** Both now sit below the bottom bar, and the advisory carries its own PANIC button for desktop.
+- **`P` (panic) was inert while a select, slider or knob had focus**, and `⌘/Ctrl K` no longer worked from inputs. PANIC and modifier chords now fire from any control; plain letters stay inert only in real text entry.
+- **Space could double-fire** on ARIA buttons/sliders (click-to-type readouts, citations). Any activatable role, and any already-handled event, is exempt.
+- **One Escape closed every stacked overlay.** A modal stack lets only the top-most sheet answer Escape; sheets also trap Tab and give initial focus to the sheet (a held Enter can no longer accept the advisory by key repeat).
+- **Phone layout guard** used `overflow-x: hidden` on `main` (which disabled `position: sticky` inside pages) and made every panel a scroll container (clipping citation popovers). It now uses `overflow-x: clip` and scopes inner scrolling to tables and scopes.
+- Share fallback (no clipboard) now stays on screen until dismissed, receives focus, and announces via a live region; the WAV format note is visible text; disabled chips look disabled; fade-length chips are toggle buttons instead of half-implemented radios.
 
 ### Changed
 - Dependabot: minors and patches arrive grouped; majors are excluded and reviewed by hand (ESLint 10 and Vite plugin-react 6 broke CI); GitHub Actions bumps are grouped. `actions/checkout` and `actions/setup-node` moved to v7.

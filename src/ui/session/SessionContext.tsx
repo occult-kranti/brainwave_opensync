@@ -199,6 +199,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   });
   const [startBlocked, setStartBlocked] = useState<string[]>([]);
   const [advisoryOpen, setAdvisoryOpen] = useState(false);
+  const [advisoryPendingStart, setAdvisoryPendingStart] = useState(false);
   // Synchronous mirror of the acknowledgment so a START issued in the same
   // tick as the acknowledgment (the dialog's "I UNDERSTAND — START") never
   // reads a stale closure and re-opens the gate.
@@ -298,7 +299,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const start = useCallback((): boolean => {
     const eng = engineRef.current;
+    // Already live: START is a no-op (never reset a running session's clock).
+    if (runningRef.current) return true;
     if (!ackRef.current) {
+      setAdvisoryPendingStart(true);
       setAdvisoryOpen(true);
       return false;
     }
@@ -389,6 +393,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const resumeSafely = useCallback(() => {
     if (!ackRef.current) {
       setPanicked(false);
+      setAdvisoryPendingStart(true);
       setAdvisoryOpen(true);
       return;
     }
@@ -620,13 +625,21 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       writeAdvisoryAck();
       setGovernorState((cur) => ({ ...cur, drivingWarningAcknowledged: true }));
       setAdvisoryOpen(false);
+      setAdvisoryPendingStart(false);
       // Continue into the session the user asked for — same tick, no stale closure.
       if (opts.andStart) startRef.current();
     },
     [],
   );
-  const openAdvisory = useCallback(() => setAdvisoryOpen(true), []);
-  const closeAdvisory = useCallback(() => setAdvisoryOpen(false), []);
+  /** Review the advisory (Safety Center): accepting never starts anything. */
+  const openAdvisory = useCallback(() => {
+    setAdvisoryPendingStart(false);
+    setAdvisoryOpen(true);
+  }, []);
+  const closeAdvisory = useCallback(() => {
+    setAdvisoryOpen(false);
+    setAdvisoryPendingStart(false);
+  }, []);
 
   // ---- config setters -------------------------------------------------------
   const setMode = useCallback(
@@ -1145,6 +1158,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       startBlocked,
       advisoryAcknowledged: governor.drivingWarningAcknowledged,
       advisoryOpen,
+      advisoryPendingStart,
       presetName,
       presetGrade,
       dirty,
@@ -1202,7 +1216,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     [
       mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, running, paused, interrupted, fading, fadeEndsAtSec, panicked,
       elapsedSec, limitMin, fadeOutSec, volumeDb, muted, warnings, noiseDb, noiseOn, nature, bowl, layersOn, phases,
-      activePhaseIdx, dosePercent, governor, authorization, startBlocked, advisoryOpen, presetName, presetGrade, dirty,
+      activePhaseIdx, dosePercent, governor, authorization, startBlocked, advisoryOpen, advisoryPendingStart, presetName, presetGrade, dirty,
       userPresets, exporting, exportError, previewId, togglePreview, stopPreview, previewPreset, previewPhases,
       previewUrl, previewTone, start, stop, togglePause, panic, rehearsePanic, resumeSafely, dismissPanic,
       startSleepFade, cancelSleepFade, setFadeOutSec, acknowledgeAdvisory, openAdvisory, closeAdvisory, setMode,

@@ -59,6 +59,8 @@ export interface SessionSnapshot {
   /** One-time safety advisory (driving / seizure / headphones). */
   advisoryAcknowledged: boolean;
   advisoryOpen: boolean;
+  /** True when the open advisory was raised by START (accepting continues into the session). */
+  advisoryPendingStart: boolean;
   presetName: string | null;
   presetGrade: Grade | null;
   dirty: boolean;

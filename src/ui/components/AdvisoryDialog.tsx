@@ -13,16 +13,24 @@ import { Headphones, ShieldAlert } from 'lucide-react';
 import { SafetyGovernor } from '@/safety/governor';
 import { useSession } from '../session/useSession';
 import { useModalA11y } from '../hooks';
+import { PanicButton } from './Panic';
 
-/** Above the panic overlay (z-90) and bottom bar (z-100), below the palette (z-110). */
-const ADVISORY_Z = 105;
+/**
+ * Above the panic overlay (z-90) but BELOW the phone bottom bar (z-100) so the
+ * bar's PANIC segment stays tappable; the desktop rail/status-bar PANIC is
+ * covered by the backdrop, so the sheet carries its own PANIC button.
+ */
+const ADVISORY_Z = 95;
 
 export function AdvisoryDialog() {
   const s = useSession();
   const open = s.advisoryOpen;
-  const firstRef = useRef<HTMLButtonElement>(null);
-  useModalA11y(open, s.closeAdvisory, firstRef);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  // Initial focus lands on the sheet itself, never on the affirmative button:
+  // a held Enter on START must not acknowledge the advisory by key repeat.
+  useModalA11y(open, s.closeAdvisory, sheetRef, sheetRef);
   const texts = useMemo(() => new SafetyGovernor().advisoryTexts(), []);
+  const pendingStart = s.advisoryPendingStart;
 
   const items = [
     {
@@ -56,22 +64,25 @@ export function AdvisoryDialog() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: 16,
+            padding: '16px 16px calc(16px + 56px + env(safe-area-inset-bottom, 0px))',
           }}
         >
           <motion.div
+            ref={sheetRef}
+            tabIndex={-1}
             className="panel"
             initial={{ y: 16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 8, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            style={{ width: 'min(640px, 100%)', maxHeight: 'calc(100vh - 32px)', overflow: 'auto', borderTop: '2px solid var(--amber)' }}
+            style={{ width: 'min(640px, 100%)', maxHeight: 'calc(100vh - 32px - 56px)', overflow: 'auto', borderTop: '2px solid var(--amber)', outline: 'none' }}
           >
             <div className="flex items-center gap-3" style={{ marginBottom: 12 }}>
               <ShieldAlert size={18} style={{ color: 'var(--amber)' }} />
-              <h2 id="advisory-title" className="t-h3" style={{ color: 'var(--text-1)' }}>
-                Before your first session
+              <h2 id="advisory-title" className="t-h3" style={{ color: 'var(--text-1)', flex: 1 }}>
+                {pendingStart ? 'Before your first session' : 'Safety advisory'}
               </h2>
+              <PanicButton />
             </div>
             <p className="t-body-sm" style={{ color: 'var(--text-2)', marginBottom: 16 }}>
               Open Sync is a wellness-tier audio instrument, not a medical device. Read these once; the
@@ -97,16 +108,18 @@ export function AdvisoryDialog() {
             </ol>
             <div className="flex gap-2" style={{ marginTop: 20, flexWrap: 'wrap' }}>
               <button
-                ref={firstRef}
                 type="button"
                 className="btn-amber"
                 data-testid="advisory-accept"
-                onClick={() => s.acknowledgeAdvisory({ andStart: true })}
+                onKeyDown={(e) => {
+                  if (e.repeat) e.preventDefault();
+                }}
+                onClick={() => s.acknowledgeAdvisory({ andStart: pendingStart })}
               >
-                I UNDERSTAND — START
+                {pendingStart ? 'I UNDERSTAND — START' : 'I UNDERSTAND'}
               </button>
               <button type="button" className="btn-ghost" data-testid="advisory-dismiss" onClick={s.closeAdvisory}>
-                NOT NOW
+                {pendingStart ? 'NOT NOW' : 'CLOSE'}
               </button>
             </div>
           </motion.div>

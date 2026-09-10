@@ -409,3 +409,43 @@ describe('v2.0.1 session-state fixes', () => {
     expect(last[2]).toBe(-20);
   });
 });
+
+describe('advisory review vs. START gate (v2.0.1)', () => {
+  it('reviewing the advisory from the Safety Center during a live session never restarts it', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(4_000);
+    });
+    expect(session.elapsedSec).toBe(4);
+    act(() => session.openAdvisory());
+    expect(session.advisoryOpen).toBe(true);
+    expect(session.advisoryPendingStart).toBe(false);
+    expect(document.body.textContent).toContain('I UNDERSTAND');
+    expect(document.body.textContent).not.toContain('I UNDERSTAND — START');
+    const accept = document.querySelector('[data-testid="advisory-accept"]') as HTMLButtonElement;
+    act(() => accept.click());
+    expect(session.advisoryOpen).toBe(false);
+    expect(session.running).toBe(true);
+    expect(session.elapsedSec).toBe(4); // clock untouched
+    // START while already running is a no-op too
+    act(() => void session.start());
+    expect(session.elapsedSec).toBe(4);
+  });
+
+  it('only the top-most overlay answers Escape', async () => {
+    await mountShell();
+    act(() => session.openAdvisory());
+    press('?');
+    expect(document.querySelector('[data-testid="shortcuts-overlay"]')).not.toBeNull();
+    press('Escape');
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 350));
+    });
+    expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull();
+    expect(session.advisoryOpen).toBe(true); // the advisory underneath stayed open
+    press('Escape');
+    expect(session.advisoryOpen).toBe(false);
+  });
+});

@@ -2,7 +2,19 @@
 
 All notable changes to Open Sync. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/).
 
-## [2.0.1] — 2026-09-10
+## [2.0.2] — 2026-09-10
+
+Completeness-critic pass over the 2.0.1 code (a reviewer that had not seen it).
+
+### Fixed
+- **RESET, then START played at the previous level and honored the previous limit** while the UI showed factory values: the synchronous refs START reads were written only by the setters, and RESET wrote state directly. The refs are now re-synced on every render and RESET writes them too.
+- **Unmute while STOPPED, or after a PANIC, played the noise and nature/bowl loops** with no clock, dose accounting or limit (the loops stay connected while idle and the master gain followed the fader). The master now resolves to silence unless a session is live, and PANIC releases every layer loop.
+- **RESUME SAFELY from a panic rehearsal inherited the previous session's clock, phase position and limit-fade state.** Only a panic that cut a live session continues that budget; everything else starts fresh.
+- START, previews and pre-rendered playback resumed the AudioContext only from `suspended`; WebKit's `interrupted` state was left stalled. Any non-running context is resumed.
+- The offline audio cache could never be filled by `<audio>` playback (Range requests return 206, which the cache rejects); the first play now also fetches the file plainly to seed the cache, and the preview manifest is cached network-first.
+- The UPDATE chip is disabled while a session runs (applying an update removes old route chunks; the running session survives but unvisited screens would not load until the reload).
+
+
 
 Deploy fix plus the first round of an adversarial multi-agent review of the v2 diff (seven reviewers, three refuters per finding).
 

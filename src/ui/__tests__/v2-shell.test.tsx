@@ -577,3 +577,54 @@ describe('share link boot from the URL hash', () => {
     expect(window.location.hash).toBe('');
   });
 });
+
+describe('v2.0.2 — RESET then START, rehearsal resume', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+    installFakeAudio(true);
+  });
+  afterEach(() => {
+    delete (globalThis as Record<string, unknown>).AudioContext;
+  });
+
+  it('START after RESET uses the factory level and limit, not the pre-reset ones', async () => {
+    vi.useFakeTimers();
+    const outSpy = vi.spyOn(LiveEngine.prototype, 'setOutputDb');
+    await mountShell();
+    act(() => {
+      session.setVolumeDb(-6);
+      session.setLimitMin(1);
+    });
+    act(() => session.resetFrontPanel());
+    expect(session.volumeDb).toBe(-12);
+    expect(session.limitMin).toBe(90);
+    outSpy.mockClear();
+    act(() => void session.start());
+    expect(outSpy).toHaveBeenLastCalledWith(-12);
+    await act(async () => {
+      vi.advanceTimersByTime(61_000); // the old 1-minute limit must not stop it
+    });
+    expect(session.running).toBe(true);
+    expect(session.elapsedSec).toBe(61);
+  });
+
+  it('RESUME SAFELY from a rehearsal starts a fresh clock; after a live panic it continues the budget', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(3_000);
+    });
+    act(() => session.stop());
+    act(() => session.rehearsePanic());
+    act(() => session.resumeSafely());
+    expect(session.running).toBe(true);
+    expect(session.elapsedSec).toBe(0);
+    await act(async () => {
+      vi.advanceTimersByTime(4_000);
+    });
+    act(() => session.panic()); // a real panic on a live session
+    act(() => session.resumeSafely());
+    expect(session.elapsedSec).toBe(4); // budget continues
+  });
+});

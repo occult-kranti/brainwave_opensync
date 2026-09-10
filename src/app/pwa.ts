@@ -43,7 +43,10 @@ export function registerPwa(): void {
         },
         // Another tab applied the update: the new worker now controls this
         // tab too. Reload only when no session is running here; otherwise
-        // wait for it to end (the old assets keep working until then).
+        // wait for it to end. (The running engine lives in the shell and is
+        // unaffected; screens not yet visited may fail to load until the
+        // reload, because the old chunks are gone — the UPDATE chip is
+        // disabled while a session runs for the same reason.)
         onNeedReload() {
           if (reloadGuard?.()) deferredReload = true;
           else window.location.reload();

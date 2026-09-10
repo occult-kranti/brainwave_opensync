@@ -428,3 +428,60 @@ describe('LiveEngine v2.0.1 — interruption, timers, mute vs fade, previews, re
     vi.advanceTimersByTime(200);
   });
 });
+
+describe('LiveEngine v2.0.2 — idle silence, panic empties the bus, stalled contexts', () => {
+  beforeEach(() => {
+    install();
+    vi.useFakeTimers();
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+    delete (globalThis as Record<string, unknown>).AudioContext;
+  });
+
+  it('unmute while stopped (or after panic) resolves the master to silence, never to the fader level', () => {
+    const eng = new LiveEngine();
+    eng.setOutputDb(-12);
+    eng.start();
+    eng.setNoiseLevel('pink', -20);
+    eng.stop();
+    const master = gains[1];
+    master.gain.log.length = 0;
+    eng.setMuted(true);
+    eng.setMuted(false);
+    const ramps = master.gain.log.filter((l) => l[0] === 'linearRampToValueAtTime');
+    expect(ramps.length).toBeGreaterThan(0);
+    for (const r of ramps) expect(r[1]).toBe(0);
+    // and while paused
+    eng.start();
+    eng.pause();
+    master.gain.log.length = 0;
+    eng.setMuted(false);
+    for (const r of master.gain.log.filter((l) => l[0] === 'linearRampToValueAtTime')) expect(r[1]).toBe(0);
+  });
+
+  it('panic releases every layer loop; the remembered mixer rebuilds them on the next start', () => {
+    const eng = new LiveEngine();
+    eng.start();
+    eng.setNoiseLevel('pink', -20);
+    eng.setNature('rain', -24);
+    const layerGains = gains.slice(-2);
+    eng.panic();
+    for (const g of layerGains) expect(g.gain.log).toContainEqual(['setTargetAtTime', 0, 0, 0.02]);
+    const before = gains.length;
+    eng.start();
+    expect(gains.length - before).toBe(4); // gL, gR + pink + rain rebuilt
+  });
+
+  it("resumes a WebKit 'interrupted' context on start() and on previews", () => {
+    const eng = new LiveEngine();
+    eng.prepare();
+    const ctx = eng.context as unknown as { state: string; resume: () => void };
+    const resumeSpy = vi.spyOn(ctx, 'resume');
+    ctx.state = 'interrupted';
+    eng.start();
+    expect(resumeSpy).toHaveBeenCalledTimes(1);
+    eng.playBuffer(new Float32Array(48), new Float32Array(48), 48000, -18);
+    expect(resumeSpy).toHaveBeenCalledTimes(2);
+  });
+});

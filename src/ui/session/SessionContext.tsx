@@ -220,13 +220,20 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   // only on render) so a same-tick `setVolumeDb(x); setLimitMin(y); start()`
   // — the Quick Lab arm launcher — authorizes and starts with the new values,
   // and the 1 s clock never reads a stale limit.
+  // Re-synced on every render (so any state writer keeps them current) AND
+  // written inside the setters (so a same-tick read is exact).
   const limitRef = useRef(limitMin);
+  limitRef.current = limitMin;
   const fadeRef = useRef(fadeOutSec);
   fadeRef.current = fadeOutSec;
   const phasesRef = useRef(phases);
   phasesRef.current = phases;
   const volumeRef = useRef(volumeDb);
+  volumeRef.current = volumeDb;
   const mutedRef = useRef(muted);
+  mutedRef.current = muted;
+  /** True when the panic that opened the overlay cut a live session (vs. a rehearsal). */
+  const panicWasLiveRef = useRef(false);
   const carrierRef = useRef(carrierHz);
   carrierRef.current = carrierHz;
   const governorRef = useRef(governor);
@@ -373,6 +380,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     previewStopRef.current?.();
     previewStopRef.current = null;
     setPreviewId(null);
+    panicWasLiveRef.current = runningRef.current;
     engineRef.current.panic();
     runningRef.current = false;
     pausedRef.current = false;
@@ -388,6 +396,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     // Test mode: same visual sequence, no engine bus is touched. Never while a
     // session is live — a rehearsal there would freeze pause/resume.
     if (runningRef.current) return;
+    panicWasLiveRef.current = false;
     setPanicked(true);
   }, []);
 
@@ -417,6 +426,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     volumeRef.current = db;
     runningRef.current = true;
     pausedRef.current = false;
+    if (!panicWasLiveRef.current) {
+      // Resuming from a rehearsal (or after a normal STOP) is a fresh session:
+      // only a panic that cut a live session continues that session's budget.
+      limitFadeIssuedRef.current = false;
+      elapsedRef.current = 0;
+      setElapsedSec(0);
+      setActivePhaseIdx(0);
+      setFadeEndsAtSec(null);
+    }
+    panicWasLiveRef.current = false;
     setVolumeDbState(db);
     setStartBlocked([]);
     setRunning(true);
@@ -944,8 +963,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     engineRef.current.setBowl(false, d.bowl.baseHz, d.bowl.db);
     setLayersOnState(true);
     engineRef.current.setLayersBypass(true);
-    if (!running) setLimitMinState(d.limitMin);
+    if (!running) {
+      limitRef.current = d.limitMin;
+      setLimitMinState(d.limitMin);
+    }
     setFadeOutSecState(d.fadeOutSec);
+    volumeRef.current = d.volumeDb;
     setVolumeDbState(d.volumeDb);
     engineRef.current.setOutputDb(d.volumeDb);
     setPresetName(null);
@@ -1076,6 +1099,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         // volume is the fallback.
         const detach = engineRef.current.attachMediaElement(audio, db);
         audio.volume = detach ? 1 : Math.min(1, Math.pow(10, db / 20));
+        // Media elements fetch with Range headers (HTTP 206), which the
+        // service worker's audio cache cannot store; a plain fetch of the same
+        // URL seeds the cache so the file is available offline afterwards.
+        if (typeof fetch === 'function' && typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+          void fetch(url).catch(() => {});
+        }
         const clearIfCurrent = () => setPreviewId((cur) => (cur === id ? null : cur));
         audio.onended = clearIfCurrent;
         audio.onerror = clearIfCurrent;

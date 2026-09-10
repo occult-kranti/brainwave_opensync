@@ -64,6 +64,12 @@ export default defineConfig({
             },
           },
           {
+            // The preview manifest is small and changes with each preset render.
+            urlPattern: ({ url }) => /\/previews\/manifest\.json$/.test(url.pathname),
+            handler: 'NetworkFirst',
+            options: { cacheName: 'open-sync-manifest', networkTimeoutSeconds: 3, cacheableResponse: { statuses: [0, 200] } },
+          },
+          {
             urlPattern: ({ url }) => url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com',
             handler: 'StaleWhileRevalidate',
             options: { cacheName: 'open-sync-fonts', expiration: { maxEntries: 16, maxAgeSeconds: 365 * 24 * 3600 } },

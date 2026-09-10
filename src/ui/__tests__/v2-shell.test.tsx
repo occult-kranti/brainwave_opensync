@@ -395,15 +395,20 @@ describe('v2.0.1 session-state fixes', () => {
   });
 
   it('a locked bowl keeps ringing at the carrier when only its level changes', async () => {
-    const bowlSpy = vi.spyOn(LiveEngine.prototype, 'setBowl');
+    const bowlSpy = vi.spyOn(LiveEngine.prototype, 'setBowls');
     await mountShell();
+    const id = session.bowls[0].id;
     act(() => session.setCarrierHz(300));
-    act(() => session.setBowl({ on: true, lock: true }));
-    act(() => session.setBowl({ db: -20 }));
-    const last = bowlSpy.mock.calls[bowlSpy.mock.calls.length - 1];
-    expect(last[0]).toBe(true);
-    expect(last[1]).toBe(300); // never 0
-    expect(last[2]).toBe(-20);
+    act(() => session.setBowl(id, { on: true, lock: true }));
+    act(() => session.setBowl(id, { db: -20 }));
+    const last = bowlSpy.mock.calls[bowlSpy.mock.calls.length - 1][0];
+    expect(last).toHaveLength(1);
+    expect(last[0].baseHz).toBe(300); // never 0
+    expect(last[0].db).toBe(-20);
+    // The carrier moving re-tunes the locked bowl without a UI round trip.
+    act(() => session.setCarrierHz(240));
+    const after = bowlSpy.mock.calls[bowlSpy.mock.calls.length - 1][0];
+    expect(after[0].baseHz).toBe(240);
   });
 });
 
@@ -561,7 +566,8 @@ describe('share link boot from the URL hash', () => {
       noiseDb: {},
       noiseOn: true,
       nature: { on: false, kind: 'rain', db: -30 },
-      bowl: { on: false, baseHz: 136.1, db: -30, lock: false },
+      bowls: [],
+      bellEveryMin: 0,
       layersOn: true,
       limitMin: 30,
       fadeOutSec: 60,

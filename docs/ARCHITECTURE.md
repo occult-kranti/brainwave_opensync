@@ -14,7 +14,7 @@ Open Sync is a static single-page app: React 19 + TypeScript on Vite 7, Tailwind
 ## Layers
 
 ### `src/engine` — pure DSP (no DOM, no Web Audio)
-Deterministic renderers: `renderBinaural / renderMonaural / renderIsochronic`, six noise colors, singing-bowl and nature textures, a phase sequencer with equal-power crossfades, breath cues, peak-normalization, and a WAV encoder (PCM-16/24, float-32). `renderSession(spec)` returns stereo `Float32Array`s plus a **manifest** (hash of the spec, duration, peak, warnings) so an export is reproducible. Everything here is bit-exact under test and runs in node, in the browser, in the export worker, and in `scripts/render-previews.mjs`.
+Deterministic renderers: `renderBinaural / renderMonaural / renderIsochronic`, six noise colors, singing bowls (`bowls.ts`: five material profiles, three techniques, per-bowl pan, `Phase.bowls[]`; `renderBowl` sums every earlier strike's tail in closed form so periodic re-strikes cost one sine per partial and loop seamlessly) and nature textures, a phase sequencer with equal-power crossfades, breath cues, peak-normalization, and a WAV encoder (PCM-16/24, float-32). `renderSession(spec)` returns stereo `Float32Array`s plus a **manifest** (hash of the spec, duration, peak, warnings) so an export is reproducible. Everything here is bit-exact under test and runs in node, in the browser, in the export worker, and in `scripts/render-previews.mjs`.
 
 ### `src/dsp` — measurement
 FFT, RBJ biquads, ITU-R BS.1770-4 loudness (K-weighting, gating, LRA, 4× true-peak), THD / THD+N / SINAD, wow & flutter, azimuth, phase coherence. Used by the Analyzer and Sample Lab.
@@ -33,6 +33,7 @@ previews ──▶ previewBus ─┬─▶ previewDirect ───────�
 ```
 - Oscillators (binaural: hard-panned pair; monaural: summed pair; isochronic: one carrier gated by a looped raised-cosine envelope buffer).
 - Noise / nature / bowl are engine-rendered loops on their **section buses**; a bypass ramps a bus with a 50 ms time constant instead of stopping sources (click-free, phase-continuous). The engine **remembers** layer state set while idle and materializes it on `start()`.
+- Bowls are a **set** (`setBowls`, keyed by id, up to `MAX_BOWLS`): each bowl is its own loop whose length is its re-strike interval, through an optional `StereoPannerNode`, into the layer bus. A level/pan change ramps the existing nodes; a voice change (pitch, material, technique, interval) re-renders and swaps with a release ramp. The interval bell (`strikeBell`) is a cached one-shot on the same bus, so bypass, infant low-pass and master gain all apply.
 - **Infant path**: a 1 kHz low-pass cross-faded in with equal-power gains.
 - **Sleep fade**: `fadeOut(sec)` schedules a 12-segment piecewise-linear (dB-linear) ramp to −60 dBFS then 0, keeps `running` true until it lands, then stops and emits `fade-done`.
 - **Pause** ramps master to 0 and suspends the context (phase accumulators freeze; resume is click-free). **Panic** is a 0 ms hard cut of everything, including previews.

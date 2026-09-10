@@ -7,7 +7,7 @@
 ## v2.1 — audio engine depth
 
 - **AudioWorklet engine.** Move the tone chain into an `AudioWorkletProcessor` so beat and carrier ramps are sample-accurate and continuous (today the beat steps once per second from the React clock and the isochronic gate is a pre-rendered loop). Keep the pure engine as the reference: worklet output must match `renderSession()` within a tolerance test.
-- **Seamless layer loops.** Cross-fade the 8–12 s noise/nature/bowl loops (or render them 4× longer) — the loop seams are audible on headphones.
+- **Seamless layer loops.** Cross-fade the 8–12 s noise/nature loops (or render them 4× longer) — the loop seams are audible on headphones. (Bowl loops are seamless since 2.1: the closed-form tail sum makes a buffer of whole re-strike cycles periodic.)
 - **Decorrelated stereo layers.** `NoiseSpec.stereoWidth` (default 0 to keep v1 renders bit-exact) rendering independent L/R seeds mixed by width.
 - **Bilateral / panning modulation** (Brainaural-style) as a fourth modality, graded like the others.
 - **Preview routing** through the master analyser tap so previews show on the scope and the meters.

@@ -29,6 +29,9 @@ import {
   dbToLin,
   isochronicGate,
   renderBowl,
+  bowlMaterial,
+  type BowlMaterial,
+  type BowlStrike,
   renderNature,
   renderNoise,
   type EntrainmentMode,
@@ -77,7 +80,31 @@ const LAYER_RELEASE_MS = 120;
 interface LayerNode {
   src: AudioBufferSourceNode;
   gain: GainNode;
+  /** Present for panned bowls (StereoPannerNode when the platform has one). */
+  panner?: StereoPannerNode;
 }
+
+/** One bowl of the live bowl set. `db` −Infinity = silent (kept in the set). */
+export interface LiveBowl {
+  /** Stable id: a bowl whose voice is unchanged keeps its loop (gain/pan ramp only). */
+  id: string;
+  baseHz: number;
+  db: number;
+  material?: BowlMaterial;
+  strike?: BowlStrike;
+  /** −1..1, default 0. */
+  pan?: number;
+  /** Loop length = re-strike interval (default 8 s). */
+  restrikeSec?: number;
+}
+
+interface BowlNode extends LayerNode {
+  /** Voice identity — a change means re-render, not ramp. */
+  voiceKey: string;
+}
+
+const BOWL_SCALE = 0.5;
+const BELL_SCALE = 0.5;
 
 interface FadeState {
   t0: number;
@@ -126,10 +153,15 @@ export class LiveEngine {
    * (v1 dropped mixer moves made while idle). Applied on every start(). */
   private noiseLevels = new Map<NoiseColor, number>();
   private natureState: { kind: NatureKind | null; db: number } = { kind: null, db: -Infinity };
-  private bowlState: { enabled: boolean; baseHz: number; db: number } = { enabled: false, baseHz: 136.1, db: -Infinity };
+  private bowlsState: LiveBowl[] = [];
   private noiseNodes = new Map<NoiseColor, LayerNode>();
   private noiseBuffers = new Map<NoiseColor, AudioBuffer>();
-  private layerNodes: { nature?: LayerNode; bowl?: LayerNode } = {};
+  private layerNodes: { nature?: LayerNode } = {};
+  private bowlNodes = new Map<string, BowlNode>();
+  /** Rendered one-shot bell buffers, keyed by voice (a bell every N minutes must not re-render). */
+  private bellBuffers = new Map<string, AudioBuffer>();
+  /** Ringing bell sources so stop/panic can cut them. */
+  private bellSrcs = new Set<AudioBufferSourceNode>();
   /** One-shot preview sources (playBuffer) so panic/stop can cut them too. */
   private previewSrcs = new Set<AudioBufferSourceNode>();
   private listeners = new Set<LiveEngineListener>();
@@ -479,7 +511,7 @@ export class LiveEngine {
       if (!this.noiseNodes.has(color)) this.applyNoiseLevel(color, db);
     }
     if (this.natureState.kind && !this.layerNodes.nature) this.applyNature(this.natureState.kind, this.natureState.db);
-    if (this.bowlState.enabled && !this.layerNodes.bowl) this.applyBowl(true, this.bowlState.baseHz, this.bowlState.db);
+    this.applyBowls();
   }
 
   /** Gentle stop with a short fade (normal stop path). */
@@ -637,8 +669,24 @@ export class LiveEngine {
     for (const node of this.noiseNodes.values()) this.releaseLayer(node);
     this.noiseNodes.clear();
     if (this.layerNodes.nature) this.releaseLayer(this.layerNodes.nature);
-    if (this.layerNodes.bowl) this.releaseLayer(this.layerNodes.bowl);
     this.layerNodes = {};
+    for (const node of this.bowlNodes.values()) this.releaseLayer(node);
+    this.bowlNodes.clear();
+    this.stopBells();
+  }
+
+  /** Cut every ringing interval bell (stop / panic). */
+  private stopBells(): void {
+    for (const src of this.bellSrcs) {
+      try {
+        src.onended = null;
+        src.stop();
+      } catch {
+        /* already stopped */
+      }
+      src.disconnect();
+    }
+    this.bellSrcs.clear();
   }
 
   /** Hard-stop all one-shot preview buffers (second tap / panic / new preview). */
@@ -813,6 +861,7 @@ export class LiveEngine {
       }
       node.src.disconnect();
       node.gain.disconnect();
+      node.panner?.disconnect();
     }, LAYER_RELEASE_MS);
   }
 
@@ -950,25 +999,118 @@ export class LiveEngine {
     this.layerNodes.nature = this.makeLoop(renderNature(kind, 12, ctx.sampleRate), dbToLin(db) * 0.5, this.layerBus ?? this.bus);
   }
 
-  /** Singing-bowl layer (engine-rendered loop) — routed via layerBus. enabled false = off. */
+  /**
+   * Single-bowl convenience (v2.0 API): one bowl with id "bowl", center, 8 s
+   * re-strike. Equivalent to setBowls([...]) / setBowls([]).
+   */
   setBowl(enabled: boolean, baseHz: number, db: number): void {
-    this.bowlState = { enabled: enabled && Number.isFinite(db), baseHz, db };
-    this.applyBowl(enabled, baseHz, db);
+    this.setBowls(enabled ? [{ id: 'bowl', baseHz, db }] : []);
   }
 
-  private applyBowl(enabled: boolean, baseHz: number, db: number): void {
+  /**
+   * The live bowl set. Bowls are keyed by id: a bowl whose voice (pitch,
+   * material, technique, interval) is unchanged keeps its running loop and
+   * only its level/pan ramp (no restart, no click); a changed voice is
+   * re-rendered and swapped with a release ramp; bowls absent from the list
+   * are released. Remembered while idle and materialized on start().
+   */
+  setBowls(bowls: readonly LiveBowl[]): void {
+    this.bowlsState = bowls.map((b) => ({ ...b }));
+    this.applyBowls();
+  }
+
+  /** Current live bowl set (a copy). */
+  getBowls(): LiveBowl[] {
+    return this.bowlsState.map((b) => ({ ...b }));
+  }
+
+  private static bowlVoiceKey(b: LiveBowl): string {
+    return `${b.baseHz}|${b.material ?? 'tibetan-bronze'}|${b.strike ?? 'mallet'}|${b.restrikeSec ?? 8}`;
+  }
+
+  private applyBowls(): void {
     const ctx = this.ctx;
     if (!ctx || !this.bus) return;
-    if (this.layerNodes.bowl) {
-      this.releaseLayer(this.layerNodes.bowl);
-      this.layerNodes.bowl = undefined;
+    const wanted = new Map<string, LiveBowl>();
+    for (const b of this.bowlsState) {
+      if (Number.isFinite(b.db) && Number.isFinite(b.baseHz) && b.baseHz > 0) wanted.set(b.id, b);
     }
-    if (!enabled || !Number.isFinite(db)) return;
-    this.layerNodes.bowl = this.makeLoop(
-      renderBowl({ baseHz, level: 1, restrikeSec: 8 }, 8, ctx.sampleRate),
-      dbToLin(db) * 0.5,
-      this.layerBus ?? this.bus,
-    );
+    // Release bowls that left the set or changed voice.
+    for (const [id, node] of this.bowlNodes) {
+      const next = wanted.get(id);
+      if (!next || node.voiceKey !== LiveEngine.bowlVoiceKey(next)) {
+        this.releaseLayer(node);
+        this.bowlNodes.delete(id);
+      }
+    }
+    const t = ctx.currentTime;
+    for (const [id, b] of wanted) {
+      const gainLin = dbToLin(b.db) * BOWL_SCALE;
+      const pan = Math.max(-1, Math.min(1, b.pan ?? 0));
+      const existing = this.bowlNodes.get(id);
+      if (existing) {
+        existing.gain.gain.setTargetAtTime(gainLin, t, 0.05);
+        existing.panner?.pan.setTargetAtTime(pan, t, 0.05);
+        continue;
+      }
+      const restrike = b.restrikeSec ?? 8;
+      const data = renderBowl(
+        { baseHz: b.baseHz, level: 1, material: b.material, strike: b.strike, restrikeSec: restrike },
+        restrike,
+        ctx.sampleRate,
+      );
+      const into = this.layerBus ?? this.bus;
+      let panner: StereoPannerNode | undefined;
+      if (typeof ctx.createStereoPanner === 'function') {
+        panner = ctx.createStereoPanner();
+        panner.pan.value = pan;
+        panner.connect(into);
+      }
+      const node = this.makeLoop(data, gainLin, panner ?? into);
+      this.bowlNodes.set(id, { ...node, panner, voiceKey: LiveEngine.bowlVoiceKey(b) });
+    }
+  }
+
+  /**
+   * Strike one bowl once (the interval / mindfulness bell). Renders and
+   * caches a one-shot of the voice, plays it through the layer bus (so the
+   * layers bypass, infant low-pass and master gain all apply) and forgets it
+   * when it has rung down. No-op while the session is not live.
+   */
+  strikeBell(voice: { baseHz: number; material?: BowlMaterial; strike?: BowlStrike }, db: number): boolean {
+    const ctx = this.ctx;
+    if (!ctx || !this.bus || !this.running || !Number.isFinite(db)) return false;
+    if (!(Number.isFinite(voice.baseHz) && voice.baseHz > 0)) return false;
+    const key = `${voice.baseHz}|${voice.material ?? 'tibetan-bronze'}|${voice.strike ?? 'mallet'}`;
+    let buffer = this.bellBuffers.get(key);
+    if (!buffer) {
+      const ringSec = Math.min(24, Math.max(4, bowlMaterial(voice.material).decaySec * 2.5));
+      const data = renderBowl({ baseHz: voice.baseHz, level: 1, material: voice.material, strike: voice.strike, restrikeSec: ringSec }, ringSec, ctx.sampleRate);
+      // Ring-down: taper the last second to true zero so a one-shot never clicks off.
+      const tail = Math.min(data.length, Math.round(ctx.sampleRate));
+      for (let i = 0; i < tail; i++) data[data.length - 1 - i] *= i / tail;
+      buffer = ctx.createBuffer(1, data.length, ctx.sampleRate);
+      buffer.getChannelData(0).set(data);
+      this.bellBuffers.set(key, buffer);
+      if (this.bellBuffers.size > 4) {
+        const oldest = this.bellBuffers.keys().next().value;
+        if (oldest !== undefined && oldest !== key) this.bellBuffers.delete(oldest);
+      }
+    }
+    const src = ctx.createBufferSource();
+    src.buffer = buffer;
+    const gain = ctx.createGain();
+    gain.gain.value = dbToLin(db) * BELL_SCALE;
+    src.connect(gain);
+    gain.connect(this.layerBus ?? this.bus);
+    src.onended = () => {
+      this.bellSrcs.delete(src);
+      src.disconnect();
+      gain.disconnect();
+    };
+    this.bellSrcs.add(src);
+    src.start();
+    return true;
   }
 }
 

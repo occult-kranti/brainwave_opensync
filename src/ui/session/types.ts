@@ -44,7 +44,10 @@ export interface SessionSnapshot {
   /** Noise mixer master bypass (true = section audible). */
   noiseOn: boolean;
   nature: NatureLayer;
-  bowl: BowlLayer;
+  /** The bowl set (up to MAX_BOWLS rows; each with its own voice, pan and interval). */
+  bowls: BowlLayer[];
+  /** Interval (mindfulness) bell period in minutes; 0 = off. */
+  bellEveryMin: number;
   /** Nature/bowl layers master bypass (true = section audible). */
   layersOn: boolean;
   phases: UiPhase[];
@@ -120,7 +123,14 @@ export interface SessionActions {
   setNoiseDb: (color: NoiseColor, db: number) => void;
   setNoiseOn: (on: boolean) => void;
   setNature: (patch: Partial<NatureLayer>) => void;
-  setBowl: (patch: Partial<BowlLayer>) => void;
+  /** Patch one bowl of the set by id (unknown ids are ignored). */
+  setBowl: (id: string, patch: Partial<Omit<BowlLayer, 'id'>>) => void;
+  /** Append a bowl (defaults + `init`). Returns its id, or null when the set is full. */
+  addBowl: (init?: Partial<Omit<BowlLayer, 'id'>>) => string | null;
+  removeBowl: (id: string) => void;
+  /** Replace the whole set (bowl-set presets). Capped at MAX_BOWLS. */
+  setBowls: (bowls: BowlLayer[]) => void;
+  setBellEveryMin: (min: number) => void;
   setLayersOn: (on: boolean) => void;
   setVolumeDb: (db: number) => void;
   setMuted: (m: boolean) => void;

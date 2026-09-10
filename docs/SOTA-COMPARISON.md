@@ -15,7 +15,7 @@ Sources: project READMEs and live demos — [Moodist](https://github.com/remvze/
 | Multi-phase schedule editor | ✓ (8 phases, drag) | ✓ | – | ✓ (segments, XML) | ✓ (3-phase ramp) | timeline | – |
 | Continuous beat ramps | 1 s steps | 1 s steps (worklet in v2.1) | – | ✓ | ✓ (log-sigmoid) | n/a | – |
 | Noise colors | 6 | 6 | white/pink/brown | white/pink/brown | pink | – | modulated white |
-| Ambient layers | 5 nature + bowl | same | 84 sounds | 11 | – | library | – |
+| Ambient layers | 5 nature + bowl | 5 nature + **bowl set (7 bowls, 5 materials, 3 techniques, pan, sets, interval bell)** | 84 sounds | 11 | – | library | – |
 | Mathematical generators (Shepard, Euclidean, chaos, tuning systems…) | 17 | 17 | – | – | – | – | – |
 | Cymatics simulator | ✓ | ✓ | – | – | – | – | – |
 | Waveform / spectrum / correlation scopes | ✓ | ✓ | – | – | waterfall | – | – |

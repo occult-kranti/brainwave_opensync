@@ -2,6 +2,25 @@
 
 All notable changes to Open Sync. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/).
 
+## [2.1.0] — 2026-09-10
+
+Bowl sets: the singing-bowl layer becomes a multi-bowl instrument, plus the interval bell — the layer people pay ambient / meditation apps for, kept evidence-honest (grade D throughout: sound models, no effect claims).
+
+### Added
+- **Multiple singing bowls** (up to 7). Each bowl has its own on/off, material, playing technique, pitch (note picker or exact Hz, or LOCK to the carrier), stereo pan, re-strike interval and level. `+ ADD BOWL`, `×` to remove.
+- **Five bowl materials** as physical-model profiles (partial ratios, amplitudes, decay, shimmer, mode-doublet beating) chosen by ear against published bowl measurements: Tibetan bronze (the v2.0 voice), Himalayan antique, bell bronze, brass, crystal quartz.
+- **Three playing techniques**: mallet, soft mallet (fewer highs, 12 ms bloom), rim singing (sustained swell → hold → release each cycle).
+- **Bowl sets** — ready-made arrangements loaded in one tap: Himalayan trio, Crystal pair, Seven-note set (the "chakra set" layout; the note-to-body mapping is labeled folklore), Deep drone, Bright bells.
+- **Interval bell** (mindfulness bell): strikes the first bowl once at START and every 1–30 minutes, live and in the export.
+- Engine: `BowlSpec.material / strike / pan`, `Phase.bowls[]`, `renderBowl` now rings earlier strikes through later ones (closed-form tail sum — one sine per partial, seamless loops), `BOWL_MATERIALS / BOWL_STRIKES / BOWL_SETS / BOWL_NOTE_CHOICES`, `panGains`, `noteLabel`.
+- Live engine: `setBowls()` keyed by id (level/pan changes ramp; voice changes re-render; removals release), `StereoPannerNode` per bowl where available, `strikeBell()` one-shots through the layer bus (bypass, infant low-pass and master gain all apply).
+- Share links carry the whole bowl set (`bs`) and the bell (`be`); v2.0 links (`b`) still decode. Persisted panels migrate a v2.0 single bowl to a one-bowl set in the original voice.
+- Export keeps the bowls' relative balance (loudest at the v2.0 level) and pans them; the bell exports as a bowl re-struck every N minutes (so it also rings at each phase start).
+
+### Changed
+- The bowl voice: re-strikes no longer reset the ring-down, so an 8 s loop of a long-sustain bowl no longer clicks at the strike. `tibetan-bronze` keeps the v2.0 partials.
+- Default new bowl: Himalayan antique, 136.1 Hz, −30 dB, center, 8 s (off until you switch it on).
+
 ## [2.0.2] — 2026-09-10
 
 Completeness-critic pass over the 2.0.1 code (a reviewer that had not seen it).

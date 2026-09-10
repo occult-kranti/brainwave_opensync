@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml/badge.svg)](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-2.1.0-amber)
+![Version](https://img.shields.io/badge/version-2.2.0-amber)
 
 An open, evidence-graded replication **and correction** of commercial brainwave-entrainment
 platforms, rebuilt as a browser app where every frequency, protocol and claim carries an
@@ -23,7 +23,7 @@ A "neural audio instrument" that refuses to overclaim:
 - Solfeggio / chakra / "angel number" frequencies ship with their audited origins (1970s–90s
   numerology, not medieval), Schumann modes use *measured* geophysical values, and astral/occult
   content is quarantined as cultural-historical exhibits.
-- Safety rails are contracts, not advisories: a −6 dBFS gain cap, a 90-minute session cap, a
+- Safety rails are contracts, not advisories: a −6 dBFS gain cap, a session cap you set yourself, a
   WHO-ITU H.870 weekly dose meter that really spans seven days, an infant mode with a live 1 kHz
   low-pass, a panic button on every screen, and a one-time advisory gate before the first START.
 
@@ -149,7 +149,7 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for how the layers fit togeth
 - Every claim carries an A–D grade; banned vocabulary ("induces", "synchronizes", "digital drug"…)
   is enforced by tests that CI runs on every push.
 - Safety rails: H.870 weekly dose model with a persistent 7-day log, −6 dBFS cap enforced at the
-  fader, 90-minute session cap with sleep fade, panic button with rehearse mode, first-run advisory
+  fader, user-set session cap with sleep fade, panic button with rehearse mode, first-run advisory
   gate, seizure-disorder exclusion notice, infant mode enforced in the live signal path.
 - Blinded experiment results are never reported without n and a confidence interval.
 - Wellness product only — no disease claims (FDA General Wellness boundary).

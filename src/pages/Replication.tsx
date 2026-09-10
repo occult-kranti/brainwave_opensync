@@ -15,7 +15,6 @@ import { WarningChip } from '@/ui/components/primitives';
 import { MiniPhaseBar } from '@/ui/components/PhaseTimeline';
 import { fmtClock } from '@/ui/session/sessionMath';
 import { useSession } from '@/ui/session/useSession';
-import type { GradeLetter } from '@/ui/theme';
 import {
   REPLICATION_BANNER,
   REPLICATION_CARDS,
@@ -277,8 +276,3 @@ export default function Replication() {
     </div>
   );
 }
-
-// Re-export for tests/lint convenience (grade colors per card).
-export const CARD_GRADES: Record<string, GradeLetter> = Object.fromEntries(
-  REPLICATION_CARDS.map((c) => [c.id, c.ourGrade]),
-);

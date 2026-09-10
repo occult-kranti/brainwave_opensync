@@ -39,7 +39,7 @@ describe('share links', () => {
 
   it('applies defaults and clamps hostile values', () => {
     const enc = toBase64Url(
-      JSON.stringify({ v: 2, m: 'weird', c: 99999, w: 'saw', p: [[1e9, -5], [60, 12], 'junk'], n: { pink: 50, laser: -10 }, l: 500, f: -3 }),
+      JSON.stringify({ v: 2, m: 'weird', c: 99999, w: 'saw', p: [[1e9, -5], [60, 12], 'junk'], n: { pink: 50, laser: -10 }, l: 99999, f: -3 }),
     );
     const s = decodeShare(enc)!;
     expect(s.mode).toBe('binaural');
@@ -47,7 +47,7 @@ describe('share links', () => {
     expect(s.carrierHz).toBe(1000);
     expect(s.phases).toEqual([{ durationSec: 60, beatHz: 12 }]); // first pair rejected (beat ≤ 0), junk skipped
     expect(s.noiseDb).toEqual({ pink: 0 });
-    expect(s.limitMin).toBe(90);
+    expect(s.limitMin).toBe(1440); // a link may carry any length up to 24 h; the receiver's cap applies on apply
     expect(s.fadeOutSec).toBe(0);
   });
 

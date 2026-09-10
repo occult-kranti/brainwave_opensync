@@ -22,6 +22,7 @@ const defaults: FrontPanel = {
   gateDuty: 0.5,
   gateShape: 'raised-cosine',
   limitMin: 90,
+  sessionCapMin: 1440,
   volumeDb: -12,
   noiseDb: { white: -Infinity, pink: -Infinity, brown: -Infinity, blue: -Infinity, violet: -Infinity, grey: -Infinity },
   noiseOn: true,
@@ -59,13 +60,13 @@ describe('front panel persistence', () => {
   it('falls back to defaults when nothing is stored or the blob is hostile', () => {
     expect(loadFrontPanel(defaults, memoryStorage())).toEqual(defaults);
     const s = sanitizeFrontPanel(
-      { mode: 'laser', carrierHz: 1e9, beatHz: -4, waveform: 3, limitMin: 400, volumeDb: 12, phases: [{ durationSec: 0, beatHz: 10 }, 'x'], noiseDb: { pink: 5, nope: -3 }, presetGrade: 'Z' },
+      { mode: 'laser', carrierHz: 1e9, beatHz: -4, waveform: 3, limitMin: 99999, volumeDb: 12, phases: [{ durationSec: 0, beatHz: 10 }, 'x'], noiseDb: { pink: 5, nope: -3 }, presetGrade: 'Z' },
       defaults,
     );
     expect(s.mode).toBe('binaural');
     expect(s.carrierHz).toBe(1000);
     expect(s.beatHz).toBe(0.1); // clamped, like the Studio setter
-    expect(s.limitMin).toBe(90);
+    expect(s.limitMin).toBe(1440); // no cap by default: clamped to the 24 h bound, not to 90
     expect(s.volumeDb).toBe(0);
     expect(s.phases).toEqual(defaults.phases); // no valid phase → defaults
     expect(s.noiseDb.pink).toBe(0);
@@ -176,5 +177,29 @@ describe('persistence — bowl sets (v2.1)', () => {
     expect(messy.bowls[0]).toEqual({ id: 'dup', on: false, material: 'himalayan-antique', strike: 'mallet', baseHz: 1000, db: 0, pan: -1, restrikeSec: 4, lock: false });
     expect(messy.bowls[1].id).not.toBe('dup');
     expect(messy.bellEveryMin).toBe(0);
+  });
+});
+
+describe('persistence — user session cap (v2.2)', () => {
+  it('a v2.0/2.1 blob without a cap reads as no cap and keeps its length', () => {
+    const s = sanitizeFrontPanel({ ...defaults, sessionCapMin: undefined, limitMin: 90 }, defaults);
+    expect(s.sessionCapMin).toBe(1440);
+    expect(s.limitMin).toBe(90);
+  });
+
+  it('round-trips the cap, clamps it, and never lets the length exceed it', () => {
+    const st = memoryStorage();
+    const panel: FrontPanel = { ...defaults, sessionCapMin: 120, limitMin: 100 };
+    expect(saveFrontPanel(panel, st)).toBe(true);
+    expect(loadFrontPanel(defaults, st)).toEqual(panel);
+    const tight = sanitizeFrontPanel({ ...defaults, sessionCapMin: 30, limitMin: 90 }, defaults);
+    expect(tight.limitMin).toBe(30);
+    const wide = sanitizeFrontPanel({ ...defaults, sessionCapMin: 1440, limitMin: 600 }, defaults);
+    expect(wide.limitMin).toBe(600);
+    expect(sanitizeFrontPanel({ ...defaults, sessionCapMin: 1 }, defaults).sessionCapMin).toBe(5);
+    expect(sanitizeFrontPanel({ ...defaults, sessionCapMin: 99999 }, defaults).sessionCapMin).toBe(1440);
+    // Infant mode still wins over a wider cap.
+    const infant = sanitizeFrontPanel({ ...defaults, infantMode: true, sessionCapMin: 240, limitMin: 240 }, defaults);
+    expect(infant.limitMin).toBe(45);
   });
 });

@@ -2,9 +2,11 @@
  * SafetyGovernor — pure authorization layer for audio sessions.
  *
  * Enforces the evidence-anchored safety spec:
- *   - General sessions: duration <= maxSessionMin (default 90 min; conservative
- *     vs NIOSH 85 dBA / 8 h REL), digital gain <= maxGainDbFs (default -6 dBFS;
- *     note a digital cap is NOT an acoustic limit — see WHO-ITU H.870 / EN 50332).
+ *   - General sessions: duration <= the user's own session cap (maxSessionMin;
+ *     there is no fixed cap by default — only the 24 h engineering bound — the
+ *     H.870 dose tracker is the evidence-anchored limit), digital gain <=
+ *     maxGainDbFs (default -6 dBFS; note a digital cap is NOT an acoustic
+ *     limit — see WHO-ITU H.870 / EN 50332).
  *   - Infant mode: mandatory lowpass <= 1000 Hz (matches intrauterine acoustics),
  *     gain path targeting <= 50 dBA at the crib (AAP guidance; Hugh et al. 2014),
  *     auto-shutoff required (Hugh 2014; NICU music-therapy norms 20-45 min),
@@ -23,6 +25,16 @@ export const INFANT_HEARTBEAT_BPM_MIN = 60;
 export const INFANT_HEARTBEAT_BPM_MAX = 80;
 /** Maximum infant heartbeat/session auto-shutoff (min), per NICU music-therapy norms. */
 export const INFANT_MAX_SESSION_MIN = 45;
+/** Longest session the app will run at all (24 h): an engineering bound, not a health claim. */
+export const MAX_SESSION_MIN = 24 * 60;
+/** Shortest cap a user may set (minutes). */
+export const MIN_SESSION_CAP_MIN = 5;
+
+/** Clamp a user-entered session cap into [MIN_SESSION_CAP_MIN, MAX_SESSION_MIN]; NaN → no cap. */
+export function clampSessionCap(min: number): number {
+  if (!Number.isFinite(min)) return MAX_SESSION_MIN;
+  return Math.max(MIN_SESSION_CAP_MIN, Math.min(MAX_SESSION_MIN, Math.round(min)));
+}
 
 /**
  * Session specification as seen by the governor. This is a local, decoupled
@@ -44,7 +56,10 @@ export interface GovernorSessionSpec {
 }
 
 export interface GovernorConfig {
-  /** Hard session-length cap in minutes (default 90). */
+  /**
+   * The user's session-length cap in minutes. Default MAX_SESSION_MIN (no cap
+   * beyond the 24 h bound); the Safety Center lets the user set a lower one.
+   */
   maxSessionMin: number;
   /** Digital gain cap in dBFS (default -6). */
   maxGainDbFs: number;
@@ -55,7 +70,7 @@ export interface GovernorConfig {
 }
 
 export const DEFAULT_GOVERNOR_CONFIG: GovernorConfig = {
-  maxSessionMin: 90,
+  maxSessionMin: MAX_SESSION_MIN,
   maxGainDbFs: -6,
   infantMode: false,
   drivingWarningAcknowledged: false,
@@ -119,8 +134,10 @@ export class SafetyGovernor {
     }
 
     // General constraints.
-    if (Number.isFinite(spec.durationMin) && spec.durationMin > c.maxSessionMin) {
-      reasons.push(`Session exceeds the ${c.maxSessionMin}-minute limit (${spec.durationMin} min requested).`);
+    if (Number.isFinite(spec.durationMin) && spec.durationMin > MAX_SESSION_MIN) {
+      reasons.push(`Sessions are limited to 24 hours (${spec.durationMin} min requested).`);
+    } else if (Number.isFinite(spec.durationMin) && spec.durationMin > c.maxSessionMin) {
+      reasons.push(`Session exceeds your ${c.maxSessionMin}-minute cap (${spec.durationMin} min requested).`);
     }
     if (Number.isFinite(spec.gainDbFs) && spec.gainDbFs > c.maxGainDbFs) {
       reasons.push(`Gain ${spec.gainDbFs} dBFS exceeds the ${c.maxGainDbFs} dBFS cap.`);

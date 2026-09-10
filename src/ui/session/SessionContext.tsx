@@ -18,7 +18,7 @@
  *   - Share links reproduce the whole setup on another device.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import {
   checkPhaseGuardrails,
   renderPhase,
@@ -32,7 +32,9 @@ import {
   DEFAULT_GOVERNOR_CONFIG,
   INFANT_MAX_LOWPASS_HZ,
   INFANT_MAX_SESSION_MIN,
+  MAX_SESSION_MIN,
   SafetyGovernor,
+  clampSessionCap,
   type AuthorizationResult,
   type GovernorConfig,
 } from '@/safety/governor';
@@ -91,7 +93,7 @@ import { encodeShare, shareFromHash, shareUrl, type ShareState } from './shareLi
 
 /** Merge a share payload over a front panel. A share never loosens the infant caps of the panel it lands on. */
 function panelFromShare(base: FrontPanel, s: ShareState): FrontPanel {
-  const limitCap = base.infantMode ? INFANT_MAX_SESSION_MIN : 90;
+  const limitCap = base.infantMode ? Math.min(base.sessionCapMin, INFANT_MAX_SESSION_MIN) : base.sessionCapMin;
   return {
     ...base,
     mode: s.mode,
@@ -131,46 +133,55 @@ function boot(): BootState {
   };
 }
 
-export function SessionProvider({ children }: { children: ReactNode }) {
-  const bootRef = useRef<BootState | null>(null);
-  if (!bootRef.current) bootRef.current = boot();
-  const init = bootRef.current.panel;
+/**
+ * Build the live engine pre-loaded with the restored panel: it remembers
+ * mixer/layer state before any node exists and materializes it on the first
+ * start().
+ */
+function createEngine(init: FrontPanel): LiveEngine {
+  const eng = new LiveEngine();
+  eng.updateConfig({
+    mode: init.mode,
+    carrierHz: init.carrierHz,
+    beatHz: init.beatHz,
+    waveform: init.waveform,
+    gateDuty: init.gateDuty,
+    gateShape: init.gateShape,
+  });
+  eng.setOutputDb(init.volumeDb);
+  for (const [color, db] of Object.entries(init.noiseDb) as [NoiseColor, number][]) eng.setNoiseLevel(color, db);
+  eng.setNature(init.nature.on ? init.nature.kind : null, init.nature.db);
+  eng.setBowls(liveBowlsFrom(init.bowls, init.carrierHz));
+  eng.setNoiseBypass(init.noiseOn);
+  eng.setLayersBypass(init.layersOn);
+  eng.setInfantFilter(init.infantMode);
+  return eng;
+}
 
-  const engineRef = useRef<LiveEngine>(null as unknown as LiveEngine);
-  const doseRef = useRef<SoundDoseTracker>(null as unknown as SoundDoseTracker);
-  const doseLogRef = useRef<DoseLogEntry[]>(bootRef.current.doseLog);
-  if (!engineRef.current) {
-    const eng = new LiveEngine();
-    // Push the restored panel into the engine before any node exists — it
-    // remembers mixer/layer state and materializes it on the first start().
-    eng.updateConfig({
-      mode: init.mode,
-      carrierHz: init.carrierHz,
-      beatHz: init.beatHz,
-      waveform: init.waveform,
-      gateDuty: init.gateDuty,
-      gateShape: init.gateShape,
-    });
-    eng.setOutputDb(init.volumeDb);
-    for (const [color, db] of Object.entries(init.noiseDb) as [NoiseColor, number][]) eng.setNoiseLevel(color, db);
-    eng.setNature(init.nature.on ? init.nature.kind : null, init.nature.db);
-    eng.setBowls(liveBowlsFrom(init.bowls, init.carrierHz));
-    eng.setNoiseBypass(init.noiseOn);
-    eng.setLayersBypass(init.layersOn);
-    eng.setInfantFilter(init.infantMode);
-    engineRef.current = eng;
-  }
-  if (!doseRef.current) {
-    const tracker = new SoundDoseTracker('adult');
-    for (const e of doseLogRef.current) {
-      try {
-        tracker.addExposure(e.dbA, e.seconds);
-      } catch {
-        /* a bad row never poisons the tracker */
-      }
+/** Rebuild the H.870 tracker from the persisted 7-day log (a bad row never poisons it). */
+function createDoseTracker(log: readonly DoseLogEntry[]): SoundDoseTracker {
+  const tracker = new SoundDoseTracker('adult');
+  for (const e of log) {
+    try {
+      tracker.addExposure(e.dbA, e.seconds);
+    } catch {
+      /* skip */
     }
-    doseRef.current = tracker;
   }
+  return tracker;
+}
+
+export function SessionProvider({ children }: { children: ReactNode }) {
+  // One-time boot and the two singletons live in lazy state initializers:
+  // they run exactly once and are never read back through a ref during
+  // render (react-hooks/refs).
+  const [bootState] = useState(boot);
+  const init = bootState.panel;
+  const [engine] = useState(() => createEngine(init));
+  const [doseTracker] = useState(() => createDoseTracker(bootState.doseLog));
+  const engineRef = useRef<LiveEngine>(engine);
+  const doseRef = useRef<SoundDoseTracker>(doseTracker);
+  const doseLogRef = useRef<DoseLogEntry[]>(bootState.doseLog);
 
   const [mode, setModeState] = useState<EntrainmentMode>(init.mode);
   const [carrierHz, setCarrierState] = useState(init.carrierHz);
@@ -203,11 +214,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [layersOn, setLayersOnState] = useState(init.layersOn);
   const [phases, setPhasesState] = useState<UiPhase[]>(init.phases);
   const [activePhaseIdx, setActivePhaseIdx] = useState(0);
-  const [dosePercent, setDosePercent] = useState(() => doseRef.current.weeklyDosePercent());
+  const [dosePercent, setDosePercent] = useState(() => doseTracker.weeklyDosePercent());
   const [governor, setGovernorState] = useState<GovernorConfig>({
     ...DEFAULT_GOVERNOR_CONFIG,
+    maxSessionMin: clampSessionCap(init.sessionCapMin),
     infantMode: init.infantMode,
-    drivingWarningAcknowledged: bootRef.current.advisoryAck,
+    drivingWarningAcknowledged: bootState.advisoryAck,
   });
   const [startBlocked, setStartBlocked] = useState<string[]>([]);
   const [advisoryOpen, setAdvisoryOpen] = useState(false);
@@ -215,10 +227,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   // Synchronous mirror of the acknowledgment so a START issued in the same
   // tick as the acknowledgment (the dialog's "I UNDERSTAND — START") never
   // reads a stale closure and re-opens the gate.
-  const ackRef = useRef(bootRef.current.advisoryAck);
+  const ackRef = useRef(bootState.advisoryAck);
   const [presetName, setPresetName] = useState<string | null>(init.presetName);
   const [presetGrade, setPresetGrade] = useState<Grade | null>(init.presetGrade);
-  const [dirty, setDirty] = useState(bootRef.current.fromShare);
+  const [dirty, setDirty] = useState(bootState.fromShare);
   const [exporting, setExporting] = useState(false);
   const [exportError, setExportError] = useState<string | null>(null);
   // MY PRESETS: localStorage-backed user saves (salvaged on corrupt reads).
@@ -229,33 +241,36 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const exportingRef = useRef(false);
 
   // Latest-value refs. They are updated synchronously inside the setters (not
-  // only on render) so a same-tick `setVolumeDb(x); setLimitMin(y); start()`
+  // only after render) so a same-tick `setVolumeDb(x); setLimitMin(y); start()`
   // — the Quick Lab arm launcher — authorizes and starts with the new values,
   // and the 1 s clock never reads a stale limit.
-  // Re-synced on every render (so any state writer keeps them current) AND
-  // written inside the setters (so a same-tick read is exact).
+  // Re-synced after every commit in a layout effect (so any state writer
+  // keeps them current before an event handler or timer can run) AND written
+  // inside the setters (so a same-tick read is exact).
   const limitRef = useRef(limitMin);
-  limitRef.current = limitMin;
   const fadeRef = useRef(fadeOutSec);
-  fadeRef.current = fadeOutSec;
   const phasesRef = useRef(phases);
-  phasesRef.current = phases;
   const volumeRef = useRef(volumeDb);
-  volumeRef.current = volumeDb;
   const mutedRef = useRef(muted);
-  mutedRef.current = muted;
   /** True when the panic that opened the overlay cut a live session (vs. a rehearsal). */
   const panicWasLiveRef = useRef(false);
   const carrierRef = useRef(carrierHz);
-  carrierRef.current = carrierHz;
   const governorRef = useRef(governor);
-  governorRef.current = governor;
   const elapsedRef = useRef(elapsedSec);
-  elapsedRef.current = elapsedSec;
   const runningRef = useRef(running);
-  runningRef.current = running;
   const pausedRef = useRef(paused);
-  pausedRef.current = paused;
+  useLayoutEffect(() => {
+    limitRef.current = limitMin;
+    fadeRef.current = fadeOutSec;
+    phasesRef.current = phases;
+    volumeRef.current = volumeDb;
+    mutedRef.current = muted;
+    carrierRef.current = carrierHz;
+    governorRef.current = governor;
+    elapsedRef.current = elapsedSec;
+    runningRef.current = running;
+    pausedRef.current = paused;
+  });
   /** The limit fade is issued at most once per session (a cancel must not re-arm it every tick). */
   const limitFadeIssuedRef = useRef(false);
 
@@ -272,13 +287,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   // Clear a consumed share hash so a reload does not re-apply it.
   useEffect(() => {
-    if (!bootRef.current?.fromShare || typeof window === 'undefined') return;
+    if (!bootState.fromShare || typeof window === 'undefined') return;
     try {
       window.history.replaceState(null, '', window.location.pathname + window.location.search);
     } catch {
       /* ignore */
     }
-  }, []);
+  }, [bootState.fromShare]);
 
   const persistDose = useCallback(() => {
     saveDoseLog(doseLogRef.current, Date.now());
@@ -594,14 +609,19 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     if (!running) flushDeferredPwaReload();
   }, [running]);
 
-  startRef.current = start;
   const stopRef = useRef(stop);
-  stopRef.current = stop;
   const togglePauseRef = useRef(togglePause);
-  togglePauseRef.current = togglePause;
+  useLayoutEffect(() => {
+    startRef.current = start;
+    stopRef.current = stop;
+    togglePauseRef.current = togglePause;
+  });
+  // Lock-screen / hardware-key bridge: built on mount (an effect, so its
+  // handlers may read the transport refs); the handlers go through the
+  // latest-callback refs so they never capture a stale transport.
   const mediaRef = useRef<MediaSessionBridge | null>(null);
-  if (!mediaRef.current) {
-    mediaRef.current = new MediaSessionBridge({
+  useEffect(() => {
+    const m = new MediaSessionBridge({
       play: () => {
         if (runningRef.current && pausedRef.current) togglePauseRef.current();
         else if (!runningRef.current) startRef.current();
@@ -611,9 +631,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       },
       stop: () => stopRef.current(),
     });
-  }
+    mediaRef.current = m;
+    return () => {
+      m.deactivate();
+      if (mediaRef.current === m) mediaRef.current = null;
+    };
+  }, []);
   useEffect(() => {
-    const m = mediaRef.current!;
+    const m = mediaRef.current;
+    if (!m) return;
     // No live beat readout here: a phase-plan glide changes it every second
     // and would churn the lock-screen notification.
     const info = {
@@ -624,32 +650,34 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     else if (running && paused) m.pause(info);
     else m.deactivate();
   }, [running, paused, presetName, mode]);
-  useEffect(() => () => mediaRef.current?.deactivate(), []);
 
   // ---- front-panel persistence (debounced, flushed on hide/unload) ----------
   const panelRef = useRef<FrontPanel | null>(null);
-  panelRef.current = {
-    mode,
-    carrierHz,
-    beatHz,
-    waveform,
-    phaseLock,
-    gateDuty,
-    gateShape,
-    limitMin,
-    volumeDb,
-    noiseDb,
-    noiseOn,
-    nature,
-    bowls,
-    bellEveryMin,
-    layersOn,
-    phases,
-    presetName,
-    presetGrade,
-    fadeOutSec,
-    infantMode: governor.infantMode,
-  };
+  useLayoutEffect(() => {
+    panelRef.current = {
+      mode,
+      carrierHz,
+      beatHz,
+      waveform,
+      phaseLock,
+      gateDuty,
+      gateShape,
+      limitMin,
+      sessionCapMin: governor.maxSessionMin,
+      volumeDb,
+      noiseDb,
+      noiseOn,
+      nature,
+      bowls,
+      bellEveryMin,
+      layersOn,
+      phases,
+      presetName,
+      presetGrade,
+      fadeOutSec,
+      infantMode: governor.infantMode,
+    };
+  });
   useEffect(() => {
     const t = window.setTimeout(() => {
       if (panelRef.current) saveFrontPanel(panelRef.current);
@@ -657,7 +685,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     return () => window.clearTimeout(t);
   }, [
     mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, limitMin, volumeDb, noiseDb, noiseOn,
-    nature, bowls, bellEveryMin, layersOn, phases, presetName, presetGrade, fadeOutSec, governor.infantMode,
+    nature, bowls, bellEveryMin, layersOn, phases, presetName, presetGrade, fadeOutSec, governor.infantMode, governor.maxSessionMin,
   ]);
   useEffect(() => {
     // React never runs effect cleanups on unload, and a backgrounded phone
@@ -837,7 +865,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     (min: number) => {
       // Limits only tighten live; loosening applies next session (safety spec).
       const cap = governor.infantMode ? Math.min(governor.maxSessionMin, INFANT_MAX_SESSION_MIN) : governor.maxSessionMin;
-      const clamped = Math.max(1, Math.min(cap, Math.round(min)));
+      const clamped = Math.max(1, Math.min(cap, MAX_SESSION_MIN, Math.round(min)));
       if (!running || clamped < limitMin) {
         limitRef.current = clamped;
         setLimitMinState(clamped);
@@ -859,6 +887,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       limitRef.current = Math.min(limitRef.current, INFANT_MAX_SESSION_MIN);
     }
     if (patch.maxGainDbFs !== undefined) volumeRef.current = Math.min(volumeRef.current, patch.maxGainDbFs);
+    if (patch.maxSessionMin !== undefined) {
+      // A lower cap tightens the session length now (mid-session too); a
+      // higher one never loosens a running session (setLimitMin refuses).
+      const cap = clampSessionCap(patch.maxSessionMin);
+      patch = { ...patch, maxSessionMin: cap };
+      limitRef.current = Math.min(limitRef.current, cap);
+      setLimitMinState((l) => Math.min(l, cap));
+    }
     setGovernorState((cur) => {
       const next = { ...cur, ...patch };
       governorRef.current = next;
@@ -961,7 +997,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const applyShare = useCallback(
     (s: ShareState) => {
-      const panel = panelFromShare({ ...DEFAULT_FRONT_PANEL, infantMode: governorRef.current.infantMode }, s);
+      const panel = panelFromShare(
+        { ...DEFAULT_FRONT_PANEL, infantMode: governorRef.current.infantMode, sessionCapMin: governorRef.current.maxSessionMin },
+        s,
+      );
       setModeState(panel.mode);
       setCarrierState(panel.carrierHz);
       setBeatState(panel.beatHz);

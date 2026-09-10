@@ -12,6 +12,7 @@
 import type { BowlMaterial, BowlStrike, EntrainmentMode, NatureKind, NoiseColor } from '@/engine';
 import { BOWL_MATERIAL_IDS, BOWL_STRIKE_IDS, MAX_BOWLS } from '@/engine';
 import type { Waveform } from '../audio/liveEngine';
+import { MAX_SESSION_MIN } from '@/safety/governor';
 
 export const SHARE_VERSION = 2;
 export const SHARE_PARAM = 's';
@@ -230,7 +231,7 @@ export function decodeShare(encoded: string): ShareState | null {
     bowls,
     bellEveryMin: clamp(wire.be, 0, 60, 0),
     layersOn: wire.lo !== 0,
-    limitMin: clamp(wire.l, 1, 90, 90),
+    limitMin: clamp(wire.l, 1, MAX_SESSION_MIN, 90),
     fadeOutSec: clamp(wire.f, 0, 600, 30),
     presetName: typeof wire.t === 'string' && wire.t.trim() ? truncateCodePoints(wire.t.trim(), 60) : undefined,
   };

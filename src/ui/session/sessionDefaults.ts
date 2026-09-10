@@ -4,6 +4,7 @@
 
 import type { NoiseColor } from '@/engine';
 import { INFANT_CEILING_DBA } from '@/safety/dose';
+import { MAX_SESSION_MIN } from '@/safety/governor';
 import { DBFS_TO_DBA_OFFSET, newUiPhase, type UiPhase } from './sessionMath';
 import type { FrontPanel } from './sessionPersistence';
 
@@ -39,6 +40,7 @@ export const DEFAULT_FRONT_PANEL: FrontPanel = {
   gateDuty: 0.5,
   gateShape: 'raised-cosine',
   limitMin: 90,
+  sessionCapMin: MAX_SESSION_MIN,
   volumeDb: -12,
   noiseDb: ALL_NOISE_OFF,
   noiseOn: true,

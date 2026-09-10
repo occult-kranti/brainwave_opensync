@@ -16,7 +16,7 @@ import type { Grade } from '@/data/frequencies';
 import type { GateShape, Waveform } from '../audio/liveEngine';
 import type { BowlLayer, NatureLayer, UiPhase } from './sessionMath';
 import { snapRestrike } from './sessionMath';
-import { INFANT_MAX_SESSION_MIN } from '@/safety/governor';
+import { INFANT_MAX_SESSION_MIN, MAX_SESSION_MIN, MIN_SESSION_CAP_MIN } from '@/safety/governor';
 import { INFANT_CEILING_DBA } from '@/safety/dose';
 import { DBFS_TO_DBA_OFFSET } from './sessionMath';
 import { truncateCodePoints } from './shareLink';
@@ -35,6 +35,8 @@ export interface FrontPanel {
   gateDuty: number;
   gateShape: GateShape;
   limitMin: number;
+  /** The user's session cap in minutes (MAX_SESSION_MIN = no cap). Governor setting, remembered with the panel. */
+  sessionCapMin: number;
   volumeDb: number;
   noiseDb: Record<NoiseColor, number>;
   noiseOn: boolean;
@@ -135,8 +137,11 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
     phases.push({ id: typeof q.id === 'string' && q.id ? q.id : `p${phases.length}-${Math.round(durationSec)}`, durationSec, beatHz });
   }
   const infantMode = typeof r.infantMode === 'boolean' ? r.infantMode : defaults.infantMode;
-  // A persisted panel can never loosen the infant caps (rails only tighten).
-  const limitCap = infantMode ? INFANT_MAX_SESSION_MIN : 90;
+  // A persisted panel can never loosen the infant caps (rails only tighten),
+  // and a session length never exceeds the cap stored with it. A v2.0 blob
+  // has no cap field: it reads as "no cap".
+  const sessionCapMin = num(r.sessionCapMin, MIN_SESSION_CAP_MIN, MAX_SESSION_MIN, defaults.sessionCapMin);
+  const limitCap = infantMode ? Math.min(sessionCapMin, INFANT_MAX_SESSION_MIN) : sessionCapMin;
   const volumeCap = infantMode ? INFANT_CEILING_DBA - DBFS_TO_DBA_OFFSET : 0;
   return {
     mode: oneOf(r.mode, MODES, defaults.mode),
@@ -147,6 +152,7 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
     gateDuty: num(r.gateDuty, 0.05, 0.95, defaults.gateDuty),
     gateShape: oneOf(r.gateShape, GATES, defaults.gateShape),
     limitMin: num(r.limitMin, 1, limitCap, Math.min(defaults.limitMin, limitCap)),
+    sessionCapMin,
     volumeDb: num(r.volumeDb, -60, volumeCap, Math.min(defaults.volumeDb, volumeCap)),
     noiseDb,
     noiseOn: typeof r.noiseOn === 'boolean' ? r.noiseOn : defaults.noiseOn,

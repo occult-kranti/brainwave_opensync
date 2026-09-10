@@ -101,11 +101,7 @@ export function AdvisoryDialog() {
                 type="button"
                 className="btn-amber"
                 data-testid="advisory-accept"
-                onClick={() => {
-                  s.acknowledgeAdvisory();
-                  // Continue into the session the user asked for.
-                  window.setTimeout(() => s.start(), 0);
-                }}
+                onClick={() => s.acknowledgeAdvisory({ andStart: true })}
               >
                 I UNDERSTAND — START
               </button>

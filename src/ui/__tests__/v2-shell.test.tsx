@@ -113,15 +113,14 @@ describe('START advisory gate', () => {
     expect(document.querySelector('[data-testid="advisory-dialog"]')).not.toBeNull();
     // Copy is the governor's own advisory text — never paraphrased.
     expect(c.ownerDocument.body.textContent).toContain('Never use while driving or operating machinery');
-    act(() => session.acknowledgeAdvisory());
+    // The dialog's own button: acknowledge AND start in the same tick (a
+    // deferred start() from the pre-acknowledgment snapshot re-opened the gate).
+    const accept = document.querySelector('[data-testid="advisory-accept"]') as HTMLButtonElement;
+    act(() => accept.click());
     expect(session.advisoryAcknowledged).toBe(true);
     expect(session.advisoryOpen).toBe(false);
-    expect(window.localStorage.getItem(STORAGE_KEYS.advisoryAck)).toContain('"at"');
-    act(() => {
-      ok = session.start();
-    });
-    expect(ok).toBe(true);
     expect(session.running).toBe(true);
+    expect(window.localStorage.getItem(STORAGE_KEYS.advisoryAck)).toContain('"at"');
   });
 
   it('a returning user starts straight away', async () => {

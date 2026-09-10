@@ -195,6 +195,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   });
   const [startBlocked, setStartBlocked] = useState<string[]>([]);
   const [advisoryOpen, setAdvisoryOpen] = useState(false);
+  // Synchronous mirror of the acknowledgment so a START issued in the same
+  // tick as the acknowledgment (the dialog's "I UNDERSTAND — START") never
+  // reads a stale closure and re-opens the gate.
+  const ackRef = useRef(bootRef.current.advisoryAck);
   const [presetName, setPresetName] = useState<string | null>(init.presetName);
   const [presetGrade, setPresetGrade] = useState<Grade | null>(init.presetGrade);
   const [dirty, setDirty] = useState(bootRef.current.fromShare);
@@ -220,6 +224,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   mutedRef.current = muted;
 
   const markDirty = useCallback(() => setDirty(true), []);
+  /** Latest start() (declared below); read by acknowledgeAdvisory and the media session. */
+  const startRef = useRef<() => boolean>(() => false);
 
   const pushConfig = useCallback(
     (patch: Partial<{ mode: EntrainmentMode; carrierHz: number; beatHz: number; waveform: Waveform; gateDuty: number; gateShape: GateShape }>) => {
@@ -257,12 +263,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   // ---- transport -----------------------------------------------------------
   const start = useCallback((): boolean => {
     const eng = engineRef.current;
-    if (!governor.drivingWarningAcknowledged) {
+    if (!ackRef.current) {
       setAdvisoryOpen(true);
       return false;
     }
     eng.prepare();
-    const gov = new SafetyGovernor(governor);
+    const gov = new SafetyGovernor({ ...governor, drivingWarningAcknowledged: true });
     const auth = gov.authorizeSession({
       durationMin: limitMin,
       gainDbFs: muted ? -60 : volumeDb,
@@ -433,7 +439,6 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   // ---- platform integrations ------------------------------------------------
   useWakeLock(running && !paused);
 
-  const startRef = useRef(start);
   startRef.current = start;
   const stopRef = useRef(stop);
   stopRef.current = stop;
@@ -500,11 +505,17 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   ]);
 
   // ---- advisory -----------------------------------------------------------------
-  const acknowledgeAdvisory = useCallback(() => {
-    writeAdvisoryAck();
-    setGovernorState((cur) => ({ ...cur, drivingWarningAcknowledged: true }));
-    setAdvisoryOpen(false);
-  }, []);
+  const acknowledgeAdvisory = useCallback(
+    (opts: { andStart?: boolean } = {}) => {
+      ackRef.current = true;
+      writeAdvisoryAck();
+      setGovernorState((cur) => ({ ...cur, drivingWarningAcknowledged: true }));
+      setAdvisoryOpen(false);
+      // Continue into the session the user asked for — same tick, no stale closure.
+      if (opts.andStart) startRef.current();
+    },
+    [],
+  );
   const openAdvisory = useCallback(() => setAdvisoryOpen(true), []);
   const closeAdvisory = useCallback(() => setAdvisoryOpen(false), []);
 

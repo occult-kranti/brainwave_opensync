@@ -102,8 +102,8 @@ export interface SessionActions {
   startSleepFade: (sec?: number) => boolean;
   cancelSleepFade: () => void;
   setFadeOutSec: (sec: number) => void;
-  /** Record the one-time advisory acknowledgment (persisted) and close the dialog. */
-  acknowledgeAdvisory: () => void;
+  /** Record the one-time advisory acknowledgment (persisted), close the dialog, optionally start. */
+  acknowledgeAdvisory: (opts?: { andStart?: boolean }) => void;
   openAdvisory: () => void;
   closeAdvisory: () => void;
   setMode: (m: EntrainmentMode) => void;

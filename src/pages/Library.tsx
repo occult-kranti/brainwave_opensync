@@ -11,7 +11,7 @@ import { Play } from 'lucide-react';
 import { FREQUENCIES, type FrequencyEntry } from '@/data/frequencies';
 import { GradeBadge, GradeLegend } from '@/ui/components/GradeBadge';
 import { Chip } from '@/ui/components/primitives';
-import { useSession } from '@/ui/session/SessionContext';
+import { useSession } from '@/ui/session/useSession';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { GRADE_COLOR, type GradeLetter } from '@/ui/theme';
 

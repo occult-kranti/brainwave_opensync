@@ -13,7 +13,8 @@ import { PanicButtonLarge } from '@/ui/components/Panic';
 import { DoseGauge } from '@/ui/components/DoseGauge';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { InfoPopover } from '@/ui/components/InfoPopover';
-import { useSession, fmtClock } from '@/ui/session/SessionContext';
+import { useSession } from '@/ui/session/useSession';
+import { fmtClock } from '@/ui/session/sessionMath';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const ADVISORIES: { title: string; grade: 'A' | 'B' | 'C' | 'D'; body: string; action?: 'iso' }[] = [
@@ -114,6 +115,44 @@ export default function Safety() {
               <div style={{ width: `${sessionPct}%`, height: '100%', background: sessionPct >= 80 ? 'var(--danger)' : 'var(--amber)' }} />
             </div>
           </div>
+        </div>
+      </motion.div>
+
+      {/* v2: advisory acknowledgment + governor verdict for the current panel */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.03 }}
+        className="panel"
+        data-testid="advisory-panel"
+        style={{ marginBottom: 16, padding: isMobile ? 16 : '16px 24px', borderLeft: `2px solid ${s.advisoryAcknowledged ? 'var(--teal)' : 'var(--amber)'}` }}
+      >
+        <div className="flex items-center gap-3" style={{ flexWrap: 'wrap', rowGap: 8 }}>
+          <div style={{ flex: 1, minWidth: 220 }}>
+            <div className="t-label" style={{ color: 'var(--text-1)' }}>
+              FIRST-RUN ADVISORY ·{' '}
+              <span style={{ color: s.advisoryAcknowledged ? 'var(--teal-hi)' : 'var(--amber)' }}>
+                {s.advisoryAcknowledged ? 'ACKNOWLEDGED ON THIS DEVICE' : 'NOT YET ACKNOWLEDGED'}
+              </span>
+            </div>
+            <p className="t-body-sm text-2" style={{ margin: '4px 0 0' }}>
+              Headphones and level, driving, seizure history, medication precaution, crisis resources. START is
+              refused until it has been read once; the governor re-checks the front panel at every start.
+            </p>
+          </div>
+          <button type="button" className="chip" onClick={s.openAdvisory} data-testid="review-advisory">
+            REVIEW ADVISORY
+          </button>
+        </div>
+        {!s.authorization.ok && (
+          <ul className="t-caption font-mono2" style={{ margin: '10px 0 0', paddingLeft: 16, color: 'var(--danger)' }}>
+            {s.authorization.reasons.map((r) => (
+              <li key={r}>START WOULD BE REFUSED: {r}</li>
+            ))}
+          </ul>
+        )}
+        <div className="t-caption font-mono2" style={{ marginTop: 8, color: 'var(--text-3)' }}>
+          SLEEP FADE {s.fadeOutSec === 0 ? 'OFF (hard stop at the limit)' : `${s.fadeOutSec} s before the ${s.limitMin}-minute limit`} · change in Studio
         </div>
       </motion.div>
 

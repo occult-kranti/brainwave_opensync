@@ -11,9 +11,10 @@
 
 import { describe, it, expect } from 'vitest';
 import { APP_SCREENS, FEATURES, type FeatureEntry } from '../features';
+import { BANNED_PHRASES } from '@/docs/vocabulary';
 
 /** Overclaim phrases forbidden in user-facing copy (case-insensitive). */
-const BANNED = ['induces', 'synchronizes', 'attunes', 'cia-validated', 'digital drug'];
+const BANNED = BANNED_PHRASES;
 
 function userFacingFields(f: FeatureEntry): { label: string; text: string }[] {
   const fields: { label: string; text: string }[] = [

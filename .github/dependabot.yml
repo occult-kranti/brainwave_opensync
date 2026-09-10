@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      dev-tooling:
+        patterns: ['eslint*', 'typescript*', 'vite*', 'vitest*', '@vitest/*', 'happy-dom', 'tailwindcss*', 'postcss', 'autoprefixer', '@types/*']
+      runtime:
+        patterns: ['react*', 'framer-motion', 'lucide-react', 'cmdk', '@radix-ui/*', 'clsx', 'tailwind-merge']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

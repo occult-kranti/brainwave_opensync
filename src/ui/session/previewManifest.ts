@@ -7,6 +7,7 @@
  */
 
 import { useEffect, useState } from 'react';
+import { assetUrl } from '@/lib/assetUrl';
 
 export interface PreviewManifestEntry {
   id: string;
@@ -25,12 +26,12 @@ export interface PreviewManifest {
   totalBytes: number;
 }
 
-/** Root-absolute URL convention (same as /stimulus_pack). */
+/** Deploy-base-aware URL (v1 was root-absolute and 404'd on GitHub Pages). */
 export function previewUrl(id: string): string {
-  return `/previews/${id}.wav`;
+  return assetUrl(`previews/${id}.wav`);
 }
 
-export const PREVIEW_MANIFEST_URL = '/previews/manifest.json';
+export const PREVIEW_MANIFEST_URL = assetUrl('previews/manifest.json');
 
 /** File URL when the manifest covers `id`, else null (→ engine fallback). */
 export function previewUrlFor(id: string, manifest: PreviewManifest | null): string | null {

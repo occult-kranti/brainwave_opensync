@@ -23,9 +23,11 @@ import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { MemoryRouter } from 'react-router';
 import { LiveEngine } from '../audio/liveEngine';
-import { SessionProvider, useSession } from '../session/SessionContext';
+import { SessionProvider } from '../session/SessionContext';
+import { useSession } from '../session/useSession';
 import { StudioScope } from '../components/StudioScope';
 import { AMBER, TEAL } from '../theme';
+import { seedAdvisoryAck } from '@/test/helpers';
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -171,6 +173,7 @@ beforeEach(() => {
   channelData.l = 255;
   channelData.r = 0;
   window.localStorage.clear();
+  seedAdvisoryAck();
   // No canvas 2D in happy-dom — record calls instead.
   vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockImplementation(function (this: HTMLCanvasElement) {
     if (!recs.has(this)) recs.set(this, { fillTexts: [], strokes: [], currentPath: [] });

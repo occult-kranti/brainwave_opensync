@@ -5,9 +5,10 @@
 import { describe, expect, it } from 'vitest';
 import type { Phase } from '@/engine';
 import { PROTOCOL_CITATIONS, PROTOCOLS } from '../protocols';
+import { BANNED_PHRASES } from '@/docs/vocabulary';
 
 /** Banned overclaim phrases (feature-docs-dual-register SKILL / Advisor S12.2). */
-const BANNED = ['induces', 'synchronizes', 'attunes', 'cia-validated', 'digital drug'];
+const BANNED = BANNED_PHRASES;
 
 function protocolStrings(): { label: string; text: string }[] {
   const out: { label: string; text: string }[] = [];

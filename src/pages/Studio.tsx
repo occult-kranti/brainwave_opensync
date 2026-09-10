@@ -5,8 +5,11 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
-import { Download, Play, Send, Square, Volume2, VolumeX } from 'lucide-react';
-import { useSession, fmtClock } from '@/ui/session/SessionContext';
+import { Check, Download, Headphones, Link2, MoonStar, Play, RotateCcw, Send, Square, Volume2, VolumeX } from 'lucide-react';
+import { useSession } from '@/ui/session/useSession';
+import { fmtClock } from '@/ui/session/sessionMath';
+import { FADE_OUT_CHOICES } from '@/ui/session/sessionDefaults';
+import { EXPORT_FORMATS, type ExportFormat } from '@/ui/audio/renderExport';
 import { Panel, Led, WarningChip, Readout } from '@/ui/components/primitives';
 import { useModalA11y } from '@/ui/hooks';
 import { Knob } from '@/ui/components/Knob';
@@ -54,28 +57,48 @@ export default function Studio() {
 
   // P0-6 4-state WAV export: idle → exporting (spinner only after a 200 ms
   // delay, so fast renders never flash) → done (brief inline confirm) or
-  // error (inline, with retry).
+  // error (inline, with retry). v2: the render runs in a Web Worker and the
+  // format is a choice; the session limit caps the file.
   const [exportState, setExportState] = useState<'idle' | 'exporting' | 'done' | 'error'>('idle');
   const [exportSpin, setExportSpin] = useState(false);
+  const [exportFormat, setExportFormat] = useState<ExportFormat>('pcm16');
   const runExport = () => {
     if (exportState === 'exporting') return;
     setExportState('exporting');
     setExportSpin(false);
     const spinT = window.setTimeout(() => setExportSpin(true), 200);
-    // Defer the heavy offline render off the click frame.
-    window.setTimeout(() => {
-      try {
-        s.exportWav();
+    void s.exportWav({ format: exportFormat }).then((ok) => {
+      window.clearTimeout(spinT);
+      setExportSpin(false);
+      if (ok) {
         setExportState('done');
         window.setTimeout(() => setExportState('idle'), 2500);
-      } catch {
+      } else {
         setExportState('error');
-      } finally {
-        window.clearTimeout(spinT);
-        setExportSpin(false);
       }
-    }, 20);
+    });
   };
+
+  // Share link: copy to clipboard with a brief inline confirm.
+  const [shared, setShared] = useState<'idle' | 'copied' | 'shown'>('idle');
+  const [shareText, setShareText] = useState('');
+  const copyShareLink = () => {
+    const url = s.getShareLink();
+    setShareText(url);
+    const clip = typeof navigator !== 'undefined' ? navigator.clipboard : undefined;
+    if (clip && typeof clip.writeText === 'function') {
+      clip
+        .writeText(url)
+        .then(() => setShared('copied'))
+        .catch(() => setShared('shown'));
+    } else {
+      setShared('shown');
+    }
+    window.setTimeout(() => setShared('idle'), 4000);
+  };
+
+  const fadeStartsAtSec = Math.max(0, s.limitMin * 60 - s.fadeOutSec);
+  const remainingSec = Math.max(0, s.limitMin * 60 - s.elapsedSec);
 
   const limitPct = Math.min(100, (s.elapsedSec / (s.limitMin * 60)) * 100);
 
@@ -194,7 +217,7 @@ export default function Studio() {
             data-state={exportState}
             onClick={runExport}
             disabled={exportState === 'exporting'}
-            title="Render offline via engine + encode WAV (PCM16)"
+            title={`Render offline in a worker + encode WAV (${exportFormat}); capped at the session limit`}
           >
             <Download size={11} className={exportSpin ? 'animate-spin' : undefined} />
             {exportState === 'exporting' ? (exportSpin ? 'RENDERING…' : 'WAV') : exportState === 'done' ? 'SAVED ✓' : 'WAV'}
@@ -208,6 +231,128 @@ export default function Studio() {
             </span>
           )}
         </div>
+      </motion.div>
+
+      {/* ROW A2 — Session tools (v2): sleep fade, share, export format, reset + notices */}
+      <motion.div
+        initial={{ y: -8, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.2, delay: 0.04 }}
+        className="panel"
+        data-testid="session-tools"
+        style={{ padding: isMobile ? '10px 12px' : '10px 16px', marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 10 }}
+      >
+        <div className="flex items-center gap-3" style={{ flexWrap: 'wrap', rowGap: 8 }}>
+          <span className="t-label" style={{ color: 'var(--text-3)' }}>
+            <MoonStar size={11} style={{ display: 'inline', marginRight: 6, verticalAlign: '-1px' }} />
+            SLEEP FADE
+          </span>
+          <div className="flex gap-1" role="radiogroup" aria-label="Sleep fade length before the limit">
+            {FADE_OUT_CHOICES.map((c) => (
+              <button
+                key={c.sec}
+                type="button"
+                role="radio"
+                aria-checked={s.fadeOutSec === c.sec}
+                className={`chip${s.fadeOutSec === c.sec ? ' chip-active' : ''}`}
+                style={{ height: 24, padding: '0 8px', fontSize: 10 }}
+                onClick={() => s.setFadeOutSec(c.sec)}
+                title={c.sec === 0 ? 'Stop hard at the limit' : `Ramp to silence over the last ${c.label.toLowerCase()} before the limit`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
+          {s.running && !s.fading && (
+            <button
+              type="button"
+              className="chip"
+              data-testid="fade-now"
+              onClick={() => s.startSleepFade()}
+              title="Fade to silence now (F)"
+              style={{ height: 24, padding: '0 8px', fontSize: 10 }}
+            >
+              FADE NOW
+            </button>
+          )}
+          {s.fading && (
+            <span className="flex items-center gap-2" data-testid="fading-notice">
+              <WarningChip tone="amber">FADING · {fmtClock(remainingSec)}</WarningChip>
+              <button type="button" className="chip" style={{ height: 24, padding: '0 8px', fontSize: 10 }} onClick={s.cancelSleepFade}>
+                CANCEL
+              </button>
+            </span>
+          )}
+          <span className="t-caption" style={{ color: 'var(--text-3)' }}>
+            {s.fadeOutSec > 0 ? `fade begins at ${fmtClock(fadeStartsAtSec)} · limit ${fmtClock(s.limitMin * 60)}` : `hard stop at ${fmtClock(s.limitMin * 60)}`}
+          </span>
+          <div className="flex items-center gap-2" style={isMobile ? { flexBasis: '100%', flexWrap: 'wrap' } : { marginLeft: 'auto' }}>
+            <label className="t-caption text-3" htmlFor="export-format" style={{ letterSpacing: '0.08em' }}>
+              WAV
+            </label>
+            <select
+              id="export-format"
+              value={exportFormat}
+              onChange={(e) => setExportFormat(e.target.value as ExportFormat)}
+              aria-label="WAV export format"
+              className="font-mono2"
+              style={{ height: 24, background: 'var(--ink-3)', color: 'var(--text-1)', border: '1px solid var(--line-1)', borderRadius: 2, fontSize: 10, padding: '0 6px' }}
+            >
+              {EXPORT_FORMATS.map((f) => (
+                <option key={f.id} value={f.id} title={f.note}>
+                  {f.label}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              className="chip"
+              data-testid="share-link"
+              onClick={copyShareLink}
+              title="Copy a link that reproduces this whole setup on any device"
+              style={{ height: 24, padding: '0 8px', fontSize: 10 }}
+            >
+              {shared === 'copied' ? <Check size={11} /> : <Link2 size={11} />} {shared === 'copied' ? 'LINK COPIED' : 'SHARE'}
+            </button>
+            <button
+              type="button"
+              className="chip"
+              onClick={s.resetFrontPanel}
+              disabled={s.running}
+              title={s.running ? 'Stop the session to reset' : 'Restore the factory front panel (presets and dose are kept)'}
+              style={{ height: 24, padding: '0 8px', fontSize: 10 }}
+            >
+              <RotateCcw size={11} /> RESET
+            </button>
+          </div>
+        </div>
+        {shared === 'shown' && (
+          <input
+            readOnly
+            value={shareText}
+            aria-label="Share link"
+            onFocus={(e) => e.currentTarget.select()}
+            className="font-mono2"
+            style={{ width: '100%', height: 28, background: 'var(--ink-0)', color: 'var(--text-2)', border: '1px solid var(--line-1)', borderRadius: 2, fontSize: 11, padding: '0 8px' }}
+          />
+        )}
+        {(s.mode === 'binaural' || s.startBlocked.length > 0 || s.interrupted || s.exportError) && (
+          <div className="flex items-center gap-2" style={{ flexWrap: 'wrap' }}>
+            {s.mode === 'binaural' && (
+              <WarningChip tone="teal">
+                <Headphones size={11} style={{ display: 'inline', marginRight: 4, verticalAlign: '-1px' }} />
+                HEADPHONES REQUIRED
+              </WarningChip>
+            )}
+            {s.interrupted && <WarningChip tone="amber">AUDIO INTERRUPTED BY THE SYSTEM — PAUSED · PRESS RESUME</WarningChip>}
+            {s.exportError && <WarningChip tone="danger">EXPORT: {s.exportError}</WarningChip>}
+            {s.startBlocked.map((r) => (
+              <WarningChip key={r} tone="danger">
+                {r}
+              </WarningChip>
+            ))}
+          </div>
+        )}
       </motion.div>
 
       <div className="grid gap-4" style={{ gridTemplateColumns: isMobile ? '1fr' : 'repeat(12, 1fr)' }}>

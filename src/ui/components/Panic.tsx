@@ -7,7 +7,8 @@
 import { useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { OctagonX } from 'lucide-react';
-import { fmtClock, useSession } from '../session/SessionContext';
+import { fmtClock } from '../session/sessionMath';
+import { useSession } from '../session/useSession';
 import { useModalA11y } from '../hooks';
 
 /** Compact status-bar panic button (danger outline). */

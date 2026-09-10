@@ -4,6 +4,7 @@
  */
 
 import { useEffect, useRef, useState } from 'react';
+import { STORAGE_KEYS } from '@/lib/storage';
 
 /**
  * Minimal modal a11y contract for the app's custom (non-Radix) overlays
@@ -43,7 +44,7 @@ export function useModalA11y(
   }, [open]);
 }
 
-const DENSITY_KEY = 'opensync.density.v1';
+const DENSITY_KEY = STORAGE_KEYS.density;
 
 /**
  * P2 density preference: 'comfortable' (default) | 'compact', persisted in
@@ -68,4 +69,57 @@ export function useDensity(): ['comfortable' | 'compact', () => void] {
     }
   }, [density]);
   return [density, () => setDensity((d) => (d === 'compact' ? 'comfortable' : 'compact'))];
+}
+
+// ---------------------------------------------------------------------------
+// v2: Screen Wake Lock
+// ---------------------------------------------------------------------------
+
+interface WakeLockSentinelLike {
+  release(): Promise<void>;
+}
+
+function wakeLockApi(): { request(type: 'screen'): Promise<WakeLockSentinelLike> } | null {
+  try {
+    const wl = (navigator as unknown as { wakeLock?: { request(type: 'screen'): Promise<WakeLockSentinelLike> } }).wakeLock;
+    return wl && typeof wl.request === 'function' ? wl : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Keep the display awake while `active` (a session is running) so a long
+ * sleep-onset plan on a phone is not cut off by the screen locking — which
+ * also suspends the AudioContext on some platforms. Re-acquires when the tab
+ * returns to the foreground; releases on stop/pause. No-op without the API.
+ */
+export function useWakeLock(active: boolean): void {
+  useEffect(() => {
+    if (!active) return;
+    const api = wakeLockApi();
+    if (!api) return;
+    let sentinel: WakeLockSentinelLike | null = null;
+    let disposed = false;
+    const acquire = async () => {
+      if (disposed || document.visibilityState !== 'visible') return;
+      try {
+        sentinel = await api.request('screen');
+      } catch {
+        sentinel = null; // low battery / policy — silently degrade
+      }
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === 'visible' && !sentinel) void acquire();
+    };
+    void acquire();
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      disposed = true;
+      document.removeEventListener('visibilitychange', onVisibility);
+      const s = sentinel;
+      sentinel = null;
+      void s?.release().catch(() => {});
+    };
+  }, [active]);
 }

@@ -16,79 +16,36 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { NavLink, useLocation } from 'react-router';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
-  Activity,
-  Archive,
-  AudioWaveform,
-  BookMarked,
-  BookOpen,
   ChevronRight,
   ChevronsLeft,
-  Compass,
-  FlaskConical,
-  Gauge,
-  FileAudio,
-  GitFork,
-  Home,
   Info,
-  Layers,
-  ListChecks,
   OctagonX,
-  Orbit,
   Pause,
   Play,
-  Zap,
-  MessageSquareWarning,
-  Moon,
   MoreHorizontal,
-  Repeat2,
-  ShieldAlert,
-  Waves,
   X,
 } from 'lucide-react';
 import { useIsMobile } from '../../hooks/use-mobile';
-import { fmtClock, useSession } from '../session/SessionContext';
+import { BOTTOM_TAB_ROUTES, CORE_ROUTES, RESEARCH_ROUTES, ROUTES } from '../../app/routes';
+import { fmtClock } from '../session/sessionMath';
+import { useSession } from '../session/useSession';
 import { DensityToggle, Led } from '../components/primitives';
 import { useModalA11y } from '../hooks';
 import { MobilePanicButton, PanicButton, PanicOverlay } from '../components/Panic';
 import { CommandPalette, PaletteHint } from '../components/CommandPalette';
+import { AdvisoryDialog } from '../components/AdvisoryDialog';
+import { ShortcutsOverlay } from '../components/ShortcutsOverlay';
+import { PwaUpdateChip } from '../components/PwaUpdateChip';
+import { matchShortcut } from '../../app/shortcuts';
+import { engineLedState } from '../theme';
+import { STORAGE_KEYS } from '@/lib/storage';
 
-const MODULES = [
-  { path: '/', label: 'HOME', icon: Home },
-  { path: '/studio', label: 'STUDIO', icon: AudioWaveform },
-  { path: '/library', label: 'LIBRARY', icon: BookOpen },
-  { path: '/presets', label: 'PRESETS', icon: Layers },
-  { path: '/levels', label: 'LEVELS', icon: Gauge },
-  { path: '/analyzer', label: 'ANALYZER', icon: Activity },
-  { path: '/cymatics', label: 'CYMATICS', icon: Waves },
-  { path: '/dream', label: 'SLEEP & DREAM', icon: Moon },
-  { path: '/replication', label: 'REPLICATION BAY', icon: Repeat2 },
-  { path: '/safety', label: 'SAFETY', icon: ShieldAlert },
-  { path: '/knowledge', label: 'KNOWLEDGE', icon: BookMarked },
-  { path: '/about', label: 'ABOUT', icon: Info },
-  { path: '/guide', label: 'GUIDE', icon: Compass },
-] as const;
-
-/** Research modules — all live (the · SOON section suffix is retired). */
-const RESEARCH_MODULES = [
-  { path: '/lab', label: 'EXPERIMENT LAB', icon: FlaskConical },
-  { path: '/critique', label: 'CRITIQUE LIBRARY', icon: MessageSquareWarning },
-  { path: '/hypotheses', label: 'HYPOTHESIS TRACKER', icon: ListChecks },
-  { path: '/programs', label: 'PROGRAMS ARCHIVE', icon: Archive },
-  { path: '/quicklab', label: 'QUICK LAB', icon: Zap },
-  { path: '/theory', label: 'THEORY EXPLORER', icon: GitFork },
-  { path: '/sonic-lab', label: 'SONIC LAB', icon: Orbit },
-  { path: '/sample-lab', label: 'SAMPLE LAB', icon: FileAudio },
-] as const;
-
-const ALL_ROUTES = [...MODULES, ...RESEARCH_MODULES];
-
+/** Route lists come from the registry (src/app/routes.tsx) — one source of truth. */
+const MODULES = CORE_ROUTES;
+const RESEARCH_MODULES = RESEARCH_ROUTES;
+const ALL_ROUTES = ROUTES;
 /** Primary bottom-bar destinations (phone shell); everything else via MORE. */
-const BOTTOM_TABS = [
-  { path: '/', label: 'HOME', icon: Home },
-  { path: '/studio', label: 'STUDIO', icon: AudioWaveform },
-  { path: '/library', label: 'LIBRARY', icon: BookOpen },
-  { path: '/safety', label: 'SAFETY', icon: ShieldAlert },
-] as const;
+const BOTTOM_TABS = BOTTOM_TAB_ROUTES;
 
 /** Bottom bar height (excluding safe-area inset) — also the content padding. */
 const BOTTOM_BAR_H = 56;
@@ -100,7 +57,7 @@ export type SidebarState = 'full' | 'icon' | 'hidden';
 
 const SIDEBAR_W: Record<SidebarState, number> = { full: 240, icon: 64, hidden: 0 };
 const SIDEBAR_STATES: SidebarState[] = ['full', 'icon', 'hidden'];
-const SIDEBAR_STORAGE_KEY = 'open-sync:sidebar';
+const SIDEBAR_STORAGE_KEY = STORAGE_KEYS.sidebar;
 
 function readSidebarState(): SidebarState {
   try {
@@ -379,11 +336,6 @@ function UtcClock() {
   );
 }
 
-/** Engine LED states, consistent everywhere: off = idle, amber = playing, teal = paused. */
-export function engineLedState(running: boolean, paused: boolean): 'off' | 'amber' | 'teal' {
-  return running ? (paused ? 'teal' : 'amber') : 'off';
-}
-
 /**
  * Global pause/resume chip (status bar; Space hotkey). Phase-coherent: the
  * engine freezes its phase accumulators and continues on resume — no click,
@@ -479,6 +431,7 @@ function StatusBar({ onPalette }: { onPalette: () => void }) {
           INFANT
         </span>
       )}
+      <PwaUpdateChip />
       <PaletteHint onOpen={onPalette} />
       <span title={running ? (paused ? 'Session paused' : 'Engine running') : 'Engine off'}>
         <Led state={engineLedState(running, paused)} />
@@ -512,7 +465,8 @@ function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
         {label}
       </span>
       <div className="flex items-center gap-2" style={{ marginLeft: 'auto' }}>
-        <PaletteHint onOpen={onPalette} />
+        <PwaUpdateChip />
+      <PaletteHint onOpen={onPalette} />
         <span title={running ? (paused ? 'Session paused' : 'Engine running') : 'Engine off'}>
           <Led state={engineLedState(running, paused)} />
         </span>
@@ -807,7 +761,8 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const location = useLocation();
-  const { panic, rehearsePanic, running, togglePause } = useSession();
+  const { panic, rehearsePanic, running, fading, togglePause, muted, setMuted, startSleepFade } = useSession();
+  const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const isMobile = useIsMobile();
   const [moreOpen, setMoreOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
@@ -824,18 +779,6 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   const cycleSidebar = () => setSidebar((s) => nextSidebarState(s));
 
-  // P1-1: ⌘K / Ctrl+K opens the command palette from anywhere.
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
-        e.preventDefault();
-        setPaletteOpen((v) => !v);
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
-
   // Close the MORE drawer whenever the route changes (state-adjust-during-
   // render pattern; drawer links also close it on tap directly).
   const [lastPath, setLastPath] = useState(location.pathname);
@@ -844,64 +787,56 @@ export function AppShell({ children }: { children: ReactNode }) {
     setMoreOpen(false);
   }
 
-  // Sidebar hotkey: [ cycles full → icon → hidden (desktop only; the rail
-  // and its layout state don't exist on the mobile shell).
+  // Global keyboard shortcuts — one handler driven by the registry in
+  // src/app/shortcuts.ts (the same table renders the `?` help sheet).
+  // Typing contexts are filtered by the registry; Space stays fully inert
+  // while idle so it keeps its default scroll behavior.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement | null;
-      const tag = target?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || target?.isContentEditable) return;
-      if (e.key === '[') cycleSidebar();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
-
-  // Global panic hotkey: P (Shift+P = test/rehearse). Desktop path; on touch
-  // devices the bottom-bar panic segment is the equivalent.
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      if (e.key === 'p' || e.key === 'P') {
-        if (e.shiftKey) rehearsePanic();
-        else panic();
+      const hit = matchShortcut(e);
+      if (!hit) return;
+      switch (hit.id) {
+        case 'palette':
+          e.preventDefault();
+          setPaletteOpen((v) => !v);
+          break;
+        case 'sidebar':
+          cycleSidebar();
+          break;
+        case 'pause':
+          if (!running) return;
+          e.preventDefault();
+          togglePause();
+          break;
+        case 'mute':
+          setMuted(!muted);
+          break;
+        case 'fade':
+          if (running && !fading) startSleepFade();
+          break;
+        case 'panic':
+          panic();
+          break;
+        case 'panic-rehearse':
+          rehearsePanic();
+          break;
+        case 'help':
+          e.preventDefault();
+          setShortcutsOpen((v) => !v);
+          break;
+        default:
+          break;
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [panic, rehearsePanic]);
-
-  // Global pause hotkey: Space toggles pause/resume while a session is live.
-  // Guarded — never fires from form fields, contenteditable, or focused
-  // buttons/links (Space is their activation key), and stays fully inert
-  // when idle so Space keeps its default scroll behavior.
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key !== ' ' && e.key !== 'Spacebar') return;
-      if (e.metaKey || e.ctrlKey || e.altKey || e.repeat) return;
-      const target = e.target as HTMLElement | null;
-      const tag = target?.tagName;
-      if (
-        tag === 'INPUT' ||
-        tag === 'TEXTAREA' ||
-        tag === 'SELECT' ||
-        tag === 'BUTTON' ||
-        tag === 'A' ||
-        target?.isContentEditable
-      ) {
-        return;
-      }
-      if (!running) return;
-      e.preventDefault();
-      togglePause();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [running, togglePause]);
+  }, [running, fading, muted, togglePause, setMuted, startSleepFade, panic, rehearsePanic]);
 
   return (
     <div className="flex grain" style={{ minHeight: '100vh', background: 'var(--ink-0)' }}>
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
       {!isMobile && <ModuleRail state={sidebar} onCycle={cycleSidebar} />}
       {!isMobile && sidebar === 'hidden' && <SidebarReopenHandle onOpen={() => setSidebar('full')} />}
       <div className="flex flex-col" style={{ flex: 1, minWidth: 0 }}>
@@ -911,6 +846,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           <StatusBar onPalette={() => setPaletteOpen(true)} />
         )}
         <main
+          id="main"
+          tabIndex={-1}
           style={{
             flex: 1,
             background: 'var(--ink-1)',
@@ -938,7 +875,10 @@ export function AppShell({ children }: { children: ReactNode }) {
         </>
       )}
       <PanicOverlay />
+      <AdvisoryDialog />
+      <ShortcutsOverlay open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />
       <CommandPalette
+        onShowShortcuts={() => setShortcutsOpen(true)}
         open={paletteOpen}
         onClose={() => setPaletteOpen(false)}
         onToggleSidebar={isMobile ? undefined : cycleSidebar}

@@ -4,6 +4,8 @@
  * Entries never leave the device (per dream protocol safety note).
  */
 
+import { STORAGE_KEYS } from '@/lib/storage';
+
 export interface DreamJournalEntry {
   id: string;
   createdIso: string;
@@ -20,7 +22,7 @@ export interface StorageLike {
   removeItem?(key: string): void;
 }
 
-export const JOURNAL_STORAGE_KEY = 'open-sync.dream-journal.v1';
+export const JOURNAL_STORAGE_KEY = STORAGE_KEYS.dreamJournal;
 
 // ---------------------------------------------------------------------------
 // CRUD (all functions return new arrays; no mutation of inputs)

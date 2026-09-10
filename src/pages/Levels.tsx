@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import { FOCUS_LEVELS, gatewayHistory } from '@/data/levels';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { WarningChip } from '@/ui/components/primitives';
-import { useSession } from '@/ui/session/SessionContext';
+import { useSession } from '@/ui/session/useSession';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { depthColor } from '@/ui/theme';
 

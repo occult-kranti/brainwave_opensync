@@ -22,6 +22,7 @@ import { StudioCymatics } from '../components/StudioCymatics';
 import studioSrc from '@/pages/Studio.tsx?raw';
 import scopeSrc from '../components/StudioScope.tsx?raw';
 import cymaticsSrc from '../components/StudioCymatics.tsx?raw';
+import { BANNED_PHRASES } from '@/docs/vocabulary';
 
 const mobileState = vi.hoisted(() => ({ mobile: false }));
 vi.mock('@/hooks/use-mobile', () => ({ useIsMobile: () => mobileState.mobile }));
@@ -129,7 +130,7 @@ describe('Studio page — visualization row', () => {
 });
 
 describe('no banned overclaim phrases in new UI copy', () => {
-  const BANNED = ['induces', 'synchronizes', 'attunes', 'cia-validated', 'digital drug'];
+  const BANNED = BANNED_PHRASES;
   const files: [string, string][] = [
     ['Studio.tsx', studioSrc as string],
     ['StudioScope.tsx', scopeSrc as string],

@@ -7,9 +7,10 @@ import { describe, expect, it } from 'vitest';
 import { EXPERIMENTS } from '@/research/experiments';
 import type { Verdict } from '@/research/types';
 import { getChain, THEORY_CHAINS, type TheoryChain } from '../chains';
+import { BANNED_PHRASES } from '@/docs/vocabulary';
 
 const VALID_VERDICTS: readonly Verdict[] = ['REPAIRABLE', 'DEMOTE', 'DISCARD', 'OPEN'];
-const BANNED = ['induces', 'synchronizes', 'attunes', 'cia-validated', 'digital drug'];
+const BANNED = BANNED_PHRASES;
 const REGISTRY_IDS = new Set(EXPERIMENTS.map((x) => x.id));
 
 function chainStrings(c: TheoryChain): { label: string; text: string }[] {

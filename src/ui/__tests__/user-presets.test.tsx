@@ -22,7 +22,8 @@ import {
   saveUserPreset,
   userPresetAsPreset,
 } from '../session/userPresets';
-import { SessionProvider, useSession } from '../session/SessionContext';
+import { SessionProvider } from '../session/SessionContext';
+import { useSession } from '../session/useSession';
 import { LiveEngine } from '../audio/liveEngine';
 import type { SessionSpec } from '@/data/presets';
 

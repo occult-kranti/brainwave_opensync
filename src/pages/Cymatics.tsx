@@ -16,7 +16,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Download, Info, Play, Shuffle, Square, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useSession } from '@/ui/session/SessionContext';
+import { useSession } from '@/ui/session/useSession';
 import { Chip, Led, Panel, Readout, WarningChip } from '@/ui/components/primitives';
 import { Knob } from '@/ui/components/Knob';
 import { GradeBadge } from '@/ui/components/GradeBadge';
@@ -41,11 +41,12 @@ import {
 } from '@/cymatics/chladni';
 import { COLORMAPS, renderFrame, type ColormapName } from '@/cymatics/render';
 import { sampleAudioFeatures, smoothDriveHz } from '@/cymatics/audioLink';
+import { STORAGE_KEYS } from '@/lib/storage';
 
 type DriveMode = 'manual' | 'frequency' | 'audio';
 type Interpretation = 'physics' | 'art';
 
-const COACH_KEY = 'opensync.cymatics.coach.v1';
+const COACH_KEY = STORAGE_KEYS.cymaticsCoach;
 
 const COACH_STEPS = [
   {

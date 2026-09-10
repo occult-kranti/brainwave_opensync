@@ -12,7 +12,7 @@ import { renderPhase } from '@/engine';
 import { Panel, Chip, Led, WarningChip } from '@/ui/components/primitives';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { InfoPopover } from '@/ui/components/InfoPopover';
-import { useSession } from '@/ui/session/SessionContext';
+import { useSession } from '@/ui/session/useSession';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { AMBER, INK, LINE, MONO, TEAL, TEAL_DIM, TEXT } from '@/ui/theme';
 

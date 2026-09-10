@@ -9,8 +9,9 @@
  */
 
 import type { Preset, SessionSpec } from '@/data/presets';
+import { STORAGE_KEYS } from '@/lib/storage';
 
-export const USER_PRESETS_STORAGE_KEY = 'open-sync:user-presets';
+export const USER_PRESETS_STORAGE_KEY = STORAGE_KEYS.userPresets;
 export const USER_PRESETS_VERSION = 1;
 
 export interface UserPreset {

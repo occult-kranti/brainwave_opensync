@@ -21,15 +21,18 @@ import { FEATURES } from '@/docs/features';
 import { PRESETS } from '@/data/presets';
 import { InfoPopover } from '../components/InfoPopover';
 import { LiveEngine } from '../audio/liveEngine';
-import { SessionProvider, presetPreviewPhases, useSession } from '../session/SessionContext';
+import { SessionProvider } from '../session/SessionContext';
+import { presetPreviewPhases } from '../session/sessionMath';
+import { useSession } from '../session/useSession';
 import Presets from '../../pages/Presets';
-import { stimulusPlan } from '../../pages/research/ExperimentLab';
+import { stimulusPlan } from '@/research/stimulusPlan';
 // vite `?raw` sources for the banned-claim lint on new UI copy.
 import popoverSrc from '../components/InfoPopover.tsx?raw';
 import presetsSrc from '../../pages/Presets.tsx?raw';
 import replicationSrc from '../../pages/Replication.tsx?raw';
 import experimentLabSrc from '../../pages/research/ExperimentLab.tsx?raw';
 import cymaticsSrc from '../../pages/Cymatics.tsx?raw';
+import { BANNED_PHRASES } from '@/docs/vocabulary';
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -304,7 +307,7 @@ describe('experiment stimulus preview plan', () => {
 // ------------------------------------------------------------- claims lint
 
 describe('no banned overclaim phrases in new UI copy', () => {
-  const BANNED = ['induces', 'synchronizes', 'attunes', 'cia-validated', 'digital drug'];
+  const BANNED = BANNED_PHRASES;
   const files: [string, string][] = [
     ['InfoPopover.tsx', popoverSrc as string],
     ['Presets.tsx', presetsSrc as string],

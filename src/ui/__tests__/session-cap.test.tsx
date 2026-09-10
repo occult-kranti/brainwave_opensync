@@ -22,7 +22,8 @@ import Safety from '@/pages/Safety';
 if (typeof Element !== 'undefined') {
   (Element.prototype as unknown as Record<string, unknown>).animate = undefined;
 }
-vi.mock('@/hooks/use-mobile', () => ({ useIsMobile: () => false }));
+const mobileState = vi.hoisted(() => ({ mobile: false }));
+vi.mock('@/hooks/use-mobile', () => ({ useIsMobile: () => mobileState.mobile }));
 
 class FakeParam {
   value = 1;
@@ -112,6 +113,7 @@ describe('session cap (v2.2)', () => {
   beforeEach(() => {
     roots = [];
     containers = [];
+    mobileState.mobile = false;
     window.localStorage.clear();
     seedAdvisoryAck();
     installFakeAudio();
@@ -213,5 +215,16 @@ describe('session cap (v2.2)', () => {
     expect(session.governor.maxSessionMin).toBe(MAX_SESSION_MIN);
     expect(readout()).toBe('NO CAP');
     expect(chips(c, 'session-length').map((b) => b.textContent)).toEqual(['30', '60', '90', '120', '180', '240']);
+  });
+
+  it('on a phone every Safety panel spans one column (an ungated span-4 child collapsed the grid)', async () => {
+    mobileState.mobile = true;
+    const c = await mountSession(<Safety />);
+    const grid = Array.from(c.querySelectorAll('div.grid')).find((g) => g.textContent?.includes('SESSION LIMITS'))!;
+    expect(grid).toBeTruthy();
+    expect((grid as HTMLElement).style.gridTemplateColumns).toBe('1fr');
+    const spans = Array.from(grid.children).map((ch) => (ch as HTMLElement).style.gridColumn);
+    expect(spans.length).toBeGreaterThanOrEqual(4);
+    expect(spans.every((v) => v === 'span 1')).toBe(true);
   });
 });

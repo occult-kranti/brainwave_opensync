@@ -427,7 +427,7 @@ export default function Safety() {
         </motion.div>
 
         {/* Crisis strip */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} style={{ gridColumn: 'span 4' }}>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 4' }}>
           <Panel title="IF SOMETHING FEELS WRONG">
             <p className="t-body-sm text-2" style={{ marginBottom: 12 }}>
               If audio playback ever coincides with dizziness, visual disturbance, chest symptoms, or a panic response:

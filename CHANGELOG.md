@@ -7,6 +7,9 @@ All notable changes to Open Sync. The format follows [Keep a Changelog](https://
 ### Changed
 - **The fixed 90-minute session cap is gone.** Sessions can run up to 24 hours (an engineering bound of the clock and the export, not a health claim); the default session length stays 90 minutes.
 - **Custom session cap.** Safety Center → SESSION LIMITS now has a SESSION CAP row: OFF, 30/60/90/120/180/240/480 or a typed value (5 min to 24 h). The session length can never exceed the cap; lowering the cap tightens a running session at once, raising it never loosens one; infant mode keeps its 45-minute cap; the H.870 dose meter counts regardless. The cap is remembered with the front panel, and a share link lands under the receiver's cap.
+
+### Fixed
+- Safety Center on phones collapsed into three narrow columns: one panel kept a desktop `span 4` placement in the single-column grid, forcing implicit tracks. Every panel now spans one column on phones (regression test added).
 - Dev tooling bumped (Dependabot group: vite 7.3, typescript-eslint 8.69, eslint-plugin-react-hooks 7.1, eslint-plugin-react-refresh 0.5, esbuild 0.28, postcss, autoprefixer, @types/node). The new `react-hooks/refs` rule is honored rather than silenced: the session provider keeps its boot state, engine, dose tracker and Media Session bridge in lazy state initializers, syncs its latest-value refs in a layout effect, and the mobile breakpoint hook reads the media query through `useSyncExternalStore`.
 
 ## [2.1.0] — 2026-09-10

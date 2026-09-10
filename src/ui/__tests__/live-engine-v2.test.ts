@@ -485,3 +485,117 @@ describe('LiveEngine v2.0.2 — idle silence, panic empties the bus, stalled con
     expect(resumeSpy).toHaveBeenCalledTimes(2);
   });
 });
+
+describe('LiveEngine v2.1 — bowl sets', () => {
+  beforeEach(() => install());
+  afterEach(() => {
+    delete (globalThis as Record<string, unknown>).AudioContext;
+  });
+
+  it('keys bowls by id: a level/pan change ramps, a voice change re-renders, a removed bowl is released', () => {
+    vi.useFakeTimers();
+    const eng = new LiveEngine();
+    eng.start();
+    const layerBus = gains[3];
+    const before = gains.length;
+    eng.setBowls([
+      { id: 'a', baseHz: 136.1, db: -24, material: 'brass', pan: -0.5, restrikeSec: 8 },
+      { id: 'b', baseHz: 261.63, db: -30, material: 'crystal-quartz', strike: 'rim', restrikeSec: 12 },
+    ]);
+    expect(gains.length - before).toBe(2);
+    const gainA = gains[before];
+    const gainB = gains[before + 1];
+    expect(gainA.connections).toContain(layerBus);
+    expect(gainB.connections).toContain(layerBus);
+    // Level only: same node, gain ramp, no new gain node.
+    eng.setBowls([
+      { id: 'a', baseHz: 136.1, db: -12, material: 'brass', pan: 0.5, restrikeSec: 8 },
+      { id: 'b', baseHz: 261.63, db: -30, material: 'crystal-quartz', strike: 'rim', restrikeSec: 12 },
+    ]);
+    expect(gains.length - before).toBe(2);
+    expect(gainA.gain.log.some(([m, v]) => m === 'setTargetAtTime' && Math.abs((v as number) - Math.pow(10, -12 / 20) * 0.5) < 1e-9)).toBe(true);
+    // Voice change on `a` (material) → released and rebuilt; `b` untouched.
+    eng.setBowls([
+      { id: 'a', baseHz: 136.1, db: -12, material: 'bell-bronze', pan: 0.5, restrikeSec: 8 },
+      { id: 'b', baseHz: 261.63, db: -30, material: 'crystal-quartz', strike: 'rim', restrikeSec: 12 },
+    ]);
+    expect(gains.length - before).toBe(3);
+    expect(gainA.gain.log.some(([m, v]) => m === 'setTargetAtTime' && v === 0)).toBe(true);
+    expect(gainB.gain.log.some(([m, v]) => m === 'setTargetAtTime' && v === 0)).toBe(false);
+    // Removing `b` releases it.
+    eng.setBowls([{ id: 'a', baseHz: 136.1, db: -12, material: 'bell-bronze', pan: 0.5, restrikeSec: 8 }]);
+    expect(gainB.gain.log.some(([m, v]) => m === 'setTargetAtTime' && v === 0)).toBe(true);
+    expect(eng.getBowls()).toHaveLength(1);
+    vi.runAllTimers();
+    vi.useRealTimers();
+  });
+
+  it('remembers a bowl set given while idle and materializes it on start; −∞ dB bowls stay silent', () => {
+    const eng = new LiveEngine();
+    eng.setBowls([
+      { id: 'a', baseHz: 136.1, db: -24 },
+      { id: 'mute', baseHz: 200, db: -Infinity },
+      { id: 'bad', baseHz: 0, db: -20 },
+    ]);
+    expect(eng.prepare()).toBe(true);
+    const before = gains.length;
+    eng.start();
+    // tone chain (gL, gR) + exactly one bowl loop (the silent and the 0 Hz bowls make no node)
+    expect(gains.length - before).toBe(3);
+    expect(gains[before + 2].connections).toContain(gains[3]);
+    expect(eng.getBowls()).toHaveLength(3);
+  });
+
+  it('the v2.0 setBowl() shim is a one-bowl set and panic releases every bowl', () => {
+    vi.useFakeTimers();
+    const eng = new LiveEngine();
+    eng.start();
+    const before = gains.length;
+    eng.setBowl(true, 136.1, -24);
+    expect(gains.length - before).toBe(1);
+    expect(eng.getBowls()).toEqual([{ id: 'bowl', baseHz: 136.1, db: -24 }]);
+    const bowlGain = gains[before];
+    eng.panic();
+    expect(bowlGain.gain.log.some(([m, v]) => m === 'setTargetAtTime' && v === 0)).toBe(true);
+    eng.setBowl(false, 136.1, -24);
+    expect(eng.getBowls()).toEqual([]);
+    vi.runAllTimers();
+    vi.useRealTimers();
+  });
+
+  it('uses a StereoPannerNode for pan when the platform has one', () => {
+    const Ctx = (globalThis as Record<string, unknown>).AudioContext as new () => Record<string, unknown>;
+    const panners: (FakeNode & { pan: FakeParam })[] = [];
+    Ctx.prototype.createStereoPanner = function createStereoPanner() {
+      const p = Object.assign(new FakeNode(), { pan: new FakeParam() });
+      panners.push(p);
+      return p;
+    };
+    const eng = new LiveEngine();
+    eng.start();
+    eng.setBowls([{ id: 'a', baseHz: 136.1, db: -24, pan: -0.7 }]);
+    expect(panners).toHaveLength(1);
+    expect(panners[0].pan.value).toBe(-0.7);
+    expect(panners[0].connections).toContain(gains[3]); // panner → layerBus
+    expect(gains[gains.length - 1].connections).toContain(panners[0]); // loop gain → panner
+    eng.setBowls([{ id: 'a', baseHz: 136.1, db: -24, pan: 0.2 }]);
+    expect(panners[0].pan.log.some(([m, v]) => m === 'setTargetAtTime' && v === 0.2)).toBe(true);
+  });
+
+  it('strikeBell plays a cached one-shot through the layer bus only while live', () => {
+    const eng = new LiveEngine();
+    expect(eng.strikeBell({ baseHz: 220 }, -18)).toBe(false); // no graph yet
+    eng.start();
+    const before = gains.length;
+    const spy = vi.spyOn(eng.context!, 'createBuffer');
+    expect(eng.strikeBell({ baseHz: 220, material: 'himalayan-antique' }, -18)).toBe(true);
+    expect(eng.strikeBell({ baseHz: 220, material: 'himalayan-antique' }, -18)).toBe(true);
+    expect(spy).toHaveBeenCalledTimes(1); // second strike reuses the rendered buffer
+    expect(gains.length - before).toBe(2);
+    expect(gains[before].connections).toContain(gains[3]);
+    expect(eng.strikeBell({ baseHz: 0 }, -18)).toBe(false);
+    expect(eng.strikeBell({ baseHz: 220 }, -Infinity)).toBe(false);
+    eng.stop();
+    expect(eng.strikeBell({ baseHz: 220 }, -18)).toBe(false); // not running
+  });
+});

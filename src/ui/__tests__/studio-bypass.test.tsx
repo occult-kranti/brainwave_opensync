@@ -57,7 +57,8 @@ const LAYERS_ON = {
   noiseDb: NOISE,
   noiseOn: true,
   nature: { on: true, kind: 'rain' as const, db: -30 },
-  bowl: { on: true, baseHz: 136.1, db: -30, lock: false },
+  bowls: [{ id: 'b1', on: true, material: 'tibetan-bronze' as const, strike: 'mallet' as const, baseHz: 136.1, db: -30, pan: 0, restrikeSec: 8, lock: false }],
+  bellEveryMin: 0,
   layersOn: true,
 };
 
@@ -66,20 +67,20 @@ describe('buildExportPhases — bypassed sections are omitted from the export', 
     const phases = buildExportPhases(PHASES, 200, 'binaural', LAYERS_ON);
     expect(phases).toHaveLength(1);
     expect(phases[0].noise?.color).toBe('pink'); // loudest color wins, as before
-    expect(phases[0].bowl?.baseHz).toBe(136.1);
+    expect(phases[0].bowls?.[0].baseHz).toBe(136.1);
     expect(phases[0].nature?.kind).toBe('rain');
   });
 
   it('noise bypassed: no noise key, layers still present', () => {
     const phases = buildExportPhases(PHASES, 200, 'binaural', { ...LAYERS_ON, noiseOn: false });
     expect('noise' in phases[0]).toBe(false);
-    expect(phases[0].bowl).toBeTruthy();
+    expect(phases[0].bowls).toBeTruthy();
     expect(phases[0].nature).toBeTruthy();
   });
 
   it('layers bypassed: no bowl/nature keys, noise still present', () => {
     const phases = buildExportPhases(PHASES, 200, 'binaural', { ...LAYERS_ON, layersOn: false });
-    expect('bowl' in phases[0]).toBe(false);
+    expect('bowls' in phases[0]).toBe(false);
     expect('nature' in phases[0]).toBe(false);
     expect(phases[0].noise).toBeTruthy();
   });
@@ -89,7 +90,8 @@ describe('buildExportPhases — bypassed sections are omitted from the export', 
       noiseDb: { ...NOISE, pink: -Infinity },
       noiseOn: true,
       nature: { on: false, kind: 'rain', db: -30 },
-      bowl: { on: false, baseHz: 136.1, db: -30, lock: false },
+      bowls: [],
+      bellEveryMin: 0,
       layersOn: true,
     });
     const bypassed = buildExportPhases(PHASES, 200, 'binaural', { ...LAYERS_ON, noiseOn: false, layersOn: false });
@@ -313,12 +315,12 @@ describe('session bypass state', () => {
   it('layers bypass: ramps the layer bus, keeps per-layer settings', async () => {
     await mountSession();
     await act(async () => session.setNature({ on: true }));
-    await act(async () => session.setBowl({ on: true }));
+    await act(async () => session.setBowl(session.bowls[0].id, { on: true }));
     await act(async () => session.setLayersOn(false));
     expect(session.layersOn).toBe(false);
     expect(LiveEngine.prototype.setLayersBypass).toHaveBeenCalledWith(false);
     expect(session.nature.on).toBe(true);
-    expect(session.bowl.on).toBe(true);
+    expect(session.bowls[0].on).toBe(true);
     await act(async () => session.setLayersOn(true));
     expect(LiveEngine.prototype.setLayersBypass).toHaveBeenLastCalledWith(true);
   });

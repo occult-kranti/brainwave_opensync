@@ -12,7 +12,11 @@ const state: ShareState = {
   noiseDb: { pink: -24, brown: -30 },
   noiseOn: true,
   nature: { on: true, kind: 'ocean', db: -28 },
-  bowl: { on: true, baseHz: 136.1, db: -32, lock: false },
+  bowls: [
+    { on: true, material: 'himalayan-antique', strike: 'soft', baseHz: 136.1, db: -32, pan: -0.5, restrikeSec: 12, lock: false },
+    { on: true, material: 'crystal-quartz', strike: 'rim', baseHz: 261.63, db: -28, pan: 0.5, restrikeSec: 16, lock: true },
+  ],
+  bellEveryMin: 5,
   layersOn: false,
   limitMin: 45,
   fadeOutSec: 120,
@@ -64,10 +68,10 @@ describe('share links', () => {
 
 describe('share links — v2.0.1 hardening', () => {
   it('a layer at −∞ dB encodes as OFF and decodes as OFF, never as 0 dB', () => {
-    const enc = encodeShare({ ...state, nature: { on: true, kind: 'rain', db: -Infinity }, bowl: { on: true, baseHz: 136.1, db: -Infinity, lock: false } });
+    const enc = encodeShare({ ...state, nature: { on: true, kind: 'rain', db: -Infinity }, bowls: [{ ...state.bowls[0], db: -Infinity }] });
     const d = decodeShare(enc)!;
     expect(d.nature.on).toBe(false);
-    expect(d.bowl.on).toBe(false);
+    expect(d.bowls).toEqual([]);
     expect(d.nature.db).toBe(-30); // default, not 0
   });
 
@@ -84,5 +88,28 @@ describe('share links — v2.0.1 hardening', () => {
     const name = '🎧'.repeat(70);
     const d = decodeShare(encodeShare({ ...state, presetName: name }))!;
     expect(d.presetName).toBe('🎧'.repeat(60));
+  });
+});
+
+describe('share links — bowl sets (v2.1)', () => {
+  it('a v2.0 link with the single `b` bowl decodes as a one-bowl set with the original voice', () => {
+    const enc = toBase64Url(JSON.stringify({ v: 2, m: 'binaural', c: 200, w: 'sine', p: [[60, 10]], b: [1, 136.1, -30, 1] }));
+    const d = decodeShare(enc)!;
+    expect(d.bowls).toEqual([
+      { on: true, material: 'tibetan-bronze', strike: 'mallet', baseHz: 136.1, db: -30, pan: 0, restrikeSec: 8, lock: true },
+    ]);
+    expect(d.bellEveryMin).toBe(0);
+  });
+
+  it('bowls that are off are not carried; the set is capped and every field is clamped', () => {
+    const many = Array.from({ length: 10 }, (_, i) => ({ ...state.bowls[0], baseHz: 100 + i }));
+    const d = decodeShare(encodeShare({ ...state, bowls: [{ ...state.bowls[1], on: false }, ...many] }))!;
+    expect(d.bowls).toHaveLength(7);
+    expect(d.bowls.every((b) => b.on)).toBe(true);
+    const bad = toBase64Url(JSON.stringify({ v: 2, m: 'binaural', c: 200, w: 'sine', p: [[60, 10]], bs: [[5000, 12, 99, -3, 7, 1000, 1], 'junk'], be: 999 }));
+    const e = decodeShare(bad)!;
+    expect(e.bowls).toHaveLength(1);
+    expect(e.bowls[0]).toEqual({ on: true, material: 'crystal-quartz', strike: 'mallet', baseHz: 1000, db: 0, pan: 1, restrikeSec: 16, lock: true });
+    expect(e.bellEveryMin).toBe(60);
   });
 });

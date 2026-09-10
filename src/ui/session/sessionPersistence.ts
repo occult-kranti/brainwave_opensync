@@ -10,10 +10,12 @@
  */
 
 import type { EntrainmentMode, NatureKind, NoiseColor } from '@/engine';
+import { BOWL_MATERIAL_IDS, BOWL_STRIKE_IDS, MAX_BOWLS } from '@/engine';
 import { STORAGE_KEYS, readJson, writeJson, type StorageLike, defaultStorage } from '@/lib/storage';
 import type { Grade } from '@/data/frequencies';
 import type { GateShape, Waveform } from '../audio/liveEngine';
 import type { BowlLayer, NatureLayer, UiPhase } from './sessionMath';
+import { snapRestrike } from './sessionMath';
 import { INFANT_MAX_SESSION_MIN } from '@/safety/governor';
 import { INFANT_CEILING_DBA } from '@/safety/dose';
 import { DBFS_TO_DBA_OFFSET } from './sessionMath';
@@ -37,7 +39,10 @@ export interface FrontPanel {
   noiseDb: Record<NoiseColor, number>;
   noiseOn: boolean;
   nature: NatureLayer;
-  bowl: BowlLayer;
+  /** The bowl set (v2.0 persisted a single `bowl`; it migrates to a one-bowl set). */
+  bowls: BowlLayer[];
+  /** Interval bell period in minutes (0 = off). */
+  bellEveryMin: number;
   layersOn: boolean;
   phases: UiPhase[];
   presetName: string | null;
@@ -64,6 +69,51 @@ const level = (v: unknown, fb: number): number => {
 };
 const oneOf = <T extends string>(v: unknown, allowed: readonly T[], fb: T): T => (allowed.includes(v as T) ? (v as T) : fb);
 
+const FALLBACK_BOWL: BowlLayer = { id: 'b-default', on: false, material: 'himalayan-antique', strike: 'mallet', baseHz: 136.1, db: -30, pan: 0, restrikeSec: 8, lock: false };
+
+/** One persisted bowl row → a valid BowlLayer (null when it is not an object at all). */
+function sanitizeBowl(raw: unknown, fb: BowlLayer, idx: number, taken: Set<string>): BowlLayer | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const b = raw as Record<string, unknown>;
+  let id = typeof b.id === 'string' && b.id.trim() ? truncateCodePoints(b.id.trim(), 40) : `b${idx}-restored`;
+  while (taken.has(id)) id = `${id}-${idx}`;
+  taken.add(id);
+  return {
+    id,
+    on: typeof b.on === 'boolean' ? b.on : fb.on,
+    material: oneOf(b.material, BOWL_MATERIAL_IDS, fb.material),
+    strike: oneOf(b.strike, BOWL_STRIKE_IDS, fb.strike),
+    baseHz: num(b.baseHz, 20, 1000, fb.baseHz),
+    db: level(b.db, fb.db),
+    pan: num(b.pan, -1, 1, fb.pan),
+    restrikeSec: snapRestrike(typeof b.restrikeSec === 'number' ? b.restrikeSec : fb.restrikeSec),
+    lock: typeof b.lock === 'boolean' ? b.lock : fb.lock,
+  };
+}
+
+/** Bowl set from a persisted blob: `bowls[]` (v2.1), a single `bowl` (v2.0) or the defaults. */
+function sanitizeBowls(r: Record<string, unknown>, defaults: FrontPanel): BowlLayer[] {
+  const fb = defaults.bowls[0] ?? FALLBACK_BOWL;
+  const taken = new Set<string>();
+  if (Array.isArray(r.bowls)) {
+    // An empty array is a real state (every bowl removed), not a corrupt one.
+    const out: BowlLayer[] = [];
+    for (const raw of r.bowls) {
+      if (out.length >= MAX_BOWLS) break;
+      const b = sanitizeBowl(raw, fb, out.length, taken);
+      if (b) out.push(b);
+    }
+    return out;
+  }
+  if (r.bowl && typeof r.bowl === 'object') {
+    // v2.0 single bowl: keep the original voice so a restored panel sounds the same.
+    const legacy = { ...(r.bowl as Record<string, unknown>), id: 'b-legacy', material: 'tibetan-bronze', strike: 'mallet', pan: 0, restrikeSec: 8 };
+    const b = sanitizeBowl(legacy, fb, 0, taken);
+    return b ? [b] : defaults.bowls.map((d) => ({ ...d }));
+  }
+  return defaults.bowls.map((d) => ({ ...d }));
+}
+
 /** Sanitize a parsed blob against `defaults`; unknown/invalid fields fall back. */
 export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPanel {
   if (!raw || typeof raw !== 'object') return defaults;
@@ -73,7 +123,6 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
     for (const c of NOISES) noiseDb[c] = level((r.noiseDb as Record<string, unknown>)[c], defaults.noiseDb[c]);
   }
   const nat = (r.nature ?? {}) as Record<string, unknown>;
-  const bowl = (r.bowl ?? {}) as Record<string, unknown>;
   const phasesRaw = Array.isArray(r.phases) ? r.phases : [];
   const phases: UiPhase[] = [];
   for (const p of phasesRaw.slice(0, 8)) {
@@ -106,12 +155,8 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
       kind: oneOf(nat.kind, NATURES, defaults.nature.kind),
       db: level(nat.db, defaults.nature.db),
     },
-    bowl: {
-      on: typeof bowl.on === 'boolean' ? bowl.on : defaults.bowl.on,
-      baseHz: num(bowl.baseHz, 20, 1000, defaults.bowl.baseHz),
-      db: level(bowl.db, defaults.bowl.db),
-      lock: typeof bowl.lock === 'boolean' ? bowl.lock : defaults.bowl.lock,
-    },
+    bowls: sanitizeBowls(r, defaults),
+    bellEveryMin: num(r.bellEveryMin, 0, 60, defaults.bellEveryMin),
     layersOn: typeof r.layersOn === 'boolean' ? r.layersOn : defaults.layersOn,
     phases: phases.length ? phases : defaults.phases,
     presetName: typeof r.presetName === 'string' && r.presetName.trim() ? truncateCodePoints(r.presetName.trim(), 80) : null,

@@ -26,7 +26,8 @@ const defaults: FrontPanel = {
   noiseDb: { white: -Infinity, pink: -Infinity, brown: -Infinity, blue: -Infinity, violet: -Infinity, grey: -Infinity },
   noiseOn: true,
   nature: { on: false, kind: 'rain', db: -30 },
-  bowl: { on: false, baseHz: 136.1, db: -30, lock: false },
+  bowls: [{ id: 'b-default', on: false, material: 'himalayan-antique', strike: 'mallet', baseHz: 136.1, db: -30, pan: 0, restrikeSec: 8, lock: false }],
+  bellEveryMin: 0,
   layersOn: true,
   phases: [{ id: 'a', durationSec: 600, beatHz: 10 }],
   presetName: null,
@@ -133,5 +134,47 @@ describe('persistence — v2.0.1 hardening', () => {
     expect(pruned).toHaveLength(2);
     expect(pruned[0].seconds).toBe(7 * 24 * 3600);
     expect(pruned[1]).toEqual({ t: now - 5000, dbA: 58, seconds: 5 });
+  });
+});
+
+describe('persistence — bowl sets (v2.1)', () => {
+  it('a v2.0 blob with a single `bowl` migrates to a one-bowl set in the original voice', () => {
+    const s = sanitizeFrontPanel({ ...defaults, bowls: undefined, bowl: { on: true, baseHz: 220, db: -24, lock: true } }, defaults);
+    expect(s.bowls).toEqual([
+      { id: 'b-legacy', on: true, material: 'tibetan-bronze', strike: 'mallet', baseHz: 220, db: -24, pan: 0, restrikeSec: 8, lock: true },
+    ]);
+    expect(s.bellEveryMin).toBe(0);
+  });
+
+  it('a bowl set round-trips, an empty set is a real state, and bad rows are clamped or dropped', () => {
+    const st = memoryStorage();
+    const panel: FrontPanel = {
+      ...defaults,
+      bowls: [
+        { id: 'x1', on: true, material: 'crystal-quartz', strike: 'rim', baseHz: 261.63, db: -Infinity, pan: -0.5, restrikeSec: 16, lock: false },
+        { id: 'x2', on: false, material: 'brass', strike: 'soft', baseHz: 400, db: -20, pan: 0.25, restrikeSec: 12, lock: true },
+      ],
+      bellEveryMin: 5,
+    };
+    expect(saveFrontPanel(panel, st)).toBe(true);
+    expect(loadFrontPanel(defaults, st)).toEqual(panel);
+    expect(sanitizeFrontPanel({ ...defaults, bowls: [] }, defaults).bowls).toEqual([]);
+    const messy = sanitizeFrontPanel(
+      {
+        ...defaults,
+        bowls: [
+          { id: 'dup', material: 'unobtainium', strike: 7, baseHz: 5000, db: 12, pan: -9, restrikeSec: 5, lock: 'yes' },
+          { id: 'dup', on: true },
+          'junk',
+          ...Array.from({ length: 10 }, (_, i) => ({ id: `m${i}`, on: true })),
+        ],
+        bellEveryMin: -4,
+      },
+      defaults,
+    );
+    expect(messy.bowls).toHaveLength(7);
+    expect(messy.bowls[0]).toEqual({ id: 'dup', on: false, material: 'himalayan-antique', strike: 'mallet', baseHz: 1000, db: 0, pan: -1, restrikeSec: 4, lock: false });
+    expect(messy.bowls[1].id).not.toBe('dup');
+    expect(messy.bellEveryMin).toBe(0);
   });
 });

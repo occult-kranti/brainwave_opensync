@@ -23,6 +23,20 @@ export interface NoiseSpec {
 }
 
 /**
+ * Bowl alloy / material. Each material is a partial-ratio, amplitude,
+ * decay and shimmer profile (see bowls.ts). `tibetan-bronze` is the
+ * historical default voice and renders bit-identically to v2.0.
+ */
+export type BowlMaterial = 'tibetan-bronze' | 'himalayan-antique' | 'bell-bronze' | 'brass' | 'crystal-quartz';
+
+/**
+ * How the bowl is played. `mallet` is a plain strike (default, legacy);
+ * `soft` is a padded mallet (fewer highs, gentle attack); `rim` is a rubbed
+ * rim — the bowl "sings" continuously instead of ringing down.
+ */
+export type BowlStrike = 'mallet' | 'soft' | 'rim';
+
+/**
  * Singing-bowl layer: FM-modulated inharmonic partials (~[1, 2.76, 5.4])
  * with exponential decay, re-struck on a configurable interval.
  */
@@ -31,12 +45,20 @@ export interface BowlSpec {
   baseHz: number;
   /** Linear layer level, 0..1. */
   level: number;
-  /** Inharmonic partial ratios (default [1, 2.76, 5.4]). */
+  /** Inharmonic partial ratios (default: the material profile). */
   partials?: number[];
-  /** Amplitude decay time constant in seconds (default 6). */
+  /** Amplitude decay time constant in seconds (default: the material profile, 6 for tibetan-bronze). */
   decaySec?: number;
   /** Re-strike interval in seconds (default: phase length, i.e. struck once). */
   restrikeSec?: number;
+  /** Alloy profile (default 'tibetan-bronze'). */
+  material?: BowlMaterial;
+  /** Playing technique (default 'mallet'). */
+  strike?: BowlStrike;
+  /** Stereo position −1 (left) … 0 (center) … 1 (right). Default 0 = identical in both channels. */
+  pan?: number;
+  /** 0..1 seeded strike-timing / velocity jitter (default 0 = metronomic). */
+  humanize?: number;
 }
 
 /** Procedurally generated nature texture layer. */
@@ -67,7 +89,10 @@ export interface Phase {
   /** Phase gain in dB applied to the mixed phase (0 = unity). */
   gainDb: number;
   noise?: NoiseSpec;
+  /** Single bowl (v2.0 field; still honored, mixed before `bowls`). */
   bowl?: BowlSpec;
+  /** Additional bowls — a bowl set. Each renders and pans independently. */
+  bowls?: BowlSpec[];
   nature?: NatureSpec;
 }
 

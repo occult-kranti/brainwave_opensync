@@ -16,6 +16,7 @@ import type {
   PhaseOffsets,
   RenderResult,
 } from './types';
+import { bowlMaterial, bowlStrike, panGains, phaseBowls } from './bowls';
 
 export const TWO_PI = Math.PI * 2;
 
@@ -420,9 +421,20 @@ function applySpectralShaping(
 }
 
 /**
- * Singing bowl: inharmonic partials (default ratios [1, 2.76, 5.4]) with
- * exponential amplitude decay, subtle slow FM shimmer (~1 Hz, ±0.2%), and
- * re-striking every `restrikeSec`. Deterministic given `seed`.
+ * Singing bowl voice.
+ *
+ * A bowl is a sum of inharmonic partials (ratios from the material profile,
+ * see bowls.ts) with independent exponential decays and a slow shimmer FM.
+ * Hand-hammered materials split each mode into a close doublet that beats.
+ * The bowl is re-struck every `restrikeSec`; earlier strikes keep ringing
+ * through later ones. Because the strikes are periodic, the sum of every
+ * previous strike's tail is a geometric series and collapses to ONE sine per
+ * partial with a modified amplitude and phase (z = e^{-R/τ}·e^{iωR}, tail
+ * factor 1/(1−z)), so the cost is one sin() per partial per sample and a
+ * buffer whose length is a multiple of `restrikeSec` loops seamlessly.
+ * The `rim` strike replaces the ring-down with a swell → sustain → release
+ * envelope inside each cycle (a rubbed, "singing" bowl). Deterministic
+ * given `seed`; RMS-normalized to 1.
  */
 export function renderBowl(
   spec: BowlSpec,
@@ -434,27 +446,107 @@ export function renderBowl(
   if (n === 0 || !isFiniteNumber(spec.baseHz) || spec.baseHz <= 0) {
     return new Float32Array(n);
   }
-  const ratios = spec.partials && spec.partials.length > 0 ? spec.partials : [1, 2.76, 5.4];
-  const decay = Math.max(0.05, spec.decaySec ?? 6);
+  const mat = bowlMaterial(spec.material);
+  const technique = bowlStrike(spec.strike);
+  const custom = spec.partials && spec.partials.length > 0;
+  const ratios = custom ? spec.partials! : mat.ratios;
+  const decay = Math.max(0.05, spec.decaySec ?? mat.decaySec);
   const restrike = Math.max(0.1, spec.restrikeSec ?? durationSec);
   const restrikeSamples = Math.max(1, Math.round(restrike * sampleRate));
+  const cycleSec = restrikeSamples / sampleRate;
   const prng = createPrng(seed ^ 0x85ebca6b);
-  // Per-partial stable detune/phase so strikes don't click identically.
-  const phase0 = ratios.map(() => prng() * TWO_PI);
-  const amps = ratios.map((_, i) => 1 / (1 + 1.2 * i));
+
+  // Shimmer FM and the rim tremolo are made periodic over one re-strike
+  // cycle (rate snapped to k / cycle), so every strike carries the same
+  // modulation relative to its onset — that is what makes the tail sum
+  // below exact and a whole-cycle buffer loop seamlessly.
+  const fmHz = Math.max(1, Math.round(mat.fmHz * cycleSec)) / cycleSec;
+  const tremHz = Math.max(1, Math.round(0.9 * cycleSec)) / cycleSec;
+  const fmOmega = TWO_PI * fmHz;
+
+  // One "voice" per (partial × doublet half): frequency, amplitude, phase,
+  // decay, FM excursion and the closed-form factor for all previous strikes'
+  // tails.
+  interface Voice {
+    omega: number;
+    amp: number;
+    phase: number;
+    tau: number;
+    /** Phase-modulation excursion (rad) giving ±fmDepth frequency deviation. */
+    fmAmp: number;
+    /** |1/(1−z)| and arg — sum of the current strike plus every earlier tail. */
+    tailMag: number;
+    tailArg: number;
+    /** |z/(1−z)| and arg — earlier tails only (used during a soft attack). */
+    prevMag: number;
+    prevArg: number;
+  }
+  const voices: Voice[] = [];
+  for (let p = 0; p < ratios.length; p++) {
+    const baseAmp = custom ? 1 / (1 + 1.2 * p) : (mat.amps[p] ?? 1 / (1 + 1.2 * p));
+    const weight = technique.weights[Math.min(p, technique.weights.length - 1)];
+    const amp = baseAmp * weight;
+    const tau = decay / (1 + 0.6 * p);
+    const split = mat.doublet > 0 ? [1 - mat.doublet / 2, 1 + mat.doublet / 2] : [1];
+    for (const d of split) {
+      const f = ratios[p] * spec.baseHz * d;
+      const omega = TWO_PI * f;
+      const phase = prng() * TWO_PI;
+      let tailMag = 1;
+      let tailArg = 0;
+      let prevMag = 0;
+      let prevArg = 0;
+      if (!technique.sustained) {
+        const r = Math.exp(-cycleSec / tau);
+        const zr = r * Math.cos(omega * cycleSec);
+        const zi = r * Math.sin(omega * cycleSec);
+        // 1/(1−z)
+        const dr = 1 - zr;
+        const di = -zi;
+        const den = dr * dr + di * di;
+        const sr = dr / den;
+        const si = -di / den;
+        tailMag = Math.hypot(sr, si);
+        tailArg = Math.atan2(si, sr);
+        // z/(1−z) = 1/(1−z) − 1
+        prevMag = Math.hypot(sr - 1, si);
+        prevArg = Math.atan2(si, sr - 1);
+      }
+      voices.push({ omega, amp: amp / split.length, phase, tau, fmAmp: (omega * mat.fmDepth) / fmOmega, tailMag, tailArg, prevMag, prevArg });
+    }
+  }
+
   const out = new Float32Array(n);
-  const fmDepth = 0.002;
-  const fmHz = 1.1;
+  const attack = technique.attackSec;
+  // Rim voice envelope: swell (τ 0.6 s) → sustain → raised-cosine release
+  // in the last quarter of the cycle (≤ 1.2 s), so cycles never click.
+  const releaseSec = Math.min(1.2, 0.25 * cycleSec);
+  const releaseStart = cycleSec - releaseSec;
   for (let i = 0; i < n; i++) {
-    const strikePos = i % restrikeSamples;
-    const t = strikePos / sampleRate;
-    const tGlobal = i / sampleRate;
-    const fm = 1 + fmDepth * Math.sin(TWO_PI * fmHz * tGlobal);
+    const t = (i % restrikeSamples) / sampleRate;
+    // Phase modulation whose derivative is ±fmDepth of the frequency.
+    const fmPhase = 1 - Math.cos(fmOmega * t);
     let s = 0;
-    for (let p = 0; p < ratios.length; p++) {
-      const tau = decay / (1 + 0.6 * p);
-      const env = Math.exp(-t / tau);
-      s += amps[p] * env * Math.sin(TWO_PI * ratios[p] * spec.baseHz * fm * t + phase0[p]);
+    if (technique.sustained) {
+      const swell = 1 - Math.exp(-t / 0.6);
+      const rel = t > releaseStart ? 0.5 * (1 + Math.cos((Math.PI * (t - releaseStart)) / releaseSec)) : 1;
+      const tremolo = 1 - 0.03 * (1 - Math.cos(TWO_PI * tremHz * t));
+      const env = swell * rel * tremolo;
+      for (const v of voices) {
+        s += v.amp * env * Math.exp(-t / (4 * v.tau)) * Math.sin(v.omega * t + v.fmAmp * fmPhase + v.phase);
+      }
+    } else if (attack > 0 && t < attack) {
+      const a = t / attack;
+      for (const v of voices) {
+        const env = Math.exp(-t / v.tau);
+        const arg = v.omega * t + v.fmAmp * fmPhase + v.phase;
+        s += v.amp * env * (a * Math.sin(arg) + v.prevMag * Math.sin(arg + v.prevArg));
+      }
+    } else {
+      for (const v of voices) {
+        const env = Math.exp(-t / v.tau);
+        s += v.amp * env * v.tailMag * Math.sin(v.omega * t + v.fmAmp * fmPhase + v.phase + v.tailArg);
+      }
     }
     out[i] = s;
   }
@@ -562,9 +654,10 @@ export function renderNature(
 }
 
 /**
- * Render a complete phase: tone mode + optional noise / bowl / nature layers,
- * with phase gain applied. Layer buffers are identically mixed into both
- * channels (decorrelated stereo noise is a future enhancement).
+ * Render a complete phase: tone mode + optional noise / bowl(s) / nature
+ * layers, with phase gain applied. Noise and nature buffers are identically
+ * mixed into both channels (decorrelated stereo noise is a future
+ * enhancement); bowls are panned per bowl.
  */
 export function renderPhase(
   phase: Phase,
@@ -601,12 +694,21 @@ export function renderPhase(
       tone.right[i] += buf[i] * g;
     }
   }
-  if (phase.bowl && phase.bowl.level > 0 && isFiniteNumber(phase.bowl.level)) {
-    const buf = renderBowl(phase.bowl, phase.durationSec, sampleRate, seed);
-    const g = 0.2 * phase.bowl.level * gain;
+  // Bowls: each bowl renders on its own (seed offset by index so a set never
+  // shares strike phases) and is placed with equal-power pan. Center = the
+  // same signal in both channels; off-center bowls give the set a width.
+  const bowls = phaseBowls(phase);
+  for (let b = 0; b < bowls.length; b++) {
+    const bowl = bowls[b];
+    if (!(bowl.level > 0) || !isFiniteNumber(bowl.level)) continue;
+    const buf = renderBowl(bowl, phase.durationSec, sampleRate, seed + b * 0x9e3779b1);
+    const g = 0.2 * bowl.level * gain;
+    const [gl, gr] = panGains(bowl.pan);
+    const gL = g * gl;
+    const gR = g * gr;
     for (let i = 0; i < n; i++) {
-      tone.left[i] += buf[i] * g;
-      tone.right[i] += buf[i] * g;
+      tone.left[i] += buf[i] * gL;
+      tone.right[i] += buf[i] * gR;
     }
   }
   if (phase.nature && phase.nature.level > 0 && isFiniteNumber(phase.nature.level)) {

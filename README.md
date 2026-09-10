@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml/badge.svg)](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-2.0.2-amber)
+![Version](https://img.shields.io/badge/version-2.1.0-amber)
 
 An open, evidence-graded replication **and correction** of commercial brainwave-entrainment
 platforms, rebuilt as a browser app where every frequency, protocol and claim carries an
@@ -49,7 +49,7 @@ Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-sour
 
 | Area | What you get |
 |---|---|
-| **Studio** | Live binaural / monaural / isochronic engine, 6 noise colors, nature & bowl layers, multi-phase session timeline, live L/R scope, virtual-plate cymatics, sleep fade, share links, WAV export |
+| **Studio** | Live binaural / monaural / isochronic engine, 6 noise colors, nature layer, a bowl set of up to 7 singing bowls (5 materials × 3 techniques, pan, intervals, ready-made sets), interval bell, multi-phase session timeline, live L/R scope, virtual-plate cymatics, sleep fade, share links, WAV export |
 | **Sonic Lab** | 17 mathematical sound generators: Shepard/Risset illusions, Euclidean & prime & golden-ratio rhythms, fractal 1/f^α noise, logistic-map chaos, waveform designer (additive/FM/Chebyshev/phase distortion), tuning systems (JI/12-TET/Bohlen-Pierce), astronomically derived tunings with split grades: *arithmetic A · meaning D* |
 | **Cymatic Studio** | Chladni plate simulator (square/circular/Bessel modes, sand particles, colormaps, audio-reactive) with physics/art honesty labels |
 | **Frequency Library** | 44 audited frequencies in 7 sets, grade badges, citation popovers, corrected Schumann values |

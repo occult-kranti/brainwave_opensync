@@ -55,10 +55,14 @@ import {
 import { useWakeLock } from '../hooks';
 import { bandForBeat } from '../theme';
 import {
+  BELL_DB,
   DBFS_TO_DBA_OFFSET,
   PREVIEW_MAX_SEC,
   beatAtTime,
+  bellVoiceFrom,
   buildExportPhases,
+  liveBowlsFrom,
+  newBowlLayer,
   newUiPhase as newPhase,
   presetPreviewPhases,
   truncatePhases,
@@ -66,6 +70,7 @@ import {
   type NatureLayer,
   type UiPhase,
 } from './sessionMath';
+import { MAX_BOWLS } from '@/engine';
 import { ALL_NOISE_OFF, DEFAULT_FRONT_PANEL, INFANT_MAX_VOLUME_DB } from './sessionDefaults';
 import { SessionCtx } from './useSession';
 import type { ExportWavOptions, SessionActions, SessionSnapshot } from './types';
@@ -97,7 +102,8 @@ function panelFromShare(base: FrontPanel, s: ShareState): FrontPanel {
     noiseDb: { ...ALL_NOISE_OFF, ...s.noiseDb },
     noiseOn: s.noiseOn,
     nature: { ...s.nature },
-    bowl: { ...s.bowl },
+    bowls: s.bowls.slice(0, MAX_BOWLS).map((b) => newBowlLayer(b)),
+    bellEveryMin: s.bellEveryMin,
     layersOn: s.layersOn,
     limitMin: Math.min(s.limitMin, limitCap),
     fadeOutSec: s.fadeOutSec,
@@ -148,7 +154,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     eng.setOutputDb(init.volumeDb);
     for (const [color, db] of Object.entries(init.noiseDb) as [NoiseColor, number][]) eng.setNoiseLevel(color, db);
     eng.setNature(init.nature.on ? init.nature.kind : null, init.nature.db);
-    eng.setBowl(init.bowl.on, init.bowl.lock ? init.carrierHz : init.bowl.baseHz, init.bowl.db);
+    eng.setBowls(liveBowlsFrom(init.bowls, init.carrierHz));
     eng.setNoiseBypass(init.noiseOn);
     eng.setLayersBypass(init.layersOn);
     eng.setInfantFilter(init.infantMode);
@@ -187,7 +193,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [noiseDb, setNoiseDbState] = useState<Record<NoiseColor, number>>(init.noiseDb);
   const [noiseOn, setNoiseOnState] = useState(init.noiseOn);
   const [nature, setNatureState] = useState<NatureLayer>(init.nature);
-  const [bowl, setBowlState] = useState<BowlLayer>(init.bowl);
+  const [bowls, setBowlsState] = useState<BowlLayer[]>(init.bowls);
+  const [bellEveryMin, setBellEveryMinState] = useState(init.bellEveryMin);
+  /** Same-tick mirror of the bowl set: every bowl setter writes it before React renders. */
+  const bowlsRef = useRef<BowlLayer[]>(init.bowls);
+  const bellRef = useRef(init.bellEveryMin);
+  /** Index of the last interval-bell period that rang (−1 = ring at the first tick). */
+  const lastBellIdxRef = useRef(-1);
   const [layersOn, setLayersOnState] = useState(init.layersOn);
   const [phases, setPhasesState] = useState<UiPhase[]>(init.phases);
   const [activePhaseIdx, setActivePhaseIdx] = useState(0);
@@ -329,6 +341,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     runningRef.current = true;
     pausedRef.current = false;
     limitFadeIssuedRef.current = false;
+    lastBellIdxRef.current = -1;
     elapsedRef.current = 0;
     setElapsedSec(0);
     setActivePhaseIdx(0);
@@ -430,6 +443,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       // Resuming from a rehearsal (or after a normal STOP) is a fresh session:
       // only a panic that cut a live session continues that session's budget.
       limitFadeIssuedRef.current = false;
+      lastBellIdxRef.current = -1;
       elapsedRef.current = 0;
       setElapsedSec(0);
       setActivePhaseIdx(0);
@@ -540,6 +554,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         return cur;
       });
       setActivePhaseIdx(idx);
+      // Interval bell: one strike at the start and at every period boundary.
+      const bellMin = bellRef.current;
+      if (bellMin > 0) {
+        const period = Math.floor(next / (bellMin * 60));
+        if (period !== lastBellIdxRef.current) {
+          lastBellIdxRef.current = period;
+          engineRef.current.strikeBell(bellVoiceFrom(bowlsRef.current, carrierRef.current), BELL_DB);
+        }
+      }
       // H.870 dose accumulation (1 s tick at the current estimated level).
       if (!mutedRef.current) {
         const dbA = volumeRef.current + DBFS_TO_DBA_OFFSET;
@@ -618,7 +641,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     noiseDb,
     noiseOn,
     nature,
-    bowl,
+    bowls,
+    bellEveryMin,
     layersOn,
     phases,
     presetName,
@@ -633,7 +657,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     return () => window.clearTimeout(t);
   }, [
     mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, limitMin, volumeDb, noiseDb, noiseOn,
-    nature, bowl, layersOn, phases, presetName, presetGrade, fadeOutSec, governor.infantMode,
+    nature, bowls, bellEveryMin, layersOn, phases, presetName, presetGrade, fadeOutSec, governor.infantMode,
   ]);
   useEffect(() => {
     // React never runs effect cleanups on unload, and a backgrounded phone
@@ -746,14 +770,39 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     });
     setDirty(true);
   }, []);
-  const setBowl = useCallback((patch: Partial<BowlLayer>) => {
-    setBowlState((cur) => {
-      const next = { ...cur, ...patch };
-      // Locked bowls follow the carrier — resolved here so a level change on
-      // a locked bowl never renders a 0 Hz (silent) bowl.
-      engineRef.current.setBowl(next.on, next.lock ? carrierRef.current : next.baseHz, next.db);
-      return next;
-    });
+  // Bowl set. Every setter derives the next set from the same-tick ref, pushes
+  // it to the engine (locks resolved against the carrier — so a level change
+  // on a locked bowl never renders a 0 Hz bowl) and then commits it to state.
+  const commitBowls = useCallback((next: BowlLayer[]) => {
+    bowlsRef.current = next;
+    setBowlsState(next);
+    engineRef.current.setBowls(liveBowlsFrom(next, carrierRef.current));
+    setDirty(true);
+  }, []);
+  const setBowls = useCallback((next: BowlLayer[]) => commitBowls(next.slice(0, MAX_BOWLS)), [commitBowls]);
+  const setBowl = useCallback(
+    (id: string, patch: Partial<Omit<BowlLayer, 'id'>>) => {
+      if (!bowlsRef.current.some((b) => b.id === id)) return;
+      commitBowls(bowlsRef.current.map((b) => (b.id === id ? { ...b, ...patch, id } : b)));
+    },
+    [commitBowls],
+  );
+  const addBowl = useCallback(
+    (init?: Partial<Omit<BowlLayer, 'id'>>): string | null => {
+      if (bowlsRef.current.length >= MAX_BOWLS) return null;
+      const b = newBowlLayer(init);
+      commitBowls([...bowlsRef.current, b]);
+      return b.id;
+    },
+    [commitBowls],
+  );
+  const removeBowl = useCallback((id: string) => commitBowls(bowlsRef.current.filter((b) => b.id !== id)), [commitBowls]);
+  const setBellEveryMin = useCallback((min: number) => {
+    const v = Number.isFinite(min) ? Math.max(0, Math.min(60, Math.round(min))) : 0;
+    bellRef.current = v;
+    // Re-base the period counter so a change mid-session never rings at once.
+    lastBellIdxRef.current = v > 0 ? Math.floor(elapsedRef.current / (v * 60)) : -1;
+    setBellEveryMinState(v);
     setDirty(true);
   }, []);
   // Section bypass for the nature/bowl layers: click-free ramp on the
@@ -763,11 +812,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     engineRef.current.setLayersBypass(on);
     setDirty(true);
   }, []);
-  // Bowl "detune to carrier" lock.
+  // Bowl "detune to carrier" lock: locked bowls re-tune when the carrier moves.
   useEffect(() => {
-    if (bowl.on && bowl.lock) engineRef.current.setBowl(true, carrierHz, bowl.db);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [carrierHz, bowl.lock, bowl.on]);
+    if (bowlsRef.current.some((b) => b.on && b.lock)) engineRef.current.setBowls(liveBowlsFrom(bowlsRef.current, carrierHz));
+  }, [carrierHz]);
   const setVolumeDb = useCallback(
     (db: number) => {
       // The governor gain cap (−6 dBFS default) and the infant ceiling are
@@ -926,8 +974,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       engineRef.current.setNoiseBypass(panel.noiseOn);
       setNatureState(panel.nature);
       engineRef.current.setNature(panel.nature.on ? panel.nature.kind : null, panel.nature.db);
-      setBowlState(panel.bowl);
-      engineRef.current.setBowl(panel.bowl.on, panel.bowl.lock ? panel.carrierHz : panel.bowl.baseHz, panel.bowl.db);
+      bowlsRef.current = panel.bowls;
+      setBowlsState(panel.bowls);
+      engineRef.current.setBowls(liveBowlsFrom(panel.bowls, panel.carrierHz));
+      bellRef.current = panel.bellEveryMin;
+      lastBellIdxRef.current = panel.bellEveryMin > 0 ? Math.floor(elapsedRef.current / (panel.bellEveryMin * 60)) : -1;
+      setBellEveryMinState(panel.bellEveryMin);
       setLayersOnState(panel.layersOn);
       engineRef.current.setLayersBypass(panel.layersOn);
       if (!running) {
@@ -959,8 +1011,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     engineRef.current.setNoiseBypass(true);
     setNatureState(d.nature);
     engineRef.current.setNature(null, d.nature.db);
-    setBowlState(d.bowl);
-    engineRef.current.setBowl(false, d.bowl.baseHz, d.bowl.db);
+    const freshBowls = d.bowls.map((b) => ({ ...b }));
+    bowlsRef.current = freshBowls;
+    setBowlsState(freshBowls);
+    engineRef.current.setBowls([]);
+    bellRef.current = d.bellEveryMin;
+    lastBellIdxRef.current = -1;
+    setBellEveryMinState(d.bellEveryMin);
     setLayersOnState(true);
     engineRef.current.setLayersBypass(true);
     if (!running) {
@@ -992,7 +1049,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       noiseDb: Object.fromEntries(Object.entries(noiseDb).filter(([, db]) => Number.isFinite(db))) as Partial<Record<NoiseColor, number>>,
       noiseOn,
       nature,
-      bowl,
+      bowls: bowls.map(({ id: _id, ...b }) => b),
+      bellEveryMin,
       layersOn,
       limitMin,
       fadeOutSec,
@@ -1000,7 +1058,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     };
     if (typeof window === 'undefined') return `#s=${encodeShare(state)}`;
     return shareUrl(state, window.location.origin, import.meta.env.BASE_URL);
-  }, [mode, carrierHz, waveform, phases, noiseDb, noiseOn, nature, bowl, layersOn, limitMin, fadeOutSec, presetName]);
+  }, [mode, carrierHz, waveform, phases, noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn, limitMin, fadeOutSec, presetName]);
 
   /**
    * Preview playback level: at most −12 dB, never above the governor gain cap,
@@ -1152,7 +1210,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setExportError(null);
       try {
         // Bypassed sections are omitted from the export (see buildExportPhases).
-        const enginePhases = buildExportPhases(phases, carrierHz, mode, { noiseDb, noiseOn, nature, bowl, layersOn });
+        const enginePhases = buildExportPhases(phases, carrierHz, mode, { noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn });
         const spec = buildExportSpec(presetName ?? 'Open Sync session', enginePhases, { maxSec: limitMin * 60, masterGainDb: -6 });
         const format = options.format ?? 'pcm16';
         const result = await renderExportAsync(spec, format);
@@ -1166,7 +1224,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setExporting(false);
       }
     },
-    [phases, carrierHz, mode, noiseDb, noiseOn, bowl, nature, layersOn, presetName, limitMin],
+    [phases, carrierHz, mode, noiseDb, noiseOn, bowls, bellEveryMin, nature, layersOn, presetName, limitMin],
   );
 
   // ---- warnings (engine guardrails) ------------------------------------------
@@ -1204,7 +1262,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       noiseDb,
       noiseOn,
       nature,
-      bowl,
+      bowls,
+      bellEveryMin,
       layersOn,
       phases,
       activePhaseIdx,
@@ -1253,6 +1312,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setNoiseOn,
       setNature,
       setBowl,
+      addBowl,
+      removeBowl,
+      setBowls,
+      setBellEveryMin,
       setLayersOn,
       setVolumeDb,
       setMuted,
@@ -1273,13 +1336,13 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     }),
     [
       mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, running, paused, interrupted, fading, fadeEndsAtSec, panicked,
-      elapsedSec, limitMin, fadeOutSec, volumeDb, muted, warnings, noiseDb, noiseOn, nature, bowl, layersOn, phases,
+      elapsedSec, limitMin, fadeOutSec, volumeDb, muted, warnings, noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn, phases,
       activePhaseIdx, dosePercent, governor, authorization, startBlocked, advisoryOpen, advisoryPendingStart, presetName, presetGrade, dirty,
       userPresets, exporting, exportError, previewId, togglePreview, stopPreview, previewPreset, previewPhases,
       previewUrl, previewTone, start, stop, togglePause, panic, rehearsePanic, resumeSafely, dismissPanic,
       startSleepFade, cancelSleepFade, setFadeOutSec, acknowledgeAdvisory, openAdvisory, closeAdvisory, setMode,
       setCarrierHz, setBeatHz, setWaveform, setGateDuty, setGateShape, setNoiseDb, setNoiseOn, setNature, setBowl,
-      setLayersOn, setVolumeDb, setMuted, setLimitMin, setGovernor, setPhases, saveCurrentAsPreset,
+      addBowl, removeBowl, setBowls, setBellEveryMin, setLayersOn, setVolumeDb, setMuted, setLimitMin, setGovernor, setPhases, saveCurrentAsPreset,
       deleteUserPresetById, loadPreset, loadFrequency, previewHz, exportWav, getShareLink, applyShare, resetFrontPanel, resetDoseLog,
     ],
   );

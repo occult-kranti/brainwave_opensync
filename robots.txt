@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /previews/
-Disallow: /stimulus_pack/
 
 Sitemap: https://occult-kranti.github.io/brainwave_opensync/sitemap.xml

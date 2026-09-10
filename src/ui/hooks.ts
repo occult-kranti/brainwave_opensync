@@ -104,7 +104,13 @@ export function useWakeLock(active: boolean): void {
     const acquire = async () => {
       if (disposed || document.visibilityState !== 'visible') return;
       try {
-        sentinel = await api.request('screen');
+        const lock = await api.request('screen');
+        if (disposed) {
+          // The session ended while the request was in flight — never keep a dead lock.
+          void lock.release().catch(() => {});
+          return;
+        }
+        sentinel = lock;
       } catch {
         sentinel = null; // low battery / policy — silently degrade
       }

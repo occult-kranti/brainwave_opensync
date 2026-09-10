@@ -29,6 +29,8 @@ export interface SessionSnapshot {
   interrupted: boolean;
   /** True while the sleep fade is ramping the output to silence. */
   fading: boolean;
+  /** Session-clock second at which the active fade reaches silence (null when not fading). */
+  fadeEndsAtSec: number | null;
   panicked: boolean;
   elapsedSec: number;
   limitMin: number;

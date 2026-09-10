@@ -98,7 +98,8 @@ export default function Studio() {
   };
 
   const fadeStartsAtSec = Math.max(0, s.limitMin * 60 - s.fadeOutSec);
-  const remainingSec = Math.max(0, s.limitMin * 60 - s.elapsedSec);
+  // Countdown to silence: the fade's own end (manual or limit), not the limit.
+  const remainingSec = Math.max(0, (s.fadeEndsAtSec ?? s.limitMin * 60) - s.elapsedSec);
 
   const limitPct = Math.min(100, (s.elapsedSec / (s.limitMin * 60)) * 100);
 

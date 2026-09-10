@@ -110,3 +110,28 @@ describe('advisory acknowledgment', () => {
     expect(readAdvisoryAck(st)).toBe(true);
   });
 });
+
+describe('persistence — v2.0.1 hardening', () => {
+  it('a persisted infant panel cannot exceed the infant caps', () => {
+    const s = sanitizeFrontPanel({ ...defaults, infantMode: true, limitMin: 90, volumeDb: -6 }, defaults);
+    expect(s.infantMode).toBe(true);
+    expect(s.limitMin).toBe(45);
+    expect(s.volumeDb).toBe(-26);
+    const n = sanitizeFrontPanel({ ...defaults, infantMode: false, limitMin: 90, volumeDb: -6 }, defaults);
+    expect(n.limitMin).toBe(90);
+    expect(n.volumeDb).toBe(-6);
+  });
+
+  it('drops phantom dose rows from the future and caps a single row at the window', () => {
+    const now = 1_800_000_000_000;
+    const log = [
+      { t: now + 3 * 3600 * 1000, dbA: 60, seconds: 100 }, // clock jumped backwards → phantom
+      { t: now - 1000, dbA: 58, seconds: 10 * 24 * 3600 }, // absurd length
+      { t: now - 5000, dbA: 58, seconds: 5 },
+    ];
+    const pruned = pruneDose(log, now);
+    expect(pruned).toHaveLength(2);
+    expect(pruned[0].seconds).toBe(7 * 24 * 3600);
+    expect(pruned[1]).toEqual({ t: now - 5000, dbA: 58, seconds: 5 });
+  });
+});

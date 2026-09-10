@@ -82,13 +82,15 @@ export function loadUserPresets(storage: StorageLike | null = defaultStorage()):
   }
 }
 
-function persist(presets: UserPreset[], storage: StorageLike | null): void {
-  if (!storage) return;
+/** Write the list; false when storage is missing, full or blocked (the in-memory list still stands). */
+function persist(presets: UserPreset[], storage: StorageLike | null): boolean {
+  if (!storage) return false;
   try {
     const file: UserPresetFile = { version: USER_PRESETS_VERSION, presets };
     storage.setItem(USER_PRESETS_STORAGE_KEY, JSON.stringify(file));
+    return true;
   } catch {
-    /* storage full/blocked — keep the in-memory list, don't crash the modal */
+    return false;
   }
 }
 
@@ -103,7 +105,7 @@ export function saveUserPreset(
   name: string,
   spec: SessionSpec,
   storage: StorageLike | null = defaultStorage(),
-): { presets: UserPreset[]; preset: UserPreset; replaced: boolean } {
+): { presets: UserPreset[]; preset: UserPreset; replaced: boolean; persisted: boolean } {
   const clean = name.trim() || 'Untitled session';
   const presets = loadUserPresets(storage);
   const idx = presets.findIndex((p) => p.name.trim().toLowerCase() === clean.toLowerCase());
@@ -117,8 +119,8 @@ export function saveUserPreset(
           createdAt: new Date().toISOString(),
         };
   const next = idx >= 0 ? presets.map((p, i) => (i === idx ? preset : p)) : [...presets, preset];
-  persist(next, storage);
-  return { presets: next, preset, replaced: idx >= 0 };
+  const persisted = persist(next, storage);
+  return { presets: next, preset, replaced: idx >= 0, persisted };
 }
 
 /** Delete by id. Returns the remaining list (also persisted). */

@@ -69,7 +69,7 @@ Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-sour
 
 ## Run it locally
 
-Requirements: **Node.js 20+** (22 recommended).
+Requirements: **Node.js 20.19+ or 22.12+** (22 LTS recommended — Vite 7 needs it).
 
 ```bash
 git clone https://github.com/occult-kranti/brainwave_opensync.git

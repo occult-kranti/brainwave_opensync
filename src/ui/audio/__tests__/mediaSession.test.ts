@@ -60,3 +60,12 @@ describe('MediaSessionBridge', () => {
     expect(document.querySelector('audio')).toBeNull();
   });
 });
+
+describe('MediaSessionBridge keep-alive length', () => {
+  it('uses a clip longer than 5 s so Chromium treats it as controllable, persistent media', async () => {
+    const { KEEPALIVE_SEC, silentWavDataUri } = await import('../mediaSession');
+    expect(KEEPALIVE_SEC).toBeGreaterThan(5);
+    const bytes = Uint8Array.from(atob(silentWavDataUri().split(',')[1]), (c) => c.charCodeAt(0));
+    expect(bytes.length).toBe(44 + KEEPALIVE_SEC * 8000);
+  });
+});

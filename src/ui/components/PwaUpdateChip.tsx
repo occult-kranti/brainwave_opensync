@@ -6,10 +6,10 @@
 
 import { useEffect, useState } from 'react';
 import { RefreshCw } from 'lucide-react';
-import { PWA_UPDATE_EVENT, applyPwaUpdate } from '@/app/pwa';
+import { PWA_UPDATE_EVENT, applyPwaUpdate, hasPendingPwaUpdate } from '@/app/pwa';
 
 export function PwaUpdateChip() {
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(hasPendingPwaUpdate);
   useEffect(() => {
     const on = () => setReady(true);
     window.addEventListener(PWA_UPDATE_EVENT, on);

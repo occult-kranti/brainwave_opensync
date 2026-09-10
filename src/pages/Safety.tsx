@@ -306,7 +306,7 @@ export default function Safety() {
                   s.setVolumeDb(Math.min(s.volumeDb, -40));
                   s.setLimitMin(20);
                 }
-                confirm(!s.governor.infantMode ? 'INFANT MODE ON — CAPPED −40 dBFS / 20:00' : 'INFANT MODE OFF');
+                confirm(!s.governor.infantMode ? 'INFANT MODE ON — SET −40 dBFS / 20:00 · CEILING −26 dBFS / 45:00' : 'INFANT MODE OFF');
               }}
             >
               {s.governor.infantMode ? 'ON' : 'OFF'}

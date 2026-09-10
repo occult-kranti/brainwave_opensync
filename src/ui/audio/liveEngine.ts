@@ -14,10 +14,15 @@
  *   noiseBus  ──┼─▶ bus ─┬─▶ directGain ─────────────┬─▶ master ─▶ spectrum analyser ─▶ destination
  *   layerBus  ──┘        └─▶ infantFilter ─▶ filterGain ┘      └─▶ splitter ─▶ L/R analysers
  *
+ *   previews ──▶ previewBus ─┬─▶ previewDirect ──────────────────┬─▶ destination
+ *                            └─▶ previewFilter ─▶ previewFiltered ┘
+ *
  * The infant path is a 1 kHz low-pass (governor INFANT_MAX_LOWPASS_HZ) that is
  * cross-faded in with equal-power gains, so toggling infant mode mid-session
- * never clicks. Section buses let the Studio bypass a whole section (noise
- * mixer / nature+bowl layers) with a 50 ms ramp and no source restarts.
+ * never clicks. Previews have their own copy of that split so they stay
+ * audible while the session is stopped (master is 0) yet still honor infant
+ * mode. Section buses let the Studio bypass a whole section (noise mixer /
+ * nature+bowl layers) with a 50 ms ramp and no source restarts.
  */
 
 import {
@@ -45,12 +50,16 @@ export interface LiveEngineConfig {
 }
 
 /**
- * Engine → UI notifications. `interrupted`: the OS suspended the context
- * behind our back (phone call, iOS audio-session steal, Bluetooth handoff);
- * the engine has flipped itself to paused so the UI must show PAUSED and
- * offer resume. `fade-done`: a scheduled fade-out reached silence.
+ * Engine → UI notifications.
+ *  - `interrupted`: the OS suspended the context behind our back (phone call,
+ *    iOS audio-session steal, Bluetooth handoff); the engine has flipped
+ *    itself to paused and hard-muted the master, so a platform auto-resume
+ *    stays silent until the user presses RESUME.
+ *  - `fade-done`: a scheduled fade-out reached silence and the engine stopped.
+ *  - `fade-cancelled`: a fade was dropped by pause / interruption (never by
+ *    the user's own cancel, which the UI already knows about).
  */
-export type LiveEngineEvent = 'interrupted' | 'fade-done';
+export type LiveEngineEvent = 'interrupted' | 'fade-done' | 'fade-cancelled';
 export type LiveEngineListener = (event: LiveEngineEvent) => void;
 
 const NOISE_COLORS: NoiseColor[] = ['white', 'pink', 'brown', 'blue', 'violet', 'grey'];
@@ -58,8 +67,23 @@ const NOISE_COLORS: NoiseColor[] = ['white', 'pink', 'brown', 'blue', 'violet', 
 const NOISE_SCALE = 0.25;
 /** Fade-outs ramp linearly in dB down to this floor, then snap to true 0. */
 const FADE_FLOOR_LIN = 1e-3; // −60 dB
+const FADE_FLOOR_DB = -60;
 /** Number of linear segments approximating the dB-linear fade curve. */
 const FADE_SEGMENTS = 12;
+/** Layer sources ramp to 0 with this time constant before they are stopped (no pop). */
+const LAYER_RELEASE_TC = 0.02;
+const LAYER_RELEASE_MS = 120;
+
+interface LayerNode {
+  src: AudioBufferSourceNode;
+  gain: GainNode;
+}
+
+interface FadeState {
+  t0: number;
+  sec: number;
+  fromDb: number;
+}
 
 function resolveCtx(): AudioContext | null {
   const g = globalThis as { AudioContext?: typeof AudioContext; webkitAudioContext?: typeof AudioContext };
@@ -93,14 +117,19 @@ export class LiveEngine {
   private filterGain: GainNode | null = null;
   private infantFilter: BiquadFilterNode | null = null;
   private infantOn = false;
+  /** Preview path with its own infant split (independent of master). */
+  private previewBus: GainNode | null = null;
+  private previewDirect: GainNode | null = null;
+  private previewFiltered: GainNode | null = null;
+  private previewFilter: BiquadFilterNode | null = null;
   /** Desired layer state, remembered even before the AudioContext exists
    * (v1 dropped mixer moves made while idle). Applied on every start(). */
   private noiseLevels = new Map<NoiseColor, number>();
   private natureState: { kind: NatureKind | null; db: number } = { kind: null, db: -Infinity };
   private bowlState: { enabled: boolean; baseHz: number; db: number } = { enabled: false, baseHz: 136.1, db: -Infinity };
-  private noiseNodes = new Map<NoiseColor, { src: AudioBufferSourceNode; gain: GainNode }>();
+  private noiseNodes = new Map<NoiseColor, LayerNode>();
   private noiseBuffers = new Map<NoiseColor, AudioBuffer>();
-  private layerNodes: { nature?: AudioBufferSourceNode; bowl?: AudioBufferSourceNode } = {};
+  private layerNodes: { nature?: LayerNode; bowl?: LayerNode } = {};
   /** One-shot preview sources (playBuffer) so panic/stop can cut them too. */
   private previewSrcs = new Set<AudioBufferSourceNode>();
   private listeners = new Set<LiveEngineListener>();
@@ -108,7 +137,12 @@ export class LiveEngine {
   private paused = false;
   /** True while a scheduled fade-out owns the master gain (volume changes are deferred). */
   private fading = false;
+  private fade: FadeState | null = null;
   private fadeTimer: number | null = null;
+  /** pause() suspends the context 90 ms after its ramp; the timer is cancellable. */
+  private pauseTimer: number | null = null;
+  /** True between our own ctx.suspend() and its statechange — not an OS interruption. */
+  private suspendPending = false;
   private config: LiveEngineConfig = {
     mode: 'binaural',
     carrierHz: 200,
@@ -130,6 +164,12 @@ export class LiveEngine {
 
   get isFading(): boolean {
     return this.fading;
+  }
+
+  /** Seconds until the active fade reaches silence (null when not fading). */
+  get fadeRemainingSec(): number | null {
+    if (!this.fading || !this.fade || !this.ctx) return null;
+    return Math.max(0, this.fade.t0 + this.fade.sec - this.ctx.currentTime);
   }
 
   get context(): AudioContext | null {
@@ -167,7 +207,8 @@ export class LiveEngine {
     if (!ctx) return null;
     this.ctx = ctx;
     // Gain creation order is part of the contract with the engine tests:
-    // 0 bus, 1 master, 2 noiseBus, 3 layerBus, 4 directGain, 5 filterGain.
+    // 0 bus, 1 master, 2 noiseBus, 3 layerBus, 4 directGain, 5 filterGain,
+    // 6 previewBus, 7 previewDirect, 8 previewFiltered.
     this.bus = ctx.createGain();
     this.master = ctx.createGain();
     this.master.gain.value = 0;
@@ -185,22 +226,34 @@ export class LiveEngine {
     this.layerBus.gain.value = this.layersBypassed ? 0 : 1;
     this.layerBus.connect(this.bus);
     // Infant low-pass path (cross-faded with the direct path).
+    const canFilter = typeof ctx.createBiquadFilter === 'function';
     this.directGain = ctx.createGain();
     this.filterGain = ctx.createGain();
     this.bus.connect(this.directGain);
     this.directGain.connect(this.master);
-    if (typeof ctx.createBiquadFilter === 'function') {
-      this.infantFilter = ctx.createBiquadFilter();
-      this.infantFilter.type = 'lowpass';
-      this.infantFilter.frequency.value = INFANT_MAX_LOWPASS_HZ;
-      this.infantFilter.Q.value = Math.SQRT1_2;
+    if (canFilter) {
+      this.infantFilter = this.makeLowpass(ctx);
       this.bus.connect(this.infantFilter);
       this.infantFilter.connect(this.filterGain);
       this.filterGain.connect(this.master);
     }
+    // Preview path — same split, straight to the output.
+    this.previewBus = ctx.createGain();
+    this.previewDirect = ctx.createGain();
+    this.previewFiltered = ctx.createGain();
+    this.previewBus.connect(this.previewDirect);
+    this.previewDirect.connect(ctx.destination);
+    if (canFilter) {
+      this.previewFilter = this.makeLowpass(ctx);
+      this.previewBus.connect(this.previewFilter);
+      this.previewFilter.connect(this.previewFiltered);
+      this.previewFiltered.connect(ctx.destination);
+    }
     const infantActive = this.infantOn && this.infantFilter !== null;
     this.directGain.gain.value = infantActive ? 0 : 1;
     this.filterGain.gain.value = infantActive ? 1 : 0;
+    this.previewDirect.gain.value = infantActive ? 0 : 1;
+    this.previewFiltered.gain.value = infantActive ? 1 : 0;
     const splitter = ctx.createChannelSplitter(2);
     this.master.connect(splitter);
     this.anaL = ctx.createAnalyser();
@@ -217,16 +270,42 @@ export class LiveEngine {
     return ctx;
   }
 
+  private makeLowpass(ctx: AudioContext): BiquadFilterNode {
+    const f = ctx.createBiquadFilter();
+    f.type = 'lowpass';
+    f.frequency.value = INFANT_MAX_LOWPASS_HZ;
+    f.Q.value = Math.SQRT1_2;
+    return f;
+  }
+
   /** Called by the platform when the AudioContext state changes. */
   private handleStateChange(): void {
     const ctx = this.ctx;
     if (!ctx) return;
     const state = ctx.state as string;
-    const stalled = state === 'suspended' || state === 'interrupted';
-    if (stalled && this.running && !this.paused) {
-      // Not our pause(): treat as an external interruption, hold the clock.
+    if (state === 'running') {
+      this.suspendPending = false;
+      return;
+    }
+    const stalled = state === 'suspended' || state === 'interrupted' || state === 'closed';
+    if (!stalled) return;
+    if (this.suspendPending && state === 'suspended') {
+      // Our own pause() landing — not an interruption.
+      this.suspendPending = false;
+      return;
+    }
+    if (this.running && !this.paused) {
+      // External interruption: hold the clock and hard-mute. The context is
+      // not rendering, so an instant set cannot click; it guarantees that a
+      // platform auto-resume (end of call, unlock) stays silent until the
+      // user presses RESUME.
       this.paused = true;
-      this.clearFade();
+      this.clearPauseTimer();
+      this.clearFade(true);
+      if (this.master) {
+        this.master.gain.cancelScheduledValues(ctx.currentTime);
+        this.master.gain.value = 0;
+      }
       this.emit('interrupted');
     }
   }
@@ -313,8 +392,22 @@ export class LiveEngine {
     return buf;
   }
 
-  private teardownTone(): void {
-    for (const n of [this.oscL, this.oscR, this.gateSrc]) {
+  /** Detach the current tone chain from the engine fields and return it for teardown. */
+  private detachTone(): { sources: (OscillatorNode | AudioBufferSourceNode | null)[]; nodes: (AudioNode | null)[] } {
+    const captured = {
+      sources: [this.oscL, this.oscR, this.gateSrc],
+      nodes: [this.gateGain, this.gL, this.gR, this.merger],
+    };
+    this.oscL = this.oscR = null;
+    this.gateSrc = null;
+    this.gateGain = null;
+    this.gL = this.gR = null;
+    this.merger = null;
+    return captured;
+  }
+
+  private static stopChain(chain: { sources: (OscillatorNode | AudioBufferSourceNode | null)[]; nodes: (AudioNode | null)[] }): void {
+    for (const n of chain.sources) {
       if (n) {
         try {
           n.stop();
@@ -324,22 +417,33 @@ export class LiveEngine {
         n.disconnect();
       }
     }
-    this.gateGain?.disconnect();
-    this.gL?.disconnect();
-    this.gR?.disconnect();
-    this.merger?.disconnect();
-    this.oscL = this.oscR = null;
-    this.gateSrc = null;
-    this.gateGain = null;
-    this.gL = this.gR = null;
-    this.merger = null;
+    for (const n of chain.nodes) n?.disconnect();
   }
 
-  private clearFade(): void {
-    this.fading = false;
+  private teardownTone(): void {
+    LiveEngine.stopChain(this.detachTone());
+  }
+
+  private clearFadeTimer(): void {
     if (this.fadeTimer !== null) {
       window.clearTimeout(this.fadeTimer);
       this.fadeTimer = null;
+    }
+  }
+
+  /** Drop an active fade. `notify` emits fade-cancelled (pause / interruption paths). */
+  private clearFade(notify = false): void {
+    const wasFading = this.fading;
+    this.fading = false;
+    this.fade = null;
+    this.clearFadeTimer();
+    if (wasFading && notify) this.emit('fade-cancelled');
+  }
+
+  private clearPauseTimer(): void {
+    if (this.pauseTimer !== null) {
+      window.clearTimeout(this.pauseTimer);
+      this.pauseTimer = null;
     }
   }
 
@@ -355,6 +459,8 @@ export class LiveEngine {
   start(): boolean {
     const ctx = this.ensureGraph();
     if (!ctx) return false;
+    this.clearPauseTimer();
+    this.suspendPending = false;
     if (ctx.state === 'suspended') void ctx.resume();
     this.clearFade();
     if (!this.running) {
@@ -379,6 +485,8 @@ export class LiveEngine {
   /** Gentle stop with a short fade (normal stop path). */
   stop(fadeSec = 0.15): void {
     this.paused = false;
+    this.clearPauseTimer();
+    this.suspendPending = false;
     this.clearFade();
     if (!this.ctx || !this.master) return;
     const t = this.ctx.currentTime;
@@ -386,7 +494,47 @@ export class LiveEngine {
     this.master.gain.setValueAtTime(this.master.gain.value, t);
     this.master.gain.linearRampToValueAtTime(0, t + fadeSec);
     this.running = false;
-    window.setTimeout(() => this.teardownTone(), fadeSec * 1000 + 60);
+    // Detach the chain now so a start() inside the fade window builds a fresh
+    // chain the delayed teardown cannot touch.
+    const chain = this.detachTone();
+    window.setTimeout(() => LiveEngine.stopChain(chain), fadeSec * 1000 + 60);
+  }
+
+  /**
+   * Schedule the dB-linear fade curve from `fromLin` to silence over `sec`,
+   * arm the completion timer, and record the fade for countdowns / unmute.
+   */
+  private scheduleFade(fromLin: number, sec: number): void {
+    if (!this.ctx || !this.master) return;
+    const t = this.ctx.currentTime;
+    const p = this.master.gain;
+    p.cancelScheduledValues(t);
+    p.setValueAtTime(p.value, t);
+    const from = Math.max(FADE_FLOOR_LIN, fromLin);
+    const fromDb = 20 * Math.log10(from);
+    if (fromLin <= FADE_FLOOR_LIN) {
+      p.linearRampToValueAtTime(0, t + 0.05);
+    } else {
+      // Piecewise-linear approximation of an exponential (dB-linear) decay —
+      // works on every AudioParam implementation, including test doubles.
+      for (let i = 1; i <= FADE_SEGMENTS; i++) {
+        const k = i / FADE_SEGMENTS;
+        const db = fromDb + (FADE_FLOOR_DB - fromDb) * k;
+        p.linearRampToValueAtTime(Math.pow(10, db / 20), t + sec * k);
+      }
+      p.linearRampToValueAtTime(0, t + sec + 0.05);
+    }
+    this.clearFadeTimer();
+    this.fading = true;
+    this.fade = { t0: t, sec, fromDb };
+    this.fadeTimer = window.setTimeout(() => {
+      this.fadeTimer = null;
+      if (!this.fading) return;
+      this.fading = false;
+      this.fade = null;
+      this.stop(0.05);
+      this.emit('fade-done');
+    }, (sec + 0.1) * 1000);
   }
 
   /**
@@ -394,35 +542,21 @@ export class LiveEngine {
    * so the last minute is not perceptually abrupt), then stop the engine.
    * The session stays `running` until the fade lands — the clock and dose
    * tracker keep ticking on real output — and `fade-done` fires on landing.
-   * No-op when idle or paused. Volume changes during the fade are deferred.
+   * The curve starts from the *current* output level (so re-triggering a fade
+   * mid-fade, or fading inside resumeSafely's ramp-in, never jumps up), and a
+   * muted engine fades straight to 0. No-op when idle or paused.
    */
   fadeOut(fadeSec: number): boolean {
     if (!this.ctx || !this.master || !this.running || this.paused) return false;
     const sec = Math.max(0.05, fadeSec);
-    const t = this.ctx.currentTime;
-    const p = this.master.gain;
-    const from = Math.max(FADE_FLOOR_LIN, this.muted ? FADE_FLOOR_LIN : dbToLin(this.outDb));
-    p.cancelScheduledValues(t);
-    p.setValueAtTime(this.master.gain.value, t);
-    // Piecewise-linear approximation of an exponential (dB-linear) decay —
-    // works on every AudioParam implementation, including test doubles.
-    const fromDb = 20 * Math.log10(from);
-    const floorDb = 20 * Math.log10(FADE_FLOOR_LIN);
-    for (let i = 1; i <= FADE_SEGMENTS; i++) {
-      const k = i / FADE_SEGMENTS;
-      const db = fromDb + (floorDb - fromDb) * k;
-      p.linearRampToValueAtTime(Math.pow(10, db / 20), t + sec * k);
-    }
-    p.linearRampToValueAtTime(0, t + sec + 0.05);
-    this.clearFade();
-    this.fading = true;
-    this.fadeTimer = window.setTimeout(() => {
-      this.fadeTimer = null;
-      if (!this.fading) return;
-      this.fading = false;
-      this.stop(0.05);
-      this.emit('fade-done');
-    }, (sec + 0.1) * 1000);
+    const target = this.muted ? 0 : dbToLin(this.outDb);
+    // AudioParam.value reads back the automated value on real engines; a
+    // readback at/below the floor (just started, or a test double that never
+    // advances) falls back to the nominal level.
+    const readback = this.master.gain.value;
+    const cur = Number.isFinite(readback) && readback > FADE_FLOOR_LIN ? readback : target;
+    const from = this.muted ? 0 : Math.min(cur, target);
+    this.scheduleFade(from, sec);
     return true;
   }
 
@@ -438,11 +572,12 @@ export class LiveEngine {
    * AudioContext so its clock — and every oscillator/gate/noise phase
    * accumulator — freezes in place (player.ts pause semantics applied to the
    * live graph: the position is retained, not rebuilt). Resume continues the
-   * frozen phases, so there is no phase jump. No-op when not running.
+   * frozen phases, so there is no phase jump. Drops an active fade
+   * (fade-cancelled). No-op when not running.
    */
   pause(): void {
     if (!this.ctx || !this.master || !this.running || this.paused) return;
-    this.clearFade();
+    this.clearFade(true);
     const t = this.ctx.currentTime;
     this.master.gain.cancelScheduledValues(t);
     this.master.gain.setValueAtTime(this.master.gain.value, t);
@@ -450,9 +585,14 @@ export class LiveEngine {
     this.paused = true;
     const ctx = this.ctx;
     // Suspend only after the fade has landed, and only if still paused
-    // (stop()/panic()/resume() clear `paused` first, cancelling this).
-    window.setTimeout(() => {
-      if (this.paused && ctx.state === 'running') void ctx.suspend();
+    // (stop()/panic()/resume() clear the timer, cancelling this).
+    this.clearPauseTimer();
+    this.pauseTimer = window.setTimeout(() => {
+      this.pauseTimer = null;
+      if (this.paused && ctx.state === 'running') {
+        this.suspendPending = true;
+        void ctx.suspend();
+      }
     }, 90);
   }
 
@@ -464,6 +604,8 @@ export class LiveEngine {
   resume(): void {
     if (!this.ctx || !this.master || !this.paused) return;
     this.paused = false;
+    this.clearPauseTimer();
+    this.suspendPending = false;
     void this.ctx.resume();
     const t = this.ctx.currentTime;
     const target = this.muted ? 0 : dbToLin(this.outDb);
@@ -475,9 +617,11 @@ export class LiveEngine {
   /** Panic: hard mute at 0 ms — no fade (safety spec: fades are how people get hurt). */
   panic(): void {
     this.paused = false;
+    this.clearPauseTimer();
+    this.suspendPending = false;
     this.clearFade();
-    // Previews bypass the master bus (they connect to destination directly),
-    // so panic must cut them explicitly — panic silences EVERYTHING.
+    // Previews bypass the master bus, so panic must cut them explicitly —
+    // panic silences EVERYTHING.
     this.stopPreviews();
     if (!this.ctx || !this.master) return;
     this.master.gain.cancelScheduledValues(this.ctx.currentTime);
@@ -532,15 +676,37 @@ export class LiveEngine {
     return this.outDb;
   }
 
+  /**
+   * Mute always wins: during a fade the curve is cut to 0 immediately (the
+   * fade timer still stops the engine on schedule); unmuting during a fade
+   * re-issues the remainder of the curve from where it would be now.
+   */
   setMuted(muted: boolean): void {
     this.muted = muted;
+    if (this.fading && this.ctx && this.master) {
+      const t = this.ctx.currentTime;
+      const p = this.master.gain;
+      if (muted) {
+        p.cancelScheduledValues(t);
+        p.setValueAtTime(p.value, t);
+        p.linearRampToValueAtTime(0, t + 0.02);
+      } else if (this.fade) {
+        const elapsed = Math.max(0, t - this.fade.t0);
+        const remaining = Math.max(0.1, this.fade.sec - elapsed);
+        const k = Math.min(1, elapsed / this.fade.sec);
+        const db = this.fade.fromDb + (FADE_FLOOR_DB - this.fade.fromDb) * k;
+        this.scheduleFade(Math.pow(10, db / 20), remaining);
+      }
+      return;
+    }
     this.applyMasterGain(0.02);
   }
 
   /**
    * Infant mode low-pass (≤1 kHz, governor rule): cross-fades the filtered
-   * path in over 50 ms. Returns false when the platform has no BiquadFilter
-   * (the caller should then refuse to authorize an infant session).
+   * path in over 50 ms — on the session path and on the preview path.
+   * Returns false when the platform has no BiquadFilter (the caller should
+   * then refuse to authorize an infant session).
    */
   setInfantFilter(on: boolean): boolean {
     this.infantOn = on;
@@ -549,6 +715,8 @@ export class LiveEngine {
     const t = this.ctx.currentTime;
     this.directGain.gain.setTargetAtTime(on ? 0 : 1, t, 0.05);
     this.filterGain.gain.setTargetAtTime(on ? 1 : 0, t, 0.05);
+    this.previewDirect?.gain.setTargetAtTime(on ? 0 : 1, t, 0.05);
+    this.previewFiltered?.gain.setTargetAtTime(on ? 1 : 0, t, 0.05);
     return true;
   }
 
@@ -616,6 +784,39 @@ export class LiveEngine {
     this.rampSection(this.layerBus, on);
   }
 
+  /** Ramp a layer to silence, then stop and disconnect it (no pop on release). */
+  private releaseLayer(node: LayerNode): void {
+    const ctx = this.ctx;
+    if (!ctx) return;
+    const t = ctx.currentTime;
+    node.gain.gain.cancelScheduledValues(t);
+    node.gain.gain.setTargetAtTime(0, t, LAYER_RELEASE_TC);
+    window.setTimeout(() => {
+      try {
+        node.src.stop();
+      } catch {
+        /* already stopped */
+      }
+      node.src.disconnect();
+      node.gain.disconnect();
+    }, LAYER_RELEASE_MS);
+  }
+
+  private makeLoop(data: Float32Array, gainLin: number, into: AudioNode): LayerNode {
+    const ctx = this.ctx!;
+    const buffer = ctx.createBuffer(1, data.length, ctx.sampleRate);
+    buffer.getChannelData(0).set(data);
+    const src = ctx.createBufferSource();
+    src.buffer = buffer;
+    src.loop = true;
+    const gain = ctx.createGain();
+    gain.gain.value = gainLin;
+    src.connect(gain);
+    gain.connect(into);
+    src.start();
+    return { src, gain };
+  }
+
   /** Set one noise color's level in dB (−Infinity = off). Loops an engine-rendered buffer. */
   setNoiseLevel(color: NoiseColor, db: number): void {
     if (Number.isFinite(db)) this.noiseLevels.set(color, db);
@@ -629,14 +830,8 @@ export class LiveEngine {
     const existing = this.noiseNodes.get(color);
     if (!Number.isFinite(db)) {
       if (existing) {
-        try {
-          existing.src.stop();
-        } catch {
-          /* noop */
-        }
-        existing.src.disconnect();
-        existing.gain.disconnect();
         this.noiseNodes.delete(color);
+        this.releaseLayer(existing);
       }
       return;
     }
@@ -663,9 +858,10 @@ export class LiveEngine {
   }
 
   /**
-   * Play a rendered stereo buffer once, straight to the output (preview tones).
-   * Sources are tracked so stopPreviews()/panic() can cut them; `onEnded`
-   * fires on natural completion (never on a manual stop).
+   * Play a rendered stereo buffer once through the preview path (audible while
+   * the session is stopped; honors infant mode). Sources are tracked so
+   * stopPreviews()/panic() can cut them; `onEnded` fires on natural
+   * completion (never on a manual stop).
    */
   playBuffer(left: Float32Array, right: Float32Array, sampleRate: number, db = -18, onEnded?: () => void): boolean {
     const ctx = this.ensureGraph();
@@ -686,9 +882,7 @@ export class LiveEngine {
     const gain = ctx.createGain();
     gain.gain.value = dbToLin(db);
     src.connect(gain);
-    // Route previews straight to the output so they are audible even when the
-    // session engine is stopped (master gain is 0 while stopped).
-    gain.connect(ctx.destination);
+    gain.connect(this.previewBus ?? ctx.destination);
     this.previewSrcs.add(src);
     src.start();
     return true;
@@ -704,27 +898,11 @@ export class LiveEngine {
     const ctx = this.ctx;
     if (!ctx || !this.bus) return;
     if (this.layerNodes.nature) {
-      try {
-        this.layerNodes.nature.stop();
-      } catch {
-        /* noop */
-      }
-      this.layerNodes.nature.disconnect();
+      this.releaseLayer(this.layerNodes.nature);
       this.layerNodes.nature = undefined;
     }
     if (!kind || !Number.isFinite(db)) return;
-    const data = renderNature(kind, 12, ctx.sampleRate);
-    const buffer = ctx.createBuffer(1, data.length, ctx.sampleRate);
-    buffer.getChannelData(0).set(data);
-    const src = ctx.createBufferSource();
-    src.buffer = buffer;
-    src.loop = true;
-    const gain = ctx.createGain();
-    gain.gain.value = dbToLin(db) * 0.5;
-    src.connect(gain);
-    gain.connect(this.layerBus ?? this.bus);
-    src.start();
-    this.layerNodes.nature = src;
+    this.layerNodes.nature = this.makeLoop(renderNature(kind, 12, ctx.sampleRate), dbToLin(db) * 0.5, this.layerBus ?? this.bus);
   }
 
   /** Singing-bowl layer (engine-rendered loop) — routed via layerBus. enabled false = off. */
@@ -737,27 +915,15 @@ export class LiveEngine {
     const ctx = this.ctx;
     if (!ctx || !this.bus) return;
     if (this.layerNodes.bowl) {
-      try {
-        this.layerNodes.bowl.stop();
-      } catch {
-        /* noop */
-      }
-      this.layerNodes.bowl.disconnect();
+      this.releaseLayer(this.layerNodes.bowl);
       this.layerNodes.bowl = undefined;
     }
     if (!enabled || !Number.isFinite(db)) return;
-    const data = renderBowl({ baseHz, level: 1, restrikeSec: 8 }, 8, ctx.sampleRate);
-    const buffer = ctx.createBuffer(1, data.length, ctx.sampleRate);
-    buffer.getChannelData(0).set(data);
-    const src = ctx.createBufferSource();
-    src.buffer = buffer;
-    src.loop = true;
-    const gain = ctx.createGain();
-    gain.gain.value = dbToLin(db) * 0.5;
-    src.connect(gain);
-    gain.connect(this.layerBus ?? this.bus);
-    src.start();
-    this.layerNodes.bowl = src;
+    this.layerNodes.bowl = this.makeLoop(
+      renderBowl({ baseHz, level: 1, restrikeSec: 8 }, 8, ctx.sampleRate),
+      dbToLin(db) * 0.5,
+      this.layerBus ?? this.bus,
+    );
   }
 }
 

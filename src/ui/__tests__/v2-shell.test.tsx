@@ -263,3 +263,149 @@ describe('Studio session tools (SSR smoke)', () => {
     expect(html).toContain('HEADPHONES REQUIRED');
   });
 });
+
+describe('v2.0.1 session-state fixes', () => {
+  it('start() honors a same-tick setVolumeDb/setLimitMin (Quick Lab launcher)', async () => {
+    const outSpy = vi.spyOn(LiveEngine.prototype, 'setOutputDb');
+    await mountShell();
+    act(() => {
+      session.setVolumeDb(-40);
+      session.setLimitMin(12);
+      session.start();
+    });
+    expect(session.running).toBe(true);
+    expect(outSpy).toHaveBeenLastCalledWith(-40);
+    expect(session.volumeDb).toBe(-40);
+    expect(session.limitMin).toBe(12);
+  });
+
+  it('resumeSafely goes through the advisory gate and the governor', async () => {
+    clearAdvisoryAck();
+    await mountShell();
+    act(() => session.rehearsePanic());
+    expect(session.panicked).toBe(true);
+    act(() => session.resumeSafely());
+    expect(session.running).toBe(false);
+    expect(session.advisoryOpen).toBe(true);
+    expect(session.panicked).toBe(false);
+    act(() => session.acknowledgeAdvisory());
+    act(() => session.setGovernor({ infantMode: true })); // no low-pass path in happy-dom → refused
+    act(() => session.rehearsePanic());
+    act(() => session.resumeSafely());
+    expect(session.running).toBe(false);
+    expect(session.startBlocked.join(' ')).toMatch(/low-pass/i);
+  });
+
+  it('a rehearsal is inert while a session runs, and STOP clears a rehearsal', async () => {
+    await mountShell();
+    act(() => void session.start());
+    act(() => session.rehearsePanic());
+    expect(session.panicked).toBe(false);
+    act(() => session.togglePause());
+    expect(session.paused).toBe(true);
+    act(() => session.togglePause());
+    act(() => session.stop());
+    act(() => session.rehearsePanic());
+    expect(session.panicked).toBe(true);
+    act(() => void session.start());
+    expect(session.panicked).toBe(false);
+  });
+
+  it('a fresh START begins at 00:00 even after a manual STOP mid-session', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(3_000);
+    });
+    expect(session.elapsedSec).toBe(3);
+    act(() => session.stop());
+    expect(session.elapsedSec).toBe(3); // readout keeps the last value while stopped
+    act(() => void session.start());
+    expect(session.elapsedSec).toBe(0);
+    expect(session.activePhaseIdx).toBe(0);
+  });
+
+  it('the limit fade is issued once — cancelling it does not re-arm a volume pump', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => {
+      session.setLimitMin(1);
+      session.setFadeOutSec(30);
+    });
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(31_000);
+    });
+    expect(session.fading).toBe(true);
+    expect(session.fadeEndsAtSec).toBe(60);
+    expect(LiveEngine.prototype.fadeOut).toHaveBeenCalledTimes(1);
+    act(() => session.cancelSleepFade());
+    await act(async () => {
+      vi.advanceTimersByTime(5_000);
+    });
+    expect(session.fading).toBe(false);
+    expect(LiveEngine.prototype.fadeOut).toHaveBeenCalledTimes(1);
+    // the limit still ends the session on time
+    await act(async () => {
+      vi.advanceTimersByTime(30_000);
+    });
+    expect(session.running).toBe(false);
+  });
+
+  it('pause drops an active manual fade in the UI too, and the countdown targets the fade end', async () => {
+    vi.useFakeTimers();
+    await mountShell();
+    act(() => void session.start());
+    await act(async () => {
+      vi.advanceTimersByTime(2_000);
+    });
+    act(() => void session.startSleepFade(20));
+    expect(session.fading).toBe(true);
+    expect(session.fadeEndsAtSec).toBe(22);
+    act(() => session.togglePause());
+    expect(session.fading).toBe(false);
+    expect(session.fadeEndsAtSec).toBeNull();
+  });
+
+  it('the Safety Center acknowledgment chip and the START gate share one source of truth', async () => {
+    await mountShell();
+    act(() => session.setGovernor({ drivingWarningAcknowledged: false }));
+    expect(window.localStorage.getItem(STORAGE_KEYS.advisoryAck)).toBeNull();
+    let ok = true;
+    act(() => {
+      ok = session.start();
+    });
+    expect(ok).toBe(false);
+    expect(session.advisoryOpen).toBe(true);
+    act(() => session.closeAdvisory());
+    act(() => session.setGovernor({ drivingWarningAcknowledged: true }));
+    expect(window.localStorage.getItem(STORAGE_KEYS.advisoryAck)).toContain('"at"');
+    act(() => {
+      ok = session.start();
+    });
+    expect(ok).toBe(true);
+  });
+
+  it('previews are held under the infant ceiling and the low-pass path', async () => {
+    const play = vi.spyOn(LiveEngine.prototype, 'playBuffer').mockReturnValue(true);
+    await mountShell();
+    act(() => session.setGovernor({ infantMode: true }));
+    act(() => session.previewHz(440));
+    expect(play).toHaveBeenCalled();
+    const db = play.mock.calls[play.mock.calls.length - 1][3];
+    expect(db).toBeLessThanOrEqual(INFANT_MAX_VOLUME_DB);
+  });
+
+  it('a locked bowl keeps ringing at the carrier when only its level changes', async () => {
+    const bowlSpy = vi.spyOn(LiveEngine.prototype, 'setBowl');
+    await mountShell();
+    act(() => session.setCarrierHz(300));
+    act(() => session.setBowl({ on: true, lock: true }));
+    act(() => session.setBowl({ db: -20 }));
+    const last = bowlSpy.mock.calls[bowlSpy.mock.calls.length - 1];
+    expect(last[0]).toBe(true);
+    expect(last[1]).toBe(300); // never 0
+    expect(last[2]).toBe(-20);
+  });
+});

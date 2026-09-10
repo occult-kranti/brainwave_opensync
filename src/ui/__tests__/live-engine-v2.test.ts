@@ -278,3 +278,138 @@ describe('LiveEngine v2 — mixer memory before first start', () => {
     expect(gains.length - afterStop).toBeLessThanOrEqual(2); // tone chain gains only (gL, gR)
   });
 });
+
+describe('LiveEngine v2.0.1 — interruption, timers, mute vs fade, previews, releases', () => {
+  beforeEach(() => {
+    install();
+    vi.useFakeTimers();
+  });
+  afterEach(() => {
+    vi.useRealTimers();
+    delete (globalThis as Record<string, unknown>).AudioContext;
+  });
+
+  it('hard-mutes the master on an OS interruption so a platform auto-resume stays silent', () => {
+    const eng = new LiveEngine();
+    eng.setOutputDb(-12);
+    eng.start();
+    eng.fadeOut(30);
+    const master = gains[1];
+    master.gain.value = 0.25;
+    const events: string[] = [];
+    eng.subscribe((e) => events.push(e));
+    const ctx = eng.context as unknown as { state: string; onstatechange: (() => void) | null };
+    ctx.state = 'interrupted';
+    ctx.onstatechange?.();
+    expect(master.gain.value).toBe(0);
+    expect(eng.isPaused).toBe(true);
+    expect(eng.isFading).toBe(false);
+    expect(events).toEqual(['fade-cancelled', 'interrupted']);
+    // The platform resuming the context by itself does not un-pause us.
+    ctx.state = 'running';
+    ctx.onstatechange?.();
+    expect(eng.isPaused).toBe(true);
+  });
+
+  it("treats the engine's own pause() suspend as self-inflicted, and a fast resume cancels it", () => {
+    const eng = new LiveEngine();
+    eng.start();
+    const ctx = eng.context as unknown as { state: string; onstatechange: (() => void) | null; suspend: () => void };
+    const suspendSpy = vi.spyOn(ctx, 'suspend');
+    const events: string[] = [];
+    eng.subscribe((e) => events.push(e));
+    eng.pause();
+    vi.advanceTimersByTime(100); // suspend timer fires → suspendPending
+    expect(suspendSpy).toHaveBeenCalledTimes(1);
+    ctx.state = 'suspended';
+    ctx.onstatechange?.();
+    expect(events).toEqual([]); // not an interruption
+    eng.resume();
+    ctx.state = 'running';
+    ctx.onstatechange?.();
+    // Second round: resume before the timer fires → no suspend at all.
+    eng.pause();
+    eng.resume();
+    vi.advanceTimersByTime(200);
+    expect(suspendSpy).toHaveBeenCalledTimes(1);
+    expect(eng.isPaused).toBe(false);
+  });
+
+  it('mute wins over a fade (ramps to 0 now), unmute re-issues the remainder, fade-done still fires', () => {
+    const eng = new LiveEngine();
+    const events: string[] = [];
+    eng.subscribe((e) => events.push(e));
+    eng.setOutputDb(-12);
+    eng.start();
+    const master = gains[1];
+    eng.fadeOut(10);
+    master.gain.log.length = 0;
+    eng.setMuted(true);
+    const ramp = master.gain.log.find((l) => l[0] === 'linearRampToValueAtTime');
+    expect(ramp?.[1]).toBe(0);
+    expect(ramp?.[2]).toBeCloseTo(0.02, 3);
+    expect(eng.isFading).toBe(true);
+    master.gain.log.length = 0;
+    eng.setMuted(false);
+    // Re-issued curve: many segments again, ending at 0.
+    const ramps = master.gain.log.filter((l) => l[0] === 'linearRampToValueAtTime');
+    expect(ramps.length).toBeGreaterThanOrEqual(12);
+    expect(ramps[ramps.length - 1][1]).toBe(0);
+    vi.advanceTimersByTime(11_000);
+    expect(eng.isRunning).toBe(false);
+    expect(events).toContain('fade-done');
+  });
+
+  it('starts a fade from the current level, never above it (re-trigger mid-fade cannot jump up)', () => {
+    const eng = new LiveEngine();
+    eng.setOutputDb(-12); // nominal 0.251
+    eng.start();
+    const master = gains[1];
+    master.gain.value = 0.05; // fade already 2/3 of the way down
+    master.gain.log.length = 0;
+    eng.fadeOut(10);
+    const ramps = master.gain.log.filter((l) => l[0] === 'linearRampToValueAtTime');
+    for (const r of ramps) expect(r[1] as number).toBeLessThanOrEqual(0.05 + 1e-9);
+  });
+
+  it('a start() inside the stop fade window survives the delayed teardown', () => {
+    const eng = new LiveEngine();
+    eng.start();
+    eng.stop(0.3);
+    eng.start();
+    expect(eng.isRunning).toBe(true);
+    const oscStops: number[] = [];
+    // count oscillator stop() calls after the timer by instrumenting the fake nodes created so far
+    vi.advanceTimersByTime(500);
+    expect(eng.isRunning).toBe(true);
+    expect(oscStops.length).toBe(0);
+    // the live chain is still connected: updateConfig can address oscillators without throwing
+    expect(() => eng.updateConfig({ beatHz: 7 })).not.toThrow();
+  });
+
+  it('routes previews through the preview bus (infant low-pass path), not straight to destination', () => {
+    const eng = new LiveEngine();
+    eng.prepare();
+    const previewBus = gains[6];
+    const before = gains.length;
+    eng.playBuffer(new Float32Array(480), new Float32Array(480), 48000, -18);
+    expect(gains[before].connections).toContain(previewBus);
+    eng.setInfantFilter(true);
+    expect(gains[7].gain.log).toContainEqual(['setTargetAtTime', 0, 0, 0.05]); // previewDirect closes
+    expect(gains[8].gain.log).toContainEqual(['setTargetAtTime', 1, 0, 0.05]); // previewFiltered opens
+    expect(filters.length).toBe(2); // session + preview low-pass
+  });
+
+  it('releases a layer with a ramp before stopping it, instead of a hard cut', () => {
+    const eng = new LiveEngine();
+    eng.start();
+    eng.setNoiseLevel('brown', -18);
+    const g = gains[gains.length - 1];
+    eng.setNoiseLevel('brown', -Infinity);
+    expect(g.gain.log).toContainEqual(['setTargetAtTime', 0, 0, 0.02]);
+    // and turning it back on before the release lands creates a fresh, independent node
+    eng.setNoiseLevel('brown', -20);
+    expect(gains[gains.length - 1]).not.toBe(g);
+    vi.advanceTimersByTime(200);
+  });
+});

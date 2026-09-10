@@ -80,10 +80,13 @@ import {
   type DoseLogEntry,
   type FrontPanel,
 } from './sessionPersistence';
+import { STORAGE_KEYS, removeKey } from '@/lib/storage';
+import { flushDeferredPwaReload, setPwaReloadGuard } from '@/app/pwa';
 import { encodeShare, shareFromHash, shareUrl, type ShareState } from './shareLink';
 
-/** Merge a share payload over a front panel. */
+/** Merge a share payload over a front panel. A share never loosens the infant caps of the panel it lands on. */
 function panelFromShare(base: FrontPanel, s: ShareState): FrontPanel {
+  const limitCap = base.infantMode ? INFANT_MAX_SESSION_MIN : 90;
   return {
     ...base,
     mode: s.mode,
@@ -96,7 +99,7 @@ function panelFromShare(base: FrontPanel, s: ShareState): FrontPanel {
     nature: { ...s.nature },
     bowl: { ...s.bowl },
     layersOn: s.layersOn,
-    limitMin: s.limitMin,
+    limitMin: Math.min(s.limitMin, limitCap),
     fadeOutSec: s.fadeOutSec,
     presetName: s.presetName ?? 'Shared session',
     presetGrade: null,
@@ -174,6 +177,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [paused, setPaused] = useState(false);
   const [interrupted, setInterrupted] = useState(false);
   const [fading, setFading] = useState(false);
+  const [fadeEndsAtSec, setFadeEndsAtSec] = useState<number | null>(null);
   const [panicked, setPanicked] = useState(false);
   const [elapsedSec, setElapsedSec] = useState(0);
   const [limitMin, setLimitMinState] = useState(init.limitMin);
@@ -211,17 +215,29 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const previewStopRef = useRef<(() => void) | null>(null);
   const exportingRef = useRef(false);
 
-  // Latest-value refs for the 1 s clock (avoids the v1 stale-closure limit bug).
+  // Latest-value refs. They are updated synchronously inside the setters (not
+  // only on render) so a same-tick `setVolumeDb(x); setLimitMin(y); start()`
+  // — the Quick Lab arm launcher — authorizes and starts with the new values,
+  // and the 1 s clock never reads a stale limit.
   const limitRef = useRef(limitMin);
-  limitRef.current = limitMin;
   const fadeRef = useRef(fadeOutSec);
   fadeRef.current = fadeOutSec;
   const phasesRef = useRef(phases);
   phasesRef.current = phases;
   const volumeRef = useRef(volumeDb);
-  volumeRef.current = volumeDb;
   const mutedRef = useRef(muted);
-  mutedRef.current = muted;
+  const carrierRef = useRef(carrierHz);
+  carrierRef.current = carrierHz;
+  const governorRef = useRef(governor);
+  governorRef.current = governor;
+  const elapsedRef = useRef(elapsedSec);
+  elapsedRef.current = elapsedSec;
+  const runningRef = useRef(running);
+  runningRef.current = running;
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
+  /** The limit fade is issued at most once per session (a cancel must not re-arm it every tick). */
+  const limitFadeIssuedRef = useRef(false);
 
   const markDirty = useCallback(() => setDirty(true), []);
   /** Latest start() (declared below); read by acknowledgeAdvisory and the media session. */
@@ -261,32 +277,49 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, [governor, limitMin, volumeDb, muted]);
 
   // ---- transport -----------------------------------------------------------
+  /**
+   * Governor check for a live session at `gainDb` with the latest limit /
+   * mute / infant state. Reads refs, never closures, so it is exact in the
+   * same tick as the setters that preceded it. Shared by start() and
+   * resumeSafely().
+   */
+  const authorizeLive = useCallback((gainDb: number): AuthorizationResult => {
+    const eng = engineRef.current;
+    const gov = governorRef.current;
+    eng.prepare();
+    return new SafetyGovernor({ ...gov, drivingWarningAcknowledged: ackRef.current }).authorizeSession({
+      durationMin: limitRef.current,
+      gainDbFs: mutedRef.current ? -60 : gainDb,
+      lowpassHz: gov.infantMode && eng.hasInfantFilter ? INFANT_MAX_LOWPASS_HZ : undefined,
+      autoShutoff: true,
+      targetDbA: gov.infantMode ? gainDb + DBFS_TO_DBA_OFFSET : undefined,
+    });
+  }, []);
+
   const start = useCallback((): boolean => {
     const eng = engineRef.current;
     if (!ackRef.current) {
       setAdvisoryOpen(true);
       return false;
     }
-    eng.prepare();
-    const gov = new SafetyGovernor({ ...governor, drivingWarningAcknowledged: true });
-    const auth = gov.authorizeSession({
-      durationMin: limitMin,
-      gainDbFs: muted ? -60 : volumeDb,
-      lowpassHz: governor.infantMode && eng.hasInfantFilter ? INFANT_MAX_LOWPASS_HZ : undefined,
-      autoShutoff: true,
-      targetDbA: governor.infantMode ? volumeDb + DBFS_TO_DBA_OFFSET : undefined,
-    });
+    const auth = authorizeLive(volumeRef.current);
     if (!auth.ok) {
       setStartBlocked(auth.reasons);
       return false;
     }
-    eng.setOutputDb(volumeDb);
-    eng.setMuted(muted);
-    eng.setInfantFilter(governor.infantMode);
+    eng.setOutputDb(volumeRef.current);
+    eng.setMuted(mutedRef.current);
+    eng.setInfantFilter(governorRef.current.infantMode);
     if (!eng.start()) {
       setStartBlocked(['Web Audio is unavailable in this browser.']);
       return false;
     }
+    // A fresh session starts its clock, phase plan and limit fade from zero.
+    limitFadeIssuedRef.current = false;
+    elapsedRef.current = 0;
+    setElapsedSec(0);
+    setActivePhaseIdx(0);
+    setFadeEndsAtSec(null);
     setStartBlocked([]);
     setRunning(true);
     setPaused(false);
@@ -294,7 +327,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setFading(false);
     setPanicked(false);
     return true;
-  }, [governor, limitMin, volumeDb, muted]);
+  }, [authorizeLive]);
 
   const stop = useCallback(() => {
     engineRef.current.stop(0.3);
@@ -302,6 +335,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setPaused(false);
     setInterrupted(false);
     setFading(false);
+    setFadeEndsAtSec(null);
+    // A rehearsal or a real panic must never survive a normal STOP.
+    setPanicked(false);
     persistDose();
   }, [persistDose]);
 
@@ -313,8 +349,11 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setPaused(false);
       setInterrupted(false);
     } else {
+      // The engine drops an active fade on pause (fade-cancelled) — mirror it.
       engineRef.current.pause();
       setPaused(true);
+      setFading(false);
+      setFadeEndsAtSec(null);
     }
   }, [running, panicked, paused]);
 
@@ -334,17 +373,42 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }, [persistDose]);
 
   const rehearsePanic = useCallback(() => {
-    // Test mode: same visual sequence, no engine bus is touched.
+    // Test mode: same visual sequence, no engine bus is touched. Never while a
+    // session is live — a rehearsal there would freeze pause/resume.
+    if (runningRef.current) return;
     setPanicked(true);
   }, []);
 
+  /**
+   * Resume after a panic at −12 dB below the previous level. Goes through the
+   * same gate as START: advisory acknowledgment, then the governor with the
+   * lowered level (a rehearsal from a fresh device must not start unchecked).
+   * The session clock continues from where the panic cut it — the limit is a
+   * budget, and the time already listened counts.
+   */
   const resumeSafely = useCallback(() => {
+    if (!ackRef.current) {
+      setPanicked(false);
+      setAdvisoryOpen(true);
+      return;
+    }
+    const target = Math.max(-60, volumeRef.current - 12);
+    const auth = authorizeLive(target);
+    if (!auth.ok) {
+      setPanicked(false);
+      setStartBlocked(auth.reasons);
+      return;
+    }
+    engineRef.current.setInfantFilter(governorRef.current.infantMode);
     const db = engineRef.current.resumeSafely();
+    volumeRef.current = db;
     setVolumeDbState(db);
+    setStartBlocked([]);
     setRunning(true);
     setPaused(false);
+    setInterrupted(false);
     setPanicked(false);
-  }, []);
+  }, [authorizeLive]);
 
   const dismissPanic = useCallback(() => setPanicked(false), []);
 
@@ -356,7 +420,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         return true;
       }
       const ok = engineRef.current.fadeOut(s);
-      if (ok) setFading(true);
+      if (ok) {
+        setFading(true);
+        setFadeEndsAtSec(elapsedRef.current + s);
+      }
       return ok;
     },
     [stop],
@@ -365,6 +432,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const cancelSleepFade = useCallback(() => {
     engineRef.current.cancelFadeOut();
     setFading(false);
+    setFadeEndsAtSec(null);
   }, []);
 
   const setFadeOutSec = useCallback((sec: number) => {
@@ -377,10 +445,17 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       if (ev === 'interrupted') {
         setPaused(true);
         setInterrupted(true);
+        setFading(false);
+        setFadeEndsAtSec(null);
+      } else if (ev === 'fade-cancelled') {
+        setFading(false);
+        setFadeEndsAtSec(null);
       } else if (ev === 'fade-done') {
         setRunning(false);
         setPaused(false);
         setFading(false);
+        setFadeEndsAtSec(null);
+        elapsedRef.current = 0;
         setElapsedSec(0);
         saveDoseLog(doseLogRef.current, Date.now());
       }
@@ -405,8 +480,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         return;
       }
       const fade = fadeRef.current;
-      if (fade > 0 && !engineRef.current.isFading && next >= limitSec - fade) {
-        if (engineRef.current.fadeOut(Math.max(1, limitSec - next))) setFading(true);
+      if (fade > 0 && !limitFadeIssuedRef.current && next >= limitSec - fade) {
+        // Issued once per session: a CANCEL inside the window must not turn
+        // into a volume pump (cancel → re-arm → cancel …). After a cancel the
+        // limit simply stops the session on time.
+        limitFadeIssuedRef.current = true;
+        if (!engineRef.current.isFading && engineRef.current.fadeOut(Math.max(1, limitSec - next))) {
+          setFading(true);
+          setFadeEndsAtSec(limitSec);
+        }
       }
       // Phase plan drives the live beat.
       const { beat, idx } = beatAtTime(phasesRef.current, next);
@@ -429,6 +511,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         }
       }
       setDosePercent(doseRef.current.weeklyDosePercent());
+      elapsedRef.current = Math.floor(next);
       setElapsedSec(Math.floor(next));
       if (++ticks % 30 === 0) saveDoseLog(doseLogRef.current, now);
     }, 1000);
@@ -438,16 +521,21 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   // ---- platform integrations ------------------------------------------------
   useWakeLock(running && !paused);
+  // A service-worker update applied in another tab must not reload this one
+  // mid-session; the held reload runs once the session ends.
+  useEffect(() => {
+    setPwaReloadGuard(() => runningRef.current);
+    return () => setPwaReloadGuard(null);
+  }, []);
+  useEffect(() => {
+    if (!running) flushDeferredPwaReload();
+  }, [running]);
 
   startRef.current = start;
   const stopRef = useRef(stop);
   stopRef.current = stop;
   const togglePauseRef = useRef(togglePause);
   togglePauseRef.current = togglePause;
-  const pausedRef = useRef(paused);
-  pausedRef.current = paused;
-  const runningRef = useRef(running);
-  runningRef.current = running;
   const mediaRef = useRef<MediaSessionBridge | null>(null);
   if (!mediaRef.current) {
     mediaRef.current = new MediaSessionBridge({
@@ -463,46 +551,67 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   }
   useEffect(() => {
     const m = mediaRef.current!;
+    // No live beat readout here: a phase-plan glide changes it every second
+    // and would churn the lock-screen notification.
     const info = {
       title: presetName ?? 'Open Sync session',
-      artist: `${mode.toUpperCase()} · ${beatHz.toFixed(2)} Hz`,
+      artist: `${mode.toUpperCase()} · Open Sync`,
     };
     if (running && !paused) m.activate(info);
     else if (running && paused) m.pause(info);
     else m.deactivate();
-  }, [running, paused, presetName, mode, beatHz]);
+  }, [running, paused, presetName, mode]);
   useEffect(() => () => mediaRef.current?.deactivate(), []);
 
-  // ---- front-panel persistence (debounced) -----------------------------------
+  // ---- front-panel persistence (debounced, flushed on hide/unload) ----------
+  const panelRef = useRef<FrontPanel | null>(null);
+  panelRef.current = {
+    mode,
+    carrierHz,
+    beatHz,
+    waveform,
+    phaseLock,
+    gateDuty,
+    gateShape,
+    limitMin,
+    volumeDb,
+    noiseDb,
+    noiseOn,
+    nature,
+    bowl,
+    layersOn,
+    phases,
+    presetName,
+    presetGrade,
+    fadeOutSec,
+    infantMode: governor.infantMode,
+  };
   useEffect(() => {
     const t = window.setTimeout(() => {
-      saveFrontPanel({
-        mode,
-        carrierHz,
-        beatHz,
-        waveform,
-        phaseLock,
-        gateDuty,
-        gateShape,
-        limitMin,
-        volumeDb,
-        noiseDb,
-        noiseOn,
-        nature,
-        bowl,
-        layersOn,
-        phases,
-        presetName,
-        presetGrade,
-        fadeOutSec,
-        infantMode: governor.infantMode,
-      });
+      if (panelRef.current) saveFrontPanel(panelRef.current);
     }, 250);
     return () => window.clearTimeout(t);
   }, [
     mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, limitMin, volumeDb, noiseDb, noiseOn,
     nature, bowl, layersOn, phases, presetName, presetGrade, fadeOutSec, governor.infantMode,
   ]);
+  useEffect(() => {
+    // React never runs effect cleanups on unload, and a backgrounded phone
+    // page may be frozen before a pending timer fires: flush synchronously.
+    const flush = () => {
+      if (panelRef.current) saveFrontPanel(panelRef.current);
+      saveDoseLog(doseLogRef.current, Date.now());
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') flush();
+    };
+    window.addEventListener('pagehide', flush);
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      window.removeEventListener('pagehide', flush);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, []);
 
   // ---- advisory -----------------------------------------------------------------
   const acknowledgeAdvisory = useCallback(
@@ -531,6 +640,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const setCarrierHz = useCallback(
     (hz: number) => {
       const clamped = Math.min(1000, Math.max(20, hz));
+      carrierRef.current = clamped;
       setCarrierState(clamped);
       pushConfig({ carrierHz: clamped });
       markDirty();
@@ -591,7 +701,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const setBowl = useCallback((patch: Partial<BowlLayer>) => {
     setBowlState((cur) => {
       const next = { ...cur, ...patch };
-      engineRef.current.setBowl(next.on, next.lock ? 0 : next.baseHz, next.db);
+      // Locked bowls follow the carrier — resolved here so a level change on
+      // a locked bowl never renders a 0 Hz (silent) bowl.
+      engineRef.current.setBowl(next.on, next.lock ? carrierRef.current : next.baseHz, next.db);
       return next;
     });
     setDirty(true);
@@ -614,12 +726,14 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       // enforced at the fader, not only at START.
       const cap = governor.infantMode ? Math.min(governor.maxGainDbFs, INFANT_MAX_VOLUME_DB) : governor.maxGainDbFs;
       const clamped = Math.max(-60, Math.min(cap, db));
+      volumeRef.current = clamped;
       setVolumeDbState(clamped);
       engineRef.current.setOutputDb(clamped);
     },
     [governor.infantMode, governor.maxGainDbFs],
   );
   const setMuted = useCallback((m: boolean) => {
+    mutedRef.current = m;
     setMutedState(m);
     engineRef.current.setMuted(m);
   }, []);
@@ -628,17 +742,33 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       // Limits only tighten live; loosening applies next session (safety spec).
       const cap = governor.infantMode ? Math.min(governor.maxSessionMin, INFANT_MAX_SESSION_MIN) : governor.maxSessionMin;
       const clamped = Math.max(1, Math.min(cap, Math.round(min)));
-      if (!running || clamped < limitMin) setLimitMinState(clamped);
+      if (!running || clamped < limitMin) {
+        limitRef.current = clamped;
+        setLimitMinState(clamped);
+      }
     },
     [running, limitMin, governor.infantMode, governor.maxSessionMin],
   );
   const setGovernor = useCallback((patch: Partial<GovernorConfig>) => {
+    // The advisory acknowledgment has one writer: keep the synchronous ref and
+    // the persisted record in step with the governor flag (Safety Center chip).
+    if (patch.drivingWarningAcknowledged !== undefined) {
+      ackRef.current = patch.drivingWarningAcknowledged;
+      if (patch.drivingWarningAcknowledged) writeAdvisoryAck();
+      else removeKey(STORAGE_KEYS.advisoryAck);
+    }
+    if (patch.infantMode) {
+      // Infant mode tightens the level and session caps immediately.
+      volumeRef.current = Math.min(volumeRef.current, INFANT_MAX_VOLUME_DB);
+      limitRef.current = Math.min(limitRef.current, INFANT_MAX_SESSION_MIN);
+    }
+    if (patch.maxGainDbFs !== undefined) volumeRef.current = Math.min(volumeRef.current, patch.maxGainDbFs);
     setGovernorState((cur) => {
       const next = { ...cur, ...patch };
+      governorRef.current = next;
       if (patch.infantMode !== undefined && patch.infantMode !== cur.infantMode) {
         engineRef.current.setInfantFilter(patch.infantMode);
         if (patch.infantMode) {
-          // Infant mode tightens the level and session caps immediately.
           setVolumeDbState((v) => {
             const clamped = Math.min(v, INFANT_MAX_VOLUME_DB);
             engineRef.current.setOutputDb(clamped);
@@ -683,7 +813,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setUserPresets(result.presets);
       setPresetName(result.preset.name);
       setPresetGrade(null);
-      setDirty(false);
+      // Storage full/blocked: the preset exists for this tab only — stay dirty
+      // so the unsaved-changes dot keeps telling the truth.
+      setDirty(!result.persisted);
       return result.preset;
     },
     [phases, carrierHz, mode],
@@ -733,7 +865,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
   const applyShare = useCallback(
     (s: ShareState) => {
-      const panel = panelFromShare(DEFAULT_FRONT_PANEL, s);
+      const panel = panelFromShare({ ...DEFAULT_FRONT_PANEL, infantMode: governorRef.current.infantMode }, s);
       setModeState(panel.mode);
       setCarrierState(panel.carrierHz);
       setBeatState(panel.beatHz);
@@ -750,7 +882,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       engineRef.current.setBowl(panel.bowl.on, panel.bowl.lock ? panel.carrierHz : panel.bowl.baseHz, panel.bowl.db);
       setLayersOnState(panel.layersOn);
       engineRef.current.setLayersBypass(panel.layersOn);
-      if (!running) setLimitMinState(panel.limitMin);
+      if (!running) {
+        limitRef.current = panel.limitMin;
+        setLimitMinState(panel.limitMin);
+      }
       setFadeOutSecState(panel.fadeOutSec);
       setPresetName(panel.presetName);
       setPresetGrade(null);
@@ -808,15 +943,29 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     return shareUrl(state, window.location.origin, import.meta.env.BASE_URL);
   }, [mode, carrierHz, waveform, phases, noiseDb, noiseOn, nature, bowl, layersOn, limitMin, fadeOutSec, presetName]);
 
-  const previewHz = useCallback((hz: number) => {
-    // Inaudible values (< 40 Hz) preview as a binaural beat on a 200 Hz carrier.
-    const phase: EnginePhase =
-      hz <= 40
-        ? { durationSec: 2.5, carrierHz: 200, beatHz: Math.max(0.1, hz), mode: 'binaural', gainDb: -14 }
-        : { durationSec: 2.5, carrierHz: Math.min(1200, hz), beatHz: 0, mode: 'monaural', gainDb: -14 };
-    const r = renderPhase(phase, 48000);
-    engineRef.current.playBuffer(r.left, r.right, 48000, -12);
-  }, []);
+  /**
+   * Preview playback level: at most −12 dB, never above the governor gain cap,
+   * and inside infant mode never above the infant ceiling (previews use the
+   * engine's preview path, which also carries the 1 kHz low-pass).
+   */
+  const previewLevelDb = useCallback(
+    (base = -12): number =>
+      Math.min(base, governor.maxGainDbFs, governor.infantMode ? INFANT_MAX_VOLUME_DB : 0),
+    [governor.maxGainDbFs, governor.infantMode],
+  );
+
+  const previewHz = useCallback(
+    (hz: number) => {
+      // Inaudible values (< 40 Hz) preview as a binaural beat on a 200 Hz carrier.
+      const phase: EnginePhase =
+        hz <= 40
+          ? { durationSec: 2.5, carrierHz: 200, beatHz: Math.max(0.1, hz), mode: 'binaural', gainDb: -14 }
+          : { durationSec: 2.5, carrierHz: Math.min(1200, hz), beatHz: 0, mode: 'monaural', gainDb: -14 };
+      const r = renderPhase(phase, 48000);
+      engineRef.current.playBuffer(r.left, r.right, 48000, previewLevelDb(-12));
+    },
+    [previewLevelDb],
+  );
 
   // ---- previews (≤30 s, never dose-debited — the dose clock only ticks while
   // a session is running, and previews never call start()) -------------------
@@ -856,15 +1005,15 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       const r = renderSession({ name: 'preview', phases: truncated, crossfadeSec: 0.5, masterGainDb: -6 });
       if (r.left.length === 0) return;
       const sr = r.manifest.sampleRate;
-      // Previews respect the governor gain cap (quiet hours / infant mode).
-      const db = Math.min(-12, governor.maxGainDbFs);
+      // Previews respect the governor gain cap and the infant ceiling.
+      const db = previewLevelDb(-12);
       startPreview(id, () => {
         engineRef.current.playBuffer(r.left, r.right, sr, db, () =>
           setPreviewId((cur) => (cur === id ? null : cur)),
         );
       });
     },
-    [previewId, governor.maxGainDbFs, startPreview, stopPreview],
+    [previewId, previewLevelDb, startPreview, stopPreview],
   );
 
   const previewPreset = useCallback(
@@ -880,10 +1029,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         stopPreview();
         return;
       }
-      // Governor gain cap applied as HTMLAudio volume (engine previews use the
-      // same min(−12 dB, cap) rule). File previews are ≤30 s renders and never
+      // Governor gain cap + infant ceiling applied as HTMLAudio volume (engine
+      // previews use the same rule). File previews are ≤30 s renders and never
       // touch the dose clock; panic()/stopPreview() cut them via the stop fn.
-      const db = Math.min(-12, governor.maxGainDbFs);
+      const db = previewLevelDb(-12);
       startPreview(id, () => {
         const audio = new Audio(url);
         audio.volume = Math.min(1, Math.pow(10, db / 20));
@@ -899,7 +1048,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         };
       });
     },
-    [previewId, governor.maxGainDbFs, startPreview, stopPreview],
+    [previewId, previewLevelDb, startPreview, stopPreview],
   );
 
   const previewTone = useCallback(
@@ -911,17 +1060,17 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       const carrier = Math.min(1200, Math.max(20, hz));
       const dur = Math.min(30, Math.max(1, durSec));
       const r = renderPhase(
-        { durationSec: dur, carrierHz: carrier, beatHz: 0, mode: 'monaural', gainDb: Math.min(-14, governor.maxGainDbFs) },
+        { durationSec: dur, carrierHz: carrier, beatHz: 0, mode: 'monaural', gainDb: previewLevelDb(-14) },
         48000,
       );
-      const db = Math.min(-12, governor.maxGainDbFs);
+      const db = previewLevelDb(-12);
       startPreview(id, () => {
         engineRef.current.playBuffer(r.left, r.right, 48000, db, () =>
           setPreviewId((cur) => (cur === id ? null : cur)),
         );
       });
     },
-    [previewId, governor.maxGainDbFs, startPreview, stopPreview],
+    [previewId, previewLevelDb, startPreview, stopPreview],
   );
 
   // ---- export (off-thread; honors the session limit) --------------------------
@@ -973,6 +1122,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       paused,
       interrupted,
       fading,
+      fadeEndsAtSec,
       panicked,
       elapsedSec,
       limitMin,
@@ -1050,7 +1200,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       engineRef,
     }),
     [
-      mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, running, paused, interrupted, fading, panicked,
+      mode, carrierHz, beatHz, waveform, phaseLock, gateDuty, gateShape, running, paused, interrupted, fading, fadeEndsAtSec, panicked,
       elapsedSec, limitMin, fadeOutSec, volumeDb, muted, warnings, noiseDb, noiseOn, nature, bowl, layersOn, phases,
       activePhaseIdx, dosePercent, governor, authorization, startBlocked, advisoryOpen, presetName, presetGrade, dirty,
       userPresets, exporting, exportError, previewId, togglePreview, stopPreview, previewPreset, previewPhases,

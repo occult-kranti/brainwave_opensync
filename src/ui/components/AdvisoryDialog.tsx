@@ -35,7 +35,7 @@ export function AdvisoryDialog() {
   const items = [
     {
       title: 'Headphones, low level',
-      body: 'Binaural sessions need one tone per ear. Start quiet — comfort beats intensity; the fader is capped at −6 dBFS and the weekly dose meter tracks every minute.',
+      body: 'Binaural sessions need one tone per ear. Start at low device volume. The Studio fader is capped at −6 dBFS or lower. The weekly dose estimate covers Studio sessions; short previews are not logged.',
     },
     { title: 'Never while driving', body: texts.driving },
     { title: 'Seizure-disorder notice', body: texts.seizure },

@@ -57,11 +57,13 @@ marketing, engineering, documentation, visual-design and UX perspectives, is in
 Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-source tools:
 [`docs/SOTA-COMPARISON.md`](docs/SOTA-COMPARISON.md). Where it goes next: [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
-## Modules (21 screens)
+## Modules (23 screens)
 
 | Area | What you get |
 |---|---|
 | **Studio** | Live binaural / monaural / isochronic engine, 6 noise colors, nature layer, a bowl set of up to 7 singing bowls (5 materials × 3 techniques, pan, intervals, ready-made sets), interval bell, multi-phase session timeline, live L/R scope, virtual-plate cymatics, sleep fade, share links, WAV export |
+| **Harmonic Lab** | Compose chords, arpeggios, and four-bar phrases with explicit tuning, eight overtones, A/B listening, WAV export, and portable recipes at `/harmonics` |
+| **Channeled Sources** | Audit the supplied Bashar digest, inspect a clearly labeled illustrative scale conversion, and explore three experimental presets and a golden-ratio bowl set at `/channeled` |
 | **Sonic Lab** | 17 mathematical sound generators: Shepard/Risset illusions, Euclidean & prime & golden-ratio rhythms, fractal 1/f^α noise, logistic-map chaos, waveform designer (additive/FM/Chebyshev/phase distortion), tuning systems (JI/12-TET/Bohlen-Pierce), astronomically derived tunings with split grades: *arithmetic A · meaning D* |
 | **Cymatic Studio** | Chladni plate simulator (square/circular/Bessel modes, sand particles, colormaps, audio-reactive) with physics/art honesty labels |
 | **Frequency Library** | 44 audited frequencies in 7 sets, grade badges, citation popovers, corrected Schumann values |
@@ -147,7 +149,7 @@ src/
     audio/    # live Web Audio engine, export worker, media session bridge
     session/  # session provider + types, hook, math, defaults, persistence, share links
     components, layout, hooks, theme
-  pages/      # 21 routed screens
+  pages/      # 23 routed screens
   test/       # vitest setup + helpers
 scripts/      # render-previews.mjs (preset WAVs), render-icons.py (PWA icons)
 docs/         # ARCHITECTURE, ROADMAP, SOTA-COMPARISON
@@ -174,3 +176,7 @@ SuperCollider, Strudel, Gnaural) were studied as documentation only and re-imple
 
 **Freedom-to-operate:** professional FTO opinion pending — this is a wellness-tier, claims-clean
 release; no medical claims are made. Not medical advice; not a medical device.
+
+### Harmonic and source-exhibit update
+
+See [the implementation and review record](docs/HARMONIC-AND-SOURCE-REVIEW.md) for the research, evidence boundaries, architecture changes, and verification. The harmonic composer is a bounded audio sketchpad; its arithmetic does not establish physiological outcomes. Source digests are explicitly distinguished from independently verified transcripts.

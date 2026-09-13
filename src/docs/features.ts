@@ -69,9 +69,33 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/theory', label: 'Theory Explorer' },
   { route: '/sonic-lab', label: 'Sonic Lab' },
   { route: '/sample-lab', label: 'Sample Lab' },
+  { route: '/harmonics', label: 'Harmonic Lab' },
+  { route: '/channeled', label: 'Channeled Sources' },
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'harmonic-composer', module: 'Harmonic Lab', route: '/harmonics', name: 'Harmonic composer',
+    grade: 'A', gradeScope: 'Frequency arithmetic and digital synthesis only; no physiological outcome is established.',
+    simple: 'Build a chord, shape its overtones, and hear a short musical phrase. Compare tunings and export the exact sound or its recipe.',
+    deep: 'Each note follows an explicit ratio to the chosen root. Integer multiples form its harmonic spectrum, while equal temperament divides an octave logarithmically. Quiet previews and WAV exports use the same bounded renderer and gain. These calculations describe audio, not a measured brain state.',
+    howTo: ['Choose a root, chord, and tuning.', 'Adjust relative overtones, then choose a chord, arpeggio, or progression.', 'Play a short preview, compare tunings, or export WAV and recipe files.'],
+    plot: { axes: 'The component map shows predicted frequency on a logarithmic horizontal axis and unsummed per-voice weight vertically.', good: 'The frequency table and partial lines match the chosen ratios.', bad: 'Omitted out-of-band partials are reported; the plot is a prediction, not a microphone measurement.' },
+  },
+  {
+    id: 'channeled-bashar-exhibit', module: 'Channeled Sources', route: '/channeled', name: 'Bashar source exhibit',
+    grade: 'D', gradeScope: 'The channeled claims themselves; supplied digests are not independently verified transcripts.',
+    simple: 'Read a source exhibit with a clear boundary between reported claims and checkable numbers. Follow the citations before exploring the sound examples.',
+    deep: 'The supplied digest describes several quantities without a reproducible measurement protocol. An alpha peak and gamma activity do not by themselves establish an internal contradiction. The exhibit reports these limits before offering experimental audio. No position on the origin of the material is implied.',
+    howTo: ['Read the source and verification note.', 'Compare the reported quantities with the measurement audit.', 'Explore the experimental presets or mathematical bowl set.'],
+  },
+  {
+    id: 'channeled-scale-mapping', module: 'Channeled Sources', route: '/channeled', name: 'Illustrative scale mapping',
+    grade: 'A', gradeScope: 'The chosen k = 5,000 arithmetic only, anchored at 200,000 ↔ 40 Hz.',
+    simple: 'Check a division whose constant was chosen to fit one reference point. Landing inside an EEG band does not validate the source scale.',
+    deep: 'The free parameter k = 5,000 is chosen to map 200,000 to 40 Hz. Dividing the remaining source numbers produces reproducible values. This is a fitted illustration, not a measured conversion or independent prediction. Source interpretations remain Grade D.',
+    howTo: ['Read the chosen anchor and free parameter.', 'Recalculate each row by dividing by 5,000.', 'Keep arithmetic and physiological interpretation separate.'],
+  },
   // ------------------------------------------------------------- Home / Guide
   {
     id: 'home-landing',
@@ -311,7 +335,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     simple:
       'Renders your entire session — phases, noise, layers — into a standard WAV file you can keep or share. Choose 16-bit, 24-bit or float, then press the WAV button in the Studio transport. The render runs in the background and stops at your session limit.',
     deep:
-      'exportWav() runs the same synthesis graph through an offline render at the session sample rate inside a Web Worker and encodes PCM-16, PCM-24 or float-32 WAV (engine/wav.ts, unit-tested for header layout and round-trip fidelity). The phase plan is truncated to the session limit before rendering, so the file can never outlast the cap. Offline rendering decouples export quality from real-time CPU load, and the −6 dBFS master gain still applies. The file carries no metadata claims — what you heard is exactly what is in the file.',
+      'exportWav() runs the same synthesis graph through an offline render at the session sample rate inside a Web Worker and encodes PCM-16, PCM-24 or float-32 WAV (engine/wav.ts, unit-tested for header layout and round-trip fidelity). The phase plan is truncated to the session limit before rendering, so the file can never outlast the cap. Offline rendering decouples export quality from real-time CPU load and respects the current output ceiling. The file carries no metadata claims — the file follows the phase plan; live transitions can differ from offline crossfades.',
     howTo: [
       'Build or load the session you want in the Studio.',
       'Press the WAV button in the transport bar.',

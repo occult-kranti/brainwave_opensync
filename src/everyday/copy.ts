@@ -92,6 +92,7 @@ export const copy = {
       'seven-note-set': 'Seven bowls, C major scale',
       'deep-drone': 'Two low bowls, brass accent',
       'bright-bells': 'High bronze and brass, quick decay',
+      'golden-ratio-chord': 'Five bowls, golden-ratio ladder',
     },
   },
   settings: {

@@ -4,7 +4,7 @@
  * Honesty principle: filtered-out rows dim, never vanish.
  */
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
@@ -71,6 +71,13 @@ const CATEGORIES: Category[] = [
     verdict: 'Arithmetically consistent, physiologically unevidenced. Grade D.',
   },
   {
+    id: 'channeled',
+    label: 'CHANNELED-SOURCE MAP',
+    match: (e) => e.id.startsWith('bashar-'),
+    bestGrade: 'D',
+    verdict: 'Grade A arithmetic; Grade D source interpretation. With chosen k = 5,000, anchored on 200,000 ↔ 40 Hz, the mapped rows illustrate division only. Their EEG-band placement does not validate a physical connection. The phi row is separate pitch-ratio arithmetic. Source: supplied bashar-opensync-prompt.md; transcripts unverified.',
+  },
+  {
     id: 'angel',
     label: 'ANGEL NUMBERS',
     match: (e) => e.id.startsWith('angel-'),
@@ -92,9 +99,20 @@ export default function Library() {
   const [gradeFilter, setGradeFilter] = useState<GradeLetter | null>(null);
   const [query, setQuery] = useState('');
   const [loadedId, setLoadedId] = useState<string | null>(null);
-  const { loadFrequency, previewHz } = useSession();
+  const { loadFrequency, previewHz, previewPhases, previewId, stopPreview, running, panicked, muted, governor, advisoryAcknowledged, openAdvisory } = useSession();
   const navigate = useNavigate();
   const isMobile = useIsMobile();
+  const channeledPreviewBlocked = running || panicked || muted || governor.infantMode;
+  const ownsChanneledPreview = previewId?.startsWith('library:bashar-map-') ?? false;
+  const channeledPreviewRef = useRef(false);
+
+  useEffect(() => {
+    channeledPreviewRef.current = ownsChanneledPreview;
+    if (channeledPreviewBlocked && ownsChanneledPreview) stopPreview();
+  }, [channeledPreviewBlocked, ownsChanneledPreview, stopPreview]);
+  useEffect(() => () => {
+    if (channeledPreviewRef.current) stopPreview();
+  }, [stopPreview]);
 
   const cat = CATEGORIES.find((c) => c.id === catId)!;
   const rows = useMemo(() => FREQUENCIES.filter(cat.match), [cat]);
@@ -115,6 +133,20 @@ export default function Library() {
 
   const display = searchRows ?? rows;
 
+  const preview = (entry: FrequencyEntry) => {
+    const frequency = entry.hz ?? entry.band?.minHz ?? 10;
+    if (entry.id.startsWith('bashar-map-')) {
+      if (channeledPreviewBlocked) return;
+      if (!advisoryAcknowledged) { openAdvisory(); return; }
+      previewPhases(`library:${entry.id}`, [{
+        durationSec: 2.5, carrierHz: 200, beatHz: frequency,
+        mode: frequency > 30 ? 'monaural' : 'binaural', gainDb: -16,
+      }], 2.5);
+    } else {
+      previewHz(frequency);
+    }
+  };
+
   return (
     <div style={{ padding: isMobile ? '20px 16px 40px' : '32px 40px 48px', maxWidth: 1440, margin: '0 auto' }}>
       {/* Header */}
@@ -125,7 +157,7 @@ export default function Library() {
         </p>
         <div className="flex items-center flex-wrap" style={{ margin: '20px 0', gap: 0 }}>
           {[
-            { n: '7', label: 'SETS AUDITED' },
+            { n: String(CATEGORIES.length), label: 'SETS AUDITED' },
             { n: String(FREQUENCIES.length), label: 'FREQUENCIES' },
             { n: '1', label: 'GRADE-A SET', color: 'var(--teal)' },
             { n: '1839→2026', label: 'EVIDENCE SPAN' },
@@ -338,7 +370,7 @@ export default function Library() {
                   {e.note}
                 </span>
                 <span className={isMobile ? 'flex gap-2' : 'flex gap-2 justify-end'} style={isMobile ? { alignSelf: 'stretch' } : undefined}>
-                  <button type="button" className="chip" onClick={() => previewHz(e.hz ?? e.band?.minHz ?? 10)} title="Preview tone (2.5 s; sub-40 Hz values preview as a binaural beat)" aria-label={`Preview ${e.name}`}>
+                  <button type="button" className="chip" onClick={() => preview(e)} disabled={e.id.startsWith('bashar-map-') && channeledPreviewBlocked} title={e.id.startsWith('bashar-map-') ? 'Preview illustrative rhythm (2.5 s; rates above 30 Hz use monaural modulation). Unavailable during sessions, mute, panic, or infant mode.' : 'Preview tone (2.5 s; sub-40 Hz values preview as a binaural beat)'} aria-label={`Preview ${e.name}`}>
                     <Play size={11} />
                   </button>
                   <button
@@ -372,6 +404,7 @@ function shortVerdict(e: FrequencyEntry): string {
   if (e.id.startsWith('schumann')) return 'Real geophysics; audio playback is a simulation.';
   if (e.id === 'tuning-432') return 'Real but tiny effects vs 440 Hz (small pilots).';
   if (e.id.startsWith('planetary')) return 'Arithmetic exact; therapy claim unevidenced.';
+  if (e.id.startsWith('bashar-')) return 'Arithmetic only; source interpretation is Grade D.';
   if (e.id.startsWith('band-lambda') || e.id.startsWith('band-epsilon')) return 'Experimental vendor construct — no peer-reviewed basis.';
   if (e.id.startsWith('band-')) return 'Standard EEG taxonomy; entrainment claim separate.';
   return 'Graded claim — see evidence.';

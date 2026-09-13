@@ -79,3 +79,15 @@ describe('helpers', () => {
     expect(myths.map((k) => k.id)).toEqual(expected.map((k) => k.id));
   });
 });
+
+describe('Bashar knowledge entries', () => {
+  it('keeps all four source claims at Grade D and scopes the 432/528 review to the supplied material', () => {
+    const entries = KNOWLEDGE_BASE.filter((entry) => entry.id.includes('bashar'));
+    expect(entries).toHaveLength(4);
+    for (const entry of entries) expect(entry.grade).toBe('D');
+    const verdict = getKnowledgeById('myth-bashar-hz-products')!.verdict.toLowerCase();
+    expect(verdict).toContain('no'); expect(verdict).toContain('432');
+    expect(verdict).toContain('supplied digest');
+    expect(getKnowledgeById('myth-bashar-gamma-alpha')!.verdict).toContain('can coexist');
+  });
+});

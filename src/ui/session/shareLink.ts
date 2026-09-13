@@ -20,6 +20,10 @@ export const SHARE_PARAM = 's';
 export interface SharePhase {
   durationSec: number;
   beatHz: number;
+  carrierHz?: number;
+  mode?: EntrainmentMode;
+  gainDbFs?: number;
+  rampSec?: number;
 }
 
 export interface ShareBowl {
@@ -60,13 +64,13 @@ export const MAX_SHARE_PHASES = 8;
 export const MAX_SHARE_BOWLS = MAX_BOWLS;
 const RESTRIKES = [4, 6, 8, 12, 16];
 
-/** Compact wire format: short keys, phases as [sec, hz] pairs. */
+/** Compact wire format: legacy [sec, beat] pairs accept optional carrier and mode. */
 interface Wire {
   v: number;
   m: string;
   c: number;
   w: string;
-  p: [number, number][];
+  p: [number, number, (number | null)?, (string | null)?, (number | null)?, (number | null)?][];
   n?: Record<string, number>;
   no?: 0 | 1;
   na?: [0 | 1, string, number];
@@ -123,7 +127,9 @@ export function encodeShare(state: ShareState): string {
     m: state.mode,
     c: round(state.carrierHz, 2),
     w: state.waveform,
-    p: state.phases.slice(0, MAX_SHARE_PHASES).map((ph) => [Math.round(ph.durationSec), round(ph.beatHz, 2)]),
+    p: state.phases.slice(0, MAX_SHARE_PHASES).map((ph) => ph.carrierHz !== undefined || ph.mode !== undefined || ph.gainDbFs !== undefined || ph.rampSec !== undefined
+      ? [Math.round(ph.durationSec), round(ph.beatHz, 2), ph.carrierHz ?? null, ph.mode ?? null, ph.gainDbFs ?? null, ph.rampSec ?? null]
+      : [Math.round(ph.durationSec), round(ph.beatHz, 2)]),
   };
   const noise: Record<string, number> = {};
   for (const [k, v] of Object.entries(state.noiseDb)) {
@@ -169,10 +175,19 @@ export function decodeShare(encoded: string): ShareState | null {
   const phases: SharePhase[] = [];
   for (const pair of wire.p.slice(0, MAX_SHARE_PHASES)) {
     if (!Array.isArray(pair) || pair.length < 2) continue;
+    const values: unknown[] = pair;
     const rawD = Number(pair[0]);
     const rawB = Number(pair[1]);
-    if (!(rawD > 0) || !(rawB > 0)) continue; // non-positive / NaN pairs are invalid, not clamped
-    phases.push({ durationSec: clamp(rawD, 1, 6 * 3600, 60), beatHz: clamp(rawB, 0.1, 80, 10) });
+    const validBeatType = typeof values[1] === 'number' || (typeof values[1] === 'string' && values[1].trim() !== '');
+    if (!Number.isFinite(rawD) || !(rawD > 0) || !validBeatType || !Number.isFinite(rawB) || rawB < 0) continue;
+    phases.push({
+      durationSec: clamp(rawD, 1, 6 * 3600, 60),
+      beatHz: clamp(rawB, 0, 80, 10),
+      ...(typeof pair[2] === 'number' && Number.isFinite(pair[2]) ? { carrierHz: clamp(pair[2], 20, 1000, 200) } : {}),
+      ...(MODES.includes(pair[3] as EntrainmentMode) ? { mode: pair[3] as EntrainmentMode } : {}),
+      ...(typeof pair[4] === 'number' && Number.isFinite(pair[4]) ? { gainDbFs: clamp(pair[4], -60, 0, 0) } : {}),
+      ...(typeof pair[5] === 'number' && Number.isFinite(pair[5]) ? { rampSec: clamp(pair[5], 0, 600, 0) } : {}),
+    });
   }
   if (phases.length === 0) return null;
   const noiseDb: Partial<Record<NoiseColor, number>> = {};

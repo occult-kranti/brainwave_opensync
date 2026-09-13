@@ -4,7 +4,7 @@
  *    tooltips / 0px hidden with a 16px amber-edge reopen handle
  *  - chevron toggle + `[` keyboard shortcut cycle the states
  *  - localStorage persistence round-trip
- *  - all 21 routes present in full AND icon states
+ *  - all 23 routes present in full AND icon states
  *  - panic reachable in every state; rail footer carries density toggle +
  *    collapse control; a11y attributes on the toggles
  *  - mobile shell (bottom bar) is unaffected by sidebar state
@@ -50,6 +50,8 @@ const ALL_ROUTE_PATHS = [
   '/theory',
   '/sonic-lab',
   '/sample-lab',
+  '/harmonics',
+  '/channeled',
 ];
 
 const STORAGE_KEY = 'open-sync:sidebar';
@@ -132,7 +134,7 @@ afterEach(async () => {
 });
 
 describe('V3 collapsible sidebar — three states', () => {
-  it('full state (default): 240px rail, labels, all 21 routes, footer controls, panic', async () => {
+  it('full state (default): 240px rail, labels, all 23 routes, footer controls, panic', async () => {
     const c = await renderShell(1280);
     const rail = railOf(c)!;
     expect(rail).toBeTruthy();
@@ -143,7 +145,7 @@ describe('V3 collapsible sidebar — three states', () => {
     // Labels visible.
     expect(rail.textContent).toContain('STUDIO');
     expect(rail.textContent).toContain('REPLICATION BAY');
-    // All 20 routes linked.
+    // All 23 routes linked.
     const hrefs = railHrefs(c);
     expect(hrefs.size).toBe(ALL_ROUTE_PATHS.length);
     for (const p of ALL_ROUTE_PATHS) expect(hrefs.has(p), `rail links to ${p}`).toBe(true);
@@ -160,7 +162,7 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(c.querySelector('[data-testid="rail-reopen-handle"]')).toBeNull();
   });
 
-  it('icon state: 64px strip, no labels, tooltip + aria-label per item, all 21 routes, panic reachable', async () => {
+  it('icon state: 64px strip, no labels, tooltip + aria-label per item, all 23 routes, panic reachable', async () => {
     window.localStorage.setItem(STORAGE_KEY, 'icon');
     const c = await renderShell(1280);
     const rail = railOf(c)!;
@@ -169,7 +171,7 @@ describe('V3 collapsible sidebar — three states', () => {
     // Labels hidden.
     expect(rail.textContent).not.toContain('STUDIO');
     expect(rail.textContent).not.toContain('PANIC');
-    // All 20 routes still linked, each with a hover tooltip + accessible name.
+    // All 23 routes still linked, each with a hover tooltip + accessible name.
     const links = Array.from(rail.querySelectorAll('a[href]'));
     expect(links.length).toBe(ALL_ROUTE_PATHS.length);
     const hrefs = new Set(links.map((a) => a.getAttribute('href')));

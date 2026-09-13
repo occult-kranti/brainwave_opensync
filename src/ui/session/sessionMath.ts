@@ -6,7 +6,7 @@
 
 import type { BowlMaterial, BowlSetPreset, BowlStrike, EntrainmentMode, NoiseColor, Phase as EnginePhase } from '@/engine';
 import { BOWL_RESTRIKE_CHOICES, MAX_BOWLS, dbToLin } from '@/engine';
-import type { Preset } from '@/data/presets';
+import type { Preset, PresetMode } from '@/data/presets';
 import type { NatureKind } from '@/engine';
 import type { LiveBowl } from '../audio/liveEngine';
 
@@ -14,15 +14,45 @@ export interface UiPhase {
   id: string;
   durationSec: number;
   beatHz: number;
+  /** Optional planned carrier; absent on legacy plans using the global control. */
+  carrierHz?: number;
+  /** Optional planned modality; absent on legacy plans using the global control. */
+  mode?: EntrainmentMode;
+  /** Authored phase gain; live loading chooses a conservative fixed level. */
+  gainDbFs?: number;
+  /** Authored amplitude-fade metadata; current live/offline transitions differ. */
+  rampSec?: number;
 }
 
 let phaseSeq = 0;
 /** Fresh UI phase with a unique id (ids key the timeline's drag state). */
-export const newUiPhase = (durationSec: number, beatHz: number): UiPhase => ({
+export const newUiPhase = (durationSec: number, beatHz: number, overrides: Pick<UiPhase, 'carrierHz' | 'mode' | 'gainDbFs' | 'rampSec'> = {}): UiPhase => ({
   id: `p${++phaseSeq}-${Date.now().toString(36)}`,
   durationSec,
   beatHz,
+  ...overrides,
 });
+
+/** Data-layer noise-only phases keep the legacy fallback; all tone modes retain their identity. */
+export function presetAudioMode(mode: PresetMode | undefined): EntrainmentMode {
+  return mode === 'monaural' || mode === 'isochronic' ? mode : 'binaural';
+}
+
+/**
+ * Resolve a partially specified plan against its global controls once, when
+ * the plan is loaded/edited. This prevents a later phase without an override
+ * from accidentally inheriting the previous phase's live readout. Entirely
+ * legacy dimensions remain absent so global controls retain their behavior.
+ */
+export function completePhaseOverrides(phases: readonly UiPhase[], carrierHz: number, mode: EntrainmentMode): UiPhase[] {
+  const hasCarrier = phases.some((p) => p.carrierHz !== undefined);
+  const hasMode = phases.some((p) => p.mode !== undefined);
+  return phases.map((p) => ({
+    ...p,
+    ...(hasCarrier ? { carrierHz: p.carrierHz ?? carrierHz } : {}),
+    ...(hasMode ? { mode: p.mode ?? mode } : {}),
+  }));
+}
 
 /** Nature/bowl layer state as held by the session (mirrors SessionSnapshot). */
 export interface NatureLayer {
@@ -151,12 +181,15 @@ export function buildExportPhases(
   mode: EntrainmentMode,
   layers: ExportLayers,
 ): EnginePhase[] {
+  // Keep authored relative phase levels without counting the global fader
+  // twice. Equal authored levels become unity phases under the global gain.
+  const loudestPhaseGain = Math.max(...phases.map((p) => p.gainDbFs ?? 0), -60);
   const enginePhases: EnginePhase[] = phases.map((p) => ({
     durationSec: p.durationSec,
-    carrierHz,
+    carrierHz: p.carrierHz ?? carrierHz,
     beatHz: p.beatHz,
-    mode,
-    gainDb: 0,
+    mode: p.mode ?? mode,
+    gainDb: (p.gainDbFs ?? 0) - loudestPhaseGain,
   }));
   const loudestNoise = (Object.entries(layers.noiseDb) as [NoiseColor, number][]).reduce(
     (best, [c, db]) => (db > best[1] ? [c, db] : best),
@@ -172,7 +205,7 @@ export function buildExportPhases(
     const maxDb = Math.max(...activeBowls.map((b) => b.db));
     for (const p of enginePhases) {
       p.bowls = activeBowls.map((b) => ({
-        baseHz: b.lock ? carrierHz : b.baseHz,
+        baseHz: b.lock ? p.carrierHz : b.baseHz,
         level: 0.5 * dbToLin(b.db - maxDb),
         material: b.material,
         strike: b.strike,
@@ -182,8 +215,8 @@ export function buildExportPhases(
     }
   }
   if (layers.layersOn && layers.bellEveryMin > 0) {
-    const voice = bellVoiceFrom(layers.bowls, carrierHz);
     for (const p of enginePhases) {
+      const voice = bellVoiceFrom(layers.bowls, p.carrierHz);
       (p.bowls ??= []).push({ ...voice, level: 0.4, restrikeSec: layers.bellEveryMin * 60 });
     }
   }
@@ -193,14 +226,14 @@ export function buildExportPhases(
   return enginePhases;
 }
 
-/** First ~`maxSec` of a data-layer preset as engine phases (binaural, per-phase gain). */
+/** First ~`maxSec` of a preset, preserving each phase's carrier, modality and gain. */
 export function presetPreviewPhases(preset: Preset, maxSec: number = PREVIEW_MAX_SEC): EnginePhase[] {
   return truncatePhases(
     preset.spec.phases.map((p) => ({
       durationSec: p.durationSec,
       carrierHz: p.carrierHz,
       beatHz: p.beatHz,
-      mode: 'binaural' as const,
+      mode: presetAudioMode(p.mode),
       gainDb: Math.min(0, p.gainDbFs),
     })),
     maxSec,

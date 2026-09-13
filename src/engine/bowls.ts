@@ -291,6 +291,19 @@ export const BOWL_SETS: readonly BowlSetPreset[] = [
       { material: 'bell-bronze', strike: 'soft', baseHz: hz('G#', 4), db: -30, pan: 0, restrikeSec: 16 },
     ],
   },
+  {
+    id: 'golden-ratio-chord',
+    name: 'Golden-ratio chord',
+    blurb: 'Five bowls spaced by the golden ratio, 833 cents apart.',
+    bowls: Array.from({ length: 5 }, (_, n) => ({
+      material: 'crystal-quartz' as const,
+      strike: 'soft' as const,
+      baseHz: 110 * ((1 + Math.sqrt(5)) / 2) ** n,
+      db: -26,
+      pan: -0.6 + n * 0.3,
+      restrikeSec: 12,
+    })),
+  },
 ];
 
 /** Re-strike intervals offered live (seconds). Each is the loop length of that bowl's buffer. */

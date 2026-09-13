@@ -12,6 +12,8 @@
  * constructs; only the Schumann physics and a few pilot-backed items rank above D.
  */
 
+import { BASHAR_FREQUENCIES } from '@/channeled/bashar';
+
 export type Grade = 'A' | 'B' | 'C' | 'D';
 
 export interface FrequencyBand {
@@ -400,6 +402,7 @@ export const FREQUENCIES: readonly FrequencyEntry[] = [
     citation: 'No peer-reviewed literature supporting epsilon-band entrainment claims (audit 2026).',
     note: 'Below the range addressable by binaural beats in practice; claims are folklore.',
   },
+  ...BASHAR_FREQUENCIES,
 ];
 
 /** Lookup helper. */

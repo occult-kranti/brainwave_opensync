@@ -123,3 +123,17 @@ describe('getFrequencyById', () => {
     expect(getFrequencyById('nope')).toBeUndefined();
   });
 });
+
+describe('channeled catalog scope', () => {
+  it('stores eight audio-range values with arithmetic A and interpretation D', () => {
+    const rows = FREQUENCIES.filter((entry) => entry.id.startsWith('bashar-'));
+    expect(rows).toHaveLength(8);
+    for (const row of rows) {
+      expect(row.grade).toBe('A'); expect(row.secondaryGrade).toBe('D');
+      expect(row.secondaryScope?.length).toBeGreaterThan(0);
+      expect(row.hz).toBeLessThan(1_000);
+    }
+    expect(getFrequencyById('bashar-phi-interval')!.hz).toBeCloseTo(110 * (1 + Math.sqrt(5)) / 2, 10);
+    expect(getFrequencyById('bashar-map-333k')!.note).toContain('carrier, not the beat');
+  });
+});

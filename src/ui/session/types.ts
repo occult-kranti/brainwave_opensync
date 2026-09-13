@@ -113,7 +113,9 @@ export interface SessionActions {
   acknowledgeAdvisory: (opts?: { andStart?: boolean }) => void;
   openAdvisory: () => void;
   closeAdvisory: () => void;
+  /** Global mode edit clears the plan's per-phase mode overrides. */
   setMode: (m: EntrainmentMode) => void;
+  /** Global carrier edit clears the plan's per-phase carrier overrides. */
   setCarrierHz: (hz: number) => void;
   setBeatHz: (hz: number) => void;
   setWaveform: (w: Waveform) => void;

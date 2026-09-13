@@ -15,7 +15,7 @@ import { STORAGE_KEYS, readJson, writeJson, type StorageLike, defaultStorage } f
 import type { Grade } from '@/data/frequencies';
 import type { GateShape, Waveform } from '../audio/liveEngine';
 import type { BowlLayer, NatureLayer, UiPhase } from './sessionMath';
-import { snapRestrike } from './sessionMath';
+import { completePhaseOverrides, snapRestrike } from './sessionMath';
 import { INFANT_MAX_SESSION_MIN, MAX_SESSION_MIN, MIN_SESSION_CAP_MIN } from '@/safety/governor';
 import { INFANT_CEILING_DBA } from '@/safety/dose';
 import { DBFS_TO_DBA_OFFSET } from './sessionMath';
@@ -130,11 +130,19 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
   for (const p of phasesRaw.slice(0, 8)) {
     if (!p || typeof p !== 'object') continue;
     const q = p as Record<string, unknown>;
-    // Non-positive / non-numeric values are invalid rows, not clamped ones.
-    if (!(typeof q.durationSec === 'number' && q.durationSec > 0) || !(typeof q.beatHz === 'number' && q.beatHz > 0)) continue;
+    // Zero beat is a deliberate plain tone; negative/non-numeric rates are invalid.
+    if (!(typeof q.durationSec === 'number' && Number.isFinite(q.durationSec) && q.durationSec > 0) || !(typeof q.beatHz === 'number' && Number.isFinite(q.beatHz) && q.beatHz >= 0)) continue;
     const durationSec = num(q.durationSec, 1, 6 * 3600, 60);
-    const beatHz = num(q.beatHz, 0.1, 80, 10);
-    phases.push({ id: typeof q.id === 'string' && q.id ? q.id : `p${phases.length}-${Math.round(durationSec)}`, durationSec, beatHz });
+    const beatHz = num(q.beatHz, 0, 80, 10);
+    phases.push({
+      id: typeof q.id === 'string' && q.id ? q.id : `p${phases.length}-${Math.round(durationSec)}`,
+      durationSec,
+      beatHz,
+      ...(typeof q.carrierHz === 'number' && Number.isFinite(q.carrierHz) ? { carrierHz: num(q.carrierHz, 20, 1000, defaults.carrierHz) } : {}),
+      ...(MODES.includes(q.mode as EntrainmentMode) ? { mode: q.mode as EntrainmentMode } : {}),
+      ...(typeof q.gainDbFs === 'number' && Number.isFinite(q.gainDbFs) ? { gainDbFs: num(q.gainDbFs, -60, 0, 0) } : {}),
+      ...(typeof q.rampSec === 'number' && Number.isFinite(q.rampSec) ? { rampSec: num(q.rampSec, 0, 600, 0) } : {}),
+    });
   }
   const infantMode = typeof r.infantMode === 'boolean' ? r.infantMode : defaults.infantMode;
   // A persisted panel can never loosen the infant caps (rails only tighten),
@@ -146,7 +154,7 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
   return {
     mode: oneOf(r.mode, MODES, defaults.mode),
     carrierHz: num(r.carrierHz, 20, 1000, defaults.carrierHz),
-    beatHz: num(r.beatHz, 0.1, 80, defaults.beatHz),
+    beatHz: r.beatHz === 0 ? 0 : num(r.beatHz, 0.1, 80, defaults.beatHz),
     waveform: oneOf(r.waveform, WAVES, defaults.waveform),
     phaseLock: typeof r.phaseLock === 'boolean' ? r.phaseLock : defaults.phaseLock,
     gateDuty: num(r.gateDuty, 0.05, 0.95, defaults.gateDuty),
@@ -164,7 +172,7 @@ export function sanitizeFrontPanel(raw: unknown, defaults: FrontPanel): FrontPan
     bowls: sanitizeBowls(r, defaults),
     bellEveryMin: num(r.bellEveryMin, 0, 60, defaults.bellEveryMin),
     layersOn: typeof r.layersOn === 'boolean' ? r.layersOn : defaults.layersOn,
-    phases: phases.length ? phases : defaults.phases,
+    phases: phases.length ? completePhaseOverrides(phases, num(r.carrierHz, 20, 1000, defaults.carrierHz), oneOf(r.mode, MODES, defaults.mode)) : defaults.phases,
     presetName: typeof r.presetName === 'string' && r.presetName.trim() ? truncateCodePoints(r.presetName.trim(), 80) : null,
     presetGrade: GRADES.includes(r.presetGrade as string) ? (r.presetGrade as Grade) : null,
     fadeOutSec: num(r.fadeOutSec, 0, 600, defaults.fadeOutSec),

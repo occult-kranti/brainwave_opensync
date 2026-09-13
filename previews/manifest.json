@@ -235,7 +235,22 @@
       "id": "infant-quiet-room",
       "sha256": "45b5756851bfc446128567e0f64ef377daf26dc4e3566ab6790da0ec10b8d10e",
       "bytes": 1152044
+    },
+    {
+      "id": "exp-bashar-scale-map",
+      "sha256": "e7674264bc6852b4904207ec755901ef19b64b2fb2c7c74d0d12d65326ec43dc",
+      "bytes": 1152044
+    },
+    {
+      "id": "exp-bashar-gamma-contradiction",
+      "sha256": "f5dbc25736c3059ce4d4668351f26921f57ee3a06abb5e2bef9a214bea9b20f3",
+      "bytes": 1152044
+    },
+    {
+      "id": "exp-phi-ladder",
+      "sha256": "2ba4e33d4a903fe7c52f4529441df4225b02fd75b8b9010a0844e27aad352186",
+      "bytes": 1152044
     }
   ],
-  "totalBytes": 52994024
+  "totalBytes": 56450156
 }

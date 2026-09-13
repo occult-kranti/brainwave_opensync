@@ -15,9 +15,9 @@ function render(el: React.ReactElement) {
 describe('W8 home & docs screens', () => {
   it('Home renders hero, honesty statement, quick start, and module cards', () => {
     const html = render(<Home />);
-    expect(html).toContain('GENERATE. MEASURE. VERIFY.');
+    expect(html).toContain('Build and compare sounds.');
     expect(html).toContain('What is this?');
-    expect(html).toContain('READ THE HONESTY MANIFESTO');
+    expect(html).toContain('READ ABOUT THE METHODS');
     expect(html).toContain('First session in 60 seconds');
     expect(html).toContain('STUDIO');
     expect(html).toContain('IN VERIFICATION');

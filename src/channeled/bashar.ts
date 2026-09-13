@@ -35,9 +35,9 @@ export const EEG_SOURCE: ExhibitSource = {
 };
 
 export const MAPPING_CONTEXT =
-  'With the freely chosen constant k = 5,000, anchored on 200,000 ↔ 40 Hz, each displayed result is the stated number divided by 5,000.';
+  'With chosen k = 5,000, anchored on 200,000 ↔ 40 Hz, divide each source number by 5,000.';
 export const MAPPING_LIMIT =
-  'One constant fitted to one landmark places the other values somewhere; landing inside a broad EEG band is weak evidence and does not validate a physical connection.';
+  'The constant fits one reference point. Other results falling within EEG bands do not establish a physical connection.';
 export const MAPPING_NOTE =
   `${MAPPING_CONTEXT} Grade A covers this reproducible arithmetic only. Grade D covers what the source numbers measure: the supplied digest identifies no instrument or operational measurement method. Cycles per second and Hz have the same dimension; the physical quantity is unspecified. ${MAPPING_LIMIT}`;
 export const PHI_NOTE =
@@ -45,15 +45,15 @@ export const PHI_NOTE =
 
 export const BASHAR_COPY = {
   title: 'Channeled Sources',
-  eyebrow: 'RESEARCH EXHIBIT · CORPUS 01 / BASHAR',
-  subtitle: 'Source claims, measurement questions, and arithmetic you can inspect.',
-  provenanceTitle: 'Read the provenance before listening',
+  eyebrow: 'BASHAR · SOURCE REVIEW',
+  subtitle: 'Read the supplied claims, check the calculations, and listen to examples.',
+  provenanceTitle: 'Sources and limits',
   provenance: [
-    'This exhibit presents the supplied auto-transcript digests of sessions attributed to Bashar, channeled by Darryl Anka since 1983 according to the brief. The original transcripts and their completeness have not been independently verified.',
-    'Open Sync takes no position on the source of the material. It separates Grade D source claims from Grade A arithmetic.',
-    'No fixed musical tuning is prescribed in the supplied digest: it provides no support for 432 Hz or 528 Hz products. It does mention EEG values in Hz; this exhibit makes no claim about every session in the full corpus.',
+    'This page uses the supplied auto-transcript digests of sessions attributed to Bashar through Darryl Anka. The original transcripts have not been independently verified.',
+    'Grade D covers the source claims. Grade A covers the calculations. These grades make no judgment about the origin of the material.',
+    'No fixed musical tuning is prescribed in the supplied digest. It provides no support for 432 Hz or 528 Hz products, and does mention EEG values in Hz. This review covers only the supplied material.',
   ],
-  provenanceNote: 'Session links identify the material cited by the supplied brief. A citation records provenance; it does not establish that a statement is true or that the digest is accurate. Summaries below are paraphrases, not verified quotations.',
+  provenanceNote: 'Session links come from the supplied brief. The summaries are paraphrases of its digests; the original wording and attribution remain unverified.',
   claimGrade: 'D · SOURCE CLAIMS',
   arithmeticGrade: 'A · ARITHMETIC ONLY',
   sourceLinkLabel: 'Source / verification status',
@@ -62,15 +62,15 @@ export const BASHAR_COPY = {
   harmonicLink: 'Explore ratios in Harmonic Lab',
   jumpLabel: 'Exhibit sections',
   sections: [
-    { id: 'source', label: 'What the source says' },
+    { id: 'source', label: 'Reported claims' },
     { id: 'consistency', label: 'Measurement & consistency' },
-    { id: 'mapping', label: 'An illustrative mapping' },
-    { id: 'literal', label: 'Read literally' },
+    { id: 'mapping', label: 'Scale calculator' },
+    { id: 'literal', label: 'Units and calculations' },
     { id: 'play', label: 'Play & compare' },
   ],
   sourceIntro: 'Six themes from the supplied digest. All source claims are Grade D, including claims about consciousness and reported readings.',
-  consistencyIntro: 'Different quantities require different measurements. No recording, instrument specification, raw EEG data, uncertainty estimate, or calibration is supplied here.',
-  mappingTitle: 'A chosen scale, not a discovered conversion',
+  consistencyIntro: 'The supplied brief includes no recordings, instrument specifications, raw EEG data, measurement uncertainty, or calibration.',
+  mappingTitle: 'Divide by a chosen constant',
   mappingIntro: MAPPING_CONTEXT,
   mappingLimit: MAPPING_LIMIT,
   mappingGrade: 'A for division · D for a link to consciousness',
@@ -80,17 +80,17 @@ export const BASHAR_COPY = {
   bandNote: 'Band labels use this app’s existing EEG catalog and are conventions, not state diagnoses. Here the catalog defines gamma as 30–100 Hz; 40 Hz is the chosen anchor, not a universal gamma onset.',
   anchorLabel: 'chosen anchor',
   calculatorLabel: 'Try a stated number',
-  calculatorHelp: 'A numeric illustration only; it does not read a body signal or measure your state.',
+  calculatorHelp: 'Divides your number by 5,000. No body signal is measured.',
   calculatorInvalid: 'Enter a finite number from 0 to 1,000,000.',
   calculatorResult: (stated: number, result: number) =>
     `With chosen k = 5,000, anchored on 200,000 ↔ 40 Hz: ${stated.toLocaleString('en-US')} ÷ 5,000 = ${result.toLocaleString('en-US', { maximumFractionDigits: 5 })} Hz (illustrative result; Grade A arithmetic, Grade D interpretation).`,
-  literalIntro: 'A unit does not identify the thing oscillating. Sound pressure, an electrical field, and an EEG recording are different physical quantities.',
-  phiTitle: 'Listen to a ratio',
+  literalIntro: 'Hz counts cycles per second. To interpret a frequency, identify what changes: sound pressure, a field, or a recorded electrical signal.',
+  phiTitle: 'Golden-ratio pitches',
   phiSubtitle: 'Five pitches · one repeated golden-ratio interval',
   phiFormula: `fₙ = 110 × φⁿ Hz · φ = (1 + √5)/2 · ${PHI_CENTS.toFixed(2)} cents per step`,
   phiNote: PHI_NOTE,
   phiDifference: `At a 200 Hz lower pitch, φ spacing gives an arithmetic separation of ${(200 * ((1 + Math.sqrt(5)) / 2 - 1)).toFixed(2)} Hz. That separation is not a supported binaural beat rate; a perceived difference tone is not guaranteed.`,
-  playIntro: 'These are listening demonstrations, not measured states or a method for contacting anyone. Preset previews play the opening segment only. Load a full sequence into Studio to inspect its phases, use the timer, or export a WAV. Studio uses its existing transitions; the authored 20-second amplitude fades are retained as metadata and are not implemented.',
+  playIntro: 'These presets demonstrate sound patterns. No measured consciousness state or contact method is established. Preview plays the opening segment; Studio loads the full sequence for editing and WAV export. The requested 20-second phase fades are saved as metadata but do not run during playback or export.',
   preview: 'Preview opening',
   previewBlocked: 'Previews are unavailable during a running session, mute, panic, or infant mode.',
   previewAdvisory: 'Read the listening advisory before previewing; then press Preview opening again.',
@@ -103,8 +103,8 @@ export const BASHAR_COPY = {
   presetMeta: (minutes: number) => `${minutes} min · Grade D · experimental tier`,
   phaseLabel: (index: number, carrier: number, beat: number, mode: string) =>
     `${index + 1}. ${carrier.toFixed(2)} Hz carrier · ${beat} Hz ${mode === 'monaural' ? 'monaural modulation' : beat === 0 ? 'no beat' : 'binaural beat'}`,
-  sourcesTitle: 'What would improve this exhibit?',
-  nextEvidence: 'Timestamped original transcripts would verify attribution. An operational definition, calibration procedure, raw recordings, and a prediction tested on new data would be needed before treating the proposed scale as a measurement model.',
+  sourcesTitle: 'Missing evidence',
+  nextEvidence: 'Original transcripts with timestamps are needed to check attribution. Testing the scale also needs a defined quantity, a calibrated instrument, raw recordings, and predictions checked against new data.',
 } as const;
 
 export const SOURCE_CARDS = [
@@ -142,7 +142,7 @@ export const SOURCE_CARDS = [
 
 export const CONSISTENCY_CARDS = [
   {
-    title: 'The missing measurement is the central issue',
+    title: 'No measurement method supplied',
     text: 'The supplied digest of session 94agFEADfyk says the method is outside current scientific understanding and combines physical and spirit-realm vibrations. That is not an operational method a reader can reproduce. Cycles/s is dimensionally Hz, but the measured quantity, instrument, and calibration remain unspecified.',
     grade: 'D', sources: [digest('94agFEADfyk'), UNIT_SOURCE],
   },
@@ -152,7 +152,7 @@ export const CONSISTENCY_CARDS = [
     grade: 'D', sources: [digest('7WjydoNj7hE'), digest('mgSgI0ElfTI'), EEG_SOURCE],
   },
   {
-    title: 'One anchor does not supply an independent test',
+    title: 'One fitted reference point',
     text: `${MAPPING_CONTEXT} The digest does not establish that an average human must map to beta, so imposing that extra anchor cannot prove the source internally inconsistent. The claimed vibrational scale, EEG frequencies, and frame rate remain separate until an explicit model links them.`,
     grade: 'D', sources: [DIGEST_SOURCE],
   },
@@ -170,7 +170,7 @@ export const LITERAL_CARDS = [
     grade: 'A', sources: [LIGHT_SOURCE],
   },
   {
-    title: 'Planck time is a scale, not evidence of frames',
+    title: 'Planck-time calculation',
     text: 'Using the CODATA Planck time, 1/tₚ is approximately 1.855 × 10⁴³ s⁻¹, not exactly 10⁴³. The reciprocal is arithmetic (Grade A); a universal reality frame rate is a separate source claim (Grade D). No frame-counting measurement is supplied.',
     grade: 'A', sources: [PLANCK_SOURCE, DIGEST_SOURCE],
   },
@@ -196,7 +196,7 @@ export const BASHAR_FREQUENCIES: readonly FrequencyEntry[] = [
 
 export const BASHAR_KNOWLEDGE: readonly KnowledgeEntry[] = [
   {
-    id: 'history-bashar-corpus', title: 'Bashar: a source exhibit with limited provenance', category: 'history',
+    id: 'history-bashar-corpus', title: 'Bashar: supplied summaries and source limits', category: 'history',
     claim: 'The supplied Bashar digests establish a measurable consciousness-frequency scale.', grade: 'D',
     verdict: 'The supplied brief attributes the sessions to Darryl Anka channeling Bashar since 1983. This exhibit has auto-transcript digests, not independently verified full transcripts or measurements. It takes no position on the source of the material. Numbers and ratios can be audited without validating the claimed scale.',
     citations: [DIGEST_SOURCE.label],

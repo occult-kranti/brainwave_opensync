@@ -23,6 +23,7 @@ import {
   Gauge,
   GitFork,
   Home as HomeIcon,
+  Headphones,
   Info,
   Layers,
   ListChecks,
@@ -88,6 +89,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/theory', 'THEORY EXPLORER', 'Theory Explorer', GitFork, 'research', () => import('@/pages/TheoryExplorer')),
   r('/sonic-lab', 'SONIC LAB', 'Sonic Lab', Orbit, 'research', () => import('@/pages/SonicLab')),
   r('/harmonics', 'HARMONIC LAB', 'Harmonic Lab', Music2, 'research', () => import('@/pages/HarmonicLab')),
+  r('/sound-methods', 'SOUND METHODS', 'Sound Methods', Headphones, 'research', () => import('@/pages/SoundMethods')),
   r('/channeled', 'CHANNELED SOURCES', 'Channeled Sources', Radio, 'research', () => import('@/pages/ChanneledSources')),
   r('/sample-lab', 'SAMPLE LAB', 'Sample Lab', FileAudio, 'research', () => import('@/pages/SampleLab')),
 ];

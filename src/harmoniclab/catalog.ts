@@ -3,7 +3,7 @@ import type { HarmonicRecipe } from './model';
 export const CHOICES = [
   { id: 'unison', label: 'Single note' }, { id: 'fifth', label: 'Open fifth' },
   { id: 'major', label: 'Major triad' }, { id: 'minor', label: 'Minor triad' },
-  { id: 'dominant7', label: 'Dominant seventh' }, { id: 'harmonic', label: 'Harmonic series · 1–7' },
+  { id: 'dominant7', label: 'Dominant seventh' }, { id: 'harmonic', label: 'Harmonic series · ratios 1–7' },
   { id: 'phi', label: 'Golden-ratio intervals' }, { id: 'custom', label: 'Custom ratios' },
 ] as const;
 
@@ -17,7 +17,7 @@ export const TIMBRES = [
 export const HARMONIC_SOURCES = [
   { label: 'UNSW · harmonics, temperament, and beats', url: 'https://newt.phys.unsw.edu.au/jw/tartini-temperament.html', scope: 'Grade A · acoustic principles and tuning calculations' },
   { label: 'Web Audio specification · digital audio', url: 'https://www.w3.org/TR/webaudio/', scope: 'Grade A · browser audio implementation' },
-  { label: 'WHO–ITU H.870 · listening level and exposure', url: 'https://www.itu.int/rec/T-REC-H.870', scope: 'Level and duration guidance; digital gain is not a measured sound level' },
+  { label: 'WHO–ITU H.870 · listening level and exposure', url: 'https://www.itu.int/rec/T-REC-H.870', scope: 'Level and duration guidance; device volume determines the listening level' },
 ] as const;
 
 export function parseRatios(text: string): number[] {

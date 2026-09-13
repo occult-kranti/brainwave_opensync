@@ -137,10 +137,10 @@ function HeroCanvas() {
 }
 
 const QUICK_START = [
-  'Put on headphones — binaural needs one tone per ear.',
+  'Use headphones for binaural mode: one tone plays in each ear.',
   'Open the Studio and press START SESSION.',
-  'Keep the volume low; comfort beats intensity.',
-  'Watch the Visualizer confirm what is actually playing.',
+  'Start at low volume and keep it comfortable.',
+  'Use the Visualizer to inspect the generated sound.',
 ];
 
 export default function Home() {
@@ -174,7 +174,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
           >
-            OPEN SYNC — EVIDENCE-HONEST AUDIO LABORATORY
+            OPEN SYNC · AUDIO LAB
           </motion.span>
           <motion.h1
             className="t-display-xl"
@@ -183,7 +183,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.08 }}
           >
-            GENERATE. MEASURE. VERIFY.
+            Build and compare sounds.
           </motion.h1>
           <motion.p
             className="t-body"
@@ -192,8 +192,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.16 }}
           >
-            A brainwave-audio instrument that grades its own claims. Every frequency
-            travels with an evidence badge; every meter shows real data.
+            Create tones, beats, noise, and musical patterns. Listen, export a WAV,
+            or check the sound with the analysis tools.
           </motion.p>
           <motion.div
             className="flex gap-3"
@@ -274,15 +274,11 @@ export default function Home() {
             What is this?
           </h2>
           <p className="t-body" style={{ color: 'var(--text-2)', maxWidth: 880 }}>
-            Open Sync is an open replication — and correction — of a classic
-            brainwave-synchronization-style audio platform. It generates binaural,
-            monaural, and isochronic sessions with the full instrument stack
-            (noise, nature layers, phase sequencing, WAV export), then measures its
-            own output and grades every claim it makes from A to D. Some of what is
-            here is replicated physics; some is folklore kept visible on purpose,
-            labeled as folklore, so you can see exactly where the evidence ends.
-            Nothing is hidden, nothing is oversold, and every badge opens its
-            citation.
+            Open Sync is a browser app for building and studying sound. Studio combines
+            binaural beats, mixed-tone beats, pulses, noise, and modeled instruments.
+            Harmonic Lab builds chords; Sonic Lab generates rhythms and audio illusions.
+            Research pages explain the sources behind the presets. Grades A–D describe
+            the evidence for each claim. The app measures audio, not brain activity.
           </p>
           <Link
             to="/about"
@@ -296,7 +292,7 @@ export default function Home() {
               textDecoration: 'none',
             }}
           >
-            READ THE HONESTY MANIFESTO <ArrowRight size={12} />
+            READ ABOUT THE METHODS <ArrowRight size={12} />
           </Link>
         </motion.section>
 
@@ -331,7 +327,7 @@ export default function Home() {
           <div className="flex items-center justify-between" style={{ marginBottom: 16 }}>
             <h2 className="t-h2">Modules</h2>
             <span className="t-label text-3">
-              {FEATURES.length} DOCUMENTED FEATURES · ONE DATA SOURCE
+              {FEATURES.length} FEATURES
             </span>
           </div>
           <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))' }}>
@@ -372,10 +368,10 @@ export default function Home() {
                       grade && (
                         <span
                           className="t-caption font-mono2"
-                          title="Weakest evidence grade claimed anywhere in this module"
+                          title="Lowest evidence grade among this module’s claims"
                           style={{ color: GRADE_COLOR[grade], fontSize: 10 }}
                         >
-                          WEAKEST CLAIM
+                          LOWEST GRADE
                         </span>
                       )
                     )}

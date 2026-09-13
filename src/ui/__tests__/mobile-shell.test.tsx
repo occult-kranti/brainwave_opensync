@@ -52,6 +52,7 @@ const ALL_ROUTE_PATHS = [
   '/sample-lab',
   '/harmonics',
   '/channeled',
+  '/sound-methods',
 ];
 
 type ChangeFn = () => void;

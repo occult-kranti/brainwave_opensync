@@ -12,41 +12,41 @@ import { type GradeLetter } from '@/ui/theme';
 
 const CHAPTERS: { word: string; title: string; body: string }[] = [
   {
-    word: 'EXISTS',
-    title: 'The original platform had good engineering and bad epistemology.',
-    body: 'It measured nothing, graded nothing, and sold folklore frequencies alongside real geophysics at the same visual weight. The UI was beautiful; the claims were not audited.',
+    word: 'BUILD',
+    title: 'Create sound in your browser.',
+    body: 'Open Sync generates tones, beats, noise, and modeled instruments. You can arrange sessions, export WAV files, and inspect the output with audio analysis tools.',
   },
   {
-    word: 'CORRECTS',
-    title: 'The correction, not the takedown.',
-    body: 'Open Sync keeps the instrument and corrects the claims: Schumann values corrected to measured modes, Solfeggio labeled 1970s numerology instead of medieval heritage, Gateway levels presented as history. Nothing deleted — everything graded.',
+    word: 'SOURCES',
+    title: 'Read the source behind a preset.',
+    body: 'The catalogs include acoustic measurements, published studies, historical programs, and spiritual traditions. Evidence grades distinguish these sources and state which part of a claim they support.',
   },
   {
-    word: 'PROVES',
-    title: 'An instrument you can interrogate.',
-    body: 'The Analyzer treats our own output as a device under test. The Knowledge Base shows every source. If we grade something wrong, the citation popover is one click away from proving it.',
+    word: 'CHECK',
+    title: 'Compare the claim with the sound.',
+    body: 'The Analyzer measures audio signals. The Knowledge Base links claims to sources and records their limits. A measured sound frequency does not establish a change in brain activity or consciousness.',
   },
 ];
 
 const POLICY = [
-  ['We never show a naked number.', 'every frequency travels with its grade'],
-  ["We dim, we don't delete.", 'filtered-out content stays visible'],
-  ['We grade our own safety claims.', 'the Safety Center carries badges too'],
-  ['Government interest ≠ validation.', 'programs are documented, not endorsed'],
-  ["If we're wrong, the receipt is one click away.", 'every badge opens its citation'],
+  ['Show evidence grades.', 'Frequency catalog entries include a grade and source.'],
+  ['Keep filtered entries readable.', 'Library filters dim entries outside your selection.'],
+  ['Explain listening limits.', 'Safety guidance includes its evidence and assumptions.'],
+  ['Separate records from results.', 'A government file can document a program without verifying its claims.'],
+  ['Link claims to sources.', 'Use the citations to review the evidence and its limits.'],
 ] as const;
 
 const RUBRIC: { grade: GradeLetter; criteria: string; example: string }[] = [
   { grade: 'A', criteria: 'Established physics or engineering; multiple independent replications; quantitative consensus.', example: 'Schumann 7.83 Hz measured modes' },
-  { grade: 'B', criteria: 'Direct human evidence, small samples or single labs; effects real but not yet robust.', example: '432 Hz pilots (n=33, n=42; 2025 RCT) → graded B−' },
+  { grade: 'B', criteria: 'Human studies with limited samples or replication; results remain uncertain.', example: '432 Hz pilots (n=33, n=42; 2025 RCT) → graded B−' },
   { grade: 'C', criteria: 'Plausible mechanism; indirect, inconsistent, or contradicted evidence.', example: 'Beat-driven EEG entrainment (8/14 studies contradict)' },
   { grade: 'D', criteria: 'Numerology, folklore, or constructs with no physiological evidence.', example: 'Solfeggio, planetary therapy claims, Lambda/Epsilon' },
 ];
 
 const LEDGER: [string, string, string, boolean][] = [
-  ['US 3,884,218 (Monroe, 1975)', 'Frequency-following response audio method', 'EXPIRED 1993', false],
-  ['US 5,213,562 + continuations', 'Hemi-Sync refinements', 'EXPIRED', false],
-  ['"Hemi-Sync" word mark', 'Trademark, not patent', 'LIVE', true],
+  ['US 3,884,218 (Monroe, 1975)', 'Frequency-following response audio method', 'PATENT TEXT', false],
+  ['US 5,213,562 (Monroe, 1993)', 'Multiple binaural-beat signals', 'PATENT TEXT', false],
+  ['"Hemi-Sync" word mark', 'Commercial product name', 'BRAND NAME', true],
 ];
 
 const STACK: [string, string, string][] = [
@@ -91,7 +91,7 @@ export default function About() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.4 }}
           >
-            GENERATE. MEASURE. VERIFY.
+            Sound, sources, and evidence.
           </motion.div>
         </div>
       </div>
@@ -124,15 +124,15 @@ export default function About() {
         {/* Replication spec sheet */}
         <section>
           <h1 className="t-h1" style={{ marginBottom: 24 }}>
-            How the original was rebuilt
+            What the app includes
           </h1>
           <div className="panel" style={{ padding: 0 }}>
             {(
               [
-                ['SCOPE', 'Full feature parity: binaural / monaural / isochronic engine, noise mixer, presets, focus levels, session phases'],
-                ['CHANGED', 'Frequency values corrected where measured data disagrees; claims graded; no "1–49 continuum"; no trademarked names'],
-                ['REMOVED', 'Nothing. Removed claims are documented in the Knowledge Base with their verdicts instead'],
-                ['ADDED', 'Grade badges, citation popovers, Analyzer self-measurement, H.870 dose model, panic control'],
+                ['SCOPE', 'Binaural, monaural, and isochronic generators; noise mixer; presets; session phases'],
+                ['CHANGED', 'Frequency entries include source notes; historical Focus labels have no verified Hz conversion'],
+                ['RESEARCH', 'The Knowledge Base records claims, supporting sources, and review findings'],
+                ['ADDED', 'Evidence grades, audio analysis, an estimated H.870 dose meter, and a panic control'],
               ] as [string, string][]
             ).map(([k, v], i) => (
               <div key={k} className="flex gap-4" style={{ padding: '14px 20px', borderTop: i > 0 ? '1px solid var(--line-1)' : 'none' }}>
@@ -146,7 +146,7 @@ export default function About() {
             ))}
           </div>
           <p className="t-caption text-3" style={{ marginTop: 12 }}>
-            Replication here means <em>the instrument</em>, not the mythology. The mythology is archived — with its grade.
+            Audio demonstrations show how a signal is built. Claims about consciousness need separate evidence.
           </p>
         </section>
 
@@ -168,14 +168,14 @@ export default function About() {
             ))}
           </div>
           <div className="flex items-center gap-3" style={{ marginTop: 32, borderTop: '1px solid var(--line-1)', paddingTop: 16 }}>
-            <span className="t-label text-3">THIS PAGE CONTAINS ZERO UNGRADED CLAIMS.</span>
+            <span className="t-label text-3">A GRADE APPLIES TO THE CLAIM BESIDE IT.</span>
             <GradeBadge
               grade="A"
               compact
               citation={{
-                verdict: 'This claim is about our own policy and is verifiable by inspection.',
-                summary: 'Grade A by construction: check any badge on this page — each opens its citation.',
-                source: 'Open Sync honest-claims policy (this page)',
+                verdict: 'Grades state the evidence for a specific claim.',
+                summary: 'A grade for acoustic arithmetic does not grade a proposed physiological effect.',
+                source: 'Open Sync grading policy (this page)',
               }}
             />
           </div>
@@ -194,7 +194,7 @@ export default function About() {
                   citation={{
                     verdict: `Grade ${r.grade}: ${r.criteria}`,
                     summary:
-                      'The grading rubric itself is adapted from evidence-based-medicine hierarchies, simplified for a consumer instrument. The rubric is a judgment call and says so.',
+                      'This is an app-specific evidence rubric. Grades summarize a review and may change when new evidence is assessed.',
                     source: 'Open Sync method — border cases resolve toward the lower grade',
                   }}
                 />
@@ -206,18 +206,17 @@ export default function About() {
             ))}
           </div>
           <div className="t-body-sm text-2" style={{ background: 'var(--ink-0)', border: '1px solid var(--line-1)', padding: 16, marginTop: 12 }}>
-            B− exists because evidence has texture. It renders with a dashed border everywhere it appears.
+            B− marks a borderline B-grade result. Its badge uses a dashed border.
           </div>
           <p className="t-caption text-3" style={{ marginTop: 12 }}>
-            Border cases are resolved toward the <em>lower</em> grade. Disagree? Every grade links to its sources — bring
-            a better one.
+            Borderline claims receive the <em>lower</em> grade. Open the linked sources to review the reasoning.
           </p>
         </section>
 
         {/* Patent ledger */}
         <section>
           <h1 className="t-h1" style={{ marginBottom: 24 }}>
-            Patent status, on the record
+            Historical filings and names
           </h1>
           <div className="panel" style={{ padding: 0 }}>
             {LEDGER.map(([pat, subj, status, live], i) => (
@@ -240,11 +239,11 @@ export default function About() {
             ))}
           </div>
           <p className="t-body-sm text-2" style={{ marginTop: 12 }}>
-            Patent expiry means the <em>technique</em> is in the public domain; trademarks and branding are not. Open
-            Sync implements expired-patent methods under neutral names and cites the filings in the Knowledge Base.
+            The filings describe audio methods. A patent describes an invention; it does not establish that its
+            claimed effects occur. Open Sync generates its own audio and uses neutral preset names.
           </p>
           <p className="t-label text-3" style={{ marginTop: 12 }}>
-            THIS IS A DESIGN STATEMENT OF INTENT, NOT LEGAL ADVICE.
+            FILINGS, RECORDINGS, AND PRODUCT NAMES ARE SEPARATE SOURCES.
           </p>
         </section>
 
@@ -269,17 +268,17 @@ export default function About() {
               <div className="t-readout-md" style={{ color: 'var(--text-1)' }}>
                 Web Audio API
               </div>
-              <div className="t-body-sm text-2">the engine — no framework, just the platform</div>
+              <div className="t-body-sm text-2">Browser audio playback</div>
             </div>
           </div>
           <p className="t-caption text-3" style={{ marginTop: 12 }}>
-            No telemetry, no accounts, no server. The whole lab runs in your browser tab.
+            Audio processing runs in your browser. The app requires no account and collects no telemetry.
           </p>
         </section>
 
         {/* Bookend */}
         <div className="t-readout-md text-3" style={{ textAlign: 'center', padding: '32px 0' }}>
-          GENERATE. MEASURE. VERIFY.
+          Sound, sources, and evidence.
         </div>
       </div>
 
@@ -289,8 +288,8 @@ export default function About() {
         style={{ borderTop: '1px solid var(--line-1)', padding: '24px 40px', maxWidth: 1440, margin: '0 auto' }}
       >
         <span className="t-label">OPEN SYNC</span>
-        <span className="t-readout-sm text-3">VERSION 1.0 · DESIGN SYSTEM 'INK & AMBER' · 2026</span>
-        <span className="t-caption text-3">Design + copy: CC BY-SA 4.0. Code: MIT. Grades: argue with us via citation.</span>
+        <span className="t-readout-sm text-3">OPEN SOURCE · 2026</span>
+        <span className="t-caption text-3">Design and copy: CC BY-SA 4.0. Code: MIT.</span>
       </footer>
     </div>
   );

@@ -35,7 +35,7 @@ function HypothesisCard({ h }: { h: TrackedHypothesis }) {
           citation={{
             verdict: `Current evidence grade: ${h.currentGrade}${h.gradeMinus ? '−' : ''}`,
             summary:
-              'Grades apply to the claim\u2019s supporting evidence and change only via the audit trail below \u2014 on data, not on vibes.',
+              'Grades reflect the supporting evidence. The record below explains each change.',
           }}
         />
       </header>

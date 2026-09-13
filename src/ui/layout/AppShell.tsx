@@ -100,7 +100,7 @@ function Logo({ collapsed }: { collapsed?: boolean }) {
             Open Sync
           </div>
           <div className="t-caption text-3" style={{ lineHeight: '14px' }}>
-            evidence-honest audio lab
+            sound and research tools
           </div>
         </div>
       )}

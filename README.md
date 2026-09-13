@@ -1,4 +1,4 @@
-# Open Sync — Evidence-Honest Brainwave Audio Laboratory
+# Open Sync — Sound and Research Lab
 
 [![CI](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml/badge.svg)](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -57,11 +57,12 @@ marketing, engineering, documentation, visual-design and UX perspectives, is in
 Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-source tools:
 [`docs/SOTA-COMPARISON.md`](docs/SOTA-COMPARISON.md). Where it goes next: [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
-## Modules (23 screens)
+## Modules (24 screens)
 
 | Area | What you get |
 |---|---|
 | **Studio** | Live binaural / monaural / isochronic engine, 6 noise colors, nature layer, a bowl set of up to 7 singing bowls (5 materials × 3 techniques, pan, intervals, ready-made sets), interval bell, multi-phase session timeline, live L/R scope, virtual-plate cymatics, sleep fade, share links, WAV export |
+| **Sound Methods** | Nine original sound examples from published methods, source and study notes, editable signal settings, and WAV/JSON export at `/sound-methods` |
 | **Harmonic Lab** | Compose chords, arpeggios, and four-bar phrases with explicit tuning, eight overtones, A/B listening, WAV export, and portable recipes at `/harmonics` |
 | **Channeled Sources** | Audit the supplied Bashar digest, inspect a clearly labeled illustrative scale conversion, and explore three experimental presets and a golden-ratio bowl set at `/channeled` |
 | **Sonic Lab** | 17 mathematical sound generators: Shepard/Risset illusions, Euclidean & prime & golden-ratio rhythms, fractal 1/f^α noise, logistic-map chaos, waveform designer (additive/FM/Chebyshev/phase distortion), tuning systems (JI/12-TET/Bohlen-Pierce), astronomically derived tunings with split grades: *arithmetic A · meaning D* |
@@ -149,7 +150,7 @@ src/
     audio/    # live Web Audio engine, export worker, media session bridge
     session/  # session provider + types, hook, math, defaults, persistence, share links
     components, layout, hooks, theme
-  pages/      # 23 routed screens
+  pages/      # 24 routed screens
   test/       # vitest setup + helpers
 scripts/      # render-previews.mjs (preset WAVs), render-icons.py (PWA icons)
 docs/         # ARCHITECTURE, ROADMAP, SOTA-COMPARISON
@@ -180,3 +181,7 @@ release; no medical claims are made. Not medical advice; not a medical device.
 ### Harmonic and source-exhibit update
 
 See [the implementation and review record](docs/HARMONIC-AND-SOURCE-REVIEW.md) for the research, evidence boundaries, architecture changes, and verification. The harmonic composer is a bounded audio sketchpad; its arithmetic does not establish physiological outcomes. Source digests are explicitly distinguished from independently verified transcripts.
+
+## Published sound methods
+
+The [Sound Methods page](https://occult-kranti.github.io/brainwave_opensync/sound-methods) adds original audio from public Monroe/Gateway disclosures and general modulation methods. It includes source notes, editable settings, short previews, and WAV/JSON export. Read [the research and implementation review](docs/SOUND-METHODS-REVIEW.md) for source coverage, formulas, limitations, and checks.

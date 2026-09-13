@@ -70,10 +70,25 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/sonic-lab', label: 'Sonic Lab' },
   { route: '/sample-lab', label: 'Sample Lab' },
   { route: '/harmonics', label: 'Harmonic Lab' },
+  { route: '/sound-methods', label: 'Sound Methods' },
   { route: '/channeled', label: 'Channeled Sources' },
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'sound-methods-player', module: 'Sound Methods', route: '/sound-methods', name: 'Published sound methods',
+    grade: 'A', gradeScope: 'The generated signal and arithmetic only; patent claims and mental effects need separate evidence.',
+    simple: 'Hear original examples based on Monroe patents and audio research. Change the settings, preview a sound, or export its WAV and recipe.',
+    deep: 'A separate renderer makes tone pairs, amplitude envelopes, opposite stereo phase modulation, and deterministic filtered noise. Public patent examples are distinguished from chosen demonstration settings. Previews last up to thirty seconds; background WAV exports last up to five minutes. Both use the same output ceiling and fifty-millisecond edge fades, without reproducing commercial recordings or voice scripts.',
+    howTo: ['Choose a sound and read its source note.', 'Start at low device volume, then press Play preview.', 'Change a setting or compare a second method.', 'Export the WAV and JSON settings to reproduce your result.'],
+    plot: { axes: 'Left and right relative waveform amplitudes over forty milliseconds, after the initial fade.', good: 'The displayed signal matches the selected channel construction.', bad: 'The plot describes generated audio; it cannot measure a listener’s brain state.' },
+  },
+  {
+    id: 'sound-methods-sources', module: 'Sound Methods', route: '/sound-methods', name: 'Patents, studies, and tools',
+    simple: 'Read what each source describes and what it leaves untested. Filter patents, studies, and open-source tools, or search for a name.',
+    deep: 'The collection links historical disclosures, the Gateway assessment, human studies, and software documentation. Patent descriptions establish a proposed signal method, not its effectiveness. Study entries separate auditory responses from mood, attention, or sleep outcomes. Software entries record checked licenses and gaps without importing third-party recordings.',
+    howTo: ['Open Sources and tools.', 'Filter by source type or enter a search term.', 'Follow the original source and read the stated limitation.'],
+  },
   {
     id: 'harmonic-composer', module: 'Harmonic Lab', route: '/harmonics', name: 'Harmonic composer',
     grade: 'A', gradeScope: 'Frequency arithmetic and digital synthesis only; no physiological outcome is established.',
@@ -85,8 +100,8 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
   {
     id: 'channeled-bashar-exhibit', module: 'Channeled Sources', route: '/channeled', name: 'Bashar source exhibit',
     grade: 'D', gradeScope: 'The channeled claims themselves; supplied digests are not independently verified transcripts.',
-    simple: 'Read a source exhibit with a clear boundary between reported claims and checkable numbers. Follow the citations before exploring the sound examples.',
-    deep: 'The supplied digest describes several quantities without a reproducible measurement protocol. An alpha peak and gamma activity do not by themselves establish an internal contradiction. The exhibit reports these limits before offering experimental audio. No position on the origin of the material is implied.',
+    simple: 'Read the frequency claims in the supplied Bashar summaries and the limits of those sources. Compare the numbers and listen to audio examples.',
+    deep: 'The supplied digest gives several frequencies without a reproducible measurement method. Alpha and gamma activity can occur in the same recording. The page separates unverified source claims from calculations and audio demonstrations. Original transcripts and recordings are needed to check attribution and measurements.',
     howTo: ['Read the source and verification note.', 'Compare the reported quantities with the measurement audit.', 'Explore the experimental presets or mathematical bowl set.'],
   },
   {
@@ -103,11 +118,11 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/',
     name: 'Home landing',
     simple:
-      'The front door of the instrument. It explains what Open Sync is, shows every module as a card, and offers a 60-second first session. Open any card to start working.',
+      'Home explains the app and links to each module. Follow the quick start to play a session, or choose a card to explore.',
     deep:
-      'The hero is procedural: a canvas renders a teal/amber carrier pair and their difference-frequency envelope, mirroring the Studio signal path at display rate. Module cards are generated from this same features dataset, so card copy, grade chips, and mini-steps can never drift from the Guide. Grade summary chips report the weakest relevant grade in each module, not the most flattering one.',
+      'The header animation illustrates a pair of tones; it is not a measurement of current audio. Module cards use the same feature descriptions as the Guide. Each summary badge shows the lowest evidence grade assigned within that module.',
     howTo: [
-      'Read the two-sentence honesty statement under the hero.',
+      'Read the app description below the header.',
       'Pick a module card, or follow the 60-second quick-start strip.',
       'Open the Guide any time you meet a meter you do not understand.',
     ],
@@ -142,7 +157,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
       'The engine synthesizes fL and fR = fL + Δf; the perceived beat equals |fL − fR| and is constructed centrally where the two auditory pathways converge in the superior olivary complex — it does not exist in the air. The percept is robust for carriers at or below ~1 kHz and beats at or below ~30 Hz (Oster 1973), which is why the UI warns outside that domain. The stronger claim that the beat biases cortical oscillations toward the beat rate is contradicted by 8 of 14 controlled EEG studies (Ingendoh 2023) and behavioral effects, where found, are modest (g ≈ 0.4). Phase-lock mode restarts both oscillators at shared zero-crossings so interaural phase stays exact instead of drifting.',
     howTo: [
       'Put on headphones — the effect needs one tone per ear.',
-      'Choose a beat: 4–7 Hz for winding down, 10 Hz relaxed, 14–20 Hz alert.',
+      'Choose a beat rate and compare how it sounds; the rate does not measure your state.',
       'Keep the carrier between 100 and 400 Hz, set a comfortable volume, press Start Session.',
     ],
   },
@@ -188,7 +203,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'Signal generation correctness; offered as masking/comfort, no entrainment claim.',
     simple:
-      'Six colors of background noise you can blend like faders on a mixing desk. Each color has a different bass-to-treble balance. They mask distractions and aid relaxation — they carry no brainwave claim.',
+      'Blend six colors of background noise. Each color has a different bass-to-treble balance. Use the faders to set their levels.',
     deep:
       'Spectral slopes per octave: white 0 dB (flat energy per Hz), pink −3 dB (equal energy per octave), brown −6 dB (random-walk, bass-weighted), blue +3 dB, violet +6 dB (differentiated white), grey psychoacoustic equal-loudness shaped so each band sounds equally loud. The engine synthesizes each color by filtering white noise and sums them through independent −60…0 dB gain stages. Double-clicking a fader returns it to off. All noise layers pass through the master gain and the dose meter like everything else.',
     howTo: [
@@ -207,7 +222,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     simple:
       'Adds rain, ocean, stream, fire, or thunder underneath your session. Small human studies find natural soundscapes relaxing. Toggle Nature in the Layers panel and set its level.',
     deep:
-      'Each nature voice is procedurally synthesized from shaped, slowly modulated filtered noise — no loops and no samples — so spectra evolve without audible repetition. Relaxation evidence for natural soundscapes is real but small, which is why the layer wears a B badge and is framed as comfort rather than entrainment. The layer runs through the same master gain, limiter expectations, and dose accounting as the tonal engine.',
+      'Each nature sound is synthesized from filtered and slowly modulated noise. Live playback uses loops rendered by the audio engine. Studies of natural soundscapes do not directly validate these synthetic versions. The layer passes through the session master gain and contributes to its estimated sound dose.',
     howTo: [
       'Click the Nature LED in the Layers panel to enable it.',
       'Pick a scene (rain is the most spectrally neutral).',
@@ -222,13 +237,13 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     grade: 'D',
     gradeScope: 'Traditional/cultural use documented; no controlled physiological evidence. Materials and sets are sound models, not effects.',
     simple:
-      'A set of up to seven modelled singing bowls you can add for texture, each with its own material, strike, pitch, pan and interval. It is included because people enjoy the sound, not because it does anything proven. Wellness claims about bowls are folklore, and the D badge says so.',
+      'Add up to seven modeled singing bowls, each with its own pitch, material, strike, pan, and interval. Choose a set or adjust each bowl. These are sound models; the app makes no wellness claim for them.',
     deep:
       'Each bowl is a physical-model voice: a sum of inharmonic partials with independent exponential decays, a slow shimmer and a split mode doublet that beats the way a hand-hammered bowl does. The five materials and three strikes are profiles chosen by ear against published partial measurements (Inácio 2006; Terwagne & Bush 2011); they change the sound, and nothing else is claimed. Every bowl has a pitch (note picker or typed Hz), a stereo pan, a re-strike interval and its own level, and LOCK ties a bowl to the session carrier so the texture stays consonant with the engine. Ready-made sets load a whole arrangement at once; the seven-note set is the C-major layout sold as a "chakra set", and its note-to-body mapping is folklore. Traditional meditative use is documented; controlled physiological evidence is absent, so the layer ships with a D badge and is labeled texture.',
     howTo: [
       'Click a bowl LED in the Layers panel, or press + ADD BOWL (up to seven bowls).',
       'Pick a material and a strike, then a note or a typed Hz — or press LOCK to follow the carrier.',
-      'Pan each bowl, choose its interval, and keep levels modest; the set is a texture, not a floor.',
+      'Set each bowl’s pan, repeat interval, and volume.',
       'Use LOAD SET for a ready-made arrangement, then edit it freely.',
     ],
   },
@@ -259,7 +274,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     simple:
       'Ready-made bowl arrangements you can load from one menu. Loading a set replaces every bowl currently in the panel. Each set is described by how it sounds, nothing more.',
     deep:
-      'A set is pure data: a list of bowls with material, strike, pitch, level, pan and re-strike interval, capped at seven. LOAD SET replaces the whole set with fresh rows (all switched on, intervals snapped to the offered choices), so the previous bowls are gone rather than merged. The five sets range from a Himalayan trio and a rim-sung crystal pair to a seven-bowl C-major scale; that last layout is what shops sell as a "chakra set", and its note-to-body mapping is folklore while the scale itself is real. Sets carry the layer\'s D badge — an arrangement is a matter of taste, not evidence.',
+      'Each set lists up to seven bowls with material, strike, pitch, level, pan, and repeat interval. LOAD SET replaces the current bowls with the selected arrangement. Sets include a Himalayan trio, crystal pairs, a C-major scale, and golden-ratio intervals. The C-major note-to-body mapping sold as a chakra set is a Grade D claim; the musical intervals can be checked separately.',
     howTo: [
       'Open the LOAD SET… menu in the Singing Bowls header.',
       'Choose a set; the current bowls are replaced and the set blurb appears under the header.',
@@ -272,7 +287,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/studio',
     name: 'Interval bell',
     simple:
-      'A timer bell that rings the first bowl of the set once when the session starts and again every few minutes. Use it to mark meditation intervals or to remind yourself to check posture and breath. It is a clock, not a stimulus, and carries no claim.',
+      'Rings the first bowl when a session starts and at your chosen interval. Use it as a timer for meditation or breaks. Turn it off in the Layers panel.',
     deep:
       'The bell is a single strike of the first bowl\'s voice (its material, strike and pitch, with LOCK resolved to the carrier); a rim-sung bowl is struck with a mallet instead, and an empty set falls back to an A3 antique bowl. Live, the session clock rings it at the first tick and at every period boundary, so it survives pause and resume without drift. In the export the bell is rendered as a bowl re-struck every N minutes, which rings at each phase start and every N minutes within a phase — a single-phase export therefore matches the live session, while a multi-phase export also rings at each phase boundary. Its level is fixed at −18 dB on the layer bus, and it is silent whenever the layers are bypassed.',
     howTo: [
@@ -287,7 +302,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/studio',
     name: 'Phase timeline / sequencer',
     simple:
-      'Lets a session change its beat frequency over time — for example starting alert and slowing down. The timeline shows each segment with a moving playhead. Edit segments to build your own arc.',
+      'Change the beat frequency through a sequence of timed phases. The timeline marks the current phase as the session plays. Edit the durations and target frequencies to change the sequence.',
     deep:
       'Phases form a piecewise schedule of target beat frequencies with linear ramps; beatAtTime() maps elapsed seconds to the active segment and its interpolated beat. The oscillator bank retunes continuously without discontinuity clicks, and the playhead shares the clock used by the dose accumulator. Presets load into exactly this structure, so anything a preset does can be inspected and edited here.',
     plot: {
@@ -310,7 +325,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/studio',
     name: 'Visualizer (scope / spectrum / correlation)',
     simple:
-      'A live oscilloscope for your session: the waveform, the pitches present, and how alike the two ears are. It is a measuring instrument, not a screensaver. When the engine is stopped it shows a NO SIGNAL watermark.',
+      'See the session waveform, frequency spectrum, and stereo correlation. These views read the generated audio. When playback stops, they show NO SIGNAL.',
     deep:
       'Three canvas views render from the engine analyser taps at 60 fps: the scope plots sample amplitude against time (teal = L, amber = R); the spectrum plots FFT magnitude in dB against Hz with 0.6 attack / 0.12 release smoothing and peak-hold dots decaying 20 dB per 3 s; the correlation meter shows normalized zero-lag L/R cross-correlation. A binaural pair intentionally reads near zero correlation — the ears differ by design. All scopes draw an instrument grid and a NO SIGNAL watermark when stopped.',
     plot: {
@@ -335,7 +350,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     simple:
       'Renders your entire session — phases, noise, layers — into a standard WAV file you can keep or share. Choose 16-bit, 24-bit or float, then press the WAV button in the Studio transport. The render runs in the background and stops at your session limit.',
     deep:
-      'exportWav() runs the same synthesis graph through an offline render at the session sample rate inside a Web Worker and encodes PCM-16, PCM-24 or float-32 WAV (engine/wav.ts, unit-tested for header layout and round-trip fidelity). The phase plan is truncated to the session limit before rendering, so the file can never outlast the cap. Offline rendering decouples export quality from real-time CPU load and respects the current output ceiling. The file carries no metadata claims — the file follows the phase plan; live transitions can differ from offline crossfades.',
+      'exportWav() runs the same synthesis graph through an offline render at the session sample rate inside a Web Worker and encodes PCM-16, PCM-24 or float-32 WAV (engine/wav.ts, unit-tested for header layout and round-trip fidelity). The phase plan is truncated to the session limit before rendering, so the file can never outlast the cap. Offline rendering decouples export quality from real-time CPU load and respects the current output ceiling. The file follows the phase plan; live transitions can differ from offline crossfades.',
     howTo: [
       'Build or load the session you want in the Studio.',
       'Press the WAV button in the transport bar.',
@@ -397,7 +412,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/library',
     name: 'Frequency Library & grades',
     simple:
-      'An audited catalog of famous frequencies — brainwave bands, Schumann resonances, Solfeggio, planetary tones, and more. Every row wears an evidence grade, and clicking the badge shows its citation. Filtered-out rows dim but never disappear.',
+      'Browse brainwave bands, Schumann resonances, Solfeggio pitches, planetary tones, and other frequency entries. Each row includes an evidence grade and citation. Filters dim entries outside your selection.',
     deep:
       'Each entry stores a documented origin, a best-available citation, and one or two grades — planetary tones, for instance, grade A for the octave arithmetic and D for the healing claim. Schumann entries use the measured Earth-ionosphere cavity modes (7.83 Hz fundamental), not vendor numerology; Solfeggio Hz values trace to 1970s digit-reduction numerology rather than medieval practice, and are labeled as such. The rubric: A = replicated physics, B = small human studies, C = plausible but weak, D = folklore. Preview tones render through the same engine as the Studio.',
     howTo: [
@@ -431,9 +446,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'C',
     gradeScope: 'Historical construct with plausible relaxation use; consciousness claims unproven.',
     simple:
-      'A ladder of "deep focus" levels inspired by the 1983 Gateway program, from F1 to F49. It is presented as history you can try, not as a proven map of consciousness. Tap a level to load its settings and read its honest description.',
+      'Browse historical Gateway Focus labels and load audio demonstrations. There is no verified conversion from a Focus number to a beat frequency. Each card explains its source and limits.',
     deep:
-      'Each level maps a discrete carrier/beat configuration onto a Gateway Focus label; the depth gauge sweeps teal to amber with depth. Levels are documentation of a specific historical program, not measured brain states — no continuous 1–49 scale is claimed beyond what the sources describe. Higher levels carry inline psychiatric caution where relaxation intensity warrants it. Loading a level just configures the Studio engine; the same C-grade entrainment caveat applies.',
+      'The page pairs historical Focus labels with carrier and beat settings chosen for this app. Those settings do not reproduce a verified Focus-number-to-Hz mapping or a commercial recording. The displayed depth scale orders the labels; it does not measure consciousness. Loading a level configures Studio and starts no audio.',
     howTo: [
       'Pick a level on the ladder — F10 and F12 are the documented starting points.',
       'Read the level card and its grade before loading.',
@@ -446,9 +461,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/levels',
     name: 'CIA Gateway report exhibit',
     simple:
-      'A faithful exhibit of the 1983 Gateway report: what the document says, who wrote it, and what it does not show. Government interest is history, not proof. The banner says it plainly: documented does not mean validated.',
+      'Read the 1983 Army assessment of the Gateway program, later released in the CIA archive. The page explains the report and its limits. DOCUMENTED does not mean VALIDATED.',
     deep:
-      'The exhibit anchors the 1983 CIA Gateway Process report (CIA-RDP96-00788) in context: an Army assessment of the Monroe Institute program, built on a biomedical model of its era, declassified decades later. Every claim quoted from the report is graded with the same A–D rubric as commercial folklore. The DOCUMENTED ≠ VALIDATED framing is mandatory here and across the Programs Archive. Treat the document as a primary historical source, not as evidence.',
+      'The source is the 1983 Army Gateway assessment, archived as CIA-RDP96-00788R001700210016-5. It describes the Monroe Institute program and proposes explanations for its effects. The assessment does not establish those effects through controlled experiments. Use it to study the claims and history, then check outcome evidence separately.',
     howTo: [
       'Open the Levels module and scroll to the exhibit panel.',
       'Read the framing banner first, then the document summary.',
@@ -464,7 +479,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'ITU-R BS.1770 standardized measurement, unit-tested implementation.',
     simple:
-      'Tells you how loud your audio actually sounds to human ears, in LUFS, rather than how tall the waveform looks. Watch Integrated for the whole measurement and Momentary for right now. Keep sessions quiet and comfortable.',
+      'Estimates signal loudness in LUFS using frequency weighting. Integrated covers the full measurement; Momentary covers the latest 400 milliseconds. Your device volume also determines how loud playback is.',
     deep:
       'Loudness follows ITU-R BS.1770: K-weighting (a high-shelf pre-filter plus an RLB high-pass), then mean-square energy, converted to LUFS. Gating removes a −70 LUFS absolute floor and a −10 LU relative gate so silence cannot bias the Integrated value. Momentary uses a 400 ms window and Short-term 3 s. K-weighted loudness approximates perception far better than peak level, which is why the dose meter consumes loudness rather than raw amplitude.',
     plot: {
@@ -510,7 +525,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     simple:
       'Measures how pure a tone is — how much unwanted harmonic grit the signal contains. Lower THD means a cleaner tone. Pair it with the built-in calibration tones to check your own playback chain.',
     deep:
-      'THD is the ratio of harmonic power to the fundamental — the root-sum-square of harmonics n ≥ 2 divided by the fundamental — reported in percent and dB. THD+N includes noise and everything else in the residual; its reciprocal is SINAD. The Analyzer synthesizes a known-clean reference tone, notches the fundamental, and integrates the residual above the FFT noise floor. It is the honest way to verify that headphones, dongles, or the export path add no audible distortion.',
+      'THD is the ratio of harmonic power to the fundamental — the root-sum-square of harmonics n ≥ 2 divided by the fundamental — reported in percent and dB. THD+N includes noise and everything else in the residual; its reciprocal is SINAD. The Analyzer synthesizes a known-clean reference tone, notches the fundamental, and integrates the residual above the FFT noise floor. Testing headphones or adapters requires a recording of their output; an internal signal measurement cannot check external hardware.',
     plot: {
       axes: 'Readouts: THD (% and dB), THD+N, SINAD (dB). The spectrum view shows the fundamental and any harmonic peaks above the floor.',
       good: 'Sine source: THD below 0.1%, harmonic peaks barely above the noise floor.',
@@ -621,9 +636,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/knowledge',
     name: 'Knowledge Base (1839–2026)',
     simple:
-      'A searchable archive of everything we know: papers, patents, government files, and myth-busts, from 1839 to today. Every card shows its verdict and grade up front. Government documents always carry DOCUMENTED ≠ VALIDATED.',
+      'Search papers, patents, government records, and claim reviews from 1839 onward. Cards show a verdict, evidence grade, and citation. Government records distinguish documentation from validation.',
     deep:
-      'Entries are typed records — myth-bust, evidence, safety, history — each with a graded citation, and the timeline view scrubs 1839 to 2026 with era markers. The archive is the citation target for every badge popover in the app, so any claim can be chased to a source in one click. Debunking claims are graded with the same rubric as the claims they attack. If a grade here is wrong, the receipt to prove it is part of the entry.',
+      'Entries are typed records — myth-bust, evidence, safety, history — each with a graded citation, and the timeline view scrubs 1839 to 2026 with era markers. The archive is the citation target for every badge popover in the app, so any claim can be chased to a source in one click. Debunking claims are graded with the same rubric as the claims they attack. Each entry includes its sources so the grade can be reviewed.',
     howTo: [
       'Search a term (e.g. "Oster" or "Schumann") or scrub the timeline.',
       'Filter by category or grade to compare evidence tiers.',
@@ -635,15 +650,15 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     id: 'honesty-manifesto',
     module: 'About',
     route: '/about',
-    name: 'Honesty manifesto & method',
+    name: 'Evidence and methods',
     simple:
-      'The honest-claims policy in the open: we never show a naked number, we dim rather than delete, and we grade our own safety claims. It is the contract every module is held to. Read it in full on the About page.',
+      'Read how Open Sync grades claims and separates source records from measured results. The About page explains the four grades and the app’s scope. Follow a citation to check the evidence.',
     deep:
-      'The policy is enforced structurally, not rhetorically: preset grades compute from their weakest constituent claim, filtered Library rows dim instead of vanishing, and government programs carry mandatory DOCUMENTED ≠ VALIDATED framing. The About module hosts the A–D rubric, the expired-patent ledger, and the replication story. Claim discipline is mechanical as well — user-facing documentation strings are tested in CI against a list of overclaim phrases.',
+      'The A–D rubric summarizes the evidence for individual claims. Library filters keep excluded entries visible, and government-program pages distinguish documentation from validation. About also lists historical audio patents and the software stack. Documentation tests check prohibited claims, readability, and page coverage.',
     howTo: [
       'Open About and read the five policy commitments.',
       'Check the rubric table to learn what each grade requires.',
-      'Use any badge popover to audit us against our own policy.',
+      'Open a badge to read its source and scope.',
     ],
   },
   {
@@ -652,9 +667,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/about',
     name: 'Evidence badges (A–D)',
     simple:
-      'The little A/B/C/D chips that travel with every claim. A means replicated science, B means small human studies, C means plausible but weak, D means folklore. Click any badge to see its evidence and citation.',
+      'A–D badges summarize the evidence for the claim beside them. A covers established findings, B limited human studies, C weak or inconsistent evidence, and D unsupported claims or traditions. Open a badge to read its scope and source.',
     deep:
-      'The badge is a first-class component with a fixed rubric: A = solid physics or multiple independent replications, B = direct human evidence with small samples, C = plausible mechanism with inconsistent evidence, D = numerology or folklore. Dual grades split math from therapy claims (planetary tones: A/D) and the dashed B− variant marks borderline pilots such as 432 Hz. Every badge opens a citation popover one click from the Knowledge Base — the receipt is part of the component, so a claim without a badge is a bug.',
+      'The same four-grade rubric is used across the app. Dual grades separate claims such as frequency arithmetic and proposed health effects. B− marks borderline B-grade evidence. A badge summarizes a review; its source and scope explain the limits.',
     howTo: [
       'Find any claim in the app; its badge sits beside it.',
       'Click the badge to open the citation popover.',
@@ -668,13 +683,13 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/lab',
     name: 'Experiment registry (X01–X14)',
     simple:
-      'Fourteen pre-registered experiments we intend to run, with the analysis plan written before any data exists. Nothing here is a result yet. Each card states exactly how a null outcome will be handled.',
+      'Fourteen planned experiments list hypotheses, methods, and analysis rules. No results have been collected here. Each card explains how a null result will be reported.',
     deep:
-      'Every protocol card carries its grade, its linked hypothesis, and a null-handling statement; the honesty bar keeps all metrics in n-and-confidence-interval placeholder form because no data has been collected. Pre-registration means success criteria cannot be rewritten after results arrive. The registry is the antidote to the file-drawer effect that afflicts vendor entrainment research. Cards are readable now; execution status updates as runs complete.',
+      'Protocol cards link a hypothesis to a method, evidence grade, and null-result rule. Sample sizes and confidence intervals remain empty until data is collected. Analysis criteria are recorded before the planned runs. This makes later changes visible; it does not establish an external preregistration.',
     howTo: [
       'Open the Experiment Lab and browse the X01–X14 cards.',
       'Read a card’s hypothesis, protocol, and null-handling statement.',
-      'Check the honesty bar: placeholder metrics mean no data yet.',
+      'Check the result fields: placeholders mean no data yet.',
     ],
   },
   {
@@ -683,12 +698,12 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/critique',
     name: 'Critique Library (13 theories)',
     simple:
-      'Thirteen popular theories taken apart with a fixed flaw checklist, each given its strongest possible defense first. Every entry ends in a verdict and the key numbers. Even skeptics get audited when they overclaim.',
+      'Read structured reviews of thirteen theories. Each review checks the mechanism, mathematics, history, and evidence. It includes the strongest supporting argument, identified flaws, and a verdict.',
     deep:
-      'Each critique runs a six-pass flaw taxonomy — mechanism, math, history, evidence, overreach, steelman — so every theory faces identical scrutiny, and the fifth review applies the same instrument to the debunkers. Verdict chips, flaw tables, and citations are structured data, not prose. Grading only the claims you dislike is marketing; grading all of them with one rubric is method. Entries link back into the Knowledge Base for primary sources.',
+      'The reviews use six categories: mechanism, mathematics, history, evidence, overreach, and the strongest supporting argument. The same categories apply to claims and to critiques of those claims. Each entry records findings and a verdict. Citations link to the sources used in the review.',
     howTo: [
       'Open the Critique Library and pick a theory.',
-      'Read the steelman first, then the flaw table, then the verdict.',
+      'Read the supporting argument, identified flaws, and verdict.',
       'Follow citations into the Knowledge Base to check the work.',
     ],
   },
@@ -698,9 +713,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/hypotheses',
     name: 'Hypothesis Tracker (11 claims)',
     simple:
-      'A public scoreboard of eleven claims we are tracking. Each one lists exactly what evidence would raise its grade and what would lower it. Grades can move in both directions, in public.',
+      'Track eleven claims and their current evidence grades. Each entry states what evidence would raise or lower its grade. The history records any changes.',
     deep:
-      'Every tracked hypothesis stores its current grade, a grade-change audit trail, and pre-written promotion and demotion criteria, so belief updates are procedural rather than vibes. Entries start pre-registered and awaiting data, and each claim links to the experiment that could move it. The rubric is the same A–D scale the Library uses, turned on ourselves. Watching a grade drop is a feature of the system, not a failure of it.',
+      'Each hypothesis stores its grade, review history, and criteria for changing the grade. It links to an experiment that could test the claim. Entries awaiting data are labeled accordingly. New evidence can raise or lower a grade.',
     plot: {
       axes:
         'The grade-audit timeline runs left to right by date; each step mark is one grade event on the A–D scale, and hovering it shows the evidence that triggered the change.',
@@ -721,9 +736,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/programs',
     name: 'Programs Archive (42 programs)',
     simple:
-      'Forty-two real government programs that touched entrainment, auditory stimulation, or so-called psychotronics. Each is graded twice: is the program documented, and is the claimed effect validated. Funding is history, not proof.',
+      'Browse forty-two government-program records related to auditory stimulation, entrainment, and psychotronics. One grade covers documentation; another covers evidence for the claimed effect. Funding alone does not establish an effect.',
     deep:
-      'Programs carry two independent grading axes — DOCUMENTED PROGRAM (archive-grade evidence that the effort existed) and VALIDATED EFFECT (whether the claimed phenomenon survived controlled testing). Most programs score high on the first axis and D on the second, which is the central lesson of the archive. Official negative findings are documented alongside the programs rather than omitted. The mandatory banner frames everything as history and funding records, never endorsement.',
+      'DOCUMENTED PROGRAM grades the evidence that an effort existed. VALIDATED EFFECT grades controlled evidence for the claimed outcome. Each record includes sources, dates, and relevant negative findings. Read both grades before drawing a conclusion from a historical record.',
     howTo: [
       'Open the Programs Archive and read the framing banner first.',
       'Compare the two grades on any card — documentation versus validation.',
@@ -787,9 +802,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     name: 'Replication protocols',
     status: 'in-verification',
     simple:
-      'A workspace for re-running published experiments with the exact same settings, so claims get checked instead of trusted. Protocols and result templates will live here. This module is in verification and opens soon.',
+      'Review published stimulus settings and the changes needed for browser demonstrations. Protocol cards list procedures and result templates. This module is in verification.',
     deep:
-      'Each protocol will capture stimulus parameters — carrier, beat, mode, dose — plus procedure and a pre-registered analysis plan, so an independent run is a measurement rather than an anecdote. Designs are being cross-checked against the published parameter lists before release; until then every card is marked in verification. Null results will be published with the same prominence as positive ones. The Replication Bay is where the Experiment Lab’s X-series protocols meet the public.',
+      'Each protocol records carriers, beat rates, mode, duration, and a planned analysis. Fidelity notes identify missing hardware, unknown parameters, and substitutions. Those differences determine whether a run is a replication or only a demonstration. Record null and positive results against the same analysis plan.',
     howTo: [
       'Wait for the module to leave verification, then open Replication Bay.',
       'Pick a protocol and mirror its parameters in the Studio.',
@@ -802,9 +817,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/quicklab',
     name: 'Blinded self-experiments',
     grade: 'B',
-    gradeScope: 'Design follows pre-registration practice; your own results are n-of-1 evidence, graded by the honesty bar, never over-claimed.',
+    gradeScope: 'Individual comparisons with hidden condition labels; results apply to the recorded sessions and their limits.',
     simple:
-      'Run a real blinded experiment on yourself. The app secretly picks real or control sessions, you rate how you feel after each, and after enough sessions it tells you the difference with an honest confidence range — and says "inconclusive" when the data is inconclusive.',
+      'Compare audio conditions across several sessions with their labels hidden. Rate each session, then review the estimated difference and confidence interval. Results remain inconclusive when the interval includes zero.',
     deep:
       'Quick Lab enrolls you into block-randomized, fully blinded n-of-1 protocols (seeded RNG, arm identity sealed until completion). Each arm is an engine-rendered session (including active-placebo and 0 Hz control arms drawn from the H1–H12 hypothesis set). Outcomes are session ratings and an optional simple-reaction tap test; results render only as n + estimate + 95% CI, a verdict string appears only at ≥10 sessions, and a CI spanning zero returns "inconclusive" by construction. Every session debits your WHO-ITU H.870 weekly dose budget and the scheduler refuses over-dose runs.',
     plot: {
@@ -813,11 +828,11 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
       good:
         'n at or above 10 with a confidence interval narrow enough to read clearly, every session logged, and arms still blinded until completion.',
       bad:
-        'A very wide interval or one crossing the zero line is reported as inconclusive — that is a correct result, so keep logging sessions rather than re-reading the chart.',
+        'An interval crossing zero is inconclusive. A wide interval means the estimated difference is uncertain.',
     },
     howTo: [
       'Open Quick Lab and pick a protocol — ear-swap and the 0 Hz-floor test are fastest.',
-      'Run your scheduled blinded sessions and rate each one honestly.',
+      'Run the scheduled sessions and record your rating after each.',
       'After ten sessions, read your estimate and confidence range — including if it is inconclusive.',
     ],
   },
@@ -829,9 +844,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'Audit content is the program\u2019s gated critical-review record; verdicts carry flaw tables and citations.',
     simple:
-      'See exactly why each big claim about sound and the brain holds up or falls apart. Follow the argument step by step, see the weakest link highlighted, and read the verdict — from solid physics to discarded folklore.',
+      'Review claims about sound and the brain one step at a time. Each argument shows its assumptions, evidence gaps, and verdict. Follow the citations to check the review.',
     deep:
-      'Each theory is rendered as its audited inference chain: numbered derivation steps with inline flaw flags (logical, mathematical, empirical, scope, statistical, semantic), the weakest arrow highlighted, the domain of validity, at least two mundane alternative explanations, a steelman, and the final verdict (REPAIRABLE / DEMOTE / DISCARD / OPEN) with links into the experiment registry. Discarded claims render as audited records with their flaw tables — never as selectable session options. All content renders from the program\u2019s gated research data, not hand-written copy.',
+      'Each theory is rendered as its audited inference chain: numbered derivation steps with inline flaw flags (logical, mathematical, empirical, scope, statistical, semantic), the weakest arrow highlighted, the domain of validity, at least two mundane alternative explanations, a steelman, and the final verdict (REPAIRABLE / DEMOTE / DISCARD / OPEN) with links into the experiment registry. Discarded claims render as audited records with their flaw tables — never as selectable session options. The page links its findings to the underlying research records.',
     howTo: [
       'Open Theory Explorer and pick a claim — try "432 Hz" or the Gateway chain.',
       'Walk the numbered steps; the amber arrow marks where the argument breaks.',
@@ -846,13 +861,13 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'Auditory illusion — replicated psychoacoustics (Shepard 1964).',
     simple:
-      'A tone that seems to rise forever without ever getting higher, like a barber pole for sound. Pick a center frequency and speed, then press play.',
+      'Overlapping tones create the impression of a continually rising pitch. Set the center frequency and speed, then press play.',
     deep:
       'Eight to ten octave-spaced sine partials sweep upward while a Gaussian-in-log-frequency envelope fades partials in at the bottom and out at the top. The spectrum returns to itself every octave cycle, so perceived pitch height circulates without any real ascent. Loop mode snaps the base frequency so every partial completes whole cycles, making the loop sample-seamless.',
     howTo: [
       'Open Sonic Lab and find the Illusions group.',
       'Set a center frequency (300–500 Hz works best) and press play.',
-      'Try the loop mode and listen for the seam — there is none.',
+      'Try loop mode and listen across the repeat point.',
     ],
   },
   {
@@ -863,7 +878,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'Temporal analog of the Shepard illusion; perceptual, not therapeutic.',
     simple:
-      'A beat that seems to speed up forever without getting faster. Watch the tempo readout — it always comes back to where it started.',
+      'Overlapping click patterns create the impression of a continually accelerating rhythm. The displayed tempo returns to its starting point each cycle.',
     deep:
       'Click trains at multiple tempo ratios are crossfaded as the base tempo accelerates. Analytic scheduling keeps each pulse stream phase-coherent across the cycle boundary. The percept is the rhythm-domain version of the Shepard circulation.',
     howTo: ['Open the Illusions group.', 'Choose a tempo ratio and press play.', 'Watch the meta-bar indicator to see the cycle restart.'],
@@ -902,10 +917,10 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'B',
     gradeScope: 'Beatty/Sturmian sequence with irrational slope — deterministic structure; aesthetic only.',
     simple:
-      'Pulses placed by the golden ratio — never repeating, never random. It sounds like structured drift.',
+      'Generate a pulse pattern from the golden ratio. Compare its uneven spacing with a regular beat.',
     deep:
-      'A Beatty/Sturmian sequence with slope 1/φ generates the gate times. Irrational rotation guarantees no exact period, which is why the texture never locks into a loop. No physiological claim attaches.',
-    howTo: ['Open Math Rhythms.', 'Play the golden-ratio card.', 'Compare its drift with the prime-pulse card next to it.'],
+      'A Beatty sequence with slope 1/φ selects pulse positions. The infinite sequence has no exact period. Playback uses a finite generated buffer, which can repeat in loop mode.',
+    howTo: ['Open Math Rhythms.', 'Play the golden-ratio card.', 'Compare the pulse spacing with the prime-pulse pattern.'],
   },
   {
     id: 'soniclab-prime-pulse',
@@ -914,9 +929,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     name: 'Prime pulse train',
     grade: 'B',
     gradeScope: 'Prime-indexed onsets; mathematical pattern, aesthetic listening object.',
-    simple: 'Clicks only at prime-numbered steps — a sparse, never-settling rhythm. Pick a step rate and press play.',
-    deep: 'Onsets occupy indices 2, 3, 5, 7, 11… of a fixed grid. Gaps grow slowly because prime density thins logarithmically. The result is a sparse, aperiodic texture that never settles into a groove.',
-    howTo: ['Open Math Rhythms.', 'Play Prime pulses.', 'Try tapping along — the pattern never lets you settle.'],
+    simple: 'Play clicks on prime-numbered steps: 2, 3, 5, 7, and so on. Set the step rate to hear the spacing change.',
+    deep: 'Onsets occupy prime indices on a fixed time grid. The proportion of prime indices decreases roughly as 1/ln(n) at large n. This creates uneven gaps in the finite generated pattern.',
+    howTo: ['Open Math Rhythms.', 'Play Prime pulses.', 'Change the step rate and compare the gaps between clicks.'],
   },
   {
     id: 'soniclab-fibonacci-word',
@@ -924,12 +939,12 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/sonic-lab',
     name: 'Fibonacci-word rhythm',
     grade: 'C',
-    gradeScope: 'Real combinatorial structure; note that fold-mapped Fibonacci frequencies carry zero information (audited in the Critique Library).',
+    gradeScope: 'The substitution rule defines the rhythm; no special physiological effect is established.',
     simple:
-      'A rhythm generated by the Fibonacci word — a self-similar pattern of long and short steps. This is honest structure, not magic numbers.',
+      'Generate long and short steps with the Fibonacci substitution rule. Play the pattern and follow the displayed sequence.',
     deep:
-      'The Fibonacci word (0→01, 1→0 substitution) yields a Sturmian rhythm with provable combinatorial properties. We deliberately do not octave-fold Fibonacci numbers into Hz. That mapping is information-free, as the Critique Library audit shows.',
-    howTo: ['Open Math Rhythms.', 'Play the Fibonacci-word card.', 'Read the note explaining why we avoid Fibonacci Hz claims.'],
+      'The Fibonacci word is built by repeatedly applying 0→01 and 1→0. The two symbols set the rhythm’s long and short steps. This is a construction rule for sound, with no established special effect on listeners.',
+    howTo: ['Open Math Rhythms.', 'Play the Fibonacci-word card.', 'Read the substitution rule beside the pattern.'],
   },
   {
     id: 'soniclab-fractal-noise',
@@ -939,7 +954,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'B',
     gradeScope: '1/f^α spectra are real signal science; pleasantness claims are aesthetic.',
     simple:
-      'Noise with a tunable texture between white hiss and deep rumble. The alpha slider walks you through pink, Brownian, and beyond.',
+      'Adjust the balance of low and high frequencies in noise. Alpha 0 gives white noise, 1 gives pink, and 2 gives Brownian.',
     deep:
       'Spectral shaping multiplies noise amplitudes by f^(−α/2) so power falls as f^−α (about −3α dB per octave). α=1 is pink, α=2 is Brownian, and α=0 is white. A Voss–McCartney time-domain approximation is included for comparison.',
     howTo: ['Open Fractal & Chaos.', 'Sweep the alpha slider while playing.', 'Match the slope readout against the Analyzer.'],
@@ -952,7 +967,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'The logistic map is textbook nonlinear dynamics (Feigenbaum); used here as a control signal.',
     simple:
-      'Chaos theory driving a tone: one slider walks from a steady hum, through wobbles, into full unpredictability. Stop anywhere and it holds that texture.',
+      'Use the logistic map to vary a tone’s pitch or amplitude. Adjust r to compare steady, repeating, and chaotic patterns.',
     deep:
       'x_{n+1} = r·x_n(1−x_n) at control rate modulates pitch or amplitude. Below r≈3 it settles to a fixed point, past 3.449 it period-doubles, and at r=4 it is fully chaotic. The page warns you at each bifurcation edge.',
     howTo: ['Open Fractal & Chaos.', 'Drag the r slider slowly from 3.4 to 4.0.', 'Listen for the period-doubling cascade.'],
@@ -965,7 +980,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'Classic synthesis engineering (additive, FM, Chebyshev, phase distortion).',
     simple:
-      'Build your own waveform from harmonics or FM and hear it live. Export it as a studio-grade WAV file when it sounds right.',
+      'Build a waveform from harmonics, frequency modulation, or waveshaping. Preview the sound and export a WAV file.',
     deep:
       'Additive stacks up to 8 harmonics, Chowning FM with bandwidth following Carson\u2019s rule, and Chebyshev T_n waveshaping (T_n(cos θ) = cos nθ, verified by FFT in tests) are available. Casio-style phase distortion adds a second family of timbres. Export uses the engine\u2019s bit-exact WAV encoder.',
     howTo: ['Open Custom Waveforms.', 'Move harmonic sliders or set an FM index.', 'Press play, then export WAV if you like it.'],
@@ -978,9 +993,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'B',
     gradeScope: 'Tuning mathematics is exact; consonance follows Plomp–Levelt roughness; healing-tuning claims are grade D and excluded.',
     simple:
-      'Hear how just intonation, equal temperament, and the Bohlen–Pierce scale actually differ — in cents and in sound. Play any interval in two systems back to back.',
+      'Compare just intonation, equal temperament, and the Bohlen–Pierce scale. Play an interval and read its size in cents.',
     deep:
-      'The JI table lists exact cent deviations from 12-TET (major third +13.69¢, syntonic comma 21.51¢). Bohlen–Pierce divides the 3:1 tritave into 13 steps of 146.304¢. Consonance is framed by Plomp–Levelt roughness curves, the honest psychoacoustic basis.',
+      'The tuning table calculates intervals from ratios and logarithms. A just major third is about 13.69 cents below its 12-TET equivalent; the syntonic comma is about 21.51 cents. Bohlen–Pierce divides the 3:1 tritave into 13 equal steps of about 146.304 cents. Roughness is one factor in consonance, alongside timbre, context, and listener experience.',
     howTo: ['Open Tuning Systems.', 'Play the same interval in JI and 12-TET.', 'Read the cent column while you listen.'],
   },
   {
@@ -991,10 +1006,10 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'D',
     gradeScope: 'Orbital arithmetic is grade A; any special meaning or effect is grade D — labeled inline, per program rule.',
     simple:
-      'Tones computed from real astronomy — planet orbits, the TRAPPIST-1 system, the Earth year. The math is exact; there is no evidence they do anything special.',
+      'Convert orbital periods into audible pitches. The selected reference sets the octave or starting note. These calculations establish no special effect on listeners.',
     deep:
-      'Orbital period ratios become pitch intervals (TRAPPIST-1 ladder anchored to h = C3 = 130.81 Hz; Earth-year tone 136.10 Hz with the sidereal/tropical convention explicitly selected — the two differ by 0.067¢, a 189-second slow beat). Every entry carries the split grade: arithmetic A, meaning D. NASA-style sonification practice is the reference frame; mystical claims are excluded by design.',
-    howTo: ['Open Astro-Tuned.', 'Toggle sidereal/tropical to hear the tiny difference.', 'Read the honesty label before playing anything.'],
+      'Orbital period ratios become pitch intervals. The TRAPPIST-1 demonstration uses planet h as C3, and Earth-year tones depend on the selected sidereal or tropical period. Grade A applies to the arithmetic; Grade D applies to proposed special effects. These are sound representations of selected astronomical data.',
+    howTo: ['Open Astro-Tuned.', 'Toggle sidereal/tropical to hear the tiny difference.', 'Read the source and interpretation note before playing.'],
   },
 // ------------------------------------------------------------- Sample Lab
 {
@@ -1003,7 +1018,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
   route: '/sample-lab',
   name: 'Local file upload',
   simple:
-    'Drop or pick any audio file and the Lab dissects it: tones, tempo, loudness, stereo construction, tuning, and loops. Everything is decoded and analyzed on your device. The file is never uploaded or stored anywhere else.',
+    'Choose an audio file to inspect its frequencies, rhythm, loudness, stereo structure, and repeated sections. Processing happens on your device. The audio is not uploaded.',
   deep:
     'Files are decoded with AudioContext.decodeAudioData (WAV, MP3, OGG, M4A) into per-channel Float32 arrays at the native sample rate. All DSP runs in chunked, cancellable passes that yield between chunks so the page stays responsive, and long files are analyzed on a widened frame grid so memory and time stay bounded. No network call exists anywhere in the path; closing the tab discards everything.',
   howTo: [
@@ -1059,7 +1074,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     'Per STFT frame: centroid C = Σf·p (brightness), spread S = √Σ(f−C)²·p, rolloff = smallest frequency holding 85% of power, flatness = geometric/arithmetic mean ratio of a lightly time-smoothed spectrum (0 = pure tone, →1 = noise), plus positive-only spectral flux F = Σ max(0, P − P_prev) which feeds onset detection. Rolloff is the lossy-encoder detector: mp3 re-encodes show a hard shelf at 15–20 kHz. All five are O(N) per frame on top of the shared STFT.',
   plot: {
     axes: 'Four time series: centroid (Hz, log), spread (Hz, log), rolloff-85 (Hz, log), flatness (0–1).',
-    good: 'Flatness near 0 with stable centroid = clean tones; flatness near 1 with low centroid = a noise bed — both fine if labeled honestly.',
+    good: 'Flatness near 0 with stable centroid = clean tones; flatness near 1 with low centroid = a noise bed.',
     bad: 'A flatness or rolloff step midway = spliced or re-encoded material; rolloff glued below 16 kHz in a "lossless" file = mp3 in disguise.',
   },
   howTo: ['Load a file.', 'Scan flatness to classify tone vs noise.', 'Scan rolloff for codec shelves and splices.'],
@@ -1142,12 +1157,12 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
   route: '/sample-lab',
   name: 'Loop detection',
   simple:
-    'Answers the uncomfortable question: is this hour-long session actually an hour of content, or a five-minute loop repeated twelve times? If the material repeats exactly, this panel finds the period and shows you the evidence.',
+    'Look for repeated sections in an audio file. The detector estimates a repeat period from spectral similarity and shows the comparison curve.',
   deep:
-    'The STFT is folded into 1-second, 16-band log-frequency energy fingerprints; every pair of fingerprints at every whole-second lag is compared by cosine similarity. An exact loop produces an off-diagonal ridge at the loop period (and its multiples); the smallest lag above 0.92 is reported as the period. Spectrally stationary content (flat noise, a single held tone) is genuinely ambiguous — any segment matches any other — so the detector abstains rather than inventing a period.',
+    'The STFT is folded into 1-second, 16-band log-frequency energy fingerprints; every pair of fingerprints at every whole-second lag is compared by cosine similarity. An exact loop produces an off-diagonal ridge at the loop period (and its multiples); the smallest lag above 0.92 is reported as the period. Spectrally stationary content (flat noise, a single held tone) is ambiguous — any segment matches any other — so the detector abstains rather than inventing a period.',
   plot: {
     axes: 'x = lag (seconds), y = self-similarity (0–1); dashed amber line = 0.92 detection threshold; amber marker = reported period.',
-    good: 'A single dominant ridge at one lag = a loop with that period; a flat low curve = genuinely evolving content.',
+    good: 'A dominant ridge suggests repetition at that lag; a low curve means less spectral similarity.',
     bad: 'Not applicable — abstains ("not evaluated") on silence, constant spectra, or files under 6 s instead of guessing.',
   },
   howTo: ['Load a long session file.', 'Read the verdict: loop period or "no exact loop".', 'Check the ridge on the curve for yourself.'],
@@ -1175,7 +1190,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/safety',
     name: 'Seven-day dose log',
     simple:
-      'The weekly dose meter now really covers seven days. Every second of session output is logged with its estimated level and replayed when the app starts. Muted time is not counted.',
+      'The weekly dose meter covers seven days. Every second of session output is logged with its estimated level and replayed when the app starts. Muted time is not counted.',
     deep:
       'Exposures are coalesced per level into a rolling 7-day log persisted every 30 seconds and at stop, then replayed into the H.870 tracker at boot. The equal-energy 3 dB exchange model and the 80 dBA / 40 h reference are unchanged. The level is a headphone estimate (−18 dBFS ≈ 58 dBA), not a calibrated measurement, so the meter is conservative guidance rather than a dosimeter.',
     howTo: [

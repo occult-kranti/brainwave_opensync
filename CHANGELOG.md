@@ -2,6 +2,23 @@
 
 All notable changes to Open Sync. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/).
 
+## [2.5.0] — 2026-09-13
+
+### Added
+- Bashar sounds collection at `/presets?collection=bashar`, searchable cards, and eight-second previews of individual sequence steps.
+- Fourth Bashar preset: five exact phi-spaced modeled bowls over a steady 110 Hz root, with a 15-minute duration and twelve-second re-strikes. Fifty catalog presets now have shipped preview files.
+- Optional preset mixer profiles restore waveform, noise, nature, bowls, and interval bells. Saved Studio presets retain their mix and quiet fader ceiling.
+
+### Changed
+- Practical pages share one Tools group. Theory & research starts collapsed in the desktop sidebar, phone More menu, and Home card list; theory deep links reveal the active navigation item.
+- Preset cards describe actual pitches and modes. Details separate audible settings from source claims and label unrendered phase-fade metadata.
+- The details dialog has a reachable Panic button, focus trap, and step playback controls. Preview controls enforce session, mute, panic, and advisory gates and stop on navigation or filter changes.
+
+### Fixed
+- Bowl exports retain absolute fader attenuation instead of raising the loudest bowl to a fixed level. High levels respect the renderer's bowl-level bound.
+- Bowl frequencies keep full precision in share links. Failed or immediately ended previews clear their playing indicator.
+- Bashar presets clear unrelated mixer layers left by previous sessions. The source page now loads the complete chord preset.
+
 ## [2.3.0] — 2026-09-10
 
 ### Added

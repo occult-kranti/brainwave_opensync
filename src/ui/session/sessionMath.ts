@@ -7,6 +7,7 @@
 import type { BowlMaterial, BowlSetPreset, BowlStrike, EntrainmentMode, NoiseColor, Phase as EnginePhase } from '@/engine';
 import { BOWL_RESTRIKE_CHOICES, MAX_BOWLS, dbToLin } from '@/engine';
 import type { Preset, PresetMode } from '@/data/presets';
+import { sanitizePresetMix } from '@/data/presetMix';
 import type { NatureKind } from '@/engine';
 import type { LiveBowl } from '../audio/liveEngine';
 
@@ -170,8 +171,9 @@ export interface ExportLayers {
  * OMITTED from the phases entirely — the exported file contains no noise /
  * bowl / nature content at all (not merely a zero-gain render of it).
  * (Export flattens the mixer to the loudest noise color, as before.)
- * Bowls keep their relative balance: the loudest bowl renders at level 0.5
- * (the v2.0 single-bowl level) and the others sit below it by their dB gap.
+ * Bowl faders retain their absolute attenuation. The offline mixer applies
+ * 0.2 per bowl; the live bowl bus applies 0.5, so the adapter converts by 2.5,
+ * capped at the offline layer maximum of 1 (a conservative high-level limit).
  * The interval bell is a bowl re-struck every N minutes, so the export rings
  * it at each phase start and every N minutes within a phase.
  */
@@ -202,11 +204,10 @@ export function buildExportPhases(
   }
   const activeBowls = layers.layersOn ? layers.bowls.filter((b) => b.on && Number.isFinite(b.db)) : [];
   if (activeBowls.length) {
-    const maxDb = Math.max(...activeBowls.map((b) => b.db));
     for (const p of enginePhases) {
       p.bowls = activeBowls.map((b) => ({
         baseHz: b.lock ? p.carrierHz : b.baseHz,
-        level: 0.5 * dbToLin(b.db - maxDb),
+        level: Math.min(1, 2.5 * dbToLin(Math.min(0, b.db))),
         material: b.material,
         strike: b.strike,
         pan: b.pan,
@@ -228,6 +229,20 @@ export function buildExportPhases(
 
 /** First ~`maxSec` of a preset, preserving each phase's carrier, modality and gain. */
 export function presetPreviewPhases(preset: Preset, maxSec: number = PREVIEW_MAX_SEC): EnginePhase[] {
+  const mix = sanitizePresetMix(preset.spec.mix);
+  if (mix) {
+    const phases = preset.spec.phases.map((p, i) => ({
+      id: `preview-${i}`, durationSec: p.durationSec, carrierHz: p.carrierHz,
+      beatHz: p.beatHz, mode: presetAudioMode(p.mode), gainDbFs: p.gainDbFs,
+    }));
+    const rendered = buildExportPhases(phases, phases[0]?.carrierHz ?? 200, phases[0]?.mode ?? 'binaural', {
+      ...mix,
+      noiseDb: { white: -Infinity, pink: -Infinity, brown: -Infinity, blue: -Infinity, violet: -Infinity, grey: -Infinity, ...mix.noiseDb },
+      bowls: mix.bowls.map((b, i) => ({ ...b, id: `preview-bowl-${i}` })),
+    });
+    for (let i = 0; i < rendered.length; i++) rendered[i].gainDb = Math.min(0, preset.spec.phases[i].gainDbFs, mix.volumeDb ?? 0);
+    return truncatePhases(rendered, maxSec);
+  }
   return truncatePhases(
     preset.spec.phases.map((p) => ({
       durationSec: p.durationSec,

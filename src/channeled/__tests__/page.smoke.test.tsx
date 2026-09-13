@@ -60,7 +60,7 @@ describe('Channeled Sources page integration', () => {
     expect(container.textContent).toContain('Alpha and gamma: unresolved descriptions');
     expect(container.textContent).toContain('200,000 ↔ 40 Hz');
     expect(container.querySelectorAll('table tbody tr')).toHaveLength(7);
-    expect(buttons(BASHAR_COPY.preview)).toHaveLength(3);
+    expect(buttons(BASHAR_COPY.preview)).toHaveLength(4);
     expect(session.running).toBe(false);
     expect(LiveEngine.prototype.playBuffer).not.toHaveBeenCalled();
   });
@@ -148,13 +148,16 @@ describe('Channeled Sources page integration', () => {
     expect(session.running).toBe(false);
   });
 
-  it('replaces the bowl set with the exact phi chord and enables the existing layer', async () => {
+  it('loads the complete phi chord preset with its root, bowls, and duration', async () => {
     await mount();
     await act(async () => buttons(BASHAR_COPY.bowlLoad)[0].click());
     expect(location).toBe('/studio');
     expect(session.bowls.map((bowl) => bowl.baseHz)).toEqual(PHI_LADDER_HZ);
     expect(session.bowls.every((bowl) => bowl.on && !bowl.lock)).toBe(true);
     expect(session.layersOn).toBe(true);
+    expect(session.carrierHz).toBe(110);
+    expect(session.phases[0]).toMatchObject({ beatHz: 0, durationSec: 900 });
+    expect(session.presetName).toBe('Golden-ratio bowl chord (experimental tier)');
     expect(session.running).toBe(false);
   });
 });

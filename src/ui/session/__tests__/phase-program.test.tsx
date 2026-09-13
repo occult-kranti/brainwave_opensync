@@ -3,6 +3,8 @@ import { act } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Preset } from '@/data/presets';
+import { getPresetById } from '@/data/presets';
+import { PHI_LADDER_HZ } from '@/channeled/mapping';
 import { memoryStorage } from '@/lib/storage';
 import { seedAdvisoryAck } from '@/test/helpers';
 import { LiveEngine } from '@/ui/audio/liveEngine';
@@ -68,6 +70,74 @@ afterEach(async () => {
 });
 
 describe('per-phase live programs', () => {
+  it('loads the phi chord with five exact bowls and removes previous noise/nature/waveform settings', async () => {
+    await mount();
+    act(() => {
+      session.setNoiseDb('pink', -12);
+      session.setNature({ on: true, kind: 'ocean' });
+      session.setWaveform('square');
+      session.setBellEveryMin(3);
+    });
+    const setBowls = vi.spyOn(LiveEngine.prototype, 'setBowls');
+    act(() => {
+      session.loadPreset(getPresetById('exp-phi-bowl-chord')!);
+      expect(session.start()).toBe(true);
+    });
+    expect(session.carrierHz).toBe(110);
+    expect(session.beatHz).toBe(0);
+    expect(session.waveform).toBe('sine');
+    expect(session.noiseOn).toBe(false);
+    expect(session.noiseDb.pink).toBe(-Infinity);
+    expect(session.nature.on).toBe(false);
+    expect(session.bellEveryMin).toBe(0);
+    expect(session.limitMin).toBe(15);
+    expect(session.bowls.map((b) => b.baseHz)).toEqual(PHI_LADDER_HZ);
+    expect(setBowls).toHaveBeenLastCalledWith(expect.arrayContaining([expect.objectContaining({ baseHz: PHI_LADDER_HZ[4], db: -26, restrikeSec: 12 })]));
+    act(() => session.loadPreset(getPresetById('exp-phi-ladder')!));
+    expect(session.bowls).toEqual([]);
+    expect(session.layersOn).toBe(true);
+    expect(setBowls).toHaveBeenLastCalledWith([]);
+  });
+
+  it('keeps edited chord layers and quiet volume through MY PRESETS, share, and export', async () => {
+    await mount();
+    act(() => session.loadPreset(getPresetById('exp-phi-bowl-chord')!));
+    act(() => { session.setVolumeDb(-30); session.setBowl(session.bowls[2].id, { db: -45, pan: 0.25 }); });
+    act(() => { session.saveCurrentAsPreset('My phi chord'); });
+    const saved = loadUserPresets()[0];
+    expect(saved.spec.mix?.bowls.map((b) => b.baseHz)).toEqual(PHI_LADDER_HZ);
+    expect(saved.spec.mix?.volumeDb).toBe(-30);
+    act(() => { session.resetFrontPanel(); session.loadPreset(userPresetAsPreset(saved)); });
+    expect(session.volumeDb).toBe(-30);
+    expect(session.bowls[2]).toMatchObject({ db: -45, pan: 0.25 });
+    const shared = decodeShare(session.getShareLink().split('#s=')[1])!;
+    expect(shared.bowls.map((b) => b.baseHz)).toEqual(PHI_LADDER_HZ);
+    act(() => { session.resetFrontPanel(); session.applyShare(shared); });
+    expect(session.bowls[2]).toMatchObject({ db: -45, pan: 0.25 });
+    const render = vi.spyOn(exportAudio, 'renderExportAsync').mockResolvedValue({ wav: new Uint8Array(44), sampleRate: 48000, hash: 'chord', totalDurationSec: 900, warnings: [] });
+    vi.spyOn(exportAudio, 'downloadBytes').mockImplementation(() => {});
+    await act(async () => { await session.exportWav(); });
+    const phase = render.mock.calls.at(-1)![0].phases[0];
+    expect(phase.bowls?.map((b) => b.baseHz)).toEqual(PHI_LADDER_HZ);
+    expect(phase.bowls![2].level).toBeCloseTo(2.5 * 10 ** (-45 / 20), 12);
+    expect(phase.bowls![2].pan).toBe(0.25);
+    expect(phase.noise).toBeUndefined();
+    expect(phase.nature).toBeUndefined();
+  });
+
+  it('clears a failed or synchronously ended preset preview instead of leaving STOP active', async () => {
+    await mount();
+    const play = vi.spyOn(LiveEngine.prototype, 'playBuffer').mockReturnValue(false);
+    act(() => session.previewPreset(getPresetById('exp-phi-bowl-chord')!));
+    expect(session.previewId).toBeNull();
+    play.mockImplementation((_left, _right, _sr, _db, onEnded) => { onEnded?.(); return true; });
+    act(() => session.previewPreset(getPresetById('exp-phi-bowl-chord')!));
+    expect(session.previewId).toBeNull();
+    play.mockImplementation(() => { throw new Error('Unavailable audio'); });
+    act(() => session.previewPreset(getPresetById('exp-phi-bowl-chord')!));
+    expect(session.previewId).toBeNull();
+  });
+
   it('same-tick load and START apply the first mode/carrier immediately, then switch at the boundary', async () => {
     await mount();
     act(() => {

@@ -2,6 +2,7 @@
 import type { FrequencyEntry } from '@/data/frequencies';
 import type { KnowledgeEntry } from '@/data/knowledge';
 import type { Preset } from '@/data/presets';
+import { CLEAN_PRESET_MIX } from '@/data/presetMix';
 import { map, PHI_CENTS, PHI_LADDER_HZ, SCALE_READINGS, vacuumWavelength } from './mapping';
 
 export interface ExhibitSource {
@@ -99,7 +100,7 @@ export const BASHAR_COPY = {
   bowlTitle: 'Golden-ratio bowl chord',
   bowlDescription: 'Five bowl fundamentals at 110 × φⁿ, played together with the existing bowl model. The modeled partials are not pure sine waves. Grade A describes the fundamental spacing only; Grade D covers the source interpretation.',
   bowlLoad: 'Load bowl chord',
-  bowlHelp: 'Replaces the current bowl set and opens Studio. Review the other audio layers before pressing START; loading does not start playback.',
+  bowlHelp: 'Loads a 15-minute preset with five modeled bowls and a steady 110 Hz root. The preset replaces the previous sound mix and opens Studio without starting playback.',
   presetMeta: (minutes: number) => `${minutes} min · Grade D · experimental tier`,
   phaseLabel: (index: number, carrier: number, beat: number, mode: string) =>
     `${index + 1}. ${carrier.toFixed(2)} Hz carrier · ${beat} Hz ${mode === 'monaural' ? 'monaural modulation' : beat === 0 ? 'no beat' : 'binaural beat'}`,
@@ -226,6 +227,7 @@ export const BASHAR_PRESETS: readonly Preset[] = [
     id: 'exp-bashar-scale-map', title: 'Bashar scale illustration (experimental tier)', category: 'Experimental', grade: 'D',
     spec: {
       autoShutoff: true,
+      mix: CLEAN_PRESET_MIX,
       phases: SCALE_READINGS.map((reading) => ({
         name: `Illustration: ${reading.stated.toLocaleString('en-US')}`,
         durationSec: 300, carrierHz: 200, beatHz: map(reading.stated), gainDbFs: -16, rampSec: 20,
@@ -237,7 +239,7 @@ export const BASHAR_PRESETS: readonly Preset[] = [
   },
   {
     id: 'exp-bashar-gamma-contradiction', title: 'Alpha / gamma descriptions (experimental tier)', category: 'Experimental', grade: 'D',
-    spec: { autoShutoff: true, phases: [
+    spec: { autoShutoff: true, mix: CLEAN_PRESET_MIX, phases: [
       { name: 'Alpha-range illustration', durationSec: 600, carrierHz: 200, beatHz: 10.5, mode: 'binaural', gainDbFs: -16, rampSec: 20 },
       { name: 'Gamma-range illustration', durationSec: 600, carrierHz: 200, beatHz: 40, mode: 'monaural', gainDbFs: -16, rampSec: 20 },
     ] },
@@ -246,10 +248,26 @@ export const BASHAR_PRESETS: readonly Preset[] = [
   },
   {
     id: 'exp-phi-ladder', title: 'Golden-ratio pitch ladder (experimental tier)', category: 'Experimental', grade: 'D',
-    spec: { autoShutoff: true, phases: PHI_LADDER_HZ.map((carrierHz, n) => ({
+    spec: { autoShutoff: true, mix: CLEAN_PRESET_MIX, phases: PHI_LADDER_HZ.map((carrierHz, n) => ({
       name: `Phi pitch ${n + 1}`, durationSec: 300, carrierHz, beatHz: 0, mode: 'binaural', gainDbFs: -16, rampSec: 20,
     })) },
     rationale: `Five sequential carriers follow 110 × φⁿ with no beat. ${PHI_NOTE} Full precision is retained in playback; displayed pitches are rounded. The starting pitch and durations are app design choices.`,
+    citations: [digest('Rcjd1TkZUMY').label],
+  },
+  {
+    id: 'exp-phi-bowl-chord', title: 'Golden-ratio bowl chord (experimental tier)', category: 'Experimental', grade: 'D',
+    spec: {
+      autoShutoff: true,
+      phases: [{ name: 'Steady root and five modeled bowls', durationSec: 900, carrierHz: 110, beatHz: 0, mode: 'binaural', gainDbFs: -16 }],
+      mix: {
+        ...CLEAN_PRESET_MIX,
+        bowls: PHI_LADDER_HZ.map((baseHz, n) => ({
+          on: true, material: 'crystal-quartz', strike: 'soft', baseHz,
+          db: -26, pan: -0.6 + n * 0.3, restrikeSec: 12, lock: false,
+        })),
+      },
+    },
+    rationale: `Five modeled bowls play together at 110 × φⁿ, with a steady 110 Hz sine root and a new strike every 12 seconds. These are synthesized instruments, not acoustic recordings. ${PHI_NOTE} The root, bowl voice, duration, level and timing are app choices.`,
     citations: [digest('Rcjd1TkZUMY').label],
   },
 ];

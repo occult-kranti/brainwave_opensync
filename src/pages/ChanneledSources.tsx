@@ -6,11 +6,10 @@ import {
   LITERAL_CARDS, SOURCE_CARDS, type ExhibitSource,
 } from '@/channeled/bashar';
 import { map, MAPPING_ANCHOR, PHI_LADDER_HZ, SCALE_READINGS } from '@/channeled/mapping';
-import { BOWL_SETS } from '@/engine/bowls';
 import { getPresetById, presetDurationMin } from '@/data/presets';
 import { getFrequencyById } from '@/data/frequencies';
 import { useSession } from '@/ui/session/useSession';
-import { bowlSetToLayers } from '@/ui/session/sessionMath';
+import { presetSignalSummary } from '@/ui/components/presetPresentation';
 import '@/channeled/channeled.css';
 
 function Sources({ sources }: { sources: readonly ExhibitSource[] }) {
@@ -53,16 +52,6 @@ export default function ChanneledSources() {
     if (previewBlocked && ownsPreview) stopPreview();
   }, [previewBlocked, ownsPreview, stopPreview]);
 
-  const loadChord = () => {
-    const bowls = BOWL_SETS.find((set) => set.id === 'golden-ratio-chord');
-    if (!bowls) return;
-    session.stopPreview();
-    session.stop();
-    session.setBowls(bowlSetToLayers(bowls));
-    session.setLayersOn(true);
-    navigate('/studio');
-  };
-
   return <div className="channeled">
     <header>
       <p className="source-eyebrow">{copy.eyebrow}</p>
@@ -78,6 +67,7 @@ export default function ChanneledSources() {
         <p className="source-meta">{copy.provenanceNote}</p>
         <Sources sources={[DIGEST_SOURCE]} />
       </div>
+      <p style={{ marginTop: 16 }}><Link to="/presets?collection=bashar">Open Bashar sounds in Presets</Link></p>
     </header>
 
     <nav className="source-jumps" aria-label={copy.jumpLabel}>
@@ -154,6 +144,7 @@ export default function ChanneledSources() {
             <div className="source-card-top"><h3>{preset.title}</h3><Grade grade="D" /></div>
             <p className="source-meta">{copy.presetMeta(presetDurationMin(preset))}</p>
             <p>{preset.rationale}</p>
+            {preset.spec.mix?.bowls.length ? <p className="source-meta">{presetSignalSummary(preset)}</p> : null}
             <ul className="source-phases">{preset.spec.phases.map((phase, index) => <li key={phase.name}>
               {copy.phaseLabel(index, phase.carrierHz, phase.beatHz, phase.mode ?? 'binaural')}
             </li>)}</ul>
@@ -169,18 +160,10 @@ export default function ChanneledSources() {
               </button>
               <button type="button" className="source-action primary" onClick={() => {
                 session.stopPreview(); session.stop(); session.loadPreset(preset); navigate('/studio');
-              }}><ArrowUpRight size={16} aria-hidden="true" />{copy.loadPreset}</button>
+              }}><ArrowUpRight size={16} aria-hidden="true" />{preset.id === 'exp-phi-bowl-chord' ? copy.bowlLoad : copy.loadPreset}</button>
             </div>
           </article>;
         })}
-        <article className="source-card">
-          <div className="source-card-top"><h3>{copy.bowlTitle}</h3><Grade grade="D" /></div>
-          <p>{copy.bowlDescription}</p><p className="source-meta">{copy.bowlHelp}</p>
-          <Sources sources={SOURCE_CARDS[3].sources} />
-          <div className="source-actions"><button type="button" className="source-action primary" onClick={loadChord}>
-            <ArrowUpRight size={16} aria-hidden="true" />{copy.bowlLoad}
-          </button></div>
-        </article>
       </div>
     </section>
 

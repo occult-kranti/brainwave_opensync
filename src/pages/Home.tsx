@@ -11,8 +11,8 @@ import { motion } from 'framer-motion';
 import {
   ArrowRight,
 } from 'lucide-react';
-import { FEATURES, featuresByModule, type FeatureEntry } from '@/docs/features';
-import { iconForModule } from '@/app/routes';
+import { featuresByModule, type FeatureEntry } from '@/docs/features';
+import { HELP_ROUTES, RESEARCH_ROUTES, TOOL_ROUTES, type AppRoute } from '@/app/routes';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { GRADE_COLOR, LINE, TEXT, AMBER, TEAL, MONO, type GradeLetter } from '@/ui/theme';
@@ -146,11 +146,7 @@ const QUICK_START = [
 export default function Home() {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
-  const groups = useMemo(() => {
-    const g = featuresByModule();
-    g.delete('Home');
-    return [...g.entries()];
-  }, []);
+  const groups = useMemo(() => featuresByModule(), []);
 
   return (
     <div style={{ paddingBottom: 64 }}>
@@ -158,7 +154,7 @@ export default function Home() {
       <div
         className="relative flex items-end"
         style={{
-          height: '64vh',
+          height: isMobile ? 'auto' : '64vh',
           minHeight: 400,
           background: 'linear-gradient(180deg, var(--ink-1), var(--ink-0))',
           borderBottom: '1px solid var(--line-1)',
@@ -166,7 +162,7 @@ export default function Home() {
         }}
       >
         <HeroCanvas />
-        <div style={{ position: 'relative', padding: isMobile ? '0 20px 40px' : '0 64px 56px', maxWidth: 980 }}>
+        <div style={{ position: 'relative', padding: isMobile ? '64px 20px 40px' : '0 64px 56px', maxWidth: 980 }}>
           <motion.span
             className="t-label"
             style={{ color: 'var(--teal-hi)' }}
@@ -196,7 +192,7 @@ export default function Home() {
             or check the sound with the analysis tools.
           </motion.p>
           <motion.div
-            className="flex gap-3"
+            className="flex flex-wrap gap-3"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.24 }}
@@ -205,7 +201,7 @@ export default function Home() {
               type="button"
               onClick={() => navigate('/studio')}
               style={{
-                height: 36,
+                minHeight: 44,
                 padding: '0 16px',
                 background: 'var(--amber)',
                 color: 'var(--text-inv)',
@@ -220,12 +216,29 @@ export default function Home() {
             >
               OPEN STUDIO
             </button>
+            <Link
+              to="/presets?collection=bashar"
+              data-testid="home-bashar-link"
+              className="t-label"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                minHeight: 44,
+                padding: '0 16px',
+                color: 'var(--amber)',
+                border: '1px solid var(--amber-dim)',
+                borderRadius: 2,
+                textDecoration: 'none',
+              }}
+            >
+              BASHAR SOUNDS
+            </Link>
             <button
               type="button"
               onClick={() => navigate('/guide')}
               className="t-label"
               style={{
-                height: 36,
+                minHeight: 44,
                 padding: '0 16px',
                 background: 'transparent',
                 color: 'var(--text-1)',
@@ -245,7 +258,7 @@ export default function Home() {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                height: 36,
+                minHeight: 44,
                 padding: '0 16px',
                 background: 'transparent',
                 color: 'var(--teal-hi)',
@@ -322,96 +335,121 @@ export default function Home() {
           </div>
         </motion.section>
 
-        {/* MODULE GRID */}
-        <section>
+        {/* Practical tools follow the same order as the sidebar. */}
+        <section aria-labelledby="home-tools-title" data-testid="home-tools">
           <div className="flex items-center justify-between" style={{ marginBottom: 16 }}>
-            <h2 className="t-h2">Modules</h2>
-            <span className="t-label text-3">
-              {FEATURES.length} FEATURES
-            </span>
+            <h2 id="home-tools-title" className="t-h2">Tools</h2>
+            <span className="t-label text-3">{TOOL_ROUTES.length} TOOLS</span>
           </div>
-          <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))' }}>
-            {groups.map(([module, entries], gi) => {
-              const rep = entries[0];
-              const Icon = iconForModule(module);
-              const grade = weakestGrade(entries);
-              const pending = entries.every((e) => e.status === 'in-verification');
-              return (
-                <motion.div
-                  key={module}
-                  className="panel panel-interactive flex flex-col"
-                  style={{ padding: 20, opacity: pending ? 0.75 : 1 }}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: pending ? 0.75 : 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.3, delay: Math.min(gi * 0.04, 0.3) }}
-                >
-                  <div className="flex items-center gap-3" style={{ marginBottom: 10 }}>
-                    <Icon size={20} strokeWidth={1.5} style={{ color: 'var(--text-2)' }} />
-                    <span className="t-label" style={{ color: 'var(--text-1)', flex: 1 }}>
-                      {module.toUpperCase()}
-                    </span>
-                    {pending ? (
-                      <span
-                        className="t-caption font-mono2"
-                        style={{
-                          color: 'var(--text-3)',
-                          border: '1px dashed var(--line-2)',
-                          borderRadius: 2,
-                          padding: '2px 6px',
-                          fontSize: 10,
-                        }}
-                      >
-                        IN VERIFICATION
-                      </span>
-                    ) : (
-                      grade && (
-                        <span
-                          className="t-caption font-mono2"
-                          title="Lowest evidence grade among this module’s claims"
-                          style={{ color: GRADE_COLOR[grade], fontSize: 10 }}
-                        >
-                          LOWEST GRADE
-                        </span>
-                      )
-                    )}
-                    {!pending && grade && <GradeBadge grade={grade} compact />}
-                  </div>
-                  <p className="t-body-sm text-2" style={{ marginBottom: 12, minHeight: 40 }}>
-                    {firstSentence(rep.simple)}
-                  </p>
-                  <ol className="t-caption" style={{ color: 'var(--text-3)', margin: '0 0 14px', paddingLeft: 16 }}>
-                    {rep.howTo.slice(0, 3).map((s) => (
-                      <li key={s} style={{ marginBottom: 4 }}>
-                        {s}
-                      </li>
-                    ))}
-                  </ol>
-                  <div style={{ marginTop: 'auto' }}>
-                    {pending ? (
-                      <span className="t-label text-3">OPENS AFTER VERIFICATION</span>
-                    ) : (
-                      <Link
-                        to={rep.route}
-                        className="t-label"
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: 6,
-                          color: 'var(--amber)',
-                          textDecoration: 'none',
-                        }}
-                      >
-                        OPEN <ArrowRight size={12} />
-                      </Link>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
+          <ModuleGrid routes={TOOL_ROUTES} groups={groups} />
+        </section>
+
+        <details
+          data-testid="home-research"
+          style={{ marginTop: 32, padding: 16, border: '1px solid var(--line-1)', borderRadius: 4 }}
+        >
+          <summary className="t-h2" style={{ cursor: 'pointer', minHeight: 48, padding: '8px 0' }}>
+            Theory &amp; research
+          </summary>
+          <div style={{ marginTop: 16 }}>
+            <ModuleGrid routes={RESEARCH_ROUTES} groups={groups} />
           </div>
+        </details>
+
+        <section aria-labelledby="home-help-title" style={{ marginTop: 32 }}>
+          <h2 id="home-help-title" className="t-h2" style={{ marginBottom: 16 }}>Help</h2>
+          <ModuleGrid routes={HELP_ROUTES} groups={groups} />
         </section>
       </div>
+    </div>
+  );
+}
+
+function ModuleGrid({ routes, groups }: { routes: readonly AppRoute[]; groups: Map<string, FeatureEntry[]> }) {
+  return (
+    <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))' }}>
+      {routes.map((route, gi) => {
+        const entries = groups.get(route.module);
+        if (!entries?.length) return null;
+        const module = route.module;
+        const rep = entries[0];
+        const Icon = route.icon;
+        const grade = weakestGrade(entries);
+        const pending = entries.every((e) => e.status === 'in-verification');
+        return (
+          <motion.div
+            key={module}
+            className="panel panel-interactive flex flex-col"
+            style={{ padding: 20, opacity: pending ? 0.75 : 1 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: pending ? 0.75 : 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.3, delay: Math.min(gi * 0.04, 0.3) }}
+          >
+            <div className="flex items-center gap-3" style={{ marginBottom: 10 }}>
+              <Icon size={20} strokeWidth={1.5} style={{ color: 'var(--text-2)' }} />
+              <h3 className="t-label" style={{ color: 'var(--text-1)', flex: 1 }}>
+                {module.toUpperCase()}
+              </h3>
+              {pending ? (
+                <span
+                  className="t-caption font-mono2"
+                  style={{
+                    color: 'var(--text-3)',
+                    border: '1px dashed var(--line-2)',
+                    borderRadius: 2,
+                    padding: '2px 6px',
+                    fontSize: 10,
+                  }}
+                >
+                  IN VERIFICATION
+                </span>
+              ) : (
+                grade && (
+                  <span
+                    className="t-caption font-mono2"
+                    title="Lowest evidence grade among this module’s claims"
+                    style={{ color: GRADE_COLOR[grade], fontSize: 10 }}
+                  >
+                    LOWEST GRADE
+                  </span>
+                )
+              )}
+              {!pending && grade && <GradeBadge grade={grade} compact />}
+            </div>
+            <p className="t-body-sm text-2" style={{ marginBottom: 12, minHeight: 40 }}>
+              {firstSentence(rep.simple)}
+            </p>
+            <ol className="t-caption" style={{ color: 'var(--text-3)', margin: '0 0 14px', paddingLeft: 16 }}>
+              {rep.howTo.slice(0, 3).map((s) => (
+                <li key={s} style={{ marginBottom: 4 }}>
+                  {s}
+                </li>
+              ))}
+            </ol>
+            <div style={{ marginTop: 'auto' }}>
+              {pending ? (
+                <span className="t-label text-3">OPENS AFTER VERIFICATION</span>
+              ) : (
+                <Link
+                  to={rep.route}
+                  aria-label={`Open ${module}`}
+                  className="t-label"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    color: 'var(--amber)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  OPEN <ArrowRight size={12} />
+                </Link>
+              )}
+            </div>
+          </motion.div>
+        );
+      })}
     </div>
   );
 }

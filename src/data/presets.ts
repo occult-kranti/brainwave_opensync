@@ -7,6 +7,7 @@
 
 import type { Grade } from './frequencies';
 import { BASHAR_PRESETS } from '@/channeled/bashar';
+import type { PresetMix } from './presetMix';
 
 export type PresetCategory = 'Sleep' | 'Focus' | 'Relax' | 'Meditate' | 'Experimental' | 'Infant';
 
@@ -42,6 +43,8 @@ export interface Phase {
 export interface SessionSpec {
   phases: Phase[];
   autoShutoff: boolean;
+  /** An authored mixer replaces previous Studio layers when this preset loads. */
+  mix?: PresetMix;
   /** Heartbeat pulse rate, BPM (infant content only; 60-80 per AAP-aligned design). */
   heartbeatBpm?: number;
 }

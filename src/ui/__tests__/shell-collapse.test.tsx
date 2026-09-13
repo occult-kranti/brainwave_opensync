@@ -4,7 +4,7 @@
  *    tooltips / 0px hidden with a 16px amber-edge reopen handle
  *  - chevron toggle + `[` keyboard shortcut cycle the states
  *  - localStorage persistence round-trip
- *  - all 24 routes present in full AND icon states
+ *  - all routes reachable in full AND icon states after expanding research
  *  - panic reachable in every state; rail footer carries density toggle +
  *    collapse control; a11y attributes on the toggles
  *  - mobile shell (bottom bar) is unaffected by sidebar state
@@ -19,6 +19,8 @@ import { createRoot, type Root } from 'react-dom/client';
 import { MemoryRouter } from 'react-router';
 import { AppShell } from '../layout/AppShell';
 import { SessionProvider } from '../session/SessionContext';
+import { seedAdvisoryAck } from '@/test/helpers';
+import { RESEARCH_ROUTES, TOOL_ROUTES } from '@/app/routes';
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -76,7 +78,7 @@ function mockViewport(width: number) {
 let roots: Root[] = [];
 let containers: HTMLElement[] = [];
 
-async function renderShell(width: number) {
+async function renderShell(width: number, path = '/') {
   mockViewport(width);
   const container = document.createElement('div');
   document.body.appendChild(container);
@@ -85,7 +87,7 @@ async function renderShell(width: number) {
   roots.push(root);
   await act(async () => {
     root.render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={[path]}>
         <SessionProvider>
           <AppShell>
             <div>page content</div>
@@ -123,6 +125,7 @@ beforeEach(() => {
   roots = [];
   containers = [];
   window.localStorage.clear();
+  seedAdvisoryAck();
 });
 
 afterEach(async () => {
@@ -135,7 +138,7 @@ afterEach(async () => {
 });
 
 describe('V3 collapsible sidebar — three states', () => {
-  it('full state (default): 240px rail, labels, all 24 routes, footer controls, panic', async () => {
+  it('full state: tools visible, theory collapsed, every route reachable, footer controls intact', async () => {
     const c = await renderShell(1280);
     const rail = railOf(c)!;
     expect(rail).toBeTruthy();
@@ -146,7 +149,21 @@ describe('V3 collapsible sidebar — three states', () => {
     // Labels visible.
     expect(rail.textContent).toContain('STUDIO');
     expect(rail.textContent).toContain('REPLICATION BAY');
-    // All 24 routes linked.
+    // Practical tools are visible; references are one native-button disclosure.
+    const researchToggle = rail.querySelector<HTMLButtonElement>('[data-testid="rail-research-toggle"]')!;
+    expect(researchToggle.tagName).toBe('BUTTON');
+    expect(researchToggle.type).toBe('button');
+    expect(researchToggle.getAttribute('aria-expanded')).toBe('false');
+    const researchContent = document.getElementById(researchToggle.getAttribute('aria-controls')!)!;
+    expect(researchContent.hidden).toBe(true);
+    for (const route of TOOL_ROUTES) expect(railHrefs(c).has(route.path)).toBe(true);
+    for (const route of RESEARCH_ROUTES) expect(railHrefs(c).has(route.path)).toBe(false);
+    researchToggle.focus();
+    await click(researchToggle);
+    expect(document.activeElement).toBe(researchToggle);
+    expect(researchContent.hidden).toBe(false);
+    expect(researchToggle.getAttribute('aria-expanded')).toBe('true');
+    // Expanding makes every registered destination reachable.
     const hrefs = railHrefs(c);
     expect(hrefs.size).toBe(ALL_ROUTE_PATHS.length);
     for (const p of ALL_ROUTE_PATHS) expect(hrefs.has(p), `rail links to ${p}`).toBe(true);
@@ -163,7 +180,7 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(c.querySelector('[data-testid="rail-reopen-handle"]')).toBeNull();
   });
 
-  it('icon state: 64px strip, no labels, tooltip + aria-label per item, all 24 routes, panic reachable', async () => {
+  it('icon state: named research disclosure, named tool icons, all routes reachable, panic reachable', async () => {
     window.localStorage.setItem(STORAGE_KEY, 'icon');
     const c = await renderShell(1280);
     const rail = railOf(c)!;
@@ -172,7 +189,13 @@ describe('V3 collapsible sidebar — three states', () => {
     // Labels hidden.
     expect(rail.textContent).not.toContain('STUDIO');
     expect(rail.textContent).not.toContain('PANIC');
-    // All 24 routes still linked, each with a hover tooltip + accessible name.
+    const researchToggle = rail.querySelector<HTMLButtonElement>('[data-testid="rail-research-toggle"]')!;
+    expect(researchToggle.getAttribute('aria-label')).toBe('Theory & research');
+    expect(researchToggle.getAttribute('title')).toBe('Show Theory & research');
+    expect(researchToggle.getAttribute('aria-expanded')).toBe('false');
+    expect(rail.querySelector('a[href="/theory"]')).toBeNull();
+    await click(researchToggle);
+    // Every route can still be reached, with tooltip and accessible name.
     const links = Array.from(rail.querySelectorAll('a[href]'));
     expect(links.length).toBe(ALL_ROUTE_PATHS.length);
     const hrefs = new Set(links.map((a) => a.getAttribute('href')));
@@ -189,6 +212,41 @@ describe('V3 collapsible sidebar — three states', () => {
     const railPanic = footer.querySelector('button[aria-label^="Panic"]');
     expect(railPanic).toBeTruthy();
     expect(c.textContent).toContain('PANIC');
+  });
+
+  it('reveals a theory deep link, keeps its cue when collapsed, and reveals another theory destination', async () => {
+    const c = await renderShell(1280, '/channeled');
+    const rail = railOf(c)!;
+    const toggle = rail.querySelector<HTMLButtonElement>('[data-testid="rail-research-toggle"]')!;
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(rail.querySelector('a[href="/channeled"]')!.getAttribute('aria-current')).toBe('page');
+    await click(toggle);
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(rail.textContent).toContain('Current page: CHANNELED SOURCES');
+    expect(toggle.getAttribute('aria-label')).toContain('current page: CHANNELED SOURCES');
+    // A page reached through the palette also reveals its position in navigation.
+    await pressKey('k', { ctrlKey: true });
+    const item = Array.from(document.querySelectorAll<HTMLElement>('[cmdk-item]')).find((el) =>
+      el.textContent === 'THEORY EXPLORER',
+    )!;
+    await click(item);
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(rail.querySelector('a[href="/theory"]')!.getAttribute('aria-current')).toBe('page');
+    await click(rail.querySelector<HTMLElement>('a[href="/studio"]')!);
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    expect(rail.querySelector('a[href="/theory"]')).toBeNull();
+  });
+
+  it('opens the active theory group in the icon rail and keeps a named cue when collapsed', async () => {
+    window.localStorage.setItem(STORAGE_KEY, 'icon');
+    const c = await renderShell(1280, '/channeled');
+    const rail = railOf(c)!;
+    const toggle = rail.querySelector<HTMLButtonElement>('[data-testid="rail-research-toggle"]')!;
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(rail.querySelector('a[href="/channeled"]')!.getAttribute('aria-current')).toBe('page');
+    await click(toggle);
+    expect(toggle.getAttribute('aria-label')).toContain('current page: CHANNELED SOURCES');
+    expect(toggle.getAttribute('title')).toContain('current page: CHANNELED SOURCES');
   });
 
   it('hidden state: 0px rail, 16px amber-edge reopen handle restores full, panic still reachable', async () => {

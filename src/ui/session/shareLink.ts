@@ -142,7 +142,7 @@ export function encodeShare(state: ShareState): string {
   const bowls = state.bowls.filter((b) => b.on && Number.isFinite(b.db)).slice(0, MAX_SHARE_BOWLS);
   if (bowls.length) {
     wire.bs = bowls.map((b) => [
-      round(b.baseHz, 2),
+      b.baseHz,
       round(b.db, 1),
       Math.max(0, BOWL_MATERIAL_IDS.indexOf(b.material)),
       Math.max(0, BOWL_STRIKE_IDS.indexOf(b.strike)),

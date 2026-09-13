@@ -9,6 +9,7 @@
  */
 
 import type { Preset, SessionSpec } from '@/data/presets';
+import { sanitizePresetMix } from '@/data/presetMix';
 import { STORAGE_KEYS } from '@/lib/storage';
 
 export const USER_PRESETS_STORAGE_KEY = STORAGE_KEYS.userPresets;
@@ -76,7 +77,10 @@ export function loadUserPresets(storage: StorageLike | null = defaultStorage()):
   try {
     const parsed = JSON.parse(raw) as Partial<UserPresetFile>;
     if (!parsed || parsed.version !== USER_PRESETS_VERSION || !Array.isArray(parsed.presets)) return [];
-    return parsed.presets.filter(isValidUserPreset);
+    return parsed.presets.filter(isValidUserPreset).map((preset) => ({
+      ...preset,
+      spec: preset.spec.mix === undefined ? preset.spec : { ...preset.spec, mix: sanitizePresetMix(preset.spec.mix) },
+    }));
   } catch {
     return [];
   }

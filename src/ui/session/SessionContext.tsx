@@ -39,6 +39,7 @@ import {
   type GovernorConfig,
 } from '@/safety/governor';
 import type { Preset, SessionSpec as DataSessionSpec } from '@/data/presets';
+import { sanitizePresetMix } from '@/data/presetMix';
 import type { Grade } from '@/data/frequencies';
 import {
   deleteUserPreset,
@@ -969,6 +970,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       // global fader remains a playback control, separate from phase ratios.
       const spec: DataSessionSpec = {
         autoShutoff: true,
+        mix: sanitizePresetMix({ waveform, noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn, volumeDb }),
         phases: phases.map((p, i) => ({
           name: `phase-${i + 1}`,
           durationSec: p.durationSec,
@@ -988,7 +990,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setDirty(!result.persisted);
       return result.preset;
     },
-    [phases, carrierHz, mode],
+    [phases, carrierHz, mode, waveform, noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn, volumeDb],
   );
 
   const deleteUserPresetById = useCallback((id: string) => {
@@ -998,6 +1000,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   // ---- loading --------------------------------------------------------------
   const loadPreset = useCallback(
     (preset: Preset) => {
+      // Authored mixes are complete setups. Legacy presets without a profile
+      // keep the current layer controls for backwards-compatible loading.
+      const mix = sanitizePresetMix(preset.spec.mix);
       const plan = preset.spec.phases.slice(0, 8).map((p) => newPhase(p.durationSec, p.beatHz, {
         carrierHz: p.carrierHz,
         mode: presetAudioMode(p.mode),
@@ -1014,7 +1019,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       // Loading never raises output. Live playback uses the quietest authored
       // phase as a fixed ceiling; export retains relative phase differences.
       const gainCap = gov.infantMode ? Math.min(gov.maxGainDbFs, INFANT_MAX_VOLUME_DB) : gov.maxGainDbFs;
-      const nextVolume = Math.min(volumeRef.current, gainCap, ...plan.map((p) => p.gainDbFs ?? 0));
+      const nextVolume = Math.min(volumeRef.current, gainCap, mix?.volumeDb ?? 0, ...plan.map((p) => p.gainDbFs ?? 0));
       volumeRef.current = nextVolume;
       setVolumeDbState(nextVolume);
       engineRef.current.setOutputDb(nextVolume);
@@ -1025,6 +1030,26 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setCarrierState(first.carrierHz);
         setBeatState(first.beatHz);
         pushConfig({ mode: firstMode, carrierHz: first.carrierHz, beatHz: first.beatHz });
+      }
+      if (mix) {
+        setWaveformState(mix.waveform);
+        pushConfig({ waveform: mix.waveform });
+        const nextNoise = { ...ALL_NOISE_OFF, ...mix.noiseDb };
+        setNoiseDbState(nextNoise);
+        for (const [color, db] of Object.entries(nextNoise) as [NoiseColor, number][]) engineRef.current.setNoiseLevel(color, db);
+        setNoiseOnState(mix.noiseOn);
+        engineRef.current.setNoiseBypass(mix.noiseOn);
+        setNatureState(mix.nature);
+        engineRef.current.setNature(mix.nature.on ? mix.nature.kind : null, mix.nature.db);
+        const nextBowls = mix.bowls.map((b) => newBowlLayer(b));
+        bowlsRef.current = nextBowls;
+        setBowlsState(nextBowls);
+        engineRef.current.setBowls(liveBowlsFrom(nextBowls, carrierRef.current));
+        bellRef.current = mix.bellEveryMin;
+        lastBellIdxRef.current = mix.bellEveryMin > 0 ? Math.floor(elapsedRef.current / (mix.bellEveryMin * 60)) : -1;
+        setBellEveryMinState(mix.bellEveryMin);
+        setLayersOnState(mix.layersOn);
+        engineRef.current.setLayersBypass(mix.layersOn);
       }
       applyPhaseAtTime(runningRef.current ? elapsedRef.current : 0);
       setPresetName(preset.title);
@@ -1194,14 +1219,20 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setPreviewId(null);
   }, []);
 
-  const startPreview = useCallback((id: string, startFn: () => (() => void) | void) => {
+  const startPreview = useCallback((id: string, startFn: () => (() => void) | void | false) => {
     // One preview at a time: stop whatever is playing first.
     previewStopRef.current?.();
     previewStopRef.current = null;
     engineRef.current.stopPreviews();
-    const stopFn = startFn();
-    previewStopRef.current = typeof stopFn === 'function' ? stopFn : null;
     setPreviewId(id);
+    try {
+      const stopFn = startFn();
+      previewStopRef.current = typeof stopFn === 'function' ? stopFn : null;
+      if (stopFn === false) setPreviewId(null);
+    } catch {
+      engineRef.current.stopPreviews();
+      setPreviewId(null);
+    }
   }, []);
 
   const togglePreview = useCallback(
@@ -1226,9 +1257,10 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       // Previews respect the governor gain cap and the infant ceiling.
       const db = previewLevelDb(-12);
       startPreview(id, () => {
-        engineRef.current.playBuffer(r.left, r.right, sr, db, () =>
+        const started = engineRef.current.playBuffer(r.left, r.right, sr, db, () =>
           setPreviewId((cur) => (cur === id ? null : cur)),
         );
+        if (started === false) return false;
       });
     },
     [previewId, previewLevelDb, startPreview, stopPreview],

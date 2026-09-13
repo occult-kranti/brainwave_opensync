@@ -299,7 +299,7 @@ describe('rail section label — RESEARCH (the · SOON suffix is retired)', () =
   it('desktop rail shows RESEARCH without SOON markers', async () => {
     const c = await mountShell(1280);
     const rail = c.querySelector('[data-testid="module-rail"]')!;
-    expect(rail.textContent).toContain('RESEARCH');
+    expect(rail.textContent).toContain('Theory & research');
     expect(rail.textContent).not.toContain('RESEARCH · SOON');
     expect(rail.textContent).not.toContain('SOON');
     // Research routes are live links, no longer dimmed.
@@ -314,7 +314,7 @@ describe('rail section label — RESEARCH (the · SOON suffix is retired)', () =
       c.querySelector<HTMLElement>('[data-testid="bottom-tab-more"]')!.click();
     });
     const drawer = c.querySelector('[data-testid="more-drawer"]')!;
-    expect(drawer.textContent).toContain('RESEARCH');
+    expect(drawer.textContent).toContain('Theory & research');
     expect(drawer.textContent).not.toContain('RESEARCH · SOON');
   });
 });

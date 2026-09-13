@@ -250,7 +250,12 @@
       "id": "exp-phi-ladder",
       "sha256": "2ba4e33d4a903fe7c52f4529441df4225b02fd75b8b9010a0844e27aad352186",
       "bytes": 1152044
+    },
+    {
+      "id": "exp-phi-bowl-chord",
+      "sha256": "334b041555c919236805c2a06d10b11f549c6d76d86ee8c843d80b5392eea619",
+      "bytes": 1152044
     }
   ],
-  "totalBytes": 56450156
+  "totalBytes": 57602200
 }

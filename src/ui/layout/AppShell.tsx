@@ -26,7 +26,8 @@ import {
   X,
 } from 'lucide-react';
 import { useIsMobile } from '../../hooks/use-mobile';
-import { BOTTOM_TAB_ROUTES, CORE_ROUTES, RESEARCH_ROUTES, ROUTES } from '../../app/routes';
+import { BOTTOM_TAB_ROUTES, ROUTES } from '../../app/routes';
+import { GroupedNavigation } from './GroupedNavigation';
 import { fmtClock } from '../session/sessionMath';
 import { useSession } from '../session/useSession';
 import { DensityToggle, Led } from '../components/primitives';
@@ -41,8 +42,6 @@ import { engineLedState } from '../theme';
 import { STORAGE_KEYS } from '@/lib/storage';
 
 /** Route lists come from the registry (src/app/routes.tsx) — one source of truth. */
-const MODULES = CORE_ROUTES;
-const RESEARCH_MODULES = RESEARCH_ROUTES;
 const ALL_ROUTES = ROUTES;
 /** Primary bottom-bar destinations (phone shell); everything else via MORE. */
 const BOTTOM_TABS = BOTTOM_TAB_ROUTES;
@@ -133,7 +132,7 @@ function RailItem({
         <div
           className="flex items-center gap-3"
           style={{
-            height: 56,
+            height: 48,
             padding: collapsed ? 0 : '0 16px',
             justifyContent: collapsed ? 'center' : undefined,
             background: isActive ? 'var(--ink-2)' : 'transparent',
@@ -246,30 +245,26 @@ function ModuleRail({ state, onCycle }: { state: SidebarState; onCycle: () => vo
         <>
           <Logo collapsed={collapsed} />
           <div className="flex-1 overflow-y-auto">
-            {MODULES.map((m) => (
-              <RailItem
-                key={m.path}
-                {...m}
-                collapsed={collapsed}
-                ledState={
-                  m.path === '/studio'
-                    ? engineLedState(running, paused)
-                    : m.path === '/safety'
-                      ? governor.infantMode
-                        ? 'teal'
-                        : 'off'
-                      : undefined
-                }
-              />
-            ))}
-            {!collapsed && (
-              <div className="t-label text-3" style={{ padding: '16px 16px 4px' }}>
-                RESEARCH
-              </div>
-            )}
-            {RESEARCH_MODULES.map((m) => (
-              <RailItem key={m.path} {...m} collapsed={collapsed} />
-            ))}
+            <GroupedNavigation
+              idPrefix="rail"
+              collapsed={collapsed}
+              renderRoute={(m) => (
+                <RailItem
+                  key={m.path}
+                  {...m}
+                  collapsed={collapsed}
+                  ledState={
+                    m.path === '/studio'
+                      ? engineLedState(running, paused)
+                      : m.path === '/safety'
+                        ? governor.infantMode
+                          ? 'teal'
+                          : 'off'
+                        : undefined
+                  }
+                />
+              )}
+            />
           </div>
           <div
             data-testid="rail-footer"
@@ -653,8 +648,8 @@ function DrawerLink({
 }
 
 /**
- * MORE drawer (§3.2): bottom sheet listing every route (primary tabs repeated
- * for completeness + all remaining modules + research), plus the session
+ * MORE drawer (§3.2): tools first, with background reading behind the same
+ * disclosure as the desktop rail. Includes every route, plus the session
  * readout and UTC clock that the compact status bar no longer shows. The
  * sheet stops above the bottom bar so PANIC stays reachable while it is open.
  */
@@ -662,8 +657,6 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   // P0-4: Esc closes, focus moves to the close button, returns to MORE tab.
   useModalA11y(open, onClose, closeRef);
-  const core = ALL_ROUTES.filter((r) => BOTTOM_TABS.some((t) => t.path === r.path));
-  const modules = MODULES.filter((m) => !BOTTOM_TABS.some((t) => t.path === m.path));
   return (
     <AnimatePresence>
       {open && (
@@ -734,24 +727,12 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
                 </button>
               </div>
             </div>
-            <div className="t-label text-3" style={{ padding: '12px 16px 4px' }}>
-              CORE
-            </div>
-            {core.map((m) => (
-              <DrawerLink key={m.path} {...m} onNavigate={onClose} />
-            ))}
-            <div className="t-label text-3" style={{ padding: '12px 16px 4px' }}>
-              MODULES
-            </div>
-            {modules.map((m) => (
-              <DrawerLink key={m.path} {...m} onNavigate={onClose} />
-            ))}
-            <div className="t-label text-3" style={{ padding: '12px 16px 4px' }}>
-              RESEARCH
-            </div>
-            {RESEARCH_MODULES.map((m) => (
-              <DrawerLink key={m.path} {...m} onNavigate={onClose} />
-            ))}
+            <nav aria-label="All pages">
+              <GroupedNavigation
+                idPrefix="drawer"
+                renderRoute={(m) => <DrawerLink key={m.path} {...m} onNavigate={onClose} />}
+              />
+            </nav>
           </motion.div>
         </>
       )}

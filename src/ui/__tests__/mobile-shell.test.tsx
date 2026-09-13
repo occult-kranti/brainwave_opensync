@@ -93,7 +93,7 @@ function mockViewport(width: number) {
 let roots: Root[] = [];
 let containers: HTMLElement[] = [];
 
-async function renderShell(width: number) {
+async function renderShell(width: number, path = '/') {
   mockViewport(width);
   const container = document.createElement('div');
   document.body.appendChild(container);
@@ -102,7 +102,7 @@ async function renderShell(width: number) {
   roots.push(root);
   await act(async () => {
     root.render(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={[path]}>
         <SessionProvider>
           <AppShell>
             <div>page content</div>
@@ -162,7 +162,7 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(panicButtons.length).toBeGreaterThanOrEqual(2);
   });
 
-  it('MORE drawer lists all 17 routes', async () => {
+  it('MORE drawer groups tools first and reveals all routes through its theory disclosure', async () => {
     const c = await renderShell(390);
     expect(c.querySelector('[data-testid="more-drawer"]')).toBeNull();
     const more = c.querySelector<HTMLElement>('[data-testid="bottom-tab-more"]')!;
@@ -171,6 +171,15 @@ describe('W10 mobile shell — layout tiers', () => {
     });
     const drawer = document.querySelector('[data-testid="more-drawer"]');
     expect(drawer).toBeTruthy();
+    const tools = drawer!.querySelector('[data-nav-group="tools"]')!;
+    expect(tools.querySelector('a[href="/harmonics"]')).toBeTruthy();
+    expect(tools.querySelector('a[href="/sound-methods"]')).toBeTruthy();
+    expect(tools.querySelector('a[href="/lab"]')).toBeTruthy();
+    expect(drawer!.querySelector('a[href="/channeled"]')).toBeNull();
+    const toggle = drawer!.querySelector<HTMLButtonElement>('[data-testid="drawer-research-toggle"]')!;
+    expect(toggle.getAttribute('aria-expanded')).toBe('false');
+    await act(async () => toggle.click());
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
     const hrefs = new Set(
       Array.from(drawer!.querySelectorAll('a[href]')).map((a) => a.getAttribute('href')),
     );
@@ -179,6 +188,17 @@ describe('W10 mobile shell — layout tiers', () => {
     }
     expect(hrefs.size).toBe(ALL_ROUTE_PATHS.length);
     // Panic remains outside the drawer, still reachable while it is open.
+    expect(c.querySelector('[data-testid="mobile-panic"]')).toBeTruthy();
+  });
+  it('MORE reveals a theory deep link and closes after choosing a practical tool', async () => {
+    const c = await renderShell(390, '/channeled');
+    await act(async () => c.querySelector<HTMLElement>('[data-testid="bottom-tab-more"]')!.click());
+    const drawer = document.querySelector('[data-testid="more-drawer"]')!;
+    const toggle = drawer.querySelector<HTMLButtonElement>('[data-testid="drawer-research-toggle"]')!;
+    expect(toggle.getAttribute('aria-expanded')).toBe('true');
+    expect(drawer.querySelector('a[href="/channeled"]')!.getAttribute('aria-current')).toBe('page');
+    await act(async () => drawer.querySelector<HTMLElement>('a[href="/presets"]')!.click());
+    expect(c.querySelector('[data-testid="bottom-tab-more"]')!.getAttribute('aria-expanded')).toBe('false');
     expect(c.querySelector('[data-testid="mobile-panic"]')).toBeTruthy();
   });
 });

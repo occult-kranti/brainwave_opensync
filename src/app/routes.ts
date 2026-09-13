@@ -40,7 +40,7 @@ import {
 } from 'lucide-react';
 import Home from '@/pages/Home';
 
-export type RouteGroup = 'core' | 'research';
+export type RouteGroup = 'home' | 'tools' | 'research' | 'help';
 
 export interface AppRoute {
   /** Router path (all top-level; deep links rely on the Pages 404 fallback). */
@@ -67,35 +67,38 @@ const r = (
 ): AppRoute => ({ path, label, module, icon, group, component: lazy(load), ...extra });
 
 export const ROUTES: readonly AppRoute[] = [
-  { path: '/', label: 'HOME', module: 'Home', icon: HomeIcon, group: 'core', component: Home, bottomTab: true },
-  r('/studio', 'STUDIO', 'Studio', AudioWaveform, 'core', () => import('@/pages/Studio'), { bottomTab: true }),
-  r('/library', 'LIBRARY', 'Library', BookOpen, 'core', () => import('@/pages/Library'), { bottomTab: true }),
-  r('/presets', 'PRESETS', 'Presets', Layers, 'core', () => import('@/pages/Presets')),
-  r('/levels', 'LEVELS', 'Levels', Gauge, 'core', () => import('@/pages/Levels')),
-  r('/analyzer', 'ANALYZER', 'Analyzer', Activity, 'core', () => import('@/pages/Analyzer')),
-  r('/cymatics', 'CYMATICS', 'Cymatic Studio', Waves, 'core', () => import('@/pages/Cymatics')),
-  r('/dream', 'SLEEP & DREAM', 'Sleep & Dream', Moon, 'core', () => import('@/pages/Dream')),
-  r('/replication', 'REPLICATION BAY', 'Replication Bay', Repeat2, 'core', () => import('@/pages/Replication')),
-  r('/safety', 'SAFETY', 'Safety', ShieldAlert, 'core', () => import('@/pages/Safety'), { bottomTab: true }),
-  r('/knowledge', 'KNOWLEDGE', 'Knowledge', BookMarked, 'core', () => import('@/pages/Knowledge')),
-  r('/about', 'ABOUT', 'About', Info, 'core', () => import('@/pages/About')),
-  r('/guide', 'GUIDE', 'Guide', Compass, 'core', () => import('@/pages/Guide')),
-  // Research modules — all live.
-  r('/lab', 'EXPERIMENT LAB', 'Experiment Lab', FlaskConical, 'research', () => import('@/pages/research/ExperimentLab')),
+  { path: '/', label: 'HOME', module: 'Home', icon: HomeIcon, group: 'home', component: Home, bottomTab: true },
+  // Practical tools — listening, creating, measuring and testing.
+  r('/studio', 'STUDIO', 'Studio', AudioWaveform, 'tools', () => import('@/pages/Studio'), { bottomTab: true }),
+  r('/presets', 'PRESETS', 'Presets', Layers, 'tools', () => import('@/pages/Presets')),
+  r('/library', 'LIBRARY', 'Library', BookOpen, 'tools', () => import('@/pages/Library'), { bottomTab: true }),
+  r('/harmonics', 'HARMONIC LAB', 'Harmonic Lab', Music2, 'tools', () => import('@/pages/HarmonicLab')),
+  r('/sound-methods', 'SOUND METHODS', 'Sound Methods', Headphones, 'tools', () => import('@/pages/SoundMethods')),
+  r('/sonic-lab', 'SONIC LAB', 'Sonic Lab', Orbit, 'tools', () => import('@/pages/SonicLab')),
+  r('/sample-lab', 'SAMPLE LAB', 'Sample Lab', FileAudio, 'tools', () => import('@/pages/SampleLab')),
+  r('/analyzer', 'ANALYZER', 'Analyzer', Activity, 'tools', () => import('@/pages/Analyzer')),
+  r('/cymatics', 'CYMATICS', 'Cymatic Studio', Waves, 'tools', () => import('@/pages/Cymatics')),
+  r('/dream', 'SLEEP & DREAM', 'Sleep & Dream', Moon, 'tools', () => import('@/pages/Dream')),
+  r('/quicklab', 'QUICK LAB', 'Quick Lab', Zap, 'tools', () => import('@/pages/QuickLab')),
+  r('/lab', 'EXPERIMENT LAB', 'Experiment Lab', FlaskConical, 'tools', () => import('@/pages/research/ExperimentLab')),
+  r('/replication', 'REPLICATION BAY', 'Replication Bay', Repeat2, 'tools', () => import('@/pages/Replication')),
+  // Background reading — grouped behind one disclosure in both navigation layouts.
+  r('/levels', 'LEVELS', 'Levels', Gauge, 'research', () => import('@/pages/Levels')),
+  r('/knowledge', 'KNOWLEDGE', 'Knowledge', BookMarked, 'research', () => import('@/pages/Knowledge')),
+  r('/channeled', 'CHANNELED SOURCES', 'Channeled Sources', Radio, 'research', () => import('@/pages/ChanneledSources')),
+  r('/theory', 'THEORY EXPLORER', 'Theory Explorer', GitFork, 'research', () => import('@/pages/TheoryExplorer')),
   r('/critique', 'CRITIQUE LIBRARY', 'Critique Library', MessageSquareWarning, 'research', () => import('@/pages/research/CritiqueLibrary')),
   r('/hypotheses', 'HYPOTHESIS TRACKER', 'Hypothesis Tracker', ListChecks, 'research', () => import('@/pages/research/HypothesisTracker')),
   r('/programs', 'PROGRAMS ARCHIVE', 'Programs Archive', Archive, 'research', () => import('@/pages/research/ProgramsArchive')),
-  r('/quicklab', 'QUICK LAB', 'Quick Lab', Zap, 'research', () => import('@/pages/QuickLab')),
-  r('/theory', 'THEORY EXPLORER', 'Theory Explorer', GitFork, 'research', () => import('@/pages/TheoryExplorer')),
-  r('/sonic-lab', 'SONIC LAB', 'Sonic Lab', Orbit, 'research', () => import('@/pages/SonicLab')),
-  r('/harmonics', 'HARMONIC LAB', 'Harmonic Lab', Music2, 'research', () => import('@/pages/HarmonicLab')),
-  r('/sound-methods', 'SOUND METHODS', 'Sound Methods', Headphones, 'research', () => import('@/pages/SoundMethods')),
-  r('/channeled', 'CHANNELED SOURCES', 'Channeled Sources', Radio, 'research', () => import('@/pages/ChanneledSources')),
-  r('/sample-lab', 'SAMPLE LAB', 'Sample Lab', FileAudio, 'research', () => import('@/pages/SampleLab')),
+  r('/safety', 'SAFETY', 'Safety', ShieldAlert, 'help', () => import('@/pages/Safety'), { bottomTab: true }),
+  r('/guide', 'GUIDE', 'Guide', Compass, 'help', () => import('@/pages/Guide')),
+  r('/about', 'ABOUT', 'About', Info, 'help', () => import('@/pages/About')),
 ];
 
-export const CORE_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group === 'core');
+export const HOME_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group === 'home');
+export const TOOL_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group === 'tools');
 export const RESEARCH_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group === 'research');
+export const HELP_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group === 'help');
 export const BOTTOM_TAB_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.bottomTab);
 
 export function routeByPath(path: string): AppRoute | undefined {

@@ -102,7 +102,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     grade: 'D', gradeScope: 'The channeled claims themselves; supplied digests are not independently verified transcripts.',
     simple: 'Read the frequency claims in the supplied Bashar summaries and the limits of those sources. Compare the numbers and listen to audio examples.',
     deep: 'The supplied digest gives several frequencies without a reproducible measurement method. Alpha and gamma activity can occur in the same recording. The page separates unverified source claims from calculations and audio demonstrations. Original transcripts and recordings are needed to check attribution and measurements.',
-    howTo: ['Read the source and verification note.', 'Compare the reported quantities with the measurement audit.', 'Explore the experimental presets or mathematical bowl set.'],
+    howTo: ['Read the source and verification note.', 'Compare the reported quantities with the measurement audit.', 'Open the Bashar sounds collection in Presets to hear each example.'],
   },
   {
     id: 'channeled-scale-mapping', module: 'Channeled Sources', route: '/channeled', name: 'Illustrative scale mapping',
@@ -426,15 +426,15 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     id: 'presets',
     module: 'Presets',
     route: '/presets',
-    name: 'Protocol presets',
+    name: 'Sound presets',
     simple:
-      'Ready-made sessions for sleep, focus, relaxation, meditation, and experimentation that load straight into the Studio. Each card shows its evidence grade and duration. Press load, then Start Session.',
+      'Search ready-made sounds or open the Bashar collection. Preview a sound or hear individual steps before loading the full session into Studio. Each card shows its duration and evidence grade.',
     deep:
-      'A preset is a typed SessionSpec: mode, carrier, a phase schedule, noise and layer mix, plus an auto-computed grade equal to the weakest grade among its constituent claims — the grade cannot be edited upward. More than 24 protocols ship built in, and any Studio setup can be saved as a preset with the same auto-grading. Declared durations feed the Safety Center time cap and dose accounting.',
+      'Catalog entries specify phase duration, carrier, rhythm, modality, authored gain, and an editorial evidence grade. An optional mixer profile restores waveform, noise, nature, bowl settings, and interval bells; Bashar presets include complete profiles. Saved Studio presets retain that mix and their fader ceiling. Step previews isolate eight seconds; full playback and WAV export use their existing synthesis and transition paths, which can differ. Authored phase fades remain metadata and are labeled as unrendered.',
     howTo: [
-      'Filter by goal (Sleep, Focus, Relax, Meditate, Experimental) or by grade.',
-      'Open a card to read its phase schedule and evidence drawer.',
-      'Load it, adjust in the Studio if you like, then Start Session.',
+      'Search by name, pitch, rhythm, or mode, or open Bashar sounds.',
+      'Use Preview or open Details and steps to hear a segment and read its sources.',
+      'Load into Studio, review the mix and volume, then press Start.',
     ],
   },
   // ------------------------------------------------------------------- Levels

@@ -46,6 +46,7 @@ await build({
     contents: [
       `export { renderSession, encodeWav } from ${JSON.stringify(path.join(ROOT, 'src/engine/index.ts'))};`,
       `export { PRESETS } from ${JSON.stringify(path.join(ROOT, 'src/data/presets.ts'))};`,
+      `export { presetPreviewPhases } from ${JSON.stringify(path.join(ROOT, 'src/ui/session/sessionMath.ts'))};`,
     ].join('\n'),
     resolveDir: ROOT,
     loader: 'ts',
@@ -57,7 +58,7 @@ await build({
   outfile: bundlePath,
   logLevel: 'silent',
 });
-const { renderSession, encodeWav, PRESETS } = await import(pathToFileURL(bundlePath).href);
+const { renderSession, encodeWav, PRESETS, presetPreviewPhases } = await import(pathToFileURL(bundlePath).href);
 rmSync(bundlePath, { force: true });
 
 // ---------------------------------------------------------------------------
@@ -68,6 +69,7 @@ rmSync(bundlePath, { force: true });
 // what loading the preset in Studio produces.
 // ---------------------------------------------------------------------------
 function enginePhases(preset, maxSec) {
+  if (preset.spec.mix) return presetPreviewPhases(preset, maxSec);
   const out = [];
   let remaining = maxSec;
   for (const p of preset.spec.phases) {

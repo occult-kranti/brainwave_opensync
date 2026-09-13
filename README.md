@@ -2,12 +2,10 @@
 
 [![CI](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml/badge.svg)](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-2.3.0-amber)
+![Version](https://img.shields.io/badge/version-2.5.0-amber)
 
-An open, evidence-graded replication **and correction** of commercial brainwave-entrainment
-platforms, rebuilt as a browser app where every frequency, protocol and claim carries an
-**A–D evidence grade**, every graph explains itself, and you can run **blinded experiments on
-yourself**. No account, no server, nothing phones home.
+Browser tools for creating sounds, composing harmonies, comparing audio methods, and reading
+their sources. Presets carry A–D evidence grades. Audio is generated locally; no account is required.
 
 **Live site (GitHub Pages):** https://occult-kranti.github.io/brainwave_opensync/ — installable as a PWA.
 
@@ -15,17 +13,17 @@ yourself**. No account, no server, nothing phones home.
 
 ## What it is
 
-A "neural audio instrument" that refuses to overclaim:
+- Studio combines tones, rhythms, noise, nature textures, and modeled bowls.
+- Harmonic Lab creates chords and phrases; Sound Methods demonstrates published audio techniques.
+- Presets provide full sessions and short previews. Research pages explain the sources and their limits.
+- The app calculates and measures audio. It does not measure brain activity or a human consciousness frequency.
+- Gain limits, a session timer, a seven-day dose estimate, and Panic controls apply to playback. Device volume determines actual listening level; short previews are excluded from the Studio dose log.
 
-- The beat-generation math is real and sample-accurate (rendered beat frequency verified to <0.001 Hz in tests, renders bit-exact).
-- Cortical entrainment by binaural beats is *unproven* (8 of 14 rigorous EEG studies contradict
-  it) — so the app leads with **measurement and self-verification**, not promises.
-- Solfeggio / chakra / "angel number" frequencies ship with their audited origins (1970s–90s
-  numerology, not medieval), Schumann modes use *measured* geophysical values, and astral/occult
-  content is quarantined as cultural-historical exhibits.
-- Safety rails are contracts, not advisories: a −6 dBFS gain cap, a session cap you set yourself, a
-  WHO-ITU H.870 weekly dose meter that really spans seven days, an infant mode with a live 1 kHz
-  low-pass, a panic button on every screen, and a one-time advisory gate before the first START.
+## Bashar sounds and practical navigation — v2.5
+
+Open [Bashar sounds](https://occult-kranti.github.io/brainwave_opensync/presets?collection=bashar) for the scale sequence, alpha/gamma comparison, golden-ratio pitch ladder, and a simultaneous bowl chord over a 110 Hz root. Each sound can be previewed, loaded into Studio, edited, saved, and exported. **Details & steps** plays any segment for eight seconds. Starting pitches and timings are app choices; the source claims remain unverified.
+
+Practical pages are grouped under **Tools**. **Theory & research** starts collapsed in the sidebar, mobile More menu, and Home module list. The active theory route opens its navigation group automatically. Read the [implementation and review record](docs/BASHAR-PRESETS-AND-NAVIGATION.md) for the sound definitions and remaining renderer differences.
 
 ## Everyday app (phone-first, no captions)
 
@@ -64,11 +62,11 @@ Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-sour
 | **Studio** | Live binaural / monaural / isochronic engine, 6 noise colors, nature layer, a bowl set of up to 7 singing bowls (5 materials × 3 techniques, pan, intervals, ready-made sets), interval bell, multi-phase session timeline, live L/R scope, virtual-plate cymatics, sleep fade, share links, WAV export |
 | **Sound Methods** | Nine original sound examples from published methods, source and study notes, editable signal settings, and WAV/JSON export at `/sound-methods` |
 | **Harmonic Lab** | Compose chords, arpeggios, and four-bar phrases with explicit tuning, eight overtones, A/B listening, WAV export, and portable recipes at `/harmonics` |
-| **Channeled Sources** | Audit the supplied Bashar digest, inspect a clearly labeled illustrative scale conversion, and explore three experimental presets and a golden-ratio bowl set at `/channeled` |
+| **Channeled Sources** | Read the supplied Bashar digest analysis, inspect the chosen scale conversion, and open four experimental sound presets at `/channeled` |
 | **Sonic Lab** | 17 mathematical sound generators: Shepard/Risset illusions, Euclidean & prime & golden-ratio rhythms, fractal 1/f^α noise, logistic-map chaos, waveform designer (additive/FM/Chebyshev/phase distortion), tuning systems (JI/12-TET/Bohlen-Pierce), astronomically derived tunings with split grades: *arithmetic A · meaning D* |
 | **Cymatic Studio** | Chladni plate simulator (square/circular/Bessel modes, sand particles, colormaps, audio-reactive) with physics/art honesty labels |
 | **Frequency Library** | 44 audited frequencies in 7 sets, grade badges, citation popovers, corrected Schumann values |
-| **Presets** | 46 evidence-graded protocols with instant pre-rendered previews + MY PRESETS |
+| **Presets** | 50 catalog presets, Bashar collection, search, per-step listening, six-second preview files, and saved Studio mixes |
 | **Levels** | Deep Focus ladder (discrete Monroe-style signposts) + an accurate exhibit on the 1983 CIA Gateway report (a *theoretical assessment*, no experiments) |
 | **Analyzer** | ITU-R BS.1770 loudness (LUFS/LRA/true-peak), THD/SINAD, spectrum, wow & flutter, azimuth |
 | **Sample Lab** | 9-module analysis of your own audio files: STFT, spectral shape, octave bands, tempo, mid/side + binaural-construction detection, loudness over time, pitch, loop detection |
@@ -135,7 +133,7 @@ src/
   engine/     # pure DSP: oscillators, noise colors, bowls, nature, sequencer, WAV encoder
   dsp/        # FFT, BS.1770 loudness, THD/SINAD, wow & flutter, azimuth, biquads
   safety/     # H.870 dose tracker, session governor (authorization, infant rules, advisories)
-  data/       # evidence-graded frequency DB, 46 presets, levels, knowledge base
+  data/       # evidence-graded frequency DB, 50 presets, mixer profiles, levels, knowledge base
   docs/       # features.ts — single source of truth for dual-register docs; vocabulary.ts
   lib/        # storage (versioned keys), asset URLs, cn()
   cymatics/   # Chladni solvers, sand sim, colormaps, audio link

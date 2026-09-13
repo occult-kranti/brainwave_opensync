@@ -14,6 +14,7 @@
  */
 
 import type { Grade } from './frequencies';
+import { BASHAR_KNOWLEDGE } from '@/channeled/bashar';
 
 export type KnowledgeCategory = 'myth-bust' | 'evidence' | 'safety' | 'history';
 
@@ -243,6 +244,7 @@ export const KNOWLEDGE_BASE: readonly KnowledgeEntry[] = [
     grade: 'D',
     citations: ['Monroe Institute published program maps (Gateway Experience, Lifeline, Starlines)'],
   },
+  ...BASHAR_KNOWLEDGE,
 ];
 
 /** Lookup helper. */

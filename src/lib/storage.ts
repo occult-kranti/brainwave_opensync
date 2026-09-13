@@ -25,6 +25,7 @@ export const STORAGE_KEYS = {
   realityCheck: 'open-sync.reality-check.v1',
   cymaticsCoach: 'opensync.cymatics.coach.v1',
   quicklab: 'opensync.quicklab.v1',
+  harmonicRecipes: 'opensync.harmonic-recipes.v1',
   // v2
   frontPanel: 'open-sync:front-panel.v2',
   doseHistory: 'open-sync:dose-history.v2',

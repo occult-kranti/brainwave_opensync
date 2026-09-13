@@ -109,7 +109,7 @@ export default defineConfig({
       // globPatterns already covers icons/favicon; social/crawler files are not
       // part of the offline shell.
       manifest: {
-        name: 'Open Sync — Evidence-Honest Brainwave Audio Lab',
+        name: 'Open Sync — Sound and Research Lab',
         short_name: 'Open Sync',
         description:
           'Binaural / monaural / isochronic audio laboratory with A–D evidence grades, blinded self-experiments and a graded research archive. Runs entirely in your browser.',

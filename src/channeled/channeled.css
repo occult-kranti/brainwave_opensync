@@ -1,0 +1,62 @@
+.channeled {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 40px 64px;
+  color: var(--text-1);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.channeled h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.15; letter-spacing: -0.04em; }
+.channeled h2 { font-size: clamp(24px, 3vw, 30px); line-height: 1.25; letter-spacing: -0.025em; }
+.channeled h3 { font-size: 20px; line-height: 1.35; }
+.channeled p { margin: 12px 0 0; }
+.channeled a { color: var(--teal-hi); text-underline-offset: 3px; }
+.channeled a:focus-visible, .channeled button:focus-visible, .channeled input:focus-visible,
+.channeled summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 4px; }
+.channeled .source-eyebrow { font-size: 14px; letter-spacing: 0.08em; color: var(--amber); margin: 0 0 12px; }
+.channeled .source-subtitle { color: var(--text-2); max-width: 68ch; }
+.channeled .source-provenance { margin-top: 24px; padding: 24px; background: var(--ink-2); border: 1px solid var(--line-1); border-left: 3px solid var(--amber); }
+.channeled .source-provenance ol { padding-left: 24px; margin: 16px 0; }
+.channeled .source-provenance li + li { margin-top: 12px; }
+.channeled .source-meta { font-size: 14px; line-height: 1.6; color: var(--text-2); }
+.channeled .source-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.channeled .source-grade { display: inline-flex; align-items: center; padding: 2px 10px; font-size: 14px; border: 1px solid var(--line-2); border-radius: 3px; white-space: nowrap; }
+.channeled .source-grade[data-grade='D'] { color: var(--amber); border-color: var(--amber-dim, var(--line-2)); }
+.channeled .source-grade[data-grade='A'] { color: var(--teal-hi); }
+.channeled .source-jumps { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 24px 0 0; font-size: 14px; }
+.channeled .source-section { margin-top: 44px; scroll-margin-top: 80px; }
+.channeled .source-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+.channeled .source-card { min-width: 0; padding: 22px; border: 1px solid var(--line-1); background: var(--ink-2); }
+.channeled .source-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.channeled .source-card p { color: var(--text-2); }
+.channeled .source-citations { margin-top: 16px; font-size: 14px; overflow-wrap: anywhere; }
+.channeled .source-citations summary { color: var(--teal-hi); cursor: pointer; }
+.channeled .source-citations ul { padding-left: 20px; margin-top: 8px; color: var(--text-2); }
+.channeled .source-citations li + li { margin-top: 8px; }
+.channeled .source-mapping { background: var(--ink-2); border: 1px solid var(--line-1); margin-top: 20px; padding: 24px; }
+.channeled .source-table-scroll { overflow-x: auto; margin-top: 20px; }
+.channeled table { width: 100%; border-collapse: collapse; min-width: 540px; font-size: 16px; }
+.channeled th { font-size: 14px; font-weight: 500; text-align: left; color: var(--text-2); }
+.channeled th, .channeled td { padding: 12px 16px 12px 0; border-bottom: 1px solid var(--line-1); }
+.channeled td:nth-child(1), .channeled td:nth-child(2) { font-variant-numeric: tabular-nums; }
+.channeled .source-anchor { color: var(--amber); }
+.channeled .source-calculator { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line-1); }
+.channeled .source-calculator label { display: block; font-size: 16px; }
+.channeled .source-calculator input { margin-top: 10px; padding: 10px 12px; width: 240px; max-width: 100%; font: inherit; background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 3px; color: var(--text-1); }
+.channeled .source-calculator output { display: block; margin-top: 12px; }
+.channeled .source-error { color: var(--danger); }
+.channeled .source-pitches { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.channeled .source-pitch { flex: 1 1 115px; background: var(--ink-3); border-top: 2px solid var(--amber); padding: 12px; font-variant-numeric: tabular-nums; }
+.channeled .source-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.channeled .source-action { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 14px; font-size: 14px; font-weight: 500; background: var(--ink-3); border: 1px solid var(--line-2); border-radius: 3px; color: var(--text-1); cursor: pointer; }
+.channeled .source-action.primary { color: var(--amber); border-color: var(--amber); }
+.channeled .source-action:disabled { opacity: 0.5; cursor: not-allowed; }
+.channeled .source-phases { padding-left: 20px; margin: 16px 0 0; color: var(--text-2); font-size: 14px; }
+.channeled .source-phases li + li { margin-top: 6px; }
+.channeled .source-footer { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line-1); }
+@media (max-width: 760px) {
+  .channeled { padding: 24px 16px 48px; }
+  .channeled .source-grid { grid-template-columns: minmax(0, 1fr); }
+  .channeled .source-provenance, .channeled .source-card, .channeled .source-mapping { padding: 18px; }
+  .channeled .source-card-top { flex-wrap: wrap; }
+}

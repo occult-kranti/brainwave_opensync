@@ -251,6 +251,17 @@ export function PhaseTimeline({ phases, onChange, playheadSec, height = 120, rea
           </span>
         </div>
       )}
+      {phases.some((p) => p.carrierHz !== undefined || p.mode !== undefined) && (
+        <details style={{ marginTop: 12, fontSize: 14, color: TEXT[2] }}>
+          <summary style={{ cursor: 'pointer' }}>Pitch and mode per phase</summary>
+          <ol style={{ paddingLeft: 24, marginTop: 8 }}>
+            {phases.map((p, index) => <li key={p.id} style={{ marginTop: 4 }}>
+              {index + 1}. {fmtClock(p.durationSec)} · {p.carrierHz !== undefined ? `${p.carrierHz.toFixed(2)} Hz carrier` : 'Studio carrier'} · {p.mode ?? 'Studio mode'} · {p.beatHz} Hz {p.beatHz === 0 ? '(no beat)' : 'beat / modulation'}
+            </li>)}
+          </ol>
+          {!readonly && <p style={{ marginTop: 8 }}>Changing the Studio carrier or mode applies that choice to every phase.</p>}
+        </details>
+      )}
     </div>
   );
 }

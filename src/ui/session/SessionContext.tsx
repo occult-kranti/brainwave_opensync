@@ -63,9 +63,11 @@ import {
   beatAtTime,
   bellVoiceFrom,
   buildExportPhases,
+  completePhaseOverrides,
   liveBowlsFrom,
   newBowlLayer,
   newUiPhase as newPhase,
+  presetAudioMode,
   presetPreviewPhases,
   truncatePhases,
   type BowlLayer,
@@ -94,13 +96,20 @@ import { encodeShare, shareFromHash, shareUrl, type ShareState } from './shareLi
 /** Merge a share payload over a front panel. A share never loosens the infant caps of the panel it lands on. */
 function panelFromShare(base: FrontPanel, s: ShareState): FrontPanel {
   const limitCap = base.infantMode ? Math.min(base.sessionCapMin, INFANT_MAX_SESSION_MIN) : base.sessionCapMin;
+  const authoredGains = s.phases.map((p) => p.gainDbFs).filter((gain): gain is number => typeof gain === 'number' && Number.isFinite(gain));
   return {
     ...base,
-    mode: s.mode,
-    carrierHz: s.carrierHz,
+    mode: s.phases[0]?.mode ?? s.mode,
+    carrierHz: s.phases[0]?.carrierHz ?? s.carrierHz,
     beatHz: s.phases[0]?.beatHz ?? base.beatHz,
     waveform: s.waveform,
-    phases: s.phases.map((p) => newPhase(p.durationSec, p.beatHz)),
+    volumeDb: Math.min(base.volumeDb, base.infantMode ? INFANT_MAX_VOLUME_DB : 0, ...authoredGains),
+    phases: completePhaseOverrides(s.phases.map((p) => newPhase(p.durationSec, p.beatHz, {
+      ...(p.carrierHz !== undefined ? { carrierHz: p.carrierHz } : {}),
+      ...(p.mode !== undefined ? { mode: p.mode } : {}),
+      ...(p.gainDbFs !== undefined ? { gainDbFs: p.gainDbFs } : {}),
+      ...(p.rampSec !== undefined ? { rampSec: p.rampSec } : {}),
+    })), s.carrierHz, s.mode),
     noiseDb: { ...ALL_NOISE_OFF, ...s.noiseDb },
     noiseOn: s.noiseOn,
     nature: { ...s.nature },
@@ -255,6 +264,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   /** True when the panic that opened the overlay cut a live session (vs. a rehearsal). */
   const panicWasLiveRef = useRef(false);
   const carrierRef = useRef(carrierHz);
+  const modeRef = useRef(mode);
   const governorRef = useRef(governor);
   const elapsedRef = useRef(elapsedSec);
   const runningRef = useRef(running);
@@ -266,6 +276,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     volumeRef.current = volumeDb;
     mutedRef.current = muted;
     carrierRef.current = carrierHz;
+    modeRef.current = mode;
     governorRef.current = governor;
     elapsedRef.current = elapsedSec;
     runningRef.current = running;
@@ -278,12 +289,37 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   /** Latest start() (declared below); read by acknowledgeAdvisory and the media session. */
   const startRef = useRef<() => boolean>(() => false);
 
+  /** Plan writes are synchronous so load/edit followed by START uses the new plan. */
+  const commitPhases = useCallback((next: UiPhase[]) => {
+    phasesRef.current = next;
+    setPhasesState(next);
+  }, []);
+
   const pushConfig = useCallback(
     (patch: Partial<{ mode: EntrainmentMode; carrierHz: number; beatHz: number; waveform: Waveform; gateDuty: number; gateShape: GateShape }>) => {
+      if (patch.carrierHz !== undefined) carrierRef.current = patch.carrierHz;
+      if (patch.mode !== undefined) modeRef.current = patch.mode;
       engineRef.current.updateConfig(patch);
     },
     [],
   );
+
+  /** Use the same planned carrier/mode on START and on every live clock tick. */
+  const applyPhaseAtTime = useCallback((seconds: number) => {
+    const plan = phasesRef.current;
+    if (!plan.length) return;
+    const { beat, idx } = beatAtTime(plan, seconds);
+    const phase = plan[idx];
+    pushConfig({
+      beatHz: beat,
+      ...(phase?.carrierHz !== undefined ? { carrierHz: phase.carrierHz } : {}),
+      ...(phase?.mode !== undefined ? { mode: phase.mode } : {}),
+    });
+    setBeatState(Math.round(beat * 100) / 100);
+    if (phase?.carrierHz !== undefined) setCarrierState(phase.carrierHz);
+    if (phase?.mode !== undefined) setModeState(phase.mode);
+    setActivePhaseIdx(idx);
+  }, [pushConfig]);
 
   // Clear a consumed share hash so a reload does not re-apply it.
   useEffect(() => {
@@ -348,6 +384,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     eng.setOutputDb(volumeRef.current);
     eng.setMuted(mutedRef.current);
     eng.setInfantFilter(governorRef.current.infantMode);
+    applyPhaseAtTime(0);
     if (!eng.start()) {
       setStartBlocked(['Web Audio is unavailable in this browser.']);
       return false;
@@ -368,7 +405,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setFading(false);
     setPanicked(false);
     return true;
-  }, [authorizeLive]);
+  }, [authorizeLive, applyPhaseAtTime]);
 
   const stop = useCallback(() => {
     engineRef.current.stop(0.3);
@@ -450,6 +487,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       return;
     }
     engineRef.current.setInfantFilter(governorRef.current.infantMode);
+    if (!panicWasLiveRef.current) applyPhaseAtTime(0);
     const db = engineRef.current.resumeSafely();
     volumeRef.current = db;
     runningRef.current = true;
@@ -471,7 +509,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setPaused(false);
     setInterrupted(false);
     setPanicked(false);
-  }, [authorizeLive]);
+  }, [authorizeLive, applyPhaseAtTime]);
 
   const dismissPanic = useCallback(() => setPanicked(false), []);
 
@@ -559,16 +597,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
           setFadeEndsAtSec(limitSec);
         }
       }
-      // Phase plan drives the live beat.
-      const { beat, idx } = beatAtTime(phasesRef.current, next);
-      setBeatState((cur) => {
-        if (Math.abs(cur - beat) > 0.005) {
-          pushConfig({ beatHz: beat });
-          return Math.round(beat * 100) / 100;
-        }
-        return cur;
-      });
-      setActivePhaseIdx(idx);
+      // Beat glide plus the phase's optional carrier/modality plan.
+      applyPhaseAtTime(next);
       // Interval bell: one strike at the start and at every period boundary.
       const bellMin = bellRef.current;
       if (bellMin > 0) {
@@ -731,21 +761,25 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   // ---- config setters -------------------------------------------------------
   const setMode = useCallback(
     (m: EntrainmentMode) => {
+      // A global edit deliberately replaces all imported per-phase modes.
+      commitPhases(phasesRef.current.map(({ mode: _mode, ...p }) => p));
       setModeState(m);
       pushConfig({ mode: m });
       markDirty();
     },
-    [pushConfig, markDirty],
+    [pushConfig, markDirty, commitPhases],
   );
   const setCarrierHz = useCallback(
     (hz: number) => {
       const clamped = Math.min(1000, Math.max(20, hz));
+      // Do not let a later imported phase silently undo the global knob.
+      commitPhases(phasesRef.current.map(({ carrierHz: _carrierHz, ...p }) => p));
       carrierRef.current = clamped;
       setCarrierState(clamped);
       pushConfig({ carrierHz: clamped });
       markDirty();
     },
-    [pushConfig, markDirty],
+    [pushConfig, markDirty, commitPhases],
   );
   const setBeatHz = useCallback(
     (hz: number) => {
@@ -895,9 +929,12 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       limitRef.current = Math.min(limitRef.current, cap);
       setLimitMinState((l) => Math.min(l, cap));
     }
+    // Loading a preset or starting in this same event must see the tightened
+    // governor immediately, before React evaluates the queued updater.
+    const nextGovernor = { ...governorRef.current, ...patch };
+    governorRef.current = nextGovernor;
     setGovernorState((cur) => {
-      const next = { ...cur, ...patch };
-      governorRef.current = next;
+      const next = nextGovernor;
       if (patch.infantMode !== undefined && patch.infantMode !== cur.infantMode) {
         engineRef.current.setInfantFilter(patch.infantMode);
         if (patch.infantMode) {
@@ -920,25 +957,26 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     });
   }, []);
   const setPhases = useCallback((p: UiPhase[]) => {
-    setPhasesState(p.slice(0, 8));
+    commitPhases(completePhaseOverrides(p.slice(0, 8), carrierRef.current, modeRef.current));
     setDirty(true);
-  }, []);
+  }, [commitPhases]);
 
   // ---- user presets (Studio "SAVE AS PRESET") -------------------------------
   const saveCurrentAsPreset = useCallback(
     (name: string): UserPreset => {
       // Snapshot the front panel as a data-layer SessionSpec: per-phase beat,
-      // current carrier/mode, unity gain (the fader is a playback control,
-      // not part of the saved stimulus).
+      // planned carrier/mode and authored gain/fade metadata. The current
+      // global fader remains a playback control, separate from phase ratios.
       const spec: DataSessionSpec = {
         autoShutoff: true,
         phases: phases.map((p, i) => ({
           name: `phase-${i + 1}`,
           durationSec: p.durationSec,
-          carrierHz,
+          carrierHz: p.carrierHz ?? carrierHz,
           beatHz: p.beatHz,
-          gainDbFs: 0,
-          mode,
+          gainDbFs: p.gainDbFs ?? 0,
+          mode: p.mode ?? mode,
+          ...(p.rampSec !== undefined ? { rampSec: p.rampSec } : {}),
         })),
       };
       const result = saveUserPreset(name, spec);
@@ -960,20 +998,40 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   // ---- loading --------------------------------------------------------------
   const loadPreset = useCallback(
     (preset: Preset) => {
+      const plan = preset.spec.phases.slice(0, 8).map((p) => newPhase(p.durationSec, p.beatHz, {
+        carrierHz: p.carrierHz,
+        mode: presetAudioMode(p.mode),
+        gainDbFs: Number.isFinite(p.gainDbFs) ? Math.max(-60, Math.min(0, p.gainDbFs)) : 0,
+        ...(p.rampSec !== undefined && Number.isFinite(p.rampSec) ? { rampSec: Math.max(0, Math.min(600, p.rampSec)) } : {}),
+      }));
+      commitPhases(plan);
+      const gov = governorRef.current;
+      const cap = gov.infantMode ? Math.min(gov.maxSessionMin, INFANT_MAX_SESSION_MIN) : gov.maxSessionMin;
+      const authoredMin = Math.max(1, plan.reduce((seconds, p) => seconds + p.durationSec, 0) / 60);
+      const nextLimit = Math.min(cap, MAX_SESSION_MIN, authoredMin, runningRef.current ? limitRef.current : Infinity);
+      limitRef.current = nextLimit;
+      setLimitMinState(nextLimit);
+      // Loading never raises output. Live playback uses the quietest authored
+      // phase as a fixed ceiling; export retains relative phase differences.
+      const gainCap = gov.infantMode ? Math.min(gov.maxGainDbFs, INFANT_MAX_VOLUME_DB) : gov.maxGainDbFs;
+      const nextVolume = Math.min(volumeRef.current, gainCap, ...plan.map((p) => p.gainDbFs ?? 0));
+      volumeRef.current = nextVolume;
+      setVolumeDbState(nextVolume);
+      engineRef.current.setOutputDb(nextVolume);
       const first = preset.spec.phases[0];
       if (first) {
+        const firstMode = presetAudioMode(first.mode);
+        setModeState(firstMode);
         setCarrierState(first.carrierHz);
         setBeatState(first.beatHz);
-        pushConfig({ carrierHz: first.carrierHz, beatHz: first.beatHz });
+        pushConfig({ mode: firstMode, carrierHz: first.carrierHz, beatHz: first.beatHz });
       }
-      setPhasesState(
-        preset.spec.phases.slice(0, 8).map((p) => newPhase(p.durationSec, p.beatHz)),
-      );
+      applyPhaseAtTime(runningRef.current ? elapsedRef.current : 0);
       setPresetName(preset.title);
       setPresetGrade(preset.grade);
       setDirty(false);
     },
-    [pushConfig],
+    [pushConfig, commitPhases, applyPhaseAtTime],
   );
 
   const loadFrequency = useCallback(
@@ -983,8 +1041,9 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setCarrierState(200);
         setBeatState(hz);
         pushConfig({ carrierHz: 200, beatHz: hz });
-        setPhasesState([newPhase(20 * 60, hz)]);
+        commitPhases([newPhase(20 * 60, hz)]);
       } else {
+        commitPhases(phasesRef.current.map(({ carrierHz: _carrierHz, ...p }) => p));
         setCarrierState(Math.min(1000, hz));
         pushConfig({ carrierHz: Math.min(1000, hz) });
       }
@@ -992,21 +1051,24 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setPresetGrade(null);
       setDirty(false);
     },
-    [pushConfig],
+    [pushConfig, commitPhases],
   );
 
   const applyShare = useCallback(
     (s: ShareState) => {
       const panel = panelFromShare(
-        { ...DEFAULT_FRONT_PANEL, infantMode: governorRef.current.infantMode, sessionCapMin: governorRef.current.maxSessionMin },
+        { ...DEFAULT_FRONT_PANEL, volumeDb: volumeRef.current, infantMode: governorRef.current.infantMode, sessionCapMin: governorRef.current.maxSessionMin },
         s,
       );
       setModeState(panel.mode);
       setCarrierState(panel.carrierHz);
       setBeatState(panel.beatHz);
       setWaveformState(panel.waveform);
+      volumeRef.current = panel.volumeDb;
+      setVolumeDbState(panel.volumeDb);
+      engineRef.current.setOutputDb(panel.volumeDb);
       pushConfig({ mode: panel.mode, carrierHz: panel.carrierHz, beatHz: panel.beatHz, waveform: panel.waveform });
-      setPhasesState(panel.phases);
+      commitPhases(panel.phases);
       setNoiseDbState(panel.noiseDb);
       for (const [color, db] of Object.entries(panel.noiseDb) as [NoiseColor, number][]) engineRef.current.setNoiseLevel(color, db);
       setNoiseOnState(panel.noiseOn);
@@ -1030,7 +1092,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setPresetGrade(null);
       setDirty(true);
     },
-    [pushConfig, running],
+    [pushConfig, running, commitPhases],
   );
 
   const resetFrontPanel = useCallback(() => {
@@ -1043,7 +1105,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setGateDutyState(d.gateDuty);
     setGateShapeState(d.gateShape);
     pushConfig({ mode: d.mode, carrierHz: d.carrierHz, beatHz: d.beatHz, waveform: d.waveform, gateDuty: d.gateDuty, gateShape: d.gateShape });
-    setPhasesState([newPhase(8 * 60, 10), newPhase(20 * 60, 6), newPhase(62 * 60, 4)]);
+    commitPhases([newPhase(8 * 60, 10), newPhase(20 * 60, 6), newPhase(62 * 60, 4)]);
     setNoiseDbState(ALL_NOISE_OFF);
     for (const color of Object.keys(ALL_NOISE_OFF) as NoiseColor[]) engineRef.current.setNoiseLevel(color, -Infinity);
     setNoiseOnState(true);
@@ -1070,7 +1132,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setPresetName(null);
     setPresetGrade(null);
     setDirty(false);
-  }, [pushConfig, running]);
+  }, [pushConfig, running, commitPhases]);
 
   const resetDoseLog = useCallback(() => {
     doseRef.current.reset();
@@ -1084,7 +1146,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       mode,
       carrierHz,
       waveform,
-      phases: phases.map((p) => ({ durationSec: p.durationSec, beatHz: p.beatHz })),
+      phases: phases.map(({ id: _id, ...p }) => p),
       noiseDb: Object.fromEntries(Object.entries(noiseDb).filter(([, db]) => Number.isFinite(db))) as Partial<Record<NoiseColor, number>>,
       noiseOn,
       nature,
@@ -1250,7 +1312,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       try {
         // Bypassed sections are omitted from the export (see buildExportPhases).
         const enginePhases = buildExportPhases(phases, carrierHz, mode, { noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn });
-        const spec = buildExportSpec(presetName ?? 'Open Sync session', enginePhases, { maxSec: limitMin * 60, masterGainDb: -6 });
+        const exportGain = Math.min(volumeDb, governor.maxGainDbFs, governor.infantMode ? INFANT_MAX_VOLUME_DB : 0);
+        const spec = buildExportSpec(presetName ?? 'Open Sync session', enginePhases, { maxSec: limitMin * 60, masterGainDb: muted ? -60 : exportGain });
         const format = options.format ?? 'pcm16';
         const result = await renderExportAsync(spec, format);
         downloadBytes(result.wav, exportFileName(presetName, format));
@@ -1263,7 +1326,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setExporting(false);
       }
     },
-    [phases, carrierHz, mode, noiseDb, noiseOn, bowls, bellEveryMin, nature, layersOn, presetName, limitMin],
+    [phases, carrierHz, mode, noiseDb, noiseOn, bowls, bellEveryMin, nature, layersOn, presetName, limitMin, muted, volumeDb, governor.maxGainDbFs, governor.infantMode],
   );
 
   // ---- warnings (engine guardrails) ------------------------------------------

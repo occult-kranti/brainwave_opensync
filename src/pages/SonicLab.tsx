@@ -228,10 +228,9 @@ export default function SonicLab() {
           Sonic Lab
         </h1>
         <p className="t-body-sm" style={{ color: 'var(--text-2)', maxWidth: 720 }}>
-          Mathematical sound generators with honest evidence grades. A = verifiable math or replicated
-          psychoacoustics; D = quarantined claims shown only to be labeled, never endorsed. All renders
-          pass the safety rails (peak ceiling, infrasonic/ultrasonic detection, duration cap) before
-          playback.
+          Generate audio illusions, mathematical rhythms, noise, and tuning comparisons.
+          Each card explains its settings and evidence grade. Preview levels are limited digitally;
+          use low device volume and read any warnings.
         </p>
       </header>
 
@@ -783,7 +782,7 @@ function AstroCard({ play, previewId, warnings }: { play: PlayFn; previewId: str
       <div className="flex flex-col gap-2" style={{ marginBottom: 12 }}>
         <WarningChip tone="danger">{ASTRO_MEANING_LABEL}</WarningChip>
         <span className="t-caption font-mono2" style={{ color: 'var(--text-3)' }}>
-          every entry: arithmetic grade A · meaning grade D · “{ASTRO_LABEL}”
+          Grade A: calculations · Grade D: proposed effects · “{ASTRO_LABEL}”
         </span>
       </div>
 

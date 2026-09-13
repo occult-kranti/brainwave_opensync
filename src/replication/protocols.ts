@@ -106,11 +106,11 @@ function rampSteps(fromHz: number, toHz: number, steps: number, base: Omit<Engin
 const GATEWAY_BASE = { carrierHz: 275, mode: 'binaural' as const, gainDb: -30 };
 
 const GATEWAY_ENGINE: EnginePhase[] = [
-  // 0:00–5:00 alpha settle (US 5,213,562 Oersted-optimal carrier ~275 Hz).
+  // 0:00–5:00 at 10 Hz; 275 Hz carrier chosen for this demonstration.
   { ...GATEWAY_BASE, durationSec: 300, beatHz: 10 },
-  // 5:00–10:00 ramp 10 → 5.5 Hz (alpha → Focus-10-class theta).
+  // 5:00–10:00 ramp 10 → 5.5 Hz; no verified Focus-level mapping.
   ...rampSteps(10, 5.5, 5, GATEWAY_BASE),
-  // 10:00–29:30 theta hold; Focus-12-class pink-sound bed at −12 dB rel carriers.
+  // 10:00–29:30 at 5.5 Hz with plain pink noise at −12 dB relative to carriers.
   { ...GATEWAY_BASE, durationSec: 1170, beatHz: 5.5, noise: { color: 'pink', level: 0.25 } },
   // 29:30–34:30 ramp back 5.5 → 10 Hz.
   ...rampSteps(5.5, 10, 5, GATEWAY_BASE),
@@ -151,7 +151,7 @@ const LIDA_ENGINE: EnginePhase[] = [
 
 const GATEWAY: ReplicationCard = {
   id: 'rep-gateway-focus10',
-  name: 'Gateway-class Focus Progression (Hemi-Sync reconstruction)',
+  name: 'Gateway-inspired beat sequence',
   program: 'Monroe Gateway Experience; US Army INSCOM Gateway assessment 1983',
   era: '1975–1984',
   documented: true,
@@ -160,13 +160,13 @@ const GATEWAY: ReplicationCard = {
     'Focused consciousness states (“Focus 10/12/15/21”) up to out-of-body perception and “escaping spacetime”.',
   ourGrade: 'C',
   summary:
-    'Replicates the stimulus class described in the expired Monroe patents (US 5,213,562: stereo carriers, ' +
-    'binaural beat f1−f2, Oersted-optimal ~275 Hz carrier, “Phased Pink Sound” bed) and the 1983 CIA ' +
-    'INSCOM assessment. The Army judged the method “plausible” and purchased the technology — a documented ' +
-    'program — but the report contains no experiments, and the consciousness claims are unvalidated.',
+    'A demonstration of stereo tone pairs and pink noise, informed by Monroe audio patents and the 1983 Army ' +
+    'Gateway assessment held in the CIA archive. The report contains no experiments establishing its ' +
+    'consciousness claims. The settings below are choices for this app.',
   fidelityNote:
-    'Monroe’s exact per-tape beat progressions are proprietary and unpublished. This is a patent-derived ' +
-    'reconstruction (Focus 10 ≈ theta 4–7 Hz bed, alpha entry/exit), not a copy of any commercial tape.',
+    'This is a method-level reconstruction with app-chosen settings: a 275 Hz carrier and a 10 → 5.5 → 10 → 14 Hz sequence. ' +
+    'No verified Focus-number-to-Hz mapping or exact commercial-tape sequence is available in the reviewed sources. ' +
+    'Plain pink noise does not reproduce the patent’s full multi-signal processing.',
   registryId: 'X05',
   safetyClass: 'adult',
   safety: {
@@ -179,14 +179,13 @@ const GATEWAY: ReplicationCard = {
   },
   citations: [
     'CIA-RDP96-00788R001700210016-5 (1983; theoretical assessment, no experiments)',
-    'US 5,213,562 (Monroe 1993, expired); US 3,884,218; US 5,356,368',
+    'US 5,213,562 (Monroe 1993); US 3,884,218; US 5,356,368',
     'Emerson, Secret Warriors (1988) pp. 103–4 — INSCOM–Monroe contracts ~1981–84',
   ],
   engine: GATEWAY_ENGINE,
   engineNote:
-    'Ramp segments are rendered as 60 s constant-beat steps (the engine crossfades phases). ' +
-    'The optional 2877.3 Hz “beta” OBE-exercise carrier is documented verbatim in the CIA report but ' +
-    'omitted here: above the ~1 kHz binaural-perception ceiling it would be silent nonsense.',
+    'Ramps use 60-second constant-beat steps with crossfades. The 35-minute duration and noise level are app choices. ' +
+    'The report’s 2877.3 Hz discussion is not implemented here; that pitch is outside the range usually used for binaural-beat demonstrations.',
 };
 
 const GENUS: ReplicationCard = {

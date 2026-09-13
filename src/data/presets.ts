@@ -6,6 +6,7 @@
  */
 
 import type { Grade } from './frequencies';
+import { BASHAR_PRESETS } from '@/channeled/bashar';
 
 export type PresetCategory = 'Sleep' | 'Focus' | 'Relax' | 'Meditate' | 'Experimental' | 'Infant';
 
@@ -803,6 +804,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
       'Low-level low-passed masking texture. NOTE: white-noise claims cannot lean on music-therapy evidence (Cochrane excludes white noise); keep <=50 dBA at crib and >=2 m away.',
     citations: ['Cochrane preterm-infant review (white noise excluded)', 'AAP 2023 noise-exposure policy statement'],
   },
+  ...BASHAR_PRESETS,
 ];
 
 /** Full preset catalog with H.870 dose metadata computed for every entry. */

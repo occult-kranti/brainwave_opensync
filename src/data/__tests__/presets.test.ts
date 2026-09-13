@@ -243,3 +243,32 @@ describe('catalog breadth and domain limits', () => {
     }
   });
 });
+
+describe('channeled listening demonstrations', () => {
+  it('preserves seven five-minute phases with monaural mode above the binaural domain', () => {
+    const preset = getPresetById('exp-bashar-scale-map')!;
+    expect(preset.spec.phases.map((phase) => phase.beatHz)).toEqual([6, 10, 27.4, 28.6, 29.2, 40, 66.6]);
+    expect(preset.spec.phases.slice(-2).map((phase) => phase.mode)).toEqual(['monaural', 'monaural']);
+    expect(presetDurationMin(preset)).toBe(35);
+    for (const phase of preset.spec.phases) {
+      expect(phase.durationSec).toBe(300); expect(phase.carrierHz).toBe(200);
+      expect(phase.gainDbFs).toBe(-16); expect(phase.rampSec).toBe(20);
+    }
+  });
+
+  it('keeps the alpha/gamma comparison at 20 minutes without calling it a controlled experiment', () => {
+    const preset = getPresetById('exp-bashar-gamma-contradiction')!;
+    expect(presetDurationMin(preset)).toBe(20);
+    expect(preset.spec.phases.map((phase) => [phase.beatHz, phase.mode ?? 'binaural'])).toEqual([[10.5, 'binaural'], [40, 'monaural']]);
+    expect(preset.rationale).toContain('not a controlled neuroscience experiment');
+  });
+
+  it('keeps the phi ladder beat-free and retains exact computed pitches for all 25 minutes', () => {
+    const preset = getPresetById('exp-phi-ladder')!;
+    expect(presetDurationMin(preset)).toBe(25);
+    preset.spec.phases.forEach((phase, index) => {
+      expect(phase.beatHz).toBe(0);
+      expect(phase.carrierHz).toBe(110 * ((1 + Math.sqrt(5)) / 2) ** index);
+    });
+  });
+});

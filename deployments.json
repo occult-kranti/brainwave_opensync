@@ -1,0 +1,12 @@
+{
+  "current": {
+    "branch": "master",
+    "commit": "297b6d4add716d0fd9578d7b036cf2791850a44b",
+    "path": "/brainwave_opensync/"
+  },
+  "previous": {
+    "branch": "legacy-v2.5",
+    "commit": "2d1935714335cbb94c8f01ade62ed9e74ead1faf",
+    "path": "/brainwave_opensync/v2/"
+  }
+}

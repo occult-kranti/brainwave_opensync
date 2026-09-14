@@ -12,6 +12,8 @@ All notable changes to Open Sync. The format follows [Keep a Changelog](https://
 - Stop all sound replaces the emergency wording. The stop dialog defaults to Keep sound off; Play Studio quietly explicitly starts or continues Studio and never replays a preview.
 
 ### Fixed
+- Saved Studio presets retain the selected playback duration as optional bounded metadata. Studio shows the shorter WAV duration when a live session extends beyond its sequence.
+- The command menu keeps Stop all sound visible during searches. Muted status and recovery remain clear across pages; competing exports are blocked.
 - Alpha Ease loads a complete clean mix instead of inheriting unrelated noise or layers. Regenerated all fifty previews; every WAV remained unchanged.
 - Corrected the inspected Safety implant statement, Studio-only mode action, and digital-level wording. Labelled the existing legacy noise presets' carrier-tone fallback.
 - Updated Guide and task descriptions to match the new paths and controls.

@@ -40,7 +40,7 @@ describe('SampleLab page shell', () => {
   it('server-renders the desktop branch with local-only disclosure', () => {
     const html = ssr();
     expect(html).toContain('data-testid="sample-lab"');
-    expect(html).toContain('Sample Lab');
+    expect(html).toContain('Recording analysis');
     expect(html).toContain('nothing is uploaded');
     expect(html).toContain('data-testid="sample-lab-dropzone"');
   });

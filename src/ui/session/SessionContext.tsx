@@ -38,7 +38,7 @@ import {
   type AuthorizationResult,
   type GovernorConfig,
 } from '@/safety/governor';
-import type { Preset, SessionSpec as DataSessionSpec } from '@/data/presets';
+import { sanitizePresetLimitMin, type Preset, type SessionSpec as DataSessionSpec } from '@/data/presets';
 import { sanitizePresetMix } from '@/data/presetMix';
 import type { Grade } from '@/data/frequencies';
 import {
@@ -970,6 +970,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       // global fader remains a playback control, separate from phase ratios.
       const spec: DataSessionSpec = {
         autoShutoff: true,
+        limitMin,
         mix: sanitizePresetMix({ waveform, noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn, volumeDb }),
         phases: phases.map((p, i) => ({
           name: `phase-${i + 1}`,
@@ -990,7 +991,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       setDirty(!result.persisted);
       return result.preset;
     },
-    [phases, carrierHz, mode, waveform, noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn, volumeDb],
+    [phases, carrierHz, mode, waveform, noiseDb, noiseOn, nature, bowls, bellEveryMin, layersOn, volumeDb, limitMin],
   );
 
   const deleteUserPresetById = useCallback((id: string) => {
@@ -1012,7 +1013,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       commitPhases(plan);
       const gov = governorRef.current;
       const cap = gov.infantMode ? Math.min(gov.maxSessionMin, INFANT_MAX_SESSION_MIN) : gov.maxSessionMin;
-      const authoredMin = Math.max(1, plan.reduce((seconds, p) => seconds + p.durationSec, 0) / 60);
+      const authoredMin = sanitizePresetLimitMin(preset.spec.limitMin) ?? Math.max(1, plan.reduce((seconds, p) => seconds + p.durationSec, 0) / 60);
       const nextLimit = Math.min(cap, MAX_SESSION_MIN, authoredMin, runningRef.current ? limitRef.current : Infinity);
       limitRef.current = nextLimit;
       setLimitMinState(nextLimit);

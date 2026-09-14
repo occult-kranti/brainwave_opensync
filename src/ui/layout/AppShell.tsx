@@ -316,20 +316,6 @@ function SidebarReopenHandle({ onOpen }: { onOpen: () => void }) {
   );
 }
 
-function UtcClock() {
-  const [now, setNow] = useState(() => new Date());
-  useEffect(() => {
-    const iv = window.setInterval(() => setNow(new Date()), 1000);
-    return () => window.clearInterval(iv);
-  }, []);
-  const iso = now.toISOString();
-  return (
-    <span className="t-readout-sm text-3" title="Master clock (UTC)">
-      {iso.slice(11, 19)} UTC
-    </span>
-  );
-}
-
 /**
  * Global pause/resume chip (status bar; Space hotkey). Phase-coherent: the
  * engine freezes its phase accumulators and continues on resume — no click,
@@ -373,11 +359,11 @@ function PauseChip() {
 
 /** Compact engine readout (`BIN · 4.00 Hz · 12:00 · DOSE 3%` / `PAUSED · …` / ENGINE OFF). */
 function SessionReadout() {
-  const { running, paused, previewId, mode, beatHz, elapsedSec, dosePercent } = useSession();
+  const { running, paused, fading, muted, previewId, mode, beatHz, elapsedSec, dosePercent } = useSession();
   return (
     <span className="t-readout-sm" style={{ color: running && !paused ? 'var(--text-1)' : 'var(--text-3)' }}>
       {previewId ? 'Preview playing' : running
-        ? `Studio ${paused ? 'paused' : 'playing'} · ${mode.slice(0, 3).toUpperCase()} · ${beatHz.toFixed(2)} Hz · ${fmtClock(elapsedSec)} · DOSE ${dosePercent.toFixed(0)}%`
+        ? `Studio ${paused ? 'paused' : fading ? 'fading' : 'playing'}${muted ? ' · muted' : ''} · ${mode.slice(0, 3).toUpperCase()} · ${beatHz.toFixed(2)} Hz · ${fmtClock(elapsedSec)} · DOSE ${dosePercent.toFixed(0)}%`
         : 'Studio ready'}
     </span>
   );
@@ -399,8 +385,9 @@ function StatusBar({ onPalette }: { onPalette: () => void }) {
       data-testid="status-bar"
       className="flex items-center gap-4"
       style={{
-        height: 48,
-        padding: '0 20px',
+        minHeight: 48,
+        flexWrap: 'wrap',
+        padding: '8px 16px',
         background: 'var(--ink-1)',
         borderBottom: '1px solid var(--line-1)',
         position: 'sticky',
@@ -408,8 +395,8 @@ function StatusBar({ onPalette }: { onPalette: () => void }) {
         zIndex: 40,
       }}
     >
-      <span className="t-label">{label}</span>
-      <div style={{ margin: '0 auto' }}>
+      <span className="t-label" style={{ flex: '1 1 180px', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</span>
+      <div style={{ flex: '1 1 240px', minWidth: 0, maxWidth: '100%' }}>
         <SessionReadout />
       </div>
       {governor.infantMode && (
@@ -438,7 +425,7 @@ function StatusBar({ onPalette }: { onPalette: () => void }) {
 
 /** Phone status bar (§3.2): session label + compact engine LED only. */
 function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
-  const { running, paused, previewId } = useSession();
+  const { running, paused, fading, muted, previewId } = useSession();
   const label = useModuleLabel();
   return (
     <header
@@ -456,7 +443,7 @@ function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
     >
       <div style={{ overflow: 'hidden', minWidth: 0 }}>
         <span className="t-label" style={{ display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</span>
-        {(previewId || running) && <span className="t-caption text-2">{previewId ? 'Preview playing' : paused ? 'Studio paused' : 'Studio playing'}</span>}
+        {(previewId || running) && <span className="t-caption text-2">{previewId ? 'Preview playing' : `Studio ${paused ? 'paused' : fading ? 'fading' : 'playing'}${muted ? ' · muted' : ''}`}</span>}
       </div>
       <div className="flex items-center gap-2" style={{ marginLeft: 'auto' }}>
         <PwaUpdateChip />
@@ -693,16 +680,16 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
               className="flex items-center gap-3"
               style={{
                 padding: '12px 16px',
+                flexWrap: 'wrap',
                 borderBottom: '1px solid var(--line-1)',
                 position: 'sticky',
                 top: 0,
                 background: 'var(--ink-0)',
               }}
             >
-              <SessionReadout />
-              <div style={{ marginLeft: 'auto' }} className="flex items-center gap-3">
+              <div style={{ flex: '1 1 180px', minWidth: 0 }}><SessionReadout /></div>
+              <div style={{ marginLeft: 'auto', flexShrink: 0 }} className="flex items-center gap-3">
                 <DensityToggle />
-                <UtcClock />
                 <button
                   type="button"
                   ref={closeRef}
@@ -712,6 +699,7 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
                   style={{
                     width: 44,
                     height: 44,
+                    flexShrink: 0,
                     background: 'none',
                     border: '1px solid var(--line-1)',
                     borderRadius: 2,

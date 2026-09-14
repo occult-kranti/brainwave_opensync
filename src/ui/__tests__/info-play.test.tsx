@@ -200,7 +200,7 @@ describe('preset preview (engine preview path)', () => {
     const playSpy = vi.spyOn(LiveEngine.prototype, 'playBuffer').mockReturnValue(true);
     const stopSpy = vi.spyOn(LiveEngine.prototype, 'stopPreviews');
     const c = await mount(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/presets?collection=all']}>
         <SessionProvider>
           <Presets />
         </SessionProvider>
@@ -230,7 +230,7 @@ describe('preset preview (engine preview path)', () => {
     vi.spyOn(LiveEngine.prototype, 'playBuffer').mockReturnValue(true);
     const stopSpy = vi.spyOn(LiveEngine.prototype, 'stopPreviews');
     const c = await mount(
-      <MemoryRouter>
+      <MemoryRouter initialEntries={['/presets?collection=all']}>
         <SessionProvider>
           <Presets />
         </SessionProvider>

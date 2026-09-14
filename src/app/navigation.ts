@@ -38,7 +38,7 @@ const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/sonic-lab', 'create', 'Sonic Lab', 'Try audio patterns, rhythms, and illusions.', ['Shepard', 'Risset', 'Fibonacci', 'noise', 'generator', 'patterns']],
   ['/library', 'create', 'Frequency reference', 'Browse frequency references and hear short examples.', ['library', 'frequency library', 'Hz', 'Bashar', 'pitch', 'tone']],
   ['/cymatics', 'create', 'Cymatics', 'Simulate sound-driven patterns.', ['cymatic studio', 'visualization', 'sand', 'plate', 'Chladni']],
-  ['/sample-lab', 'analyze', 'Recording analysis', 'Inspect an audio file in your browser.', ['sample lab', 'recording', 'file', 'spectrum', 'spectrogram', 'loudness']],
+  ['/sample-lab', 'analyze', 'Recording analysis', 'Inspect an audio file in your browser.', ['sample lab', 'recording', 'file', 'audio files', 'spectrum', 'spectrogram', 'loudness']],
   ['/analyzer', 'analyze', 'Live analyzer', 'Monitor the Studio signal or a microphone input.', ['analyzer', 'live', 'microphone', 'input', 'spectrum', 'level']],
   ['/quicklab', 'experiments', 'Quick Lab', 'Run a small listening comparison and record your ratings.', ['self experiment', 'compare', 'A/B', 'ratings']],
   ['/lab', 'experiments', 'Experiment Lab', 'Inspect planned audio experiments and their methods.', ['protocol', 'study', 'experiment']],

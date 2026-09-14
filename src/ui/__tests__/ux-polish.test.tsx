@@ -253,7 +253,7 @@ describe('W13 command palette', () => {
     for (const label of MODULE_LABELS) {
       expect(text, `palette lists ${label}`).toContain(label);
     }
-    for (const action of ['START SESSION', 'STOP ALL SOUND', 'EXPORT SESSION AS WAV', 'INFANT MODE', 'GUIDE']) {
+    for (const action of ['START SESSION', 'Stop all sound', 'EXPORT SESSION AS WAV', 'INFANT MODE', 'GUIDE']) {
       expect(text, `palette action ${action}`).toContain(action);
     }
     // Esc closes (P0-4 contract).

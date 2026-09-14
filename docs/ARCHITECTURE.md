@@ -64,7 +64,7 @@ Export builds a spec truncated to the session limit, renders in a module Worker 
 
 ### `src/app`
 - `routes.ts` — canonical routes, stable paths/module identifiers, icons, components, and mobile-tab flags. `navigation.ts` adds task categories, purpose labels, descriptions and search aliases used by the sidebar, More menu, Home directory, Guide and palette. Route references resolve on use because eager Home consumes navigation metadata. Primary navigation is Home/Presets/Studio, plus direct Safety; specialist groups disclose their links on request.
-- Studio keeps the shared SessionProvider mounted while native disclosures hide editing and file controls. Current sound, active mix, duration, output, transport and action-requiring notices stay outside those disclosures. Duration controls call the existing bounded setter; they cannot extend a running session.
+- Studio keeps the shared SessionProvider mounted while native disclosures hide editing and file controls. Current sound, active mix, duration, output, transport and action-requiring notices stay outside those disclosures. Duration controls call the existing bounded setter; they cannot extend a running session. Saved presets optionally carry `SessionSpec.limitMin`, sanitized to 1–1440 minutes; loading still applies current governor limits. The full phase plan remains editable. Exports end at the earlier of playback limit and sequence end; longer live sessions hold final settings.
 - `shortcuts.ts` — the shortcut registry; `AppShell` binds one handler from it and `ShortcutsOverlay` renders it.
 - `pwa.ts` — service-worker registration with an "update available" event; a cross-tab update never reloads a tab while its session is running.
 

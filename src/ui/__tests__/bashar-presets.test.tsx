@@ -213,6 +213,14 @@ describe('Bashar preset collection', () => {
     if (reason === 'muted') {
       expect(container.textContent).toContain('Unmute before previewing.');
       expect(container.textContent).not.toContain('Stop the active session');
+      const dialog = container.querySelector('[role="dialog"]')!;
+      expect(dialog.textContent).toContain('and select Unmute, then return here to preview.');
+      const studioLink = dialog.querySelector<HTMLAnchorElement>('a[href="/studio"]')!;
+      expect(studioLink.textContent).toBe('Open Studio');
+      await act(async () => studioLink.click());
+      expect(path).toBe('/studio');
+      expect(session.muted).toBe(true);
+      expect(session.running).toBe(false);
     }
   });
 

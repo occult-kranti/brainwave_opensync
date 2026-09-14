@@ -8,7 +8,7 @@
  * SessionContext holds the reactive copy.
  */
 
-import type { Preset, SessionSpec } from '@/data/presets';
+import { sanitizePresetLimitMin, type Preset, type SessionSpec } from '@/data/presets';
 import { sanitizePresetMix } from '@/data/presetMix';
 import { STORAGE_KEYS } from '@/lib/storage';
 
@@ -79,7 +79,10 @@ export function loadUserPresets(storage: StorageLike | null = defaultStorage()):
     if (!parsed || parsed.version !== USER_PRESETS_VERSION || !Array.isArray(parsed.presets)) return [];
     return parsed.presets.filter(isValidUserPreset).map((preset) => ({
       ...preset,
-      spec: preset.spec.mix === undefined ? preset.spec : { ...preset.spec, mix: sanitizePresetMix(preset.spec.mix) },
+      spec: { ...preset.spec,
+        ...(preset.spec.mix === undefined ? {} : { mix: sanitizePresetMix(preset.spec.mix) }),
+        ...(preset.spec.limitMin === undefined ? {} : { limitMin: sanitizePresetLimitMin(preset.spec.limitMin) }),
+      },
     }));
   } catch {
     return [];

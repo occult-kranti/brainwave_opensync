@@ -36,6 +36,9 @@ export default function Presets() {
   const infantOnly = governor.infantMode;
   const previewBlocked = session.running || session.panicked || session.muted;
   const previewBlockReason = session.panicked ? 'Sound is stopped. Dismiss the stop screen before previewing.' : session.running ? 'Stop the active session before previewing.' : session.muted ? 'Unmute before previewing.' : '';
+  const unmuteHelp = session.muted && !session.running && !session.panicked
+    ? <><Link to="/studio">Open Studio</Link> and select Unmute, then return here to preview.</>
+    : null;
   const previewManifest = usePreviewManifest();
   const navigate = useNavigate();
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
@@ -140,7 +143,7 @@ export default function Presets() {
       {infantOnly && <p className="t-body-sm text-2">Infant mode: only Infant presets are shown.</p>}
     </section>
 
-    {previewBlocked && <p className="t-body-sm text-2 preset-playback-note" role="status">{previewBlockReason}</p>}
+    {previewBlocked && <p className="t-body-sm text-2 preset-playback-note" role="status">{previewBlockReason} {unmuteHelp}</p>}
     {previewHint && <p className="t-body-sm text-2 preset-playback-note" role="status">{previewHint}</p>}
 
     {collection === 'saved' && !infantOnly && <section data-testid="my-presets" style={{ marginBottom: 28 }}>
@@ -217,6 +220,7 @@ export default function Presets() {
           </li>;
         })}</ol>
         <p className="t-caption text-3" style={{ marginTop: 16 }}>Step previews play each segment in isolation. Studio plays the full sequence with its current transition behavior. Preview level is reduced; device volume determines listening loudness.</p>
+        {previewBlocked && <p className="t-body-sm text-2 preset-playback-note" role="status">{previewBlockReason} {unmuteHelp}</p>}
         {previewHint && <p className="t-body-sm text-2 preset-playback-note" role="status">{previewHint}</p>}
         {drawer.spec.phases.some((p) => p.rampSec) && <p className="t-caption text-3" style={{ marginTop: 8 }}>Authored phase fades ({[...new Set(drawer.spec.phases.map((p) => p.rampSec).filter(Boolean))].join(', ')} s) are saved as metadata; they do not run during playback or export.</p>}
         <h3 className="t-h3">Sources and limits</h3>

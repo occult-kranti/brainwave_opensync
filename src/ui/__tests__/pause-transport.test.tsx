@@ -275,6 +275,41 @@ describe('global pause/resume — surfaces + Space hotkey', () => {
     expect(session.paused).toBe(true);
   });
 
+  it.each(['chord', 'no-matches-here'])('palette keeps an actionable global stop while searching %s', async (query) => {
+    const c = await mountShell(360);
+    await act(async () => session.start());
+    await act(async () => c.querySelector<HTMLElement>('[data-testid="palette-hint"]')!.click());
+    const input = c.querySelector<HTMLInputElement>('[data-testid="command-palette"] input')!;
+    const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!;
+    await act(async () => {
+      setValue.call(input, query);
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    });
+    expect(c.querySelector('[data-testid="command-palette"]')!.textContent).not.toContain('PAUSE SESSION');
+    await pressKeyOn(input, 'p');
+    expect(session.running).toBe(true); // typing in search must not trigger a shortcut
+    const stop = c.querySelector<HTMLButtonElement>('[data-testid="palette-stop-all"]')!;
+    expect(stop.disabled).toBe(false);
+    await act(async () => { stop.focus(); });
+    expect(document.activeElement).toBe(stop);
+    await act(async () => stop.click());
+    expect(session.running).toBe(false);
+    expect(session.panicked).toBe(true);
+    await act(async () => vi.advanceTimersByTime(1000));
+    expect(c.querySelector('[data-testid="command-palette"]')).toBeNull();
+    expect(c.querySelector('[aria-labelledby="sound-stopped-title"]')).toBeTruthy();
+    expect(document.activeElement?.textContent).toContain('Keep sound off');
+  });
+
+  it.each([360, 800])('describes muted Studio playback and pause accurately at width %i', async (width) => {
+    const c = await mountShell(width);
+    await act(async () => { session.setMuted(true); session.start(); });
+    const header = c.querySelector(width < 768 ? '[data-testid="status-bar-mobile"]' : '[data-testid="status-bar"]')!;
+    expect(header.textContent).toContain('Studio playing · muted');
+    await act(async () => session.togglePause());
+    expect(header.textContent).toContain('Studio paused · muted');
+  });
+
   it('mobile header carries Studio pause while the bottom bar keeps Stop all sound', async () => {
     const c = await mountShell(500);
     const bar = c.querySelector('[data-testid="mobile-bottom-bar"]')!;

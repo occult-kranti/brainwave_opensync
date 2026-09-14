@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { Check, Download, Headphones, Link2, MoonStar, Pause, Play, RotateCcw, Send, Square, Volume2, VolumeX } from 'lucide-react';
 import { useSession } from '@/ui/session/useSession';
 import { fmtClock } from '@/ui/session/sessionMath';
-import { FADE_OUT_CHOICES } from '@/ui/session/sessionDefaults';
+import { FADE_OUT_CHOICES, INFANT_MAX_VOLUME_DB } from '@/ui/session/sessionDefaults';
 import { EXPORT_FORMATS, type ExportFormat } from '@/ui/audio/renderExport';
 import { Panel, Led, WarningChip, Readout } from '@/ui/components/primitives';
 import { useModalA11y } from '@/ui/hooks';
@@ -44,8 +44,9 @@ export default function Studio() {
   const [saveName, setSaveName] = useState('');
   const [saved, setSaved] = useState(false);
   const saveInputRef = useRef<HTMLInputElement>(null);
+  const saveDialogRef = useRef<HTMLDivElement>(null);
   // P0-4: Esc closes the modal, focus returns to the SAVE AS PRESET trigger.
-  useModalA11y(saveOpen, () => setSaveOpen(false), saveInputRef);
+  useModalA11y(saveOpen, () => setSaveOpen(false), saveInputRef, saveDialogRef);
   const isMobile = useIsMobile();
 
   // Persists via the SessionContext user-preset store; refused on an empty name.
@@ -68,7 +69,7 @@ export default function Studio() {
   const [exportSpin, setExportSpin] = useState(false);
   const [exportFormat, setExportFormat] = useState<ExportFormat>('pcm16');
   const runExport = () => {
-    if (exportState === 'exporting') return;
+    if (exportState === 'exporting' || s.exporting) return;
     setExportState('exporting');
     setExportSpin(false);
     const spinT = window.setTimeout(() => setExportSpin(true), 200);
@@ -116,7 +117,9 @@ export default function Studio() {
 
   const fadeStartsAtSec = Math.max(0, s.limitMin * 60 - s.fadeOutSec);
   // Countdown to silence: the fade's own end (manual or limit), not the limit.
-  const remainingSec = Math.max(0, (s.fadeEndsAtSec ?? s.limitMin * 60) - s.elapsedSec);
+  const remainingSec = Math.max(0, Math.min(s.fadeEndsAtSec ?? Infinity, s.limitMin * 60) - s.elapsedSec);
+  const sequenceSec = s.phases.reduce((total, phase) => total + phase.durationSec, 0);
+  const wavSec = Math.min(s.limitMin * 60, sequenceSec);
 
   const limitPct = Math.min(100, (s.elapsedSec / (s.limitMin * 60)) * 100);
 
@@ -170,12 +173,12 @@ export default function Studio() {
               {[5, 10, 20].map((minutes) => <button key={minutes} type="button" className="chip" aria-pressed={s.limitMin === minutes}
                 disabled={minutes > durationMax} onClick={() => { setDurationDraft(null); s.setLimitMin(minutes); }}>{minutes} min</button>)}
             </div>
-            <p className="t-caption text-3">{s.running ? 'Stop the session to make it longer.' : 'Playback stops at this duration; the sequence stays unchanged.'}</p>
+            <p className="t-caption text-3">{s.running ? 'Stop the session to make it longer.' : `Current cap: ${Math.min(s.governor.maxSessionMin, s.governor.infantMode ? INFANT_MAX_SESSION_MIN : Infinity)} min. Playback stops at the selected duration.`}</p>
           </div>
           <div>
             <label className="t-label" htmlFor="studio-output">Output level · {s.volumeDb.toFixed(1)} dBFS</label>
             <div className="studio-volume-row">
-              <input id="studio-output" type="range" min={-60} max={s.governor.maxGainDbFs} step={0.5} value={s.volumeDb}
+              <input id="studio-output" type="range" min={-60} max={Math.min(s.governor.maxGainDbFs, s.governor.infantMode ? INFANT_MAX_VOLUME_DB : 0)} step={0.5} value={s.volumeDb}
                 onChange={(e) => s.setVolumeDb(parseFloat(e.target.value))} aria-label="Output level" />
               <button type="button" className="chip" onClick={() => s.setMuted(!s.muted)} aria-label={s.muted ? 'Unmute Studio' : 'Mute Studio'}>
                 {s.muted ? <VolumeX size={16} /> : <Volume2 size={16} />}{s.muted ? 'Unmute' : 'Mute'}
@@ -184,6 +187,7 @@ export default function Studio() {
             <p className="t-caption text-3">Device volume also sets listening loudness. Begin low.</p>
           </div>
         </div>
+        {s.limitMin * 60 > sequenceSec && <p className="t-caption text-2" data-testid="studio-duration-note">The sequence ends at {fmtClock(sequenceSec)}. Studio holds its final settings until {fmtClock(s.limitMin * 60)}; WAV export ends with the sequence.</p>}
         <div className="studio-progress" aria-hidden="true"><div style={{ width: `${limitPct}%` }} /></div>
       </section>
 
@@ -209,6 +213,7 @@ export default function Studio() {
         data-testid="session-tools"
         style={{ padding: isMobile ? '10px 12px' : '10px 16px', marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 10 }}
       >
+        <p className="t-body-sm text-2" data-testid="studio-wav-duration">WAV duration: {fmtClock(wavSec)}. Saved presets keep the full sequence, mix, and selected playback duration.</p>
         <div className="studio-file-actions">
           <button type="button" className="chip" onClick={() => setSaveOpen(true)}>
             SAVE AS PRESET
@@ -222,11 +227,11 @@ export default function Studio() {
             data-testid="wav-export"
             data-state={exportState}
             onClick={runExport}
-            disabled={exportState === 'exporting'}
+            disabled={exportState === 'exporting' || s.exporting}
             title={`Render offline in a worker + encode WAV (${exportFormat}); capped at the session limit`}
           >
             <Download size={11} className={exportSpin ? 'animate-spin' : undefined} />
-            {exportState === 'exporting' ? (exportSpin ? 'RENDERING…' : 'WAV') : exportState === 'done' ? 'SAVED ✓' : 'WAV'}
+            {exportState === 'exporting' ? 'Rendering WAV…' : exportState === 'done' ? 'WAV saved' : 'Export WAV'}
           </button>
         </div>
         <div className="flex items-center gap-3" style={{ flexWrap: 'wrap', rowGap: 8 }}>
@@ -658,7 +663,7 @@ export default function Studio() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.14 }}
             className="panel"
-            role="dialog" aria-modal="true" aria-label="Save as preset"
+            ref={saveDialogRef} role="dialog" aria-modal="true" aria-label="Save as preset"
             style={{ width: 'min(380px, calc(100vw - 32px))' }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -677,7 +682,7 @@ export default function Studio() {
               style={{ width: '100%', background: 'var(--ink-4)', border: '1px solid var(--line-2)', borderRadius: 2, color: 'var(--text-1)', padding: '8px 10px', fontSize: 13, marginBottom: 8 }}
             />
             <p className="t-caption text-3" style={{ marginBottom: 12 }}>
-              Saved in My presets on this device. Source grades describe claims, not sound quality.
+              Saved in My presets on this device with the full sequence, mix, and selected duration. A matching name replaces the existing preset.
             </p>
             <div className="flex gap-2">
               <button

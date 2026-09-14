@@ -43,6 +43,8 @@ export interface Phase {
 export interface SessionSpec {
   phases: Phase[];
   autoShutoff: boolean;
+  /** Optional saved playback limit in minutes; the full phase plan is retained. */
+  limitMin?: number;
   /** An authored mixer replaces previous Studio layers when this preset loads. */
   mix?: PresetMix;
   /** Heartbeat pulse rate, BPM (infant content only; 60-80 per AAP-aligned design). */
@@ -823,6 +825,12 @@ export function getPresetById(id: string): Preset | undefined {
 }
 
 /** Total session duration in minutes (for governor checks). */
+/** Saved metadata is bounded to the same 24-hour engineering ceiling as Studio. */
+export function sanitizePresetLimitMin(value: unknown): number | undefined {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 1
+    ? Math.min(24 * 60, Math.round(value)) : undefined;
+}
+
 export function presetDurationMin(preset: Preset): number {
-  return preset.spec.phases.reduce((acc, ph) => acc + ph.durationSec, 0) / 60;
+  return sanitizePresetLimitMin(preset.spec.limitMin) ?? preset.spec.phases.reduce((acc, ph) => acc + ph.durationSec, 0) / 60;
 }

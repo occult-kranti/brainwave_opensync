@@ -145,6 +145,15 @@ describe('userPresets store — corrupt-storage salvage', () => {
     expect(loaded[0].id).toBe('user-x');
   });
 
+  it('sanitizes optional saved duration without changing legacy phase plans', () => {
+    for (const [raw, expected] of [[5000, 1440], [5.4, 5], [0, undefined], [-10, undefined], ['5', undefined], [null, undefined]] as const) {
+      const st = memStorage(JSON.stringify({ version: 1, presets: [{ id: 'user-duration', name: 'Duration', spec: { ...SPEC_A, limitMin: raw }, createdAt: '2026-09-14' }] }));
+      const saved = loadUserPresets(st)[0];
+      expect(saved.spec.limitMin).toBe(expected);
+      expect(saved.spec.phases).toEqual(SPEC_A.phases);
+    }
+  });
+
   it('save after corruption starts fresh instead of crashing', () => {
     const st = memStorage('###');
     const { presets } = saveUserPreset('Recovered', SPEC_A, st);

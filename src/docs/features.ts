@@ -348,12 +348,12 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/studio',
     name: 'WAV export',
     simple:
-      'Renders your entire session — phases, noise, layers — into a standard WAV file you can keep or share. Open Save, export & session options, choose a format, then press WAV. The render runs in the background and stops at your session limit.',
+      'Renders your entire session — phases, noise, layers — into a standard WAV file you can keep or share. Open Save, export & session options, choose a format, then press Export WAV. The render runs in the background and stops at your session limit.',
     deep:
       'exportWav() runs the same synthesis graph through an offline render at the session sample rate inside a Web Worker and encodes PCM-16, PCM-24 or float-32 WAV (engine/wav.ts, unit-tested for header layout and round-trip fidelity). The phase plan is truncated to the session limit before rendering, so the file can never outlast the cap. Offline rendering decouples export quality from real-time CPU load and respects the current output ceiling. The file follows the phase plan; live transitions can differ from offline crossfades.',
     howTo: [
       'Build or load the session you want in the Studio.',
-      'Open Save, export & session options and press WAV.',
+      'Open Save, export & session options and press Export WAV.',
       'Wait for the offline render, then save the downloaded file.',
     ],
   },
@@ -430,7 +430,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     simple:
       'Start with three sounds, browse all presets, or open the Bashar collection. Hear a short preview before loading a session into Studio. Cards state preview and full-session durations; source details are optional.',
     deep:
-      'Catalog entries specify phase duration, carrier, rhythm, modality, authored gain, and an editorial evidence grade. An optional mixer profile restores waveform, noise, nature, bowl settings, and interval bells; the starting sounds and Bashar presets include complete profiles. Saved Studio presets retain that mix and their fader ceiling. Step previews isolate eight seconds; full playback and WAV export use their existing synthesis and transition paths, which can differ. Authored phase fades remain metadata and are labeled as unrendered.',
+      'Catalog entries specify phase duration, carrier, rhythm, modality, authored gain, and an editorial evidence grade. An optional mixer profile restores waveform, noise, nature, bowl settings, and interval bells; the starting sounds and Bashar presets include complete profiles. Saved Studio presets retain that mix, their fader ceiling, and playback duration while keeping the full phase plan. Step previews isolate eight seconds; full playback and WAV export use their existing synthesis and transition paths, which can differ. Authored phase fades remain metadata and are labeled as unrendered.',
     howTo: [
       'Search by name, pitch, rhythm, or mode, or open Bashar sounds.',
       'Use Preview or open Details and steps to hear a segment and read its sources.',

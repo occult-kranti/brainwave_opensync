@@ -8,6 +8,9 @@ import Home from '@/pages/Home';
 import Guide from '@/pages/Guide';
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
+// Match the existing UI harness: happy-dom's native animation cancellation
+// rejects on unmount even when the component cleanup is correct.
+(Element.prototype as unknown as Record<string, unknown>).animate = undefined;
 
 let root: Root | undefined;
 let container: HTMLDivElement;

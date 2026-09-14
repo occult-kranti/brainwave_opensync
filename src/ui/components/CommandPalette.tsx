@@ -94,13 +94,6 @@ export function CommandPalette({
           run: () => s.togglePause(),
         },
         {
-          id: 'panic',
-          label: 'STOP ALL SOUND',
-          icon: OctagonX,
-          hint: 'P · panic shortcut',
-          run: () => s.panic(),
-        },
-        {
           id: 'export',
           label: 'EXPORT SESSION AS WAV',
           icon: Download,
@@ -212,6 +205,13 @@ export function CommandPalette({
               boxShadow: '0 16px 48px rgba(0,0,0,0.5)',
             }}
           >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: '8px 12px', borderBottom: '1px solid var(--line-1)' }}>
+              <span className="t-body-sm text-2">Find a tool</span>
+              <button type="button" className="chip" data-testid="palette-stop-all" onClick={() => runAndClose(() => s.panic())}
+                style={{ minHeight: 44, color: 'var(--danger)', borderColor: 'var(--danger)' }}>
+                <OctagonX size={15} aria-hidden="true" />Stop all sound
+              </button>
+            </div>
             <Command label="Command palette" loop shouldFilter={false}>
               <Command.Input
                 ref={inputRef}

@@ -196,7 +196,7 @@ export default function SampleLab() {
       }}
     >
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24 }}>
-        <h1 className="t-display-lg">Sample Lab</h1>
+        <h1 className="t-display-lg">Recording analysis</h1>
         <p className="t-body text-2" style={{ marginTop: 8, maxWidth: 760 }}>
           Load any audio file — a song, a sample, or a commercial entrainment product — and see what it
           actually contains, plot by plot. <strong style={{ color: 'var(--text-1)' }}>Local-only:</strong> the

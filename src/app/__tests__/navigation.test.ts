@@ -22,7 +22,7 @@ describe('task navigation', () => {
   });
 
   it.each([
-    ['chord', '/harmonics'], ['recording', '/sample-lab'], ['Monroe', '/sound-methods'],
+    ['chord', '/harmonics'], ['recording', '/sample-lab'], ['audio files', '/sample-lab'], ['Monroe', '/sound-methods'],
     ['Bashar', '/presets'], ['noise', '/studio'], ['sample lab', '/sample-lab'],
     ['frequency library', '/library'], ['sleep & dream', '/dream'], ['  GOLDEN   ratio ', '/channeled'],
   ])('finds %s through familiar words or old page names', (query, path) => {

@@ -203,7 +203,7 @@ export default function Analyzer() {
       }}
     >
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24 }}>
-        <h1 className="t-display-lg">Analyzer</h1>
+        <h1 className="t-display-lg">Live analyzer</h1>
         <p className="t-body text-2" style={{ marginTop: 8 }}>
           Inspect the Studio signal, a microphone input, or an audio file.
         </p>

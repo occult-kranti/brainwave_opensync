@@ -83,6 +83,8 @@ Platform integrations live where the state is: `useWakeLock(running && !paused)`
 
 ## Build & deploy
 
+The Pages workflow publishes two source branches together: `master` at [the main URL](https://occult-kranti.github.io/brainwave_opensync/) and `legacy-v2.5` at [the previous-version URL](https://occult-kranti.github.io/brainwave_opensync/v2/). The legacy branch preserves release 2.5.0 at `2d1935714335cbb94c8f01ade62ed9e74ead1faf`. Its build uses `VITE_BASE=/brainwave_opensync/v2/`, including route shells and its own service-worker scope. The current worker excludes `/v2/` from its navigation fallback. Both builds finish before publishing, so a current-version deployment cannot delete the previous version. `deployments.json` records each source commit. To republish both, run the Pages workflow on `master`; do not run the historical workflow on the legacy branch. Browser-local settings remain shared because both URLs use the same origin.
+
 `vite.config.ts` reads `VITE_BASE` (default `/`); the Pages workflow sets `/brainwave_opensync/`. The router basename, `assetUrl`, the manifest `start_url`/`scope` and the Workbox navigation fallback all follow it. The service worker precaches the app shell (~1.4 MB) and caches `previews/` and `stimulus_pack/` WAVs at runtime (cache-first, capped). `index.html` is copied to `404.html` for SPA deep links.
 
 ## Testing

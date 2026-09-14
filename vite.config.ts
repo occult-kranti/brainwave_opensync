@@ -130,7 +130,8 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,json,woff2}'],
         globIgnores: ['previews/**', 'stimulus_pack/**', 'icons/og-image.png', 'robots.txt', 'sitemap.xml'],
         navigateFallback: `${base}index.html`,
-        navigateFallbackDenylist: [/\/previews\//, /\/stimulus_pack\//],
+        // The separately built previous release owns its own app shell and worker.
+        navigateFallbackDenylist: [/\/previews\//, /\/stimulus_pack\//, /\/v2(?:\/|$)/],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
         runtimeCaching: [
           {

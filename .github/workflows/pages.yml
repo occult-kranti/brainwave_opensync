@@ -1,6 +1,7 @@
 name: Deploy to GitHub Pages
 
-# Builds with the project base path and publishes dist/ to the `gh-pages`
+# Builds master at the project root and legacy-v2.5 at /v2/ into one dist/.
+# Both source branches are published together to the `gh-pages`
 # branch, which is the repository's Pages source ("Deploy from a branch").
 # The gh-pages checkout is updated in place (not force-orphaned) so only the
 # files that changed are pushed — the 108 MB of preview / stimulus WAVs are
@@ -39,6 +40,32 @@ jobs:
           VITE_BASE: /brainwave_opensync/
       - name: Route shells (HTTP 200 deep links) + SPA 404 fallback
         run: node scripts/emit-route-shells.mjs dist
+      - name: Check out the previous release
+        uses: actions/checkout@v7
+        with:
+          ref: legacy-v2.5
+          path: legacy-source
+      - name: Install previous-release dependencies
+        working-directory: legacy-source
+        run: npm ci --no-audit --no-fund
+      - name: Verify and build the previous release
+        working-directory: legacy-source
+        run: npm run check && node scripts/emit-route-shells.mjs dist
+        env:
+          VITE_BASE: /brainwave_opensync/v2/
+      - name: Include the previous release under v2
+        run: |
+          mkdir -p dist/v2
+          cp -a legacy-source/dist/. dist/v2/
+          node --input-type=module <<'NODE'
+          import { execFileSync } from 'node:child_process';
+          import { writeFileSync } from 'node:fs';
+          const legacyCommit = execFileSync('git', ['-C', 'legacy-source', 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+          writeFileSync('dist/deployments.json', JSON.stringify({
+            current: { branch: 'master', commit: process.env.GITHUB_SHA, path: '/brainwave_opensync/' },
+            previous: { branch: 'legacy-v2.5', commit: legacyCommit, path: '/brainwave_opensync/v2/' },
+          }, null, 2) + '\n');
+          NODE
       - name: Publish dist/ to gh-pages
         env:
           GITHUB_TOKEN: ${{ github.token }}

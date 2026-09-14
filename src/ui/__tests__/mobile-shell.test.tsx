@@ -136,7 +136,7 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(c.querySelector('[data-testid="status-bar-mobile"]')).toBeTruthy();
     expect(c.querySelector('[data-testid="status-bar"]')).toBeNull();
     // Primary tabs + MORE.
-    for (const tab of ['home', 'studio', 'library', 'safety', 'more']) {
+    for (const tab of ['home', 'presets', 'studio', 'safety', 'more']) {
       expect(c.querySelector(`[data-testid="bottom-tab-${tab}"]`)).toBeTruthy();
     }
     // Persistent panic: ≥56px target; bar z-index ≥70 (clears grain z-60 and
@@ -157,12 +157,12 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(c.querySelector('[data-testid="status-bar-mobile"]')).toBeNull();
     // Desktop panic affordances: rail + status bar.
     const panicButtons = Array.from(c.querySelectorAll('button')).filter((b) =>
-      b.textContent?.includes('PANIC'),
+      b.textContent?.includes('Stop all sound'),
     );
     expect(panicButtons.length).toBeGreaterThanOrEqual(2);
   });
 
-  it('MORE drawer groups tools first and reveals all routes through its theory disclosure', async () => {
+  it('MORE drawer starts with primary routes and reveals all routes through task disclosures', async () => {
     const c = await renderShell(390);
     expect(c.querySelector('[data-testid="more-drawer"]')).toBeNull();
     const more = c.querySelector<HTMLElement>('[data-testid="bottom-tab-more"]')!;
@@ -172,13 +172,15 @@ describe('W10 mobile shell — layout tiers', () => {
     const drawer = document.querySelector('[data-testid="more-drawer"]');
     expect(drawer).toBeTruthy();
     const tools = drawer!.querySelector('[data-nav-group="tools"]')!;
-    expect(tools.querySelector('a[href="/harmonics"]')).toBeTruthy();
-    expect(tools.querySelector('a[href="/sound-methods"]')).toBeTruthy();
-    expect(tools.querySelector('a[href="/lab"]')).toBeTruthy();
+    expect(tools.querySelectorAll('a')).toHaveLength(0);
+    expect(drawer!.querySelectorAll('a')).toHaveLength(4);
     expect(drawer!.querySelector('a[href="/channeled"]')).toBeNull();
     const toggle = drawer!.querySelector<HTMLButtonElement>('[data-testid="drawer-research-toggle"]')!;
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    await act(async () => toggle.click());
+    for (const button of drawer!.querySelectorAll<HTMLButtonElement>('button[aria-controls$="-links"]')) {
+      expect(button.getAttribute('aria-expanded')).toBe('false');
+      await act(async () => button.click());
+    }
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     const hrefs = new Set(
       Array.from(drawer!.querySelectorAll('a[href]')).map((a) => a.getAttribute('href')),

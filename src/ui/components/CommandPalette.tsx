@@ -25,10 +25,8 @@ import {
 } from 'lucide-react';
 import { useSession } from '../session/useSession';
 import { useModalA11y } from '../hooks';
-import { ROUTES } from '../../app/routes';
+import { NAVIGATION_CATEGORIES, NAVIGATION_ENTRIES, navigationMatches } from '../../app/navigation';
 
-/** Every registered screen, in rail order (src/app/routes.tsx). */
-const MODULE_ENTRIES = ROUTES;
 
 /** Hint chip for the status bar: visible, focusable, opens the palette. */
 export function PaletteHint({ onOpen }: { onOpen: () => void }) {
@@ -40,9 +38,9 @@ export function PaletteHint({ onOpen }: { onOpen: () => void }) {
       onClick={onOpen}
       className="chip"
       style={{ height: 24, padding: '0 8px', fontSize: 10 }}
-      title="Command palette — jump anywhere, run actions"
+      title="Find a tool or run an action"
     >
-      ⌘K
+      FIND
     </button>
   );
 }
@@ -97,9 +95,9 @@ export function CommandPalette({
         },
         {
           id: 'panic',
-          label: 'PANIC — STOP ALL AUDIO',
+          label: 'STOP ALL SOUND',
           icon: OctagonX,
-          hint: 'P',
+          hint: 'P · panic shortcut',
           run: () => s.panic(),
         },
         {
@@ -214,12 +212,12 @@ export function CommandPalette({
               boxShadow: '0 16px 48px rgba(0,0,0,0.5)',
             }}
           >
-            <Command label="Command palette" loop>
+            <Command label="Command palette" loop shouldFilter={false}>
               <Command.Input
                 ref={inputRef}
                 value={query}
                 onValueChange={setQuery}
-                placeholder="Jump to a module or run an action…"
+                placeholder="Find a tool: chord, recording, Bashar…"
                 className="font-mono2"
                 style={{
                   width: '100%',
@@ -232,36 +230,32 @@ export function CommandPalette({
                   outline: 'none',
                 }}
               />
-              <Command.List style={{ maxHeight: 320, overflowY: 'auto', padding: 6 }}>
-                <Command.Empty className="t-body-sm text-3" style={{ padding: '12px 14px' }}>
-                  No matches — try a module name or "panic".
-                </Command.Empty>
+              <Command.List style={{ maxHeight: 400, overflowY: 'auto', padding: 6 }}>
+                {!actions.some((action) => `${action.label} ${action.hint}`.toLowerCase().includes(query.trim().toLowerCase())) && !NAVIGATION_ENTRIES.some((entry) => navigationMatches(entry, query)) && (
+                  <div className="t-body-sm text-3" style={{ padding: '12px 14px' }} role="status">
+                    No tools or actions match “{query}”. <button type="button" className="chip" onClick={() => setQuery('')}>Clear search</button>
+                  </div>
+                )}
                 <Command.Group
                   heading="ACTIONS"
                   style={{ ['--cmdk-group-heading-color' as string]: 'var(--text-3)' } as React.CSSProperties}
                 >
-                  {actions.map((a) => (
+                  {actions.filter((action) => `${action.label} ${action.hint}`.toLowerCase().includes(query.trim().toLowerCase())).map((a) => (
                     <PaletteItem key={a.id} onSelect={() => runAndClose(a.run)} hint={a.hint}>
                       <a.icon size={14} strokeWidth={1.5} style={{ flexShrink: 0 }} />
                       {a.label}
                     </PaletteItem>
                   ))}
                 </Command.Group>
-                <Command.Group heading="GO TO MODULE">
-                  {MODULE_ENTRIES.map((m) => (
-                    <PaletteItem
-                      key={m.path}
-                      onSelect={() =>
-                        runAndClose(() => {
-                          navigate(m.path);
-                        })
-                      }
-                    >
-                      <m.icon size={14} strokeWidth={1.5} style={{ flexShrink: 0 }} />
-                      {m.label}
-                    </PaletteItem>
-                  ))}
-                </Command.Group>
+                {NAVIGATION_CATEGORIES.map((category) => {
+                  const entries = NAVIGATION_ENTRIES.filter((entry) => entry.category === category.id && navigationMatches(entry, query));
+                  return entries.length > 0 && <Command.Group key={category.id} heading={category.title}>
+                    {entries.map(({ route, title, description }) => <PaletteItem key={route.path} value={route.path} onSelect={() => runAndClose(() => navigate(route.path))}>
+                      <route.icon size={16} strokeWidth={1.5} style={{ flexShrink: 0 }} />
+                      <span style={{ minWidth: 0 }}><span>{title}</span><span className="t-caption text-2" style={{ display: 'block', marginTop: 4, lineHeight: 1.4, letterSpacing: 0 }}>{description}</span></span>
+                    </PaletteItem>)}
+                  </Command.Group>;
+                })}
               </Command.List>
               <div
                 className="t-caption text-3 flex items-center gap-4"
@@ -284,20 +278,24 @@ function PaletteItem({
   children,
   hint,
   onSelect,
+  value,
 }: {
   children: React.ReactNode;
+  value?: string;
   hint?: string;
   onSelect: () => void;
 }) {
   return (
     <Command.Item
+      value={value}
       onSelect={onSelect}
       className="t-label"
       style={{
         display: 'flex',
         alignItems: 'center',
         gap: 10,
-        padding: '9px 10px',
+        padding: '10px',
+        minHeight: 44,
         borderRadius: 2,
         cursor: 'pointer',
         color: 'var(--text-2)',

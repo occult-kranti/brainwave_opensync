@@ -13,14 +13,16 @@ function render(el: React.ReactElement) {
 }
 
 describe('W8 home & docs screens', () => {
-  it('Home renders hero, honesty statement, quick start, and module cards', () => {
+  it('Home renders practical task paths, scope statement, and a complete directory', () => {
     const html = render(<Home />);
-    expect(html).toContain('Build and compare sounds.');
-    expect(html).toContain('What is this?');
-    expect(html).toContain('READ ABOUT THE METHODS');
-    expect(html).toContain('First session in 60 seconds');
-    expect(html).toContain('STUDIO');
-    expect(html).toContain('IN VERIFICATION');
+    expect(html).toContain('Listen, create, and inspect audio.');
+    expect(html).toContain('Choose a sound');
+    expect(html).toContain('They do not measure your brain activity.');
+    expect(html).toContain('Build a chord');
+    expect(html).toContain('Find a tool or page');
+    expect(html).toContain('Theory &amp; research');
+    expect(html).not.toContain('<canvas');
+    expect(html).not.toContain('LOWEST GRADE');
   });
 
   it('Guide renders both registers control, module groups, and plot explainers', () => {

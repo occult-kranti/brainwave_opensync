@@ -38,9 +38,9 @@ function render(el: React.ReactElement) {
 }
 
 const PAGES: { name: string; el: () => React.ReactElement; primary: string }[] = [
-  { name: 'Home', el: () => <Home />, primary: 'OPEN STUDIO' },
+  { name: 'Home', el: () => <Home />, primary: 'Choose a sound' },
   { name: 'Guide', el: () => <Guide />, primary: 'DEEP TECHNICAL' },
-  { name: 'Studio', el: () => <Studio />, primary: 'START SESSION' },
+  { name: 'Studio', el: () => <Studio />, primary: 'Play session' },
   { name: 'Library', el: () => <Library />, primary: 'LOAD ↗' },
   { name: 'Presets', el: () => <Presets />, primary: 'LOAD INTO STUDIO' },
   { name: 'Levels', el: () => <Levels />, primary: 'LOAD PROTOCOL' },
@@ -48,7 +48,7 @@ const PAGES: { name: string; el: () => React.ReactElement; primary: string }[] =
   { name: 'Cymatics', el: () => <Cymatics />, primary: 'Cymatic Studio' },
   { name: 'Dream', el: () => <Dream />, primary: 'TEST CUE' },
   { name: 'Replication', el: () => <Replication />, primary: 'Replication Bay' },
-  { name: 'Safety', el: () => <Safety />, primary: 'PANIC — STOP EVERYTHING' },
+  { name: 'Safety', el: () => <Safety />, primary: 'Stop all sound' },
   { name: 'Knowledge', el: () => <Knowledge />, primary: 'Knowledge Base' },
   { name: 'About', el: () => <About />, primary: 'About the Method' },
   { name: 'Experiment Lab', el: () => <ExperimentLab />, primary: 'Experiment Lab' },

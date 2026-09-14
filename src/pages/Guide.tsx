@@ -6,11 +6,14 @@
  */
 
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router';
 import { motion } from 'framer-motion';
-import { Search } from 'lucide-react';
+import { ArrowRight, Search } from 'lucide-react';
 import { FEATURES, featuresByModule, type FeatureEntry } from '@/docs/features';
+import { navigationForPath } from '@/app/navigation';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { useIsMobile } from '@/hooks/use-mobile';
+import './guide.css';
 
 type Register = 'simple' | 'deep';
 
@@ -49,9 +52,9 @@ function FeatureCard({ entry, register }: { entry: FeatureEntry; register: Regis
         {register === 'simple' ? entry.simple : entry.deep}
       </p>
 
-      {register === 'deep' && entry.gradeScope && (
+      {entry.gradeScope && (
         <p className="t-caption text-3" style={{ marginTop: 8 }}>
-          GRADE SCOPE — {entry.gradeScope}
+          Evidence scope: {entry.gradeScope}
         </p>
       )}
 
@@ -110,57 +113,69 @@ export default function Guide() {
   const groups = useMemo(() => [...featuresByModule(filtered).entries()], [filtered]);
 
   return (
-    <div style={{ padding: isMobile ? '20px 16px 56px' : '32px 40px 64px', maxWidth: 1100, margin: '0 auto' }}>
+    <div className="guide-page" style={{ padding: isMobile ? '20px 16px 56px' : '32px 40px 64px', maxWidth: 1100, margin: '0 auto' }}>
       <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }}>
         <span className="t-label" style={{ color: 'var(--teal-hi)' }}>
-          DOCUMENTATION — ONE DATA SOURCE, TWO REGISTERS
+          Help with the tools
         </span>
         <h1 className="t-display-lg" style={{ margin: '8px 0 12px' }}>
           Guide
         </h1>
         <p className="t-body text-2" style={{ maxWidth: 720, marginBottom: 24 }}>
-          Every feature, meter, and plot in Open Sync, explained twice: once in plain
-          language, once with the math. Claims are graded, and effects are described as
-          biasing toward states — nothing here promises an outcome.
+          Start with a task below. Open a tool's instructions for more detail, or search for a control, sound, or measurement.
         </p>
       </motion.div>
 
+      <section className="guide-start" aria-labelledby="guide-start-title">
+        <h2 id="guide-start-title" className="t-h2">Start with a task</h2>
+        <div className="guide-task-grid">
+          <article><h3 className="t-h3">Play a preset</h3><p className="t-body-sm text-2">Choose a sound and hear its preview. Load it into Studio, check the session length, then press Play. Stop is always available.</p><Link to="/presets">Choose a sound <ArrowRight size={14} aria-hidden /></Link></article>
+          <article><h3 className="t-h3">Make a chord</h3><p className="t-body-sm text-2">Choose a root note, chord, and tuning in Harmonic Lab. Preview the pattern, then adjust its overtones.</p><Link to="/harmonics">Build a chord <ArrowRight size={14} aria-hidden /></Link></article>
+          <article><h3 className="t-h3">Inspect a recording</h3><p className="t-body-sm text-2">Open an audio file in Recording analysis to view its waveform, spectrum, and level. The file is processed in your browser.</p><Link to="/sample-lab">Inspect an audio file <ArrowRight size={14} aria-hidden /></Link></article>
+          <article><h3 className="t-h3">Save or export</h3><p className="t-body-sm text-2">In Studio, save the current setup as a preset to edit later. Export WAV downloads the sound as an audio file.</p><Link to="/studio">Open Studio <ArrowRight size={14} aria-hidden /></Link></article>
+        </div>
+        <p className="guide-start-note t-body-sm text-2">Start at low device volume. Binaural sounds use a different tone in each ear, so headphones are needed.</p>
+      </section>
+
+      <h2 className="t-h2" style={{ marginBottom: 16 }}>Tool instructions</h2>
+
       {/* controls — sticky so the register switch stays reachable on long pages */}
       <div
-        className="panel flex items-center gap-4"
-        style={{ padding: '12px 16px', marginBottom: 32, flexWrap: 'wrap', position: 'sticky', top: 8, zIndex: 30 }}
+        className="panel flex items-center gap-4 guide-controls"
+        style={{ padding: '12px 16px', marginBottom: 20, flexWrap: 'wrap', position: 'sticky', top: 8, zIndex: 30 }}
       >
-        <div className="flex items-center gap-2" style={{ flex: 1, minWidth: 220 }}>
+        <label className="flex items-center gap-2" style={{ flex: 1, minWidth: 'min(220px, 100%)' }}>
+          <span className="sr-only">Search guide</span>
           <Search size={14} style={{ color: 'var(--text-3)', flexShrink: 0 }} />
           <input
+            type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search features — try “LUFS”, “panic”, “Chladni”…"
+            placeholder="Try play, export, chords, or LUFS"
             aria-label="Search guide"
             className="font-mono2"
             style={{
               flex: 1,
+              minWidth: 0,
               background: 'var(--ink-4)',
               border: '1px solid var(--line-1)',
               borderRadius: 2,
               color: 'var(--text-1)',
               padding: '6px 10px',
               fontSize: 12,
-              outline: 'none',
             }}
           />
-        </div>
-        <div className="flex" role="tablist" aria-label="Register">
+        </label>
+        <div className="flex" role="group" aria-label="Explanation detail">
           {(['simple', 'deep'] as Register[]).map((r) => (
             <button
               key={r}
               type="button"
-              role="tab"
-              aria-selected={register === r}
+              aria-pressed={register === r}
               onClick={() => setRegister(r)}
               className="t-label"
               style={{
-                height: 32,
+                minHeight: 40,
                 padding: '0 14px',
                 border: '1px solid var(--line-2)',
                 borderRadius: 0,
@@ -176,32 +191,25 @@ export default function Guide() {
         </div>
       </div>
 
+      {query.trim() && <p className="t-body-sm text-2" role="status" style={{ marginBottom: 16 }}>{filtered.length} {filtered.length === 1 ? 'instruction' : 'instructions'} found</p>}
+
       {groups.length === 0 && (
-        <p className="t-body text-3">No features match “{query}”.</p>
+        <div className="guide-empty"><p className="t-body text-2">No instructions match “{query}”.</p><button type="button" onClick={() => setQuery('')}>Clear search</button></div>
       )}
 
       {groups.map(([module, entries]) => (
-        <section key={module} style={{ marginBottom: 40 }}>
-          <div className="flex items-center gap-3 hairline-b" style={{ paddingBottom: 8, marginBottom: 16 }}>
-            <h2 className="t-h2">{module}</h2>
-            <span className="t-label text-3">
-              {entries.length} {entries.length === 1 ? 'ENTRY' : 'ENTRIES'}
-            </span>
-            {entries[0].route && (
-              <span className="t-readout-sm text-3" style={{ marginLeft: 'auto' }}>
-                {entries[0].route}
-              </span>
-            )}
+        <details key={module} className="guide-module" open={query.trim() ? true : undefined}>
+          <summary><span className="t-h3">{navigationForPath(entries[0].route)?.title ?? module}</span><span className="t-body-sm text-2">{entries.length} {entries.length === 1 ? 'instruction' : 'instructions'}</span></summary>
+          <div className="guide-module-body">
+            <Link className="guide-open-tool" to={entries[0].route}>Open {navigationForPath(entries[0].route)?.title ?? module} <ArrowRight size={14} aria-hidden /></Link>
+            <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))' }}>
+              {entries.map((e) => <FeatureCard key={e.id} entry={e} register={register} />)}
+            </div>
           </div>
-          <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))' }}>
-            {entries.map((e) => (
-              <FeatureCard key={e.id} entry={e} register={register} />
-            ))}
-          </div>
-        </section>
+        </details>
       ))}
 
-      <GestureMapSection />
+      <details className="guide-module guide-shortcuts"><summary className="t-h3">Gestures &amp; shortcuts</summary><div className="guide-module-body"><GestureMapSection /></div></details>
     </div>
   );
 }

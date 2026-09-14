@@ -13,7 +13,7 @@ describe('route registry', () => {
 
   it('keeps four phone tabs and groups tools, reference pages and help without duplicates', () => {
     expect(BOTTOM_TAB_ROUTES.length).toBeLessThanOrEqual(4);
-    expect(BOTTOM_TAB_ROUTES.map((r) => r.path)).toEqual(['/', '/studio', '/library', '/safety']);
+    expect(BOTTOM_TAB_ROUTES.map((r) => r.path)).toEqual(['/', '/presets', '/studio', '/safety']);
     expect([...HOME_ROUTES, ...TOOL_ROUTES, ...RESEARCH_ROUTES, ...HELP_ROUTES]).toEqual(ROUTES);
     expect(HOME_ROUTES.map((r) => r.path)).toEqual(['/']);
     for (const path of ['/studio', '/presets', '/library', '/harmonics', '/sound-methods', '/sonic-lab', '/sample-lab', '/analyzer', '/cymatics', '/dream', '/quicklab', '/lab', '/replication']) {

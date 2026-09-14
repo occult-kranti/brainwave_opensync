@@ -14,6 +14,10 @@ export function phaseSoundLabel(phase: Phase): string {
 
 export function presetSoundDescription(preset: Preset): string {
   switch (preset.id) {
+    case 'relax-alpha-ease': return 'Five minutes with a 150 Hz carrier and 10 Hz binaural beat, then 25 minutes at 140 Hz with a 9 Hz beat. Headphones separate the tones between your ears.';
+    case 'focus-brown-noise': return 'This legacy preset currently produces a steady 150 Hz tone. Its intended brown-noise texture is not implemented in preset playback.';
+    case 'focus-pink-noise':
+    case 'sleep-pink-quiet': return 'This legacy preset currently produces a steady 200 Hz tone. Its intended pink-noise texture is not implemented in preset playback.';
     case 'exp-bashar-scale-map': return `Seven five-minute steps, from 6 to 66.6 Hz. ${MAPPING_CONTEXT}`;
     case 'exp-bashar-gamma-contradiction': return 'Ten minutes of a 10.5 Hz binaural beat, then ten minutes of a 40 Hz monaural rhythm. Both use a 200 Hz carrier.';
     case 'exp-phi-ladder': return 'Five steady pitches, one after another. Each is the previous pitch multiplied by the golden ratio, starting at 110 Hz.';

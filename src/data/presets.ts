@@ -7,7 +7,7 @@
 
 import type { Grade } from './frequencies';
 import { BASHAR_PRESETS } from '@/channeled/bashar';
-import type { PresetMix } from './presetMix';
+import { CLEAN_PRESET_MIX, type PresetMix } from './presetMix';
 
 export type PresetCategory = 'Sleep' | 'Focus' | 'Relax' | 'Meditate' | 'Experimental' | 'Infant';
 
@@ -225,6 +225,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
     category: 'Relax',
     spec: {
       autoShutoff: true,
+      mix: CLEAN_PRESET_MIX,
       phases: [
         { name: 'ease-in', durationSec: 300, carrierHz: 150, beatHz: 10, gainDbFs: -14, rampSec: 60 },
         { name: 'rest', durationSec: 1500, carrierHz: 140, beatHz: 9, gainDbFs: -16, rampSec: 60 },

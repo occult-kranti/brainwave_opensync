@@ -205,7 +205,7 @@ export default function Analyzer() {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24 }}>
         <h1 className="t-display-lg">Analyzer</h1>
         <p className="t-body text-2" style={{ marginTop: 8 }}>
-          Measure what's actually coming out of the engine — not what the marketing says.
+          Inspect the Studio signal, a microphone input, or an audio file.
         </p>
         <div className="flex items-center flex-wrap gap-2" style={{ margin: '20px 0' }}>
           {/* source selector — segmented row, scrolls horizontally if cramped */}
@@ -267,7 +267,7 @@ export default function Analyzer() {
             TONE {calOn ? 'ON' : 'OFF'}
           </Chip>
           <button type="button" className="chip" onClick={() => setFrozen((f) => !f)} style={{ marginLeft: 'auto' }}>
-            {frozen ? <Play size={11} /> : <Pause size={11} />} {frozen ? 'FROZEN' : 'RUN'}
+            {frozen ? <Play size={11} /> : <Pause size={11} />} {frozen ? 'Resume graph' : 'Freeze graph'}
           </button>
           <button type="button" className="chip" onClick={exportReport}>
             <Download size={11} /> REPORT ↓
@@ -302,7 +302,7 @@ export default function Analyzer() {
                   compact
                   citation={{
                     verdict: 'Metering standard: ITU-R BS.1770 — solid, replicated engineering.',
-                    summary: 'K-weighting + gating per BS.1770-4; the Analyzer grades itself as the most trustworthy thing in the app.',
+                    summary: 'K-weighting and gating follow BS.1770-4. This measures the audio signal, not a response in the listener.',
                     source: 'ITU-R BS.1770-4 (2015)',
                   }}
                 />

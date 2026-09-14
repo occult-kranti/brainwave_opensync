@@ -1,455 +1,116 @@
-/**
- * Home — landing (replaces the old redirect-to-Studio placeholder).
- * Hero (procedural audio-visual), honest "what is this", module grid cards,
- * 60-second quick start, manifesto link. All module card copy renders from
- * src/docs/features.ts — the single source of truth shared with the Guide.
- */
-
-import { useEffect, useMemo, useRef } from 'react';
-import { Link, useNavigate } from 'react-router';
-import { motion } from 'framer-motion';
+/** Home starts with tasks; the complete directory shares the navigation registry. */
+import { useMemo, useState } from 'react';
+import { Link } from 'react-router';
+import { ArrowRight, AudioLines, Headphones, Music2, Search } from 'lucide-react';
 import {
-  ArrowRight,
-} from 'lucide-react';
-import { featuresByModule, type FeatureEntry } from '@/docs/features';
-import { HELP_ROUTES, RESEARCH_ROUTES, TOOL_ROUTES, type AppRoute } from '@/app/routes';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { GradeBadge } from '@/ui/components/GradeBadge';
-import { GRADE_COLOR, LINE, TEXT, AMBER, TEAL, MONO, type GradeLetter } from '@/ui/theme';
-
-const GRADE_ORDER: GradeLetter[] = ['A', 'B', 'C', 'D'];
-
-/** Weakest (most conservative) grade among a module's graded features. */
-function weakestGrade(entries: FeatureEntry[]): GradeLetter | null {
-  let worst: GradeLetter | null = null;
-  for (const e of entries) {
-    if (!e.grade) continue;
-    if (!worst || GRADE_ORDER.indexOf(e.grade) > GRADE_ORDER.indexOf(worst)) worst = e.grade;
-  }
-  return worst;
-}
-
-function firstSentence(text: string): string {
-  const i = text.indexOf('. ');
-  return i === -1 ? text : text.slice(0, i + 1);
-}
-
-/**
- * Procedural hero: a teal/amber carrier pair drifting in phase, with the
- * difference-frequency envelope drawn below — the binaural idea, visualized.
- */
-function HeroCanvas() {
-  const ref = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = ref.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    let raf = 0;
-    const draw = (t: number) => {
-      const dpr = window.devicePixelRatio || 1;
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      if (canvas.width !== w * dpr || canvas.height !== h * dpr) {
-        canvas.width = w * dpr;
-        canvas.height = h * dpr;
-      }
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, w, h);
-
-      // grid
-      ctx.strokeStyle = LINE[1];
-      ctx.globalAlpha = 0.35;
-      ctx.lineWidth = 1;
-      for (let x = 0; x <= w; x += 48) {
-        ctx.beginPath();
-        ctx.moveTo(x + 0.5, 0);
-        ctx.lineTo(x + 0.5, h);
-        ctx.stroke();
-      }
-      for (let y = 0; y <= h; y += 48) {
-        ctx.beginPath();
-        ctx.moveTo(0, y + 0.5);
-        ctx.lineTo(w, y + 0.5);
-        ctx.stroke();
-      }
-      ctx.globalAlpha = 1;
-
-      const mid = h * 0.42;
-      const amp = h * 0.16;
-      const k = (Math.PI * 2 * 6) / Math.max(1, w); // ~6 cycles across
-      const detune = 0.55; // slow relative drift between the pair
-
-      const trace = (color: string, phaseMul: number, glow: boolean) => {
-        ctx.beginPath();
-        for (let x = 0; x <= w; x += 2) {
-          const y = mid + amp * Math.sin(k * x - t * 1.2 * phaseMul);
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 1.5;
-        ctx.shadowBlur = glow ? 6 : 0;
-        ctx.shadowColor = color;
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-      };
-      trace(TEAL, 1, true);
-      trace(AMBER, detune, true);
-
-      // beat envelope of the sum, drawn underneath
-      const envMid = h * 0.8;
-      const envAmp = h * 0.1;
-      ctx.beginPath();
-      for (let x = 0; x <= w; x += 2) {
-        const s =
-          Math.sin(k * x - t * 1.2) + Math.sin(k * x - t * 1.2 * detune);
-        const y = envMid + envAmp * 0.5 * s;
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.strokeStyle = `${AMBER}66`;
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      ctx.font = MONO(10);
-      ctx.fillStyle = TEXT[3];
-      ctx.fillText('L 440.00 Hz', 12, mid - amp - 10);
-      ctx.fillText('R 444.00 Hz', 12, mid + amp + 20);
-      ctx.fillText('BEAT 4.00 Hz', 12, envMid + envAmp + 16);
-
-      if (!reduced) raf = requestAnimationFrame((now) => draw(now / 1000));
-    };
-    draw(performance.now() / 1000);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  return (
-    <canvas
-      ref={ref}
-      aria-hidden
-      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
-    />
-  );
-}
-
-const QUICK_START = [
-  'Use headphones for binaural mode: one tone plays in each ear.',
-  'Open the Studio and press START SESSION.',
-  'Start at low volume and keep it comfortable.',
-  'Use the Visualizer to inspect the generated sound.',
-];
+  NAVIGATION_CATEGORIES,
+  NAVIGATION_ENTRIES,
+  navigationMatches,
+  type NavigationEntry,
+} from '@/app/navigation';
+import './home.css';
 
 export default function Home() {
-  const navigate = useNavigate();
-  const isMobile = useIsMobile();
-  const groups = useMemo(() => featuresByModule(), []);
+  const [query, setQuery] = useState('');
+  const matches = useMemo(
+    () => NAVIGATION_ENTRIES.filter((entry) => entry.route.path !== '/' && navigationMatches(entry, query)),
+    [query],
+  );
+  const tools = matches.filter((entry) => entry.route.group === 'tools');
+  const research = matches.filter((entry) => entry.route.group === 'research');
+  const help = matches.filter((entry) => entry.route.group === 'help');
+  const searching = query.trim().length > 0;
+  const researchCategory = NAVIGATION_CATEGORIES.find((category) => category.id === 'research');
 
   return (
-    <div style={{ paddingBottom: 64 }}>
-      {/* HERO */}
-      <div
-        className="relative flex items-end"
-        style={{
-          height: isMobile ? 'auto' : '64vh',
-          minHeight: 400,
-          background: 'linear-gradient(180deg, var(--ink-1), var(--ink-0))',
-          borderBottom: '1px solid var(--line-1)',
-          overflow: 'hidden',
-        }}
-      >
-        <HeroCanvas />
-        <div style={{ position: 'relative', padding: isMobile ? '64px 20px 40px' : '0 64px 56px', maxWidth: 980 }}>
-          <motion.span
-            className="t-label"
-            style={{ color: 'var(--teal-hi)' }}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            OPEN SYNC · AUDIO LAB
-          </motion.span>
-          <motion.h1
-            className="t-display-xl"
-            style={{ margin: '12px 0 16px', color: 'var(--text-1)', fontSize: 'clamp(30px, 9vw, 56px)', lineHeight: 1.05 }}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.08 }}
-          >
-            Build and compare sounds.
-          </motion.h1>
-          <motion.p
-            className="t-body"
-            style={{ color: 'var(--text-2)', maxWidth: 640, marginBottom: 24 }}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.16 }}
-          >
-            Create tones, beats, noise, and musical patterns. Listen, export a WAV,
-            or check the sound with the analysis tools.
-          </motion.p>
-          <motion.div
-            className="flex flex-wrap gap-3"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.24 }}
-          >
-            <button
-              type="button"
-              onClick={() => navigate('/studio')}
-              style={{
-                minHeight: 44,
-                padding: '0 16px',
-                background: 'var(--amber)',
-                color: 'var(--text-inv)',
-                border: 'none',
-                borderRadius: 2,
-                fontFamily: '"IBM Plex Mono", monospace',
-                fontSize: 11,
-                fontWeight: 600,
-                letterSpacing: '0.12em',
-                cursor: 'pointer',
-              }}
-            >
-              OPEN STUDIO
-            </button>
-            <Link
-              to="/presets?collection=bashar"
-              data-testid="home-bashar-link"
-              className="t-label"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                minHeight: 44,
-                padding: '0 16px',
-                color: 'var(--amber)',
-                border: '1px solid var(--amber-dim)',
-                borderRadius: 2,
-                textDecoration: 'none',
-              }}
-            >
-              BASHAR SOUNDS
-            </Link>
-            <button
-              type="button"
-              onClick={() => navigate('/guide')}
-              className="t-label"
-              style={{
-                minHeight: 44,
-                padding: '0 16px',
-                background: 'transparent',
-                color: 'var(--text-1)',
-                border: '1px solid var(--line-2)',
-                borderRadius: 2,
-                cursor: 'pointer',
-              }}
-            >
-              READ THE GUIDE
-            </button>
-            {/* The Everyday app is a second entry outside this router: a plain link. */}
-            <a
-              href={`${import.meta.env.BASE_URL}app/`}
-              className="t-label"
-              data-testid="everyday-link"
-              title="Open Sync Everyday — the simple, phone-first player"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                minHeight: 44,
-                padding: '0 16px',
-                background: 'transparent',
-                color: 'var(--teal-hi)',
-                border: '1px solid var(--teal-dim)',
-                borderRadius: 2,
-                textDecoration: 'none',
-              }}
-            >
-              EVERYDAY APP
-            </a>
-          </motion.div>
+    <div className="home-page">
+      <header className="home-intro">
+        <span className="t-label home-eyebrow">Open Sync · Sound workspace</span>
+        <h1 className="t-display-lg">Listen, create, and inspect audio.</h1>
+        <p className="t-body text-2">Listen to a preset, build a chord, or inspect an audio file. Start with a short preview; open more controls when you need them.</p>
+        <div className="home-start-row">
+          <Link className="home-primary" to="/presets">Choose a sound <ArrowRight size={17} aria-hidden /></Link>
+          <Link className="home-text-link" to="/guide">How to start</Link>
         </div>
-      </div>
+        <p className="home-scope t-body-sm text-2">These tools generate and measure audio. They do not measure your brain activity.</p>
+      </header>
 
-      <div style={{ padding: isMobile ? '32px 16px 0' : '48px 40px 0', maxWidth: 1440, margin: '0 auto' }}>
-        {/* WHAT IS THIS */}
-        <motion.section
-          className="panel"
-          style={{ marginBottom: 48, borderLeft: `2px solid ${AMBER}` }}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.3 }}
-        >
-          <h2 className="t-h2" style={{ marginBottom: 12 }}>
-            What is this?
-          </h2>
-          <p className="t-body" style={{ color: 'var(--text-2)', maxWidth: 880 }}>
-            Open Sync is a browser app for building and studying sound. Studio combines
-            binaural beats, mixed-tone beats, pulses, noise, and modeled instruments.
-            Harmonic Lab builds chords; Sonic Lab generates rhythms and audio illusions.
-            Research pages explain the sources behind the presets. Grades A–D describe
-            the evidence for each claim. The app measures audio, not brain activity.
-          </p>
-          <Link
-            to="/about"
-            className="t-label"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 6,
-              color: 'var(--teal-hi)',
-              marginTop: 16,
-              textDecoration: 'none',
-            }}
-          >
-            READ ABOUT THE METHODS <ArrowRight size={12} />
-          </Link>
-        </motion.section>
+      <section className="home-task-section" aria-label="What would you like to do?">
+        <div className="home-task-grid">
+          <article className="home-task home-task-listen">
+            <Headphones size={21} aria-hidden />
+            <h2 className="t-h2">Listen</h2>
+            <p className="t-body-sm text-2">Hear a short preview, then load a sound into Studio to play the full session.</p>
+            <Link className="home-task-link" to="/presets">Browse presets <ArrowRight size={15} aria-hidden /></Link>
+            <Link className="home-text-link" to="/presets?collection=bashar" data-testid="home-bashar-link">Bashar sounds · experimental collection</Link>
+          </article>
+          <article className="home-task">
+            <Music2 size={21} aria-hidden />
+            <h2 className="t-h2">Create</h2>
+            <p className="t-body-sm text-2">Build chords and musical patterns, or edit tones and layers in Studio.</p>
+            <Link className="home-task-link" to="/harmonics">Build a chord <ArrowRight size={15} aria-hidden /></Link>
+            <Link className="home-text-link" to="/studio">Open Studio</Link>
+          </article>
+          <article className="home-task">
+            <AudioLines size={21} aria-hidden />
+            <h2 className="t-h2">Inspect</h2>
+            <p className="t-body-sm text-2">View an audio file's waveform and spectrum, or measure its level and distortion.</p>
+            <Link className="home-task-link" to="/sample-lab">Inspect an audio file <ArrowRight size={15} aria-hidden /></Link>
+            <Link className="home-text-link" to="/analyzer">Measure audio</Link>
+          </article>
+        </div>
+        <div className="home-simple-player">
+          <p className="t-body-sm text-2"><strong>Want fewer controls?</strong> Simple player opens a separate listening view.</p>
+          <a href={`${import.meta.env.BASE_URL}app/`} className="home-text-link" data-testid="everyday-link">Open Simple player <ArrowRight size={14} aria-hidden /></a>
+        </div>
+      </section>
 
-        {/* QUICK START */}
-        <motion.section
-          style={{ marginBottom: 48 }}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="flex items-center justify-between" style={{ marginBottom: 16 }}>
-            <h2 className="t-h2">First session in 60 seconds</h2>
-            <span className="t-label text-3">QUICK START</span>
+      <section className="home-directory" aria-labelledby="home-directory-title">
+        <div className="home-directory-header">
+          <div>
+            <h2 id="home-directory-title" className="t-h2">Find a tool or page</h2>
+            <p className="t-body-sm text-2">Browse by task or search by name.</p>
           </div>
-          <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
-            {QUICK_START.map((step, i) => (
-              <div key={step} className="panel" style={{ padding: 16 }}>
-                <span className="t-readout-lg" style={{ color: 'var(--amber)' }}>
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <p className="t-body-sm text-2" style={{ marginTop: 8 }}>
-                  {step}
-                </p>
-              </div>
-            ))}
-          </div>
-        </motion.section>
+          <label className="home-search">
+            <span className="t-body-sm">Search tools and pages</span>
+            <span className="home-search-input"><Search size={16} aria-hidden /><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try chords, Bashar, or audio files" /></span>
+          </label>
+        </div>
+        {searching && <p className="home-search-status t-body-sm text-2" role="status">{matches.length} {matches.length === 1 ? 'page' : 'pages'} found</p>}
+        {matches.length === 0 && <div className="home-empty"><p className="t-body-sm text-2">No pages match “{query}”.</p><button type="button" className="home-reset" onClick={() => setQuery('')}>Clear search</button></div>}
 
-        {/* Practical tools follow the same order as the sidebar. */}
-        <section aria-labelledby="home-tools-title" data-testid="home-tools">
-          <div className="flex items-center justify-between" style={{ marginBottom: 16 }}>
-            <h2 id="home-tools-title" className="t-h2">Tools</h2>
-            <span className="t-label text-3">{TOOL_ROUTES.length} TOOLS</span>
-          </div>
-          <ModuleGrid routes={TOOL_ROUTES} groups={groups} />
-        </section>
+        {tools.length > 0 && <div className="home-tool-groups" data-testid="home-tools">
+          {NAVIGATION_CATEGORIES.map((category) => {
+            const entries = tools.filter((entry) => entry.category === category.id);
+            if (!entries.length) return null;
+            return <section key={category.id} className="home-directory-group" aria-labelledby={`home-group-${category.id}`}>
+              <h3 id={`home-group-${category.id}`} className="t-h3">{category.title}</h3>
+              <DirectoryList entries={entries} />
+            </section>;
+          })}
+        </div>}
 
-        <details
-          data-testid="home-research"
-          style={{ marginTop: 32, padding: 16, border: '1px solid var(--line-1)', borderRadius: 4 }}
-        >
-          <summary className="t-h2" style={{ cursor: 'pointer', minHeight: 48, padding: '8px 0' }}>
-            Theory &amp; research
-          </summary>
-          <div style={{ marginTop: 16 }}>
-            <ModuleGrid routes={RESEARCH_ROUTES} groups={groups} />
-          </div>
-        </details>
+        {research.length > 0 && <details className="home-reading" data-testid="home-research" open={searching || undefined}>
+          <summary><span className="t-h3">{researchCategory?.title ?? 'Theory & research'}</span><span className="t-body-sm text-2">Sources, interpretations, and study notes</span></summary>
+          <DirectoryList entries={research} />
+        </details>}
 
-        <section aria-labelledby="home-help-title" style={{ marginTop: 32 }}>
-          <h2 id="home-help-title" className="t-h2" style={{ marginBottom: 16 }}>Help</h2>
-          <ModuleGrid routes={HELP_ROUTES} groups={groups} />
-        </section>
-      </div>
+        {help.length > 0 && <nav className="home-help" aria-label="Help">
+          <span className="t-body-sm text-2">Help</span>
+          {help.map((entry) => <Link key={entry.route.path} className="home-text-link" to={entry.route.path}>{entry.title}</Link>)}
+        </nav>}
+      </section>
     </div>
   );
 }
 
-function ModuleGrid({ routes, groups }: { routes: readonly AppRoute[]; groups: Map<string, FeatureEntry[]> }) {
-  return (
-    <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(min(300px, 100%), 1fr))' }}>
-      {routes.map((route, gi) => {
-        const entries = groups.get(route.module);
-        if (!entries?.length) return null;
-        const module = route.module;
-        const rep = entries[0];
-        const Icon = route.icon;
-        const grade = weakestGrade(entries);
-        const pending = entries.every((e) => e.status === 'in-verification');
-        return (
-          <motion.div
-            key={module}
-            className="panel panel-interactive flex flex-col"
-            style={{ padding: 20, opacity: pending ? 0.75 : 1 }}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: pending ? 0.75 : 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.3, delay: Math.min(gi * 0.04, 0.3) }}
-          >
-            <div className="flex items-center gap-3" style={{ marginBottom: 10 }}>
-              <Icon size={20} strokeWidth={1.5} style={{ color: 'var(--text-2)' }} />
-              <h3 className="t-label" style={{ color: 'var(--text-1)', flex: 1 }}>
-                {module.toUpperCase()}
-              </h3>
-              {pending ? (
-                <span
-                  className="t-caption font-mono2"
-                  style={{
-                    color: 'var(--text-3)',
-                    border: '1px dashed var(--line-2)',
-                    borderRadius: 2,
-                    padding: '2px 6px',
-                    fontSize: 10,
-                  }}
-                >
-                  IN VERIFICATION
-                </span>
-              ) : (
-                grade && (
-                  <span
-                    className="t-caption font-mono2"
-                    title="Lowest evidence grade among this module’s claims"
-                    style={{ color: GRADE_COLOR[grade], fontSize: 10 }}
-                  >
-                    LOWEST GRADE
-                  </span>
-                )
-              )}
-              {!pending && grade && <GradeBadge grade={grade} compact />}
-            </div>
-            <p className="t-body-sm text-2" style={{ marginBottom: 12, minHeight: 40 }}>
-              {firstSentence(rep.simple)}
-            </p>
-            <ol className="t-caption" style={{ color: 'var(--text-3)', margin: '0 0 14px', paddingLeft: 16 }}>
-              {rep.howTo.slice(0, 3).map((s) => (
-                <li key={s} style={{ marginBottom: 4 }}>
-                  {s}
-                </li>
-              ))}
-            </ol>
-            <div style={{ marginTop: 'auto' }}>
-              {pending ? (
-                <span className="t-label text-3">OPENS AFTER VERIFICATION</span>
-              ) : (
-                <Link
-                  to={rep.route}
-                  aria-label={`Open ${module}`}
-                  className="t-label"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 6,
-                    color: 'var(--amber)',
-                    textDecoration: 'none',
-                  }}
-                >
-                  OPEN <ArrowRight size={12} />
-                </Link>
-              )}
-            </div>
-          </motion.div>
-        );
-      })}
-    </div>
-  );
+function DirectoryList({ entries }: { entries: readonly NavigationEntry[] }) {
+  return <ul className="home-directory-list">{entries.map((entry) => {
+    const Icon = entry.route.icon;
+    return <li key={entry.route.path}><Link to={entry.route.path} className="home-directory-link">
+      <Icon size={17} aria-hidden />
+      <span><strong>{entry.title}</strong><span className="t-body-sm text-2">{entry.description}</span></span>
+      <ArrowRight size={14} aria-hidden />
+    </Link></li>;
+  })}</ul>;
 }

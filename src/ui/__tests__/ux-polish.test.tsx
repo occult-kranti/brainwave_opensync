@@ -44,25 +44,7 @@ if (typeof Element !== 'undefined') {
   proto.releasePointerCapture ??= () => {};
 }
 
-const MODULE_LABELS = [
-  'HOME',
-  'STUDIO',
-  'LIBRARY',
-  'PRESETS',
-  'LEVELS',
-  'ANALYZER',
-  'CYMATICS',
-  'SLEEP & DREAM',
-  'REPLICATION BAY',
-  'SAFETY',
-  'KNOWLEDGE',
-  'ABOUT',
-  'GUIDE',
-  'EXPERIMENT LAB',
-  'CRITIQUE LIBRARY',
-  'HYPOTHESIS TRACKER',
-  'PROGRAMS ARCHIVE',
-];
+const MODULE_LABELS = ['Home', 'Studio', 'Frequency reference', 'Presets', 'Levels', 'Live analyzer', 'Cymatics', 'Sleep experiments', 'Replication Bay', 'Safety', 'Knowledge', 'About', 'Guide', 'Experiment Lab', 'Critique Library', 'Hypothesis Tracker', 'Programs Archive'];
 
 /** Viewport mock shared with the mobile-shell suite. */
 function mockViewport(width: number) {
@@ -271,7 +253,7 @@ describe('W13 command palette', () => {
     for (const label of MODULE_LABELS) {
       expect(text, `palette lists ${label}`).toContain(label);
     }
-    for (const action of ['START SESSION', 'PANIC', 'EXPORT SESSION AS WAV', 'INFANT MODE', 'GUIDE']) {
+    for (const action of ['START SESSION', 'STOP ALL SOUND', 'EXPORT SESSION AS WAV', 'INFANT MODE', 'GUIDE']) {
       expect(text, `palette action ${action}`).toContain(action);
     }
     // Esc closes (P0-4 contract).
@@ -325,9 +307,9 @@ describe('W13 focus management (P0-4)', () => {
     expect(document.activeElement).toBe(more);
   });
 
-  it('panic overlay: role=dialog, focuses RESUME SAFELY, Esc dismisses, focus returns to the panic button', async () => {
+  it('panic overlay: role=dialog, focuses Keep sound off, Esc dismisses, focus returns to the panic button', async () => {
     const c = await renderShell(1280);
-    const panicBtn = Array.from(c.querySelectorAll('button')).find((b) => b.textContent?.includes('PANIC'))!;
+    const panicBtn = Array.from(c.querySelectorAll('button')).find((b) => b.textContent?.includes('Stop all sound'))!;
     await act(async () => {
       panicBtn.focus();
       panicBtn.click();
@@ -337,13 +319,14 @@ describe('W13 focus management (P0-4)', () => {
     });
     const overlay = document.querySelector('[role="dialog"][aria-modal="true"]');
     expect(overlay).toBeTruthy();
-    expect(overlay!.textContent).toContain('RESUME SAFELY');
+    expect(overlay!.textContent).toContain('Keep sound off');
+    expect(document.activeElement?.textContent).toContain('Keep sound off');
     expect(overlay!.contains(document.activeElement)).toBe(true);
     await act(async () => {
       key(window, 'keydown', { key: 'Escape' });
     });
     await settle();
-    expect(document.querySelector('[aria-label="Session stopped"]')).toBeNull();
+    expect(document.querySelector('[aria-labelledby="sound-stopped-title"]')).toBeNull();
     expect(document.activeElement).toBe(panicBtn);
   });
 });

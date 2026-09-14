@@ -218,7 +218,7 @@ describe('global pause/resume — surfaces + Space hotkey', () => {
     expect(chip().textContent).toContain('RESUME');
     expect(chip().getAttribute('aria-pressed')).toBe('true');
     // Readout carries the PAUSED marker.
-    expect(c.textContent).toContain('PAUSED ·');
+    expect(c.textContent).toContain('Studio paused ·');
   });
 
   it('Space toggles pause while playing; resume works too', async () => {
@@ -275,15 +275,16 @@ describe('global pause/resume — surfaces + Space hotkey', () => {
     expect(session.paused).toBe(true);
   });
 
-  it('mobile bottom bar carries a compact pause chip next to (never covering) panic', async () => {
+  it('mobile header carries Studio pause while the bottom bar keeps Stop all sound', async () => {
     const c = await mountShell(500);
     const bar = c.querySelector('[data-testid="mobile-bottom-bar"]')!;
-    const pauseChip = bar.querySelector<HTMLButtonElement>('[data-testid="mobile-pause"]')!;
+    const pauseChip = c.querySelector<HTMLButtonElement>('[data-testid="status-bar-mobile"] [data-testid="mobile-pause"]')!;
     const panic = bar.querySelector<HTMLElement>('[data-testid="mobile-panic"]')!;
     expect(pauseChip).toBeTruthy();
     expect(panic).toBeTruthy();
     // Separate segments: pause sits before panic, panic keeps its own slot.
-    expect(bar.contains(pauseChip) && bar.contains(panic)).toBe(true);
+    expect(bar.contains(pauseChip)).toBe(false);
+    expect(bar.contains(panic)).toBe(true);
     expect(pauseChip.disabled).toBe(true); // idle
     await act(async () => session.start());
     expect(pauseChip.disabled).toBe(false);
@@ -302,7 +303,8 @@ describe('rail section label — RESEARCH (the · SOON suffix is retired)', () =
     expect(rail.textContent).toContain('Theory & research');
     expect(rail.textContent).not.toContain('RESEARCH · SOON');
     expect(rail.textContent).not.toContain('SOON');
-    // Research routes are live links, no longer dimmed.
+    // Experiments remain available in their task group.
+    await act(async () => rail.querySelector<HTMLButtonElement>('[data-testid="rail-experiments-toggle"]')!.click());
     const lab = rail.querySelector('a[href="/lab"]')!;
     expect(lab).toBeTruthy();
     expect(lab.querySelector('div')!.style.opacity).not.toBe('0.45');

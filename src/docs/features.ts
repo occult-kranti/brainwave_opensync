@@ -2,7 +2,7 @@
  * src/docs/features.ts — SINGLE SOURCE OF TRUTH for feature documentation.
  *
  * Every feature, graph, and meter in Open Sync gets exactly one entry here.
- * Home renders its module cards from this data; Guide renders both registers
+ * Guide renders both registers from this data; Home uses task navigation metadata
  * from this data; the vitest suite audits this data for coverage and claim
  * discipline. No hand-written divergent copy anywhere else.
  *
@@ -51,7 +51,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/', label: 'Home' },
   { route: '/guide', label: 'Guide' },
   { route: '/studio', label: 'Studio' },
-  { route: '/library', label: 'Library' },
+  { route: '/library', label: 'Frequency reference' },
   { route: '/presets', label: 'Presets' },
   { route: '/levels', label: 'Levels' },
   { route: '/analyzer', label: 'Analyzer' },
@@ -118,12 +118,12 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/',
     name: 'Home landing',
     simple:
-      'Home explains the app and links to each module. Follow the quick start to play a session, or choose a card to explore.',
+      'Choose a sound, build a chord, or inspect a recording from Home. Search the tool directory when you need a specialist page.',
     deep:
-      'The header animation illustrates a pair of tones; it is not a measurement of current audio. Module cards use the same feature descriptions as the Guide. Each summary badge shows the lowest evidence grade assigned within that module.',
+      'Home presents listening, creation, and inspection before the full directory. Navigation descriptions and search aliases come from one registry shared with the sidebar and command palette. Specialist and research links stay discoverable without grading entire tools.',
     howTo: [
-      'Read the app description below the header.',
-      'Pick a module card, or follow the 60-second quick-start strip.',
+      'Choose Listen, Create, or Inspect on Home.',
+      'Choose a sound for previews, or follow a direct tool link.',
       'Open the Guide any time you meet a meter you do not understand.',
     ],
   },
@@ -135,7 +135,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     simple:
       'A plain-language and a technical explanation of every screen and meter in the app. Flip the Simple / Deep Technical switch to change registers. Search to jump straight to a feature.',
     deep:
-      'The Guide renders the same FeatureEntry records consumed by Home and by the test suite — one data source, two registers. Every plot widget entry carries an axes explainer plus explicit good/bad pattern notes. User-facing strings in this dataset are continuously tested for banned overclaim phrases and for readable sentence length.',
+      'The Guide renders FeatureEntry records in two reading levels and provides task links from the shared navigation registry. Every plot widget entry carries an axes explainer plus explicit good/bad pattern notes. User-facing strings in this dataset are continuously tested for banned overclaim phrases and for readable sentence length.',
     howTo: [
       'Type a feature name (e.g. "LUFS" or "panic") into search.',
       'Read the Simple card first; switch to Deep Technical for the math.',
@@ -152,13 +152,13 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     grade: 'C',
     gradeScope: 'Beat percept is Grade A psychoacoustics; the cortical-entrainment claim is Grade C.',
     simple:
-      'Plays one tone in your left ear and a slightly different tone in your right ear, so you hear a slow pulsing beat. Headphones are required. Set the carrier and beat knobs, then press Start Session.',
+      'Plays one tone in your left ear and a slightly different tone in your right ear, so you hear a slow pulsing beat. Headphones are required. Set the carrier and beat knobs, then press Play session.',
     deep:
       'The engine synthesizes fL and fR = fL + Δf; the perceived beat equals |fL − fR| and is constructed centrally where the two auditory pathways converge in the superior olivary complex — it does not exist in the air. The percept is robust for carriers at or below ~1 kHz and beats at or below ~30 Hz (Oster 1973), which is why the UI warns outside that domain. The stronger claim that the beat biases cortical oscillations toward the beat rate is contradicted by 8 of 14 controlled EEG studies (Ingendoh 2023) and behavioral effects, where found, are modest (g ≈ 0.4). Phase-lock mode restarts both oscillators at shared zero-crossings so interaural phase stays exact instead of drifting.',
     howTo: [
       'Put on headphones — the effect needs one tone per ear.',
       'Choose a beat rate and compare how it sounds; the rate does not measure your state.',
-      'Keep the carrier between 100 and 400 Hz, set a comfortable volume, press Start Session.',
+      'Keep the carrier between 100 and 400 Hz, set a comfortable volume, press Play session.',
     ],
   },
   {
@@ -348,12 +348,12 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/studio',
     name: 'WAV export',
     simple:
-      'Renders your entire session — phases, noise, layers — into a standard WAV file you can keep or share. Choose 16-bit, 24-bit or float, then press the WAV button in the Studio transport. The render runs in the background and stops at your session limit.',
+      'Renders your entire session — phases, noise, layers — into a standard WAV file you can keep or share. Open Save, export & session options, choose a format, then press WAV. The render runs in the background and stops at your session limit.',
     deep:
       'exportWav() runs the same synthesis graph through an offline render at the session sample rate inside a Web Worker and encodes PCM-16, PCM-24 or float-32 WAV (engine/wav.ts, unit-tested for header layout and round-trip fidelity). The phase plan is truncated to the session limit before rendering, so the file can never outlast the cap. Offline rendering decouples export quality from real-time CPU load and respects the current output ceiling. The file follows the phase plan; live transitions can differ from offline crossfades.',
     howTo: [
       'Build or load the session you want in the Studio.',
-      'Press the WAV button in the transport bar.',
+      'Open Save, export & session options and press WAV.',
       'Wait for the offline render, then save the downloaded file.',
     ],
   },
@@ -367,7 +367,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     deep:
       'The engine schedules a piecewise-linear approximation of an exponential (dB-linear) gain ramp on the master AudioParam: twelve segments down to −60 dBFS, then a snap to true zero. The session stays running until the ramp lands, so the clock and the H.870 dose tracker keep counting real output. Volume changes during the fade are deferred so they never fight the ramp; stop, pause and panic cancel it instantly. The same ramp replaces the hard stop when the session limit is reached.',
     howTo: [
-      'Pick a fade length in the SLEEP FADE row (OFF, 30 s, 2, 5 or 10 minutes).',
+      'Open Save, export & session options and choose a SLEEP FADE length.',
       'Let the session reach its limit, or press FADE NOW (F) to fade right away.',
       'Press CANCEL during a fade to restore the volume and keep going.',
     ],
@@ -383,7 +383,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
       'The front panel is serialized to a compact JSON wire format and base64url-encoded into the URL hash, so it never reaches a server log. Decoding validates and clamps every field to the same ranges the Studio setters enforce, ignores unknown keys, and rejects malformed or empty plans. Applying a link marks the panel dirty and names it Shared session until you save it as a preset. Links open on any deploy base because the router and asset paths follow the configured base URL.',
     howTo: [
       'Build the session you want in the Studio.',
-      'Press SHARE — the link is copied (or shown to copy by hand).',
+      'Open Save, export & session options, then press SHARE.',
       'Open the link anywhere; the Studio loads with the same setup.',
     ],
   },
@@ -428,13 +428,13 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/presets',
     name: 'Sound presets',
     simple:
-      'Search ready-made sounds or open the Bashar collection. Preview a sound or hear individual steps before loading the full session into Studio. Each card shows its duration and evidence grade.',
+      'Start with three sounds, browse all presets, or open the Bashar collection. Hear a short preview before loading a session into Studio. Cards state preview and full-session durations; source details are optional.',
     deep:
-      'Catalog entries specify phase duration, carrier, rhythm, modality, authored gain, and an editorial evidence grade. An optional mixer profile restores waveform, noise, nature, bowl settings, and interval bells; Bashar presets include complete profiles. Saved Studio presets retain that mix and their fader ceiling. Step previews isolate eight seconds; full playback and WAV export use their existing synthesis and transition paths, which can differ. Authored phase fades remain metadata and are labeled as unrendered.',
+      'Catalog entries specify phase duration, carrier, rhythm, modality, authored gain, and an editorial evidence grade. An optional mixer profile restores waveform, noise, nature, bowl settings, and interval bells; the starting sounds and Bashar presets include complete profiles. Saved Studio presets retain that mix and their fader ceiling. Step previews isolate eight seconds; full playback and WAV export use their existing synthesis and transition paths, which can differ. Authored phase fades remain metadata and are labeled as unrendered.',
     howTo: [
       'Search by name, pitch, rhythm, or mode, or open Bashar sounds.',
       'Use Preview or open Details and steps to hear a segment and read its sources.',
-      'Load into Studio, review the mix and volume, then press Start.',
+      'Load into Studio, choose duration and volume, then press Play session.',
     ],
   },
   // ------------------------------------------------------------------- Levels
@@ -568,11 +568,11 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     simple:
       'There is no fixed session cap any more; you set your own in the Safety Center. The session length can never exceed the cap you set. Lowering the cap applies at once, raising it waits for the next session.',
     deep:
-      'The cap is a SafetyGovernor setting (maxSessionMin) checked by authorizeSession() at every START and enforced by the session setters: the length is clamped to the cap, a lower cap tightens a running session immediately, and a higher cap never loosens one. It defaults to the 24-hour engineering bound, which is a limit of the clock and the export, not a health claim. Infant mode keeps its 45-minute cap whatever the setting, and a share link lands under the receiver\'s cap. The cap is remembered with the front panel and shown in the Studio readout next to the session length. The WHO-ITU H.870 dose meter remains the evidence-anchored limit and counts regardless.',
+      'The cap is a SafetyGovernor setting (maxSessionMin) checked by authorizeSession() at every START and enforced by the session setters: the length is clamped to the cap, a lower cap tightens a running session immediately, and a higher cap never loosens one. It defaults to the 24-hour engineering bound, which is a limit of the clock and the export, not a health claim. Infant mode keeps its 45-minute cap whatever the setting, and a share link lands under the receiver\'s cap. The cap is remembered with the front panel and bounds the Studio duration control. The WHO-ITU H.870 dose meter remains the evidence-anchored limit and counts regardless.',
     howTo: [
       'Open the Safety Center and find SESSION CAP under Session Limits.',
       'Press OFF for no cap, a chip for a common value, or type a custom cap and press Enter.',
-      'Set the session length below it; the length chips only offer values inside the cap.',
+      'Set duration beside playback in Studio; longer choices are disabled while playing.',
     ],
   },
   {
@@ -601,14 +601,14 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     id: 'panic-button',
     module: 'Safety',
     route: '/safety',
-    name: 'Panic button',
+    name: 'Stop all sound (Panic)',
     simple:
       'One button — or the P key — that instantly silences everything, from anywhere in the app. Use it the moment sound feels wrong or overwhelming. Shift+P rehearses the flow without a real session.',
     deep:
-      'Panic executes an immediate engine mute (0 ms target), dims the screen, and requires a deliberate resume so an accidental keypress cannot restart audio. It is bound globally in the app shell and duplicated in the rail and status bar, with no fades and no network calls in the path. Rehearsal mode (Shift+P) walks the identical flow without audio so the motor memory exists before it is needed. Safety UX is treated as a feature, not a settings page.',
+      'Stop all sound executes an immediate engine mute and opens a dialog focused on Keep sound off. Play Studio quietly is a separate explicit action that retains start authorization; it does not resume a stopped preview. It is bound globally in the app shell and duplicated in the rail and status bar, with no fades and no network calls in the path. Rehearsal mode (Shift+P) walks the identical flow without audio so the motor memory exists before it is needed. Safety UX is treated as a feature, not a settings page.',
     howTo: [
-      'Press P, or click the red PANIC control, any time audio must stop now.',
-      'Read the overlay, then resume deliberately or leave the session stopped.',
+      'Press P, or choose Stop all sound, to stop sessions and previews immediately.',
+      'Choose Keep sound off to return without starting audio.',
       'Run Shift+P once to rehearse before your first real session.',
     ],
   },
@@ -1216,7 +1216,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
   },
 ];
 
-/** Full feature list — the single import surface for Home, Guide, and tests. */
+/** Full feature list — the single import surface for Guide and documentation tests. */
 export const FEATURES: readonly FeatureEntry[] = [...FEATURES_CORE, ...FEATURES_MODULES];
 
 /** Features grouped by module, preserving data order. */

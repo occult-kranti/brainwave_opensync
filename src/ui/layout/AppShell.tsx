@@ -3,7 +3,7 @@
  * Bar, workspace with routed module pages, global panic affordance.
  *
  * Mobile shell (mobile_adaptation_spec.md §3.2, W10): below 768px the rail
- * is replaced by a fixed bottom bar — HOME / STUDIO / LIBRARY / SAFETY /
+ * is replaced by a fixed bottom bar — HOME / PRESETS / STUDIO / SAFETY /
  * MORE (bottom-sheet drawer with every remaining route) — plus a persistent
  * ≥56px PANIC segment pinned at the trailing end. The status bar shrinks to
  * session label + engine LED; the long session readout and UTC clock move
@@ -161,14 +161,13 @@ function RailItem({
 
 /** Icon-only panic for the 64px icon strip (full PanicButton label won't fit). */
 function IconPanicButton() {
-  const { panic, running } = useSession();
+  const { panic } = useSession();
   return (
     <button
       type="button"
       onClick={panic}
-      aria-label="Panic — stop everything (P). Single press, no confirm."
-      title="Panic — stop everything (P)"
-      className={running ? 'panic-breathe' : undefined}
+      aria-label="Stop all sound (P). Single press, no confirm."
+      title="Stop all sound (P)"
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -227,7 +226,7 @@ function ModuleRail({ state, onCycle }: { state: SidebarState; onCycle: () => vo
       id="module-rail"
       data-testid="module-rail"
       data-state={state}
-      aria-label="Module rail"
+      aria-label="Main navigation"
       className="flex flex-col"
       style={{
         width: SIDEBAR_W[state],
@@ -344,7 +343,7 @@ function PauseChip() {
       type="button"
       data-testid="pause-toggle"
       className="chip"
-      aria-label={paused ? 'Resume session (Space)' : 'Pause session (Space)'}
+      aria-label={paused ? 'Resume Studio session (Space)' : 'Pause Studio session (Space)'}
       aria-pressed={paused}
       disabled={!running}
       onClick={togglePause}
@@ -374,12 +373,12 @@ function PauseChip() {
 
 /** Compact engine readout (`BIN · 4.00 Hz · 12:00 · DOSE 3%` / `PAUSED · …` / ENGINE OFF). */
 function SessionReadout() {
-  const { running, paused, mode, beatHz, elapsedSec, dosePercent } = useSession();
+  const { running, paused, previewId, mode, beatHz, elapsedSec, dosePercent } = useSession();
   return (
     <span className="t-readout-sm" style={{ color: running && !paused ? 'var(--text-1)' : 'var(--text-3)' }}>
-      {running
-        ? `${paused ? 'PAUSED · ' : ''}${mode.slice(0, 3).toUpperCase()} · ${beatHz.toFixed(2)} Hz · ${fmtClock(elapsedSec)} · DOSE ${dosePercent.toFixed(0)}%`
-        : 'ENGINE OFF'}
+      {previewId ? 'Preview playing' : running
+        ? `Studio ${paused ? 'paused' : 'playing'} · ${mode.slice(0, 3).toUpperCase()} · ${beatHz.toFixed(2)} Hz · ${fmtClock(elapsedSec)} · DOSE ${dosePercent.toFixed(0)}%`
+        : 'Studio ready'}
     </span>
   );
 }
@@ -432,7 +431,6 @@ function StatusBar({ onPalette }: { onPalette: () => void }) {
         <Led state={engineLedState(running, paused)} />
       </span>
       <PauseChip />
-      <UtcClock />
       <PanicButton />
     </header>
   );
@@ -440,7 +438,7 @@ function StatusBar({ onPalette }: { onPalette: () => void }) {
 
 /** Phone status bar (§3.2): session label + compact engine LED only. */
 function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
-  const { running, paused } = useSession();
+  const { running, paused, previewId } = useSession();
   const label = useModuleLabel();
   return (
     <header
@@ -456,12 +454,14 @@ function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
         zIndex: 40,
       }}
     >
-      <span className="t-label" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-        {label}
-      </span>
+      <div style={{ overflow: 'hidden', minWidth: 0 }}>
+        <span className="t-label" style={{ display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</span>
+        {(previewId || running) && <span className="t-caption text-2">{previewId ? 'Preview playing' : paused ? 'Studio paused' : 'Studio playing'}</span>}
+      </div>
       <div className="flex items-center gap-2" style={{ marginLeft: 'auto' }}>
         <PwaUpdateChip />
-      <PaletteHint onOpen={onPalette} />
+        <PaletteHint onOpen={onPalette} />
+        <MobilePauseChip />
         <span title={running ? (paused ? 'Session paused' : 'Engine running') : 'Engine off'}>
           <Led state={engineLedState(running, paused)} />
         </span>
@@ -509,10 +509,9 @@ function BottomTab({ path, label, icon: Icon }: { path: string; label: string; i
 }
 
 /**
- * Compact pause chip for the phone bottom bar: icon + micro label, pinned as
- * its own segment immediately before PANIC (panic keeps its fixed 72px
- * trailing slot — the chip never overlaps or obscures it). Disabled while
- * idle; the global Space hotkey is the desktop equivalent.
+ * Compact Studio pause control in the phone header. Keeping it out of the
+ * bottom navigation leaves room for the primary destinations and Stop all
+ * sound. Disabled while Studio is idle; previews do not support pause.
  */
 function MobilePauseChip() {
   const { running, paused, togglePause } = useSession();
@@ -520,15 +519,16 @@ function MobilePauseChip() {
     <button
       type="button"
       data-testid="mobile-pause"
-      aria-label={paused ? 'Resume session' : 'Pause session'}
+      aria-label={paused ? 'Resume Studio session' : 'Pause Studio session'}
       aria-pressed={paused}
       disabled={!running}
       onClick={togglePause}
       className="flex flex-col items-center justify-center"
       style={{
-        width: '100%',
-        minHeight: BOTTOM_BAR_H,
-        gap: 3,
+        width: 48,
+        flexShrink: 0,
+        minHeight: 40,
+        gap: 2,
         border: 'none',
         borderLeft: '1px solid var(--line-1)',
         color: paused ? 'var(--teal)' : 'var(--text-2)',
@@ -577,7 +577,7 @@ function BottomBar({ onMore, moreOpen }: { onMore: () => void; moreOpen: boolean
       <button
         type="button"
         data-testid="bottom-tab-more"
-        aria-label="More modules"
+        aria-label="More tools and research"
         aria-expanded={moreOpen}
         onClick={onMore}
         className="flex flex-col items-center justify-center"
@@ -600,10 +600,6 @@ function BottomBar({ onMore, moreOpen }: { onMore: () => void; moreOpen: boolean
         <MoreHorizontal size={20} strokeWidth={1.5} />
         MORE
       </button>
-      {/* Pause: compact segment next to panic (separate slot — never covers it). */}
-      <div style={{ width: 52, flexShrink: 0, display: 'flex' }}>
-        <MobilePauseChip />
-      </div>
       {/* Panic: fixed-width trailing segment, ≥56px target, always on top. */}
       <div style={{ width: 72, flexShrink: 0, display: 'flex' }}>
         <MobilePanicButton />
@@ -676,7 +672,7 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
             data-testid="more-drawer"
             role="dialog"
             aria-modal="true"
-            aria-label="More modules"
+            aria-label="More tools and research"
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}

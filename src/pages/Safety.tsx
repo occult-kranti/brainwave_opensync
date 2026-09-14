@@ -7,7 +7,6 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { INFANT_MAX_SESSION_MIN, MAX_SESSION_MIN, MIN_SESSION_CAP_MIN, SafetyGovernor } from '@/safety/governor';
-import { INFANT_CEILING_DBA, NICU_LEQ_DBA } from '@/safety/dose';
 import { Panel, Led, WarningChip, Chip } from '@/ui/components/primitives';
 import { PanicButtonLarge } from '@/ui/components/Panic';
 import { DoseGauge } from '@/ui/components/DoseGauge';
@@ -17,7 +16,7 @@ import { useSession } from '@/ui/session/useSession';
 import { fmtClock } from '@/ui/session/sessionMath';
 import { useIsMobile } from '@/hooks/use-mobile';
 
-const ADVISORIES: { title: string; grade: 'A' | 'B' | 'C' | 'D'; body: string; action?: 'iso' }[] = [
+const ADVISORIES: { title: string; grade: 'A' | 'B' | 'C' | 'D'; body: string; action?: 'iso'; source?: { title: string; url: string } }[] = [
   {
     title: 'EPILEPSY / PHOTOSENSITIVITY',
     grade: 'B',
@@ -37,7 +36,8 @@ const ADVISORIES: { title: string; grade: 'A' | 'B' | 'C' | 'D'; body: string; a
   {
     title: 'PACEMAKERS / IMPLANTS',
     grade: 'A',
-    body: 'Audio through headphones cannot affect implanted electronics — no mechanism exists. Listed because users ask.',
+    body: "Follow your implant manufacturer's guidance for headphones and other magnetic electronics. Headphone magnets can interfere with some implanted devices when held close to them.",
+    source: { title: 'American Heart Association: headphones and implanted devices', url: 'https://www.heart.org/en/health-topics/arrhythmia/prevention--treatment-of-arrhythmia/devices-that-may-interfere-with-icds-and-pacemakers' },
   },
   {
     title: 'DRIVING / OPERATING MACHINERY',
@@ -63,8 +63,8 @@ export default function Safety() {
   };
   const isMobile = useIsMobile();
 
-  const levelZone = s.volumeDb > -6 ? 'LOUD' : s.volumeDb > -18 ? 'CAUTION' : 'SAFE';
-  const zoneColor = levelZone === 'LOUD' ? 'var(--danger)' : levelZone === 'CAUTION' ? 'var(--amber)' : 'var(--grade-A, #5FA98C)';
+  const levelZone = s.volumeDb > -6 ? 'HIGHER OUTPUT' : s.volumeDb > -18 ? 'MID OUTPUT' : 'LOWER OUTPUT';
+  const zoneColor = levelZone === 'HIGHER OUTPUT' ? 'var(--danger)' : levelZone === 'MID OUTPUT' ? 'var(--amber)' : 'var(--text-2)';
   const sessionPct = Math.min(100, (s.elapsedSec / (s.limitMin * 60)) * 100);
 
   const confirm = (msg: string) => {
@@ -77,7 +77,7 @@ export default function Safety() {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24 }}>
         <h1 className="t-display-lg">Safety Center</h1>
         <p className="t-body text-2" style={{ marginTop: 8 }}>
-          Loud, long, or late is the actual risk here — not the beat frequency. This panel controls all three.
+          Set playback limits and review the listening notes. The app limits digital output; it does not measure sound level at your ear.
         </p>
 
         {/* Live safety state strip */}
@@ -96,7 +96,7 @@ export default function Safety() {
                 {'\u2009'}dBFS
               </span>{' '}
               <span className="t-label" style={{ color: zoneColor }}>
-                {levelZone === 'SAFE' ? 'LOWER-RISK' : levelZone}
+                {levelZone}
               </span>
             </div>
             <div className="t-label">LEVEL</div>
@@ -108,7 +108,7 @@ export default function Safety() {
                 %
               </span>
             </div>
-            <div className="t-label">DOSE THIS WEEK</div>
+            <div className="t-label">ESTIMATED DOSE THIS WEEK</div>
           </div>
           <div style={{ padding: isMobile ? '0 16px 8px 0' : '0 24px', borderLeft: isMobile ? 'none' : '1px solid var(--line-1)' }}>
             <div className="t-readout-lg" style={{ color: 'var(--text-1)' }}>
@@ -144,8 +144,8 @@ export default function Safety() {
               </span>
             </div>
             <p className="t-body-sm text-2" style={{ margin: '4px 0 0' }}>
-              Headphones and level, driving, seizure history, medication precaution, crisis resources. START is
-              refused until it has been read once; the governor re-checks the front panel at every start.
+              Review the listening notes before your first session. Your acknowledgment is saved on this device;
+              playback limits are checked each time you start.
             </p>
           </div>
           <button type="button" className="chip" onClick={s.openAdvisory} data-testid="review-advisory">
@@ -159,7 +159,7 @@ export default function Safety() {
               s.resetDoseLog();
               confirm('DOSE WEEK RESET — 0%');
             }}
-            title="Start a new 7-day dose window (after changing headphones or calibration)"
+            title="Clear the local 7-day Studio estimate. This does not change past sound exposure."
           >
             RESET DOSE WEEK
           </button>
@@ -179,16 +179,15 @@ export default function Safety() {
       <div className="grid gap-4" style={{ gridTemplateColumns: isMobile ? '1fr' : 'repeat(12, 1fr)' }}>
         {/* Panic panel — first in mobile order */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 5' }}>
-          <Panel title="PANIC" style={{ height: '100%' }}>
+          <Panel title="STOP ALL SOUND" style={{ height: '100%' }}>
             <PanicButtonLarge />
             <p className="t-body-sm text-2" style={{ margin: '16px 0 8px' }}>
-              Single press, no confirm — a confirm dialog on an emergency stop is an anti-pattern. Mutes at 0 ms,
-              everywhere. Keyboard: <span className="font-mono2">P</span> (test:{' '}
+              Stops Studio and every preview immediately. Keyboard: <span className="font-mono2">P</span> (show the stopped screen:{' '}
               <span className="font-mono2">Shift+P</span>).
             </p>
             {isMobile && (
               <p className="t-caption text-3" style={{ margin: '0 0 8px' }}>
-                On touch devices the same panic control is pinned in the bottom bar of every screen.
+                On touch devices, Stop all sound stays in the bottom bar.
               </p>
             )}
             <button
@@ -196,13 +195,13 @@ export default function Safety() {
               className="chip"
               onClick={() => {
                 s.rehearsePanic();
-                confirm('PANIC REHEARSAL — VISUAL ONLY');
+                confirm('STOPPED SCREEN PREVIEW — NO AUDIO');
               }}
             >
-              TEST PANIC
+              Preview stopped screen
             </button>
             <p className="t-caption text-3" style={{ marginTop: 8 }}>
-              Rehearse it once. Muscle memory beats reading.
+              This preview opens only while Studio is stopped. Keep sound off closes it without starting audio.
             </p>
           </Panel>
         </motion.div>
@@ -289,10 +288,8 @@ export default function Safety() {
               />
             </div>
             <p className="t-caption text-3" style={{ marginBottom: 20 }}>
-              No fixed ceiling any more (2.1 had a 90-minute one). Set your own cap and the session length can never
-              exceed it: lowering the cap applies at once, even mid-session; raising it never loosens a running
-              session. Infant mode keeps its 45-minute cap regardless, and the H.870 dose meter keeps counting
-              whatever the cap. Remembered with your front panel.
+              The session length cannot exceed your cap. Lowering the cap applies immediately; raising it applies
+              to the next session. Infant mode keeps its 45-minute cap. These settings are saved on this device.
             </p>
             <div className="flex items-start gap-6 flex-wrap">
               <div>
@@ -303,7 +300,7 @@ export default function Safety() {
                     grade="A"
                     compact
                     citation={{
-                      verdict: 'Dose math is real occupational-health engineering.',
+                      verdict: 'The grade applies to the cited dose model, not a measurement at your ear.',
                       summary:
                         'ITU-T H.870 / WHO Make Listening Safe, 3 dB exchange rate. Our headphone-level estimate is approximate — flat-response assumption — stated as such.',
                       source: 'ITU-T H.870 (2019); WHO-NMH-NVI-19.4; NIOSH REL 85 dBA / 3 dB',
@@ -317,8 +314,8 @@ export default function Safety() {
                   EST. LEVEL {s.volumeDb.toFixed(0)} dBFS ≈ {s.estDbA.toFixed(0)} dBA (headphone est.) · DOSE {s.dosePercent.toFixed(0)}%
                 </div>
                 <p className="t-caption text-3" style={{ marginTop: 8, maxWidth: 380 }}>
-                  Without calibrated headphones this is an estimate within roughly ±6 dB — a digital cap is not an
-                  acoustic limit. We show the uncertainty instead of hiding it.
+                  This is a model estimate, not a measurement. Headphones and device volume change actual listening
+                  level. The log covers Studio sessions; short previews and other audio are not included.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -372,11 +369,9 @@ export default function Safety() {
               {s.governor.infantMode ? 'ON' : 'OFF'}
             </button>
             <p className="t-body-sm text-2" style={{ margin: '12px 0' }}>
-              For playback in a room with an infant present. Enforced: a ≤1 kHz low-pass in the live signal path, a
-              level ceiling of −26 dBFS (≈{INFANT_CEILING_DBA} dBA at the infant's ear on the headphone estimate; AAP-aligned,
-              NICU hourly Leq ≤ {NICU_LEQ_DBA} dBA), an automatic stop and a 45-minute cap. Turning it on also sets the
-              fader to −40 dBFS and the limit to 20:00 as gentler starting points, and the Presets screen shows only
-              the Infant category.
+              This mode adds a ≤1 kHz low-pass, caps digital output at −26 dBFS, and limits a session to 45 minutes.
+              Turning it on sets the fader to −40 dBFS and the session to 20 minutes. Only Infant presets are shown.
+              These controls do not measure or guarantee sound level in the room or at an infant's ear.
             </p>
             <div className="flex gap-2" style={{ marginBottom: 8 }}>
               <GradeBadge grade="D" compact citation={{ verdict: "Grade D as a 'feature'.", summary: 'There is no evidence binaural audio benefits infants, and no safety trials either.', source: 'Hugh et al., Pediatrics 2014 (PMID 24590753)' }} />
@@ -407,9 +402,10 @@ export default function Safety() {
                   {openAdv === i && (
                     <div style={{ marginTop: 8 }}>
                       <p className="t-body-sm text-2">{a.body}</p>
+                      {a.source && <a className="t-body-sm" href={a.source.url} target="_blank" rel="noreferrer">{a.source.title}</a>}
                       {a.action === 'iso' && (
-                        <button type="button" className="chip" style={{ marginTop: 8 }} onClick={() => { s.setMode('binaural'); confirm('ISOCHRONIC DISABLED GLOBALLY'); }}>
-                          DISABLE ISOCHRONIC GLOBALLY
+                        <button type="button" className="chip" style={{ marginTop: 8 }} onClick={() => { s.setMode('binaural'); confirm('STUDIO SET TO BINAURAL'); }}>
+                          Switch Studio to binaural
                         </button>
                       )}
                     </div>
@@ -431,7 +427,7 @@ export default function Safety() {
           <Panel title="IF SOMETHING FEELS WRONG">
             <p className="t-body-sm text-2" style={{ marginBottom: 12 }}>
               If audio playback ever coincides with dizziness, visual disturbance, chest symptoms, or a panic response:
-              stop playback, sit down, breathe. That's the whole protocol.
+              stop playback. This app cannot assess symptoms or tell you their cause.
             </p>
             <div className="t-readout-md" style={{ color: 'var(--amber)', marginBottom: 4 }}>
               US — call/text 988

@@ -5,7 +5,7 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
-import { Check, Download, Headphones, Link2, MoonStar, Play, RotateCcw, Send, Square, Volume2, VolumeX } from 'lucide-react';
+import { Check, Download, Headphones, Link2, MoonStar, Pause, Play, RotateCcw, Send, Square, Volume2, VolumeX } from 'lucide-react';
 import { useSession } from '@/ui/session/useSession';
 import { fmtClock } from '@/ui/session/sessionMath';
 import { FADE_OUT_CHOICES } from '@/ui/session/sessionDefaults';
@@ -21,14 +21,17 @@ import { StudioCymatics } from '@/ui/components/StudioCymatics';
 import { PhaseTimeline } from '@/ui/components/PhaseTimeline';
 import { InfoPopover } from '@/ui/components/InfoPopover';
 import { BowlSet } from '@/ui/components/BowlSet';
+import { PanicButton } from '@/ui/components/Panic';
 import { BANDS, BAND_COLOR, NOISE_COLOR, NOISE_SLOPE, bandForBeat } from '@/ui/theme';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { INFANT_MAX_SESSION_MIN, MAX_SESSION_MIN } from '@/safety/governor';
+import './studio.css';
 import type { EntrainmentMode, NoiseColor } from '@/engine';
 
 const MODE_DESC: Record<EntrainmentMode, string> = {
-  binaural: 'Two slightly detuned carriers, one per ear. Headphones required. Percept valid ≤1 kHz carrier, ≤30 Hz beat.',
-  monaural: 'Both tones summed acoustically before the ear. Stronger cortical AM response than binaural (Orozco Perez 2020).',
-  isochronic: 'A single tone gated on/off at the beat rate. Works on speakers. Strongest AM stimulus of the three.',
+  binaural: 'One tone in each ear, with a small frequency difference. Use headphones.',
+  monaural: 'Two tones heard together. Their frequency difference produces acoustic beating.',
+  isochronic: 'One tone pulsed on and off at the chosen rate. Works on speakers or headphones.',
 };
 
 const NATURE_KINDS = ['rain', 'ocean', 'stream', 'fire', 'thunder'] as const;
@@ -37,6 +40,7 @@ export default function Studio() {
   const s = useSession();
   const navigate = useNavigate();
   const [saveOpen, setSaveOpen] = useState(false);
+  const [durationDraft, setDurationDraft] = useState<string | null>(null);
   const [saveName, setSaveName] = useState('');
   const [saved, setSaved] = useState(false);
   const saveInputRef = useRef<HTMLInputElement>(null);
@@ -116,108 +120,96 @@ export default function Studio() {
 
   const limitPct = Math.min(100, (s.elapsedSec / (s.limitMin * 60)) * 100);
 
+  const durationMax = Math.min(MAX_SESSION_MIN, s.governor.maxSessionMin, s.governor.infantMode ? INFANT_MAX_SESSION_MIN : Infinity, s.running ? s.limitMin : Infinity);
+  const activeMix = [
+    ...(s.noiseOn ? Object.entries(s.noiseDb).filter(([, db]) => Number.isFinite(db) && db > -60).map(([color]) => `${color} noise`) : []),
+    ...(s.layersOn && s.nature.on ? [s.nature.kind] : []),
+    ...(s.layersOn && s.bowls.some((b) => b.on) ? [`${s.bowls.filter((b) => b.on).length} bowls`] : []),
+    ...(s.layersOn && s.bellEveryMin > 0 ? [`bell every ${s.bellEveryMin} min`] : []),
+  ];
+
   return (
     <div style={{ padding: isMobile ? '20px 16px 40px' : '32px 40px 48px', maxWidth: 1440, margin: '0 auto' }}>
-      {/* ROW A — Transport bar (wraps to two rows below md) */}
-      <motion.div
-        initial={{ y: -16, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        className="panel flex items-center gap-5"
-        style={{
-          minHeight: 64,
-          height: isMobile ? 'auto' : 64,
-          padding: isMobile ? '8px 12px' : '0 16px',
-          marginBottom: 16,
-          flexWrap: isMobile ? 'wrap' : 'nowrap',
-          rowGap: isMobile ? 10 : undefined,
-          columnGap: isMobile ? 12 : undefined,
-        }}
-      >
-        <button
-          type="button"
-          onClick={s.running ? s.stop : s.start}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 8,
-            height: 48,
-            padding: '0 20px',
-            background: s.running ? 'transparent' : 'var(--amber)',
-            border: s.running ? '1px solid var(--amber)' : 'none',
-            borderRadius: 2,
-            color: s.running ? 'var(--amber)' : 'var(--text-inv)',
-            fontFamily: '"IBM Plex Mono", monospace',
-            fontSize: 12,
-            fontWeight: 600,
-            letterSpacing: '0.12em',
-            cursor: 'pointer',
-          }}
-        >
-          {s.running ? <Square size={14} /> : <Play size={14} />}
-          {s.running ? 'STOP' : 'START SESSION'}
-        </button>
-        <Led state={s.running ? 'amber' : 'off'} title={s.running ? 'Engine running' : 'Engine off'} />
-        <span className="t-readout-lg" style={{ color: s.running ? 'var(--text-1)' : 'var(--text-3)' }}>
-          {fmtClock(s.elapsedSec)}
-        </span>
-        <div title="Session length — set it (and your own cap) in Safety Center">
-          <div className="t-readout-sm" style={{ color: limitPct >= 80 ? 'var(--danger)' : 'var(--text-3)' }}>
-            LIMIT {fmtClock(s.limitMin * 60)}
+      <header className="studio-heading">
+        <div><h1 className="t-h1">Studio</h1><p className="t-body-sm text-2">Play a session. Open sound controls to change the mix.</p></div>
+        <button type="button" className="chip" onClick={() => navigate('/presets')}>Choose another sound</button>
+      </header>
+      <section className="panel studio-player" aria-label="Session player">
+        <div className="studio-sound-heading">
+          <div>
+            <span className="t-label text-3">Current sound</span>
+            <h2 className="t-h2">{s.presetName ?? 'Studio draft'}</h2>
+            <p className="t-caption text-2">{s.dirty ? 'Edited settings' : s.presetName ? 'Preset loaded' : 'Default tone sequence'} · {s.phases.length} phases · {fmtClock(s.phases.reduce((total, p) => total + p.durationSec, 0))} sequence</p>
           </div>
-          <div style={{ width: 120, height: 2, background: 'var(--ink-4)', marginTop: 4 }}>
-            <div
-              style={{
-                height: '100%',
-                width: `${limitPct}%`,
-                background: limitPct >= 80 ? 'var(--danger)' : 'var(--amber)',
-                transition: 'width 1s linear',
-              }}
-            />
+          <span className="chip" role="status" data-testid="studio-playback-state">
+            {s.running ? s.paused ? 'Studio paused' : s.fading ? 'Studio fading' : s.muted ? 'Studio playing · muted' : 'Studio playing' : 'Studio stopped'}
+          </span>
+        </div>
+        <p className="t-body-sm text-2" data-testid="studio-mix-summary">
+          {s.waveform} tone · {s.carrierHz.toFixed(2)} Hz · {s.mode} · {s.beatHz.toFixed(2)} Hz {s.mode === 'binaural' ? 'difference' : 'rate'}.
+          {' '}{activeMix.length ? `Added: ${activeMix.join(', ')}.` : 'No added noise or layers.'}
+        </p>
+        <div className="studio-transport">
+          <button type="button" onClick={s.running ? s.stop : s.start} className="studio-play-button">
+            {s.running ? <Square size={16} /> : <Play size={16} />}{s.running ? 'Stop session' : 'Play session'}
+          </button>
+          {s.running && <button type="button" className="chip studio-secondary-button" onClick={s.togglePause}>
+            {s.paused ? <Play size={14} /> : <Pause size={14} />}{s.paused ? 'Resume session' : 'Pause session'}
+          </button>}
+          <span className="t-readout-md">{fmtClock(s.elapsedSec)} <span className="t-caption text-3">elapsed · {fmtClock(remainingSec)} remaining</span></span>
+        </div>
+        <div className="studio-basic-controls">
+          <div>
+            <label className="t-label" htmlFor="studio-duration">Duration in minutes</label>
+            <div className="studio-duration-row">
+              <input id="studio-duration" type="number" min={1} max={durationMax} step={1}
+                value={durationDraft ?? s.limitMin}
+                onChange={(e) => setDurationDraft(e.target.value)}
+                onBlur={() => { if (durationDraft?.trim() && Number.isFinite(Number(durationDraft))) s.setLimitMin(Number(durationDraft)); setDurationDraft(null); }}
+                onKeyDown={(e) => { if (e.key === 'Enter') e.currentTarget.blur(); }} />
+              {[5, 10, 20].map((minutes) => <button key={minutes} type="button" className="chip" aria-pressed={s.limitMin === minutes}
+                disabled={minutes > durationMax} onClick={() => { setDurationDraft(null); s.setLimitMin(minutes); }}>{minutes} min</button>)}
+            </div>
+            <p className="t-caption text-3">{s.running ? 'Stop the session to make it longer.' : 'Playback stops at this duration; the sequence stays unchanged.'}</p>
+          </div>
+          <div>
+            <label className="t-label" htmlFor="studio-output">Output level · {s.volumeDb.toFixed(1)} dBFS</label>
+            <div className="studio-volume-row">
+              <input id="studio-output" type="range" min={-60} max={s.governor.maxGainDbFs} step={0.5} value={s.volumeDb}
+                onChange={(e) => s.setVolumeDb(parseFloat(e.target.value))} aria-label="Output level" />
+              <button type="button" className="chip" onClick={() => s.setMuted(!s.muted)} aria-label={s.muted ? 'Unmute Studio' : 'Mute Studio'}>
+                {s.muted ? <VolumeX size={16} /> : <Volume2 size={16} />}{s.muted ? 'Unmute' : 'Mute'}
+              </button>
+            </div>
+            <p className="t-caption text-3">Device volume also sets listening loudness. Begin low.</p>
           </div>
         </div>
-        <button
-          type="button"
-          onClick={() => navigate('/presets')}
-          className="chip"
-          title="Open preset quick-switcher"
-          style={{ position: 'relative' }}
-        >
-          {s.presetName ?? 'CUSTOM'}
-          {s.presetGrade && <GradeBadge grade={s.presetGrade} compact />}
-          {s.dirty && (
-            <span
-              style={{ position: 'absolute', top: -2, right: -2, width: 6, height: 6, borderRadius: '50%', background: 'var(--amber)' }}
-              title="Unsaved changes"
-            />
-          )}
-        </button>
-        <div
-          className="flex items-center gap-2"
-          style={isMobile ? { flexBasis: '100%', flexWrap: 'wrap', rowGap: 8 } : { marginLeft: 'auto' }}
-        >
-          <input
-            type="range"
-            min={-60}
-            max={0}
-            step={0.5}
-            value={s.volumeDb}
-            onChange={(e) => s.setVolumeDb(parseFloat(e.target.value))}
-            aria-label="Output level"
-            style={{ width: isMobile ? '100%' : 110, minWidth: isMobile ? 0 : undefined, accentColor: '#D9A441' }}
-          />
-          <span className="t-readout-sm text-2" style={{ width: 64 }}>
-            {s.volumeDb.toFixed(1)} dB
-          </span>
-          <button
-            type="button"
-            onClick={() => s.setMuted(!s.muted)}
-            className="chip"
-            style={{ padding: '0 8px' }}
-            title={s.muted ? 'Unmute' : 'Mute'}
-          >
-            {s.muted ? <VolumeX size={13} /> : <Volume2 size={13} />}
-          </button>
+        <div className="studio-progress" aria-hidden="true"><div style={{ width: `${limitPct}%` }} /></div>
+      </section>
+
+      <div className="studio-notices" aria-live="polite">
+        {s.previewId && <p className="t-body-sm">A preview is playing. <button className="chip" type="button" onClick={s.stopPreview}>Stop preview</button></p>}
+        {s.mode === 'binaural' && <WarningChip tone="teal"><Headphones size={11} /> HEADPHONES REQUIRED</WarningChip>}
+        {s.interrupted && <WarningChip tone="amber">Studio was interrupted — press Resume session to continue.</WarningChip>}
+        {s.startBlocked.map((reason) => <WarningChip key={reason} tone="danger">{reason}</WarningChip>)}
+        {s.fading && <span data-testid="fading-notice"><WarningChip tone="amber">FADING · {fmtClock(remainingSec)}</WarningChip> <button type="button" className="chip" onClick={s.cancelSleepFade}>Cancel fade</button></span>}
+        {(exportState === 'exporting' || s.exporting) && <p role="status">Rendering WAV…</p>}
+        {exportState === 'done' && <p role="status">WAV saved.</p>}
+        {(exportState === 'error' || s.exportError) && <div role="alert"><WarningChip tone="danger">Export failed{s.exportError ? `: ${s.exportError}` : ''}</WarningChip> <button type="button" className="chip" onClick={runExport}>Retry export</button></div>}
+      </div>
+
+      <details className="studio-disclosure" data-testid="studio-file-options">
+        <summary>Save, export & session options <span className="t-caption text-3">WAV, share link, end fade and reset</span></summary>
+      {/* ROW A2 — Session tools (v2): sleep fade, share, export format, reset + notices */}
+      <motion.div
+        initial={{ y: -8, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.2, delay: 0.04 }}
+        className="panel"
+        data-testid="session-tools"
+        style={{ padding: isMobile ? '10px 12px' : '10px 16px', marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 10 }}
+      >
+        <div className="studio-file-actions">
           <button type="button" className="chip" onClick={() => setSaveOpen(true)}>
             SAVE AS PRESET
           </button>
@@ -236,26 +228,7 @@ export default function Studio() {
             <Download size={11} className={exportSpin ? 'animate-spin' : undefined} />
             {exportState === 'exporting' ? (exportSpin ? 'RENDERING…' : 'WAV') : exportState === 'done' ? 'SAVED ✓' : 'WAV'}
           </button>
-          {exportState === 'error' && (
-            <span className="flex items-center gap-2" role="alert">
-              <WarningChip tone="danger">Export failed</WarningChip>
-              <button type="button" className="chip" onClick={runExport}>
-                RETRY
-              </button>
-            </span>
-          )}
         </div>
-      </motion.div>
-
-      {/* ROW A2 — Session tools (v2): sleep fade, share, export format, reset + notices */}
-      <motion.div
-        initial={{ y: -8, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.2, delay: 0.04 }}
-        className="panel"
-        data-testid="session-tools"
-        style={{ padding: isMobile ? '10px 12px' : '10px 16px', marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 10 }}
-      >
         <div className="flex items-center gap-3" style={{ flexWrap: 'wrap', rowGap: 8 }}>
           <span className="t-label" style={{ color: 'var(--text-3)' }}>
             <MoonStar size={11} style={{ display: 'inline', marginRight: 6, verticalAlign: '-1px' }} />
@@ -287,14 +260,6 @@ export default function Studio() {
             >
               FADE NOW
             </button>
-          )}
-          {s.fading && (
-            <span className="flex items-center gap-2" data-testid="fading-notice">
-              <WarningChip tone="amber">FADING · {fmtClock(remainingSec)}</WarningChip>
-              <button type="button" className="chip" style={{ height: 24, padding: '0 8px', fontSize: 10 }} onClick={s.cancelSleepFade}>
-                CANCEL
-              </button>
-            </span>
           )}
           <span className="t-caption" style={{ color: 'var(--text-3)' }}>
             {s.fadeOutSec > 0 ? `fade begins at ${fmtClock(fadeStartsAtSec)} · limit ${fmtClock(s.limitMin * 60)}` : `hard stop at ${fmtClock(s.limitMin * 60)}`}
@@ -361,25 +326,11 @@ export default function Studio() {
             </button>
           </div>
         )}
-        {(s.mode === 'binaural' || s.startBlocked.length > 0 || s.interrupted || s.exportError) && (
-          <div className="flex items-center gap-2" style={{ flexWrap: 'wrap' }}>
-            {s.mode === 'binaural' && (
-              <WarningChip tone="teal">
-                <Headphones size={11} style={{ display: 'inline', marginRight: 4, verticalAlign: '-1px' }} />
-                HEADPHONES REQUIRED
-              </WarningChip>
-            )}
-            {s.interrupted && <WarningChip tone="amber">AUDIO INTERRUPTED BY THE SYSTEM — PAUSED · PRESS RESUME</WarningChip>}
-            {s.exportError && <WarningChip tone="danger">EXPORT: {s.exportError}</WarningChip>}
-            {s.startBlocked.map((r) => (
-              <WarningChip key={r} tone="danger">
-                {r}
-              </WarningChip>
-            ))}
-          </div>
-        )}
       </motion.div>
+      </details>
 
+      <details className="studio-disclosure" data-testid="studio-sound-controls">
+        <summary>Sound controls <span className="t-caption text-3">Tones, noise, layers, sequence and signal views</span></summary>
       <div className="grid gap-4" style={{ gridTemplateColumns: isMobile ? '1fr' : 'repeat(12, 1fr)' }}>
         {/* ROW B — Engine panel */}
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.05 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 4' }}>
@@ -694,6 +645,8 @@ export default function Studio() {
         </motion.div>
       </div>
 
+      </details>
+
       {/* Save-as-preset modal */}
       {saveOpen && (
         <div
@@ -705,12 +658,11 @@ export default function Studio() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.14 }}
             className="panel"
+            role="dialog" aria-modal="true" aria-label="Save as preset"
             style={{ width: 'min(380px, calc(100vw - 32px))' }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="t-h3" style={{ marginBottom: 12 }}>
-              Save as preset
-            </h3>
+            <div className="studio-sound-heading" style={{ marginBottom: 12 }}><h3 className="t-h3">Save as preset</h3><PanicButton /></div>
             <input
               ref={saveInputRef}
               autoFocus
@@ -725,7 +677,7 @@ export default function Studio() {
               style={{ width: '100%', background: 'var(--ink-4)', border: '1px solid var(--line-2)', borderRadius: 2, color: 'var(--text-1)', padding: '8px 10px', fontSize: 13, marginBottom: 8 }}
             />
             <p className="t-caption text-3" style={{ marginBottom: 12 }}>
-              Saved to this browser session with the auto-computed grade of its frequencies. Grade cannot be edited upward.
+              Saved in My presets on this device. Source grades describe claims, not sound quality.
             </p>
             <div className="flex gap-2">
               <button

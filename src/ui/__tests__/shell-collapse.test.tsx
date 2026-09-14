@@ -20,7 +20,8 @@ import { MemoryRouter } from 'react-router';
 import { AppShell } from '../layout/AppShell';
 import { SessionProvider } from '../session/SessionContext';
 import { seedAdvisoryAck } from '@/test/helpers';
-import { RESEARCH_ROUTES, TOOL_ROUTES } from '@/app/routes';
+import { RESEARCH_ROUTES } from '@/app/routes';
+import { DISCLOSURE_CATEGORIES } from '@/app/navigation';
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -138,7 +139,7 @@ afterEach(async () => {
 });
 
 describe('V3 collapsible sidebar — three states', () => {
-  it('full state: tools visible, theory collapsed, every route reachable, footer controls intact', async () => {
+  it('full state: primary tasks visible, specialized groups collapsed, every route reachable', async () => {
     const c = await renderShell(1280);
     const rail = railOf(c)!;
     expect(rail).toBeTruthy();
@@ -148,7 +149,7 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(rail.style.transition).toContain('var(--motion-2)');
     // Labels visible.
     expect(rail.textContent).toContain('STUDIO');
-    expect(rail.textContent).toContain('REPLICATION BAY');
+    expect(rail.textContent).not.toContain('REPLICATION BAY');
     // Practical tools are visible; references are one native-button disclosure.
     const researchToggle = rail.querySelector<HTMLButtonElement>('[data-testid="rail-research-toggle"]')!;
     expect(researchToggle.tagName).toBe('BUTTON');
@@ -156,14 +157,17 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(researchToggle.getAttribute('aria-expanded')).toBe('false');
     const researchContent = document.getElementById(researchToggle.getAttribute('aria-controls')!)!;
     expect(researchContent.hidden).toBe(true);
-    for (const route of TOOL_ROUTES) expect(railHrefs(c).has(route.path)).toBe(true);
+    expect([...railHrefs(c)]).toEqual(['/', '/presets', '/studio', '/safety']);
     for (const route of RESEARCH_ROUTES) expect(railHrefs(c).has(route.path)).toBe(false);
     researchToggle.focus();
     await click(researchToggle);
     expect(document.activeElement).toBe(researchToggle);
     expect(researchContent.hidden).toBe(false);
     expect(researchToggle.getAttribute('aria-expanded')).toBe('true');
-    // Expanding makes every registered destination reachable.
+    for (const category of DISCLOSURE_CATEGORIES.filter((category) => category.id !== 'research')) {
+      await click(rail.querySelector<HTMLElement>(`[data-testid="rail-${category.id}-toggle"]`)!);
+    }
+    // Expanding all task groups makes every destination reachable, without duplicates.
     const hrefs = railHrefs(c);
     expect(hrefs.size).toBe(ALL_ROUTE_PATHS.length);
     for (const p of ALL_ROUTE_PATHS) expect(hrefs.has(p), `rail links to ${p}`).toBe(true);
@@ -175,7 +179,7 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     expect(toggle.getAttribute('aria-label')).toBeTruthy();
     expect(toggle.getAttribute('aria-controls')).toBe('module-rail');
-    expect(rail.textContent).toContain('PANIC');
+    expect(rail.querySelector('button[title^="Stop all sound"], button[aria-label^="Stop all sound"]')).toBeTruthy();
     // No reopen handle while the rail is visible.
     expect(c.querySelector('[data-testid="rail-reopen-handle"]')).toBeNull();
   });
@@ -188,13 +192,15 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(rail.style.width).toBe('64px');
     // Labels hidden.
     expect(rail.textContent).not.toContain('STUDIO');
-    expect(rail.textContent).not.toContain('PANIC');
+    expect(rail.textContent).not.toContain('Stop all sound');
     const researchToggle = rail.querySelector<HTMLButtonElement>('[data-testid="rail-research-toggle"]')!;
     expect(researchToggle.getAttribute('aria-label')).toBe('Theory & research');
     expect(researchToggle.getAttribute('title')).toBe('Show Theory & research');
     expect(researchToggle.getAttribute('aria-expanded')).toBe('false');
     expect(rail.querySelector('a[href="/theory"]')).toBeNull();
-    await click(researchToggle);
+    for (const category of DISCLOSURE_CATEGORIES) {
+      await click(rail.querySelector<HTMLElement>(`[data-testid="rail-${category.id}-toggle"]`)!);
+    }
     // Every route can still be reached, with tooltip and accessible name.
     const links = Array.from(rail.querySelectorAll('a[href]'));
     expect(links.length).toBe(ALL_ROUTE_PATHS.length);
@@ -209,9 +215,9 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(footer.querySelector('[data-testid="density-toggle"]')).toBeTruthy();
     expect(footer.querySelector('[data-testid="rail-collapse-toggle"]')).toBeTruthy();
     // Panic reachable: icon panic in rail footer + status-bar panic.
-    const railPanic = footer.querySelector('button[aria-label^="Panic"]');
+    const railPanic = footer.querySelector('button[title^="Stop all sound"], button[aria-label^="Stop all sound"]');
     expect(railPanic).toBeTruthy();
-    expect(c.textContent).toContain('PANIC');
+    expect(c.querySelector('button[title^="Stop all sound"], button[aria-label^="Stop all sound"]')).toBeTruthy();
   });
 
   it('reveals a theory deep link, keeps its cue when collapsed, and reveals another theory destination', async () => {
@@ -222,12 +228,12 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(rail.querySelector('a[href="/channeled"]')!.getAttribute('aria-current')).toBe('page');
     await click(toggle);
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
-    expect(rail.textContent).toContain('Current page: CHANNELED SOURCES');
-    expect(toggle.getAttribute('aria-label')).toContain('current page: CHANNELED SOURCES');
+    expect(rail.textContent).toContain('Current page: Channeled Sources');
+    expect(toggle.getAttribute('aria-label')).toContain('current page: Channeled Sources');
     // A page reached through the palette also reveals its position in navigation.
     await pressKey('k', { ctrlKey: true });
     const item = Array.from(document.querySelectorAll<HTMLElement>('[cmdk-item]')).find((el) =>
-      el.textContent === 'THEORY EXPLORER',
+      el.getAttribute('data-value') === '/theory',
     )!;
     await click(item);
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
@@ -245,8 +251,8 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     expect(rail.querySelector('a[href="/channeled"]')!.getAttribute('aria-current')).toBe('page');
     await click(toggle);
-    expect(toggle.getAttribute('aria-label')).toContain('current page: CHANNELED SOURCES');
-    expect(toggle.getAttribute('title')).toContain('current page: CHANNELED SOURCES');
+    expect(toggle.getAttribute('aria-label')).toContain('current page: Channeled Sources');
+    expect(toggle.getAttribute('title')).toContain('current page: Channeled Sources');
   });
 
   it('hidden state: 0px rail, 16px amber-edge reopen handle restores full, panic still reachable', async () => {
@@ -263,7 +269,7 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(handle.getAttribute('aria-expanded')).toBe('false');
     expect(handle.getAttribute('aria-controls')).toBe('module-rail');
     // Panic reachable via the status bar.
-    expect(c.textContent).toContain('PANIC');
+    expect(c.querySelector('button[title^="Stop all sound"], button[aria-label^="Stop all sound"]')).toBeTruthy();
     // Handle click restores the full rail.
     await click(handle);
     expect(railOf(c)!.dataset.state).toBe('full');
@@ -324,6 +330,32 @@ describe('V3 collapsible sidebar — toggle + keyboard + persistence', () => {
 });
 
 describe('V3 collapsible sidebar — command palette + mobile isolation', () => {
+  it('finds a recording tool by its old name, supports clear search, and opens its category', async () => {
+    const c = await renderShell(1280);
+    await pressKey('k', { ctrlKey: true });
+    const palette = document.querySelector<HTMLElement>('[data-testid="command-palette"]')!;
+    const input = palette.querySelector<HTMLInputElement>('input')!;
+    const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!;
+    const search = async (value: string) => {
+      await act(async () => {
+        setValue.call(input, value);
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    };
+    await search('does-not-exist');
+    expect(palette.textContent).toContain('No tools or actions match');
+    const clear = Array.from(palette.querySelectorAll<HTMLButtonElement>('button')).find((button) => button.textContent === 'Clear search')!;
+    await click(clear);
+    expect(input.value).toBe('');
+    await search('sample lab');
+    expect(palette.querySelectorAll('[cmdk-item]')).toHaveLength(1);
+    const recording = palette.querySelector<HTMLElement>('[cmdk-item][data-value="/sample-lab"]')!;
+    expect(recording.textContent).toContain('Recording analysis');
+    await click(recording);
+    expect(railOf(c)!.querySelector('[data-testid="rail-analyze-toggle"]')!.getAttribute('aria-expanded')).toBe('true');
+    expect(railOf(c)!.querySelector('a[href="/sample-lab"]')!.getAttribute('aria-current')).toBe('page');
+  });
+
   it("palette lists 'TOGGLE SIDEBAR' and running it collapses the rail", async () => {
     const c = await renderShell(1280);
     expect(c.querySelector('[data-testid="command-palette"]')).toBeNull();

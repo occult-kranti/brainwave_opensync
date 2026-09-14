@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml/badge.svg)](https://github.com/occult-kranti/brainwave_opensync/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-2.5.0-amber)
+![Version](https://img.shields.io/badge/version-3.0.0-amber)
 
 Browser tools for creating sounds, composing harmonies, comparing audio methods, and reading
 their sources. Presets carry A–D evidence grades. Audio is generated locally; no account is required.
@@ -10,6 +10,9 @@ their sources. Presets carry A–D evidence grades. Audio is generated locally; 
 **Live site (GitHub Pages):** https://occult-kranti.github.io/brainwave_opensync/ — installable as a PWA.
 
 ---
+
+
+Version 3 starts with **Listen, Create, and Inspect**. [Presets](https://occult-kranti.github.io/brainwave_opensync/presets) offers three sounds to try, the complete catalog, Bashar sounds, and saved Studio presets. Studio keeps playback, duration, level, and active settings visible; sound editing and file options open on request. Specialist tools and Theory & research are grouped in the sidebar. See the [panel decisions](docs/panel/loop-1-decisions.md) for scope and preservation checks.
 
 ## What it is
 

@@ -1,25 +1,23 @@
 /**
  * PanicButton (status-bar quick variant + full Safety-Center variant) and the
  * PanicOverlay (safety.md): single-press, no confirm, instant mute, dim
- * overlay with RESUME SAFELY (−12 dB, 2 s ramp).
+ * overlay that keeps sound off unless Studio playback is explicitly chosen.
  */
 
 import { useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { OctagonX } from 'lucide-react';
-import { fmtClock } from '../session/sessionMath';
 import { useSession } from '../session/useSession';
 import { useModalA11y } from '../hooks';
 
 /** Compact status-bar panic button (danger outline). */
 export function PanicButton() {
-  const { panic, running } = useSession();
+  const { panic } = useSession();
   return (
     <button
       type="button"
       onClick={panic}
-      title="Panic — stop everything (P). Single press, no confirm."
-      className={running ? 'panic-breathe' : undefined}
+      title="Stop all sound (P). Stops sessions and previews immediately."
       style={{
         display: 'inline-flex',
         alignItems: 'center',
@@ -33,12 +31,12 @@ export function PanicButton() {
         fontFamily: '"IBM Plex Mono", monospace',
         fontSize: 11,
         fontWeight: 600,
-        letterSpacing: '0.12em',
+        letterSpacing: '0.03em',
         cursor: 'pointer',
       }}
     >
       <OctagonX size={13} />
-      PANIC
+      Stop all sound
     </button>
   );
 }
@@ -51,14 +49,13 @@ export function PanicButton() {
  * never behind an overlay.
  */
 export function MobilePanicButton() {
-  const { panic, running } = useSession();
+  const { panic } = useSession();
   return (
     <button
       type="button"
       data-testid="mobile-panic"
-      aria-label="Panic — stop everything. Single tap, no confirm."
+      aria-label="Stop all sound. Stops sessions and previews immediately."
       onClick={panic}
-      className={running ? 'panic-breathe' : undefined}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -74,27 +71,28 @@ export function MobilePanicButton() {
         color: 'var(--danger)',
         background: 'rgba(196,99,79,0.14)',
         fontFamily: '"IBM Plex Mono", monospace',
-        fontSize: 10,
+        fontSize: 9.5,
+        lineHeight: 1.2,
+        whiteSpace: 'normal',
         fontWeight: 600,
-        letterSpacing: '0.12em',
+        letterSpacing: '0.03em',
         cursor: 'pointer',
         touchAction: 'manipulation',
       }}
     >
       <OctagonX size={16} />
-      PANIC
+      <span>Stop all sound</span>
     </button>
   );
 }
 
 /** Full-width Safety Center panic button (96px, danger fill). */
 export function PanicButtonLarge() {
-  const { panic, running } = useSession();
+  const { panic } = useSession();
   return (
     <button
       type="button"
       onClick={panic}
-      className={running ? 'panic-breathe' : undefined}
       style={{
         position: 'relative',
         width: '100%',
@@ -122,25 +120,25 @@ export function PanicButtonLarge() {
           opacity: 0.7,
         }}
       />
-      PANIC — STOP EVERYTHING
+      Stop all sound
     </button>
   );
 }
 
 /** Full-screen dim overlay shown after a panic stop. */
 export function PanicOverlay() {
-  const { panicked, elapsedSec, resumeSafely, running, dismissPanic } = useSession();
+  const { panicked, resumeSafely, running, dismissPanic } = useSession();
   const open = panicked && !running;
-  const resumeRef = useRef<HTMLButtonElement>(null);
-  // P0-4: Esc dismisses, focus lands on RESUME SAFELY, returns to trigger.
-  useModalA11y(open, dismissPanic, resumeRef);
+  const keepOffRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  // Closing or accepting the default action never starts audio.
+  useModalA11y(open, dismissPanic, keepOffRef, dialogRef);
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Session stopped"
+          data-testid="sound-stopped-backdrop"
+          onClick={(event) => { if (event.target === event.currentTarget) dismissPanic(); }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -151,25 +149,31 @@ export function PanicOverlay() {
             zIndex: 90,
             background: 'rgba(11,12,13,0.88)',
             display: 'flex',
-            flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 24,
+            padding: '24px 16px 88px',
           }}
         >
-          <div className="t-readout-lg" style={{ color: 'var(--text-1)' }}>
-            STOPPED — {fmtClock(elapsedSec)} session ended
-          </div>
-          <div className="t-body-sm text-2" style={{ maxWidth: 420, textAlign: 'center' }}>
-            Resume always comes back quieter than you left it (−12 dB, ramped over 2 s).
-          </div>
-          <div className="flex gap-3">
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="sound-stopped-title" tabIndex={-1}
+            className="panel" style={{ width: 'min(480px, 100%)', maxHeight: 'calc(100dvh - 112px)', overflow: 'auto', padding: 24 }}>
+            <h2 id="sound-stopped-title" className="t-h2" style={{ color: 'var(--text-1)', marginBottom: 12 }}>Sound is off</h2>
+            <p className="t-body-sm text-2" style={{ marginBottom: 20 }}>Keep sound off returns to the page. Play Studio quietly starts or continues the current Studio session at a reduced output level. Stopped previews stay off.</p>
+            <div className="flex gap-3" style={{ flexWrap: 'wrap' }}>
             <button
               type="button"
-              ref={resumeRef}
+              ref={keepOffRef}
+              onClick={dismissPanic}
+              className="btn-amber"
+              style={{ minHeight: 44 }}
+            >
+              Keep sound off
+            </button>
+            <button
+              type="button"
+              onKeyDown={(event) => { if (event.repeat) event.preventDefault(); }}
               onClick={resumeSafely}
               style={{
-                height: 36,
+                minHeight: 44,
                 padding: '0 16px',
                 border: '1px solid var(--line-2)',
                 borderRadius: 2,
@@ -177,20 +181,13 @@ export function PanicOverlay() {
                 background: 'transparent',
                 fontFamily: '"IBM Plex Mono", monospace',
                 fontSize: 11,
-                letterSpacing: '0.12em',
+                letterSpacing: '0.03em',
                 cursor: 'pointer',
               }}
             >
-              RESUME SAFELY
+              Play Studio quietly
             </button>
-            <button
-              type="button"
-              onClick={dismissPanic}
-              className="t-label"
-              style={{ background: 'none', border: 'none', color: 'var(--text-3)', cursor: 'pointer', padding: '0 8px' }}
-            >
-              DISMISS
-            </button>
+            </div>
           </div>
         </motion.div>
       )}

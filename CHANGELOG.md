@@ -2,6 +2,23 @@
 
 All notable changes to Open Sync. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/).
 
+## [3.0.0] — 2026-09-14
+
+### Changed
+- Home starts with Listen, Create, and Inspect. A searchable directory and task groups replace the full feature catalog; all existing routes remain available.
+- Navigation keeps Home, Presets, Studio, and Safety visible. Specialist tools and Theory & research start closed; deep links reveal their current group. Search includes old names and ordinary task words.
+- Presets starts with three described sounds. All presets, Bashar sounds, and My presets are separate collections; preview lengths are visible and evidence filters are optional.
+- Studio opens as a player with the current sound, active mix, duration, level, Play/Pause/Resume/Stop, and remaining time. Sound controls and file options open separately without resetting settings.
+- Stop all sound replaces the emergency wording. The stop dialog defaults to Keep sound off; Play Studio quietly explicitly starts or continues Studio and never replays a preview.
+
+### Fixed
+- Alpha Ease loads a complete clean mix instead of inheriting unrelated noise or layers. Regenerated all fifty previews; every WAV remained unchanged.
+- Corrected the inspected Safety implant statement, Studio-only mode action, and digital-level wording. Labelled the existing legacy noise presets' carrier-tone fallback.
+- Updated Guide and task descriptions to match the new paths and controls.
+
+### Review
+- Three moderated AI panel loops with UI/UX, psychology, therapist, and simulated-user perspectives. Decisions and verification are recorded under `docs/panel/`; these are code/interface reviews, not clinical validation or participant research.
+
 ## [2.5.0] — 2026-09-13
 
 ### Added

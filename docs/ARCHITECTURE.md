@@ -63,7 +63,8 @@ The 1 s clock reads live refs (limit, fade, phases, volume) so mid-session chang
 Export builds a spec truncated to the session limit, renders in a module Worker (falls back to a synchronous render where `Worker` is unavailable, e.g. tests) and downloads the WAV. The worker imports only from `engine/`.
 
 ### `src/app`
-- `routes.ts` — **the** route table: path, label, feature-docs module, icon, group, lazy component, bottom-tab flag. App, rail, bottom bar, MORE drawer, palette and Home icons all derive from it.
+- `routes.ts` — canonical routes, stable paths/module identifiers, icons, components, and mobile-tab flags. `navigation.ts` adds task categories, purpose labels, descriptions and search aliases used by the sidebar, More menu, Home directory, Guide and palette. Route references resolve on use because eager Home consumes navigation metadata. Primary navigation is Home/Presets/Studio, plus direct Safety; specialist groups disclose their links on request.
+- Studio keeps the shared SessionProvider mounted while native disclosures hide editing and file controls. Current sound, active mix, duration, output, transport and action-requiring notices stay outside those disclosures. Duration controls call the existing bounded setter; they cannot extend a running session.
 - `shortcuts.ts` — the shortcut registry; `AppShell` binds one handler from it and `ShortcutsOverlay` renders it.
 - `pwa.ts` — service-worker registration with an "update available" event; a cross-tab update never reloads a tab while its session is running.
 

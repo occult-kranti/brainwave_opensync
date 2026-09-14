@@ -68,8 +68,9 @@ export default function Studio() {
   const [exportState, setExportState] = useState<'idle' | 'exporting' | 'done' | 'error'>('idle');
   const [exportSpin, setExportSpin] = useState(false);
   const [exportFormat, setExportFormat] = useState<ExportFormat>('pcm16');
+  const exportBusy = exportState === 'exporting' || s.exporting;
   const runExport = () => {
-    if (exportState === 'exporting' || s.exporting) return;
+    if (exportBusy) return;
     setExportState('exporting');
     setExportSpin(false);
     const spinT = window.setTimeout(() => setExportSpin(true), 200);
@@ -199,7 +200,7 @@ export default function Studio() {
         {s.fading && <span data-testid="fading-notice"><WarningChip tone="amber">FADING · {fmtClock(remainingSec)}</WarningChip> <button type="button" className="chip" onClick={s.cancelSleepFade}>Cancel fade</button></span>}
         {(exportState === 'exporting' || s.exporting) && <p role="status">Rendering WAV…</p>}
         {exportState === 'done' && <p role="status">WAV saved.</p>}
-        {(exportState === 'error' || s.exportError) && <div role="alert"><WarningChip tone="danger">Export failed{s.exportError ? `: ${s.exportError}` : ''}</WarningChip> <button type="button" className="chip" onClick={runExport}>Retry export</button></div>}
+        {s.exportError && !exportBusy && <div role="alert"><WarningChip tone="danger">Export failed{s.exportError ? `: ${s.exportError}` : ''}</WarningChip> <button type="button" className="chip" disabled={exportBusy} onClick={runExport}>Retry export</button></div>}
       </div>
 
       <details className="studio-disclosure" data-testid="studio-file-options">
@@ -227,7 +228,7 @@ export default function Studio() {
             data-testid="wav-export"
             data-state={exportState}
             onClick={runExport}
-            disabled={exportState === 'exporting' || s.exporting}
+            disabled={exportBusy}
             title={`Render offline in a worker + encode WAV (${exportFormat}); capped at the session limit`}
           >
             <Download size={11} className={exportSpin ? 'animate-spin' : undefined} />

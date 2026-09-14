@@ -20,13 +20,13 @@ Version 3 starts with **Listen, Create, and Inspect**. [Presets](https://occult-
 - Harmonic Lab creates chords and phrases; Sound Methods demonstrates published audio techniques.
 - Presets provide full sessions and short previews. Research pages explain the sources and their limits.
 - The app calculates and measures audio. It does not measure brain activity or a human consciousness frequency.
-- Gain limits, a session timer, a seven-day dose estimate, and Panic controls apply to playback. Device volume determines actual listening level; short previews are excluded from the Studio dose log.
+- Gain limits, a session timer, a seven-day dose estimate, and Stop all sound controls apply to playback. Device volume determines actual listening level; short previews are excluded from the Studio dose log.
 
-## Bashar sounds and practical navigation — v2.5
+## Bashar sounds
 
 Open [Bashar sounds](https://occult-kranti.github.io/brainwave_opensync/presets?collection=bashar) for the scale sequence, alpha/gamma comparison, golden-ratio pitch ladder, and a simultaneous bowl chord over a 110 Hz root. Each sound can be previewed, loaded into Studio, edited, saved, and exported. **Details & steps** plays any segment for eight seconds. Starting pitches and timings are app choices; the source claims remain unverified.
 
-Practical pages are grouped under **Tools**. **Theory & research** starts collapsed in the sidebar, mobile More menu, and Home module list. The active theory route opens its navigation group automatically. Read the [implementation and review record](docs/BASHAR-PRESETS-AND-NAVIGATION.md) for the sound definitions and remaining renderer differences.
+Practical pages are grouped by task. **Theory & research** starts collapsed in the sidebar, mobile More menu, and Home directory. The active theory route opens its navigation group automatically. Read the [implementation and review record](docs/BASHAR-PRESETS-AND-NAVIGATION.md) for the sound definitions and remaining renderer differences.
 
 ## Everyday app (phone-first, no captions)
 

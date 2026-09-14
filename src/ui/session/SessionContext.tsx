@@ -902,6 +902,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       const cap = governor.infantMode ? Math.min(governor.maxSessionMin, INFANT_MAX_SESSION_MIN) : governor.maxSessionMin;
       const clamped = Math.max(1, Math.min(cap, MAX_SESSION_MIN, Math.round(min)));
       if (!running || clamped < limitMin) {
+        if (clamped !== limitRef.current) setDirty(true);
         limitRef.current = clamped;
         setLimitMinState(clamped);
       }

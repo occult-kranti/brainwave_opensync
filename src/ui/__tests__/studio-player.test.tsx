@@ -89,6 +89,26 @@ describe('Studio player', () => {
     expect(session.limitMin).toBe(5);
   });
 
+  it('marks changed saved duration as edited while preserving clean no-op and rejected edits', async () => {
+    await mount();
+    await act(async () => session.loadPreset(PRESETS.find((p) => p.id === 'exp-phi-bowl-chord')!));
+    expect(session.dirty).toBe(false);
+    await act(async () => session.setLimitMin(15));
+    expect(session.dirty).toBe(false);
+    await act(async () => button('5 min').click());
+    expect(session.dirty).toBe(true); expect(container.textContent).toContain('Edited settings');
+    await act(async () => session.saveCurrentAsPreset('Short chord'));
+    expect(session.dirty).toBe(false);
+    await act(async () => session.setGovernor({ maxSessionMin: 5 }));
+    await act(async () => session.setLimitMin(30));
+    expect(session.limitMin).toBe(5); expect(session.dirty).toBe(false);
+    await act(async () => session.setGovernor({ maxSessionMin: 60 }));
+    await act(async () => session.start());
+    await act(async () => session.setLimitMin(10));
+    expect(session.limitMin).toBe(5); expect(session.dirty).toBe(false);
+    await act(async () => session.stop());
+  });
+
   it('counts down to a tightened limit during an active fade', async () => {
     vi.useFakeTimers(); await mount();
     await act(async () => { session.setLimitMin(20); session.start(); });
@@ -107,16 +127,20 @@ describe('Studio player', () => {
     const renderSpy = vi.spyOn(exportAudio, 'renderExportAsync').mockImplementation(() => new Promise((resolve) => { resolveRender = resolve; }));
     vi.spyOn(exportAudio, 'downloadBytes').mockImplementation(() => {});
     await mount();
+    const wav = container.querySelector<HTMLButtonElement>('[data-testid="wav-export"]')!;
+    renderSpy.mockRejectedValueOnce(new Error('Offline failure'));
+    await act(async () => wav.click());
+    expect(container.textContent).toContain('Export failed');
     let pending!: Promise<boolean>;
     await act(async () => { pending = session.exportWav(); });
-    const wav = container.querySelector<HTMLButtonElement>('[data-testid="wav-export"]')!;
     expect(wav.disabled).toBe(true);
     await act(async () => wav.click());
-    expect(renderSpy).toHaveBeenCalledTimes(1);
+    expect(renderSpy).toHaveBeenCalledTimes(2);
     expect(container.textContent).not.toContain('Export failed');
     await act(async () => { resolveRender({ wav: new Uint8Array(), totalDurationSec: 1, sampleRate: 48000, hash: 'test', warnings: [] }); await pending; });
     expect(wav.disabled).toBe(false);
     expect(wav.textContent).toBe('Export WAV');
+    expect(container.textContent).not.toContain('Export failed');
   });
 
   it('retains the first-play advisory gate with sound controls closed', async () => {

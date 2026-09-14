@@ -143,7 +143,7 @@ export default function Studio() {
           <div>
             <span className="t-label text-3">Current sound</span>
             <h2 className="t-h2">{s.presetName ?? 'Studio draft'}</h2>
-            <p className="t-caption text-2">{s.dirty ? 'Edited settings' : s.presetName ? 'Preset loaded' : 'Default tone sequence'} · {s.phases.length} phases · {fmtClock(s.phases.reduce((total, p) => total + p.durationSec, 0))} sequence</p>
+            <p className="t-caption text-2">{s.dirty ? 'Edited settings' : s.presetName ? 'Preset loaded' : 'Default tone sequence'} · {s.phases.length} {s.phases.length === 1 ? 'phase' : 'phases'} · {fmtClock(s.phases.reduce((total, p) => total + p.durationSec, 0))} sequence</p>
           </div>
           <span className="chip" role="status" data-testid="studio-playback-state">
             {s.running ? s.paused ? 'Studio paused' : s.fading ? 'Studio fading' : s.muted ? 'Studio playing · muted' : 'Studio playing' : 'Studio stopped'}

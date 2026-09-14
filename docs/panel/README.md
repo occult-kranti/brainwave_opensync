@@ -6,7 +6,7 @@ The requested UI/UX, psychology, therapist, simulated-user and moderator perspec
 |---|---|---|
 | 1 | OpenSync 2.5.0, `2d19357` | [Architecture and ownership decisions](loop-1-decisions.md); implementation `ff51bf8` |
 | 2 | Integrated first implementation, `ff51bf8` | [Nine correction decisions](loop-2-decisions.md); corrected implementation `c42fb1a` |
-| 3 | Corrected candidate, `c42fb1a` | Final independent acceptance reports and narrowly scoped duration/export corrections; publication evidence recorded in the release review |
+| 3 | Corrected candidate, `c42fb1a` | Final independent acceptance reports and narrowly scoped duration/export corrections; publication evidence in [release verification](release-verification.md) |
 
 Each reviewing role inspected another implementer's surface in loops 2 and 3. The moderator merged findings, resolved alternatives and assigned work with separate ownership. Baseline audits, implementation notes and later reviews are separate files so an implementation note cannot count as another independent review.
 

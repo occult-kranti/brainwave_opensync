@@ -15,7 +15,7 @@ their sources. Presets carry A–D evidence grades. Audio is generated locally; 
 
 The complete `occult-kranti/open-sync` source at `02425613cd057406d92c4f3ee33b5fc54a493601` is retained in `integrations/open-sync/` with its MIT notice and [import record](integrations/open-sync/PROVENANCE.md). It builds independently, preserving all 22 original modules, including MED FREQ. Hash routing and base-aware asset links make the suite work under GitHub Pages. Navigation between projects unloads the active audio document; Connected projects also stops the current session and previews before leaving.
 
-The atlas connects the Newton–Tesla dossiers, Resonant Vessels and the historical astronomy workbench. Historical descriptions, model calculations and proposed experiments retain distinct evidence labels. The Pages workflow builds the current app, original suite, previous release and research atlas into one deployment; `deployments.json` records the source versions.
+The atlas connects the Newton–Tesla dossiers, Resonant Vessels and the historical astronomy workbench. Its nanoparticle extension adds five agent-reviewed computational investigations and an independent [standalone atlas](https://occult-kranti.github.io/resonance-research-atlas/#nanoparticles), while retaining the original six rounds including the dreaming session. Historical descriptions, model calculations and proposed experiments retain distinct evidence labels. The Pages workflow builds the current app, original suite, previous release and research atlas into one deployment; `deployments.json` records the source versions.
 
 ---
 
@@ -26,6 +26,7 @@ Version 3 starts with **Listen, Create, and Inspect**. [Presets](https://occult-
 
 - Studio combines tones, rhythms, noise, nature textures, and modeled bowls.
 - Harmonic Lab creates chords and phrases; Sound Methods demonstrates published audio techniques.
+- [NanoLab audio](https://occult-kranti.github.io/brainwave_opensync/nano-lab/) compares beat envelopes, amplitude modulation, baseband tones, and carrier controls with measured spectra and WAV/checksum-manifest downloads. Its [signal contract and verification](docs/NANOLAB.md) distinguish audio samples from calibrated physical experiments.
 - Presets provide full sessions and short previews. Research pages explain the sources and their limits.
 - The app calculates and measures audio. It does not measure brain activity or a human consciousness frequency.
 - Gain limits, a session timer, a seven-day dose estimate, and Stop all sound controls apply to playback. Device volume determines actual listening level; short previews are excluded from the Studio dose log.
@@ -73,6 +74,7 @@ Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-sour
 | **Studio** | Live binaural / monaural / isochronic engine, 6 noise colors, nature layer, a bowl set of up to 7 singing bowls (5 materials × 3 techniques, pan, intervals, ready-made sets), interval bell, multi-phase session timeline, live L/R scope, virtual-plate cymatics, sleep fade, share links, WAV export |
 | **Sound Methods** | Nine original sound examples from published methods, source and study notes, editable signal settings, and WAV/JSON export at `/sound-methods` |
 | **Harmonic Lab** | Compose chords, arpeggios, and four-bar phrases with explicit tuning, eight overtones, A/B listening, WAV export, and portable recipes at `/harmonics` |
+| **NanoLab audio** | Four bounded signal conditions, waveform and FFT measurements, quiet shared previews, PCM16 WAV and SHA-256 manifest export at `/nano-lab`; links to the nanoparticle research rounds without inferring magnetic or optical exposure |
 | **Channeled Sources** | Read the supplied Bashar digest analysis, inspect the chosen scale conversion, and open four experimental sound presets at `/channeled` |
 | **Sonic Lab** | 17 mathematical sound generators: Shepard/Risset illusions, Euclidean & prime & golden-ratio rhythms, fractal 1/f^α noise, logistic-map chaos, waveform designer (additive/FM/Chebyshev/phase distortion), tuning systems (JI/12-TET/Bohlen-Pierce), astronomically derived tunings with split grades: *arithmetic A · meaning D* |
 | **Cymatic Studio** | Chladni plate simulator (square/circular/Bessel modes, sand particles, colormaps, audio-reactive) with physics/art honesty labels |
@@ -150,6 +152,7 @@ src/
   cymatics/   # Chladni solvers, sand sim, colormaps, audio link
   soniclab/   # 17 mathematical sound generators + render safety rails
   samplelab/  # 9-module audio-file analysis
+  nanolab/    # bounded audio analogues, spectrum checks, WAV + checksum manifests
   quicklab/   # blinded n-of-1 experiment engine (randomization, sealing, CI stats)
   dream/      # lucid-dreaming protocols, scheduler, journal
   replication/# government-program replication protocols

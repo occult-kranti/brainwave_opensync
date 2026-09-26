@@ -40,6 +40,7 @@ const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/cymatics', 'create', 'Cymatics', 'Simulate sound-driven patterns.', ['cymatic studio', 'visualization', 'sand', 'plate', 'Chladni']],
   ['/sample-lab', 'analyze', 'Recording analysis', 'Inspect an audio file in your browser.', ['sample lab', 'recording', 'file', 'audio files', 'spectrum', 'spectrogram', 'loudness']],
   ['/analyzer', 'analyze', 'Live analyzer', 'Monitor the Studio signal or a microphone input.', ['analyzer', 'live', 'microphone', 'input', 'spectrum', 'level']],
+  ['/nano-lab', 'experiments', 'NanoLab audio', 'Compare beat envelopes, amplitude modulation, and baseband controls.', ['nanoparticle', 'FFT', 'frequency', 'two tone', 'WAV', 'measurement', 'manifest']],
   ['/quicklab', 'experiments', 'Quick Lab', 'Run a small listening comparison and record your ratings.', ['self experiment', 'compare', 'A/B', 'ratings']],
   ['/lab', 'experiments', 'Experiment Lab', 'Inspect planned audio experiments and their methods.', ['protocol', 'study', 'experiment']],
   ['/replication', 'experiments', 'Replication Bay', 'Compare published stimuli and inspect reconstruction limits.', ['replicate', 'protocol', 'Monroe', 'Gateway', 'stimulus']],

@@ -16,7 +16,7 @@ describe('route registry', () => {
     expect(BOTTOM_TAB_ROUTES.map((r) => r.path)).toEqual(['/', '/presets', '/studio', '/safety']);
     expect([...HOME_ROUTES, ...TOOL_ROUTES, ...RESEARCH_ROUTES, ...HELP_ROUTES]).toEqual(ROUTES);
     expect(HOME_ROUTES.map((r) => r.path)).toEqual(['/']);
-    for (const path of ['/studio', '/presets', '/library', '/harmonics', '/sound-methods', '/sonic-lab', '/sample-lab', '/analyzer', '/cymatics', '/dream', '/quicklab', '/lab', '/replication']) {
+    for (const path of ['/studio', '/presets', '/library', '/harmonics', '/sound-methods', '/nano-lab', '/sonic-lab', '/sample-lab', '/analyzer', '/cymatics', '/dream', '/quicklab', '/lab', '/replication']) {
       expect(routeByPath(path)?.group, path).toBe('tools');
     }
     for (const path of ['/levels', '/knowledge', '/channeled', '/theory', '/critique', '/hypotheses', '/programs']) {

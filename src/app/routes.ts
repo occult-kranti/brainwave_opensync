@@ -79,6 +79,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/analyzer', 'LIVE ANALYZER', 'Analyzer', Activity, 'tools', () => import('@/pages/Analyzer')),
   r('/cymatics', 'CYMATICS', 'Cymatic Studio', Waves, 'tools', () => import('@/pages/Cymatics')),
   r('/dream', 'SLEEP EXPERIMENTS', 'Sleep & Dream', Moon, 'tools', () => import('@/pages/Dream')),
+  r('/nano-lab', 'NANOLAB AUDIO', 'NanoLab', FlaskConical, 'tools', () => import('@/pages/NanoLab')),
   r('/quicklab', 'QUICK LAB', 'Quick Lab', Zap, 'tools', () => import('@/pages/QuickLab')),
   r('/lab', 'EXPERIMENT LAB', 'Experiment Lab', FlaskConical, 'tools', () => import('@/pages/research/ExperimentLab')),
   r('/replication', 'REPLICATION BAY', 'Replication Bay', Repeat2, 'tools', () => import('@/pages/Replication')),

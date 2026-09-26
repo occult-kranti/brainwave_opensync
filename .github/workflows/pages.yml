@@ -88,7 +88,9 @@ jobs:
         run: |
           node research-atlas/tests/independent-review.mjs
           node research-atlas/tests/independent-dom-review.mjs
+          node research-atlas/tests/nanoparticles-ui.mjs
           python3 research-atlas/research/verify_rounds.py
+          python3 research-atlas/research/nanoparticles/verify.py
           python3 research-atlas/scripts/build_site.py --output dist/research
       - name: Publish dist/ to gh-pages
         env:

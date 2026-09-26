@@ -57,6 +57,7 @@ const ALL_ROUTE_PATHS = [
   '/harmonics',
   '/channeled',
   '/sound-methods',
+  '/nano-lab',
 ];
 
 const STORAGE_KEY = 'open-sync:sidebar';

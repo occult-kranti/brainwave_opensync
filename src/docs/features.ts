@@ -73,9 +73,18 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/sound-methods', label: 'Sound Methods' },
   { route: '/channeled', label: 'Channeled Sources' },
   { route: '/projects', label: 'Projects' },
+  { route: '/nano-lab', label: 'NanoLab' },
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'nano-audio-bench', module: 'NanoLab', route: '/nano-lab', name: 'Frequency comparison bench',
+    grade: 'A', gradeScope: 'Signal algebra and digital measurements only; no nanoparticle or biological response is established.',
+    simple: 'Compare two nearby tones, a changing volume envelope, and a low tone itself. Preview quiet sounds and download each waveform with its measurement record.',
+    deep: 'The unchanged synthesis engine generates identical left and right channels with bounded gain and duration. Centered Hann spectra distinguish carrier lines and sidebands from an envelope repetition rate. Waveform and spectrum plots show digital amplitude, while the manifest records units, sample peak, settings, and the encoded file checksum. An acoustic or nanoparticle experiment needs separately calibrated hardware and a physical model.',
+    howTo: ['Choose a condition while keeping carrier, rate, length, and gain fixed.', 'Compare predicted frequencies with the measured spectrum.', 'Preview at low device volume or download the WAV and its manifest.', 'Read the linked nanoparticle research rounds before proposing a physical experiment.'],
+    plot: { axes: 'Waveform: milliseconds and digital full-scale amplitude; spectrum: hertz and sinusoidal-amplitude dBFS.', good: 'Measured spectral lines agree with the selected signal construction within the stated FFT resolution.', bad: 'An envelope rate is not a new linear signal component; digital levels do not specify a calibrated physical dose.' },
+  },
   {
     id: 'connected-projects', module: 'Projects', route: '/projects', name: 'Connected projects',
     simple: 'Open the original audio suite or explore the research atlas. Follow each project back to its source repository.',

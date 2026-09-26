@@ -1,0 +1,1423 @@
+/* ===========================================================================
+   Christian Astrology — interactive edition. Design system.
+   A scholarly celestial-parchment aesthetic: deep night-sky blues, aged
+   parchment, and gilt accents, with highly readable typography.
+   =========================================================================== */
+:root {
+  --night: #0e1430;          /* deep night sky */
+  --night-2: #161d42;
+  --ink: #20242e;            /* body text on parchment */
+  --parchment: #f6efe0;      /* page background */
+  --parchment-2: #efe6d2;
+  --card: #fffdf8;
+  --gold: #b8862b;           /* gilt accent */
+  --gold-2: #d9b15a;
+  --rule: #d8cbac;
+  --link: #7a3b1e;           /* warm sienna */
+  --muted: #6b6354;
+  --fire: #c0432b;
+  --earth: #6c7a32;
+  --air: #2f7ca8;
+  --water: #4a55a8;
+  --benefic: #2f7d4f;
+  --malefic: #b23b2e;
+  --lum: #b8862b;
+  --neutral: #6a5aa0;
+  --maxw: 1080px;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; font-family: var(--serif); color: var(--ink);
+  background: var(--parchment);
+  background-image:
+    radial-gradient(circle at 50% -10%, rgba(184,134,43,.10), transparent 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Ccircle cx='20' cy='20' r='.6' fill='%23d8cbac' opacity='.4'/%3E%3C/svg%3E");
+  line-height: 1.65; font-size: 1.04rem;
+}
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.2rem; }
+
+/* ---- Header / nav ---- */
+header.site {
+  background: linear-gradient(180deg, var(--night), var(--night-2));
+  color: #e9e3d2; border-bottom: 3px solid var(--gold);
+  position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 14px rgba(0,0,0,.25);
+}
+header.site .wrap { display: flex; align-items: center; gap: 1rem; padding: .55rem 1.2rem; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: #f3ecd8; font-weight: 600; }
+.brand .mark { font-size: 1.5rem; color: var(--gold-2); }
+.brand b { font-family: var(--serif); font-size: 1.12rem; letter-spacing: .02em; }
+.brand small { display: block; font-family: var(--sans); font-size: .64rem; letter-spacing: .18em; text-transform: uppercase; color: #b9b29a; }
+/* ---- Mega-menu: five group buttons, each opening a dropdown panel ---------
+   Desktop layout below; the mobile drawer overrides it in the max-width query.
+   Open state is the `.open` class (JS-toggled) + aria-expanded — one mechanism
+   for both the desktop dropdown and the mobile accordion. */
+nav.main { margin-left: auto; display: flex; gap: .1rem; align-items: stretch; font-family: var(--sans); font-size: .82rem; }
+.nav-group { position: relative; display: flex; align-items: stretch; }
+.nav-group-btn { font: inherit; color: #d8d0bb; background: transparent; border: 0; cursor: pointer;
+  padding: .4rem .6rem; border-radius: 6px; display: inline-flex; align-items: center; gap: .3rem; white-space: nowrap; }
+.nav-group-btn:hover, .nav-group.open > .nav-group-btn { background: rgba(217,177,90,.18); color: #fff; }
+.nav-group.has-current > .nav-group-btn { color: #fff; box-shadow: inset 0 -2px 0 var(--gold-2); }
+.nav-caret { font-size: .62em; opacity: .7; transition: transform .18s ease; }
+.nav-group.open .nav-caret { transform: rotate(180deg); }
+
+.nav-menu { position: absolute; top: calc(100% + 6px); left: 0; z-index: 60; display: none;
+  min-width: 232px; max-width: min(300px, calc(100vw - 1.5rem)); padding: .35rem;
+  background: linear-gradient(180deg, var(--night), var(--night-2));
+  border: 1px solid rgba(217,177,90,.5); border-radius: 10px; box-shadow: 0 12px 34px rgba(0,0,0,.45);
+  max-height: 78vh; overflow-y: auto; }
+.nav-group.open > .nav-menu { display: block; }
+.nav-group.open > .nav-menu.wide { display: grid; grid-template-columns: 1fr 1fr; gap: 0 .25rem;
+  min-width: 452px; max-width: min(452px, calc(100vw - 1.5rem)); }
+/* Panels near the right edge open leftwards so they never spill off-screen. */
+.nav-group[data-group="cast"] > .nav-menu,
+.nav-group[data-group="traditions"] > .nav-menu,
+.nav-group[data-group="oracles"] > .nav-menu,
+.nav-group[data-group="reference"] > .nav-menu { left: auto; right: 0; }
+.nav-menu a { display: block; color: #d8d0bb; text-decoration: none; padding: .42rem .6rem;
+  border-radius: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nav-menu a:hover { background: rgba(217,177,90,.18); color: #fff; }
+.nav-menu a.active { background: rgba(217,177,90,.3); color: #fff; }
+
+/* Hamburger toggle — hidden on the desktop layout, shown below the breakpoint */
+.nav-toggle { display: none; margin-left: auto; background: transparent; border: 1px solid rgba(217,177,90,.45);
+  border-radius: 7px; padding: .45rem .6rem; cursor: pointer; line-height: 0; }
+.nav-toggle:hover { background: rgba(217,177,90,.18); }
+.nav-toggle-bars, .nav-toggle-bars::before, .nav-toggle-bars::after { display: block; width: 22px; height: 2px;
+  background: var(--gold-2); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+.nav-toggle-bars { position: relative; }
+.nav-toggle-bars::before, .nav-toggle-bars::after { content: ''; position: absolute; left: 0; }
+.nav-toggle-bars::before { top: -7px; }
+.nav-toggle-bars::after { top: 7px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bars::after { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 880px) {
+  header.site .wrap { gap: .6rem; }
+  .nav-toggle { display: inline-flex; align-items: center; }
+  /* The whole mega-menu collapses into a scrollable hamburger drawer. Each group
+     button becomes an accordion header; its panel drops in below, single column. */
+  nav.main { margin-left: 0; order: 3; flex-basis: 100%; flex-direction: column; align-items: stretch;
+    gap: 0; display: none; max-height: 78vh; overflow-y: auto; }
+  nav.main.open { display: flex; }
+  .nav-group { position: static; flex-direction: column; align-items: stretch; }
+  .nav-group-btn { width: 100%; justify-content: space-between; padding: .72rem .5rem; border-radius: 0;
+    border-bottom: 1px solid rgba(255,255,255,.09); font-size: .66rem; letter-spacing: .14em;
+    text-transform: uppercase; color: #cbc19a; }
+  .nav-group.has-current > .nav-group-btn { box-shadow: none; color: #f0e6c6; }
+  .nav-menu, .nav-menu.wide { position: static; min-width: 0; max-width: none; padding: 0; border: 0;
+    border-radius: 0; box-shadow: none; background: rgba(0,0,0,.22); max-height: none; }
+  .nav-group.open > .nav-menu, .nav-group.open > .nav-menu.wide { display: block; grid-template-columns: 1fr; }
+  .nav-menu a { padding: .6rem .5rem .6rem 1.1rem; border-radius: 0; white-space: normal; overflow: visible;
+    border-bottom: 1px solid rgba(255,255,255,.06); }
+}
+
+/* ---- AI assistant conversation -------------------------------------------
+   A readable chat transcript: each turn is its own bubble with a clear role
+   label, so the user's question and Claude's reply are easy to tell apart and
+   easy to read. High contrast on the deep-night log; the message body keeps the
+   model's line breaks (pre-wrap) so lists and paragraphs survive. */
+#wb-asst-log { color: #eef1f8; background: #0d1430 !important; font-size: .92rem;
+  display: flex; flex-direction: column; gap: .55rem; line-height: 1.6; }
+.wb-chat-turn { border-radius: .55rem; padding: .55rem .7rem .6rem; max-width: 100%;
+  border: 1px solid transparent; }
+.wb-chat-turn .wb-chat-role { font-family: var(--sans); font-size: .66rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; margin-bottom: .25rem; display: flex;
+  align-items: center; gap: .35rem; }
+.wb-chat-turn .wb-chat-body { white-space: pre-wrap; word-break: break-word; color: #f3f5fb; }
+.wb-chat-turn .wb-chat-body b { color: #fff; }
+/* You — gold-tinted, aligned to the right edge of the column */
+.wb-chat-user { background: rgba(217,177,90,.16); border-color: rgba(217,177,90,.38);
+  border-left: 3px solid var(--gold-2); align-self: flex-end; }
+.wb-chat-user .wb-chat-role { color: #eccf8f; }
+.wb-chat-user .wb-chat-body { color: #fbf3df; }
+/* Claude — cool slate card, aligned left */
+.wb-chat-bot { background: rgba(120,150,210,.13); border-color: rgba(120,150,210,.34);
+  border-left: 3px solid #7e9bd8; align-self: flex-start; }
+.wb-chat-bot .wb-chat-role { color: #a9c2f0; }
+.wb-chat-bot .wb-chat-body { color: #eef2fb; }
+.wb-chat-note { align-self: flex-start; font-size: .8rem; color: #aeb8d4; margin-left: .6rem; }
+.wb-chat-note code { background: rgba(255,255,255,.1); color: #d7def0; }
+#wb-asst-log a, .wb-chat-turn a { color: #f0d28a; }
+#wb-asst-log code, .wb-chat-turn code { background: rgba(255,255,255,.1); color: #eaeefb; }
+.wb-chat-save { font-family: var(--sans); font-size: .72rem; }
+
+/* Wide data tables scroll horizontally on small screens instead of clipping. */
+@media (max-width: 680px) {
+  table.data { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* ---- Headings & text ---- */
+h1, h2, h3, h4 { font-family: var(--serif); line-height: 1.2; color: #2a2419; }
+h1 { font-size: 2.1rem; margin: .2em 0 .3em; }
+h2 { font-size: 1.5rem; margin: 1.8rem 0 .6rem; border-bottom: 1px solid var(--rule); padding-bottom: .25rem; }
+h3 { font-size: 1.18rem; margin: 1.3rem 0 .4rem; color: var(--link); }
+a { color: var(--link); }
+a:hover { color: #a85a2e; }
+.lede { font-size: 1.16rem; color: #494334; }
+.muted { color: var(--muted); }
+.small { font-size: .86rem; }
+code, .mono { font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace; font-size: .9em; background: #00000008; padding: .05em .3em; border-radius: 4px; }
+
+main { padding: 1.6rem 0 3rem; min-height: 60vh; }
+
+/* ---- Hero (home) ---- */
+.hero { background: linear-gradient(180deg, var(--night), #1b2350 70%, var(--night-2));
+  color: #ece5d2; padding: 3rem 0 2.6rem; border-bottom: 3px solid var(--gold);
+  position: relative; overflow: hidden; }
+.hero::after { content:''; position:absolute; inset:0;
+  background-image: radial-gradient(1px 1px at 20% 30%, #fff5, transparent),
+    radial-gradient(1px 1px at 70% 60%, #fff4, transparent),
+    radial-gradient(1.5px 1.5px at 40% 80%, #fff6, transparent),
+    radial-gradient(1px 1px at 85% 25%, #fff5, transparent),
+    radial-gradient(1px 1px at 55% 15%, #fff4, transparent);
+  opacity:.7; pointer-events:none; }
+.hero .wrap { position: relative; z-index: 1; }
+.hero h1 { color: #fbf4df; font-size: 2.7rem; margin-bottom: .2em; }
+.hero .sub { font-style: italic; color: #cfc8b2; font-size: 1.25rem; }
+.hero p { max-width: 60ch; color: #ddd6c2; }
+
+/* ---- Buttons ---- */
+.btn { display: inline-block; font-family: var(--sans); font-weight: 600; font-size: .92rem;
+  background: var(--gold); color: #2a2008; text-decoration: none; padding: .6rem 1.1rem;
+  border-radius: 8px; border: none; cursor: pointer; transition: .15s; }
+.btn:hover { background: var(--gold-2); color: #1c1604; transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: #f0e8d2; border: 1px solid var(--gold); }
+.btn.ghost:hover { background: rgba(217,177,90,.15); color:#fff; }
+.btn.sm { padding: .35rem .7rem; font-size: .82rem; }
+
+/* ---- Cards / grid ---- */
+.grid { display: grid; gap: 1.1rem; }
+.grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: 12px;
+  padding: 1.1rem 1.2rem; box-shadow: 0 1px 3px rgba(40,30,10,.06); }
+.card h3 { margin-top: 0; }
+a.card { text-decoration: none; color: inherit; display: block; transition: .15s; }
+a.card:hover { border-color: var(--gold); box-shadow: 0 6px 20px rgba(40,30,10,.12); transform: translateY(-2px); }
+.card .tag { font-family: var(--sans); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+
+.glyph-badge { font-size: 1.9rem; line-height: 1; color: var(--gold); }
+
+/* ---- Callouts ---- */
+.callout { border-left: 4px solid var(--gold); background: #fbf4e2; padding: .8rem 1rem;
+  border-radius: 0 8px 8px 0; margin: 1.1rem 0; }
+.callout.science { border-color: var(--air); background: #eef5fa; }
+.callout.lilly { border-color: var(--link); background: #f7efe6; font-style: italic; }
+.callout .label { font-family: var(--sans); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: .2rem; }
+blockquote.lilly { font-style: italic; border-left: 3px solid var(--gold); margin: 1rem 0; padding: .3rem 0 .3rem 1rem; color: #43200d; }
+blockquote.lilly cite { display:block; font-style: normal; font-family: var(--sans); font-size:.78rem; color: var(--muted); margin-top:.3rem; }
+
+/* ---- Tables ---- */
+table.data { border-collapse: collapse; width: 100%; font-size: .92rem; margin: 1rem 0; background: var(--card); }
+table.data th, table.data td { border: 1px solid var(--rule); padding: .4rem .55rem; text-align: center; }
+table.data th { background: var(--parchment-2); font-family: var(--sans); font-size: .76rem; letter-spacing: .04em; text-transform: uppercase; color: #5a5340; }
+table.data td.l, table.data th.l { text-align: left; }
+table.data tr:nth-child(even) td { background: #fbf7ee; }
+.pos { color: var(--benefic); font-weight: 600; }
+.neg { color: var(--malefic); font-weight: 600; }
+
+/* ---- Forms / calculators ---- */
+.calc { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 1.2rem; }
+.field-row { display: flex; flex-wrap: wrap; gap: .9rem; align-items: end; }
+.field { display: flex; flex-direction: column; gap: .25rem; }
+.field label { font-family: var(--sans); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: #5a5340; font-weight: 600; }
+.field input, .field select { font-family: var(--sans); font-size: .95rem; padding: .45rem .55rem;
+  border: 1px solid var(--rule); border-radius: 7px; background: #fff; color: var(--ink); }
+.field input:focus, .field select:focus { outline: 2px solid var(--gold-2); border-color: var(--gold); }
+/* Fieldsets default to min-inline-size:min-content, so a wide child (e.g. a <select>
+   with a long option label) can push the whole fieldset past a narrow viewport. Let
+   fieldsets and the fields nested in them shrink so form panels never overflow on mobile. */
+fieldset { min-width: 0; }
+fieldset .field { min-width: 0; }
+
+/* ---- Chart wheel SVG ---- */
+.chart-wheel { display:block; margin: 0 auto; max-width: 100%; height: auto; }
+.wheel-ring { fill: #fffdf6; stroke: #cbbd9c; stroke-width: 1; }
+.wheel-ring:first-of-type { fill: #fbf4e3; }
+.sign-div { stroke: #cbbd9c; stroke-width: 1; }
+.cusp { stroke: #c2b48f; stroke-width: 1; stroke-dasharray: 3 3; }
+.cusp-angle { stroke: #8a6a2a; stroke-width: 1.8; }
+.sign-glyph { font-size: 17px; }
+.elem-fire { fill: var(--fire); } .elem-earth { fill: var(--earth); }
+.elem-air { fill: var(--air); } .elem-water { fill: var(--water); }
+.house-num { font-size: 11px; fill: #9b8e6e; font-family: var(--sans); }
+.angle-label { font-size: 10px; fill: #6b5a2a; font-family: var(--sans); font-weight: 700; letter-spacing:.05em; }
+.planet-tick { stroke: #c7b88f; stroke-width: .8; }
+.planet-glyph { font-size: 19px; fill: #2a2419; }
+.planet-deg { font-size: 9px; fill: #6b6354; font-family: var(--sans); }
+.planet.benefic .planet-glyph { fill: var(--benefic); }
+.planet.malefic .planet-glyph { fill: var(--malefic); }
+.planet.lum .planet-glyph { fill: var(--lum); }
+.planet.neutral .planet-glyph { fill: var(--neutral); }
+.planet.point .planet-glyph { fill: #7b6f8f; font-size: 16px; }
+.aspect-line { stroke-width: 1.1; opacity: .6; fill: none; }
+.aspect-line.asp-soft { stroke: #2f7d4f; }
+.aspect-line.asp-hard { stroke: #b23b2e; }
+.aspect-line.asp-conj { stroke: #8a6a2a; }
+.aspect-line.separating { stroke-dasharray: 4 4; opacity: .4; }
+
+/* ---- Chart results layout ---- */
+.chart-layout { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+@media (max-width: 820px) { .chart-layout { grid-template-columns: 1fr; } }
+
+/* ---- Footer ---- */
+footer.site { background: var(--night); color: #c5bda6; padding: 2rem 0; border-top: 3px solid var(--gold);
+  font-size: .88rem; }
+footer.site a { color: var(--gold-2); }
+footer.site .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.4rem; }
+footer .disclaimer { grid-column: 1/-1; border-top: 1px solid #2c3358; padding-top: 1rem; color: #9a937e; font-style: italic; }
+
+/* ---- Breadcrumb ---- */
+.crumb { font-family: var(--sans); font-size: .8rem; color: var(--muted); margin: 0 0 .6rem; }
+.crumb a { color: var(--link); text-decoration: none; }
+
+/* ---- Misc ---- */
+.pill { display:inline-block; font-family:var(--sans); font-size:.7rem; padding:.12rem .5rem; border-radius:99px;
+  background: var(--parchment-2); color:#5a5340; border:1px solid var(--rule); margin:.1rem; }
+.center { text-align: center; }
+hr.fancy { border:0; height:1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 2rem 0; }
+ul.clean { list-style: none; padding-left: 0; }
+ul.clean li { padding: .15rem 0; }
+.step { counter-increment: step; position: relative; padding-left: 2.4rem; margin: 1rem 0; }
+.step::before { content: counter(step); position: absolute; left: 0; top: 0; width: 1.7rem; height: 1.7rem;
+  background: var(--gold); color: #2a2008; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--sans); font-weight: 700; font-size: .9rem; }
+.steps { counter-reset: step; }
+
+/* ---- Auto-linked glossary terms ---- */
+.gloss-link { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--gold); cursor: help; }
+.gloss-link:hover { color: var(--link); border-bottom-color: var(--link); background: #fbf2dd; }
+.gloss-card { scroll-margin-top: 80px; }
+.gloss-card.target { box-shadow: 0 0 0 2px var(--gold); animation: glosshi 2.4s ease; }
+@keyframes glosshi { 0%, 45% { background: #fbeec2; } 100% { background: var(--card); } }
+
+/* ---- Advisories / cautions panel (Master Tool, Horary, Election) ---- */
+.advisories { list-style: none; padding-left: 0; margin: .4rem 0; }
+.advisories li { position: relative; padding: .5rem .7rem .5rem 2.1rem; margin: .4rem 0;
+  border-radius: 6px; border: 1px solid var(--rule); background: var(--card); font-size: .94rem; }
+.advisories li::before { position: absolute; left: .6rem; top: .5rem; font-size: 1rem; }
+.adv-good    { border-left: 4px solid var(--benefic); background: #eef7ee; }
+.adv-good::before    { content: "✓"; color: var(--benefic); }
+.adv-note    { border-left: 4px solid var(--air); background: #eef5fa; }
+.adv-note::before    { content: "ℹ"; color: var(--air); }
+.adv-caution { border-left: 4px solid var(--gold); background: #fbf4e2; }
+.adv-caution::before { content: "⚠"; color: #b8860b; }
+.adv-bad     { border-left: 4px solid var(--malefic); background: #fbeeee; }
+.adv-bad::before     { content: "✕"; color: var(--malefic); }
+.verdict { font-family: var(--sans); font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+  display: inline-block; padding: .35rem .9rem; border-radius: 99px; font-size: .85rem; }
+.verdict.green { background: #d8efd6; color: #1f5e1d; border: 1px solid var(--benefic); }
+.verdict.amber { background: #faedcb; color: #7a5a06; border: 1px solid var(--gold); }
+.verdict.red   { background: #f6d9d9; color: #7a1d1d; border: 1px solid var(--malefic); }
+.sev-legend { font-size: .8rem; color: var(--muted, #6b6450); margin: .3rem 0 .6rem; }
+.sev-legend span { margin-right: 1rem; white-space: nowrap; }
+
+/* ---- Workflow / chapter map ---- */
+.flowmap { display: grid; gap: .5rem; margin: 1rem 0; }
+.flow-node { border: 1px solid var(--rule); border-radius: 8px; padding: .7rem .9rem; background: var(--card); }
+.flow-node h4 { margin: 0 0 .25rem; font-size: 1rem; }
+.flow-arrow { text-align: center; color: var(--gold); font-size: 1.3rem; line-height: 1; }
+table.data td.l small { color: #6b6450; }
+.chip { display:inline-block; font-family:var(--sans); font-size:.66rem; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; padding:.1rem .45rem; border-radius:4px; margin-right:.3rem; }
+.chip.done { background:#d8efd6; color:#1f5e1d; }
+.chip.tool { background:#e7eef7; color:#2b4a6b; }
+.chip.soon { background:#f0e8d4; color:#7a5a06; }
+.tool-card .what { font-size:.85rem; color:#5a5340; margin-top:.4rem; }
+.tool-card .what b { color:#3a3322; }
+
+/* ---- Geolocation control (injected by wireCitySelect) ---- */
+.geo-btn { margin-left: .4rem; }
+.geo-status { display: inline-block; }
+
+/* ---- Print stylesheet (Phase 3): clean printouts of recipes/readings ---- */
+@media print {
+  header.site, footer.site, nav.main, form.calc, .btn, .geo-btn, .geo-status,
+  .no-print { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  main.wrap { max-width: none; margin: 0; padding: 0; }
+  .card, section.card { border: 1px solid #999 !important; box-shadow: none !important;
+    background: #fff !important; color: #000 !important; break-inside: avoid; page-break-inside: avoid; }
+  a { color: #000 !important; text-decoration: none; }
+  .callout, .callout.science { border: 1px solid #bbb !important; background: #fff !important; color: #000 !important; }
+  .verdict { border: 1px solid #000 !important; color: #000 !important; background: #fff !important; }
+  table.data, table.data th, table.data td { border-color: #999 !important; color: #000 !important; }
+  h1, h2, h3 { color: #000 !important; }
+  @page { margin: 1.5cm; }
+}
+
+/* ---- Accessibility: skip link ---- */
+.skip-link { position: absolute; left: -999px; top: 0; z-index: 1000;
+  background: #1a1407; color: #e9dfc4; padding: .5rem .8rem; border-radius: 0 0 6px 0; }
+.skip-link:focus { left: 0; }
+@media print { .skip-link { display: none !important; } }
+
+/* ---- Accessibility: a visible keyboard-focus ring everywhere ---- */
+a:focus-visible, button:focus-visible, summary:focus-visible,
+select:focus-visible, input:focus-visible, textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--gold-2); outline-offset: 2px; border-radius: 4px;
+}
+/* On the dark header the gilt ring needs a touch more contrast */
+header.site a:focus-visible, header.site button:focus-visible { outline-color: #f0d28a; }
+
+/* Responsive coordinate/offset inputs — fixed widths that collapse on phones */
+.w-coord { width: 7rem; max-width: 100%; }
+.w-offset { width: 6rem; max-width: 100%; }
+@media (max-width: 560px) { .w-coord, .w-offset { width: 100%; } }
+
+/* --- Chronology wing (R15) -------------------------------------------------
+   The Hermetic Chronology: epistemic-label badges (documented / disputed /
+   debunked / conspiracy), the timeline rail & markers, the legend grid and the
+   filter chips. The original site's label colours (gold/slate/red/amber on a
+   dark ground) are re-derived here in darker shades that read on parchment,
+   from the site's own palette where possible. Everything is namespaced
+   `chron-` and touches nothing else. */
+:root {
+  --chron-doc: var(--gold);       /* documented — the site's gilt */
+  --chron-disp: #4a68a8;          /* disputed — slate blue (darkened from #8FA6CE) */
+  --chron-deb: #b23b2e;           /* debunked — rubric red (site --malefic) */
+  --chron-con: #b06f1f;           /* conspiracy — burnt amber (darkened from #D79E56) */
+}
+
+/* label badges */
+.chron-badge { display: inline-block; font-family: var(--sans); font-size: .66rem; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase; padding: .12rem .5rem; border-radius: 4px;
+  border: 1px solid; vertical-align: middle; }
+.chron-badge.chron-doc  { color: #6b4d0c; background: #f7ecce; border-color: var(--chron-doc); }
+.chron-badge.chron-disp { color: #2b4a6b; background: #e7eef7; border-color: var(--chron-disp); }
+.chron-badge.chron-deb  { color: #7a1d1d; background: #f6d9d9; border-color: var(--chron-deb); }
+.chron-badge.chron-con  { color: #7a4a06; background: #f8e8d0; border-color: var(--chron-con); }
+
+/* timeline rail + markers (documented = gilt diamond; others = circles,
+   hollow for disputed/conspiracy, solid for debunked — as on the original) */
+.chron-item { position: relative; margin: 0 0 1rem; padding-left: 1.6rem; border-left: 3px solid var(--rule); }
+.chron-item::before { content: ''; position: absolute; left: -8px; top: 1.15rem; width: 11px; height: 11px;
+  border-radius: 50%; background: var(--card); border: 3px solid var(--chron-doc); }
+.chron-l-doc::before  { border-color: var(--chron-doc); background: var(--chron-doc);
+  border-radius: 2px; transform: rotate(45deg); }
+.chron-l-disp::before { border-color: var(--chron-disp); }
+.chron-l-deb::before  { border-color: var(--chron-deb); background: var(--chron-deb); }
+.chron-l-con::before  { border-color: var(--chron-con); }
+
+.chron-era { margin-top: 2.2rem; }
+.chron-era .chron-range { font-family: var(--sans); font-size: .78rem; font-weight: 400;
+  color: var(--muted); letter-spacing: .04em; white-space: nowrap; }
+.chron-meta { margin: 0 0 .2rem; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.chron-date { font-family: var(--sans); font-size: .78rem; font-weight: 700; letter-spacing: .05em;
+  color: #6b5a2a; text-transform: uppercase; }
+.chron-entry h3 { margin: .1rem 0 .35rem; }
+.chron-src { margin: .4rem 0 0; }
+.chron-links { margin: .35rem 0 0; }
+.chron-cast { margin: .5rem 0 0; border-top: 1px dashed var(--rule); padding-top: .45rem; }
+.chron-tier { display: inline-block; font-family: var(--sans); font-size: .66rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: #5a5340; background: var(--parchment-2);
+  border: 1px solid var(--rule); border-radius: 99px; padding: .08rem .5rem; margin-left: .35rem; cursor: help; }
+
+/* legend grid */
+.chron-legend { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 1rem 0; }
+.chron-legend .chron-key { background: var(--card); border: 1px solid var(--rule); border-radius: 8px;
+  padding: .55rem .7rem; font-size: .88rem; }
+
+/* filter chips */
+.chron-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .7rem; }
+.chron-chip { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; padding: .3rem .7rem; border-radius: 99px; cursor: pointer;
+  background: var(--parchment-2); color: var(--muted); border: 1px solid var(--rule); transition: .15s; }
+.chron-chip[aria-pressed="true"].chron-doc  { color: #6b4d0c; background: #f7ecce; border-color: var(--chron-doc); }
+.chron-chip[aria-pressed="true"].chron-disp { color: #2b4a6b; background: #e7eef7; border-color: var(--chron-disp); }
+.chron-chip[aria-pressed="true"].chron-deb  { color: #7a1d1d; background: #f6d9d9; border-color: var(--chron-deb); }
+.chron-chip[aria-pressed="true"].chron-con  { color: #7a4a06; background: #f8e8d0; border-color: var(--chron-con); }
+.chron-chip[aria-pressed="false"] { opacity: .55; text-decoration: line-through; }
+
+/* reveal animation — disabled outright under prefers-reduced-motion */
+.chron-reveal { opacity: 0; transform: translateY(10px); transition: opacity .45s ease, transform .45s ease; }
+.chron-reveal.chron-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .chron-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* library reliability tiers + field-guide swatches */
+.chron-tag { display: inline-block; font-family: var(--sans); font-size: .64rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; padding: .1rem .45rem; border-radius: 4px;
+  margin-right: .4rem; border: 1px solid; vertical-align: middle; }
+.chron-tag.sch { color: #1f5e1d; background: #d8efd6; border-color: var(--benefic); }
+.chron-tag.jrn { color: #2b4a6b; background: #e7eef7; border-color: var(--chron-disp); }
+.chron-tag.web { color: #7a5a06; background: #faedcb; border-color: var(--gold); }
+.chron-swatch { display: inline-block; width: .85em; height: .85em; border-radius: 50%;
+  border: 1px solid rgba(0,0,0,.25); vertical-align: baseline; margin-right: .35rem; }
+/* --- end Chronology wing (R15) --------------------------------------------- */
+
+/* ===========================================================================
+   DESIGN SYSTEM 2.0 — additive token + component layer (Revamp WP1).
+   Everything below is ADDED, never rewired: every existing custom property and
+   class above is byte-for-byte untouched, so NO page changes appearance until a
+   later sweep opts a component in. Tokens map the site's already-shipped
+   hardcoded values onto named scales (aliasing, never shifting colours); new
+   component classes are all namespaced and inert until markup adopts them.
+   Order: TOKENS 2.0 · DS2 PRIMITIVES · DS2 COMPONENTS · MOTION · PRINT ADDENDUM.
+   (Custom properties resolve regardless of :root position, so this block lives
+   at the file tail to keep the locked head untouched — see plan §1.8 / P1.)
+   =========================================================================== */
+
+/* ---------- TOKENS 2.0 (plan §1.2) ------------------------------------------ */
+:root {
+  /* -- night scale (dark surfaces) -- */
+  --night-900:#090d20;   /* hero vignette base, PNG export bg      */
+  --night-800:#0e1430;   /* = --night                              */
+  --night-700:#161d42;   /* = --night-2                            */
+  --night-600:#1e2756;   /* hover/raised surface on dark           */
+  /* -- paper scale (light surfaces) -- */
+  --paper-0:#fffdf8;     /* = --card                               */
+  --paper-50:#fbf7ee;    /* zebra rows / panel wash (already used) */
+  --paper-100:#f6efe0;   /* = --parchment                          */
+  --paper-200:#efe6d2;   /* = --parchment-2                        */
+  --paper-300:#e6dabf;   /* pressed/active surface                 */
+  /* -- gold scale -- */
+  --gold-700:#8a6420;    /* gold-as-TEXT on parchment (AA >= 4.5)  */
+  --gold-500:#b8862b;    /* = --gold                               */
+  --gold-300:#d9b15a;    /* = --gold-2                             */
+  --gold-100:#f7ecce;    /* gold wash bg                           */
+  /* -- ink & neutrals -- */
+  --ink-900:#20242e;     /* = --ink                                */
+  --ink-700:#494334;     /* .lede colour, tokenised                */
+  --ink-500:#6b6354;     /* = --muted                              */
+  --ink-300:#9b8e6e;     /* faint labels (house numbers etc.)      */
+  --rule-300:#d8cbac;    /* = --rule                               */
+  --rule-500:#c2b48f;    /* strong rules (already used ad hoc)     */
+
+  /* -- semantic aliases: components reference ONLY these -- */
+  --surface-page:var(--paper-100);    --surface-card:var(--paper-0);
+  --surface-wash:var(--paper-50);     --surface-inset:var(--paper-200);
+  --surface-inverse:var(--night-800); --surface-inverse-2:var(--night-700);
+  --text:var(--ink-900);              --text-soft:var(--ink-700);
+  --text-muted:var(--ink-500);        --text-faint:var(--ink-300);
+  --text-inverse:#e9e3d2;             --text-inverse-muted:#b9b29a;
+  --border:var(--rule-300);           --border-strong:var(--rule-500);
+  --border-inverse:rgba(217,177,90,.5);
+  --accent:var(--gold-500);           --accent-strong:var(--gold-700);
+  --accent-soft:var(--gold-300);      --accent-wash:var(--gold-100);
+  --focus:var(--gold-300);            --focus-on-dark:#f0d28a;
+  --link-hover:#a85a2e;               /* --link stays defined in the head */
+
+  /* -- verdict triads (traffic-light gravity — tokenise what exists) -- */
+  --ok:#2f7d4f;    --ok-wash:#d8efd6;   --ok-ink:#1f5e1d;    /* = benefic family */
+  --warn:#b8862b;  --warn-wash:#faedcb; --warn-ink:#7a5a06;  /* = gold family    */
+  --bad:#b23b2e;   --bad-wash:#f6d9d9;  --bad-ink:#7a1d1d;    /* = malefic family */
+  --info:#2f7ca8;  --info-wash:#eef5fa; --info-ink:#2b4a6b;   /* = air family     */
+
+  /* -- epistemic-label triads — promoted site-wide; --chron-* stay equal aliases -- */
+  --ep-doc:var(--gold-500);  --ep-doc-wash:#f7ecce;  --ep-doc-ink:#6b4d0c;   /* documented */
+  --ep-disp:#4a68a8;         --ep-disp-wash:#e7eef7; --ep-disp-ink:#2b4a6b;  /* disputed   */
+  --ep-deb:#b23b2e;          --ep-deb-wash:#f6d9d9;  --ep-deb-ink:#7a1d1d;   /* debunked   */
+  --ep-con:#b06f1f;          --ep-con-wash:#f8e8d0;  --ep-con-ink:#7a4a06;   /* conspiracy */
+
+  /* -- spacing / radius / shadow / z-index -- */
+  --sp-1:.25rem; --sp-2:.5rem; --sp-3:.75rem; --sp-4:1rem; --sp-5:1.5rem;
+  --sp-6:2rem;   --sp-7:3rem;  --sp-8:4rem;
+  --rad-1:4px; --rad-2:8px; --rad-3:12px; --rad-pill:999px;
+  --shadow-1:0 1px 3px rgba(40,30,10,.06);
+  --shadow-2:0 6px 20px rgba(40,30,10,.12);
+  --shadow-3:0 12px 34px rgba(0,0,0,.45);
+  --z-sticky:40; --z-header:50; --z-menu:60; --z-toast:100;
+  --sticky-top:4.5rem;   /* shared sticky offset (rail/filterbar/workrail) */
+
+  /* -- typography scale (fluid, serif-first — identity keeps its Iowan voice) -- */
+  --font-serif:var(--serif); --font-sans:var(--sans);
+  --font-mono:ui-monospace,'SFMono-Regular',Menlo,monospace;
+  --font-deva:'Nirmala UI','Noto Sans Devanagari','Mangal',sans-serif;
+  --font-hebr:'Segoe UI','Noto Sans Hebrew','David',sans-serif;
+  --fs--1:.86rem;
+  --fs-0:clamp(1rem, .97rem + .25vw, 1.06rem);
+  --fs-1:clamp(1.12rem, 1.05rem + .3vw, 1.2rem);
+  --fs-2:clamp(1.32rem, 1.2rem + .6vw, 1.55rem);
+  --fs-3:clamp(1.65rem, 1.4rem + 1.2vw, 2.15rem);
+  --fs-4:clamp(2rem, 1.6rem + 2vw, 2.75rem);
+  --fs-label:.74rem; --fs-badge:.68rem;
+  --lh-body:1.65; --lh-tight:1.2; --lh-loose:1.75; --measure:72ch;
+
+  /* -- diagram tokens (the one SVG family) -- */
+  --dg-fill:#fffdf6;   --dg-fill-2:#fbf4e3;
+  --dg-frame:#cbbd9c;  --dg-grid:#c2b48f;
+  --dg-strong:#8a6a2a; --dg-label:#9b8e6e;  --dg-ink:#2a2419;
+  --dg-hot:var(--link); --dg-sel:var(--gold-500); --dg-tick:#b3a37e;
+
+  /* -- chat surface tokens (extracted from #wb-asst-log, tokenised) -- */
+  --chat-surface:#0d1430;
+  --chat-user-bg:rgba(217,177,90,.16); --chat-user-bd:rgba(217,177,90,.38);
+  --chat-bot-bg:rgba(120,150,210,.13); --chat-bot-bd:rgba(120,150,210,.34);
+
+  /* -- motion (reduced-motion-first: these only apply where a rule opts in) -- */
+  --t-fast:120ms; --t-med:180ms; --t-slow:240ms; --ease:cubic-bezier(.2,.7,.3,1);
+}
+
+/* ---------- DS2 PRIMITIVES --------------------------------------------------- */
+
+/* Global anchor offset so deep links clear the sticky header (Quick Win 2).
+   `:where()` keeps specificity 0 so the existing .gloss-card / .ys-sutra
+   scroll-margins still win where they already set one. */
+:where(h2, h3, section, [id]) { scroll-margin-top: 5rem; }
+
+/* Right-aligned tabular numerals for score/degree columns (Quick Win 9).
+   The table-scoped rule out-specifies table.data td's centring. */
+.num { font-family: var(--font-sans); font-variant-numeric: tabular-nums; text-align: right; }
+table.data td.num, table.data th.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Scrollable table wrapper + sticky header (Quick Win 1). Sticky is scoped to
+   the wrapper ONLY (never global table.data thead) so it can't double-stick
+   inside the legacy max-width:680px scroll hack — see plan WP1 risk note. */
+.table-scroll { max-height: 70vh; overflow: auto; border: 1px solid var(--border);
+  border-radius: var(--rad-2); -webkit-overflow-scrolling: touch; }
+.table-scroll table.data { margin: 0; border: 0; }
+.table-scroll thead th { position: sticky; top: 0; z-index: 1; }
+
+/* ---------- DS2 COMPONENTS --------------------------------------------------- */
+
+/* -- Badges & chips: ONE system (plan §1.3.5). Aliases for the five legacy
+      badge families are listed in the DEPRECATION LEDGER below; existing markup
+      keeps its own rules until a sweep swaps class names. -- */
+.badge { display: inline-block; font-family: var(--font-sans); font-size: var(--fs-badge);
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: .1rem .45rem;
+  border-radius: var(--rad-1); border: 1px solid var(--border); background: var(--surface-inset);
+  color: var(--text-muted); vertical-align: middle; white-space: nowrap; }
+.badge--ok   { color: var(--ok-ink);   background: var(--ok-wash);   border-color: var(--ok); }
+.badge--warn { color: var(--warn-ink); background: var(--warn-wash); border-color: var(--warn); }
+.badge--bad  { color: var(--bad-ink);  background: var(--bad-wash);  border-color: var(--bad); }
+.badge--info { color: var(--info-ink); background: var(--info-wash); border-color: var(--info); }
+.badge--doc  { color: var(--ep-doc-ink);  background: var(--ep-doc-wash);  border-color: var(--ep-doc); }
+.badge--disp { color: var(--ep-disp-ink); background: var(--ep-disp-wash); border-color: var(--ep-disp); }
+.badge--deb  { color: var(--ep-deb-ink);  background: var(--ep-deb-wash);  border-color: var(--ep-deb); }
+.badge--con  { color: var(--ep-con-ink);  background: var(--ep-con-wash);  border-color: var(--ep-con); }
+.badge--plain { color: var(--text-muted); background: var(--surface-inset); border-color: var(--border); }
+
+.chip-toggle { display: inline-block; font-family: var(--font-sans); font-size: var(--fs-badge);
+  font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: .3rem .7rem;
+  border-radius: var(--rad-pill); border: 1px solid var(--border); background: var(--surface-inset);
+  color: var(--text-muted); cursor: pointer; transition: background var(--t-fast) var(--ease); }
+.chip-toggle[aria-pressed="false"] { opacity: .55; text-decoration: line-through; }
+
+/* -- Button hierarchy (plan §1.3.2 / Quick Win 4). One gold .btn per form;
+      secondary + quiet de-emphasise everything else. -- */
+.btn-secondary { display: inline-block; font-family: var(--font-sans); font-weight: 600;
+  font-size: .92rem; background: var(--surface-inset); color: var(--text); text-decoration: none;
+  padding: .6rem 1.1rem; border-radius: var(--rad-2); border: 1px solid var(--border-strong);
+  cursor: pointer; transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease); }
+.btn-secondary:hover { background: var(--paper-300); color: var(--text); }
+.btn-secondary.sm { padding: .35rem .7rem; font-size: .82rem; }
+.btn-quiet { display: inline-block; font-family: var(--font-sans); font-weight: 600; font-size: .92rem;
+  background: transparent; color: var(--link); border: 0; padding: .5rem .6rem; cursor: pointer; text-decoration: none; }
+.btn-quiet:hover { text-decoration: underline; color: var(--link-hover); }
+.btn-quiet.sm { padding: .3rem .4rem; font-size: .82rem; }
+.btn:active { transform: none; }
+/* Busy state: the ONLY spinner on the site, capped at task duration and only
+   animated where motion is welcome (plan §1.5). */
+.btn-busy { position: relative; pointer-events: none; color: transparent !important; }
+.btn-busy::after { content: ''; position: absolute; top: 50%; left: 50%; width: 1.1em; height: 1.1em;
+  margin: -.55em 0 0 -.55em; border-radius: 50%; color: var(--gold-700);
+  background: conic-gradient(from 0deg, transparent, currentColor);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0);
+          mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0); }
+@media (prefers-reduced-motion: no-preference) {
+  .btn-busy::after { animation: ds-spin .8s linear infinite; }
+  @keyframes ds-spin { to { transform: rotate(1turn); } }
+}
+
+/* -- Result panel + panel header (plan §1.3.7). section.panel is the same box
+      as section.card; add it ALONGSIDE .card, never replacing it. -- */
+.panel { background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--rad-3);
+  padding: var(--sp-4) var(--sp-5); box-shadow: var(--shadow-1); }
+.panel-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center;
+  column-gap: var(--sp-3); row-gap: var(--sp-1); margin-bottom: var(--sp-3); }
+.panel-status { grid-column: 1; grid-row: 1; align-self: center; }
+.panel-title  { grid-column: 2; grid-row: 1; margin: 0; font-size: var(--fs-2); }
+.panel-meta   { grid-column: 2; grid-row: 2; font-size: var(--fs--1); color: var(--text-muted); }
+.panel-anchor { grid-column: 3; grid-row: 1; opacity: 0; text-decoration: none; color: var(--accent);
+  font-weight: 700; transition: opacity var(--t-fast) var(--ease); }
+.panel-head:hover .panel-anchor, .panel-anchor:focus-visible { opacity: 1; }
+
+/* -- Verdict banner (plan §1.3.9): the first thing after a compute. -- */
+.verdict-banner { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4); border-radius: var(--rad-2); border: 1px solid var(--border);
+  border-left: 6px solid var(--border-strong); background: var(--surface-wash); margin: var(--sp-4) 0; }
+.verdict-banner--ok   { background: var(--ok-wash);   border-color: var(--ok); }
+.verdict-banner--warn { background: var(--warn-wash); border-color: var(--warn); }
+.verdict-banner--bad  { background: var(--bad-wash);  border-color: var(--bad); }
+.verdict-banner .vb-reason { flex: 1 1 16rem; color: var(--text-soft); }
+.verdict-banner .vb-link { white-space: nowrap; }
+
+/* -- Epistemic strip: three fixed chips under a tool's h1 (plan §1.3.4). -- */
+.ep-strip { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center; margin: var(--sp-2) 0 var(--sp-4); }
+.ep-strip a { text-decoration: none; }
+
+/* -- Filter toolbar (plan §1.3.10 — generalises .ys-toolbar). -- */
+.filterbar { position: sticky; top: 0; z-index: var(--z-sticky); display: flex; flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4); align-items: center; padding: var(--sp-3) var(--sp-1);
+  margin: 0 0 var(--sp-4); background: var(--surface-page); border-bottom: 1px solid var(--border); }
+.filter-input { flex: 1 1 16rem; min-width: 12rem; padding: .45rem .7rem; font: inherit;
+  border: 1px solid var(--border); border-radius: var(--rad-2); background: var(--surface-card); color: var(--text); }
+.filter-input:focus { outline: 2px solid var(--focus); outline-offset: 1px; }
+.filter-count { font-family: var(--font-sans); font-size: var(--fs--1); color: var(--text-muted); white-space: nowrap; }
+
+/* -- Segmented control (plan §1.3.11 — generalises .ys-numbering). -- */
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--border); border-radius: var(--rad-2); overflow: hidden; }
+.seg button, .seg a { font-family: var(--font-sans); font-size: .78rem; padding: .4rem .7rem; border: 0;
+  cursor: pointer; background: var(--surface-card); color: var(--text-muted);
+  border-left: 1px solid var(--border); text-decoration: none; }
+.seg button:first-child, .seg a:first-child { border-left: 0; }
+.seg .active, .seg button.active, .seg [aria-current="page"], .seg [aria-pressed="true"] {
+  background: var(--accent); color: #fff; font-weight: 700; }
+
+/* -- Accordion (plan §1.3.6 — promotes .ys-bhashya, the best <details> style). -- */
+.acc { margin: var(--sp-2) 0; padding: .5rem .75rem; border: 1px dashed var(--border);
+  border-radius: var(--rad-2); background: var(--surface-wash); }
+.acc > summary { font-family: var(--font-sans); font-size: .74rem; font-weight: 700; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--accent-strong); cursor: pointer; list-style: none; }
+.acc > summary::-webkit-details-marker { display: none; }
+.acc > summary::before { content: '\25B8 '; color: var(--accent); }
+.acc[open] > summary::before { content: '\25BE '; }
+.acc > summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.acc > summary h2, .acc > summary h3 { display: inline; margin: 0; font-size: inherit; color: inherit; }
+.acc-body { margin-top: .5rem; }
+
+/* -- Record card (plan §T6 canonical layering: one sutra / mansion / face). -- */
+.record { border: 1px solid var(--border); border-radius: var(--rad-3); background: var(--surface-card);
+  padding: var(--sp-4) var(--sp-5); margin: 0 0 var(--sp-4); box-shadow: var(--shadow-1);
+  scroll-margin-top: var(--sticky-top); }
+.record:target { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.record-head { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: baseline; margin-bottom: var(--sp-2); }
+.record-num { font-family: var(--font-sans); font-weight: 700; color: var(--accent-strong);
+  text-decoration: none; letter-spacing: .02em; }
+.record-num:hover { text-decoration: underline; }
+.record-src { margin-top: var(--sp-3); padding-top: var(--sp-2); border-top: 1px dashed var(--border);
+  font-size: var(--fs--1); color: var(--text-muted); }
+
+/* -- Prev/next pager (plan §T6). -- */
+.pager { display: flex; justify-content: space-between; gap: var(--sp-3); margin: var(--sp-4) 0;
+  font-family: var(--font-sans); font-size: .9rem; }
+.pager a { display: inline-flex; align-items: center; gap: .3rem; text-decoration: none; color: var(--link);
+  padding: .4rem .7rem; border: 1px solid var(--border); border-radius: var(--rad-2); background: var(--surface-card); }
+.pager a:hover { border-color: var(--accent); color: var(--link-hover); }
+.pager .pager-next { margin-left: auto; }
+
+/* -- Stat tiles (plan §1.3.13). -- */
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--sp-4); margin: var(--sp-4) 0; }
+.stat { background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--rad-3); padding: var(--sp-3) var(--sp-4); }
+.stat-num { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem); line-height: 1.1;
+  font-variant-numeric: tabular-nums; color: var(--text); }
+.stat-label { font-family: var(--font-sans); font-size: var(--fs-label); text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); }
+
+/* -- Toast / status line (plan §1.3.14). Fade only, and only under motion. -- */
+.toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translateX(-50%); z-index: var(--z-toast);
+  background: var(--surface-card); color: var(--text); border: 1px solid var(--border); border-radius: var(--rad-2);
+  box-shadow: var(--shadow-2); padding: var(--sp-3) var(--sp-4); font-family: var(--font-sans); font-size: .9rem;
+  max-width: min(90vw, 28rem); }
+.toast[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .toast { animation: ds-toast-in var(--t-med) var(--ease); }
+  @keyframes ds-toast-in { from { opacity: 0; transform: translate(-50%, 8px); } to { opacity: 1; transform: translate(-50%, 0); } }
+}
+
+/* -- Figure wrapper for every diagram (plan §3.7 family contract). -- */
+.fig { margin: var(--sp-4) 0; }
+.fig-body { display: flex; justify-content: center; }
+.fig-caption { margin-top: var(--sp-2); text-align: center; font-family: var(--font-sans);
+  font-size: var(--fs--1); color: var(--text-muted); }
+
+/* -- Legend grid (plan §1.3.9 — promotes .chron-legend). -- */
+.legend-grid { display: grid; gap: var(--sp-3); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: var(--sp-4) 0; }
+.legend-grid > * { background: var(--surface-card); border: 1px solid var(--border); border-radius: var(--rad-2); padding: .55rem .7rem; font-size: .88rem; }
+
+/* -- Results rail: in-page nav for long tool pages (plan §1.3.8). CSS only in
+      WP1; the opt-in rail.js module lands with the sweeps. -- */
+.rail { font-family: var(--font-sans); font-size: .86rem; }
+.rail ol, .rail ul { list-style: none; margin: 0; padding: 0; }
+.rail a { display: block; padding: .3rem .5rem; border-left: 2px solid var(--border); color: var(--text-muted);
+  text-decoration: none; border-radius: 0 var(--rad-1) var(--rad-1) 0; }
+.rail a:hover { color: var(--text); background: var(--surface-wash); }
+.rail a.is-here { color: var(--accent-strong); border-left-color: var(--accent); font-weight: 700; }
+@media (min-width: 1100px) {
+  main.with-rail { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: var(--sp-6); align-items: start; }
+  main.with-rail > .span-all { grid-column: 1 / -1; }
+  main.with-rail > .rail { grid-column: 2; }
+  .rail { position: sticky; top: var(--sticky-top); align-self: start;
+    max-height: calc(100vh - var(--sticky-top) - 1rem); overflow: auto; }
+}
+@media (max-width: 1099px) {
+  .rail { position: sticky; top: 0; z-index: var(--z-sticky); display: flex; gap: .3rem; overflow-x: auto;
+    background: var(--surface-page); border-bottom: 1px solid var(--border); padding: .4rem 0; }
+  .rail a { border-left: 0; border-bottom: 2px solid transparent; white-space: nowrap; }
+  .rail a.is-here { border-left: 0; border-bottom-color: var(--accent); }
+}
+
+/* -- Work-scope rail for the future Great Works reading room (plan §5.2). -- */
+.workrail { font-family: var(--font-sans); font-size: .86rem; }
+.workrail .wr-title { font-weight: 700; color: var(--text); margin-bottom: var(--sp-2); }
+.workrail ol { list-style: none; margin: 0; padding: 0; }
+.workrail a { display: block; padding: .3rem .5rem; color: var(--text-muted); text-decoration: none; border-left: 2px solid var(--border); }
+.workrail a[aria-current="page"] { color: var(--accent-strong); border-left-color: var(--accent); font-weight: 700; }
+@media (min-width: 1100px) { .workrail { position: sticky; top: var(--sticky-top); } }
+
+/* -- Wing hero for hub pages: parchment band + glyph watermark (plan §1.3.12). -- */
+.wing-hero { position: relative; overflow: hidden; background: var(--surface-page);
+  border-bottom: 1px solid var(--border); padding: var(--sp-6) 0 var(--sp-5); margin-bottom: var(--sp-5); }
+.wing-hero .wh-glyph { position: absolute; right: 2%; top: 50%; transform: translateY(-50%);
+  font-size: 12rem; line-height: 1; color: var(--accent); opacity: .06; pointer-events: none; }
+.wing-hero h1 { margin: .1em 0 .2em; }
+
+/* -- Casting stage: the oracle "night-sky stage" (plan §T3). Reduced-motion-
+      first: figures are visible by default; the staged reveal is an enhancement
+      only where motion is welcome, and short-circuits to the final state. -- */
+.casting-stage { position: relative; background: linear-gradient(180deg, var(--surface-inverse), var(--surface-inverse-2));
+  color: var(--text-inverse); border: 1px solid var(--border-inverse); border-radius: var(--rad-3);
+  padding: var(--sp-5); box-shadow: var(--shadow-3); }
+.casting-stage h2, .casting-stage h3 { color: var(--text-inverse); }
+.casting-stage a { color: var(--focus-on-dark); }
+.casting-stage-controls { margin-top: var(--sp-3); }
+.stage-figure { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .casting-stage.is-staged .stage-figure { opacity: 0; transform: translateY(8px);
+    animation: ds-stage-rise var(--t-slow) var(--ease) forwards; animation-delay: calc(var(--stage-i, 0) * 90ms); }
+  @keyframes ds-stage-rise { to { opacity: 1; transform: none; } }
+}
+
+/* -- Lesson-path spine for the future Learn curriculum (plan §5.3). -- */
+.path { margin: var(--sp-5) 0; }
+.path-node { display: grid; grid-template-columns: 2.4rem 1fr; gap: var(--sp-3); position: relative; padding-bottom: var(--sp-5); }
+.path-node::before { content: ''; position: absolute; left: 1.2rem; top: 2.4rem; bottom: 0; width: 2px;
+  background: var(--border); transform: translateX(-1px); }
+.path-node:last-child::before { display: none; }
+.path-medallion { width: 2.4rem; height: 2.4rem; border-radius: 50%; background: var(--accent); color: #2a2008;
+  display: grid; place-items: center; font-family: var(--font-sans); font-weight: 700; }
+.path-node.is-done .path-medallion { background: var(--gold-700); color: #fff; }
+.path-meta { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin: var(--sp-2) 0; }
+.path-milestone { background: var(--ok-wash); border: 1px solid var(--ok); border-radius: var(--rad-2);
+  padding: var(--sp-3) var(--sp-4); margin: var(--sp-4) 0; }
+
+/* -- Chat component: one AI-transcript surface (plan §4.4 — extracted from the
+      id-scoped #wb-asst-log rules and tokenised; the legacy .wb-chat-* rules in
+      the head stay for existing markup). -- */
+.chat { color: #eef1f8; background: var(--chat-surface); font-size: .92rem; display: flex;
+  flex-direction: column; gap: .55rem; line-height: 1.6; border-radius: var(--rad-2); }
+.chat-turn { border-radius: .55rem; padding: .55rem .7rem .6rem; max-width: 100%; border: 1px solid transparent; }
+.chat-role { font-family: var(--font-sans); font-size: .66rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; margin-bottom: .25rem; display: flex; align-items: center; gap: .35rem; }
+.chat-body { white-space: pre-wrap; word-break: break-word; color: #f3f5fb; }
+.chat-user { background: var(--chat-user-bg); border-color: var(--chat-user-bd); border-left: 3px solid var(--gold-300); align-self: flex-end; }
+.chat-user .chat-role { color: #eccf8f; }
+.chat-bot { background: var(--chat-bot-bg); border-color: var(--chat-bot-bd); border-left: 3px solid #7e9bd8; align-self: flex-start; }
+.chat-bot .chat-role { color: #a9c2f0; }
+.chat-note { align-self: flex-start; font-size: .8rem; color: #aeb8d4; margin-left: .6rem; }
+.chat a, .chat-turn a { color: var(--focus-on-dark); }
+.chat code { background: rgba(255,255,255,.1); color: #eaeefb; }
+
+/* -- Footer diet hook (plan §4.5). The footer TEMPLATE change is shared.js (WP4);
+      WP1 only ships the class so WP4 can slim the ~35-link column. -- */
+footer.site.footer-diet .footer-overflow { display: none !important; }
+footer.site.footer-diet .wrap { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+/* ---------- MOTION: reduced-motion inversion (plan §1.5 / Quick Win 3) --------
+   Default = no motion. This retro-covers the un-gated glosshi keyframe, the nav
+   caret spin and the hover transforms that currently animate unconditionally. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ---------- PRINT ADDENDUM (plan §1.6) --------------------------------------- */
+@media print {
+  .rail, .workrail, .toast, .menu-btn, .ep-strip, .casting-stage-controls, .filterbar,
+  .btn-secondary, .btn-quiet { display: none !important; }
+  section.panel, .panel, .record { break-inside: avoid; page-break-inside: avoid; }
+  .casting-stage { background: #fff !important; color: #000 !important; border: 1px solid #999 !important; box-shadow: none !important; }
+  .casting-stage h2, .casting-stage h3, .casting-stage a { color: #000 !important; }
+  .badge { border: 1px solid #000 !important; color: #000 !important; background: #fff !important; }
+  .chat { background: #fff !important; color: #000 !important; }
+  .gloss-link { border-bottom: none !important; }
+}
+
+/* ---------- DEPRECATION LEDGER (plan §1.8) ----------------------------------
+   Legacy name -> DS2 name. Ledger names are NEVER deleted while any page still
+   uses them; both render identically until a sweep swaps the class in markup.
+   No existing class is restyled here — this is documentation for the sweeps.
+     .pill                         -> .badge--plain
+     .chip / .chip.done/tool/soon  -> .badge--plain / .badge--ok/info/warn
+     .chron-badge                  -> .badge
+       .chron-doc/disp/deb/con     -> .badge--doc/disp/deb/con
+     .cy-status (cycles page)      -> .badge--doc/disp/deb/con
+     .ys-badge (yoga wing)         -> .badge--*
+     .ys-toolbar                   -> .filterbar
+     .ys-numbering                 -> .seg
+     .ys-bhashya                   -> .acc
+     .ys-sutra                     -> .record
+     .chron-legend                 -> .legend-grid
+     .chron-item / markers         -> .rail / .tl-* (WP3/T8)
+     #wb-asst-log / .wb-chat-*     -> .chat / .chat-*
+     --chron-doc/disp/deb/con      -> --ep-doc/disp/deb/con  (equal values)
+   ---------------------------------------------------------------------------- */
+
+/* ===========================================================================
+   DS2 · WP3 CHROME ADDENDUM (revamp WP3 sweep 1). The visible layer WP1 shipped
+   as tokens but deferred applying: the fluid heading scale, the honest-frame
+   seal, and the blockquote ornament. Strictly ADDITIVE — no head rule is
+   rewritten. These later, equal-or-higher-specificity rules simply adopt the
+   already-shipped DS2 tokens, so desktop sizes match today's within ~1px while
+   320–768px stops crowding. Copy is never touched here — style only.
+   =========================================================================== */
+
+/* -- Fluid heading scale (plan §1.2.6): adopt the clamp tokens on the display
+      headings. Cascade position lets these win over the locked head rules
+      (h1/h2 font-size 2.1/1.5rem, .hero h1 2.7rem) without editing them. -- */
+h1 { font-size: var(--fs-3); }
+h2 { font-size: var(--fs-2); }
+.hero h1 { font-size: var(--fs-4); }
+
+/* -- The honest-frame seal (plan §1.3.4 / §4.1): the science/covenant callout
+      keeps its --info left rule (set in the head); a gold ✶ seal precedes the
+      label, and the body is capped to the reading measure so the covenant reads
+      as measure-set serif. The framing copy inside is byte-for-byte unchanged. */
+.callout.science { max-width: var(--measure); }
+.callout.science .label::before { content: '\2736\2009'; color: var(--accent); }
+
+/* -- blockquote.lilly hanging-quote ornament (plan §1.3.4): a faded gilt opening
+      quotation mark hung above the quotation. Purely decorative — the italic
+      quote text paints over it and stays legible; hidden from AT (aria not
+      needed: generated content is already ignored for the accessible name). -- */
+blockquote.lilly { position: relative; }
+blockquote.lilly::before { content: '\201C'; position: absolute; left: -.05rem; top: -.9rem;
+  font-family: var(--font-serif); font-size: 2.2rem; line-height: 1; color: var(--accent-soft);
+  opacity: .6; pointer-events: none; }
+
+/* ###########################################################################
+   ##  DS3 — THE INTERACTION + BEAUTY LAYER (UI3 revamp). ONE additive append.
+   ##  Four banners in order: MOTION · INTERACTION · ART · DATAVIZ. Nothing
+   ##  above this line changes. Every colour is a var() or a documented token
+   ##  in these blocks; no color-mix(); reduced-motion-first throughout.
+   ########################################################################### */
+
+/* =========================================================================
+   DS3 · MOTION LAYER (physics §3, verbatim minus the cut .btn--magnet rule).
+   Physics constants live in app/motion.js (SPRINGS); these tokens carry the
+   derived CSS-side personality + the micro-interaction rules.
+   ========================================================================= */
+:root {
+  /* JS boot (motionOK() only) overwrites these with springLinear() strings.
+     Declared here as safe fallbacks so CSS never depends on JS. */
+  --ease-spring-snappy: var(--ease);
+  --ease-spring-gentle: var(--ease);
+  --ease-spring-molasses: var(--ease);
+  --press-scale: .98;
+  --dial-size: 8.5rem;          /* >=136px => the knob itself is a 44px+ target */
+}
+
+/* -- press-down: every real button acknowledges the finger (physics §5.1) -- */
+@media (prefers-reduced-motion: no-preference) {
+  .btn:active, .btn-secondary:active, .seg button:active, .chip-toggle:active,
+  .dial-knob:active { transform: scale(var(--press-scale)); }
+  .btn, .btn-secondary, .seg button, .chip-toggle {
+    transition: transform 90ms var(--ease-spring-snappy), background var(--t-fast) var(--ease); }
+}
+/* note: the DS2 head rule `.btn:active { transform:none }` is out-specified by
+   the @media block above only under no-preference — the reduced-motion default
+   keeps the head rule byte-identical. */
+
+/* -- segmented control thumb (physics §4.7) -- */
+.seg { position: relative; }
+.seg-thumb { position: absolute; z-index: 0; top: 0; left: 0; height: 100%;
+  background: var(--accent); border-radius: inherit; pointer-events: none;
+  transform-origin: left center; will-change: auto; }
+.seg.has-thumb button, .seg.has-thumb a { position: relative; z-index: 1; background: transparent; }
+.seg.has-thumb .active, .seg.has-thumb [aria-pressed="true"] { background: transparent; }
+
+/* -- dial / knob input (physics §4.6) -- */
+.dial { display: inline-grid; grid-template-columns: var(--dial-size) auto;
+  gap: var(--sp-3); align-items: center; }
+.dial-face { width: var(--dial-size); height: var(--dial-size); border-radius: 50%;
+  background: var(--surface-card); border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-1); position: relative; touch-action: none;
+  contain: layout paint; cursor: grab; }
+.dial-face:active { cursor: grabbing; }
+.dial-tick { stroke: var(--dg-tick); stroke-width: 1; }
+.dial-tick--major { stroke: var(--dg-strong); stroke-width: 1.5; }
+.dial-tick.is-hit { stroke: var(--accent); stroke-width: 2.5; } /* 120ms flash, JS-removed */
+.dial-needle { stroke: var(--accent-strong); stroke-width: 2; stroke-linecap: round; }
+.dial-readout { font-family: var(--font-sans); font-variant-numeric: tabular-nums; }
+.dial input[type="number"] { width: 6.5rem; }  /* type-to-enter is ALWAYS present */
+@media (max-width: 420px) { .dial { grid-template-columns: 1fr; } }
+
+/* -- wheel rotate-to-inspect (physics §4.4 / D4) -- */
+.wheel-stage { contain: layout paint; }
+.wheel-stage .wheel-rotor { transform-origin: center; }   /* set on chart.js group */
+.wheel-stage.is-dragging { cursor: grabbing; }
+.wheel-rotate-toggle[aria-pressed="true"] { background: var(--accent); color: #fff; }
+
+/* =========================================================================
+   DS3 · INTERACTION LAYER (flow §8; the .reveal-seq stagger is cut, C6).
+   Components for B1's moment-picker / action-bar / palette / next-up +
+   the home doors and the mega-menu Cast kickers. Nothing restyled.
+   ========================================================================= */
+:root {
+  --z-actionbar: 40;            /* below the header's 50 */
+  --mp-field-h: 2.75rem;        /* 44px touch height */
+  --door-rule: 3px;
+}
+
+/* disabled state for the primary/secondary buttons (was unstyled) */
+.btn[disabled], .btn-secondary[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* -- the moment-picker (flow §2.2) -- */
+.mp { border: 1px solid var(--border); border-radius: var(--rad-3);
+  background: var(--surface-card); padding: var(--sp-4); margin: 0 0 var(--sp-4); }
+.mp > legend { font-family: var(--font-sans); font-size: var(--fs-label); font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--accent-strong); padding: 0 .4rem; }
+.mp-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3);
+  margin: var(--sp-2) 0; }
+.mp-group > label { font-family: var(--font-sans); font-size: var(--fs-label);
+  font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted);
+  min-width: 3.4rem; }
+.mp input, .mp select { min-height: var(--mp-field-h); }
+.mp-chip { display: inline-flex; align-items: center; gap: .3rem; min-height: 44px;
+  padding: .25rem .6rem; font-family: var(--font-sans); font-size: .82rem;
+  background: var(--surface-inset); color: var(--text); border: 1px solid var(--border);
+  border-radius: var(--rad-pill); cursor: pointer; }
+.mp-chip:hover { border-color: var(--accent); }
+.mp-chip .mp-chip-x { color: var(--text-muted); font-weight: 700; }
+.mp-hint { font-family: var(--font-sans); font-size: var(--fs--1); color: var(--warn-ink);
+  margin: .2rem 0 0; }
+.mp-error { font-family: var(--font-sans); font-size: var(--fs--1); color: var(--bad-ink);
+  font-weight: 600; margin: .2rem 0 0; }
+.is-invalid { border-color: var(--bad) !important; outline-color: var(--bad); }
+
+/* -- the sticky action bar (flow §2.4) -- */
+html { scroll-padding-bottom: 64px; }
+.action-bar { position: sticky; bottom: 0; z-index: var(--z-actionbar);
+  display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap;
+  min-height: 56px; padding: .4rem .8rem; margin-top: var(--sp-4);
+  background: var(--surface-page); border-top: 1px solid var(--border);
+  box-shadow: var(--shadow-2); }
+.action-bar .ab-summary { flex: 1 1 12rem; min-width: 0; color: var(--text-muted);
+  font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.action-bar .ab-spacer { flex: 1 1 auto; }
+.action-bar.is-hushed { display: none; }   /* hidden while an assistant textarea is focused */
+.ab-menu { position: relative; }
+.ab-menu [role="menu"] { position: absolute; bottom: calc(100% + .3rem); right: 0;
+  min-width: 12rem; background: var(--surface-card); border: 1px solid var(--border);
+  border-radius: var(--rad-2); box-shadow: var(--shadow-2); padding: .3rem; z-index: var(--z-menu); }
+.ab-menu [role="menuitem"] { display: block; width: 100%; text-align: left;
+  padding: .4rem .6rem; border: 0; background: transparent; border-radius: var(--rad-1);
+  font: inherit; color: var(--text); cursor: pointer; }
+.ab-menu [role="menuitem"]:hover, .ab-menu [role="menuitem"]:focus { background: var(--surface-inset); }
+
+/* -- the command palette (flow §2.6) -- */
+.cmdk { width: min(560px, 92vw); max-width: 560px; margin: 12vh auto auto; padding: 0;
+  border: 1px solid var(--border-strong); border-radius: var(--rad-3);
+  background: var(--surface-card); box-shadow: var(--shadow-3); color: var(--text); }
+.cmdk::backdrop { background: rgba(20, 15, 6, .38); }
+.cmdk input[type="search"], .cmdk .cmdk-input { width: 100%; box-sizing: border-box;
+  font-family: var(--font-serif); font-size: 1.1rem; padding: .8rem 1rem;
+  border: 0; border-bottom: 1px solid var(--border); background: transparent; color: var(--text); }
+.cmdk [role="listbox"] { list-style: none; margin: 0; padding: .3rem; max-height: 52vh; overflow: auto; }
+.cmdk-row { display: flex; align-items: center; gap: .6rem; padding: .5rem .7rem;
+  border-radius: var(--rad-2); cursor: pointer; text-decoration: none; color: var(--text); }
+.cmdk-row[aria-selected="true"], .cmdk-row:hover { background: var(--surface-inset); }
+.cmdk-row .cmdk-label { font-weight: 600; }
+.cmdk-row .cmdk-path { margin-left: auto; font-family: var(--font-sans); font-size: var(--fs--1);
+  color: var(--text-faint); }
+.cmdk-kicker { display: inline-block; font-family: var(--font-sans); font-size: var(--fs-badge);
+  font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-strong);
+  background: var(--accent-wash); border-radius: var(--rad-pill); padding: .1rem .5rem; }
+
+/* -- the header command-palette button (shared.js; flow §2.6, D10). Sits just
+      after the brand at every width — the discoverable path to Ctrl-K. -- */
+.cmdk-btn { display: inline-grid; place-items: center; width: 2.1rem; height: 2.1rem;
+  background: transparent; border: 1px solid rgba(217,177,90,.45); border-radius: var(--rad-2);
+  color: #e9e3d2; cursor: pointer; }
+.cmdk-btn:hover { background: rgba(217,177,90,.18); color: #fff; }
+.cmdk-btn .icon { width: 1.15em; height: 1.15em; margin: 0; }
+
+/* -- the home three doors (flow §3.1) -- */
+.doors .door { border-top: var(--door-rule) solid var(--accent); }
+.door .door-kicker { display: block; font: 700 var(--fs-label) var(--font-sans);
+  letter-spacing: .14em; text-transform: uppercase; color: var(--accent-strong);
+  margin-bottom: .2rem; }
+.door ul { list-style: none; margin: .4rem 0 0; padding: 0; }
+.door ul li { margin: .2rem 0; }
+.door .door-whisper { font-family: var(--font-sans); font-size: var(--fs--1); color: var(--text-faint); }
+
+/* -- "where next" band (flow §3.3) -- */
+.next-up { border-top: 1px solid var(--border); margin-top: var(--sp-6); padding-top: var(--sp-5); }
+.next-up-kicker { display: block; font: 700 var(--fs-label) var(--font-sans);
+  letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: var(--sp-3); }
+
+/* -- mega-menu Cast-panel kickers (flow §4; CSS-only grouping) -- */
+.nav-menu-kicker { display: block; font-family: var(--font-sans); font-size: .64rem;
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-2);
+  opacity: .8; padding: .5rem .7rem .15rem; margin: 0; }
+.nav-menu-kicker:first-child { padding-top: .1rem; }
+
+/* =========================================================================
+   DS3 · ART LAYER — The Illuminated Observatory (art §2–§8; cuts C3 folio,
+   C4 twinkle, C8 sealMark; D7 ::before gilt strip). Additive atmosphere.
+   ========================================================================= */
+:root {
+  /* -- paper textures (all data-URI SVG, rasterized once by the browser) -- */
+  --tx-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 .13 0 0 0 0 .11 0 0 0 0 .07 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+  --tx-stardust: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 .97 0 0 0 0 .88 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23s)'/%3E%3C/svg%3E");
+  /* -- vignettes (edge shading; ellipse keeps corners soft, no banding) -- */
+  --tx-vignette-paper: radial-gradient(120% 90% at 50% 30%, transparent 62%, rgba(50,40,16,.06) 100%);
+  --tx-vignette-night: radial-gradient(130% 100% at 50% 20%, transparent 55%, rgba(0,0,0,.38) 100%);
+  /* -- the aurora: the AI's voice-surface wash (Dome only) -- */
+  --grad-aurora: radial-gradient(120% 80% at 85% -10%, rgba(126,155,216,.20), transparent 60%),
+                 radial-gradient(90% 60% at 8% 110%, rgba(217,177,90,.10), transparent 55%);
+  /* -- gilt rules & frames -- */
+  --grad-gilt-rule: linear-gradient(90deg, transparent, var(--gold-300) 18%, var(--gold-500) 50%, var(--gold-300) 82%, transparent);
+  --frame-gilt: 0 0 0 1px var(--gold-300);
+  --frame-gilt-2: 0 0 0 1px var(--gold-300), inset 0 0 0 3px var(--surface-card), inset 0 0 0 4px rgba(217,177,90,.55);
+  /* -- ornament strokes (engraving grammar, art §4.2) -- */
+  --orn-stroke: var(--dg-frame);
+  --orn-stroke-strong: var(--dg-strong);
+  --orn-gold: var(--gold-500);
+  --orn-opacity: .85;
+  /* -- epistemic texture fills for HTML surfaces (art §6; fixed rgba, no color-mix) -- */
+  --tex-disp: repeating-linear-gradient(45deg, transparent 0 3px, rgba(74,104,168,.18) 3px 4px);
+  --tex-con:  radial-gradient(rgba(176,111,31,.38) .8px, transparent .9px);
+  --tex-deb-strike: linear-gradient(178deg, transparent 47%, rgba(178,59,46,.55) 47%, rgba(178,59,46,.55) 53%, transparent 53%);
+  /* -- celestial instrument colours (also fallbacks for core/skyart.js) -- */
+  --sky-disc: #0b102a;
+  --sky-lit:  #fdf9ec;
+  --sky-star: #fff7dd;
+  --sky-halo: rgba(240,210,138,.22);
+}
+
+/* -- body grain (art §3.1): re-declare the background adding grain as a third
+      layer. The two head layers (gold glow, dot-grid) are copied byte-identical;
+      grain slots between them. Cascade-override — the head rule is untouched. -- */
+body {
+  background-image:
+    radial-gradient(circle at 50% -10%, rgba(184,134,43,.10), transparent 45%),
+    var(--tx-grain),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 0h40v40H0z' fill='none'/%3E%3Ccircle cx='20' cy='20' r='.6' fill='%23d8cbac' opacity='.4'/%3E%3C/svg%3E");
+}
+
+/* -- Dome dust + vignette (art §3.2) -- */
+.hero, .casting-stage, footer.site { background-blend-mode: normal; }
+.casting-stage::before, .hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: var(--tx-vignette-night), var(--tx-stardust); border-radius: inherit; }
+.casting-stage > * { position: relative; z-index: 1; }
+
+/* -- the aurora + gilt top strip on AI surfaces (art §3.3; D7 ::before strip) -- */
+.chat, #wb-asst-log { background-image: var(--grad-aurora); }
+.chat { position: relative; }
+.chat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--grad-gilt-rule); pointer-events: none; }
+
+/* -- deckled register-transition rule (art §3.4) -- */
+.deckle-rule { height: 12px; margin: -6px 0; overflow: hidden; line-height: 0; pointer-events: none; }
+.deckle-rule svg { display: block; width: 100%; height: 12px; }
+
+/* -- panel plate vignette (art §3.5) -- */
+.plate { background-image: var(--tx-vignette-paper); }
+
+/* -- wing-hero frontispiece (art §4.3) -- */
+.wing-hero .fp { position: absolute; right: 2%; top: 50%; transform: translateY(-50%);
+  width: clamp(200px, 30vw, 340px); height: auto; opacity: var(--orn-opacity); pointer-events: none; }
+@media (max-width: 560px) { .wing-hero .fp { display: none; } }
+
+/* -- ceremonial card corner ornaments (art §4.5) -- */
+.card--plate { position: relative; }
+.plate-corners { position: absolute; inset: 0; pointer-events: none; }
+.plate-corner { position: absolute; width: 12px; height: 12px; }
+.plate-corner svg { display: block; width: 12px; height: 12px; }
+.pc-tl { top: 6px; left: 6px; }
+.pc-tr { top: 6px; right: 6px; transform: rotate(90deg); }
+.pc-br { bottom: 6px; right: 6px; transform: rotate(180deg); }
+.pc-bl { bottom: 6px; left: 6px; transform: rotate(270deg); }
+
+/* -- drop caps (art §4.5): a clean gilt versal, never on framing callouts -- */
+.dropcap::first-letter { font-family: var(--font-serif); font-weight: 600; color: var(--gold-700);
+  float: left; font-size: 3.2em; line-height: .82; padding: .04em .08em 0 0; }
+@supports (initial-letter: 3) {
+  .dropcap::first-letter { float: none; padding: 0; initial-letter: 3; margin-right: .12em; }
+}
+@media (max-width: 480px) { .dropcap::first-letter { font-size: 2.6em; } }
+
+/* -- icon sprite sizing (art §5.1) -- */
+.icon { width: 1em; height: 1em; vertical-align: -.125em; }
+.icon use { color: inherit; }
+button .icon, a .icon { margin-right: .35em; }
+.icon--lg { width: 1.4em; height: 1.4em; }
+
+/* -- epistemics as texture (art §6): texture ACCOMPANIES the text badge, never
+      replaces it; content contrast is unaffected. -- */
+.badge--disp { background-image: var(--tex-disp); }
+.badge--con { background-image: var(--tex-con); background-size: 6px 6px; border-style: dashed; }
+.tex-deb { position: relative; }
+.tex-deb::after { content: ''; position: absolute; inset: 0; background: var(--tex-deb-strike); pointer-events: none; }
+.chron-l-disp::before { background-image: var(--tex-disp); }
+.chron-l-con::before { background-image: var(--tex-con); background-size: 6px 6px; }
+.chron-l-deb::before { background-image: var(--tex-deb-strike); }
+
+/* -- the Dome inset for celestial instruments (art §7.1) -- */
+.sky-inset { position: relative; overflow: hidden; border-radius: var(--rad-3);
+  background: linear-gradient(180deg, var(--night-800), var(--night-700)); }
+.sky-inset .starfield { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sky-inset > svg.sa-moon { position: relative; z-index: 1; }
+
+/* =========================================================================
+   DS3 · DATAVIZ ADDENDUM (dataviz §5; D6 pre-mixed tokens, no color-mix).
+   Components for B2's figures — nothing restyled.
+   ========================================================================= */
+:root {
+  /* heat ramp (gold family, AA vs --ink-900 text at every step) */
+  --viz-heat-0: transparent; --viz-heat-1: #f7f1de; --viz-heat-2: #f3e6bf;
+  --viz-heat-3: #ecd79a;      --viz-heat-4: #e0c274;
+  --viz-now: var(--gold-700);
+  /* period-strip lord washes (existing ok/bad/gold/neutral family, pre-mixed for SVG) */
+  --viz-seg-lum: #f2e2bb; --viz-seg-ben: #d8efd6; --viz-seg-mal: #f6d9d9;
+  --viz-seg-neu: #e6e0f2; --viz-seg-node: #e4e0ea;
+  /* D6: pre-mixed aspect-grid softs (replace color-mix) */
+  --viz-ok-soft: #eaf6e8; --viz-bad-soft: #fbeaea; --viz-acc-soft: #fbf5e4;
+}
+
+/* -- tip + pin card (dataviz §2) -- */
+.viz-tip { position: fixed; z-index: var(--z-toast); max-width: 34ch; pointer-events: none;
+  font-family: var(--font-sans); font-size: var(--fs--1); line-height: 1.35;
+  background: var(--surface-card); color: var(--text); border: 1px solid var(--border-strong);
+  border-radius: var(--rad-2); box-shadow: var(--shadow-2); padding: .4rem .55rem; }
+.viz-pin-card { position: fixed; z-index: var(--z-toast); width: min(320px, 90vw);
+  background: var(--surface-card); color: var(--text); border: 1px solid var(--border-strong);
+  border-radius: var(--rad-3); box-shadow: var(--shadow-3); padding: var(--sp-3) var(--sp-4);
+  font-size: .92rem; }
+.viz-pin-card--inline { position: static; width: 100%; margin: var(--sp-3) 0; box-shadow: var(--shadow-1); }
+.viz-pin-card .viz-pin-x { position: absolute; top: .3rem; right: .4rem; border: 0; background: transparent;
+  font-size: 1.1rem; line-height: 1; color: var(--text-muted); cursor: pointer; }
+
+/* -- brush + zoombar + rotate readout -- */
+.viz-brush { position: absolute; top: 0; height: 100%; pointer-events: none;
+  background: var(--accent-wash); opacity: .45; border-left: 1px solid var(--accent-strong);
+  border-right: 1px solid var(--accent-strong); }
+.viz-zoombar { display: flex; align-items: center; gap: var(--sp-2); margin: var(--sp-2) 0;
+  font-family: var(--font-sans); font-size: var(--fs--1); color: var(--text-muted); }
+.viz-rotate-readout { display: inline-block; font-family: var(--font-sans); font-size: var(--fs--1);
+  font-weight: 600; color: var(--accent-strong); background: var(--accent-wash);
+  border-radius: var(--rad-pill); padding: .2rem .7rem; }
+
+/* -- figure scroll wrapper + hidden print list (dataviz §4.1) -- */
+.fig-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+.fig-print-list { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
+.figure-legend { display: flex; flex-wrap: wrap; gap: var(--sp-2) var(--sp-3); margin-top: var(--sp-2);
+  font-family: var(--font-sans); font-size: var(--fs--1); color: var(--text-muted); }
+.figure-legend > * { display: inline-flex; align-items: center; gap: .35rem; }
+.figure-legend .swatch { width: 1em; height: 1em; border-radius: 3px; display: inline-block; }
+
+/* -- hover/focus state on any data figure (dataviz §2; opacity-only, RM-safe) -- */
+.chart-wheel.has-focus .aspect-line:not(.is-hot),
+.chart-wheel.has-focus .asp-conj-bracket:not(.is-hot) { opacity: .12; }
+.chart-wheel.has-focus .planet:not(.is-hot) { opacity: .35; }
+.chart-wheel .aspect-line.is-hot { opacity: .95; }
+[data-el].is-hot { outline: none; }
+table.has-focus .grid-cell:not(.is-hot) { opacity: .45; }
+
+/* -- heat scale (dataviz §3.7) -- */
+.heat-0 { background: var(--viz-heat-0); }
+.heat-1 { background: var(--viz-heat-1); }
+.heat-2 { background: var(--viz-heat-2); }
+.heat-3 { background: var(--viz-heat-3); }
+.heat-4 { background: var(--viz-heat-4); }
+.heat-hi { box-shadow: inset 0 0 0 2px var(--accent-strong); font-weight: 700; }
+
+/* -- aspect-grid heat cells (dataviz §3.5; number is always printed → colour is
+      redundant, colour-blind-safe. Pre-mixed tokens, never color-mix). -- */
+.grid-cell { text-align: center; }
+.grid-cell.is-hot { outline: 2px solid var(--accent); outline-offset: -2px; }
+th.is-hot { background: var(--accent-wash); }
+.grid-cell.asp-soft.orb-partile { background: var(--ok-wash); font-weight: 700; }
+.grid-cell.asp-soft.orb-tight   { background: var(--viz-ok-soft); }
+.grid-cell.asp-hard.orb-partile { background: var(--bad-wash); font-weight: 700; }
+.grid-cell.asp-hard.orb-tight   { background: var(--viz-bad-soft); }
+.grid-cell.asp-conj.orb-partile { background: var(--accent-wash); font-weight: 700; }
+.grid-cell.asp-conj.orb-tight   { background: var(--viz-acc-soft); }
+
+/* one appearance nicety only, motion-gated (dataviz §5) */
+@media (prefers-reduced-motion: no-preference) {
+  .viz-tip { animation: ds-viz-tip 120ms var(--ease) both; }
+  @keyframes ds-viz-tip { from { opacity: 0; } }
+}
+
+/* =========================================================================
+   DS3 · INTEGRATOR RECONCILIATION — structural sub-class rules the component
+   builders emit beyond the spec §5 named selectors. Applied by the integrator
+   per manifest step 2, crediting the requester (B1 moment-picker/action-bar/
+   palette/next-up/dial; B2 pin-card/legend/wheel-toolbar/detent; B5 seg-btn/
+   sky-inset children/hl-row). Token-consistent with the blocks above.
+   ========================================================================= */
+
+/* -- B1 moment-picker sub-structure (manifest-b1 §2) -- */
+.mp-place, .mp-when { margin: var(--sp-2) 0; }
+.mp-label { font-family: var(--font-sans); font-size: var(--fs-label); font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+.mp-place-row, .mp-when-row, .mp-coords-row { display: flex; flex-wrap: wrap;
+  align-items: center; gap: var(--sp-2) var(--sp-3); }
+.mp-combo { position: relative; flex: 1 1 12rem; min-width: 0; }
+.mp-city { width: 100%; box-sizing: border-box; min-height: var(--mp-field-h); }
+.mp-listbox { position: absolute; z-index: var(--z-menu); left: 0; right: 0; top: calc(100% + 2px);
+  list-style: none; margin: 0; padding: .2rem; max-height: 15rem; overflow: auto;
+  background: var(--surface-card); border: 1px solid var(--border-strong);
+  border-radius: var(--rad-2); box-shadow: var(--shadow-2); }
+.mp-opt { display: flex; align-items: center; gap: .5rem; padding: .4rem .6rem;
+  border-radius: var(--rad-1); cursor: pointer; color: var(--text); }
+.mp-opt.is-active, .mp-opt:hover { background: var(--surface-inset); }
+.mp-opt--recent { color: var(--accent-strong); }
+.mp-opt--city, .mp-opt--coords { color: var(--text); }
+.mp-opt-badge { margin-left: auto; font-family: var(--font-sans); font-size: var(--fs-badge);
+  color: var(--text-faint); }
+.mp-geo { display: inline-flex; align-items: center; gap: .3rem; }
+.mp-geo-status { font-family: var(--font-sans); font-size: var(--fs--1); color: var(--text-muted); }
+.mp-chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); margin: var(--sp-2) 0; }
+.mp-chips-label { font-family: var(--font-sans); font-size: var(--fs-label); font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
+.mp-chip-pick { cursor: pointer; }
+.mp-coords { margin: var(--sp-2) 0; }
+.mp-now { white-space: nowrap; }
+
+/* -- B1 action-bar sub-structure (manifest-b1 §2) -- */
+.ab-chip { display: inline-flex; align-items: center; gap: .3rem; font-family: var(--font-sans);
+  font-weight: 700; font-size: var(--fs--1); border-radius: var(--rad-pill); padding: .15rem .6rem;
+  background: var(--surface-inset); color: var(--text); }
+.ab-sum { flex: 1 1 12rem; min-width: 0; color: var(--text-muted); font-size: .9rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ab-menu-wrap { position: relative; }
+.ab-menu-btn { font: inherit; }
+.ab-menu-item { display: block; width: 100%; text-align: left; padding: .4rem .6rem; border: 0;
+  background: transparent; border-radius: var(--rad-1); font: inherit; color: var(--text); cursor: pointer; }
+.ab-menu-item:hover, .ab-menu-item:focus { background: var(--surface-inset); }
+.ab-ai { white-space: nowrap; }
+.ab-top { margin-left: .2rem; }
+.action-bar.ab-typing, .ab-typing { display: none; }   /* hidden while an assistant textarea has focus */
+
+/* -- B1 palette sub-structure (manifest-b1 §2) -- */
+.cmdk-form { margin: 0; }
+.cmdk-list { list-style: none; margin: 0; padding: .3rem; max-height: 52vh; overflow: auto; }
+.cmdk-row.is-active { background: var(--surface-inset); }
+.cmdk-foot { display: flex; gap: var(--sp-3); padding: .5rem .8rem; border-top: 1px solid var(--border);
+  font-family: var(--font-sans); font-size: var(--fs--1); color: var(--text-faint); }
+.cmdk-empty { padding: 1rem; text-align: center; color: var(--text-muted); font-family: var(--font-sans); }
+
+/* -- B1 next-up sub-structure (manifest-b1 §2) -- */
+.next-up-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: var(--sp-3); }
+.next-up-card { display: block; padding: var(--sp-3); border: 1px solid var(--border);
+  border-radius: var(--rad-2); background: var(--surface-card); color: var(--text);
+  text-decoration: none; }
+.next-up-card:hover { border-color: var(--accent); }
+
+/* -- B1 dial SVG element class (manifest-b1 §2; set via setAttribute) -- */
+.dial-svg { display: block; }
+
+/* -- 390 px acceptance (§10.2): the mountFigure wheel containers are flex items
+      (flex:0 0 auto, min-width:auto) so they won't shrink below the wheel SVG's
+      434 px min-content, overflowing the page. min-width:0 lets them shrink; the
+      .chart-wheel{max-width:100%;height:auto} rule (viewBox) then scales the SVG. -- */
+[id$="-wheel"] { min-width: 0; max-width: 100%; }
+/* a <select> with long option text (e.g. horary #h-quesited) grows to its widest
+   option and overflows narrow viewports; clamp to the container site-wide (§10.2). */
+select { max-width: 100%; box-sizing: border-box; }
+/* .field is a flex item with the default min-width:auto, so a wide control (select)
+   keeps it from shrinking on narrow viewports; min-width:0 lets it clamp (§10.2). */
+.field { min-width: 0; }
+
+/* -- B2 pin-card internals (manifest-b2 §2) -- */
+.vpc-close { position: absolute; top: .3rem; right: .4rem; border: 0; background: transparent;
+  font-size: 1.1rem; line-height: 1; color: var(--text-muted); cursor: pointer; }
+.vpc-title { font-family: var(--font-serif); font-weight: 700; margin: 0 1.4rem .3rem 0; }
+.vpc-row { display: flex; gap: var(--sp-2); margin: .15rem 0; }
+.vpc-k { color: var(--text-muted); min-width: 5rem; }
+.vpc-v { color: var(--text); font-weight: 600; }
+.vpc-plain { color: var(--text); margin: .3rem 0; }
+.vpc-gloss { color: var(--text-muted); font-size: var(--fs--1); margin: .2rem 0; }
+.vpc-foot { margin-top: var(--sp-2); }
+.vpc-ask { margin-top: var(--sp-2); }
+
+/* -- B2 figure-legend internals (manifest-b2 §2) -- */
+.figure-legend-item { display: inline-flex; align-items: center; gap: .35rem; }
+.lg-swatch { width: 1em; height: 1em; border-radius: 3px; display: inline-block; }
+.lg-glyph { font-weight: 700; }
+.lg-label { color: var(--text-muted); }
+.lg-soft { background: var(--viz-ok-soft); }
+.lg-hard { background: var(--viz-bad-soft); }
+.lg-conj { background: var(--viz-acc-soft); }
+
+/* -- B2 wheel toolbar + detent flash (manifest-b2 §2) -- */
+.wheel-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2) var(--sp-3);
+  margin: var(--sp-2) 0; }
+.wheel-steppers { display: inline-flex; align-items: center; gap: var(--sp-2); }
+.is-pinned { outline: 2px solid var(--accent); outline-offset: 1px; }
+.is-detent { stroke: var(--accent-strong); }
+@media (prefers-reduced-motion: no-preference) {
+  .is-detent { animation: ds-detent-flash 120ms var(--ease) both; }
+  @keyframes ds-detent-flash { from { stroke: var(--accent-strong); } to { stroke: var(--accent-strong); } }
+}
+/* -- B2 brush crosshair + live region (inline-styled; rules for the grep law) -- */
+.viz-crosshair { position: absolute; top: 0; width: 1px; height: 100%; pointer-events: none;
+  background: var(--accent-strong); }
+.viz-live { position: absolute; clip-path: inset(50%); width: 1px; height: 1px; overflow: hidden; }
+
+/* -- B5 vedic seg toggle button + now.html moon inset children + hours highlight (manifest-b5 §2) -- */
+.seg-btn { font: inherit; border: 0; background: transparent; padding: .3rem .7rem; cursor: pointer;
+  color: var(--text-muted); border-radius: var(--rad-1); }
+.seg-btn[aria-pressed="true"] { background: var(--surface-card); color: var(--text); font-weight: 600; }
+.sky-inset-stars { position: absolute; inset: 0; }
+.sky-inset-disc { position: relative; }
+.hl-row { background: var(--accent-wash); }
+
+/* =========================================================================
+   DS3 · PRINT ADDENDUM (art §8 + dataviz §5). Atmosphere off; line art prints.
+   ========================================================================= */
+@media print {
+  body { background-image: none !important; }
+  .hero::before, .casting-stage::before, .chat { background-image: none !important; }
+  .chat::before { display: none !important; }
+  .sky-inset { background: #fff !important; }
+  .sky-inset svg .st { fill: #999 !important; }
+  .action-bar, .cmdk, .viz-tip, .viz-pin-card, .viz-brush, .viz-zoombar,
+  .viz-rotate-readout { display: none !important; }
+  .fig-print-list { position: static; clip-path: none; width: auto; height: auto; font-size: .8rem; color: #000; }
+  .period-strip .lbl-quiet { display: none; }
+  /* engravings, the dial, the moon and the epistemic hatches are MADE for print — they stay. */
+}
+
+/* ---- incense · the live hour panel -------------------------------------
+   Inherits the nocturne shape of the earlier hours instrument: a proportional
+   24-segment band whose widths ARE the real hour lengths, a needle at now, and
+   a gilt/dark split between day and night hours. */
+.inc-now { background: linear-gradient(180deg, rgba(27,33,71,.45), rgba(20,26,58,.25));
+  border: 1px solid rgba(200,162,75,.22); border-radius: 14px; padding: 1rem 1.1rem 1.2rem; margin: 1.2rem 0 1.6rem; }
+.inc-cap { font-family: var(--mono, monospace); font-size: .68rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--gold, #C8A24B); }
+.inc-nowline { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin: .6rem 0 .2rem; }
+.inc-glyph { font-size: 3rem; line-height: 1; color: #E8C874; text-shadow: 0 0 24px rgba(232,200,116,.3); }
+.inc-ruler { font-size: 1.25rem; }
+.inc-assign { margin-top: .2rem; }
+.inc-cd { margin-left: auto; text-align: right; }
+.inc-cd-t { font-family: var(--mono, monospace); font-size: 1.4rem; color: #E8C874; }
+.inc-ribbon { position: relative; display: flex; height: 40px; border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(200,162,75,.28); margin: .8rem 0 .3rem; background: rgba(7,9,23,.6); }
+.inc-seg { display: flex; align-items: center; justify-content: center; min-width: 0; overflow: hidden;
+  font-size: .78rem; border-right: 1px solid rgba(11,14,36,.7);
+  background: linear-gradient(180deg, rgba(200,162,75,.20), rgba(200,162,75,.07)); color: rgba(20,20,20,.75); }
+.inc-seg.night { background: linear-gradient(180deg, rgba(21,25,58,.9), rgba(11,14,36,.9)); color: rgba(199,208,232,.6); }
+.inc-seg.now { box-shadow: inset 0 0 0 2px #E8C874; }
+.inc-needle { position: absolute; top: -2px; bottom: -2px; width: 2px; background: #E8C874;
+  box-shadow: 0 0 8px rgba(232,200,116,.8); }
+@media (prefers-reduced-motion: reduce) { .inc-needle { transition: none; } }
+@media (max-width: 520px) { .inc-cd { margin-left: 0; text-align: left; } .inc-seg { font-size: .6rem; } }

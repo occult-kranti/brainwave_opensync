@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The AI assistant — how it works | The Astrologer's Workbench</title>
+<meta name="description" content="How the Workbench's AI assistant and the oracle-page diviner work: the browser hands the model (the free Groq tier by default, or Claude with agentic engine tools — always your own key, never proxied) the computed, cited reading and asks it to explain the result, narrate a Hermetic 'Codex of the Hour', interpret an oracle cast, or plan a historical working. Privacy, grounding, the honest framing.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body><aside style="position:relative;z-index:10000;background:#eee8db;color:#183a39;padding:10px 18px;font:14px/1.5 system-ui;border-bottom:1px solid #b4c0b7"><a style="color:#145c5a;font-weight:700" href="../../../index.html#projects">← Research Atlas</a> · Historical and proposed interpretations retain their own evidence limits.</aside>
+<main class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> › <a href="../pages/tools.html">Tools</a> › <a href="../pages/workbench.html">Workbench</a> › AI assistant</p>
+  <h1>The AI assistant — how it works</h1>
+  <p class="lede">The <a href="../pages/workbench.html">Workbench</a> hands a language model the <b>computed, cited</b> reading
+    and asks it to explain the result in plain language, narrate a Hermetic <b>Codex of the Hour</b>, or <b>plan a
+    historical working</b> using the engine tools. Because the engine numbers are computed and passed in, the model
+    narrates real results rather than inventing them.</p>
+
+  <div class="callout science"><span class="label">Honest note</span>
+    The assistant narrates a <b>historical, pseudoscientific</b> tradition. A locked system prompt holds it to the
+    site's framing: it <em>describes</em> Lilly's and the Picatrix's reasoning, it does not advise, predict, or present
+    astrology as valid. Magical/talismanic content is historical only. See <a href="../pages/about/index.html">Sources &amp; Science</a>.</div>
+
+  <h2>Two backends — Groq (free, the default) or Claude (agentic tools)</h2>
+  <p>The assistant calls the model <b>directly from your browser with your own key</b> — nothing is proxied, and no key
+    is ever bundled with the site:</p>
+  <ol>
+    <li><b>Groq (the default)</b> — a genuinely free tier, no card needed: get a key at
+      <a href="https://console.groq.com/keys" rel="noopener">console.groq.com/keys</a>. Fast open models
+      (GPT-OSS 120B/20B, Qwen3). Streaming chat over the computed, cited reading; the grounded context is automatically
+      slimmed to fit the free per-minute token cap.</li>
+    <li><b>Claude (Anthropic)</b> — the strongest experience, and the only backend with the <b>agentic engine tools</b>:
+      get a key at <a href="https://platform.claude.com" rel="noopener">platform.claude.com</a>
+      (default model <code>claude-opus-4-8</code>).</li>
+    <li>Tick <b>remember on this device</b> to keep the key in this browser's <code>localStorage</code> for next time,
+      or leave it off to re-enter the key each visit (it then lives only in the page for the session).</li>
+    <li>Ask away — the same key works on the Workbench assistant and on every oracle page's <b>diviner</b>.</li>
+  </ol>
+  <div class="callout"><span class="label">Privacy &amp; CORS</span>
+    Requests go <b>only</b> to the chosen provider (<code>api.groq.com</code> or <code>api.anthropic.com</code> — the
+    Anthropic call carries the <code>anthropic-dangerous-direct-browser-access: true</code> header that authorises a
+    browser-origin request). Nothing is proxied through this site; the page is static. Your key is stored only where you
+    choose (session memory, or this device if you tick "remember"). <b>No network request fires on page load</b> — every
+    call happens on an explicit click.</div>
+
+  <h2>Three ways to use it</h2>
+  <ul>
+    <li><b>Chat</b> — ask anything about the reading (“why is the love election red?”, “which planet is strongest?”).
+      With <em>“let the model run the engine tools”</em> ticked (Claude only), a tool-using model can compute fresh
+      numbers itself — rank the aims, find the next good window, look up a mansion, even <b>cast an oracle</b>
+      (geomancy, tarot, I Ching) — and narrate the <b>real</b> result.</li>
+    <li><b>📜 Generate the Codex of this Hour</b> — narrates the whole master report tool-by-tool in the grave,
+      image-rich register of Hermes Trismegistus and the Picatrix (yet truthful): for each computation, <em>what it
+      measures</em>, <em>its meaning now</em>, and <em>how the tradition would best use it</em> — with the honest caveat.</li>
+    <li><b>Plan a working (agentic)</b> — the “conjure rain” box. Type a free-form aim (e.g. <em>“when is the next best
+      time to attempt to call rain, and how would the tradition do it?”</em>). Claude maps it to the nearest catalogued
+      operation, <b>calls the engine tools</b> (<code>findNextElection</code>, <code>rankNow</code>,
+      <code>talismanRecipe</code>) to find the next favourable window, says what to check in the report, and lays out the
+      historical procedure — described, not prescribed. Your requests are remembered for quick reuse.</li>
+  </ul>
+
+  <h2>How the grounding works</h2>
+  <p>The assistant is built on three pure modules so the framing and facts can't drift:</p>
+  <ul class="clean">
+    <li><code>assets/js/core/reading.js</code> — <code>fullReading</code> composes the whole engine into one cited object.</li>
+    <li><code>assets/js/core/llm-context.js</code> — <code>buildContext()</code> builds the locked honest-framing system
+      prompt + the cited fact sheet; <code>toAnthropicTools()</code> exposes the engine's callable capabilities to Claude;
+      <code>runTool()</code> safely runs the real engine for a tool call; <code>buildCodexPrompt()</code> and
+      <code>buildOperationPrompt()</code> are the two task prompts.</li>
+    <li><code>assets/js/core/registry.js</code> — the capability map the tool schema is derived from.</li>
+  </ul>
+
+  <h2>The diviner — the same assistant on the tool pages</h2>
+  <p>Many computed pages carry an <b>“Ask the diviner”</b> panel built on the same transport and the same key. It speaks
+    in the voice of a learned historian of the tradition in question — vivid about the figures, the cards and their
+    rituals — yet it is held to the identical locked framing, and it is grounded in the <b>computed result</b> (the
+    shield, the spread, the hexagram, the chart): it interprets what was actually drawn or cast, never inventing a
+    figure, a card or a placement. Most pages also give each figure a <b>✶ explain</b> chip that pre-fills a focused
+    question.</p>
+  <p>Each panel declares a <b>kind</b>, and each kind has its own grounded context builder, interpret prompt and JSON
+    data block in <code>core/llm-context.js</code>. The kinds shipped so far:</p>
+  <ul class="clean">
+    <li><b>Oracles</b> — <code>geomancy</code> (<a href="../pages/geomancy.html">Geomancy</a>),
+      <code>tarot</code> (<a href="../pages/tarot.html">Tarot</a>),
+      <code>iching</code> (<a href="../pages/iching.html">I Ching</a>),
+      <code>runes</code> (<a href="../pages/runes.html">Runes</a>).</li>
+    <li><b>Western computed readings</b> — <code>cycles</code> (<a href="../pages/cycles.html">Cycles</a>),
+      <code>timelords</code> (<a href="../pages/timelords.html">Time-lords</a>),
+      <code>jung</code> (<a href="../pages/jung/tool.html">the Jung tool</a>),
+      <code>confluence</code> (<a href="../pages/confluence.html">the influence atlas</a>).</li>
+    <li><b>Indian &amp; Perso-Arabic computed readings</b> — <code>prasna</code>
+      (<a href="../pages/prasna.html">Praśna</a>), <code>muhurta</code> (<a href="../pages/muhurta.html">Muhūrta</a>),
+      <code>tajika</code> (<a href="../pages/tajika.html">Tājika varṣaphala</a>),
+      <code>vedicyogas</code> (<a href="../pages/vedic/yogas.html">the yoga detector</a>),
+      <code>vedicdelineation</code> (<a href="../pages/vedic/delineation.html">the bhāva browser</a>), and
+      <code>vedic</code> (<a href="../pages/vedic/index.html">the sidereal reading</a>).</li>
+  </ul>
+
+  <h2>The <code>vedic</code> kind — explaining a sidereal reading</h2>
+  <p>The <a href="../pages/vedic/index.html">Vedic reading</a>'s panel is an <b>explainer, not a predictor</b>. It is
+    handed the very cast the page drew — the same <code>castVedic()</code> result, so the words on screen and the numbers
+    in the figure can never drift apart — and its system prompt is the site's largest: a <b>codebook</b> that teaches the
+    model the units before it is allowed to use them. A ṣaḍbala total is meaningless without its bar, so the model is
+    given both (1 rūpa = 60 virūpas; each graha's own required minimum, and the <em>ratio</em> is what gets quoted). An
+    aṣṭakavarga bindu is a tally of votes, not a measurement (0–8 per sign, SAV per-sign mean ≈28, grand total always
+    337). The Vimśottarī balance at birth is derived, not asserted.</p>
+  <p>Four framing rules are enforced by the round's test suite rather than by convention. The Vedic and Western charts
+    are <b>compared, never merged</b> — they are two rulebooks, and agreement between them is a coincidence of
+    conventions. The <b>ayanāṁśa is a choice</b>: Lahiri is this site's default, not the one true zodiac, and Rāman, KP
+    and Fagan–Bradley would each move the degrees; the context even flags <b>ayanāṁśa-fragile</b> placements (a graha
+    within 1.5° of a sign boundary, which another ayanāṁśa would push into the next sign and bhāva) so the model must say
+    so aloud. Every interpretive claim must <b>cite its rule</b> to a named edition, or say plainly that it cannot. And
+    the assistant <b>refuses</b> remedies (gemstones, mantras, pūjā, donations, fasting), medical/legal/financial/marital
+    questions, lifespan and death-timing (māraka is described as historical doctrine only), muhūrta for a real decision,
+    and “what is going to happen” — each refusal answering the question actually being asked instead. Your birth data is
+    never sent anywhere by this site itself; it leaves your browser only if you press send, and then only to the provider
+    whose key you pasted.</p>
+
+  <h2>The local-model option (currently disabled)</h2>
+  <p>The codebase also contains an <b>offline</b> path — a local model via <a href="https://ollama.com" rel="noopener">Ollama</a>
+    or an in-browser <b>WebLLM</b> model — so the assistant can run with nothing leaving your machine. That option is
+    <b>turned off in the UI for now</b>; the shared transport (<code>assets/js/app/llm-core.js</code>) already speaks
+    the OpenAI-compatible protocol any local server exposes, so it can be re-enabled by adding the endpoint to the
+    provider table. With Ollama you would run <code>ollama serve</code> with <code>OLLAMA_ORIGINS</code> set to allow
+    this page; WebLLM needs WebGPU.</p>
+
+  <p class="small muted">Back to the <a href="../pages/workbench.html">Workbench</a>.</p>
+</main>
+<script type="module">
+  import { mountChrome } from '../assets/js/app/shared.js';
+  mountChrome();
+</script>
+</body>
+</html>

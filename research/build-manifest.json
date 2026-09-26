@@ -1,0 +1,16 @@
+{
+  "atlas_source": "756091e18b69514849ce9154bf134bcb82fc5ea6",
+  "projects": [
+    {
+      "name": "resonant-vessels",
+      "commit": "d404a4e3d3df7dae6f947271510831139cf1be10",
+      "path": "projects/resonant-vessels/"
+    },
+    {
+      "name": "astrology-sim-ant",
+      "commit": "3a3ce9953e47a078e659723a52187648f1f08486",
+      "path": "projects/astrology-sim-ant/"
+    }
+  ],
+  "assembly": "Source snapshots, only navigation banners added"
+}

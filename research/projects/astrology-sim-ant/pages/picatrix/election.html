@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Election — Picatrix | The Astrologer's Workbench</title>
+<meta name="description" content="An interactive electional tool: choose a moment, place and magical aim, and it auto-calculates a fully cited readout — Lilly's dignities, the planetary hour and day, the Moon's condition and mansion, the decan faces and Behenian fixed stars — and finds the best upcoming windows. Historical practice only.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body><aside style="position:relative;z-index:10000;background:#eee8db;color:#183a39;padding:10px 18px;font:14px/1.5 system-ui;border-bottom:1px solid #b4c0b7"><a style="color:#145c5a;font-weight:700" href="../../../../index.html#projects">← Research Atlas</a> · Historical and proposed interpretations retain their own evidence limits.</aside>
+<main class="wrap">
+  <p class="crumb"><a href="../../index.html">Home</a> › <a href="../tools.html">Cast</a> › Election</p>
+  <h1>Election — choosing the moment</h1>
+  <p class="lede">Pick an <b>aim</b>, a <b>moment</b> and a <b>place</b>, and this tool auto-judges the
+    moment for that work by William Lilly's essential and accidental dignities, the <b>planetary hour and
+    day</b>, the <b>Moon's condition</b> — her phase, speed, mansion, via combusta and dispositor — the
+    <b>decan faces</b> of the luminaries and the <b>Behenian fixed stars</b> in contact, and then scans the
+    next three days to find the <b>best upcoming windows</b>. Every judgement is cited to its source.</p>
+
+  <div class="callout science"><span class="label">Honest note</span>
+    The astronomy is real and reproducible — positions come from a
+    <a href="../about/index.html">verified engine</a> — but the <em>electional rules</em> are the historical
+    practice of Lilly, the <em>Picatrix</em> and Agrippa, presented strictly for historical study.
+    Astrology has no demonstrated predictive validity. See <a href="../about/index.html">Sources &amp; Science</a>.</div>
+
+  <p class="small"><b>How it works:</b> see the step-by-step explanation of
+    <a href="../how-it-works.html#hiw-election">election scoring</a> and
+    <a href="../how-it-works.html#hiw-moon">the Moon's condition</a>.</p>
+
+  <div class="callout"><span class="label">How to read the verdict</span>
+    This tool <b>ranks a moment by weighted testimony</b> — it is not a hard-constraint elector. A
+    <span class="verdict green">green</span> verdict means a <em>high score</em>, not a guarantee; the testimonies
+    trade off, so a strong score can still sit over a real impediment (a combust or retrograde ruler). Read the cited
+    breakdown below, and treat the green/amber/red badge as a <b>gravity scale</b>, not the planetary/talisman colours.</div>
+
+  <form id="e-form" class="calc">
+    <div class="field-row">
+      <div class="field" style="flex:1 1 220px"><label for="e-op">Aim of the work</label><select id="e-op"></select></div>
+      <div class="field"><label for="e-system">Houses</label><select id="e-system">
+        <option value="regiomontanus">Regiomontanus</option><option value="placidus">Placidus</option>
+        <option value="whole">Whole Sign</option><option value="equal">Equal</option></select></div>
+    </div>
+    <div id="e-picker" style="margin-top:.8rem"></div>
+    <!-- Legacy write-through: the moment-picker fills these hidden inputs by their historic ids. -->
+    <input type="hidden" id="e-lat"><input type="hidden" id="e-lon">
+    <input type="hidden" id="e-date"><input type="hidden" id="e-time"><input type="hidden" id="e-offset">
+    <div class="field-row" style="margin-top:.8rem">
+      <button type="submit" class="btn">Judge this moment</button>
+    </div>
+  </form>
+
+  <div id="e-summary" role="status" aria-live="polite"></div>
+  <div id="e-actionbar"></div>
+
+  <div id="e-detail"></div>
+
+  <section class="card panel" id="e-reasons-card">
+    <div class="panel-head"><h2 class="panel-title">Why — the cited testimonies</h2>
+      <a class="panel-anchor" href="#e-reasons-card" aria-label="Link to this section">¶</a></div>
+    <p class="sev-legend">
+      <span class="pos">✓ favourable</span>
+      <span style="color:#2b6da3">ℹ note</span>
+      <span style="color:#b8860b">⚠ caution</span>
+      <span class="neg">✕ serious affliction</span>
+    </p>
+    <ul class="advisories" id="e-reasons"></ul>
+  </section>
+
+  <section class="card panel" id="e-windows-card">
+    <div class="panel-head"><h2 class="panel-title">Best upcoming windows (next 72 hours)</h2>
+      <a class="panel-anchor" href="#e-windows-card" aria-label="Link to this section">¶</a></div>
+    <div id="e-windows"></div>
+  </section>
+
+  <section class="card panel" id="e-heatmap-card">
+    <div class="panel-head"><h2 class="panel-title">The week at a glance — an election heat-map</h2>
+      <a class="panel-anchor" href="#e-heatmap-card" aria-label="Link to this section">¶</a></div>
+    <p class="small muted">Every hour of the next seven days scored for this aim. Watch the <b>weekly rhythm</b>
+      emerge: the planetary day &amp; hour of the aim's ruler recur on a 7-day beat, so the favourable cells fall in a
+      repeating diagonal — a visible consequence of the planetary-hour arithmetic, not a hidden force. Green = fit,
+      amber = mixed, red = unfit. (Reuses the same cited scorer.)</p>
+    <p><button type="button" class="btn sm" id="e-heatmap-btn">Show the 7-day heat-map</button>
+      <span id="e-heatmap-status" class="small muted" style="margin-left:.5rem"></span></p>
+    <div id="e-heatmap" style="overflow-x:auto"></div>
+  </section>
+</main>
+<script type="module">
+  import { mountChrome } from '../../assets/js/app/shared.js';
+  import { initElection } from '../../assets/js/app/election-tool.js';
+  mountChrome('picatrix');
+  initElection();
+</script>
+</body>
+</html>

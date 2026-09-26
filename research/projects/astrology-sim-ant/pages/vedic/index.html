@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jagannath Hora — the Vedic (sidereal) reading | The Astrologer's Workbench</title>
+<meta name="description" content="A real Vedic (Jyotiṣa) horoscope modelled on Jagannath Hora: the sidereal Lagna and nine grahas with nakṣatra & pada, whole-sign houses, the Pañcāṅga, the Vimśottarī daśā, the divisional charts (vargas), the Aṣṭakavarga (SAV) and a partial Ṣaḍbala — computed on the same verified astronomical engine as the Western tools. A separate system, shown for study. Astrology has no demonstrated predictive validity.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="../../assets/css/vedic-tools.css">
+<style>
+  /* The prefilled "explain this" chips: they only FILL the assistant's box.
+     Wrapping + a width cap keep the row clean at 390 px. */
+  #v-ai-chips { gap: .4rem; align-items: flex-start; }
+  #v-ai-chips .btn { max-width: 100%; white-space: normal; text-align: left; }
+</style>
+</head>
+<body><aside style="position:relative;z-index:10000;background:#eee8db;color:#183a39;padding:10px 18px;font:14px/1.5 system-ui;border-bottom:1px solid #b4c0b7"><a style="color:#145c5a;font-weight:700" href="../../../../index.html#projects">← Research Atlas</a> · Historical and proposed interpretations retain their own evidence limits.</aside>
+<main class="wrap">
+  <p class="crumb"><a href="../../index.html">Home</a> › <a href="../contents.html">Traditions</a> › Jagannath Hora (Vedic)</p>
+  <h1>Jagannath Hora — the Vedic (sidereal) reading</h1>
+  <div class="ep-strip">
+    <a class="badge badge--ok" href="../about/index.html">Astronomy — verified</a>
+    <a class="badge badge--doc" href="../about/index.html">Doctrine — historical</a>
+    <a class="badge badge--bad" href="../about/index.html">Predictive validity — none demonstrated</a>
+  </div>
+  <p class="lede">A second, <b>independent</b> system. Where the rest of this site computes William Lilly's <b>Western,
+    tropical</b> astrology, this page computes the <b>Vedic (Jyotiṣa)</b> horoscope as <a href="https://www.vedicastrologer.org/jh/" rel="noopener">Jagannath
+    Hora</a> does — the <b>sidereal</b> zodiac (tropical − Lahiri ayanāṁśa), <b>whole-sign</b> houses, the 27 <b>nakṣatras</b>,
+    the <b>Vimśottarī daśā</b>, the <b>Pañcāṅga</b>, the divisional charts (<b>vargas</b>), the <b>Aṣṭakavarga</b>, and a
+    partial <b>Ṣaḍbala</b>. The astronomy is the same verified engine; only the zodiac, houses and methods differ.</p>
+  <p class="small"><b>The two systems disagree by design.</b> The same planet sits ~24° earlier in the sidereal zodiac, so it
+    often lands in a different sign and house than the Western chart. That is expected — see the worked example below, and
+    toggle <b>🕉 Jagannath Hora — Vedic view</b> on any calculator to compare them side by side.</p>
+
+  <p class="small">Two dedicated Jyotiṣa tools branch from this reading: the <a href="yogas.html"><b>Vedic yogas — detector</b></a>
+    (36 cited yoga rules evaluated predicate by predicate, contested rules shown both ways) and the
+    <a href="delineation.html"><b>Bhāva delineations — browser</b></a> (the graha-in-house literature, two witnesses side by
+    side and never merged). The reading below now also surfaces the <b>pañcadhā-maitrī</b> friendship matrix, the
+    <b>graha-dṛṣṭi</b> aspect grid and per-graha <b>combustion (asta)</b> flags.
+    Theory in teaching order lives on <a href="course.html"><b>The Parāśarī course</b></a> — the nine-unit
+    walkthrough that cites every rule and links it back to these tools.</p>
+
+  <div class="callout science"><span class="label">Honest note — please read</span>
+    Vedic astrology, like all astrology, has <b>no demonstrated predictive validity</b> and is regarded by the scientific
+    community as a pseudoscience. The mathematics here (sidereal positions, daśā arithmetic, the varga and aṣṭakavarga
+    tables) is real and reproducible and cited to <b>Parāśara's BPHS</b> and <b>P.V.R. Narasimha Rao's</b> JHora; the
+    <em>interpretations</em> are the tradition's, reproduced for study — never as a forecast. See
+    <a href="../about/index.html">Sources &amp; Science</a>.</div>
+
+  <form id="v-form" class="calc">
+    <div class="field-row">
+      <div class="field" style="flex:1 1 180px"><label for="v-city">Birth place (preset)</label><select id="v-city"></select></div>
+      <div class="field"><label for="v-lat">Lat °N</label><input id="v-lat" type="number" step="0.0001" style="width:7rem"></div>
+      <div class="field"><label for="v-lon">Lon °E</label><input id="v-lon" type="number" step="0.0001" style="width:7rem"></div>
+      <div class="field"><label for="v-date">Birth date</label><input id="v-date" type="date"></div>
+      <div class="field"><label for="v-time">Time (local)</label><input id="v-time" type="time"></div>
+      <div class="field"><label for="v-offset">UTC offset</label><input id="v-offset" type="number" step="0.5" style="width:6rem"></div>
+    </div>
+    <div class="field-row" style="margin-top:.8rem">
+      <button type="submit" class="btn">Compute the Vedic chart</button>
+      <button type="button" class="btn sm" id="v-copy">Copy shareable link</button>
+      <button type="button" class="btn sm" id="v-print">Print</button>
+      <span id="v-copy-status" class="small muted"></span>
+    </div>
+  </form>
+
+  <section class="card panel"><h2 style="margin-top:0">The chart (Jagannath Hora style)</h2>
+    <div id="v-out"></div></section>
+
+  <section class="card" id="dv-assistant-card">
+    <h2 style="margin-top:0">Ask it to explain the reading <span class="small muted">(optional · your own API key)</span></h2>
+
+    <div class="callout science"><span class="label">About this diviner — please read</span>
+      This panel <b>explains a computed reading; it is not a prediction service</b>. Everything it talks about is already
+      on this page — the sidereal Lagna and the nine grahas by bhāva and nakṣatra, the pañcāṅga, the Vimśottarī daśā, the
+      vargas, the Sarvāṣṭakavarga bindus, the six-fold Ṣaḍbala rūpas, the yogas and the conclusion lines. Its job is to make
+      those numbers <em>legible</em>: what a rūpa is and what the required minimum means, why <em>this</em> daśā is running
+      and how the balance at birth produced it, what an aṣṭakavarga bindu is counting, and <b>which classical rule</b>
+      (BPHS tr. Santhanam, Phaladīpikā tr. Sareen, Sārāvalī, Laghu Parāśarī) produced each interpretive line — and to say
+      so plainly when a statement cannot be tied to a cited rule.
+      <br><br>
+      <b>A second, independent system.</b> This reading is <b>compared</b> with the Western tropical chart, never merged:
+      the astronomy is identical, the zodiac and the methods are not. <b>The ayanāṁśa is a choice</b> — Lahiri is this
+      site's default, not the one true zodiac; <b>Rāman</b>, <b>KP</b> and <b>Fagan–Bradley</b> differ by degrees, which moves
+      cusps and can move a graha into a different sign. <b>Nothing here is advice.</b> The assistant will not prescribe
+      remedies (gemstones, mantras, pūjā, donations, fasting, or a muhūrta for a real decision), will not give medical,
+      legal, financial or marital guidance, will not time a death or predict a lifespan (the māraka material is described
+      as historical doctrine only), and will not tell you what <em>will</em> happen — it describes what the tradition
+      computes and claims. Where the sources genuinely disagree (yoga conditions, the three nīca-bhaṅga recensions, the
+      scope of kendrādhipati doṣa, varga conventions, combustion arcs) it shows <b>every position and resolves none</b>.
+      Jyotiṣa, like all astrology, has <b>no demonstrated predictive validity</b>.
+      <br><br>
+      <b>Bring your own key.</b> The model is called <b>directly from your browser with your own API key</b> — nothing is
+      proxied and no key is bundled. <b>No key, no calls:</b> with the field empty the panel simply sits there and every
+      button below still works offline. <b>Your birth data is never sent anywhere by this site itself</b> — it stays in
+      your browser (and in the shareable link you choose to copy); it leaves only if <em>you</em> press a send button, and
+      then only to the AI provider you picked, under your own account.</div>
+
+    <p class="small" style="margin:.2rem 0 .3rem"><b>Start here — the explain questions.</b> These only <b>fill the box</b>
+      below; nothing is sent and no key is needed to read or edit them.</p>
+    <div class="field-row" id="v-ai-chips">
+      <button type="button" class="btn sm" data-q="Explain my Ṣaḍbala numbers: what is a rūpa, how are the six balas summed, and what does the BPHS required minimum for each graha actually mean? Cite the rule.">✶ Explain my Ṣaḍbala numbers</button>
+      <button type="button" class="btn sm" data-q="Why is this Vimśottarī daśā running now? Walk me from the Moon's nakṣatra to the balance of the first mahādaśā at birth, and show how that arithmetic lands on today's mahā and antar lords. Cite the rule.">✶ Why is this daśā running now?</button>
+      <button type="button" class="btn sm" data-q="What do the Aṣṭakavarga bindus mean? What is each bindu counting, where does the Sarvāṣṭakavarga total of 337 come from, and what is the 28-per-sign average actually a baseline for? Cite the rule.">✶ What do the Aṣṭakavarga bindus mean?</button>
+      <button type="button" class="btn sm" data-q="Where does this sidereal chart disagree with the tropical Western one, and why? Name the ayanāṁśa and its value, say which placements move, and keep the two systems compared and never merged.">✶ Sidereal vs tropical — where do they differ?</button>
+      <button type="button" class="btn sm" data-q="Which classical rule produced each conclusion line in the reading above? For every line, name the rule and the edition, and say plainly if a line cannot be tied to a cited rule.">✶ Which rule produced each conclusion?</button>
+      <button type="button" class="btn sm" data-q="In what order would a Jyotiṣī actually read this chart? Take me through the canonical sequence — lagna and its lord, the kārakas, bhāva by bhāva, dignity, vargas, ṣaḍbala, aṣṭakavarga, then daśā — and say what each step is for.">✶ In what order is a chart read?</button>
+    </div>
+
+    <div id="dv-assistant"></div>
+  </section>
+
+  <section class="card panel"><h2 style="margin-top:0">Worked example — reading a Vedic chart</h2>
+    <p class="small">Take the default chart above (<b>15 May 1990, 12:00, London</b>). Here is how the tradition reads it,
+      step by step — every figure recomputes live above, so you can change the birth data and watch the reasoning move:</p>
+    <ol class="small">
+      <li><b>Sidereal shift.</b> The Lahiri ayanāṁśa for 1990 is ≈23.7°, so every tropical longitude is pulled back ~24°.
+        The Sun, ~24° Taurus in the Western chart, becomes <b>0°41′ Taurus</b> sidereally — a different degree, and often a
+        different sign than the Western reading.</li>
+      <li><b>Lagna &amp; houses.</b> The sidereal Ascendant is <b>Leo</b>, so Leo is the 1st <em>bhāva</em> and the houses
+        run whole-sign from there. The Sun in Taurus therefore sits in the <b>10th</b> (career, status) — the kāraka of the
+        soul on the house of action.</li>
+      <li><b>Dignities.</b> <b>Venus is exalted</b> in Pisces (8th) and <b>Saturn is in its own sign</b> Capricorn (6th):
+        two strong grahas. A planet's strength is read first by sign (exalted / own / mūlatrikoṇa / debilitated), then
+        confirmed by the divisional charts and Ṣaḍbala.</li>
+      <li><b>Nakṣatra &amp; daśā.</b> The Moon sits in <b>Uttara Āṣāḍhā</b>, ruled by the Sun, so life opens in a Sun
+        mahā-daśā; by 2026 the chart is deep in the <b>Rāhu</b> mahā-daśā. The Vimśottarī daśā is the spine of Vedic timing
+        — the running mahā/antar lord colours the period.</li>
+      <li><b>Pañcāṅga.</b> The five limbs of the day (tithi, vāra, nakṣatra, yoga, karaṇa) frame the muhūrta — the Vedic
+        counterpart of Lilly's election: which moment is fit for which act.</li>
+      <li><b>Aṣṭakavarga.</b> The Sarvāṣṭakavarga distributes 337 points across the 12 signs (average 28); a sign with
+        &gt;28 bindus is a strong field for the planets transiting it — a quick, numeric strength map of the whole chart.</li>
+    </ol>
+    <p class="small muted">Compare this with the Western chart on the <a href="../workbench.html">Master Tool (Workbench)</a> —
+      toggle the 🕉 Vedic view there to see both systems at once for the same moment.</p>
+  </section>
+
+  <p class="small muted">See also: <a href="../how-it-works.html">how the Western calculations work</a> ·
+    <a href="../workbench.html">Master Tool (Workbench)</a> · <a href="../trajectory.html">Life Trajectory</a>.</p>
+</main>
+<script type="module">
+  import { mountChrome } from '../../assets/js/app/shared.js';
+  mountChrome('vedic');
+  import { initVedic } from '../../assets/js/app/vedic.js';
+  initVedic();
+</script>
+</body>
+</html>

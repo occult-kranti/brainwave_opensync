@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossary &amp; Dictionary | The Astrologer's Workbench</title>
+<meta name="description" content="A searchable dictionary of the terms of art in William Lilly's Christian Astrology — dignities, aspects, horary technique, points and more, each defined and linked to where it is used.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body><aside style="position:relative;z-index:10000;background:#eee8db;color:#183a39;padding:10px 18px;font:14px/1.5 system-ui;border-bottom:1px solid #b4c0b7"><a style="color:#145c5a;font-weight:700" href="../../../index.html#projects">← Research Atlas</a> · Historical and proposed interpretations retain their own evidence limits.</aside>
+<main class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> › <a href="about/index.html">Reference</a> › Glossary</p>
+  <h1>Glossary &amp; Dictionary</h1>
+  <p class="lede">The terms of art in Lilly's astrology, the Picatrix and the Vedic system, each defined plainly and
+    linked to where it is used. New here? Start with <a href="basics.html">The Basics</a>. Search or filter by theme.</p>
+
+  <div class="callout science" style="margin:.6rem 0 1rem"><span class="label">Honest note</span>
+    These are the terms of a historical, <b>pseudoscientific</b> tradition, defined so you can study and compute it —
+    <b>described, never prescribed</b>. Astrology has no demonstrated predictive validity. See
+    <a href="about/index.html">Sources &amp; Science</a>.</div>
+
+  <div class="field-row" style="margin-bottom:1rem">
+    <div class="field" style="flex:1 1 280px"><label for="g-search">Search</label>
+      <input id="g-search" type="search" placeholder="e.g. peregrine, translation, cazimi…"></div>
+    <div class="field"><label for="g-cat">Theme</label><select id="g-cat"><option value="">All themes</option></select></div>
+    <span id="g-count" class="muted small" style="align-self:center"></span>
+  </div>
+
+  <div id="g-list"></div>
+</main>
+<script type="module">
+  import { mountChrome, ROOT } from '../assets/js/app/shared.js';
+  import { GLOSSARY, GLOSSARY_CATEGORIES } from '../assets/js/core/data/glossary.js';
+  import { slugTerm } from '../assets/js/app/autolink.js';
+  mountChrome('glossary');
+  const list = document.getElementById('g-list');
+  const search = document.getElementById('g-search');
+  const catSel = document.getElementById('g-cat');
+  const count = document.getElementById('g-count');
+  catSel.innerHTML += GLOSSARY_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('');
+  const sorted = [...GLOSSARY].sort((a,b)=>a.term.localeCompare(b.term));
+  function render() {
+    const q = search.value.trim().toLowerCase();
+    const cat = catSel.value;
+    const items = sorted.filter(g =>
+      (!cat || g.cat===cat) &&
+      (!q || g.term.toLowerCase().includes(q) || g.def.toLowerCase().includes(q)));
+    count.textContent = `${items.length} term${items.length===1?'':'s'}`;
+    list.innerHTML = items.map(g => `<div class="card gloss-card" id="${slugTerm(g.term)}" style="margin-bottom:.7rem">
+      <h3 style="margin:.1rem 0">${g.term} <span class="pill">${g.cat}</span></h3>
+      <p style="margin:.3rem 0">${g.def}</p>
+      ${g.see?`<a class="small" href="${ROOT}/${g.see}">→ see it in use</a>`:''}
+    </div>`).join('') || '<p class="muted">No terms match.</p>';
+  }
+  search.addEventListener('input', render);
+  catSel.addEventListener('change', render);
+  render();
+  // jump to + highlight an anchored term (e.g. arriving from an auto-link)
+  function gotoHash() {
+    if (!location.hash) return;
+    const el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.querySelectorAll('.gloss-card.target').forEach(c => c.classList.remove('target'));
+      el.classList.add('target'); }
+  }
+  window.addEventListener('hashchange', gotoHash);
+  setTimeout(gotoHash, 100);
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+// ============================================================================
+//  book1-master.js — the Book I "Master Tool": one chart input → every Book I
+//  computation in a single view. Positions, the full essential-dignity ledger
+//  for all seven planets, accidental dignity, almutens, aspects with Lilly's
+//  orbs, antiscia and their contacts, the Part of Fortune, the planetary hour,
+//  and the body-part rulerships.
+// ============================================================================
+import {
+  castChart, formatLon, signOf, norm360, antiscion, contraAntiscion,
+  PLANET_GLYPHS, SIGN_GLYPHS
+} from '../core/astro.js';
+import { essentialDignity, accidentalDignity, almuten, dignityRulersAt } from '../core/dignities.js';
+import { allAspects, aspectBetween } from '../core/aspects.js';
+import { renderChart } from '../core/chart.js';
+import { planetaryHour } from '../core/planetary-hours.js';
+import { chartCautions } from '../core/cautions.js';
+import { nextAuspiciousTime } from '../core/election.js';
+import { SIGNS } from '../core/data/signs.js';
+import { DOMICILE } from '../core/data/dignities-data.js';
+import { genderOfDegree, qualityOfDegree, isFortunateDegree, bodyPartOf, TABLE_USE } from '../core/data/degree-tables.js';
+import { toUTC, nowLocalFields, VERDICT_LEGEND } from './shared.js';
+import { attachVedicPanel } from './vedic-panel.js';
+
+const $ = id => document.getElementById(id);
+const PL = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn'];
+const G = p => PLANET_GLYPHS[p] || p;
+const motionOK = () => { try { return matchMedia('(prefers-reduced-motion: no-preference)').matches; } catch { return false; } };
+let vedicUpdate = null;
+const ENH = {}; let bar = null, picker = null;
+
+export async function initMaster() {
+  const n = nowLocalFields();
+  $('m-date').value = n.date; $('m-time').value = n.time; $('m-offset').value = 0;
+  $('m-lat').value = 51.5074; $('m-lon').value = -0.1278;
+  $('m-form').addEventListener('submit', e => { e.preventDefault(); doCompute(); });
+  await mountEnh();
+  compute();
+}
+
+async function mountEnh() {
+  const L = async p => { try { return await import(p); } catch { return null; } };
+  ENH.mp = await L('./moment-picker.js'); ENH.ab = await L('./action-bar.js');
+  ENH.fig = await L('./viz/figure.js'); ENH.wi = await L('./viz/wheel-interact.js'); ENH.wr = await L('./wheel-rotate.js');
+  try { const i = await L('./viz/inspect.js'); i && i.initInspect && i.initInspect(); } catch { /* */ }
+  const ids = { lat: 'm-lat', lon: 'm-lon', date: 'm-date', time: 'm-time', offset: 'm-offset' };
+  if (ENH.mp && ENH.mp.mountMomentPicker) { try { picker = ENH.mp.mountMomentPicker($('m-picker'), { mode: 'question', label: 'The moment & place', persist: 'wb', ids, onChange: () => compute() }); } catch { pickerFallback('m-picker', ids); } } else pickerFallback('m-picker', ids);
+  if (ENH.ab && ENH.ab.mountActionBar) { try { bar = ENH.ab.mountActionBar($('m-actionbar'), { variant: 'tool', exports: [], askAI: null, summary: () => barSummary() }); } catch { bar = null; } }
+}
+
+function barSummary() {
+  const b = $('m-verdict-banner'); const v = b && b.querySelector('.verdict');
+  return { verdict: v ? v.textContent : '', text: b && !b.hidden ? (b.querySelector('.vb-reason') || {}).textContent || '' : '' };
+}
+function doCompute() {
+  const banner = $('m-verdict-banner'), btn = $('m-form').querySelector('button[type="submit"]');
+  const cf = ENH.ab && ENH.ab.computeFlow;
+  if (cf) { try { cf(btn, $('m-summary'), () => compute(), { banner, firstPanel: $('m-p-health') }); return; } catch { /* */ } }
+  compute();
+  if (banner && !banner.hidden) { try { banner.tabIndex = -1; banner.focus({ preventScroll: true }); banner.scrollIntoView({ block: 'start', behavior: motionOK() ? 'smooth' : 'auto' }); } catch { /* */ } }
+}
+function pickerFallback(boxId, ids) {
+  const box = document.getElementById(boxId); if (!box || box.dataset.fb) return; box.dataset.fb = '1';
+  const M = { lat: ['number', 'Lat °N', '0.0001'], lon: ['number', 'Lon °E', '0.0001'], date: ['date', 'Date'], time: ['time', 'Time (local)'], offset: ['number', 'UTC offset', '0.5'] };
+  const row = document.createElement('div'); row.className = 'field-row';
+  for (const k of Object.keys(ids)) { const inp = $(ids[k]); if (!inp) continue; const [t, l, s] = M[k] || ['text', k]; inp.type = t; if (s) inp.step = s; inp.style.width = t === 'number' ? '7rem' : ''; const fd = document.createElement('div'); fd.className = 'field'; const lb = document.createElement('label'); lb.htmlFor = ids[k]; lb.textContent = l; fd.append(lb, inp); row.appendChild(fd); }
+  box.appendChild(row);
+}
+function renderWheel(container, chart, asps) {
+  if (ENH.fig && ENH.fig.mountFigure) {
+    try {
+      const svgEl = renderChart(document.createElement('div'), chart, asps, { size: 540 });
+      container.innerHTML = '';
+      ENH.fig.mountFigure(container, { svg: svgEl.outerHTML, ariaLabel: 'Chart wheel — planets are buttons', caption: '' });
+      const m = container.querySelector('svg');
+      try { ENH.wi && ENH.wi.wireWheel && ENH.wi.wireWheel(m, chart, asps); } catch { /* */ }
+      try { ENH.wr && ENH.wr.attachWheelRotate && ENH.wr.attachWheelRotate(container, chart); } catch { /* */ }
+      return;
+    } catch { /* */ }
+  }
+  renderChart(container, chart, asps, { size: 540 });
+}
+
+function compute() {
+  const date = toUTC($('m-date').value, $('m-time').value, parseFloat($('m-offset').value) || 0);
+  const lat = parseFloat($('m-lat').value), lon = parseFloat($('m-lon').value);
+  if (isNaN(lat) || isNaN(lon)) return;
+  const chart = castChart(date, lat, lon, $('m-system').value);
+  const isDay = chart.isDay;
+  try { if (!vedicUpdate) vedicUpdate = attachVedicPanel(); vedicUpdate(chart); } catch { /* non-fatal */ }
+  const ph = planetaryHour(date, lat, lon);
+
+  const bodies = {}; for (const p of PL) bodies[p] = chart.planets[p];
+  const asps = allAspects(bodies);
+  renderWheel($('m-wheel'), chart, asps);
+
+  $('m-summary').innerHTML = `<strong>${formatLon(chart.asc)}</strong> ascending · MC
+    <strong>${formatLon(chart.mc)}</strong> · ${isDay ? 'day' : 'night'} chart
+    ${ph ? `· hour of <b>${G(ph.ruler)} ${ph.ruler}</b> (${ph.dayRuler}-day)` : ''}`;
+
+  // 0) Cautions & chart health — the consolidated advisory engine
+  const cau = chartCautions(chart, { hourRuler: ph ? ph.ruler : null });
+  $('m-verdict').innerHTML = `<span class="verdict ${cau.verdict}">${cau.verdict === 'green' ? 'Clean' : cau.verdict === 'amber' ? 'Cautions' : 'Impeded'}</span>`;
+  $('m-verdict').title = cau.label;
+  // Chart-health verdict, lifted to a full-width banner (plan §1.3.9).
+  const banner = $('m-verdict-banner');
+  if (banner) {
+    const mod = cau.verdict === 'green' ? 'ok' : cau.verdict === 'amber' ? 'warn' : 'bad';
+    banner.className = 'verdict-banner verdict-banner--' + mod;
+    banner.hidden = false;
+    banner.innerHTML = `<span class="verdict ${cau.verdict}">${cau.verdict === 'green' ? 'Clean' : cau.verdict === 'amber' ? 'Cautions' : 'Impeded'}</span>
+      <span class="vb-reason">${cau.label}</span>
+      <a class="vb-link" href="#m-p-health">see the evidence ↓</a>`;
+  }
+  $('m-cautions').innerHTML = cau.global.map(a =>
+    `<li class="adv-${a.severity}">${a.text}</li>`).join('');
+  // The next more-auspicious time (the electional habit of waiting for a better hour).
+  if (cau.verdict === 'green') {
+    $('m-next-ausp').innerHTML = 'This figure is already clear (green) — no need to wait.';
+  } else {
+    const na = nextAuspiciousTime(date, lat, lon, { hoursAhead: 48, target: 'amber' });
+    $('m-next-ausp').innerHTML = na
+      ? `<b>Next more auspicious time:</b> ${na.time.toUTCString()} (~${na.hoursFromNow.toFixed(1)}h later) — the chart-health improves from <span class="verdict ${cau.verdict}">${cau.verdict}</span> to <span class="verdict ${na.verdict}">${na.verdict}</span>.`
+      : '<b>Next more auspicious time:</b> none found within 48 hours of this moment.';
+  }
+  $('m-verdict-legend').innerHTML = VERDICT_LEGEND;
+  const afflictRows = Object.entries(cau.planets)
+    .filter(([, info]) => info.flags.length)
+    .map(([name, info]) =>
+      `<p style="margin:.3rem 0"><b>${G(name)} ${name}</b></p><ul class="advisories" style="margin-top:.2rem">${
+        info.flags.map(f => `<li class="adv-${f.severity}">${f.text}</li>`).join('')}</ul>`).join('');
+  $('m-afflict').innerHTML = afflictRows || '<p class="muted small">No planet carries an accidental affliction in this figure.</p>';
+
+  // 1) Full essential + accidental dignity ledger
+  let rows = '';
+  for (const name of PL) {
+    const p = chart.planets[name];
+    const ed = essentialDignity(name, p.lon, isDay);
+    const ad = accidentalDignity(name, chart);
+    const s = signOf(p.lon);
+    rows += `<tr>
+      <td>${G(name)} ${name}</td>
+      <td class="l">${formatLon(p.lon)}${p.retrograde ? ' ℞' : ''}</td>
+      <td>${p.house}</td>
+      <td class="l small">${ed.rows.map(r => `<span class="${r.score >= 0 ? 'pos' : 'neg'}">${r.kind}</span>`).join(', ')}</td>
+      <td class="num ${ed.total >= 0 ? 'pos' : 'neg'}">${ed.total >= 0 ? '+' : ''}${ed.total}</td>
+      <td class="num ${ad.total >= 0 ? 'pos' : 'neg'}">${ad.total >= 0 ? '+' : ''}${ad.total}</td>
+      <td class="num ${(ed.total + ad.total) >= 0 ? 'pos' : 'neg'}"><b>${(ed.total + ad.total) >= 0 ? '+' : ''}${ed.total + ad.total}</b></td>
+      <td>${G(ed.dispositor)}</td>
+    </tr>`;
+  }
+  $('m-dignities').innerHTML = rows;
+
+  // 2) Almutens of the angles
+  const angAl = [['Ascendant', chart.asc], ['Midheaven', chart.mc]].map(([lbl, l]) => {
+    const a = almuten(l, isDay); return `${lbl}: <b>${G(a.planet)} ${a.planet}</b> (${a.score})`;
+  }).join(' · ');
+  $('m-almutens').innerHTML = angAl;
+
+  // 3) Aspects
+  $('m-aspects').innerHTML = asps.length
+    ? asps.map(a => `<li>${G(a.from)} ${a.from} <b>${a.glyph} ${a.aspect}</b> ${G(a.to)} ${a.to}
+        — <span class="${a.applying ? 'pos' : 'muted'}">${a.applying ? 'applying' : 'separating'}</span>, orb ${a.orb.toFixed(1)}°</li>`).join('')
+    : '<li class="muted">No aspects within orb.</li>';
+
+  // 4) Antiscia + contacts
+  let antiRows = '', contacts = [];
+  for (const name of PL) {
+    const p = chart.planets[name];
+    const a = antiscion(p.lon), c = contraAntiscion(p.lon);
+    antiRows += `<tr><td>${G(name)} ${name}</td><td class="l">${formatLon(a)}</td><td class="l">${formatLon(c)}</td></tr>`;
+    // does this antiscion fall on another planet (within 1°)?
+    for (const other of PL) {
+      if (other === name) continue;
+      const op = chart.planets[other].lon;
+      if (Math.min(norm360(a - op), norm360(op - a)) <= 1)
+        contacts.push(`${G(name)} ${name}'s antiscion meets ${G(other)} ${other} (a hidden conjunction)`);
+      if (Math.min(norm360(c - op), norm360(op - c)) <= 1)
+        contacts.push(`${G(name)} ${name}'s contra-antiscion meets ${G(other)} ${other} (a hidden opposition)`);
+    }
+  }
+  $('m-antiscia').innerHTML = antiRows;
+  $('m-contacts').innerHTML = contacts.length
+    ? contacts.map(c => `<li>${c}</li>`).join('') : '<li class="muted">No antiscia contacts within 1°.</li>';
+
+  // 5) Special points
+  const pof = chart.planets.Fortune, nn = chart.planets.NorthNode;
+  $('m-points').innerHTML = `
+    <li>Part of Fortune ⊕ at <b>${formatLon(pof.lon)}</b>, house ${pof.house}</li>
+    <li>Dragon's Head ☊ at <b>${formatLon(nn.lon)}</b>, house ${nn.house}; Tail ☋ at ${formatLon(chart.planets.SouthNode.lon)}</li>
+    <li>The chart is <b>${isDay ? 'diurnal (a day chart)' : 'nocturnal (a night chart)'}</b> — the Sun is ${isDay ? 'above' : 'below'} the horizon.</li>`;
+
+  // 5b) The ascending degree, read by Lilly's supplementary tables
+  const ascS = signOf(chart.asc);
+  const ascGender = genderOfDegree(ascS.index, ascS.degInSign);
+  const ascQuality = qualityOfDegree(ascS.index, ascS.degInSign);
+  const ascFort = isFortunateDegree(ascS.index, ascS.degInSign);
+  const ascAl = almuten(chart.asc, isDay);
+  $('m-ascdeg').innerHTML = `
+    <li><b>${formatLon(chart.asc)}</b> rises — a <b>${ascQuality.toLowerCase()}</b> and <b>${ascGender.toLowerCase()}</b> degree${ascFort ? ', <b class="pos">increasing fortune</b>' : ''}.</li>
+    <li>Its almuten (lord of the degree) is <b>${G(ascAl.planet)} ${ascAl.planet}</b>; its sign-lord is <b>${G(cau.lordAsc)} ${cau.lordAsc}</b>.</li>
+    <li class="muted small">A ${ascQuality.toLowerCase()} degree on the cusp makes the native ${ascQuality === 'Light' ? 'fairer and more conspicuous' : ascQuality === 'Dark' ? 'more obscure' : ascQuality === 'Smoky' ? 'of a mixed, middling condition' : 'of small understanding, per Lilly'}.</li>`;
+
+  // 6) Body-part rulerships (Lilly's planet×sign grid) + degree qualities
+  $('m-body').innerHTML = PL.map(name => {
+    const s = signOf(chart.planets[name].lon);
+    const part = bodyPartOf(name, s.index);
+    const gender = genderOfDegree(s.index, s.degInSign);
+    const quality = qualityOfDegree(s.index, s.degInSign);
+    const fort = isFortunateDegree(s.index, s.degInSign);
+    return `<li>${G(name)} ${name} in ${SIGNS[s.index].glyph} ${s.name} → rules the <b>${(part || '').toLowerCase()}</b>
+      <span class="muted small">(${gender}, ${quality} degree${fort ? ', <b class="pos">fortunate</b>' : ''})</span></li>`;
+  }).join('');
+  try { picker && picker.commitRecent && picker.commitRecent(); } catch { /* */ }
+  try { bar && bar.show && bar.show(); } catch { /* */ }
+}

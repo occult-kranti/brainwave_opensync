@@ -1,12 +1,20 @@
 {
   "current": {
     "branch": "master",
-    "commit": "297b6d4add716d0fd9578d7b036cf2791850a44b",
+    "commit": "756091e18b69514849ce9154bf134bcb82fc5ea6",
     "path": "/brainwave_opensync/"
   },
   "previous": {
     "branch": "legacy-v2.5",
     "commit": "2d1935714335cbb94c8f01ade62ed9e74ead1faf",
     "path": "/brainwave_opensync/v2/"
+  },
+  "originalSuite": {
+    "repository": "occult-kranti/open-sync",
+    "commit": "02425613cd057406d92c4f3ee33b5fc54a493601",
+    "path": "/brainwave_opensync/open-sync/"
+  },
+  "research": {
+    "path": "/brainwave_opensync/research/"
   }
 }

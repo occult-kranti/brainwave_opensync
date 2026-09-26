@@ -1,0 +1,395 @@
+// ============================================================================
+//  assistant.js — the "Ask the Workbench" panel. It narrates the COMPUTED,
+//  CITED reading (from core/llm-context.js) using an LLM called DIRECTLY from
+//  the browser with the user's OWN key (BYOK — nothing is proxied). Two backend
+//  kinds are supported:
+//    • Anthropic (Claude) — the recommended default; supports the agentic
+//      tool-loop (the model runs the real engine tools).
+//    • OpenAI-compatible — Groq, Google Gemini (OpenAI endpoint), OpenRouter,
+//      Cerebras, Mistral, or any custom base URL. Lets a user bring a FREE-tier
+//      key. Streaming chat only (the data is embedded; no live tool-calls).
+//
+//  Three uses: free chat about the reading; "Codex of this Hour" (a Hermes/
+//  Picatrix codebook narration); and "Plan a working" (map an aim to a
+//  catalogued operation + the favourable window).
+//
+//  HONEST / SAFETY: no key is ever bundled — every request uses the user's own
+//  key and goes only to that provider's endpoint. The system prompt is the
+//  locked honest-framing preamble; facts are engine-computed & cited; the model
+//  describes a historical, pseudoscientific tradition — it does not advise or
+//  predict. VERIFY-GATE: NO network request fires on load; every fetch is on an
+//  explicit click and is wrapped so a failure updates the panel, never throws.
+// ============================================================================
+import { buildContext, runTool, toAnthropicTools, buildCodexPrompt, buildSynthesisPrompt, buildPlainReadingPrompt, buildOperationPrompt, buildMomentFinderPrompt, dataBlockFor, SITE_URLS } from '../core/llm-context.js';
+import { findNextElection } from '../core/election.js';
+import { downloadText } from './state.js';
+import { PROVIDERS, PROV_ORDER, streamChat as coreStreamChat, claudeToolLoop as coreToolLoop, openrouterHeaders } from './llm-core.js';
+import { LOCAL_DEFAULTS } from './local-config.js';
+
+const PROV_STORE = 'wb-llm-provider';
+const OPS_STORE = 'wb-operations';
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+let api = null, currentReading = null;
+let history = [], controller = null;
+const el = id => document.getElementById(id);
+
+export function initAssistant(_api) {
+  api = _api || {};
+  currentReading = api.getReading ? api.getReading() : null;
+  render();
+  if (api.subscribeReading) api.subscribeReading(r => { currentReading = r; refreshPreview(); });
+  try { injectExplainChips(); } catch { /* non-fatal — the panels explain themselves */ }
+}
+
+// Drop a focused question into the chat box and bring it into view.
+export function prefill(text) {
+  const input = el('wb-asst-input'); if (!input) return;
+  input.value = text;
+  const card = document.getElementById('wb-assistant-card');
+  if (card && card.scrollIntoView) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  input.focus();
+}
+
+// --- per-panel "✶ explain this" chips ----------------------------------------
+// Each Workbench result panel gets a chip in its heading that pre-fills a
+// scoped, grounded question. The chip only NAMES the panel — the values come
+// from the already-grounded context, so nothing can be misquoted.
+const PANEL_EXPLAIN = {
+  'wb-moment': 'Explain the figure of this moment — the Ascendant, the angles, the day/night sect and the planetary hour — and what the tradition read in them. Ground only in the computed facts; describe, never predict.',
+  'wb-horary': 'Explain the horary panel of this reading — the querent’s and quesited’s significators, their condition, and whether/how the matter perfects. Describe the tradition’s reasoning; never predict.',
+  'wb-dignities': 'Explain the dignity ledger of this reading — which planets are strongest and weakest by essential and accidental dignity, and why. Ground only in the computed facts; describe, never predict.',
+  'wb-aspects': 'Explain the aspects & reception panel of this reading — the tightest applying and separating aspects and any reception, and what the tradition made of them. Describe, never predict.',
+  'wb-lots': 'Explain the Lots & antiscia of this reading — the Part of Fortune and Spirit and the notable antiscia contacts, and how the tradition used them. Describe, never predict.',
+  'wb-cautions': 'Explain the chart-health verdict of this reading — which considerations and afflictions drive it, weighted by the significators. Ground only in the computed facts; describe, never predict.',
+  'wb-election': 'Explain the election panel of this reading — what this hour is fit and unfit for by the tradition’s testimonies, and why the chosen aim got its verdict. Describe as history; never advise.',
+  'wb-talisman': 'Explain the talisman recipe of this reading — the ruling planet, the timing, the materials and the mansion — strictly as HISTORICAL practice, never an instruction.',
+  'wb-natal': 'Explain the life-trajectory panel of this reading — the Lord of the Geniture, the profected year and Lord of the Year, and the notable directions. Describe the tradition’s method; never predict.',
+};
+function injectExplainChips() {
+  if (!el('wb-asst-input')) return;
+  for (const [panelId, q] of Object.entries(PANEL_EXPLAIN)) {
+    const panel = document.getElementById(panelId); if (!panel) continue;
+    const card = panel.closest('section.card'); if (!card) continue;
+    const h2 = card.querySelector('h2'); if (!h2 || h2.querySelector('.wb-explain')) continue;
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'btn sm wb-explain'; btn.style.marginLeft = '.5rem';
+    btn.textContent = '✶ explain';
+    btn.addEventListener('click', () => prefill(q));
+    h2.appendChild(btn);
+  }
+}
+
+// --- storage helpers (best-effort; never throw) -----------------------------
+const lsGet = k => { try { return localStorage.getItem(k); } catch { return null; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch { /* ignore */ } };
+const lsDel = k => { try { localStorage.removeItem(k); } catch { /* ignore */ } };
+function recentOps() { try { return JSON.parse(lsGet(OPS_STORE) || '[]'); } catch { return []; } }
+function saveOp(req) { lsSet(OPS_STORE, JSON.stringify([req, ...recentOps().filter(x => x !== req)].slice(0, 8))); }
+
+const provName = () => { const s = el('wb-asst-provider'); return s && PROVIDERS[s.value] ? s.value : 'anthropic'; };
+const provCfg = () => PROVIDERS[provName()];
+// Free OpenAI-compatible tiers have small per-minute token caps (e.g. Groq's
+// 8000 TPM), so the grounded context must be MUCH smaller than for Claude. These
+// budgets keep a typical request under ~6–7k tokens on a free key.
+const isFree = () => provCfg().kind === 'openai';
+const factBudget = big => isFree() ? (big ? 45 : 28) : (big ? 400 : 110);
+const keyStore = () => 'wb-llm-key-' + provName();
+const baseStore = () => 'wb-llm-base-' + provName();
+
+// the default provider: a remembered choice, else the local-config default, else Groq
+const defaultProv = () => { const p = lsGet(PROV_STORE) || LOCAL_DEFAULTS.provider || 'groq'; return PROVIDERS[p] ? p : 'groq'; };
+// pre-fill the key field: a remembered key, else the local-config key (this device only)
+const prefillKey = () => lsGet(keyStore()) || (provName() === LOCAL_DEFAULTS.provider ? (LOCAL_DEFAULTS.key || '') : '');
+
+function render() {
+  const host = el('wb-assistant');
+  if (!host) return;
+  const savedProv = defaultProv();
+  host.innerHTML = `
+    <div class="callout science" style="margin-top:0"><span class="label">About this assistant</span>
+      It explains the <b>computed, cited</b> reading above using an LLM called directly from your browser with
+      <b>your own API key</b> (nothing is proxied; no key is bundled). Use <b>Claude</b> (recommended, supports the
+      agentic tools) or the <b>free Groq tier</b> (the default — no card needed). It describes a historical,
+      <b>pseudoscientific</b> tradition; it does not advise or predict. Magical material is historical only.
+      New here? <a href="../docs/LOCAL-LLM.html">How the assistant works →</a></div>
+
+    <fieldset style="border:1px solid #2a3350;border-radius:.5rem;padding:.7rem .8rem;margin:.6rem 0">
+      <legend class="small" style="padding:0 .4rem">Connect an AI (your own key)</legend>
+      <div class="field-row" style="align-items:flex-end;flex-wrap:wrap;gap:.6rem">
+        <div class="field" style="flex:1 1 240px"><label for="wb-asst-provider">Provider</label>
+          <select id="wb-asst-provider">${PROV_ORDER.map(k => `<option value="${k}">${esc(PROVIDERS[k].label)}</option>`).join('')}</select></div>
+        <div class="field"><label for="wb-asst-model">Model</label><select id="wb-asst-model"></select></div>
+      </div>
+      <div class="field-row" id="wb-asst-base-row" style="margin-top:.5rem;display:none"><div class="field" style="flex:1 1 100%">
+        <label for="wb-asst-base">Base URL (OpenAI-compatible, ending in <code>/v1</code>)</label>
+        <input id="wb-asst-base" type="text" spellcheck="false" placeholder="https://host/v1" style="width:100%"></div></div>
+      <div class="field-row" style="align-items:flex-end;flex-wrap:wrap;gap:.6rem;margin-top:.5rem">
+        <div class="field" style="flex:1 1 320px"><label for="wb-asst-key">API key</label>
+          <input id="wb-asst-key" type="password" autocomplete="off" spellcheck="false" style="width:100%"></div>
+        <a id="wb-asst-getkey" class="small" rel="noopener" target="_blank" href="#">get a key ↗</a>
+      </div>
+      <div class="field-row" style="align-items:center;gap:1rem;margin-top:.5rem">
+        <label class="small" style="display:flex;align-items:center;gap:.3rem"><input type="checkbox" id="wb-asst-remember"> remember on this device</label>
+        <label class="small" id="wb-asst-tools-wrap" style="display:flex;align-items:center;gap:.3rem"><input type="checkbox" id="wb-asst-tools" checked> let the model run the engine tools (agentic; Claude only)</label>
+      </div>
+      <p id="wb-asst-status" class="small muted" style="margin:.4rem 0 0">Paste your key and ask — nothing is sent until you do.</p>
+    </fieldset>
+
+    <div class="field-row" style="gap:.4rem;margin:.2rem 0 .3rem;flex-wrap:wrap">
+      <button type="button" class="btn sm" id="wb-asst-plain">🗣 Plain words — explain every result simply</button>
+      <button type="button" class="btn sm" id="wb-asst-moment">🎯 Auspicious moment — scan ahead &amp; translate</button>
+      <button type="button" class="btn sm" id="wb-asst-synth">🔎 Interpret &amp; advise — everything, together</button>
+      <button type="button" class="btn sm" id="wb-asst-codex">📜 Codex of this Hour — evocative</button>
+    </div>
+    <p class="small muted" style="margin:.1rem 0 .6rem">First <b>compute a reading above</b>; each button then sends the
+      <b>whole computed reading as JSON</b> so the model interprets the real figures across <b>both systems</b> (Western + Vedic)
+      and the Picatrix layer. <b>🗣 Plain words</b> walks every panel for a beginner — what it means in simple terms, the good
+      points, the hard points, the concerns, and one theme to reflect on (a mirror, never advice); <b>🎯 Auspicious
+      moment</b> has the <b>engine</b> scan the next 72 hours for the chosen aim (deterministic, 30-minute steps) and the
+      model translate each found window — book meaning → literal real-life terms, honest frame first; <b>🔎 Interpret</b>
+      synthesises; the <b>📜 Codex</b> is image-rich. Replies are cite-bound ([F#]) and each has a <b>⤓ save</b> link.</p>
+
+    <fieldset style="border:1px solid #2a3350;border-radius:.5rem;padding:.7rem .8rem;margin:.2rem 0 .6rem">
+      <legend class="small" style="padding:0 .4rem">Plan a working (agentic)</legend>
+      <p class="small muted" style="margin:.1rem 0 .4rem">Ask the Workbench to plan a historical working. The model maps your aim to a catalogued
+        operation, finds the next favourable window (with the engine tools on Claude, or from the embedded data otherwise), and lays out the procedure.</p>
+      <div class="field-row" style="gap:.4rem">
+        <textarea id="wb-asst-op" rows="2" placeholder="e.g. when is the next best time to attempt to call rain, and how would the tradition do it?" style="flex:1 1 320px;min-width:240px"></textarea>
+        <button type="button" class="btn" id="wb-asst-plan">Plan it</button>
+      </div>
+      <div id="wb-asst-op-recent" class="small" style="margin-top:.35rem"></div>
+    </fieldset>
+
+    <div id="wb-asst-log" class="small chat" style="max-height:24rem;overflow:auto;border:1px solid #2a3350;border-radius:.4rem;padding:.6rem;background:#0c0f1a"></div>
+    <div class="field-row" style="margin-top:.5rem;gap:.4rem">
+      <textarea id="wb-asst-input" rows="2" placeholder="Ask about this reading… (e.g. “explain the chart-health verdict”)" style="flex:1 1 320px;min-width:240px"></textarea>
+      <button type="button" class="btn" id="wb-asst-send">Send</button>
+      <button type="button" class="btn sm" id="wb-asst-stop">Stop</button>
+    </div>
+
+    <details style="margin-top:.6rem"><summary class="small">What the model is told (the grounded facts)</summary>
+      <div id="wb-asst-preview" class="small muted"></div></details>`;
+
+  el('wb-asst-provider').value = savedProv;
+  onProviderChange();
+  el('wb-asst-provider').addEventListener('change', () => { lsSet(PROV_STORE, provName()); onProviderChange(); });
+  el('wb-asst-plain').addEventListener('click', () => generatePlain());
+  el('wb-asst-moment').addEventListener('click', () => generateMoment());
+  el('wb-asst-synth').addEventListener('click', () => generateSynthesis());
+  el('wb-asst-codex').addEventListener('click', () => generateCodex());
+  el('wb-asst-plan').addEventListener('click', () => planOperation());
+  el('wb-asst-send').addEventListener('click', () => send());
+  el('wb-asst-stop').addEventListener('click', () => { if (controller) controller.abort(); });
+  el('wb-asst-input').addEventListener('keydown', e => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); send(); } });
+  el('wb-asst-key').addEventListener('change', () => persistKey());
+  el('wb-asst-base').addEventListener('change', () => { lsSet(baseStore(), el('wb-asst-base').value.trim()); });
+  el('wb-asst-remember').addEventListener('change', () => persistKey());
+
+  renderRecentOps();
+  refreshPreview();
+}
+
+// Re-skin the connect form for the selected provider.
+function onProviderChange() {
+  const p = provCfg();
+  const modelSel = el('wb-asst-model');
+  modelSel.innerHTML = p.models.map(([v, l]) => `<option value="${v}">${esc(l)}</option>`).join('');
+  el('wb-asst-key').placeholder = p.keyHint;
+  el('wb-asst-key').value = prefillKey();
+  el('wb-asst-remember').checked = !!lsGet(keyStore());
+  el('wb-asst-base-row').style.display = p.custom ? '' : 'none';
+  if (p.custom) el('wb-asst-base').value = lsGet(baseStore()) || '';
+  const gk = el('wb-asst-getkey'); if (gk) { gk.href = p.keyUrl || '#'; gk.style.display = p.keyUrl ? '' : 'none'; }
+  el('wb-asst-tools-wrap').style.display = p.tools ? 'flex' : 'none';
+  setStatus(p.cors === 'unknown'
+    ? 'Note: this provider’s browser-direct (CORS) support is unverified — if you see a network error, it blocks direct calls; use Groq or Claude, which do allow it.'
+    : 'Paste your key and ask — nothing is sent until you do.');
+}
+
+function setStatus(t) { const s = el('wb-asst-status'); if (s) s.innerHTML = t; }
+function getKey() { const k = el('wb-asst-key') ? el('wb-asst-key').value.trim() : ''; persistKey(); return k; }
+function persistKey() {
+  const remember = el('wb-asst-remember') && el('wb-asst-remember').checked;
+  const k = el('wb-asst-key') ? el('wb-asst-key').value.trim() : '';
+  if (remember && k) lsSet(keyStore(), k); else lsDel(keyStore());
+}
+
+function renderRecentOps() {
+  const box = el('wb-asst-op-recent'); if (!box) return;
+  const ops = recentOps();
+  box.innerHTML = ops.length ? 'Recent: ' + ops.map(o => `<a href="#" class="gloss-link" data-op="${esc(o)}">${esc(o.length > 48 ? o.slice(0, 46) + '…' : o)}</a>`).join(' · ') : '';
+  box.querySelectorAll('a[data-op]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); el('wb-asst-op').value = a.getAttribute('data-op'); }));
+}
+
+function refreshPreview() {
+  const p = el('wb-asst-preview'); if (!p) return;
+  if (!currentReading) { p.textContent = 'Compute a reading above first.'; return; }
+  try {
+    const { facts } = buildContext(currentReading);
+    p.innerHTML = '<p class="muted" style="margin:.2rem 0">Replies are <b>cite-bound</b>: the model tags computed claims with these fact numbers, e.g. [F3].</p>'
+      + '<ul class="clean">' + facts.map((f, i) => `<li><b>[F${i + 1}]</b> ${esc(f.text)}${f.cite ? ` <span class="muted">[${esc(f.cite)}]</span>` : ''}</li>`).join('') + '</ul>';
+  } catch { p.textContent = 'Could not build the context.'; }
+}
+
+// --- chat log (labelled bubbles) --------------------------------------------
+function appendMsg(role, text) {
+  const log = el('wb-asst-log');
+  const turn = document.createElement('div');
+  turn.className = `wb-chat-turn chat-turn ${role === 'user' ? 'wb-chat-user chat-user' : 'wb-chat-bot chat-bot'}`;
+  const label = document.createElement('div');
+  label.className = 'wb-chat-role chat-role';
+  label.innerHTML = `<span aria-hidden="true">${role === 'user' ? '🜨' : '✶'}</span> ${role === 'user' ? 'You' : provName() === 'anthropic' ? 'Claude' : 'AI'}`;
+  const body = document.createElement('div');
+  body.className = 'wb-chat-body chat-body';
+  body.textContent = text;
+  turn.appendChild(label); turn.appendChild(body);
+  log.appendChild(turn); log.scrollTop = log.scrollHeight;
+  return body;
+}
+function appendToolNote(name, args, result) {
+  const log = el('wb-asst-log');
+  const div = document.createElement('div');
+  div.className = 'wb-chat-note chat-note';
+  const ok = !(result && result.error);
+  div.innerHTML = `↳ ran <code>${esc(name)}</code>(${esc(JSON.stringify(args || {}))}) → ${ok ? 'computed' : 'error: ' + esc(result.error)}`;
+  log.appendChild(div); log.scrollTop = log.scrollHeight;
+}
+const scrollLog = () => { const l = el('wb-asst-log'); if (l) l.scrollTop = l.scrollHeight; };
+
+// --- backends (thin wrappers over the shared llm-core transport) ------------
+
+// dispatch a streaming chat to the selected provider; stream into `asstEl` and
+// record the turn in `history`. The transport itself lives in llm-core.js.
+async function streamChat(messages, system, asstEl, maxTokens = 3072) {
+  const p = provCfg();
+  asstEl.textContent = '';
+  const full = await coreStreamChat({
+    provider: p, url: p.url, baseUrl: p.custom ? (el('wb-asst-base').value || '') : '',
+    model: el('wb-asst-model').value, key: getKey(),
+    system, messages, maxTokens, signal: controller.signal,
+    extraHeaders: provName() === 'openrouter' ? openrouterHeaders(SITE_URLS && SITE_URLS.home) : null,
+    onDelta: t => { asstEl.textContent = t; scrollLog(); },
+  });
+  history.push({ role: 'assistant', content: full });
+  return full;
+}
+
+// crypto randomness for the oracle tools (castGeomancy/drawTarot/castIChing):
+// the APP throws the dice, never the model and never the pure core.
+function appRand(n) {
+  try { const a = new Uint32Array(1); (self.crypto || window.crypto).getRandomValues(a); return a[0] % n; }
+  catch { return Math.floor(Math.random() * n); }
+}
+
+async function claudeToolLoop(messages, system, asstEl) {
+  const full = await coreToolLoop({
+    url: provCfg().url, model: el('wb-asst-model').value, key: getKey(),
+    system, messages, tools: toAnthropicTools(),
+    runTool: (name, input) => runTool(name, input, { ...(api.getContext ? api.getContext() : {}), rand: appRand }),
+    signal: controller.signal,
+    onText: t => { asstEl.textContent = t; scrollLog(); },
+    onToolNote: (name, input, result) => appendToolNote(name, input, result),
+  });
+  history.push({ role: 'assistant', content: full });
+  return full;
+}
+
+// --- the entry points -------------------------------------------------------
+function preflight() {
+  if (!currentReading) { setStatus('Compute a reading above first.'); return false; }
+  if (provCfg().custom && !(el('wb-asst-base').value || '').trim()) { setStatus('Enter the OpenAI-compatible base URL.'); return false; }
+  if (!getKey()) { setStatus('Enter your API key first.'); return false; }
+  setStatus('');
+  return true;
+}
+const toolsOn = () => provCfg().tools && el('wb-asst-tools') && el('wb-asst-tools').checked;
+
+async function send() {
+  const input = el('wb-asst-input');
+  const q = input.value.trim(); if (!q || !preflight()) return;
+  input.value = '';
+  const { system } = buildContext(currentReading, { maxFacts: factBudget(false), maxGlossary: isFree() ? 6 : 99 });
+  // window the history: the Anthropic API requires the FIRST message to be a
+  // user turn (drop any leading assistant the slice cut into), and free tiers
+  // can't afford a full one-click reply in the window — truncate long turns.
+  let hist = history.slice(isFree() ? -4 : -8);
+  while (hist[0] && hist[0].role === 'assistant') hist = hist.slice(1);
+  if (isFree()) hist = hist.map(m => (typeof m.content === 'string' && m.content.length > 1200) ? { ...m, content: m.content.slice(0, 1200) + ' …[earlier reply truncated]' } : m);
+  const messages = [...hist, { role: 'user', content: q }];
+  history.push({ role: 'user', content: q });
+  appendMsg('user', q);
+  const asstEl = appendMsg('assistant', '…');
+  controller = new AbortController();
+  try {
+    const out = toolsOn() ? await claudeToolLoop(messages, system, asstEl) : await streamChat(messages, system, asstEl);
+    addSaveLink(asstEl, out, 'reply');
+  } catch (e) { asstEl.textContent = (e && e.name === 'AbortError') ? '(stopped)' : 'Error: ' + (e && e.message ? e.message : 'request failed'); }
+}
+
+function addSaveLink(bodyEl, text, name) {
+  if (!bodyEl || !text) return;
+  const turn = bodyEl.closest('.wb-chat-turn') || bodyEl.parentElement; if (!turn) return;
+  const a = document.createElement('a');
+  a.href = '#'; a.className = 'wb-chat-save'; a.style.display = 'inline-block'; a.style.marginTop = '.4rem';
+  a.textContent = '⤓ save this reply';
+  a.addEventListener('click', e => { e.preventDefault(); downloadText(text, `workbench-${name || 'reply'}.md`, 'text/markdown;charset=utf-8'); });
+  turn.appendChild(a);
+}
+
+// A shared one-click flow: shows a compact label as the user turn, RECORDS that
+// turn in history (so a follow-up send() never begins with an assistant turn —
+// the Anthropic API rejects that), streams the reply, adds a save-link.
+async function oneClick(label, body, saveName, maxTokens = 6144) {
+  if (!preflight()) return;
+  const { system } = buildContext(currentReading, { maxFacts: factBudget(true), maxGlossary: isFree() ? 6 : 99 });
+  appendMsg('user', label);
+  history.push({ role: 'user', content: label });
+  const asstEl = appendMsg('assistant', '…');
+  controller = new AbortController();
+  // free tiers count the reserved output against a tight per-minute cap
+  const maxT = isFree() ? 3072 : maxTokens;
+  try { const out = await streamChat([{ role: 'user', content: body }], system, asstEl, maxT); addSaveLink(asstEl, out, saveName); }
+  catch (e) { asstEl.textContent = (e && e.name === 'AbortError') ? '(stopped)' : 'Error: ' + (e && e.message ? e.message : 'request failed'); }
+}
+// On a free tier the big JSON digest would blow the per-minute token cap — the
+// numbered facts in the system prompt already ground the reading there.
+const withData = prompt => prompt + (isFree() ? '' : dataBlockFor(currentReading));
+
+const generateSynthesis = () => oneClick('🔎 Interpret & advise — the whole reading, together (data sent as JSON)',
+  withData(buildSynthesisPrompt(currentReading)), 'interpretation');
+const generateCodex = () => oneClick('📜 Codex of this Hour (deep interpretation, both systems; data sent as JSON)',
+  withData(buildCodexPrompt(currentReading)), 'codex');
+const generatePlain = () => oneClick('🗣 Plain words — every result explained simply: the good, the hard, the concerns, what to reflect on',
+  withData(buildPlainReadingPrompt(currentReading)), 'plain-words', 8192);
+
+// 🎯 The auspicious-moment automation: the ENGINE finds the windows
+// (findNextElection — deterministic, 72 h ahead at 30-minute steps); the model
+// only translates them, codebooked: book meaning → literal real-life terms,
+// honest frame first. The scan runs here in the app, never in the model.
+function generateMoment() {
+  if (!preflight()) return;
+  const inp = currentReading.meta.inputs;
+  let windows = [];
+  try {
+    windows = findNextElection(inp.operationKey || 'talisman', new Date(inp.date), inp.latitude, inp.longitude,
+      { hoursAhead: 72, stepMinutes: 30, system: inp.system });
+  } catch { windows = []; }
+  oneClick('🎯 Auspicious moment — the engine scans 72 h ahead for the chosen aim; every window explained, book meaning → real life',
+    buildMomentFinderPrompt(currentReading, windows), 'auspicious-moment', 8192);
+}
+
+async function planOperation() {
+  const req = el('wb-asst-op').value.trim(); if (!req || !preflight()) return;
+  saveOp(req); renderRecentOps();
+  const { system } = buildContext(currentReading);
+  appendMsg('user', '🜔 ' + req);
+  history.push({ role: 'user', content: '🜔 ' + req });
+  const asstEl = appendMsg('assistant', '…');
+  controller = new AbortController();
+  const messages = [{ role: 'user', content: buildOperationPrompt(currentReading, req) + dataBlockFor(currentReading) }];
+  try {
+    const out = toolsOn() ? await claudeToolLoop(messages, system, asstEl) : await streamChat(messages, system, asstEl);
+    addSaveLink(asstEl, out, 'working');
+  } catch (e) { asstEl.textContent = (e && e.name === 'AbortError') ? '(stopped)' : 'Error: ' + (e && e.message ? e.message : 'request failed'); }
+}

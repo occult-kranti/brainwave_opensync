@@ -1,0 +1,111 @@
+// ============================================================================
+//  talisman.js (app) — the guided talisman workflow. Choose an aim and a
+//  moment/place; the page elects the time, assembles the historical materials,
+//  mansion/face/star and ritual steps, and renders the end-result "recipe card".
+//  Composes core/talisman.js (which composes the election + correspondence
+//  engines). Historical practice, described not prescribed.
+// ============================================================================
+import { castChart, formatLon, signOf, PLANET_GLYPHS } from '../core/astro.js';
+import { OPERATIONS } from '../core/election.js';
+import { talismanRecipe } from '../core/talisman.js';
+import { toUTC, nowLocalFields } from './shared.js';
+import { attachVedicPanel } from './vedic-panel.js';
+let vedicUpdate = null;
+const ENH = {}; let bar = null, picker = null, lastVerdict = { verdict: '', text: '' };
+const motionOK = () => { try { return matchMedia('(prefers-reduced-motion: no-preference)').matches; } catch { return false; } };
+
+const $ = id => document.getElementById(id);
+const G = p => PLANET_GLYPHS[p] || p;
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const VW = v => v === 'green' ? 'favourable' : v === 'amber' ? 'mixed' : 'unfavourable';
+// the election traffic-light → the promoted .verdict-banner triad (plan §1.3.9).
+const VB_CLASS = { green: 'ok', amber: 'warn', red: 'bad' };
+
+export async function initTalisman() {
+  $('t-op').innerHTML = OPERATIONS.map(o => `<option value="${esc(o.key)}">${esc(o.label)}</option>`).join('');
+  try { const w = new URLSearchParams(location.search).get('op'); if (w && OPERATIONS.some(o => o.key === w)) $('t-op').value = w; } catch { /* */ }
+  const n = nowLocalFields();
+  $('t-date').value = n.date; $('t-time').value = n.time; $('t-offset').value = 0;
+  $('t-lat').value = 51.5074; $('t-lon').value = -0.1278;
+  $('t-op').addEventListener('change', () => build());
+  $('t-form').addEventListener('submit', e => { e.preventDefault(); doBuild(); });
+  await mountEnh();
+  build();
+}
+
+async function mountEnh() {
+  const L = async p => { try { return await import(p); } catch { return null; } };
+  ENH.mp = await L('./moment-picker.js'); ENH.ab = await L('./action-bar.js');
+  const ids = { lat: 't-lat', lon: 't-lon', date: 't-date', time: 't-time', offset: 't-offset' };
+  if (ENH.mp && ENH.mp.mountMomentPicker) { try { picker = ENH.mp.mountMomentPicker($('t-picker'), { mode: 'now', label: 'The moment & place', persist: 'wb', ids, onChange: () => build() }); } catch { pickerFallback('t-picker', ids); } } else pickerFallback('t-picker', ids);
+  if (ENH.ab && ENH.ab.mountActionBar) { try { bar = ENH.ab.mountActionBar($('t-actionbar'), { variant: 'tool', exports: [], askAI: null, summary: () => lastVerdict }); } catch { bar = null; } }
+}
+function doBuild() {
+  const btn = $('t-form').querySelector('button[type="submit"]');
+  const cf = ENH.ab && ENH.ab.computeFlow;
+  if (cf) { try { cf(btn, null, () => build(), { firstPanel: $('t-steps') }); return; } catch { /* */ } }
+  build();
+}
+function pickerFallback(boxId, ids) {
+  const box = document.getElementById(boxId); if (!box || box.dataset.fb) return; box.dataset.fb = '1';
+  const M = { lat: ['number', 'Lat °N', '0.0001'], lon: ['number', 'Lon °E', '0.0001'], date: ['date', 'Date'], time: ['time', 'Time (local)'], offset: ['number', 'UTC offset', '0.5'] };
+  const row = document.createElement('div'); row.className = 'field-row';
+  for (const k of Object.keys(ids)) { const inp = $(ids[k]); if (!inp) continue; const [t, l, s] = M[k] || ['text', k]; inp.type = t; if (s) inp.step = s; inp.style.width = t === 'number' ? '7rem' : ''; const fd = document.createElement('div'); fd.className = 'field'; const lb = document.createElement('label'); lb.htmlFor = ids[k]; lb.textContent = l; fd.append(lb, inp); row.appendChild(fd); }
+  box.appendChild(row);
+}
+
+function build() {
+  try {
+    const date = toUTC($('t-date').value, $('t-time').value, parseFloat($('t-offset').value) || 0);
+    const lat = parseFloat($('t-lat').value), lon = parseFloat($('t-lon').value);
+    if (isNaN(lat) || isNaN(lon)) return;
+    const chart = castChart(date, lat, lon, 'regiomontanus');
+    try { if (!vedicUpdate) vedicUpdate = attachVedicPanel(); vedicUpdate(chart); } catch { /* non-fatal */ }
+    const r = talismanRecipe(chart, $('t-op').value, { scanHours: 72, stepMinutes: 30 });
+
+    // What the sources record, in order — attested description, never instruction
+    // (FRAMING §9.14). `steps` no longer exists; each entry is third-person and
+    // names who instructed whom.
+    $('t-steps').innerHTML =
+      `<p class="small muted">${esc(r.voice)}</p>` +
+      `<ol class="steps">${r.attestedSequence.map(s =>
+        `<li>${esc(s.text)} <span class="small muted">— ${esc(s.cite)}</span></li>`).join('')}</ol>`;
+
+    // End-result recipe card
+    const m = r.materials, sp = m.spirits;
+    const win = r.window
+      ? `Best upcoming window (next 72 h): <b>${r.window.start.toLocaleString()}</b> → ${r.window.end.toLocaleString()} (best ${VW(r.window.bestVerdict)}, score ${r.window.best}).`
+      : `No clearly favourable window in the next 72 h — the tradition would wait.`;
+    const starTxt = r.star ? `${G(r.star.planet)} ${esc(r.star.planet)} ∠ ${esc(r.star.star)} (${r.star.sep.toFixed(1)}°)` : 'none conjunct a planet now';
+    $('t-card').innerHTML = `
+      <div class="verdict-banner verdict-banner--${VB_CLASS[r.verdict] || 'warn'}" role="status" aria-live="polite">
+        <span class="verdict ${esc(r.verdict)}">${VW(r.verdict)}</span>
+        <span class="vb-reason">the elected moment for <b>${esc(r.aim)}</b> ranks <b>${VW(r.verdict)}</b> by weighted testimony (score ${r.score}) — a gravity scale for the election, not the talisman's ritual colour.</span>
+      </div>
+      <div class="card" style="border:2px solid var(--gold,#b9912f)">
+        <h2 style="margin-top:0">Recipe — ${esc(r.aim)}</h2>
+        <p class="small muted">${esc(r.disclaimer)}</p>
+        <table class="data">
+          <tbody>
+            <tr><th class="l">Aim</th><td class="l">${esc(r.aim)} — ruling planet ${G(r.planet)} <b>${esc(r.planet)}</b> (${esc(r.book)})</td></tr>
+            <tr><th class="l">Moment</th><td class="l">${esc(new Date(r.when).toUTCString())} · ${r.where.lat.toFixed(2)}°, ${r.where.lon.toFixed(2)}°${r.hour ? ` · hour of ${esc(r.hour.ruler)}, day of ${esc(r.hour.dayRuler)}` : ''}</td></tr>
+            <tr><th class="l">Election</th><td class="l"><b>${VW(r.verdict)}</b> — ${esc(r.verdictLabel)} (score ${r.score}). ${esc(win)}</td></tr>
+            <tr><th class="l">Moon</th><td class="l">${esc(r.moon.sign)} ${formatLon(r.moon.lon)}, ${esc(r.moon.phase)}; Mansion ${r.moon.mansion.num} — ${esc(r.moon.mansion.name)} (“${esc(r.moon.mansion.use)}”)</td></tr>
+            <tr><th class="l">Suffumigation</th><td class="l">${esc(m.suffumigation)}</td></tr>
+            <tr><th class="l">Colour</th><td class="l">${esc(m.colour)}</td></tr>
+            <tr><th class="l">Metal</th><td class="l">${esc(m.metal)}</td></tr>
+            <tr><th class="l">Stone</th><td class="l">${esc(m.stone)}</td></tr>
+            <tr><th class="l">Spirits</th><td class="l">Picatrix prayer-angel ${esc(sp.picatrixPrayerAngel)}; Agrippa Angel <b>${esc(sp.agrippa.angel)}</b> / Intelligence ${esc(sp.agrippa.intelligence)} / Spirit ${esc(sp.agrippa.spirit)}</td></tr>
+            <tr><th class="l">Design</th><td class="l">${esc(r.design)}</td></tr>
+            <tr><th class="l">Fixed star</th><td class="l">${starTxt}</td></tr>
+          </tbody>
+        </table>
+        <p class="small"><button type="button" class="btn-secondary sm" onclick="window.print()">Print this recipe</button></p>
+      </div>`;
+    lastVerdict = { verdict: VW(r.verdict), text: `${r.aim} — ${VW(r.verdict)}` };
+    try { picker && picker.commitRecent && picker.commitRecent(); } catch { /* */ }
+    try { bar && bar.show && bar.show(); } catch { /* */ }
+  } catch (e) {
+    $('t-card').innerHTML = `<p class="adv-bad">Could not build the recipe: ${esc(e.message)}</p>`;
+  }
+}

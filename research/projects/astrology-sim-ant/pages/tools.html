@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tools &amp; Calculators | The Astrologer's Workbench</title>
+<meta name="description" content="Every interactive calculator in one place: the Book I Master Tool, the Horary Chart Calculator, the Essential Dignity Calculator, Planetary Hours, the Nativity Calculator and the degree-table lookups — each built on a verified astronomical engine.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9C%B6%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body><aside style="position:relative;z-index:10000;background:#eee8db;color:#183a39;padding:10px 18px;font:14px/1.5 system-ui;border-bottom:1px solid #b4c0b7"><a style="color:#145c5a;font-weight:700" href="../../../index.html#projects">← Research Atlas</a> · Historical and proposed interpretations retain their own evidence limits.</aside>
+<main class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> › <a href="about/index.html">Reference</a> › Tools</p>
+  <h1>Tools &amp; Calculators</h1>
+  <p class="lede">Every working calculator on the site, gathered in one place. Each computes a real chart from a
+    <a href="about/index.html">verified astronomical engine</a> (≈1 arc-minute) and judges it by Lilly's own rules.
+    Start with the <b>Master Tool</b> if you want everything about a moment at once.</p>
+
+  <div class="callout science"><span class="label">Honest note</span>
+    The mathematics is real and reproducible. The <em>interpretations</em> are Lilly's, presented for historical
+    study — astrology has no demonstrated predictive validity. See <a href="about/index.html">Sources &amp; Science</a>.</div>
+
+  <div class="callout"><span class="label">New here?</span>
+    Every calculation is explained in plain English — its meaning, the step-by-step method, and a worked example —
+    on the <a href="how-it-works.html"><b>How it's calculated</b></a> page. The
+    <span class="verdict green">green</span>/<span class="verdict amber">amber</span>/<span class="verdict red">red</span>
+    badges are a gravity scale for a verdict, not planetary colours.</div>
+
+  <p class="small" id="tool-jump"><b>Jump to:</b> <a href="#s-master">Master tool</a> · <a href="#s-focused">Focused calculators</a> · <a href="#s-picatrix">Picatrix magic</a> · <a href="#divination">Oracles</a> · <a href="#s-indian">The Indian mirror</a> · <a href="#s-jung">Jung</a> · <a href="#s-history">Chronology &amp; cycles</a> · <a href="#s-science">Honest science</a> · <a href="#s-table">What each computes</a></p>
+
+  <h2 id="s-master">The one-stop calculator</h2>
+  <div class="grid cols-2">
+    <a class="card tool-card" href="workbench.html">
+      <span class="glyph-badge">✶</span>
+      <span class="chip tool">All books + Vedic</span><span class="chip done">the master tool</span>
+      <h3>The Master Tool (the Workbench)</h3>
+      <p>The single, fullest tool: one moment &amp; place runs the <b>whole engine at once</b> (the <code>fullReading</code>
+        spine) with the <b>Vedic (Jagannath Hora) chart side by side</b>, and links every result to its dedicated tool,
+        its step-by-step explanation and the glossary. <b>Export as JSON/Markdown</b>, share by link, <b>save</b> the
+        reading, download the chart (SVG/PNG), and ask the <b>AI assistant</b> to interpret it (Groq free tier or Claude — your own key).</p>
+      <p class="what"><b>Computes:</b> the union of every panel — figure · dignity ledger · aspects/reception ·
+        lots/antiscia · chart health · horary · election · talisman · life trajectory · the Vedic chart (grahas ·
+        daśā · Ṣaḍbala · practice) — plus a capability Reference index and the AI assistant.</p>
+    </a>
+    <a class="card tool-card" href="trajectory.html">
+      <span class="glyph-badge">🜨</span>
+      <span class="chip tool">All books</span><span class="chip done">personal</span>
+      <h3>Life Trajectory</h3>
+      <p>A birth chart for <b>anywhere in the world</b> (by latitude/longitude, or "use my location") read across the
+        whole arc of a life: the natal figure, the year-by-year <b>profections &amp; Lord of the Year</b>, the
+        <b>primary directions</b>, the <b>solar return</b>, and a <b>personalised Picatrix</b> layer — the works the
+        tradition would count as this chart's, and the highest-scoring talisman for the moment. Shareable &amp; printable.</p>
+      <p class="what"><b>Computes:</b> natal signatures · profection timeline · directions · solar return ·
+        personalised election/talisman recommendations.</p>
+    </a>
+    <a class="card tool-card" href="autopilot.html">
+      <span class="glyph-badge">🜍</span>
+      <span class="chip tool">Every engine</span><span class="chip done">agentic AI · your Claude key</span>
+      <h3>The Grand Orchestrator</h3>
+      <p><b>One prompt, every engine.</b> Type <b>any</b> question — simple or advanced, about a past date or a future
+        one — and <b>Claude drives all of the site's engines as tools</b>: it plans which charts to cast,
+        <b>computes the real numbers</b> (the figure, transits, synastry, the Indian &amp; Persian clocks, the great
+        conjunctions, the oracles…), then explains them <b>codebooked</b> — book meaning → plain words — honest frame
+        first, each tradition kept separate. Your own key, browser-direct; every engine it runs is shown as an
+        auditable <code>⚙ toolName(args)</code> line. Claude only (the agentic tools need it).</p>
+      <p class="what"><b>Computes:</b> nothing new — it reaches the <b>whole site</b> through ~a dozen tools
+        (<code>fullChart</code> · <code>vedicChart</code> · <code>transitHits</code> · <code>synastryPair</code> ·
+        <code>annualChart</code> · <code>prasnaNow</code> · <code>muhurtaDay</code> · <code>momentScan</code> ·
+        <code>greatConjunctions</code> · <code>timelords</code> · the oracles · <code>defineTerm</code>) and
+        <code>listCapabilities</code> for discovery.</p>
+    </a>
+    <a class="card tool-card" href="vedic/index.html">
+      <span class="glyph-badge">🕉</span>
+      <span class="chip tool">Vedic</span><span class="chip done">another system</span>
+      <h3>Jagannath Hora — Vedic (sidereal)</h3>
+      <p>A second, <b>independent</b> system: the <b>Vedic (Jyotiṣa)</b> horoscope as Jagannath Hora computes it — the
+        <b>sidereal</b> zodiac, <b>whole-sign</b> houses, the 27 <b>nakṣatras</b>, the <b>Vimśottarī daśā</b>, the
+        <b>Pañcāṅga</b>, the divisional charts (<b>vargas</b>), the <b>Aṣṭakavarga</b> and a partial <b>Ṣaḍbala</b>.
+        Toggle <b>🕉 Vedic view</b> on any calculator to compare it with the Western chart side by side.</p>
+      <p class="what"><b>Computes:</b> sidereal grahas + nakṣatra/pada · whole-sign bhāvas · dignities · pañcāṅga ·
+        Vimśottarī daśā · vargas (D1–D60) · Sarvāṣṭakavarga · yogas.</p>
+    </a>
+    <a class="card tool-card" href="book1/master.html">
+      <span class="glyph-badge">✶</span>
+      <span class="chip tool">Book I</span><span class="chip done">recommended</span>
+      <h3>Master Tool</h3>
+      <p>One moment and place → <b>everything</b>: the wheel, the full essential + accidental dignity ledger for
+        all seven planets, the almutens of the angles, all aspects by Lilly's orbs, antiscia and their hidden
+        contacts, the special points, the planetary hour, the ascending degree, body-part rulerships, and the
+        complete <b>cautions &amp; chart-health</b> panel.</p>
+      <p class="what"><b>Computes:</b> positions · houses (4 systems) · dignities · almutens · aspects · antiscia ·
+        Part of Fortune · nodes · planetary hour · degree tables · cautions/considerations.</p>
+    </a>
+    <a class="card tool-card" href="book2/horary.html">
+      <span class="glyph-badge">☽☿☉</span>
+      <span class="chip tool">Book II</span>
+      <h3>Horary Chart Calculator</h3>
+      <p>Answer a question from the chart of the moment it is asked. Identifies the significators of querent and
+        quesited, scores their dignity, lists applying/separating aspects, runs the considerations before
+        judgement, and detects the modes of <b>perfection</b> (direct, translation, collection, prohibition,
+        refranation) with an estimate of <b>timing</b>.</p>
+      <p class="what"><b>Computes:</b> significators · perfection &amp; timing · reception · considerations · the wheel.</p>
+    </a>
+  </div>
+
+  <h2 id="s-focused">Focused calculators</h2>
+  <div class="grid cols-3">
+    <a class="card tool-card" href="book1/dignities.html">
+      <span class="glyph-badge">♄♃♂</span><span class="chip tool">Book I</span>
+      <h3>Essential Dignity</h3>
+      <p>Any planet at any degree → its domicile, exaltation, triplicity, term and face, scored by Lilly's
+        points, with the almuten of the degree.</p>
+    </a>
+    <a class="card tool-card" href="book1/planetary-hours.html">
+      <span class="glyph-badge">🕖</span><span class="chip tool">Book I</span>
+      <h3>Planetary Hours</h3>
+      <p>The ruler of the present planetary hour and day in the Chaldean order, with the full table of the
+        twenty-four unequal hours from sunrise to sunrise.</p>
+    </a>
+    <a class="card tool-card" href="book3/nativity.html">
+      <span class="glyph-badge">⊕</span><span class="chip tool">Book III</span>
+      <h3>Nativity Calculator</h3>
+      <p>A birth chart with houses, dignities, the Part of Fortune, the Lord of the Geniture and the
+        temperament balance — the start of Lilly's natal method.</p>
+    </a>
+    <a class="card tool-card" href="book3/master.html">
+      <span class="glyph-badge">⊕</span><span class="chip tool">Book III</span><span class="chip done">master</span>
+      <h3>Book III Master Tool</h3>
+      <p>The natal super-view: Lord of the Geniture, temperament, annual <b>profection &amp; Lord of the Year</b>,
+        <b>hyleg &amp; alcocoden</b>, <b>primary directions</b> and the <b>solar return</b>.</p>
+    </a>
+    <a class="card tool-card" href="timelords.html">
+      <span class="glyph-badge">⏳</span>
+      <span class="chip tool">Hellenistic · Persian</span><span class="chip done">time-lords</span>
+      <h3>Time-lords &amp; Progressions</h3>
+      <p>Who "rules" the years of a life — three classical answers side by side: <b>secondary
+        progressions</b> (day-for-a-year, Valens IX.3; angles by the <b>Naibod arc</b>), Abu Ma&#700;shar's
+        <b>firdaria</b> periods (75-year cycle, the disputed night-node placement exposed as a toggle),
+        and Valens's <b>zodiacal releasing</b> from the Lots of Spirit &amp; Fortune (360-day years,
+        the <b>loosing of the bond</b> marked). The current period-lords are highlighted for any
+        "as of" date.</p>
+      <p class="what"><b>Computes:</b> progressed planets &amp; Naibod-arc angles · the full 75-year
+        firdaria table with sub-periods (Abu Ma&#700;shar / Bonatti night variants) · L1/L2 zodiacal
+        releasing from Spirit &amp; Fortune with loosing of the bond · distribution age (360-day years).</p>
+    </a>
+    <a class="card tool-card" href="book1/degrees.html">
+      <span class="glyph-badge">°</span><span class="chip tool">Book I</span>
+      <h3>Degree Tables</h3>
+      <p>Lilly's supplementary tables: masculine/feminine and light/dark/smoky/void degrees, the fortunate
+        degrees, and the planet×sign body-parts grid.</p>
+    </a>
+    <a class="card tool-card" href="book2/considerations.html">
+      <span class="glyph-badge">⚖</span><span class="chip tool">Book II</span>
+      <h3>Considerations</h3>
+      <p>The cautions that decide whether a figure is <em>radical</em> — fit to be judged — and what each one
+        really means.</p>
+    </a>
+    <a class="card tool-card" href="workflow.html">
+      <span class="glyph-badge">🗺</span><span class="chip soon">map</span>
+      <h3>Chapter Map &amp; Workflows</h3>
+      <p>See which tool answers which chapter of each book, with a worked example and the step-by-step method
+        for horary and nativities.</p>
+    </a>
+    <a class="card tool-card" href="handcalc.html">
+      <span class="glyph-badge">✶</span><span class="chip tool">Foundations</span><span class="chip done">by hand</span>
+      <h3>Cast a Chart by Hand</h3>
+      <p>The classic manual workflow — <b>ephemeris + atlas + book of tables</b> — in five stations, exactly as
+        Catherine Urban's workshop and <i>The Astrology Podcast</i> ep. 396 teach it: clock time → UT, Local Sidereal
+        Time (the <b>10 s/hour</b> book rule beside the exact <b>9.8565 s/h</b> rate), planetary positions by linear
+        interpolation <b>and</b> proportional logarithms, and house cusps by <b>double interpolation</b> — with
+        <b>every hand step checked live against the engine and the delta shown</b>.</p>
+      <p class="what"><b>Computes:</b> UT from offset + the atlas-honesty pitfalls · LST by hand (book &amp; exact rates,
+        each Δ vs engine) · a live mini-ephemeris (midnight positions + daily motion) · linear &amp; proportional-log
+        interpolation per planet with the Moon's ~2.7′ caveat · the Book-of-Tables double interpolation (Placidus,
+        4-min ST rows × 1° latitude) vs the exact ASC/MC · the finished chart &amp; total accumulated error.</p>
+    </a>
+    <a class="card tool-card" href="transits.html">
+      <span class="glyph-badge">☄</span><span class="chip tool">Traditional</span><span class="chip done">timing</span>
+      <h3>Transits to a Natal Chart</h3>
+      <p>For a nativity and a date window (capped at ~2 years), the <b>exact-hit dates</b> a transiting planet perfects a
+        Ptolemaic aspect to a natal point — applying/separating, the retrograde <b>1-or-3 passes</b>, stations &amp;
+        ingresses — with the <b>profection overlay</b>: transits <em>by</em> the Lord of the Year, or <em>to</em> the Lord
+        of the Year / the profected sign, highlighted (the "time-lord activated" filter, labelled a modern reconstruction).</p>
+      <p class="what"><b>Computes:</b> exact aspect perfections (conj/sext/sq/trine/opp) to natal points · retrograde
+        pass n/m · a "transits in force" snapshot with applying/separating · stations &amp; sign ingresses ·
+        the Lord-of-the-Year activation overlay · the lunar (monthly) returns.</p>
+    </a>
+    <a class="card tool-card" href="synastry.html">
+      <span class="glyph-badge">⚭</span><span class="chip tool">Traditional</span><span class="chip done">two charts</span>
+      <h3>Synastry — the Aspect Grid</h3>
+      <p>Two nativities compared: the full <b>cross-aspect grid</b> (A's planets × B's), Lilly's moieties, applying/
+        separating and the whole-sign aspect, plus the <b>house overlays both ways</b>. The classical core is Ptolemy's
+        luminary rule (Tetrabiblos IV.5); the full grid is flagged modern, with Jung's <b>null</b> 1952 marriage
+        experiment as the honest bridge.</p>
+      <p class="what"><b>Computes:</b> the 7×7 chart-to-chart aspect matrix (reuses aspects.js) · the Ptolemaic
+        luminary-interaspect core · applying/separating &amp; whole-sign per cell · A-in-B and B-in-A house overlays.</p>
+    </a>
+  </div>
+
+  <h2 id="s-picatrix">Picatrix — astrological magic</h2>
+  <p>The medieval magical layer that shares Lilly's chart. Presented as historical practice only — see the
+    <a href="picatrix/index.html">Picatrix hub</a>.</p>
+  <div class="grid cols-2">
+    <a class="card tool-card" href="picatrix/election.html">
+      <span class="glyph-badge">⚖</span><span class="chip tool">Picatrix</span><span class="chip done">engine</span>
+      <h3>Election Engine</h3>
+      <p>Auto-judges any moment for a chosen aim — dignity, planetary hour, the Moon's condition &amp; mansion, decan
+        faces and Behenian stars — with a cited verdict and the best upcoming windows.</p>
+      <p class="what"><b>Computes:</b> ranked verdict · cited testimonies · Moon mansion/phase/dispositor · star contacts · next windows.</p>
+    </a>
+    <a class="card tool-card" href="now.html">
+      <span class="glyph-badge">🜨</span><span class="chip tool">Live</span>
+      <h3>Right Now — live sky</h3>
+      <p>A minute-by-minute dashboard of the present hour, the Moon's mansion and condition, what is fit to do now,
+        the active cautions and any star contacts.</p>
+      <p class="what"><b>Computes:</b> planetary hour/day · live Moon condition · ranked aims now · cautions now.</p>
+    </a>
+    <a class="card tool-card" href="picatrix/talisman.html">
+      <span class="glyph-badge">⛤</span><span class="chip tool">Picatrix</span><span class="chip done">workflow</span>
+      <h3>Talisman Workflow</h3>
+      <p>Guided talisman maker: aim → elected moment → materials → mansion/decan image → a cited end-result
+        recipe card. Historical practice only.</p>
+      <p class="what"><b>Computes:</b> election + correspondences + mansion/face/star, assembled into a recipe.</p>
+    </a>
+    <a class="card tool-card" href="picatrix/mansions.html">
+      <span class="glyph-badge">☽</span><span class="chip tool">Picatrix</span>
+      <h3>28 Mansions of the Moon</h3>
+      <p>The tropical lunar mansions and their traditional uses; shows the Moon's mansion right now.</p>
+    </a>
+    <a class="card tool-card" href="picatrix/stars.html">
+      <span class="glyph-badge">✦</span><span class="chip tool">Picatrix</span>
+      <h3>15 Behenian Fixed Stars</h3>
+      <p>The fifteen potent stars with nature, stone, plant and use — longitudes precessed to this year; lists
+        any star conjunct a planet now.</p>
+    </a>
+    <a class="card tool-card" href="picatrix/faces.html">
+      <span class="glyph-badge">⛢</span><span class="chip tool">Picatrix</span>
+      <h3>36 Decan Faces</h3>
+      <p>Each sign's three faces, their rulers and talismanic images (Agrippa, with Picatrix variants flagged).</p>
+    </a>
+    <a class="card tool-card" href="picatrix/correspondences.html">
+      <span class="glyph-badge">♀</span><span class="chip tool">Picatrix</span>
+      <h3>Planetary Correspondences</h3>
+      <p>Per-planet petitions, suffumigations, colours, metals, stones and spirits — the material of election.</p>
+    </a>
+    <a class="card tool-card" href="picatrix/kameas.html">
+      <span class="glyph-badge">▦</span><span class="chip tool">Agrippa</span><span class="chip done">sigil tracer</span>
+      <h3>Kameas &amp; Sigils</h3>
+      <p>The seven planetary magic squares (Agrippa II.22), every grid <b>verified live</b>, with the intelligence &amp;
+        spirit gematria and a sigil tracer that draws any name on the square (III.30, aiq-bekar).</p>
+    </a>
+  </div>
+
+  <h2 id="divination">Divination — the daughters of astrology</h2>
+  <p>Three further divinatory arts, each with its own computable engine and an AI diviner to narrate the cast.
+    Presented as historical practice only — arts of no demonstrated validity.</p>
+  <div class="grid cols-3">
+    <a class="card tool-card" href="geomancy.html">
+      <span class="glyph-badge">⚏</span><span class="chip tool">Geomancy</span><span class="chip done">engine</span>
+      <h3>Geomancy — the Shield Chart</h3>
+      <p>Strike the four <b>Mothers</b> and the engine derives the Daughters, Nieces, the two <b>Witnesses</b>, the
+        <b>Judge</b> and the Reconciler by pure algebra (the Judge always checks out <b>even</b>), lays the twelve
+        figures into the <b>houses</b>, and gives a house-by-house judgement — with an AI diviner to narrate it.</p>
+      <p class="what"><b>Computes:</b> the 16 figures · the full Shield · the House Chart · perfection (occupation/
+        conjunction/mutation/translation) · an affirmed/qualified/denied tone.</p>
+    </a>
+    <a class="card tool-card" href="tarot.html">
+      <span class="glyph-badge">🂠</span><span class="chip tool">Tarot</span><span class="chip done">78 cards</span>
+      <h3>Tarot — the spread, laid &amp; read</h3>
+      <p>The full <b>78-card</b> Rider–Waite–Smith / Golden Dawn deck: choose a spread (single, Past/Present/Future, the
+        Horseshoe, or the ten-card <b>Celtic Cross</b>), <b>shuffle &amp; draw</b> with reversals, and the engine reads
+        the <b>elemental dignities</b> between neighbours and the spread's balance — with an AI diviner to narrate it.</p>
+      <p class="what"><b>Computes:</b> the 78-card deck · 4 spreads with positioned cards · reversals · Golden Dawn
+        elemental dignities · Major-Arcana / suit / element balance.</p>
+    </a>
+    <a class="card tool-card" href="iching.html">
+      <span class="glyph-badge">☯</span><span class="chip tool">I Ching</span><span class="chip done">64 hexagrams</span>
+      <h3>I Ching — the Book of Changes</h3>
+      <p>Cast the coins and the engine reads the <b>primary hexagram</b>, the <b>moving lines</b>, the <b>nuclear</b>
+        (inner) hexagram and the <b>relating</b> hexagram — the tendency of the change — over the 64 King Wen figures
+        and the 8 trigrams, with an AI diviner to narrate it.</p>
+      <p class="what"><b>Computes:</b> the 64 hexagrams &amp; 8 trigrams · the coin cast · moving lines · nuclear &amp;
+        relating hexagrams · the guidance.</p>
+    </a>
+    <a class="card tool-card" href="runes.html">
+      <span class="glyph-badge">ᚱ</span><span class="chip tool">Runes</span><span class="chip done">24 staves</span>
+      <h3>Elder Futhark Runes — cast &amp; read</h3>
+      <p>Scatter the lots in the <b>Tacitus</b> manner (<i>Germania</i> 10), or draw a single rune or a three-rune
+        spread; the engine reads each stave's <b>attested</b> medieval rune-poem stanza <em>above</em> its clearly-flagged
+        <b>modern</b> keyword — the two never blended — with an AI diviner to narrate it.</p>
+      <p class="what"><b>Computes:</b> the 24 staves in 3 ættir · verified Unicode codepoints · the Tacitus / single /
+        three-rune casts · attested OE + Norse rune-poem stanzas vs the flagged modern keyword · in-data disputes (⚑).</p>
+    </a>
+  </div>
+
+  <div class="grid cols-2">
+    <a class="card tool-card" href="kabbalah.html">
+      <span class="glyph-badge">א</span><span class="chip tool">Kabbalah</span><span class="chip done">10 sephiroth · 22 paths</span>
+      <h3>Kabbalah — the Tree of Life explorer &amp; gematria</h3>
+      <p>The <b>Kircher tree</b> (1652–54) as an interactive diagram: click any <b>sephira</b> (pillar, sphere,
+        planet → its kamea) or <b>path</b> (Hebrew letter, <i>Sefer Yetzirah</i> letter-class, Golden Dawn trump),
+        with the recension spread for the seven <b>double letters</b> — the GD's planetary order matches
+        <b>no manuscript</b> — and a live <b>gematria</b> calculator over the 22-letter alphabet.</p>
+      <p class="what"><b>Computes:</b> gematria (standard &amp; the mispar-gadol finals variant) · the 22-path
+        letter/trump/tarot-deck join · the sephira→kamea join · the SY planet-spread by recension (flagged, never
+        resolved) · the dated transmission timeline.</p>
+    </a>
+    <a class="card tool-card" href="thelemic-times.html">
+      <span class="glyph-badge">☉</span>
+      <span class="chip tool">Esoterica</span><span class="chip done">zero-data · engine-reuse</span>
+      <h3>Thelemic times — Era Legis &amp; Liber Resh</h3>
+      <p>Two small museum tools on the site's astronomy engine. The <b>Era Legis</b> date-stamp writes a
+        moment in Aleister Crowley's Thelemic calendar — the {docosade}{year} Roman-numeral "Anno" counted
+        from the 1904 vernal equinox, with the ☉/☽ sign stamp and the contested year-start (exact equinox vs
+        March 20) shown both ways. <b>Liber Resh</b> lists the four solar moments (sunrise / noon / sunset /
+        midnight) the 1911 text marks with its adorations of the Sun (Ra / Ahathoor / Tum / Khephra).
+        Described as history, cited to public-domain witnesses; no demonstrated validity.</p>
+      <p class="what"><b>Computes:</b> the Anno notation + Sun/Moon stamp for a moment (both year-start
+        conventions), and the four Liber Resh station times (two horizon crossings + the two solar
+        culminations) for a place — pure reuse of the existing astronomy engine.</p>
+    </a>
+  </div>
+
+  <h2 id="s-indian">The Indian mirror — praśna, muhūrta &amp; the year</h2>
+  <p>The Jyotiṣa counterparts of the horary, election and solar-return engines — the <b>same sky, a second
+    rulebook</b>, computed on the sidereal frame and shown side by side with the Western tools, compared but
+    never merged. Every rule cited; contested values flagged.</p>
+  <div class="grid cols-3">
+    <a class="card tool-card" href="vedic/yogas.html">
+      <span class="glyph-badge">🕉</span><span class="chip tool">Vedic</span><span class="chip done">36 yoga rules</span>
+      <h3>Vedic yogas — the detector</h3>
+      <p>The 36 classical <b>yogas</b> stored as machine-checkable rules and evaluated against your sidereal chart —
+        the Pañca-Mahāpuruṣa five, Gaja-Kesarī, the Vipreet trio, Nīca-bhaṅga, the Rāja &amp; Dhana sets, the
+        Parivartana classes and the modern Kāla-Sarpa. Grouped by family, with every condition marked ✓/✗.
+        <b>Contested-aware, never a bare boolean</b>: where the texts disagree the yoga is reported <i>conditional</i>
+        and every position is shown side by side, none resolved.</p>
+      <p class="what"><b>Computes:</b> per-rule status (met / conditional / not-met) · every condition's outcome ·
+        the contested positions verbatim (Gaja-Kesarī bare vs conditioned, Kāla-Sarpa by sign vs degree,
+        Nīca-bhaṅga across three recensions) · cited per record.</p>
+    </a>
+    <a class="card tool-card" href="vedic/delineation.html">
+      <span class="glyph-badge">🕉</span><span class="chip tool">Vedic</span><span class="chip done">108 records</span>
+      <h3>Bhāva delineations — the browser</h3>
+      <p>The graha-in-house corpus: <b>108 records</b> (9 grahas × 12 bhāvas) with <b>two witnesses kept side by
+        side and never merged</b> — Phaladīpikā ch. 8 and Sārāvalī ch. 30. An agreement badge, a contradiction
+        callout where they diverge, a sensitive-claim flag on the harsh lines, and the Rāhu/Ketu single-witness
+        absence note. A "from a chart" mode rings your own nine placements.</p>
+      <p class="what"><b>Computes:</b> both loci &amp; summaries per cell · the agreement class
+        (agree/partial/contradict/single) · contradiction &amp; sensitive notes · per-record citations · the nine
+        placements of a cast chart.</p>
+    </a>
+    <a class="card tool-card" href="vedic/course.html">
+      <span class="glyph-badge">🕉</span><span class="chip tool">Vedic</span><span class="chip done">Theory · 9 units</span>
+      <h3>The Parāśarī course — theory</h3>
+      <p>Jyotiṣa in the order it is actually taught: nine units from the grahas to the yogas, every rule
+        cited to <b>BPHS / Phaladīpikā / Sārāvalī</b> and linked to the tool that computes it. A teaching
+        page, not a calculator — described, never prescribed. The māraka unit carries the strongest
+        non-prediction frame, and a contested register lists every intra-tradition dispute both ways.</p>
+      <p class="what"><b>Reads:</b> grahas · rāśis · the two chart formats · bhāvas · graha strength ·
+        planets-in-houses · the house classifications · the yogas · where the course stops.</p>
+    </a>
+    <a class="card tool-card" href="prasna.html">
+      <span class="glyph-badge">🕉</span><span class="chip tool">Praśna</span><span class="chip done">249 sub-lords</span>
+      <h3>Praśna — Indian horary &amp; the KP sub-lords</h3>
+      <p>Ask a question and the engine judges the <b>sidereal chart of the moment</b> by the cited rules of the
+        <b>Ṣaṭpañcāśikā</b>, <b>Daivajña Vallabha</b> and <b>Praśna Mārga</b> — lagna &amp; Moon testimony, the kendra
+        configuration, bhāva fortification, the retrograde 7th lord — plus the <b>KP layer</b>: the self-verifiable
+        <b>249-entry sub-lord table</b>, generated from first principles, and the querent's <b>horary number</b>.
+        The Indian mirror of the Workbench's horary: the same moment judged both ways, never merged.</p>
+      <p class="what"><b>Computes:</b> the sidereal praśna chart (lagna, Moon nakṣatra &amp; tithi) · cited
+        testimonies &amp; a for/against leaning · the generated 1–249 KP table (6 rāśi-boundary splits) · horary
+        number → lagna · the 12 cusp &amp; 9 graha star-/sub-lords.</p>
+    </a>
+    <a class="card tool-card" href="muhurta.html">
+      <span class="glyph-badge">🕉</span>
+      <span class="chip tool">Vedic</span><span class="chip done">electional</span>
+      <h3>Muhūrta — electing the moment</h3>
+      <p>The Indian electional day-clock: the <b>30 muhūrtas</b> of the sunrise-to-sunrise day (with <b>Abhijit</b>
+        straddling local apparent noon and the pre-dawn <b>Brāhma muhūrta</b>), the three avoided <b>kālas</b> —
+        Rāhu-kāla, Yamaghaṇṭa, Gulika-kāla — from the verified weekday octant tables, and the classical
+        <b>pañcāṅga screens</b> (Riktā tithis, the nine avoided yogas, Viṣṭi karaṇa, the sevenfold nakṣatra
+        classes). Contested gradings are flagged ⚑ with both positions; compare the same instant on the
+        Picatrix Election engine — two rulebooks, one sky.</p>
+      <p class="what"><b>Computes:</b> 30-muhūrta timeline (day arc/15 + night arc/15) · Abhijit &amp; Brāhma windows ·
+        Rāhu-kāla / Yamaghaṇṭa / Gulika-kāla (day arc/8 by the sunrise-bounded vāra) · tithi/yoga/karaṇa/nakṣatra
+        quality screens with citations.</p>
+    </a>
+    <a class="card tool-card" href="tajika.html">
+      <span class="glyph-badge">॥</span>
+      <span class="chip tool">Vedic</span><span class="chip done">annual chart</span>
+      <h3>Tājika varṣaphala — the annual chart</h3>
+      <p>The Indo-Persian <b>year chart</b>: the <b>varṣa-praveśa</b> (the <b>sidereal</b> solar return), the
+        <b>munthā</b>, the <b>varṣeśvara</b> chosen from the five candidates (with the tradition's own four-way
+        dispute shown honestly), Tājika aspects with <b>deeptāṁśa</b> orbs — <b>itthaśāla/īsarāpha</b> are the very
+        ittiṣāl/inṣirāf that Lilly's horary inherited — and the core dozen <b>sahams</b>. Every rule cited to
+        Balabhadra's <i>Hāyanaratna</i> (Gansten, Brill 2020).</p>
+      <p class="what"><b>Computes:</b> varṣa-praveśa (sidereal return instant + annual chart) · munthā (sign/house/lord) ·
+        varṣeśvara (five candidates, aspect precondition, dispute flagged) · Tājika aspect table with deeptāṁśa orbs ·
+        itthaśāla/īsarāpha + ikkavāla/induvāra/nakta/yamayā/kambūla · the 12 sahams with the contested +30° correction.</p>
+    </a>
+    <a class="card tool-card" href="tithi-pravesha.html">
+      <span class="glyph-badge">☾</span>
+      <span class="chip tool">Vedic</span><span class="chip done">annual return</span>
+      <h3>Tithi-praveśa — the annual tithi return</h3>
+      <p>The <b>Moon's</b> answer to the solar revolution: the year restarts when the Moon regains its <b>exact natal
+        elongation</b> from the Sun (the same <b>tithi</b> and tithi-fraction) while the Sun is back in its natal
+        <b>sidereal sign</b>. Sanjay Rath's Odiśā tradition; PVR's soli-lunar variant; JHora's solar-months default.
+        Cast for the <b>birthplace</b>. A <b>modern-lineage technique with no classical BPHS anchor</b> — flagged
+        honestly, as is the solar/soli-lunar fork and the 0/2-crossing edge.</p>
+      <p class="what"><b>Computes:</b> natal elongation E₀ + tithi · the Sun-in-natal-sign window (sidereal ingress→egress) ·
+        the annual TP instant to the second (all candidates + ambiguity flag) · the sidereal TP chart (whole-sign) ·
+        readings (TP lagna, weekday lord, horā "lord of the year") · the monthly praveśa series.</p>
+    </a>
+    <a class="card tool-card" href="kuta.html">
+      <span class="glyph-badge">☍</span>
+      <span class="chip tool">Vedic</span><span class="chip done">matching</span>
+      <h3>Kūṭa matching — the aṣṭakūṭa &amp; the ten porutham</h3>
+      <p><b>Sensitive domain — what the tradition computes, never advice.</b> The North's <b>aṣṭakūṭa</b> (36-guṇa: varṇa,
+        vaśya, tārā, yoni, graha-maitrī, gaṇa, bhakūṭa, nāḍī) and the Tamil South's <b>ten porutham</b> (with rajju &amp;
+        vedhā vetoes) scored from two nativities' Moons. Every rule cited; every source-disagreement flagged (⚑) — the
+        varṇa air/earth swap, the graha-maitrī &amp; gaṇa grids, the nāḍī exempt lists — and the one place the two
+        systems <b>flatly contradict</b> (the 5/9 rāśi relation) is shown both ways.</p>
+      <p class="what"><b>Computes:</b> per-kūṭa breakdown to 36 (points, doṣas, cancellations, contested markers) with a
+        variant-set toggle (saravali / common) · the ten poruthams as pass/marginal/fail with the rajju &amp; vedhā
+        vetoes · the North/South 5-9 contradiction side by side · the flagged Sagittarius-vaśya completion (throws if
+        disabled).</p>
+    </a>
+    <a class="card tool-card" href="moments.html">
+      <span class="glyph-badge">⚖</span>
+      <span class="chip tool">cross-system</span><span class="chip done">electional</span>
+      <h3>Moment Scanner — every rulebook, one timeline</h3>
+      <p>One time-range scan (24 h to a week) showing <b>each tradition's verdict on the same sky, side by
+        side</b>: the <b>Lilly/Picatrix election</b> verdict for a chosen aim, the <b>Chaldean planetary hour</b>,
+        the Indian <b>muhūrta</b> of the sunrise-day, the three avoided <b>kālas</b>, and the <b>pañcāṅga
+        screens</b> — a table row whenever any tradition's state changes. Separate historical rulebooks,
+        <b>compared, never merged</b>: agreement between them means nothing more than a coincidence of
+        conventions.</p>
+      <p class="what"><b>Computes:</b> a stepped timeline (30-min strides, capped at 168 h) · per step: the
+        election verdict + score (electionScore) · the hour ruler (planetaryHour) · the muhūrta slot &amp;
+        grading (muhurtasOf, cached per sunrise-day) · Rāhu/Yama/Gulika overlap (kalas) · the four pañcāṅga
+        screen verdicts (castVedic + panchangaScreens, per step) — all from the existing engines, no new data.</p>
+    </a>
+    <a class="card tool-card" href="rasa.html">
+      <span class="glyph-badge">☿</span>
+      <span class="chip tool">Vedic</span><span class="chip done">alchemy &amp; yantras</span>
+      <h3>Rasaśāstra &amp; yantra-mathematics</h3>
+      <p>The Indian alchemy of <b>mercury</b> and its magic-square mathematics: the dated textual chain (with the
+        Wujastyk <b>"alchemical ghost"</b> dispute flagged), the <b>18 saṃskāras</b> and the rasaśālā apparatus
+        (history of chemistry only — mercury is <b>toxic</b>, described never prescribed), the <b>nine navagraha
+        squares</b> verified live (flagged as the modern printed tradition) beside the dated classical squares
+        (Varāhamihira's sum-18, the Khajuraho <b>Chautisa</b> most-perfect square), a <b>kaṭapayādi</b>
+        encoder/decoder, and the 81-cell <b>Sarvatobhadra Chakra</b> cast for any date. The Indian sibling of the
+        Picatrix <a href="picatrix/kameas.html">kameas</a> — same mathematics, opposite planetary logic.</p>
+      <p class="what"><b>Computes:</b> the 9 navagraha 3×3 squares (constants 15–39, grand total 729) with live
+        <code>validateYantra</code> badges · the Chautisa most-perfect checks (broken diagonals + 2×2 blocks + corner
+        quads = 34) · kaṭapayādi decode/encode (Dhīraśaṅkarābharaṇam→29, the π verse→18 digits) · the 81-cell
+        Sarvatobhadra Chakra joined to the pañcāṅga, with the Moon's vedha lines.</p>
+    </a>
+    <a class="card tool-card" href="abhichara/index.html">
+      <span class="glyph-badge">🕉</span>
+      <span class="chip tool">Abhicāra</span><span class="chip done">ṣaṭkarman screen</span>
+      <h3>Abhicāra &amp; the ṣaṭkarman — Indian ritual magic, described</h3>
+      <p>The Indian ritual-magic tradition as scholarship treats it: the Vedic <b>abhicāra</b> of the
+        Atharvaveda and its tantric systematization into the <b>six acts</b> (śānti, vaśīkaraṇa, stambhana,
+        vidveṣaṇa, uccāṭana, māraṇa). Every verified correspondence table — the two conflicting season/time
+        schemes side by side (⚑), colours, mudrās, rosaries, finger-holds, the left-hand rule, the
+        dark-fortnight timing — plus Mahīdhara's <b>19-item apparatus schema</b> and a read-only
+        <b>ṣaṭkarman timing screen</b>. Described, never prescribed; no demonstrated validity, and nothing
+        here is an instruction. The eastern mirror of the <a href="picatrix/index.html">Picatrix</a> magic.</p>
+      <p class="what"><b>Computes:</b> the timing screen for an act &amp; moment — calendar season (ṛtu, from the
+        sidereal Sun) · ghaṭikā-cycle block &amp; day-part (from sunrise) · lunar fortnight (pañcāṅga) · a
+        "does now match the prescription?" check, every row cited.</p>
+    </a>
+  </div>
+
+  <h2 id="s-jung">Jung &amp; astrology</h2>
+  <p>The modern hinge of this history: C. G. Jung used horoscopes clinically, tested astrology statistically (and
+    published the null result), and read the whole art as projected psychology. <a href="jung/index.html">The study
+    wing</a> has the timeline, theory and sources.</p>
+  <div class="grid cols-2">
+    <a class="card tool-card" href="jung/tool.html">
+      <span class="glyph-badge">☍</span><span class="chip tool">Jung</span><span class="chip done">3 charts</span>
+      <h3>The Jung chart tool</h3>
+      <p>The charts Jung actually made, live: the <b>psychological horoscope</b> (planets as archetypes, element→function
+        balance, anima/animus, the Sol–Luna coniunctio), the <b>marriage-experiment synastry</b> between two nativities,
+        and the <b>aeon clock</b> of <i>Aion</i>. One click loads <b>Jung's own chart</b>.</p>
+      <p class="what"><b>Computes:</b> natal + archetypal reading · cross-aspect grid with the classic marriage aspects
+        flagged · precession, the Platonic month &amp; the competing Aquarius datings.</p>
+    </a>
+    <a class="card tool-card" href="jung/experiment.html">
+      <span class="glyph-badge">⚖</span><span class="chip tool">Jung</span><span class="chip done">honest stats</span>
+      <h3>The marriage experiment, re-run</h3>
+      <p>Jung's 1952 experiment — 483 couples, 50 cross-aspects — with a live Monte-Carlo re-run showing that chance
+        pairing alone produces his "significant" ~10% top-aspect rates, exactly as the Fierz correction showed him.</p>
+      <p class="what"><b>Computes:</b> the null model at Jung's own 8° orb · 200-batch histogram vs his reported figures.</p>
+    </a>
+  </div>
+
+  <h2 id="s-history">The Hermetic Chronology &amp; the cycles of history</h2>
+  <div class="grid cols-2">
+    <a class="card tool-card" href="chronology/index.html">
+      <span class="glyph-badge">☿</span><span class="chip tool">Timeline</span><span class="chip done">43 entries</span>
+      <h3>The Hermetic Chronology</h3>
+      <p>A sourced, filterable timeline of Hermetic philosophy, magic &amp; the occult — Babylon and Egypt to the
+        academy — with every claim carrying an <b>epistemic label</b> (documented / disputed / debunked / conspiracy)
+        and day-datable moments castable in the <b>Workbench</b> with the Julian→Gregorian conversion shown.</p>
+      <p class="what"><b>Shows:</b> 8 eras · 43 cited entries · search + era + label filters · "cast this moment"
+        links with era-accuracy tiers.</p>
+    </a>
+    <a class="card tool-card" href="cycles.html">
+      <span class="glyph-badge">♃♄</span>
+      <span class="chip tool">Mundane</span><span class="chip done">history</span>
+      <h3>Cycles of History — great conjunctions &amp; eclipses</h3>
+      <p>The <b>Jupiter–Saturn great conjunctions</b> computed across the centuries (geocentric, tropical of-date)
+        with the <b>trigon shifts</b>, the triple passes and <b>Abū Maʿshar's doctrinal mean-conjunction
+        overlay</b> — plus an honest <b>eclipse finder</b> that answers "was an eclipse possible somewhere on Earth?"
+        two ways: the classical NASA/Espenak ecliptic limits AND a real global eclipse search. Kepler's 1603 trigon
+        entry, the Paris masters' 1345 conjunction (real sky, debunked cause) and the disputed 7 BCE
+        "Star of Bethlehem" triple — castable where in range, cited everywhere.</p>
+      <p class="what"><b>Computes:</b> conjunction scanner (−1999…3000, era-tiered) · triplicity runs &amp;
+        trigon shifts · the doctrinal mean series · node-distance eclipse verdicts (certain / possible / impossible)
+        + engine ground truth · the Babylonian eclipse-omen context.</p>
+    </a>
+  </div>
+
+  <h2 id="s-science">Honest-science explorers</h2>
+  <div class="grid cols-2">
+    <a class="card" href="structure.html">
+      <h3>Structure &amp; patterns</h3>
+      <p>The hidden symmetry the rules are built on — the planetary-week theorem (24 ≡ 3 mod 7), the harmonic aspects,
+        the divisor structure of the zodiac, and antiscia — each demonstrated by computation.</p></a>
+    <a class="card" href="experiment.html">
+      <h3>Test it yourself — the falsification demo</h3>
+      <p>Permute the moment of an election and watch the fitness score scatter into a null distribution. See where your
+        moment falls, and how a few minutes can flip the verdict.</p></a>
+    <a class="card tool-card" href="yoga/index.html">
+      <span class="glyph-badge">☸</span><span class="chip tool">Yoga Sūtras</span>
+      <h3>The Yoga Sūtras of Patañjali — study wing</h3>
+      <p>All 196 sūtras word-by-word (Devanāgarī · IAST · glosses after Rama Prasada · translations after
+        Woods), a live 194/195/196 counts table, a search across every sūtra, the eight-limb map and the
+        honest āsana layer. A historical philosophy/practice text — the siddhi claims are the text's own,
+        described never prescribed.</p>
+    </a>
+  </div>
+
+  <h2 id="s-table">What each tool actually computes</h2>
+  <table class="data">
+    <thead><tr><th class="l">Tool</th><th class="l">Inputs</th><th class="l">Key outputs</th><th class="l">Book / chapters</th></tr></thead>
+    <tbody>
+      <tr><td class="l"><a href="book1/master.html">Master Tool</a></td><td class="l">moment, place, house system</td>
+        <td class="l">positions, full dignity ledger, almutens, aspects, antiscia, points, planetary hour, ascending degree, body parts, cautions</td><td class="l">Book I, chs. VII–XIX</td></tr>
+      <tr><td class="l"><a href="book2/horary.html">Horary Calculator</a></td><td class="l">moment of the question, place</td>
+        <td class="l">significators, dignity, aspects, perfection &amp; timing, reception, considerations, wheel</td><td class="l">Book II</td></tr>
+      <tr><td class="l"><a href="book1/dignities.html">Dignity Calculator</a></td><td class="l">planet + degree, day/night</td>
+        <td class="l">domicile/exaltation/triplicity/term/face, score, almuten</td><td class="l">Book I, ch. XVIII</td></tr>
+      <tr><td class="l"><a href="book1/planetary-hours.html">Planetary Hours</a></td><td class="l">moment, place</td>
+        <td class="l">hour &amp; day ruler, 24-hour table (Chaldean order)</td><td class="l">Book I (timing)</td></tr>
+      <tr><td class="l"><a href="book3/nativity.html">Nativity Calculator</a></td><td class="l">birth moment, place</td>
+        <td class="l">houses, dignities, Part of Fortune, Lord of the Geniture, temperament</td><td class="l">Book III</td></tr>
+      <tr><td class="l"><a href="book1/degrees.html">Degree Tables</a></td><td class="l">(reference)</td>
+        <td class="l">masculine/feminine, light/dark/smoky/void, fortunate degrees, body-parts grid</td><td class="l">Book I, ch. XIX</td></tr>
+      <tr><td class="l"><a href="confluence.html">The Great Confluence</a></td><td class="l">(the atlas — a cited dataset, no inputs)</td>
+        <td class="l">188 entries × 9 traditions on an era-warped time axis, 151 transmission arcs, epistemic labels, contested flags, detail drawer, "follow this thread" walk, Ledger view</td><td class="l">Cross-tradition · nine wings</td></tr>
+      <tr><td class="l"><a href="opgraph.html">The Operative Corpus</a></td><td class="l">(a cited dataset — filters only, no chart inputs)</td>
+        <td class="l">101 works typed by the KIND of procedure each contains (27 occupied types of 53), 246 procedure claims + 45 propagation claims drawn as weighted op-nodes, three completeness axes with a named basis, a computed curation gate (1,255 admitted · 102 excluded · 17 tombstoned), reported-not-broken cycle check, attribution pressure, and a text ledger carrying every drawn row</td><td class="l">Cross-tradition · five corpora</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="s-compare">How this site compares</h2>
+  <p><a href="compare.html">How this site compares</a> — the honest landscape survey (astro.com, Solar Fire, JHora, Delphic Oracle, Co-Star…), every cell a checkable fact with its source and survey date, and the mandatory "what others do better" column.</p>
+</main>
+<script type="module">
+  import { mountChrome } from '../assets/js/app/shared.js';
+  mountChrome('tools');
+</script>
+</body>
+</html>

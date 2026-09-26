@@ -44,3 +44,5 @@ After the full check, an independent reviewer identified source components that 
 No preset definitions or deterministic core DSP were changed. The existing route registry drives deployment route-shell generation, so `/nano-lab/` is included without workflow changes.
 
 Final release gate: after the independent-review corrections, the team lead reran `npm run check`; lint, TypeScript, all 1,156 tests in 85 files, and the production build passed.
+
+CI portability correction: GitHub’s slower runner exposed the five-second timeout in a test that allocated a matcher for every sample. The test now scans the same complete buffers and reports the first mismatch, preserving equality, finiteness, PCM stereo and numerical tolerances. No production renderer or test timeout was changed.

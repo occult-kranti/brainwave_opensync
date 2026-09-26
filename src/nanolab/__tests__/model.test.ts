@@ -17,12 +17,18 @@ describe('NanoLab independent signal verification', () => {
     for (const kind of ['two-tone', 'baseband', 'carrier']) expect(validateNanoRecipe({ ...recipe, kind, carrierHz: 80, rateHz: 80 }).kind).toBe(kind);
     expect(() => validateNanoRecipe({ ...recipe, kind: 'am', carrierHz: 80, rateHz: 80 })).toThrow('positive');
   });
-  it('is deterministic, diotic, edge-faded, bounded and finite at all allowed limits', () => {
+  it('is deterministic, diotic, edge-faded, bounded and finite for all modes and the maximum duration', () => {
     for (const kind of NANO_KINDS) {
       const sound = renderNanoSignal({ ...recipe, kind });
-      expect(sound.left).toEqual(renderNanoSignal({ ...recipe, kind }).left); expect(sound.right).toEqual(sound.left);
+      const repeated = renderNanoSignal({ ...recipe, kind });
+      expect(repeated.left.length).toBe(sound.left.length); expect(sound.right.length).toBe(sound.left.length);
+      // Inspect every sample without constructing hundreds of thousands of
+      // matcher objects; the full equality/finite checks remain unchanged.
+      expect(sound.left.findIndex((x, i) => !Object.is(x, repeated.left[i]))).toBe(-1);
+      expect(sound.left.findIndex((x, i) => !Object.is(x, sound.right[i]))).toBe(-1);
       expect(sound.left.length).toBe(96000); expect(Math.abs(sound.left[0])).toBe(0); expect(Math.abs(sound.left.at(-1)!)).toBe(0);
-      let peak = 0; for (const x of sound.left) { expect(Number.isFinite(x)).toBe(true); peak = Math.max(peak, Math.abs(x)); }
+      expect(sound.left.findIndex(x => !Number.isFinite(x))).toBe(-1);
+      let peak = 0; for (const x of sound.left) peak = Math.max(peak, Math.abs(x));
       expect(peak).toBeLessThanOrEqual(10 ** (-24 / 20) + 1e-8); expect(sound.samplePeak).toBe(peak);
       const quiet = renderNanoSignal({ ...recipe, kind, gainDb: -30 }); expect(component(quiet.left, kind === 'baseband' ? 23.4375 : kind === 'two-tone' ? 363.28125 : 375) / component(sound.left, kind === 'baseband' ? 23.4375 : kind === 'two-tone' ? 363.28125 : 375)).toBeCloseTo(10 ** (-6 / 20), 6);
     }
@@ -50,7 +56,9 @@ describe('NanoLab independent signal verification', () => {
     expect(new TextDecoder().decode(wav.slice(0, 4))).toBe('RIFF'); expect(view.getUint16(20, true)).toBe(1); expect(view.getUint16(22, true)).toBe(2); expect(view.getUint32(24, true)).toBe(48000); expect(view.getUint16(34, true)).toBe(16);
     expect(wav.length).toBe(44 + sound.left.length * 4); expect(json.wavSha256).toBe(createHash('sha256').update(wav).digest('hex')); expect(json.physicalCalibration).toBeNull();
     const decoded = new Float32Array(sound.left.length);
-    for (let i = 0; i < decoded.length; i++) { const l = view.getInt16(44 + i * 4, true), r = view.getInt16(46 + i * 4, true); expect(l).toBe(r); decoded[i] = l / 32768; }
+    let stereoMismatch = -1;
+    for (let i = 0; i < decoded.length; i++) { const l = view.getInt16(44 + i * 4, true), r = view.getInt16(46 + i * 4, true); if (l !== r && stereoMismatch < 0) stereoMismatch = i; decoded[i] = l / 32768; }
+    expect(stereoMismatch).toBe(-1);
     let maxError = 0; for (let i = 0; i < decoded.length; i++) maxError = Math.max(maxError, Math.abs(decoded[i] - sound.left[i]));
     expect(maxError).toBeLessThan(2 / 32768); expect(component(decoded, 23.4375)).toBeLessThan(1e-6);
     expect(component(decoded, 363.28125)).toBeCloseTo(10 ** (-24 / 20) / 2, 4);

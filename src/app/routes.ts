@@ -90,6 +90,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/critique', 'CRITIQUE LIBRARY', 'Critique Library', MessageSquareWarning, 'research', () => import('@/pages/research/CritiqueLibrary')),
   r('/hypotheses', 'HYPOTHESIS TRACKER', 'Hypothesis Tracker', ListChecks, 'research', () => import('@/pages/research/HypothesisTracker')),
   r('/programs', 'PROGRAMS ARCHIVE', 'Programs Archive', Archive, 'research', () => import('@/pages/research/ProgramsArchive')),
+  r('/projects', 'CONNECTED PROJECTS', 'Projects', GitFork, 'research', () => import('@/pages/Projects')),
   r('/safety', 'SAFETY', 'Safety', ShieldAlert, 'help', () => import('@/pages/Safety'), { bottomTab: true }),
   r('/guide', 'GUIDE', 'Guide', Compass, 'help', () => import('@/pages/Guide')),
   r('/about', 'ABOUT', 'About', Info, 'help', () => import('@/pages/About')),

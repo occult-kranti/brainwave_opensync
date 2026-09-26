@@ -40,6 +40,22 @@ jobs:
           VITE_BASE: /brainwave_opensync/
       - name: Route shells (HTTP 200 deep links) + SPA 404 fallback
         run: node scripts/emit-route-shells.mjs dist
+      - name: Install the preserved Open Sync suite
+        working-directory: integrations/open-sync
+        run: npm ci --no-audit --no-fund
+      - name: Verify and prepare the original audio assets
+        run: |
+          node scripts/prepare-open-sync.mjs
+          node integrations/open-sync/scripts/render-previews.mjs
+      - name: Test and build the preserved suite
+        working-directory: integrations/open-sync
+        run: npm test -- --reporter=dot && VITE_BASE=/brainwave_opensync/open-sync/ npm run build
+      - name: Include the preserved suite under open-sync
+        run: |
+          mkdir -p dist/open-sync
+          cp -a integrations/open-sync/dist/. dist/open-sync/
+          cp integrations/open-sync/LICENSE dist/open-sync/LICENSE
+          cp integrations/open-sync/PROVENANCE.md dist/open-sync/PROVENANCE.md
       - name: Check out the previous release
         uses: actions/checkout@v7
         with:
@@ -64,8 +80,16 @@ jobs:
           writeFileSync('dist/deployments.json', JSON.stringify({
             current: { branch: 'master', commit: process.env.GITHUB_SHA, path: '/brainwave_opensync/' },
             previous: { branch: 'legacy-v2.5', commit: legacyCommit, path: '/brainwave_opensync/v2/' },
+            originalSuite: { repository: 'occult-kranti/open-sync', commit: '02425613cd057406d92c4f3ee33b5fc54a493601', path: '/brainwave_opensync/open-sync/' },
+            research: { path: '/brainwave_opensync/research/' },
           }, null, 2) + '\n');
           NODE
+      - name: Build the connected research atlas and pinned source archives
+        run: |
+          node research-atlas/tests/independent-review.mjs
+          node research-atlas/tests/independent-dom-review.mjs
+          python3 research-atlas/research/verify_rounds.py
+          python3 research-atlas/scripts/build_site.py --output dist/research
       - name: Publish dist/ to gh-pages
         env:
           GITHUB_TOKEN: ${{ github.token }}

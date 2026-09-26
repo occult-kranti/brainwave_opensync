@@ -9,6 +9,14 @@ their sources. Presets carry A–D evidence grades. Audio is generated locally; 
 
 **Live site (GitHub Pages):** https://occult-kranti.github.io/brainwave_opensync/ — installable as a PWA.
 
+## Connected projects
+
+[Connected projects](https://occult-kranti.github.io/brainwave_opensync/projects/) opens the preserved [original Open Sync suite](https://occult-kranti.github.io/brainwave_opensync/open-sync/) and the [Resonance Research Atlas](https://occult-kranti.github.io/brainwave_opensync/research/). The current laboratory, Everyday player and [previous release](https://occult-kranti.github.io/brainwave_opensync/v2/) keep their own entry points.
+
+The complete `occult-kranti/open-sync` source at `02425613cd057406d92c4f3ee33b5fc54a493601` is retained in `integrations/open-sync/` with its MIT notice and [import record](integrations/open-sync/PROVENANCE.md). It builds independently, preserving all 22 original modules, including MED FREQ. Hash routing and base-aware asset links make the suite work under GitHub Pages. Navigation between projects unloads the active audio document; Connected projects also stops the current session and previews before leaving.
+
+The atlas connects the Newton–Tesla dossiers, Resonant Vessels and the historical astronomy workbench. Historical descriptions, model calculations and proposed experiments retain distinct evidence labels. The Pages workflow builds the current app, original suite, previous release and research atlas into one deployment; `deployments.json` records the source versions.
+
 ---
 
 
@@ -58,7 +66,7 @@ marketing, engineering, documentation, visual-design and UX perspectives, is in
 Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-source tools:
 [`docs/SOTA-COMPARISON.md`](docs/SOTA-COMPARISON.md). Where it goes next: [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
-## Modules (24 screens)
+## Modules
 
 | Area | What you get |
 |---|---|

@@ -2,6 +2,13 @@
 
 All notable changes to Open Sync. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [SemVer](https://semver.org/).
 
+## [Unreleased] — Connected research collection
+
+- Preserved the complete original `occult-kranti/open-sync` source at commit `0242561` under `integrations/open-sync`, including MED FREQ and all 22 routed modules. It builds separately at `/open-sync/` with hash routes, base-aware audio assets and a return link.
+- Added Connected projects to the shared route, navigation and feature documentation registries. Leaving through the project links stops current session audio and previews.
+- Integrated the research atlas build into Pages deployment while preserving the current app, Everyday player and `/v2/` release. The parent service worker excludes the separately hosted suite and research archive.
+- Added checksum verification before copying the original 20 X10 WAV files; preset previews regenerate from the imported deterministic engine. Generated audio stays out of source control.
+
 ## [3.0.0] — 2026-09-14
 
 ### Changed

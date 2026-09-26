@@ -72,9 +72,16 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/harmonics', label: 'Harmonic Lab' },
   { route: '/sound-methods', label: 'Sound Methods' },
   { route: '/channeled', label: 'Channeled Sources' },
+  { route: '/projects', label: 'Projects' },
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'connected-projects', module: 'Projects', route: '/projects', name: 'Connected projects',
+    simple: 'Open the original audio suite or explore the research atlas. Follow each project back to its source repository.',
+    deep: 'The original Open Sync suite is built separately from its preserved source commit. Whole-page navigation stops the current session and previews before loading another project. The atlas distinguishes historical claims, model calculations, and proposed experiments. Source links retain each project’s provenance.',
+    howTo: ['Choose the original suite for its archived tools.', 'Open the research atlas to inspect sources and experiments.', 'Use the source links to inspect the original projects.'],
+  },
   {
     id: 'sound-methods-player', module: 'Sound Methods', route: '/sound-methods', name: 'Published sound methods',
     grade: 'A', gradeScope: 'The generated signal and arithmetic only; patent claims and mental effects need separate evidence.',

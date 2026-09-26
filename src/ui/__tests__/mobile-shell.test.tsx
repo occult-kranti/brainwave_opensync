@@ -46,6 +46,7 @@ const ALL_ROUTE_PATHS = [
   '/critique',
   '/hypotheses',
   '/programs',
+  '/projects',
   '/quicklab',
   '/theory',
   '/sonic-lab',

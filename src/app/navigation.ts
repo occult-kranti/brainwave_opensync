@@ -51,6 +51,7 @@ const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/critique', 'research', 'Critique Library', 'Review study limitations and alternative explanations.', ['criticism', 'evidence', 'studies']],
   ['/hypotheses', 'research', 'Hypothesis Tracker', 'Inspect open questions and proposed tests.', ['hypothesis', 'question', 'test']],
   ['/programs', 'research', 'Programs Archive', 'Browse historical sound programs and their sources.', ['Gateway', 'Monroe', 'archive', 'history']],
+  ['/projects', 'research', 'Connected projects', 'Open the preserved audio suite and related research projects.', ['open-sync', 'Tesla', 'Newton', 'alchemy', 'resonant', 'astrology', 'medical']],
   ['/safety', 'help', 'Safety', 'Set listening limits and read the audio advisory.', ['volume', 'duration', 'dose', 'hearing', 'stop', 'infant']],
   ['/guide', 'help', 'Guide', 'Find instructions for each tool.', ['help', 'instructions', 'how to', 'manual']],
   ['/about', 'help', 'About', 'Read project information, licenses, and privacy details.', ['open source', 'privacy', 'license', 'version']],

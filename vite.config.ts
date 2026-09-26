@@ -128,10 +128,10 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,json,woff2}'],
-        globIgnores: ['previews/**', 'stimulus_pack/**', 'icons/og-image.png', 'robots.txt', 'sitemap.xml'],
+        globIgnores: ['previews/**', 'stimulus_pack/**', 'open-sync/**', 'research/**', 'v2/**', 'icons/og-image.png', 'robots.txt', 'sitemap.xml'],
         navigateFallback: `${base}index.html`,
         // The separately built previous release owns its own app shell and worker.
-        navigateFallbackDenylist: [/\/previews\//, /\/stimulus_pack\//, /\/v2(?:\/|$)/],
+        navigateFallbackDenylist: [/\/previews\//, /\/stimulus_pack\//, /\/v2(?:\/|$)/, /\/open-sync(?:\/|$)/, /\/research(?:\/|$)/],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
         runtimeCaching: [
           {
@@ -186,6 +186,7 @@ export default defineConfig({
     format: 'es',
   },
   test: {
+    include: ['src/**/*.test.{ts,tsx}'],
     // Default environment stays node (pure DSP/data suites); UI suites opt
     // into happy-dom per file via `// @vitest-environment happy-dom`.
     setupFiles: ['./src/test/setup.ts'],

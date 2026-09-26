@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+*.local
+# Generated audio artifacts (regenerate via scripts/)
+public/previews/*
+!public/previews/manifest.json
+public/stimulus_pack/*
+!public/stimulus_pack/manifest.json
+.DS_Store

@@ -31,7 +31,7 @@ Open http://localhost:8000/. The build fetches the exact public commits in `inte
 
 ## Publication
 
-Primary integrated destination: https://occult-kranti.github.io/brainwave_opensync/research/ . This URL is a deployment target until verification records confirm it is live.
+Verified live integrated destination: https://occult-kranti.github.io/brainwave_opensync/research/ . See [the release record](docs/live-release.md) for deployed revisions and checks.
 
 Requested standalone repository: `occult-kranti/resonance-research-atlas`. The connected GitHub plugin can update existing repositories but exposes no repository-creation or Pages-administration action. Standalone creation is tracked separately; it must not be reported as published until the remote exists and the site is verified.
 

@@ -17,6 +17,8 @@ The complete `occult-kranti/open-sync` source at `02425613cd057406d92c4f3ee33b5f
 
 The atlas connects the Newton–Tesla dossiers, Resonant Vessels and the historical astronomy workbench. Its nanoparticle extension adds five agent-reviewed computational investigations and an independent [standalone atlas](https://occult-kranti.github.io/resonance-research-atlas/#nanoparticles), while retaining the original six rounds including the dreaming session. Historical descriptions, model calculations and proposed experiments retain distinct evidence labels. The Pages workflow builds the current app, original suite, previous release and research atlas into one deployment; `deployments.json` records the source versions.
 
+The [Sound & observation lab](https://occult-kranti.github.io/brainwave_opensync/research/sound-lab/) extends the atlas with five two-loop sound/metrology rounds and three conditional Bashar/AI-consciousness audits. It includes speaker/phone and gentle-tap setup plans, scientific diagrams and 3D geometry, synthetic calculators, local WAV/CSV screening and a protected Python recording-analysis path. Follow the [decision ledger](research-atlas/research/panel-v3-decisions.json) for model acceptance and the [continuation guide](research-atlas/docs/continuation-v3.md) for scope; no physical apparatus, clinical effect or metaphysical connection is established by the computational results.
+
 ---
 
 

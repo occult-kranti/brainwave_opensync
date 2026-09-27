@@ -61,4 +61,14 @@ describe('NanoLab shared audio ownership and controls', () => {
     await click('Play preview'); const oldEnd = ended; await act(async () => session!.togglePreview('other', () => () => undefined)); expect(session!.previewId).toBe('other'); await act(async () => oldEnd?.()); expect(session!.previewId).toBe('other');
     await click('Play preview'); await act(async () => root.render(<MemoryRouter><SessionProvider><Probe /></SessionProvider></MemoryRouter>)); expect(session!.previewId).toBeNull(); expect(LiveEngine.prototype.stopPreviews).toHaveBeenCalled();
   });
+  it('stops shared previews before opening the external sound protocol document', async () => {
+    await click('Play preview');
+    const link = [...container.querySelectorAll('a')].find(a => a.textContent?.startsWith('Open sound protocols'))!;
+    expect(link.getAttribute('href')).toContain('research/sound-lab/');
+    // Keep this test in-document while exercising React's navigation cleanup.
+    link.addEventListener('click', event => event.preventDefault());
+    await act(async () => link.click());
+    expect(session!.previewId).toBeNull();
+    expect(LiveEngine.prototype.stopPreviews).toHaveBeenCalled();
+  });
 });

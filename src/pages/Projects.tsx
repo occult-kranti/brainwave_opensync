@@ -9,6 +9,8 @@ const repositories = [
   ['newton-tesla-alchemy', 'Historical dossiers covering Newton, Tesla, Jung, Penrose and Feynman.'],
   ['resonant-vessels', 'Illustrated folios about resonance, historical experiments and speculative claims.'],
   ['astrology-sim-ant', 'Astronomical calculators, historical systems and a sourced research graph.'],
+  ['resonance-research-atlas', 'Source records, reviewed models, sound experiments and proposed apparatus.'],
+  ['bashar-index', 'A source index for the cultural perspective examined in the consciousness inquiry.'],
 ] as const;
 
 export default function Projects() {
@@ -27,12 +29,18 @@ export default function Projects() {
       </article>
       <article style={{ padding: 24, border: '1px solid var(--line-1)', borderRadius: 10, background: 'var(--ink-2)' }}>
         <BookOpen aria-hidden size={26} style={{ color: 'var(--amber)' }} />
+        <h2 style={{ fontSize: 22, margin: '16px 0 12px' }}>Sound & observation lab</h2>
+        <p style={{ color: 'var(--text-2)', lineHeight: 1.7 }}>Start with a speaker and microphone, inspect the model controls, and follow the reviewed experiments into their sources and apparatus plans.</p>
+        <a href={assetUrl('research/sound-lab/')} onClick={leaveAudio} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--teal-hi)', marginTop: 16 }}>Open sound experiments <ArrowUpRight size={16} /></a>
+      </article>
+      <article style={{ padding: 24, border: '1px solid var(--line-1)', borderRadius: 10, background: 'var(--ink-2)' }}>
+        <BookOpen aria-hidden size={26} style={{ color: 'var(--amber)' }} />
         <h2 style={{ fontSize: 22, margin: '16px 0 12px' }}>Resonance Research Atlas</h2>
         <p style={{ color: 'var(--text-2)', lineHeight: 1.7 }}>Compare historical claims, current sources, model calculations and proposed experiments across the research collection.</p>
         <a href={assetUrl('research/')} onClick={leaveAudio} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--teal-hi)', marginTop: 16 }}>Open research atlas <ArrowUpRight size={16} /></a>
       </article>
     </div>
-    <p className="t-caption" style={{ color: 'var(--text-3)' }}>Opening either project stops audio in this tab. The original suite is preserved separately; the current <Link to="/studio" style={{ color: 'var(--teal-hi)' }}>Studio</Link> retains its newer session controls.</p>
+    <p className="t-caption" style={{ color: 'var(--text-3)' }}>Opening a project stops audio in this tab. The original suite is preserved separately; the current <Link to="/studio" style={{ color: 'var(--teal-hi)' }}>Studio</Link> retains its newer session controls.</p>
     <section style={{ marginTop: 40 }}>
       <h2 style={{ fontSize: 22 }}><GitFork aria-hidden size={20} style={{ display: 'inline', marginRight: 8 }} />Source repositories</h2>
       <div style={{ marginTop: 12 }}>{repositories.map(([name, description]) => <article key={name} style={{ padding: '18px 0', borderBottom: '1px solid var(--line-1)' }}>

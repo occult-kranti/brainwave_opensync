@@ -32,7 +32,7 @@ function SignalPlots({ sound }: { sound: NanoRender }) {
 }
 
 export default function NanoLab() {
-  const { previewId, togglePreview, stopPreview, engineRef, governor, running, panicked, muted, advisoryAcknowledged, openAdvisory } = useSession();
+  const { previewId, togglePreview, stop, stopPreview, engineRef, governor, running, panicked, muted, advisoryAcknowledged, openAdvisory } = useSession();
   const [kind, setKind] = useState<NanoSignalKind>('two-tone');
   const [draft, setDraft] = useState({ carrierHz: String(DEFAULT_NANO_RECIPE.carrierHz), rateHz: String(DEFAULT_NANO_RECIPE.rateHz), durationSec: String(DEFAULT_NANO_RECIPE.durationSec), gainDb: String(DEFAULT_NANO_RECIPE.gainDb) });
   const [feedback, setFeedback] = useState('');
@@ -53,6 +53,7 @@ export default function NanoLab() {
   useEffect(() => { mounted.current = true; const epoch = exportGeneration; return () => { mounted.current = false; epoch.current++; if (owner.current !== null) { owner.current = null; stopPreview(); } }; }, [stopPreview]);
   useEffect(() => { exportGeneration.current++; if (owner.current !== null) { owner.current = null; stopPreview(); } }, [running, panicked, muted, advisoryAcknowledged, governor.infantMode, governor.maxGainDbFs, stopPreview]);
   const stopOwned = () => { if (owner.current !== null) { owner.current = null; stopPreview(); } };
+  const leaveLab = () => { stopOwned(); stopPreview(); stop(); };
   const edit = () => { stopOwned(); exportGeneration.current++; setFeedback(''); setError(''); };
   const play = () => {
     if (playing) { stopOwned(); return; }
@@ -83,7 +84,8 @@ export default function NanoLab() {
   return <div className="nano-page">
     <header className="nano-heading"><div><p className="nano-kicker">AUDIO · MEASUREMENT · CONTROLS</p><h1>NanoLab audio bench</h1><p>Test the difference between a beat envelope, amplitude modulation, and a real low-frequency signal.</p></div><InfoPopover featureId="nano-audio-bench" /></header>
     <p className="nano-scope">This is an acoustic analogy for the nanoparticle research branch. Audio samples specify neither a magnetic field nor an optical exposure; they do not establish nanoparticle response or treatment.</p>
-    <a href={assetUrl('research/#nanoparticles')} onClick={stopOwned}>Read the five nanoparticle research rounds and their evidence →</a>
+    <a href={assetUrl('research/#nanoparticles')} onClick={leaveLab}>Read the five nanoparticle research rounds and their evidence →</a>
+    <a href={assetUrl('research/sound-lab/')} onClick={leaveLab}>Open sound protocols, recording analysis, and apparatus plans →</a>
     <section className="nano-bench" aria-label="Frequency experiment controls">
       <div className="nano-title"><h2>Build a controlled signal</h2><GradeBadge grade="A" citation={{ verdict: 'Grade A applies to the signal algebra only.', summary: 'No material or biological response is inferred.', source: 'https://openstax.org/books/university-physics-volume-1/pages/17-6-beats' }} /></div>
       <div className="nano-kind">{NANO_KINDS.map(value => <button key={value} aria-pressed={kind === value} onClick={() => { edit(); setKind(value); }}>{NANO_LABELS[value]}</button>)}</div>

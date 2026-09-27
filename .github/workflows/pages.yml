@@ -91,6 +91,8 @@ jobs:
           node research-atlas/tests/nanoparticles-ui.mjs
           python3 research-atlas/research/verify_rounds.py
           python3 research-atlas/research/nanoparticles/verify.py
+          node research-atlas/sound-lab/test.mjs
+          python3 research-atlas/scripts/verify_continuation.py
           python3 research-atlas/scripts/build_site.py --output dist/research
       - name: Publish dist/ to gh-pages
         env:

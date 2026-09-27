@@ -37,7 +37,7 @@ Validation completed on 2026-09-26:
 - Eleven new model/UI tests include bounded allocation, finite/deterministic/diotic buffers, quiet levels and fades, direct float64 Fourier projections independent of the production FFT, PCM16 decoding, and an independent Node SHA-256 checksum.
 - For the bin-centered test (`fc=375 Hz`, `r=23.4375 Hz`), the linear two-tone signal has lines at 363.28125 and 386.71875 Hz, while its square contains the 23.4375 Hz difference component. AM has lines at 351.5625, 375, and 398.4375 Hz. The baseband control has the 23.4375 Hz line.
 - Happy DOM tests exercised the real shared session provider: exact preview/export buffer identity; natural end; edits; mute; panic; tightened governor; advisory gate; infant restrictions; failed audio start; invalid-input measurement clearing; stale exports; replacement ownership; and page unmount.
-- Browser layout, real audio-device output, microphone calibration, and physical material response were not tested. Responsive CSS is authored but no visual browser pass is claimed.
+- This local verification stage did not test browser layout, real audio-device output, microphone calibration, or physical material response. The later live browser inspection is recorded below.
 
 After the full check, an independent reviewer identified source components that can coincide with the chosen rate. The explanatory text now says no additional difference-frequency line; a new direct Fourier regression covers two-tone 90/60 Hz and AM 80/40 Hz. Active-component validation also preserves valid boundary settings in the other conditions. The final focused suite contains eleven passing tests, and targeted lint plus TypeScript passed.
 
@@ -46,3 +46,13 @@ No preset definitions or deterministic core DSP were changed. The existing route
 Final release gate: after the independent-review corrections, the team lead reran `npm run check`; lint, TypeScript, all 1,156 tests in 85 files, and the production build passed.
 
 CI portability correction: GitHub’s slower runner exposed the five-second timeout in a test that allocated a matcher for every sample. The test now scans the same complete buffers and reports the first mismatch, preserving equality, finiteness, PCM stereo and numerical tolerances. No production renderer or test timeout was changed.
+
+## Live release verification — 27 September 2026
+
+Source `5bc616344881eaa9a5418304b535f8f8b3426170` passed [CI](https://github.com/occult-kranti/brainwave_opensync/actions/runs/36281004565) and [combined publication](https://github.com/occult-kranti/brainwave_opensync/actions/runs/36281004599). [GitHub Pages deployment 36281166038](https://github.com/occult-kranti/brainwave_opensync/actions/runs/36281166038) succeeded for artifact revision `74ceccf9e2c93db548e36df665b023fc11af8949`. The live deployment manifest returned the source revision above.
+
+The published [NanoLab](https://occult-kranti.github.io/brainwave_opensync/nano-lab) was visually inspected in a desktop browser. At carrier 375 Hz, rate 23.4375 Hz, duration 2 s and requested gain −24 dBFS, two-tone bins matched 363.28125/386.71875 Hz at approximately −30.02 dBFS each. AM bins matched 351.5625/375/398.4375 Hz at approximately −36.04/−30.02/−36.04 dBFS. The page displayed 96,000 frames, waveform and peak/RMS measurements. No mobile visual pass is claimed.
+
+The manifest button reported successful export with checksum and settings; the browser tool's download-event capture timed out, so browser-downloaded bytes were not inspected. Automated export tests and the separately fetched published round-five reference WAV supply byte-level checks. No sound was played, and no physical output or material response was measured. A preexisting tab initially showed the older service-worker version; the application's normal **UPDATE** button activated the new release.
+
+![Verified live NanoLab](../research-atlas/docs/verification/nanolab-5bc61634.jpg)

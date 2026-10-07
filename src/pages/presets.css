@@ -46,3 +46,24 @@
   .preset-sheet { padding: 20px 16px; padding-bottom: 110px; }
   .preset-card { padding: 16px; }
 }
+
+/* Pack artwork thumbnail (research packs) */
+.preset-card-art {
+  width: calc(100% + 40px);
+  margin: -20px -20px 14px;
+  aspect-ratio: 16 / 5;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px 10px 0 0;
+  opacity: 0.92;
+  filter: saturate(0.9);
+}
+.preset-card { overflow: hidden; transition: transform 160ms ease, box-shadow 160ms ease; }
+.preset-card:hover { transform: translateY(-2px); }
+@media (max-width: 700px) {
+  .preset-card-art { width: calc(100% + 32px); margin: -16px -16px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preset-card { transition: none; }
+  .preset-card:hover { transform: none; }
+}

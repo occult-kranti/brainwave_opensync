@@ -45,6 +45,7 @@ const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/lab', 'experiments', 'Experiment Lab', 'Inspect planned audio experiments and their methods.', ['protocol', 'study', 'experiment']],
   ['/replication', 'experiments', 'Replication Bay', 'Compare published stimuli and inspect reconstruction limits.', ['replicate', 'protocol', 'Monroe', 'Gateway', 'stimulus']],
   ['/dream', 'experiments', 'Sleep experiments', 'Review advanced sleep protocols and keep a dream journal.', ['sleep & dream', 'sleep and dream', 'dream lab', 'lucid', 'journal', 'TLR', 'WBTB']],
+  ['/lucid', 'experiments', 'Lucid Audio Lab', 'Study audio cue research, timing maps, and lucid practice sessions.', ['lucid dreaming', 'Gateway', 'REM', 'cue', 'octave portraits', 'hypotheses', 'hemi-sync']],
   ['/levels', 'research', 'Levels', 'Inspect proposed levels and their evidence limits.', ['focus levels', 'ladder', 'frequency']],
   ['/knowledge', 'research', 'Knowledge', 'Read explanations of sound, perception, and evidence.', ['learn', 'knowledge base', 'brain', 'EEG']],
   ['/channeled', 'research', 'Channeled Sources', 'Read the Bashar digest analysis and chosen frequency mappings.', ['Bashar', 'channeling', 'golden ratio', 'phi', '200000']],

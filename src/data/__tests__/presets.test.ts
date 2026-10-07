@@ -13,7 +13,7 @@ import { getFrequencyById } from '../frequencies';
 import type { Grade } from '../frequencies';
 
 const GRADES: readonly Grade[] = ['A', 'B', 'C', 'D'];
-const CATEGORIES = ['Sleep', 'Focus', 'Relax', 'Meditate', 'Experimental', 'Infant'] as const;
+const CATEGORIES = ['Sleep', 'Focus', 'Relax', 'Meditate', 'Lucid Dream', 'Experimental', 'Infant'] as const;
 
 /** Adapt a data-layer preset into the governor's session shape. */
 function toGovernorSpec(preset: Preset, targetDbA?: number): GovernorSessionSpec {

@@ -40,6 +40,7 @@ const ALL_ROUTE_PATHS = [
   '/analyzer',
   '/cymatics',
   '/dream',
+  '/lucid',
   '/replication',
   '/safety',
   '/knowledge',

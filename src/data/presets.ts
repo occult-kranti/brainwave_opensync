@@ -7,9 +7,10 @@
 
 import type { Grade } from './frequencies';
 import { BASHAR_PRESETS } from '@/channeled/bashar';
+import { LUCID_LAB_PRESETS } from './lucidLab';
 import { CLEAN_PRESET_MIX, type PresetMix } from './presetMix';
 
-export type PresetCategory = 'Sleep' | 'Focus' | 'Relax' | 'Meditate' | 'Experimental' | 'Infant';
+export type PresetCategory = 'Sleep' | 'Focus' | 'Relax' | 'Meditate' | 'Lucid Dream' | 'Experimental' | 'Infant';
 
 /**
  * Stimulus modality. Undefined means 'binaural' (legacy default).
@@ -810,6 +811,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
       'Low-level low-passed masking texture. NOTE: white-noise claims cannot lean on music-therapy evidence (Cochrane excludes white noise); keep <=50 dBA at crib and >=2 m away.',
     citations: ['Cochrane preterm-infant review (white noise excluded)', 'AAP 2023 noise-exposure policy statement'],
   },
+  ...LUCID_LAB_PRESETS,
   ...BASHAR_PRESETS,
 ];
 

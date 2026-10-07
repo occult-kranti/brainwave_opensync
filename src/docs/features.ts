@@ -64,6 +64,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/programs', label: 'Programs Archive' },
   { route: '/cymatics', label: 'Cymatic Studio' },
   { route: '/dream', label: 'Sleep & Dream' },
+  { route: '/lucid', label: 'Lucid Audio Lab' },
   { route: '/replication', label: 'Replication Bay' },
   { route: '/quicklab', label: 'Quick Lab' },
   { route: '/theory', label: 'Theory Explorer' },
@@ -416,6 +417,58 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
       'Set up the Studio and close the tab.',
       'Reopen the app — the same panel is back.',
       'Press RESET (engine stopped) to return to defaults.',
+    ],
+  },
+  // ------------------------------------------------------- Lucid Audio Lab
+  {
+    id: 'lucid-evidence-atlas',
+    module: 'Lucid Audio Lab',
+    route: '/lucid',
+    name: 'Audio lucid-dreaming evidence atlas',
+    grade: 'B',
+    gradeScope: 'Summaries of the cited induction studies; the presets remain support tools, not validated interventions.',
+    simple:
+      'Read what each audio lucid-dreaming study actually found, with its setup, timing, and result. The strongest route pairs a sound with practice before sleep, then replays it during REM. Beat-only lucidity claims are labeled with their failed replications.',
+    deep:
+      'Entries span the 2023 laboratory TLR naps, the 2024 smartphone translation, four-laboratory interactive dreaming, the multi-centre wearable-EEG study, and the strict 2026 replication that separated incorporation from lucidity. The 40 Hz tACS row is included as a documented null replication with its criterion critique, and the galantamine row is education-only timing pharmacology. Each card states its grade, the timing window used, and the primary citation.',
+    howTo: [
+      'Open the Evidence section on the Lucid Audio Lab.',
+      'Check the grade and timing window on each study card.',
+      'Follow the citation line for the primary source.',
+    ],
+  },
+  {
+    id: 'lucid-practice-presets',
+    module: 'Lucid Audio Lab',
+    route: '/lucid',
+    name: 'Lucid practice preset pack',
+    grade: 'B',
+    gradeScope: 'Protocol-level evidence (TLR, WBTB, SSILD trials); the audio beds are relaxation and pacing aids.',
+    simple:
+      'Five sessions built around the parts of the research that hold up: pairing practice, the wake-back-to-bed window, the REM-rich last third, sleep-onset incubation, and paced sense cycling. Preview ten seconds or load a session into the Studio. Grades refer to the protocol evidence, not a promise.',
+    deep:
+      'The pack keeps the validated cue canon (400/600/800 Hz ascending tone, 650 ms, 40–45 dB SPL discipline) on the linked Sleep & Dream page while these sessions cover the surrounding practice windows. Durations match the literature: 20 min pairing bed, 35 min return descent, 45 min REM-window theta, 15 min incubation window, 12 min sense-cycle pacer. The SSILD pacer alternates G4, B4, and E4 markers every 30 seconds across eight cycles.',
+    howTo: [
+      'Pick a session for the practice window you are in.',
+      'Preview quietly, then load into Studio.',
+      'Set the night plan on the Sleep & Dream page and keep volume low.',
+    ],
+  },
+  {
+    id: 'lucid-portraits-hypotheses',
+    module: 'Lucid Audio Lab',
+    route: '/lucid',
+    name: 'Octave portraits & hypothesis ledger',
+    grade: 'D',
+    gradeScope: 'Meaning of portrait tones and unconfirmed hypotheses; the arithmetic is graded A separately on the page.',
+    simple:
+      'Hear tones derived from real measurements: planetary orbits, the hydrogen line, the Sun’s five-minute oscillation, and Newton’s color division. Each one lists its exact octave arithmetic. Experimental presets carry a written hypothesis and a home test.',
+    deep:
+      'Portraits map a physical period or spectral line into hearing by exact powers of two, with n stated and Cousto’s published table values shown where they differ. Arithmetic is graded A; any therapeutic reading is graded D, because an audible octave shares no physics with its source. The hypothesis ledger states each prediction, its falsifiable home protocol, and an honest prior, including the null expectation for the Gateway reconstructions.',
+    howTo: [
+      'Read the octave table and recompute any row as value times 2 to the n.',
+      'Preview a portrait or hypothesis probe.',
+      'Log outcomes in the Dream journal before comparing nights.',
     ],
   },
 ];

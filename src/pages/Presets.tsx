@@ -15,7 +15,7 @@ import { isBasharPreset, phaseSoundLabel, presetDisplayName, presetMatchesSearch
 import type { GradeLetter } from '@/ui/theme';
 import './presets.css';
 
-const CATS: (PresetCategory | 'All')[] = ['All', 'Sleep', 'Focus', 'Relax', 'Meditate', 'Experimental', 'Infant'];
+const CATS: (PresetCategory | 'All')[] = ['All', 'Sleep', 'Focus', 'Relax', 'Meditate', 'Lucid Dream', 'Experimental', 'Infant'];
 const GRADE_RANK: Record<GradeLetter, number> = { A: 3, B: 2, C: 1, D: 0 };
 const STARTER_IDS = ['relax-alpha-ease', 'exp-phi-ladder', 'exp-phi-bowl-chord'];
 type Collection = 'start' | 'all' | 'bashar' | 'saved';

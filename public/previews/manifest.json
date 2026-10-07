@@ -327,6 +327,26 @@
       "bytes": 768044
     },
     {
+      "id": "exp-kepler-motet",
+      "sha256": "0561f3613007cc60bb6cc5e071f5bef855e5d2eb751152a30794b51807b9415b",
+      "bytes": 768044
+    },
+    {
+      "id": "meditate-five-tones",
+      "sha256": "986988dc48a967edb1bcefe7ba294aa8fbabc9c70ace1a59f29ceac78f71f766",
+      "bytes": 768044
+    },
+    {
+      "id": "exp-tesla-369",
+      "sha256": "1fb7d4d4d441005cc7c4147ae1848f6102129fda093acd6c3251ad17886943b6",
+      "bytes": 768044
+    },
+    {
+      "id": "exp-genus-daily-hour",
+      "sha256": "edaa2d17fd47221d95f964c84251f34084b2ce515389d2acae90a8564ecba77b",
+      "bytes": 768044
+    },
+    {
       "id": "exp-bashar-scale-map",
       "sha256": "59fded789a619552a354b2c8519993e6820a889f57c97e51a995cae7707ffaa2",
       "bytes": 768044
@@ -347,5 +367,5 @@
       "bytes": 768044
     }
   ],
-  "totalBytes": 52226992
+  "totalBytes": 55299168
 }

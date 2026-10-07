@@ -12,6 +12,7 @@ import { fmtClock } from '@/ui/session/sessionMath';
 import { previewUrlFor, usePreviewManifest } from '@/ui/session/previewManifest';
 import { userPresetAsPreset } from '@/ui/session/userPresets';
 import { isBasharPreset, phaseSoundLabel, presetDisplayName, presetMatchesSearch, presetSignalSummary, presetSoundDescription } from '@/ui/components/presetPresentation';
+import { assetUrl } from '@/lib/assetUrl';
 import type { GradeLetter } from '@/ui/theme';
 import './presets.css';
 
@@ -184,6 +185,7 @@ export default function Presets() {
         const playing = previewId === `preset:${p.id}`;
         const bashar = isBasharPreset(p);
         return <article key={p.id} className="panel preset-card" data-testid={`preset-card-${p.id}`}>
+          {p.art && <img className="preset-card-art" src={assetUrl(p.art)} alt={`${presetDisplayName(p)} cover art`} loading="lazy" />}
           <div className="preset-card-top">
             <span className="t-label text-3">Full session · {fmtClock(presetDurationMin(p) * 60)}</span>
             <GradeBadge grade={p.grade} citation={{ verdict: gradeVerdict(p), summary: p.rationale, source: p.citations[0] }} />

@@ -16,6 +16,9 @@ import { Knob } from '@/ui/components/Knob';
 import { Fader } from '@/ui/components/Fader';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { Visualizer } from '@/ui/components/Visualizer';
+import { CymaticsOverlay } from '@/ui/components/CymaticsOverlay';
+import { Field4D } from '@/ui/components/Field4D';
+import { useField4d } from '@/hooks/useField4d';
 import { StudioScope } from '@/ui/components/StudioScope';
 import { StudioCymatics } from '@/ui/components/StudioCymatics';
 import { PhaseTimeline } from '@/ui/components/PhaseTimeline';
@@ -45,6 +48,8 @@ export default function Studio() {
   const [saved, setSaved] = useState(false);
   const saveInputRef = useRef<HTMLInputElement>(null);
   const saveDialogRef = useRef<HTMLDivElement>(null);
+  const [sandOn, setSandOn] = useState(false);
+  const [field4dOn, setField4dOn] = useField4d();
   // P0-4: Esc closes the modal, focus returns to the SAVE AS PRESET trigger.
   useModalA11y(saveOpen, () => setSaveOpen(false), saveInputRef, saveDialogRef);
   const isMobile = useIsMobile();
@@ -138,7 +143,9 @@ export default function Studio() {
         <div><h1 className="t-h1">Studio</h1><p className="t-body-sm text-2">Play a session. Open sound controls to change the mix.</p></div>
         <button type="button" className="chip" onClick={() => navigate('/presets')}>Choose another sound</button>
       </header>
-      <section className="panel studio-player" aria-label="Session player">
+      <section className="panel studio-player" aria-label="Session player" style={{ position: 'relative', isolation: 'isolate', overflow: 'hidden' }}>
+        {field4dOn && <Field4D />}
+        {sandOn && <CymaticsOverlay onClose={() => setSandOn(false)} />}
         <div className="studio-sound-heading">
           <div>
             <span className="t-label text-3">Current sound</span>
@@ -161,6 +168,16 @@ export default function Studio() {
             {s.paused ? <Play size={14} /> : <Pause size={14} />}{s.paused ? 'Resume session' : 'Pause session'}
           </button>}
           <span className="t-readout-md">{fmtClock(s.elapsedSec)} <span className="t-caption text-3">elapsed · {fmtClock(remainingSec)} remaining</span></span>
+          <span className="flex gap-2" style={{ marginLeft: 'auto', flexWrap: 'wrap' }}>
+            <button type="button" className={`chip ${sandOn ? 'chip-active' : ''}`} aria-pressed={sandOn}
+              aria-label="Toggle cymatics sand plate overlay" onClick={() => setSandOn((v) => !v)}>
+              Sand plate
+            </button>
+            <button type="button" className={`chip ${field4dOn ? 'chip-active' : ''}`} aria-pressed={field4dOn}
+              aria-label="Toggle 4D field backdrop" onClick={() => setField4dOn(!field4dOn)}>
+              4D field
+            </button>
+          </span>
         </div>
         <div className="studio-basic-controls">
           <div>

@@ -7,7 +7,7 @@
 
 import type { Grade } from './frequencies';
 import { BASHAR_PRESETS } from '@/channeled/bashar';
-import { LUCID_LAB_PRESETS } from './lucidLab';
+import { EXPEDITION_PRESETS, LUCID_LAB_PRESETS, PRESET_ART } from './lucidLab';
 import { CLEAN_PRESET_MIX, type PresetMix } from './presetMix';
 
 export type PresetCategory = 'Sleep' | 'Focus' | 'Relax' | 'Meditate' | 'Lucid Dream' | 'Experimental' | 'Infant';
@@ -77,6 +77,8 @@ export interface Preset {
    * replication protocols) remain valid Presets without recomputing it.
    */
   dose?: PresetDoseInfo;
+  /** Optional pack artwork under public/art/ (resolved with assetUrl at render). */
+  art?: string;
 }
 
 /** One session's share of the H.870 adult weekly budget at an assumed level. */
@@ -812,6 +814,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
     citations: ['Cochrane preterm-infant review (white noise excluded)', 'AAP 2023 noise-exposure policy statement'],
   },
   ...LUCID_LAB_PRESETS,
+  ...EXPEDITION_PRESETS,
   ...BASHAR_PRESETS,
 ];
 
@@ -819,7 +822,8 @@ const RAW_PRESETS: readonly PresetSpec[] = [
 export const PRESETS: readonly Preset[] = RAW_PRESETS.map((p) => {
   const dbA = assumedLevelDbA(p.category);
   const durationMin = p.spec.phases.reduce((acc, ph) => acc + ph.durationSec, 0) / 60;
-  return { ...p, dose: { assumedDbA: dbA, weeklyBudgetPct: weeklyDosePct(durationMin, dbA) } };
+  const art = p.art ?? PRESET_ART[p.id];
+  return { ...p, ...(art ? { art } : {}), dose: { assumedDbA: dbA, weeklyBudgetPct: weeklyDosePct(durationMin, dbA) } };
 });
 
 export function getPresetById(id: string): Preset | undefined {

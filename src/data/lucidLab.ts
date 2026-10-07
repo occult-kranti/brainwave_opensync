@@ -1026,3 +1026,200 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
     citations: ['Fixsen 2009, ApJ 707:916–920 (CMB monopole peak 160.4 GHz)'],
   },
 ];
+
+// ---------------------------------------------------------------------------
+// 6. Kepler's planet songs (Harmonices Mundi, 1619) — computed, not mythic
+// ---------------------------------------------------------------------------
+
+/**
+ * Kepler found that the ratio of a planet's angular speeds at perihelion and
+ * aphelion approximates a just musical interval. By the second law the ratio
+ * is ((1+e)/(1-e))² from the orbital eccentricity alone. Tones here are the
+ * absolute angular speeds (cycles/second) octaved up into Kepler's own choir
+ * registers (Saturn bass → Mercury soprano); n stated per planet.
+ */
+export interface KeplerSong {
+  planet: string;
+  /** Modern eccentricity (JPL). */
+  eccentricity: number;
+  /** Aphelion / perihelion tones, Hz, rounded to 0.01. */
+  aphelionHz: number;
+  perihelionHz: number;
+  /** Octave multiplier n used to reach the register. */
+  octaveN: number;
+  /** Measured ratio perihelion/aphelion. */
+  ratio: number;
+  /** Nearest just interval and its signed cents deviation. */
+  interval: string;
+  centsOff: number;
+}
+
+export const KEPLER_SONGS: readonly KeplerSong[] = [
+  { planet: 'Saturn', eccentricity: 0.05415, aphelionHz: 66.43, perihelionHz: 82.51, octaveN: 36, ratio: 1.2421, interval: '5:4 major third', centsOff: -11.0 },
+  { planet: 'Jupiter', eccentricity: 0.04839, aphelionHz: 83.41, perihelionHz: 101.24, octaveN: 35, ratio: 1.2137, interval: '6:5 minor third', centsOff: 19.7 },
+  { planet: 'Mars', eccentricity: 0.09339, aphelionHz: 120.53, perihelionHz: 175.3, octaveN: 33, ratio: 1.4545, interval: '3:2 fifth', centsOff: -53.3 },
+  { planet: 'Earth', eccentricity: 0.01671, aphelionHz: 263.28, perihelionHz: 281.48, octaveN: 33, ratio: 1.0691, interval: '16:15 semitone', centsOff: 4.0 },
+  { planet: 'Venus', eccentricity: 0.00677, aphelionHz: 436.52, perihelionHz: 448.5, octaveN: 33, ratio: 1.0275, interval: '25:24 comma', centsOff: -23.8 },
+  { planet: 'Mercury', eccentricity: 0.20563, aphelionHz: 380.46, perihelionHz: 876.37, octaveN: 32, ratio: 2.3035, interval: '12:5 octave + minor third', centsOff: -71.1 },
+];
+
+export const KEPLER_NOTE =
+  'Kepler heard Earth sing "mi–fa–mi" (misery–famine) across its semitone slide. Honest counterweight: Hartmut Warm\'s ' +
+  'probability analysis found Kepler\'s correspondences statistically indistinguishable from chance — the interval labels ' +
+  'are nearest-fit assignments, and only Earth (4 cents) and Saturn (11 cents) sit inside perceptual tolerance. Arithmetic ' +
+  'grade A; cosmic-harmony meaning grade D.';
+
+// ---------------------------------------------------------------------------
+// 7. Additional government-documented frequency programs (US / RF hearing)
+// ---------------------------------------------------------------------------
+
+export const GOV_FREY: GovProgram = {
+  id: 'gov-frey-rf-hearing',
+  name: 'Microwave auditory effect (Frey effect) & RF-hearing patents',
+  years: '1961–present (physics); patents 1976–2003',
+  agency: 'U.S. — GE/Cornell research; U.S. Air Force Research Laboratory patent (2002)',
+  record:
+    'Allan Frey documented in 1961/1962 (J. Applied Physiology) that pulsed microwave radiation is perceived as clicks, ' +
+    'buzzes, or hisses inside the head — no acoustic pathway involved. The accepted mechanism is thermoelastic expansion: ' +
+    'microsecond pulses deposit energy in tissue, launching a pressure wave that reaches the cochlea by bone conduction. ' +
+    'Patents US3951134A (1976), US4858612A/US4877027A (1989), and AFRL\'s US6470214 (2002) show sustained engineering ' +
+    'interest in RF-based audio delivery.',
+  audioLink:
+    'None inside this app — we never emit RF, and no audio speaker reproduces the mechanism. Included because "government ' +
+    'frequency weapon" claims online usually trace to these documents. Verified: simple percepts (clicks/tones) under lab ' +
+    'conditions. Unverified: reliable intelligible speech at distance, and every "voice-to-skull harassment" product claim.',
+  recordGrade: 'A',
+  claimGrade: 'C',
+  source: 'Frey, J. Applied Physiology 17(4):689–692 (1962); Lin, "Microwave Auditory Effects and Applications" (1978); US6470214',
+};
+
+// ---------------------------------------------------------------------------
+// 8. Round-2 preset pack: Kepler motet, five tones, Tesla folklore, GENUS hour
+// ---------------------------------------------------------------------------
+
+export const EXPEDITION_PRESETS: readonly PresetSpec[] = [
+  {
+    id: 'exp-kepler-motet',
+    title: 'Kepler Motet 1619 (computed planet songs) — experimental tier',
+    category: 'Experimental',
+    spec: {
+      autoShutoff: true,
+      phases: KEPLER_SONGS.map((s) => [
+        { name: `${s.planet.toLowerCase()}-aphelion`, durationSec: 40, carrierHz: s.aphelionHz, beatHz: 0, gainDbFs: -16, rampSec: 8 },
+        { name: `${s.planet.toLowerCase()}-perihelion`, durationSec: 40, carrierHz: s.perihelionHz, beatHz: 0, gainDbFs: -16, rampSec: 8 },
+      ]).flat(),
+    },
+    grade: 'D',
+    rationale:
+      'Each planet sings its aphelion tone then its perihelion tone, bass Saturn (66→83 Hz) to soprano Mercury (380→876 Hz), ' +
+      '8 min total. Ratios computed from modern eccentricities via ((1+e)/(1-e))²: Earth lands within 4 cents of a 16:15 ' +
+      'semitone — Kepler\'s "mi–fa–mi". Nearest-fit interval labels and Warm\'s randomness critique are on the Lucid Audio ' +
+      'Lab page. Arithmetic A; cosmic meaning D. 1619 staff notation, realized with 2026 orbital data.',
+    citations: [
+      'Kepler, Harmonices Mundi (1619), Book V',
+      'JPL orbital elements; ratio = ((1+e)/(1-e))² by the second law',
+      'Warm, Signature of the Celestial Spheres (randomness critique)',
+    ],
+  },
+  {
+    id: 'meditate-five-tones',
+    title: 'Five Tones Pentatonic (gōng cycle, 25 min)',
+    category: 'Meditate',
+    spec: {
+      autoShutoff: true,
+      phases: [
+        { name: 'gong-do', durationSec: 300, carrierHz: 261.63, beatHz: 0, gainDbFs: -16, rampSec: 30 },
+        { name: 'shang-re', durationSec: 300, carrierHz: 293.66, beatHz: 0, gainDbFs: -16, rampSec: 30 },
+        { name: 'jue-mi', durationSec: 300, carrierHz: 329.63, beatHz: 0, gainDbFs: -16, rampSec: 30 },
+        { name: 'zhi-sol', durationSec: 300, carrierHz: 392, beatHz: 0, gainDbFs: -16, rampSec: 30 },
+        { name: 'yu-la', durationSec: 300, carrierHz: 440, beatHz: 0, gainDbFs: -16, rampSec: 30 },
+      ],
+    },
+    grade: 'B',
+    rationale:
+      'The five tones (宫 gōng, 商 shāng, 角 jué, 徵 zhǐ, 羽 yǔ) rendered as the C-major pentatonic steps they name, ' +
+      '5 min per tone — the 30 min/day session norm of the clinical literature, trimmed to 25. Five-element music therapy ' +
+      'has meta-analytic RCT support as MUSIC (21 trials, 1612 participants: post-stroke depression and sleep improved); ' +
+      'the organ-element mapping is traditional correspondence, not Hz physiology. Grade B for music-as-therapy; no ' +
+      'frequency-specific claim.',
+    citations: [
+      'Int. J. Nursing meta-analysis of 21 RCTs, N=1612 (Wiley, 2026): five-element music therapy post-stroke',
+      'Huangdi Neijing tradition (five tones ↔ five elements), cultural origin',
+    ],
+  },
+  {
+    id: 'exp-tesla-369',
+    title: 'Tesla 3-6-9 (folklore, honest label) — experimental tier',
+    category: 'Experimental',
+    spec: {
+      autoShutoff: true,
+      phases: Array.from({ length: 3 }, (_, round) => [
+        { name: `round-${round + 1}-three`, durationSec: 180, carrierHz: 120, beatHz: 3, gainDbFs: -16, rampSec: 30 },
+        { name: `round-${round + 1}-six`, durationSec: 180, carrierHz: 150, beatHz: 6, gainDbFs: -16, rampSec: 30 },
+        { name: `round-${round + 1}-nine`, durationSec: 180, carrierHz: 180, beatHz: 9, gainDbFs: -16, rampSec: 30 },
+      ]).flat(),
+    },
+    grade: 'D',
+    rationale:
+      'Three rounds of 3 / 6 / 9 Hz beats, 27 min. The "magnificence of 3, 6 and 9" quote has no primary source in Tesla\'s ' +
+      'writings — it surfaces in 20th-century retellings, and "vortex mathematics" is digit-root numerology, not physics. ' +
+      'Tesla\'s DOCUMENTED frequency work (mechanical resonance demonstrations, 1893; resonant transformer coils) belongs ' +
+      'to engineering history. Kept as labeled folklore: a pleasant theta-to-alpha walk, nothing more.',
+    citations: [
+      'Quote-audit: no primary Tesla source for the 3-6-9 claim (folklore assessment)',
+      'Tesla, "Mechanical Therapy" / oscillator demonstrations (1890s engineering record)',
+    ],
+  },
+  {
+    id: 'exp-genus-daily-hour',
+    title: 'GENUS Daily Hour (40 Hz AM, 60 min)',
+    category: 'Experimental',
+    spec: {
+      autoShutoff: true,
+      phases: [
+        { name: 'gamma-hour', durationSec: 3600, carrierHz: 250, beatHz: 40, mode: 'monaural', gainDbFs: -14, rampSec: 60 },
+      ],
+    },
+    grade: 'B',
+    rationale:
+      'The full clinical-session duration: human GENUS-protocol studies dose 40 Hz light+sound 1 hour per day. Audio-only ' +
+      'monaural AM on a 250 Hz carrier. Honest status: OVERTURE (N=76) missed its primary MADCOMS endpoint but showed ' +
+      'significant secondary measures (ADCS-ADL, MMSE, whole-brain volume, corpus-callosum preservation); the pivotal ' +
+      'HOPE trial (673 participants, 70 sites) reads out in 2026. Investigational; no disease claims.',
+    citations: [
+      'Hajós et al. 2024, Front Neurol (OVERTURE: primary miss, secondary signals)',
+      'Cognito HOPE pivotal study NCT (673 enrolled, readout 2026)',
+      'Cimenser et al. 2021, Front Syst Neurosci (sleep/daily-activity endpoints)',
+    ],
+  },
+];
+
+// ---------------------------------------------------------------------------
+// 9. Pack artwork map — generated album covers under public/art/
+// ---------------------------------------------------------------------------
+
+/** Preset id → artwork path (public/art/*.jpg). Resolved via assetUrl at render. */
+export const PRESET_ART: Record<string, string> = {
+  'lucid-tlr-training-bed': 'art/lucid-dream.jpg',
+  'lucid-wbtb-return-descent': 'art/lucid-dream.jpg',
+  'lucid-rem-window-theta': 'art/lucid-dream.jpg',
+  'lucid-n1-incubation': 'art/lucid-dream.jpg',
+  'lucid-ssild-pacer': 'art/lucid-dream.jpg',
+  'exp-theta-gamma-interleave': 'art/lucid-dream.jpg',
+  'exp-rem-gamma-whisper': 'art/lucid-dream.jpg',
+  'gateway-focus-10-reconstruction': 'art/gateway-file.jpg',
+  'gateway-focus-12-reconstruction': 'art/gateway-file.jpg',
+  'gateway-focus-15-reconstruction': 'art/gateway-file.jpg',
+  'gateway-focus-21-reconstruction': 'art/gateway-file.jpg',
+  'relax-archaeo-110': 'art/chamber-110.jpg',
+  'relax-vat-40-analog': 'art/vibro-40.jpg',
+  'exp-newton-spectrum-dorian': 'art/newton-spectrum.jpg',
+  'exp-planetary-octave-ascent': 'art/planetary-octave.jpg',
+  'exp-hydrogen-21cm-portrait': 'art/hydrogen-21cm.jpg',
+  'exp-solar-pmode-portrait': 'art/solar-pmode.jpg',
+  'exp-cmb-peak-portrait': 'art/cmb-afterglow.jpg',
+  'exp-kepler-motet': 'art/kepler-motet.jpg',
+  'meditate-five-tones': 'art/five-tones.jpg',
+  'exp-tesla-369': 'art/tesla-369.jpg',
+  'exp-genus-daily-hour': 'art/genus-40hz.jpg',
+};

@@ -18,13 +18,19 @@ import { Chip, Panel, WarningChip } from '@/ui/components/primitives';
 import { useSession } from '@/ui/session/useSession';
 import { getPresetById, presetDurationMin, type Preset } from '@/data/presets';
 import {
+  GOV_FREY,
   GOV_PROGRAMS,
+  KEPLER_NOTE,
+  KEPLER_SONGS,
   LUCID_AUDIO_STUDIES,
   LUCID_HYPOTHESES,
   OCTAVE_PORTRAITS,
 } from '@/data/lucidLab';
 import { fmtMin, parseBedtime, planNight } from '@/dream/scheduler';
 import { fmtClock } from '@/ui/session/sessionMath';
+import { Field4D } from '@/ui/components/Field4D';
+import { useField4d } from '@/hooks/useField4d';
+import { assetUrl } from '@/lib/assetUrl';
 
 // ---------------------------------------------------------------------------
 // Shared bits
@@ -74,7 +80,15 @@ function PresetMiniCard({ preset }: { preset: Preset }) {
     session.stopPreview(); session.stop(); session.loadPreset(preset); navigate('/studio');
   };
   return (
-    <article className="panel" style={{ padding: 18 }} data-testid={`lucid-preset-${preset.id}`}>
+    <article className="panel" style={{ padding: 18, overflow: 'hidden' }} data-testid={`lucid-preset-${preset.id}`}>
+      {preset.art && (
+        <img
+          src={assetUrl(preset.art)}
+          alt={`${preset.title} cover art`}
+          loading="lazy"
+          style={{ width: 'calc(100% + 36px)', margin: '-18px -18px 12px', aspectRatio: '3 / 1', objectFit: 'cover', display: 'block', opacity: 0.9 }}
+        />
+      )}
       <div className="flex items-center justify-between" style={{ marginBottom: 6 }}>
         <span className="t-label text-3">FULL SESSION · {fmtClock(presetDurationMin(preset) * 60)}</span>
         <GradeBadge grade={preset.grade} citation={{ verdict: 'See rationale and sources.', summary: preset.rationale, source: preset.citations[0] }} />
@@ -167,6 +181,8 @@ const PRACTICE_IDS = ['lucid-tlr-training-bed', 'lucid-wbtb-return-descent', 'lu
 const GATEWAY_IDS = ['gateway-focus-10-reconstruction', 'gateway-focus-12-reconstruction', 'gateway-focus-15-reconstruction', 'gateway-focus-21-reconstruction'];
 const HEALING_IDS = ['relax-archaeo-110', 'relax-vat-40-analog'];
 const PHYSICS_IDS = ['exp-theta-gamma-interleave', 'exp-rem-gamma-whisper', 'exp-newton-spectrum-dorian', 'exp-planetary-octave-ascent', 'exp-hydrogen-21cm-portrait', 'exp-solar-pmode-portrait', 'exp-cmb-peak-portrait'];
+const EXPEDITION_IDS = ['exp-kepler-motet', 'meditate-five-tones', 'exp-tesla-369', 'exp-genus-daily-hour'];
+const ALL_GOV = [...GOV_PROGRAMS, GOV_FREY];
 
 const byId = (id: string) => getPresetById(id)!;
 
@@ -176,10 +192,18 @@ const JUMPS = [
 ] as const;
 
 export default function LucidLab() {
+  const [field4dOn, setField4dOn] = useField4d();
   return (
-    <div className="flex flex-col gap-6" style={{ maxWidth: 1080 }}>
+    <div className="flex flex-col gap-6" style={{ maxWidth: 1080, position: 'relative', isolation: 'isolate' }}>
+      {field4dOn && <Field4D />}
       <header>
-        <p className="t-label text-3">AUDIO × FREQUENCY × LUCIDITY · RESEARCH-GRADED</p>
+        <div className="flex items-start justify-between" style={{ gap: 12, flexWrap: 'wrap' }}>
+          <p className="t-label text-3">AUDIO × FREQUENCY × LUCIDITY · RESEARCH-GRADED</p>
+          <button type="button" className={`chip ${field4dOn ? 'chip-active' : ''}`} aria-pressed={field4dOn}
+            aria-label="Toggle 4D field backdrop" onClick={() => setField4dOn(!field4dOn)}>
+            4D field {field4dOn ? 'on' : 'off'}
+          </button>
+        </div>
         <h1 className="t-display-lg">Lucid Audio Lab</h1>
         <p className="t-body text-2" style={{ maxWidth: 760 }}>
           Every audio route to lucid dreaming that has been measured, what it actually did, and how long each protocol takes —
@@ -226,7 +250,7 @@ export default function LucidLab() {
         <SectionTitle icon={<Archive size={18} />} id="govt" title="Government file"
           sub="Declassified and published government-linked work, graded twice: the record itself, and the capability claims it explored. An assessment is not an endorsement — read what the documents actually found." />
         <div className="flex flex-col gap-4">
-          {GOV_PROGRAMS.map((g) => (
+          {ALL_GOV.map((g) => (
             <div key={g.id} className="panel" style={{ padding: 18 }}>
               <div className="flex items-center justify-between" style={{ marginBottom: 6, flexWrap: 'wrap', gap: 8 }}>
                 <span className="t-label text-3">{g.agency.toUpperCase()} · {g.years.toUpperCase()}</span>
@@ -304,8 +328,51 @@ export default function LucidLab() {
             semitone segments; that is why Newton drew them narrow. Verification: recompute any row as value × 2^±n.
           </p>
         </Panel>
+
+        {/* Kepler's planet songs — computed from eccentricities */}
+        <Panel style={{ marginTop: 16 }}>
+          <h3 className="t-h3">Kepler’s planet songs (Harmonices Mundi, 1619) — recomputed</h3>
+          <p className="t-body-sm text-2" style={{ margin: '6px 0 12px' }}>
+            Kepler’s ratio is pure orbital mechanics: perihelion/aphelion angular speed = ((1+e)/(1−e))². Each planet below
+            is octaved into Kepler’s own choir register (Saturn bass → Mercury soprano); n is stated per planet.
+          </p>
+          <div style={{ overflowX: 'auto' }}>
+            <table className="t-body-sm" style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr className="t-label text-3" style={{ textAlign: 'left' }}>
+                  <th style={{ padding: '6px 10px 6px 0' }}>PLANET</th>
+                  <th style={{ padding: '6px 10px' }}>APHELION → PERIHELION</th>
+                  <th style={{ padding: '6px 10px' }}>RATIO</th>
+                  <th style={{ padding: '6px 10px' }}>NEAREST INTERVAL</th>
+                  <th style={{ padding: '6px 10px' }}>CENTS OFF</th>
+                </tr>
+              </thead>
+              <tbody>
+                {KEPLER_SONGS.map((k) => (
+                  <tr key={k.planet} style={{ borderTop: '1px solid var(--ink-0)' }}>
+                    <td style={{ padding: '8px 10px 8px 0' }}><strong>{k.planet}</strong> <span className="t-caption text-3">e={k.eccentricity} · n={k.octaveN}</span></td>
+                    <td className="font-mono2" style={{ padding: '8px 10px' }}>{k.aphelionHz.toFixed(2)} → {k.perihelionHz.toFixed(2)} Hz</td>
+                    <td className="font-mono2" style={{ padding: '8px 10px' }}>{k.ratio.toFixed(4)}</td>
+                    <td style={{ padding: '8px 10px' }}>{k.interval}</td>
+                    <td className="font-mono2" style={{ padding: '8px 10px', color: Math.abs(k.centsOff) <= 15 ? 'var(--teal)' : 'var(--amber)' }}>{k.centsOff > 0 ? '+' : ''}{k.centsOff.toFixed(1)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="t-caption text-3" style={{ marginTop: 12 }}>{KEPLER_NOTE}</p>
+        </Panel>
         <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', marginTop: 16 }}>
           {PHYSICS_IDS.map((id) => <PresetMiniCard key={id} preset={byId(id)} />)}
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------ expedition */}
+      <section>
+        <SectionTitle icon={<Orbit size={18} />} id="expedition" title="Expedition shelf — history, tradition, folklore (labeled)"
+          sub="Kepler's computed planet songs, the Chinese five-tone pentatonic with its meta-analytic music-therapy support, Tesla's unsourced 3-6-9 legend graded as folklore, and the clinical 40 Hz daily-hour dose. Every card states what is arithmetic, what is tradition, and what failed to replicate." />
+        <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))' }}>
+          {EXPEDITION_IDS.map((id) => <PresetMiniCard key={id} preset={byId(id)} />)}
         </div>
       </section>
 

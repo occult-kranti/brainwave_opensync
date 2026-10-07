@@ -1222,4 +1222,11 @@ export const PRESET_ART: Record<string, string> = {
   'meditate-five-tones': 'art/five-tones.jpg',
   'exp-tesla-369': 'art/tesla-369.jpg',
   'exp-genus-daily-hour': 'art/genus-40hz.jpg',
+  'heal-bowl-session': 'art/bowl-session.jpg',
+  'heal-vat-skille-scan': 'art/vat-scan.jpg',
+  'heal-wbv-30-analog': 'art/wbv-bone.jpg',
+  'heal-pythagorean-ladder': 'art/pythagoras.jpg',
+  'exp-sonodynamic-portrait': 'art/nano-ultrasound.jpg',
+  'exp-piezo-nano-portrait': 'art/nano-ultrasound.jpg',
+  'exp-tuning-fork-128': 'art/tuning-fork.jpg',
 };

@@ -2,370 +2,405 @@
   "version": 1,
   "sampleRate": 48000,
   "format": "pcm16-stereo",
-  "seconds": 4,
+  "seconds": 3,
   "targetSeconds": 12,
-  "note": "per-file duration auto-reduced 12s → 4s to keep the total under 60 MB",
+  "note": "per-file duration auto-reduced 12s → 3s to keep the total under 60 MB",
   "files": [
     {
       "id": "sleep-delta-descent",
-      "sha256": "cdd0ae01b27916dff65a2ad7bdd6611c8a634ae6e664cc7b39bcef7e345de2ec",
-      "bytes": 768044
+      "sha256": "4b3592e5ac98265f5ab4feb229c32d1f51bcb969b1206cc99e5c2f2c34b4b7ca",
+      "bytes": 576044
     },
     {
       "id": "sleep-slow-wave-cue",
-      "sha256": "25c46bdd20a54a6ec5101f563ef8bbeadaf4e814bceb43d58c3426f43f1a07a6",
-      "bytes": 768044
+      "sha256": "91d0452c308aa95f1d550abde923ae7bd6a4a234f3ef16c21d63dccf206af73e",
+      "bytes": 576044
     },
     {
       "id": "sleep-theta-drift",
-      "sha256": "8e311242e74aa89bbf28294b9aba06c927026da712ad578492524ee410afafbd",
-      "bytes": 768044
+      "sha256": "73b883c79bfbd18d49daa7cda7ed3e737242ac19d558005161faafd43086a1c4",
+      "bytes": 576044
     },
     {
       "id": "sleep-pink-quiet",
-      "sha256": "0ee120fe33a25bb801478a2c0e6ead4d295f4a6c36bbf50ef624241fbb4166b7",
-      "bytes": 768044
+      "sha256": "4d7a7a6c263fdcb0a7793f4cb9c81c3c45a25ab11b51b9e7df13e823868c75c6",
+      "bytes": 576044
     },
     {
       "id": "focus-smr",
-      "sha256": "6f316387dbd9a0d79b154a9501fac4a54a555e9cf04646be78e168a1ef69b9df",
-      "bytes": 768044
+      "sha256": "7edcb89253c70339f68a3654f403ff4ced58036a6fd964f309a0e36ba4ad15e8",
+      "bytes": 576044
     },
     {
       "id": "focus-beta-block",
-      "sha256": "31ad9fcfb52e857c490d2115d4816b8935345c56c2f29a8d61b4fa296abe9e80",
-      "bytes": 768044
+      "sha256": "81876260586e1bab52f1e27fed8d6246c5191f40136c2ce97693b268896e162c",
+      "bytes": 576044
     },
     {
       "id": "focus-pomodoro",
-      "sha256": "75c699f24e27b97882f6b0905c7e0820ad85924e482a08eccf85b0e90da4d92f",
-      "bytes": 768044
+      "sha256": "e529a5afc59245d99e9c3ce0c8cf781156e388bc331b8b7127f7776e5689e9f4",
+      "bytes": 576044
     },
     {
       "id": "focus-alpha-flow",
-      "sha256": "048ea6ecc1557c7a72c717adab97d0e0795068013b111eed73f49d4098e24961",
-      "bytes": 768044
+      "sha256": "91bb67a529db5e71cdbd83197f02f59b89aad0e33f9277fab9cdaca7f207f24a",
+      "bytes": 576044
     },
     {
       "id": "relax-alpha-ease",
-      "sha256": "a39dd9186eb42cb8a775b6cadcb8ffebd01b9d62e99d4766be34112c4369b796",
-      "bytes": 768044
+      "sha256": "cc83226a108483323357cc3647a3d5f951f2d17589d95d591176148eaeaead7c",
+      "bytes": 576044
     },
     {
       "id": "relax-432-evening",
-      "sha256": "84743ea30a576faceacb94674fffbf06d1fbb0bf8af5a0e3019cfb630df0a583",
-      "bytes": 768044
+      "sha256": "9e1707ffd6367b90508f9b7b3b6ff2d75c0307d14bc59cd3566b06b3612644fd",
+      "bytes": 576044
     },
     {
       "id": "relax-schumann-sim",
-      "sha256": "96def74da71ac580b16adcdc630a25e24bd16c50674ec41a17d1170d7a8b9383",
-      "bytes": 768044
+      "sha256": "004714a3bbffe44faa88e4a422175c3f12914f5625c102d89ebe304f4032bf3d",
+      "bytes": 576044
     },
     {
       "id": "relax-breath-pacer",
-      "sha256": "8dada6278f2013aeecab725a17a47a743930b933bd583f6a1204f6e974e48761",
-      "bytes": 768044
+      "sha256": "1626a321fde7a4c40ce3c55bbed029dae4866ec25a98a44575006be5920fae80",
+      "bytes": 576044
     },
     {
       "id": "relax-heartbeat-calm",
-      "sha256": "91a0b2e4642144255694414233354408699c0d89399a9558270522a0a8b163fb",
-      "bytes": 768044
+      "sha256": "8150211bfee46df4c8c6237156ffe5646d73e33a01d3ec85547e3c54bc95dbd1",
+      "bytes": 576044
     },
     {
       "id": "meditate-theta-garden",
-      "sha256": "361529eab196055d213f5fc1d67a5bc91c426471dd3afbcf5c0797679960615f",
-      "bytes": 768044
+      "sha256": "afe4bbb0f445c49b67318ba80eae4eb99585ea6f446c683efe914abf38628819",
+      "bytes": 576044
     },
     {
       "id": "meditate-om-cousto",
-      "sha256": "f6325745e265b708b856a255ddaf709d9ad13b671702d4d1b8d5205fa24aab36",
-      "bytes": 768044
+      "sha256": "159c60423051a3544527dc5fc8816f688c6b4cb7e4c9dd0b1534378efb06ef86",
+      "bytes": 576044
     },
     {
       "id": "meditate-solfeggio-528",
-      "sha256": "c0fc2c1c1789b6b6c718a3d5cbed887333aff95923ffbfc91883dbc67f53f1b5",
-      "bytes": 768044
+      "sha256": "81dac118bce7e70e50372c143afcd1b74fbfc0dbfaaf1ccc169de9730e2d6bf1",
+      "bytes": 576044
     },
     {
       "id": "meditate-chakra-walk",
-      "sha256": "a465b4efc506f58c3f8177f760313fe0de10d6eb4edbd5e29058581ed4df88c1",
-      "bytes": 768044
+      "sha256": "2465a60e172626e61c0034dc375148380ffd680c6ad6ee7da32bf3c7faa68f7c",
+      "bytes": 576044
     },
     {
       "id": "exp-gamma-40",
-      "sha256": "b9b38f6aef6cbac68975391edeec8b0c15b64d065f9d7962665263b25ff86328",
-      "bytes": 768044
+      "sha256": "e8b26fc496d401f0473d020dffc97661592584c3673425996622da4813d81906",
+      "bytes": 576044
     },
     {
       "id": "exp-assr-40",
-      "sha256": "f762ce4811f72f90f7aac286b7ced51964d6a5772874366ebe36e1141bc30908",
-      "bytes": 768044
+      "sha256": "3497131c9a921fe2d4cdf1392fa67a760a3ea879abdbae0bd9d9551857baf97f",
+      "bytes": 576044
     },
     {
       "id": "exp-lambda-label",
-      "sha256": "8718038ae5a45db95390b0d5f2b3eb09e253af511b20698a135c58c8272809c2",
-      "bytes": 768044
+      "sha256": "cb9d00e05b29157b1b42748f94f228ed34ac23d7a096ee5e91cb161e71164b94",
+      "bytes": 576044
     },
     {
       "id": "exp-schumann-modes",
-      "sha256": "b6b68b9a4eb47f3558dd57ec2c4a6551238ce899205ccc17d249405e4e66664b",
-      "bytes": 768044
+      "sha256": "7c84a90b08d64153911d0f57bf32f56ef6dc256dae5bcac4e11fa7d21e2d5525",
+      "bytes": 576044
     },
     {
       "id": "exp-epsilon-null",
-      "sha256": "47f07c1405314713af97ad047b74c07a0d69c2602190e9450e09fd9227d71c9c",
-      "bytes": 768044
+      "sha256": "6f30b0f83ece53352f79d82c0b0b4b92bbea664e7aa7c39f17dc58b9de70b17e",
+      "bytes": 576044
     },
     {
       "id": "walk-delta",
-      "sha256": "466a70a98aab82409f6231d594d73106e698db6a7c41fd75ab2f070d0570cb23",
-      "bytes": 768044
+      "sha256": "2313c5bdd3c617bdc61e44872da104a4d0c60b08d4ffa9149011f14203278b42",
+      "bytes": 576044
     },
     {
       "id": "walk-theta",
-      "sha256": "e6199f7c45223efcc3271b58c9c0e5200146582061cfd3d896e892be0d2e50a3",
-      "bytes": 768044
+      "sha256": "c45b841f0218affe06d26bd8069637c161308a48e50c6269b35d38656c6bf90f",
+      "bytes": 576044
     },
     {
       "id": "walk-alpha",
-      "sha256": "9cb33c3be119f7f5142d514102bf83e4c2a451650aca9fa595f11a96ee3c22fe",
-      "bytes": 768044
+      "sha256": "b01e584b4f02a2a0b7e39f941fe13c26595dedea8f205814794f70f018587248",
+      "bytes": 576044
     },
     {
       "id": "walk-smr",
-      "sha256": "5b5d76b72d9abd0b432272f34a93ce016fc6e5830b7afd3aa6121ffc71af3370",
-      "bytes": 768044
+      "sha256": "cc05c37ad9a49f7224772fd2b9be3eaa60d633e291c8cc9c99979bd1a3ecf55d",
+      "bytes": 576044
     },
     {
       "id": "walk-beta",
-      "sha256": "ccf4b8871b015753662dfb8c68d161c5fe9f309f75881b43d688508523b4c960",
-      "bytes": 768044
+      "sha256": "3ca4fa6aa7ffe6ac141c4eb7a0f04d7f1e009ec51ea7cf01c2630748f7da10f3",
+      "bytes": 576044
     },
     {
       "id": "walk-gamma",
-      "sha256": "7b4fc5aceb368c0c9999929116bec5d1fbe7d5e19a3a4d3d4755c738b5b885e6",
-      "bytes": 768044
+      "sha256": "fd24794db95e29895c462a0967258d16b6d02673f55d7be1378c7c3ab9606dbd",
+      "bytes": 576044
     },
     {
       "id": "relax-schumann-m2",
-      "sha256": "39972fd26eba03f9a499d568f2f61efe6a8f9cabbd2b73982bd470723e938aa1",
-      "bytes": 768044
+      "sha256": "86c81cdbd808f91be3eabba9c16ed5afc57a2d66f6a21559413970e47b313dfe",
+      "bytes": 576044
     },
     {
       "id": "relax-schumann-m3",
-      "sha256": "103084b1fafa869de0676b78e42c9f2aa84bf4fb82b34abde3488b165ec6b4ef",
-      "bytes": 768044
+      "sha256": "d8b0d4ee25154bd4cac05f83b3430a2b4d72ef36c00fa3de4c09921c365c184b",
+      "bytes": 576044
     },
     {
       "id": "relax-schumann-m4",
-      "sha256": "4c3c7e63a1e490143e55716a622b2f8a1bf5e8d80a8e46d9e1ac6b102f5aa0c0",
-      "bytes": 768044
+      "sha256": "87456cac354dee971fdb0cb038cef6cfb511ab494b3b84f7942164c9c5562e1e",
+      "bytes": 576044
     },
     {
       "id": "relax-schumann-m5",
-      "sha256": "79a898666e361760b9e85983e4c05db9c95967862adc551a1f2966559ca6bdb3",
-      "bytes": 768044
+      "sha256": "7c10a91da6350bd9bdf4642fea2feb13edc3c0b37829dc8b424ead973add5e09",
+      "bytes": 576044
     },
     {
       "id": "relax-440-control",
-      "sha256": "edcb2b6b599492ca6fd1b3881cac5af2fe6811dc321b17dc361f30f03c2bfbaa",
-      "bytes": 768044
+      "sha256": "5d14a529f6702a0e45058e7d5cff08a21e5fa2b31ae9c16b4828956c8ea6ca97",
+      "bytes": 576044
     },
     {
       "id": "exp-gamma-monaural",
-      "sha256": "edaa2d17fd47221d95f964c84251f34084b2ce515389d2acae90a8564ecba77b",
-      "bytes": 768044
+      "sha256": "bd08fa8d0b6190bf83733cd8ebe6591f35d7368ec5d02074576722f4d5773790",
+      "bytes": 576044
     },
     {
       "id": "focus-isochronic-beta",
-      "sha256": "af146754993606ef8824c8a2a8f1b2f55f54d46ae37f295d6f0f7d0cbd715ea5",
-      "bytes": 768044
+      "sha256": "11e352ebc8a5daf8e598980768affd0f8547948788798b88d27de0aff50c3eeb",
+      "bytes": 576044
     },
     {
       "id": "focus-monaural-smr",
-      "sha256": "76e4a100b2cf3152c115173a5ff4be91f3a25beb478dc7c2878a71141b119cf5",
-      "bytes": 768044
+      "sha256": "3d3f62af11c90164d64f7a3a5bdde9de4572cb97ab052c4992d0eba62c769515",
+      "bytes": 576044
     },
     {
       "id": "sleep-isochronic-delta",
-      "sha256": "9451fa6a828266d4c4f2f80fd4245fdd10a4a97324e32e2fa93e0fc209cb8e33",
-      "bytes": 768044
+      "sha256": "d49a577009410bfd11fc3147217545051e4b40f40fb36c7dcfecc8a46b27fdfa",
+      "bytes": 576044
     },
     {
       "id": "relax-monaural-alpha",
-      "sha256": "3e453759740a1588e68e03a391989303a410d09723f5e9f79a5fbad0f9fe5e17",
-      "bytes": 768044
+      "sha256": "17b67ecd95113fc4ad9ae787aaae500e6b81d74ee37cf00eb02b44d134d1aea1",
+      "bytes": 576044
     },
     {
       "id": "focus-brown-noise",
-      "sha256": "cf223aec7881893b1448745145ba04e5595b98907609f88ff6a2173fcfe1cc3e",
-      "bytes": 768044
+      "sha256": "75f1fc72cd8c5d7966a66230af59f206da7f1e68f214404e9015827e1f1132bf",
+      "bytes": 576044
     },
     {
       "id": "focus-pink-noise",
-      "sha256": "84424c738596b262b134fcf35b625be7aa703f3702095a0465fcd7c61c85bcba",
-      "bytes": 768044
+      "sha256": "a6c35f2dceb744f4ba9dae5acd3233d7b5e69f6ee55e256f2d3838ce99c4a80a",
+      "bytes": 576044
     },
     {
       "id": "relax-breath-coherence",
-      "sha256": "3a6534753226ad5c00a74fc0e02818a2e404364a772276203da29803ea19d86d",
-      "bytes": 768044
+      "sha256": "02e4c827fc036d974e2c1c8036a3f3a45dc774d968a8d3be662d05ef90940330",
+      "bytes": 576044
     },
     {
       "id": "sleep-breath-wind-down",
-      "sha256": "dcbcb84fd9464cfcbd1c4adb6e1c249486a507b3d4b056d857f0f0b5b444d5f2",
-      "bytes": 768044
+      "sha256": "436ba300fa9b4dd9421724d653d9ed247ab2115b542e33e80b3ec83be9b3c459",
+      "bytes": 576044
     },
     {
       "id": "infant-womb-hush",
-      "sha256": "d77bdcd60361eadcdfa23bc43cc190ae818c6cc0399d64eb558544274db44b3a",
-      "bytes": 768044
+      "sha256": "6f7c57a75c0092ed1c6e92ce0be2e28a411e864a89803b2144221e7894621763",
+      "bytes": 576044
     },
     {
       "id": "infant-heartbeat-70",
-      "sha256": "b6481659afb50821b6366d54aa302bbd162eeb737e6a8a4ef87bb90acc1fbfa2",
-      "bytes": 768044
+      "sha256": "e625ea2e0df6ff98f67917c836284d7d5a4ccada1deabe0f5a26f1bd5da57751",
+      "bytes": 576044
     },
     {
       "id": "infant-nap-fade",
-      "sha256": "047e75fe2f3ca78c81a55e56578c595f333a3e242657ff114dc29e6f31319c7b",
-      "bytes": 768044
+      "sha256": "b7231896f125394b37f370fcea2ea2f6417337ea9aba1aad5c333a48e70cc593",
+      "bytes": 576044
     },
     {
       "id": "infant-quiet-room",
-      "sha256": "0dad0fb521e889f12aa41891a049e3b57017526100f86df6099267c21a2e16b3",
-      "bytes": 768044
+      "sha256": "f71e0bfb28ff06993585b2a7d435abc33a47ea3cd40851701fb7a9c61939c5df",
+      "bytes": 576044
     },
     {
       "id": "lucid-tlr-training-bed",
-      "sha256": "7d89284cccadb9983410f372ab9f520cb32fe3222393fdc4a4baa627e0197ac5",
-      "bytes": 768044
+      "sha256": "9184ce1d9607a7a4cf2ec35f4f9751f7d31e6af3b521ea3e35d12bea6687d008",
+      "bytes": 576044
     },
     {
       "id": "lucid-wbtb-return-descent",
-      "sha256": "8b814a93ea9e69c20bd99992f004c33c5ee6266cf37c7f2dd463a71a2d5d4540",
-      "bytes": 768044
+      "sha256": "7a5332871f243c6dc48336bc4f73d6f12f9c853af61bbaae30c53aeeb0e890f3",
+      "bytes": 576044
     },
     {
       "id": "lucid-rem-window-theta",
-      "sha256": "f8c1edc3389f45342e7afc3b34bf8dac326f55174dd28425270484a50b9f3957",
-      "bytes": 768044
+      "sha256": "d40e5d68f26e750e49ef7f5093379059c33929729bef41ecb1640c696f9515a8",
+      "bytes": 576044
     },
     {
       "id": "lucid-n1-incubation",
-      "sha256": "759421ca49dca9f3a090aee801e2b372b55d1ecba5d824cd321dc3c0ea28d5ea",
-      "bytes": 768044
+      "sha256": "ab7586eab1746c41585b3f7e555158e4123c5cba01987fccf4b8866144c3ecbf",
+      "bytes": 576044
     },
     {
       "id": "lucid-ssild-pacer",
-      "sha256": "ecfc7ae0076be10d6beceb00c9578599f9af96977b69b57b2dd9f073dfaa127c",
-      "bytes": 768044
+      "sha256": "1e881943b93c15f89acf883091684e2fe3e1d854c988c84c1932a82c885267a1",
+      "bytes": 576044
     },
     {
       "id": "gateway-focus-10-reconstruction",
-      "sha256": "6544d79dc666860e61943bae10e766acfe3794d6e0f145b6954b402f478ecafa",
-      "bytes": 768044
+      "sha256": "64710434961e0e8d6012b00e14168efa245287e3aef782edcff4f80a93cd2727",
+      "bytes": 576044
     },
     {
       "id": "gateway-focus-12-reconstruction",
-      "sha256": "6544d79dc666860e61943bae10e766acfe3794d6e0f145b6954b402f478ecafa",
-      "bytes": 768044
+      "sha256": "64710434961e0e8d6012b00e14168efa245287e3aef782edcff4f80a93cd2727",
+      "bytes": 576044
     },
     {
       "id": "gateway-focus-15-reconstruction",
-      "sha256": "10e3a132231a3f1e6aa9f67dc5d0e5d47c41a6e9eb607532415ef43f1b94522c",
-      "bytes": 768044
+      "sha256": "5191ed8094b56d208ba673554679e98b18085934501bb69b73238a28a1dd39e2",
+      "bytes": 576044
     },
     {
       "id": "gateway-focus-21-reconstruction",
-      "sha256": "97f0057e4659dc9c2cbb9f87a4b1bc37e2c24e3bb724ad46c1df0d9637c803c2",
-      "bytes": 768044
+      "sha256": "cbbcd22219eae2498f07707a9a95bf01c02c220bb45c9cec8c274365ee7917d3",
+      "bytes": 576044
     },
     {
       "id": "relax-archaeo-110",
-      "sha256": "cde756eb39107d34d25821ba19d9745edb6e49a91e28a254e9cc78b9ef433293",
-      "bytes": 768044
+      "sha256": "4115d3439f8ed2f2e06ed2b7f19345f1b9a8e3763d95861abfa952ab8c9fa489",
+      "bytes": 576044
     },
     {
       "id": "relax-vat-40-analog",
-      "sha256": "a186797fe3377e6cec34da764babfb3e00a79c9776a99ff8cad146d0f359993a",
-      "bytes": 768044
+      "sha256": "38575ca68990a839876881c143f4ab6202d991ab38b0a9712e3323f876012a3f",
+      "bytes": 576044
     },
     {
       "id": "exp-theta-gamma-interleave",
-      "sha256": "0a41c8683048e15d4e0710ccb1f909792c9dbe714bf76e2accddd793afed7474",
-      "bytes": 768044
+      "sha256": "5f478b12495e80dc330c3bdac56dd79a3139d8acf4653913b16ecfb4b428bde6",
+      "bytes": 576044
     },
     {
       "id": "exp-rem-gamma-whisper",
-      "sha256": "f8c1edc3389f45342e7afc3b34bf8dac326f55174dd28425270484a50b9f3957",
-      "bytes": 768044
+      "sha256": "d40e5d68f26e750e49ef7f5093379059c33929729bef41ecb1640c696f9515a8",
+      "bytes": 576044
     },
     {
       "id": "exp-newton-spectrum-dorian",
-      "sha256": "606d71fa3b4c4c0a4b51f5d1f48929cb589d147249f104a536dc10a4862c2b2f",
-      "bytes": 768044
+      "sha256": "7401411baa93b65322f4da9fea633c1656b8f3513c2a3e9dfe589e00c3eda148",
+      "bytes": 576044
     },
     {
       "id": "exp-planetary-octave-ascent",
-      "sha256": "92ef805f85e5c859e587dbaa01cd15b119ec210fe1d0d1a29cd2b33b1e0eda3e",
-      "bytes": 768044
+      "sha256": "3e6f7325a8fc1c26a13313bced6acd44a87d88371c583b9cace40aa154b82f46",
+      "bytes": 576044
     },
     {
       "id": "exp-hydrogen-21cm-portrait",
-      "sha256": "33939f431bf68d501b65f82162d66899c23256e13b761ab5f2340a57f46991dd",
-      "bytes": 768044
+      "sha256": "cad8bca362556ede2fa0c49cdce4111f24b04b2e2283b656c41bf36159416752",
+      "bytes": 576044
     },
     {
       "id": "exp-solar-pmode-portrait",
-      "sha256": "caf5cc19f39b243690fcb533a239e584e255d48d3580e7ef0d67d73d82b89cca",
-      "bytes": 768044
+      "sha256": "969d560c93e17cc81a1a6f567c7481dfcdd700e68c7f493fae7e9b6dce1f3c11",
+      "bytes": 576044
     },
     {
       "id": "exp-cmb-peak-portrait",
-      "sha256": "a14d026ea62daffdd40e5e5c155a2ab20fa821268662fcb2b35c2650f7b36cdd",
-      "bytes": 768044
+      "sha256": "3b50dde6d8ba33d537f2f55e4868fe86223eb04cdae408d3054dff1c3d6f513d",
+      "bytes": 576044
     },
     {
       "id": "exp-kepler-motet",
-      "sha256": "0561f3613007cc60bb6cc5e071f5bef855e5d2eb751152a30794b51807b9415b",
-      "bytes": 768044
+      "sha256": "ccf74c7f507d47bf25294989532023d6830b7f4c8592e5c10bba8d15cb2196bb",
+      "bytes": 576044
     },
     {
       "id": "meditate-five-tones",
-      "sha256": "986988dc48a967edb1bcefe7ba294aa8fbabc9c70ace1a59f29ceac78f71f766",
-      "bytes": 768044
+      "sha256": "d0ad8d327b0c1089fb3498aa8b9af37416b2e05c685f433fe609afe8d677d434",
+      "bytes": 576044
     },
     {
       "id": "exp-tesla-369",
-      "sha256": "1fb7d4d4d441005cc7c4147ae1848f6102129fda093acd6c3251ad17886943b6",
-      "bytes": 768044
+      "sha256": "2f4c93eb79bf31dbb1236110f0aac7fb41b8d8af250cb4b17c683f7cad228661",
+      "bytes": 576044
     },
     {
       "id": "exp-genus-daily-hour",
-      "sha256": "edaa2d17fd47221d95f964c84251f34084b2ce515389d2acae90a8564ecba77b",
-      "bytes": 768044
+      "sha256": "bd08fa8d0b6190bf83733cd8ebe6591f35d7368ec5d02074576722f4d5773790",
+      "bytes": 576044
+    },
+    {
+      "id": "heal-bowl-session",
+      "sha256": "c58cb1ffbe8bf472770dd816318e72a75d80707dc395799930251492c72ef96a",
+      "bytes": 576044
+    },
+    {
+      "id": "heal-vat-skille-scan",
+      "sha256": "4bb124e742be14d48836517ffd87c85e69a690e0ef928aea18febd1435d58502",
+      "bytes": 576044
+    },
+    {
+      "id": "heal-wbv-30-analog",
+      "sha256": "71d2fe8b3d2dfe268b603a4a0edf55dba26509743c277bb3475c0a84b1ed1ebe",
+      "bytes": 576044
+    },
+    {
+      "id": "heal-pythagorean-ladder",
+      "sha256": "d1da615fab88fdc0473a1ace2059b64c44d658523809a8adada36989a0400f24",
+      "bytes": 576044
+    },
+    {
+      "id": "exp-sonodynamic-portrait",
+      "sha256": "79d1d8837492f0b4e70f29a800a5e6282dd276987e6cc40bddf8f46c437d7df1",
+      "bytes": 576044
+    },
+    {
+      "id": "exp-piezo-nano-portrait",
+      "sha256": "170d4a64738fcea43eb8287a61482d8a942303491ea9f20eb9993494a97398bf",
+      "bytes": 576044
+    },
+    {
+      "id": "exp-tuning-fork-128",
+      "sha256": "268e88e4b719afeff348fad375272ce93d9212eccbc95e178e6c8940f868887e",
+      "bytes": 576044
     },
     {
       "id": "exp-bashar-scale-map",
-      "sha256": "59fded789a619552a354b2c8519993e6820a889f57c97e51a995cae7707ffaa2",
-      "bytes": 768044
+      "sha256": "546386e5ac82dafbed8b8d2fd58ab911a4f927ebf9667f7d320ad48c95cc5bec",
+      "bytes": 576044
     },
     {
       "id": "exp-bashar-gamma-contradiction",
-      "sha256": "e362d88bdbeb94afd89e12766c69496b648d1dd7e8fda71f8cdc2451d2aa035f",
-      "bytes": 768044
+      "sha256": "f8b6043703434fc673eb341e02a215a90511523e1f3b9aa07f698b0173e7ba3f",
+      "bytes": 576044
     },
     {
       "id": "exp-phi-ladder",
-      "sha256": "1c65baf0806b5b0ecb91f7735ed582e0e6490a9d7cd9cb3a33e0030f2f727b34",
-      "bytes": 768044
+      "sha256": "1599702c7dab1c9d6676edb17d3afbab9bb6979e50d88f203ab2f9e5a4cf7ec9",
+      "bytes": 576044
     },
     {
       "id": "exp-phi-bowl-chord",
-      "sha256": "d6299ed957faa724148d30dd7a462bfba71d0ac1fb2468ad20177d15ac72b16a",
-      "bytes": 768044
+      "sha256": "90797072048955efb5f6027ee74067aab2d72cfa02468ee974dad457d3e9ec72",
+      "bytes": 576044
     }
   ],
-  "totalBytes": 55299168
+  "totalBytes": 45507476
 }

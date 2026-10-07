@@ -402,7 +402,7 @@ export default function LucidLab() {
       </section>
 
       <footer className="t-body-sm text-3" style={{ borderTop: '1px solid var(--ink-0)', paddingTop: 16 }}>
-        Companion pages: <Link to="/dream">Sleep &amp; Dream protocols and journal</Link> · <Link to="/presets?collection=all">Full preset catalog</Link> ·{' '}
+        Companion pages: <Link to="/dream">Sleep &amp; Dream protocols and journal</Link> · <Link to="/healing">Healing Sound Lab</Link> · <Link to="/presets?collection=all">Full preset catalog</Link> ·{' '}
         <Link to="/programs">Programs archive</Link> · <Link to="/safety">Safety center</Link>. Lucid-dreaming practice with
         dissociative, psychosis-spectrum, or nightmare-disorder conditions belongs with a clinician first.
       </footer>

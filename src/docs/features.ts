@@ -65,6 +65,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/cymatics', label: 'Cymatic Studio' },
   { route: '/dream', label: 'Sleep & Dream' },
   { route: '/lucid', label: 'Lucid Audio Lab' },
+  { route: '/healing', label: 'Healing Sound Lab' },
   { route: '/replication', label: 'Replication Bay' },
   { route: '/quicklab', label: 'Quick Lab' },
   { route: '/theory', label: 'Theory Explorer' },
@@ -469,6 +470,41 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
       'Read the octave table and recompute any row as value times 2 to the n.',
       'Preview a portrait or hypothesis probe.',
       'Log outcomes in the Dream journal before comparing nights.',
+    ],
+  },
+  // ------------------------------------------------------- Healing Sound Lab
+  {
+    id: 'healing-evidence-atlas',
+    module: 'Healing Sound Lab',
+    route: '/healing',
+    name: 'Healing-sound evidence atlas with doses',
+    grade: 'B',
+    gradeScope: 'Summaries of the cited clinical and acoustic studies; presets remain listening experiences, not treatment.',
+    simple:
+      'Read what each healing-sound study measured, with the dose written on the card. Bowls, vibroacoustic chairs, vibration platforms, and hospital music each have their own evidence level. The strongest proof is for music and for touch-delivered vibration.',
+    deep:
+      'Entries carry session parameters: Goldsby 2017 single-session bowl meditation (observational, N=62), Skille VAT protocols (30–120 Hz tactile, 20–45 min, 1–3×/week), Naghdi 2015 (40 Hz, 23 min, 2×/week, 5 weeks), Mosabbir 2020 (40 Hz, 30 min, 3 weeks), the Rubin 30 Hz WBV transmissibility window with meta-analytic bone-density effects (g = 0.11), and the two Cochrane music reviews (26 trials/2,051 preoperative; 17 trials/1,381 cancer care). The modality boundary panel keeps tactile evidence separate from airborne audio. Airborne presets are graded against that boundary, not as if they were clinical devices.',
+    howTo: [
+      'Open the Evidence section on the Healing Sound Lab.',
+      'Read the dose line on each card before the outcome line.',
+      'Check the modality boundary panel before treating any tactile result as a listening result.',
+    ],
+  },
+  {
+    id: 'healing-presets-portraits',
+    module: 'Healing Sound Lab',
+    route: '/healing',
+    name: 'Healing presets & nano portraits',
+    grade: 'D',
+    gradeScope: 'Therapy meaning of portrait tones and fork folklore; acoustic measurements and arithmetic graded A separately on the page.',
+    simple:
+      'Listen to synthesized bowls in measured geometry, the 30–120 Hz physioacoustic scan, the 30 Hz bone-window rate, and a harmonic ladder. The ultrasound and nanoparticle shelf shows real lab frequencies octaved down into hearing. Those portraits share numbers with the protocols, nothing else.',
+    deep:
+      'The bowl session models measured bowl acoustics (50–750 Hz fundamentals, 500/630/800 Hz size bands, f ∝ a/R²) with three physical-model bowls over a quiet bed. The sonodynamic portrait walks 0.88/1.0/1.1/2.64/3.3 MHz octaved down by 2⁻¹³–2⁻¹⁴, and the piezo-nano portrait pairs the 1 MHz BTNP carrier portrait with the 50 Hz MENP field rate as a quiet envelope. The hypothesis ledger supplies falsifiable home tests, including aesthetic-null predictions for the portraits.',
+    howTo: [
+      'Preview a preset quietly, then load it into Studio.',
+      'Recompute any portrait row as the listed value times 2 to the minus n.',
+      'Use headphones or a subwoofer for the low-frequency scan.',
     ],
   },
 ];

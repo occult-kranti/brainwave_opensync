@@ -74,4 +74,22 @@ describe('Bashar sound recipes', () => {
     expect(mix.volumeDb).toBe(0);
     expect(sanitizePresetMix(null)).toBeUndefined();
   });
+
+  it('every Bashar preset carries a purpose note and source video links', () => {
+    for (const p of BASHAR_PRESETS) {
+      expect(p.purpose && p.purpose.trim().length, `${p.id} purpose`).toBeGreaterThan(0);
+      expect(p.purpose!.toLowerCase(), p.id).not.toContain('induces');
+      expect(p.links && p.links.length, `${p.id} links`).toBeGreaterThan(0);
+      for (const l of p.links!) {
+        expect(l.url, p.id).toMatch(/^https:\/\/www\.youtube\.com\/watch\?v=[\w-]+$/);
+        expect(l.label.toLowerCase(), p.id).toContain('unverified');
+      }
+    }
+    // the catalog copy carries the same fields (dose/art merged in data layer)
+    for (const p of BASHAR_PRESETS) {
+      const full = getPresetById(p.id)!;
+      expect(full.purpose).toBe(p.purpose);
+      expect(full.links).toEqual(p.links);
+    }
+  });
 });

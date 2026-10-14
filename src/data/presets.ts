@@ -80,6 +80,10 @@ export interface Preset {
   dose?: PresetDoseInfo;
   /** Optional pack artwork under public/art/ (resolved with assetUrl at render). */
   art?: string;
+  /** Plain-language purpose/benefit note (shown on the card and spec sheet). */
+  purpose?: string;
+  /** External source links, e.g. session videos; labeled with verification status. */
+  links?: readonly { label: string; url: string }[];
 }
 
 /** One session's share of the H.870 adult weekly budget at an assumed level. */

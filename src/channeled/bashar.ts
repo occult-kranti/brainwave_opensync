@@ -15,6 +15,12 @@ const digest = (id: string): ExhibitSource => ({
   url: `https://www.youtube.com/watch?v=${id}`,
 });
 
+/** UI-facing source link for a preset card/spec sheet (short label, same honesty note). */
+const video = (id: string): { label: string; url: string } => ({
+  label: `Source video ${id} — auto-transcript digest, unverified`,
+  url: digest(id).url!,
+});
+
 export const DIGEST_SOURCE: ExhibitSource = {
   label: 'User-supplied bashar-opensync-prompt.md, sections 3–4 (auto-transcript digests, not verified transcripts)',
 };
@@ -235,6 +241,9 @@ export const BASHAR_PRESETS: readonly Preset[] = [
       })),
     },
     rationale: `${MAPPING_CONTEXT} Seven five-minute audio phases illustrate that chosen mapping; Grade A covers the division, Grade D covers any link to the source’s scale. ${MAPPING_LIMIT} The final 40 Hz and 66.6 Hz phases use monaural modulation.`,
+    purpose:
+      'Purpose: hear the source’s number scale translated into beat rates by one chosen, stated division (k = 5,000, anchored 200,000 ↔ 40 Hz). Goal: audit aid — once the arithmetic is transparent you can judge whether the claimed scale sounds like anything more than a fitted illustration. No physiological outcome is claimed or established.',
+    links: [video('p8JC21bFf5M'), video('hTlU_M_R0eE')],
     citations: [DIGEST_SOURCE.label, digest('p8JC21bFf5M').label, digest('hTlU_M_R0eE').label],
   },
   {
@@ -244,6 +253,9 @@ export const BASHAR_PRESETS: readonly Preset[] = [
       { name: 'Gamma-range illustration', durationSec: 600, carrierHz: 200, beatHz: 40, mode: 'monaural', gainDbFs: -16, rampSec: 20 },
     ] },
     rationale: 'A 10.5 Hz binaural segment followed by 40 Hz monaural modulation illustrates two descriptions in the supplied digest. Changing both rate and mode makes this a listening comparison, not a controlled neuroscience experiment. No EEG is measured. Alpha and gamma can coexist; the descriptions are unresolved without recordings and definitions.',
+    purpose:
+      'Purpose: put the digest’s alpha-range and gamma-range descriptions back to back so you can hear the difference yourself. Benefit: makes the unresolved alpha/gamma question concrete for your own judgment. It is a listening comparison only — nothing is measured and no brain state is promised.',
+    links: [video('7WjydoNj7hE'), video('mgSgI0ElfTI')],
     citations: [digest('7WjydoNj7hE').label, digest('mgSgI0ElfTI').label],
   },
   {
@@ -252,6 +264,9 @@ export const BASHAR_PRESETS: readonly Preset[] = [
       name: `Phi pitch ${n + 1}`, durationSec: 300, carrierHz, beatHz: 0, mode: 'binaural', gainDbFs: -16, rampSec: 20,
     })) },
     rationale: `Five sequential carriers follow 110 × φⁿ with no beat. ${PHI_NOTE} Full precision is retained in playback; displayed pitches are rounded. The starting pitch and durations are app design choices.`,
+    purpose:
+      'Purpose: hear five pitches related by the golden ratio exactly (110 × φⁿ), one per five-minute phase. Goal: experience the ratio as sound — a mathematics illustration you can verify by dividing each pitch by the previous one. Any “harmonic healing” reading is not established.',
+    links: [video('Rcjd1TkZUMY')],
     citations: [digest('Rcjd1TkZUMY').label],
   },
   {
@@ -268,6 +283,9 @@ export const BASHAR_PRESETS: readonly Preset[] = [
       },
     },
     rationale: `Five modeled bowls play together at 110 × φⁿ, with a steady 110 Hz sine root and a new strike every 12 seconds. These are synthesized instruments, not acoustic recordings. ${PHI_NOTE} The root, bowl voice, duration, level and timing are app choices.`,
+    purpose:
+      'Purpose: the golden-ratio ladder as a synthesized bowl chord for calm, meditative listening — the gentlest of the four Bashar sounds and the one meant for simply resting. Benefit: a slow, quietly re-struck soundscape; the pitch ratios are exact, while any therapeutic meaning remains unestablished.',
+    links: [video('Rcjd1TkZUMY')],
     citations: [digest('Rcjd1TkZUMY').label],
   },
 ];

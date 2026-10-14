@@ -67,3 +67,16 @@
   .preset-card { transition: none; }
   .preset-card:hover { transform: none; }
 }
+
+/* Source links + purpose line on preset cards */
+.preset-card-purpose { margin-top: 6px; }
+.preset-card-links { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 8px; }
+.preset-card-links a {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--amber);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--amber);
+}
+.preset-card-links a:hover { color: var(--teal); border-bottom-color: var(--teal); }

@@ -21,6 +21,10 @@ describe('W8 home & docs screens', () => {
     expect(html).toContain('Build a chord');
     expect(html).toContain('Find a tool or page');
     expect(html).toContain('Theory &amp; research');
+    expect(html).toContain('Research labs');
+    expect(html).toContain('data-testid="home-lab-lucid"');
+    expect(html).toContain('data-testid="home-lab-healing"');
+    expect(html).toContain('data-testid="home-lab-nature"');
     expect(html).not.toContain('<canvas');
     expect(html).not.toContain('LOWEST GRADE');
   });

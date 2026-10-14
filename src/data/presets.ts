@@ -9,6 +9,7 @@ import type { Grade } from './frequencies';
 import { BASHAR_PRESETS } from '@/channeled/bashar';
 import { EXPEDITION_PRESETS, LUCID_LAB_PRESETS, PRESET_ART } from './lucidLab';
 import { HEALING_PRESETS, HEALING_PRESETS_R4 } from './healingLab';
+import { VARIETY_PRESETS } from './varietyPack';
 import { CLEAN_PRESET_MIX, type PresetMix } from './presetMix';
 
 export type PresetCategory = 'Sleep' | 'Focus' | 'Relax' | 'Meditate' | 'Lucid Dream' | 'Experimental' | 'Infant';
@@ -818,6 +819,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
       'Low-level low-passed masking texture. NOTE: white-noise claims cannot lean on music-therapy evidence (Cochrane excludes white noise); keep <=50 dBA at crib and >=2 m away.',
     citations: ['Cochrane preterm-infant review (white noise excluded)', 'AAP 2023 noise-exposure policy statement'],
   },
+  ...VARIETY_PRESETS,
   ...LUCID_LAB_PRESETS,
   ...EXPEDITION_PRESETS,
   ...HEALING_PRESETS,

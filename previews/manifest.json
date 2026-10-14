@@ -237,6 +237,76 @@
       "bytes": 576044
     },
     {
+      "id": "sleep-rem-rebound-nap",
+      "sha256": "2263e8008b3d961ddc9b3d3724ab0c7d7bd47e968c447db5eccef0b790ec492f",
+      "bytes": 576044
+    },
+    {
+      "id": "sleep-432-drift",
+      "sha256": "ace00fc277532582a4b932862c2b1586c548a835dac380a9fc3963df2b922b7f",
+      "bytes": 576044
+    },
+    {
+      "id": "sleep-power-nap-25",
+      "sha256": "7e54ec300ef5575c921003260fab682045db2e3aad373be35afa3e1f389de696",
+      "bytes": 576044
+    },
+    {
+      "id": "focus-52-17-rhythm",
+      "sha256": "e529a5afc59245d99e9c3ce0c8cf781156e388bc331b8b7127f7776e5689e9f4",
+      "bytes": 576044
+    },
+    {
+      "id": "focus-study-alpha",
+      "sha256": "7c7e33965b510369528ba75619281d2c2f0c48e46979bc43794a1367dde1c0e1",
+      "bytes": 576044
+    },
+    {
+      "id": "focus-brown-rain",
+      "sha256": "d47bb7253919c5a67fc64f0a7b2e74144757b02dc81d453e363398232aa93167",
+      "bytes": 576044
+    },
+    {
+      "id": "relax-528-blind-pair",
+      "sha256": "69043a366efefc4411e8652e668878ccad633279fa77af7fbff066ec48a47166",
+      "bytes": 576044
+    },
+    {
+      "id": "relax-cyclic-sigh-pacer",
+      "sha256": "e5c730e818ff54c676dc54a732bc830af7201723a2b1cc6c9c21eed509443fcf",
+      "bytes": 576044
+    },
+    {
+      "id": "relax-bhramari-drone",
+      "sha256": "0a17039bb37dce62b9957e441cd496e89420f629aeb7e58eb0c7ca00c02b980d",
+      "bytes": 576044
+    },
+    {
+      "id": "meditate-nada-drone",
+      "sha256": "0a17039bb37dce62b9957e441cd496e89420f629aeb7e58eb0c7ca00c02b980d",
+      "bytes": 576044
+    },
+    {
+      "id": "meditate-bowl-bath-walk",
+      "sha256": "6b3b98cb59e97a27e8d2a0402cf4b076338c6a5f6b9e9d1a1bc79aa3561e4df9",
+      "bytes": 576044
+    },
+    {
+      "id": "meditate-zazen-descent",
+      "sha256": "0204166187cb88eab11a9f4f56ecbdd66df7275a13ec78d24121adcb4738e8a0",
+      "bytes": 576044
+    },
+    {
+      "id": "lucid-morning-nap-window",
+      "sha256": "2263e8008b3d961ddc9b3d3724ab0c7d7bd47e968c447db5eccef0b790ec492f",
+      "bytes": 576044
+    },
+    {
+      "id": "lucid-first-half-guard",
+      "sha256": "9c80dffda613634dbd06114dfae6b86736cd36e16ff005c6f11c52ed90fa3bbd",
+      "bytes": 576044
+    },
+    {
       "id": "lucid-tlr-training-bed",
       "sha256": "9184ce1d9607a7a4cf2ec35f4f9751f7d31e6af3b521ea3e35d12bea6687d008",
       "bytes": 576044
@@ -412,5 +482,5 @@
       "bytes": 576044
     }
   ],
-  "totalBytes": 46659564
+  "totalBytes": 54724180
 }

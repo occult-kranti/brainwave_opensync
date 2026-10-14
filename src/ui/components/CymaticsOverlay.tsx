@@ -8,7 +8,7 @@
  * it is not a measurement of the listener.
  */
 
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { X } from 'lucide-react';
 import {
   VIRTUAL_PLATES,
@@ -19,6 +19,7 @@ import {
   type SandState,
 } from '@/cymatics/chladni';
 import { renderFrame } from '@/cymatics/render';
+import { drawPlate3D } from '@/cymatics/plate3d';
 import { sampleAudioFeatures, SILENT_FEATURES } from '@/cymatics/audioLink';
 import { useSession } from '@/ui/session/useSession';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -31,6 +32,7 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sandRef = useRef<SandState | null>(null);
   const energyRef = useRef(0.15);
+  const [view3d, setView3d] = useState(true);
 
   // The plate is driven by the session carrier tone (fallback: the plate's
   // own fundamental when the engine is stopped).
@@ -66,19 +68,32 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
 
       const sand = sandRef.current;
       if (sand && !reduced) stepParticles(sand, field, dt * 0.9, { speed: 0.4, jitter: 0.02 + energyRef.current * 0.05 });
-      renderFrame(ctx, size, size, {
-        field,
-        circular: false,
-        mode: 'sand',
-        colormap: 'amber-grain',
-        particles: sand,
-        energy: energyRef.current,
-      });
+      if (view3d) {
+        drawPlate3D(ctx, size, size, field, {
+          time: now / 1000,
+          amp: 0.34,
+          energy: energyRef.current,
+          gridX: isMobile ? 52 : 76,
+          gridY: isMobile ? 36 : 54,
+          stride: 2,
+          particles: sand,
+          still: reduced,
+        });
+      } else {
+        renderFrame(ctx, size, size, {
+          field,
+          circular: false,
+          mode: 'sand',
+          colormap: 'gold-plate',
+          particles: sand,
+          energy: energyRef.current,
+        });
+      }
       if (!reduced) raf = requestAnimationFrame(draw);
     };
     raf = requestAnimationFrame(draw);
     return () => cancelAnimationFrame(raf);
-  }, [field, engineRef, running]);
+  }, [field, engineRef, running, view3d, isMobile]);
 
   const size = Math.min(520, typeof window === 'undefined' ? 520 : window.innerWidth - 48);
 
@@ -98,11 +113,15 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
         style={{ padding: 16, maxWidth: size + 32, width: '100%' }}
       >
-        <div className="flex items-center justify-between" style={{ marginBottom: 10 }}>
+        <div className="flex items-center justify-between" style={{ marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
           <span className="t-label text-3">SAND ON A SQUARE PLATE · STEEL 30×30 CM · DRIVEN BY {roundedDrive} HZ</span>
-          <button type="button" className="chip" aria-label="Close cymatics overlay" onClick={onClose}>
-            <X size={14} /> Close
-          </button>
+          <span className="flex gap-2">
+            <button type="button" className={`chip ${view3d ? 'chip-active' : ''}`} aria-pressed={view3d} onClick={() => setView3d(true)}>3D PLATE</button>
+            <button type="button" className={`chip ${!view3d ? 'chip-active' : ''}`} aria-pressed={!view3d} onClick={() => setView3d(false)}>2D SAND</button>
+            <button type="button" className="chip" aria-label="Close cymatics overlay" onClick={onClose}>
+              <X size={14} /> Close
+            </button>
+          </span>
         </div>
         <canvas
           ref={canvasRef}
@@ -112,7 +131,9 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
         />
         <p className="t-caption text-3" style={{ marginTop: 10 }}>
           Simulation: sand grains settle on the nodal lines of the plate mode nearest the session carrier — the same
-          eigenmode math as the Cymatics Studio page. A visualization of the sound, not a measurement of its effect on you.
+          eigenmode math as the Cymatics Studio page. In 3D the surface height is the plate's displacement field, so the
+          sand collects in the valleys; the gold palette matches a photographed steel-plate figure. A visualization of
+          the sound, not a measurement of its effect on you.
         </p>
       </div>
     </div>

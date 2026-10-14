@@ -7,8 +7,11 @@ import { describe, expect, it } from 'vitest';
 import {
   HEALING_GOV,
   HEALING_HYPOTHESES,
+  HEALING_HYPOTHESES_R4,
   HEALING_PRESETS,
+  HEALING_PRESETS_R4,
   HEALING_STUDIES,
+  HEALING_STUDIES_R4,
   NANO_PORTRAITS,
 } from '../healingLab';
 import { PRESETS, getPresetById, presetDurationMin } from '../presets';
@@ -16,11 +19,11 @@ import { BANNED_PHRASES } from '@/docs/vocabulary';
 
 const collectStrings = (): string[] => {
   const out: string[] = [];
-  for (const s of HEALING_STUDIES) out.push(s.name, s.setup, s.dose, s.outcome, s.note, s.source);
+  for (const s of [...HEALING_STUDIES, ...HEALING_STUDIES_R4]) out.push(s.name, s.setup, s.dose, s.outcome, s.note, s.source);
   for (const g of HEALING_GOV) out.push(g.name, g.years, g.agency, g.record, g.source);
   for (const n of NANO_PORTRAITS) out.push(n.label, n.physicalHz, n.context, n.citation);
-  for (const h of HEALING_HYPOTHESES) out.push(h.title, h.statement, h.prediction, h.homeTest, h.prior, ...h.citations);
-  for (const p of HEALING_PRESETS) out.push(p.title, p.rationale, ...p.citations);
+  for (const h of [...HEALING_HYPOTHESES, ...HEALING_HYPOTHESES_R4]) out.push(h.title, h.statement, h.prediction, h.homeTest, h.prior, ...h.citations);
+  for (const p of [...HEALING_PRESETS, ...HEALING_PRESETS_R4]) out.push(p.title, p.rationale, ...p.citations);
   return out;
 };
 
@@ -28,16 +31,19 @@ describe('healingLab data integrity', () => {
   it('has unique ids within and across collections', () => {
     const ids = [
       ...HEALING_STUDIES.map((x) => x.id),
+      ...HEALING_STUDIES_R4.map((x) => x.id),
       ...HEALING_GOV.map((x) => x.id),
       ...NANO_PORTRAITS.map((x) => x.id),
       ...HEALING_HYPOTHESES.map((x) => x.id),
+      ...HEALING_HYPOTHESES_R4.map((x) => x.id),
       ...HEALING_PRESETS.map((x) => x.id),
+      ...HEALING_PRESETS_R4.map((x) => x.id),
     ];
     expect(new Set(ids).size).toBe(ids.length);
   });
 
   it('every study states its dose (duration/cadence discipline)', () => {
-    for (const s of HEALING_STUDIES) {
+    for (const s of [...HEALING_STUDIES, ...HEALING_STUDIES_R4]) {
       for (const field of [s.name, s.setup, s.dose, s.outcome, s.note, s.source]) {
         expect(field.trim().length, s.id).toBeGreaterThan(0);
       }
@@ -76,7 +82,7 @@ describe('nano/ultrasound portrait arithmetic (recomputed)', () => {
 
 describe('healing preset pack', () => {
   it('all presets registered in the main catalog with dose metadata', () => {
-    for (const p of HEALING_PRESETS) {
+    for (const p of [...HEALING_PRESETS, ...HEALING_PRESETS_R4]) {
       const full = getPresetById(p.id);
       expect(full, p.id).toBeDefined();
       expect(full!.dose, p.id).toBeDefined();
@@ -140,14 +146,35 @@ describe('healing preset pack', () => {
   });
 
   it('healing hypotheses reference real presets with falsifiable fields', () => {
-    for (const h of HEALING_HYPOTHESES) {
+    for (const h of [...HEALING_HYPOTHESES, ...HEALING_HYPOTHESES_R4]) {
       expect(getPresetById(h.presetId), h.id).toBeDefined();
       expect(h.prediction.trim().length).toBeGreaterThan(0);
       expect(h.homeTest.trim().length).toBeGreaterThan(0);
     }
   });
 
-  it('keeps the catalog at or above 79 presets', () => {
-    expect(PRESETS.length).toBeGreaterThanOrEqual(79);
+  it('keeps the catalog at or above 81 presets', () => {
+    expect(PRESETS.length).toBeGreaterThanOrEqual(81);
+  });
+
+  it('Pythagorean evening descends 288→144 Hz over 20 quiet minutes (Sleep)', () => {
+    const p = getPresetById('heal-pythagorean-evening')!;
+    expect(p.spec.phases.map((ph) => ph.carrierHz)).toEqual([288, 240, 216, 192, 144]);
+    expect(presetDurationMin(p)).toBeCloseTo(20, 6);
+    expect(p.category).toBe('Sleep');
+    expect(p.rationale).toContain('few and good dreams');
+  });
+
+  it('Pythagorean morning ascends 144→288 Hz over 10 minutes (Focus)', () => {
+    const p = getPresetById('heal-pythagorean-morning')!;
+    expect(p.spec.phases.map((ph) => ph.carrierHz)).toEqual([144, 192, 216, 240, 288]);
+    expect(presetDurationMin(p)).toBeCloseTo(10, 6);
+    expect(p.category).toBe('Focus');
+  });
+
+  it('GENUS detail card records the primary-endpoint miss and the pending HOPE readout', () => {
+    const g = HEALING_STUDIES_R4.find((x) => x.id === 'heal-study-genus-detail')!;
+    expect(g.outcome).toContain('not met');
+    expect(g.note).toContain('NOT reported');
   });
 });

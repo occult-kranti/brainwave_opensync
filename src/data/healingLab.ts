@@ -533,3 +533,117 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
     citations: ['Evidence audit 2026: no peer-reviewed RCTs for therapeutic tuning forks'],
   },
 ];
+
+// ---------------------------------------------------------------------------
+// 6. Round-4 additions: GENUS detail, the ancient canon, the Bashar audit
+// ---------------------------------------------------------------------------
+
+export const HEALING_STUDIES_R4: readonly HealingStudy[] = [
+  {
+    id: 'heal-study-genus-detail',
+    name: 'GENUS/Spectris 40 Hz — the detailed trial record',
+    setup: 'OVERTURE (NCT03556280): 76 mild-to-moderate Alzheimer\'s participants, EEG-verified 40 Hz light+sound via the CogTx-001 device, self-administered at home with a care partner.',
+    dose: '1 hour every morning for 6 months (+12-month open-label extension); stimulation intensity personalized per participant at a clinic visit.',
+    outcome: 'Primary MADCOMS endpoint not met. Secondary measures: 76% less cognitive decline (MMSE), 77% less functional decline (ADCS-ADL), 69% slower whole-brain atrophy, corpus-callosum preservation. Adherence 85%; tinnitus 15% of active arm (0% sham); headache 22% vs 11%.',
+    grade: 'B',
+    note: 'HOPE (NCT05637801) — 673 participants, 70 sites, 12-month daily use — completed enrollment July 2025 and has NOT reported a readout as of October 2026. Everything before that verdict is feasibility-grade.',
+    source: 'Hajós et al. 2024, Front Neurol 15:1343588 (PMC10957179); Cognito businesswire enrollment notice, 1 Jul 2025',
+  },
+  {
+    id: 'heal-study-pythagoras-medicine',
+    name: 'Pythagorean musical medicine (Iamblichus, ~300 CE)',
+    setup: 'The oldest documented daily sound-hygiene routine in the Western canon: specific melodies against specific passions (despondency, rage, appetite), sung around a central lyre player.',
+    dose: 'Evening odes before bed for tranquil sleep and "few and good dreams"; morning songs against torpor; seasonal vernal paeans. A daily practice, not a one-off dose.',
+    outcome: 'Textual record only: Iamblichus, De Vita Pythagorica XV.64 and XXV.110–111 (melodies used "instead of medicine"; the lyre preferred over the pipe for its "liberal" sound).',
+    grade: 'D',
+    note: 'Grade A as a historical document, D as therapy. The authentic content is mode, order and daily routine — never a Hz value. Our Evening/Morning presets below realize the routine\'s shape, honestly labeled.',
+    source: 'Iamblichus, Life of Pythagoras XV 64, XXV 110–111 (Guthrie/Clark translations; Project Gutenberg 63300)',
+  },
+  {
+    id: 'heal-study-inayat-khan',
+    name: 'Hazrat Inayat Khan — The Mysticism of Sound and Music (1923)',
+    setup: 'Sufi teaching on sound as the source of manifestation; practices are chanting, zikr (remembrance repetition), and deep listening.',
+    dose: 'Daily chanting/listening practice; no frequencies, durations or decibels are specified anywhere in the text.',
+    outcome: 'A spiritual practice canon, not a measurement tradition: zero Hz assignments. Any product mapping "Sufi frequencies" to Hz is a modern graft.',
+    grade: 'D',
+    note: 'Same verdict as the chakra-Hz graft: genuine contemplative system, frequency-free. Respect the practice; refuse the numerology.',
+    source: 'Inayat Khan, The Mysticism of Sound and Music (1923), public-domain text audit',
+  },
+  {
+    id: 'heal-study-bashar-healing-audit',
+    name: 'Bashar corpus — frequency-healing content audit',
+    setup: 'The supplied session digests (auto-transcripts, unverified) were audited for healing-frequency prescriptions.',
+    dose: 'The digests mention EEG-range numbers (a 40–100 "gamma" description, a 9→10–11 Hz "set point" change) and a phi pitch ratio — no prescribed healing frequencies, no session durations, no dosing protocol.',
+    outcome: 'Nothing in the supplied material supports a Hz-based healing prescription; the four Bashar sound demonstrations in this app illustrate the audit itself.',
+    grade: 'D',
+    note: 'Source videos are linked on each Bashar preset card (Presets → Bashar sounds). The full measurement audit lives on the Channeled Sources page.',
+    source: 'Supplied digest audit (see /channeled); DIGEST_SOURCE limits apply',
+  },
+];
+
+export const HEALING_PRESETS_R4: readonly PresetSpec[] = [
+  {
+    id: 'heal-pythagorean-evening',
+    title: 'Pythagorean Evening Purification (20 min)',
+    category: 'Sleep',
+    spec: {
+      autoShutoff: true,
+      phases: [
+        { name: 'lyre-v', durationSec: 240, carrierHz: 288, beatHz: 0, gainDbFs: -18, rampSec: 30 },
+        { name: 'lyre-iv', durationSec: 240, carrierHz: 240, beatHz: 0, gainDbFs: -20, rampSec: 30 },
+        { name: 'lyre-iii', durationSec: 240, carrierHz: 216, beatHz: 0, gainDbFs: -22, rampSec: 30 },
+        { name: 'lyre-ii', durationSec: 240, carrierHz: 192, beatHz: 0, gainDbFs: -24, rampSec: 30 },
+        { name: 'lyre-i', durationSec: 240, carrierHz: 144, beatHz: 0, gainDbFs: -28, rampSec: 45 },
+      ],
+    },
+    grade: 'C',
+    rationale:
+      'Iamblichus records that the Pythagoreans closed the day with particular odes to shed "diurnal perturbations" and ' +
+      'buy tranquil sleep with few and good dreams (VP XXV.110–111). No melodies survive, so this realizes the routine\'s ' +
+      'SHAPE honestly: five quiet descending tones (the harmonic ladder downward, 288→144 Hz), four minutes each, fading ' +
+      'out. Ancient practice, modern relaxation framing — not a sleep treatment.',
+    citations: [
+      'Iamblichus, Life of Pythagoras XXV 110–111 (evening purification for tranquil sleep)',
+      'Bavafa 2023 et al. — audio sleep-aid evidence remains small and mixed',
+    ],
+  },
+  {
+    id: 'heal-pythagorean-morning',
+    title: 'Pythagorean Morning Lyre (10 min)',
+    category: 'Focus',
+    spec: {
+      autoShutoff: true,
+      phases: [
+        { name: 'rise-i', durationSec: 120, carrierHz: 144, beatHz: 0, gainDbFs: -22, rampSec: 20 },
+        { name: 'rise-ii', durationSec: 120, carrierHz: 192, beatHz: 0, gainDbFs: -20, rampSec: 20 },
+        { name: 'rise-iii', durationSec: 120, carrierHz: 216, beatHz: 0, gainDbFs: -18, rampSec: 20 },
+        { name: 'rise-iv', durationSec: 120, carrierHz: 240, beatHz: 0, gainDbFs: -18, rampSec: 20 },
+        { name: 'rise-v', durationSec: 120, carrierHz: 288, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+      ],
+    },
+    grade: 'C',
+    rationale:
+      'The complement: Iamblichus records morning songs "of another kind" to shake off sleep\'s torpor. Rendered as the ' +
+      'ascending ladder (144→288 Hz), two minutes per step, over ten minutes — a musical get-up ritual from the oldest ' +
+      'documented sound routine in the canon. Wakefulness aid in the ritual sense; no frequency-specific claim.',
+    citations: ['Iamblichus, Life of Pythagoras XXV 111 (morning songs against torpor)'],
+  },
+];
+
+export const HEALING_HYPOTHESES_R4: readonly HealingHypothesis[] = [
+  {
+    id: 'hyp-evening-descent-order',
+    presetId: 'heal-pythagorean-evening',
+    title: 'Descending vs ascending order at bedtime',
+    statement:
+      'The evening purification tradition implies a wind-DOWN contour. If contour matters for subjective sleepiness, ' +
+      'the descending ladder should beat its own ascending reversal at bedtime.',
+    prediction: 'Descending nights score ≥1 point higher on sleep-onset ease (0–10) than ascending nights; a null keeps it a ritual.',
+    homeTest:
+      'Six nights: three with this preset (descending), three with the Morning Lyre at equally low volume (ascending), ' +
+      'randomized; rate how easily sleep came on a 0–10 scale each morning.',
+    prior: 'Small. Music-direction effects on sleepiness are plausible but modest; the evidence base is the routine, not the contour.',
+    grade: 'C',
+    citations: ['Iamblichus VP XXV 110–111 (routine)', 'sleep-trial synthesis (small, mixed effects)'],
+  },
+];

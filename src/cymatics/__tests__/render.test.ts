@@ -33,9 +33,10 @@ function expectBufferSane(buf: Uint8ClampedArray, w: number, h: number) {
 }
 
 describe('colormaps', () => {
-  it('exposes the five required lab colormaps', () => {
+  it('exposes the six required lab colormaps', () => {
     expect(COLORMAPS.map((c) => c.id)).toEqual([
       'amber-grain',
+      'gold-plate',
       'teal-glow',
       'monochrome',
       'inferno-warm',

@@ -40,6 +40,7 @@ import {
   type SandState,
 } from '@/cymatics/chladni';
 import { COLORMAPS, renderFrame, type ColormapName } from '@/cymatics/render';
+import { drawPlate3D } from '@/cymatics/plate3d';
 import { sampleAudioFeatures, smoothDriveHz } from '@/cymatics/audioLink';
 import { STORAGE_KEYS } from '@/lib/storage';
 
@@ -168,7 +169,7 @@ export default function Cymatics() {
   const [audioActive, setAudioActive] = useState(false);
 
   // ---- render state --------------------------------------------------------
-  const [renderMode, setRenderMode] = useState<'lines' | 'sand'>('lines');
+  const [renderMode, setRenderMode] = useState<'lines' | 'sand' | 'plate3d'>('lines');
   const [colormap, setColormap] = useState<ColormapName>('amber-grain');
   const [threshold, setThreshold] = useState(0.08);
   const [particleCount, setParticleCount] = useState(6000);
@@ -302,21 +303,33 @@ export default function Cymatics() {
       }
 
       const sand = sandRef.current;
-      if (renderMode === 'sand' && sand) {
+      if ((renderMode === 'sand' || renderMode === 'plate3d') && sand) {
         stepParticles(sand, field, dt * speed, {
           jitter: 0.012 + energyRef.current * 0.05,
         });
       }
 
-      renderFrame(buf.getContext('2d'), resolution, resolution, {
-        field,
-        circular: shape === 'circular',
-        mode: renderMode,
-        colormap,
-        threshold,
-        particles: renderMode === 'sand' ? sand : null,
-        energy: energyRef.current,
-      });
+      if (renderMode === 'plate3d') {
+        drawPlate3D(buf.getContext('2d')!, resolution, resolution, field, {
+          time: now / 1000,
+          amp: 0.34,
+          energy: energyRef.current,
+          gridX: resolution >= 512 ? 76 : 52,
+          gridY: resolution >= 512 ? 54 : 36,
+          stride: 2,
+          particles: sand,
+        });
+      } else {
+        renderFrame(buf.getContext('2d'), resolution, resolution, {
+          field,
+          circular: shape === 'circular',
+          mode: renderMode,
+          colormap,
+          threshold,
+          particles: renderMode === 'sand' ? sand : null,
+          energy: energyRef.current,
+        });
+      }
       ctx.imageSmoothingEnabled = true;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(buf, 0, 0, canvas.width, canvas.height);
@@ -331,15 +344,22 @@ export default function Cymatics() {
     const off = document.createElement('canvas');
     off.width = res;
     off.height = res;
-    renderFrame(off.getContext('2d'), res, res, {
-      field,
-      circular: shape === 'circular',
-      mode: renderMode,
-      colormap,
-      threshold,
-      particles: renderMode === 'sand' ? sandRef.current : null,
-      energy: 0,
-    });
+    if (renderMode === 'plate3d') {
+      drawPlate3D(off.getContext('2d')!, res, res, field, {
+        time: 4, amp: 0.34, energy: 0, gridX: 76, gridY: 54, stride: 2,
+        particles: sandRef.current, still: true,
+      });
+    } else {
+      renderFrame(off.getContext('2d'), res, res, {
+        field,
+        circular: shape === 'circular',
+        mode: renderMode,
+        colormap,
+        threshold,
+        particles: renderMode === 'sand' ? sandRef.current : null,
+        energy: 0,
+      });
+    }
     off.toBlob((blob) => {
       if (!blob) return;
       const url = URL.createObjectURL(blob);
@@ -800,6 +820,7 @@ export default function Cymatics() {
             <div className="flex gap-2" style={{ marginBottom: 16 }}>
               <Chip active={renderMode === 'lines'} onClick={() => setRenderMode('lines')}>NODAL LINES</Chip>
               <Chip active={renderMode === 'sand'} onClick={() => setRenderMode('sand')}>SAND</Chip>
+              <Chip active={renderMode === 'plate3d'} onClick={() => setRenderMode('plate3d')}>3D PLATE</Chip>
             </div>
             <div className="flex flex-col gap-4">
               <div>
@@ -815,7 +836,7 @@ export default function Cymatics() {
               {renderMode === 'lines' && (
                 <Slider label="LINE WIDTH" value={threshold} min={0.01} max={0.3} step={0.005} onChange={setThreshold} format={(v) => v.toFixed(3)} />
               )}
-              {renderMode === 'sand' && (
+              {(renderMode === 'sand' || renderMode === 'plate3d') && (
                 <>
                   <Slider
                     label="PARTICLES"

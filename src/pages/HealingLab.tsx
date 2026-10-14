@@ -19,7 +19,9 @@ import { getPresetById, presetDurationMin, type Preset } from '@/data/presets';
 import {
   HEALING_GOV,
   HEALING_HYPOTHESES,
+  HEALING_HYPOTHESES_R4,
   HEALING_STUDIES,
+  HEALING_STUDIES_R4,
   NANO_PORTRAITS,
 } from '@/data/healingLab';
 import { fmtClock } from '@/ui/session/sessionMath';
@@ -82,8 +84,10 @@ function PresetMiniCard({ preset }: { preset: Preset }) {
   );
 }
 
-const HEALING_IDS = ['heal-bowl-session', 'heal-vat-skille-scan', 'heal-wbv-30-analog', 'heal-pythagorean-ladder'];
+const HEALING_IDS = ['heal-bowl-session', 'heal-vat-skille-scan', 'heal-wbv-30-analog', 'heal-pythagorean-ladder', 'heal-pythagorean-evening', 'heal-pythagorean-morning'];
 const NANO_IDS = ['exp-sonodynamic-portrait', 'exp-piezo-nano-portrait', 'exp-tuning-fork-128'];
+const ALL_STUDIES = [...HEALING_STUDIES, ...HEALING_STUDIES_R4];
+const ALL_HYPOTHESES = [...HEALING_HYPOTHESES, ...HEALING_HYPOTHESES_R4];
 const byId = (id: string) => getPresetById(id)!;
 
 const JUMPS = [
@@ -126,7 +130,7 @@ export default function HealingLab() {
         <SectionTitle icon={<BookMarked size={18} />} id="heal-evidence" title="The evidence, with doses"
           sub="Every card carries the studied dose — frequency, session length, cadence — because 'how long and how often' is where healing-sound claims usually go vague." />
         <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))' }}>
-          {HEALING_STUDIES.map((s) => (
+          {ALL_STUDIES.map((s) => (
             <div key={s.id} className="panel" style={{ padding: 18 }}>
               <div className="flex items-center justify-between" style={{ marginBottom: 6 }}>
                 <span className="t-label text-3">STUDY</span>
@@ -249,7 +253,7 @@ export default function HealingLab() {
         <SectionTitle icon={<ListChecks size={18} />} id="heal-hypotheses" title="Hypothesis ledger — healing edition"
           sub="Falsifiable home tests for the healing presets, including the two honest nulls: portraits should behave aesthetically, and folklore forks should not beat their neighbors." />
         <div className="flex flex-col gap-4">
-          {HEALING_HYPOTHESES.map((h) => {
+          {ALL_HYPOTHESES.map((h) => {
             const preset = getPresetById(h.presetId);
             return (
               <div key={h.id} className="panel" style={{ padding: 18, borderLeft: '3px solid var(--amber)' }}>

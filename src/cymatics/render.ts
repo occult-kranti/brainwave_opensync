@@ -22,10 +22,12 @@ export type ColormapName =
   | 'teal-glow'
   | 'monochrome'
   | 'inferno-warm'
-  | 'spectrum-lab';
+  | 'spectrum-lab'
+  | 'gold-plate';
 
 export const COLORMAPS: readonly { id: ColormapName; label: string }[] = [
   { id: 'amber-grain', label: 'AMBER GRAIN' },
+  { id: 'gold-plate', label: 'GOLD PLATE (PHOTO-MATCHED)' },
   { id: 'teal-glow', label: 'TEAL GLOW' },
   { id: 'monochrome', label: 'MONOCHROME' },
   { id: 'inferno-warm', label: 'INFERNO WARM' },
@@ -42,6 +44,13 @@ const COLORMAP_STOPS: Record<ColormapName, readonly Rgb[]> = {
     [122, 94, 38],
     [217, 164, 65],
     [240, 222, 178],
+  ],
+  'gold-plate': [
+    [10, 8, 6],
+    [44, 34, 26],
+    [97, 81, 66],
+    [177, 157, 137],
+    [240, 226, 205],
   ],
   'teal-glow': [
     [11, 12, 13],

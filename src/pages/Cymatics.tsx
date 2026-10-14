@@ -41,6 +41,8 @@ import {
 } from '@/cymatics/chladni';
 import { COLORMAPS, renderFrame, type ColormapName } from '@/cymatics/render';
 import { drawPlate3D } from '@/cymatics/plate3d';
+import { Field4D } from '@/ui/components/Field4D';
+import { useField4d } from '@/hooks/useField4d';
 import { sampleAudioFeatures, smoothDriveHz } from '@/cymatics/audioLink';
 import { STORAGE_KEYS } from '@/lib/storage';
 
@@ -169,8 +171,9 @@ export default function Cymatics() {
   const [audioActive, setAudioActive] = useState(false);
 
   // ---- render state --------------------------------------------------------
-  const [renderMode, setRenderMode] = useState<'lines' | 'sand' | 'plate3d'>('lines');
-  const [colormap, setColormap] = useState<ColormapName>('amber-grain');
+  const [renderMode, setRenderMode] = useState<'lines' | 'sand' | 'plate3d'>('plate3d');
+  const [colormap, setColormap] = useState<ColormapName>('gold-plate');
+  const [field4dOn, setField4dOn] = useField4d();
   const [threshold, setThreshold] = useState(0.08);
   const [particleCount, setParticleCount] = useState(6000);
   const [speed, setSpeed] = useState(1);
@@ -539,8 +542,10 @@ export default function Cymatics() {
               borderTop: '1px solid var(--line-1)',
               borderBottom: '1px solid var(--line-1)',
               position: 'relative',
+              isolation: 'isolate',
             }}
           >
+            {field4dOn && <Field4D />}
             <canvas
               ref={displayRef}
               width={640}
@@ -818,9 +823,10 @@ export default function Cymatics() {
 
           <Panel title="RENDER">
             <div className="flex gap-2" style={{ marginBottom: 16 }}>
-              <Chip active={renderMode === 'lines'} onClick={() => setRenderMode('lines')}>NODAL LINES</Chip>
-              <Chip active={renderMode === 'sand'} onClick={() => setRenderMode('sand')}>SAND</Chip>
               <Chip active={renderMode === 'plate3d'} onClick={() => setRenderMode('plate3d')}>3D PLATE</Chip>
+              <Chip active={renderMode === 'sand'} onClick={() => setRenderMode('sand')}>SAND</Chip>
+              <Chip active={renderMode === 'lines'} onClick={() => setRenderMode('lines')}>NODAL LINES</Chip>
+              <Chip active={field4dOn} onClick={() => setField4dOn(!field4dOn)}>4D FIELD</Chip>
             </div>
             <div className="flex flex-col gap-4">
               <div>

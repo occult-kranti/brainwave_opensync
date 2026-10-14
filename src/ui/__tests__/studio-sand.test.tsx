@@ -238,13 +238,15 @@ function spyCtxWithImageMirror(images: CtxRec['images']) {
 }
 
 describe('StudioCymatics — LINES/SAND toggle', () => {
-  it('header carries both render-mode chips; LINES is the default', async () => {
+  it('header carries the render-mode chips; 3D plate is the default', async () => {
     const c = await mountCymatics(null);
     const panel = c.querySelector('[data-testid="studio-cymatics"]')!;
-    expect(panel.getAttribute('data-render-mode')).toBe('lines');
+    expect(panel.getAttribute('data-render-mode')).toBe('plate3d');
+    const plate = c.querySelector('[data-testid="cymatics-render-plate3d"]')!;
     const lines = c.querySelector('[data-testid="cymatics-render-lines"]')!;
     const sand = c.querySelector('[data-testid="cymatics-render-sand"]')!;
-    expect(lines.getAttribute('aria-pressed')).toBe('true');
+    expect(plate.getAttribute('aria-pressed')).toBe('true');
+    expect(lines.getAttribute('aria-pressed')).toBe('false');
     expect(sand.getAttribute('aria-pressed')).toBe('false');
   });
 

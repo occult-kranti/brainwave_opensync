@@ -45,6 +45,7 @@ import {
 } from '@/cymatics/chladni';
 import { renderFrame } from '@/cymatics/render';
 import { drawPlate3D } from '@/cymatics/plate3d';
+import { useOrbitCamera } from '@/hooks/useOrbitCamera';
 import {
   driveFromFeatures,
   sampleAudioFeatures,
@@ -101,6 +102,7 @@ export function StudioCymatics({
   const [live, setLive] = useState(false);
   const [readout, setReadout] = useState<{ hz: number; mode: string } | null>(null);
   const [visible, setVisible] = useState(true);
+  const { cam: orbitCam, interacted: orbited, bind: orbitBind } = useOrbitCamera();
 
   // An explicit prop drives the panel on its own; otherwise follow transport.
   const driving = running || analyser != null;
@@ -196,6 +198,7 @@ export function StudioCymatics({
           gridY: 30,
           stride: 2,
           particles,
+          orbit: orbited.current ? { ...orbitCam.current } : undefined,
         });
       } else {
         renderFrame(buf.getContext('2d'), RES, RES, {
@@ -213,7 +216,7 @@ export function StudioCymatics({
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [driving, visible, mode, renderMode, analyser, engineRef]);
+  }, [driving, visible, mode, renderMode, analyser, engineRef, orbitCam, orbited]);
 
   // Idle: paint the static deterministic frame once, schedule nothing. Sand
   // mode shows the freshly seeded resting layout (fixed seed → identical
@@ -315,7 +318,8 @@ export function StudioCymatics({
       </div>
       <canvas
         ref={canvasRef}
-        style={{ flex: 1, width: '100%', display: 'block', minHeight: 0 }}
+        {...orbitBind}
+        style={{ flex: 1, width: '100%', display: 'block', minHeight: 0, touchAction: renderMode === 'plate3d' ? 'none' : 'auto', cursor: renderMode === 'plate3d' ? 'grab' : 'default' }}
         aria-label={
           live
             ? renderMode === 'sand'

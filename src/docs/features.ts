@@ -892,7 +892,6 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     module: 'Cymatic Studio',
     route: '/cymatics',
     name: 'Chladni cymatic patterns',
-    status: 'in-verification',
     grade: 'A',
     gradeScope: 'Grade A plate physics; any therapeutic reading of the geometry is Grade D and is not made here.',
     simple:
@@ -905,9 +904,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
       bad: 'A washed-out or flickering figure means the driving signal is unsteady — check the engine first.',
     },
     howTo: [
-      'Wait for the module to leave verification, then open Cymatic Studio.',
-      'Drive it from a Studio tone and watch the nodal lines form.',
-      'Sweep the frequency slowly and compare figures across modes.',
+      'Open Cymatic Studio and pick 3D PLATE, SAND, or NODAL LINES.',
+      'Drag the plate to orbit; scroll or pinch to zoom; double-click resets the camera.',
+      'Try 5D PHASE to watch displacement and velocity trade places in color.',
     ],
   },
   {

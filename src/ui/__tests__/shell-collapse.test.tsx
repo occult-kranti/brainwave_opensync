@@ -42,6 +42,7 @@ const ALL_ROUTE_PATHS = [
   '/dream',
   '/lucid',
   '/healing',
+  '/nature',
   '/replication',
   '/safety',
   '/knowledge',

@@ -307,6 +307,46 @@
       "bytes": 576044
     },
     {
+      "id": "nature-cat-purr-companion",
+      "sha256": "41a23ecf73738f608dcf306d75e83f777109e81c320dd55c7cb83215782487fd",
+      "bytes": 576044
+    },
+    {
+      "id": "nature-sparrow-band",
+      "sha256": "98e83c5879fd03a4695936e1c6dd374866ac41191fa3af07843025d5e4218ea1",
+      "bytes": 576044
+    },
+    {
+      "id": "nature-bluejay-jeer",
+      "sha256": "81ee4d83c1d1608674a5668497f272b00d7521c1bbd378bcb2077cb56116bdb2",
+      "bytes": 576044
+    },
+    {
+      "id": "nature-squirrel-alarm",
+      "sha256": "b6f8b1a31f3ab17a6f08e1606ba0dff8797375a8d39a5ef998bae80b8b8a319b",
+      "bytes": 576044
+    },
+    {
+      "id": "nature-plant-clicks-portrait",
+      "sha256": "61edc6084bdef6fef224d0da625d2079909bf04d2909c1dde4dfc626c7d3bacc",
+      "bytes": 576044
+    },
+    {
+      "id": "nature-bee-buzz-portrait",
+      "sha256": "098517bb2a05a4371f9007f4aedeeec0ab2babfe35c76c6689b6ad5919a53bf7",
+      "bytes": 576044
+    },
+    {
+      "id": "nature-dolbear-cricket",
+      "sha256": "69bd9d83ce004b01d7ba88e1d9d30dbfcfd0241da7356a84223e985afe82b3cb",
+      "bytes": 576044
+    },
+    {
+      "id": "nature-stream-soundscape",
+      "sha256": "a55110dae93f535c55965e1ad27daaf93068a747208ae66006c4d71b7f671138",
+      "bytes": 576044
+    },
+    {
       "id": "lucid-tlr-training-bed",
       "sha256": "9184ce1d9607a7a4cf2ec35f4f9751f7d31e6af3b521ea3e35d12bea6687d008",
       "bytes": 576044
@@ -482,5 +522,5 @@
       "bytes": 576044
     }
   ],
-  "totalBytes": 54724180
+  "totalBytes": 59332532
 }

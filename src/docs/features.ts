@@ -66,6 +66,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/dream', label: 'Sleep & Dream' },
   { route: '/lucid', label: 'Lucid Audio Lab' },
   { route: '/healing', label: 'Healing Sound Lab' },
+  { route: '/nature', label: 'Nature Calls Lab' },
   { route: '/replication', label: 'Replication Bay' },
   { route: '/quicklab', label: 'Quick Lab' },
   { route: '/theory', label: 'Theory Explorer' },
@@ -505,6 +506,41 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
       'Preview a preset quietly, then load it into Studio.',
       'Recompute any portrait row as the listed value times 2 to the minus n.',
       'Use headphones or a subwoofer for the low-frequency scan.',
+    ],
+  },
+  // -------------------------------------------------------- Nature Calls Lab
+  {
+    id: 'nature-call-signs',
+    module: 'Nature Calls Lab',
+    route: '/nature',
+    name: 'Animal call-sign cards',
+    grade: 'B',
+    gradeScope: 'Measured bands and documented call meanings; hearing-range values come from the cited audiogram literature.',
+    simple:
+      'Learn what the cat, sparrow, blue jay, and squirrel around you are saying, with the measured frequency band of each call. Cards show the call table up front. Details and sources sit behind the info button.',
+    deep:
+      'Each species card lists hearing range, three documented calls with bands (cat purr 25–30 Hz with the 380 Hz solicitation cry; sparrow chirps 3–4.5 kHz with the urban pitch shift; jay jeer 1.5–3.5 kHz plus 2–4.5 kHz hawk mimicry; squirrel kuk/quaa/moan at 2–5 kHz dominant), an observation protocol, and a graded source line. Field playback rules are restrictive by design and rendered as a permanent ethics panel. The Analyzer page links across for reading real spectrograms outdoors.',
+    howTo: [
+      'Pick a species card and read its call table.',
+      'Open the info button for hearing range, protocol, and sources.',
+      'Train your ear with the band presets before any outdoor listening.',
+    ],
+  },
+  {
+    id: 'nature-presets-thermometer',
+    module: 'Nature Calls Lab',
+    route: '/nature',
+    name: 'Nature presets & cricket thermometer',
+    grade: 'C',
+    gradeScope: 'Band-learning value of synthesized approximations; portrait presets are arithmetic-exact but not recordings.',
+    simple:
+      'Hear the bands the animals use, plus plant ultrasound and bee-buzz portraits, and a cricket chirp that tells the temperature. The slider widget turns Dolbear’s law into a live calculator. Presets are teaching tools, not bird callers.',
+    deep:
+      'Synthesized presets cover the purr rate (25 Hz AM), the sparrow band with its +0.8 kHz urban shift, the jay jeer and hawk-mimic bands, squirrel kuk/quaa rate differences, the plant-ultrasound band as octave portraits (20–100 kHz ÷ 2⁸–2⁹), the ~350 Hz buzz-pollination band, and a 2 chirp/s 70 °F Dolbear reference. The widget computes chirps per second from °F via rate = (F − 40) × 4 / 60 and flags the 55–100 °F validity band. The stream soundscape bed cites the Buxton 2021 meta-analysis.',
+    howTo: [
+      'Slide the thermometer and note the chirp rate.',
+      'Play the 70 °F reference and compare with real crickets at night.',
+      'Keep any outdoor playback under thirty seconds and stop on reaction.',
     ],
   },
 ];

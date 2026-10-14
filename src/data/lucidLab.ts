@@ -1296,4 +1296,12 @@ export const PRESET_ART: Record<string, string> = {
   'meditate-zazen-descent': 'art/meditate-dawn.jpg',
   'lucid-morning-nap-window': 'art/lucid-dream.jpg',
   'lucid-first-half-guard': 'art/lucid-dream.jpg',
+  'nature-cat-purr-companion': 'art/cat-purr.jpg',
+  'nature-sparrow-band': 'art/sparrow.jpg',
+  'nature-bluejay-jeer': 'art/bluejay.jpg',
+  'nature-squirrel-alarm': 'art/squirrel.jpg',
+  'nature-plant-clicks-portrait': 'art/plant-clicks.jpg',
+  'nature-bee-buzz-portrait': 'art/bee-buzz.jpg',
+  'nature-dolbear-cricket': 'art/cricket-dolbear.jpg',
+  'nature-stream-soundscape': 'art/relax-water.jpg',
 };

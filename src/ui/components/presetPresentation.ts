@@ -41,3 +41,10 @@ export function presetMatchesSearch(preset: Preset, query: string): boolean {
   const text = [preset.title, preset.id, preset.category, presetSoundDescription(preset), presetSignalSummary(preset), ...preset.spec.phases.map(phaseSoundLabel)].join(' ').toLowerCase();
   return words.every((word) => text.includes(word));
 }
+
+/** Single-line use case for lab cards: the authored purpose, else the rationale's first sentence. */
+export function presetUseCase(p: Preset): string {
+  if (p.purpose && p.purpose.trim()) return p.purpose;
+  const first = p.rationale.split(/(?<=[.!?])\s/)[0] ?? p.rationale;
+  return first.length > 170 ? `${first.slice(0, 167)}…` : first;
+}

@@ -9,13 +9,14 @@
  * not Hz. Claim discipline per src/docs/vocabulary.ts.
  */
 
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import { Archive, BookMarked, FlaskConical, HeartPulse, ListChecks, Orbit } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { Chip, Panel, WarningChip } from '@/ui/components/primitives';
-import { useSession } from '@/ui/session/useSession';
-import { getPresetById, presetDurationMin, type Preset } from '@/data/presets';
+import { DetailPopover } from '@/ui/components/DetailPopover';
+import { LabPresetCard } from '@/ui/components/LabPresetCard';
+import { getPresetById, presetDurationMin } from '@/data/presets';
 import {
   HEALING_GOV,
   HEALING_HYPOTHESES,
@@ -27,7 +28,6 @@ import {
 import { fmtClock } from '@/ui/session/sessionMath';
 import { Field4D } from '@/ui/components/Field4D';
 import { useField4d } from '@/hooks/useField4d';
-import { assetUrl } from '@/lib/assetUrl';
 
 function SectionTitle({ icon, id, title, sub }: { icon: ReactNode; id: string; title: string; sub: string }) {
   return (
@@ -38,49 +38,6 @@ function SectionTitle({ icon, id, title, sub }: { icon: ReactNode; id: string; t
       </div>
       <p className="t-body-sm text-2" style={{ marginBottom: 16 }}>{sub}</p>
     </div>
-  );
-}
-
-function PresetMiniCard({ preset }: { preset: Preset }) {
-  const session = useSession();
-  const navigate = useNavigate();
-  const playing = session.previewId === `preset:${preset.id}`;
-  const blocked = session.running || session.panicked || session.muted;
-  const preview = () => {
-    if (blocked) return;
-    if (!session.advisoryAcknowledged) { session.openAdvisory(); return; }
-    session.previewPreset(preset);
-  };
-  const load = () => {
-    session.stopPreview(); session.stop(); session.loadPreset(preset); navigate('/studio');
-  };
-  return (
-    <article className="panel" style={{ padding: 18, overflow: 'hidden' }} data-testid={`heal-preset-${preset.id}`}>
-      {preset.art && (
-        <img
-          src={assetUrl(preset.art)}
-          alt={`${preset.title} cover art`}
-          loading="lazy"
-          style={{ width: 'calc(100% + 36px)', margin: '-18px -18px 12px', aspectRatio: '3 / 1', objectFit: 'cover', display: 'block', opacity: 0.9 }}
-        />
-      )}
-      <div className="flex items-center justify-between" style={{ marginBottom: 6 }}>
-        <span className="t-label text-3">FULL SESSION · {fmtClock(presetDurationMin(preset) * 60)}</span>
-        <GradeBadge grade={preset.grade} citation={{ verdict: 'See rationale and sources.', summary: preset.rationale, source: preset.citations[0] }} />
-      </div>
-      <h3 className="t-h3">{preset.title}</h3>
-      <p className="t-body-sm text-2" style={{ marginTop: 8 }}>{preset.rationale}</p>
-      <ul className="t-caption font-mono2 text-3" style={{ marginTop: 8, paddingLeft: 0, listStyle: 'none' }}>
-        {preset.citations.map((c) => <li key={c} style={{ marginTop: 4 }}>▸ {c}</li>)}
-      </ul>
-      <div className="flex gap-2" style={{ marginTop: 12, flexWrap: 'wrap' }}>
-        <button type="button" className={`chip ${playing ? 'chip-active' : ''}`} disabled={blocked} onClick={preview}
-          aria-label={playing ? `Stop preview of ${preset.title}` : `Preview first 10 seconds of ${preset.title}`}>
-          {playing ? '■ STOP' : '▶ PREVIEW · 10 S'}
-        </button>
-        <button type="button" className="chip chip-active" onClick={load}>LOAD INTO STUDIO</button>
-      </div>
-    </article>
   );
 }
 
@@ -134,14 +91,19 @@ export default function HealingLab() {
             <div key={s.id} className="panel" style={{ padding: 18 }}>
               <div className="flex items-center justify-between" style={{ marginBottom: 6 }}>
                 <span className="t-label text-3">STUDY</span>
-                <GradeBadge grade={s.grade} minus={s.gradeMinus} citation={{ verdict: s.note, summary: s.outcome, source: s.source }} />
+                <span className="flex items-center gap-1">
+                  <GradeBadge grade={s.grade} minus={s.gradeMinus} compact />
+                  <DetailPopover title={s.name} grade={s.grade} label={`Details: ${s.name}`}>
+                    <p className="t-body-sm" style={{ color: 'var(--text-2)' }}><strong>Setup · </strong>{s.setup}</p>
+                    <p className="t-body-sm" style={{ color: 'var(--amber)', marginTop: 8 }}><strong>Dose · </strong>{s.dose}</p>
+                    <p className="t-body-sm" style={{ color: 'var(--teal)', marginTop: 8 }}><strong>Outcome · </strong>{s.outcome}</p>
+                    <p className="t-caption" style={{ color: 'var(--text-3)', marginTop: 8 }}>{s.note}</p>
+                    <p className="t-caption font-mono2" style={{ color: 'var(--text-3)', marginTop: 8 }}>▸ {s.source}</p>
+                  </DetailPopover>
+                </span>
               </div>
               <h3 className="t-h3">{s.name}</h3>
-              <p className="t-body-sm text-2" style={{ marginTop: 8 }}><strong>Setup · </strong>{s.setup}</p>
-              <p className="t-body-sm" style={{ marginTop: 6, color: 'var(--amber)' }}><strong>Dose · </strong>{s.dose}</p>
-              <p className="t-body-sm" style={{ marginTop: 6, color: 'var(--teal)' }}><strong>Outcome · </strong>{s.outcome}</p>
-              <p className="t-caption text-3" style={{ marginTop: 8 }}>{s.note}</p>
-              <p className="t-caption font-mono2 text-3" style={{ marginTop: 6 }}>▸ {s.source}</p>
+              <p className="t-body-sm" style={{ marginTop: 6, color: 'var(--teal)' }}>{s.headline ?? s.outcome}</p>
             </div>
           ))}
         </div>
@@ -174,7 +136,7 @@ export default function HealingLab() {
         <SectionTitle icon={<FlaskConical size={18} />} id="heal-presets" title="Healing presets — clinical doses, honest labels"
           sub="Synthesized bowls in measured geometry, the Skille 30–120 Hz scan as pure tones, the 30 Hz bone-window as an AM rate, and the harmonic ladder the old texts actually describe." />
         <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))' }}>
-          {HEALING_IDS.map((id) => <PresetMiniCard key={id} preset={byId(id)} />)}
+          {HEALING_IDS.map((id) => <LabPresetCard key={id} preset={byId(id)} testidPrefix="heal" />)}
         </div>
       </section>
 
@@ -187,16 +149,19 @@ export default function HealingLab() {
             <div key={g.id} className="panel" style={{ padding: 18 }}>
               <div className="flex items-center justify-between" style={{ marginBottom: 6, flexWrap: 'wrap', gap: 8 }}>
                 <span className="t-label text-3">{g.agency.toUpperCase()} · {g.years.toUpperCase()}</span>
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-1">
                   <span className="t-caption text-3">RECORD</span>
-                  <GradeBadge grade={g.recordGrade} citation={{ verdict: 'Grade of the documentation.', summary: g.record, source: g.source }} />
+                  <GradeBadge grade={g.recordGrade} compact />
                   <span className="t-caption text-3">CLAIMS</span>
-                  <GradeBadge grade={g.claimGrade} citation={{ verdict: 'Grade of the claims.', summary: g.record, source: g.source }} />
+                  <GradeBadge grade={g.claimGrade} compact />
+                  <DetailPopover title={g.name} grade={g.claimGrade} label={`Details: ${g.name}`}>
+                    <p className="t-body-sm" style={{ color: 'var(--text-2)' }}>{g.record}</p>
+                    <p className="t-caption font-mono2" style={{ color: 'var(--text-3)', marginTop: 8 }}>▸ {g.source}</p>
+                  </DetailPopover>
                 </span>
               </div>
               <h3 className="t-h3">{g.name}</h3>
-              <p className="t-body-sm text-2" style={{ marginTop: 8 }}>{g.record}</p>
-              <p className="t-caption font-mono2 text-3" style={{ marginTop: 8 }}>▸ {g.source}</p>
+              <p className="t-body-sm" style={{ marginTop: 6, color: 'var(--teal)' }}>{g.headline ?? g.record}</p>
             </div>
           ))}
         </div>
@@ -244,7 +209,7 @@ export default function HealingLab() {
           </p>
         </Panel>
         <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', marginTop: 16 }}>
-          {NANO_IDS.map((id) => <PresetMiniCard key={id} preset={byId(id)} />)}
+          {NANO_IDS.map((id) => <LabPresetCard key={id} preset={byId(id)} testidPrefix="heal" />)}
         </div>
       </section>
 
@@ -259,14 +224,17 @@ export default function HealingLab() {
               <div key={h.id} className="panel" style={{ padding: 18, borderLeft: '3px solid var(--amber)' }}>
                 <div className="flex items-center justify-between" style={{ marginBottom: 6 }}>
                   <span className="t-label text-3">HYPOTHESIS · PRIOR: {h.prior.toUpperCase()}</span>
-                  <GradeBadge grade={h.grade} citation={{ verdict: 'Experimental hypothesis; the prediction may fail.', summary: h.prediction, source: h.citations[0] }} />
+                  <GradeBadge grade={h.grade} compact />
+                  <DetailPopover title={h.title} grade={h.grade} label={`Details: ${h.title}`}>
+                    <p className="t-body-sm" style={{ color: 'var(--text-2)' }}><strong>Statement · </strong>{h.statement}</p>
+                    <p className="t-body-sm" style={{ color: 'var(--teal)', marginTop: 8 }}><strong>Prediction · </strong>{h.prediction}</p>
+                    <p className="t-body-sm" style={{ color: 'var(--text-2)', marginTop: 8 }}><strong>Home test · </strong>{h.homeTest}</p>
+                    {h.citations.map((c) => <p key={c} className="t-caption font-mono2" style={{ color: 'var(--text-3)', marginTop: 6 }}>▸ {c}</p>)}
+                  </DetailPopover>
                 </div>
                 <h3 className="t-h3">{h.title}</h3>
-                <p className="t-body-sm text-2" style={{ marginTop: 8 }}><strong>Statement · </strong>{h.statement}</p>
-                <p className="t-body-sm" style={{ marginTop: 6, color: 'var(--teal)' }}><strong>Prediction · </strong>{h.prediction}</p>
-                <p className="t-body-sm text-2" style={{ marginTop: 6 }}><strong>Home test · </strong>{h.homeTest}</p>
+                <p className="t-body-sm" style={{ marginTop: 6, color: 'var(--teal)' }}>{h.headline ?? h.prediction}</p>
                 {preset && <p className="t-caption font-mono2 text-3" style={{ marginTop: 8 }}>PRESET · {preset.title} · {fmtClock(presetDurationMin(preset) * 60)}</p>}
-                {h.citations.map((c) => <p key={c} className="t-caption font-mono2 text-3" style={{ marginTop: 4 }}>▸ {c}</p>)}
               </div>
             );
           })}

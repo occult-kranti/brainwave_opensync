@@ -1229,4 +1229,6 @@ export const PRESET_ART: Record<string, string> = {
   'exp-sonodynamic-portrait': 'art/nano-ultrasound.jpg',
   'exp-piezo-nano-portrait': 'art/nano-ultrasound.jpg',
   'exp-tuning-fork-128': 'art/tuning-fork.jpg',
+  'heal-pythagorean-evening': 'art/pythagorean-evening.jpg',
+  'heal-pythagorean-morning': 'art/pythagorean-morning.jpg',
 };

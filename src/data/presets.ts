@@ -8,7 +8,7 @@
 import type { Grade } from './frequencies';
 import { BASHAR_PRESETS } from '@/channeled/bashar';
 import { EXPEDITION_PRESETS, LUCID_LAB_PRESETS, PRESET_ART } from './lucidLab';
-import { HEALING_PRESETS } from './healingLab';
+import { HEALING_PRESETS, HEALING_PRESETS_R4 } from './healingLab';
 import { CLEAN_PRESET_MIX, type PresetMix } from './presetMix';
 
 export type PresetCategory = 'Sleep' | 'Focus' | 'Relax' | 'Meditate' | 'Lucid Dream' | 'Experimental' | 'Infant';
@@ -821,6 +821,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
   ...LUCID_LAB_PRESETS,
   ...EXPEDITION_PRESETS,
   ...HEALING_PRESETS,
+  ...HEALING_PRESETS_R4,
   ...BASHAR_PRESETS,
 ];
 

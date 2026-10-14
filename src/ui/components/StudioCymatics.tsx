@@ -44,6 +44,7 @@ import {
   type SandState,
 } from '@/cymatics/chladni';
 import { renderFrame } from '@/cymatics/render';
+import { drawPlate3D } from '@/cymatics/plate3d';
 import {
   driveFromFeatures,
   sampleAudioFeatures,
@@ -52,7 +53,7 @@ import {
 } from '@/cymatics/audioLink';
 
 type Interpretation = 'physics' | 'art';
-type RenderMode = 'lines' | 'sand';
+type RenderMode = 'plate3d' | 'sand' | 'lines';
 
 /** Fixed compact-panel plate (the full Cymatic Studio offers the selector). */
 const PLATE = VIRTUAL_PLATES[0]; // steel square 30×30 cm, fundamental 180 Hz
@@ -96,7 +97,7 @@ export function StudioCymatics({
   const smoothHzRef = useRef(0);
   const sandRef = useRef<SandState | null>(null);
   const [mode, setMode] = useState<Interpretation>('physics');
-  const [renderMode, setRenderMode] = useState<RenderMode>('lines');
+  const [renderMode, setRenderMode] = useState<RenderMode>('plate3d');
   const [live, setLive] = useState(false);
   const [readout, setReadout] = useState<{ hz: number; mode: string } | null>(null);
   const [visible, setVisible] = useState(true);
@@ -171,7 +172,7 @@ export function StudioCymatics({
       // layout survives LINES↔SAND toggles — same physical continuity as
       // real sand on a plate whose drive keeps changing.
       let particles: SandState | null = null;
-      if (renderMode === 'sand') {
+      if (renderMode === 'sand' || renderMode === 'plate3d') {
         if (!sandRef.current) sandRef.current = createSand(SAND_COUNT, SAND_SEED, false);
         stepParticles(sandRef.current, field, dt, {
           jitter: 0.012 + energy * 0.05,
@@ -179,14 +180,6 @@ export function StudioCymatics({
         particles = sandRef.current;
       }
 
-      renderFrame(buf.getContext('2d'), RES, RES, {
-        field,
-        circular: false,
-        mode: renderMode,
-        colormap: 'amber-grain',
-        energy,
-        particles,
-      });
       const dpr = Math.min(2, window.devicePixelRatio || 1);
       const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
       const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
@@ -194,9 +187,29 @@ export function StudioCymatics({
         canvas.width = w;
         canvas.height = h;
       }
-      ctx.imageSmoothingEnabled = true;
-      ctx.clearRect(0, 0, w, h);
-      ctx.drawImage(buf, 0, 0, w, h);
+      if (renderMode === 'plate3d') {
+        drawPlate3D(ctx, w, h, field, {
+          time: now / 1000,
+          amp: 0.3,
+          energy,
+          gridX: 44,
+          gridY: 30,
+          stride: 2,
+          particles,
+        });
+      } else {
+        renderFrame(buf.getContext('2d'), RES, RES, {
+          field,
+          circular: false,
+          mode: renderMode,
+          colormap: 'gold-plate',
+          energy,
+          particles,
+        });
+        ctx.imageSmoothingEnabled = true;
+        ctx.clearRect(0, 0, w, h);
+        ctx.drawImage(buf, 0, 0, w, h);
+      }
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
@@ -215,14 +228,6 @@ export function StudioCymatics({
     const buf = bufferRef.current;
     buf.width = RES;
     buf.height = RES;
-    renderFrame(buf.getContext('2d'), RES, RES, {
-      field: STATIC_FIELD,
-      circular: false,
-      mode: renderMode,
-      colormap: 'amber-grain',
-      energy: 0,
-      particles: renderMode === 'sand' ? createSand(SAND_COUNT, SAND_SEED, false) : null,
-    });
     const dpr = Math.min(2, window.devicePixelRatio || 1);
     const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
     const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
@@ -230,9 +235,25 @@ export function StudioCymatics({
       canvas.width = w;
       canvas.height = h;
     }
-    ctx.imageSmoothingEnabled = true;
-    ctx.clearRect(0, 0, w, h);
-    ctx.drawImage(buf, 0, 0, w, h);
+    if (renderMode === 'plate3d') {
+      const idleSand = createSand(SAND_COUNT, SAND_SEED, false);
+      stepParticles(idleSand, STATIC_FIELD, 4, { jitter: 0 });
+      drawPlate3D(ctx, w, h, STATIC_FIELD, {
+        time: 4, amp: 0.3, energy: 0, gridX: 44, gridY: 30, stride: 2, particles: idleSand, still: true,
+      });
+    } else {
+      renderFrame(buf.getContext('2d'), RES, RES, {
+        field: STATIC_FIELD,
+        circular: false,
+        mode: renderMode,
+        colormap: 'gold-plate',
+        energy: 0,
+        particles: renderMode === 'sand' ? createSand(SAND_COUNT, SAND_SEED, false) : null,
+      });
+      ctx.imageSmoothingEnabled = true;
+      ctx.clearRect(0, 0, w, h);
+      ctx.drawImage(buf, 0, 0, w, h);
+    }
   }, [driving, visible, renderMode]);
 
   return (
@@ -262,7 +283,7 @@ export function StudioCymatics({
             {m.toUpperCase()}
           </button>
         ))}
-        {(['lines', 'sand'] as RenderMode[]).map((rm) => (
+        {(['plate3d', 'sand', 'lines'] as RenderMode[]).map((rm) => (
           <button
             key={rm}
             type="button"
@@ -274,10 +295,12 @@ export function StudioCymatics({
             title={
               rm === 'lines'
                 ? 'Nodal-line figure of the driven virtual plate'
-                : 'Sand-particle view — grains settle on the nodal lines of the same virtual plate'
+                : rm === 'sand'
+                  ? 'Sand-particle view — grains settle on the nodal lines of the same virtual plate'
+                  : '3D plate — surface height is the displacement field; grains settle in the nodal valleys'
             }
           >
-            {rm.toUpperCase()}
+            {rm === 'plate3d' ? '3D' : rm.toUpperCase()}
           </button>
         ))}
         <InfoPopover featureId="cymatic-patterns" label="About cymatic patterns" />
@@ -297,7 +320,9 @@ export function StudioCymatics({
           live
             ? renderMode === 'sand'
               ? 'Live sand-particle Chladni pattern driven by the session audio on a virtual plate'
-              : 'Live Chladni pattern driven by the session audio on a virtual plate'
+              : renderMode === 'plate3d'
+                ? 'Live 3D plate view — displacement terrain with sand settling in the nodal valleys'
+                : 'Live Chladni pattern driven by the session audio on a virtual plate'
             : 'Static Chladni figure — start a session to drive the virtual plate live'
         }
       />
@@ -305,10 +330,11 @@ export function StudioCymatics({
         <p className="t-caption" style={{ color: TEXT[3], marginBottom: 4 }}>
           {HONESTY[mode]}
           {renderMode === 'sand' ? ` ${SAND_NOTE}` : ''}
+          {renderMode === 'plate3d' ? ' In 3D the surface height is the displacement field — grains collect in the nodal valleys.' : ''}
         </p>
         <div className="t-readout-sm" style={{ color: TEXT[3] }}>
           PLATE {PLATE.label}
-          {renderMode === 'sand' ? ` · SAND ${SAND_COUNT} GRAINS` : ''}
+          {renderMode === 'sand' ? ` · SAND ${SAND_COUNT} GRAINS` : ''}{renderMode === 'plate3d' ? ' · 3D DISPLACEMENT VIEW' : ''}
           {' · '}
           {live && readout
             ? `DRIVE ${readout.hz.toFixed(1)} Hz · MODE ${readout.mode}`

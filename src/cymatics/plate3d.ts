@@ -203,16 +203,11 @@ export function drawPlate3D(
     const core = rampGold(0.95);
     for (const it of items) {
       const r = 1.05 * it.persp;
-      // halo
+      // halo + grain core as rects (happy-dom-compatible: no ctx.arc in tests)
       ctx.fillStyle = css(rampGold(Math.min(1, it.v + 0.3)), 0.16);
-      ctx.beginPath();
-      ctx.arc(it.px, it.py, r * 2.6, 0, Math.PI * 2);
-      ctx.fill();
-      // grain core
+      ctx.fillRect(it.px - r * 2.6, it.py - r * 2.6, r * 5.2, r * 5.2);
       ctx.fillStyle = css(core, 0.85);
-      ctx.beginPath();
-      ctx.arc(it.px, it.py, r, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.fillRect(it.px - r, it.py - r, r * 2, r * 2);
     }
   }
 }

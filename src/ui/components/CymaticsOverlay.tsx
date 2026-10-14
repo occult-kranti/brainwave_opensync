@@ -1,11 +1,17 @@
 /**
- * CymaticsOverlay — live sand-on-a-square-plate simulation for the Studio.
+ * CymaticsOverlay — the full-screen sand-plate stage for the Studio.
  *
- * A toggleable art overlay: the session carrier drives a virtual steel plate
- * (drivenSquareModes / drivenSquareField from the Cymatics module), sand
- * particles drift onto the nodal lines, and spectral energy (when an analyser
- * is attached) feeds grain brightness. Real plate physics as a visualization —
- * it is not a measurement of the listener.
+ * Opens as a viewport-filling modal so the plate has room: a large square
+ * canvas centered on a dimmed stage, the 3D plate renderer by default (the
+ * surface height IS the displacement field; sand drifts along −∇|u| into the
+ * nodal valleys), a 2D sand fallback, and an optional 4D-field backdrop behind
+ * the canvas (shares the Studio's 4D toggle state). Esc / backdrop / Close
+ * all dismiss; focus returns to the trigger.
+ *
+ * Display tuning: the virtual plate's fundamental is set to carrier ÷ 6.5 so
+ * a session carrier excites the pattern-rich (2,3)/(3,2) mode pair (the
+ * physical 30 cm steel plate would show the (1,1) dome at these frequencies).
+ * The caption states this; physics and honesty chain unchanged.
  */
 
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -23,25 +29,36 @@ import { drawPlate3D } from '@/cymatics/plate3d';
 import { sampleAudioFeatures, SILENT_FEATURES } from '@/cymatics/audioLink';
 import { useSession } from '@/ui/session/useSession';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useModalA11y } from '@/ui/hooks';
+import { Field4D } from '@/ui/components/Field4D';
+import { useField4d } from '@/hooks/useField4d';
 
 const PLATE = VIRTUAL_PLATES.find((p) => p.id === 'steel-square-30') ?? VIRTUAL_PLATES[0];
 
-/**
- * Display tuning: on the physical 30 cm steel plate (fundamental 180 Hz) a
- * 100–300 Hz session carrier only excites the (1,1) single-hump mode — a
- * boring dome. We tune the virtual plate so the carrier lands on the
- * (2,3)/(3,2) pair (f/f₀ = 6.5), the classic diamond-pattern territory from
- * the photographed plates. The caption says so; the physics is unchanged.
- */
+/** Display tuning ratio (f_drive / f_fundamental) → the (2,3)/(3,2) pair. */
 const DISPLAY_MODE_RATIO = 6.5;
+
+/** Stage z-index: below detail popovers (75), panic surfaces (90), bottom bar (100). */
+const STAGE_Z = 60;
 
 export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
   const { carrierHz, running, engineRef } = useSession();
   const isMobile = useIsMobile();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
   const sandRef = useRef<SandState | null>(null);
   const energyRef = useRef(0.15);
   const [view3d, setView3d] = useState(true);
+  const [field4dOn, setField4dOn] = useField4d();
+
+  useModalA11y(true, onClose, closeRef);
+
+  // Esc closes (desktop browsers; the backdrop click covers touch).
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [onClose]);
 
   // The plate is driven by the session carrier tone (fallback: the plate's
   // own fundamental when the engine is stopped).
@@ -55,7 +72,7 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
   }, [roundedDrive]);
 
   useEffect(() => {
-    sandRef.current = createSand(isMobile ? 2200 : 4200, 7, false);
+    sandRef.current = createSand(isMobile ? 2600 : 5200, 7, false);
   }, [isMobile]);
 
   useEffect(() => {
@@ -81,10 +98,10 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
       if (view3d) {
         drawPlate3D(ctx, size, size, field, {
           time: now / 1000,
-          amp: 0.34,
+          amp: 0.36,
           energy: energyRef.current,
-          gridX: isMobile ? 52 : 76,
-          gridY: isMobile ? 36 : 54,
+          gridX: isMobile ? 56 : 84,
+          gridY: isMobile ? 40 : 60,
           stride: 2,
           particles: sand,
           still: reduced,
@@ -105,47 +122,65 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
     return () => cancelAnimationFrame(raf);
   }, [field, engineRef, running, view3d, isMobile]);
 
-  const size = Math.min(520, typeof window === 'undefined' ? 520 : window.innerWidth - 48);
+  const canvasPx = Math.min(isMobile ? 420 : 640, typeof window === 'undefined' ? 640 : window.innerWidth - 32);
 
   return (
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Cymatics sand plate overlay"
+      aria-label="Cymatics sand plate stage"
       onClick={onClose}
       style={{
-        position: 'absolute', inset: 0, zIndex: 30, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        background: 'rgba(6, 8, 10, 0.72)', backdropFilter: 'blur(3px)', borderRadius: 12, padding: 8,
+        position: 'fixed', inset: 0, zIndex: STAGE_Z, display: 'flex', flexDirection: 'column',
+        background: 'rgba(5, 6, 8, 0.88)', backdropFilter: 'blur(6px)',
       }}
     >
-      <div
-        className="panel"
-        onClick={(e) => e.stopPropagation()}
-        style={{ padding: 14, width: '100%', maxWidth: size + 28, maxHeight: '100%', overflowY: 'auto' }}
-      >
-        <div className="flex items-center justify-between" style={{ marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
-          <span className="t-label text-3">SAND ON A SQUARE PLATE · STEEL 30×30 CM · DRIVEN BY {roundedDrive} HZ</span>
-          <span className="flex gap-2">
-            <button type="button" className={`chip ${view3d ? 'chip-active' : ''}`} aria-pressed={view3d} onClick={() => setView3d(true)}>3D PLATE</button>
-            <button type="button" className={`chip ${!view3d ? 'chip-active' : ''}`} aria-pressed={!view3d} onClick={() => setView3d(false)}>2D SAND</button>
-            <button type="button" className="chip" aria-label="Close cymatics overlay" onClick={onClose}>
-              <X size={14} /> Close
-            </button>
-          </span>
+      {field4dOn && (
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+          <Field4D />
         </div>
+      )}
+
+      {/* header bar */}
+      <div
+        className="flex items-center gap-2"
+        onClick={(e) => e.stopPropagation()}
+        style={{ position: 'relative', padding: '12px 16px', borderBottom: '1px solid var(--line-2)', flexWrap: 'wrap' }}
+      >
+        <span className="t-label" style={{ marginRight: 'auto' }}>
+          SAND ON A SQUARE PLATE · DRIVEN BY {roundedDrive} HZ
+        </span>
+        <button type="button" className={`chip ${view3d ? 'chip-active' : ''}`} aria-pressed={view3d} onClick={() => setView3d(true)}>3D PLATE</button>
+        <button type="button" className={`chip ${!view3d ? 'chip-active' : ''}`} aria-pressed={!view3d} onClick={() => setView3d(false)}>2D SAND</button>
+        <button type="button" className={`chip ${field4dOn ? 'chip-active' : ''}`} aria-pressed={field4dOn} onClick={() => setField4dOn(!field4dOn)}>4D FIELD</button>
+        <button ref={closeRef} type="button" className="chip" aria-label="Close cymatics stage" onClick={onClose}>
+          <X size={14} /> Close
+        </button>
+      </div>
+
+      {/* stage */}
+      <div
+        style={{ position: 'relative', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16, minHeight: 0 }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <canvas
           ref={canvasRef}
-          width={isMobile ? 360 : 520}
-          height={isMobile ? 360 : 520}
-          style={{ display: 'block', margin: '0 auto', height: 'min(46vh, 440px)', width: 'auto', maxWidth: '100%', aspectRatio: '1', borderRadius: 8, background: 'var(--ink-0)' }}
+          width={canvasPx}
+          height={canvasPx}
+          style={{
+            display: 'block', aspectRatio: '1', width: `min(${canvasPx}px, 92vw, 62vh)`, height: 'auto',
+            borderRadius: 10, background: 'rgba(10,8,6,0.92)', boxShadow: '0 24px 80px rgba(0,0,0,0.55)',
+          }}
         />
-        <p className="t-caption text-3" style={{ marginTop: 10 }}>
-          Simulation: sand grains settle on the nodal lines of the plate mode nearest the session carrier — the same
-          eigenmode math as the Cymatics Studio page. In 3D the surface height is the plate's displacement field, so the
-          sand collects in the valleys; the gold palette matches a photographed steel-plate figure. Display tuning: the
-          virtual plate's fundamental is set to carrier ÷ 6.5 so the carrier excites the pattern-rich (2,3)/(3,2) mode
-          pair (on the physical 30 cm plate the same carrier would show the single-hump (1,1) dome). A visualization of
-          the sound, not a measurement of its effect on you.
+      </div>
+
+      {/* caption */}
+      <div onClick={(e) => e.stopPropagation()} style={{ position: 'relative', padding: '0 16px 14px', maxWidth: 860, margin: '0 auto' }}>
+        <p className="t-caption" style={{ color: 'var(--text-3)', textAlign: 'center' }}>
+          Simulation: sand settles on the nodal lines of the plate mode nearest the session carrier. In 3D the surface
+          height is the plate's displacement field — grains collect in the valleys. Display tuning: plate fundamental =
+          carrier ÷ 6.5 for the pattern-rich (2,3)/(3,2) pair; a physical 30 cm steel plate would show the (1,1) dome at
+          this frequency. A visualization of the sound, not a measurement of its effect on you.
         </p>
       </div>
     </div>

@@ -25,6 +25,8 @@ type PresetSpec = Omit<Preset, 'dose'>;
 export interface HealingStudy {
   id: string;
   name: string;
+  /** One-line use case / takeaway shown on the card face. */
+  headline?: string;
   setup: string;
   /** Session dose: duration, frequency content, cadence. */
   dose: string;
@@ -38,6 +40,7 @@ export interface HealingStudy {
 export const HEALING_STUDIES: readonly HealingStudy[] = [
   {
     id: 'heal-study-goldsby-bowls',
+    headline: 'One group bowl session cut tension, anger, fatigue and depressed mood (uncontrolled).',
     name: 'Singing-bowl sound meditation (Goldsby 2017)',
     setup: 'Live Tibetan bowls, gongs and bells played while participants (N=62, mean age 49.7) reclined in group sessions at three sites.',
     dose: 'One guided sound-meditation session; effects measured immediately pre/post.',
@@ -48,6 +51,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-bowl-acoustics',
+    headline: 'Bowls are 50–750 Hz harmonic resonators — rich beating, no magic single frequency.',
     name: 'What a bowl actually emits (measured acoustics)',
     setup: 'MIT (Terwagne/Bush) modal analysis of antique bowls; Colombian 1/3-octave band measurements of small/medium/large bowls struck and rubbed.',
     dose: 'Bowl fundamentals span 50–750 Hz (e.g. a (2,0) mode at 188 Hz); measured band peaks: large ≈500 Hz, medium ≈630 Hz, small ≈800 Hz. Frequency scales with rim thickness over radius squared (f ∝ a/R²).',
@@ -58,6 +62,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-skille-vat',
+    headline: 'VAT is low frequency through the body, 20–45 min sessions — not headphones.',
     name: 'Physioacoustic therapy (Skille protocols)',
     setup: 'Olav Skille\'s low-frequency sound delivered to the BODY via transducers — chairs, beds, mats — not headphones.',
     dose: '30–120 Hz, moderate amplitude; sessions 20–45 min, typically 1–3× per week; single-digit-minute exposures also studied.',
@@ -68,6 +73,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-naghdi-fibro',
+    headline: '40 Hz tactile, 23 min twice weekly: pain and sleep improved; a quarter stopped pain meds.',
     name: 'Fibromyalgia VAT trial (Naghdi 2015)',
     setup: '23-minute vibroacoustic sessions, 40 Hz tactile, twice weekly for 5 weeks, fibromyalgia patients.',
     dose: '40 Hz · 23 min · 2×/week · 5 weeks (10 sessions).',
@@ -79,6 +85,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-mosabbir-parkinson',
+    headline: '40 Hz chair, 30 min for 3 weeks: small RCT improvement in Parkinson\'s scores.',
     name: 'Parkinson\'s VAT randomized trial (Mosabbir 2020)',
     setup: '40 Hz vibroacoustic chair sessions vs no-treatment control in Parkinson\'s disease.',
     dose: '40 Hz · 30 min sessions · 5×/week · 3 weeks.',
@@ -90,6 +97,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-wbv-bone',
+    headline: '30 Hz platforms transmit best to bone; density gains are small (g = 0.11).',
     name: 'Whole-body vibration — the 30 Hz bone window',
     setup: 'Standing on vibrating platforms; muscle and bone respond to mechanical oscillation, not sound.',
     dose: 'Clinical range 12.6–45 Hz; Rubin lab\'s window centers on 30 Hz (transmissibility to hip/spine ~80%, dropping sharply above ~33 Hz); typical dosing 20 min/day or 5×/week programs over 6–12 months.',
@@ -100,6 +108,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-cochrane-preop',
+    headline: '26 trials, 2,051 patients: music before surgery cuts anxiety — music, not Hz.',
     name: 'Music listening for preoperative anxiety (Cochrane)',
     setup: 'Recorded music of the patient\'s or clinician\'s choice before surgery, vs standard care.',
     dose: 'Single listening session pre-surgery; 26 trials, 2,051 participants.',
@@ -111,6 +120,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-cochrane-cancer',
+    headline: '17 trials, 1,381 patients: large anxiety reduction from music in cancer care.',
     name: 'Music interventions in cancer care (Cochrane)',
     setup: 'Music therapy/listening for adults with cancer across treatment settings.',
     dose: '17 trials, 1,381 participants; session lengths varied by protocol.',
@@ -122,6 +132,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-akimoto-528',
+    headline: 'n=9 pilot: 528 Hz vs 440 Hz moved cortisol slightly — hypothesis-grade only.',
     name: '528 Hz vs 440 Hz acute pilot (Akimoto 2018)',
     setup: 'Nine healthy participants listened to piano tones at 528 Hz and 440 Hz on separate occasions.',
     dose: 'Two 5-minute listening exposures, counterbalanced.',
@@ -132,6 +143,7 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-tuning-fork-audit',
+    headline: 'No controlled trials exist for therapeutic tuning forks; the fork is honest acoustics.',
     name: 'Tuning-fork therapy (Otto 128 etc.) — evidence audit',
     setup: 'Weighted and unweighted forks at 32–512 Hz applied on or near the body; "Otto 128" is the most-sold therapeutic fork.',
     dose: 'Practitioner sessions 15–60 min; no standardized dose exists.',
@@ -149,6 +161,8 @@ export const HEALING_STUDIES: readonly HealingStudy[] = [
 export interface HealingGov {
   id: string;
   name: string;
+  /** One-line use case / takeaway shown on the card face. */
+  headline?: string;
   years: string;
   agency: string;
   record: string;
@@ -160,6 +174,7 @@ export interface HealingGov {
 export const HEALING_GOV: readonly HealingGov[] = [
   {
     id: 'heal-gov-nih-vat',
+    headline: 'NIH rehab program used vibroacoustic relaxation from 1992 — program-reported, not an RCT.',
     name: 'NIH Clinical Center vibroacoustic relaxation program',
     years: '1992–present (program record)',
     agency: 'U.S. National Institutes of Health, Rehabilitation Medicine Department',
@@ -174,6 +189,7 @@ export const HEALING_GOV: readonly HealingGov[] = [
   },
   {
     id: 'heal-gov-gantt-military',
+    headline: 'Theta-binaural bedtime music shifted stress HRV in 74 service members (2017).',
     name: 'DoD theta-binaural HRV trial (cross-reference)',
     years: '2017',
     agency: 'U.S. military treatment facilities',
@@ -187,6 +203,7 @@ export const HEALING_GOV: readonly HealingGov[] = [
   },
   {
     id: 'heal-gov-nccih-music',
+    headline: 'Federal synthesis: the strong evidence is for music interventions, not frequencies.',
     name: 'NCCIH music-therapy evidence synthesis',
     years: 'reviews ongoing',
     agency: 'U.S. National Center for Complementary and Integrative Health',
@@ -268,6 +285,8 @@ export const NANO_PORTRAITS: readonly NanoPortrait[] = [
 
 export interface HealingHypothesis {
   id: string;
+  /** One-line use case / takeaway shown on the card face. */
+  headline?: string;
   presetId: string;
   title: string;
   statement: string;
@@ -281,6 +300,7 @@ export interface HealingHypothesis {
 export const HEALING_HYPOTHESES: readonly HealingHypothesis[] = [
   {
     id: 'hyp-bowl-synth-parity',
+    headline: 'Do synthesized bowls relax like recorded ones? Three-evening A/B/C test.',
     presetId: 'heal-bowl-session',
     title: 'Synthesized bowls vs recorded bowls',
     statement:
@@ -299,6 +319,7 @@ export const HEALING_HYPOTHESES: readonly HealingHypothesis[] = [
   },
   {
     id: 'hyp-vat-analog-dose',
+    headline: 'Does 45 min beat 20 min of the audible scan? Prior: no.',
     presetId: 'heal-vat-skille-scan',
     title: 'Audible-analog dose response (20 vs 45 min)',
     statement:
@@ -314,6 +335,7 @@ export const HEALING_HYPOTHESES: readonly HealingHypothesis[] = [
   },
   {
     id: 'hyp-wbv-30-steadiness',
+    headline: '30 Hz vs 40 Hz envelope for felt steadiness — expected null.',
     presetId: 'heal-wbv-30-analog',
     title: 'The 30 Hz window as listening texture',
     statement:
@@ -328,6 +350,7 @@ export const HEALING_HYPOTHESES: readonly HealingHypothesis[] = [
   },
   {
     id: 'hyp-nano-portrait-aesthetic',
+    headline: 'Portrait tones should rank by pitch preference, not protocol source.',
     presetId: 'exp-sonodynamic-portrait',
     title: 'Ultrasound portraits — aesthetic only, by construction',
     statement:
@@ -343,6 +366,7 @@ export const HEALING_HYPOTHESES: readonly HealingHypothesis[] = [
   },
   {
     id: 'hyp-fork-128-preference',
+    headline: '128 vs 120 Hz blind preference — expected chance-level.',
     presetId: 'exp-tuning-fork-128',
     title: 'Otto 128 vs its neighbor — preference test',
     statement:
@@ -373,6 +397,7 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
   {
     id: 'heal-bowl-session',
     title: 'Himalayan Bowl Meditation (30 min)',
+    purpose: 'Use case: a 30-minute synthesized bowl meditation in the measured geometry of real instruments.',
     category: 'Meditate',
     spec: {
       autoShutoff: true,
@@ -397,6 +422,7 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
   {
     id: 'heal-vat-skille-scan',
     title: 'Physioacoustic Scan 30–120 Hz (20 min, audible analog)',
+    purpose: 'Use case: the 30–120 Hz physioacoustic range as pure tones — needs headphones or a sub.',
     category: 'Relax',
     spec: {
       autoShutoff: true,
@@ -418,6 +444,7 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
   {
     id: 'heal-wbv-30-analog',
     title: 'Bone-Window 30 Hz (WBV audible analog, 20 min)',
+    purpose: 'Use case: the 30 Hz bone-window rate as an audible envelope — the rate, not the dose.',
     category: 'Relax',
     spec: {
       autoShutoff: true,
@@ -439,6 +466,7 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
   {
     id: 'heal-pythagorean-ladder',
     title: 'Pythagorean Harmonic Ladder (24 min)',
+    purpose: 'Use case: harmonics 1–6 ascending — the ratio canon the old texts actually describe.',
     category: 'Meditate',
     spec: {
       autoShutoff: true,
@@ -465,6 +493,7 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-sonodynamic-portrait',
     title: 'Therapeutic Ultrasound Portrait (0.88–3.3 MHz band) — experimental tier',
+    purpose: 'Use case: five clinical ultrasound frequencies as exact octave-down tones — portraits, not doses.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -492,6 +521,7 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-piezo-nano-portrait',
     title: 'Piezo-Nano Stimulation Portrait (BTNP + 50 Hz field rate) — experimental tier',
+    purpose: 'Use case: the 1 MHz piezo-nano carrier and 50 Hz MENP field rate as one audible object.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -514,6 +544,7 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-tuning-fork-128',
     title: 'Otto 128 Fork Tradition (with 120 Hz blind blocks) — experimental tier',
+    purpose: 'Use case: the Otto 128 fork tradition with built-in blind 120 Hz comparison blocks.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -541,6 +572,7 @@ export const HEALING_PRESETS: readonly PresetSpec[] = [
 export const HEALING_STUDIES_R4: readonly HealingStudy[] = [
   {
     id: 'heal-study-genus-detail',
+    headline: '40 Hz device 1 h/day × 6 months: primary missed, secondary measures slowed decline.',
     name: 'GENUS/Spectris 40 Hz — the detailed trial record',
     setup: 'OVERTURE (NCT03556280): 76 mild-to-moderate Alzheimer\'s participants, EEG-verified 40 Hz light+sound via the CogTx-001 device, self-administered at home with a care partner.',
     dose: '1 hour every morning for 6 months (+12-month open-label extension); stimulation intensity personalized per participant at a clinic visit.',
@@ -551,6 +583,7 @@ export const HEALING_STUDIES_R4: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-pythagoras-medicine',
+    headline: 'Oldest documented daily sound routine: evening odes for sleep, morning songs for torpor.',
     name: 'Pythagorean musical medicine (Iamblichus, ~300 CE)',
     setup: 'The oldest documented daily sound-hygiene routine in the Western canon: specific melodies against specific passions (despondency, rage, appetite), sung around a central lyre player.',
     dose: 'Evening odes before bed for tranquil sleep and "few and good dreams"; morning songs against torpor; seasonal vernal paeans. A daily practice, not a one-off dose.',
@@ -561,6 +594,7 @@ export const HEALING_STUDIES_R4: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-inayat-khan',
+    headline: 'Sufi sound mysticism: chanting and listening practice, zero Hz in the text.',
     name: 'Hazrat Inayat Khan — The Mysticism of Sound and Music (1923)',
     setup: 'Sufi teaching on sound as the source of manifestation; practices are chanting, zikr (remembrance repetition), and deep listening.',
     dose: 'Daily chanting/listening practice; no frequencies, durations or decibels are specified anywhere in the text.',
@@ -571,6 +605,7 @@ export const HEALING_STUDIES_R4: readonly HealingStudy[] = [
   },
   {
     id: 'heal-study-bashar-healing-audit',
+    headline: 'The supplied digests carry EEG numbers and a phi ratio — no healing-frequency prescriptions.',
     name: 'Bashar corpus — frequency-healing content audit',
     setup: 'The supplied session digests (auto-transcripts, unverified) were audited for healing-frequency prescriptions.',
     dose: 'The digests mention EEG-range numbers (a 40–100 "gamma" description, a 9→10–11 Hz "set point" change) and a phi pitch ratio — no prescribed healing frequencies, no session durations, no dosing protocol.',
@@ -585,6 +620,7 @@ export const HEALING_PRESETS_R4: readonly PresetSpec[] = [
   {
     id: 'heal-pythagorean-evening',
     title: 'Pythagorean Evening Purification (20 min)',
+    purpose: 'Use case: a 20-minute descending wind-down in the shape of the Pythagorean evening odes.',
     category: 'Sleep',
     spec: {
       autoShutoff: true,
@@ -610,6 +646,7 @@ export const HEALING_PRESETS_R4: readonly PresetSpec[] = [
   {
     id: 'heal-pythagorean-morning',
     title: 'Pythagorean Morning Lyre (10 min)',
+    purpose: 'Use case: a 10-minute ascending get-up ritual after the Pythagorean morning songs.',
     category: 'Focus',
     spec: {
       autoShutoff: true,
@@ -633,6 +670,7 @@ export const HEALING_PRESETS_R4: readonly PresetSpec[] = [
 export const HEALING_HYPOTHESES_R4: readonly HealingHypothesis[] = [
   {
     id: 'hyp-evening-descent-order',
+    headline: 'Descending ladder vs ascending at bedtime — a contour test for sleepiness.',
     presetId: 'heal-pythagorean-evening',
     title: 'Descending vs ascending order at bedtime',
     statement:

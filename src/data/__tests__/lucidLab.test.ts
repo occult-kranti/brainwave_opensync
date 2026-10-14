@@ -263,6 +263,29 @@ describe('lucid lab preset pack', () => {
     }
   });
 
+  it('every study, program and hypothesis carries a short use-case headline', () => {
+    const wordCap = (t: string) => t.split(/\s+/).filter(Boolean).length;
+    for (const st of LUCID_AUDIO_STUDIES) {
+      expect(st.headline, st.id).toBeTruthy();
+      expect(wordCap(st.headline!), st.id).toBeLessThanOrEqual(26);
+    }
+    for (const g of [...GOV_PROGRAMS, GOV_FREY]) {
+      expect(g.headline, g.id).toBeTruthy();
+      expect(wordCap(g.headline!), g.id).toBeLessThanOrEqual(26);
+    }
+    for (const h of LUCID_HYPOTHESES) {
+      expect(h.headline, h.id).toBeTruthy();
+      expect(wordCap(h.headline!), h.id).toBeLessThanOrEqual(26);
+    }
+  });
+
+  it('every lab preset carries a one-line purpose (card-face use case)', () => {
+    for (const pr of [...LUCID_LAB_PRESETS, ...EXPEDITION_PRESETS]) {
+      expect(pr.purpose, pr.id).toBeTruthy();
+      expect(pr.purpose!.length, pr.id).toBeLessThanOrEqual(240);
+    }
+  });
+
   it('keeps the overall catalog at or above its previous size floor', () => {
     expect(PRESETS.length).toBeGreaterThanOrEqual(72);
   });

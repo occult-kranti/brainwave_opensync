@@ -30,6 +30,8 @@ type PresetSpec = Omit<Preset, 'dose'>;
 export interface LucidStudy {
   id: string;
   name: string;
+  /** One-line use case / takeaway shown on the card face. */
+  headline?: string;
   /** Signal + delivery setup, honestly specified. */
   setup: string;
   /** Timing / duration window used in the protocol. */
@@ -46,6 +48,7 @@ export interface LucidStudy {
 export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   {
     id: 'study-carr-2023-tlr',
+    headline: 'Paired tone cue replayed in REM: 50% vs 17% signal-verified lucid dreams.',
     name: 'Targeted Lucidity Reactivation (TLR), laboratory naps',
     setup:
       'Ascending pure-tone cue (400/600/800 Hz, ~650 ms, ~40–45 dB at the ear) paired before sleep with a ' +
@@ -59,6 +62,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-mallett-2024-app',
+    headline: 'Phone cue at home: about 0.7 to 2.1 lucid dreams per week.',
     name: 'Smartphone TLR at home (no EEG)',
     setup:
       'App pairs a chosen sound with a lucid mindset exercise before sleep, then replays the sound during sleep ' +
@@ -71,6 +75,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-konkoly-2021-interactive',
+    headline: 'Dreamers answered sounds from inside REM — cues really enter dreams.',
     name: 'Interactive dreaming — two-way communication in REM',
     setup:
       'Spoken questions and tone cues presented during REM; trained lucid dreamers answered with pre-agreed eye-movement ' +
@@ -84,6 +89,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-wolk-2024-multicentre',
+    headline: 'Wearable plus cueing: 45–65% verified lucidity across two sites (preprint).',
     name: 'SSILD + TLR multi-centre wearable-EEG study',
     setup:
       'Senses-initiated lucid-dream training paired with multimodal cues (visual, auditory, tactile), cues replayed in REM ' +
@@ -96,6 +102,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-peters-2024-sounds',
+    headline: 'Spoken dream cue: 54.5% reported lucid, 27.3% strict-verified.',
     name: 'Sounds of Lucidity — verbal cue + reality checks',
     setup:
       'The spoken phrase "You are dreaming" associated with reality-check practice in a pre-sleep learning phase, ' +
@@ -108,6 +115,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-erlacher-2020-ring',
+    headline: 'Six-day beep training: 41.7% self-rated, 16.7% signal-verified.',
     name: 'Ring, ring, ring… Are you dreaming? (acoustic cue + reflection)',
     setup:
       'A pager-style beep paired with Tholey-style critical reflection across a six-day training, then the same beep ' +
@@ -120,6 +128,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-ijodr-2026-replication',
+    headline: 'Strict redo: cues entered 36% of dreams, only 6.7% turned lucid.',
     name: 'Auditory-triggered reality checks — strict 2026 replication',
     setup:
       'Two-day reality-check training with pedometer beeps, then the same beeps during REM on one laboratory night.',
@@ -131,6 +140,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-voss-2014-tacs',
+    headline: '40 Hz electrical lucidity claim did not replicate — not audio, not shipped.',
     name: 'Frontal 25/40 Hz tACS during REM (electrical, not audio)',
     setup:
       'Transcranial alternating current over fronto-temporal cortex at 2–100 Hz during REM; 25 Hz and especially 40 Hz ' +
@@ -143,6 +153,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-laberge-2018-galantamine',
+    headline: 'The drug trial\'s timing map (wake at 4.5 h) is the reusable part — we never dose.',
     name: 'Galantamine timing (education only — we never dose)',
     setup:
       'Double-blind crossover (N=121): galantamine 0/4/8 mg taken during a 30–40 min wake window after ~4.5 h of sleep, ' +
@@ -156,6 +167,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-haar-horowitz-2020-dormio',
+    headline: 'Quiet cue at sleep onset steers early dream content (creativity, not lucidity).',
     name: 'Dormio — targeted dream incubation at sleep onset (N1)',
     setup:
       'Short thematic audio cue played as the user crosses into N1 hypnagogia (tracked by a hand-worn sensor); ' +
@@ -168,6 +180,7 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
   },
   {
     id: 'study-kueny-1985-tape',
+    headline: '1980s dream-phrase cassettes — the lineage root of every cueing protocol.',
     name: 'Early precedent — "You are dreaming" cassette tapes',
     setup:
       'A cassette recording of the phrase "You are dreaming" played during the night as a lucidity reminder.',
@@ -186,6 +199,8 @@ export const LUCID_AUDIO_STUDIES: readonly LucidStudy[] = [
 export interface GovProgram {
   id: string;
   name: string;
+  /** One-line use case / takeaway shown on the card face. */
+  headline?: string;
   years: string;
   agency: string;
   /** What the record actually shows. */
@@ -202,6 +217,7 @@ export interface GovProgram {
 export const GOV_PROGRAMS: readonly GovProgram[] = [
   {
     id: 'gov-gateway-1983',
+    headline: 'The Army\'s 1983 read of the Monroe tapes: a plausible-mechanism analysis, not a validation.',
     name: 'Analysis and Assessment of Gateway Process (Hemi-Sync)',
     years: 'Report dated 9 June 1983; declassified via FOIA, released 2003',
     agency: 'U.S. Army Intelligence and Security Command (INSCOM); filed in the CIA reading room',
@@ -222,6 +238,7 @@ export const GOV_PROGRAMS: readonly GovProgram[] = [
   },
   {
     id: 'gov-army-hemisync-eval',
+    headline: 'Evaluators saw sleep/stress help; wakefulness claims unproven.',
     name: 'U.S. Army evaluation of Hemi-Sync presentations',
     years: '1980s (declassified)',
     agency: 'U.S. Army (INSCOM orbit)',
@@ -237,6 +254,7 @@ export const GOV_PROGRAMS: readonly GovProgram[] = [
   },
   {
     id: 'gov-gantt-2017',
+    headline: 'Theta-binaural bedtime music shifted stress HRV in 74 service members.',
     name: 'Binaural beats for postdeployment stress (clinical trial)',
     years: '2017 (trial run over ~3 years prior)',
     agency: 'U.S. military treatment facilities; published in Journal of Nursing Scholarship',
@@ -253,6 +271,7 @@ export const GOV_PROGRAMS: readonly GovProgram[] = [
   },
   {
     id: 'gov-stargate-1995',
+    headline: 'Two decades of remote viewing; closed in 1995 for no operational value.',
     name: 'Stargate Project (remote viewing)',
     years: '1972–1995 (~$20M across SRI and SAIC)',
     agency: 'CIA → DIA; predecessors Grill Flame, Center Lane, Sun Streak',
@@ -270,6 +289,7 @@ export const GOV_PROGRAMS: readonly GovProgram[] = [
   },
   {
     id: 'gov-onr-2014-spidey',
+    headline: 'Navy intuition research, 2014–2018 — context, not audio.',
     name: 'ONR "Spidey sense" intuition program',
     years: '2014–2018 (~$3.85M)',
     agency: 'Office of Naval Research',
@@ -471,6 +491,8 @@ export const OCTAVE_PORTRAITS: readonly OctavePortrait[] = [
 export interface LucidHypothesis {
   id: string;
   /** Preset this hypothesis belongs to. */
+  /** One-line use case / takeaway shown on the card face. */
+  headline?: string;
   presetId: string;
   title: string;
   statement: string;
@@ -487,6 +509,7 @@ export interface LucidHypothesis {
 export const LUCID_HYPOTHESES: readonly LucidHypothesis[] = [
   {
     id: 'hyp-theta-gamma-interleave',
+    headline: 'Does theta–gamma alternation in the REM window change dream self-reference? Prior: low.',
     presetId: 'exp-theta-gamma-interleave',
     title: 'Theta–gamma interleave in the REM window',
     statement:
@@ -509,6 +532,7 @@ export const LUCID_HYPOTHESES: readonly LucidHypothesis[] = [
   },
   {
     id: 'hyp-rem-gamma-whisper',
+    headline: 'Whisper-level 40 Hz AM in the REM window — test incorporation, not lucidity.',
     presetId: 'exp-rem-gamma-whisper',
     title: 'Gamma whisper as a cue-incorporation amplifier',
     statement:
@@ -530,6 +554,7 @@ export const LUCID_HYPOTHESES: readonly LucidHypothesis[] = [
   },
   {
     id: 'hyp-ssild-pacer-adherence',
+    headline: 'Paced sense-cycling should raise practice completion; no new lucidity claim.',
     presetId: 'lucid-ssild-pacer',
     title: 'Paced sense-cycling improves practice adherence',
     statement:
@@ -545,6 +570,7 @@ export const LUCID_HYPOTHESES: readonly LucidHypothesis[] = [
   },
   {
     id: 'hyp-gateway-relaxation-null',
+    headline: 'Honest null: the Focus 10 reconstruction should not beat plain alpha for relaxation.',
     presetId: 'gateway-focus-10-reconstruction',
     title: 'Gateway reconstructions — relaxation beyond expectancy?',
     statement:
@@ -567,6 +593,7 @@ export const LUCID_HYPOTHESES: readonly LucidHypothesis[] = [
   },
   {
     id: 'hyp-110hz-chamber',
+    headline: 'Is 110 Hz more interior-feeling than 100 Hz? Blind-test with the built-in blocks.',
     presetId: 'relax-archaeo-110',
     title: '110 Hz chamber tone — subjective interiority',
     statement:
@@ -588,6 +615,7 @@ export const LUCID_HYPOTHESES: readonly LucidHypothesis[] = [
   },
   {
     id: 'hyp-octave-portrait-null',
+    headline: 'Portraits should rank by pleasantness, not by which constant they portray.',
     presetId: 'exp-planetary-octave-ascent',
     title: 'Octave portraits — aesthetic, not physiological',
     statement:
@@ -619,6 +647,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'lucid-tlr-training-bed',
     title: 'TLR Pairing Bed (20 min)',
+    purpose: 'Use case: 20-minute quiet backdrop for pre-sleep cue-pairing practice — the pairing does the work.',
     category: 'Lucid Dream',
     spec: {
       autoShutoff: true,
@@ -640,6 +669,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'lucid-wbtb-return-descent',
     title: 'WBTB Return Descent (35 min)',
+    purpose: 'Use case: falling back asleep after the 20–40 min Wake-Back-To-Bed window.',
     category: 'Lucid Dream',
     spec: {
       autoShutoff: true,
@@ -663,6 +693,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'lucid-rem-window-theta',
     title: 'REM Window Theta (45 min)',
+    purpose: 'Use case: a low theta bed sized to the REM-rich last third of the night.',
     category: 'Lucid Dream',
     spec: {
       autoShutoff: true,
@@ -685,6 +716,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'lucid-n1-incubation',
     title: 'Sleep-Onset Incubation Window (15 min)',
+    purpose: 'Use case: a 15-minute fading window to plant one theme at sleep onset.',
     category: 'Lucid Dream',
     spec: {
       autoShutoff: true,
@@ -707,6 +739,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'lucid-ssild-pacer',
     title: 'SSILD Sense-Cycle Pacer (12 min)',
+    purpose: 'Use case: audible pacing for SSILD cycles — 30 s each of vision, hearing, body, eight rounds.',
     category: 'Lucid Dream',
     spec: {
       autoShutoff: true,
@@ -732,6 +765,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'gateway-focus-10-reconstruction',
     title: 'Gateway Focus 10 reconstruction (35 min, unofficial)',
+    purpose: 'Use case: a theta meditation session in the mind-awake-body-asleep style of the 1983 report.',
     category: 'Meditate',
     spec: {
       autoShutoff: true,
@@ -756,6 +790,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'gateway-focus-12-reconstruction',
     title: 'Gateway Focus 12 reconstruction (40 min, unofficial)',
+    purpose: 'Use case: a longer theta session with added noise layer — the expanded-awareness level as soundscape.',
     category: 'Meditate',
     spec: {
       autoShutoff: true,
@@ -778,6 +813,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'gateway-focus-15-reconstruction',
     title: 'Gateway Focus 15 reconstruction (45 min, unofficial)',
+    purpose: 'Use case: deep theta with a delta dip — the no-time level as a meditation soundscape.',
     category: 'Meditate',
     spec: {
       autoShutoff: true,
@@ -801,6 +837,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'gateway-focus-21-reconstruction',
     title: 'Gateway Focus 21 reconstruction (50 min, unofficial)',
+    purpose: 'Use case: the deepest, longest reconstruction — boundary theta for extended sitting.',
     category: 'Meditate',
     spec: {
       autoShutoff: true,
@@ -828,6 +865,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'relax-archaeo-110',
     title: 'Neolithic Chamber Tone (110 Hz, with blind 100 Hz blocks)',
+    purpose: 'Use case: the Neolithic chamber tone (110 Hz) with built-in blind 100 Hz control blocks.',
     category: 'Relax',
     spec: {
       autoShutoff: true,
@@ -852,6 +890,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'relax-vat-40-analog',
     title: 'Vibroacoustic 40 Hz — audible analog (23 min)',
+    purpose: 'Use case: an audible analog of the 40 Hz vibroacoustic session — listening, not tactile therapy.',
     category: 'Relax',
     spec: {
       autoShutoff: true,
@@ -877,6 +916,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-theta-gamma-interleave',
     title: 'Theta–Gamma Interleave Probe — experimental tier',
+    purpose: 'Use case: self-experiment stimulus alternating theta bed and quiet gamma-rate blocks in the REM window.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -899,6 +939,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-rem-gamma-whisper',
     title: 'REM-Window Gamma Whisper — experimental tier',
+    purpose: 'Use case: self-experiment stimulus — whisper-level 40 Hz AM for cue-incorporation testing.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -920,6 +961,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-newton-spectrum-dorian',
     title: 'Newton Spectrum Walk (Dorian division, 1704) — experimental tier',
+    purpose: 'Use case: Newton\'s seven colors as exact octave-down photon tones — a listening portrait of light.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -947,6 +989,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-planetary-octave-ascent',
     title: 'Planetary Octave Ascent (recomputed Cousto set) — experimental tier',
+    purpose: 'Use case: the solar system\'s orbital periods as ascending tones — exact arithmetic, symbolic meaning.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -975,6 +1018,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-hydrogen-21cm-portrait',
     title: 'Hydrogen 21 cm Portrait (677.30 Hz) — experimental tier',
+    purpose: 'Use case: radio astronomy\'s most famous line (21 cm) as a 20-minute tone portrait.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -993,6 +1037,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-solar-pmode-portrait',
     title: 'Solar p-Mode Portrait (measured helioseismology) — experimental tier',
+    purpose: 'Use case: the Sun\'s measured 5-minute oscillation as carrier and beat — the physics-honest Sun tone.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -1011,6 +1056,7 @@ export const LUCID_LAB_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-cmb-peak-portrait',
     title: 'CMB Peak Portrait (597.54 Hz) — experimental tier',
+    purpose: 'Use case: the cosmic microwave background peak as a quiet 15-minute tone portrait.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -1075,6 +1121,7 @@ export const KEPLER_NOTE =
 
 export const GOV_FREY: GovProgram = {
   id: 'gov-frey-rf-hearing',
+    headline: 'Pulsed microwaves make clicks in the head (real physics); speech delivery unverified.',
   name: 'Microwave auditory effect (Frey effect) & RF-hearing patents',
   years: '1961–present (physics); patents 1976–2003',
   agency: 'U.S. — GE/Cornell research; U.S. Air Force Research Laboratory patent (2002)',
@@ -1101,6 +1148,7 @@ export const EXPEDITION_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-kepler-motet',
     title: 'Kepler Motet 1619 (computed planet songs) — experimental tier',
+    purpose: 'Use case: Kepler\'s 1619 planet songs recomputed from real eccentricities — each planet slides its interval.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -1124,6 +1172,7 @@ export const EXPEDITION_PRESETS: readonly PresetSpec[] = [
   {
     id: 'meditate-five-tones',
     title: 'Five Tones Pentatonic (gōng cycle, 25 min)',
+    purpose: 'Use case: the Chinese five-tone pentatonic cycle, five minutes per tone — the literature\'s daily dose shape.',
     category: 'Meditate',
     spec: {
       autoShutoff: true,
@@ -1150,6 +1199,7 @@ export const EXPEDITION_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-tesla-369',
     title: 'Tesla 3-6-9 (folklore, honest label) — experimental tier',
+    purpose: 'Use case: the unsourced Tesla 3-6-9 legend as a labeled-folklore theta-to-alpha walk.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,
@@ -1173,6 +1223,7 @@ export const EXPEDITION_PRESETS: readonly PresetSpec[] = [
   {
     id: 'exp-genus-daily-hour',
     title: 'GENUS Daily Hour (40 Hz AM, 60 min)',
+    purpose: 'Use case: the clinical 40 Hz session length (1 h/day) as audio-only AM — investigational status on the card.',
     category: 'Experimental',
     spec: {
       autoShutoff: true,

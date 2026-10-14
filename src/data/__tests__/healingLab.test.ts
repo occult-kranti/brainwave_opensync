@@ -153,6 +153,29 @@ describe('healing preset pack', () => {
     }
   });
 
+  it('every healing study, program and hypothesis carries a short use-case headline', () => {
+    const wordCap = (t: string) => t.split(/\s+/).filter(Boolean).length;
+    for (const st of [...HEALING_STUDIES, ...HEALING_STUDIES_R4]) {
+      expect(st.headline, st.id).toBeTruthy();
+      expect(wordCap(st.headline!), st.id).toBeLessThanOrEqual(26);
+    }
+    for (const g of HEALING_GOV) {
+      expect(g.headline, g.id).toBeTruthy();
+      expect(wordCap(g.headline!), g.id).toBeLessThanOrEqual(26);
+    }
+    for (const h of [...HEALING_HYPOTHESES, ...HEALING_HYPOTHESES_R4]) {
+      expect(h.headline, h.id).toBeTruthy();
+      expect(wordCap(h.headline!), h.id).toBeLessThanOrEqual(26);
+    }
+  });
+
+  it('every healing preset carries a one-line purpose (card-face use case)', () => {
+    for (const pr of [...HEALING_PRESETS, ...HEALING_PRESETS_R4]) {
+      expect(pr.purpose, pr.id).toBeTruthy();
+      expect(pr.purpose!.length, pr.id).toBeLessThanOrEqual(240);
+    }
+  });
+
   it('keeps the catalog at or above 81 presets', () => {
     expect(PRESETS.length).toBeGreaterThanOrEqual(81);
   });

@@ -62,3 +62,13 @@
   .home-primary { width: 100%; }
   .home-start-row { gap: 8px; }
 }
+
+
+/* Research labs hub */
+.home-labs { margin: 30px 0 8px; }
+.home-lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 14px; }
+.home-lab-card { display: block; border: 1px solid var(--line-2); border-radius: 12px; overflow: hidden; text-decoration: none; background: var(--ink-2); color: var(--text-1); transition: transform 160ms ease, border-color 160ms ease; }
+.home-lab-card:hover { transform: translateY(-2px); border-color: var(--amber); }
+.home-lab-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; opacity: 0.92; }
+.home-lab-body { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px 14px; }
+@media (prefers-reduced-motion: reduce) { .home-lab-card { transition: none; } .home-lab-card:hover { transform: none; } }

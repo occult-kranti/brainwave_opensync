@@ -28,6 +28,8 @@ import {
 import { fmtClock } from '@/ui/session/sessionMath';
 import { Field4D } from '@/ui/components/Field4D';
 import { useField4d } from '@/hooks/useField4d';
+import { LabRibbon } from '@/ui/components/LabRibbon';
+import { LabHero } from '@/ui/components/LabHero';
 
 function SectionTitle({ icon, id, title, sub }: { icon: ReactNode; id: string; title: string; sub: string }) {
   return (
@@ -80,6 +82,8 @@ export default function HealingLab() {
         <nav className="flex gap-2" style={{ marginTop: 14, flexWrap: 'wrap' }} aria-label="Section shortcuts">
           {JUMPS.map(([href, label]) => <Chip key={href} onClick={() => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })}>{label}</Chip>)}
         </nav>
+        <LabRibbon />
+        <LabHero src="art/hero-healing.jpg" alt="Singing bowls in warm light with rippling waves — Healing Sound Lab banner" caption="HEALING SOUND LAB · clinical doses · honest labels" />
       </header>
 
       {/* ---------------------------------------------------------- evidence */}

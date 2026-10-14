@@ -24,6 +24,8 @@ import {
 } from '@/data/natureLab';
 import { Field4D } from '@/ui/components/Field4D';
 import { useField4d } from '@/hooks/useField4d';
+import { LabRibbon } from '@/ui/components/LabRibbon';
+import { LabHero } from '@/ui/components/LabHero';
 
 function SectionTitle({ icon, id, title, sub }: { icon: ReactNode; id: string; title: string; sub: string }) {
   return (
@@ -120,6 +122,8 @@ export default function NatureLab() {
         <nav className="flex gap-2" style={{ marginTop: 14, flexWrap: 'wrap' }} aria-label="Section shortcuts">
           {JUMPS.map(([href, label]) => <Chip key={href} onClick={() => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })}>{label}</Chip>)}
         </nav>
+        <LabRibbon />
+        <LabHero src="art/hero-nature.jpg" alt="Dawn forest with birds and drifting sound rings — Nature Calls Lab banner" caption="NATURE CALLS LAB · measured bands · field ethics" />
       </header>
 
       {/* ---------------------------------------------------------- species */}

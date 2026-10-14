@@ -65,6 +65,37 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="home-labs" aria-labelledby="home-labs-title">
+        <h2 id="home-labs-title" className="t-h2">Research labs</h2>
+        <p className="t-body-sm text-2">Evidence-graded collections with listening presets — pick a lab.</p>
+        <div className="home-lab-grid">
+          <Link className="home-lab-card" to="/lucid" data-testid="home-lab-lucid">
+            <img src={`${import.meta.env.BASE_URL}art/lucid-dream.jpg`} alt="Lucid Audio Lab cover art" loading="lazy" />
+            <span className="home-lab-body">
+              <span className="t-label text-3">LUCID AUDIO LAB</span>
+              <strong className="t-body">Cue research, night timing, Gateway file</strong>
+              <span className="t-body-sm text-2">What sound can and cannot do for lucid dreams.</span>
+            </span>
+          </Link>
+          <Link className="home-lab-card" to="/healing" data-testid="home-lab-healing">
+            <img src={`${import.meta.env.BASE_URL}art/bowl-session.jpg`} alt="Healing Sound Lab cover art" loading="lazy" />
+            <span className="home-lab-body">
+              <span className="t-label text-3">HEALING SOUND LAB</span>
+              <strong className="t-body">Clinical doses, honest labels</strong>
+              <span className="t-body-sm text-2">Bowls, vibroacoustics, the 30 Hz window, nano portraits.</span>
+            </span>
+          </Link>
+          <Link className="home-lab-card" to="/nature" data-testid="home-lab-nature">
+            <img src={`${import.meta.env.BASE_URL}art/sparrow.jpg`} alt="Nature Calls Lab cover art" loading="lazy" />
+            <span className="home-lab-body">
+              <span className="t-label text-3">NATURE CALLS LAB</span>
+              <strong className="t-body">Animal call signs, plant acoustics</strong>
+              <span className="t-body-sm text-2">Measured bands for cat, sparrow, jay, squirrel — plus a cricket thermometer.</span>
+            </span>
+          </Link>
+        </div>
+      </section>
+
       <section className="home-directory" aria-labelledby="home-directory-title">
         <div className="home-directory-header">
           <div>

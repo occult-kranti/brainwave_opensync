@@ -31,6 +31,8 @@ import { fmtMin, parseBedtime, planNight } from '@/dream/scheduler';
 import { fmtClock } from '@/ui/session/sessionMath';
 import { Field4D } from '@/ui/components/Field4D';
 import { useField4d } from '@/hooks/useField4d';
+import { LabRibbon } from '@/ui/components/LabRibbon';
+import { LabHero } from '@/ui/components/LabHero';
 
 // ---------------------------------------------------------------------------
 // Shared bits
@@ -176,6 +178,8 @@ export default function LucidLab() {
         <nav className="flex gap-2" style={{ marginTop: 14, flexWrap: 'wrap' }} aria-label="Section shortcuts">
           {JUMPS.map(([href, label]) => <Chip key={href} onClick={() => document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })}>{label}</Chip>)}
         </nav>
+        <LabRibbon />
+        <LabHero src="art/hero-lucid.jpg" alt="A starfield shaped like a closed eye above mountains — Lucid Audio Lab banner" caption="LUCID AUDIO LAB · cue research · timing · the government file" />
       </header>
 
       {/* ---------------------------------------------------------- evidence */}

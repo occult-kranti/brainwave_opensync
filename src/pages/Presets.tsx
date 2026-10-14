@@ -119,6 +119,7 @@ export default function Presets() {
         <h2 id="bashar-collection-title" className="t-h2">Bashar sounds</h2>
         <p className="t-body-sm text-2">Scale sequence, alpha/gamma comparison, golden-ratio pitch ladder, and bowl chord. Four listening examples from the supplied digest.</p>
         <p className="t-body-sm text-2">Starting pitches and timings are app choices. The scale uses chosen k = 5,000, anchored on 200,000 ↔ 40 Hz; this is an illustration, not a measured human frequency. <Link to="/channeled">Read the source analysis</Link>.</p>
+        <p className="t-body-sm text-2">Each card states its purpose and links the source videos (auto-transcript digests, unverified). The same links appear in each sound’s spec sheet under Source videos.</p>
       </div>
     </section>}
 
@@ -192,6 +193,16 @@ export default function Presets() {
           </div>
           <h3 className="t-h2">{presetDisplayName(p)}</h3>
           <p className={`t-body-sm text-2 preset-card-description ${bashar ? '' : 'clamped'}`}>{presetSoundDescription(p)}</p>
+          {p.purpose && <p className="t-caption text-2 preset-card-purpose clamped">{p.purpose}</p>}
+          {p.links && p.links.length > 0 && (
+            <p className="preset-card-links">
+              {p.links.map((l) => (
+                <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer" title={l.label}>
+                  ▶ VIDEO {l.url.split('v=')[1] ?? 'SOURCE'}
+                </a>
+              ))}
+            </p>
+          )}
           <MiniPhaseBar beats={p.spec.phases.map((ph) => ({ sec: ph.durationSec, beat: ph.beatHz }))} durationSec={presetDurationMin(p) * 60} />
           <p className="t-readout-sm text-2 preset-signal">{presetSignalSummary(p)}</p>
           <div className="preset-card-actions">
@@ -228,6 +239,23 @@ export default function Presets() {
         <h3 className="t-h3">Sources and limits</h3>
         <GradeBadge grade={drawer.grade} citation={{ verdict: gradeVerdict(drawer), summary: drawer.rationale, source: drawer.citations[0] }} />
         <p className="t-body-sm text-2" style={{ marginTop: 12 }}>{drawer.rationale}</p>
+        {drawer.purpose && (
+          <p className="t-body-sm" style={{ marginTop: 10, color: 'var(--teal)' }}>{drawer.purpose}</p>
+        )}
+        {drawer.links && drawer.links.length > 0 && (
+          <div style={{ marginTop: 10 }}>
+            <span className="t-label text-3">SOURCE VIDEOS</span>
+            <ul className="source-list t-caption" style={{ marginTop: 6 }}>
+              {drawer.links.map((l) => (
+                <li key={l.url}>
+                  <a href={l.url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--amber)' }}>
+                    ▶ {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <ul className="source-list t-caption text-3">{drawer.citations.map((c) => <li key={c}>{c}</li>)}</ul>
         {isBasharPreset(drawer) && <p className="t-body-sm"><Link to="/channeled">Open the Bashar source analysis</Link></p>}
         <button type="button" className="chip chip-active" onClick={() => load(drawer)}>LOAD INTO STUDIO</button>

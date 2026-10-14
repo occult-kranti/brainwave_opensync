@@ -40,7 +40,8 @@ import {
   type SandState,
 } from '@/cymatics/chladni';
 import { COLORMAPS, renderFrame, type ColormapName } from '@/cymatics/render';
-import { drawPlate3D } from '@/cymatics/plate3d';
+import { drawPlate3D, drawPlate5D } from '@/cymatics/plate3d';
+import { useOrbitCamera } from '@/hooks/useOrbitCamera';
 import { Field4D } from '@/ui/components/Field4D';
 import { useField4d } from '@/hooks/useField4d';
 import { sampleAudioFeatures, smoothDriveHz } from '@/cymatics/audioLink';
@@ -171,9 +172,10 @@ export default function Cymatics() {
   const [audioActive, setAudioActive] = useState(false);
 
   // ---- render state --------------------------------------------------------
-  const [renderMode, setRenderMode] = useState<'lines' | 'sand' | 'plate3d'>('plate3d');
+  const [renderMode, setRenderMode] = useState<'lines' | 'sand' | 'plate3d' | 'plate5d'>('plate3d');
   const [colormap, setColormap] = useState<ColormapName>('gold-plate');
   const [field4dOn, setField4dOn] = useField4d();
+  const { cam: orbitCam, interacted: orbited, bind: orbitBind } = useOrbitCamera();
   const [threshold, setThreshold] = useState(0.08);
   const [particleCount, setParticleCount] = useState(6000);
   const [speed, setSpeed] = useState(1);
@@ -306,14 +308,16 @@ export default function Cymatics() {
       }
 
       const sand = sandRef.current;
-      if ((renderMode === 'sand' || renderMode === 'plate3d') && sand) {
+      if ((renderMode === 'sand' || renderMode === 'plate3d' || renderMode === 'plate5d') && sand) {
         stepParticles(sand, field, dt * speed, {
           jitter: 0.012 + energyRef.current * 0.05,
         });
       }
 
-      if (renderMode === 'plate3d') {
-        drawPlate3D(buf.getContext('2d')!, resolution, resolution, field, {
+      const orbit = orbited.current ? { ...orbitCam.current } : undefined;
+      if (renderMode === 'plate3d' || renderMode === 'plate5d') {
+        const drawFn = renderMode === 'plate5d' ? drawPlate5D : drawPlate3D;
+        drawFn(buf.getContext('2d')!, resolution, resolution, field, {
           time: now / 1000,
           amp: 0.34,
           energy: energyRef.current,
@@ -321,6 +325,7 @@ export default function Cymatics() {
           gridY: resolution >= 512 ? 54 : 36,
           stride: 2,
           particles: sand,
+          orbit,
         });
       } else {
         renderFrame(buf.getContext('2d'), resolution, resolution, {
@@ -339,7 +344,7 @@ export default function Cymatics() {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [field, renderMode, colormap, threshold, resolution, speed, shape, driveMode, engineRef]);
+  }, [field, renderMode, colormap, threshold, resolution, speed, shape, driveMode, engineRef, orbitCam, orbited]);
 
   // ---- actions ----------------------------------------------------------------
   const exportPng = useCallback(() => {
@@ -347,8 +352,9 @@ export default function Cymatics() {
     const off = document.createElement('canvas');
     off.width = res;
     off.height = res;
-    if (renderMode === 'plate3d') {
-      drawPlate3D(off.getContext('2d')!, res, res, field, {
+    if (renderMode === 'plate3d' || renderMode === 'plate5d') {
+      const drawFn = renderMode === 'plate5d' ? drawPlate5D : drawPlate3D;
+      drawFn(off.getContext('2d')!, res, res, field, {
         time: 4, amp: 0.34, energy: 0, gridX: 76, gridY: 54, stride: 2,
         particles: sandRef.current, still: true,
       });
@@ -550,7 +556,9 @@ export default function Cymatics() {
               ref={displayRef}
               width={640}
               height={640}
-              style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '1' }}
+              {...orbitBind}
+              style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '1', touchAction: (renderMode === 'plate3d' || renderMode === 'plate5d') ? 'none' : 'auto', cursor: (renderMode === 'plate3d' || renderMode === 'plate5d') ? 'grab' : 'default' }}
+              aria-label={(renderMode === 'plate3d' || renderMode === 'plate5d') ? 'Interactive plate — drag to orbit, scroll or pinch to zoom, double-click to reset' : 'Cymatics plate display'}
             />
             {driveMode === 'audio' && !audioActive && (
               <div
@@ -824,6 +832,7 @@ export default function Cymatics() {
           <Panel title="RENDER">
             <div className="flex gap-2" style={{ marginBottom: 16 }}>
               <Chip active={renderMode === 'plate3d'} onClick={() => setRenderMode('plate3d')}>3D PLATE</Chip>
+              <Chip active={renderMode === 'plate5d'} onClick={() => setRenderMode('plate5d')}>5D PHASE</Chip>
               <Chip active={renderMode === 'sand'} onClick={() => setRenderMode('sand')}>SAND</Chip>
               <Chip active={renderMode === 'lines'} onClick={() => setRenderMode('lines')}>NODAL LINES</Chip>
               <Chip active={field4dOn} onClick={() => setField4dOn(!field4dOn)}>4D FIELD</Chip>
@@ -842,7 +851,7 @@ export default function Cymatics() {
               {renderMode === 'lines' && (
                 <Slider label="LINE WIDTH" value={threshold} min={0.01} max={0.3} step={0.005} onChange={setThreshold} format={(v) => v.toFixed(3)} />
               )}
-              {(renderMode === 'sand' || renderMode === 'plate3d') && (
+              {(renderMode === 'sand' || renderMode === 'plate3d' || renderMode === 'plate5d') && (
                 <>
                   <Slider
                     label="PARTICLES"

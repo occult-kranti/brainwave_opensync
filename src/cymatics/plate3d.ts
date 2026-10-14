@@ -67,6 +67,35 @@ export interface ProjectedPoint {
   z: number;
 }
 
+/** User-orbitable camera state (yaw/tilt angles, dist = zoom). */
+export interface OrbitCam {
+  yaw: number;
+  tilt: number;
+  dist: number;
+}
+
+/** Orbit clamps — keep the plate readable, never below the horizon or inside it. */
+export const ORBIT_LIMITS = {
+  tiltMin: 0.15,
+  tiltMax: 1.45,
+  distMin: 1.2,
+  distMax: 4.2,
+} as const;
+
+/** Drag-to-orbit math: dx spins yaw, dy lifts tilt (clamped). Pure for tests. */
+export function orbitBy(cam: OrbitCam, dxPx: number, dyPx: number): OrbitCam {
+  return {
+    yaw: cam.yaw + dxPx * 0.008,
+    tilt: Math.min(ORBIT_LIMITS.tiltMax, Math.max(ORBIT_LIMITS.tiltMin, cam.tilt - dyPx * 0.006)),
+    dist: cam.dist,
+  };
+}
+
+/** Wheel/pinch zoom math (clamped). Pure for tests. */
+export function zoomBy(cam: OrbitCam, factor: number): OrbitCam {
+  return { ...cam, dist: Math.min(ORBIT_LIMITS.distMax, Math.max(ORBIT_LIMITS.distMin, cam.dist / factor)) };
+}
+
 export interface Camera {
   yaw: number;
   tilt: number;
@@ -113,6 +142,8 @@ export interface Plate3DDrawOptions {
   particles: SandState | null;
   /** Still camera for reduced-motion renders. */
   still?: boolean;
+  /** User-orbit camera override; when set, auto-sway is disabled. */
+  orbit?: OrbitCam;
 }
 
 /**
@@ -126,15 +157,16 @@ export function drawPlate3D(
   field: (x: number, y: number) => number,
   opts: Plate3DDrawOptions,
 ): void {
-  const { time, amp, energy, gridX, gridY, stride, particles, still } = opts;
+  const { time, amp, energy, gridX, gridY, stride, particles, still, orbit } = opts;
   const t = still ? 4 : time;
+  const camDist = orbit ? orbit.dist : 2.1;
   const cam: Camera = {
-    yaw: still ? 0.42 : 0.42 + 0.28 * Math.sin(t * 0.09),
-    tilt: 1.02,
-    dist: 2.1,
+    yaw: orbit ? orbit.yaw : still ? 0.42 : 0.42 + 0.28 * Math.sin(t * 0.09),
+    tilt: orbit ? orbit.tilt : 1.02,
+    dist: camDist,
     cx: w / 2,
     cy: h * 0.6,
-    scale: Math.min(w, h) * 0.46,
+    scale: Math.min(w, h) * 0.46 * (2.1 / camDist),
   };
   const breathe = 1 + (still ? 0 : 0.07 * Math.sin(t * 0.7));
   const ampNow = amp * (1 + energy * 0.45);
@@ -207,6 +239,141 @@ export function drawPlate3D(
       ctx.fillStyle = css(rampGold(Math.min(1, it.v + 0.3)), 0.16);
       ctx.fillRect(it.px - r * 2.6, it.py - r * 2.6, r * 5.2, r * 5.2);
       ctx.fillStyle = css(core, 0.85);
+      ctx.fillRect(it.px - r, it.py - r, r * 2, r * 2);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 5D phase mode — x, y, displacement, time, and the velocity channel
+// ---------------------------------------------------------------------------
+
+/**
+ * For harmonic plate motion u(x,y,t) = U(x,y)·sin θ, the surface velocity is
+ * v = ω·U(x,y)·cos θ — a quarter-cycle (90°) ahead of displacement, the same
+ * quantity scanning laser Doppler vibrometers map. 5D mode renders both:
+ * height = instantaneous displacement, color = signed instantaneous velocity
+ * (diverging gold-up / teal-down), over a slowed display oscillation.
+ *
+ * Physical honesty: nodal lines (U = 0) are dark and still at EVERY phase —
+ * displacement and velocity both vanish there, which is exactly why sand
+ * collects on them. Sand drift still follows the time-averaged envelope |U|,
+ * so the caller steps particles against the amplitude field, not fieldNow.
+ */
+
+/** Diverging velocity color: gold upward, teal downward, dark at zero. */
+export function velocityColor(v: number, glow: number): Rgb {
+  const x = Number.isFinite(v) ? Math.min(1, Math.max(-1, v)) : 0;
+  const m = Math.min(1, Math.abs(x) * 1.6) * glow;
+  const dark: Rgb = [14, 11, 9];
+  const target: Rgb = x >= 0 ? rampGold(0.55 + 0.45 * m) : [60, 170, 150];
+  return [
+    Math.round(dark[0] + (target[0] - dark[0]) * m),
+    Math.round(dark[1] + (target[1] - dark[1]) * m),
+    Math.round(dark[2] + (target[2] - dark[2]) * m),
+  ];
+}
+
+/** Display oscillation rate for 5D mode (Hz) — slowed so the phase is visible. */
+export const PHASE5D_RATE_HZ = 0.35;
+
+/** Phase factors at time t: displacement ∝ sin θ, velocity ∝ cos θ. */
+export function phaseFactors5D(timeSec: number): { disp: number; vel: number; theta: number } {
+  const theta = 2 * Math.PI * PHASE5D_RATE_HZ * timeSec;
+  return { disp: Math.sin(theta), vel: Math.cos(theta), theta };
+}
+
+export interface Plate5DOptions extends Omit<Plate3DDrawOptions, 'particles'> {
+  /** Sand particles stepped against the amplitude envelope |U| by the caller. */
+  particles: SandState | null;
+}
+
+/** Draw the 5D phase view: displacement terrain + velocity color channel. */
+export function drawPlate5D(
+  ctx: CanvasRenderingContext2D,
+  w: number,
+  h: number,
+  envelope: (x: number, y: number) => number,
+  opts: Plate5DOptions,
+): void {
+  const { time, amp, energy, gridX, gridY, stride, particles, still, orbit } = opts;
+  const t = still ? 4 : time;
+  const { disp, vel } = phaseFactors5D(t);
+  const fieldNow = (x: number, y: number) => envelope(x, y) * disp;
+  const velNow = (x: number, y: number) => envelope(x, y) * vel;
+
+  const camDist = orbit ? orbit.dist : 2.1;
+  const cam: Camera = {
+    yaw: orbit ? orbit.yaw : still ? 0.42 : 0.42 + 0.28 * Math.sin(t * 0.09),
+    tilt: orbit ? orbit.tilt : 1.02,
+    dist: camDist,
+    cx: w / 2,
+    cy: h * 0.6,
+    scale: Math.min(w, h) * 0.46 * (2.1 / camDist),
+  };
+  const ampNow = amp * (1 + energy * 0.45);
+  const glow = 0.72 + energy * 0.28;
+
+  ctx.fillStyle = css(PLATE3D_BACKGROUND);
+  ctx.fillRect(0, 0, w, h);
+
+  ctx.lineCap = 'round';
+  const segLen = 4;
+  const drawPolyline = (pts: ProjectedPoint[], vels: number[]) => {
+    for (let s = 0; s < pts.length - 1; s += segLen) {
+      const end = Math.min(pts.length - 1, s + segLen);
+      const v = vels.slice(s, end + 1).reduce((a, b) => a + b, 0) / (end - s + 1);
+      const dim = 1 - Math.min(0.45, Math.max(0, (pts[s].depth + 0.9) * 0.18));
+      const c = velocityColor(v, glow);
+      ctx.strokeStyle = css([Math.round(c[0] * dim), Math.round(c[1] * dim), Math.round(c[2] * dim)], 0.9);
+      ctx.lineWidth = 1.1 * pts[s].persp;
+      ctx.beginPath();
+      ctx.moveTo(pts[s].px, pts[s].py);
+      for (let k = s + 1; k <= end; k++) ctx.lineTo(pts[k].px, pts[k].py);
+      ctx.stroke();
+    }
+  };
+
+  for (let j = 0; j < gridY; j += stride) {
+    const y = (j / (gridY - 1)) * 2 - 1;
+    const pts: ProjectedPoint[] = [];
+    const vels: number[] = [];
+    for (let i = 0; i < gridX; i++) {
+      const x = (i / (gridX - 1)) * 2 - 1;
+      pts.push(projectPoint(x, y, fieldNow((x + 1) / 2, (y + 1) / 2) * ampNow, cam));
+      vels.push(velNow((x + 1) / 2, (y + 1) / 2));
+    }
+    drawPolyline(pts, vels);
+  }
+  for (let i = 0; i < gridX; i += stride) {
+    const x = (i / (gridX - 1)) * 2 - 1;
+    const pts: ProjectedPoint[] = [];
+    const vels: number[] = [];
+    for (let j = 0; j < gridY; j++) {
+      const y = (j / (gridY - 1)) * 2 - 1;
+      pts.push(projectPoint(x, y, fieldNow((x + 1) / 2, (y + 1) / 2) * ampNow, cam));
+      vels.push(velNow((x + 1) / 2, (y + 1) / 2));
+    }
+    drawPolyline(pts, vels);
+  }
+
+  if (particles && particles.count > 0) {
+    const n = particles.count;
+    const items: { depth: number; px: number; py: number; persp: number; v: number }[] = [];
+    for (let k = 0; k < n; k++) {
+      const x = particles.x[k] * 2 - 1;
+      const y = particles.y[k] * 2 - 1;
+      const z = fieldNow(particles.x[k], particles.y[k]) * ampNow + 0.015;
+      const p = projectPoint(x, y, z, cam);
+      items.push({ depth: p.depth, px: p.px, py: p.py, persp: p.persp, v: velNow(particles.x[k], particles.y[k]) });
+    }
+    items.sort((a, b) => b.depth - a.depth);
+    for (const it of items) {
+      const r = 1.05 * it.persp;
+      const c = velocityColor(it.v, glow);
+      ctx.fillStyle = css(c, 0.2);
+      ctx.fillRect(it.px - r * 2.6, it.py - r * 2.6, r * 5.2, r * 5.2);
+      ctx.fillStyle = css(c, 0.9);
       ctx.fillRect(it.px - r, it.py - r, r * 2, r * 2);
     }
   }

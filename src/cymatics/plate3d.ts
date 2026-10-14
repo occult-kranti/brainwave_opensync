@@ -142,7 +142,7 @@ export function drawPlate3D(
   ctx.fillStyle = css(PLATE3D_BACKGROUND);
   ctx.fillRect(0, 0, w, h);
 
-  const glow = 0.55 + energy * 0.45;
+  const glow = 0.72 + energy * 0.28;
 
   // Mesh: stride-spaced rows and columns, segment-colored by |displacement|.
   ctx.lineCap = 'round';

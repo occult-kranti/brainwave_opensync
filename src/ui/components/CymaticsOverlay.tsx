@@ -26,6 +26,15 @@ import { useIsMobile } from '@/hooks/use-mobile';
 
 const PLATE = VIRTUAL_PLATES.find((p) => p.id === 'steel-square-30') ?? VIRTUAL_PLATES[0];
 
+/**
+ * Display tuning: on the physical 30 cm steel plate (fundamental 180 Hz) a
+ * 100–300 Hz session carrier only excites the (1,1) single-hump mode — a
+ * boring dome. We tune the virtual plate so the carrier lands on the
+ * (2,3)/(3,2) pair (f/f₀ = 6.5), the classic diamond-pattern territory from
+ * the photographed plates. The caption says so; the physics is unchanged.
+ */
+const DISPLAY_MODE_RATIO = 6.5;
+
 export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
   const { carrierHz, running, engineRef } = useSession();
   const isMobile = useIsMobile();
@@ -40,7 +49,8 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
   const roundedDrive = Math.round(driveHz);
 
   const field = useMemo(() => {
-    const modes = drivenSquareModes(roundedDrive, PLATE);
+    const displayPlate = { ...PLATE, fundamentalHz: roundedDrive / DISPLAY_MODE_RATIO };
+    const modes = drivenSquareModes(roundedDrive, displayPlate);
     return drivenSquareField(modes);
   }, [roundedDrive]);
 
@@ -105,13 +115,13 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
       onClick={onClose}
       style={{
         position: 'absolute', inset: 0, zIndex: 30, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        background: 'rgba(6, 8, 10, 0.72)', backdropFilter: 'blur(3px)', borderRadius: 12, padding: 12,
+        background: 'rgba(6, 8, 10, 0.72)', backdropFilter: 'blur(3px)', borderRadius: 12, padding: 8,
       }}
     >
       <div
         className="panel"
         onClick={(e) => e.stopPropagation()}
-        style={{ padding: 16, maxWidth: size + 32, width: '100%' }}
+        style={{ padding: 14, width: '100%', maxWidth: size + 28, maxHeight: '100%', overflowY: 'auto' }}
       >
         <div className="flex items-center justify-between" style={{ marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
           <span className="t-label text-3">SAND ON A SQUARE PLATE · STEEL 30×30 CM · DRIVEN BY {roundedDrive} HZ</span>
@@ -127,12 +137,14 @@ export function CymaticsOverlay({ onClose }: { onClose: () => void }) {
           ref={canvasRef}
           width={isMobile ? 360 : 520}
           height={isMobile ? 360 : 520}
-          style={{ width: '100%', height: 'auto', borderRadius: 8, display: 'block', background: 'var(--ink-0)' }}
+          style={{ display: 'block', margin: '0 auto', height: 'min(46vh, 440px)', width: 'auto', maxWidth: '100%', aspectRatio: '1', borderRadius: 8, background: 'var(--ink-0)' }}
         />
         <p className="t-caption text-3" style={{ marginTop: 10 }}>
           Simulation: sand grains settle on the nodal lines of the plate mode nearest the session carrier — the same
           eigenmode math as the Cymatics Studio page. In 3D the surface height is the plate's displacement field, so the
-          sand collects in the valleys; the gold palette matches a photographed steel-plate figure. A visualization of
+          sand collects in the valleys; the gold palette matches a photographed steel-plate figure. Display tuning: the
+          virtual plate's fundamental is set to carrier ÷ 6.5 so the carrier excites the pattern-rich (2,3)/(3,2) mode
+          pair (on the physical 30 cm plate the same carrier would show the single-hump (1,1) dome). A visualization of
           the sound, not a measurement of its effect on you.
         </p>
       </div>

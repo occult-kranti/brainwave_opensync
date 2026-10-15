@@ -12,3 +12,5 @@ No branch history is force-rewritten. The unchanged original workspace can still
 ## Spatial Observatory — 15 October 2026
 
 The archive adds shared Three.js/WebGL 2 sculpture, 3D/4D camera zoom and reset, an immersive visual room, three materials, original collection artwork, common spatial surfaces and workshop wayfinding. Visual settings persist independently of sound. The original master UI and all 139 presets remain. The Pages manifest records the graphics stack and zoom range.
+
+The spatial archive also includes an interactive outline fallback when WebGL is disabled, preserving camera zoom and Clifford projection controls.

@@ -4,6 +4,9 @@
  */
 import { describe, expect, it } from 'vitest';
 import {
+  CROP_HYPOTHESES,
+  CROP_PRESETS,
+  CROP_STUDIES,
   DOLBEAR_VALID_F,
   NATURE_HYPOTHESES,
   NATURE_PRESETS,
@@ -22,9 +25,9 @@ const allText = (): string[] => {
     out.push(s.species, s.hearing, s.observe, s.headline, s.source);
     for (const c of s.calls) out.push(c.name, c.band, c.meaning);
   }
-  for (const n of NATURE_STUDIES) out.push(n.name, n.finding, n.numbers, n.headline, n.source);
-  for (const h of NATURE_HYPOTHESES) out.push(h.title, h.headline, h.statement, h.prediction, h.homeTest, h.prior, ...h.citations);
-  for (const p of NATURE_PRESETS) out.push(p.title, p.purpose, p.rationale, ...p.citations);
+  for (const n of [...NATURE_STUDIES, ...CROP_STUDIES]) out.push(n.name, n.finding, n.numbers, n.headline, n.source);
+  for (const h of [...NATURE_HYPOTHESES, ...CROP_HYPOTHESES]) out.push(h.title, h.headline, h.statement, h.prediction, h.homeTest, h.prior, ...h.citations);
+  for (const p of [...NATURE_PRESETS, ...CROP_PRESETS]) out.push(p.title, p.purpose, p.rationale, ...p.citations);
   return out;
 };
 
@@ -33,8 +36,11 @@ describe('natureLab integrity', () => {
     const ids = [
       ...SPECIES_CARDS.map((x) => x.id),
       ...NATURE_STUDIES.map((x) => x.id),
+      ...CROP_STUDIES.map((x) => x.id),
       ...NATURE_HYPOTHESES.map((x) => x.id),
+      ...CROP_HYPOTHESES.map((x) => x.id),
       ...NATURE_PRESETS.map((x) => x.id),
+      ...CROP_PRESETS.map((x) => x.id),
     ];
     expect(new Set(ids).size).toBe(ids.length);
   });
@@ -53,8 +59,8 @@ describe('natureLab integrity', () => {
 
   it('every study/hypothesis headline is short (≤26 words)', () => {
     const wc = (t: string) => t.split(/\s+/).filter(Boolean).length;
-    for (const n of NATURE_STUDIES) expect(wc(n.headline), n.id).toBeLessThanOrEqual(26);
-    for (const h of NATURE_HYPOTHESES) expect(wc(h.headline), h.id).toBeLessThanOrEqual(26);
+    for (const n of [...NATURE_STUDIES, ...CROP_STUDIES]) expect(wc(n.headline), n.id).toBeLessThanOrEqual(26);
+    for (const h of [...NATURE_HYPOTHESES, ...CROP_HYPOTHESES]) expect(wc(h.headline), h.id).toBeLessThanOrEqual(26);
     for (const s of SPECIES_CARDS) expect(wc(s.headline), s.id).toBeLessThanOrEqual(26);
   });
 
@@ -90,7 +96,7 @@ describe('Dolbear math', () => {
 
 describe('nature presets', () => {
   it('all registered with dose metadata', () => {
-    for (const p of NATURE_PRESETS) {
+    for (const p of [...NATURE_PRESETS, ...CROP_PRESETS]) {
       const full = getPresetById(p.id);
       expect(full, p.id).toBeDefined();
       expect(full!.dose, p.id).toBeDefined();
@@ -142,7 +148,47 @@ describe('nature presets', () => {
     }
   });
 
-  it('catalog grows to ≥103 presets', () => {
-    expect(PRESETS.length).toBeGreaterThanOrEqual(103);
+  it('catalog grows to ≥107 presets', () => {
+    expect(PRESETS.length).toBeGreaterThanOrEqual(107);
+  });
+});
+
+describe('crop & water field', () => {
+  it('PAFT band walk covers the documented 125/250/500/1000 Hz tones', () => {
+    const p = getPresetById('nature-crop-paft-band')!;
+    expect(p.spec.phases.map((ph) => ph.carrierHz)).toEqual([125, 250, 500, 1000]);
+    expect(p.rationale).toContain('900/1200 Hz');
+  });
+
+  it('seed-priming portrait arithmetic is exact (20/40 kHz ÷ 2^8)', () => {
+    const p = getPresetById('nature-seed-priming-portrait')!;
+    expect(p.spec.phases[0].carrierHz).toBeCloseTo(20000 * 2 ** -8, 2);
+    expect(p.spec.phases[1].carrierHz).toBeCloseTo(40000 * 2 ** -8, 2);
+  });
+
+  it('sonolysis portrait arithmetic is exact (2^10 / 2^11)', () => {
+    const p = getPresetById('nature-sonolysis-portrait')!;
+    expect(p.spec.phases[0].carrierHz).toBeCloseTo(200000 * 2 ** -10, 2);
+    expect(p.spec.phases[1].carrierHz).toBeCloseTo(300000 * 2 ** -11, 2);
+    expect(p.spec.phases[2].carrierHz).toBeCloseTo(400000 * 2 ** -11, 2);
+  });
+
+  it('root phonotropism preset is D-grade single-lab labeled', () => {
+    const p = getPresetById('nature-root-phonotropism')!;
+    expect(p.grade).toBe('D');
+    expect(p.rationale).toContain('never independently replicated');
+  });
+
+  it('water folklore entry is D-grade with the 1988 Nature investigation cited', () => {
+    const m = CROP_STUDIES.find((x) => x.id === 'water-memory-myth')!;
+    expect(m.grade).toBe('D');
+    expect(m.source).toContain('1988');
+  });
+
+  it('crop hypotheses reference real presets with falsifiable fields', () => {
+    for (const h of CROP_HYPOTHESES) {
+      expect(getPresetById(h.presetId), h.id).toBeDefined();
+      expect(h.homeTest.length).toBeGreaterThan(0);
+    }
   });
 });

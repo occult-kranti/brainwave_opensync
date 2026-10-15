@@ -10,6 +10,7 @@ import { Download, Pause, Play } from 'lucide-react';
 import { analyzeLoudness, magnitudeSpectrumDb, thd, thdN, rms, type LoudnessResult, type ThdResult, type ThdnResult } from '@/dsp';
 import { renderPhase } from '@/engine';
 import { Panel, Chip, Led, WarningChip } from '@/ui/components/primitives';
+import { StudioCymatics } from '@/ui/components/StudioCymatics';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { InfoPopover } from '@/ui/components/InfoPopover';
 import { useSession } from '@/ui/session/useSession';
@@ -50,6 +51,7 @@ export default function Analyzer() {
   const [thdR, setThdR] = useState<ThdResult | null>(null);
   const [thdnR, setThdnR] = useState<ThdnResult | null>(null);
   const [micError, setMicError] = useState<string | null>(null);
+  const [cymAnalyser, setCymAnalyser] = useState<AnalyserNode | null>(null);
   const micRef = useRef<{ stream: MediaStream; ctx: AudioContext; ana: AnalyserNode } | null>(null);
   const isMobile = useIsMobile();
 
@@ -107,7 +109,8 @@ export default function Analyzer() {
       micRef.current?.stream.getTracks().forEach((t) => t.stop());
       void micRef.current?.ctx.close();
       micRef.current = null;
-      return;
+      const t = window.setTimeout(() => setCymAnalyser(null), 0);
+      return () => window.clearTimeout(t);
     }
     let cancelled = false;
     navigator.mediaDevices
@@ -124,6 +127,7 @@ export default function Analyzer() {
         ana.fftSize = 4096;
         src.connect(ana);
         micRef.current = { stream, ctx, ana };
+        setCymAnalyser(ana);
         setMicError(null);
       })
       .catch(() => setMicError('microphone permission denied'));
@@ -131,6 +135,15 @@ export default function Analyzer() {
       cancelled = true;
     };
   }, [source]);
+
+  // ---- cymatics plate source (refs resolved in effects, never during render) ----
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      if (source === 'engine') setCymAnalyser(engineRef.current?.analysers()?.spectrum ?? null);
+      else if (source === 'file') setCymAnalyser(null);
+    }, 0);
+    return () => window.clearTimeout(t);
+  }, [source, running, engineRef]);
 
   // ---- cal tone ---------------------------------------------------------------
   useEffect(() => {
@@ -287,6 +300,19 @@ export default function Analyzer() {
               <span className="t-readout-sm text-3">20 Hz – 20 kHz LOG · −120…0 dBFS</span>
             </div>
             <SpectrumCanvas source={source} frozen={frozen} file={file} engineRef={engineRef} micRef={micRef} height={isMobile ? 240 : 360} carrierHz={carrierHz} beatHz={beatHz} />
+          </Panel>
+        </div>
+
+        {/* Live cymatics plate — driven by the selected source (engine bus / mic) */}
+        <div style={{ gridColumn: isMobile ? 'span 1' : 'span 12', minWidth: 0 }}>
+          <Panel title="CYMATICS PLATE — LIVE" pad={false} right={
+            <span className="t-caption text-3" style={{ paddingRight: 8 }}>
+              {source === 'file' ? 'file source: plate idles (engine/mic only)' : 'driven by the selected live source'}
+            </span>
+          }>
+            <div style={{ padding: '10px 12px 12px' }}>
+              <StudioCymatics analyser={cymAnalyser} height={isMobile ? 300 : 380} />
+            </div>
           </Panel>
         </div>
 

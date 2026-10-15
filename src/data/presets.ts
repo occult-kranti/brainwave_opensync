@@ -5,6 +5,8 @@
  * (W3) stays decoupled; the engine adapts these into its own runtime types.
  */
 
+import { OVERNIGHT_PRESETS } from './overnightPractice';
+import { NANO_STUDIO_PRESETS } from './nanoPresets';
 import { PRACTICE_PRESETS } from './listeningPractice';
 import { ARCHIVE_PRESETS } from './archivePractice';
 import type { Grade } from './frequencies';
@@ -824,6 +826,8 @@ const RAW_PRESETS: readonly PresetSpec[] = [
   },
   ...PRACTICE_PRESETS,
   ...ARCHIVE_PRESETS,
+  ...OVERNIGHT_PRESETS,
+  ...NANO_STUDIO_PRESETS,
   ...VARIETY_PRESETS,
   ...NATURE_PRESETS,
   ...CROP_PRESETS,

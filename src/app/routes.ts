@@ -73,6 +73,7 @@ export const ROUTES: readonly AppRoute[] = [
   { path: '/', label: 'HOME', module: 'Home', icon: HomeIcon, group: 'home', component: Home, bottomTab: true },
   // Practical tools — listening, creating, measuring and testing.
   r('/meditate', 'FIND A SESSION', 'Find a Session', Compass, 'tools', () => import('@/pages/Meditate')),
+  r('/overnight', 'OVERNIGHT', 'Overnight', Moon, 'tools', () => import('@/pages/Overnight')),
   r('/hypnosis', 'HYPNOSIS & DREAMING', 'Hypnosis & Dreaming', MoonStar, 'tools', () => import('@/pages/Hypnosis')),
   r('/presets', 'PRESETS', 'Presets', Layers, 'tools', () => import('@/pages/Presets'), { bottomTab: true }),
   r('/studio', 'STUDIO', 'Studio', AudioWaveform, 'tools', () => import('@/pages/Studio'), { bottomTab: true }),

@@ -32,6 +32,7 @@ const ALL_ROUTE_PATHS = [
   '/',
   '/meditate',
   '/hypnosis',
+  '/overnight',
   '/traditions',
   '/studio',
   '/library',

@@ -110,3 +110,8 @@
 .home-sourcebook-link > span { display: grid; gap: 8px; }
 .home-sourcebook-link strong { font: 24px Georgia, serif; }
 .home-sourcebook-link span span { color: var(--text-2); font-size: 14px; }
+.home-night-link { display: grid; gap: 14px; border: 1px solid var(--line-2); padding: 28px; margin: 28px 0; border-radius: 12px; background: var(--ink-2); text-decoration: none; }
+.home-night-link strong { font: 30px/1.2 Georgia,serif; color: var(--text-1); }
+.home-night-link > span:last-child { color: var(--text-2); font-size: 13px; line-height: 1.8; }
+.home-night-link svg { vertical-align: middle; margin-left: 8px; }
+@media(max-width:700px) { .home-night-link { padding: 22px; }.home-night-link strong { font-size: 26px; } }

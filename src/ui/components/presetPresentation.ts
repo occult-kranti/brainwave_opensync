@@ -38,7 +38,7 @@ export function presetSignalSummary(preset: Preset): string {
 
 export function presetMatchesSearch(preset: Preset, query: string): boolean {
   const words = query.toLowerCase().trim().split(/\s+/);
-  const text = [preset.title, preset.id, preset.category, presetSoundDescription(preset), presetSignalSummary(preset), ...preset.spec.phases.map(phaseSoundLabel)].join(' ').toLowerCase();
+  const text = [preset.title, preset.id, preset.category, preset.purpose ?? '', preset.spec.mix?.nature.on ? preset.spec.mix.nature.kind : '', preset.spec.mix?.noiseOn ? Object.keys(preset.spec.mix.noiseDb).join(' ') : '', presetSoundDescription(preset), presetSignalSummary(preset), ...preset.spec.phases.map(phaseSoundLabel)].join(' ').toLowerCase();
   return words.every((word) => text.includes(word));
 }
 

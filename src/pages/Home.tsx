@@ -38,6 +38,7 @@ export default function Home() {
       <p className="home-scope t-body-sm text-3">These tools create and visualize audio. They do not measure your brain activity.</p>
       <section className="home-now" aria-labelledby="home-now-title"><div><span className="eyebrow">A moment for you</span><h2 id="home-now-title">What do you need right now?</h2><p>Choose an intention. We’ll help you find a place to begin.</p></div><div className="home-intentions">{PRACTICE_GOALS.slice(0, 5).map((g) => <Link key={g.id} to={`/meditate?goal=${g.id}`}>{g.title}<ArrowRight size={15} /></Link>)}</div><Link className="home-text-link" to="/meditate">Which meditation should I do right now?</Link></section>
 
+      <Link className="home-night-link" to="/overnight"><span className="eyebrow">For tonight</span><strong>A quieter night starts here.</strong><span>Plan seven hours · choose sound, then quiet · explore dreaming <ArrowRight size={16} /></span></Link>
       <details className="home-tool-drawer"><summary>Make it your own <span>Studio, composition & audio analysis</span></summary><section className="home-task-section" aria-label="What would you like to do?">
         <div className="home-task-grid">
           <article className="home-task home-task-listen">

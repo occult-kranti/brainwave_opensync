@@ -33,6 +33,7 @@ type EntrySpec = readonly [path: string, category: NavigationCategoryId, title: 
 const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/', 'primary', 'Home', 'Find a starting point for listening, creating, or inspecting audio.', ['start', 'tools', 'directory']],
   ['/meditate', 'primary', 'Find a session', 'Choose a meditation for your intention, time and listening setup.', ['meditation', 'suggestion', 'recommend', 'right now', 'healing', 'sleep']],
+  ['/overnight', 'practice', 'Overnight', 'Plan seven hours with speaker-compatible sound beds and optional quiet time.', ['sleep', '7 hours', 'lucid', 'astral projection', 'remote viewing', 'hypnosis']],
   ['/hypnosis', 'practice', 'Hypnosis & dreaming', 'Read the evidence, explore sound mathematics, and try a listening practice.', ['hypnagogia', 'hypnagogic', 'trance', 'theta', 'suggestion', 'mathematics']],
   ['/presets', 'primary', 'Presets', 'Preview ready-made sounds, then load a session to play or edit.', ['listen', 'Bashar', 'bowls', 'noise', 'sound library', 'saved']],
   ['/studio', 'primary', 'Studio', 'Mix tones, noise, and layers into a session.', ['create', 'play', 'duration', 'volume', 'export', 'WAV', 'binaural', 'isochronic']],

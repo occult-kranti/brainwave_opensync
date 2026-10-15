@@ -90,4 +90,21 @@
 .preset-category-group .preset-grid { margin-bottom: 20px; grid-template-columns: repeat(auto-fit,minmax(min(100%,270px),1fr)); }
 .preset-card h3 { font-family: Georgia, serif; font-size: 24px; font-weight: 400; }
 .preset-card { background: var(--ink-1); }
+.preset-quick-filters { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.preset-quick-filters label, .preset-arrangement label { display: grid; gap: 8px; color: var(--text-2); font-size: 12px; min-width: 0; }
+.preset-quick-filters select, .preset-arrangement select { max-width: 100%; width: 100%; }
+.preset-arrangement { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 24px; }
+.preset-arrangement label { min-width: min(190px,100%); }
+.preset-setup-tag { color: var(--teal-hi); font-size: 11px; margin: 8px 0; }
+.preset-collections .chip { text-transform: none; font: 12px/1.4 Inter,sans-serif; letter-spacing: 0; }
+.preset-card-actions .chip { flex: 1 1 120px; }
+@media(max-width:700px) {
+  .preset-collections { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .preset-quick-filters { grid-template-columns: 1fr; }
+  .preset-arrangement { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .preset-arrangement label { min-width: 0; }
+  .preset-category-group > summary { font-size: 20px; }
+  .preset-category-group > summary > span { float: none; display: block; padding-top: 8px; margin-left: 22px; }
+  .preset-card-actions .preset-details-button { flex-basis: 100%; }
+}
 @media(max-width:700px) { .preset-category-group { padding: 0 12px; } .preset-page > header .t-display-lg { font-size: 38px; } }

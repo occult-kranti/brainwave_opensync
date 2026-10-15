@@ -9,6 +9,11 @@ import { renderToString } from 'react-dom/server';
 import { MemoryRouter } from 'react-router';
 import { SessionProvider } from '@/ui/session/SessionContext';
 import Home from '@/pages/Home';
+import Overnight from '@/pages/Overnight';
+import NanoLab from '@/pages/NanoLab';
+import Meditate from '@/pages/Meditate';
+import Hypnosis from '@/pages/Hypnosis';
+import Traditions from '@/pages/Traditions';
 import Guide from '@/pages/Guide';
 import Studio from '@/pages/Studio';
 import Library from '@/pages/Library';
@@ -38,6 +43,11 @@ function render(el: React.ReactElement) {
 }
 
 const PAGES: { name: string; el: () => React.ReactElement; primary: string }[] = [
+  { name: 'Overnight', el: () => <Overnight />, primary: 'Set up this night' },
+  { name: 'NanoLab', el: () => <NanoLab />, primary: 'Four controlled starting points' },
+  { name: 'Find a session', el: () => <Meditate />, primary: 'Set up this session' },
+  { name: 'Hypnosis', el: () => <Hypnosis />, primary: 'Hypnosis' },
+  { name: 'Traditions', el: () => <Traditions />, primary: 'Set up in Studio' },
   { name: 'Home', el: () => <Home />, primary: 'Find my session' },
   { name: 'Guide', el: () => <Guide />, primary: 'DEEP TECHNICAL' },
   { name: 'Studio', el: () => <Studio />, primary: 'Play session' },

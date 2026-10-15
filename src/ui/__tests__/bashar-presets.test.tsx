@@ -132,10 +132,21 @@ describe('Bashar preset collection', () => {
 
   it('does not silently ignore the evidence filter for the Bashar collection', async () => {
     await mount();
-    const select = container.querySelector('select')!;
+    const select = container.querySelector<HTMLSelectElement>('select[aria-label="Minimum evidence grade"]')!;
     await act(async () => { select.value = 'A'; select.dispatchEvent(new Event('change', { bubbles: true })); });
     expect(container.querySelectorAll('[data-testid^="preset-card-"]')).toHaveLength(0);
     expect(container.textContent).toContain('0 presets');
+  });
+
+  it('combines overnight, speaker, texture and search filters from the URL', async () => {
+    await mount('/presets?collection=all&setup=speakers&duration=night&sound=nature&q=rain');
+    expect(container.querySelectorAll('[data-testid^="preset-card-"]')).toHaveLength(2);
+    expect(card('night-sleep')).toBeTruthy();
+    expect(card('night-lucid')).toBeTruthy();
+    expect(container.querySelector<HTMLDetailsElement>('.preset-category-group')!.open).toBe(true);
+    await act(async () => button('Clear filters').click());
+    expect(container.querySelectorAll('[data-testid^="preset-card-"]')).toHaveLength(PRESETS.length);
+    expect(path).toBe('/presets?collection=all');
   });
 
   it('labels shipped preview lengths using the manifest, not the fallback length', async () => {

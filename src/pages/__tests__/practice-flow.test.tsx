@@ -4,6 +4,8 @@ import { createRoot, type Root } from 'react-dom/client';
 import { MemoryRouter, Routes, Route } from 'react-router';
 import { beforeEach, afterEach, describe, expect, it, vi } from 'vitest';
 import Meditate from '../Meditate';
+import Overnight from '../Overnight';
+import { prepareNightPreset } from '@/data/overnightPractice';
 import { SessionProvider } from '@/ui/session/SessionContext';
 import { useSession } from '@/ui/session/useSession';
 import { LiveEngine } from '@/ui/audio/liveEngine';
@@ -24,6 +26,26 @@ beforeEach(() => {
 afterEach(async () => { await act(async () => root.unmount()); host.remove(); vi.restoreAllMocks(); window.localStorage.clear(); });
 
 describe('practice integration', () => {
+  it('loads the overnight default without autoplay, then stops a full plan after an elapsed-time jump', async () => {
+    await act(async () => root.render(<MemoryRouter initialEntries={['/overnight']}><SessionProvider><Probe /><Routes><Route path="/overnight" element={<Overnight />} /><Route path="/studio" element={<div>Studio destination</div>} /></Routes></SessionProvider></MemoryRouter>));
+    const setup = Array.from(host.querySelectorAll('button')).find(b => b.textContent?.includes('Set up this night'))!;
+    await act(async () => setup.click());
+    expect(session.limitMin).toBe(30);
+    expect(session.fadeOutSec).toBe(60);
+    expect(session.running).toBe(false);
+    expect(session.volumeDb).toBeLessThanOrEqual(-30);
+    expect(session.phases.reduce((s, p) => s + p.durationSec, 0)).toBe(25200);
+    vi.useFakeTimers();
+    try {
+      act(() => { session.loadPreset(prepareNightPreset('sleep', true)); });
+      act(() => { session.start(); });
+      expect(session.running).toBe(true);
+      expect(session.limitMin).toBe(420);
+      act(() => { vi.setSystemTime(Date.now() + 25200 * 1000); vi.advanceTimersByTime(1000); });
+      expect(session.running).toBe(false);
+    } finally { vi.useRealTimers(); }
+  });
+
   it('replaces a running session with the chosen duration, keeps gain caps, and never autoplays', async () => {
     await act(async () => root.render(<MemoryRouter initialEntries={['/meditate?goal=sleep']}><SessionProvider><Probe /><Routes><Route path="/meditate" element={<Meditate />} /><Route path="/studio" element={<div>Studio destination</div>} /></Routes></SessionProvider></MemoryRouter>));
     act(() => { session.setVolumeDb(-35); session.setLimitMin(1); });

@@ -50,6 +50,7 @@ export interface FeatureEntry {
 export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/', label: 'Home' },
   { route: '/meditate', label: 'Find a Session' },
+  { route: '/overnight', label: 'Overnight' },
   { route: '/hypnosis', label: 'Hypnosis & Dreaming' },
   { route: '/traditions', label: 'Programs & Traditions' },
   { route: '/guide', label: 'Guide' },
@@ -1361,6 +1362,11 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
 
 /** Full feature list — the single import surface for Guide and documentation tests. */
 const PRACTICE_FEATURES: readonly FeatureEntry[] = [
+  { id: 'overnight-planner', module: 'Overnight', route: '/overnight', name: 'Seven-hour listening plans',
+    simple: 'Choose an intention and a speaker-compatible sound bed. Start with thirty minutes followed by quiet, or select seven hours of continuous sound.',
+    deep: 'The planner loads an original sound bed with an explicit playback limit and one-minute end fade. The timeline describes audio and quiet time, not detected sleep stages. Research disclosures distinguish clinical methods, government archives and spiritual interpretations. Browser background playback depends on the device, and oversized WAV exports are rejected before rendering.',
+    grade: 'D', gradeScope: 'Overnight outcomes for these original sound beds are unverified.',
+    howTo: ['Choose an intention, sound duration and listening setup.', 'Test the sound at a comfortable device level.', 'Review the plan and set it up in Studio.', 'Press Play when ready and compare restfulness afterwards.'] },
   { id: 'programs-traditions', module: 'Programs & Traditions', route: '/traditions', name: 'Programs, research and spiritual texts',
     simple: 'Explore government archives, Russian and Chinese studies, and esoteric books. Read the access limits and try original listening experiments.',
     deep: 'The sourcebook distinguishes original authorship, archival custody, funding and publication type. Protocols and patents are separated from observed clinical results. Every associated recipe is an explicitly speculative original composition with authored mix levels and automatic shutoff. No proprietary recording, covert message, biomedical device or closed-loop protocol is reproduced.',

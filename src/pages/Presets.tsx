@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router';
 import { X } from 'lucide-react';
+import { matchesListeningFilters, presetFamily, PRESET_COLLECTIONS, type PresetCollection } from '@/data/presetBrowse';
+import { needsHeadphones } from '@/data/sessionSuggestions';
 import { PRACTICE_PRESETS } from '@/data/listeningPractice';
 import { PRESETS, presetDurationMin, type Preset, type PresetCategory } from '@/data/presets';
 import { GradeBadge } from '@/ui/components/GradeBadge';
@@ -20,12 +22,17 @@ import './presets.css';
 const CATS: (PresetCategory | 'All')[] = ['All', 'Sleep', 'Focus', 'Relax', 'Meditate', 'Lucid Dream', 'Experimental', 'Infant'];
 const GRADE_RANK: Record<GradeLetter, number> = { A: 3, B: 2, C: 1, D: 0 };
 const STARTER_IDS = ['relax-alpha-ease', 'exp-phi-ladder', 'exp-phi-bowl-chord'];
-type Collection = 'start' | 'all' | 'bashar' | 'saved' | 'practice' | 'archive';
+type Collection = PresetCollection;
 
 export default function Presets() {
   const [params, setParams] = useSearchParams();
   const requestedCollection = params.get('collection');
-  const collection: Collection = requestedCollection === 'practice' || requestedCollection === 'archive' || requestedCollection === 'all' || requestedCollection === 'bashar' || requestedCollection === 'saved' ? requestedCollection : 'start';
+  const collection: Collection = PRESET_COLLECTIONS.find(([id]) => id === requestedCollection)?.[0] ?? 'start';
+  const setup = params.get('setup') ?? '';
+  const duration = params.get('duration') ?? '';
+  const sound = params.get('sound') ?? '';
+  const sort = params.get('sort') ?? '';
+  const groupBy = params.get('group') ?? 'collection';
   const basharCollection = collection === 'bashar';
   const cat = CATS.find((candidate) => candidate === params.get('category')) ?? 'All';
   const query = params.get('q') ?? '';
@@ -54,9 +61,11 @@ export default function Presets() {
   }, [previewBlocked, infantOnly, stopPreview]);
 
   const filtered = useMemo(() => PRESETS.filter((p) =>
-    (infantOnly ? p.category === 'Infant' : collection === 'saved' ? false : (collection === 'all' || (collection === 'practice' ? PRACTICE_PRESETS.some((entry) => entry.id === p.id) : collection === 'archive' ? p.id.startsWith('archive-') : basharCollection ? isBasharPreset(p) : STARTER_IDS.includes(p.id))) && (collection !== 'all' || cat === 'All' || p.category === cat)) &&
-    (!minGrade || GRADE_RANK[p.grade] >= GRADE_RANK[minGrade]) && presetMatchesSearch(p, query)),
-  [infantOnly, collection, basharCollection, cat, minGrade, query]);
+    (infantOnly ? p.category === 'Infant' : collection === 'saved' ? false : (collection === 'all' || (collection === 'practice' ? PRACTICE_PRESETS.some((entry) => entry.id === p.id) : collection === 'archive' ? p.id.startsWith('archive-') : collection === 'overnight' ? p.id.startsWith('night-') : collection === 'nano' ? p.id.startsWith('nano-') : basharCollection ? isBasharPreset(p) : STARTER_IDS.includes(p.id))) && (collection !== 'all' || cat === 'All' || p.category === cat)) &&
+    (!minGrade || GRADE_RANK[p.grade] >= GRADE_RANK[minGrade]) && presetMatchesSearch(p, query) && matchesListeningFilters(p, setup, duration, sound)).sort((a, b) => sort === 'shortest' ? presetDurationMin(a) - presetDurationMin(b) : sort === 'longest' ? presetDurationMin(b) - presetDurationMin(a) : sort === 'name' ? a.title.localeCompare(b.title) : 0),
+  [infantOnly, collection, basharCollection, cat, minGrade, query, setup, duration, sound, sort]);
+  const groupFor = (p: Preset) => groupBy === 'category' ? p.category : presetFamily(p);
+  const groups = [...new Set(filtered.map(groupFor))];
   const savedFiltered = userPresets.filter((preset) => presetMatchesSearch(userPresetAsPreset(preset), query));
 
   const changeParam = (key: string, value: string, replace = false) => {
@@ -65,13 +74,13 @@ export default function Presets() {
   };
   const clearFilters = () => {
     stopPreview(); setPreviewHint('');
-    setParams((previous) => { const next = new URLSearchParams(previous); ['q', 'category', 'grade'].forEach((key) => next.delete(key)); return next; });
+    setParams((previous) => { const next = new URLSearchParams(previous); ['q', 'category', 'grade', 'setup', 'duration', 'sound'].forEach((key) => next.delete(key)); return next; });
   };
   const chooseCollection = (nextCollection: Collection) => {
     stopPreview(); setPreviewHint(''); setDrawer(null);
     setParams((previous) => {
       const next = new URLSearchParams(previous);
-      ['q', 'category', 'grade'].forEach((key) => next.delete(key));
+      ['q', 'category', 'grade', 'setup', 'duration', 'sound'].forEach((key) => next.delete(key));
       if (nextCollection === 'start') next.delete('collection'); else next.set('collection', nextCollection);
       return next;
     });
@@ -102,14 +111,7 @@ export default function Presets() {
       <p className="t-body text-2">Preview a sound, then load its full session into Studio to play or edit. Loading does not start playback.</p>
     </header>
 
-    {!infantOnly && <nav className="preset-collections" aria-label="Preset collections">
-      <button type="button" className={`chip ${collection === 'start' ? 'chip-active' : ''}`} aria-pressed={collection === 'start'} onClick={() => chooseCollection('start')}>Start here</button>
-      <button type="button" className={`chip ${collection === 'practice' ? 'chip-active' : ''}`} aria-pressed={collection === 'practice'} onClick={() => chooseCollection('practice')}>Meditation & rest</button>
-      <button type="button" className={`chip ${collection === 'archive' ? 'chip-active' : ''}`} aria-pressed={collection === 'archive'} onClick={() => chooseCollection('archive')}>Programs & traditions</button>
-      <button type="button" className={`chip ${collection === 'all' ? 'chip-active' : ''}`} aria-pressed={collection === 'all'} onClick={() => chooseCollection('all')}>Browse all presets</button>
-      <button type="button" className={`chip ${basharCollection ? 'chip-active' : ''}`} aria-pressed={basharCollection} onClick={() => chooseCollection('bashar')}>Bashar sounds</button>
-      <button type="button" className={`chip ${collection === 'saved' ? 'chip-active' : ''}`} aria-pressed={collection === 'saved'} onClick={() => chooseCollection('saved')}>My presets{userPresets.length ? ` (${userPresets.length})` : ''}</button>
-    </nav>}
+    {!infantOnly && <nav className="preset-collections" aria-label="Preset collections">{PRESET_COLLECTIONS.map(([id, title]) => <button key={id} type="button" className={`chip ${collection === id ? 'chip-active' : ''}`} aria-pressed={collection === id} onClick={() => chooseCollection(id)}>{title}{id === 'saved' && userPresets.length ? ` (${userPresets.length})` : ''}</button>)}</nav>}
 
     {!infantOnly && collection === 'start' && <div className="preset-intro">
       <h2 className="t-h2">Three sounds to try</h2>
@@ -126,6 +128,8 @@ export default function Presets() {
       </div>
     </section>}
 
+    {collection === 'overnight' && <div className="preset-intro"><h2 className="t-h2">Seven-hour sound beds</h2><p>These are continuous, speaker-compatible experiments. For 30 minutes of sound followed by quiet, use the <Link to="/overnight">overnight planner</Link>.</p></div>}
+    {collection === 'nano' && <div className="preset-intro"><h2 className="t-h2">Hear the signal mathematics</h2><p>Five-minute Studio AM and carrier controls. Open <Link to="/nano-lab">NanoLab</Link> for exact two-tone, AM, baseband and carrier bench presets with measured spectra.</p></div>}
     <p className="preset-guide-link"><Link to="/meditate">Not sure where to begin? Find a session for now →</Link></p>
     <section className="preset-filters" aria-label="Find a preset">
       <div className="preset-filter-row">
@@ -133,10 +137,15 @@ export default function Presets() {
           <input type="search" value={query} placeholder="Name, pitch, rhythm, or mode" onChange={(e) => changeParam('q', e.target.value, true)} />
         </label>
       </div>
+      {(collection !== 'saved' || infantOnly) && <div className="preset-quick-filters">
+        <label>Listening setup<select value={setup} onChange={e => changeParam('setup', e.target.value)}><option value="">All setups</option><option value="speakers">Speaker-compatible</option><option value="headphones">Requires stereo headphones</option></select></label>
+        <label>Session length<select value={duration} onChange={e => changeParam('duration', e.target.value)}><option value="">Any length</option><option value="short">Up to 15 min</option><option value="medium">Over 15–60 min</option><option value="long">Over 1–under 7 hours</option><option value="night">7 hours or longer</option></select></label>
+        <label>Sound character<select value={sound} onChange={e => changeParam('sound', e.target.value)}><option value="">All sounds</option><option value="steady">Steady tones</option><option value="binaural">Binaural beats</option><option value="pulse">AM & pulses</option><option value="nature">Nature layer</option><option value="noise">Noise layer</option><option value="bowls">Singing bowls</option></select></label>
+      </div>}
       {(collection !== 'saved' || infantOnly) && <details className="preset-more-filters">
         <summary className="t-body-sm">More filters{minGrade || (collection === 'all' && cat !== 'All') ? ' · filters active' : ''}</summary>
         <label className="t-body-sm">Minimum evidence grade
-          <select value={minGrade} onChange={(e) => changeParam('grade', e.target.value)}>
+          <select aria-label="Minimum evidence grade" value={minGrade} onChange={(e) => changeParam('grade', e.target.value)}>
             <option value="">Any grade</option><option value="C">C or higher</option><option value="B">B or higher</option><option value="A">A only</option>
           </select>
         </label>
@@ -145,7 +154,7 @@ export default function Presets() {
           {CATS.map((c) => <Chip key={c} active={cat === c} onClick={() => changeParam('category', c === 'All' ? '' : c)}>{c.toUpperCase()}</Chip>)}
         </div>}
       </details>}
-      <p className="t-caption text-3">Search applies to {infantOnly ? 'Infant presets' : collection === 'start' ? 'the three starting sounds' : collection === 'saved' ? 'My presets' : basharCollection ? 'the Bashar collection' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions' : 'all presets'}.{(query || minGrade || (collection === 'all' && cat !== 'All')) && <button type="button" className="preset-clear" onClick={clearFilters}>Clear filters</button>}</p>
+      <p className="t-caption text-3">Search applies to {infantOnly ? 'Infant presets' : collection === 'start' ? 'the three starting sounds' : collection === 'saved' ? 'My presets' : basharCollection ? 'the Bashar collection' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions' : collection === 'overnight' ? 'Overnight' : collection === 'nano' ? 'NanoLab' : 'all presets'}.{(query || minGrade || setup || duration || sound || (collection === 'all' && cat !== 'All')) && <button type="button" className="preset-clear" onClick={clearFilters}>Clear filters</button>}</p>
       {infantOnly && <p className="t-body-sm text-2">Infant mode: only Infant presets are shown.</p>}
     </section>
 
@@ -176,9 +185,10 @@ export default function Presets() {
     </section>}
 
     {(collection !== 'saved' || infantOnly) && <><div className="preset-results">
-      <h2 className="t-h3">{infantOnly ? 'Infant presets' : basharCollection ? 'Bashar collection' : collection === 'start' ? 'Starting sounds' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions · experimental' : 'All presets'}</h2>
+      <h2 className="t-h3">{infantOnly ? 'Infant presets' : basharCollection ? 'Bashar collection' : collection === 'start' ? 'Starting sounds' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions · experimental' : collection === 'overnight' ? 'Overnight · experimental' : collection === 'nano' ? 'NanoLab · experimental' : 'All presets'}</h2>
       <span className="t-body-sm text-2" role="status">{filtered.length} presets</span>
     </div>
+    <div className="preset-arrangement"><label>Group by<select value={groupBy} onChange={e => changeParam('group', e.target.value)}><option value="collection">Collection</option><option value="category">Intention category</option></select></label><label>Sort within groups<select value={sort} onChange={e => changeParam('sort', e.target.value)}><option value="">Collection order</option><option value="shortest">Shortest first</option><option value="longest">Longest first</option><option value="name">Name A–Z</option></select></label></div>
     {filtered.length === 0 && <div className="panel"><p className="t-body text-2">No presets match these filters.</p>
       <button type="button" className="chip" onClick={clearFilters}>Clear filters</button>
       {!infantOnly && collection !== 'all' && <button type="button" className="chip" onClick={() => {
@@ -186,8 +196,8 @@ export default function Presets() {
         setParams((previous) => { const next = new URLSearchParams(previous); next.set('collection', 'all'); next.delete('category'); next.delete('grade'); return next; });
       }}>Search all presets instead</button>}</div>}
     <div className="preset-group-list">
-      {CATS.filter((group) => group !== 'All' && filtered.some((p) => p.category === group)).map((group) => <details className="preset-category-group" key={`${collection}-${group}-${query}-${cat}`} open={collection !== 'all' || Boolean(query) || cat !== 'All' || undefined}><summary>{group}<span>{filtered.filter((p) => p.category === group).length} sounds</span></summary><div className="preset-grid">
-      {filtered.filter((p) => p.category === group).map((p) => {
+      {groups.map((group) => <details className="preset-category-group" key={`${collection}-${group}-${query}-${cat}-${setup}-${duration}-${sound}`} open={collection !== 'all' || Boolean(query || setup || duration || sound) || cat !== 'All' || undefined}><summary>{group}<span>{filtered.filter((p) => groupFor(p) === group).length} sounds</span></summary><div className="preset-grid">
+      {filtered.filter((p) => groupFor(p) === group).map((p) => {
         const playing = previewId === `preset:${p.id}`;
         const bashar = isBasharPreset(p);
         return <article key={p.id} className="panel preset-card" data-testid={`preset-card-${p.id}`}>
@@ -196,7 +206,7 @@ export default function Presets() {
             <span className="t-label text-3">Full session · {fmtClock(presetDurationMin(p) * 60)}</span>
             <GradeBadge grade={p.grade} citation={{ verdict: gradeVerdict(p), summary: p.rationale, source: p.citations[0] }} />
           </div>
-          <h3 className="t-h2">{presetDisplayName(p)}</h3>
+          <h3 className="t-h2">{presetDisplayName(p)}</h3><p className="preset-setup-tag">{needsHeadphones(p) ? 'Stereo headphones' : 'Speaker-compatible'}</p>
           <p className={`t-body-sm text-2 preset-card-description ${bashar ? '' : 'clamped'}`}>{presetSoundDescription(p)}</p>
           {p.purpose && <p className="t-caption text-2 preset-card-purpose clamped">{p.purpose}</p>}
           {p.links && p.links.length > 0 && (

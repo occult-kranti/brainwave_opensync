@@ -46,10 +46,10 @@ export default function Meditate() {
           <button className={index === 0 ? 'practice-primary' : 'practice-text-button'} onClick={() => load(item)}>Set up this session <ArrowRight size={16} /></button>
           {index === 0 && <p className="small-note">You choose when to press Play. Start with low device volume.</p>}
           <details className="quiet-disclosure"><summary>Sound, evidence & limits</summary><p>{item.preset.rationale}</p><ul>{item.preset.citations.map((c) => <li key={c}>{c}</li>)}</ul></details>
-        </article>) : <div className="suggestion-card"><h2>No match with these settings</h2><p>Try more time or browse the complete collection.</p><Link to="/presets?collection=all">All presets</Link></div>}
+        </article>) : <div className="suggestion-card"><h2>No match with these settings</h2><p>Try more time or browse the complete collection.</p><Link to="/overnight">Plan an overnight session</Link><Link to="/presets?collection=all">All presets</Link></div>}
         <p className="small-note">Matches use your choices and the preset catalog. This is not a health assessment or a measurement of your mental state.</p>
       </section>
     </div>
-    <section className="practice-next"><h2>Go a little deeper</h2><Link to={goal.route}>Explore {goal.title.toLowerCase()} <ArrowRight size={17} /></Link><Link to="/presets?collection=all">Every sound in the collection</Link><Link to="/hypnosis">Hypnosis, dreaming & the science of sound</Link></section>
+    <section className="practice-next"><h2>Go a little deeper</h2><Link to={goal.route}>Explore {goal.title.toLowerCase()} <ArrowRight size={17} /></Link><Link to="/overnight">Plan an overnight session</Link><Link to="/presets?collection=all">Every sound in the collection</Link><Link to="/hypnosis">Hypnosis, dreaming & the science of sound</Link></section>
   </div>;
 }

@@ -231,6 +231,7 @@ export default function Studio() {
         data-testid="session-tools"
         style={{ padding: isMobile ? '10px 12px' : '10px 16px', marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 10 }}
       >
+        <p className="t-caption text-3">Browser WAV export supports up to 90 minutes. Longer sessions can play live and be saved as settings; shorten the playback duration to export an excerpt.</p>
         <p className="t-body-sm text-2" data-testid="studio-wav-duration">WAV duration: {fmtClock(wavSec)}. Saved presets keep the full sequence, mix, and selected playback duration.</p>
         <div className="studio-file-actions">
           <button type="button" className="chip" onClick={() => setSaveOpen(true)}>

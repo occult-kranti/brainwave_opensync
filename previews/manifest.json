@@ -312,6 +312,51 @@
       "bytes": 384044
     },
     {
+      "id": "night-sleep",
+      "sha256": "2ca2b25e156e7f56d2750184acef47170941d45c2273b1087c57bcf8777b5f28",
+      "bytes": 384044
+    },
+    {
+      "id": "night-lucid",
+      "sha256": "06a566a18530c9295d584370583222a9f4473088b78e3fbfc474e2e2adad16e3",
+      "bytes": 384044
+    },
+    {
+      "id": "night-astral",
+      "sha256": "2cd9d2b2dff1d11c82123f31acc923bece980f7341731d876f02a63a9f6a70b6",
+      "bytes": 384044
+    },
+    {
+      "id": "night-viewing",
+      "sha256": "2f8430704a79fef65b26a8750ae3b2d81d95de690ffb83444b84fd87bf069366",
+      "bytes": 384044
+    },
+    {
+      "id": "night-comfort",
+      "sha256": "c103d46559ef11e4fcc6927eb5fa026186a22560ca06220af38aca48b943c7a3",
+      "bytes": 384044
+    },
+    {
+      "id": "night-hypnosis",
+      "sha256": "ae6672b2cb07080cd227ed6d1bb5bd8ec7a7cd2b5e6e4bf93227d0eac1103bf6",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-am-16",
+      "sha256": "9468f080963916bf193c6465ea6c6f5ee0403f2cdd29a17641f7371ec36638ec",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-am-40",
+      "sha256": "3c2545641ac1996bc6436525e051d9209ee77c4b386048a01b4dfe53ee309c07",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-carrier",
+      "sha256": "28a43ef64277620936072e9f958f27b994b8a4fa30203873e3a0c5d9684d4fc2",
+      "bytes": 384044
+    },
+    {
       "id": "sleep-rem-rebound-nap",
       "sha256": "806b49057c19df57e20384cd751a576ba573ec28c9c5b247bc34171ea4f59c49",
       "bytes": 384044
@@ -617,5 +662,5 @@
       "bytes": 384044
     }
   ],
-  "totalBytes": 46853368
+  "totalBytes": 50309764
 }

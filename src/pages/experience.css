@@ -27,6 +27,7 @@
 .experience-shell button:disabled { opacity:.45; cursor:not-allowed; }
 .editorial-page { max-width:1440px; margin:auto; padding:48px 56px 28px; }
 .overline { font:600 10px/1.7 Inter,sans-serif; text-transform:uppercase; letter-spacing:.15em; display:block; }
+.experience-shell .overline { text-decoration:none; }
 .editorial-heading { margin-bottom:34px; }
 .editorial-heading > .overline { color:var(--text-3); }
 .editorial-heading h1 { font:400 clamp(38px,4.4vw,62px)/1.15 Georgia,serif; letter-spacing:-.045em; margin:13px 0 17px; }

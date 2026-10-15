@@ -31,7 +31,7 @@ export function ToolDirectory() {
             const entries = tools.filter((entry) => entry.category === category.id);
             if (!entries.length) return null;
             return <details key={`${category.id}-${searching}`} className="home-directory-group" open={searching || undefined}>
-              <summary id={`home-group-${category.id}`} className="t-h3">{category.title}<span>{entries.length} pages</span></summary>
+              <summary id={`home-group-${category.id}`} className="t-h3">{category.title}<span>{entries.length} {entries.length === 1 ? 'page' : 'pages'}</span></summary>
               <DirectoryList entries={entries} />
             </details>;
           })}

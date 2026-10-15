@@ -196,7 +196,7 @@ export default function Presets() {
 
     {(collection !== 'saved' || infantOnly) && <><div className="preset-results">
       <h2 className="t-h3">{infantOnly ? 'Infant presets' : basharCollection ? 'Bashar collection' : collection === 'start' ? 'Start with a little space' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions · experimental' : collection === 'overnight' ? 'Overnight · experimental' : collection === 'nano' ? 'NanoLab · experimental' : 'All presets'}</h2>
-      <span className="t-body-sm text-2" role="status">{filtered.length} presets</span>
+      <span className="t-body-sm text-2" role="status">{filtered.length} {filtered.length === 1 ? 'preset' : 'presets'}</span>
     </div>
     <div className="preset-arrangement"><label>Group by<select value={groupBy} onChange={e => changeParam('group', e.target.value)}><option value="collection">Collection</option><option value="category">Intention category</option></select></label><label>Sort within groups<select value={sort} onChange={e => changeParam('sort', e.target.value)}><option value="">Collection order</option><option value="shortest">Shortest first</option><option value="longest">Longest first</option><option value="name">Name A–Z</option></select></label></div>
     {filtered.length === 0 && <div className="panel"><p className="t-body text-2">No presets match these filters.</p>

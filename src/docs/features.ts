@@ -155,12 +155,12 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/',
     name: 'Home landing',
     simple:
-      'Choose a sound, build a chord, or inspect a recording from Home. Search the tool directory when you need a specialist page.',
+      'Choose a short practice from Today or use the intention chooser to find a session. Open the reading room for research and the full tool directory.',
     deep:
-      'Home presents listening, creation, and inspection before the full directory. Navigation descriptions and search aliases come from one registry shared with the sidebar and command palette. Specialist and research links stay discoverable without grading entire tools.',
+      'Today presents a featured practice, intention choices and a path into the overnight planner. Selecting a sound opens Listen with playback stopped. The shared session provider carries the same sound into Studio for editing. The Research reading room contains the complete searchable tool directory.',
     howTo: [
-      'Choose Listen, Create, or Inspect on Home.',
-      'Choose a sound for previews, or follow a direct tool link.',
+      'Choose Settle in or a practice on Today.',
+      'Press Play in Listen, or open Customize sound to edit the session.',
       'Open the Guide any time you meet a meter you do not understand.',
     ],
   },
@@ -1363,12 +1363,12 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/',
     name: 'Install & offline use',
     simple:
-      'Open Sync can be installed like an app and keeps working without a network. Lock-screen controls and a wake lock keep long sessions running on phones. Updates are offered, and a running session is never interrupted by one.',
+      'Open Sync can be installed like an app and caches its main screens for offline use. Long playback depends on your browser and device, so test your setup before relying on it overnight. An update waits for the running session to end.',
     deep:
-      'A service worker precaches the app shell (about 1.4 MB) and caches preview audio on first play; the 100 MB of preset previews and stimulus files are never precached. The Media Session API exposes PLAY, PAUSE and STOP with the session title, and a silent keep-alive element keeps the tab treated as playing so mobile browsers do not throttle it. The Screen Wake Lock is held while a session runs and re-acquired when the tab returns. A waiting build shows an UPDATE chip in the status bar; applying it reloads the page, and a tab with a live session holds its reload until the session ends.',
+      'A service worker precaches the application shell and artwork and caches preview audio on first play; the full audio collection is not precached. Where supported, Media Session exposes playback controls and a keep-alive element supports background playback, without guaranteeing that the operating system will keep the tab active. Screen Wake Lock is requested while a session runs and re-acquired when the tab returns. A waiting build shows an UPDATE chip; a tab with a live session defers its reload until that session ends.',
     howTo: [
       'Use your browser menu → Install (or Add to Home Screen).',
-      'Start a session, then lock the phone — controls appear on the lock screen.',
+      'Test playback on your device, including screen lock and power-saving behavior.',
       'When an UPDATE chip appears, stop the session and tap it.',
     ],
   },

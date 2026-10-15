@@ -66,3 +66,11 @@ Eight ordinary/experimental listening designs and seven archive-inspired experim
 The guide ranks the entire catalog using explicit intention, available time and speakers/headphones. It excludes infant presets, hides adult suggestions in infant mode, and requires opt-in for grade D/Experimental sounds. It does not infer diagnosis, mood, EEG or readiness for hypnosis. A recommendation loads a bounded session but does not start playback.
 
 A useful personal comparison fixes device/level/duration, compares silence, sound bed and rhythmic addition in varied order, and records comfort before and after alongside tiredness and expectation. Repeated subjective preference can inform a listening choice. It cannot by itself establish entrainment, a medical treatment or an occult mechanism.
+
+## Implementation verification
+
+The release passed lint, TypeScript, 1,279 tests and production builds, including the GitHub Pages base path and shells for the three new routes. All 122 catalog previews have a deterministic manifest entry; fifteen new audio files were added. No core DSP engine source changed. The hosted deployment also passed checks for the preserved Open Sync suite, previous release and connected research atlas.
+
+Desktop Chromium checks covered the home widget, changing intention/time, loading a shortened five-minute rain session without autoplay, Play/Pause/Stop, opening and closing the portaled sand stage, its motion/view controls, sourcebook search, and a 180/190 Hz calculator example yielding 10 Hz and 0.1 seconds. Visual review prompted source-count spacing, destination scroll reset and finer sand rendering. Existing cached installations expose the UPDATE button after the new service worker is ready.
+
+Mobile layout branches and navigation coverage were tested automatically. A real phone/browser viewport screenshot was not available in this environment; no device-specific visual certification is claimed. Listening sound-pressure levels, human effects, and the research protocols themselves were not validated by these software tests.

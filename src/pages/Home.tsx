@@ -33,7 +33,7 @@ export default function Home() {
           <div className="home-start-row"><Link className="practice-primary" to="/meditate">Find my session <ArrowRight size={16} /></Link><Link className="home-text-link" to="/presets">Explore sounds</Link></div>
           <span className="hero-footnote">YOUR PACE · YOUR SPACE · NO ACCOUNT NEEDED</span>
         </div>
-        <figure className="listening-hero-art"><img src={`${import.meta.env.BASE_URL}art/bowl-session.jpg`} alt="A singing bowl and mallet in a softly lit listening space" /><figcaption><span>THE LISTENING COLLECTION</span><strong>Small rituals. Open possibilities.</strong><Link to="/presets?collection=practice">Discover the new practices ↗</Link></figcaption></figure>
+        <figure className="listening-hero-art"><img src={`${import.meta.env.BASE_URL}art/bowl-session.jpg`} alt="Singing bowls and candles beneath Himalayan mountains" /><figcaption><span>THE LISTENING COLLECTION</span><strong>Small rituals. Open possibilities.</strong><Link to="/presets?collection=practice">Discover the new practices ↗</Link></figcaption></figure>
       </header>
       <p className="home-scope t-body-sm text-3">These tools create and visualize audio. They do not measure your brain activity.</p>
       <section className="home-now" aria-labelledby="home-now-title"><div><span className="eyebrow">A moment for you</span><h2 id="home-now-title">What do you need right now?</h2><p>Choose an intention. We’ll help you find a place to begin.</p></div><div className="home-intentions">{PRACTICE_GOALS.slice(0, 5).map((g) => <Link key={g.id} to={`/meditate?goal=${g.id}`}>{g.title}<ArrowRight size={15} /></Link>)}</div><Link className="home-text-link" to="/meditate">Which meditation should I do right now?</Link></section>

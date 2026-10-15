@@ -726,6 +726,11 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const location = useLocation();
+  useEffect(() => {
+    // New destinations start at their heading; changing filters on the same
+    // page leaves the reader's position alone.
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   const { panic, rehearsePanic, running, fading, togglePause, muted, setMuted, startSleepFade } = useSession();
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const isMobile = useIsMobile();

@@ -1,6 +1,6 @@
 # Open Sync — a listening room
 
-Replace the dense instrument-console presentation with a quiet listening room: deep pine surfaces, warm ivory type, pale sand actions, sage accents, generous space and editorial serif headings. Sans-serif labels and monospaced measurements keep controls readable. Use the existing bowl photograph as a material anchor; render scientific patterns with the actual simulation.
+Replace the dense instrument-console presentation with a quiet listening room: deep pine surfaces, warm ivory type, pale sand actions, sage accents, generous space and editorial serif headings. Sans-serif labels and monospaced measurements keep controls readable. Use the existing bowl artwork as a material anchor; render scientific patterns with the actual simulation.
 
 Home: choose an intention and enter a session. Find a session: intention, time and headphones/speakers, followed by an explained suggestion. Studio: transport, time and level first; tones, textures, visuals, sequencing and files in native disclosures. Research: definitions, graded findings, exact signal arithmetic and named limits, with details closed until requested.
 

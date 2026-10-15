@@ -71,10 +71,11 @@ describe('StudioCymatics', () => {
     expect(html).toContain('About cymatic patterns');
   });
 
-  it('carries the 3D/SAND/LINES render-mode toggle (3D default) on the fixed square plate', () => {
+  it('carries the 3D/5D/SAND/LINES render-mode toggle (3D default) on the fixed square plate', () => {
     const html = ssr(<StudioCymatics analyser={null} />);
     expect(html).toContain('data-render-mode="plate3d"');
     expect(html).toContain('data-testid="cymatics-render-plate3d"');
+    expect(html).toContain('data-testid="cymatics-render-plate5d"');
     expect(html).toContain('data-testid="cymatics-render-lines"');
     expect(html).toContain('data-testid="cymatics-render-sand"');
     expect(html).toContain('STEEL PLATE 30×30 CM');

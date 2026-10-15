@@ -113,7 +113,9 @@ jobs:
             branch: 'archive/dark-landscapes',
             commit: execFileSync('git', ['-C', 'archive-source', 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
             path: '/brainwave_opensync/archive/',
-            themes: ['Night Country', 'Quiet Horizon']
+            themes: ['Night Country', 'Quiet Horizon'],
+            experience: 'Sound Observatory',
+            presetCount: 139
           };
           writeFileSync('dist/deployments.json', JSON.stringify(manifest, null, 2) + '\n');
           NODE

@@ -195,7 +195,7 @@ describe('preset preview (engine preview path)', () => {
     expect(phases.reduce((a, ph) => a + ph.durationSec, 0)).toBeGreaterThan(0);
   });
 
-  it('▶ PREVIEW calls the engine preview once with ~10 s of audio; second tap stops', async () => {
+  it('Preview calls the engine preview once with ~10 s of audio; second tap stops', async () => {
     mockViewport(1280);
     const playSpy = vi.spyOn(LiveEngine.prototype, 'playBuffer').mockReturnValue(true);
     const stopSpy = vi.spyOn(LiveEngine.prototype, 'stopPreviews');
@@ -207,7 +207,7 @@ describe('preset preview (engine preview path)', () => {
       </MemoryRouter>,
     );
     const btn = c.querySelector<HTMLElement>('[data-testid="preset-preview-sleep-delta-descent"]')!;
-    expect(btn.textContent).toContain('▶ PREVIEW');
+    expect(btn.textContent).toContain('Preview');
 
     await act(async () => btn.click());
     expect(playSpy).toHaveBeenCalledTimes(1);
@@ -216,13 +216,13 @@ describe('preset preview (engine preview path)', () => {
     expect(left.length).toBe(right.length);
     expect(left.length).toBeLessThanOrEqual(10 * 48000 + 4800);
     expect(left.length).toBeGreaterThan(48000);
-    expect(btn.textContent).toContain('■ STOP');
+    expect(btn.textContent).toContain('■ Stop');
     expect(btn.className).toContain('chip-active');
 
     // Second tap stops.
     await act(async () => btn.click());
     expect(stopSpy).toHaveBeenCalled();
-    expect(btn.textContent).toContain('▶ PREVIEW');
+    expect(btn.textContent).toContain('Preview');
   });
 
   it('only one preview plays at a time', async () => {

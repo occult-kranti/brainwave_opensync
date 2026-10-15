@@ -202,4 +202,4 @@ The [Sound Methods page](https://occult-kranti.github.io/brainwave_opensync/soun
 
 ## Published editions
 
-The original workspace is on `master`. The redesigned listening room and its two dark landscape themes are on `archive/dark-landscapes`, deployed at [the archive](https://occult-kranti.github.io/brainwave_opensync/archive/). See [release layout](docs/RELEASES.md) for source history and deployment.
+The original workspace is on `master`. The Sound Observatory redesign, interactive 3D/4D visuals and two atmosphere themes are on `archive/dark-landscapes`, deployed at [the archive](https://occult-kranti.github.io/brainwave_opensync/archive/). See [release layout](docs/RELEASES.md) for source history and deployment.

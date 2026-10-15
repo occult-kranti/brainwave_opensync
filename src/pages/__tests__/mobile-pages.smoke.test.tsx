@@ -42,7 +42,7 @@ const PAGES: { name: string; el: () => React.ReactElement; primary: string }[] =
   { name: 'Guide', el: () => <Guide />, primary: 'DEEP TECHNICAL' },
   { name: 'Studio', el: () => <Studio />, primary: 'Play session' },
   { name: 'Library', el: () => <Library />, primary: 'LOAD ↗' },
-  { name: 'Presets', el: () => <Presets />, primary: 'LOAD INTO STUDIO' },
+  { name: 'Presets', el: () => <Presets />, primary: 'Load into Studio' },
   { name: 'Levels', el: () => <Levels />, primary: 'LOAD PROTOCOL' },
   { name: 'Analyzer', el: () => <Analyzer />, primary: 'RUN MEASUREMENT' },
   { name: 'Cymatics', el: () => <Cymatics />, primary: 'Cymatic Studio' },

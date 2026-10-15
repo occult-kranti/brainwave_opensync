@@ -12,6 +12,8 @@ export function FieldCanvas({
   suspended?: boolean;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null),
+    fallbackCanvas = useRef<HTMLCanvasElement>(null),
+    fallbackRenderer = useRef<FieldRenderer | null>(null),
     host = useRef<HTMLDivElement>(null),
     renderer = useRef<FieldRenderer | null>(null);
   const [supported] = useState(
@@ -20,10 +22,12 @@ export function FieldCanvas({
   const [ready, setReady] = useState(false),
     [failed, setFailed] = useState(!supported),
     [retry, setRetry] = useState(0);
+  const [outline, setOutline] = useState(false);
   const latest = useRef(settings);
   useEffect(() => {
     latest.current = { ...settings, motion: settings.motion && !suspended };
     renderer.current?.update(latest.current);
+    fallbackRenderer.current?.update(latest.current);
   }, [settings, suspended]);
   useEffect(() => {
     let cancelled = false;
@@ -56,13 +60,22 @@ export function FieldCanvas({
       renderer.current = null;
     };
   }, [ambient, retry, supported]);
+  useEffect(() => {
+    let cancelled = false;
+    if (!failed || ambient) return;
+    void import('./canvasField').then(({createCanvasField}) => {
+      if(cancelled || !fallbackCanvas.current || !host.current) return;
+      try { fallbackRenderer.current=createCanvasField(fallbackCanvas.current,host.current,latest.current); setOutline(Boolean(fallbackRenderer.current)); } catch { setOutline(false); }
+    });
+    return () => { cancelled=true; fallbackRenderer.current?.dispose(); fallbackRenderer.current=null; };
+  }, [failed,ambient]);
   return (
     <div
       ref={host}
       className={`spatial-canvas ${ambient ? "spatial-canvas-ambient" : ""}`}
-      data-renderer={ready ? "webgl" : "poster"}
+      data-renderer={ready ? "webgl" : outline ? "canvas" : "poster"}
     >
-      {!ready && (
+      {!ready && !outline && (
         <img
           className="field-poster"
           src={assetUrl("art/resonance-sculpture.webp")}
@@ -81,14 +94,16 @@ export function FieldCanvas({
         }
         style={{ opacity: ready ? 1 : 0 }}
       />
+      {failed && !ambient && <canvas className="field-outline-canvas" ref={fallbackCanvas} role="img" aria-hidden={!outline} aria-label={settings.dimension === '4d' ? 'Interactive outline: four-dimensional Clifford projection' : 'Interactive outline: three-dimensional toroidal field'} style={{opacity:outline?1:0}} />}
       {failed && !ambient && (
         <div className="field-fallback" role="status">
-          Still artwork · 3D rendering unavailable{" "}
+          {outline ? "Interactive outline · WebGL unavailable" : "Still artwork · 3D rendering unavailable"}{" "}
           {supported && (
             <button
               onClick={() => {
                 setFailed(false);
                 setReady(false);
+                setOutline(false);
                 setRetry((n) => n + 1);
               }}
             >

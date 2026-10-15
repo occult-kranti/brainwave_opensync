@@ -1170,3 +1170,9 @@ html[data-archive-theme="quiet-horizon"] {
     padding: 0 8px !important;
   }
 }
+/* A rectangular camera viewport keeps fallback messages and close-up geometry legible. */
+.resonance-field .field-canvas { border-radius:12px; }
+.spatial-controls .field-toolbar { max-width:none; }
+.spatial-canvas .field-outline-canvas { position:absolute; inset:0; width:100%; height:100%; }
+.field-fallback { max-width:calc(100% - 24px); }
+.field-axis-top { left:auto; }.field-axis-bottom { top:auto; bottom:16px; }

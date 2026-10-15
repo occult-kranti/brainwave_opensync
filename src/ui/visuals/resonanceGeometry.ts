@@ -1,18 +1,18 @@
 export type FieldDimension = '3d' | '4d';
 export interface Point3 { x: number; y: number; z: number }
 /** A toroidal surface or a stereographic projection of a rotated Clifford torus in R4. */
-export function resonancePoint(u: number, v: number, rotation: number, dimension: FieldDimension): Point3 {
+export function resonancePoint(u: number, v: number, rotation: number, dimension: FieldDimension, fourth?: number): Point3 {
   let x: number, y: number, z: number;
   if (dimension === '4d') {
     const a = Math.cos(u) / Math.SQRT2, b = Math.sin(u) / Math.SQRT2;
     const c = Math.cos(v) / Math.SQRT2, d = Math.sin(v) / Math.SQRT2;
-    const theta = rotation * .32 + .45;
+    const theta = fourth ?? rotation * .32 + .45;
     const xr = a * Math.cos(theta) - d * Math.sin(theta);
     const wr = a * Math.sin(theta) + d * Math.cos(theta);
     const yr = b * Math.cos(theta * .7) - c * Math.sin(theta * .7);
     const zr = b * Math.sin(theta * .7) + c * Math.cos(theta * .7);
     const scale = 1 / (1.7 - wr);
-    x = xr * scale * 2.4; y = yr * scale * 2.4; z = zr * scale * 2.4;
+    x = xr * scale * 1.8; y = yr * scale * 1.8; z = zr * scale * 1.8;
   } else {
     const r = .36 + .045 * Math.cos(u * 6 + v * 3);
     const twist = v + .24 * Math.sin(u * 3);

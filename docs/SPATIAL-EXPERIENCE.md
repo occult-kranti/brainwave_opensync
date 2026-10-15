@@ -75,7 +75,7 @@ At narrow widths, hero and player stack; collections become two columns then one
 - One persistent decorative renderer, plus a foreground field on Home/Listen or in the immersive room. Background and underlying fields pause when the room opens. No renderer per preset card.
 - Reuse one indexed geometry and shader material for mesh and points; uniforms update without reconstructing GPU resources.
 - Stop animation offscreen or while document-hidden. Start still when reduced motion is requested; users can explicitly animate. Theme changes redraw a paused field.
-- Dispose renderer, geometry, material, observers and event handlers on unmount. Retry uses a fresh canvas after context failure. If WebGL 2 is absent, show the original still artwork and an honest status.
+- Dispose renderer, geometry, material, observers and event handlers on unmount. Retry uses a fresh canvas after context failure. If WebGL 2 is absent or disabled, use a lightweight Canvas2D projection in the foreground (20 fps maximum); keep the background still. If Canvas2D is also unavailable, show the original still artwork. Status explicitly identifies outline mode. The Canvas fallback shares torus/Clifford mathematics and camera controls; it does not imitate GPU shading.
 - Visual state uses registered versioned storage `open-sync:spatial.v1`, sanitized against malformed values. It cannot write the audio graph or saved presets.
 - No autoplay audio, no external font/CDN runtime dependencies, no third-party assets, no extra heavy post-processing or ray tracing. These are intentional choices for an overnight listening use case.
 

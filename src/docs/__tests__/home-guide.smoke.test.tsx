@@ -15,17 +15,17 @@ function render(el: React.ReactElement) {
 describe('W8 home & docs screens', () => {
   it('Home renders practical task paths, scope statement, and a complete directory', () => {
     const html = render(<Home />);
-    expect(html).toContain('A soft place to land.');
-    expect(html).toContain('Help me choose');
-    expect(html).toContain('it does not measure your brain activity.');
-    expect(html).toContain('Sound workshop');
+    expect(html).toContain('Take five minutes');
+    expect(html).toContain('Full session finder');
+    expect(html).toContain('not a brainwave reading.');
+    expect(html).toContain('Open the workshop');
     expect(html).toContain('All tools');
-    expect(html).toContain('reading room');
-    expect(html).toContain('For the curious');
+    expect(html).toContain('research notebook');
+    expect(html).toContain('Practice with perspective');
     expect(html).toContain('data-testid="home-lab-lucid"');
     expect(html).toContain('data-testid="home-lab-healing"');
     expect(html).toContain('data-testid="home-lab-nature"');
-    expect(html).not.toContain('<canvas');
+    expect(html).toContain('Generative art:');
     expect(html).not.toContain('LOWEST GRADE');
   });
 

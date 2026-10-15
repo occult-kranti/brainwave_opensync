@@ -36,8 +36,8 @@ async function mount(entry = '/presets?collection=bashar') {
   </Routes></SessionProvider></MemoryRouter>));
 }
 function card(id: string) { return container.querySelector<HTMLElement>(`[data-testid="preset-card-${id}"]`)!; }
-function button(text: string, within: ParentNode = container) { return Array.from(within.querySelectorAll('button')).find((b) => b.textContent === text)!; }
-async function details(id: string) { await act(async () => button('Sound details', card(id)).click()); }
+function button(text: string, within: ParentNode = container) { return Array.from(within.querySelectorAll('button')).find((b) => b.textContent === text || b.getAttribute('aria-label') === text)!; }
+async function details(id: string) { await act(async () => button('Sound details & practice', card(id)).click()); }
 async function input(value: string) {
   const field = container.querySelector<HTMLInputElement>('input[type="search"]')!;
   const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')!.set!;
@@ -94,7 +94,7 @@ describe('Bashar preset collection', () => {
     expect(container.querySelector<HTMLInputElement>('input[type="search"]')!.value).toBe('66.6');
     await act(async () => button('Browse all presets').click());
     expect(path).toBe('/presets?collection=all');
-    await act(async () => button('▶ Preview · 10 s', card('exp-phi-ladder')).click());
+    await act(async () => button('Preview · 10 s', card('exp-phi-ladder')).click());
     expect(session.previewId).toBe('preset:exp-phi-ladder');
     await act(async () => navigate(-1));
     expect(path).toBe('/presets?collection=bashar&q=66.6');
@@ -120,7 +120,7 @@ describe('Bashar preset collection', () => {
     expect(container.textContent).toContain('Harmonic Lab recipes stay in Harmonic Lab.');
     await act(async () => session.saveCurrentAsPreset('My test sound'));
     expect(container.querySelectorAll('[data-testid^="my-preset-preview-"]')).toHaveLength(1);
-    expect(container.querySelector('[data-testid^="my-preset-preview-"]')?.textContent).toBe('▶ Preview · 10 s');
+    expect(container.querySelector('[data-testid^="my-preset-preview-"]')?.textContent).toBe('Preview · 10 s');
   });
 
   it('searches pitch and mode, and reports an empty filtered collection', async () => {
@@ -159,9 +159,9 @@ describe('Bashar preset collection', () => {
     await mount();
     expect(card('exp-phi-bowl-chord').querySelector('[data-testid^="preset-preview-"]')?.getAttribute('aria-label')).toContain('first 6 seconds');
     expect(card('exp-phi-ladder').querySelector('[data-testid^="preset-preview-"]')?.getAttribute('aria-label')).toContain('first 10 seconds');
-    expect(card('exp-phi-bowl-chord').querySelector('[data-testid^="preset-preview-"]')?.textContent).toBe('▶ Preview · 6 s');
-    expect(card('exp-phi-ladder').querySelector('[data-testid^="preset-preview-"]')?.textContent).toBe('▶ Preview · 10 s');
-    expect(card('exp-phi-ladder').textContent).toContain('Full session · 25:00');
+    expect(card('exp-phi-bowl-chord').querySelector('[data-testid^="preset-preview-"]')?.textContent).toBe('Preview · 6 s');
+    expect(card('exp-phi-ladder').querySelector('[data-testid^="preset-preview-"]')?.textContent).toBe('Preview · 10 s');
+    expect(card('exp-phi-ladder').textContent).toContain('25 min');
   });
 
   it('hears the later monaural stage immediately, then stops on a second tap', async () => {
@@ -203,13 +203,13 @@ describe('Bashar preset collection', () => {
 
   it('requires advisory acknowledgment before any preview', async () => {
     clearAdvisoryAck(); await mount();
-    await act(async () => button('▶ Preview · 10 s', card('exp-phi-ladder')).click());
+    await act(async () => button('Preview · 10 s', card('exp-phi-ladder')).click());
     expect(session.advisoryOpen).toBe(true);
     expect(LiveEngine.prototype.playBuffer).not.toHaveBeenCalled();
     await act(async () => session.acknowledgeAdvisory());
     expect(LiveEngine.prototype.playBuffer).not.toHaveBeenCalled();
     expect(container.textContent).toContain('press Preview or Hear step again');
-    await act(async () => button('▶ Preview · 10 s', card('exp-phi-ladder')).click());
+    await act(async () => button('Preview · 10 s', card('exp-phi-ladder')).click());
     expect(session.previewId).toBe('preset:exp-phi-ladder');
   });
 
@@ -248,13 +248,13 @@ describe('Bashar preset collection', () => {
 
   it('stops a preview when filters change, the dialog closes, or the route changes', async () => {
     await mount();
-    await act(async () => button('▶ Preview · 10 s', card('exp-phi-ladder')).click());
+    await act(async () => button('Preview · 10 s', card('exp-phi-ladder')).click());
     await input('phi'); expect(session.previewId).toBeNull();
     await details('exp-phi-ladder');
     await act(async () => container.querySelector<HTMLButtonElement>('[aria-label="Hear step 1 for 8 seconds"]')!.click());
     await act(async () => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' })));
     expect(session.previewId).toBeNull(); expect(container.querySelector('[role="dialog"]')).toBeNull();
-    await act(async () => button('▶ Preview · 10 s', card('exp-phi-ladder')).click());
+    await act(async () => button('Preview · 10 s', card('exp-phi-ladder')).click());
     await act(async () => container.querySelector<HTMLAnchorElement>('a[href="/channeled"]')!.click());
     expect(path).toBe('/channeled'); expect(session.previewId).toBeNull();
   });

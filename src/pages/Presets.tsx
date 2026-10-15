@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router';
-import { X } from 'lucide-react';
-import { matchesListeningFilters, presetFamily, PRESET_COLLECTIONS, type PresetCollection } from '@/data/presetBrowse';
+import { ArrowRight, BookOpen, Headphones, Play, Search, SlidersHorizontal, Speaker, X } from 'lucide-react';
+import { matchesListeningFilters, matchesCollection, presetFamily, PRESET_COLLECTIONS, COLLECTION_NOTES, FAMILY_ORDER, type PresetCollection } from '@/data/presetBrowse';
 import { needsHeadphones } from '@/data/sessionSuggestions';
-import { PRACTICE_PRESETS } from '@/data/listeningPractice';
 import { PRESETS, presetDurationMin, type Preset, type PresetCategory } from '@/data/presets';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { Chip } from '@/ui/components/primitives';
@@ -21,7 +20,7 @@ import './presets.css';
 
 const CATS: (PresetCategory | 'All')[] = ['All', 'Sleep', 'Focus', 'Relax', 'Meditate', 'Lucid Dream', 'Experimental', 'Infant'];
 const GRADE_RANK: Record<GradeLetter, number> = { A: 3, B: 2, C: 1, D: 0 };
-const STARTER_IDS = ['practice-soft-landing', 'practice-bowl-attention', 'practice-evening-rain', 'practice-steady-focus'];
+const ARCHIVE_EDITION = true;
 type Collection = PresetCollection;
 
 export default function Presets() {
@@ -63,11 +62,15 @@ export default function Presets() {
   }, [previewBlocked, infantOnly, stopPreview]);
 
   const filtered = useMemo(() => PRESETS.filter((p) =>
-    (infantOnly ? p.category === 'Infant' : collection === 'saved' ? false : (collection === 'all' || (collection === 'practice' ? PRACTICE_PRESETS.some((entry) => entry.id === p.id) : collection === 'archive' ? p.id.startsWith('archive-') : collection === 'overnight' ? p.id.startsWith('night-') : collection === 'nano' ? p.id.startsWith('nano-') : basharCollection ? isBasharPreset(p) : STARTER_IDS.includes(p.id))) && (collection !== 'all' || cat === 'All' || p.category === cat)) &&
+    (infantOnly ? p.category === 'Infant' : matchesCollection(p, collection) && (cat === 'All' || p.category === cat)) &&
     (!minGrade || GRADE_RANK[p.grade] >= GRADE_RANK[minGrade]) && presetMatchesSearch(p, query) && matchesListeningFilters(p, setup, duration, sound)).sort((a, b) => sort === 'shortest' ? presetDurationMin(a) - presetDurationMin(b) : sort === 'longest' ? presetDurationMin(b) - presetDurationMin(a) : sort === 'name' ? a.title.localeCompare(b.title) : 0),
-  [infantOnly, collection, basharCollection, cat, minGrade, query, setup, duration, sound, sort]);
+  [infantOnly, collection, cat, minGrade, query, setup, duration, sound, sort]);
   const groupFor = (p: Preset) => groupBy === 'category' ? p.category : presetFamily(p);
-  const groups = [...new Set(filtered.map(groupFor))];
+  const groups = [...new Set(filtered.map(groupFor))].sort((a, b) => FAMILY_ORDER.indexOf(a) - FAMILY_ORDER.indexOf(b));
+  const [expanded, setExpanded] = useState<boolean | null>(null);
+  const [expansionVersion, setExpansionVersion] = useState(0);
+  const expandGroups = (open: boolean) => { setExpanded(open); setExpansionVersion(v => v + 1); };
+  const collectionTitle = PRESET_COLLECTIONS.find(([id]) => id === collection)?.[1] ?? 'Presets';
   const savedFiltered = userPresets.filter((preset) => presetMatchesSearch(userPresetAsPreset(preset), query));
 
   const commitParams = (next: URLSearchParams, replace = false) => {
@@ -87,13 +90,13 @@ export default function Presets() {
     commitParams(next);
   };
   const chooseCollection = (nextCollection: Collection) => {
-    stopPreview(); setPreviewHint(''); setDrawer(null);
+    stopPreview(); setPreviewHint(''); setDrawer(null); setExpanded(null);
     const next = new URLSearchParams(pendingParams.current);
     ['q', 'category', 'grade', 'setup', 'duration', 'sound'].forEach(key => next.delete(key));
     if (nextCollection === 'start') next.delete('collection'); else next.set('collection', nextCollection);
     commitParams(next);
   };
-  const load = (p: Preset, destination = '/listen') => {
+  const load = (p: Preset, destination = ARCHIVE_EDITION ? '/listen' : '/studio') => {
     stopPreview(); session.stop(); session.loadPreset(p); navigate(destination);
   };
   const canPreview = (p: Preset) => {
@@ -113,132 +116,31 @@ export default function Presets() {
     session.previewPreset({ ...p, id: `${p.id}:step:${index + 1}`, spec: { ...p.spec, phases: [{ ...p.spec.phases[index], durationSec: 8 }] } });
   };
 
-  return <div className="preset-page">
-    <header>
-      <span className="eyebrow">Explore the collection</span><h1 className="t-display-lg">Find your kind of quiet.</h1>
-      <p className="t-body text-2">A short pause, a longer practice, or something new to explore. Preview a sound, then choose when to play.</p>
-    </header>
-
-    {!infantOnly && <nav className="preset-collections" aria-label="Preset collections">{PRESET_COLLECTIONS.map(([id, title]) => <button key={id} type="button" className={`chip ${collection === id ? 'chip-active' : ''}`} aria-pressed={collection === id} onClick={() => chooseCollection(id)}>{title}{id === 'saved' && userPresets.length ? ` (${userPresets.length})` : ''}</button>)}</nav>}
-
-    {!infantOnly && collection === 'start' && <div className="preset-intro">
-      <h2 className="t-h2">A few good places to begin</h2>
-      <p className="t-body-sm text-2">Rain, bowls and steady tones. Four simple listening designs, from five to fifteen minutes.</p>
-
-    </div>}
-
-    {!infantOnly && basharCollection && <section className="panel preset-collection" aria-labelledby="bashar-collection-title">
-      <div>
-        <h2 id="bashar-collection-title" className="t-h2">Bashar sounds</h2>
-        <p className="t-body-sm text-2">Scale sequence, alpha/gamma comparison, golden-ratio pitch ladder, and bowl chord. Four listening examples from the supplied digest.</p>
-        <p className="t-body-sm text-2">Starting pitches and timings are app choices. The scale uses chosen k = 5,000, anchored on 200,000 ↔ 40 Hz; this is an illustration, not a measured human frequency. <Link to="/channeled">Read the source analysis</Link>.</p>
-        <p className="t-body-sm text-2">Each card states its purpose and links the source videos (auto-transcript digests, unverified). The same links appear in each sound’s spec sheet under Source videos.</p>
-      </div>
-    </section>}
-
-    {collection === 'overnight' && <div className="preset-intro"><h2 className="t-h2">Seven-hour sound beds</h2><p>These are continuous, speaker-compatible experiments. For 30 minutes of sound followed by quiet, use the <Link to="/overnight">overnight planner</Link>.</p></div>}
-    {collection === 'nano' && <div className="preset-intro"><h2 className="t-h2">Hear the signal mathematics</h2><p>Five-minute Studio AM and carrier controls. Open <Link to="/nano-lab">NanoLab</Link> for exact two-tone, AM, baseband and carrier bench presets with measured spectra.</p></div>}
-    <p className="preset-guide-link"><Link to="/meditate">Not sure where to begin? Find a session for now →</Link></p>
-    <section className="preset-filters" aria-label="Find a preset">
-      <div className="preset-filter-row">
-        <label className="preset-search t-body-sm">Search sounds
-          <input type="search" value={query} placeholder="Name, pitch, rhythm, or mode" onChange={(e) => changeParam('q', e.target.value, true)} />
-        </label>
-      </div>
-      <details className="explore-filter-drawer"><summary>Refine your listening{setup || duration || sound || minGrade || cat !== 'All' ? ' · filters active' : ''}</summary>
-      {(collection !== 'saved' || infantOnly) && <div className="preset-quick-filters">
-        <label>Listening setup<select value={setup} onChange={e => changeParam('setup', e.target.value)}><option value="">All setups</option><option value="speakers">Speaker-compatible</option><option value="headphones">Requires stereo headphones</option></select></label>
-        <label>Session length<select value={duration} onChange={e => changeParam('duration', e.target.value)}><option value="">Any length</option><option value="short">Up to 15 min</option><option value="medium">Over 15–60 min</option><option value="long">Over 1–under 7 hours</option><option value="night">7 hours or longer</option></select></label>
-        <label>Sound character<select value={sound} onChange={e => changeParam('sound', e.target.value)}><option value="">All sounds</option><option value="steady">Steady tones</option><option value="binaural">Binaural beats</option><option value="pulse">AM & pulses</option><option value="nature">Nature layer</option><option value="noise">Noise layer</option><option value="bowls">Singing bowls</option></select></label>
-      </div>}
-      {(collection !== 'saved' || infantOnly) && <details className="preset-more-filters">
-        <summary className="t-body-sm">More filters{minGrade || (collection === 'all' && cat !== 'All') ? ' · filters active' : ''}</summary>
-        <label className="t-body-sm">Minimum evidence grade
-          <select aria-label="Minimum evidence grade" value={minGrade} onChange={(e) => changeParam('grade', e.target.value)}>
-            <option value="">Any grade</option><option value="C">C or higher</option><option value="B">B or higher</option><option value="A">A only</option>
-          </select>
-        </label>
-        <p className="t-caption text-3">Grades describe the preset’s evidence claim, not sound quality or a guaranteed effect.</p>
-        {!infantOnly && collection === 'all' && <div className="preset-filter-row" aria-label="Preset categories">
-          {CATS.map((c) => <Chip key={c} active={cat === c} onClick={() => changeParam('category', c === 'All' ? '' : c)}>{c.toUpperCase()}</Chip>)}
-        </div>}
-      </details>}
-      </details>
-      <p className="t-caption text-3">Search applies to {infantOnly ? 'Infant presets' : collection === 'start' ? 'the four starting sounds' : collection === 'saved' ? 'My presets' : basharCollection ? 'the Bashar collection' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions' : collection === 'overnight' ? 'Overnight' : collection === 'nano' ? 'NanoLab' : 'all presets'}.{(query || minGrade || setup || duration || sound || (collection === 'all' && cat !== 'All')) && <button type="button" className="preset-clear" onClick={clearFilters}>Clear filters</button>}</p>
-      {infantOnly && <p className="t-body-sm text-2">Infant mode: only Infant presets are shown.</p>}
-    </section>
-
-    {previewBlocked && <p className="t-body-sm text-2 preset-playback-note" role="status">{previewBlockReason} {unmuteHelp}</p>}
-    {previewHint && <p className="t-body-sm text-2 preset-playback-note" role="status">{previewHint}</p>}
-
-    {collection === 'saved' && !infantOnly && <section data-testid="my-presets" style={{ marginBottom: 28 }}>
-      <h2 className="t-h2" style={{ marginBottom: 12 }}>My presets</h2>
-      <p className="t-body-sm text-2 preset-intro">Studio presets saved in this browser. Harmonic Lab recipes stay in Harmonic Lab.</p>
-      {!userPresets.length && <p className="t-body text-2">No saved Studio presets yet. <Link to="/studio">Open Studio</Link> and choose Save as preset.</p>}
-      {userPresets.length > 0 && !savedFiltered.length && <p className="t-body text-2">No saved presets match your search.</p>}
-      <div className="preset-grid">{savedFiltered.map((u) => {
-        const p = userPresetAsPreset(u);
-        const playing = previewId === `preset:${p.id}`;
-        return <article key={u.id} className="panel preset-card" data-testid={`my-preset-${u.id}`}>
-          <h3 className="t-h3">{u.name}</h3>
-          <p className="t-readout-sm text-2 preset-signal">{presetSignalSummary(p)} · Full session {fmtClock(presetDurationMin(p) * 60)}</p>
-          <div className="preset-card-actions">
-            <button type="button" data-testid={`my-preset-preview-${u.id}`} className={`chip ${playing ? 'chip-active' : ''}`} disabled={previewBlocked}
-              aria-label={playing ? `Stop preview of ${u.name}` : `Preview first 10 seconds of ${u.name}`}
-              onClick={() => { if (canPreview(p)) session.previewPreset(p); }}>{playing ? '■ Stop preview' : '▶ Preview · 10 s'}</button>
-            <button type="button" className="chip" onClick={() => load(p)}>Choose sound</button>
-            <button type="button" className="chip" data-testid={`my-preset-delete-${u.id}`} aria-label={`Delete ${u.name}`}
-              onClick={() => { stopPreview(); session.deleteUserPreset(u.id); }}>DELETE</button>
-          </div>
-        </article>;
-      })}</div>
-    </section>}
-
-    {(collection !== 'saved' || infantOnly) && <><div className="preset-results">
-      <h2 className="t-h3">{infantOnly ? 'Infant presets' : basharCollection ? 'Bashar collection' : collection === 'start' ? 'Start with a little space' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions · experimental' : collection === 'overnight' ? 'Overnight · experimental' : collection === 'nano' ? 'NanoLab · experimental' : 'All presets'}</h2>
-      <span className="t-body-sm text-2" role="status">{filtered.length} {filtered.length === 1 ? 'preset' : 'presets'}</span>
-    </div>
-    <div className="preset-arrangement"><label>Group by<select value={groupBy} onChange={e => changeParam('group', e.target.value)}><option value="collection">Collection</option><option value="category">Intention category</option></select></label><label>Sort within groups<select value={sort} onChange={e => changeParam('sort', e.target.value)}><option value="">Collection order</option><option value="shortest">Shortest first</option><option value="longest">Longest first</option><option value="name">Name A–Z</option></select></label></div>
-    {filtered.length === 0 && <div className="panel"><p className="t-body text-2">No presets match these filters.</p>
-      <button type="button" className="chip" onClick={clearFilters}>Clear filters</button>
-      {!infantOnly && collection !== 'all' && <button type="button" className="chip" onClick={() => {
-        stopPreview(); setPreviewHint('');
-        setParams((previous) => { const next = new URLSearchParams(previous); next.set('collection', 'all'); next.delete('category'); next.delete('grade'); return next; });
-      }}>Search all presets instead</button>}</div>}
-    <div className="preset-group-list">
-      {groups.map((group) => <details className="preset-category-group" key={`${collection}-${group}-${query}-${cat}-${setup}-${duration}-${sound}`} open={collection !== 'all' || Boolean(query || setup || duration || sound) || cat !== 'All' || undefined}><summary>{group}<span>{filtered.filter((p) => groupFor(p) === group).length} {filtered.filter((p) => groupFor(p) === group).length === 1 ? 'sound' : 'sounds'}</span></summary><div className="preset-grid">
-      {filtered.filter((p) => groupFor(p) === group).map((p) => {
-        const playing = previewId === `preset:${p.id}`;
-        const bashar = isBasharPreset(p);
-        return <article key={p.id} className="panel preset-card" data-testid={`preset-card-${p.id}`}>
-          <div className="preset-card-top">
-            <span className="t-label text-3">Full session · {fmtClock(presetDurationMin(p) * 60)}</span>
-            <GradeBadge grade={p.grade} citation={{ verdict: gradeVerdict(p), summary: p.rationale, source: p.citations[0] }} />
-          </div>
-          <h3 className="t-h2">{presetDisplayName(p)}</h3><p className="preset-setup-tag">{needsHeadphones(p) ? 'Stereo headphones' : 'Speaker-compatible'}</p>
-          <p className={`t-body-sm text-2 preset-card-description ${bashar ? '' : 'clamped'}`}>{presetSoundDescription(p)}</p>
-
-          {p.links && p.links.length > 0 && (
-            <p className="preset-card-links">
-              {p.links.map((l) => (
-                <a key={l.url} href={l.url} target="_blank" rel="noopener noreferrer" title={l.label}>
-                  ▶ VIDEO {l.url.split('v=')[1] ?? 'SOURCE'}
-                </a>
-              ))}
-            </p>
-          )}
-
-          <div className="preset-card-actions">
-            <button type="button" data-testid={`preset-preview-${p.id}`} className={`chip ${playing ? 'chip-active' : ''}`} disabled={previewBlocked}
-              aria-label={playing ? `Stop preview of ${p.title}` : `Preview first ${previewSeconds(p)} seconds of ${p.title}`} onClick={() => playPreview(p)}>{playing ? '■ Stop preview' : `▶ Preview · ${previewSeconds(p)} s`}</button>
-            <button type="button" className="chip chip-active" aria-label={`Choose ${p.title}`} onClick={() => load(p)}>Choose sound</button>
-            <button type="button" className="chip preset-details-button" aria-label={`Details and steps for ${p.title}`} onClick={() => { stopPreview(); setDrawer(p); }}>Sound details</button>
-          </div>
-        </article>;
-      })}
-    </div></details>)}
-    </div></>}
-
+  const guide = (path: string, label: string) => ARCHIVE_EDITION ? <Link to={path}>{label}<ArrowRight size={16} /></Link> : <a href={assetUrl(`archive${path}`)} onClick={() => { stopPreview(); session.stop(); }}>{label}<ArrowRight size={16} /></a>;
+  return <div className="preset-page library-page">
+    <header className="library-heading"><div><span className="library-eyebrow">The sound library</span><h1 className="t-display-lg">Find your frequency.</h1><p className="text-2">Choose an intention. Explore the sound. Make it your own.</p></div><div className="library-total"><strong>{PRESETS.length}</strong><span>original presets<br />with sources & limits</span></div></header>
+    <div className="library-layout">
+    {!infantOnly && <aside className="library-sidebar"><span className="library-eyebrow">Collections</span><nav className="preset-collections" aria-label="Preset collections">{PRESET_COLLECTIONS.map(([id, title]) => <button key={id} type="button" aria-label={title} aria-pressed={collection === id} onClick={() => chooseCollection(id)}><span>{title}</span><small aria-hidden="true">{id === 'saved' ? userPresets.length : PRESETS.filter(p => matchesCollection(p, id)).length}</small></button>)}</nav><div className="library-help"><BookOpen size={19} /><p>A practice for this moment?</p>{guide('/meditate', 'Help me choose')}</div></aside>}
+    <div className="library-content">
+    <section className="preset-filters" aria-label="Find a preset"><div className="library-search-row"><label className="preset-search"><span className="sr-only">Search sounds</span><Search size={18} /><input type="search" value={query} placeholder="Search names, frequencies, practices…" onChange={e => changeParam('q', e.target.value, true)} /></label></div>
+    {(collection !== 'saved' || infantOnly) && <><div className="preset-quick-filters"><label>Listening setup<select value={setup} onChange={e => changeParam('setup', e.target.value)}><option value="">All setups</option><option value="speakers">Speaker-compatible</option><option value="headphones">Stereo headphones</option></select></label><label>Session length<select value={duration} onChange={e => changeParam('duration', e.target.value)}><option value="">Any length</option><option value="short">Up to 15 min</option><option value="medium">15–60 min</option><option value="long">1–7 hours</option><option value="night">7 hours or longer</option></select></label><label>Sound character<select value={sound} onChange={e => changeParam('sound', e.target.value)}><option value="">All sounds</option><option value="steady">Steady tones</option><option value="binaural">Binaural beats</option><option value="pulse">AM & pulses</option><option value="nature">Nature layer</option><option value="noise">Noise layer</option><option value="bowls">Singing bowls</option></select></label></div>
+    <details className="preset-more-filters"><summary><SlidersHorizontal size={14} />More filters{minGrade || cat !== 'All' ? ' · active' : ''}</summary><label>Minimum evidence grade<select aria-label="Minimum evidence grade" value={minGrade} onChange={e => changeParam('grade', e.target.value)}><option value="">Any grade</option><option value="C">C or higher</option><option value="B">B or higher</option><option value="A">A only</option></select></label><p>Grades describe evidence for a claim, not sound quality.</p><div className="preset-filter-row" aria-label="Preset categories">{CATS.map(c => <Chip key={c} active={cat === c} onClick={() => changeParam('category', c === 'All' ? '' : c)}>{c}</Chip>)}</div></details></>}
+    {(query || minGrade || setup || duration || sound || cat !== 'All') && <button type="button" className="preset-clear" onClick={clearFilters}>Clear filters</button>}
+    {infantOnly && <p>Infant mode: only Infant presets are shown.</p>}</section>
+    <div className="library-collection-heading"><div><span className="library-eyebrow">{infantOnly ? 'Restricted listening' : 'Selected collection'}</span><h2>{infantOnly ? 'Infant presets' : collectionTitle}</h2><p>{infantOnly ? 'Current infant-mode limits apply to every sound.' : COLLECTION_NOTES[collection]}</p></div></div>
+    {!infantOnly && basharCollection && <section id="bashar-collection-title" className="preset-intro"><p>Scale sequence, alpha/gamma comparison, golden-ratio pitch ladder, and bowl chord. The scale uses chosen k = 5,000, anchored on 200,000 ↔ 40 Hz; this is an illustration, not a measured human frequency. <Link to="/channeled">Read the source analysis</Link>.</p></section>}
+    {!infantOnly && collection === 'hypnosis' && <div className="library-practice-link">{guide('/hypnosis', 'Read the hypnosis practice & research')}</div>}
+    {!infantOnly && collection === 'overnight' && <div className="library-practice-link">{guide('/overnight', 'Plan a night with sound, then quiet')}</div>}
+    {!infantOnly && collection === 'archive' && <div className="library-practice-link">{guide('/traditions', 'Read the programs & traditions sourcebook')}</div>}
+    {!infantOnly && collection === 'nano' && <div className="library-practice-link"><Link to="/nano-lab">Open the NanoLab signal bench <ArrowRight size={16} /></Link></div>}
+    {previewBlocked && <p className="preset-playback-note" role="status">{previewBlockReason} {unmuteHelp}</p>}
+    {previewHint && <p className="preset-playback-note" role="status">{previewHint}</p>}
+    {collection === 'saved' && !infantOnly && <section data-testid="my-presets"><h2 className="sr-only">My presets</h2><p className="preset-intro">Studio presets saved in this browser. Harmonic Lab recipes stay in Harmonic Lab.</p>{!userPresets.length && <div className="library-empty"><h3>Your own collection starts here.</h3><p>No saved Studio presets yet. <Link to="/studio">Open Studio</Link>, make a sound and choose Save as preset.</p></div>}{userPresets.length > 0 && !savedFiltered.length && <p>No saved presets match your search.</p>}<div className="preset-grid">{savedFiltered.map(u => { const p = userPresetAsPreset(u); const playing = previewId === `preset:${p.id}`; return <article key={u.id} className="panel preset-card" data-testid={`my-preset-${u.id}`}><h3>{u.name}</h3><p>{presetSignalSummary(p)} · {fmtClock(presetDurationMin(p) * 60)}</p><div className="preset-card-actions"><button type="button" data-testid={`my-preset-preview-${u.id}`} className="chip" disabled={previewBlocked} aria-label={playing ? `Stop preview of ${u.name}` : `Preview first 10 seconds of ${u.name}`} onClick={() => { if (canPreview(p)) session.previewPreset(p); }}>{playing ? 'Stop preview' : 'Preview · 10 s'}</button><button type="button" className="chip chip-active" onClick={() => load(p)}>{ARCHIVE_EDITION ? 'Choose sound' : 'Load into Studio'}</button><button type="button" className="chip" data-testid={`my-preset-delete-${u.id}`} aria-label={`Delete ${u.name}`} onClick={() => { stopPreview(); session.deleteUserPreset(u.id); }}>Delete</button></div></article>; })}</div></section>}
+    {(collection !== 'saved' || infantOnly) && <><div className="preset-results"><span role="status">{filtered.length} {filtered.length === 1 ? 'preset' : 'presets'}</span><div className="library-group-actions"><button onClick={() => expandGroups(true)}>Expand all</button><button onClick={() => expandGroups(false)}>Collapse all</button></div></div><div className="preset-arrangement"><label>Group by<select value={groupBy} onChange={e => changeParam('group', e.target.value)}><option value="collection">Practice</option><option value="category">Category</option></select></label><label>Sort<select value={sort} onChange={e => changeParam('sort', e.target.value)}><option value="">Collection order</option><option value="shortest">Shortest first</option><option value="longest">Longest first</option><option value="name">Name A–Z</option></select></label></div>
+    {filtered.length === 0 && <div className="library-empty"><h3>No sounds match yet.</h3><p>No presets match these filters. Try a broader search.</p><button type="button" className="chip" onClick={clearFilters}>Clear filters</button>{!infantOnly && collection !== 'all' && <button className="chip" onClick={() => { const next = new URLSearchParams(pendingParams.current); next.set('collection', 'all'); next.delete('category'); next.delete('grade'); commitParams(next); }}>Search all presets instead</button>}</div>}
+    <div className="preset-group-list">{groups.map((group, groupIndex) => <details className="preset-category-group" key={`${collection}-${group}-${query}-${cat}-${setup}-${duration}-${sound}-${expansionVersion}`} open={expanded ?? (collection !== 'all' || groupIndex === 0 || Boolean(query || setup || duration || sound || minGrade) || cat !== 'All')}><summary><span className="library-group-number">{String(groupIndex + 1).padStart(2, '0')}</span><span className="library-group-name">{group}</span><span className="library-group-count">{filtered.filter(p => groupFor(p) === group).length} sounds</span></summary><div className="preset-grid">{filtered.filter(p => groupFor(p) === group).map(p => { const playing = previewId === `preset:${p.id}`; return <article key={p.id} className="panel preset-card" data-testid={`preset-card-${p.id}`}>
+    <div className="preset-card-top"><span className="library-duration">{presetDurationMin(p) >= 60 ? `${Math.round(presetDurationMin(p) / 60 * 10) / 10} hr` : `${presetDurationMin(p)} min`}</span><GradeBadge grade={p.grade} citation={{ verdict: gradeVerdict(p), summary: p.rationale, source: p.citations[0] }} /></div><h3>{presetDisplayName(p)}</h3><p className="preset-setup-tag">{needsHeadphones(p) ? <Headphones size={13} /> : <Speaker size={13} />}{needsHeadphones(p) ? 'Stereo headphones' : 'Speaker-compatible'}</p><p className="preset-card-description clamped">{isBasharPreset(p) ? presetSoundDescription(p) : p.purpose ?? presetSoundDescription(p)}</p><div className="preset-card-actions"><button type="button" data-testid={`preset-preview-${p.id}`} className={`chip ${playing ? 'chip-active preview-active' : ''}`} disabled={previewBlocked} aria-label={playing ? `Stop preview of ${p.title}` : `Preview first ${previewSeconds(p)} seconds of ${p.title}`} onClick={() => playPreview(p)}>{playing ? '■ Stop preview' : <><Play size={12} />Preview · {previewSeconds(p)} s</>}</button><button type="button" className="chip chip-active" aria-label={ARCHIVE_EDITION ? `Choose ${p.title}` : `Load ${p.title} into Studio`} onClick={() => load(p)}>{ARCHIVE_EDITION ? 'Choose sound' : 'Load into Studio'}<ArrowRight size={13} /></button><button type="button" className="preset-details-button" aria-label={`Details and steps for ${p.title}`} onClick={() => { stopPreview(); setDrawer(p); }}>Sound details & practice</button></div></article>; })}</div></details>)}</div></>}
+    </div></div>
     {drawer && <>
       <div className="preset-sheet-backdrop" onClick={() => { stopPreview(); setDrawer(null); }} />
       <aside ref={drawerRef} className="preset-sheet" role="dialog" aria-modal="true" aria-labelledby="preset-sheet-title" tabIndex={-1}>

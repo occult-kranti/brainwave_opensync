@@ -693,7 +693,7 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
             >
               <div style={{ flex: '1 1 180px', minWidth: 0 }}><SessionReadout /></div>
               <div style={{ marginLeft: 'auto', flexShrink: 0 }} className="flex items-center gap-3">
-                <DensityToggle />
+                <PanicButton /><DensityToggle />
                 <button
                   type="button"
                   ref={closeRef}
@@ -738,7 +738,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   }, [theme]);
   const landscape = ARCHIVE_THEMES.find(item => item.id === theme)!;
   const reducedMotion = useReducedMotion();
-  const discovery = ['/', '/presets', '/meditate', '/overnight', '/hypnosis', '/traditions', '/research-hub'].includes(location.pathname);
+  const discovery = ['/', '/listen', '/presets', '/meditate', '/overnight', '/hypnosis', '/traditions', '/research-hub'].includes(location.pathname);
   useEffect(() => {
     // New destinations start at their heading; changing filters on the same
     // page leaves the reader's position alone.
@@ -824,15 +824,15 @@ export function AppShell({ children }: { children: ReactNode }) {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      {!isMobile && <ModuleRail state={sidebar} onCycle={cycleSidebar} />}
-      {!isMobile && sidebar === 'hidden' && <SidebarReopenHandle onOpen={() => setSidebar('full')} />}
+      {!isMobile && !discovery && <ModuleRail state={sidebar} onCycle={cycleSidebar} />}
+      {!isMobile && !discovery && sidebar === 'hidden' && <SidebarReopenHandle onOpen={() => setSidebar('full')} />}
       <div className="flex flex-col archive-workspace" style={{ flex: 1, minWidth: 0 }}>
         {isMobile ? (
           <MobileStatusBar onPalette={() => setPaletteOpen(true)} />
         ) : (
-          <StatusBar onPalette={() => setPaletteOpen(true)} />
+          discovery ? <header className="observatory-header"><NavLink to="/" className="observatory-brand"><img src={assetUrl('favicon.svg')} alt="" width="30" height="30" /><span>Open Sync<small>THE SOUND OBSERVATORY</small></span></NavLink><nav aria-label="Main navigation" data-testid="observatory-navigation">{BOTTOM_TABS.map(route => <NavLink key={route.path} to={route.path} end={route.path === '/'}>{route.label}</NavLink>)}<button aria-expanded={moreOpen} onClick={() => setMoreOpen(!moreOpen)}>Workshop <MoreHorizontal size={16} /></button></nav><div className="observatory-utilities"><button className="observatory-search" data-testid="palette-hint" aria-label="Open command palette (Ctrl+K)" onClick={() => setPaletteOpen(true)}>Find <kbd>⌘ K</kbd></button><PwaUpdateChip /><PanicButton /></div></header> : <StatusBar onPalette={() => setPaletteOpen(true)} />
         )}
-        <ArchiveThemePicker value={theme} onChange={setTheme} />
+        <div className="observatory-context"><ArchiveThemePicker value={theme} onChange={setTheme} />{discovery && !isMobile && <div className="observatory-active"><SessionReadout /><PauseChip /></div>}</div>
         <main
           id="main"
           tabIndex={-1}
@@ -860,9 +860,10 @@ export function AppShell({ children }: { children: ReactNode }) {
       {isMobile && (
         <>
           <BottomBar onMore={() => setMoreOpen((v) => !v)} moreOpen={moreOpen} />
-          <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />
+
         </>
       )}
+      <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />
       <PanicOverlay />
       <AdvisoryDialog />
       <ShortcutsOverlay open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />

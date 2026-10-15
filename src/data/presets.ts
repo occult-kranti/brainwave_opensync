@@ -5,6 +5,7 @@
  * (W3) stays decoupled; the engine adapts these into its own runtime types.
  */
 
+import { HYPNOSIS_PRESETS } from './hypnosisPractice';
 import { OVERNIGHT_PRESETS } from './overnightPractice';
 import { NANO_STUDIO_PRESETS } from './nanoPresets';
 import { PRACTICE_PRESETS } from './listeningPractice';
@@ -824,6 +825,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
       'Low-level low-passed masking texture. NOTE: white-noise claims cannot lean on music-therapy evidence (Cochrane excludes white noise); keep <=50 dBA at crib and >=2 m away.',
     citations: ['Cochrane preterm-infant review (white noise excluded)', 'AAP 2023 noise-exposure policy statement'],
   },
+  ...HYPNOSIS_PRESETS,
   ...PRACTICE_PRESETS,
   ...ARCHIVE_PRESETS,
   ...OVERNIGHT_PRESETS,

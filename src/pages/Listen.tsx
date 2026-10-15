@@ -7,6 +7,7 @@ import { useSession } from '@/ui/session/useSession';
 import { fmtClock } from '@/ui/session/sessionMath';
 import { INFANT_MAX_VOLUME_DB } from '@/ui/session/sessionDefaults';
 import { CymaticsOverlay } from '@/ui/components/CymaticsOverlay';
+import { ResonanceField } from '@/ui/visuals/ResonanceField';
 import './experience.css';
 
 export default function Listen() {
@@ -33,7 +34,7 @@ export default function Listen() {
     {adultBlocked && <p role="status" className="listen-notice">Infant mode is active. This adult practice has not been loaded. <Link to="/presets">Open the infant collection.</Link></p>}
     {requested && !selected && <p role="status" className="listen-notice">That sound could not be found. Your current session is unchanged. <Link to="/presets">Choose another sound.</Link></p>}
     <div className="listening-stage">
-      <div className="listen-art"><span className="listen-scene-note">A little room to simply be.</span><button onClick={() => setSand(true)} className="sand-launch"><Waves size={17} />Watch the sand</button></div>
+      <div className="listen-art"><ResonanceField compact /><p className="geometry-caption">Generative geometry · not an audio or brain measurement</p><button onClick={() => setSand(true)} className="sand-launch"><Waves size={17} />Open the sand studio</button></div>
       <section className="listen-controls" aria-label="Session player"><span className="overline" data-testid="listen-state">{state}</span><h1>{name}</h1><p className="listen-description">{preset?.purpose ?? 'A little space to listen. Your current sound and session settings are ready.'}</p>
         <div className="listen-meta"><span>{s.limitMin} min</span><span>{headphones ? 'Stereo headphones' : 'Speakers or headphones'}</span>{s.presetGrade && <span>Evidence {s.presetGrade}{s.presetGrade === 'D' ? ' · experimental' : ''}</span>}</div>
         <div className="listen-time"><span>{fmtClock(remaining)}</span><span>remaining</span></div><div className="listen-progress" role="progressbar" aria-label="Session progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress)}><span style={{ width: `${progress}%` }} /></div>

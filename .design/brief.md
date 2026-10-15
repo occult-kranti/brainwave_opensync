@@ -1,36 +1,23 @@
-# Open Sync — Quiet horizons
+# Open Sync — Sound Observatory
 
-## Product and invariants
-An account-free, browser-based listening and sound-making space. The immediate job is to choose a comfortable practice and listen, without first learning an audio workstation. Preserve every preset, audio layer, research page, lab, saved recipe, keyboard shortcut, stop control and safety limit. Do not alter the deterministic audio engine. Evidence describes a claim, never a guarantee of benefit.
+The user rejected the previous two designs and asked for a complete new archive experience plus a substantially better main preset catalog. This pass replaces the archive's landscape-led editorial layout with an interactive sound observatory. The original master shell remains; its catalog receives the expanded library.
 
-## New experience
-- Today: one featured five-minute practice, intention chooser, three clearly different listening paths, a night invitation.
-- Explore: searchable catalog, collection navigation, optional filters, artwork-led cards, source details on demand.
-- Listen: explicit Play, remaining time, volume, pause/stop and optional sand art. Session selection never starts audio. Customize opens the full Studio with the same session.
-- Research: an editorial reading map followed by the complete searchable tool directory.
-- Studio and all technical pages remain directly addressable. Grouped navigation and the command palette preserve discovery.
+## Primary flow
+1. Today: take five minutes directly, or select intention and time in the inline finder.
+2. Explore: 139 sounds across 14 overlapping collections; setup, duration and texture filters remain visible. Within a collection, non-overlapping practice groups expand and collapse. Search, sort and filters are URL-addressable.
+3. Listen: explicit Play, pause, stop, remaining time and volume; a freely rotatable 3D/4D visual companion. Open the original sand studio or edit in the full workshop.
+4. Research: sources, uncertainty, history and the complete searchable tool directory.
 
-## Direction
-Warm paper and blue ink for discovery; charcoal for active listening and technical work. Matte original landscape paintings identify daytime and nighttime listening. Large, restrained serif titles, ordinary sentence-case controls, generous margins and compact utility chrome. No fake health scores, brain-state measurements, streaks, or sensors.
+Desktop discovery uses a horizontal navigation bar. Workshop opens the full grouped directory. Specialist tools retain their collapsible rail. Mobile keeps four primary tabs plus More and the persistent stop control. Both theme preferences survive; old paintings become subdued full-viewport atmosphere, with a new generated sculpture as editorial art.
 
-## References consulted, 15 October 2026
-- Calm's official Discover guide: search plus content categories. https://support.calm.com/hc/en-us/articles/36452773877147-Using-the-Discover-tab-in-the-Calm-Sleep-app
-- Endel public app: intent-led entry points for focus, relaxation and sleep. https://app.endel.io/
-- Headspace official app overview: intention-based meditation and sleep pathways. https://www.headspace.com/app
-- Don Norman, *The Design of Everyday Things*, revised-edition author preface: signifiers, feedback, emotion and constraints. Read the published preface, not the full book. https://jnd.org/preface-design-of-everyday-things-revised-edition/
-- Steve Krug, *Don't Make Me Think*: author/book overview previously retrieved; full text not reviewed. https://sensible.com/dont-make-me-think/
-- Nielsen Norman Group, Progressive Disclosure: defer secondary choices while keeping them discoverable. https://www.nngroup.com/articles/progressive-disclosure/
-- W3C reflow guidance: one-dimensional reading at 320 CSS pixels. https://www.w3.org/WAI/WCAG22/Understanding/reflow.html
+## Visual system
+Charcoal and green-black surfaces, warm-white sans-serif type, pale sage or sand accents, fine rules, low contrast decorative geometry, clear high contrast control states. One italic phrase on the home heading provides contrast; body and controls use Inter. No fake statistics, streaks, measured brain states or purported therapeutic effects.
 
-These are design references, not evidence that copying another app improves outcomes. No user interviews or comparative usability trials were conducted.
+## Motion and geometry
+Code-native Canvas2D projection avoids a new 3D framework download. Capped 30fps, DPR at most 1.5, stops offscreen and while the document is hidden. Reduced-motion preference starts with a still. Buttons provide dimension, pause and rotation controls; pointer drag is optional. No strobe, scroll capture or audio graph dependency. Raster fallback if no canvas context.
 
-## Responsive behavior and verification
-Desktop discovery uses a compact rail and asymmetric editorial sections. Mobile stacks the feature, reduces the intentions to a wrapping row, uses a single-column player and keeps navigation and Stop all sound reachable. Form controls are at least 16px on narrow screens. Honor reduced motion. Verify existing audio tests, new selection-to-player behavior, routes, filters, mobile branches and production assets. State browser/device limits honestly.
+## Presets and preservation
+Eight new original hypnosis/imagery beds: arrival, staircase imagery, body rest, suggestion, familiar-room imagery, reorientation, theta comparison and dream notebook. No recorded voice. All have practice instructions and sources; experiments stay grade D. Main gains the existing 24 practice/archive/overnight/NanoLab sounds as well. Existing engine, all prior presets, labs, previews, saved sounds, safety governor and panic path remain. Long exports are rejected before allocating PCM buffers.
 
-## Preservation
-The release at ae4a1ebd6d1449979739edc9b5f84e2f09d39287 is frozen on archive/listening-room-2026-10-15 and built under /previous/. Existing /v2/, /open-sync/ and /research/ deployments remain.
-
-## Revised direction: archive landscapes
-The user requested the original pre-revamp workspace (78b0751) on master, with this redesigned experience on archive/dark-landscapes at /archive/. Keep the intermediate ae4a1eb listening room frozen at /previous/.
-
-Night Country is the default indigo and charcoal theme; Quiet Horizon uses deep lake and muted warm accents. The two existing generated paintings now fill the viewport behind all routes. Dark scrims protect content contrast, while transparent scene windows in Today and Listen reveal the continuous landscape. No background motion, blur layer, or new image download is required. A labeled, keyboard-operable theme switch persists a versioned archive-only preference without changing playback.
+## Design evidence
+Uses prior consulted official Calm, Endel and Headspace entry flows, Norman's published revised-edition preface, Krug's author overview, NN/g progressive disclosure and W3C reflow guidance. These informed task hierarchy; no human interviews or usability trials are claimed. Existing sourced research remains the authority for scientific copy. Full previous references are retained in git history.

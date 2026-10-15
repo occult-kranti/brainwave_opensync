@@ -10,7 +10,9 @@ import './practice.css';
 export default function Meditate() {
   const [params, setParams] = useSearchParams();
   const goal = PRACTICE_GOALS.find((g) => g.id === params.get('goal')) ?? PRACTICE_GOALS[0];
-  const [minutes, setMinutes] = useState(10);
+  const requestedMinutes = Number(params.get('minutes'));
+  const minutes = [5, 10, 15, 20, 30].includes(requestedMinutes) ? requestedMinutes : 10;
+  const setMinutes = (n: number) => setParams(previous => { const next = new URLSearchParams(previous); next.set('minutes', String(n)); return next; });
   const [headphones, setHeadphones] = useState(false);
   const [experimental, setExperimental] = useState(false);
   const session = useSession();
@@ -31,7 +33,7 @@ export default function Meditate() {
     <div className="suggestion-layout">
       <section className="preference-panel" aria-label="Session preferences">
         <fieldset><legend>01 <span>What brings you here?</span></legend><div className="intention-options">
-          {PRACTICE_GOALS.map((g) => <button key={g.id} type="button" aria-pressed={goal.id === g.id} onClick={() => setParams({ goal: g.id })}><strong>{g.title}</strong><span>{g.description}</span></button>)}
+          {PRACTICE_GOALS.map((g) => <button key={g.id} type="button" aria-pressed={goal.id === g.id} onClick={() => setParams({ goal: g.id, minutes: String(minutes) })}><strong>{g.title}</strong><span>{g.description}</span></button>)}
         </div></fieldset>
         <fieldset><legend>02 <span>How much time do you have?</span></legend><div className="choice-row">{[5, 10, 15, 20, 30].map((n) => <button key={n} aria-pressed={minutes === n} onClick={() => setMinutes(n)}>{n} min</button>)}</div></fieldset>
         <fieldset><legend>03 <span>How will you listen?</span></legend><div className="choice-row"><button aria-pressed={!headphones} onClick={() => setHeadphones(false)}>Speakers</button><button aria-pressed={headphones} onClick={() => setHeadphones(true)}>Headphones</button></div></fieldset>

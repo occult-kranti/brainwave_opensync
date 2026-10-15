@@ -26,7 +26,7 @@ Version 3 starts with **Listen, Create, and Inspect**. [Presets](https://occult-
 
 ## Quiet horizons redesign
 
-The main path is **Today → Explore → Listen**, with a separate **Research** reading room. Choose a practice silently, press Play explicitly, and open Customize sound to edit the same session in Studio. Every original tool remains reachable through task disclosures and the searchable directory. The catalog retains all 131 presets, including the overnight, sourcebook and NanoLab collections.
+The main path is **Today → Explore → Listen**, with a separate **Research** reading room. Choose a practice silently, press Play explicitly, and open Customize sound to edit the same session in Studio. Every original tool remains reachable through task disclosures and the searchable directory. The catalog retains all 139 presets, including the overnight, sourcebook and NanoLab collections.
 
 The [previous listening room](https://occult-kranti.github.io/brainwave_opensync/previous/) is frozen on `archive/listening-room-2026-10-15` at `ae4a1ebd6d1449979739edc9b5f84e2f09d39287`. The Pages workflow builds it separately under `/previous/` alongside the current `master` release, `/v2/`, `/open-sync/` and `/research/`. The parent service worker excludes the independent releases from navigation fallback.
 

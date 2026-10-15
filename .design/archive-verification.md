@@ -1,3 +1,5 @@
+> Historical verification of the preceding release. Superseded by observatory-verification.md for current code.
+
 # Archive themes and restoration verification
 
 ## Source separation

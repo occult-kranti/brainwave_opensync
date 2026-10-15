@@ -89,7 +89,7 @@ function mockViewport(width: number) {
 let roots: Root[] = [];
 let containers: HTMLElement[] = [];
 
-async function renderShell(width: number, path = '/') {
+async function renderShell(width: number, path = '/safety') {
   mockViewport(width);
   const container = document.createElement('div');
   document.body.appendChild(container);
@@ -248,7 +248,7 @@ describe('V3 collapsible sidebar — three states', () => {
     await click(item);
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     expect(rail.querySelector('a[href="/theory"]')!.getAttribute('aria-current')).toBe('page');
-    await click(rail.querySelector<HTMLElement>('a[href="/listen"]')!);
+    await click(rail.querySelector<HTMLElement>('a[href="/safety"]')!);
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
     expect(rail.querySelector('a[href="/theory"]')).toBeNull();
   });

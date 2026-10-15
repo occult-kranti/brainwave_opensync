@@ -50,7 +50,7 @@ const PAGES: { name: string; el: () => React.ReactElement; primary: string }[] =
   { name: 'Find a session', el: () => <Meditate />, primary: 'Set up this session' },
   { name: 'Hypnosis', el: () => <Hypnosis />, primary: 'Hypnosis' },
   { name: 'Traditions', el: () => <Traditions />, primary: 'Set up for listening' },
-  { name: 'Home', el: () => <Home />, primary: 'Settle in' },
+  { name: 'Home', el: () => <Home />, primary: 'Take five minutes' },
   { name: 'Listen', el: () => <Listen />, primary: 'Play session' },
   { name: 'Research', el: () => <ResearchHub />, primary: 'Read &amp; explore' },
   { name: 'Guide', el: () => <Guide />, primary: 'DEEP TECHNICAL' },

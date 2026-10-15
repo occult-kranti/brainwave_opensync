@@ -103,7 +103,7 @@ function mockViewport(width: number) {
 let roots: Root[] = [];
 let containers: HTMLElement[] = [];
 
-async function renderShell(width: number, path = '/') {
+async function renderShell(width: number, path = '/safety') {
   mockViewport(width);
   const container = document.createElement('div');
   document.body.appendChild(container);
@@ -269,5 +269,21 @@ describe('W10 useIsMobile hook (matchMedia wiring)', () => {
     expect(vp.removeEventListener).toHaveBeenCalledWith('change', expect.any(Function));
     expect(vp.listenerCount()).toBe(0);
     roots = roots.filter((r) => r !== root);
+  });
+});
+
+describe('Observatory discovery navigation', () => {
+  it('uses horizontal navigation on desktop discovery and preserves the full workshop directory', async () => {
+    const c = await renderShell(1280, '/');
+    const nav = c.querySelector('[data-testid="observatory-navigation"]')!;
+    expect(nav).not.toBeNull();
+    expect(c.querySelector('[data-testid="module-rail"]')).toBeNull();
+    for (const path of ['/', '/presets', '/listen', '/research-hub']) expect(nav.querySelector(`a[href="${path}"]`)).not.toBeNull();
+    await act(async () => nav.querySelector<HTMLButtonElement>('button')!.click());
+    const drawer = c.querySelector('[data-testid="more-drawer"]')!;
+    expect(drawer.getAttribute('aria-modal')).toBe('true');
+    await act(async () => drawer.querySelector<HTMLButtonElement>('[data-testid="drawer-create-toggle"]')!.click());
+    expect(drawer.querySelector('a[href="/studio"]')).not.toBeNull();
+    expect(drawer.querySelector('[title^="Stop all sound"]')).not.toBeNull();
   });
 });

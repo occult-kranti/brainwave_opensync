@@ -46,6 +46,7 @@ export default function Hypnosis() {
       <Link className="practice-text-button" to="/meditate?goal=hypnosis">Find a practice for now <ArrowRight size={16} /></Link>
       <Link className="practice-text-button" to="/traditions">Explore government programs, books & traditions <ArrowRight size={16} /></Link>
     </header>
+    <Link className="journey-button hypnosis-library-link" to="/presets?collection=hypnosis">Explore all hypnosis & suggestion presets →</Link>
     <section className="research-overview" aria-label="Three different experiences">
       <article><h2>Meditation</h2><p>A family of attention and awareness practices. A tone or bowl can serve as an optional focus for attention.</p></article>
       <article><h2>Hypnosis</h2><p>Focused attention and response to suggestions. Hypnosis is not simply sleep, and a soundtrack alone is not a complete hypnotic intervention.</p></article>

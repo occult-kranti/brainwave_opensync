@@ -237,6 +237,46 @@
       "bytes": 384044
     },
     {
+      "id": "hypnosis-arrive",
+      "sha256": "b4429b7547d36b09eda901bd0499b75d12f0469d83729668d4c402795efeaa5c",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-staircase",
+      "sha256": "b4429b7547d36b09eda901bd0499b75d12f0469d83729668d4c402795efeaa5c",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-body-rest",
+      "sha256": "f1da4da8be01a207a03287a5af2a373cfedef2bc1403b1a6038842a26616167c",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-gentle-suggestion",
+      "sha256": "b4429b7547d36b09eda901bd0499b75d12f0469d83729668d4c402795efeaa5c",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-imagery",
+      "sha256": "a4b68363ddb27be6c4ea73bdea20ad9730cfc4a96947451a4085e7b44f070507",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-return",
+      "sha256": "845f2cc701594263dd4af10ec0a40eec109bf99c305ca14b4113eea2c51ec723",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-theta-control",
+      "sha256": "845f2cc701594263dd4af10ec0a40eec109bf99c305ca14b4113eea2c51ec723",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-dream-notebook",
+      "sha256": "978a7a7663f1d9e91187e09645ca97a5ccec53ca4c79b3c1f9612f34d7c27088",
+      "bytes": 384044
+    },
+    {
       "id": "practice-soft-landing",
       "sha256": "b692637eee617c6d50d9187a92e3daffe51fbf590d5e9734302dc994aa29e63b",
       "bytes": 384044
@@ -662,5 +702,5 @@
       "bytes": 384044
     }
   ],
-  "totalBytes": 50309764
+  "totalBytes": 53382116
 }

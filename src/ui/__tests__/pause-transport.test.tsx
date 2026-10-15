@@ -70,7 +70,7 @@ function Probe() {
 
 async function mountSession(children?: React.ReactNode) {
   return mount(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={['/studio']}>
       <SessionProvider>
         <Probe />
         {children}
@@ -181,7 +181,7 @@ describe('global pause/resume — state machine', () => {
 async function mountShell(width: number) {
   mockViewport(width);
   return mount(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={['/studio']}>
       <SessionProvider>
         <Probe />
         <AppShell>

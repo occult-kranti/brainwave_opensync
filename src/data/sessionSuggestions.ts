@@ -14,7 +14,7 @@ export function suggestSessions(prefs: SessionPreferences, catalog: readonly Pre
   if (prefs.infantMode || !Number.isFinite(prefs.minutes) || prefs.minutes < 1) return [];
   return catalog.filter((p) => p.category !== 'Infant' && (prefs.experimental || (p.grade !== 'D' && p.category !== 'Experimental')) && (prefs.headphones || !needsHeadphones(p)))
     .map((preset) => {
-      const specific = (PRACTICE_PRESET_GOALS[preset.id] ?? ARCHIVE_PRESET_GOALS[preset.id])?.includes(prefs.goal) ?? false;
+      const specific = (prefs.goal === 'hypnosis' && preset.id.startsWith('hypnosis-')) || ((PRACTICE_PRESET_GOALS[preset.id] ?? ARCHIVE_PRESET_GOALS[preset.id])?.includes(prefs.goal) ?? false);
       const relevant = specific || categories[prefs.goal].includes(preset.category);
       const duration = presetDurationMin(preset);
       const score = (specific ? 100 : relevant ? 35 : -100) + (duration <= prefs.minutes ? 25 : -20) - Math.abs(duration - prefs.minutes) + (preset.spec.mix ? 5 : 0);

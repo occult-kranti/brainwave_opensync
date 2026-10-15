@@ -114,7 +114,9 @@ jobs:
             commit: execFileSync('git', ['-C', 'archive-source', 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
             path: '/brainwave_opensync/archive/',
             themes: ['Night Country', 'Quiet Horizon'],
-            experience: 'Sound Observatory',
+            experience: 'Spatial Observatory',
+            graphics: 'Three.js / WebGL 2 / GLSL',
+            cameraZoom: [50, 180],
             presetCount: 139
           };
           writeFileSync('dist/deployments.json', JSON.stringify(manifest, null, 2) + '\n');

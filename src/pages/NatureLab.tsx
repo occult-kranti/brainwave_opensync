@@ -7,13 +7,15 @@
 
 import { useMemo, useState, type ReactNode } from 'react';
 import { Link } from 'react-router';
-import { Bird, FlaskConical, Leaf, ListChecks, Thermometer } from 'lucide-react';
+import { Bird, FlaskConical, Leaf, ListChecks, Sprout, Thermometer } from 'lucide-react';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { Chip, Panel, WarningChip } from '@/ui/components/primitives';
 import { DetailPopover } from '@/ui/components/DetailPopover';
 import { LabPresetCard } from '@/ui/components/LabPresetCard';
 import { getPresetById } from '@/data/presets';
 import {
+  CROP_HYPOTHESES,
+  CROP_STUDIES,
   DOLBEAR_VALID_F,
   NATURE_HYPOTHESES,
   NATURE_STUDIES,
@@ -85,6 +87,8 @@ function DolbearWidget() {
 // Page
 // ---------------------------------------------------------------------------
 
+const CROP_IDS = ['nature-crop-paft-band', 'nature-seed-priming-portrait', 'nature-root-phonotropism', 'nature-sonolysis-portrait'];
+
 const NATURE_IDS = [
   'nature-cat-purr-companion', 'nature-sparrow-band', 'nature-bluejay-jeer', 'nature-squirrel-alarm',
   'nature-plant-clicks-portrait', 'nature-bee-buzz-portrait', 'nature-dolbear-cricket', 'nature-stream-soundscape',
@@ -93,7 +97,7 @@ const byId = (id: string) => getPresetById(id)!;
 
 const JUMPS = [
   ['#species', 'Species calls'], ['#ethics', 'Playback ethics'], ['#nature-presets', 'Presets'],
-  ['#plants', 'Plants & insects'], ['#dolbear', 'Thermometer'], ['#nature-hypotheses', 'Hypotheses'],
+  ['#plants', 'Plants & insects'], ['#field', 'Field & water'], ['#dolbear', 'Thermometer'], ['#nature-hypotheses', 'Hypotheses'],
 ] as const;
 
 export default function NatureLab() {
@@ -212,6 +216,39 @@ export default function NatureLab() {
         </div>
       </section>
 
+      {/* --------------------------------------------------- field & water */}
+      <section>
+        <SectionTitle icon={<Sprout size={18} />} id="field" title="Field & water — crop acoustics, graded"
+          sub="Greenhouse sound arrays, gene-level frequency responses, ultrasonic seed priming, and the water ledger — real cavitation engineering vs the water-memory folklore." />
+        <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))' }}>
+          {CROP_STUDIES.map((st) => (
+            <div key={st.id} className="panel" style={{ padding: 16 }}>
+              <div className="flex items-center justify-between" style={{ marginBottom: 6 }}>
+                <span className="t-label text-3">RESEARCH</span>
+                <span className="flex items-center gap-1">
+                  <GradeBadge grade={st.grade} compact />
+                  <DetailPopover title={st.name} grade={st.grade} label={`Details: ${st.name}`}>
+                    <p className="t-body-sm" style={{ color: 'var(--text-2)' }}>{st.finding}</p>
+                    <p className="t-body-sm" style={{ color: 'var(--amber)', marginTop: 8 }}><strong>Numbers · </strong>{st.numbers}</p>
+                    <p className="t-caption font-mono2" style={{ color: 'var(--text-3)', marginTop: 8 }}>▸ {st.source}</p>
+                  </DetailPopover>
+                </span>
+              </div>
+              <h3 className="t-h3">{st.name}</h3>
+              <p className="t-body-sm" style={{ marginTop: 6, color: 'var(--teal)' }}>{st.headline}</p>
+              <p className="t-caption font-mono2 text-3" style={{ marginTop: 8 }}>{st.numbers}</p>
+            </div>
+          ))}
+        </div>
+        <div className="grid gap-4" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', marginTop: 16 }}>
+          {CROP_IDS.map((id) => <LabPresetCard key={id} preset={byId(id)} testidPrefix="nature" />)}
+        </div>
+        <p className="t-caption text-3" style={{ marginTop: 10 }}>
+          Home-scale honesty: the positive field trials ran loud field arrays (65–106 dB SPL). We do not recommend
+          reproducing those levels — the seed-tray hypothesis card below is the safe version of the experiment.
+        </p>
+      </section>
+
       {/* ---------------------------------------------------------- dolbear */}
       <section id="dolbear">
         <SectionTitle icon={<Thermometer size={18} />} id="dolbear-widget" title="The cricket thermometer"
@@ -224,7 +261,7 @@ export default function NatureLab() {
         <SectionTitle icon={<ListChecks size={18} />} id="nature-hypotheses" title="Hypothesis ledger — nature edition"
           sub="Falsifiable home and field tests, priors included. Null results count." />
         <div className="flex flex-col gap-4">
-          {NATURE_HYPOTHESES.map((h) => {
+          {[...NATURE_HYPOTHESES, ...CROP_HYPOTHESES].map((h) => {
             const preset = getPresetById(h.presetId);
             return (
               <div key={h.id} className="panel" style={{ padding: 16, borderLeft: '3px solid var(--amber)' }}>

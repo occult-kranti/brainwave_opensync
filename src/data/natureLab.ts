@@ -427,3 +427,208 @@ export const NATURE_HYPOTHESES: readonly NatureHypothesis[] = [
     citations: ['Buxton 2021 PNAS (g = −0.60 stress)', 'Longman 2025 Sci Rep'],
   },
 ];
+
+// ---------------------------------------------------------------------------
+// 7. Field & water — crop acoustics and water-treatment frequencies
+// ---------------------------------------------------------------------------
+
+export const CROP_STUDIES: readonly NatureStudy[] = [
+  {
+    id: 'crop-paft-field-trials',
+    name: 'PAFT field trials — the greenhouse dose on record',
+    finding: 'China\'s Plant Acoustic Frequency Technology generators ran open-field and greenhouse trials across ~30 crops with intermittent pulses over tens of meters.',
+    numbers: '0.1–1 kHz at 70±5 dB SPL, 3 h every other day, 30–60 m: sweet pepper +30.1%, cucumber +37.1%, tomato +13.2%; lettuce +19.6%, spinach +22.7%, wheat +17.0%. Beyond ~150 m: no effect.',
+    headline: 'Greenhouse sound arrays at 0.1–1 kHz reported double-digit yield gains — distance-limited.',
+    grade: 'C',
+    source: 'Hassanien et al. 2014, J. Integr. Agric. 13:335–348 (review of the PAFT literature)',
+  },
+  {
+    id: 'crop-gene-frequency',
+    name: 'Frequency-specific gene responses (Jeong 2008/2014; Ghosh 2016)',
+    finding: 'Rice exposed to 125/250 Hz up-regulated photosynthesis genes (ald, rbcS); Arabidopsis at 500 Hz changed mechano-responsive and defense gene expression; 800–1000 Hz treatments raised drought tolerance markers.',
+    numbers: 'Rice: 125/250 Hz, 65–70 dB, 4 h. Arabidopsis: 500 Hz, 80 dB, 1 h. Drought: 0.8–1 kHz, 100 dB, 1 h.',
+    headline: 'Specific Hz values switched specific plant genes on — in small molecular studies.',
+    grade: 'B',
+    source: 'Jeong et al. 2008, Mol. Breed. 21:217–226; Ghosh et al. 2016, Sci. Rep. 6:37484; Jeong et al. 2014, Pak. J. Bot. 46',
+  },
+  {
+    id: 'crop-dose-window',
+    name: 'The dose window: help, nothing, or harm',
+    finding: 'Responses cluster in a dose window: rice germination improved at 400 Hz/106 dB, but beyond 4 kHz or 111 dB growth was inhibited; a controlled 900/1200 Hz thesis found NO effect on oats, wheat or cucumber germination.',
+    numbers: 'Effective band ~50 Hz–1 kHz at 65–106 dB in positive reports; ≥4 kHz or ≥111 dB inhibited; 900/1200 Hz null in the controlled Western Michigan thesis.',
+    headline: 'Same field, opposite results: a dose window with nulls and harm at the edges.',
+    grade: 'A',
+    source: 'Biological relevance of sound in plants review 2024 (dose table); Western Michigan Univ. thesis (900/1200 Hz null); Bochu 2003 (inhibition boundary)',
+  },
+  {
+    id: 'crop-root-220',
+    name: 'Roots bend toward ~220 Hz (Gagliano 2012/2017)',
+    finding: 'Young corn roots leaned toward water-borne sound at 220 Hz (best response 200–300 Hz), and root tips emit structured clicks; pea roots grew toward the sound of flowing water.',
+    numbers: '220 Hz target band; root clicks ~2 cm/s velocity at the elongation zone (laser vibrometer); Trends Plant Sci. 2012 (413 citations), Oecologia 2017.',
+    headline: 'Corn roots bent toward a 220 Hz speaker — one group\'s result, still unreplicated.',
+    grade: 'C',
+    source: 'Gagliano, Mancuso & Robert 2012, Trends Plant Sci. 17:323–325; Gagliano et al. 2017, Oecologia 184:151–160',
+  },
+  {
+    id: 'seed-ultrasound-priming',
+    name: 'Ultrasonic seed priming (the honest modality)',
+    finding: 'Brief water-bath sonication increases seed-coat porosity via cavitation micro-pores, improving water uptake and germination — a mechanical scarification effect, not a mystical one.',
+    numbers: '20–40 kHz water bath, 1.5–20 min: rice germination +1.8–11.1%; sunflower +43% at moderate intensity; soybean: 20 kHz strongest cavitation effect, 60 kHz strongest sponge effect.',
+    headline: 'Seeds primed in an ultrasonic water bath germinate faster — cavitation does the work.',
+    grade: 'B',
+    source: 'Chen 2023, Ultrasonics Sonochemistry (soybean frequency roles); rice US-treatment study PMC10901143; sunflower 40 kHz trial (2013)',
+  },
+  {
+    id: 'water-memory-myth',
+    name: '“Water memory” and Emoto crystals — the folklore ledger',
+    finding: 'Benveniste\'s 1988 high-dilution "water memory" paper was published with an unprecedented editorial reservation and failed independent replication; Emoto\'s word/emotion ice-crystal photos used subjective image selection and have no validated methodology.',
+    numbers: 'Nature\'s 1988 follow-up investigation found no evidence for the effect; zero blinded replications exist for either claim.',
+    headline: 'Water remembers nothing: the two famous claims both failed controlled testing.',
+    grade: 'D',
+    source: 'Benveniste et al. 1988 Nature 333:816 + Nature editorial investigation; Emoto method audits (subjective selection, unblinded)',
+  },
+  {
+    id: 'water-sonolysis-real',
+    name: 'Real water frequency treatment: sonolysis',
+    finding: 'Ultrasonic cavitation is industrial-grade water treatment: collapsing bubbles reach thousands of kelvin and hundreds of atmospheres, generating ·OH radicals that degrade pollutants and disintegrate bacteria.',
+    numbers: 'Working band 20 kHz–1 MHz; pollutant degradation optimal ~200–400 kHz; 20 kHz continuous mode cut bacteria >97% in 10 min; cavitation hotspots est. 4,000–10,000 K, up to 500 atm.',
+    headline: 'Water treatment by frequency exists — it is called cavitation, and it is violent physics.',
+    grade: 'A',
+    source: 'Deng 2026, ACS EST Water (sonolysis review); ScienceDirect sonolysis overview (200–400 kHz optimum); bacterial disintegration study (jeeng.net)',
+  },
+  {
+    id: 'water-aqua4d-eu',
+    name: 'AQUA4D irrigation water (EU-funded) — record vs claims',
+    finding: 'The EU Horizon program funded commercialization of a low-frequency electromagnetic irrigation-water device (AQUA4D): vendor-reported yield and salinity benefits; independent peer-reviewed confirmation remains thin.',
+    numbers: 'CORDIS project record (2019); claims of water savings and biofilm prevention are manufacturer-originated.',
+    headline: 'A government-funded water-treatment product: the paperwork is real, the effect is vendor-graded.',
+    grade: 'C',
+    source: 'EU CORDIS AQUA4D-HR project page (S-authority for the record; claims unaudited)',
+  },
+];
+
+export const CROP_PRESETS: readonly PresetSpec[] = [
+  {
+    id: 'nature-crop-paft-band',
+    title: 'PAFT Greenhouse Band Walk (20 min)',
+    category: 'Experimental',
+    purpose: 'Use case: hear the 0.1–1 kHz band used in the Chinese field trials — gene-study tones at 125/250 Hz included.',
+    spec: {
+      autoShutoff: true,
+      phases: [
+        { name: 'rice-gene-125', durationSec: 300, carrierHz: 125, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+        { name: 'rice-gene-250', durationSec: 300, carrierHz: 250, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+        { name: 'arabidopsis-500', durationSec: 300, carrierHz: 500, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+        { name: 'paft-top-1000', durationSec: 300, carrierHz: 1000, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+      ],
+    },
+    grade: 'C',
+    rationale:
+      'A walk through the documented band: 125/250 Hz (rice gene expression, 65–70 dB × 4 h), 500 Hz (Arabidopsis, ' +
+      '80 dB × 1 h), 1 kHz (callus work, 100 dB × 1 h). The trials ran at 65–106 dB from field arrays — this preset is ' +
+      'band education at safe listening levels, NOT a growth protocol. Note the honest counterweight: a controlled ' +
+      '900/1200 Hz thesis found no germination effect, and >4 kHz or >111 dB inhibited plants.',
+    citations: [
+      'Jeong et al. 2008 (125/250 Hz rice genes); Ghosh 2016 (500 Hz Arabidopsis)',
+      'Hassanien 2014 (PAFT band); Western Michigan thesis (900/1200 Hz null); dose-window review 2024',
+    ],
+  },
+  {
+    id: 'nature-seed-priming-portrait',
+    title: 'Seed-Priming Portrait (20/40 kHz) — experimental tier',
+    category: 'Experimental',
+    purpose: 'Use case: the ultrasonic seed-priming frequencies as octave-down portraits — the real work happens in a water bath.',
+    spec: {
+      autoShutoff: true,
+      phases: [
+        { name: 'us-20khz-cavitation', durationSec: 240, carrierHz: 78.13, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+        { name: 'us-40khz-porosity', durationSec: 240, carrierHz: 156.25, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+      ],
+    },
+    grade: 'D',
+    rationale:
+      '20 kHz ×2⁻⁸ = 78.13 Hz and 40 kHz ×2⁻⁸ = 156.25 Hz, four minutes each. Seed-priming sonication (20–40 kHz water ' +
+      'bath, 1.5–20 min) raised rice germination 1.8–11% and sunflower up to 43% at moderate intensity — via cavitation ' +
+      'micro-pores in the seed coat, a mechanical mechanism. An airborne tone shares only the number: portraits, not ' +
+      'priming.',
+    citations: ['Chen 2023 (soybean frequency roles)', 'PMC10901143 (rice US treatment)', 'Sunflower 40 kHz trial 2013'],
+  },
+  {
+    id: 'nature-root-phonotropism',
+    title: 'Corn Root Band (200–300 Hz) — experimental tier',
+    category: 'Experimental',
+    purpose: 'Use case: the 220 Hz phonotropism band as a listening walk — one lab\'s unreplicated result, labeled as such.',
+    spec: {
+      autoShutoff: true,
+      phases: [
+        { name: 'band-low-200', durationSec: 300, carrierHz: 200, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+        { name: 'band-mid-220', durationSec: 300, carrierHz: 220, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+        { name: 'band-high-300', durationSec: 300, carrierHz: 300, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+      ],
+    },
+    grade: 'D',
+    rationale:
+      'Gagliano\'s group reported young corn roots bending toward water-borne sound at ~220 Hz (best 200–300 Hz), with ' +
+      'root tips emitting their own clicks — measured by laser vibrometer. Cited hundreds of times but never independently ' +
+      'replicated; this 15-minute walk through the band is education, and the label says so.',
+    citations: ['Gagliano, Mancuso & Robert 2012, Trends Plant Sci. 17:323–325', 'Gagliano et al. 2017, Oecologia 184'],
+  },
+  {
+    id: 'nature-sonolysis-portrait',
+    title: 'Sonolysis Portrait (200–400 kHz) — experimental tier',
+    category: 'Experimental',
+    purpose: 'Use case: the real water-treatment band as octave-down tones — cavitation engineering, portrait only.',
+    spec: {
+      autoShutoff: true,
+      phases: [
+        { name: 'us-200khz', durationSec: 240, carrierHz: 195.31, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+        { name: 'us-300khz', durationSec: 240, carrierHz: 146.48, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+        { name: 'us-400khz', durationSec: 240, carrierHz: 195.31, beatHz: 0, gainDbFs: -16, rampSec: 20 },
+      ],
+    },
+    grade: 'D',
+    rationale:
+      'The optimal pollutant-degradation band (200–400 kHz) octaved down: 200 kHz ×2⁻¹⁰ = 195.31 Hz, 300 kHz ×2⁻¹¹ = ' +
+      '146.48 Hz, 400 kHz ×2⁻¹¹ = 195.31 Hz. Sonolysis is real engineering — cavitation hotspots of thousands of kelvin ' +
+      'driving ·OH chemistry. Nothing audible carries that physics; this is a portrait of an industrial process.',
+    citations: ['ScienceDirect sonolysis overview (200–400 kHz optimum)', 'Deng 2026, ACS EST Water'],
+  },
+];
+
+export const CROP_HYPOTHESES: readonly NatureHypothesis[] = [
+  {
+    id: 'hyp-seed-tray-tone',
+    presetId: 'nature-crop-paft-band',
+    title: 'Home seed-tray A/B at safe levels',
+    headline: 'Will a quiet daily tone hour change germination vs silence? Prior: null at safe SPL.',
+    statement:
+      'The positive greenhouse trials used 65–106 dB field arrays — levels we deliberately do NOT reproduce at home ' +
+      '(hearing dose discipline). The fair home question is narrower: does a ≤70 dB daily tone hour do anything at all?',
+    prediction:
+      'No detectable germination-rate or time-to-sprout difference at ≤70 dB (the honest null); any apparent difference ' +
+      'should vanish on replication with swapped trays.',
+    homeTest:
+      'Two identical seed trays (same soil, light, water, seed batch, ≥20 seeds each). Tray A gets the PAFT band walk ' +
+      'once daily at conversation level; tray B gets silence. Log germination day-by-day for two weeks, then repeat with ' +
+      'swapped tray positions.',
+    prior: 'Null at safe levels — the literature\'s effects need loud fields.',
+    grade: 'C',
+    citations: ['Hassanien 2014 (65–106 dB protocols)', 'Western Michigan thesis (900/1200 Hz null)'],
+  },
+  {
+    id: 'hyp-music-greenhouse-null',
+    presetId: 'nature-stream-soundscape',
+    title: 'The Mozart-for-plants folklore, tested fairly',
+    headline: 'Do plants care about music genre? Prior: no — caretaker attention is the confound.',
+    statement:
+      'Decades of "plants prefer classical" claims trace to uncontrolled experiments; the one TV replication favored ' +
+      'death metal, which tells you it was noise. Music-on-plants is the canonical folklore null of this field.',
+    prediction: 'No growth difference between soundscape-treated and silent matched pots once watering attention is equalized.',
+    homeTest:
+      'Four matched pots: two get a daily 30-min soundscape, two get silence; water all in one pass with identical ' +
+      'attention. Photograph weekly for a month; compare height/foliage honestly.',
+    prior: 'Null; any genre effect is a caretaker artifact.',
+    grade: 'C',
+    citations: ['UCSB critique of music-plant experiments (confound control)', 'MythBusters 2004 (entertainment replication)'],
+  },
+];

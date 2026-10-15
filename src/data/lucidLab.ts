@@ -1304,4 +1304,8 @@ export const PRESET_ART: Record<string, string> = {
   'nature-bee-buzz-portrait': 'art/bee-buzz.jpg',
   'nature-dolbear-cricket': 'art/cricket-dolbear.jpg',
   'nature-stream-soundscape': 'art/relax-water.jpg',
+  'nature-crop-paft-band': 'art/crop-field.jpg',
+  'nature-seed-priming-portrait': 'art/sonolysis.jpg',
+  'nature-root-phonotropism': 'art/crop-field.jpg',
+  'nature-sonolysis-portrait': 'art/sonolysis.jpg',
 };

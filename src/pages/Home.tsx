@@ -8,7 +8,9 @@ import {
   navigationMatches,
   type NavigationEntry,
 } from '@/app/navigation';
+import { PRACTICE_GOALS } from '@/data/listeningPractice';
 import './home.css';
+import './practice.css';
 
 export default function Home() {
   const [query, setQuery] = useState('');
@@ -24,18 +26,19 @@ export default function Home() {
 
   return (
     <div className="home-page">
-      <header className="home-intro">
-        <span className="t-label home-eyebrow">Open Sync · Sound workspace</span>
-        <h1 className="t-display-lg">Listen, create, and inspect audio.</h1>
-        <p className="t-body text-2">Listen to a preset, build a chord, or inspect an audio file. Start with a short preview; open more controls when you need them.</p>
-        <div className="home-start-row">
-          <Link className="home-primary" to="/presets">Choose a sound <ArrowRight size={17} aria-hidden /></Link>
-          <Link className="home-text-link" to="/guide">How to start</Link>
+      <header className="listening-hero">
+        <div className="listening-hero-copy"><span className="eyebrow">Open Sync · Your listening room</span>
+          <h1>A little space.<br /><em>A different rhythm.</em></h1>
+          <p>Make room for meditation, rest, and curiosity. Find a sound for this moment, and let the rest wait.</p>
+          <div className="home-start-row"><Link className="practice-primary" to="/meditate">Find my session <ArrowRight size={16} /></Link><Link className="home-text-link" to="/presets">Explore sounds</Link></div>
+          <span className="hero-footnote">YOUR PACE · YOUR SPACE · NO ACCOUNT NEEDED</span>
         </div>
-        <p className="home-scope t-body-sm text-2">These tools generate and measure audio. They do not measure your brain activity.</p>
+        <figure className="listening-hero-art"><img src={`${import.meta.env.BASE_URL}art/bowl-session.jpg`} alt="A singing bowl and mallet in a softly lit listening space" /><figcaption><span>THE LISTENING COLLECTION</span><strong>Small rituals. Open possibilities.</strong><Link to="/presets?collection=practice">Discover the new practices ↗</Link></figcaption></figure>
       </header>
+      <p className="home-scope t-body-sm text-3">These tools create and visualize audio. They do not measure your brain activity.</p>
+      <section className="home-now" aria-labelledby="home-now-title"><div><span className="eyebrow">A moment for you</span><h2 id="home-now-title">What do you need right now?</h2><p>Choose an intention. We’ll help you find a place to begin.</p></div><div className="home-intentions">{PRACTICE_GOALS.slice(0, 5).map((g) => <Link key={g.id} to={`/meditate?goal=${g.id}`}>{g.title}<ArrowRight size={15} /></Link>)}</div><Link className="home-text-link" to="/meditate">Which meditation should I do right now?</Link></section>
 
-      <section className="home-task-section" aria-label="What would you like to do?">
+      <details className="home-tool-drawer"><summary>Make it your own <span>Studio, composition & audio analysis</span></summary><section className="home-task-section" aria-label="What would you like to do?">
         <div className="home-task-grid">
           <article className="home-task home-task-listen">
             <Headphones size={21} aria-hidden />
@@ -65,9 +68,12 @@ export default function Home() {
         </div>
       </section>
 
+      </details>
+
       <section className="home-labs" aria-labelledby="home-labs-title">
-        <h2 id="home-labs-title" className="t-h2">Research labs</h2>
-        <p className="t-body-sm text-2">Evidence-graded collections with listening presets — pick a lab.</p>
+        <h2 id="home-labs-title" className="t-h2">Follow your curiosity</h2>
+        <p className="t-body-sm text-2">Listening practices and the research behind them.</p>
+        <Link className="home-sourcebook-link" to="/traditions"><span><strong>Programs, books & traditions</strong><span>Explore government archives, Russian and Chinese research, and seven new sounds.</span></span><ArrowRight size={20} /></Link>
         <div className="home-lab-grid">
           <Link className="home-lab-card" to="/lucid" data-testid="home-lab-lucid">
             <img src={`${import.meta.env.BASE_URL}art/lucid-dream.jpg`} alt="Lucid Audio Lab cover art" loading="lazy" />
@@ -81,7 +87,7 @@ export default function Home() {
             <img src={`${import.meta.env.BASE_URL}art/bowl-session.jpg`} alt="Healing Sound Lab cover art" loading="lazy" />
             <span className="home-lab-body">
               <span className="t-label text-3">HEALING SOUND LAB</span>
-              <strong className="t-body">Clinical doses, honest labels</strong>
+              <strong className="t-body">Bowls, rest & the healing traditions</strong>
               <span className="t-body-sm text-2">Bowls, vibroacoustics, the 30 Hz window, nano portraits.</span>
             </span>
           </Link>
@@ -114,10 +120,10 @@ export default function Home() {
           {NAVIGATION_CATEGORIES.map((category) => {
             const entries = tools.filter((entry) => entry.category === category.id);
             if (!entries.length) return null;
-            return <section key={category.id} className="home-directory-group" aria-labelledby={`home-group-${category.id}`}>
-              <h3 id={`home-group-${category.id}`} className="t-h3">{category.title}</h3>
+            return <details key={`${category.id}-${searching}`} className="home-directory-group" open={searching || undefined}>
+              <summary id={`home-group-${category.id}`} className="t-h3">{category.title}<span>{entries.length} pages</span></summary>
               <DirectoryList entries={entries} />
-            </section>;
+            </details>;
           })}
         </div>}
 

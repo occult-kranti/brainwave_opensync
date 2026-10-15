@@ -38,7 +38,7 @@ function render(el: React.ReactElement) {
 }
 
 const PAGES: { name: string; el: () => React.ReactElement; primary: string }[] = [
-  { name: 'Home', el: () => <Home />, primary: 'Choose a sound' },
+  { name: 'Home', el: () => <Home />, primary: 'Find my session' },
   { name: 'Guide', el: () => <Guide />, primary: 'DEEP TECHNICAL' },
   { name: 'Studio', el: () => <Studio />, primary: 'Play session' },
   { name: 'Library', el: () => <Library />, primary: 'LOAD ↗' },

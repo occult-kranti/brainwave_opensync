@@ -80,3 +80,14 @@
   border-bottom: 1px dotted var(--amber);
 }
 .preset-card-links a:hover { color: var(--teal); border-bottom-color: var(--teal); }
+.preset-page > header .t-display-lg { font-family: Georgia, serif; font-weight: 400; font-size: 48px; margin: 18px 0; }
+.preset-guide-link { margin: 18px 0; font-size: 13px; color: var(--teal-hi); }
+.preset-collections { gap: 8px; }
+.preset-collections .chip { min-height: 44px; }
+.preset-category-group { border: 1px solid var(--line-2); border-radius: 10px; margin-top: 14px; padding: 0 20px; }
+.preset-category-group > summary { min-height: 64px; padding: 19px 0; font-family: Georgia, serif; font-size: 23px; cursor: pointer; }
+.preset-category-group > summary > span { float: right; color: var(--text-3); font-family: Inter, sans-serif; font-size: 12px; padding-top: 5px; }
+.preset-category-group .preset-grid { margin-bottom: 20px; grid-template-columns: repeat(auto-fit,minmax(min(100%,270px),1fr)); }
+.preset-card h3 { font-family: Georgia, serif; font-size: 24px; font-weight: 400; }
+.preset-card { background: var(--ink-1); }
+@media(max-width:700px) { .preset-category-group { padding: 0 12px; } .preset-page > header .t-display-lg { font-size: 38px; } }

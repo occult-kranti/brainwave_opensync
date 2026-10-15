@@ -109,7 +109,7 @@ describe('Studio page — visualization row', () => {
     expect(iCym).toBeGreaterThan(iScope);
   });
 
-  it('visualization row sits between engine and mixer sections', () => {
+  it('visualization row has its own disclosure after the sound controls', () => {
     mobileState.mobile = false;
     const html = ssr(<Studio />);
     const iEngine = html.indexOf('ENGINE');
@@ -117,7 +117,8 @@ describe('Studio page — visualization row', () => {
     const iMixer = html.indexOf('NOISE MIXER');
     expect(iEngine).toBeGreaterThanOrEqual(0);
     expect(iScope).toBeGreaterThan(iEngine);
-    expect(iMixer).toBeGreaterThan(iScope);
+    expect(iScope).toBeGreaterThan(iMixer);
+    expect(html).toContain('Visuals &amp; signal views');
   });
 
   it('noise mixer + layers sections carry master bypass toggles (LED + label, enabled by default)', () => {

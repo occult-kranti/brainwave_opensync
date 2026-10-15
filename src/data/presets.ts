@@ -5,6 +5,8 @@
  * (W3) stays decoupled; the engine adapts these into its own runtime types.
  */
 
+import { PRACTICE_PRESETS } from './listeningPractice';
+import { ARCHIVE_PRESETS } from './archivePractice';
 import type { Grade } from './frequencies';
 import { BASHAR_PRESETS } from '@/channeled/bashar';
 import { EXPEDITION_PRESETS, LUCID_LAB_PRESETS, PRESET_ART } from './lucidLab';
@@ -820,6 +822,8 @@ const RAW_PRESETS: readonly PresetSpec[] = [
       'Low-level low-passed masking texture. NOTE: white-noise claims cannot lean on music-therapy evidence (Cochrane excludes white noise); keep <=50 dBA at crib and >=2 m away.',
     citations: ['Cochrane preterm-infant review (white noise excluded)', 'AAP 2023 noise-exposure policy statement'],
   },
+  ...PRACTICE_PRESETS,
+  ...ARCHIVE_PRESETS,
   ...VARIETY_PRESETS,
   ...NATURE_PRESETS,
   ...CROP_PRESETS,

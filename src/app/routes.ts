@@ -72,6 +72,8 @@ const r = (
 export const ROUTES: readonly AppRoute[] = [
   { path: '/', label: 'HOME', module: 'Home', icon: HomeIcon, group: 'home', component: Home, bottomTab: true },
   // Practical tools — listening, creating, measuring and testing.
+  r('/meditate', 'FIND A SESSION', 'Find a Session', Compass, 'tools', () => import('@/pages/Meditate')),
+  r('/hypnosis', 'HYPNOSIS & DREAMING', 'Hypnosis & Dreaming', MoonStar, 'tools', () => import('@/pages/Hypnosis')),
   r('/presets', 'PRESETS', 'Presets', Layers, 'tools', () => import('@/pages/Presets'), { bottomTab: true }),
   r('/studio', 'STUDIO', 'Studio', AudioWaveform, 'tools', () => import('@/pages/Studio'), { bottomTab: true }),
   r('/library', 'FREQUENCY REFERENCE', 'Library', BookOpen, 'tools', () => import('@/pages/Library')),
@@ -90,6 +92,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/lab', 'EXPERIMENT LAB', 'Experiment Lab', FlaskConical, 'tools', () => import('@/pages/research/ExperimentLab')),
   r('/replication', 'REPLICATION BAY', 'Replication Bay', Repeat2, 'tools', () => import('@/pages/Replication')),
   // Background reading — grouped behind one disclosure in both navigation layouts.
+  r('/traditions', 'PROGRAMS & TRADITIONS', 'Programs & Traditions', BookMarked, 'research', () => import('@/pages/Traditions')),
   r('/levels', 'LEVELS', 'Levels', Gauge, 'research', () => import('@/pages/Levels')),
   r('/knowledge', 'KNOWLEDGE', 'Knowledge', BookMarked, 'research', () => import('@/pages/Knowledge')),
   r('/channeled', 'CHANNELED SOURCES', 'Channeled Sources', Radio, 'research', () => import('@/pages/ChanneledSources')),

@@ -1,0 +1,22 @@
+.cymatics-stage { position: fixed; inset: 0; z-index: 85; background: #101b16; color: #f0ebdf; overflow-y: auto; overscroll-behavior: contain; padding: 26px 36px 32px; }
+.cymatics-stage-backdrop { position: fixed; inset: 0; pointer-events: none; opacity: .3; }
+.cymatics-stage-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; position: relative; max-width: 1280px; margin: auto; padding-bottom: 22px; border-bottom: 1px solid #354a3c; }
+.cymatics-stage-header h2 { font-family: Georgia, serif; font-size: 26px; font-weight: 400; margin: 8px 0 0; }
+.cymatics-stage-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.cymatics-stage .chip { min-height: 44px; }
+.cymatics-stage-body { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(260px,1fr); gap: 7vw; align-items: center; max-width: 1140px; margin: 28px auto 0; position: relative; }
+.cymatics-stage-view { min-width: 0; text-align: center; }
+.cymatics-view-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.cymatics-view-tabs button { min-height: 44px; color: #c0ccbb; border: 1px solid #435846; border-radius: 6px; background: transparent; padding: 10px 16px; cursor: pointer; font-size: 12px; }
+.cymatics-view-tabs button[aria-pressed=true] { background: #e3cba3; border-color: #e3cba3; color: #152017; }
+.cymatics-stage canvas { display: block; width: min(100%, 58vh); aspect-ratio: 1; margin: auto; border: 1px solid #6b5e47; border-radius: 12px; background: #100e0a; }
+.cymatics-stage-hint { font-size: 11px; color: #aebbab; line-height: 1.6; margin-top: 15px; }
+.cymatics-stage-info h3 { font-family: Georgia, serif; font-size: clamp(28px,3vw,42px); font-weight: 400; line-height: 1.18; margin: 20px 0; }
+.cymatics-stage-info p { color: #b9c3b6; font-size: 13px; line-height: 1.8; }
+.cymatics-stage-info dl { margin: 24px 0; }
+.cymatics-stage-info dl > div { display: flex; justify-content: space-between; gap: 14px; font-size: 12px; border-bottom: 1px solid #354a3c; padding: 12px 0; }
+.cymatics-stage-info dt { color: #96a492; }
+.cymatics-stage-info dd { text-align: right; }
+.cymatics-stage-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+@media(max-width:700px) { .cymatics-stage { padding: 18px 16px calc(80px + env(safe-area-inset-bottom)); } .cymatics-stage-header { align-items: flex-start; } .cymatics-stage-header h2 { font-size: 23px; } .cymatics-stage-header .eyebrow { font-size: 9px; } .cymatics-stage-actions { justify-content: flex-end; gap: 6px; } .cymatics-stage-body { grid-template-columns: 1fr; gap: 26px; margin-top: 22px; } .cymatics-stage canvas { width: min(100%, 52vh); } .cymatics-stage-info h3 { font-size: 30px; } }
+@media(max-height:540px) and (min-width:701px) { .cymatics-stage-body { align-items: start; gap: 30px; } .cymatics-stage canvas { width: min(100%,70vh); } }

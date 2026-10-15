@@ -38,11 +38,11 @@ afterEach(async () => {
 });
 
 describe('Home task paths and discovery', () => {
-  it('makes choosing a sound the first action and provides direct chord/file paths', async () => {
+  it('makes finding a session the first action and provides direct chord/file paths', async () => {
     const page = await mount(<Home />);
     const first = page.querySelector('a')!;
-    expect(first.textContent).toContain('Choose a sound');
-    expect(first.getAttribute('href')).toBe('/presets');
+    expect(first.textContent).toContain('Find my session');
+    expect(first.getAttribute('href')).toBe('/meditate');
     expect(page.querySelector('.home-task-grid a[href="/harmonics"]')?.textContent).toContain('Build a chord');
     expect(page.querySelector('.home-task-grid a[href="/sample-lab"]')?.textContent).toContain('Inspect an audio file');
     expect(page.querySelector('[data-testid="home-bashar-link"]')?.closest('article')?.textContent).toContain('Listen');

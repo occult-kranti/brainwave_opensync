@@ -30,6 +30,9 @@ if (typeof Element !== 'undefined') {
 
 const ALL_ROUTE_PATHS = [
   '/',
+  '/meditate',
+  '/hypnosis',
+  '/traditions',
   '/studio',
   '/library',
   '/presets',
@@ -178,7 +181,7 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(drawer).toBeTruthy();
     const tools = drawer!.querySelector('[data-nav-group="tools"]')!;
     expect(tools.querySelectorAll('a')).toHaveLength(0);
-    expect(drawer!.querySelectorAll('a')).toHaveLength(4);
+    expect(drawer!.querySelectorAll('a')).toHaveLength(5);
     expect(drawer!.querySelector('a[href="/channeled"]')).toBeNull();
     const toggle = drawer!.querySelector<HTMLButtonElement>('[data-testid="drawer-research-toggle"]')!;
     expect(toggle.getAttribute('aria-expanded')).toBe('false');

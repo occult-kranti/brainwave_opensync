@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router';
 import { X } from 'lucide-react';
+import { PRACTICE_PRESETS } from '@/data/listeningPractice';
 import { PRESETS, presetDurationMin, type Preset, type PresetCategory } from '@/data/presets';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { Chip } from '@/ui/components/primitives';
@@ -19,12 +20,12 @@ import './presets.css';
 const CATS: (PresetCategory | 'All')[] = ['All', 'Sleep', 'Focus', 'Relax', 'Meditate', 'Lucid Dream', 'Experimental', 'Infant'];
 const GRADE_RANK: Record<GradeLetter, number> = { A: 3, B: 2, C: 1, D: 0 };
 const STARTER_IDS = ['relax-alpha-ease', 'exp-phi-ladder', 'exp-phi-bowl-chord'];
-type Collection = 'start' | 'all' | 'bashar' | 'saved';
+type Collection = 'start' | 'all' | 'bashar' | 'saved' | 'practice' | 'archive';
 
 export default function Presets() {
   const [params, setParams] = useSearchParams();
   const requestedCollection = params.get('collection');
-  const collection: Collection = requestedCollection === 'all' || requestedCollection === 'bashar' || requestedCollection === 'saved' ? requestedCollection : 'start';
+  const collection: Collection = requestedCollection === 'practice' || requestedCollection === 'archive' || requestedCollection === 'all' || requestedCollection === 'bashar' || requestedCollection === 'saved' ? requestedCollection : 'start';
   const basharCollection = collection === 'bashar';
   const cat = CATS.find((candidate) => candidate === params.get('category')) ?? 'All';
   const query = params.get('q') ?? '';
@@ -53,7 +54,7 @@ export default function Presets() {
   }, [previewBlocked, infantOnly, stopPreview]);
 
   const filtered = useMemo(() => PRESETS.filter((p) =>
-    (infantOnly ? p.category === 'Infant' : collection === 'saved' ? false : (collection === 'all' || (basharCollection ? isBasharPreset(p) : STARTER_IDS.includes(p.id))) && (collection !== 'all' || cat === 'All' || p.category === cat)) &&
+    (infantOnly ? p.category === 'Infant' : collection === 'saved' ? false : (collection === 'all' || (collection === 'practice' ? PRACTICE_PRESETS.some((entry) => entry.id === p.id) : collection === 'archive' ? p.id.startsWith('archive-') : basharCollection ? isBasharPreset(p) : STARTER_IDS.includes(p.id))) && (collection !== 'all' || cat === 'All' || p.category === cat)) &&
     (!minGrade || GRADE_RANK[p.grade] >= GRADE_RANK[minGrade]) && presetMatchesSearch(p, query)),
   [infantOnly, collection, basharCollection, cat, minGrade, query]);
   const savedFiltered = userPresets.filter((preset) => presetMatchesSearch(userPresetAsPreset(preset), query));
@@ -97,12 +98,14 @@ export default function Presets() {
 
   return <div className="preset-page">
     <header>
-      <h1 className="t-display-lg">Presets</h1>
+      <span className="eyebrow">The listening collection</span><h1 className="t-display-lg">Find your rhythm.</h1>
       <p className="t-body text-2">Preview a sound, then load its full session into Studio to play or edit. Loading does not start playback.</p>
     </header>
 
     {!infantOnly && <nav className="preset-collections" aria-label="Preset collections">
       <button type="button" className={`chip ${collection === 'start' ? 'chip-active' : ''}`} aria-pressed={collection === 'start'} onClick={() => chooseCollection('start')}>Start here</button>
+      <button type="button" className={`chip ${collection === 'practice' ? 'chip-active' : ''}`} aria-pressed={collection === 'practice'} onClick={() => chooseCollection('practice')}>Meditation & rest</button>
+      <button type="button" className={`chip ${collection === 'archive' ? 'chip-active' : ''}`} aria-pressed={collection === 'archive'} onClick={() => chooseCollection('archive')}>Programs & traditions</button>
       <button type="button" className={`chip ${collection === 'all' ? 'chip-active' : ''}`} aria-pressed={collection === 'all'} onClick={() => chooseCollection('all')}>Browse all presets</button>
       <button type="button" className={`chip ${basharCollection ? 'chip-active' : ''}`} aria-pressed={basharCollection} onClick={() => chooseCollection('bashar')}>Bashar sounds</button>
       <button type="button" className={`chip ${collection === 'saved' ? 'chip-active' : ''}`} aria-pressed={collection === 'saved'} onClick={() => chooseCollection('saved')}>My presets{userPresets.length ? ` (${userPresets.length})` : ''}</button>
@@ -123,6 +126,7 @@ export default function Presets() {
       </div>
     </section>}
 
+    <p className="preset-guide-link"><Link to="/meditate">Not sure where to begin? Find a session for now →</Link></p>
     <section className="preset-filters" aria-label="Find a preset">
       <div className="preset-filter-row">
         <label className="preset-search t-body-sm">Search sounds
@@ -141,7 +145,7 @@ export default function Presets() {
           {CATS.map((c) => <Chip key={c} active={cat === c} onClick={() => changeParam('category', c === 'All' ? '' : c)}>{c.toUpperCase()}</Chip>)}
         </div>}
       </details>}
-      <p className="t-caption text-3">Search applies to {infantOnly ? 'Infant presets' : collection === 'start' ? 'the three starting sounds' : collection === 'saved' ? 'My presets' : basharCollection ? 'the Bashar collection' : 'all presets'}.{(query || minGrade || (collection === 'all' && cat !== 'All')) && <button type="button" className="preset-clear" onClick={clearFilters}>Clear filters</button>}</p>
+      <p className="t-caption text-3">Search applies to {infantOnly ? 'Infant presets' : collection === 'start' ? 'the three starting sounds' : collection === 'saved' ? 'My presets' : basharCollection ? 'the Bashar collection' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions' : 'all presets'}.{(query || minGrade || (collection === 'all' && cat !== 'All')) && <button type="button" className="preset-clear" onClick={clearFilters}>Clear filters</button>}</p>
       {infantOnly && <p className="t-body-sm text-2">Infant mode: only Infant presets are shown.</p>}
     </section>
 
@@ -172,7 +176,7 @@ export default function Presets() {
     </section>}
 
     {(collection !== 'saved' || infantOnly) && <><div className="preset-results">
-      <h2 className="t-h3">{infantOnly ? 'Infant presets' : basharCollection ? 'Bashar collection' : collection === 'start' ? 'Starting sounds' : 'All presets'}</h2>
+      <h2 className="t-h3">{infantOnly ? 'Infant presets' : basharCollection ? 'Bashar collection' : collection === 'start' ? 'Starting sounds' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions · experimental' : 'All presets'}</h2>
       <span className="t-body-sm text-2" role="status">{filtered.length} presets</span>
     </div>
     {filtered.length === 0 && <div className="panel"><p className="t-body text-2">No presets match these filters.</p>
@@ -181,8 +185,9 @@ export default function Presets() {
         stopPreview(); setPreviewHint('');
         setParams((previous) => { const next = new URLSearchParams(previous); next.set('collection', 'all'); next.delete('category'); next.delete('grade'); return next; });
       }}>Search all presets instead</button>}</div>}
-    <div className="preset-grid">
-      {filtered.map((p) => {
+    <div className="preset-group-list">
+      {CATS.filter((group) => group !== 'All' && filtered.some((p) => p.category === group)).map((group) => <details className="preset-category-group" key={`${collection}-${group}-${query}-${cat}`} open={collection !== 'all' || Boolean(query) || cat !== 'All' || undefined}><summary>{group}<span>{filtered.filter((p) => p.category === group).length} sounds</span></summary><div className="preset-grid">
+      {filtered.filter((p) => p.category === group).map((p) => {
         const playing = previewId === `preset:${p.id}`;
         const bashar = isBasharPreset(p);
         return <article key={p.id} className="panel preset-card" data-testid={`preset-card-${p.id}`}>
@@ -213,6 +218,7 @@ export default function Presets() {
           </div>
         </article>;
       })}
+    </div></details>)}
     </div></>}
 
     {drawer && <>

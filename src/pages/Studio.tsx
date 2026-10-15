@@ -3,7 +3,7 @@
  */
 
 import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { Check, Download, Headphones, Link2, MoonStar, Pause, Play, RotateCcw, Send, Square, Volume2, VolumeX } from 'lucide-react';
 import { useSession } from '@/ui/session/useSession';
@@ -138,10 +138,10 @@ export default function Studio() {
   ];
 
   return (
-    <div style={{ padding: isMobile ? '20px 16px 40px' : '32px 40px 48px', maxWidth: 1440, margin: '0 auto' }}>
+    <div className="studio-page" style={{ padding: isMobile ? '20px 16px 40px' : '32px 40px 48px', maxWidth: 1440, margin: '0 auto' }}>
       <header className="studio-heading">
-        <div><h1 className="t-h1">Studio</h1><p className="t-body-sm text-2">Play a session. Open sound controls to change the mix.</p></div>
-        <button type="button" className="chip" onClick={() => navigate('/presets')}>Choose another sound</button>
+        <div><span className="eyebrow">Your listening space</span><h1 className="t-h1">Settle into sound.</h1><p className="t-body-sm text-2">Your session, at your pace. Open a group below to make it your own.</p></div>
+        <div className="studio-heading-links"><Link to="/meditate">Help me choose</Link><button type="button" className="chip" onClick={() => navigate('/presets')}>Choose another sound</button></div>
       </header>
       <section className="panel studio-player" aria-label="Session player" style={{ position: 'relative', isolation: 'isolate', overflow: 'hidden' }}>
         {field4dOn && <Field4D />}
@@ -352,11 +352,8 @@ export default function Studio() {
       </motion.div>
       </details>
 
-      <details className="studio-disclosure" data-testid="studio-sound-controls">
-        <summary>Sound controls <span className="t-caption text-3">Tones, noise, layers, sequence and signal views</span></summary>
-      <div className="grid gap-4" style={{ gridTemplateColumns: isMobile ? '1fr' : 'repeat(12, 1fr)' }}>
-        {/* ROW B — Engine panel */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.05 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 4' }}>
+      <details className="studio-disclosure" data-testid="studio-sound-controls"><summary>Sound controls <span className="t-caption text-3">Tone, rhythm and waveform</span></summary><div className="studio-edit-grid">        {/* ROW B — Engine panel */}
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.05 }}>
           <Panel
             title="ENGINE"
             right={
@@ -480,7 +477,7 @@ export default function Studio() {
         </motion.div>
 
         {/* ROW B — Master readout */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.1 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 4' }}>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.1 }}>
           <div className="scope-well flex flex-col" style={{ padding: 24, height: '100%', border: s.running ? '1px solid var(--line-2)' : undefined }}>
             <span className="t-label">MASTER READOUT</span>
             <div style={{ margin: '8px 0' }}>
@@ -538,22 +535,9 @@ export default function Studio() {
           </div>
         </motion.div>
 
-        {/* ROW B — Visualizer (tabbed scope/spectrum/correlation) */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.15 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 4' }}>
-          <Visualizer height={isMobile ? 280 : 560} />
-        </motion.div>
-
-        {/* ROW C — Visualization row: big live scope (left) + cymatics panel
-            (right). Stacked on mobile, scope first (DOM order = visual order). */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.18 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 8' }}>
-          <StudioScope height={isMobile ? 220 : 260} />
-        </motion.div>
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.2 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 4' }}>
-          <StudioCymatics height={260} />
-        </motion.div>
-
-        {/* ROW D — Noise mixer (master bypass: LED + label; bypassed = silent live, omitted from export) */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.22 }} style={{ gridColumn: isMobile ? 'span 1' : 'span 5' }}>
+</div></details>
+      <details className="studio-disclosure" data-testid="studio-textures"><summary>Textures & bowls <span className="t-caption text-3">Noise, nature, singing bowls and interval bells</span></summary><div className="studio-edit-grid">        {/* ROW D — Noise mixer (master bypass: LED + label; bypassed = silent live, omitted from export) */}
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.22 }}>
           <Panel
             title="NOISE MIXER"
             right={
@@ -597,7 +581,7 @@ export default function Studio() {
         </motion.div>
 
         {/* ROW D — Layers + phases */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.25 }} className="flex flex-col gap-4" style={{ gridColumn: isMobile ? 'span 1' : 'span 7' }}>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.25 }} className="flex flex-col gap-4">
           <Panel
             title="LAYERS"
             right={
@@ -662,13 +646,27 @@ export default function Studio() {
               )}
             </div>
           </Panel>
-          <Panel title="SESSION PHASES" right={<InfoPopover featureId="phase-timeline" label="About the phase timeline" />}>
+        </motion.div>
+</div></details>
+      <details className="studio-disclosure" data-testid="studio-sequence"><summary>Session sequence <span className="t-caption text-3">Arrange the phases of your practice</span></summary>          <Panel title="SESSION PHASES" right={<InfoPopover featureId="phase-timeline" label="About the phase timeline" />}>
             <PhaseTimeline phases={s.phases} onChange={s.setPhases} playheadSec={s.running ? s.elapsedSec : 0} height={100} />
           </Panel>
+</details>
+      <details className="studio-disclosure" data-testid="studio-visuals"><summary>Visuals & signal views <span className="t-caption text-3">Waveform, spectrum, correlation and sand patterns</span></summary><div className="studio-visual-grid">        {/* ROW B — Visualizer (tabbed scope/spectrum/correlation) */}
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.15 }}>
+          <Visualizer height={300} />
         </motion.div>
-      </div>
 
-      </details>
+        {/* ROW C — Visualization row: big live scope (left) + cymatics panel
+            (right). Stacked on mobile, scope first (DOM order = visual order). */}
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.18 }}>
+          <StudioScope height={isMobile ? 220 : 260} />
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.2 }}>
+          <StudioCymatics height={260} />
+        </motion.div>
+
+</div></details>
 
       {/* Save-as-preset modal */}
       {saveOpen && (

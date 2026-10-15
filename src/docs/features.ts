@@ -49,6 +49,9 @@ export interface FeatureEntry {
 /** Every routed screen in the app (test coverage target). */
 export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/', label: 'Home' },
+  { route: '/meditate', label: 'Find a Session' },
+  { route: '/hypnosis', label: 'Hypnosis & Dreaming' },
+  { route: '/traditions', label: 'Programs & Traditions' },
   { route: '/guide', label: 'Guide' },
   { route: '/studio', label: 'Studio' },
   { route: '/library', label: 'Frequency reference' },
@@ -1357,7 +1360,22 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
 ];
 
 /** Full feature list — the single import surface for Guide and documentation tests. */
-export const FEATURES: readonly FeatureEntry[] = [...FEATURES_CORE, ...FEATURES_MODULES];
+const PRACTICE_FEATURES: readonly FeatureEntry[] = [
+  { id: 'programs-traditions', module: 'Programs & Traditions', route: '/traditions', name: 'Programs, research and spiritual texts',
+    simple: 'Explore government archives, Russian and Chinese studies, and esoteric books. Read the access limits and try original listening experiments.',
+    deep: 'The sourcebook distinguishes original authorship, archival custody, funding and publication type. Protocols and patents are separated from observed clinical results. Every associated recipe is an explicitly speculative original composition with authored mix levels and automatic shutoff. No proprietary recording, covert message, biomedical device or closed-loop protocol is reproduced.',
+    grade: 'D', gradeScope: 'Mental or spiritual effects of the original archive-inspired recipes are unverified.',
+    howTo: ['Open a source group or search a title or country.', 'Read the source and its limits.', 'Inspect an original recipe, then set it up in Studio.'] },
+  { id: 'session-suggestions', module: 'Find a Session', route: '/meditate', name: 'Find a session for now',
+    simple: 'Choose your intention, time and listening setup. Read why a sound fits, then load it into Studio.',
+    deep: 'A deterministic ranking compares the whole preset catalog with explicit preferences. Speaker mode excludes binaural beat sessions, and experimental sounds require opt-in. A shorter time loads only the beginning of the sequence through the existing bounded preset duration. The tool does not infer health or mental state.',
+    howTo: ['Choose an intention and duration.', 'Select speakers or headphones.', 'Read the match and choose Set up this session.', 'Press Play in Studio when ready.'] },
+  { id: 'hypnosis-research', module: 'Hypnosis & Dreaming', route: '/hypnosis', name: 'Hypnosis, hypnagogia and sound',
+    simple: 'Read the evidence behind hypnosis and sleep-onset sound experiments. Calculate tone differences and try original listening practices.',
+    deep: 'Signal arithmetic is separated from physiological interpretation. Primary studies of hypnotic suggestion, sleep onset and auditory stimulation have different interventions and limits. The interactive calculator subtracts carrier frequencies without inferring EEG or clinical effects. New recipes use the shared session engine, authored mixes and automatic shutoff.',
+    howTo: ['Open a topic to read its methods and limits.', 'Change the calculator tones to inspect their difference.', 'Load a sound into Studio, or open the session guide.'] },
+];
+export const FEATURES: readonly FeatureEntry[] = [...PRACTICE_FEATURES, ...FEATURES_CORE, ...FEATURES_MODULES];
 
 /** Features grouped by module, preserving data order. */
 /** Feature doc by id (InfoPopover explainers, catalog cards). */

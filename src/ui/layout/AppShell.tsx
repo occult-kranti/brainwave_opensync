@@ -99,7 +99,7 @@ function Logo({ collapsed }: { collapsed?: boolean }) {
             Open Sync
           </div>
           <div className="t-caption text-3" style={{ lineHeight: '14px' }}>
-            sound and research tools
+            a space to listen
           </div>
         </div>
       )}

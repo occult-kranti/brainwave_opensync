@@ -1,7 +1,7 @@
 import { Activity, BookOpen, CircleHelp, FlaskConical, House, Music2, type LucideIcon } from 'lucide-react';
 import { ROUTES, type AppRoute } from './routes';
 
-export type NavigationCategoryId = 'primary' | 'create' | 'analyze' | 'experiments' | 'research' | 'help';
+export type NavigationCategoryId = 'primary' | 'practice' | 'create' | 'analyze' | 'experiments' | 'research' | 'help';
 
 export interface NavigationCategory {
   id: NavigationCategoryId;
@@ -20,6 +20,7 @@ export interface NavigationEntry {
 
 export const NAVIGATION_CATEGORIES: readonly NavigationCategory[] = [
   { id: 'primary', title: 'Start here', description: 'Choose a sound or work on a session.', icon: House },
+  { id: 'practice', title: 'Meditation & rest', description: 'Listening practices, sleep, dreaming and comfort.', icon: Music2 },
   { id: 'create', title: 'Create & explore', description: 'Build chords, edit sound recipes, and explore patterns.', icon: Music2 },
   { id: 'analyze', title: 'Analyze audio', description: 'Inspect a recording or monitor a live signal.', icon: Activity },
   { id: 'experiments', title: 'Run experiments', description: 'Compare sounds, track observations, and inspect protocols.', icon: FlaskConical },
@@ -31,6 +32,8 @@ type EntrySpec = readonly [path: string, category: NavigationCategoryId, title: 
 
 const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/', 'primary', 'Home', 'Find a starting point for listening, creating, or inspecting audio.', ['start', 'tools', 'directory']],
+  ['/meditate', 'primary', 'Find a session', 'Choose a meditation for your intention, time and listening setup.', ['meditation', 'suggestion', 'recommend', 'right now', 'healing', 'sleep']],
+  ['/hypnosis', 'practice', 'Hypnosis & dreaming', 'Read the evidence, explore sound mathematics, and try a listening practice.', ['hypnagogia', 'hypnagogic', 'trance', 'theta', 'suggestion', 'mathematics']],
   ['/presets', 'primary', 'Presets', 'Preview ready-made sounds, then load a session to play or edit.', ['listen', 'Bashar', 'bowls', 'noise', 'sound library', 'saved']],
   ['/studio', 'primary', 'Studio', 'Mix tones, noise, and layers into a session.', ['create', 'play', 'duration', 'volume', 'export', 'WAV', 'binaural', 'isochronic']],
   ['/harmonics', 'create', 'Harmonic Lab', 'Build chords and compare tunings.', ['chord', 'music', 'harmony', 'overtones', 'just', 'equal', 'pitch']],
@@ -44,11 +47,12 @@ const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/quicklab', 'experiments', 'Quick Lab', 'Run a small listening comparison and record your ratings.', ['self experiment', 'compare', 'A/B', 'ratings']],
   ['/lab', 'experiments', 'Experiment Lab', 'Inspect planned audio experiments and their methods.', ['protocol', 'study', 'experiment']],
   ['/replication', 'experiments', 'Replication Bay', 'Compare published stimuli and inspect reconstruction limits.', ['replicate', 'protocol', 'Monroe', 'Gateway', 'stimulus']],
-  ['/dream', 'experiments', 'Sleep experiments', 'Review advanced sleep protocols and keep a dream journal.', ['sleep & dream', 'sleep and dream', 'dream lab', 'lucid', 'journal', 'TLR', 'WBTB']],
-  ['/lucid', 'experiments', 'Lucid Audio Lab', 'Study audio cue research, timing maps, and lucid practice sessions.', ['lucid dreaming', 'Gateway', 'REM', 'cue', 'octave portraits', 'hypotheses', 'hemi-sync']],
-  ['/healing', 'experiments', 'Healing Sound Lab', 'Review healing-sound doses, VAT and bowl evidence, and nano portraits.', ['healing', 'vibroacoustic', 'bowls', 'VAT', 'whole body vibration', 'nanoparticle', 'ultrasound', 'tuning fork']],
-  ['/nature', 'experiments', 'Nature Calls Lab', 'Learn animal call bands, plant bioacoustics, and the cricket thermometer.', ['animals', 'birds', 'cat', 'sparrow', 'blue jay', 'squirrel', 'cricket', 'plants', 'bioacoustics', 'nature', 'Dolbear']],
+  ['/dream', 'practice', 'Sleep experiments', 'Review advanced sleep protocols and keep a dream journal.', ['sleep & dream', 'sleep and dream', 'dream lab', 'lucid', 'journal', 'TLR', 'WBTB']],
+  ['/lucid', 'practice', 'Lucid Audio Lab', 'Study audio cue research, timing maps, and lucid practice sessions.', ['lucid dreaming', 'Gateway', 'REM', 'cue', 'octave portraits', 'hypotheses', 'hemi-sync']],
+  ['/healing', 'practice', 'Healing Sound Lab', 'Review healing-sound doses, VAT and bowl evidence, and nano portraits.', ['healing', 'vibroacoustic', 'bowls', 'VAT', 'whole body vibration', 'nanoparticle', 'ultrasound', 'tuning fork']],
+  ['/nature', 'practice', 'Nature Calls Lab', 'Learn animal call bands, plant bioacoustics, and the cricket thermometer.', ['animals', 'birds', 'cat', 'sparrow', 'blue jay', 'squirrel', 'cricket', 'plants', 'bioacoustics', 'nature', 'Dolbear']],
   ['/levels', 'research', 'Levels', 'Inspect proposed levels and their evidence limits.', ['focus levels', 'ladder', 'frequency']],
+  ['/traditions', 'research', 'Programs & traditions', 'Explore government archives, Russian and Chinese research, and esoteric books with original listening experiments.', ['Russia', 'China', 'Soviet', 'CIA', 'Gateway', 'qigong', 'Sufi', 'Kybalion', 'occult', 'government', 'books']],
   ['/knowledge', 'research', 'Knowledge', 'Read explanations of sound, perception, and evidence.', ['learn', 'knowledge base', 'brain', 'EEG']],
   ['/channeled', 'research', 'Channeled Sources', 'Read the Bashar digest analysis and chosen frequency mappings.', ['Bashar', 'channeling', 'golden ratio', 'phi', '200000']],
   ['/theory', 'research', 'Theory Explorer', 'Trace claims, assumptions, and supporting sources.', ['theory', 'claim', 'audit']],

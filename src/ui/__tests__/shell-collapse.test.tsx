@@ -33,6 +33,9 @@ if (typeof Element !== 'undefined') {
 
 const ALL_ROUTE_PATHS = [
   '/',
+  '/meditate',
+  '/hypnosis',
+  '/traditions',
   '/studio',
   '/library',
   '/presets',
@@ -162,7 +165,7 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(researchToggle.getAttribute('aria-expanded')).toBe('false');
     const researchContent = document.getElementById(researchToggle.getAttribute('aria-controls')!)!;
     expect(researchContent.hidden).toBe(true);
-    expect([...railHrefs(c)]).toEqual(['/', '/presets', '/studio', '/safety']);
+    expect([...railHrefs(c)]).toEqual(['/', '/meditate', '/presets', '/studio', '/safety']);
     for (const route of RESEARCH_ROUTES) expect(railHrefs(c).has(route.path)).toBe(false);
     researchToggle.focus();
     await click(researchToggle);

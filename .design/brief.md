@@ -29,3 +29,8 @@ Desktop discovery uses a compact rail and asymmetric editorial sections. Mobile 
 
 ## Preservation
 The release at ae4a1ebd6d1449979739edc9b5f84e2f09d39287 is frozen on archive/listening-room-2026-10-15 and built under /previous/. Existing /v2/, /open-sync/ and /research/ deployments remain.
+
+## Revised direction: archive landscapes
+The user requested the original pre-revamp workspace (78b0751) on master, with this redesigned experience on archive/dark-landscapes at /archive/. Keep the intermediate ae4a1eb listening room frozen at /previous/.
+
+Night Country is the default indigo and charcoal theme; Quiet Horizon uses deep lake and muted warm accents. The two existing generated paintings now fill the viewport behind all routes. Dark scrims protect content contrast, while transparent scene windows in Today and Listen reveal the continuous landscape. No background motion, blur layer, or new image download is required. A labeled, keyboard-operable theme switch persists a versioned archive-only preference without changing playback.

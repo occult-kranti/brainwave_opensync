@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import { ArrowRight, ArrowUpRight, BookOpen } from 'lucide-react';
 import { ToolDirectory } from '@/ui/components/ToolDirectory';
-import { assetUrl } from '@/lib/assetUrl';
+import { assetUrl, projectUrl } from '@/lib/assetUrl';
 import './experience.css';
 
 export default function ResearchHub() {
@@ -18,6 +18,6 @@ export default function ResearchHub() {
     ].map(([to, n, title, copy]) => <Link to={to} key={to}><span className="reading-number">{n}</span><div><h2>{title}</h2><p>{copy}</p></div><ArrowUpRight size={22} /></Link>)}</section>
     <div className="evidence-key"><strong>How to read the evidence</strong><p>Grades describe support for a particular claim, not the quality of a sound. Historical documents record what someone proposed; they do not establish that it worked. Experimental listening recipes are labeled accordingly.</p><Link to="/knowledge">Understand the evidence grades <ArrowRight size={15} /></Link></div>
     <div id="tools" className="research-tools"><ToolDirectory /></div>
-    <footer className="editorial-footer"><a data-testid="everyday-link" href={assetUrl('app/')}>Simple player · separate listening view ↗</a><a href={assetUrl('previous/')}>Previous listening room ↗</a><Link to="/presets?collection=bashar" data-testid="home-bashar-link">Bashar experimental collection</Link></footer>
+    <footer className="editorial-footer"><a data-testid="everyday-link" href={assetUrl('app/')}>Simple player · separate listening view ↗</a><a href={projectUrl('previous/')}>Previous listening room ↗</a><Link to="/presets?collection=bashar" data-testid="home-bashar-link">Bashar experimental collection</Link></footer>
   </div>;
 }

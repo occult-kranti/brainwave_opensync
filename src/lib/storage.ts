@@ -18,6 +18,7 @@ export interface StorageLike {
 /** Registry of persisted keys. Add here; never inline a key string elsewhere. */
 export const STORAGE_KEYS = {
   sidebar: 'open-sync:sidebar',
+  archiveTheme: 'open-sync:archive-theme.v1',
   density: 'opensync.density.v1',
   userPresets: 'open-sync:user-presets',
   dreamJournal: 'open-sync.dream-journal.v1',

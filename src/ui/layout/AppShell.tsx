@@ -40,6 +40,10 @@ import { PwaUpdateChip } from '../components/PwaUpdateChip';
 import { matchShortcut } from '../../app/shortcuts';
 import { engineLedState } from '../theme';
 import { STORAGE_KEYS } from '@/lib/storage';
+import { assetUrl } from '@/lib/assetUrl';
+import { ARCHIVE_THEMES, readArchiveTheme, saveArchiveTheme, type ArchiveTheme } from '../archiveTheme';
+import { ArchiveThemePicker } from '../components/ArchiveThemePicker';
+import '../../pages/archive-theme.css';
 
 /** Route lists come from the registry (src/app/routes.tsx) — one source of truth. */
 const ALL_ROUTES = ROUTES;
@@ -726,6 +730,13 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const location = useLocation();
+  const [theme, setTheme] = useState<ArchiveTheme>(readArchiveTheme);
+  useEffect(() => {
+    saveArchiveTheme(theme);
+    document.documentElement.dataset.archiveTheme = theme;
+    return () => { delete document.documentElement.dataset.archiveTheme; };
+  }, [theme]);
+  const landscape = ARCHIVE_THEMES.find(item => item.id === theme)!;
   const reducedMotion = useReducedMotion();
   const discovery = ['/', '/presets', '/meditate', '/overnight', '/hypnosis', '/traditions', '/research-hub'].includes(location.pathname);
   useEffect(() => {
@@ -808,30 +819,33 @@ export function AppShell({ children }: { children: ReactNode }) {
   }, [running, fading, muted, togglePause, setMuted, startSleepFade, panic, rehearsePanic]);
 
   return (
-    <div className={`flex experience-shell ${discovery ? 'discovery-shell' : ''}`} style={{ minHeight: '100vh', background: 'var(--ink-0)' }}>
+    <div data-archive-theme={theme} className={`flex experience-shell archive-shell ${discovery ? 'discovery-shell' : ''} ${location.pathname === '/' ? 'archive-home' : location.pathname === '/listen' ? 'archive-listen' : ''}`} style={{ minHeight: '100vh' }}>
+      <div className="archive-landscape" aria-hidden="true"><img src={assetUrl(landscape.image)} alt="" fetchPriority="high" width="1536" height="1024" /></div>
       <a href="#main" className="skip-link">
         Skip to content
       </a>
       {!isMobile && <ModuleRail state={sidebar} onCycle={cycleSidebar} />}
       {!isMobile && sidebar === 'hidden' && <SidebarReopenHandle onOpen={() => setSidebar('full')} />}
-      <div className="flex flex-col" style={{ flex: 1, minWidth: 0 }}>
+      <div className="flex flex-col archive-workspace" style={{ flex: 1, minWidth: 0 }}>
         {isMobile ? (
           <MobileStatusBar onPalette={() => setPaletteOpen(true)} />
         ) : (
           <StatusBar onPalette={() => setPaletteOpen(true)} />
         )}
+        <ArchiveThemePicker value={theme} onChange={setTheme} />
         <main
           id="main"
           tabIndex={-1}
           style={{
             flex: 1,
-            background: 'var(--ink-1)',
+            background: 'transparent',
             // Keep content clear of the fixed bottom bar (§3.2 / AC8).
             paddingBottom: isMobile ? `calc(${BOTTOM_BAR_H}px + env(safe-area-inset-bottom, 0px))` : 0,
           }}
         >
           <AnimatePresence mode="wait">
             <motion.div
+              className="archive-route"
               key={location.pathname}
               initial={reducedMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1, y: 0 }}

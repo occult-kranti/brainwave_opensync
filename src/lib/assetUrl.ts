@@ -9,3 +9,9 @@ export function assetUrl(path: string, base: string = import.meta.env.BASE_URL ?
   const b = base.endsWith('/') ? base : `${base}/`;
   return b + path.replace(/^\/+/, '');
 }
+
+/** Independent deployments are siblings of the archive, not nested inside it. */
+export function projectUrl(path: string, base: string = import.meta.env.BASE_URL ?? '/'): string {
+  const projectBase = base.replace(/archive\/?$/, '');
+  return assetUrl(path, projectBase);
+}

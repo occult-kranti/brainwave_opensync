@@ -207,3 +207,7 @@ See [the implementation and review record](docs/HARMONIC-AND-SOURCE-REVIEW.md) f
 ## Published sound methods
 
 The [Sound Methods page](https://occult-kranti.github.io/brainwave_opensync/sound-methods) adds original audio from public Monroe/Gateway disclosures and general modulation methods. It includes source notes, editable settings, short previews, and WAV/JSON export. Read [the research and implementation review](docs/SOUND-METHODS-REVIEW.md) for source coverage, formulas, limitations, and checks.
+
+## Archive edition
+
+This branch is published at [the archive](https://occult-kranti.github.io/brainwave_opensync/archive/). Master restores the original workspace. See [release layout](docs/RELEASES.md). Use the Landscape theme controls for Night Country or Quiet Horizon; the selection is remembered on this device.

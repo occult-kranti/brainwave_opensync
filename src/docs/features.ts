@@ -157,7 +157,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     simple:
       'Choose a short practice from Today or use the intention chooser to find a session. Open the reading room for research and the full tool directory.',
     deep:
-      'Today presents a featured practice, intention choices and a path into the overnight planner. Selecting a sound opens Listen with playback stopped. The shared session provider carries the same sound into Studio for editing. The Research reading room contains the complete searchable tool directory.',
+      'Today presents a featured practice, intention choices and a path into the overnight planner. The archive offers two dark landscape themes, Night Country and Quiet Horizon, remembered on this device. Selecting a sound opens Listen with playback stopped. The shared session provider carries the same sound into Studio for editing. The Research reading room contains the complete searchable tool directory.',
     howTo: [
       'Choose Settle in or a practice on Today.',
       'Press Play in Listen, or open Customize sound to edit the session.',

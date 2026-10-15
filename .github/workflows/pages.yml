@@ -1,6 +1,8 @@
 name: Deploy to GitHub Pages
 
-# Builds master at the project root and legacy-v2.5 at /v2/ into one dist/.
+# Publishes the original master at / and the redesigned archive at /archive/.
+# Existing /v2/, /previous/, /open-sync/ and /research/ remain available.
+# Run this coordinator on master after updating the archive branch.
 # Both source branches are published together to the `gh-pages`
 # branch, which is the repository's Pages source ("Deploy from a branch").
 # The gh-pages checkout is updated in place (not force-orphaned) so only the
@@ -29,6 +31,8 @@ jobs:
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: master
       - uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -78,11 +82,40 @@ jobs:
           import { writeFileSync } from 'node:fs';
           const legacyCommit = execFileSync('git', ['-C', 'legacy-source', 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
           writeFileSync('dist/deployments.json', JSON.stringify({
-            current: { branch: 'master', commit: process.env.GITHUB_SHA, path: '/brainwave_opensync/' },
+            current: { branch: 'master', commit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), sourceRelease: '78b0751', path: '/brainwave_opensync/' },
             previous: { branch: 'legacy-v2.5', commit: legacyCommit, path: '/brainwave_opensync/v2/' },
             originalSuite: { repository: 'occult-kranti/open-sync', commit: '02425613cd057406d92c4f3ee33b5fc54a493601', path: '/brainwave_opensync/open-sync/' },
             research: { path: '/brainwave_opensync/research/' },
           }, null, 2) + '\n');
+          NODE
+      - name: Check out the redesigned archive
+        uses: actions/checkout@v7
+        with:
+          ref: archive/dark-landscapes
+          path: archive-source
+      - name: Verify and build the redesigned archive
+        working-directory: archive-source
+        run: |
+          npm ci --no-audit --no-fund
+          npm run check
+          node scripts/emit-route-shells.mjs dist
+        env:
+          VITE_BASE: /brainwave_opensync/archive/
+      - name: Include the redesigned archive
+        run: |
+          mkdir -p dist/archive
+          cp -a archive-source/dist/. dist/archive/
+          node --input-type=module <<'NODE'
+          import { execFileSync } from 'node:child_process';
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const manifest = JSON.parse(readFileSync('dist/deployments.json', 'utf8'));
+          manifest.archive = {
+            branch: 'archive/dark-landscapes',
+            commit: execFileSync('git', ['-C', 'archive-source', 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+            path: '/brainwave_opensync/archive/',
+            themes: ['Night Country', 'Quiet Horizon']
+          };
+          writeFileSync('dist/deployments.json', JSON.stringify(manifest, null, 2) + '\n');
           NODE
       - name: Check out the frozen listening room
         uses: actions/checkout@v7

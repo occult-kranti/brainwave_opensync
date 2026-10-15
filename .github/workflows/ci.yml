@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [master, archive/dark-landscapes]
   pull_request:
   workflow_dispatch:
 
@@ -27,6 +27,6 @@ jobs:
       - run: npm test -- --reporter=dot
       - run: npm run build
         env:
-          VITE_BASE: /brainwave_opensync/
+          VITE_BASE: ${{ github.ref_name == 'archive/dark-landscapes' && '/brainwave_opensync/archive/' || '/brainwave_opensync/' }}
       - name: Report bundle sizes
         run: du -sh dist && ls -la dist/assets | sort -k5 -n | tail -12

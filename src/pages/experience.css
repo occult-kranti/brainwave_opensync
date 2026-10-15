@@ -1,13 +1,4 @@
 /* Quiet horizons: editorial discovery, focused listening, one shared workspace. */
-.experience-shell { --ink-0:#181c21; --ink-1:#1d232b; --ink-2:#252d37; --ink-3:#2c3541; --ink-4:#3c4653; --line-1:#3b4652; --line-2:#536071; --text-1:#f1eee7; --text-2:#bac4cf; --text-3:#a0adbc; --amber:#e1c0a0; --amber-hi:#f1d6bd; --teal:#a6bac9; --teal-hi:#c6d5dc; --teal-dim:#6a8294; }
-.discovery-shell, .experience-shell #module-rail {
-  color-scheme:light; --ink-0:#f5f2eb; --ink-1:#f7f5ef; --ink-2:#eeece5; --ink-3:#e7e6df; --ink-4:#d0d3cf;
-  --line-1:#dadbd5; --line-2:#b9c1bf; --text-1:#253b45; --text-2:#52636a; --text-3:#647279; --text-inv:#fff;
-  --amber:#345f70; --amber-hi:#254b5b; --amber-dim:#728b94; --amber-glow:rgba(52,95,112,.08);
-  --teal:#3f666b; --teal-hi:#365f65; --teal-dim:#9baead; --danger:#a04639; --danger-hi:#893a30;
-  --grade-A:#326e56; --grade-B:#58651d; --grade-C:#785326; --grade-D:#9b4336;
-  color:var(--text-1); --focus-ring:0 0 0 2px var(--ink-0),0 0 0 4px var(--amber);
-}
 .experience-shell.grain::after { display:none; }
 .experience-shell #module-rail { padding-top:14px; }
 .experience-shell #module-rail > div:first-child { padding-bottom:26px !important; }

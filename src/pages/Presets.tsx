@@ -211,7 +211,6 @@ export default function Presets() {
         const playing = previewId === `preset:${p.id}`;
         const bashar = isBasharPreset(p);
         return <article key={p.id} className="panel preset-card" data-testid={`preset-card-${p.id}`}>
-          <img className="preset-card-art" src={assetUrl(p.category === 'Sleep' || p.category === 'Lucid Dream' || p.id.startsWith('night-') || p.id.includes('dream') ? 'art/night-country.webp' : 'art/quiet-horizon.webp')} alt="" loading="lazy" width="1536" height="1024" />
           <div className="preset-card-top">
             <span className="t-label text-3">Full session · {fmtClock(presetDurationMin(p) * 60)}</span>
             <GradeBadge grade={p.grade} citation={{ verdict: gradeVerdict(p), summary: p.rationale, source: p.citations[0] }} />

@@ -8,3 +8,7 @@
 The master Pages workflow checks out and builds all editions before publishing one complete site. Push the archive changes first, then master. Every actual source commit is recorded in `deployments.json`; `sourceRelease` records the original master baseline. The preserved audio suite and research atlas remain at `/open-sync/` and `/research/`. Redirect documents preserve archive links to connected projects.
 
 No branch history is force-rewritten. The unchanged original workspace can still be rebuilt from commit `78b0751`.
+
+## Spatial Observatory — 15 October 2026
+
+The archive adds shared Three.js/WebGL 2 sculpture, 3D/4D camera zoom and reset, an immersive visual room, three materials, original collection artwork, common spatial surfaces and workshop wayfinding. Visual settings persist independently of sound. The original master UI and all 139 presets remain. The Pages manifest records the graphics stack and zoom range.

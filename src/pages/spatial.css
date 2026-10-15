@@ -1,0 +1,1172 @@
+/* Spatial edition: shared WebGL world, grounded and legible task surfaces. */
+html[data-archive-theme] {
+  --ink-0: #090f12;
+  --ink-1: #111c20;
+  --ink-2: #1b2a2d;
+  --ink-3: #26383b;
+  --line-1: #2a3a3e;
+  --line-2: #52656a;
+  --text-1: #edf0e9;
+  --text-2: #bbc9c8;
+  --text-3: #95aaa9;
+  --amber: #c5d9ca;
+  --amber-hi: #e6f1e6;
+  --text-inv: #0e201b;
+  --teal: #a8c9ca;
+  --scene-rgb: 9 15 18;
+  --field-color: 173, 207, 205;
+}
+html[data-archive-theme="quiet-horizon"] {
+  --ink-0: #151310;
+  --ink-1: #201e19;
+  --ink-2: #302d24;
+  --ink-3: #423c2f;
+  --line-1: #494437;
+  --line-2: #736a56;
+  --text-1: #f3eee2;
+  --text-2: #cec6b5;
+  --text-3: #b6ac98;
+  --amber: #e6cd9f;
+  --amber-hi: #f5e0bb;
+  --teal: #bdc9b8;
+  --text-inv: #241b0e;
+  --scene-rgb: 21 19 16;
+  --field-color: 224, 202, 162;
+}
+.archive-shell .archive-landscape img {
+  opacity: 0.38;
+  filter: saturate(0.65);
+}
+.archive-shell .archive-landscape::after {
+  background:
+    linear-gradient(
+      90deg,
+      rgb(var(--scene-rgb) / 0.85),
+      rgb(var(--scene-rgb) / 0.4)
+    ),
+    linear-gradient(0deg, rgb(var(--scene-rgb) / 0.96), transparent 80%);
+}
+.spatial-backdrop {
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  right: -36vw;
+  top: 8vh;
+  width: 110vw;
+  height: 100vh;
+  opacity: 0.14;
+}
+.spatial-backdrop .field-poster {
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+.archive-shell .archive-workspace {
+  overflow: clip;
+}
+.archive-shell .observatory-header {
+  background: rgb(var(--scene-rgb) / 0.78);
+  border-color: rgb(187 207 205/0.13);
+  padding-block: 20px;
+}
+.archive-shell .observatory-brand {
+  font-size: 20px;
+  letter-spacing: -0.045em;
+}
+.archive-shell .observatory-brand small {
+  font-size: 8px;
+  letter-spacing: 0.18em;
+}
+.archive-shell .observatory-header nav a[aria-current="page"] {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: inset 0 -1px var(--amber);
+}
+.archive-shell .observatory-header nav {
+  gap: 10px;
+}
+.archive-shell .observatory-context {
+  background: rgb(var(--scene-rgb) / 0.68);
+  gap: 20px;
+}
+.archive-shell .archive-theme-bar {
+  flex: 1;
+  min-width: 0;
+}
+.archive-shell .observatory-active {
+  min-width: 0;
+  flex-shrink: 0;
+}
+.spatial-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  color: var(--text-1);
+  font-size: 11px;
+  border: 1px solid var(--line-1);
+  border-radius: 6px;
+  background: var(--ink-1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.spatial-trigger:hover {
+  border-color: var(--line-2);
+}
+.workshop-wayfinding {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 15px 28px;
+  color: var(--text-3);
+  font-size: 11px;
+  border-bottom: 1px solid var(--line-1);
+  background: rgb(var(--scene-rgb) / 0.75);
+}
+.workshop-wayfinding a,
+.workshop-wayfinding button {
+  color: var(--text-2);
+  background: none;
+  border: 0;
+  min-height: 32px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.workshop-wayfinding strong {
+  font-weight: 500;
+  color: var(--text-1);
+}
+.workshop-wayfinding a:last-child {
+  margin-left: auto;
+  color: var(--amber);
+}
+.archive-shell #module-rail {
+  background: rgb(var(--scene-rgb) / 0.94) !important;
+}
+.archive-shell .panel {
+  background: rgb(var(--scene-rgb) / 0.9);
+  border-color: var(--line-1);
+  box-shadow: 0 8px 30px #0000000c;
+  border-radius: 12px;
+}
+/* Arrival: an art space and a three-step path into listening. */
+.archive-shell .observatory-home {
+  max-width: 1600px;
+  padding-inline: 48px;
+}
+.archive-shell .home-edition {
+  padding-top: 28px;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+.archive-shell .observatory-hero {
+  min-height: 570px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 16px;
+  padding: 28px 0 42px;
+  align-items: center;
+}
+.archive-shell .observatory-hero-copy {
+  padding-bottom: 28px;
+}
+.archive-shell .observatory-hero h1 {
+  font-size: clamp(48px, 5.3vw, 80px);
+  line-height: 1.04;
+  letter-spacing: -0.065em;
+  font-weight: 400;
+  margin: 25px 0;
+}
+.archive-shell .observatory-hero h1 em {
+  display: block;
+  margin-top: 8px;
+  color: var(--amber);
+  font-family: Georgia, serif;
+  font-size: 0.85em;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+}
+.archive-shell .observatory-hero-copy > p {
+  max-width: 400px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--text-2);
+}
+.archive-shell .hero-actions {
+  margin-top: 30px;
+  gap: 20px;
+}
+.archive-shell .journey-button {
+  border-radius: 6px;
+  min-height: 50px;
+  font-size: 12px;
+  padding-inline: 22px;
+  box-shadow: 0 4px 24px #0002;
+}
+.archive-shell .observatory-hero-art {
+  width: 100%;
+  padding-top: 12px;
+}
+.spatial-art-label {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-3);
+  font:
+    9px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.14em;
+  padding: 0 18px;
+}
+.archive-shell .observatory-hero-art .field-canvas {
+  height: 390px;
+}
+.archive-shell .geometry-caption {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text-3);
+  margin: 14px auto;
+  max-width: 380px;
+  text-align: center;
+}
+.arrival-path {
+  display: flex;
+  gap: 32px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line-1);
+  border-bottom: 1px solid var(--line-1);
+  font-size: 11px;
+  color: var(--text-2);
+  margin-bottom: 32px;
+}
+.arrival-path span {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.arrival-path b {
+  font:
+    9px ui-monospace,
+    monospace;
+  color: var(--amber);
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+}
+.archive-shell .moment-finder {
+  background: rgb(var(--scene-rgb) / 0.92);
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+  margin-bottom: 64px;
+  box-shadow: 0 15px 60px #0002;
+}
+.archive-shell .moment-result {
+  background: var(--ink-1);
+  border: 1px solid var(--line-1);
+  border-radius: 8px;
+  padding: 22px;
+}
+.archive-shell .moment-result h3 {
+  font-size: 25px;
+}
+.archive-shell .moment-result a {
+  min-height: 44px;
+}
+.archive-shell .intention-grid {
+  gap: 18px;
+}
+.archive-shell .intention-card {
+  position: relative;
+  overflow: hidden;
+  padding: 0 22px 24px;
+  border-radius: 10px;
+  background: var(--ink-1);
+  border: 1px solid var(--line-1);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+.archive-shell .intention-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--line-2);
+}
+.archive-shell .intention-card-top {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  z-index: 1;
+  color: #e7ece6;
+}
+.intention-art {
+  height: 230px;
+  margin: 0 -22px 20px;
+  background-size: 200% 200%;
+  background-position: 0 0;
+}
+.art-hypnosis {
+  background-position: 100% 0;
+}
+.art-sleep {
+  background-position: 0 100%;
+}
+.art-focus {
+  background-position: 100% 100%;
+}
+.intention-icon {
+  display: block;
+  color: var(--amber);
+  margin-bottom: 13px;
+}
+.archive-shell .intention-card h3 {
+  font-size: 24px;
+}
+.archive-shell .intention-card p {
+  font-size: 11px;
+  line-height: 1.7;
+}
+.archive-shell .home-night {
+  border-radius: 14px;
+  border: 1px solid var(--line-1);
+  background: rgb(var(--scene-rgb) / 0.92);
+  overflow: hidden;
+  margin: 64px 0;
+}
+.archive-shell .home-night-copy {
+  padding: 48px;
+}
+.archive-shell .home-night-copy h2 {
+  font:
+    400 38px/1.15 Georgia,
+    serif;
+  letter-spacing: -0.025em;
+}
+.archive-shell .section-title h2 {
+  font:
+    400 34px/1.2 Georgia,
+    serif;
+  letter-spacing: -0.025em;
+}
+.archive-shell .notebook-feature {
+  border-radius: 12px;
+}
+.archive-shell .notebook-layout nav {
+  background: rgb(var(--scene-rgb) / 0.88);
+  padding: 0 22px;
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+}
+.archive-shell .workshop-invitation {
+  padding: 26px;
+  background: var(--ink-1);
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+}
+/* Catalog, reading and workbench share the same material and spatial hierarchy. */
+.archive-shell .library-heading {
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  padding: 30px 28px;
+  border-radius: 12px;
+  background: rgb(var(--scene-rgb) / 0.92);
+  border: 1px solid var(--line-1);
+}
+.library-sculpture {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 320px;
+  background-size: 200% 200%;
+  background-position: 100% 0;
+  opacity: 0.62;
+  mask-image: linear-gradient(90deg, transparent, #000 45%);
+}
+.archive-shell .library-heading > div:not(.library-sculpture) {
+  position: relative;
+  z-index: 1;
+}
+.archive-shell .library-heading h1 {
+  font:
+    400 48px/1.1 Georgia,
+    serif;
+  letter-spacing: -0.045em;
+}
+.archive-shell .library-total {
+  background: rgb(var(--scene-rgb) / 0.9);
+  padding: 16px;
+  border-radius: 10px;
+}
+.archive-shell .library-sidebar {
+  background: rgb(var(--scene-rgb) / 0.93);
+  padding: 20px 12px;
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+}
+.archive-shell .preset-filters {
+  background: rgb(var(--scene-rgb) / 0.95);
+  border: 1px solid var(--line-1);
+  padding: 20px;
+  border-radius: 12px;
+}
+.archive-shell .preset-card.panel {
+  background: var(--ink-1);
+  border-radius: 12px;
+  border-top: 2px solid var(--line-2);
+}
+.archive-shell .preset-card h3 {
+  font-size: 24px;
+  font-weight: 400;
+}
+.archive-shell .preset-category-group > summary {
+  background: rgb(var(--scene-rgb) / 0.78);
+  padding-inline: 12px;
+}
+.archive-shell .library-collection-heading {
+  padding-top: 24px;
+}
+.archive-shell .practice-heading,
+.archive-shell .editorial-heading {
+  padding: 32px;
+  background: rgb(var(--scene-rgb) / 0.88);
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+  margin-bottom: 28px;
+}
+.archive-shell .practice-heading h1,
+.archive-shell .editorial-heading h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+.archive-shell .reading-feature,
+.archive-shell .home-directory-group,
+.archive-shell .home-reading {
+  background: rgb(var(--scene-rgb) / 0.92);
+  border-radius: 12px;
+}
+.archive-shell .listening-stage {
+  padding: 28px;
+  background: rgb(var(--scene-rgb) / 0.85);
+  border: 1px solid var(--line-1);
+  border-radius: 16px;
+  gap: 48px;
+  grid-template-columns: 1.1fr 1fr;
+}
+.archive-shell .listen-controls {
+  padding: 20px 8px;
+}
+.archive-shell .listen-controls h1 {
+  font:
+    400 42px/1.12 Georgia,
+    serif;
+  letter-spacing: -0.035em;
+}
+.archive-shell .listen-art .field-canvas {
+  height: 370px;
+}
+.archive-shell .listen-art {
+  align-self: center;
+}
+.archive-shell .listen-time {
+  font-variant-numeric: tabular-nums;
+}
+.archive-shell .listen-play {
+  border-radius: 8px;
+}
+.archive-shell .listen-below {
+  background: rgb(var(--scene-rgb) / 0.9);
+  padding: 24px;
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+}
+/* Camera controls stay in the DOM; pointer gestures are optional. */
+.spatial-canvas {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.spatial-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.spatial-canvas .field-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.resonance-field .field-canvas {
+  position: relative;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.resonance-field .field-canvas:active {
+  cursor: grabbing;
+}
+.spatial-controls {
+  background: rgb(var(--scene-rgb) / 0.94);
+  border: 1px solid var(--line-1);
+  border-radius: 9px;
+}
+.spatial-controls .field-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 10px;
+  border: 0;
+}
+.spatial-controls .field-toolbar > span {
+  font:
+    10px Inter,
+    sans-serif;
+  flex: 1;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.spatial-controls .field-dimensions,
+.spatial-controls .field-orbit {
+  display: flex;
+  gap: 2px;
+}
+.spatial-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 36px;
+  min-height: 40px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-2);
+  border-radius: 5px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.spatial-controls button:hover {
+  background: var(--ink-2);
+  color: var(--text-1);
+}
+.spatial-controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.spatial-controls button[aria-pressed="true"] {
+  background: var(--ink-2);
+  color: var(--amber);
+  border-color: var(--line-2);
+}
+.field-camera {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  border-top: 1px solid var(--line-1);
+}
+.field-camera > span {
+  font-size: 10px;
+  color: var(--text-3);
+  margin-right: 7px;
+}
+.field-camera output {
+  min-width: 42px;
+  text-align: center;
+  color: var(--text-1);
+  font:
+    11px ui-monospace,
+    monospace;
+}
+.field-camera .field-reset {
+  margin-left: auto;
+  padding-inline: 10px;
+}
+.field-camera .field-expand {
+  margin-left: 5px;
+}
+.field-advanced {
+  padding: 14px 20px 18px;
+  border-top: 1px solid var(--line-1);
+  display: grid;
+  gap: 18px;
+}
+.field-advanced fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 5px;
+}
+.field-advanced legend {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+.field-advanced fieldset button {
+  padding: 8px 13px;
+}
+.field-axis-control {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  font-size: 12px;
+}
+.field-axis-control input {
+  width: 100%;
+  grid-column: 1/-1;
+  accent-color: var(--amber);
+  min-height: 32px;
+}
+.field-quality {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+}
+.field-quality select {
+  max-width: 230px;
+  background: var(--ink-1);
+  border: 1px solid var(--line-2);
+  border-radius: 5px;
+  color: var(--text-1);
+  padding: 10px;
+}
+.field-ambient {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  min-height: 32px;
+}
+.field-ambient input {
+  accent-color: var(--amber);
+  width: 18px;
+  height: 18px;
+}
+.field-axis {
+  pointer-events: none;
+}
+.field-axis-top {
+  top: 18px;
+  right: 18px;
+  left: auto;
+}
+.field-axis-bottom {
+  bottom: 14px;
+  right: 18px;
+}
+.field-fallback {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  background: var(--ink-0);
+  color: var(--text-2);
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+.field-fallback button {
+  border: 1px solid var(--line-2);
+  background: var(--ink-1);
+  color: var(--text-1);
+  padding: 9px;
+  cursor: pointer;
+}
+/* Immersive room: focus trapped by Radix, sound status and panic in reach. */
+.spatial-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgb(3 8 10/0.94);
+}
+.spatial-room {
+  position: fixed;
+  z-index: 111;
+  inset: 24px;
+  max-width: 1250px;
+  margin: auto;
+  padding: 28px 36px;
+  overflow-y: auto;
+  color: var(--text-1);
+  background: var(--ink-0);
+  border: 1px solid var(--line-2);
+  border-radius: 16px;
+}
+.spatial-room > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.spatial-room h2 {
+  font:
+    400 32px/1.2 Georgia,
+    serif;
+  margin-top: 8px;
+}
+.spatial-room > p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--text-2);
+  max-width: 600px;
+  margin: 14px 0;
+}
+.spatial-room-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.spatial-room-actions > button:last-child {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--text-1);
+  border: 1px solid var(--line-1);
+  background: var(--ink-1);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.spatial-room .field-immersive {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  align-items: center;
+  gap: 32px;
+}
+.spatial-room .field-canvas {
+  height: min(56vh, 560px);
+}
+.spatial-room .spatial-controls .field-toolbar {
+  gap: 6px;
+}
+.spatial-room .field-toolbar > span {
+  order: 3;
+  flex-basis: 100%;
+  padding: 6px;
+}
+.spatial-room footer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid var(--line-1);
+  padding-top: 16px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+.spatial-room footer a {
+  color: var(--amber);
+  margin-left: auto;
+}
+.spatial-room footer button {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  background: var(--ink-1);
+  color: var(--text-1);
+  cursor: pointer;
+}
+.spatial-room :is(button, a, input, select):focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 4px;
+}
+@media (max-width: 1100px) {
+  .archive-shell .observatory-home {
+    padding-inline: 28px;
+  }
+  .archive-shell .observatory-active {
+    display: none;
+  }
+  .archive-shell .observatory-hero h1 {
+    font-size: 58px;
+  }
+  .archive-shell .observatory-hero {
+    min-height: 520px;
+  }
+  .archive-shell .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .archive-shell .intention-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .intention-art {
+    height: auto;
+    aspect-ratio: 1.2;
+  }
+  .archive-shell .listening-stage {
+    gap: 24px;
+    padding: 22px;
+  }
+  .archive-shell .listen-controls h1 {
+    font-size: 35px;
+  }
+  .archive-shell .listen-art .field-canvas {
+    height: 300px;
+  }
+  .spatial-room {
+    padding: 24px;
+  }
+  .spatial-room .field-immersive {
+    grid-template-columns: minmax(0, 1fr) 290px;
+    gap: 16px;
+  }
+}
+@media (max-width: 800px) {
+  .archive-shell .observatory-hero {
+    grid-template-columns: 1fr;
+    padding-top: 36px;
+    gap: 0;
+  }
+  .archive-shell .observatory-hero-copy {
+    text-align: center;
+    padding: 0;
+  }
+  .archive-shell .observatory-hero-copy > p {
+    margin-inline: auto;
+  }
+  .archive-shell .observatory-hero h1 {
+    font-size: clamp(44px, 8vw, 62px);
+  }
+  .archive-shell .hero-actions {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .archive-shell .hero-footnote {
+    justify-content: center;
+  }
+  .archive-shell .observatory-hero-art {
+    max-width: 560px;
+    margin: 24px auto 0;
+  }
+  .archive-shell .observatory-hero-art .field-canvas {
+    height: 300px;
+  }
+  .archive-shell .listening-stage {
+    grid-template-columns: 1fr;
+  }
+  .archive-shell .listen-controls {
+    padding: 0;
+  }
+  .archive-shell .listen-art {
+    max-width: 520px;
+    width: 100%;
+    margin: auto;
+  }
+  .spatial-room .field-immersive {
+    display: block;
+  }
+  .spatial-room .field-canvas {
+    height: 36vh;
+    min-height: 220px;
+  }
+  .spatial-room .spatial-controls {
+    max-width: 480px;
+    margin: auto;
+  }
+  .spatial-room .field-toolbar > span {
+    order: 0;
+    flex-basis: auto;
+  }
+  .spatial-room footer {
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 767px) {
+  .archive-shell .observatory-context {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 6px 16px;
+  }
+  .archive-shell .archive-theme-bar {
+    flex-basis: 100%;
+  }
+  .spatial-trigger {
+    margin: 4px 0;
+    font-size: 11px;
+    min-height: 44px;
+  }
+  .archive-shell .archive-original-link {
+    font-size: 10px;
+  }
+  .archive-shell .observatory-home {
+    padding-inline: 18px;
+  }
+  .archive-shell .home-edition {
+    font-size: 9px;
+    padding-top: 20px;
+  }
+  .spatial-art-label {
+    font-size: 8px;
+    padding: 0 8px;
+  }
+  .arrival-path {
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 18px 0;
+    margin-bottom: 24px;
+    font-size: 10px;
+  }
+  .arrival-path b {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .archive-shell .moment-finder {
+    padding: 22px;
+    margin-bottom: 42px;
+  }
+  .archive-shell .moment-result {
+    padding: 18px;
+  }
+  .archive-shell .intention-grid {
+    gap: 12px;
+  }
+  .archive-shell .intention-card {
+    padding: 0 15px 18px;
+  }
+  .intention-art {
+    margin-inline: -15px;
+  }
+  .archive-shell .intention-card h3 {
+    font-size: 22px;
+  }
+  .archive-shell .intention-card p {
+    font-size: 11px;
+  }
+  .archive-shell .section-title h2 {
+    font-size: 29px;
+  }
+  .archive-shell .home-night {
+    margin-block: 42px;
+  }
+  .archive-shell .home-night-copy {
+    padding: 28px;
+  }
+  .archive-shell .home-night-copy h2 {
+    font-size: 31px;
+  }
+  .archive-shell .notebook-layout nav {
+    padding-inline: 18px;
+  }
+  .archive-shell .workshop-invitation {
+    padding: 22px;
+  }
+  .archive-shell .library-heading {
+    min-height: 200px;
+    padding: 25px 20px;
+  }
+  .archive-shell .library-heading h1 {
+    font-size: 39px;
+  }
+  .library-sculpture {
+    width: 240px;
+    opacity: 0.3;
+  }
+  .archive-shell .library-sidebar {
+    padding: 10px;
+  }
+  .archive-shell .preset-filters {
+    padding: 16px;
+  }
+  .archive-shell .practice-heading,
+  .archive-shell .editorial-heading {
+    padding: 24px;
+  }
+  .archive-shell .listening-stage {
+    padding: 20px 16px;
+  }
+  .archive-shell .listen-controls h1 {
+    font-size: 33px;
+  }
+  .archive-shell .listen-art .field-canvas {
+    height: 265px;
+  }
+  .archive-shell .listen-below {
+    padding: 20px;
+  }
+  .spatial-controls button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .spatial-controls .field-toolbar {
+    gap: 5px;
+    padding: 6px;
+  }
+  .spatial-controls .field-toolbar > span {
+    font-size: 9px;
+  }
+  .field-camera {
+    padding: 6px;
+    gap: 1px;
+  }
+  .field-camera > span {
+    display: none;
+  }
+  .field-camera .field-reset {
+    padding-inline: 8px;
+  }
+  .field-camera .field-expand {
+    margin-left: 0;
+  }
+  .spatial-room {
+    inset: 8px;
+    padding: 20px 16px calc(20px + env(safe-area-inset-bottom));
+    border-radius: 12px;
+  }
+  .spatial-room > header {
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .spatial-room h2 {
+    font-size: 26px;
+  }
+  .spatial-room-actions {
+    gap: 8px;
+  }
+  .spatial-room-actions [data-testid="panic"] {
+    font-size: 9px;
+  }
+  .spatial-room > p {
+    font-size: 12px;
+  }
+  .spatial-room .field-canvas {
+    height: 30vh;
+  }
+  .spatial-room footer {
+    gap: 12px;
+    font-size: 11px;
+  }
+  .spatial-room footer a {
+    margin-left: 0;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+  .field-quality {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .field-quality select {
+    max-width: 100%;
+    width: 100%;
+    font-size: 16px;
+  }
+  .workshop-wayfinding {
+    padding: 10px 18px;
+    gap: 8px;
+  }
+  .workshop-wayfinding a,
+  .workshop-wayfinding button {
+    min-height: 44px;
+  }
+  .spatial-backdrop {
+    right: -100vw;
+    width: 180vw;
+    opacity: 0.09;
+  }
+}
+@media (max-width: 380px) {
+  .archive-shell .intention-grid {
+    grid-template-columns: 1fr;
+  }
+  .archive-shell .hero-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .spatial-controls .field-toolbar > span {
+    order: 3;
+    flex-basis: 100%;
+    text-align: center;
+  }
+  .spatial-controls .field-orbit {
+    margin-left: auto;
+  }
+  .field-camera .field-reset {
+    font-size: 10px;
+    gap: 4px;
+  }
+  .spatial-room > header {
+    flex-wrap: wrap;
+  }
+  .spatial-room-actions {
+    margin-left: auto;
+  }
+  .arrival-path {
+    display: grid;
+    gap: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .archive-shell .intention-card {
+    transition: none;
+  }
+  .archive-shell .intention-card:hover {
+    transform: none;
+  }
+}
+.spatial-explainer {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-2);
+  max-width: 850px;
+}
+.spatial-explainer summary {
+  min-height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.spatial-explainer summary::before {
+  content: "+";
+  color: var(--amber);
+}
+.spatial-explainer[open] summary::before {
+  content: "−";
+}
+.spatial-explainer p {
+  line-height: 1.8;
+  margin: 10px 0;
+}
+.spatial-explainer a {
+  color: var(--amber);
+  text-decoration: underline;
+}
+
+.spatial-room > header {
+  position: sticky;
+  top: -28px;
+  z-index: 2;
+  background: var(--ink-0);
+  padding-block: 12px;
+}
+.spatial-room-actions button[title^="Stop all sound"] {
+  min-height: 44px;
+  height: auto !important;
+}
+@media (max-width: 767px) {
+  .spatial-room > header {
+    top: -20px;
+  }
+  .spatial-room-actions button[title^="Stop all sound"] {
+    font-size: 10px !important;
+    padding: 0 8px !important;
+  }
+}

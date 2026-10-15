@@ -44,6 +44,9 @@ import { assetUrl } from '@/lib/assetUrl';
 import { ARCHIVE_THEMES, readArchiveTheme, saveArchiveTheme, type ArchiveTheme } from '../archiveTheme';
 import { ArchiveThemePicker } from '../components/ArchiveThemePicker';
 import '../../pages/archive-theme.css';
+import '../../pages/spatial.css';
+import { SpatialProvider } from '../visuals/SpatialProvider';
+import { SpatialBackdrop, SpatialPortal } from '../visuals/SpatialEnvironment';
 
 /** Route lists come from the registry (src/app/routes.tsx) — one source of truth. */
 const ALL_ROUTES = ROUTES;
@@ -729,6 +732,10 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
+  return <SpatialProvider><SpatialShell>{children}</SpatialShell></SpatialProvider>;
+}
+
+function SpatialShell({ children }: { children: ReactNode }) {
   const location = useLocation();
   const [theme, setTheme] = useState<ArchiveTheme>(readArchiveTheme);
   useEffect(() => {
@@ -821,6 +828,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div data-archive-theme={theme} className={`flex experience-shell archive-shell ${discovery ? 'discovery-shell' : ''} ${location.pathname === '/' ? 'archive-home' : location.pathname === '/listen' ? 'archive-listen' : ''}`} style={{ minHeight: '100vh' }}>
       <div className="archive-landscape" aria-hidden="true"><img src={assetUrl(landscape.image)} alt="" fetchPriority="high" width="1536" height="1024" /></div>
+      <SpatialBackdrop />
       <a href="#main" className="skip-link">
         Skip to content
       </a>
@@ -830,9 +838,10 @@ export function AppShell({ children }: { children: ReactNode }) {
         {isMobile ? (
           <MobileStatusBar onPalette={() => setPaletteOpen(true)} />
         ) : (
-          discovery ? <header className="observatory-header"><NavLink to="/" className="observatory-brand"><img src={assetUrl('favicon.svg')} alt="" width="30" height="30" /><span>Open Sync<small>THE SOUND OBSERVATORY</small></span></NavLink><nav aria-label="Main navigation" data-testid="observatory-navigation">{BOTTOM_TABS.map(route => <NavLink key={route.path} to={route.path} end={route.path === '/'}>{route.label}</NavLink>)}<button aria-expanded={moreOpen} onClick={() => setMoreOpen(!moreOpen)}>Workshop <MoreHorizontal size={16} /></button></nav><div className="observatory-utilities"><button className="observatory-search" data-testid="palette-hint" aria-label="Open command palette (Ctrl+K)" onClick={() => setPaletteOpen(true)}>Find <kbd>⌘ K</kbd></button><PwaUpdateChip /><PanicButton /></div></header> : <StatusBar onPalette={() => setPaletteOpen(true)} />
+          discovery ? <header className="observatory-header"><NavLink to="/" className="observatory-brand"><img src={assetUrl('favicon.svg')} alt="" width="30" height="30" /><span>Open Sync<small>SOUND · SPACE · ATTENTION</small></span></NavLink><nav aria-label="Main navigation" data-testid="observatory-navigation">{BOTTOM_TABS.map(route => <NavLink key={route.path} to={route.path} end={route.path === '/'}>{route.label}</NavLink>)}<button aria-expanded={moreOpen} onClick={() => setMoreOpen(!moreOpen)}>Workshop <MoreHorizontal size={16} /></button></nav><div className="observatory-utilities"><button className="observatory-search" data-testid="palette-hint" aria-label="Open command palette (Ctrl+K)" onClick={() => setPaletteOpen(true)}>Find <kbd>⌘ K</kbd></button><PwaUpdateChip /><PanicButton /></div></header> : <StatusBar onPalette={() => setPaletteOpen(true)} />
         )}
-        <div className="observatory-context"><ArchiveThemePicker value={theme} onChange={setTheme} />{discovery && !isMobile && <div className="observatory-active"><SessionReadout /><PauseChip /></div>}</div>
+        <div className="observatory-context"><ArchiveThemePicker value={theme} onChange={setTheme} /><SpatialPortal />{discovery && !isMobile && <div className="observatory-active"><SessionReadout /><PauseChip /></div>}</div>
+        {!discovery && <nav className="workshop-wayfinding" aria-label="Workspace journey"><NavLink to="/">Today</NavLink><span>/</span><button onClick={() => setMoreOpen(true)}>Workshop</button><span>/</span><strong>{ALL_ROUTES.find(route => route.path === location.pathname)?.label}</strong><NavLink to="/listen">Back to listening →</NavLink></nav>}
         <main
           id="main"
           tabIndex={-1}

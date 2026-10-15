@@ -5,28 +5,28 @@
  */
 
 export const INK = {
-  0: '#111c18',
-  1: '#15211c',
-  2: '#1a2922',
-  3: '#23352b',
-  4: '#2b4034',
+  0: '#0B0C0D',
+  1: '#101214',
+  2: '#16191B',
+  3: '#1D2124',
+  4: '#24292D',
 } as const;
 
-export const LINE = { 1: '#304439', 2: '#42594a' } as const;
+export const LINE = { 1: '#262B2F', 2: '#31373C' } as const;
 
 export const TEXT = {
-  1: '#f0ebdf',
-  2: '#b9c3b6',
-  3: '#96a492',
+  1: '#E9E5DC',
+  2: '#A8A399',
+  3: '#6E6960',
   inv: '#141414',
 } as const;
 
-export const AMBER = '#e3cba3';
-export const AMBER_HI = '#f0ddbd';
-export const AMBER_DIM = '#89765a';
-export const TEAL = '#91b29b';
-export const TEAL_HI = '#b2ccb5';
-export const TEAL_DIM = '#45664f';
+export const AMBER = '#D9A441';
+export const AMBER_HI = '#E8B95C';
+export const AMBER_DIM = '#7A5E26';
+export const TEAL = '#4F8C82';
+export const TEAL_HI = '#66A89D';
+export const TEAL_DIM = '#2E4B46';
 export const DANGER = '#C4634F';
 export const DANGER_HI = '#D97B66';
 
@@ -35,7 +35,7 @@ export type GradeLetter = 'A' | 'B' | 'C' | 'D';
 export const GRADE_COLOR: Record<GradeLetter, string> = {
   A: '#5FA98C',
   B: '#A9B368',
-  C: '#e3cba3',
+  C: '#D9A441',
   D: '#C4634F',
 };
 
@@ -58,7 +58,7 @@ export const BAND_COLOR = {
   delta: '#8A8A84',
   theta: '#9488A8',
   alpha: '#5FA98C',
-  beta: '#e3cba3',
+  beta: '#D9A441',
   gamma: '#C4634F',
 } as const;
 

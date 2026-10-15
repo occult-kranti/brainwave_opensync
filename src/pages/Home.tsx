@@ -1,28 +1,148 @@
+/** Home starts with tasks; the complete directory shares the navigation registry. */
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import { ArrowRight, ArrowUpRight, Moon, Sun, Wind } from 'lucide-react';
-import { PRACTICE_GOALS } from '@/data/listeningPractice';
-import { assetUrl } from '@/lib/assetUrl';
-import './experience.css';
+import { ArrowRight, AudioLines, Headphones, Music2, Search } from 'lucide-react';
+import {
+  NAVIGATION_CATEGORIES,
+  NAVIGATION_ENTRIES,
+  navigationMatches,
+  type NavigationEntry,
+} from '@/app/navigation';
+import './home.css';
 
 export default function Home() {
-  return <div className="today-page editorial-page">
-    <header className="editorial-heading"><span className="overline">A little time, just for you</span><h1>Come back to <em>yourself.</em></h1><p>Sounds for a quieter mind, a curious spirit, and the moments in between.</p></header>
-    <div className="today-feature-layout">
-      <section className="today-feature" aria-labelledby="today-feature-title">
-        <img className="today-landscape" src={assetUrl('art/quiet-horizon.webp')} alt="Painted blue mountains and a still lake beneath a small terracotta sun" fetchPriority="high" width="1536" height="1024" />
-        <div className="today-feature-copy"><div><span className="overline">Begin here · 5 minutes · Speakers or headphones</span><h2 id="today-feature-title">A soft place to land.</h2><p>Gentle rain. A low, steady tone. A few minutes with nothing to do.</p></div><Link className="journey-button" to="/listen?preset=practice-soft-landing">Settle in <ArrowRight size={18} /></Link></div>
+  const [query, setQuery] = useState('');
+  const matches = useMemo(
+    () => NAVIGATION_ENTRIES.filter((entry) => entry.route.path !== '/' && navigationMatches(entry, query)),
+    [query],
+  );
+  const tools = matches.filter((entry) => entry.route.group === 'tools');
+  const research = matches.filter((entry) => entry.route.group === 'research');
+  const help = matches.filter((entry) => entry.route.group === 'help');
+  const searching = query.trim().length > 0;
+  const researchCategory = NAVIGATION_CATEGORIES.find((category) => category.id === 'research');
+
+  return (
+    <div className="home-page">
+      <header className="home-intro">
+        <span className="t-label home-eyebrow">Open Sync · Sound workspace</span>
+        <h1 className="t-display-lg">Listen, create, and inspect audio.</h1>
+        <p className="t-body text-2">Listen to a preset, build a chord, or inspect an audio file. Start with a short preview; open more controls when you need them.</p>
+        <div className="home-start-row">
+          <Link className="home-primary" to="/presets">Choose a sound <ArrowRight size={17} aria-hidden /></Link>
+          <Link className="home-text-link" to="/guide">How to start</Link>
+          <a className="home-text-link" href={`${import.meta.env.BASE_URL}archive/`}>New listening room ↗</a>
+        </div>
+        <p className="home-scope t-body-sm text-2">These tools generate and measure audio. They do not measure your brain activity.</p>
+      </header>
+
+      <section className="home-task-section" aria-label="What would you like to do?">
+        <div className="home-task-grid">
+          <article className="home-task home-task-listen">
+            <Headphones size={21} aria-hidden />
+            <h2 className="t-h2">Listen</h2>
+            <p className="t-body-sm text-2">Hear a short preview, then load a sound into Studio to play the full session.</p>
+            <Link className="home-task-link" to="/presets">Browse presets <ArrowRight size={15} aria-hidden /></Link>
+            <Link className="home-text-link" to="/presets?collection=bashar" data-testid="home-bashar-link">Bashar sounds · experimental collection</Link>
+          </article>
+          <article className="home-task">
+            <Music2 size={21} aria-hidden />
+            <h2 className="t-h2">Create</h2>
+            <p className="t-body-sm text-2">Build chords and musical patterns, or edit tones and layers in Studio.</p>
+            <Link className="home-task-link" to="/harmonics">Build a chord <ArrowRight size={15} aria-hidden /></Link>
+            <Link className="home-text-link" to="/studio">Open Studio</Link>
+          </article>
+          <article className="home-task">
+            <AudioLines size={21} aria-hidden />
+            <h2 className="t-h2">Inspect</h2>
+            <p className="t-body-sm text-2">View an audio file's waveform and spectrum, or measure its level and distortion.</p>
+            <Link className="home-task-link" to="/sample-lab">Inspect an audio file <ArrowRight size={15} aria-hidden /></Link>
+            <Link className="home-text-link" to="/analyzer">Measure audio</Link>
+          </article>
+        </div>
+        <div className="home-simple-player">
+          <p className="t-body-sm text-2"><strong>Want fewer controls?</strong> Simple player opens a separate listening view.</p>
+          <a href={`${import.meta.env.BASE_URL}app/`} className="home-text-link" data-testid="everyday-link">Open Simple player <ArrowRight size={14} aria-hidden /></a>
+        </div>
       </section>
-      <section className="today-checkin" aria-labelledby="checkin-title"><Sun size={25} strokeWidth={1.2} /><span className="overline">Your next practice</span><h2 id="checkin-title">What do you<br />need right now?</h2><p>A session that fits your intention, your time and the way you listen.</p><div className="checkin-options">{PRACTICE_GOALS.slice(0, 3).map(g => <Link key={g.id} to={`/meditate?goal=${g.id}`}>{g.title}<ArrowUpRight size={16} /></Link>)}</div><Link className="checkin-all" to="/meditate">Help me choose <ArrowRight size={17} /></Link></section>
+
+      <section className="home-labs" aria-labelledby="home-labs-title">
+        <h2 id="home-labs-title" className="t-h2">Research labs</h2>
+        <p className="t-body-sm text-2">Evidence-graded collections with listening presets — pick a lab.</p>
+        <div className="home-lab-grid">
+          <Link className="home-lab-card" to="/lucid" data-testid="home-lab-lucid">
+            <img src={`${import.meta.env.BASE_URL}art/lucid-dream.jpg`} alt="Lucid Audio Lab cover art" loading="lazy" />
+            <span className="home-lab-body">
+              <span className="t-label text-3">LUCID AUDIO LAB</span>
+              <strong className="t-body">Cue research, night timing, Gateway file</strong>
+              <span className="t-body-sm text-2">What sound can and cannot do for lucid dreams.</span>
+            </span>
+          </Link>
+          <Link className="home-lab-card" to="/healing" data-testid="home-lab-healing">
+            <img src={`${import.meta.env.BASE_URL}art/bowl-session.jpg`} alt="Healing Sound Lab cover art" loading="lazy" />
+            <span className="home-lab-body">
+              <span className="t-label text-3">HEALING SOUND LAB</span>
+              <strong className="t-body">Clinical doses, honest labels</strong>
+              <span className="t-body-sm text-2">Bowls, vibroacoustics, the 30 Hz window, nano portraits.</span>
+            </span>
+          </Link>
+          <Link className="home-lab-card" to="/nature" data-testid="home-lab-nature">
+            <img src={`${import.meta.env.BASE_URL}art/sparrow.jpg`} alt="Nature Calls Lab cover art" loading="lazy" />
+            <span className="home-lab-body">
+              <span className="t-label text-3">NATURE CALLS LAB</span>
+              <strong className="t-body">Animal call signs, plant acoustics</strong>
+              <span className="t-body-sm text-2">Measured bands for cat, sparrow, jay, squirrel — plus a cricket thermometer.</span>
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      <section className="home-directory" aria-labelledby="home-directory-title">
+        <div className="home-directory-header">
+          <div>
+            <h2 id="home-directory-title" className="t-h2">Find a tool or page</h2>
+            <p className="t-body-sm text-2">Browse by task or search by name.</p>
+          </div>
+          <label className="home-search">
+            <span className="t-body-sm">Search tools and pages</span>
+            <span className="home-search-input"><Search size={16} aria-hidden /><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try chords, Bashar, or audio files" /></span>
+          </label>
+        </div>
+        {searching && <p className="home-search-status t-body-sm text-2" role="status">{matches.length} {matches.length === 1 ? 'page' : 'pages'} found</p>}
+        {matches.length === 0 && <div className="home-empty"><p className="t-body-sm text-2">No pages match “{query}”.</p><button type="button" className="home-reset" onClick={() => setQuery('')}>Clear search</button></div>}
+
+        {tools.length > 0 && <div className="home-tool-groups" data-testid="home-tools">
+          {NAVIGATION_CATEGORIES.map((category) => {
+            const entries = tools.filter((entry) => entry.category === category.id);
+            if (!entries.length) return null;
+            return <section key={category.id} className="home-directory-group" aria-labelledby={`home-group-${category.id}`}>
+              <h3 id={`home-group-${category.id}`} className="t-h3">{category.title}</h3>
+              <DirectoryList entries={entries} />
+            </section>;
+          })}
+        </div>}
+
+        {research.length > 0 && <details className="home-reading" data-testid="home-research" open={searching || undefined}>
+          <summary><span className="t-h3">{researchCategory?.title ?? 'Theory & research'}</span><span className="t-body-sm text-2">Sources, interpretations, and study notes</span></summary>
+          <DirectoryList entries={research} />
+        </details>}
+
+        {help.length > 0 && <nav className="home-help" aria-label="Help">
+          <span className="t-body-sm text-2">Help</span>
+          {help.map((entry) => <Link key={entry.route.path} className="home-text-link" to={entry.route.path}>{entry.title}</Link>)}
+        </nav>}
+      </section>
     </div>
-    <section className="today-paths" aria-labelledby="paths-title"><div className="section-title"><h2 id="paths-title">Make room for your kind of quiet.</h2><Link to="/presets?collection=all">Explore all sounds <ArrowRight size={16} /></Link></div>
-      <div className="listening-paths">
-        <Link to="/listen?preset=practice-bowl-attention" className="listening-path path-breath"><span className="path-symbol"><Wind size={34} strokeWidth={1} /></span><div><span className="overline">Meditate · 10 min</span><h3>Bowl & breath</h3><p>Let each fading note bring you back.</p></div><ArrowUpRight size={22} /></Link>
-        <Link to="/listen?preset=practice-steady-focus" className="listening-path path-focus"><span className="path-symbol"><Sun size={34} strokeWidth={1} /></span><div><span className="overline">Focus · 10 min</span><h3>One quiet task</h3><p>A steady sound. A single intention.</p></div><ArrowUpRight size={22} /></Link>
-        <Link to="/listen?preset=practice-evening-rain" className="listening-path path-sleep"><span className="path-symbol"><Moon size={34} strokeWidth={1} /></span><div><span className="overline">Wind down · 15 min</span><h3>Evening rain</h3><p>Take the day a little more slowly.</p></div><ArrowUpRight size={22} /></Link>
-      </div>
-    </section>
-    <section className="night-invitation"><img src={assetUrl('art/night-country.webp')} alt="A crescent moon over painted desert dunes" loading="lazy" width="1536" height="1024" /><div><span className="overline">When the day is done</span><h2>Leave a little<br />space for dreaming.</h2><p>Plan a seven-hour night, with a gentle beginning and room for silence. Explore sleep, dream recall and the ideas behind them.</p><Link className="journey-button journey-button-light" to="/overnight">Plan your night <ArrowRight size={18} /></Link></div></section>
-    <section className="today-reading"><div><span className="overline">For the curious</span><h2>Listen. Wonder. Understand.</h2><p>Follow the science, the histories and the open questions. Every source has a place; every claim has its limits.</p><Link className="inline-link" to="/research-hub">Enter the reading room <ArrowRight size={18} /></Link></div><nav aria-label="Explore practices and research"><Link to="/lucid" data-testid="home-lab-lucid"><span>01</span>Dreaming & the mind<ArrowUpRight size={17} /></Link><Link to="/healing" data-testid="home-lab-healing"><span>02</span>Sound, rest & healing traditions<ArrowUpRight size={17} /></Link><Link to="/nature" data-testid="home-lab-nature"><span>03</span>Patterns in the natural world<ArrowUpRight size={17} /></Link><Link to="/traditions"><span>04</span>Programs, books & archives<ArrowUpRight size={17} /></Link></nav></section>
-    <footer className="editorial-footer"><span>Made for listening. Open to exploration.</span><div><Link to="/studio">Sound workshop</Link><Link to="/research-hub#tools">All tools</Link><a href={assetUrl('previous/')}>Previous version ↗</a></div><p>Original listening designs, not medical treatments. Open Sync creates audio; it does not measure your brain activity.</p></footer>
-  </div>;
+  );
+}
+
+function DirectoryList({ entries }: { entries: readonly NavigationEntry[] }) {
+  return <ul className="home-directory-list">{entries.map((entry) => {
+    const Icon = entry.route.icon;
+    return <li key={entry.route.path}><Link to={entry.route.path} className="home-directory-link">
+      <Icon size={17} aria-hidden />
+      <span><strong>{entry.title}</strong><span className="t-body-sm text-2">{entry.description}</span></span>
+      <ArrowRight size={14} aria-hidden />
+    </Link></li>;
+  })}</ul>;
 }

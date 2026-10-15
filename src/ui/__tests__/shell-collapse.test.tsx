@@ -32,12 +32,7 @@ if (typeof Element !== 'undefined') {
 }
 
 const ALL_ROUTE_PATHS = [
-  '/listen', '/research-hub',
   '/',
-  '/meditate',
-  '/hypnosis',
-  '/overnight',
-  '/traditions',
   '/studio',
   '/library',
   '/presets',
@@ -154,11 +149,11 @@ describe('V3 collapsible sidebar — three states', () => {
     const rail = railOf(c)!;
     expect(rail).toBeTruthy();
     expect(rail.dataset.state).toBe('full');
-    expect(rail.style.width).toBe('216px');
+    expect(rail.style.width).toBe('240px');
     // Width animates with the motion token.
     expect(rail.style.transition).toContain('var(--motion-2)');
     // Labels visible.
-    expect(rail.textContent).toContain('Listen');
+    expect(rail.textContent).toContain('STUDIO');
     expect(rail.textContent).not.toContain('REPLICATION BAY');
     // Practical tools are visible; references are one native-button disclosure.
     const researchToggle = rail.querySelector<HTMLButtonElement>('[data-testid="rail-research-toggle"]')!;
@@ -167,8 +162,8 @@ describe('V3 collapsible sidebar — three states', () => {
     expect(researchToggle.getAttribute('aria-expanded')).toBe('false');
     const researchContent = document.getElementById(researchToggle.getAttribute('aria-controls')!)!;
     expect(researchContent.hidden).toBe(true);
-    expect([...railHrefs(c)]).toEqual(['/', '/presets', '/listen', '/research-hub', '/safety']);
-    for (const route of RESEARCH_ROUTES.filter(route => route.path !== '/research-hub')) expect(railHrefs(c).has(route.path)).toBe(false);
+    expect([...railHrefs(c)]).toEqual(['/', '/presets', '/studio', '/safety']);
+    for (const route of RESEARCH_ROUTES) expect(railHrefs(c).has(route.path)).toBe(false);
     researchToggle.focus();
     await click(researchToggle);
     expect(document.activeElement).toBe(researchToggle);
@@ -248,7 +243,7 @@ describe('V3 collapsible sidebar — three states', () => {
     await click(item);
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     expect(rail.querySelector('a[href="/theory"]')!.getAttribute('aria-current')).toBe('page');
-    await click(rail.querySelector<HTMLElement>('a[href="/listen"]')!);
+    await click(rail.querySelector<HTMLElement>('a[href="/studio"]')!);
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
     expect(rail.querySelector('a[href="/theory"]')).toBeNull();
   });
@@ -283,7 +278,7 @@ describe('V3 collapsible sidebar — three states', () => {
     // Handle click restores the full rail.
     await click(handle);
     expect(railOf(c)!.dataset.state).toBe('full');
-    expect(railOf(c)!.style.width).toBe('216px');
+    expect(railOf(c)!.style.width).toBe('240px');
     expect(c.querySelector('[data-testid="rail-reopen-handle"]')).toBeNull();
   });
 });

@@ -6,7 +6,6 @@ import { MemoryRouter } from 'react-router';
 import { ROUTES } from '@/app/routes';
 import Home from '@/pages/Home';
 import Guide from '@/pages/Guide';
-import ResearchHub from '@/pages/ResearchHub';
 
 (globalThis as Record<string, unknown>).IS_REACT_ACT_ENVIRONMENT = true;
 // Match the existing UI harness: happy-dom's native animation cancellation
@@ -39,18 +38,21 @@ afterEach(async () => {
 });
 
 describe('Home task paths and discovery', () => {
-  it('offers a direct listening path, a small intention chooser and the sound workshop', async () => {
+  it('makes choosing a sound the first action and provides direct chord/file paths', async () => {
     const page = await mount(<Home />);
-    expect(page.querySelector('a')!.getAttribute('href')).toBe('/listen?preset=practice-soft-landing');
-    expect(page.querySelector('.today-checkin a[href="/meditate?goal=unwind"]')).not.toBeNull();
-    expect(page.querySelector('a[href="/studio"]')).not.toBeNull();
-    expect(page.querySelector('a[href="/research-hub#tools"]')).not.toBeNull();
-    expect(page.querySelector('a[href="/previous/"]')).not.toBeNull();
+    const first = page.querySelector('a')!;
+    expect(first.textContent).toContain('Choose a sound');
+    expect(first.getAttribute('href')).toBe('/presets');
+    expect(page.querySelector('.home-task-grid a[href="/harmonics"]')?.textContent).toContain('Build a chord');
+    expect(page.querySelector('.home-task-grid a[href="/sample-lab"]')?.textContent).toContain('Inspect an audio file');
+    expect(page.querySelector('[data-testid="home-bashar-link"]')?.closest('article')?.textContent).toContain('Listen');
+    expect(page.querySelector('[data-testid="everyday-link"]')?.getAttribute('href')).toBe(`${import.meta.env.BASE_URL}app/`);
+    expect(page.textContent).toContain('separate listening view');
     expect(page.querySelector('canvas')).toBeNull();
   });
 
   it('retains every page in a browsable directory with research initially collapsed', async () => {
-    const page = await mount(<ResearchHub />);
+    const page = await mount(<Home />);
     const directory = page.querySelector('.home-directory')!;
     for (const route of ROUTES.filter((entry) => entry.path !== '/')) {
       expect(directory.querySelector(`a[href="${route.path}"]`), route.path).not.toBeNull();
@@ -61,7 +63,7 @@ describe('Home task paths and discovery', () => {
   });
 
   it('finds former tool names and exposes matching research without requiring prior category knowledge', async () => {
-    await mount(<ResearchHub />);
+    await mount(<Home />);
     await search('Sample Lab');
     const directory = container.querySelector('.home-directory')!;
     expect(directory.querySelector('a[href="/sample-lab"]')).not.toBeNull();
@@ -74,7 +76,7 @@ describe('Home task paths and discovery', () => {
   });
 
   it('offers a direct recovery when search has no results', async () => {
-    await mount(<ResearchHub />);
+    await mount(<Home />);
     await search('no-such-tool-zzzzz');
     expect(container.querySelector('[role="status"]')?.textContent).toBe('0 pages found');
     const clear = Array.from(container.querySelectorAll('button')).find((button) => button.textContent === 'Clear search')!;

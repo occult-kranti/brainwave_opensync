@@ -70,14 +70,10 @@ const r = (
 ): AppRoute => ({ path, label, module, icon, group, component: lazy(load), ...extra });
 
 export const ROUTES: readonly AppRoute[] = [
-  { path: '/', label: 'Today', module: 'Home', icon: HomeIcon, group: 'home', component: Home, bottomTab: true },
-  r('/listen', 'Listen', 'Listen', Headphones, 'tools', () => import('@/pages/Listen'), { bottomTab: true }),
+  { path: '/', label: 'HOME', module: 'Home', icon: HomeIcon, group: 'home', component: Home, bottomTab: true },
   // Practical tools — listening, creating, measuring and testing.
-  r('/meditate', 'FIND A SESSION', 'Find a Session', Compass, 'tools', () => import('@/pages/Meditate')),
-  r('/overnight', 'OVERNIGHT', 'Overnight', Moon, 'tools', () => import('@/pages/Overnight')),
-  r('/hypnosis', 'HYPNOSIS & DREAMING', 'Hypnosis & Dreaming', MoonStar, 'tools', () => import('@/pages/Hypnosis')),
-  r('/presets', 'Explore', 'Presets', Layers, 'tools', () => import('@/pages/Presets'), { bottomTab: true }),
-  r('/studio', 'STUDIO', 'Studio', AudioWaveform, 'tools', () => import('@/pages/Studio')),
+  r('/presets', 'PRESETS', 'Presets', Layers, 'tools', () => import('@/pages/Presets'), { bottomTab: true }),
+  r('/studio', 'STUDIO', 'Studio', AudioWaveform, 'tools', () => import('@/pages/Studio'), { bottomTab: true }),
   r('/library', 'FREQUENCY REFERENCE', 'Library', BookOpen, 'tools', () => import('@/pages/Library')),
   r('/harmonics', 'HARMONIC LAB', 'Harmonic Lab', Music2, 'tools', () => import('@/pages/HarmonicLab')),
   r('/sound-methods', 'SOUND METHODS', 'Sound Methods', Headphones, 'tools', () => import('@/pages/SoundMethods')),
@@ -93,9 +89,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/quicklab', 'QUICK LAB', 'Quick Lab', Zap, 'tools', () => import('@/pages/QuickLab')),
   r('/lab', 'EXPERIMENT LAB', 'Experiment Lab', FlaskConical, 'tools', () => import('@/pages/research/ExperimentLab')),
   r('/replication', 'REPLICATION BAY', 'Replication Bay', Repeat2, 'tools', () => import('@/pages/Replication')),
-  r('/research-hub', 'Research', 'Research', BookOpen, 'research', () => import('@/pages/ResearchHub'), { bottomTab: true }),
   // Background reading — grouped behind one disclosure in both navigation layouts.
-  r('/traditions', 'PROGRAMS & TRADITIONS', 'Programs & Traditions', BookMarked, 'research', () => import('@/pages/Traditions')),
   r('/levels', 'LEVELS', 'Levels', Gauge, 'research', () => import('@/pages/Levels')),
   r('/knowledge', 'KNOWLEDGE', 'Knowledge', BookMarked, 'research', () => import('@/pages/Knowledge')),
   r('/channeled', 'CHANNELED SOURCES', 'Channeled Sources', Radio, 'research', () => import('@/pages/ChanneledSources')),
@@ -104,7 +98,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/hypotheses', 'HYPOTHESIS TRACKER', 'Hypothesis Tracker', ListChecks, 'research', () => import('@/pages/research/HypothesisTracker')),
   r('/programs', 'PROGRAMS ARCHIVE', 'Programs Archive', Archive, 'research', () => import('@/pages/research/ProgramsArchive')),
   r('/projects', 'CONNECTED PROJECTS', 'Projects', GitFork, 'research', () => import('@/pages/Projects')),
-  r('/safety', 'SAFETY', 'Safety', ShieldAlert, 'help', () => import('@/pages/Safety')),
+  r('/safety', 'SAFETY', 'Safety', ShieldAlert, 'help', () => import('@/pages/Safety'), { bottomTab: true }),
   r('/guide', 'GUIDE', 'Guide', Compass, 'help', () => import('@/pages/Guide')),
   r('/about', 'ABOUT', 'About', Info, 'help', () => import('@/pages/About')),
 ];
@@ -113,7 +107,7 @@ export const HOME_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group ===
 export const TOOL_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group === 'tools');
 export const RESEARCH_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group === 'research');
 export const HELP_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.group === 'help');
-export const BOTTOM_TAB_ROUTES: readonly AppRoute[] = ['/', '/presets', '/listen', '/research-hub'].map(path => ROUTES.find(x => x.path === path && x.bottomTab)!);
+export const BOTTOM_TAB_ROUTES: readonly AppRoute[] = ROUTES.filter((x) => x.bottomTab);
 
 export function routeByPath(path: string): AppRoute | undefined {
   return ROUTES.find((x) => x.path === path);

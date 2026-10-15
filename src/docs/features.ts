@@ -49,12 +49,6 @@ export interface FeatureEntry {
 /** Every routed screen in the app (test coverage target). */
 export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/', label: 'Home' },
-  { route: '/listen', label: 'Listen' },
-  { route: '/research-hub', label: 'Research' },
-  { route: '/meditate', label: 'Find a Session' },
-  { route: '/overnight', label: 'Overnight' },
-  { route: '/hypnosis', label: 'Hypnosis & Dreaming' },
-  { route: '/traditions', label: 'Programs & Traditions' },
   { route: '/guide', label: 'Guide' },
   { route: '/studio', label: 'Studio' },
   { route: '/library', label: 'Frequency reference' },
@@ -86,18 +80,6 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
-  {
-    id: 'focused-listening', module: 'Listen', route: '/listen', name: 'Focused listening player',
-    simple: 'Choose a sound, then press Play when you are ready. Pause, stop, change the volume or watch the sand without opening the full sound editor.',
-    deep: 'The listening view shares the existing session provider and audio engine with Studio. Selecting a catalog sound stops the previous session and loads its complete recipe without autoplay. The same listening limits, advisory and stop controls remain in force. The remaining-time display follows the active duration and fade endpoint.',
-    howTo: ['Choose a practice from Today or Explore.', 'Press Play at a comfortable device volume.', 'Open Customize sound to edit the same session in Studio.'],
-  },
-  {
-    id: 'reading-room', module: 'Research', route: '/research-hub', name: 'Reading room and tool directory',
-    simple: 'Find a starting point in the research or browse every tool by task. Search familiar names to find a page without knowing its category.',
-    deep: 'The reading room organizes existing source pages into practical reading paths. Historical provenance remains distinct from experimental validation. The complete tool directory uses the shared navigation registry and search aliases. Existing routes and deep links remain available.',
-    howTo: ['Choose a reading topic.', 'Open sources and limits on the linked page.', 'Search the tool directory for a lab or feature.'],
-  },
   {
     id: 'nano-audio-bench', module: 'NanoLab', route: '/nano-lab', name: 'Frequency comparison bench',
     grade: 'A', gradeScope: 'Signal algebra and digital measurements only; no nanoparticle or biological response is established.',
@@ -155,12 +137,12 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
     route: '/',
     name: 'Home landing',
     simple:
-      'Choose a short practice from Today or use the intention chooser to find a session. Open the reading room for research and the full tool directory.',
+      'Choose a sound, build a chord, or inspect a recording from Home. Search the tool directory when you need a specialist page.',
     deep:
-      'Today presents a featured practice, intention choices and a path into the overnight planner. Selecting a sound opens Listen with playback stopped. The shared session provider carries the same sound into Studio for editing. The Research reading room contains the complete searchable tool directory.',
+      'Home presents listening, creation, and inspection before the full directory. Navigation descriptions and search aliases come from one registry shared with the sidebar and command palette. Specialist and research links stay discoverable without grading entire tools.',
     howTo: [
-      'Choose Settle in or a practice on Today.',
-      'Press Play in Listen, or open Customize sound to edit the session.',
+      'Choose Listen, Create, or Inspect on Home.',
+      'Choose a sound for previews, or follow a direct tool link.',
       'Open the Guide any time you meet a meter you do not understand.',
     ],
   },
@@ -1363,39 +1345,19 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/',
     name: 'Install & offline use',
     simple:
-      'Open Sync can be installed like an app and caches its main screens for offline use. Long playback depends on your browser and device, so test your setup before relying on it overnight. An update waits for the running session to end.',
+      'Open Sync can be installed like an app and keeps working without a network. Lock-screen controls and a wake lock keep long sessions running on phones. Updates are offered, and a running session is never interrupted by one.',
     deep:
-      'A service worker precaches the application shell and artwork and caches preview audio on first play; the full audio collection is not precached. Where supported, Media Session exposes playback controls and a keep-alive element supports background playback, without guaranteeing that the operating system will keep the tab active. Screen Wake Lock is requested while a session runs and re-acquired when the tab returns. A waiting build shows an UPDATE chip; a tab with a live session defers its reload until that session ends.',
+      'A service worker precaches the app shell (about 1.4 MB) and caches preview audio on first play; the 100 MB of preset previews and stimulus files are never precached. The Media Session API exposes PLAY, PAUSE and STOP with the session title, and a silent keep-alive element keeps the tab treated as playing so mobile browsers do not throttle it. The Screen Wake Lock is held while a session runs and re-acquired when the tab returns. A waiting build shows an UPDATE chip in the status bar; applying it reloads the page, and a tab with a live session holds its reload until the session ends.',
     howTo: [
       'Use your browser menu → Install (or Add to Home Screen).',
-      'Test playback on your device, including screen lock and power-saving behavior.',
+      'Start a session, then lock the phone — controls appear on the lock screen.',
       'When an UPDATE chip appears, stop the session and tap it.',
     ],
   },
 ];
 
 /** Full feature list — the single import surface for Guide and documentation tests. */
-const PRACTICE_FEATURES: readonly FeatureEntry[] = [
-  { id: 'overnight-planner', module: 'Overnight', route: '/overnight', name: 'Seven-hour listening plans',
-    simple: 'Choose an intention and a speaker-compatible sound bed. Start with thirty minutes followed by quiet, or select seven hours of continuous sound.',
-    deep: 'The planner loads an original sound bed with an explicit playback limit and one-minute end fade. The timeline describes audio and quiet time, not detected sleep stages. Research disclosures distinguish clinical methods, government archives and spiritual interpretations. Browser background playback depends on the device, and oversized WAV exports are rejected before rendering.',
-    grade: 'D', gradeScope: 'Overnight outcomes for these original sound beds are unverified.',
-    howTo: ['Choose an intention, sound duration and listening setup.', 'Test the sound at a comfortable device level.', 'Review the plan and set it up in Studio.', 'Press Play when ready and compare restfulness afterwards.'] },
-  { id: 'programs-traditions', module: 'Programs & Traditions', route: '/traditions', name: 'Programs, research and spiritual texts',
-    simple: 'Explore government archives, Russian and Chinese studies, and esoteric books. Read the access limits and try original listening experiments.',
-    deep: 'The sourcebook distinguishes original authorship, archival custody, funding and publication type. Protocols and patents are separated from observed clinical results. Every associated recipe is an explicitly speculative original composition with authored mix levels and automatic shutoff. No proprietary recording, covert message, biomedical device or closed-loop protocol is reproduced.',
-    grade: 'D', gradeScope: 'Mental or spiritual effects of the original archive-inspired recipes are unverified.',
-    howTo: ['Open a source group or search a title or country.', 'Read the source and its limits.', 'Inspect an original recipe, then set it up in Studio.'] },
-  { id: 'session-suggestions', module: 'Find a Session', route: '/meditate', name: 'Find a session for now',
-    simple: 'Choose your intention, time and listening setup. Read why a sound fits, then load it into Studio.',
-    deep: 'A deterministic ranking compares the whole preset catalog with explicit preferences. Speaker mode excludes binaural beat sessions, and experimental sounds require opt-in. A shorter time loads only the beginning of the sequence through the existing bounded preset duration. The tool does not infer health or mental state.',
-    howTo: ['Choose an intention and duration.', 'Select speakers or headphones.', 'Read the match and choose Set up this session.', 'Press Play in Studio when ready.'] },
-  { id: 'hypnosis-research', module: 'Hypnosis & Dreaming', route: '/hypnosis', name: 'Hypnosis, hypnagogia and sound',
-    simple: 'Read the evidence behind hypnosis and sleep-onset sound experiments. Calculate tone differences and try original listening practices.',
-    deep: 'Signal arithmetic is separated from physiological interpretation. Primary studies of hypnotic suggestion, sleep onset and auditory stimulation have different interventions and limits. The interactive calculator subtracts carrier frequencies without inferring EEG or clinical effects. New recipes use the shared session engine, authored mixes and automatic shutoff.',
-    howTo: ['Open a topic to read its methods and limits.', 'Change the calculator tones to inspect their difference.', 'Load a sound into Studio, or open the session guide.'] },
-];
-export const FEATURES: readonly FeatureEntry[] = [...PRACTICE_FEATURES, ...FEATURES_CORE, ...FEATURES_MODULES];
+export const FEATURES: readonly FeatureEntry[] = [...FEATURES_CORE, ...FEATURES_MODULES];
 
 /** Features grouped by module, preserving data order. */
 /** Feature doc by id (InfoPopover explainers, catalog cards). */

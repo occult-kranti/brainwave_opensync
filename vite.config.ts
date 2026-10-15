@@ -109,10 +109,10 @@ export default defineConfig({
       // globPatterns already covers icons/favicon; social/crawler files are not
       // part of the offline shell.
       manifest: {
-        name: 'Open Sync — A space to listen',
+        name: 'Open Sync — Sound and Research Lab',
         short_name: 'Open Sync',
         description:
-          'Sounds for meditation, rest and exploration. Find a practice, listen, customize your sound and explore the research. Runs entirely in your browser.',
+          'Binaural / monaural / isochronic audio laboratory with A–D evidence grades, blinded self-experiments and a graded research archive. Runs entirely in your browser.',
         theme_color: '#0B0C0D',
         background_color: '#0B0C0D',
         display: 'standalone',
@@ -127,11 +127,11 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,webp,json,woff2}'],
-        globIgnores: ['previews/**', 'stimulus_pack/**', 'open-sync/**', 'research/**', 'v2/**', 'previous/**', 'icons/og-image.png', 'robots.txt', 'sitemap.xml'],
+        globPatterns: ['**/*.{js,css,html,svg,png,json,woff2}'],
+        globIgnores: ['previews/**', 'stimulus_pack/**', 'open-sync/**', 'research/**', 'v2/**', 'previous/**', 'archive/**', 'icons/og-image.png', 'robots.txt', 'sitemap.xml'],
         navigateFallback: `${base}index.html`,
         // The separately built previous release owns its own app shell and worker.
-        navigateFallbackDenylist: [/\/previews\//, /\/stimulus_pack\//, /\/v2(?:\/|$)/, /\/previous(?:\/|$)/, /\/open-sync(?:\/|$)/, /\/research(?:\/|$)/],
+        navigateFallbackDenylist: [/\/previews\//, /\/stimulus_pack\//, /\/v2(?:\/|$)/, /\/previous(?:\/|$)/, /\/archive(?:\/|$)/, /\/open-sync(?:\/|$)/, /\/research(?:\/|$)/],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
         runtimeCaching: [
           {

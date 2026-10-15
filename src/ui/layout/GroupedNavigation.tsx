@@ -18,7 +18,7 @@ export function GroupedNavigation({
   return <>
     <section aria-label="Start here" data-nav-group="primary">{getPrimaryNavRoutes().map(renderRoute)}</section>
     <section aria-label="Tools" data-nav-group="tools">
-      {DISCLOSURE_CATEGORIES.filter((category) => ['practice', 'create', 'analyze', 'experiments'].includes(category.id)).map((category) =>
+      {DISCLOSURE_CATEGORIES.filter((category) => ['create', 'analyze', 'experiments'].includes(category.id)).map((category) =>
         <NavigationDisclosure key={category.id} {...{ category, idPrefix, collapsed, renderRoute, pathname }} />,
       )}
     </section>

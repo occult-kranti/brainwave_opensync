@@ -35,13 +35,8 @@ interface BadgeProps {
 export function GradeBadge({ grade, minus, compact, letterOnly, citation, className }: BadgeProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
-  const [alignRight, setAlignRight] = useState(false);
-  const toggle = () => {
-    if (!open) setAlignRight((ref.current?.getBoundingClientRect().left ?? 0) + 340 > window.innerWidth);
-    setOpen(v => !v);
-  };
   const navigate = useNavigate();
-  const color = `var(--grade-${grade})`;
+  const color = GRADE_COLOR[grade];
 
   useEffect(() => {
     if (!open) return;
@@ -99,8 +94,8 @@ export function GradeBadge({ grade, minus, compact, letterOnly, citation, classN
     height: compact ? 18 : 22,
     padding: compact ? '0 5px' : '0 8px',
     borderRadius: 2,
-    background: `color-mix(in srgb, ${color} 12%, transparent)`, // 12% over ink-3
-    border: `1px ${minus ? 'dashed' : 'solid'} color-mix(in srgb, ${color} 60%, transparent)`,
+    background: `${color}1f`, // 12% over ink-3
+    border: `1px ${minus ? 'dashed' : 'solid'} ${color}99`,
     cursor: citation ? 'pointer' : 'default',
     transition: 'border-color 140ms ease-out, box-shadow 140ms ease-out, transform 140ms ease-out',
     verticalAlign: 'middle',
@@ -113,10 +108,10 @@ export function GradeBadge({ grade, minus, compact, letterOnly, citation, classN
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = color;
         e.currentTarget.style.transform = 'translateY(-1px)';
-        e.currentTarget.style.boxShadow = `0 2px 10px color-mix(in srgb, ${color} 20%, transparent)`;
+        e.currentTarget.style.boxShadow = `0 2px 10px ${color}33`;
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = `color-mix(in srgb, ${color} 60%, transparent)`;
+        e.currentTarget.style.borderColor = `${color}99`;
         e.currentTarget.style.transform = 'none';
         e.currentTarget.style.boxShadow = 'none';
       }}
@@ -125,12 +120,12 @@ export function GradeBadge({ grade, minus, compact, letterOnly, citation, classN
       onClick={(e) => {
         if (!citation) return;
         e.stopPropagation();
-        toggle();
+        setOpen((v) => !v);
       }}
       onKeyDown={(e) => {
         if (citation && (e.key === 'Enter' || e.key === ' ')) {
           e.preventDefault();
-          toggle();
+          setOpen((v) => !v);
         }
       }}
       title={citation ? `${grade} — ${GRADE_MEANING[grade]}` : GRADE_MEANING[grade]}
@@ -155,8 +150,7 @@ export function GradeBadge({ grade, minus, compact, letterOnly, citation, classN
               position: 'absolute',
               zIndex: 70,
               top: 'calc(100% + 8px)',
-              left: alignRight ? undefined : 0,
-              right: alignRight ? 0 : undefined,
+              left: 0,
               width: 320,
               maxWidth: '80vw',
               background: 'var(--ink-3)',

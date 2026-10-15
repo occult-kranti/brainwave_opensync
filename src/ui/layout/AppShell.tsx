@@ -14,7 +14,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { NavLink, useLocation } from 'react-router';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   ChevronRight,
   ChevronsLeft,
@@ -54,7 +54,7 @@ const BOTTOM_BAR_Z = 100;
 /** Collapsible sidebar states (desktop ≥768px only): full labels → icon strip → hidden. */
 export type SidebarState = 'full' | 'icon' | 'hidden';
 
-const SIDEBAR_W: Record<SidebarState, number> = { full: 216, icon: 64, hidden: 0 };
+const SIDEBAR_W: Record<SidebarState, number> = { full: 240, icon: 64, hidden: 0 };
 const SIDEBAR_STATES: SidebarState[] = ['full', 'icon', 'hidden'];
 const SIDEBAR_STORAGE_KEY = STORAGE_KEYS.sidebar;
 
@@ -99,7 +99,7 @@ function Logo({ collapsed }: { collapsed?: boolean }) {
             Open Sync
           </div>
           <div className="t-caption text-3" style={{ lineHeight: '14px' }}>
-            a space to listen
+            sound and research tools
           </div>
         </div>
       )}
@@ -726,16 +726,6 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
 
 export function AppShell({ children }: { children: ReactNode }) {
   const location = useLocation();
-  const reducedMotion = useReducedMotion();
-  const discovery = ['/', '/presets', '/meditate', '/overnight', '/hypnosis', '/traditions', '/research-hub'].includes(location.pathname);
-  useEffect(() => {
-    // New destinations start at their heading; changing filters on the same
-    // page leaves the reader's position alone.
-    const route = ALL_ROUTES.find(item => item.path === location.pathname);
-    document.title = `${route?.label ?? 'Open Sync'} · Open Sync`;
-    const anchor = location.hash ? document.getElementById(location.hash.slice(1)) : null;
-    if (anchor) anchor.scrollIntoView(); else window.scrollTo(0, 0);
-  }, [location.pathname, location.hash]);
   const { panic, rehearsePanic, running, fading, togglePause, muted, setMuted, startSleepFade } = useSession();
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -808,7 +798,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   }, [running, fading, muted, togglePause, setMuted, startSleepFade, panic, rehearsePanic]);
 
   return (
-    <div className={`flex experience-shell ${discovery ? 'discovery-shell' : ''}`} style={{ minHeight: '100vh', background: 'var(--ink-0)' }}>
+    <div className="flex grain" style={{ minHeight: '100vh', background: 'var(--ink-0)' }}>
       <a href="#main" className="skip-link">
         Skip to content
       </a>
@@ -833,10 +823,10 @@ export function AppShell({ children }: { children: ReactNode }) {
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
-              initial={reducedMotion ? false : { opacity: 0 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.15, ease: 'easeOut' }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2, ease: 'easeOut' }}
             >
               {children}
             </motion.div>

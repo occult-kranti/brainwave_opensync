@@ -7,38 +7,38 @@
 @layer base {
   :root {
     /* Open Sync — "Ink & Amber" theme tokens (design.md §2) */
-    --ink-0: #111c18;
-    --ink-1: #15211c;
-    --ink-2: #1a2922;
-    --ink-3: #23352b;
-    --ink-4: #2b4034;
-    --line-1: #304439;
-    --line-2: #42594a;
+    --ink-0: #0B0C0D;
+    --ink-1: #101214;
+    --ink-2: #16191B;
+    --ink-3: #1D2124;
+    --ink-4: #24292D;
+    --line-1: #262B2F;
+    --line-2: #31373C;
 
-    --text-1: #f0ebdf;
-    --text-2: #b9c3b6;
-    --text-3: #96a492;
+    --text-1: #E9E5DC;
+    --text-2: #A8A399;
+    --text-3: #6E6960;
     --text-inv: #141414;
 
-    --amber: #e3cba3;
-    --amber-hi: #f0ddbd;
-    --amber-dim: #89765a;
+    --amber: #D9A441;
+    --amber-hi: #E8B95C;
+    --amber-dim: #7A5E26;
     --amber-glow: rgba(217, 164, 65, 0.16);
-    --teal: #91b29b;
-    --teal-hi: #b2ccb5;
-    --teal-dim: #45664f;
+    --teal: #4F8C82;
+    --teal-hi: #66A89D;
+    --teal-dim: #2E4B46;
     --danger: #C4634F;
     --danger-hi: #D97B66;
 
     --grade-A: #5FA98C;
     --grade-B: #A9B368;
-    --grade-C: #e3cba3;
+    --grade-C: #D9A441;
     --grade-D: #C4634F;
 
     --band-delta: #8A8A84;
     --band-theta: #9488A8;
     --band-alpha: #5FA98C;
-    --band-beta: #e3cba3;
+    --band-beta: #D9A441;
     --band-gamma: #C4634F;
 
     --noise-white: #C9C4B8;
@@ -155,8 +155,8 @@
 
   /* Type scale (design.md §3.2) */
   .t-display-xl { font-family: 'Space Grotesk', sans-serif; font-size: 56px; line-height: 60px; font-weight: 600; letter-spacing: -0.02em; }
-  .t-display-lg { font-family: Georgia, serif; font-size: 42px; line-height: 44px; font-weight: 600; letter-spacing: -0.02em; }
-  .t-h1 { font-family: Georgia, serif; font-size: 32px; line-height: 38px; font-weight: 600; letter-spacing: -0.015em; }
+  .t-display-lg { font-family: 'Space Grotesk', sans-serif; font-size: 40px; line-height: 44px; font-weight: 600; letter-spacing: -0.02em; }
+  .t-h1 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; line-height: 38px; font-weight: 600; letter-spacing: -0.015em; }
   .t-h2 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; line-height: 30px; font-weight: 600; }
   .t-h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; line-height: 24px; font-weight: 600; }
   .t-body { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 24px; }
@@ -174,7 +174,7 @@
 
   /* Panel / card (design.md §5.7) */
   .panel {
-    background: var(--ink-2);
+    background: linear-gradient(180deg, var(--ink-2), #14171a);
     border: 1px solid var(--line-1);
     border-radius: 4px;
     padding: 24px;
@@ -477,11 +477,3 @@
     }
   }
 }
-
-/* Listening-room refinements shared by existing tools. */
-.chip { letter-spacing: .02em; font-family: Inter, sans-serif; text-transform: none; border-radius: 6px; }
-.panel { border-radius: 10px; }
-.t-caption { line-height: 1.65; }
-nav[aria-label="Main navigation"] .t-label { font-family: Inter, sans-serif; letter-spacing: .025em; font-size: 11px; }
-button:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--teal-hi); outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }

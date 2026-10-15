@@ -29,12 +29,7 @@ if (typeof Element !== 'undefined') {
 }
 
 const ALL_ROUTE_PATHS = [
-  '/listen', '/research-hub',
   '/',
-  '/meditate',
-  '/hypnosis',
-  '/overnight',
-  '/traditions',
   '/studio',
   '/library',
   '/presets',
@@ -146,7 +141,7 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(c.querySelector('[data-testid="status-bar-mobile"]')).toBeTruthy();
     expect(c.querySelector('[data-testid="status-bar"]')).toBeNull();
     // Primary tabs + MORE.
-    for (const tab of ['today', 'explore', 'listen', 'research', 'more']) {
+    for (const tab of ['home', 'presets', 'studio', 'safety', 'more']) {
       expect(c.querySelector(`[data-testid="bottom-tab-${tab}"]`)).toBeTruthy();
     }
     // Persistent panic: ≥56px target; bar z-index ≥70 (clears grain z-60 and
@@ -183,7 +178,7 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(drawer).toBeTruthy();
     const tools = drawer!.querySelector('[data-nav-group="tools"]')!;
     expect(tools.querySelectorAll('a')).toHaveLength(0);
-    expect(drawer!.querySelectorAll('a')).toHaveLength(5);
+    expect(drawer!.querySelectorAll('a')).toHaveLength(4);
     expect(drawer!.querySelector('a[href="/channeled"]')).toBeNull();
     const toggle = drawer!.querySelector<HTMLButtonElement>('[data-testid="drawer-research-toggle"]')!;
     expect(toggle.getAttribute('aria-expanded')).toBe('false');

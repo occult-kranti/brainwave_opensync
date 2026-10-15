@@ -35,16 +35,6 @@ export interface ExportResult {
   warnings: string[];
 }
 
-// Preserve the existing 90-minute export workflow, but reject overnight
-// allocations before constructing a worker or allocating full PCM buffers.
-export const MAX_BROWSER_EXPORT_SEC = 90 * 60;
-export function assertBrowserExportFits(spec: SessionSpec): void {
-  const seconds = spec.phases.reduce((total, phase) => total + phase.durationSec, 0);
-  if (!Number.isFinite(seconds) || seconds > MAX_BROWSER_EXPORT_SEC) {
-    throw new RangeError('Browser WAV export supports up to 90 minutes. Long sessions support live playback and saved settings; shorten the playback duration to export an excerpt.');
-  }
-}
-
 /** Build the engine spec for an export, clamped to `maxSec`. */
 export function buildExportSpec(name: string, phases: readonly EnginePhase[], opts: ExportOptions = {}): SessionSpec {
   const capped = Number.isFinite(opts.maxSec) && (opts.maxSec as number) > 0 ? truncatePhases(phases, opts.maxSec as number) : [...phases];
@@ -59,7 +49,6 @@ export function exportFileName(name: string | null, format: ExportFormat): strin
 
 /** Synchronous render (fallback / tests). */
 export function renderExportSync(spec: SessionSpec, format: ExportFormat): ExportResult {
-  assertBrowserExportFits(spec);
   const r = renderSession(spec);
   const wav = encodeWav(r.left, r.right, r.manifest.sampleRate, format);
   return {
@@ -88,7 +77,6 @@ export function renderExportAsync(
   format: ExportFormat,
   opts: { signal?: AbortSignal } = {},
 ): Promise<ExportResult> {
-  try { assertBrowserExportFits(spec); } catch (error) { return Promise.reject(error); }
   if (!canUseWorker()) {
     return new Promise((resolve, reject) => {
       // Yield once so the UI can paint the EXPORTING state before the render.

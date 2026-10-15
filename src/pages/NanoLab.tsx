@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router';
-import { NANO_BENCH_PRESETS } from '@/data/nanoPresets';
 import { useSession } from '@/ui/session/useSession';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { InfoPopover } from '@/ui/components/InfoPopover';
@@ -87,7 +86,6 @@ export default function NanoLab() {
     <p className="nano-scope">This is an acoustic analogy for the nanoparticle research branch. Audio samples specify neither a magnetic field nor an optical exposure; they do not establish nanoparticle response or treatment.</p>
     <a href={assetUrl('research/#nanoparticles')} onClick={leaveLab}>Read the five nanoparticle research rounds and their evidence →</a>
     <a href={assetUrl('research/sound-lab/')} onClick={leaveLab}>Open sound protocols, recording analysis, and apparatus plans →</a>
-    <section className="nano-preset-library" aria-label="NanoLab presets"><h2>Four controlled starting points</h2><p>Same carrier, rate, duration and gain ceiling; different signal construction. Loading a recipe stays silent.</p><div className="nano-preset-grid">{NANO_BENCH_PRESETS.map(p => <button key={p.id} disabled={busy} onClick={() => { edit(); setKind(p.recipe.kind); setDraft({ carrierHz: String(p.recipe.carrierHz), rateHz: String(p.recipe.rateHz), durationSec: String(p.recipe.durationSec), gainDb: String(p.recipe.gainDb) }); }}><strong>{p.title}</strong><span>{p.note}</span></button>)}</div><Link to="/presets?collection=nano" onClick={leaveLab}>Longer Studio signal presets →</Link></section>
     <section className="nano-bench" aria-label="Frequency experiment controls">
       <div className="nano-title"><h2>Build a controlled signal</h2><GradeBadge grade="A" citation={{ verdict: 'Grade A applies to the signal algebra only.', summary: 'No material or biological response is inferred.', source: 'https://openstax.org/books/university-physics-volume-1/pages/17-6-beats' }} /></div>
       <div className="nano-kind">{NANO_KINDS.map(value => <button key={value} aria-pressed={kind === value} onClick={() => { edit(); setKind(value); }}>{NANO_LABELS[value]}</button>)}</div>

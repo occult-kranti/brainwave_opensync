@@ -237,6 +237,166 @@
       "bytes": 384044
     },
     {
+      "id": "hypnosis-arrive",
+      "sha256": "b4429b7547d36b09eda901bd0499b75d12f0469d83729668d4c402795efeaa5c",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-staircase",
+      "sha256": "b4429b7547d36b09eda901bd0499b75d12f0469d83729668d4c402795efeaa5c",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-body-rest",
+      "sha256": "f1da4da8be01a207a03287a5af2a373cfedef2bc1403b1a6038842a26616167c",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-gentle-suggestion",
+      "sha256": "b4429b7547d36b09eda901bd0499b75d12f0469d83729668d4c402795efeaa5c",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-imagery",
+      "sha256": "a4b68363ddb27be6c4ea73bdea20ad9730cfc4a96947451a4085e7b44f070507",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-return",
+      "sha256": "845f2cc701594263dd4af10ec0a40eec109bf99c305ca14b4113eea2c51ec723",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-theta-control",
+      "sha256": "845f2cc701594263dd4af10ec0a40eec109bf99c305ca14b4113eea2c51ec723",
+      "bytes": 384044
+    },
+    {
+      "id": "hypnosis-dream-notebook",
+      "sha256": "978a7a7663f1d9e91187e09645ca97a5ccec53ca4c79b3c1f9612f34d7c27088",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-soft-landing",
+      "sha256": "b692637eee617c6d50d9187a92e3daffe51fbf590d5e9734302dc994aa29e63b",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-bowl-attention",
+      "sha256": "7e3d469529c58ec26d6c843d480b89b70d4debcb13098a1c968aacbf19ffaed5",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-evening-rain",
+      "sha256": "a1785359442fde9cd5c81c068f907b58eeaf5c3ec9a3f9bc7ae9ae366dae80ae",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-suggestion-space",
+      "sha256": "fad1690d564e5ae19b530f3afa2e595ebdacd7ffc28d28f7e0199550583a2080",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-steady-focus",
+      "sha256": "78b9d51d2541ba4002158b0a6b44f42c6d857c0ba36313f680a78f551c325d9d",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-gentle-rhythm",
+      "sha256": "31bec3a693651e9ec529a02e2f850c71ea9ba75c33763c00096b2ebed00f71d6",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-theta-comparison",
+      "sha256": "893c85ff2550d9709a94baf9e3821982b5c8562a3bff67e0f5238890dd5be28f",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-dream-edge",
+      "sha256": "79da10feda53b72dd835a670752e37abc67e3202a051a63a0f7d30d7319fc104",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-gateway-inspired",
+      "sha256": "f4052f935759715fb5b32101125b5bb8f4add6e329510f5a337c251a28597514",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-pulse-study",
+      "sha256": "dfb2b9c04ababc9f83ba0a7c25090f50d3151c0d382e6c043cac7f728e0d0867",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-alpha-comparison",
+      "sha256": "893c85ff2550d9709a94baf9e3821982b5c8562a3bff67e0f5238890dd5be28f",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-gamma-texture",
+      "sha256": "703427e67c8a42a6194d7bd7a6a12bfce903ed3b4f2f7fa4644327a0eb9258a3",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-six-pauses",
+      "sha256": "28f1a44586cdeb0e7f82cb9bccbac60260fbc579d06a8df771e6d433bb96f49c",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-harmonic-contemplation",
+      "sha256": "303ed1c7a1bf91186d6238b09aa60eb2b3d84812b494327b751c6d666ac1db55",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-seven-intervals",
+      "sha256": "e9ac81cb9124569b5af4deb6e2ffb066b09fbb55f6d0af11fb53267757d9c64a",
+      "bytes": 384044
+    },
+    {
+      "id": "night-sleep",
+      "sha256": "2ca2b25e156e7f56d2750184acef47170941d45c2273b1087c57bcf8777b5f28",
+      "bytes": 384044
+    },
+    {
+      "id": "night-lucid",
+      "sha256": "06a566a18530c9295d584370583222a9f4473088b78e3fbfc474e2e2adad16e3",
+      "bytes": 384044
+    },
+    {
+      "id": "night-astral",
+      "sha256": "2cd9d2b2dff1d11c82123f31acc923bece980f7341731d876f02a63a9f6a70b6",
+      "bytes": 384044
+    },
+    {
+      "id": "night-viewing",
+      "sha256": "2f8430704a79fef65b26a8750ae3b2d81d95de690ffb83444b84fd87bf069366",
+      "bytes": 384044
+    },
+    {
+      "id": "night-comfort",
+      "sha256": "c103d46559ef11e4fcc6927eb5fa026186a22560ca06220af38aca48b943c7a3",
+      "bytes": 384044
+    },
+    {
+      "id": "night-hypnosis",
+      "sha256": "ae6672b2cb07080cd227ed6d1bb5bd8ec7a7cd2b5e6e4bf93227d0eac1103bf6",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-am-16",
+      "sha256": "9468f080963916bf193c6465ea6c6f5ee0403f2cdd29a17641f7371ec36638ec",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-am-40",
+      "sha256": "3c2545641ac1996bc6436525e051d9209ee77c4b386048a01b4dfe53ee309c07",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-carrier",
+      "sha256": "28a43ef64277620936072e9f958f27b994b8a4fa30203873e3a0c5d9684d4fc2",
+      "bytes": 384044
+    },
+    {
       "id": "sleep-rem-rebound-nap",
       "sha256": "806b49057c19df57e20384cd751a576ba573ec28c9c5b247bc34171ea4f59c49",
       "bytes": 384044
@@ -542,5 +702,5 @@
       "bytes": 384044
     }
   ],
-  "totalBytes": 41092708
+  "totalBytes": 53382116
 }

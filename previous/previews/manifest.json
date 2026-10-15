@@ -1,0 +1,666 @@
+{
+  "version": 1,
+  "sampleRate": 48000,
+  "format": "pcm16-stereo",
+  "seconds": 2,
+  "targetSeconds": 12,
+  "note": "per-file duration auto-reduced 12s → 2s to keep the total under 60 MB",
+  "files": [
+    {
+      "id": "sleep-delta-descent",
+      "sha256": "5e0cbd90b1b1a05fa2faa3abb3428427e1fd82e2a982c46e7d1f5858ae12dcc0",
+      "bytes": 384044
+    },
+    {
+      "id": "sleep-slow-wave-cue",
+      "sha256": "e0691429f4628f0323539244b48efe6b4edc989231834d5dd4a1e74d21683686",
+      "bytes": 384044
+    },
+    {
+      "id": "sleep-theta-drift",
+      "sha256": "2daf881dc34ddfe96d02f055383790cf3bef30fb39ca1184543e4946f206594c",
+      "bytes": 384044
+    },
+    {
+      "id": "sleep-pink-quiet",
+      "sha256": "33a0fe7cac8f3523632beed8c16bd08260cdec86d24df474a913c1e9355ee2b2",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-smr",
+      "sha256": "5a5af2beada4ba8b864aed642ce84779245d1481c3e24fc76552ff28b0712a79",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-beta-block",
+      "sha256": "afeeb7b2bd01dda44cbafeac21369b3cf4973dbdd82eeeb357f2bf43dece7a7e",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-pomodoro",
+      "sha256": "e6225b51fe4c4b202387dda05f66fd5fb753e1bc22c169ad6e4ab8a07afab357",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-alpha-flow",
+      "sha256": "3ee39b11094c8f4f0b40120559a23b352826defd7efc112df02c1a1ba08a1dd2",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-alpha-ease",
+      "sha256": "e79cee43914b5bccaf9ce96ae7be8febfea50b4aaf5a7aa9499cc1837420dd21",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-432-evening",
+      "sha256": "d0f17c4d73856762111f2087d875f78aee1d74dd525c33bd4838e9141e4eaac3",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-schumann-sim",
+      "sha256": "5aee0424cfdd99c2b34847e2df18f606362823e30a1c2117dec1b4e2bdb3aa73",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-breath-pacer",
+      "sha256": "a0ad912a16dc4b33a0c37df6facd682cccb9758ebd80d52999a351ca8ea9747d",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-heartbeat-calm",
+      "sha256": "2d8c4f9a6a390aa75332375b0a123bfa6433f1bf7ddeb9b150438c59c26895d7",
+      "bytes": 384044
+    },
+    {
+      "id": "meditate-theta-garden",
+      "sha256": "4b3346ccf7fc1bd5f3e11fc48ec4bdcd854965e3c365e54acc5568afe0decfbc",
+      "bytes": 384044
+    },
+    {
+      "id": "meditate-om-cousto",
+      "sha256": "7c11643f2f3da2c4be4267407ce0a184b72cf3df8fff44fff68d5a1919f5f145",
+      "bytes": 384044
+    },
+    {
+      "id": "meditate-solfeggio-528",
+      "sha256": "587b4685de4814a1b690864e09feddde1a3a7ac4bda884de17e51613247e1415",
+      "bytes": 384044
+    },
+    {
+      "id": "meditate-chakra-walk",
+      "sha256": "a0d3552d0ac7339df6a41a71f06718e047aa903091b017611394f1c1dbe4b634",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-gamma-40",
+      "sha256": "d38104d3f44f8653f9857fbfd74aed0eb090f3f8a810d237da42a7295e8fc129",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-assr-40",
+      "sha256": "dd5f15a0376a482ea4d9011f3d9d122b10533385e6e8d4eee0759cd52c740243",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-lambda-label",
+      "sha256": "54fc6f0027ae903ecbacd96bd8a1c2a6a0d42bfaa1717bfde1794b60be3c8880",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-schumann-modes",
+      "sha256": "c9fb040f70bc3aa0b7bd9be19f8eab41462597d21c0b5755ea0183e95bddf885",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-epsilon-null",
+      "sha256": "45584c2c497dc56889fb8889022552cded3568b5459f43c01d05edaea6c2719e",
+      "bytes": 384044
+    },
+    {
+      "id": "walk-delta",
+      "sha256": "1a220c33d8e8649beb9eab936f8a72a97a7721b2a664fa653df1d10fb59f72ff",
+      "bytes": 384044
+    },
+    {
+      "id": "walk-theta",
+      "sha256": "feeea646e94fd74cc10c55512514a639136b58c4330a9a36c40215abc0b275fe",
+      "bytes": 384044
+    },
+    {
+      "id": "walk-alpha",
+      "sha256": "122a3af97bc0740262c6c5ea081c5183d2c7f483fdd2384ca3862a2345e356a6",
+      "bytes": 384044
+    },
+    {
+      "id": "walk-smr",
+      "sha256": "37dd39a34d947bba867809e3542b5d49c66accb5193ec64d3beefc2375a701ea",
+      "bytes": 384044
+    },
+    {
+      "id": "walk-beta",
+      "sha256": "067fd0efdacd14776e763b0376b1e7a72b1548bcf072288e1dcaaeba5e9ba7da",
+      "bytes": 384044
+    },
+    {
+      "id": "walk-gamma",
+      "sha256": "7504bfbf129eb09243f65a35677d175cb09cd2e8429626c1b76619101540c828",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-schumann-m2",
+      "sha256": "95837b51eeca8ad4ac903588bb905a5ec39197488a1209b3b2106131b9eb0717",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-schumann-m3",
+      "sha256": "98a3a87fa3f4e44285c9b5cc5c13b11c3c552a432c3349d8cc8ecd20d114e6c4",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-schumann-m4",
+      "sha256": "036c92bbc5650e80c6f934e87bf0b937c7e8836d34985f23015492f92581afb0",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-schumann-m5",
+      "sha256": "c00837694abf6b59580674fb0141228b561e394af132cf6ca60319c8300dbb85",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-440-control",
+      "sha256": "5b83177ad29291268b6c7d7f74ba57b9a310c80ece1921a421abdd0bc3f8e2ef",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-gamma-monaural",
+      "sha256": "8a62ed6b80559b06cd7b9b011de1de7b26bab61aa29f9ff9a447c4c645efd43f",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-isochronic-beta",
+      "sha256": "b57a219f2a5e8c378c3c9db2bb48a63a560f8b1e03a20bf385e0e0ab6bd25859",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-monaural-smr",
+      "sha256": "6673be79bb664266e036d70d7a08ed7c2dd32664a85010603c2f437e2d699b29",
+      "bytes": 384044
+    },
+    {
+      "id": "sleep-isochronic-delta",
+      "sha256": "59dafd23432af94d31901f1d61d7563c45957a84992346e31482ef745e8c8944",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-monaural-alpha",
+      "sha256": "518b90498461bbe77a514a16a6257a5ee320445c8b3eca5433cfd16ea59d645e",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-brown-noise",
+      "sha256": "67fd8bcfcf80ea4925b2284faa9037afb477fdae59ae78cddc6069ac6415758c",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-pink-noise",
+      "sha256": "f588003c54fe030f9a7fcb60a3ee94b003dcce58d6d468f83d6d764090ca3187",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-breath-coherence",
+      "sha256": "19861ae8ee6c9e1939e9a19dbd19c2ff6749042ebef73bc8c215ddca74be950e",
+      "bytes": 384044
+    },
+    {
+      "id": "sleep-breath-wind-down",
+      "sha256": "79b29131399fb0dbd049d8206122b732726dc2c704409bdbefa613e8196e248e",
+      "bytes": 384044
+    },
+    {
+      "id": "infant-womb-hush",
+      "sha256": "96f5b748131f4560b6d15b72b080d9062f4bece821b20192c5ae7bca23a5fd67",
+      "bytes": 384044
+    },
+    {
+      "id": "infant-heartbeat-70",
+      "sha256": "8f0799e7628a1a8c067fa2ca5c91ce358434a4aa690ac4afe6c5c8554593bf3c",
+      "bytes": 384044
+    },
+    {
+      "id": "infant-nap-fade",
+      "sha256": "85cbb68bef40d56a93265b0f4dd786b940a9a94b717010523068b44fb844a92a",
+      "bytes": 384044
+    },
+    {
+      "id": "infant-quiet-room",
+      "sha256": "b302e4542a182938a220c77fb3fda8f34ba789142bdf176526b444a47fb519d0",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-soft-landing",
+      "sha256": "b692637eee617c6d50d9187a92e3daffe51fbf590d5e9734302dc994aa29e63b",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-bowl-attention",
+      "sha256": "7e3d469529c58ec26d6c843d480b89b70d4debcb13098a1c968aacbf19ffaed5",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-evening-rain",
+      "sha256": "a1785359442fde9cd5c81c068f907b58eeaf5c3ec9a3f9bc7ae9ae366dae80ae",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-suggestion-space",
+      "sha256": "fad1690d564e5ae19b530f3afa2e595ebdacd7ffc28d28f7e0199550583a2080",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-steady-focus",
+      "sha256": "78b9d51d2541ba4002158b0a6b44f42c6d857c0ba36313f680a78f551c325d9d",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-gentle-rhythm",
+      "sha256": "31bec3a693651e9ec529a02e2f850c71ea9ba75c33763c00096b2ebed00f71d6",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-theta-comparison",
+      "sha256": "893c85ff2550d9709a94baf9e3821982b5c8562a3bff67e0f5238890dd5be28f",
+      "bytes": 384044
+    },
+    {
+      "id": "practice-dream-edge",
+      "sha256": "79da10feda53b72dd835a670752e37abc67e3202a051a63a0f7d30d7319fc104",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-gateway-inspired",
+      "sha256": "f4052f935759715fb5b32101125b5bb8f4add6e329510f5a337c251a28597514",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-pulse-study",
+      "sha256": "dfb2b9c04ababc9f83ba0a7c25090f50d3151c0d382e6c043cac7f728e0d0867",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-alpha-comparison",
+      "sha256": "893c85ff2550d9709a94baf9e3821982b5c8562a3bff67e0f5238890dd5be28f",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-gamma-texture",
+      "sha256": "703427e67c8a42a6194d7bd7a6a12bfce903ed3b4f2f7fa4644327a0eb9258a3",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-six-pauses",
+      "sha256": "28f1a44586cdeb0e7f82cb9bccbac60260fbc579d06a8df771e6d433bb96f49c",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-harmonic-contemplation",
+      "sha256": "303ed1c7a1bf91186d6238b09aa60eb2b3d84812b494327b751c6d666ac1db55",
+      "bytes": 384044
+    },
+    {
+      "id": "archive-seven-intervals",
+      "sha256": "e9ac81cb9124569b5af4deb6e2ffb066b09fbb55f6d0af11fb53267757d9c64a",
+      "bytes": 384044
+    },
+    {
+      "id": "night-sleep",
+      "sha256": "2ca2b25e156e7f56d2750184acef47170941d45c2273b1087c57bcf8777b5f28",
+      "bytes": 384044
+    },
+    {
+      "id": "night-lucid",
+      "sha256": "06a566a18530c9295d584370583222a9f4473088b78e3fbfc474e2e2adad16e3",
+      "bytes": 384044
+    },
+    {
+      "id": "night-astral",
+      "sha256": "2cd9d2b2dff1d11c82123f31acc923bece980f7341731d876f02a63a9f6a70b6",
+      "bytes": 384044
+    },
+    {
+      "id": "night-viewing",
+      "sha256": "2f8430704a79fef65b26a8750ae3b2d81d95de690ffb83444b84fd87bf069366",
+      "bytes": 384044
+    },
+    {
+      "id": "night-comfort",
+      "sha256": "c103d46559ef11e4fcc6927eb5fa026186a22560ca06220af38aca48b943c7a3",
+      "bytes": 384044
+    },
+    {
+      "id": "night-hypnosis",
+      "sha256": "ae6672b2cb07080cd227ed6d1bb5bd8ec7a7cd2b5e6e4bf93227d0eac1103bf6",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-am-16",
+      "sha256": "9468f080963916bf193c6465ea6c6f5ee0403f2cdd29a17641f7371ec36638ec",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-am-40",
+      "sha256": "3c2545641ac1996bc6436525e051d9209ee77c4b386048a01b4dfe53ee309c07",
+      "bytes": 384044
+    },
+    {
+      "id": "nano-carrier",
+      "sha256": "28a43ef64277620936072e9f958f27b994b8a4fa30203873e3a0c5d9684d4fc2",
+      "bytes": 384044
+    },
+    {
+      "id": "sleep-rem-rebound-nap",
+      "sha256": "806b49057c19df57e20384cd751a576ba573ec28c9c5b247bc34171ea4f59c49",
+      "bytes": 384044
+    },
+    {
+      "id": "sleep-432-drift",
+      "sha256": "e3af86febbb600a6b1eb9f0b93ccd8a0f3cd9fac3f09c6e02a010db655eb82e9",
+      "bytes": 384044
+    },
+    {
+      "id": "sleep-power-nap-25",
+      "sha256": "e44f554f769f52401c648fbc33de73545e8e40b733d2b2288d78f44b5d333262",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-52-17-rhythm",
+      "sha256": "e6225b51fe4c4b202387dda05f66fd5fb753e1bc22c169ad6e4ab8a07afab357",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-study-alpha",
+      "sha256": "da1f754edebb326a3d94ddca02b56dbd50173b4a82468ffe4450de9e774aef54",
+      "bytes": 384044
+    },
+    {
+      "id": "focus-brown-rain",
+      "sha256": "de2b35141d7728e51e80b640f7e361b5c9728acbd5315605436bb91d9259bb6c",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-528-blind-pair",
+      "sha256": "2a399ff1b5d0db855df15877add6c88cf494abc9e14d259a4de64db4f893e2b9",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-cyclic-sigh-pacer",
+      "sha256": "a84355a3d5c803613be484f2e32d26c22969332db21fe6d339de24c6c316eec5",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-bhramari-drone",
+      "sha256": "7bfac2d792d8d2980371c9b684cc1109e871734a3a2ff706b3714b6a2b10bc58",
+      "bytes": 384044
+    },
+    {
+      "id": "meditate-nada-drone",
+      "sha256": "7bfac2d792d8d2980371c9b684cc1109e871734a3a2ff706b3714b6a2b10bc58",
+      "bytes": 384044
+    },
+    {
+      "id": "meditate-bowl-bath-walk",
+      "sha256": "443e3859a7513075ae392735a495f23b6a5b0e0af85cf45fa639973d8cf20ec6",
+      "bytes": 384044
+    },
+    {
+      "id": "meditate-zazen-descent",
+      "sha256": "39a81d1bebc3757a58b3567b8b480ad3493ccb839447534be2cb0dd364d9b9be",
+      "bytes": 384044
+    },
+    {
+      "id": "lucid-morning-nap-window",
+      "sha256": "806b49057c19df57e20384cd751a576ba573ec28c9c5b247bc34171ea4f59c49",
+      "bytes": 384044
+    },
+    {
+      "id": "lucid-first-half-guard",
+      "sha256": "64c7288c5cf766ff7f8b0c3c2b8f525116f02e31ef661981697cb56db32fe5cc",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-cat-purr-companion",
+      "sha256": "41b3d1a7103c803112e59d6ad93ffb9f3b31f80854f7acbce17124173e6ebd62",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-sparrow-band",
+      "sha256": "f3a2ba461eb350f53a76de2f39078d8654b4560f1c55f2e6448a0a23510e6917",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-bluejay-jeer",
+      "sha256": "c74823cfe9348ea1135bc31f003cbde33cbdc011df8a18c043cfed116f5ed35e",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-squirrel-alarm",
+      "sha256": "973974eceb88b7ad5709572251f2c3d0a7221ef2f864bf26f6b853b68a975e83",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-plant-clicks-portrait",
+      "sha256": "fa9a12176665ded4b8c7ec134d58770441998f769f21e511a0ed4aaa848cd449",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-bee-buzz-portrait",
+      "sha256": "ee3db127cc9e303f18bf861c148cfa71c14677a7e28cd5f79197d592ea729951",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-dolbear-cricket",
+      "sha256": "ba80b2b10bf20ee9e376a792c38a089d50d983945bf49eac0f8244faafcc6ca5",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-stream-soundscape",
+      "sha256": "c21d4262f674d3913143be4e5ec660af3c3caf1944a8c5211702e3705d08f9c0",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-crop-paft-band",
+      "sha256": "647ca22a4b3ff0bbfda39fa07954aecc3e163f12d8c14b959fb120fb98b26fbe",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-seed-priming-portrait",
+      "sha256": "fa9a12176665ded4b8c7ec134d58770441998f769f21e511a0ed4aaa848cd449",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-root-phonotropism",
+      "sha256": "a46b055d993cafdec4cf1f526900ee1ddd4a83cc210e731002c9dc837673abbc",
+      "bytes": 384044
+    },
+    {
+      "id": "nature-sonolysis-portrait",
+      "sha256": "15e285b992d4551e17fac3dee39196d0c3221d9336a3b4e3ae96269aa0cf0403",
+      "bytes": 384044
+    },
+    {
+      "id": "lucid-tlr-training-bed",
+      "sha256": "67765c7b3a35d07fd3eb2c7074fdaa4758c01fb1f30824134277388dae39ccfb",
+      "bytes": 384044
+    },
+    {
+      "id": "lucid-wbtb-return-descent",
+      "sha256": "01f9e05898141eea319c657698cabb3db806d4fc43b0ed89ee3949960cde9a62",
+      "bytes": 384044
+    },
+    {
+      "id": "lucid-rem-window-theta",
+      "sha256": "66221cca3433d29a78a149f16b23b71732997635259a44308919a84e7792b79d",
+      "bytes": 384044
+    },
+    {
+      "id": "lucid-n1-incubation",
+      "sha256": "e7d77e0fa037dacbc1c72be31aaf2651e389b7a6e4349474a3fe80160b70d451",
+      "bytes": 384044
+    },
+    {
+      "id": "lucid-ssild-pacer",
+      "sha256": "93305b81f30ad987226c3688fce379c7eef81f55696c4fd5d38bfd6f361d7997",
+      "bytes": 384044
+    },
+    {
+      "id": "gateway-focus-10-reconstruction",
+      "sha256": "91883d77d2106af41ea004d27bbd112251c762fda037ee710cf2a8d357f88272",
+      "bytes": 384044
+    },
+    {
+      "id": "gateway-focus-12-reconstruction",
+      "sha256": "91883d77d2106af41ea004d27bbd112251c762fda037ee710cf2a8d357f88272",
+      "bytes": 384044
+    },
+    {
+      "id": "gateway-focus-15-reconstruction",
+      "sha256": "09dcb81a363a914c1c5e161df53e30f5943c1aa55976d558d98214d785aa1623",
+      "bytes": 384044
+    },
+    {
+      "id": "gateway-focus-21-reconstruction",
+      "sha256": "bab69c7169dad578adb6ace3e3815e04e3ed9396eb80845443a577ae29c5a4d7",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-archaeo-110",
+      "sha256": "a71707a5c62761623fd59a5af1c3eb4a31fc25de5928dcc39a22750ddcede21c",
+      "bytes": 384044
+    },
+    {
+      "id": "relax-vat-40-analog",
+      "sha256": "b62519c3a5a60a8bd599fcf52c46d3ff20a35f4489605f948c7115ee8a79f3ae",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-theta-gamma-interleave",
+      "sha256": "d0bf6674372a8e19e0675070ac7a88b2721f6b3fe40e827c3dcd76528d7c610f",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-rem-gamma-whisper",
+      "sha256": "66221cca3433d29a78a149f16b23b71732997635259a44308919a84e7792b79d",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-newton-spectrum-dorian",
+      "sha256": "bee03ce136d09bdd6fe2a408a6cb6c6a590d766b44982a03dcde4ee615e25171",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-planetary-octave-ascent",
+      "sha256": "8c7e4847312ce1ac6a5909ce8de7ec0583f09689329b0f3b9b7fcc7ab1c051e0",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-hydrogen-21cm-portrait",
+      "sha256": "0fdc0e378ee7c3b4ac24624af9f2f3ed2f40a74246e7ccef8d0f512418e32e26",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-solar-pmode-portrait",
+      "sha256": "32eb5abbcf84d4f441485778a20cd9dae81dd6e6b629d84afc7d763b82d39831",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-cmb-peak-portrait",
+      "sha256": "8cc259846cd04aff49003b8e5f74afd7fa6ab937dbf7d3d87ad4043d8856b055",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-kepler-motet",
+      "sha256": "a87326a305f3a30985447aea557e27535a45b99e910311dd798e6aff702919f6",
+      "bytes": 384044
+    },
+    {
+      "id": "meditate-five-tones",
+      "sha256": "daa4fa5179bf01bc5c7f606b9882ffab8141c112f8248366e631428412c84332",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-tesla-369",
+      "sha256": "7aa2c290930f9cad631dc56cd0f575972330e979fead24bb9b09937646d84855",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-genus-daily-hour",
+      "sha256": "8a62ed6b80559b06cd7b9b011de1de7b26bab61aa29f9ff9a447c4c645efd43f",
+      "bytes": 384044
+    },
+    {
+      "id": "heal-bowl-session",
+      "sha256": "c12d35f448d2629b72455f5002157e1da237e4c350a84239c7b865b86237a8de",
+      "bytes": 384044
+    },
+    {
+      "id": "heal-vat-skille-scan",
+      "sha256": "ab66b71dd40a319e5c0f520508994c4681a1a12e1f08b33f3ae7b606aa680107",
+      "bytes": 384044
+    },
+    {
+      "id": "heal-wbv-30-analog",
+      "sha256": "e256dca193bdf0a01c1fec7738ba6f3c6eada60df9ede1646787bf7f6b17127c",
+      "bytes": 384044
+    },
+    {
+      "id": "heal-pythagorean-ladder",
+      "sha256": "39f478f045b3aa6331698f77d173fe76803e13680e54c56316e8d44e47e094d6",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-sonodynamic-portrait",
+      "sha256": "b0666b306b39ef12157a955c0797575edf8e9fe89f8795ca25b5b9c2e28e1d28",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-piezo-nano-portrait",
+      "sha256": "a1b6df0306208d1e81e270686de1e772940d45fd831c7db44bf7b92b4ab5b3f5",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-tuning-fork-128",
+      "sha256": "4423694102f3aa42703c945786f985b150f6aaf8beb7ce2dbe3fe3b03c89253f",
+      "bytes": 384044
+    },
+    {
+      "id": "heal-pythagorean-evening",
+      "sha256": "24a8f7bf2f47a94048bae26357968022eaae5d309d86a6fd0de2bac908a79841",
+      "bytes": 384044
+    },
+    {
+      "id": "heal-pythagorean-morning",
+      "sha256": "ae04bee1d77341b8a6e2ea63d4ff55fab08fb517e39907d99ba84024f4fcbeac",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-bashar-scale-map",
+      "sha256": "a126de7558be35af9e2911ae8d8a120db1702715d6cef0499c786e80af1c30c2",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-bashar-gamma-contradiction",
+      "sha256": "07422ee0ae96436a4d1befc83c3af469b1e895506c31d7f38eb10838fa76e1b2",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-phi-ladder",
+      "sha256": "0a21bacbeced60c94ac6a1a5005254b383fb33115bca1ef256ce3ef880faa42d",
+      "bytes": 384044
+    },
+    {
+      "id": "exp-phi-bowl-chord",
+      "sha256": "ee8f7a12bd3a6407e63625f261e70a3e6c0c08746cfc7c50c4fd1d2aa83101ed",
+      "bytes": 384044
+    }
+  ],
+  "totalBytes": 50309764
+}

@@ -1,7 +1,7 @@
 {
   "current": {
     "branch": "master",
-    "commit": "ae4a1ebd6d1449979739edc9b5f84e2f09d39287",
+    "commit": "c4890cea4ac46197fbefd8230d966d3881ed41c7",
     "path": "/brainwave_opensync/"
   },
   "previous": {
@@ -16,5 +16,10 @@
   },
   "research": {
     "path": "/brainwave_opensync/research/"
+  },
+  "listeningRoom": {
+    "branch": "archive/listening-room-2026-10-15",
+    "commit": "ae4a1ebd6d1449979739edc9b5f84e2f09d39287",
+    "path": "/brainwave_opensync/previous/"
   }
 }

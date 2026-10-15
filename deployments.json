@@ -1,7 +1,7 @@
 {
   "current": {
     "branch": "master",
-    "commit": "3d7dbb224ae2e0385653df318bbefcfda36728ca",
+    "commit": "22af1cd1a9a37dc8d1cacac2e52be0aabf065dd7",
     "sourceRelease": "78b0751",
     "path": "/brainwave_opensync/"
   },
@@ -20,7 +20,7 @@
   },
   "archive": {
     "branch": "archive/dark-landscapes",
-    "commit": "98b8447b235afa09be70dedf9824742ab167602f",
+    "commit": "17974b28f1978679e1b920a908a75376f776f677",
     "path": "/brainwave_opensync/archive/",
     "themes": [
       "Night Country",

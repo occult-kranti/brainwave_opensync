@@ -39,7 +39,7 @@
 .studio-heading-links { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .studio-heading-links a { color: var(--teal-hi); font-size: 13px; min-height: 44px; display: inline-flex; align-items: center; }
 .studio-heading-links button { min-height: 44px; }
-.studio-player { background: #20362a; border-color: #55694f; padding: 30px; border-radius: 14px; }
+.studio-player { background: var(--ink-2); border-color: var(--line-2); padding: 30px; border-radius: 14px; }
 .studio-sound-heading h2 { font-family: Georgia, serif; font-size: 30px; font-weight: 400; }
 .studio-play-button { border-radius: 7px; }
 .studio-transport { padding: 18px 0; margin-bottom: 16px; }

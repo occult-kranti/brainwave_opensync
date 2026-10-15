@@ -44,7 +44,7 @@ if (typeof Element !== 'undefined') {
   proto.releasePointerCapture ??= () => {};
 }
 
-const MODULE_LABELS = ['Home', 'Studio', 'Frequency reference', 'Presets', 'Levels', 'Live analyzer', 'Cymatics', 'Sleep experiments', 'Replication Bay', 'Safety', 'Knowledge', 'About', 'Guide', 'Experiment Lab', 'Critique Library', 'Hypothesis Tracker', 'Programs Archive'];
+const MODULE_LABELS = ['Today', 'Studio', 'Frequency reference', 'Explore', 'Levels', 'Live analyzer', 'Cymatics', 'Sleep experiments', 'Replication Bay', 'Safety', 'Knowledge', 'About', 'Guide', 'Experiment Lab', 'Critique Library', 'Hypothesis Tracker', 'Programs Archive'];
 
 /** Viewport mock shared with the mobile-shell suite. */
 function mockViewport(width: number) {

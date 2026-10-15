@@ -15,7 +15,7 @@ export default function Traditions() {
   const load = (id: string) => {
     const p = ARCHIVE_PRESETS.find((p) => p.id === id);
     if (!p || s.governor.infantMode) return;
-    s.stopPreview(); s.stop(); s.loadPreset(p); navigate('/studio');
+    s.stopPreview(); s.stop(); s.loadPreset(p); navigate('/listen');
   };
   const matches = ARCHIVE_SOURCES.filter((source) => `${source.title} ${source.origin} ${source.kind} ${source.finding}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()));
   return <div className="practice-page">
@@ -27,7 +27,7 @@ export default function Traditions() {
       const sources = matches.filter((source) => source.group === group);
       return sources.length > 0 && <details className="research-section" key={group} open={Boolean(query) || group === 'Russia & China'}><summary>{group}<span className="source-count">{sources.length} {sources.length === 1 ? 'source' : 'sources'}</span></summary><div className="sourcebook-grid">{sources.map((source) => {
         const p = ARCHIVE_PRESETS.find((p) => p.id === source.preset);
-        return <article className="sourcebook-entry" key={source.id}><span className="eyebrow">{source.kind}</span><h2>{source.title}</h2><p className="source-origin">{source.origin}</p><p>{source.finding}</p><details className="quiet-disclosure"><summary>Evidence & access limits</summary><p><strong>Access:</strong> {source.access}.</p><p>{source.limit}</p></details><div className="source-links"><a href={source.url} target="_blank" rel="noreferrer">Open source ↗</a>{source.alternate && <a href={source.alternate} target="_blank" rel="noreferrer">{source.id === 'gateway' ? 'Read transcript' : 'Read author copy'} ↗</a>}</div>{p && <div className="source-listening"><span className="eyebrow">Original sound · {presetDurationMin(p)} min · D experimental</span><h3>{p.title.replace(' — experimental tier', '')}</h3><p>{p.purpose}</p><details className="quiet-disclosure"><summary>What this recipe reproduces</summary><p>{p.rationale}</p></details><button className="practice-text-button" disabled={s.governor.infantMode} onClick={() => load(p.id)}>Set up in Studio <ArrowRight size={15} /></button></div>}</article>;
+        return <article className="sourcebook-entry" key={source.id}><span className="eyebrow">{source.kind}</span><h2>{source.title}</h2><p className="source-origin">{source.origin}</p><p>{source.finding}</p><details className="quiet-disclosure"><summary>Evidence & access limits</summary><p><strong>Access:</strong> {source.access}.</p><p>{source.limit}</p></details><div className="source-links"><a href={source.url} target="_blank" rel="noreferrer">Open source ↗</a>{source.alternate && <a href={source.alternate} target="_blank" rel="noreferrer">{source.id === 'gateway' ? 'Read transcript' : 'Read author copy'} ↗</a>}</div>{p && <div className="source-listening"><span className="eyebrow">Original sound · {presetDurationMin(p)} min · D experimental</span><h3>{p.title.replace(' — experimental tier', '')}</h3><p>{p.purpose}</p><details className="quiet-disclosure"><summary>What this recipe reproduces</summary><p>{p.rationale}</p></details><button className="practice-text-button" disabled={s.governor.infantMode} onClick={() => load(p.id)}>Set up for listening <ArrowRight size={15} /></button></div>}</article>;
       })}</div></details>;
     })}
     {matches.length === 0 && <p role="status">No source matches that search. Try a country, title or practice.</p>}

@@ -108,3 +108,35 @@
   .preset-card-actions .preset-details-button { flex-basis: 100%; }
 }
 @media(max-width:700px) { .preset-category-group { padding: 0 12px; } .preset-page > header .t-display-lg { font-size: 38px; } }
+
+/* Explore: browse first, refine on demand. Technical details stay in the sheet. */
+.discovery-shell .preset-page { padding:48px 48px 60px; max-width:1440px; }
+.discovery-shell .preset-page > header h1 { font-size:clamp(36px,4vw,56px); letter-spacing:-.04em; margin:16px 0; }
+.discovery-shell .preset-page > header p { font-size:14px; max-width:650px; line-height:1.85; }
+.discovery-shell .preset-collections { gap:0 22px; border-bottom:1px solid var(--line-1); margin:30px 0 26px; }
+.discovery-shell .preset-collections .chip { border:0; border-radius:0; background:transparent; color:var(--text-2); padding:12px 0; border-bottom:2px solid transparent; font-size:12px; }
+.discovery-shell .preset-collections .chip-active { color:var(--amber); border-color:var(--amber); font-weight:600; }
+.discovery-shell .preset-intro { padding:0; margin:0 0 15px; }
+.discovery-shell .preset-intro h2 { font:400 28px/1.25 Georgia,serif; }.discovery-shell .preset-intro p { font-size:12px; }
+.discovery-shell .preset-guide-link { font-size:12px; }
+.discovery-shell .preset-filters { margin:26px 0 30px; gap:12px; }
+.discovery-shell .preset-search { width:100%; }.discovery-shell .preset-search input { background:#fcfaf5; padding:13px 16px; border-radius:7px; margin-top:3px; }
+.explore-filter-drawer { border-bottom:1px solid var(--line-1); }.explore-filter-drawer > summary { font-size:12px; min-height:44px; padding:10px 0; cursor:pointer; color:var(--text-2); }.explore-filter-drawer[open] { padding-bottom:18px; }.explore-filter-drawer .preset-more-filters { margin-top:16px; }
+.discovery-shell .preset-arrangement { justify-content:flex-end; margin-top:-7px; gap:16px; }.discovery-shell .preset-arrangement label { display:flex; align-items:center; min-width:0; font-size:10px; }.discovery-shell .preset-arrangement select { width:auto; padding:8px; font-size:11px; min-height:40px; background:transparent; border:0; }
+.discovery-shell .preset-category-group { border:0; border-radius:0; padding:0; margin:0; border-top:1px solid var(--line-1); }
+.discovery-shell .preset-category-group > summary { font:400 25px/1.3 Georgia,serif; padding:20px 0; }
+.discovery-shell .preset-category-group .preset-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; margin-bottom:32px; }
+.discovery-shell .preset-card { padding:22px; border:1px solid #deded5; background:#fcfaf5; border-radius:10px; box-shadow:none; }
+.discovery-shell .preset-card-art { width:calc(100% + 44px); max-width:none; margin:-22px -22px 20px; aspect-ratio:2.4; object-fit:cover; opacity:1; filter:none; border-radius:0; }
+.discovery-shell .preset-card:nth-child(even) .preset-card-art { object-position:70% 85%; }
+.discovery-shell .preset-card h3 { font:400 29px/1.2 Georgia,serif; letter-spacing:-.025em; }
+.discovery-shell .preset-card-top .t-label { font:500 10px/1.5 Inter,sans-serif; letter-spacing:.04em; }
+.discovery-shell .preset-card-description { font-size:12px; line-height:1.8; min-height:44px; margin:8px 0 18px; }
+.discovery-shell .preset-card-actions { gap:9px; }.discovery-shell .preset-card-actions .chip { font:500 12px/1.5 Inter,sans-serif; text-transform:none; letter-spacing:0; border-radius:5px; }
+.discovery-shell .preset-card-actions .preset-details-button { flex-basis:100%; border:0; min-height:40px; color:var(--text-2); padding:10px 0 0; }
+.discovery-shell .preset-card-links { font-size:10px; margin-bottom:14px; }
+.preset-sheet-art { display:block; width:100%; max-height:170px; object-fit:cover; margin:16px 0; border-radius:6px; }
+@media(min-width:1600px) { .discovery-shell .preset-category-group .preset-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:1100px) { .discovery-shell .preset-page { padding:36px 28px; }.discovery-shell .preset-card h3 { font-size:25px; } }
+@media(max-width:767px) { .discovery-shell .preset-page { padding:30px 20px; }.discovery-shell .preset-page > header h1 { font-size:39px; }.discovery-shell .preset-collections { display:flex; flex-wrap:nowrap; overflow-x:auto; gap:24px; }.discovery-shell .preset-collections .chip { white-space:nowrap; flex-shrink:0; }.discovery-shell .preset-category-group .preset-grid { grid-template-columns:1fr; gap:20px; }.discovery-shell .preset-card-art { aspect-ratio:2.2; }.discovery-shell .preset-arrangement { display:grid; grid-template-columns:1fr 1fr; margin:20px 0; gap:10px; }.discovery-shell .preset-arrangement label { display:grid; }.discovery-shell .preset-arrangement select { width:100%; padding:8px 0; }.discovery-shell .preset-category-group > summary > span { display:inline; float:right; margin:0; }.discovery-shell .preset-card h3 { font-size:28px; } }
+.discovery-shell .preset-card { overflow:visible; }.discovery-shell .preset-card-art { border-radius:10px 10px 0 0; }.discovery-shell .preset-card-actions .chip-active { background:var(--amber); color:#fff; }

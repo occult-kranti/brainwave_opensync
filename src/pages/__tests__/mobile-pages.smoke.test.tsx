@@ -8,6 +8,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { renderToString } from 'react-dom/server';
 import { MemoryRouter } from 'react-router';
 import { SessionProvider } from '@/ui/session/SessionContext';
+import Listen from '../Listen';
+import ResearchHub from '../ResearchHub';
 import Home from '@/pages/Home';
 import Overnight from '@/pages/Overnight';
 import NanoLab from '@/pages/NanoLab';
@@ -47,12 +49,14 @@ const PAGES: { name: string; el: () => React.ReactElement; primary: string }[] =
   { name: 'NanoLab', el: () => <NanoLab />, primary: 'Four controlled starting points' },
   { name: 'Find a session', el: () => <Meditate />, primary: 'Set up this session' },
   { name: 'Hypnosis', el: () => <Hypnosis />, primary: 'Hypnosis' },
-  { name: 'Traditions', el: () => <Traditions />, primary: 'Set up in Studio' },
-  { name: 'Home', el: () => <Home />, primary: 'Find my session' },
+  { name: 'Traditions', el: () => <Traditions />, primary: 'Set up for listening' },
+  { name: 'Home', el: () => <Home />, primary: 'Settle in' },
+  { name: 'Listen', el: () => <Listen />, primary: 'Play session' },
+  { name: 'Research', el: () => <ResearchHub />, primary: 'Read &amp; explore' },
   { name: 'Guide', el: () => <Guide />, primary: 'DEEP TECHNICAL' },
   { name: 'Studio', el: () => <Studio />, primary: 'Play session' },
   { name: 'Library', el: () => <Library />, primary: 'LOAD ↗' },
-  { name: 'Presets', el: () => <Presets />, primary: 'LOAD INTO STUDIO' },
+  { name: 'Presets', el: () => <Presets />, primary: 'Choose sound' },
   { name: 'Levels', el: () => <Levels />, primary: 'LOAD PROTOCOL' },
   { name: 'Analyzer', el: () => <Analyzer />, primary: 'RUN MEASUREMENT' },
   { name: 'Cymatics', el: () => <Cymatics />, primary: 'Cymatic Studio' },

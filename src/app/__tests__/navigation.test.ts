@@ -6,7 +6,7 @@ describe('task navigation', () => {
   it('covers every route once with a plain purpose and preserves primary listening paths', () => {
     expect(NAVIGATION_ENTRIES).toHaveLength(ROUTES.length);
     expect(new Set(NAVIGATION_ENTRIES.map((entry) => entry.route.path))).toEqual(new Set(ROUTES.map((route) => route.path)));
-    expect(getPrimaryNavRoutes().map((route) => route.path)).toEqual(['/', '/meditate', '/presets', '/studio']);
+    expect(getPrimaryNavRoutes().map((route) => route.path)).toEqual(['/', '/presets', '/listen', '/research-hub']);
     const disclosed = DISCLOSURE_CATEGORIES.flatMap((category) => entriesForCategory(category.id)).filter((entry) => entry.route.path !== getSafetyRoute().path);
     expect([...getPrimaryNavRoutes(), ...disclosed.map((entry) => entry.route), getSafetyRoute()]).toHaveLength(ROUTES.length);
     for (const entry of NAVIGATION_ENTRIES) expect(entry.description.length).toBeGreaterThan(10);

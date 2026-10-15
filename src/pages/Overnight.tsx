@@ -28,7 +28,7 @@ export default function Overnight() {
     session.previewPreset({ ...preset, id: `night-check-${goal}`, spec: { ...preset.spec, phases: [{ ...preset.spec.phases[0], durationSec: 8 }] } });
   };
   const load = () => {
-    stopPreview(); session.stop(); session.loadPreset(preset); session.setFadeOutSec(60); navigate('/studio');
+    stopPreview(); session.stop(); session.loadPreset(preset); session.setFadeOutSec(60); navigate('/listen');
   };
   return <div className="practice-page overnight-page">
     <header className="practice-heading"><span className="eyebrow"><Moon size={15} /> The overnight collection</span><h1>Make room for a quieter night.</h1><p>A seven-hour listening plan, shaped around your intention. Start with a short wind-down, or explicitly choose continuous sound.</p></header>
@@ -46,7 +46,7 @@ export default function Overnight() {
         <dl className="night-facts"><div><dt>Sound stops after</dt><dd>{audioMinutes === 420 ? '7 hours' : `${audioMinutes} min`}</dd></div><div><dt>Final fade</dt><dd>60 seconds</dd></div><div><dt>Quiet remainder</dt><dd>{Math.floor((420 - audioMinutes) / 60)} h {(420 - audioMinutes) % 60} min</dd></div></dl>
         {audioMinutes < (continuous ? 420 : 30) && <p role="status">Your existing session cap shortens the sound to {audioMinutes} minutes. <Link to="/safety">Review your limit</Link>.</p>}
         <p>{intention.practice}</p><p className="match-reason">{intention.limit}</p>
-        <button className="practice-primary" onClick={load}>Set up this night <ArrowRight size={16} /></button><p className="small-note">Opens Studio, stopped and ready. Your volume will never be raised. Press Play when ready.</p>
+        <button className="practice-primary" onClick={load}>Set up this night <ArrowRight size={16} /></button><p className="small-note">Opens Listen, stopped and ready. Your volume will never be raised. Press Play when ready.</p>
         <details className="quiet-disclosure"><summary>Before leaving it overnight</summary><p>A browser can suspend audio when the screen locks, the app loses focus, or the device changes power state. Test your actual device first; this is not a guaranteed overnight player or alarm.</p><p>Keep listening comfortable and stop if sound fragments your sleep. Seven hours is a plan length, not a prescription: adults commonly need seven to nine hours of actual sleep. This page adds no wake-up interruptions.</p><p>Use live playback for long sessions. Full seven-hour PCM16 audio at 48 kHz would require about 4.84 GB before working memory; browser WAV export rejects oversized renders. You can save the lightweight session settings instead.</p></details>
       </section>
     </div>}

@@ -140,8 +140,8 @@ export default function Studio() {
   return (
     <div className="studio-page" style={{ padding: isMobile ? '20px 16px 40px' : '32px 40px 48px', maxWidth: 1440, margin: '0 auto' }}>
       <header className="studio-heading">
-        <div><span className="eyebrow">Your listening space</span><h1 className="t-h1">Settle into sound.</h1><p className="t-body-sm text-2">Your session, at your pace. Open a group below to make it your own.</p></div>
-        <div className="studio-heading-links"><Link to="/meditate">Help me choose</Link><button type="button" className="chip" onClick={() => navigate('/presets')}>Choose another sound</button></div>
+        <div><span className="eyebrow">The sound workshop</span><h1 className="t-h1">Make it your own.</h1><p className="t-body-sm text-2">Fine-tune a sound, build a sequence, or explore a pattern. Your listening session stays with you.</p></div>
+        <div className="studio-heading-links"><Link to="/listen">Back to listening</Link><Link to="/meditate">Help me choose</Link><button type="button" className="chip" onClick={() => navigate('/presets')}>Choose another sound</button></div>
       </header>
       <section className="panel studio-player" aria-label="Session player" style={{ position: 'relative', isolation: 'isolate', overflow: 'hidden' }}>
         {field4dOn && <Field4D />}

@@ -27,7 +27,7 @@ afterEach(async () => { await act(async () => root.unmount()); host.remove(); vi
 
 describe('practice integration', () => {
   it('loads the overnight default without autoplay, then stops a full plan after an elapsed-time jump', async () => {
-    await act(async () => root.render(<MemoryRouter initialEntries={['/overnight']}><SessionProvider><Probe /><Routes><Route path="/overnight" element={<Overnight />} /><Route path="/studio" element={<div>Studio destination</div>} /></Routes></SessionProvider></MemoryRouter>));
+    await act(async () => root.render(<MemoryRouter initialEntries={['/overnight']}><SessionProvider><Probe /><Routes><Route path="/overnight" element={<Overnight />} /><Route path="/listen" element={<div>Listen destination</div>} /></Routes></SessionProvider></MemoryRouter>));
     const setup = Array.from(host.querySelectorAll('button')).find(b => b.textContent?.includes('Set up this night'))!;
     await act(async () => setup.click());
     expect(session.limitMin).toBe(30);
@@ -47,7 +47,7 @@ describe('practice integration', () => {
   });
 
   it('replaces a running session with the chosen duration, keeps gain caps, and never autoplays', async () => {
-    await act(async () => root.render(<MemoryRouter initialEntries={['/meditate?goal=sleep']}><SessionProvider><Probe /><Routes><Route path="/meditate" element={<Meditate />} /><Route path="/studio" element={<div>Studio destination</div>} /></Routes></SessionProvider></MemoryRouter>));
+    await act(async () => root.render(<MemoryRouter initialEntries={['/meditate?goal=sleep']}><SessionProvider><Probe /><Routes><Route path="/meditate" element={<Meditate />} /><Route path="/listen" element={<div>Listen destination</div>} /></Routes></SessionProvider></MemoryRouter>));
     act(() => { session.setVolumeDb(-35); session.setLimitMin(1); });
     act(() => { session.start(); });
     expect(session.running).toBe(true);
@@ -55,7 +55,7 @@ describe('practice integration', () => {
     await act(async () => five.click());
     const load = Array.from(host.querySelectorAll('button')).find((b) => b.textContent?.includes('Set up this session'))!;
     await act(async () => load.click());
-    expect(host.textContent).toContain('Studio destination');
+    expect(host.textContent).toContain('Listen destination');
     expect(session.running).toBe(false);
     expect(session.limitMin).toBe(5);
     expect(session.volumeDb).toBeLessThanOrEqual(-35);

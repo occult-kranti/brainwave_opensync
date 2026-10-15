@@ -24,6 +24,14 @@ The [Sound & observation lab](https://occult-kranti.github.io/brainwave_opensync
 
 Version 3 starts with **Listen, Create, and Inspect**. [Presets](https://occult-kranti.github.io/brainwave_opensync/presets) offers three sounds to try, the complete catalog, Bashar sounds, and saved Studio presets. Studio keeps playback, duration, level, and active settings visible; sound editing and file options open on request. Specialist tools and Theory & research are grouped in the sidebar. See the [panel decisions](docs/panel/loop-1-decisions.md) for scope and preservation checks.
 
+## Quiet horizons redesign
+
+The main path is **Today → Explore → Listen**, with a separate **Research** reading room. Choose a practice silently, press Play explicitly, and open Customize sound to edit the same session in Studio. Every original tool remains reachable through task disclosures and the searchable directory. The catalog retains all 131 presets, including the overnight, sourcebook and NanoLab collections.
+
+The [previous listening room](https://occult-kranti.github.io/brainwave_opensync/previous/) is frozen on `archive/listening-room-2026-10-15` at `ae4a1ebd6d1449979739edc9b5f84e2f09d39287`. The Pages workflow builds it separately under `/previous/` alongside the current `master` release, `/v2/`, `/open-sync/` and `/research/`. The parent service worker excludes the independent releases from navigation fallback.
+
+See [.design/brief.md](.design/brief.md) for screen decisions and design references, and [art provenance](public/art/quiet-horizons-provenance.md) for the two original illustrations. Existing research notes retain their source-access limits; the visual redesign adds no new efficacy claims.
+
 ## What it is
 
 - Studio combines tones, rhythms, noise, nature textures, and modeled bowls.
@@ -37,7 +45,7 @@ Version 3 starts with **Listen, Create, and Inspect**. [Presets](https://occult-
 
 Open [Bashar sounds](https://occult-kranti.github.io/brainwave_opensync/presets?collection=bashar) for the scale sequence, alpha/gamma comparison, golden-ratio pitch ladder, and a simultaneous bowl chord over a 110 Hz root. Each sound can be previewed, loaded into Studio, edited, saved, and exported. **Details & steps** plays any segment for eight seconds. Starting pitches and timings are app choices; the source claims remain unverified.
 
-Practical pages are grouped by task. **Theory & research** starts collapsed in the sidebar, mobile More menu, and Home directory. The active theory route opens its navigation group automatically. Read the [implementation and review record](docs/BASHAR-PRESETS-AND-NAVIGATION.md) for the sound definitions and remaining renderer differences.
+Practical pages are grouped by task. **Theory & research** starts collapsed in the sidebar, mobile More menu, and Research tool directory. The active theory route opens its navigation group automatically. Read the [implementation and review record](docs/BASHAR-PRESETS-AND-NAVIGATION.md) for the sound definitions and remaining renderer differences.
 
 ## Everyday app (phone-first, no captions)
 
@@ -164,7 +172,7 @@ src/
     audio/    # live Web Audio engine, export worker, media session bridge
     session/  # session provider + types, hook, math, defaults, persistence, share links
     components, layout, hooks, theme
-  pages/      # 24 routed screens
+  pages/      # Routed listening, research and lab screens
   test/       # vitest setup + helpers
 scripts/      # render-previews.mjs (preset WAVs), render-icons.py (PWA icons)
 docs/         # ARCHITECTURE, ROADMAP, SOTA-COMPARISON

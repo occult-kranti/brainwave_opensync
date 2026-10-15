@@ -38,7 +38,7 @@ export default function Hypnosis() {
   const load = (id: string) => {
     const p = getPresetById(id);
     if (!p || s.governor.infantMode) return;
-    s.stopPreview(); s.stop(); s.loadPreset(p); navigate('/studio');
+    s.stopPreview(); s.stop(); s.loadPreset(p); navigate('/listen');
   };
   return <div className="practice-page">
     <header className="practice-heading"><span className="eyebrow"><BookOpen size={15} /> Listening notes · reviewed 15 October 2026</span>
@@ -54,7 +54,7 @@ export default function Hypnosis() {
     <details className="research-section" open><summary>Practices & new sounds</summary>
       <p style={{ marginTop: 16 }}>Original listening designs with quiet authored levels and an automatic stop. No spoken hypnosis, subliminal messages or clinical treatment is included.</p>
       {s.governor.infantMode && <p>Infant mode is active. These adult practices cannot be loaded.</p>}
-      <div className="research-preset-list">{PRACTICE_PRESETS.filter((p) => ['practice-suggestion-space', 'practice-evening-rain', 'practice-theta-comparison', 'practice-dream-edge'].includes(p.id)).map((p) => <article key={p.id}><span className="eyebrow">{p.category} · Grade {p.grade}</span><h3>{p.title}</h3><p>{p.purpose}</p><button disabled={s.governor.infantMode} className="practice-text-button" onClick={() => load(p.id)}>Set up in Studio <ArrowRight size={15} /></button><details className="quiet-disclosure"><summary>Why this sound?</summary><p>{p.rationale}</p></details></article>)}</div>
+      <div className="research-preset-list">{PRACTICE_PRESETS.filter((p) => ['practice-suggestion-space', 'practice-evening-rain', 'practice-theta-comparison', 'practice-dream-edge'].includes(p.id)).map((p) => <article key={p.id}><span className="eyebrow">{p.category} · Grade {p.grade}</span><h3>{p.title}</h3><p>{p.purpose}</p><button disabled={s.governor.infantMode} className="practice-text-button" onClick={() => load(p.id)}>Set up for listening <ArrowRight size={15} /></button><details className="quiet-disclosure"><summary>Why this sound?</summary><p>{p.rationale}</p></details></article>)}</div>
       <Link to="/presets?collection=practice">Browse all eight new listening practices</Link>
     </details>
     <details className="research-section"><summary>A simple self-hypnosis practice</summary>

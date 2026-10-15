@@ -26,7 +26,7 @@ concurrency:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -84,6 +84,34 @@ jobs:
             research: { path: '/brainwave_opensync/research/' },
           }, null, 2) + '\n');
           NODE
+      - name: Check out the frozen listening room
+        uses: actions/checkout@v7
+        with:
+          ref: archive/listening-room-2026-10-15
+          path: listening-room-source
+      - name: Build the archived listening room
+        working-directory: listening-room-source
+        run: |
+          test "$(git rev-parse HEAD)" = ae4a1ebd6d1449979739edc9b5f84e2f09d39287
+          npm ci --no-audit --no-fund
+          npm run build
+          node scripts/emit-route-shells.mjs dist
+        env:
+          VITE_BASE: /brainwave_opensync/previous/
+      - name: Include the archived listening room under previous
+        run: |
+          mkdir -p dist/previous
+          cp -a listening-room-source/dist/. dist/previous/
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const manifest = JSON.parse(readFileSync('dist/deployments.json', 'utf8'));
+          manifest.listeningRoom = {
+            branch: 'archive/listening-room-2026-10-15',
+            commit: 'ae4a1ebd6d1449979739edc9b5f84e2f09d39287',
+            path: '/brainwave_opensync/previous/'
+          };
+          writeFileSync('dist/deployments.json', JSON.stringify(manifest, null, 2) + '\n');
+          NODE
       - name: Build the connected research atlas and pinned source archives
         run: |
           node research-atlas/tests/independent-review.mjs
@@ -94,6 +122,8 @@ jobs:
           node research-atlas/sound-lab/test.mjs
           python3 research-atlas/scripts/verify_continuation.py
           python3 research-atlas/scripts/build_site.py --output dist/research
+      - name: Preserve archived links to the connected projects
+        run: node scripts/emit-archive-links.mjs dist
       - name: Publish dist/ to gh-pages
         env:
           GITHUB_TOKEN: ${{ github.token }}

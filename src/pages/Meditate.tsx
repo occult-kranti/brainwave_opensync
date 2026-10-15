@@ -21,7 +21,7 @@ export default function Meditate() {
     // Put the selected cap in the loaded spec so it also applies when replacing
     // a running session whose React closure still has the previous time limit.
     session.loadPreset({ ...item.preset, spec: { ...item.preset.spec, limitMin: item.minutes } });
-    navigate('/studio');
+    navigate('/listen');
   };
   return <div className="practice-page">
     <header className="practice-heading"><span className="eyebrow"><Leaf size={15} /> Your next few minutes</span>

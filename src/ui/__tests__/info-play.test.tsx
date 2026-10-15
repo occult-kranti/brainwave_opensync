@@ -207,7 +207,7 @@ describe('preset preview (engine preview path)', () => {
       </MemoryRouter>,
     );
     const btn = c.querySelector<HTMLElement>('[data-testid="preset-preview-sleep-delta-descent"]')!;
-    expect(btn.textContent).toContain('▶ PREVIEW');
+    expect(btn.textContent).toContain('▶ Preview');
 
     await act(async () => btn.click());
     expect(playSpy).toHaveBeenCalledTimes(1);
@@ -216,13 +216,13 @@ describe('preset preview (engine preview path)', () => {
     expect(left.length).toBe(right.length);
     expect(left.length).toBeLessThanOrEqual(10 * 48000 + 4800);
     expect(left.length).toBeGreaterThan(48000);
-    expect(btn.textContent).toContain('■ STOP');
+    expect(btn.textContent).toContain('■ Stop');
     expect(btn.className).toContain('chip-active');
 
     // Second tap stops.
     await act(async () => btn.click());
     expect(stopSpy).toHaveBeenCalled();
-    expect(btn.textContent).toContain('▶ PREVIEW');
+    expect(btn.textContent).toContain('▶ Preview');
   });
 
   it('only one preview plays at a time', async () => {

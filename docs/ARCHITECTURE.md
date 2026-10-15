@@ -98,3 +98,10 @@ Vitest 4. Default environment is node (DSP/data suites); UI suites opt into happ
 ## Historical note
 
 Comments still cite pre-release design documents (`design.md §…`, `safety.md`, `S30.2`, `W-A`, `P0-4`…). Those documents were the v1 planning corpus and are not in this repository; treat the references as provenance, not as links.
+
+
+## Quiet horizons navigation (October 2026)
+
+The primary destinations are Today (`/`), Explore (`/presets`), Listen (`/listen`) and Research (`/research-hub`). `Listen` is a presentation over the existing SessionProvider, not a second audio engine. Today links can select a catalog preset by query parameter; valid selection stops prior audio and loads the preset without starting playback. Studio remains the complete sound editor. The reading room embeds `ToolDirectory`, using the same navigation registry and aliases as the shell and command palette.
+
+Discovery pages use a scoped paper/blue theme; listening and technical pages use the charcoal workspace. The original images are in `public/art/` with a provenance record. The Pages workflow additionally builds the frozen `archive/listening-room-2026-10-15` branch at `/previous/`, and records its immutable source commit in `deployments.json`.

@@ -15,13 +15,13 @@ function render(el: React.ReactElement) {
 describe('W8 home & docs screens', () => {
   it('Home renders practical task paths, scope statement, and a complete directory', () => {
     const html = render(<Home />);
-    expect(html).toContain('A little space.');
-    expect(html).toContain('Find my session');
-    expect(html).toContain('They do not measure your brain activity.');
-    expect(html).toContain('Build a chord');
-    expect(html).toContain('Find a tool or page');
-    expect(html).toContain('Theory &amp; research');
-    expect(html).toContain('Follow your curiosity');
+    expect(html).toContain('A soft place to land.');
+    expect(html).toContain('Help me choose');
+    expect(html).toContain('it does not measure your brain activity.');
+    expect(html).toContain('Sound workshop');
+    expect(html).toContain('All tools');
+    expect(html).toContain('reading room');
+    expect(html).toContain('For the curious');
     expect(html).toContain('data-testid="home-lab-lucid"');
     expect(html).toContain('data-testid="home-lab-healing"');
     expect(html).toContain('data-testid="home-lab-nature"');

@@ -31,12 +31,14 @@ export const NAVIGATION_CATEGORIES: readonly NavigationCategory[] = [
 type EntrySpec = readonly [path: string, category: NavigationCategoryId, title: string, description: string, aliases: readonly string[]];
 
 const ENTRY_SPECS: readonly EntrySpec[] = [
-  ['/', 'primary', 'Home', 'Find a starting point for listening, creating, or inspecting audio.', ['start', 'tools', 'directory']],
-  ['/meditate', 'primary', 'Find a session', 'Choose a meditation for your intention, time and listening setup.', ['meditation', 'suggestion', 'recommend', 'right now', 'healing', 'sleep']],
+  ['/', 'primary', 'Today', 'Find a starting point for listening, creating, or inspecting audio.', ['start', 'tools', 'directory']],
+  ['/listen', 'primary', 'Listen', 'Play your current session in a quiet listening view.', ['player', 'pause', 'sand', 'meditate']],
+  ['/research-hub', 'primary', 'Research', 'Explore sources and find every tool in the reading room.', ['directory', 'tools', 'books', 'reading']],
+  ['/meditate', 'practice', 'Find a session', 'Choose a meditation for your intention, time and listening setup.', ['meditation', 'suggestion', 'recommend', 'right now', 'healing', 'sleep']],
   ['/overnight', 'practice', 'Overnight', 'Plan seven hours with speaker-compatible sound beds and optional quiet time.', ['sleep', '7 hours', 'lucid', 'astral projection', 'remote viewing', 'hypnosis']],
   ['/hypnosis', 'practice', 'Hypnosis & dreaming', 'Read the evidence, explore sound mathematics, and try a listening practice.', ['hypnagogia', 'hypnagogic', 'trance', 'theta', 'suggestion', 'mathematics']],
-  ['/presets', 'primary', 'Presets', 'Preview ready-made sounds, then load a session to play or edit.', ['listen', 'Bashar', 'bowls', 'noise', 'sound library', 'saved']],
-  ['/studio', 'primary', 'Studio', 'Mix tones, noise, and layers into a session.', ['create', 'play', 'duration', 'volume', 'export', 'WAV', 'binaural', 'isochronic']],
+  ['/presets', 'primary', 'Explore', 'Preview ready-made sounds, then load a session to play or edit.', ['listen', 'Bashar', 'bowls', 'noise', 'sound library', 'saved']],
+  ['/studio', 'create', 'Studio', 'Mix tones, noise, and layers into a session.', ['create', 'play', 'duration', 'volume', 'export', 'WAV', 'binaural', 'isochronic']],
   ['/harmonics', 'create', 'Harmonic Lab', 'Build chords and compare tunings.', ['chord', 'music', 'harmony', 'overtones', 'just', 'equal', 'pitch']],
   ['/sound-methods', 'create', 'Sound Methods', 'Edit sound examples from published methods.', ['Monroe', 'Gateway', 'patent', 'noise', 'binaural', 'phase modulation', 'recipe']],
   ['/sonic-lab', 'create', 'Sonic Lab', 'Try audio patterns, rhythms, and illusions.', ['Shepard', 'Risset', 'Fibonacci', 'noise', 'generator', 'patterns']],
@@ -80,7 +82,7 @@ export const NAVIGATION_ENTRIES: readonly NavigationEntry[] = ENTRY_SPECS.map(([
 export const DISCLOSURE_CATEGORIES: readonly NavigationCategory[] = NAVIGATION_CATEGORIES.filter((category) => category.id !== 'primary');
 
 export function getPrimaryNavRoutes(): readonly AppRoute[] {
-  return NAVIGATION_ENTRIES.filter((entry) => entry.category === 'primary').map((entry) => entry.route);
+  return ['/', '/presets', '/listen', '/research-hub'].map(path => NAVIGATION_ENTRIES.find(entry => entry.route.path === path)!.route);
 }
 
 export function getSafetyRoute(): AppRoute {

@@ -49,6 +49,8 @@ export interface FeatureEntry {
 /** Every routed screen in the app (test coverage target). */
 export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/', label: 'Home' },
+  { route: '/listen', label: 'Listen' },
+  { route: '/research-hub', label: 'Research' },
   { route: '/meditate', label: 'Find a Session' },
   { route: '/overnight', label: 'Overnight' },
   { route: '/hypnosis', label: 'Hypnosis & Dreaming' },
@@ -84,6 +86,18 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'focused-listening', module: 'Listen', route: '/listen', name: 'Focused listening player',
+    simple: 'Choose a sound, then press Play when you are ready. Pause, stop, change the volume or watch the sand without opening the full sound editor.',
+    deep: 'The listening view shares the existing session provider and audio engine with Studio. Selecting a catalog sound stops the previous session and loads its complete recipe without autoplay. The same listening limits, advisory and stop controls remain in force. The remaining-time display follows the active duration and fade endpoint.',
+    howTo: ['Choose a practice from Today or Explore.', 'Press Play at a comfortable device volume.', 'Open Customize sound to edit the same session in Studio.'],
+  },
+  {
+    id: 'reading-room', module: 'Research', route: '/research-hub', name: 'Reading room and tool directory',
+    simple: 'Find a starting point in the research or browse every tool by task. Search familiar names to find a page without knowing its category.',
+    deep: 'The reading room organizes existing source pages into practical reading paths. Historical provenance remains distinct from experimental validation. The complete tool directory uses the shared navigation registry and search aliases. Existing routes and deep links remain available.',
+    howTo: ['Choose a reading topic.', 'Open sources and limits on the linked page.', 'Search the tool directory for a lab or feature.'],
+  },
   {
     id: 'nano-audio-bench', module: 'NanoLab', route: '/nano-lab', name: 'Frequency comparison bench',
     grade: 'A', gradeScope: 'Signal algebra and digital measurements only; no nanoparticle or biological response is established.',

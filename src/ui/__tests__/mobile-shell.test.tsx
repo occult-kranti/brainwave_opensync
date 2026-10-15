@@ -29,6 +29,7 @@ if (typeof Element !== 'undefined') {
 }
 
 const ALL_ROUTE_PATHS = [
+  '/listen', '/research-hub',
   '/',
   '/meditate',
   '/hypnosis',
@@ -145,7 +146,7 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(c.querySelector('[data-testid="status-bar-mobile"]')).toBeTruthy();
     expect(c.querySelector('[data-testid="status-bar"]')).toBeNull();
     // Primary tabs + MORE.
-    for (const tab of ['home', 'presets', 'studio', 'safety', 'more']) {
+    for (const tab of ['today', 'explore', 'listen', 'research', 'more']) {
       expect(c.querySelector(`[data-testid="bottom-tab-${tab}"]`)).toBeTruthy();
     }
     // Persistent panic: ≥56px target; bar z-index ≥70 (clears grain z-60 and

@@ -21,11 +21,13 @@ import './presets.css';
 
 const CATS: (PresetCategory | 'All')[] = ['All', 'Sleep', 'Focus', 'Relax', 'Meditate', 'Lucid Dream', 'Experimental', 'Infant'];
 const GRADE_RANK: Record<GradeLetter, number> = { A: 3, B: 2, C: 1, D: 0 };
-const STARTER_IDS = ['relax-alpha-ease', 'exp-phi-ladder', 'exp-phi-bowl-chord'];
+const STARTER_IDS = ['practice-soft-landing', 'practice-bowl-attention', 'practice-evening-rain', 'practice-steady-focus'];
 type Collection = PresetCollection;
 
 export default function Presets() {
   const [params, setParams] = useSearchParams();
+  const pendingParams = useRef(params);
+  useEffect(() => { pendingParams.current = params; }, [params]);
   const requestedCollection = params.get('collection');
   const collection: Collection = PRESET_COLLECTIONS.find(([id]) => id === requestedCollection)?.[0] ?? 'start';
   const setup = params.get('setup') ?? '';
@@ -68,25 +70,31 @@ export default function Presets() {
   const groups = [...new Set(filtered.map(groupFor))];
   const savedFiltered = userPresets.filter((preset) => presetMatchesSearch(userPresetAsPreset(preset), query));
 
+  const commitParams = (next: URLSearchParams, replace = false) => {
+    pendingParams.current = next;
+    setParams(next, { replace });
+  };
   const changeParam = (key: string, value: string, replace = false) => {
     stopPreview(); setPreviewHint('');
-    setParams((previous) => { const next = new URLSearchParams(previous); if (value) next.set(key, value); else next.delete(key); return next; }, { replace });
+    const next = new URLSearchParams(pendingParams.current);
+    if (value) next.set(key, value); else next.delete(key);
+    commitParams(next, replace);
   };
   const clearFilters = () => {
     stopPreview(); setPreviewHint('');
-    setParams((previous) => { const next = new URLSearchParams(previous); ['q', 'category', 'grade', 'setup', 'duration', 'sound'].forEach((key) => next.delete(key)); return next; });
+    const next = new URLSearchParams(pendingParams.current);
+    ['q', 'category', 'grade', 'setup', 'duration', 'sound'].forEach(key => next.delete(key));
+    commitParams(next);
   };
   const chooseCollection = (nextCollection: Collection) => {
     stopPreview(); setPreviewHint(''); setDrawer(null);
-    setParams((previous) => {
-      const next = new URLSearchParams(previous);
-      ['q', 'category', 'grade', 'setup', 'duration', 'sound'].forEach((key) => next.delete(key));
-      if (nextCollection === 'start') next.delete('collection'); else next.set('collection', nextCollection);
-      return next;
-    });
+    const next = new URLSearchParams(pendingParams.current);
+    ['q', 'category', 'grade', 'setup', 'duration', 'sound'].forEach(key => next.delete(key));
+    if (nextCollection === 'start') next.delete('collection'); else next.set('collection', nextCollection);
+    commitParams(next);
   };
-  const load = (p: Preset) => {
-    stopPreview(); session.stop(); session.loadPreset(p); navigate('/studio');
+  const load = (p: Preset, destination = '/listen') => {
+    stopPreview(); session.stop(); session.loadPreset(p); navigate(destination);
   };
   const canPreview = (p: Preset) => {
     if (previewBlocked || (infantOnly && p.category !== 'Infant')) return false;
@@ -107,16 +115,16 @@ export default function Presets() {
 
   return <div className="preset-page">
     <header>
-      <span className="eyebrow">The listening collection</span><h1 className="t-display-lg">Find your rhythm.</h1>
-      <p className="t-body text-2">Preview a sound, then load its full session into Studio to play or edit. Loading does not start playback.</p>
+      <span className="eyebrow">Explore the collection</span><h1 className="t-display-lg">Find your kind of quiet.</h1>
+      <p className="t-body text-2">A short pause, a longer practice, or something new to explore. Preview a sound, then choose when to play.</p>
     </header>
 
     {!infantOnly && <nav className="preset-collections" aria-label="Preset collections">{PRESET_COLLECTIONS.map(([id, title]) => <button key={id} type="button" className={`chip ${collection === id ? 'chip-active' : ''}`} aria-pressed={collection === id} onClick={() => chooseCollection(id)}>{title}{id === 'saved' && userPresets.length ? ` (${userPresets.length})` : ''}</button>)}</nav>}
 
     {!infantOnly && collection === 'start' && <div className="preset-intro">
-      <h2 className="t-h2">Three sounds to try</h2>
-      <p className="t-body-sm text-2">A pair of tones, a pitch sequence, and a bowl chord. Hear a short sample before choosing a full session.</p>
-      <p className="t-body-sm text-2">Load a sound into Studio to choose a shorter duration before playing.</p>
+      <h2 className="t-h2">A few good places to begin</h2>
+      <p className="t-body-sm text-2">Rain, bowls and steady tones. Four simple listening designs, from five to fifteen minutes.</p>
+
     </div>}
 
     {!infantOnly && basharCollection && <section className="panel preset-collection" aria-labelledby="bashar-collection-title">
@@ -137,6 +145,7 @@ export default function Presets() {
           <input type="search" value={query} placeholder="Name, pitch, rhythm, or mode" onChange={(e) => changeParam('q', e.target.value, true)} />
         </label>
       </div>
+      <details className="explore-filter-drawer"><summary>Refine your listening{setup || duration || sound || minGrade || cat !== 'All' ? ' · filters active' : ''}</summary>
       {(collection !== 'saved' || infantOnly) && <div className="preset-quick-filters">
         <label>Listening setup<select value={setup} onChange={e => changeParam('setup', e.target.value)}><option value="">All setups</option><option value="speakers">Speaker-compatible</option><option value="headphones">Requires stereo headphones</option></select></label>
         <label>Session length<select value={duration} onChange={e => changeParam('duration', e.target.value)}><option value="">Any length</option><option value="short">Up to 15 min</option><option value="medium">Over 15–60 min</option><option value="long">Over 1–under 7 hours</option><option value="night">7 hours or longer</option></select></label>
@@ -154,7 +163,8 @@ export default function Presets() {
           {CATS.map((c) => <Chip key={c} active={cat === c} onClick={() => changeParam('category', c === 'All' ? '' : c)}>{c.toUpperCase()}</Chip>)}
         </div>}
       </details>}
-      <p className="t-caption text-3">Search applies to {infantOnly ? 'Infant presets' : collection === 'start' ? 'the three starting sounds' : collection === 'saved' ? 'My presets' : basharCollection ? 'the Bashar collection' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions' : collection === 'overnight' ? 'Overnight' : collection === 'nano' ? 'NanoLab' : 'all presets'}.{(query || minGrade || setup || duration || sound || (collection === 'all' && cat !== 'All')) && <button type="button" className="preset-clear" onClick={clearFilters}>Clear filters</button>}</p>
+      </details>
+      <p className="t-caption text-3">Search applies to {infantOnly ? 'Infant presets' : collection === 'start' ? 'the four starting sounds' : collection === 'saved' ? 'My presets' : basharCollection ? 'the Bashar collection' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions' : collection === 'overnight' ? 'Overnight' : collection === 'nano' ? 'NanoLab' : 'all presets'}.{(query || minGrade || setup || duration || sound || (collection === 'all' && cat !== 'All')) && <button type="button" className="preset-clear" onClick={clearFilters}>Clear filters</button>}</p>
       {infantOnly && <p className="t-body-sm text-2">Infant mode: only Infant presets are shown.</p>}
     </section>
 
@@ -175,8 +185,8 @@ export default function Presets() {
           <div className="preset-card-actions">
             <button type="button" data-testid={`my-preset-preview-${u.id}`} className={`chip ${playing ? 'chip-active' : ''}`} disabled={previewBlocked}
               aria-label={playing ? `Stop preview of ${u.name}` : `Preview first 10 seconds of ${u.name}`}
-              onClick={() => { if (canPreview(p)) session.previewPreset(p); }}>{playing ? '■ STOP PREVIEW' : '▶ PREVIEW · 10 S'}</button>
-            <button type="button" className="chip" onClick={() => load(p)}>LOAD INTO STUDIO</button>
+              onClick={() => { if (canPreview(p)) session.previewPreset(p); }}>{playing ? '■ Stop preview' : '▶ Preview · 10 s'}</button>
+            <button type="button" className="chip" onClick={() => load(p)}>Choose sound</button>
             <button type="button" className="chip" data-testid={`my-preset-delete-${u.id}`} aria-label={`Delete ${u.name}`}
               onClick={() => { stopPreview(); session.deleteUserPreset(u.id); }}>DELETE</button>
           </div>
@@ -185,7 +195,7 @@ export default function Presets() {
     </section>}
 
     {(collection !== 'saved' || infantOnly) && <><div className="preset-results">
-      <h2 className="t-h3">{infantOnly ? 'Infant presets' : basharCollection ? 'Bashar collection' : collection === 'start' ? 'Starting sounds' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions · experimental' : collection === 'overnight' ? 'Overnight · experimental' : collection === 'nano' ? 'NanoLab · experimental' : 'All presets'}</h2>
+      <h2 className="t-h3">{infantOnly ? 'Infant presets' : basharCollection ? 'Bashar collection' : collection === 'start' ? 'Start with a little space' : collection === 'practice' ? 'Meditation & rest' : collection === 'archive' ? 'Programs & traditions · experimental' : collection === 'overnight' ? 'Overnight · experimental' : collection === 'nano' ? 'NanoLab · experimental' : 'All presets'}</h2>
       <span className="t-body-sm text-2" role="status">{filtered.length} presets</span>
     </div>
     <div className="preset-arrangement"><label>Group by<select value={groupBy} onChange={e => changeParam('group', e.target.value)}><option value="collection">Collection</option><option value="category">Intention category</option></select></label><label>Sort within groups<select value={sort} onChange={e => changeParam('sort', e.target.value)}><option value="">Collection order</option><option value="shortest">Shortest first</option><option value="longest">Longest first</option><option value="name">Name A–Z</option></select></label></div>
@@ -196,19 +206,19 @@ export default function Presets() {
         setParams((previous) => { const next = new URLSearchParams(previous); next.set('collection', 'all'); next.delete('category'); next.delete('grade'); return next; });
       }}>Search all presets instead</button>}</div>}
     <div className="preset-group-list">
-      {groups.map((group) => <details className="preset-category-group" key={`${collection}-${group}-${query}-${cat}-${setup}-${duration}-${sound}`} open={collection !== 'all' || Boolean(query || setup || duration || sound) || cat !== 'All' || undefined}><summary>{group}<span>{filtered.filter((p) => groupFor(p) === group).length} sounds</span></summary><div className="preset-grid">
+      {groups.map((group) => <details className="preset-category-group" key={`${collection}-${group}-${query}-${cat}-${setup}-${duration}-${sound}`} open={collection !== 'all' || Boolean(query || setup || duration || sound) || cat !== 'All' || undefined}><summary>{group}<span>{filtered.filter((p) => groupFor(p) === group).length} {filtered.filter((p) => groupFor(p) === group).length === 1 ? 'sound' : 'sounds'}</span></summary><div className="preset-grid">
       {filtered.filter((p) => groupFor(p) === group).map((p) => {
         const playing = previewId === `preset:${p.id}`;
         const bashar = isBasharPreset(p);
         return <article key={p.id} className="panel preset-card" data-testid={`preset-card-${p.id}`}>
-          {p.art && <img className="preset-card-art" src={assetUrl(p.art)} alt={`${presetDisplayName(p)} cover art`} loading="lazy" />}
+          <img className="preset-card-art" src={assetUrl(p.category === 'Sleep' || p.category === 'Lucid Dream' || p.id.startsWith('night-') || p.id.includes('dream') ? 'art/night-country.webp' : 'art/quiet-horizon.webp')} alt="" loading="lazy" width="1536" height="1024" />
           <div className="preset-card-top">
             <span className="t-label text-3">Full session · {fmtClock(presetDurationMin(p) * 60)}</span>
             <GradeBadge grade={p.grade} citation={{ verdict: gradeVerdict(p), summary: p.rationale, source: p.citations[0] }} />
           </div>
           <h3 className="t-h2">{presetDisplayName(p)}</h3><p className="preset-setup-tag">{needsHeadphones(p) ? 'Stereo headphones' : 'Speaker-compatible'}</p>
           <p className={`t-body-sm text-2 preset-card-description ${bashar ? '' : 'clamped'}`}>{presetSoundDescription(p)}</p>
-          {p.purpose && <p className="t-caption text-2 preset-card-purpose clamped">{p.purpose}</p>}
+
           {p.links && p.links.length > 0 && (
             <p className="preset-card-links">
               {p.links.map((l) => (
@@ -218,13 +228,12 @@ export default function Presets() {
               ))}
             </p>
           )}
-          <MiniPhaseBar beats={p.spec.phases.map((ph) => ({ sec: ph.durationSec, beat: ph.beatHz }))} durationSec={presetDurationMin(p) * 60} />
-          <p className="t-readout-sm text-2 preset-signal">{presetSignalSummary(p)}</p>
+
           <div className="preset-card-actions">
             <button type="button" data-testid={`preset-preview-${p.id}`} className={`chip ${playing ? 'chip-active' : ''}`} disabled={previewBlocked}
-              aria-label={playing ? `Stop preview of ${p.title}` : `Preview first ${previewSeconds(p)} seconds of ${p.title}`} onClick={() => playPreview(p)}>{playing ? '■ STOP PREVIEW' : `▶ PREVIEW · ${previewSeconds(p)} S`}</button>
-            <button type="button" className="chip chip-active" aria-label={`Load ${p.title} into Studio`} onClick={() => load(p)}>LOAD INTO STUDIO</button>
-            <button type="button" className="chip preset-details-button" aria-label={`Details and steps for ${p.title}`} onClick={() => { stopPreview(); setDrawer(p); }}>DETAILS & STEPS</button>
+              aria-label={playing ? `Stop preview of ${p.title}` : `Preview first ${previewSeconds(p)} seconds of ${p.title}`} onClick={() => playPreview(p)}>{playing ? '■ Stop preview' : `▶ Preview · ${previewSeconds(p)} s`}</button>
+            <button type="button" className="chip chip-active" aria-label={`Choose ${p.title}`} onClick={() => load(p)}>Choose sound</button>
+            <button type="button" className="chip preset-details-button" aria-label={`Details and steps for ${p.title}`} onClick={() => { stopPreview(); setDrawer(p); }}>Sound details</button>
           </div>
         </article>;
       })}
@@ -239,6 +248,8 @@ export default function Presets() {
         <h2 className="t-h2" id="preset-sheet-title">{presetDisplayName(drawer)}</h2>
         <p className="t-body-sm text-2" style={{ marginTop: 8 }}>{presetSoundDescription(drawer)}</p>
         <p className="t-readout-sm text-2 preset-signal">{presetSignalSummary(drawer)} · {fmtClock(presetDurationMin(drawer) * 60)}</p>
+        <MiniPhaseBar beats={drawer.spec.phases.map(ph => ({ sec: ph.durationSec, beat: ph.beatHz }))} durationSec={presetDurationMin(drawer) * 60} />
+        {drawer.art && <img className="preset-sheet-art" src={assetUrl(drawer.art)} alt={`${presetDisplayName(drawer)} original cover art`} loading="lazy" />}
         <h3 className="t-h3">{drawer.spec.phases.length > 1 ? 'Sequence' : 'Sound'}</h3>
         <ol className="preset-steps">{drawer.spec.phases.map((phase, i) => {
           const playing = previewId === `preset:${drawer.id}:step:${i + 1}`;
@@ -274,7 +285,7 @@ export default function Presets() {
         )}
         <ul className="source-list t-caption text-3">{drawer.citations.map((c) => <li key={c}>{c}</li>)}</ul>
         {isBasharPreset(drawer) && <p className="t-body-sm"><Link to="/channeled">Open the Bashar source analysis</Link></p>}
-        <button type="button" className="chip chip-active" onClick={() => load(drawer)}>LOAD INTO STUDIO</button>
+        <button type="button" className="chip chip-active" onClick={() => load(drawer)}>Choose sound</button><button type="button" className="chip" onClick={() => load(drawer, '/studio')}>Open in Studio</button>
       </aside>
     </>}
   </div>;

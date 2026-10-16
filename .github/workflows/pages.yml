@@ -176,7 +176,9 @@ jobs:
             echo "creating gh-pages"
             mkdir site && git -C site init --quiet -b gh-pages && git -C site remote add origin "$REMOTE"
           fi
-          rsync -a --delete --exclude .git dist/ site/
+          # /devices/ is independently owned by research/device-observatory.
+          # Excluding it also protects it from this coordinator's --delete.
+          rsync -a --delete --exclude .git --exclude /devices/ dist/ site/
           cd site
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

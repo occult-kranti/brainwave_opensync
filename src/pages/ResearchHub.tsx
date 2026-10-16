@@ -9,6 +9,8 @@ export default function ResearchHub() {
     <header className="editorial-heading"><span className="overline">The reading room</span><h1>Stay <em>curious.</em><br />Look a little closer.</h1><p>Sound has a rich history and a growing science. Explore both, with the evidence and the uncertainties in view.</p></header>
     <section className="reading-feature"><div className="reading-feature-art"><BookOpen size={68} strokeWidth={.8} /><span>FIELD NOTES<br />ON SOUND & THE MIND</span></div><div><span className="overline">Start with the foundations</span><h2>What can a frequency actually do?</h2><p>Hear the difference between a pitch, a beat and a pulse. Explore hypnosis, the edge of sleep and the mathematics that describes a sound—then see where the evidence stops.</p><Link className="journey-button" to="/hypnosis">Read & explore <ArrowRight size={17} /></Link></div></section>
     <section className="reading-index" aria-label="Research collections">{[
+      ['/bashar-research', 'BR', 'Bashar: statements & mechanisms', 'Transcripts, attribution limits and typed connections to primary physics research.'],
+      ['/frequency-hypotheses', 'FH', 'Frequency hypothesis workshop', 'Three virtual models, eight proposed tests and quiet listening references.'],
       ['/levitation', 'LV', 'Forces, fields & levitation', 'Acoustic and magnetic benches, government records, quantum research and four listening illustrations.'],
       ['/newton-tesla', 'NT', 'Newton–Tesla research network', 'Primary texts, patents, typed connections and mathematical device models with explicit limits.'],
       ['/sound-research', '00', 'The sound research bench', 'Interactive signal models, recent studies, books, product claims and twelve original listening variations.'],

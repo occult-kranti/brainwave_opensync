@@ -2,7 +2,7 @@
 /**
  * Render pre-rendered preset preview WAVs into public/previews/.
  *
- * For every preset in src/data/presets.ts, renders the FIRST ~12 seconds of
+ * For every file-backed preset in src/data/presets.ts, renders the FIRST ~12 seconds of
  * its phase plan through the pure engine (renderSession) and encodes a
  * 48 kHz 16-bit stereo WAV (encodeWav) at public/previews/<preset-id>.wav,
  * plus a manifest.json pinning { id, sha256, bytes } per file.
@@ -22,6 +22,9 @@
  * Add --dry-run to validate inputs, existing files and the proposed budget
  * without rendering or writing previews. Overrides apply only to new files;
  * each new manifest entry records its actual sampleRate, seconds and note.
+ * Explicit src/data/runtimePreviewCatalog.ts entries use the app's existing
+ * 10-second engine preview path and are excluded from both render modes.
+ * Their declarations are checked against the catalog before any file writes.
  */
 
 import { build } from 'esbuild';
@@ -77,6 +80,7 @@ await build({
     contents: [
       `export { renderSession, encodeWav, checkPhaseGuardrails } from ${JSON.stringify(path.join(ROOT, 'src/engine/index.ts'))};`,
       `export { PRESETS } from ${JSON.stringify(path.join(ROOT, 'src/data/presets.ts'))};`,
+      `export { RUNTIME_PREVIEW_CATALOG } from ${JSON.stringify(path.join(ROOT, 'src/data/runtimePreviewCatalog.ts'))};`,
       `export { presetPreviewPhases } from ${JSON.stringify(path.join(ROOT, 'src/ui/session/sessionMath.ts'))};`,
     ].join('\n'),
     resolveDir: ROOT,
@@ -89,7 +93,7 @@ await build({
   outfile: bundlePath,
   logLevel: 'silent',
 });
-const { renderSession, encodeWav, checkPhaseGuardrails, PRESETS, presetPreviewPhases } = await import(pathToFileURL(bundlePath).href);
+const { renderSession, encodeWav, checkPhaseGuardrails, PRESETS, RUNTIME_PREVIEW_CATALOG, presetPreviewPhases } = await import(pathToFileURL(bundlePath).href);
 rmSync(bundlePath, { force: true });
 
 // ---------------------------------------------------------------------------
@@ -126,6 +130,24 @@ const ID_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
 const sha256Of = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const serializeManifest = (manifest) => JSON.stringify(manifest, null, 2) + '\n';
 const positive = (value) => typeof value === 'number' && Number.isFinite(value) && value > 0;
+
+// Declarations are narrow and explicit: other missing preset IDs still need a
+// file. Runtime metadata describes the existing previewPhases implementation.
+const runtimeIds = new Set();
+for (const entry of RUNTIME_PREVIEW_CATALOG) {
+  const preset = PRESETS.find((item) => item.id === entry.id);
+  if (!preset || !ID_PATTERN.test(entry.id) || runtimeIds.has(entry.id) || entry.mode !== 'engine' ||
+      entry.maxSeconds !== 10 || entry.sampleRate !== SAMPLE_RATE || typeof entry.reason !== 'string' || !entry.reason.trim()) {
+    throw new Error('Invalid, duplicate or uncatalogued runtime preview declaration.');
+  }
+  const phases = enginePhases(preset, entry.maxSeconds);
+  if (!phases.length || phases.some((phase) => !positive(phase.durationSec) || checkPhaseGuardrails(phase, entry.sampleRate).length) ||
+      phases.reduce((sum, phase) => sum + phase.durationSec, 0) > entry.maxSeconds) {
+    throw new Error(`${entry.id}: runtime preview fails engine preflight.`);
+  }
+  runtimeIds.add(entry.id);
+}
+const FILE_PRESETS = PRESETS.filter((preset) => !runtimeIds.has(preset.id));
 
 function validateWav(bytes, sampleRate, seconds, label) {
   const frames = seconds * sampleRate;
@@ -182,7 +204,8 @@ function appendPreviews() {
     catalogIds.add(preset.id);
   }
   if ([...ids].some((id) => !catalogIds.has(id))) throw new Error('Existing previews are absent from the catalog; append will not remove them.');
-  const pending = PRESETS.filter((preset) => !ids.has(preset.id));
+  if ([...ids].some((id) => runtimeIds.has(id))) throw new Error('A preview cannot be both file-backed and explicitly runtime-rendered.');
+  const pending = FILE_PRESETS.filter((preset) => !ids.has(preset.id));
   const sampleRate = options.sampleRate;
   const seconds = options.seconds ?? manifest.seconds;
   const note = `Appended ${seconds}s at ${sampleRate} Hz; per-file metadata overrides manifest defaults and preserves existing previews.`;
@@ -213,7 +236,7 @@ function appendPreviews() {
   const estimatedTotal = estimatedManifest.totalBytes + Buffer.byteLength(serializeManifest(estimatedManifest));
   if (estimatedTotal >= MAX_TOTAL_BYTES) throw new Error(`Append budget preflight failed: ${estimatedTotal} bytes >= ${MAX_TOTAL_BYTES}; no previews written.`);
   if (options.dryRun || !plans.length) {
-    console.log(`${options.dryRun ? 'Dry run' : 'No new presets'}: ${ids.size} existing previews verified; ${plans.length} pending; proposed total ${estimatedTotal} bytes < ${MAX_TOTAL_BYTES}. No previews written.`);
+    console.log(`${options.dryRun ? 'Dry run' : 'No new presets'}: ${ids.size} existing previews verified; ${runtimeIds.size} explicit runtime previews; ${plans.length} pending files; proposed total ${estimatedTotal} bytes < ${MAX_TOTAL_BYTES}. No previews written.`);
     return;
   }
 
@@ -273,10 +296,10 @@ if (options.append) {
 const bytesPerSec = SAMPLE_RATE * CHANNELS * BYTES_PER_SAMPLE;
 const perFileBytes = (sec) => sec * bytesPerSec + WAV_HEADER_BYTES;
 let seconds = TARGET_SEC;
-while (seconds > 1 && PRESETS.length * perFileBytes(seconds) > MAX_TOTAL_BYTES - 64 * 1024) seconds--;
+while (seconds > 1 && FILE_PRESETS.length * perFileBytes(seconds) > MAX_TOTAL_BYTES - 64 * 1024) seconds--;
 if (seconds < TARGET_SEC) {
   console.log(
-    `size guard: ${PRESETS.length} presets × ${TARGET_SEC}s stereo PCM16 would exceed 60 MB — ` +
+    `size guard: ${FILE_PRESETS.length} file-backed presets × ${TARGET_SEC}s stereo PCM16 would exceed 60 MB — ` +
       `rendering ${seconds}s per file instead (budget-fit).`,
   );
 }
@@ -287,7 +310,7 @@ if (seconds < TARGET_SEC) {
 mkdirSync(OUT_DIR, { recursive: true });
 const files = [];
 let totalBytes = 0;
-for (const preset of PRESETS) {
+for (const preset of FILE_PRESETS) {
   const phases = enginePhases(preset, seconds);
   if (phases.length === 0) {
     console.warn(`SKIP ${preset.id}: no renderable phases`);

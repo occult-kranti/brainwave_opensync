@@ -73,6 +73,8 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/lucid', label: 'Lucid Audio Lab' },
   { route: '/sound-research', label: 'Sound Research' },
   { route: '/newton-tesla', label: 'Newton–Tesla Lab' },
+  { route: '/bashar-research', label: 'Bashar Research' },
+  { route: '/frequency-hypotheses', label: 'Frequency Hypotheses' },
   { route: '/levitation', label: 'Levitation Lab' },
   { route: '/healing', label: 'Healing Sound Lab' },
   { route: '/nature', label: 'Nature Calls Lab' },
@@ -89,6 +91,22 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'bashar-source-investigation', module: 'Bashar Research', route: '/bashar-research', name: 'Bashar source investigation',
+    grade: 'D', gradeScope: 'Unvalidated physical interpretations and original listening recipes. Attribution status is recorded separately from scientific support.',
+    simple: 'Read selected Bashar source claims and their attribution limits. Follow typed connections to scientific papers, government records and proposed tests.',
+    deep: 'A pinned index, host transcript and selected automatic-caption windows anchor the audit. Catalogue questions, digest-only paraphrases and documented statements remain distinct. Related acoustic, electromagnetic and nanoparticle research supplies specific ordinary mechanisms. No keyword match establishes a mechanism, and a patent or program record does not validate an extraordinary claim.',
+    howTo: ['Open a claim and its missing-evidence note.', 'Filter connections by their evidentiary role.', 'Inspect each source passage and access scope.', 'Preview a quiet comparison or load it into Studio.'],
+    plot: { axes: 'Directed concept pairs, named relationships and linked evidence records.', good: 'Trace attribution and inspect the missing experimental bridge.', bad: 'A source statement, catalogue question or shared frequency unit does not establish physical equivalence.' },
+  },
+  {
+    id: 'frequency-hypothesis-workshop', module: 'Frequency Hypotheses', route: '/frequency-hypotheses', name: 'Frequency hypothesis workshop',
+    grade: 'A', gradeScope: 'Conditional model arithmetic only. Proposed experiments and listening outcomes are unvalidated.',
+    simple: 'Explore three numerical models and eight original experiment proposals. Each use case identifies a channel, observable, control and rejection condition.',
+    deep: 'The benches compare acoustic and electromagnetic wavelengths, classical thermal confinement with supplied stiffness, and normalized coherent interference. Units, domain bounds and omissions accompany downloadable numerical rows. The models neither establish achievable trapping nor simulate altered gravity. Four quiet listening references accompany selected signal questions as experimental tier D recipes.',
+    howTo: ['Choose a virtual bench and vary its bounded parameters.', 'Read the units and model assumptions.', 'Download numerical rows as CSV.', 'Inspect a proposal and its failure condition.', 'Compare the associated listening references.'],
+    plot: { axes: 'Frequency and wavelength; position and thermal probability density; path difference and normalized mean-square amplitude.', good: 'Check units, limiting cases, controls and rejection conditions.', bad: 'A prescribed stiffness is not a demonstrated trap, and normalized pressure is not net energy flux.' },
+  },
   {
     id: 'levitation-laboratory', module: 'Levitation Lab', route: '/levitation', name: 'Levitation, fields and energy laboratory',
     grade: 'A', gradeScope: 'Conditional teaching-model calculations only. Physical claims are source-specific and listening recipes remain experimental tier D.',

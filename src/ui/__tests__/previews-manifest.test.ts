@@ -1,7 +1,7 @@
 /**
  * W-A pre-rendered preview tests (node — reads public/previews/ built by
  * scripts/render-previews.mjs):
- *  - manifest covers every preset in src/data/presets.ts (valid, unique ids)
+ *  - file manifest + explicit runtime catalog cover every preset exactly once
  *  - each manifest entry's file exists with matching byte size + sha256
  *  - audio plus manifest stays under the 60 MB guard, with no untracked WAVs
  *  - every WAV header matches the default or explicit per-file render metadata
@@ -22,6 +22,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { PRESETS } from '@/data/presets';
+import { RUNTIME_PREVIEW_CATALOG, isRuntimePreview } from '@/data/runtimePreviewCatalog';
+import { PREVIEW_MAX_SEC } from '../session/sessionMath';
 import {
   previewUrl,
   previewUrlFor,
@@ -36,17 +38,33 @@ const manifest = JSON.parse(
 ) as PreviewManifest;
 
 describe('previews manifest — coverage + integrity', () => {
-  it('covers every preset exactly once, with valid ids', () => {
-    expect(manifest.files).toHaveLength(PRESETS.length);
+  it('covers every preset exactly once as a file or an explicitly declared runtime preview', () => {
+    expect(manifest.files.length + RUNTIME_PREVIEW_CATALOG.length).toBe(PRESETS.length);
     const seen = new Set<string>();
-    for (const f of manifest.files) {
+    for (const f of [...manifest.files, ...RUNTIME_PREVIEW_CATALOG]) {
       expect(f.id).toMatch(/^[a-z0-9][a-z0-9-]*$/);
       expect(seen.has(f.id)).toBe(false);
       seen.add(f.id);
+      expect(PRESETS.some(p => p.id === f.id), `catalog contains ${f.id}`).toBe(true);
     }
     for (const p of PRESETS) {
-      expect(seen.has(p.id), `manifest covers ${p.id}`).toBe(true);
+      expect(seen.has(p.id), `file or runtime declaration covers ${p.id}`).toBe(true);
     }
+  });
+
+  it('keeps runtime declarations bounded and disjoint from physical files', () => {
+    expect(RUNTIME_PREVIEW_CATALOG).toHaveLength(8);
+    for (const entry of RUNTIME_PREVIEW_CATALOG) {
+      expect(entry.id).toMatch(/^(bashar-study-|frequency-study-)/);
+      expect(entry.mode).toBe('engine');
+      expect(entry.maxSeconds).toBe(PREVIEW_MAX_SEC);
+      expect(entry.sampleRate).toBe(48000);
+      expect(entry.reason).toContain('60 MB');
+      expect(isRuntimePreview(entry.id)).toBe(true);
+      expect(manifest.files.some(file => file.id === entry.id)).toBe(false);
+      expect(existsSync(path.join(PREVIEWS_DIR, `${entry.id}.wav`))).toBe(false);
+    }
+    expect(isRuntimePreview('arbitrary-missing-preset')).toBe(false);
   });
 
   it('retains the default contract and records explicit lower-rate append overrides', () => {
@@ -142,6 +160,13 @@ describe('preview URL selection — file vs engine fallback', () => {
 
   it('returns null (engine fallback) for ids the manifest does not cover', () => {
     expect(previewUrlFor('no-such-preset', manifest)).toBeNull();
+  });
+
+  it('honors the explicit runtime path even if a stale manifest names one of those ids', () => {
+    for (const entry of RUNTIME_PREVIEW_CATALOG) {
+      expect(previewUrlFor(entry.id, manifest)).toBeNull();
+      expect(previewUrlFor(entry.id, { ...manifest, files: [{ id: entry.id, bytes: 44, sha256: 'stale' }] })).toBeNull();
+    }
   });
 
   it('returns null when the manifest is missing or malformed', () => {

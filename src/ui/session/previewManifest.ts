@@ -8,6 +8,7 @@
 
 import { useEffect, useState } from 'react';
 import { assetUrl } from '@/lib/assetUrl';
+import { isRuntimePreview } from '@/data/runtimePreviewCatalog';
 
 export interface PreviewManifestEntry {
   id: string;
@@ -39,9 +40,9 @@ export function previewUrl(id: string): string {
 
 export const PREVIEW_MANIFEST_URL = assetUrl('previews/manifest.json');
 
-/** File URL when the manifest covers `id`, else null (→ engine fallback). */
+/** Explicit runtime entries always use the existing engine path, even with a stale manifest. */
 export function previewUrlFor(id: string, manifest: PreviewManifest | null): string | null {
-  if (!manifest || !Array.isArray(manifest.files)) return null;
+  if (isRuntimePreview(id) || !manifest || !Array.isArray(manifest.files)) return null;
   return manifest.files.some((f) => f.id === id) ? previewUrl(id) : null;
 }
 

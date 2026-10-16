@@ -637,6 +637,66 @@
       "bytes": 384044
     },
     {
+      "id": "research-carrier-control",
+      "sha256": "903f9489d505c625ae3acf2d256a51c4e2a07ae32133d4f59da6a0991f41d1eb",
+      "bytes": 384044
+    },
+    {
+      "id": "research-stereo-6",
+      "sha256": "2292919d456bc224fc7782abd77814e20986d3d483aa81d50f9c53ad8aae4902",
+      "bytes": 384044
+    },
+    {
+      "id": "research-stereo-10",
+      "sha256": "135db7203fe0b94f8ff3d1f929dccd39ba24b44831540729bbd654a04acdb13c",
+      "bytes": 384044
+    },
+    {
+      "id": "research-monaural-6",
+      "sha256": "773345a849d1ed8df987a1a04fec6740d733ee8ddb58de445eabc5b87ecb0064",
+      "bytes": 384044
+    },
+    {
+      "id": "research-slow-pulse",
+      "sha256": "3fbc2a05c5a6487e9f7c3d05559aa35c2c26202044b596921b1f041c4df81cee",
+      "bytes": 384044
+    },
+    {
+      "id": "research-pink-bed",
+      "sha256": "ce199f18dcac88162877b3459c1c9d5a3ca94f7aa5a9a1a30e1ed1460c49cffa",
+      "bytes": 384044
+    },
+    {
+      "id": "research-brown-bed",
+      "sha256": "7297eee976bd1fd1c45b8547cbe7001e9dd3096b4c22eb6abab227f515047c94",
+      "bytes": 384044
+    },
+    {
+      "id": "research-bowl-trio",
+      "sha256": "30a0d26a54729493cd339d9bcc2cf7073fd50dd7811aa5efbd1b098bc0f81747",
+      "bytes": 384044
+    },
+    {
+      "id": "research-ratio-sequence",
+      "sha256": "5e9da1a851b03efc3609875d5c12ca4b660ae74a2b75e4c37b3d640580784682",
+      "bytes": 384044
+    },
+    {
+      "id": "research-equal-temperament",
+      "sha256": "5e9da1a851b03efc3609875d5c12ca4b660ae74a2b75e4c37b3d640580784682",
+      "bytes": 384044
+    },
+    {
+      "id": "research-fifth-drone",
+      "sha256": "60980a3534090e1c3495e9509a9bb6b34112711098dcd32baa57fdaaecd531d7",
+      "bytes": 384044
+    },
+    {
+      "id": "research-rain-bowl",
+      "sha256": "6ba0c229f72c4b0d0bbe8a07717c36fa9fc249abf812b3b83f124021e0970c45",
+      "bytes": 384044
+    },
+    {
       "id": "heal-bowl-session",
       "sha256": "c12d35f448d2629b72455f5002157e1da237e4c350a84239c7b865b86237a8de",
       "bytes": 384044
@@ -702,5 +762,5 @@
       "bytes": 384044
     }
   ],
-  "totalBytes": 53382116
+  "totalBytes": 57990644
 }

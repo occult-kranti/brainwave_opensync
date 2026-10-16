@@ -728,3 +728,500 @@
     display: none;
   }
 }
+/* Dimensional sand: the scene owns the page; tools occupy a small, optional layer. */
+.cym-lab-universe {
+  max-width: none;
+  padding: 14px 0 50px;
+}
+.cym-lab-universe .cym-heading {
+  padding: 0 30px;
+  margin: 0 0 15px;
+}
+.cym-lab-universe .cym-heading h1 {
+  margin-top: 6px;
+  font-size: 30px;
+}
+.cym-lab-universe .cym-heading h1 span {
+  font-size: 23px;
+}
+.cym-lab-universe .cym-heading p {
+  font-size: 10px;
+}
+.cym-lab-universe .cym-view-tabs {
+  padding: 0 30px 10px;
+  margin: 0;
+  border-bottom: 0;
+}
+.cym-lab-universe .cym-view-tabs button {
+  border-radius: 30px;
+  padding: 8px 15px;
+  min-height: 36px;
+}
+.cym-lab-universe .cym-layout {
+  display: block;
+}
+.cym-universe {
+  border: 0;
+  border-radius: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    #1e242b 0,
+    #0d1118 42%,
+    #070a10 80%
+  );
+}
+.cym-universe .cym-stage-top {
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  border: 0;
+  padding: 10px 30px;
+}
+.cym-universe .cym-stage-top > span {
+  color: #bbc6cd;
+  font-size: 8px;
+  letter-spacing: 1.8px;
+}
+.cym-universe .cym-stage-view {
+  height: clamp(400px, calc(100svh - 440px), 760px);
+}
+.dimensional-sand {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.dimensional-sand canvas,
+canvas.dimensional-sand {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+.cym-universe .cym-stage-caption {
+  top: 10px;
+  left: 30px;
+  right: 30px;
+  color: #8496a5;
+}
+.cym-sand-title {
+  position: absolute;
+  pointer-events: none;
+  left: 34px;
+  bottom: 95px;
+  max-width: 290px;
+  text-shadow: 0 2px 16px #000;
+}
+.cym-sand-title > span {
+  font:
+    8px/1.5 Inter,
+    sans-serif;
+  letter-spacing: 2px;
+  color: #cca17f;
+}
+.cym-sand-title h2 {
+  font:
+    400 clamp(28px, 3vw, 46px)/1.1 Georgia,
+    serif;
+  letter-spacing: -0.03em;
+  color: #f1e6d8;
+  margin: 12px 0;
+}
+.cym-sand-title p {
+  font:
+    10px/1.8 Inter,
+    sans-serif;
+  color: #adb6bf;
+  max-width: 220px;
+}
+.cym-universe .cym-camera {
+  bottom: 24px;
+  background: #0d131bcc;
+  border-color: #8997a53b;
+  border-radius: 30px;
+  backdrop-filter: blur(12px);
+  padding: 5px 12px;
+}
+.cym-universe .cym-camera button {
+  min-height: 36px;
+  border-radius: 50%;
+  color: #d3dce0;
+}
+.cym-sculpt {
+  position: absolute;
+  top: 45px;
+  right: 28px;
+  z-index: 5;
+  width: 255px;
+  color: #d6dde2;
+}
+.cym-sculpt > summary {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  margin-left: auto;
+  padding: 12px 17px;
+  min-height: 42px;
+  font-size: 10px;
+  cursor: pointer;
+  border: 1px solid #6d7b884d;
+  border-radius: 30px;
+  background: #101722cf;
+  backdrop-filter: blur(16px);
+}
+.cym-sculpt > summary::-webkit-details-marker {
+  display: none;
+}
+.cym-sculpt[open] > summary {
+  border-color: #d0a483;
+  color: #e7bd96;
+}
+.cym-sculpt-body {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  padding: 20px;
+  margin-top: 10px;
+  max-height: min(440px, 49svh);
+  overflow-y: auto;
+  border: 1px solid #6173813d;
+  border-radius: 14px;
+  background: #0d141eeb;
+  box-shadow: 0 16px 50px #0006;
+  backdrop-filter: blur(24px);
+  scrollbar-width: thin;
+}
+.cym-sculpt-heading {
+  font-size: 10px;
+  color: #e0b28b;
+}
+.cym-sculpt-body .t-label {
+  font-size: 10px;
+  letter-spacing: 0;
+}
+.cym-sculpt-body label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 10px;
+}
+.cym-sculpt-body select {
+  min-height: 40px;
+  font:
+    11px Inter,
+    sans-serif;
+  padding: 8px;
+  background: #1a2430;
+  border: 1px solid #5a6c7d70;
+  border-radius: 4px;
+  color: #e3e8eb;
+}
+.cym-sculpt-body p {
+  font-size: 9px;
+  line-height: 1.8;
+  color: #9aabb7;
+  margin: -7px 0 0;
+}
+.cym-stage button.cym-stir {
+  position: absolute;
+  bottom: 26px;
+  right: 30px;
+  border-radius: 30px;
+  color: #ccd7dd;
+  border-color: #77879555;
+  padding: 10px 15px;
+  background: #111926bb;
+}
+.cym-stage button.cym-stir[aria-pressed="true"] {
+  color: #ffe0b9;
+  border-color: #d6ab80;
+  background: #49352a80;
+}
+.cym-form-rail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 0 28px;
+  border-top: 1px solid #5c718124;
+  background: #0b1019a8;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.cym-form-rail button {
+  flex: 1;
+  min-width: 145px;
+  max-width: 240px;
+  border-radius: 0;
+  border: 0;
+  border-top: 1px solid transparent;
+  flex-direction: column;
+  gap: 6px;
+  padding: 17px 12px;
+  color: #a7b4bf;
+  background: transparent;
+  font-size: 10px;
+}
+.cym-form-rail button span {
+  color: #697e8e;
+  font: 9px monospace;
+}
+.cym-form-rail button[aria-pressed="true"] {
+  border-top-color: #e2bb93;
+  color: #f0d8b9;
+  background: linear-gradient(#a17b4f18, transparent);
+}
+.cym-form-rail button[aria-pressed="true"] span {
+  color: #d1a984;
+}
+.cym-universe .cym-stage-bottom {
+  padding: 12px 30px;
+  background: #090e16;
+  border-color: #5c718124;
+}
+.cym-universe .cym-stage-bottom small {
+  font-size: 7px;
+  letter-spacing: 1.4px;
+}
+.cym-universe .cym-stage-bottom strong {
+  font-size: 15px;
+  color: #a4b9c7;
+}
+.cym-universe .cym-stage-bottom .cym-stage-buttons button {
+  border-radius: 30px;
+  padding: 10px 16px;
+}
+.cym-lab-universe .cym-model-note,
+.cym-lab-universe .cym-method {
+  margin: 18px 30px;
+}
+.cym-model-controls {
+  min-width: 0;
+}
+.cym-model-controls > summary {
+  padding: 16px 0;
+  font-size: 12px;
+  color: var(--text-1);
+  cursor: pointer;
+  border-top: 1px solid var(--line-1);
+}
+.cym-model-controls > summary span {
+  display: block;
+  font-size: 10px;
+  color: var(--text-3);
+  margin-top: 7px;
+}
+.cym-lab-universe .cym-model-controls {
+  margin: 25px 30px;
+}
+.cym-lab-universe .cym-inspector {
+  max-width: 760px;
+}
+.cym-lab-universe .cym-controls {
+  min-height: 0;
+}
+.cym-universe.cym-stage-expanded .cym-stage-view {
+  height: auto;
+}
+@media (min-width: 851px) {
+  .cym-lab-universe .cym-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .cym-lab-universe .cym-controls h2,
+  .cym-lab-universe .cym-controls p {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 850px) {
+  .cym-universe .cym-stage-view {
+    height: clamp(400px, calc(100svh - 400px), 700px);
+  }
+  .cym-sand-title {
+    max-width: 210px;
+  }
+  .cym-sand-title h2 {
+    font-size: 32px;
+  }
+  .cym-stage button.cym-stir {
+    bottom: 80px;
+    right: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .cym-lab-universe {
+    padding: 12px 0 70px;
+  }
+  .cym-lab-universe .cym-heading {
+    padding: 0 16px;
+    margin-bottom: 12px;
+  }
+  .cym-lab-universe .cym-heading h1 {
+    font-size: 27px;
+  }
+  .cym-lab-universe .cym-heading h1 span {
+    display: inline;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  .cym-lab-universe .cym-heading p {
+    display: none;
+  }
+  .cym-lab-universe .cym-view-tabs {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .cym-universe .cym-stage-top {
+    padding: 10px 14px;
+  }
+  .cym-universe .cym-stage-top > span {
+    font-size: 6px;
+    letter-spacing: 0.9px;
+    max-width: 130px;
+  }
+  .cym-universe .cym-stage-top button {
+    min-height: 38px;
+  }
+  .cym-universe .cym-stage-view {
+    height: clamp(350px, calc(100svh - 400px), 600px);
+  }
+  .cym-universe .cym-stage-caption {
+    left: 16px;
+    right: 16px;
+    top: 6px;
+    flex-direction: row;
+    font-size: 7px;
+  }
+  .cym-universe .cym-stage-caption span:last-child {
+    max-width: 140px;
+    text-align: right;
+    font-size: 7px;
+  }
+  .cym-sand-title {
+    left: 18px;
+    bottom: 105px;
+    max-width: 170px;
+  }
+  .cym-sand-title > span {
+    font-size: 6px;
+    letter-spacing: 1.4px;
+  }
+  .cym-sand-title h2 {
+    font-size: 27px;
+    margin: 8px 0;
+  }
+  .cym-sand-title p {
+    font-size: 8px;
+    max-width: 160px;
+  }
+  .cym-sculpt {
+    right: 14px;
+    top: 36px;
+    width: 230px;
+  }
+  .cym-sculpt-body {
+    max-height: 285px;
+    padding: 16px;
+  }
+  .cym-sculpt > summary {
+    padding: 10px 13px;
+    font-size: 9px;
+  }
+  .cym-sculpt-body select {
+    font-size: 16px;
+  }
+  .cym-stage button.cym-stir {
+    right: 16px;
+    bottom: 87px;
+    font-size: 9px;
+    padding: 10px;
+  }
+  .cym-universe .cym-camera {
+    bottom: 24px;
+    padding: 4px 8px;
+  }
+  .cym-universe .cym-camera button {
+    min-width: 33px;
+    min-height: 40px;
+  }
+  .cym-form-rail {
+    padding: 0 12px;
+    justify-content: start;
+  }
+  .cym-form-rail button {
+    min-width: 128px;
+    font-size: 9px;
+    padding: 15px 10px;
+  }
+  .cym-universe .cym-stage-bottom {
+    padding: 14px 16px;
+    gap: 22px;
+  }
+  .cym-universe .cym-stage-bottom .cym-stage-buttons {
+    margin: 0;
+    flex-basis: 100%;
+  }
+  .cym-lab-universe .cym-model-note,
+  .cym-lab-universe .cym-method,
+  .cym-lab-universe .cym-model-controls {
+    margin: 18px 16px;
+  }
+  .cym-universe.cym-stage-expanded .cym-stage-view {
+    min-height: 220px;
+    height: auto;
+  }
+  .cym-stage-expanded .cym-sand-title {
+    bottom: 88px;
+  }
+  .cym-stage-expanded .cym-sand-title p {
+    display: none;
+  }
+  .cym-stage-expanded .cym-stage-bottom {
+    flex-wrap: nowrap;
+  }
+  .cym-stage-expanded .cym-stage-bottom > div:not(.cym-stage-buttons) {
+    display: none;
+  }
+  .cym-stage-expanded .cym-stage-bottom .cym-stage-buttons {
+    flex-basis: auto;
+    flex: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cym-universe *,
+  .cym-sculpt * {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}
+.cym-stage-expanded .cym-sculpt-body {
+  max-height: min(440px, calc(100svh - 260px));
+}
+@media (max-height: 550px) {
+  .cym-stage-expanded .cym-sand-title {
+    display: none;
+  }
+  .cym-universe.cym-stage-expanded .cym-stage-view {
+    min-height: 0;
+  }
+  .cym-stage-expanded .cym-form-rail button {
+    padding: 8px;
+    gap: 3px;
+  }
+  .cym-stage-expanded .cym-camera {
+    bottom: 8px;
+  }
+  .cym-stage-expanded .cym-stir {
+    bottom: 8px;
+  }
+  .cym-stage-expanded .cym-sculpt {
+    top: 18px;
+  }
+  .cym-stage-expanded .cym-sculpt-body {
+    max-height: calc(100svh - 230px);
+  }
+}

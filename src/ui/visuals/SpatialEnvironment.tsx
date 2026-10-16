@@ -7,7 +7,8 @@ import { useSession } from "@/ui/session/useSession";
 import { fmtClock } from "@/ui/session/sessionMath";
 import { useSpatial } from "./spatialContext";
 import { FieldCanvas } from "./FieldCanvas";
-import { ResonanceField } from "./ResonanceField";
+import { ResonantWorld } from "./ResonantWorld";
+import { FieldControls } from "./FieldControls";
 export function SpatialBackdrop() {
   const spatial = useSpatial();
   if (!spatial || !spatial.settings.ambient) return null;
@@ -41,7 +42,7 @@ export function SpatialPortal() {
           <header>
             <div>
               <span className="overline">Your visual companion</span>
-              <Dialog.Title>Space to wander.</Dialog.Title>
+              <Dialog.Title>Inside the field.</Dialog.Title>
             </div>
             <div className="spatial-room-actions">
               <PanicButton />
@@ -55,7 +56,12 @@ export function SpatialPortal() {
             counterpart. These are mathematical artworks, independent of your
             sound.
           </Dialog.Description>
-          <ResonanceField immersive />
+          <div className="world-room-stage">
+            <ResonantWorld route="/" immersive />
+            <div className="world-room-controls">
+              <FieldControls expanded allowExpand={false} />
+            </div>
+          </div>
           <details className="spatial-explainer">
             <summary>About the geometry & design</summary>
             <p>

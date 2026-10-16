@@ -1,15 +1,8 @@
 /**
- * Application shell (design.md §4.1): fixed 240px Module Rail, 48px Status
- * Bar, workspace with routed module pages, global panic affordance.
- *
- * Mobile shell (mobile_adaptation_spec.md §3.2, W10): below 768px the rail
- * is replaced by a fixed bottom bar — HOME / PRESETS / STUDIO / SAFETY /
- * MORE (bottom-sheet drawer with every remaining route) — plus a persistent
- * ≥56px PANIC segment pinned at the trailing end. The status bar shrinks to
- * session label + engine LED; the long session readout and UTC clock move
- * into the MORE drawer header. Breakpoint comes from the canonical
- * `useIsMobile()` hook (matchMedia `(max-width: 767px)`), matching Tailwind
- * `md`.
+ * Persistent spatial world with accessible route content above it. The scene
+ * survives route changes; sound remains in SessionProvider. Desktop uses one
+ * shared navigation, while phones retain the reachable bottom navigation and
+ * immediate stop. Scene settings are independent of audio settings.
  */
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -36,18 +29,19 @@ import { matchShortcut } from "../../app/shortcuts";
 import { engineLedState } from "../theme";
 import { assetUrl } from "@/lib/assetUrl";
 import {
-  ARCHIVE_THEMES,
   readArchiveTheme,
   saveArchiveTheme,
   type ArchiveTheme,
 } from "../archiveTheme";
-import { ArchiveThemePicker } from "../components/ArchiveThemePicker";
 import "../../pages/archive-theme.css";
 import "../../pages/spatial.css";
 import "../../pages/resonance.css";
+import "../../pages/immersive-world.css";
 import { WorkspaceNav } from "./WorkspaceNav";
 import { SpatialProvider } from "../visuals/SpatialProvider";
-import { SpatialBackdrop, SpatialPortal } from "../visuals/SpatialEnvironment";
+import { ResonantWorld } from "../visuals/ResonantWorld";
+import { WorldToolbar } from "../visuals/WorldToolbar";
+import { navigationForPath } from "@/app/navigation";
 
 /** Route lists come from the registry (src/app/routes.tsx) — one source of truth. */
 const ALL_ROUTES = ROUTES;
@@ -526,9 +520,7 @@ function SpatialShell({ children }: { children: ReactNode }) {
       delete document.documentElement.dataset.archiveTheme;
     };
   }, [theme]);
-  const landscape = ARCHIVE_THEMES.find((item) => item.id === theme)!;
   const reducedMotion = useReducedMotion();
-  const discovery = true; // One navigation and visual system across every archive route.
   useEffect(() => {
     // New destinations start at their heading; changing filters on the same
     // page leaves the reader's position alone.
@@ -619,21 +611,21 @@ function SpatialShell({ children }: { children: ReactNode }) {
   return (
     <div
       data-archive-theme={theme}
-      className={`flex experience-shell archive-shell ${discovery ? "discovery-shell" : ""} ${location.pathname === "/" ? "archive-home" : location.pathname === "/listen" ? "archive-listen" : ""}`}
+      data-spatial-world="true"
+      data-world-route={
+        location.pathname === "/"
+          ? "home"
+          : location.pathname === "/cymatics"
+            ? "cymatics"
+            : navigationForPath(location.pathname)?.category === "research" ||
+                location.pathname === "/research-hub"
+              ? "research"
+              : "tools"
+      }
+      className={`flex experience-shell archive-shell discovery-shell ${location.pathname === "/" ? "archive-home" : location.pathname === "/listen" ? "archive-listen" : ""}`}
       style={{ minHeight: "100vh" }}
     >
-      <div className="archive-landscape" aria-hidden="true">
-        <img
-          src={assetUrl(landscape.image)}
-          alt=""
-          fetchPriority="high"
-          width="1536"
-          height="1024"
-        />
-      </div>
-      {location.pathname !== "/cymatics" && location.pathname !== "/" && (
-        <SpatialBackdrop />
-      )}
+      <ResonantWorld route={location.pathname} />
       <a href="#main" className="skip-link">
         Skip to content
       </a>
@@ -693,31 +685,20 @@ function SpatialShell({ children }: { children: ReactNode }) {
           </header>
         )}
         <WorkspaceNav />
-        <div className="observatory-context">
-          <ArchiveThemePicker value={theme} onChange={setTheme} />
-          <SpatialPortal />
-          {discovery && !isMobile && (
-            <div className="observatory-active" data-testid="status-bar">
-              <SessionReadout />
-              <PauseChip />
-            </div>
-          )}
-        </div>
-        {!discovery && (
-          <nav className="workshop-wayfinding" aria-label="Workspace journey">
-            <NavLink to="/">Today</NavLink>
-            <span>/</span>
-            <button onClick={() => setMoreOpen(true)}>Workshop</button>
-            <span>/</span>
-            <strong>
-              {
-                ALL_ROUTES.find((route) => route.path === location.pathname)
-                  ?.label
-              }
-            </strong>
-            <NavLink to="/listen">Back to listening →</NavLink>
-          </nav>
+        {(location.pathname !== "/cymatics" || !isMobile) && (
+          <div className="world-context">
+            {location.pathname !== "/cymatics" && (
+              <WorldToolbar theme={theme} onThemeChange={setTheme} />
+            )}
+            {!isMobile && (
+              <div className="observatory-active" data-testid="status-bar">
+                <SessionReadout />
+                <PauseChip />
+              </div>
+            )}
+          </div>
         )}
+
         <main
           id="main"
           tabIndex={-1}

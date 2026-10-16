@@ -1,0 +1,1255 @@
+/* Open Sync / Resonant World. Content inhabits one continuous rendered space. */
+html[data-archive-theme] {
+  --ink-0: #080b10;
+  --ink-1: #11161c;
+  --ink-2: #1b222a;
+  --ink-3: #29313a;
+  --line-1: rgb(209 221 231 / 0.16);
+  --line-2: rgb(226 229 230 / 0.3);
+  --text-1: #f5f0e7;
+  --text-2: #c2c9d0;
+  --text-3: #a4b0bc;
+  --amber: #eec29c;
+  --amber-hi: #ffe3c6;
+  --teal: #a4cfdf;
+  --scene-rgb: 8 11 16;
+  --world-glass: rgb(11 16 23 / 0.78);
+  --world-glass-strong: rgb(14 19 26 / 0.92);
+}
+html[data-archive-theme="quiet-horizon"] {
+  --ink-0: #100e0d;
+  --ink-1: #1a1817;
+  --ink-2: #282420;
+  --text-1: #f8efdf;
+  --text-2: #d0c8bd;
+  --text-3: #b6ac9f;
+  --amber: #f5d2a3;
+  --scene-rgb: 16 14 13;
+  --world-glass: rgb(22 19 17 / 0.8);
+  --world-glass-strong: rgb(22 19 17 / 0.94);
+}
+.archive-shell[data-spatial-world="true"] {
+  background: var(--ink-0);
+}
+.resonant-world {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+[data-spatial-world="true"] .archive-workspace {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  overflow: clip;
+}
+[data-spatial-world="true"]
+  :is(
+    #main,
+    .archive-route,
+    .practice-page,
+    .editorial-page,
+    .preset-page,
+    .studio-page,
+    .listen-page
+  ) {
+  background: transparent;
+}
+[data-spatial-world="true"] .archive-route {
+  max-width: 1800px;
+}
+[data-spatial-world="true"] .observatory-header {
+  min-height: 74px;
+  padding: 12px 3.4%;
+  background: rgb(var(--scene-rgb) / 0.55);
+  backdrop-filter: blur(18px);
+  border-color: rgb(225 229 233 / 0.12);
+}
+[data-spatial-world="true"] .observatory-brand {
+  font-size: 21px;
+  letter-spacing: -0.06em;
+}
+[data-spatial-world="true"] .observatory-header nav a,
+[data-spatial-world="true"] .observatory-header nav button {
+  background: none;
+}
+[data-spatial-world="true"] .observatory-header nav a:hover,
+[data-spatial-world="true"] .observatory-header nav button:hover {
+  color: var(--amber-hi);
+  background: rgb(255 255 255 / 0.035);
+}
+[data-spatial-world="true"] .workspace-subnav {
+  padding-inline: 3.4%;
+  background: rgb(var(--scene-rgb) / 0.7);
+  border-color: rgb(225 229 233 / 0.1);
+  backdrop-filter: blur(14px);
+}
+[data-spatial-world="true"] [data-testid="status-bar-mobile"] {
+  background: rgb(var(--scene-rgb) / 0.82) !important;
+  backdrop-filter: blur(16px);
+}
+[data-spatial-world="true"] .world-context {
+  display: flex;
+  position: relative;
+  z-index: 15;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 47px;
+  padding: 5px 3.4%;
+  color: var(--text-2);
+  background: rgb(var(--scene-rgb) / 0.26);
+  border-bottom: 1px solid rgb(225 229 233 / 0.07);
+}
+[data-spatial-world="true"] .world-context .observatory-active {
+  background: transparent !important;
+}
+.world-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+.world-coordinate {
+  margin-right: 14px;
+  color: var(--text-3);
+  font:
+    9px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.1em;
+}
+.world-toolbar > button,
+.world-toolbar summary {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  min-width: 36px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: rgb(var(--scene-rgb) / 0.28);
+  color: var(--text-2);
+  font-size: 10px;
+  cursor: pointer;
+}
+.world-toolbar > button:hover,
+.world-toolbar summary:hover {
+  color: var(--text-1);
+  background: rgb(255 255 255 / 0.05);
+  border-color: var(--line-1);
+}
+.world-toolbar output {
+  min-width: 38px;
+  font:
+    10px/1.5 ui-monospace,
+    monospace;
+  text-align: center;
+}
+.world-toolbar details {
+  position: relative;
+}
+.world-toolbar summary {
+  list-style: none;
+}
+.world-toolbar summary::-webkit-details-marker {
+  display: none;
+}
+.world-toolbar details[open] summary {
+  color: var(--amber);
+  border-color: var(--line-2);
+}
+.world-settings-panel {
+  position: absolute;
+  z-index: 70;
+  left: 0;
+  top: calc(100% + 12px);
+  width: min(420px, calc(100vw - 32px));
+  max-height: min(540px, 70dvh);
+  padding: 22px;
+  overflow: auto;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--world-glass-strong);
+  box-shadow: 0 24px 70px #0008;
+  backdrop-filter: blur(24px);
+}
+.world-settings-panel > h2 {
+  font-size: 19px;
+  font-weight: 400;
+  margin: 0 0 18px;
+}
+.world-settings-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  font-size: 19px;
+}
+.world-settings-heading button {
+  display: grid;
+  place-items: center;
+  min-width: 40px;
+  min-height: 40px;
+  color: var(--text-2);
+  background: transparent;
+  border: 1px solid var(--line-1);
+  border-radius: 3px;
+  cursor: pointer;
+}
+.world-settings-panel > p {
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--text-3);
+  margin: 18px 0 0;
+}
+.world-settings-panel .archive-theme-bar {
+  display: block;
+  width: auto;
+  margin-top: 16px;
+}
+.world-settings-panel .archive-theme-picker {
+  flex-wrap: wrap;
+}
+.world-settings-panel .field-toolbar {
+  margin-top: 18px;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.world-settings-panel .field-toolbar button {
+  min-height: 40px;
+}
+.world-settings-panel .field-controls {
+  max-width: none;
+}
+.spatial-room .world-room-stage {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  min-height: 58vh;
+  flex: 1;
+  overflow: hidden;
+}
+.spatial-room .resonant-world-immersive {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.spatial-room .world-room-controls {
+  position: relative;
+  z-index: 1;
+  padding: 16px 24px;
+  background: var(--world-glass-strong);
+  border-top: 1px solid var(--line-1);
+  width: min(330px, 100%);
+  margin-top: 180px;
+  border-radius: 6px;
+}
+.spatial-room .world-room-controls .field-toolbar {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+/* The tool decks reveal the scene between functional and readable surfaces. */
+[data-spatial-world="true"]
+  :is(
+    .panel,
+    .suggestion-card,
+    .preference-panel,
+    .preset-card,
+    .sourcebook-entry,
+    .guide-task-grid article,
+    .guide-controls,
+    .scope-well
+  ) {
+  background: var(--world-glass);
+  border-color: var(--line-1);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 0.025),
+    0 16px 50px rgb(0 0 0 / 0.1);
+}
+[data-spatial-world="true"]
+  :is(
+    .research-section,
+    .reading-feature,
+    .evidence-key,
+    .research-tools,
+    .guide-module,
+    .listen-below,
+    .overnight-summary
+  ) {
+  background: var(--world-glass-strong);
+  border-color: var(--line-1);
+  border-radius: 8px;
+}
+[data-spatial-world="true"] :is(.evidence-key, .research-tools) {
+  padding: 28px;
+}
+[data-spatial-world="true"] .reading-feature {
+  background: var(--world-glass);
+}
+[data-spatial-world="true"] .reading-feature-art {
+  background: rgb(168 198 210 / 0.035);
+  border: 1px solid rgb(178 208 218 / 0.1);
+}
+[data-spatial-world="true"]
+  :is(.practice-heading, .editorial-heading, .library-heading) {
+  padding-top: 32px;
+  padding-bottom: 44px;
+  text-shadow: 0 3px 30px rgb(0 0 0 / 0.65);
+}
+[data-spatial-world="true"]
+  :is(.practice-heading, .editorial-heading, .library-heading)
+  p {
+  color: var(--text-2);
+  max-width: 60ch;
+}
+[data-spatial-world="true"] .reading-index {
+  gap: 20px;
+}
+[data-spatial-world="true"] .reading-index > a {
+  background: var(--world-glass);
+  padding: 26px;
+  border: 1px solid var(--line-1);
+  border-radius: 6px;
+}
+[data-spatial-world="true"] .library-layout {
+  gap: 32px;
+}
+[data-spatial-world="true"] .library-sidebar {
+  background: transparent;
+  padding-right: 20px;
+}
+[data-spatial-world="true"] .preset-filters {
+  background: var(--world-glass-strong);
+  border-color: var(--line-1);
+  border-radius: 8px;
+}
+[data-spatial-world="true"] .preset-card {
+  transition:
+    background 180ms ease,
+    border-color 180ms ease;
+}
+[data-spatial-world="true"] .preset-card:hover {
+  background: rgb(24 31 39 / 0.9);
+  border-color: rgb(235 195 159 / 0.45);
+}
+[data-spatial-world="true"] .preset-collections button {
+  background: rgb(var(--scene-rgb) / 0.5);
+}
+[data-spatial-world="true"] .preset-collections button[aria-pressed="true"] {
+  background: rgb(238 194 156 / 0.11);
+  border-color: var(--amber);
+}
+[data-spatial-world="true"] .listening-stage {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+[data-spatial-world="true"] .listen-controls {
+  order: -1;
+  background: var(--world-glass);
+  border: 1px solid var(--line-1);
+  border-radius: 10px;
+  padding: 35px;
+  backdrop-filter: blur(12px);
+}
+[data-spatial-world="true"] .listen-below {
+  padding: 24px;
+}
+.listen-world-window {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+.listen-world-caption {
+  font:
+    9px/1.7 ui-monospace,
+    monospace;
+  letter-spacing: 0.12em;
+  color: var(--amber);
+}
+.listen-world-controls {
+  padding-top: 260px;
+}
+.listen-world-controls .field-toolbar {
+  background: rgb(var(--scene-rgb) / 0.6);
+  border-color: var(--line-1);
+}
+[data-spatial-world="true"] .listen-art .sand-launch {
+  background: rgb(var(--scene-rgb) / 0.7);
+}
+[data-spatial-world="true"]
+  :is(
+    .btn-secondary,
+    .chip,
+    input:not([type="range"]):not([type="checkbox"]),
+    select,
+    textarea
+  ) {
+  background-color: rgb(16 22 30 / 0.88);
+}
+[data-spatial-world="true"] :is(.practice-primary, .btn-primary, .listen-play) {
+  box-shadow: 0 5px 28px rgb(238 194 156 / 0.1);
+}
+[data-spatial-world="true"]
+  :is(button, a, summary, input, select):focus-visible {
+  outline: 2px solid var(--amber-hi);
+  outline-offset: 4px;
+}
+
+/* Arrival leaves the right side open to the full-viewport sculpture. */
+.world-home {
+  color: var(--text-1);
+}
+.world-home a {
+  text-decoration: none;
+}
+.world-arrival {
+  min-height: max(690px, calc(100svh - 123px));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 62px 5.4% 170px;
+}
+.world-arrival-copy {
+  width: 53%;
+  max-width: 710px;
+  position: relative;
+  z-index: 1;
+}
+.world-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-3);
+  font:
+    450 10px/1.6 Inter,
+    sans-serif;
+  letter-spacing: 0.16em;
+}
+.world-eyebrow i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 12px rgb(238 194 156 / 0.4);
+}
+.world-arrival h1 {
+  font:
+    350 clamp(72px, 8.2vw, 132px)/0.98 Inter,
+    sans-serif;
+  letter-spacing: -0.075em;
+  margin: 29px 0;
+  text-shadow: 0 3px 50px #0005;
+}
+.world-arrival h1 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  color: var(--amber);
+}
+.world-arrival-copy > p {
+  font:
+    400 16px/1.8 Inter,
+    sans-serif;
+  color: var(--text-2);
+  margin: 0;
+  text-shadow: 0 2px 20px #000;
+}
+.world-arrival-actions {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 30px;
+}
+.world-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 48px;
+  padding: 13px 20px;
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 550;
+  color: var(--text-inv);
+  background: var(--amber);
+  border: 1px solid var(--amber);
+  border-radius: 3px;
+  transition: background 160ms ease;
+}
+.world-primary:hover {
+  background: var(--amber-hi);
+  border-color: var(--amber-hi);
+}
+.world-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-1);
+  font-size: 12px;
+  line-height: 1.6;
+  min-height: 44px;
+}
+.world-text-link:hover {
+  color: var(--amber-hi);
+}
+.world-quiet-note {
+  display: block;
+  font-size: 10px;
+  color: var(--text-3);
+  margin-top: 16px;
+}
+.world-scene-caption {
+  position: absolute;
+  right: 5.4%;
+  bottom: 188px;
+  max-width: 420px;
+  padding: 10px 0;
+  text-align: right;
+}
+.world-scene-name {
+  display: grid;
+  gap: 9px;
+}
+.world-scene-name > span {
+  color: var(--amber);
+  font:
+    9px/1.5 ui-monospace,
+    monospace;
+  letter-spacing: 0.16em;
+}
+.world-scene-name strong {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.world-scene-caption > p {
+  color: var(--text-3);
+  font-size: 9px;
+  line-height: 1.7;
+  margin-top: 9px;
+}
+.world-home-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+  margin-top: 15px;
+}
+.world-home-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 40px;
+  padding: 7px;
+  border: 0;
+  border-radius: 3px;
+  color: var(--text-2);
+  background: rgb(var(--scene-rgb) / 0.55);
+  font-size: 10px;
+  cursor: pointer;
+}
+.world-home-controls button:hover {
+  background: rgb(238 194 156 / 0.12);
+  color: var(--text-1);
+}
+.world-home-controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.world-home-controls output {
+  font:
+    10px/1.5 ui-monospace,
+    monospace;
+  min-width: 42px;
+  text-align: center;
+  color: var(--text-2);
+  background: rgb(var(--scene-rgb) / 0.5);
+  padding-block: 12px;
+}
+.world-dimension-switch {
+  display: flex;
+  margin-right: 8px;
+}
+.world-dimension-switch button[aria-pressed="true"] {
+  color: var(--amber);
+  box-shadow: inset 0 -1px var(--amber);
+}
+.world-portals {
+  position: absolute;
+  bottom: 36px;
+  left: 5.4%;
+  right: 5.4%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgb(225 229 233 / 0.2);
+}
+.world-portals > a {
+  color: var(--text-1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 100px;
+  padding: 19px 24px 19px 0;
+  background: transparent;
+}
+.world-portals > a + a {
+  padding-left: 24px;
+}
+.world-portals > a::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 20px;
+  height: 1px;
+  background: var(--amber);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+.world-portals > a:hover::before {
+  transform: scaleX(1);
+}
+.world-portal-number {
+  align-self: flex-start;
+  padding-top: 7px;
+  font:
+    9px/1.5 ui-monospace,
+    monospace;
+  color: var(--amber);
+}
+.world-portals h2 {
+  margin: 0 0 7px;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+.world-portals p {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text-3);
+}
+.world-portals > a > svg {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--amber);
+}
+.world-scroll-cue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-3);
+  min-height: 27px;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.world-practice,
+.world-notebook {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 10%;
+  padding: 105px 7%;
+  background: rgb(var(--scene-rgb) / 0.6);
+  border-top: 1px solid rgb(225 229 233 / 0.1);
+}
+.world-practice {
+  scroll-margin-top: 90px;
+}
+.world-section-intro h2,
+.world-dimension-section h2 {
+  margin: 25px 0 20px;
+  font:
+    400 clamp(34px, 3.4vw, 53px)/1.13 Inter,
+    sans-serif;
+  letter-spacing: -0.055em;
+}
+.world-section-intro p {
+  max-width: 35ch;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--text-2);
+}
+.world-intention-workspace {
+  min-width: 0;
+}
+.world-intentions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+}
+.world-intentions button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 65px;
+  padding: 14px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line-1);
+  border-radius: 0;
+  color: var(--text-2);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.world-intentions button small {
+  font-size: 9px;
+  color: var(--text-3);
+}
+.world-intentions button span {
+  font-size: 14px;
+}
+.world-intentions button svg {
+  margin-left: auto;
+  color: var(--text-3);
+}
+.world-intentions button[aria-pressed="true"] {
+  color: var(--amber-hi);
+  border-color: var(--amber);
+}
+.world-intentions button[aria-pressed="true"] svg,
+.world-intentions button[aria-pressed="true"] small {
+  color: var(--amber);
+}
+.world-intention-result {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 0 15px;
+}
+.world-intention-result .world-eyebrow {
+  font-size: 8px;
+}
+.world-intention-result h3 {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  margin: 10px 0 6px;
+}
+.world-intention-result p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--text-3);
+  margin: 0;
+}
+.world-intention-result .world-primary {
+  flex-shrink: 0;
+  font-size: 11px;
+  gap: 12px;
+}
+.world-intention-workspace > .world-text-link {
+  font-size: 11px;
+  color: var(--text-3);
+}
+.world-dimension-section {
+  min-height: 500px;
+  padding: 80px 7%;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 10%;
+  align-items: start;
+  border-top: 1px solid rgb(225 229 233 / 0.1);
+  background: rgb(var(--scene-rgb) / 0.28);
+}
+.world-dimension-section > .world-eyebrow {
+  padding-top: 28px;
+}
+.world-dimension-section h2 {
+  font-size: clamp(34px, 3.6vw, 58px);
+}
+.world-dimension-section h2 em {
+  color: var(--amber);
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+.world-dimension-section p {
+  max-width: 48ch;
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.9;
+  margin-bottom: 28px;
+}
+.world-dimension-section small {
+  display: block;
+  max-width: 52ch;
+  margin-top: 18px;
+  color: var(--text-3);
+  font-size: 10px;
+  line-height: 1.8;
+}
+.world-notebook {
+  background: rgb(var(--scene-rgb) / 0.73);
+}
+.world-note-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 0;
+  color: var(--text-1);
+  border-bottom: 1px solid var(--line-1);
+}
+.world-note-links a:first-child {
+  padding-top: 0;
+}
+.world-note-links a:hover h3 {
+  color: var(--amber);
+}
+.world-note-links h3 {
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  margin: 0 0 8px;
+}
+.world-note-links p {
+  margin: 0;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.7;
+}
+.world-note-links svg {
+  color: var(--amber);
+  flex-shrink: 0;
+}
+.world-footer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 32px 5.4%;
+  background: rgb(var(--scene-rgb) / 0.78);
+  border-top: 1px solid var(--line-1);
+  font-size: 10px;
+  color: var(--text-3);
+}
+.world-footer strong {
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.04em;
+  color: var(--text-1);
+}
+.world-footer > span {
+  margin-right: auto;
+}
+.world-footer a {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-2);
+}
+
+@media (min-width: 1600px) {
+  .world-arrival {
+    min-height: 810px;
+  }
+}
+@media (max-width: 1200px) {
+  [data-spatial-world="true"] .observatory-header {
+    padding-inline: 24px;
+  }
+  .world-arrival {
+    padding-inline: 4%;
+  }
+  .world-arrival-copy {
+    width: 56%;
+  }
+  .world-arrival h1 {
+    font-size: clamp(76px, 8.9vw, 108px);
+  }
+  .world-portals {
+    left: 4%;
+    right: 4%;
+  }
+  .world-portals > a {
+    gap: 12px;
+    padding-right: 16px;
+  }
+  .world-portals > a + a {
+    padding-left: 12px;
+  }
+  .world-portals h2 {
+    font-size: 22px;
+  }
+  .world-portals p {
+    font-size: 9px;
+  }
+  .world-scene-caption {
+    right: 4%;
+  }
+  .world-practice,
+  .world-notebook,
+  .world-dimension-section {
+    padding-inline: 5%;
+    gap: 7%;
+  }
+  .world-intention-result {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+}
+@media (max-width: 900px) and (min-width: 768px) {
+  .world-arrival {
+    min-height: 720px;
+  }
+  .world-arrival-copy {
+    width: 64%;
+  }
+  .world-scene-caption {
+    bottom: 175px;
+    max-width: 280px;
+  }
+  .world-scene-name strong {
+    font-size: 12px;
+  }
+  .world-arrival-actions {
+    gap: 13px;
+  }
+  .world-arrival-actions .world-text-link {
+    font-size: 10px;
+  }
+  .world-portal-number {
+    display: none;
+  }
+  .world-portals > a {
+    gap: 7px;
+  }
+  .world-portals h2 {
+    font-size: 20px;
+  }
+  .world-portals p {
+    max-width: 125px;
+  }
+  .world-coordinate {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  [data-spatial-world="true"] .world-context {
+    padding: 4px 14px;
+    gap: 5px;
+    min-height: 46px;
+  }
+  .world-toolbar {
+    gap: 2px;
+    width: 100%;
+  }
+  .world-coordinate {
+    margin-right: auto;
+    font-size: 8px;
+  }
+  .world-toolbar > button,
+  .world-toolbar summary {
+    min-height: 38px;
+    padding: 7px 8px;
+  }
+  .world-toolbar > button {
+    min-width: 34px;
+  }
+  .world-toolbar output {
+    min-width: 32px;
+    font-size: 9px;
+  }
+  .world-settings-panel {
+    position: fixed;
+    left: auto;
+    right: 12px;
+    top: 99px;
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 180px);
+    padding: 20px;
+  }
+  [data-spatial-world="true"] .workspace-subnav {
+    padding-inline: 12px;
+  }
+  [data-spatial-world="true"]
+    :is(.practice-heading, .editorial-heading, .library-heading) {
+    padding: 20px 0 32px;
+  }
+  [data-spatial-world="true"] .reading-index > a {
+    padding: 22px;
+  }
+  [data-spatial-world="true"] :is(.evidence-key, .research-tools) {
+    padding: 22px 18px;
+  }
+  [data-spatial-world="true"] .preset-filters {
+    padding: 15px;
+  }
+  [data-spatial-world="true"] .listen-controls {
+    padding: 24px 20px;
+  }
+  [data-spatial-world="true"] .listen-below {
+    padding: 20px;
+  }
+  .listen-world-window {
+    min-height: 270px;
+    padding: 12px 0;
+  }
+  .listen-world-controls {
+    padding-top: 140px;
+  }
+  .spatial-room .world-room-controls {
+    padding: 12px;
+    width: 100%;
+    margin-top: 270px;
+  }
+  .spatial-room .world-room-stage {
+    min-height: 44vh;
+  }
+  .world-arrival {
+    min-height: max(840px, calc(100svh - 100px));
+    padding: 38px 23px 350px;
+    justify-content: flex-start;
+  }
+  .world-arrival-copy {
+    width: 100%;
+    max-width: 490px;
+  }
+  .world-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.13em;
+  }
+  .world-arrival h1 {
+    font-size: clamp(69px, 18.8vw, 114px);
+    letter-spacing: -0.07em;
+    margin: 22px 0 19px;
+  }
+  .world-arrival-copy > p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .world-arrival-actions {
+    gap: 15px;
+    margin-top: 23px;
+  }
+  .world-primary {
+    min-height: 46px;
+    padding: 12px 16px;
+    font-size: 11px;
+    gap: 17px;
+  }
+  .world-arrival-actions .world-text-link {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .world-quiet-note {
+    font-size: 9px;
+    margin-top: 13px;
+  }
+  .world-scene-caption {
+    bottom: 270px;
+    right: 23px;
+    text-align: right;
+  }
+  .world-scene-name strong {
+    font-size: 12px;
+  }
+  .world-scene-name > span {
+    font-size: 8px;
+  }
+  .world-scene-caption > p {
+    font-size: 8px;
+    margin-top: 7px;
+  }
+  .world-home-controls {
+    margin-top: 9px;
+  }
+  .world-home-controls button {
+    min-height: 44px;
+    min-width: 38px;
+  }
+  .world-home-controls output {
+    padding-block: 14px;
+  }
+  .world-portals {
+    grid-template-columns: 1fr 1fr;
+    left: 23px;
+    right: 23px;
+    bottom: 37px;
+    padding-block: 8px;
+    background: rgb(var(--scene-rgb) / 0.35);
+  }
+  .world-portals > a,
+  .world-portals > a + a {
+    min-height: 98px;
+    padding: 15px 14px 15px 0;
+    gap: 10px;
+  }
+  .world-portals > a:nth-child(even) {
+    padding-left: 12px;
+    padding-right: 0;
+  }
+  .world-portals > a:nth-child(n + 3) {
+    border-top: 1px solid rgb(225 229 233 / 0.1);
+  }
+  .world-portals h2 {
+    font-size: 23px;
+    margin-bottom: 6px;
+  }
+  .world-portals p {
+    font-size: 9px;
+    max-width: 135px;
+  }
+  .world-portals > a > svg {
+    width: 14px;
+  }
+  .world-portal-number {
+    display: none;
+  }
+  .world-scroll-cue {
+    bottom: 9px;
+  }
+  .world-practice,
+  .world-notebook,
+  .world-dimension-section {
+    display: block;
+    padding: 54px 23px;
+  }
+  .world-section-intro h2,
+  .world-dimension-section h2 {
+    font-size: 38px;
+    margin: 20px 0 16px;
+  }
+  .world-section-intro p {
+    font-size: 12px;
+    max-width: 43ch;
+  }
+  .world-intention-workspace {
+    margin-top: 28px;
+  }
+  .world-intentions {
+    gap: 0 18px;
+  }
+  .world-intentions button {
+    gap: 9px;
+    min-height: 63px;
+  }
+  .world-intentions button small {
+    font-size: 8px;
+  }
+  .world-intentions button span {
+    font-size: 12px;
+  }
+  .world-intentions button svg {
+    width: 13px;
+  }
+  .world-intention-result {
+    padding-top: 26px;
+    gap: 20px;
+  }
+  .world-intention-result h3 {
+    font-size: 23px;
+  }
+  .world-intention-result .world-primary {
+    min-width: 185px;
+  }
+  .world-dimension-section {
+    min-height: 440px;
+  }
+  .world-dimension-section > .world-eyebrow {
+    padding-top: 0;
+  }
+  .world-dimension-section p {
+    font-size: 12px;
+  }
+  .world-dimension-section small {
+    font-size: 9px;
+  }
+  .world-note-links {
+    display: block;
+    margin-top: 32px;
+  }
+  .world-note-links h3 {
+    font-size: 18px;
+  }
+  .world-note-links p {
+    font-size: 10px;
+  }
+  .world-footer {
+    padding: 26px 23px;
+    gap: 13px 23px;
+    font-size: 10px;
+  }
+  .world-footer strong {
+    font-size: 20px;
+  }
+  .world-footer > span {
+    flex-basis: 57%;
+    font-size: 9px;
+  }
+}
+@media (max-width: 380px) {
+  .world-arrival {
+    padding-inline: 19px;
+    min-height: 850px;
+  }
+  .world-arrival-actions {
+    gap: 8px 12px;
+  }
+  .world-arrival-actions .world-text-link {
+    font-size: 9px;
+  }
+  .world-portals {
+    left: 19px;
+    right: 19px;
+  }
+  .world-portals h2 {
+    font-size: 21px;
+  }
+  .world-scene-caption {
+    right: 19px;
+  }
+  .world-practice,
+  .world-notebook,
+  .world-dimension-section {
+    padding-inline: 19px;
+  }
+  .world-intentions {
+    column-gap: 12px;
+  }
+  .world-intentions button small {
+    display: none;
+  }
+  .world-footer > span {
+    flex-basis: 50%;
+  }
+  .world-coordinate {
+    display: none;
+  }
+  .world-toolbar {
+    justify-content: flex-end;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .world-home *,
+  [data-spatial-world="true"] .preset-card {
+    transition: none !important;
+    animation: none !important;
+  }
+}

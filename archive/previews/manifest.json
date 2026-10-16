@@ -697,6 +697,26 @@
       "bytes": 384044
     },
     {
+      "id": "nt-phase-drift",
+      "sha256": "af8c1b2285674dbaedcec1f15189d7300e54405a1b2c777ebcad76c1b11833cf",
+      "bytes": 384044
+    },
+    {
+      "id": "nt-detuning-3",
+      "sha256": "31d969f16588cebca6c2335106d3cb849699d6e6db41db31d7f31b1c9af5d12d",
+      "bytes": 384044
+    },
+    {
+      "id": "nt-ratio-steps",
+      "sha256": "e35710a157832d82cee50439fef6b03c4ba631a28852a2c1d784bcb2fb95c16e",
+      "bytes": 384044
+    },
+    {
+      "id": "nt-tempered-steps",
+      "sha256": "37ec541f3351d980f4a42ed2b8e700d4364bc5f176c691f1a8b5e7579b21ca74",
+      "bytes": 384044
+    },
+    {
       "id": "heal-bowl-session",
       "sha256": "c12d35f448d2629b72455f5002157e1da237e4c350a84239c7b865b86237a8de",
       "bytes": 384044
@@ -762,5 +782,5 @@
       "bytes": 384044
     }
   ],
-  "totalBytes": 57990644
+  "totalBytes": 59526820
 }

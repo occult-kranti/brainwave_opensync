@@ -109,6 +109,7 @@ jobs:
           import { execFileSync } from 'node:child_process';
           import { readFileSync, writeFileSync } from 'node:fs';
           const manifest = JSON.parse(readFileSync('dist/deployments.json', 'utf8'));
+          const catalog = JSON.parse(execFileSync('node', ['archive-source/scripts/catalog-summary.mjs'], { encoding: 'utf8' }));
           manifest.archive = {
             branch: 'archive/dark-landscapes',
             commit: execFileSync('git', ['-C', 'archive-source', 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
@@ -117,7 +118,9 @@ jobs:
             experience: 'Spatial Observatory',
             graphics: 'Three.js / WebGL 2 / GLSL',
             cameraZoom: [50, 180],
-            presetCount: JSON.parse(readFileSync('archive-source/public/previews/manifest.json', 'utf8')).files.length
+            presetCount: catalog.presetCount,
+            filePreviewCount: catalog.filePreviewCount,
+            runtimePreviewCount: catalog.runtimePreviewCount
           };
           writeFileSync('dist/deployments.json', JSON.stringify(manifest, null, 2) + '\n');
           NODE

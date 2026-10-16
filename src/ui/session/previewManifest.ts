@@ -13,13 +13,19 @@ export interface PreviewManifestEntry {
   id: string;
   sha256: string;
   bytes: number;
+  /** Per-file override; absent means the manifest-level default. */
+  sampleRate?: number;
+  /** Actual duration override for an individually appended preview. */
+  seconds?: number;
+  /** Why this file differs from the catalog defaults. */
+  note?: string;
 }
 
 export interface PreviewManifest {
   version: number;
   sampleRate: number;
   format: string;
-  /** Actual rendered seconds per file (budget-fit may be < targetSeconds). */
+  /** Default rendered duration; an entry may supply its own seconds. */
   seconds: number;
   targetSeconds: number;
   files: PreviewManifestEntry[];

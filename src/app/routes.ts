@@ -85,6 +85,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/lucid', 'LUCID AUDIO LAB', 'Lucid Audio Lab', MoonStar, 'tools', () => import('@/pages/LucidLab')),
   r('/sound-research', 'SOUND RESEARCH', 'Sound Research', FlaskConical, 'tools', () => import('@/pages/SoundResearch')),
   r('/newton-tesla', 'NEWTON–TESLA LAB', 'Newton–Tesla Lab', Orbit, 'tools', () => import('@/pages/NewtonTeslaLab')),
+  r('/frequency-hypotheses', 'FREQUENCY HYPOTHESES', 'Frequency Hypotheses', FlaskConical, 'tools', () => import('@/pages/FrequencyHypotheses')),
   r('/levitation', 'LEVITATION LAB', 'Levitation Lab', Orbit, 'tools', () => import('@/pages/LevitationLab')),
   r('/healing', 'HEALING SOUND LAB', 'Healing Sound Lab', HeartPulse, 'tools', () => import('@/pages/HealingLab')),
   r('/nature', 'NATURE CALLS', 'Nature Calls Lab', Bird, 'tools', () => import('@/pages/NatureLab')),
@@ -95,6 +96,7 @@ export const ROUTES: readonly AppRoute[] = [
   // Background reading — grouped behind one disclosure in both navigation layouts.
   r('/levels', 'LEVELS', 'Levels', Gauge, 'research', () => import('@/pages/Levels')),
   r('/knowledge', 'KNOWLEDGE', 'Knowledge', BookMarked, 'research', () => import('@/pages/Knowledge')),
+  r('/bashar-research', 'BASHAR RESEARCH', 'Bashar Research', Radio, 'research', () => import('@/pages/BasharResearch')),
   r('/channeled', 'CHANNELED SOURCES', 'Channeled Sources', Radio, 'research', () => import('@/pages/ChanneledSources')),
   r('/theory', 'THEORY EXPLORER', 'Theory Explorer', GitFork, 'research', () => import('@/pages/TheoryExplorer')),
   r('/critique', 'CRITIQUE LIBRARY', 'Critique Library', MessageSquareWarning, 'research', () => import('@/pages/research/CritiqueLibrary')),

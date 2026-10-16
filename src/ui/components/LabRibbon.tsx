@@ -7,6 +7,8 @@
 import { Link, useLocation } from 'react-router';
 
 const LABS = [
+  { path: '/bashar-research', label: 'BASHAR RESEARCH' },
+  { path: '/frequency-hypotheses', label: 'FREQUENCY HYPOTHESES' },
   { path: '/levitation', label: 'LEVITATION' },
   { path: '/newton-tesla', label: 'NEWTON–TESLA' },
   { path: '/sound-research', label: 'SOUND RESEARCH' },

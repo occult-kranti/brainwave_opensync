@@ -6,6 +6,7 @@
  */
 
 import { LEVITATION_PRESETS } from './levitationPresets';
+import { FRONTIER_PRESETS } from './frontierPresets';
 import { NEWTON_TESLA_PRESETS } from './newtonTeslaPresets';
 import { SOUND_RESEARCH_PRESETS } from './soundResearchPresets';
 import { HYPNOSIS_PRESETS } from './hypnosisPractice';
@@ -841,6 +842,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
   ...SOUND_RESEARCH_PRESETS,
   ...NEWTON_TESLA_PRESETS,
   ...LEVITATION_PRESETS,
+  ...FRONTIER_PRESETS,
   ...HEALING_PRESETS,
   ...HEALING_PRESETS_R4,
   ...BASHAR_PRESETS,

@@ -3,6 +3,7 @@ import { needsHeadphones } from './sessionSuggestions';
 import { isBasharPreset } from '@/ui/components/presetPresentation';
 
 export const PRESET_COLLECTIONS = [
+  ['bashar-studies', 'Bashar research sounds'], ['frequency-studies', 'Frequency studies'],
   ['levitation', 'Levitation studies'],
   ['research', 'Sound research'], ['newton-tesla', 'Newton–Tesla studies'], ['all', 'Browse all presets'], ['start', 'Start here'], ['hypnosis', 'Hypnosis & suggestion'],
   ['practice', 'Meditation & rest'], ['sleep', 'Sleep & wind-down'], ['dream', 'Dreaming & imagery'],
@@ -13,6 +14,8 @@ export const PRESET_COLLECTIONS = [
 export type PresetCollection = typeof PRESET_COLLECTIONS[number][0];
 export const STARTER_IDS = ['practice-soft-landing', 'practice-bowl-attention', 'practice-evening-rain', 'practice-steady-focus'];
 export const COLLECTION_NOTES: Record<PresetCollection, string> = {
+ 'bashar-studies': 'Four original listening comparisons inspired by source questions. Pitches and timings are app choices, with no levitation or physiological claim.',
+ 'frequency-studies': 'Four quiet references for detuning and sampling arithmetic. These sounds do not run the particle models or drive hardware.',
  levitation: 'Four quiet listening illustrations of frequency, phase drift and order. These sounds do not drive a levitator or establish a healing effect.',
  'newton-tesla': 'Original acoustic comparisons inspired by questions about phase and tuning. These sounds are not electromagnetic apparatus or historical recordings.',
  research: 'Original experimental listening recipes for comparing sound structures. None has been validated as a treatment.',
@@ -27,6 +30,8 @@ export const COLLECTION_NOTES: Record<PresetCollection, string> = {
  bashar: 'Four listening examples from the supplied digest. Starting pitches and timings are app choices.', saved: 'Your Studio presets, saved in this browser.',
 };
 export function presetFamily(p: Preset): string {
+ if (p.id.startsWith('bashar-study-')) return 'Bashar research sounds';
+ if (p.id.startsWith('frequency-study-')) return 'Frequency studies';
  if (p.id.startsWith('levitation-')) return 'Levitation studies';
  if (p.id.startsWith('nt-')) return 'Newton–Tesla studies';
  if (p.id.startsWith('research-')) return 'Sound research';
@@ -48,6 +53,8 @@ export function presetFamily(p: Preset): string {
 export function matchesCollection(p: Preset, collection: PresetCollection): boolean {
  const family = presetFamily(p);
  switch (collection) {
+  case 'bashar-studies': return p.id.startsWith('bashar-study-');
+  case 'frequency-studies': return p.id.startsWith('frequency-study-');
   case 'levitation': return p.id.startsWith('levitation-');
   case 'newton-tesla': return p.id.startsWith('nt-');
   case 'research': return p.id.startsWith('research-');
@@ -67,7 +74,7 @@ export function matchesCollection(p: Preset, collection: PresetCollection): bool
   case 'bashar': return isBasharPreset(p);
  }
 }
-export const FAMILY_ORDER = ['Levitation studies', 'Sound research', 'Newton–Tesla studies', 'Hypnosis & suggestion', 'Meditation & breath', 'Rest & relaxation', 'Sleep & wind-down', 'Dreaming & imagery', 'Focus & attention', 'Nature & acoustic portraits', 'Healing traditions & comfort', 'Overnight · seven hours', 'Programs & traditions', 'NanoLab · signal controls', 'Bashar sounds', 'Experimental listening', 'Infant · restricted listening'];
+export const FAMILY_ORDER = ['Bashar research sounds', 'Frequency studies', 'Levitation studies', 'Sound research', 'Newton–Tesla studies', 'Hypnosis & suggestion', 'Meditation & breath', 'Rest & relaxation', 'Sleep & wind-down', 'Dreaming & imagery', 'Focus & attention', 'Nature & acoustic portraits', 'Healing traditions & comfort', 'Overnight · seven hours', 'Programs & traditions', 'NanoLab · signal controls', 'Bashar sounds', 'Experimental listening', 'Infant · restricted listening'];
 
 export function matchesListeningFilters(p: Preset, setup: string, duration: string, sound: string): boolean {
   const minutes = presetDurationMin(p);

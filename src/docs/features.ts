@@ -72,6 +72,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/dream', label: 'Sleep & Dream' },
   { route: '/lucid', label: 'Lucid Audio Lab' },
   { route: '/sound-research', label: 'Sound Research' },
+  { route: '/newton-tesla', label: 'Newton–Tesla Lab' },
   { route: '/healing', label: 'Healing Sound Lab' },
   { route: '/nature', label: 'Nature Calls Lab' },
   { route: '/replication', label: 'Replication Bay' },
@@ -87,6 +88,15 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'newton-tesla-network', module: 'Newton–Tesla Lab', route: '/newton-tesla', name: 'Newton–Tesla network laboratory',
+    grade: 'A', gradeScope: 'Conditional circuit, field-geometry and refraction calculations only. Historical claims are source-specific; original listening outcomes remain unvalidated tier D.',
+    simple: 'Explore a source-linked network of Newton and Tesla research. Inspect patents and historical texts, vary a mathematical model, or load an original listening comparison.',
+    deep: 'The network distinguishes documented relationships, modern derivations, analogies and unsupported bridges. Three teaching models show orthogonal-field phase geometry, passive series-RLC response with input and losses, and ideal planar refraction. None recreates a complete historical apparatus or estimates a biological outcome. Source access, competing explanations, controls and falsifiers accompany the research proposals.',
+    howTo: ['Select a network concept and inspect its connections.', 'Open the primary-text or patent dossiers and their access notes.', 'Vary a mathematical model and download its numerical rows.', 'Read the proposed controls before considering an experiment.', 'Preview a listening comparison quietly or load it into Studio.'],
+    plot: { axes: 'Normalized orthogonal field components; circuit frequency and electrical response; refraction geometry with supplied indices.', good: 'Check limiting cases, units, losses and control conditions.', bad: 'A graph connection is not causal proof; audio is not an electromagnetic device or clinical treatment.' },
+  },
+
   {
     id: 'sound-research-bench', module: 'Sound Research', route: '/sound-research', name: 'Sound research bench',
     grade: 'A', gradeScope: 'Signal algebra and generic mechanical response only; original listening presets remain experimental tier D.',

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520" role="img" aria-labelledby="title description"><title id="title">Diamagnetic suspension: conceptual pole layout and force balance</title><desc id="description">Left: an alternating two-by-two pole arrangement under a possible sample footprint. Right: a separate side view shows a diamagnetic tile above magnets with upward magnetic force and downward weight. The depicted spacing is schematic; no magnetic field map or stable trap is calculated.</desc><rect width="840" height="520" fill="#0e1d24"/><style>text{font-family:Arial,sans-serif;fill:#dbe6e1;font-size:15px}.title{font-size:23px;fill:#f0d0ab}.small{font-size:12px;fill:#aebeb8}.label{font-size:14px}.copper{stroke:#e6ac7a;fill:none;stroke-width:2}.teal{stroke:#8bd0c6;fill:none;stroke-width:2}.line{stroke:#658b85;fill:none;stroke-width:1.5}.node{stroke:#80b9ad;stroke-dasharray:5 5;stroke-width:1.2}.part{fill:#233f42;stroke:#8cb5a7;stroke-width:1.5}.muted{fill:#182b31;stroke:#597771;stroke-width:1.5}.force{stroke:#e6ac7a;stroke-width:2;marker-end:url(#arrow)}.guide{fill:none;stroke:#769a92;stroke-width:1.2}</style><defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#e6ac7a"/></marker></defs>
+<text x="30" y="38" class="title">Diamagnetic suspension · layout and force balance</text>
+<text x="30" y="63" class="small">Conceptual geometry · not to scale · no field strength or assembly instructions</text>
+<text x="65" y="108">Top view: alternating pole faces</text>
+<rect x="90" y="140" width="90" height="75" fill="#6c4734" stroke="#d5a276"/><rect x="180" y="140" width="90" height="75" fill="#244950" stroke="#86c2ba"/>
+<rect x="90" y="215" width="90" height="75" fill="#244950" stroke="#86c2ba"/><rect x="180" y="215" width="90" height="75" fill="#6c4734" stroke="#d5a276"/>
+<text x="130" y="181">N</text><text x="220" y="181">S</text><text x="130" y="256">S</text><text x="220" y="256">N</text>
+<rect x="130" y="175" width="100" height="80" fill="#d9e8d8" fill-opacity=".07" stroke="#d9e8d8" stroke-dasharray="6 4"/>
+<path class="guide" d="M230 175L290 145"/><text x="285" y="130" class="small">Illustrative tile footprint</text>
+<text x="455" y="108">Side view: force accounting</text>
+<rect class="part" x="480" y="206" width="200" height="13"/>
+<rect x="470" y="286" width="110" height="45" fill="#6c4734" stroke="#d5a276"/><rect x="580" y="286" width="110" height="45" fill="#244950" stroke="#86c2ba"/>
+<text x="520" y="316">N</text><text x="630" y="316">S</text>
+<path class="force" d="M579 196V151"/><path class="force" d="M579 230V270"/>
+<text x="604" y="161" class="label">Magnetic force</text><text x="604" y="258" class="label">Weight</text>
+<path class="guide" d="M482 212H428"/><text x="372" y="192" class="small">Diamagnetic</text><text x="372" y="209" class="small">tile</text>
+<text x="89" y="361" class="small">Pole pattern is illustrative; tile anisotropy and the full field matter.</text>
+<text x="30" y="409" class="label">Fz ≈ χV/(2μ₀) · ∂(B²)/∂z, for a weak isotropic linear material.</text>
+<text x="30" y="436" class="small">Upward magnetic force can balance weight. Balance alone does not establish stability in three dimensions.</text>
+<text x="30" y="472" class="small">Source context: Berry &amp; Geim (1997), and diamagnetic-source records in the laboratory dossier.</text>
+<text x="30" y="496" class="small">Original explanatory SVG. This is a known magnetic force, not evidence that gravity is cancelled.</text></svg>

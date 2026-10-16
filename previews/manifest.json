@@ -780,7 +780,39 @@
       "id": "exp-phi-bowl-chord",
       "sha256": "ee8f7a12bd3a6407e63625f261e70a3e6c0c08746cfc7c50c4fd1d2aa83101ed",
       "bytes": 384044
+    },
+    {
+      "id": "levitation-frequency-reference",
+      "sha256": "1f214014b655a3e7e6a969d50e88869f6a7ae1217e6c931dd56251352a41d3b8",
+      "bytes": 96044,
+      "sampleRate": 12000,
+      "seconds": 2,
+      "note": "Appended 2s at 12000 Hz; per-file metadata overrides manifest defaults and preserves existing previews."
+    },
+    {
+      "id": "levitation-phase-drift",
+      "sha256": "048b2bd76012a8a08cba7df95b6e8b00a3540a257e0fc220f395756af8fa9a69",
+      "bytes": 96044,
+      "sampleRate": 12000,
+      "seconds": 2,
+      "note": "Appended 2s at 12000 Hz; per-file metadata overrides manifest defaults and preserves existing previews."
+    },
+    {
+      "id": "levitation-wavelength-ascent",
+      "sha256": "d69296ef14606864c8caa9cf5f23029db121f002abc3ce937f0ad5bcac70e4a8",
+      "bytes": 96044,
+      "sampleRate": 12000,
+      "seconds": 2,
+      "note": "Appended 2s at 12000 Hz; per-file metadata overrides manifest defaults and preserves existing previews."
+    },
+    {
+      "id": "levitation-wavelength-descent",
+      "sha256": "80181a7f6d5bfb34884d0446f3cc052efc67edbdd5f542366325c2198d55155f",
+      "bytes": 96044,
+      "sampleRate": 12000,
+      "seconds": 2,
+      "note": "Appended 2s at 12000 Hz; per-file metadata overrides manifest defaults and preserves existing previews."
     }
   ],
-  "totalBytes": 59526820
+  "totalBytes": 59910996
 }

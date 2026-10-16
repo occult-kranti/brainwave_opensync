@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520" role="img" aria-labelledby="title description"><title id="title">Force measurement controls with vibration isolation</title><desc id="description">An unidentified test article rests on a calibrated load sensor supported by an isolated base. A separate reference accelerometer monitors vibration of the base. An optical displacement readout observes article motion independently. The diagram distinguishes a load reading from a demonstrated force mechanism; no levitation actuator or wiring is specified.</desc><rect width="840" height="520" fill="#0e1d24"/><style>text{font-family:Arial,sans-serif;fill:#dbe6e1;font-size:15px}.title{font-size:23px;fill:#f0d0ab}.small{font-size:12px;fill:#aebeb8}.label{font-size:14px}.copper{stroke:#e6ac7a;fill:none;stroke-width:2}.teal{stroke:#8bd0c6;fill:none;stroke-width:2}.line{stroke:#658b85;fill:none;stroke-width:1.5}.node{stroke:#80b9ad;stroke-dasharray:5 5;stroke-width:1.2}.part{fill:#233f42;stroke:#8cb5a7;stroke-width:1.5}.muted{fill:#182b31;stroke:#597771;stroke-width:1.5}.force{stroke:#e6ac7a;stroke-width:2;marker-end:url(#arrow)}.guide{fill:none;stroke:#769a92;stroke-width:1.2}</style><defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#e6ac7a"/></marker></defs>
+<text x="30" y="38" class="title">Force measurement · vibration and drift controls</text>
+<text x="30" y="63" class="small">Conceptual measurement chain · not to scale · no actuator, power supply or wiring shown</text>
+<rect class="part" x="305" y="125" width="180" height="65" rx="3"/><text x="337" y="162">Test article</text>
+<path class="guide" d="M395 190V221"/>
+<rect class="part" x="315" y="221" width="160" height="38"/><text x="336" y="246">Load sensor</text>
+<path class="guide" d="M395 259V280"/>
+<rect class="muted" x="195" y="280" width="400" height="28"/><text x="333" y="300">Support base</text>
+<path class="copper" d="M245 309V320L237 325L253 334L237 343L253 352V362M545 309V320L537 325L553 334L537 343L553 352V362"/>
+<path class="line" d="M150 363H640"/><text x="301" y="389" class="small">Vibration isolation supports</text>
+<rect class="part" x="520" y="250" width="42" height="30"/><path class="guide" d="M562 264H632"/><text x="642" y="260" class="label">Reference</text><text x="642" y="279" class="label">accelerometer</text>
+<rect class="muted" x="70" y="137" width="125" height="43"/><text x="83" y="154" class="small">Independent optical</text><text x="93" y="170" class="small">displacement readout</text>
+<path class="node" d="M195 158H305"/><text x="206" y="145" class="small">Observation</text>
+<path class="guide" d="M475 240H637"/><text x="647" y="236" class="small">Calibrated force</text><text x="647" y="253" class="small">reading + uncertainty</text>
+<text x="30" y="421" class="label">Compare drive-off, matched dummy, reversed orientation and repeated baseline runs.</text>
+<text x="30" y="445" class="small">Track vibration, thermal drift, airflow, cables and electromagnetic pickup before attributing a residual force.</text>
+<text x="30" y="473" class="small">Source context: measurement-control proposals in the Levitation Laboratory dossier; no measured result claimed.</text>
+<text x="30" y="496" class="small">Original explanatory SVG. Motion, a changing load reading, and sustained noncontact support are different observations.</text></svg>

@@ -1,7 +1,7 @@
 {
   "current": {
     "branch": "master",
-    "commit": "bafb8700600d67260cda3f8624b18e9d1c63bb74",
+    "commit": "835ba791a33feddc6f4ed313286a1503a7865900",
     "sourceRelease": "78b0751",
     "path": "/brainwave_opensync/"
   },
@@ -20,7 +20,7 @@
   },
   "archive": {
     "branch": "archive/dark-landscapes",
-    "commit": "3e0d9ba0d0c0489a50780a1f18f08c8ad623570f",
+    "commit": "3ec691f54e93b83d3af57cf765cb7e690a066ad1",
     "path": "/brainwave_opensync/archive/",
     "themes": [
       "Night Country",
@@ -32,7 +32,7 @@
       50,
       180
     ],
-    "presetCount": 155
+    "presetCount": 159
   },
   "listeningRoom": {
     "branch": "archive/listening-room-2026-10-15",

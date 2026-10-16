@@ -41,15 +41,14 @@ afterEach(async () => {
 describe('Home task paths and discovery', () => {
   it('offers a direct listening path, a small intention chooser and the sound workshop', async () => {
     const page = await mount(<Home />);
-    expect(page.querySelector('a')!.getAttribute('href')).toBe('/listen?preset=practice-soft-landing');
-    expect(page.querySelector('.moment-result a[href="/meditate?goal=unwind&minutes=10"]')).not.toBeNull();
-    expect(page.querySelector('a[href="/studio"]')).not.toBeNull();
-    expect(page.querySelector('a[href="/research-hub#tools"]')).not.toBeNull();
-    expect(page.querySelector('a[href="/previous/"]')).not.toBeNull();
+    expect(page.querySelector('a')!.getAttribute('href')).toBe('/presets?collection=all');
+    for (const path of ['/studio', '/cymatics', '/meditate', '/research-hub#tools', '/previous/']) {
+      expect(page.querySelector(`a[href="${path}"]`)).not.toBeNull();
+    }
     expect(page.querySelector('canvas')?.getAttribute('aria-label')).toContain('Generative art');
-    await act(async () => { Array.from(page.querySelectorAll('button')).find(b => b.textContent === 'Self-hypnosis')!.click(); });
-    await act(async () => { Array.from(page.querySelectorAll('button')).find(b => b.textContent === '20 min')!.click(); });
-    expect(page.querySelector('.moment-result a')?.getAttribute('href')).toBe('/meditate?goal=hypnosis&minutes=20');
+    await act(async () => { Array.from(page.querySelectorAll('.res-intentions button')).find(b => b.textContent?.startsWith('Self-hypnosis'))!.dispatchEvent(new MouseEvent('click', {bubbles:true})); });
+    expect(page.querySelector('.res-practice .res-primary')?.getAttribute('href')).toBe('/presets?collection=hypnosis');
+
   });
 
   it('retains every page in a browsable directory with research initially collapsed', async () => {

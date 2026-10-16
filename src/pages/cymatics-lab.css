@@ -1,0 +1,730 @@
+.cym-lab {
+  padding: 34px 38px 60px;
+  max-width: 1720px;
+  margin: auto;
+}
+.cym-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 26px;
+}
+.cym-heading h1 {
+  font:
+    430 44px/1.1 Inter,
+    sans-serif;
+  letter-spacing: -0.05em;
+  margin: 14px 0 0;
+}
+.cym-heading h1 span {
+  display: inline-block;
+  color: var(--text-3);
+  font:
+    italic 28px Georgia,
+    serif;
+  letter-spacing: -0.03em;
+  margin-left: 24px;
+}
+.cym-heading p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--text-3);
+  margin: 0;
+}
+.cym-view-tabs {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid var(--line-1);
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+.cym-view-tabs button {
+  white-space: nowrap;
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-2);
+  padding: 10px 16px;
+  min-height: 42px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cym-view-tabs button[aria-pressed="true"] {
+  color: var(--amber);
+  border-color: var(--line-2);
+  background: var(--ink-2);
+}
+.cym-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 22px;
+  align-items: start;
+}
+.cym-main {
+  min-width: 0;
+}
+.cym-stage {
+  border: 1px solid var(--line-1);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #0b1016;
+  color: var(--text-1);
+}
+.cym-stage button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text-2);
+  border: 1px solid var(--line-1);
+  min-height: 36px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 10px;
+  cursor: pointer;
+}
+.cym-stage button:hover {
+  background: var(--ink-3);
+  color: var(--text-1);
+}
+.cym-stage button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.cym-stage button:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+.cym-stage-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  border-bottom: 1px solid var(--line-1);
+  background: var(--ink-1);
+}
+.cym-stage-top > span {
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cym-stage-top i {
+  width: 5px;
+  height: 5px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+.cym-stage-top > div {
+  display: flex;
+  gap: 8px;
+}
+.cym-stage-view {
+  height: clamp(400px, 49vw, 590px);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.cym-stage-view > canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  touch-action: none;
+}
+.cymatics-gpu {
+  position: absolute;
+  inset: 0;
+}
+.cymatics-gpu canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+.cym-stage-caption {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  pointer-events: none;
+  font: 9px/1.5 monospace;
+  letter-spacing: 1px;
+  color: #a4b7c5;
+}
+.cym-stage-caption span:last-child {
+  font:
+    9px/1.6 Inter,
+    sans-serif;
+  letter-spacing: 0;
+  text-align: right;
+  max-width: 240px;
+}
+.cym-camera {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: #161b23ed;
+  border: 1px solid #3b4855;
+  padding: 5px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 5px 24px #0005;
+}
+.cym-camera button {
+  border: 0;
+  min-width: 35px;
+  padding: 8px;
+}
+.cym-camera > span {
+  height: 18px;
+  width: 1px;
+  background: var(--line-2);
+  margin: 0 4px;
+}
+.cym-stage-bottom {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 16px 20px;
+  background: var(--ink-1);
+  border-top: 1px solid var(--line-1);
+}
+.cym-stage-bottom small {
+  font-size: 8px;
+  color: var(--text-3);
+  letter-spacing: 1.3px;
+  display: block;
+  margin-bottom: 5px;
+}
+.cym-stage-bottom strong {
+  font: 400 22px/1.2 monospace;
+  color: var(--amber);
+}
+.cym-stage-bottom em {
+  font:
+    11px Inter,
+    sans-serif;
+  color: var(--text-3);
+}
+.cym-stage-buttons {
+  display: flex;
+  gap: 7px;
+  margin-left: auto;
+}
+.cym-stage-buttons button:first-child {
+  color: var(--amber);
+  border-color: var(--amber-dim);
+}
+.cym-presets {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  overflow: auto;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line-1);
+}
+.cym-presets > div {
+  min-width: 130px;
+  flex: 1;
+}
+.cym-presets p {
+  font-size: 10px;
+  color: var(--text-3);
+  margin: 7px 0 0;
+}
+.cym-presets button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 78px;
+  padding: 13px 12px;
+  color: var(--text-2);
+  background: var(--ink-1);
+  border: 1px solid var(--line-1);
+  border-radius: 4px;
+  font-size: 9px;
+  cursor: pointer;
+}
+.cym-presets button span {
+  font: 17px monospace;
+  color: var(--amber);
+}
+.cym-presets button[aria-pressed="true"] {
+  border-color: var(--amber);
+  background: var(--ink-3);
+}
+.cym-model-note {
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--text-3);
+  margin: 20px 0;
+}
+.cym-method {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--text-2);
+  border-top: 1px solid var(--line-1);
+}
+.cym-method summary {
+  cursor: pointer;
+  min-height: 48px;
+  display: list-item;
+  padding: 14px 0;
+  color: var(--text-1);
+}
+.cym-method p {
+  max-width: 90ch;
+  margin: 15px 0;
+}
+.cym-method a {
+  color: var(--amber);
+  display: block;
+  margin: 8px 0;
+}
+.cym-inspector {
+  border: 1px solid var(--line-1);
+  border-radius: 6px;
+  background: var(--ink-1);
+  overflow: hidden;
+}
+.cym-inspector-title {
+  display: flex;
+  justify-content: space-between;
+  padding: 19px 18px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--line-1);
+}
+.cym-inspector-title span:last-child {
+  color: var(--amber);
+}
+.cym-inspector-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--line-1);
+}
+.cym-inspector-tabs button {
+  flex: 1;
+  min-height: 44px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  font-size: 10px;
+  color: var(--text-3);
+  cursor: pointer;
+}
+.cym-inspector-tabs button[aria-pressed="true"] {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+.cym-controls {
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  min-height: 460px;
+}
+.cym-controls h2 {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin: 4px 0;
+}
+.cym-controls p {
+  font-size: 10px;
+  line-height: 1.85;
+  color: var(--text-3);
+  margin: 0;
+}
+.cym-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 10px;
+  color: var(--text-2);
+}
+.cym-controls input[type="number"],
+.cym-controls select {
+  max-width: 100%;
+  width: 100%;
+  min-height: 42px;
+  background: var(--ink-2);
+  border: 1px solid var(--line-2);
+  color: var(--text-1);
+  padding: 8px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+}
+.cym-controls input[type="number"] {
+  font-size: 25px;
+}
+.cym-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.cym-chips .chip {
+  font-size: 10px;
+  padding: 8px 10px;
+  text-transform: capitalize;
+}
+.cym-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: var(--ink-2);
+  font-size: 10px;
+  border-radius: 4px;
+  color: var(--text-2);
+}
+.cym-stat strong {
+  color: var(--amber);
+  font-weight: 400;
+}
+.cym-controls .t-label {
+  font-size: 10px;
+  letter-spacing: 0;
+}
+.cym-control-link {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 0;
+  min-height: 36px;
+  background: none;
+  border: 0;
+  text-decoration: none;
+  color: var(--amber);
+  font-size: 11px;
+  cursor: pointer;
+}
+.cym-controls details summary {
+  font-size: 11px;
+  min-height: 40px;
+  cursor: pointer;
+}
+.cym-controls details > label,
+.cym-controls details > div {
+  margin: 18px 0;
+}
+.cym-inspector-foot {
+  border-top: 1px solid var(--line-1);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cym-inspector-foot > span {
+  font-size: 9px;
+  color: var(--text-3);
+}
+.cym-signal {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--teal);
+  padding: 16px;
+  background: var(--ink-2);
+}
+.cym-stage-expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: var(--ink-0);
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  border-radius: 0;
+}
+.cym-stage-expanded .cym-stage-view {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+}
+.cym-stage-expanded .cym-stage-top {
+  padding: 12px 20px;
+}
+.cym-stage-view > .resonance-field {
+  height: 100%;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 12px;
+}
+.cym-stage-view .resonance-field .field-canvas {
+  height: 100%;
+  min-height: 0;
+}
+.cym-stage-view .field-advanced {
+  padding: 12px;
+}
+.cym-stage-view .spatial-controls {
+  align-self: center;
+  min-width: 0;
+}
+.cym-stage-view .field-toolbar {
+  flex-wrap: wrap;
+}
+.cym-stage-view .field-camera {
+  flex-wrap: wrap;
+}
+.cym-stage-view .field-camera > span {
+  display: none;
+}
+@media (max-width: 1150px) {
+  .cym-lab {
+    padding: 28px 24px;
+  }
+  .cym-heading h1 span {
+    display: block;
+    margin: 10px 0 0;
+    font-size: 24px;
+  }
+  .cym-layout {
+    grid-template-columns: minmax(0, 1fr) 260px;
+    gap: 16px;
+  }
+  .cym-stage-bottom {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .cym-stage-buttons {
+    flex-basis: 100%;
+    margin: 0;
+  }
+  .cym-stage-view > .resonance-field {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+  .cym-stage-view .field-advanced {
+    display: none;
+  }
+  .cym-stage-view .spatial-controls {
+    align-self: end;
+  }
+}
+@media (max-width: 850px) {
+  .cym-layout {
+    grid-template-columns: 1fr;
+  }
+  .cym-heading p {
+    max-width: 240px;
+  }
+  .cym-inspector {
+    display: block;
+  }
+  .cym-controls {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .cym-controls h2,
+  .cym-controls p {
+    grid-column: 1/-1;
+  }
+  .cym-inspector-foot {
+    flex-direction: row;
+    align-items: center;
+  }
+  .cym-stage-buttons {
+    flex-basis: auto;
+    margin-left: auto;
+  }
+  .cym-stage-view {
+    height: 520px;
+  }
+}
+@media (max-width: 600px) {
+  .cym-lab {
+    padding: 25px 15px 80px;
+  }
+  .cym-heading {
+    display: block;
+    margin-bottom: 20px;
+  }
+  .cym-heading h1 {
+    font-size: 35px;
+  }
+  .cym-heading h1 span {
+    font-size: 23px;
+  }
+  .cym-heading p {
+    margin-top: 15px;
+    font-size: 10px;
+    max-width: none;
+  }
+  .cym-view-tabs {
+    gap: 3px;
+    margin-bottom: 14px;
+  }
+  .cym-view-tabs button {
+    padding: 9px 12px;
+    font-size: 10px;
+  }
+  .cym-stage-view {
+    height: 395px;
+  }
+  .cym-stage-caption {
+    left: 12px;
+    right: 12px;
+    top: 14px;
+    font-size: 8px;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .cym-stage-caption span:last-child {
+    text-align: left;
+    font-size: 8px;
+  }
+  .cym-stage-top {
+    padding: 9px 10px;
+  }
+  .cym-stage-top > span {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+  .cym-stage-top button {
+    font-size: 9px;
+    padding: 7px;
+  }
+  .cym-camera {
+    gap: 0;
+    bottom: 14px;
+    padding: 4px;
+    max-width: calc(100% - 16px);
+  }
+  .cym-camera button {
+    padding: 7px;
+    min-width: 32px;
+    min-height: 38px;
+    font-size: 9px;
+  }
+  .cym-camera > span {
+    margin: 0 2px;
+  }
+  .cym-stage-bottom {
+    padding: 15px;
+    gap: 22px;
+  }
+  .cym-stage-bottom strong {
+    font-size: 20px;
+  }
+  .cym-stage-buttons {
+    flex-basis: 100%;
+    margin: 0;
+  }
+  .cym-stage-buttons button {
+    flex: 1;
+    min-height: 42px;
+  }
+  .cym-presets {
+    align-items: stretch;
+  }
+  .cym-presets > div {
+    min-width: 110px;
+    align-self: center;
+  }
+  .cym-presets .res-kicker {
+    font-size: 8px;
+  }
+  .cym-presets button {
+    min-width: 72px;
+  }
+  .cym-controls {
+    display: flex;
+  }
+  .cym-controls select {
+    font-size: 16px;
+  }
+  .cym-stage-expanded .cym-stage-top {
+    padding: 10px;
+    flex-wrap: wrap;
+  }
+  .cym-stage-expanded .cym-stage-top > div {
+    margin-left: auto;
+  }
+  .cym-stage-expanded .cym-stage-bottom {
+    padding-bottom: calc(15px + env(safe-area-inset-bottom));
+  }
+  .cym-stage-view > .resonance-field {
+    padding: 10px;
+  }
+  .cym-stage-view .field-advanced {
+    display: none;
+  }
+  .cym-stage-view .field-toolbar {
+    padding: 6px;
+  }
+  .cym-stage-view .field-camera {
+    padding: 5px;
+  }
+  .cym-stage-expanded .cym-stage-view .field-advanced {
+    display: block;
+  }
+  .cym-stage-expanded .cym-stage-view > .resonance-field {
+    overflow: auto;
+    grid-template-rows: minmax(200px, 1fr) auto;
+  }
+  .cym-stage-expanded .cym-stage-view .field-canvas {
+    min-height: 220px;
+  }
+}
+@media (min-width: 851px) {
+  .cym-stage-view {
+    height: clamp(320px, 42vh, 510px);
+  }
+  .cym-stage-expanded .cym-stage-view {
+    height: auto;
+  }
+  .cym-lab {
+    padding-top: 25px;
+  }
+  .cym-heading {
+    margin-bottom: 20px;
+  }
+  .cym-heading h1 {
+    font-size: 38px;
+  }
+  .cym-view-tabs {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .cym-stage-view {
+    height: 330px;
+  }
+  .cym-stage-expanded .cym-stage-view {
+    height: auto;
+  }
+  .cym-heading {
+    margin-bottom: 16px;
+  }
+  .cym-heading p {
+    margin-top: 10px;
+  }
+  .cym-heading h1 span {
+    display: inline;
+    margin-left: 12px;
+    font-size: 19px;
+  }
+  .cym-heading h1 {
+    font-size: 31px;
+  }
+  .cym-heading p br {
+    display: none;
+  }
+}

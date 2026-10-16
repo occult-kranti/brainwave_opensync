@@ -12,41 +12,42 @@
  * `md`.
  */
 
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { NavLink, useLocation } from 'react-router';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { NavLink, useLocation } from "react-router";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Info, Pause, Play, MoreHorizontal, X } from "lucide-react";
+import { useIsMobile } from "../../hooks/use-mobile";
+import { BOTTOM_TAB_ROUTES, ROUTES } from "../../app/routes";
+import { GroupedNavigation } from "./GroupedNavigation";
+import { fmtClock } from "../session/sessionMath";
+import { useSession } from "../session/useSession";
+import { DensityToggle, Led } from "../components/primitives";
+import { useModalA11y } from "../hooks";
 import {
-  ChevronRight,
-  ChevronsLeft,
-  Info,
-  OctagonX,
-  Pause,
-  Play,
-  MoreHorizontal,
-  X,
-} from 'lucide-react';
-import { useIsMobile } from '../../hooks/use-mobile';
-import { BOTTOM_TAB_ROUTES, ROUTES } from '../../app/routes';
-import { GroupedNavigation } from './GroupedNavigation';
-import { fmtClock } from '../session/sessionMath';
-import { useSession } from '../session/useSession';
-import { DensityToggle, Led } from '../components/primitives';
-import { useModalA11y } from '../hooks';
-import { MobilePanicButton, PanicButton, PanicOverlay } from '../components/Panic';
-import { CommandPalette, PaletteHint } from '../components/CommandPalette';
-import { AdvisoryDialog } from '../components/AdvisoryDialog';
-import { ShortcutsOverlay } from '../components/ShortcutsOverlay';
-import { PwaUpdateChip } from '../components/PwaUpdateChip';
-import { matchShortcut } from '../../app/shortcuts';
-import { engineLedState } from '../theme';
-import { STORAGE_KEYS } from '@/lib/storage';
-import { assetUrl } from '@/lib/assetUrl';
-import { ARCHIVE_THEMES, readArchiveTheme, saveArchiveTheme, type ArchiveTheme } from '../archiveTheme';
-import { ArchiveThemePicker } from '../components/ArchiveThemePicker';
-import '../../pages/archive-theme.css';
-import '../../pages/spatial.css';
-import { SpatialProvider } from '../visuals/SpatialProvider';
-import { SpatialBackdrop, SpatialPortal } from '../visuals/SpatialEnvironment';
+  MobilePanicButton,
+  PanicButton,
+  PanicOverlay,
+} from "../components/Panic";
+import { CommandPalette, PaletteHint } from "../components/CommandPalette";
+import { AdvisoryDialog } from "../components/AdvisoryDialog";
+import { ShortcutsOverlay } from "../components/ShortcutsOverlay";
+import { PwaUpdateChip } from "../components/PwaUpdateChip";
+import { matchShortcut } from "../../app/shortcuts";
+import { engineLedState } from "../theme";
+import { assetUrl } from "@/lib/assetUrl";
+import {
+  ARCHIVE_THEMES,
+  readArchiveTheme,
+  saveArchiveTheme,
+  type ArchiveTheme,
+} from "../archiveTheme";
+import { ArchiveThemePicker } from "../components/ArchiveThemePicker";
+import "../../pages/archive-theme.css";
+import "../../pages/spatial.css";
+import "../../pages/resonance.css";
+import { WorkspaceNav } from "./WorkspaceNav";
+import { SpatialProvider } from "../visuals/SpatialProvider";
+import { SpatialBackdrop, SpatialPortal } from "../visuals/SpatialEnvironment";
 
 /** Route lists come from the registry (src/app/routes.tsx) — one source of truth. */
 const ALL_ROUTES = ROUTES;
@@ -57,271 +58,6 @@ const BOTTOM_TABS = BOTTOM_TAB_ROUTES;
 const BOTTOM_BAR_H = 56;
 /** Bottom bar must clear .grain (z-60) and PanicOverlay (z-90): panic stays reachable. */
 const BOTTOM_BAR_Z = 100;
-
-/** Collapsible sidebar states (desktop ≥768px only): full labels → icon strip → hidden. */
-export type SidebarState = 'full' | 'icon' | 'hidden';
-
-const SIDEBAR_W: Record<SidebarState, number> = { full: 216, icon: 64, hidden: 0 };
-const SIDEBAR_STATES: SidebarState[] = ['full', 'icon', 'hidden'];
-const SIDEBAR_STORAGE_KEY = STORAGE_KEYS.sidebar;
-
-function readSidebarState(): SidebarState {
-  try {
-    const raw = window.localStorage.getItem(SIDEBAR_STORAGE_KEY);
-    return raw === 'icon' || raw === 'hidden' ? raw : 'full';
-  } catch {
-    return 'full';
-  }
-}
-
-function nextSidebarState(state: SidebarState): SidebarState {
-  return SIDEBAR_STATES[(SIDEBAR_STATES.indexOf(state) + 1) % SIDEBAR_STATES.length];
-}
-
-function Logo({ collapsed }: { collapsed?: boolean }) {
-  return (
-    <div
-      className="flex items-center gap-2"
-      style={collapsed ? { padding: '16px 0 12px', justifyContent: 'center' } : { padding: '16px 16px 12px' }}
-    >
-      <svg width={28} height={28} viewBox="0 0 48 48" aria-label="Open Sync">
-        {/* two interlocking sine halves forming an O ring broken on the right */}
-        <path
-          d="M 24 6 A 18 18 0 0 0 24 42"
-          fill="none"
-          stroke="var(--teal)"
-          strokeWidth={1.5}
-        />
-        <path
-          d="M 24 6 A 18 18 0 0 1 36 15 M 36 33 A 18 18 0 0 1 24 42"
-          fill="none"
-          stroke="var(--amber)"
-          strokeWidth={1.5}
-        />
-        <rect x={41} y={22} width={2} height={8} fill="var(--amber)" />
-      </svg>
-      {!collapsed && (
-        <div>
-          <div className="font-display" style={{ fontSize: 15, fontWeight: 600, color: 'var(--text-1)', lineHeight: '18px' }}>
-            Open Sync
-          </div>
-          <div className="t-caption text-3" style={{ lineHeight: '14px' }}>
-            a space to listen
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function RailItem({
-  path,
-  label,
-  icon: Icon,
-  ledState,
-  collapsed,
-}: {
-  path: string;
-  label: string;
-  icon: typeof Info;
-  ledState?: 'off' | 'amber' | 'teal' | 'danger';
-  collapsed?: boolean;
-}) {
-  return (
-    <NavLink
-      to={path}
-      title={collapsed ? label : undefined}
-      aria-label={collapsed ? label : undefined}
-      style={{ textDecoration: 'none', position: 'relative', display: 'block' }}
-      className={({ isActive }) => (isActive ? 'rail-active' : '')}
-    >
-      {({ isActive }) => (
-        <div
-          className="flex items-center gap-3"
-          style={{
-            height: 48,
-            padding: collapsed ? 0 : '0 16px',
-            justifyContent: collapsed ? 'center' : undefined,
-            background: isActive ? 'var(--ink-2)' : 'transparent',
-            color: isActive ? 'var(--amber)' : 'var(--text-2)',
-          }}
-        >
-          {isActive && (
-            <motion.span
-              layoutId="rail-bar"
-              transition={{ duration: 0.24 }}
-              style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 2, background: 'var(--amber)' }}
-            />
-          )}
-          <Icon size={20} strokeWidth={1.5} style={{ color: isActive ? 'var(--amber)' : 'var(--text-2)', flexShrink: 0 }} />
-          {!collapsed && (
-            <span className="t-label" style={{ color: isActive ? 'var(--amber)' : 'var(--text-2)', flex: 1 }}>
-              {label}
-            </span>
-          )}
-          {!collapsed && ledState && <Led state={ledState} />}
-        </div>
-      )}
-    </NavLink>
-  );
-}
-
-/** Icon-only panic for the 64px icon strip (full PanicButton label won't fit). */
-function IconPanicButton() {
-  const { panic } = useSession();
-  return (
-    <button
-      type="button"
-      onClick={panic}
-      aria-label="Stop all sound (P). Single press, no confirm."
-      title="Stop all sound (P)"
-      style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 40,
-        height: 32,
-        border: '1px solid var(--danger)',
-        borderRadius: 2,
-        color: 'var(--danger)',
-        background: 'rgba(196,99,79,0.1)',
-        cursor: 'pointer',
-      }}
-    >
-      <OctagonX size={15} />
-    </button>
-  );
-}
-
-/**
- * Collapse control at the rail bottom (full + icon states). Cycles
- * full → icon → hidden; the hidden state's reopen path is the left-edge
- * handle, the `[` shortcut, or the palette command.
- */
-function CollapseToggle({ state, onCycle }: { state: SidebarState; onCycle: () => void }) {
-  const label = state === 'full' ? 'Collapse sidebar to icons ([)' : 'Hide sidebar ([)';
-  return (
-    <button
-      type="button"
-      data-testid="rail-collapse-toggle"
-      aria-label={label}
-      aria-expanded={state !== 'hidden'}
-      aria-controls="module-rail"
-      onClick={onCycle}
-      title={label}
-      className="flex items-center justify-center"
-      style={{
-        width: 32,
-        height: 24,
-        background: 'none',
-        border: '1px solid var(--line-1)',
-        borderRadius: 2,
-        color: 'var(--text-2)',
-        cursor: 'pointer',
-      }}
-    >
-      <ChevronsLeft size={14} strokeWidth={1.5} />
-    </button>
-  );
-}
-
-function ModuleRail({ state, onCycle }: { state: SidebarState; onCycle: () => void }) {
-  const { running, paused, governor } = useSession();
-  const collapsed = state === 'icon';
-  return (
-    <nav
-      id="module-rail"
-      data-testid="module-rail"
-      data-state={state}
-      aria-label="Main navigation"
-      className="flex flex-col"
-      style={{
-        width: SIDEBAR_W[state],
-        flexShrink: 0,
-        background: 'var(--ink-0)',
-        borderRight: state === 'hidden' ? 'none' : '1px solid var(--line-1)',
-        height: '100vh',
-        position: 'sticky',
-        top: 0,
-        overflow: 'hidden',
-        transition: 'width var(--motion-2)',
-      }}
-    >
-      {state !== 'hidden' && (
-        <>
-          <Logo collapsed={collapsed} />
-          <div className="flex-1 overflow-y-auto">
-            <GroupedNavigation
-              idPrefix="rail"
-              collapsed={collapsed}
-              renderRoute={(m) => (
-                <RailItem
-                  key={m.path}
-                  {...m}
-                  collapsed={collapsed}
-                  ledState={
-                    m.path === '/studio'
-                      ? engineLedState(running, paused)
-                      : m.path === '/safety'
-                        ? governor.infantMode
-                          ? 'teal'
-                          : 'off'
-                        : undefined
-                  }
-                />
-              )}
-            />
-          </div>
-          <div
-            data-testid="rail-footer"
-            className="flex flex-col"
-            style={{
-              padding: collapsed ? 12 : 16,
-              borderTop: '1px solid var(--line-1)',
-              gap: 10,
-              alignItems: collapsed ? 'center' : 'stretch',
-            }}
-          >
-            {collapsed ? <IconPanicButton /> : <PanicButton />}
-            <div
-              className="flex items-center"
-              style={{
-                gap: 8,
-                flexDirection: collapsed ? 'column' : 'row',
-                justifyContent: collapsed ? 'center' : 'space-between',
-              }}
-            >
-              <DensityToggle />
-              <CollapseToggle state={state} onCycle={onCycle} />
-            </div>
-          </div>
-        </>
-      )}
-    </nav>
-  );
-}
-
-/**
- * Reopen affordance for the hidden rail: a 16px-wide handle pinned to the
- * left viewport edge with an amber edge line; dimmed until hover/focus
- * (styles in index.css, additive). Click restores the full rail.
- */
-function SidebarReopenHandle({ onOpen }: { onOpen: () => void }) {
-  return (
-    <button
-      type="button"
-      data-testid="rail-reopen-handle"
-      className="rail-reopen-handle"
-      aria-label="Open sidebar ([)"
-      aria-expanded={false}
-      aria-controls="module-rail"
-      onClick={onOpen}
-      title="Open sidebar ([)"
-    >
-      <ChevronRight size={12} strokeWidth={1.5} />
-    </button>
-  );
-}
 
 /**
  * Global pause/resume chip (status bar; Space hotkey). Phase-coherent: the
@@ -336,42 +72,65 @@ function PauseChip() {
       type="button"
       data-testid="pause-toggle"
       className="chip"
-      aria-label={paused ? 'Resume Studio session (Space)' : 'Pause Studio session (Space)'}
+      aria-label={
+        paused
+          ? "Resume Studio session (Space)"
+          : "Pause Studio session (Space)"
+      }
       aria-pressed={paused}
       disabled={!running}
       onClick={togglePause}
       title={
         running
           ? paused
-            ? 'Resume — continues the frozen phase, no click (Space)'
-            : 'Pause — freezes audio in place, no click (Space)'
-          : 'Pause (Space) — start a session first'
+            ? "Resume — continues the frozen phase, no click (Space)"
+            : "Pause — freezes audio in place, no click (Space)"
+          : "Pause (Space) — start a session first"
       }
       style={{
         height: 24,
-        padding: '0 8px',
+        padding: "0 8px",
         fontSize: 10,
-        display: 'inline-flex',
-        alignItems: 'center',
+        display: "inline-flex",
+        alignItems: "center",
         gap: 5,
         opacity: running ? 1 : 0.45,
-        cursor: running ? 'pointer' : 'default',
+        cursor: running ? "pointer" : "default",
       }}
     >
-      {paused ? <Play size={11} strokeWidth={1.5} /> : <Pause size={11} strokeWidth={1.5} />}
-      {paused ? 'RESUME' : 'PAUSE'}
+      {paused ? (
+        <Play size={11} strokeWidth={1.5} />
+      ) : (
+        <Pause size={11} strokeWidth={1.5} />
+      )}
+      {paused ? "RESUME" : "PAUSE"}
     </button>
   );
 }
 
 /** Compact engine readout (`BIN · 4.00 Hz · 12:00 · DOSE 3%` / `PAUSED · …` / ENGINE OFF). */
 function SessionReadout() {
-  const { running, paused, fading, muted, previewId, mode, beatHz, elapsedSec, dosePercent } = useSession();
+  const {
+    running,
+    paused,
+    fading,
+    muted,
+    previewId,
+    mode,
+    beatHz,
+    elapsedSec,
+    dosePercent,
+  } = useSession();
   return (
-    <span className="t-readout-sm" style={{ color: running && !paused ? 'var(--text-1)' : 'var(--text-3)' }}>
-      {previewId ? 'Preview playing' : running
-        ? `Studio ${paused ? 'paused' : fading ? 'fading' : 'playing'}${muted ? ' · muted' : ''} · ${mode.slice(0, 3).toUpperCase()} · ${beatHz.toFixed(2)} Hz · ${fmtClock(elapsedSec)} · DOSE ${dosePercent.toFixed(0)}%`
-        : 'Studio ready'}
+    <span
+      className="t-readout-sm"
+      style={{ color: running && !paused ? "var(--text-1)" : "var(--text-3)" }}
+    >
+      {previewId
+        ? "Preview playing"
+        : running
+          ? `Studio ${paused ? "paused" : fading ? "fading" : "playing"}${muted ? " · muted" : ""} · ${mode.slice(0, 3).toUpperCase()} · ${beatHz.toFixed(2)} Hz · ${fmtClock(elapsedSec)} · DOSE ${dosePercent.toFixed(0)}%`
+          : "Studio ready"}
     </span>
   );
 }
@@ -379,55 +138,11 @@ function SessionReadout() {
 function useModuleLabel() {
   const location = useLocation();
   const mod = ALL_ROUTES.find((m) =>
-    m.path === '/' ? location.pathname === '/' : location.pathname.startsWith(m.path),
+    m.path === "/"
+      ? location.pathname === "/"
+      : location.pathname.startsWith(m.path),
   );
-  return mod ? `OPEN SYNC / ${mod.label}` : 'OPEN SYNC';
-}
-
-function StatusBar({ onPalette }: { onPalette: () => void }) {
-  const { governor, running, paused } = useSession();
-  const label = useModuleLabel();
-  return (
-    <header
-      data-testid="status-bar"
-      className="flex items-center gap-4"
-      style={{
-        minHeight: 48,
-        flexWrap: 'wrap',
-        padding: '8px 16px',
-        background: 'var(--ink-1)',
-        borderBottom: '1px solid var(--line-1)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 40,
-      }}
-    >
-      <span className="t-label" style={{ flex: '1 1 180px', minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</span>
-      <div style={{ flex: '1 1 240px', minWidth: 0, maxWidth: '100%' }}>
-        <SessionReadout />
-      </div>
-      {governor.infantMode && (
-        <span
-          className="t-label"
-          style={{
-            color: 'var(--amber)',
-            border: '1px solid var(--amber)',
-            borderRadius: 2,
-            padding: '2px 8px',
-          }}
-        >
-          INFANT
-        </span>
-      )}
-      <PwaUpdateChip />
-      <PaletteHint onOpen={onPalette} />
-      <span title={running ? (paused ? 'Session paused' : 'Engine running') : 'Engine off'}>
-        <Led state={engineLedState(running, paused)} />
-      </span>
-      <PauseChip />
-      <PanicButton />
-    </header>
-  );
+  return mod ? `OPEN SYNC / ${mod.label}` : "OPEN SYNC";
 }
 
 /** Phone status bar (§3.2): session label + compact engine LED only. */
@@ -440,23 +155,47 @@ function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
       className="flex items-center gap-3"
       style={{
         height: 48,
-        padding: '0 16px',
-        background: 'var(--ink-1)',
-        borderBottom: '1px solid var(--line-1)',
-        position: 'sticky',
+        padding: "0 16px",
+        background: "var(--ink-1)",
+        borderBottom: "1px solid var(--line-1)",
+        position: "sticky",
         top: 0,
         zIndex: 40,
       }}
     >
-      <div style={{ overflow: 'hidden', minWidth: 0 }}>
-        <span className="t-label" style={{ display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</span>
-        {(previewId || running) && <span className="t-caption text-2">{previewId ? 'Preview playing' : `Studio ${paused ? 'paused' : fading ? 'fading' : 'playing'}${muted ? ' · muted' : ''}`}</span>}
+      <div style={{ overflow: "hidden", minWidth: 0 }}>
+        <span
+          className="t-label"
+          style={{
+            display: "block",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {label}
+        </span>
+        {(previewId || running) && (
+          <span className="t-caption text-2">
+            {previewId
+              ? "Preview playing"
+              : `Studio ${paused ? "paused" : fading ? "fading" : "playing"}${muted ? " · muted" : ""}`}
+          </span>
+        )}
       </div>
-      <div className="flex items-center gap-2" style={{ marginLeft: 'auto' }}>
+      <div className="flex items-center gap-2" style={{ marginLeft: "auto" }}>
         <PwaUpdateChip />
         <PaletteHint onOpen={onPalette} />
         <MobilePauseChip />
-        <span title={running ? (paused ? 'Session paused' : 'Engine running') : 'Engine off'}>
+        <span
+          title={
+            running
+              ? paused
+                ? "Session paused"
+                : "Engine running"
+              : "Engine off"
+          }
+        >
           <Led state={engineLedState(running, paused)} />
         </span>
       </div>
@@ -465,12 +204,20 @@ function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
 }
 
 /** Single bottom-bar tab (≥56px tall column, icon + micro label). */
-function BottomTab({ path, label, icon: Icon }: { path: string; label: string; icon: typeof Info }) {
+function BottomTab({
+  path,
+  label,
+  icon: Icon,
+}: {
+  path: string;
+  label: string;
+  icon: typeof Info;
+}) {
   return (
     <NavLink
       to={path}
       data-testid={`bottom-tab-${label.toLowerCase()}`}
-      style={{ textDecoration: 'none', flex: 1, minWidth: 0, display: 'flex' }}
+      style={{ textDecoration: "none", flex: 1, minWidth: 0, display: "flex" }}
     >
       {({ isActive }) => (
         <span
@@ -479,9 +226,9 @@ function BottomTab({ path, label, icon: Icon }: { path: string; label: string; i
             flex: 1,
             minHeight: BOTTOM_BAR_H,
             gap: 3,
-            color: isActive ? 'var(--amber)' : 'var(--text-2)',
-            background: isActive ? 'var(--ink-2)' : 'transparent',
-            borderTop: `2px solid ${isActive ? 'var(--amber)' : 'transparent'}`,
+            color: isActive ? "var(--amber)" : "var(--text-2)",
+            background: isActive ? "var(--ink-2)" : "transparent",
+            borderTop: `2px solid ${isActive ? "var(--amber)" : "transparent"}`,
             paddingTop: isActive ? 0 : 2,
           }}
         >
@@ -490,8 +237,8 @@ function BottomTab({ path, label, icon: Icon }: { path: string; label: string; i
             style={{
               fontFamily: '"IBM Plex Mono", monospace',
               fontSize: 9,
-              letterSpacing: '0.1em',
-              lineHeight: '12px',
+              letterSpacing: "0.1em",
+              lineHeight: "12px",
             }}
           >
             {label}
@@ -513,7 +260,7 @@ function MobilePauseChip() {
     <button
       type="button"
       data-testid="mobile-pause"
-      aria-label={paused ? 'Resume Studio session' : 'Pause Studio session'}
+      aria-label={paused ? "Resume Studio session" : "Pause Studio session"}
       aria-pressed={paused}
       disabled={!running}
       onClick={togglePause}
@@ -523,20 +270,24 @@ function MobilePauseChip() {
         flexShrink: 0,
         minHeight: 40,
         gap: 2,
-        border: 'none',
-        borderLeft: '1px solid var(--line-1)',
-        color: paused ? 'var(--teal)' : 'var(--text-2)',
-        background: paused ? 'var(--ink-2)' : 'transparent',
+        border: "none",
+        borderLeft: "1px solid var(--line-1)",
+        color: paused ? "var(--teal)" : "var(--text-2)",
+        background: paused ? "var(--ink-2)" : "transparent",
         opacity: running ? 1 : 0.4,
-        cursor: running ? 'pointer' : 'default',
+        cursor: running ? "pointer" : "default",
         fontFamily: '"IBM Plex Mono", monospace',
         fontSize: 9,
-        letterSpacing: '0.1em',
-        touchAction: 'manipulation',
+        letterSpacing: "0.1em",
+        touchAction: "manipulation",
       }}
     >
-      {paused ? <Play size={18} strokeWidth={1.5} /> : <Pause size={18} strokeWidth={1.5} />}
-      {paused ? 'RESUME' : 'PAUSE'}
+      {paused ? (
+        <Play size={18} strokeWidth={1.5} />
+      ) : (
+        <Pause size={18} strokeWidth={1.5} />
+      )}
+      {paused ? "RESUME" : "PAUSE"}
     </button>
   );
 }
@@ -546,23 +297,29 @@ function MobilePauseChip() {
  * Fixed, ≥56px + safe-area inset, z-index 100 (above .grain z-60 and the
  * z-90 PanicOverlay, so panic is never covered).
  */
-function BottomBar({ onMore, moreOpen }: { onMore: () => void; moreOpen: boolean }) {
+function BottomBar({
+  onMore,
+  moreOpen,
+}: {
+  onMore: () => void;
+  moreOpen: boolean;
+}) {
   return (
     <nav
       data-testid="mobile-bottom-bar"
       aria-label="Primary"
       style={{
-        position: 'fixed',
+        position: "fixed",
         left: 0,
         right: 0,
         bottom: 0,
         zIndex: BOTTOM_BAR_Z,
-        display: 'flex',
-        alignItems: 'stretch',
+        display: "flex",
+        alignItems: "stretch",
         height: `calc(${BOTTOM_BAR_H}px + env(safe-area-inset-bottom, 0px))`,
-        paddingBottom: 'env(safe-area-inset-bottom, 0px)',
-        background: 'var(--ink-0)',
-        borderTop: '1px solid var(--line-1)',
+        paddingBottom: "env(safe-area-inset-bottom, 0px)",
+        background: "var(--ink-0)",
+        borderTop: "1px solid var(--line-1)",
       }}
     >
       {BOTTOM_TABS.map((t) => (
@@ -580,22 +337,22 @@ function BottomBar({ onMore, moreOpen }: { onMore: () => void; moreOpen: boolean
           minWidth: 0,
           minHeight: BOTTOM_BAR_H,
           gap: 3,
-          color: moreOpen ? 'var(--amber)' : 'var(--text-2)',
-          background: moreOpen ? 'var(--ink-2)' : 'transparent',
-          border: 'none',
-          borderTop: `2px solid ${moreOpen ? 'var(--amber)' : 'transparent'}`,
+          color: moreOpen ? "var(--amber)" : "var(--text-2)",
+          background: moreOpen ? "var(--ink-2)" : "transparent",
+          border: "none",
+          borderTop: `2px solid ${moreOpen ? "var(--amber)" : "transparent"}`,
           paddingTop: moreOpen ? 0 : 2,
-          cursor: 'pointer',
+          cursor: "pointer",
           fontFamily: '"IBM Plex Mono", monospace',
           fontSize: 9,
-          letterSpacing: '0.1em',
+          letterSpacing: "0.1em",
         }}
       >
         <MoreHorizontal size={20} strokeWidth={1.5} />
         MORE
       </button>
       {/* Panic: fixed-width trailing segment, ≥56px target, always on top. */}
-      <div style={{ width: 72, flexShrink: 0, display: 'flex' }}>
+      <div style={{ width: 72, flexShrink: 0, display: "flex" }}>
         <MobilePanicButton />
       </div>
     </nav>
@@ -615,20 +372,27 @@ function DrawerLink({
   onNavigate: () => void;
 }) {
   return (
-    <NavLink to={path} onClick={onNavigate} style={{ textDecoration: 'none', display: 'block' }}>
+    <NavLink
+      to={path}
+      onClick={onNavigate}
+      style={{ textDecoration: "none", display: "block" }}
+    >
       {({ isActive }) => (
         <div
           className="flex items-center gap-3"
           style={{
             minHeight: 48,
-            padding: '0 16px',
-            background: isActive ? 'var(--ink-2)' : 'transparent',
-            color: isActive ? 'var(--amber)' : 'var(--text-2)',
-            borderLeft: `2px solid ${isActive ? 'var(--amber)' : 'transparent'}`,
+            padding: "0 16px",
+            background: isActive ? "var(--ink-2)" : "transparent",
+            color: isActive ? "var(--amber)" : "var(--text-2)",
+            borderLeft: `2px solid ${isActive ? "var(--amber)" : "transparent"}`,
           }}
         >
           <Icon size={20} strokeWidth={1.5} style={{ flexShrink: 0 }} />
-          <span className="t-label" style={{ color: isActive ? 'var(--amber)' : 'var(--text-2)' }}>
+          <span
+            className="t-label"
+            style={{ color: isActive ? "var(--amber)" : "var(--text-2)" }}
+          >
             {label}
           </span>
         </div>
@@ -659,7 +423,12 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
             onClick={onClose}
-            style={{ position: 'fixed', inset: 0, zIndex: 80, background: 'rgba(11,12,13,0.6)' }}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 80,
+              background: "rgba(11,12,13,0.6)",
+            }}
           />
           <motion.div
             key="more-sheet"
@@ -667,36 +436,42 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
             role="dialog"
             aria-modal="true"
             aria-label="More tools and research"
-            initial={{ y: '100%' }}
+            initial={{ y: "100%" }}
             animate={{ y: 0 }}
-            exit={{ y: '100%' }}
-            transition={{ duration: 0.22, ease: 'easeOut' }}
+            exit={{ y: "100%" }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
             style={{
-              position: 'fixed',
+              position: "fixed",
               left: 0,
               right: 0,
               bottom: `calc(${BOTTOM_BAR_H}px + env(safe-area-inset-bottom, 0px))`,
               zIndex: 81,
-              maxHeight: 'min(70vh, 560px)',
-              overflowY: 'auto',
-              background: 'var(--ink-0)',
-              borderTop: '1px solid var(--line-1)',
+              maxHeight: "min(70vh, 560px)",
+              overflowY: "auto",
+              background: "var(--ink-0)",
+              borderTop: "1px solid var(--line-1)",
             }}
           >
             <div
               className="flex items-center gap-3"
               style={{
-                padding: '12px 16px',
-                flexWrap: 'wrap',
-                borderBottom: '1px solid var(--line-1)',
-                position: 'sticky',
+                padding: "12px 16px",
+                flexWrap: "wrap",
+                borderBottom: "1px solid var(--line-1)",
+                position: "sticky",
                 top: 0,
-                background: 'var(--ink-0)',
+                background: "var(--ink-0)",
               }}
             >
-              <div style={{ flex: '1 1 180px', minWidth: 0 }}><SessionReadout /></div>
-              <div style={{ marginLeft: 'auto', flexShrink: 0 }} className="flex items-center gap-3">
-                <PanicButton /><DensityToggle />
+              <div style={{ flex: "1 1 180px", minWidth: 0 }}>
+                <SessionReadout />
+              </div>
+              <div
+                style={{ marginLeft: "auto", flexShrink: 0 }}
+                className="flex items-center gap-3"
+              >
+                <PanicButton />
+                <DensityToggle />
                 <button
                   type="button"
                   ref={closeRef}
@@ -707,11 +482,11 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
                     width: 44,
                     height: 44,
                     flexShrink: 0,
-                    background: 'none',
-                    border: '1px solid var(--line-1)',
+                    background: "none",
+                    border: "1px solid var(--line-1)",
                     borderRadius: 2,
-                    color: 'var(--text-2)',
-                    cursor: 'pointer',
+                    color: "var(--text-2)",
+                    cursor: "pointer",
                   }}
                 >
                   <X size={16} />
@@ -721,7 +496,9 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
             <nav aria-label="All pages">
               <GroupedNavigation
                 idPrefix="drawer"
-                renderRoute={(m) => <DrawerLink key={m.path} {...m} onNavigate={onClose} />}
+                renderRoute={(m) => (
+                  <DrawerLink key={m.path} {...m} onNavigate={onClose} />
+                )}
               />
             </nav>
           </motion.div>
@@ -732,7 +509,11 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
-  return <SpatialProvider><SpatialShell>{children}</SpatialShell></SpatialProvider>;
+  return (
+    <SpatialProvider>
+      <SpatialShell>{children}</SpatialShell>
+    </SpatialProvider>
+  );
 }
 
 function SpatialShell({ children }: { children: ReactNode }) {
@@ -741,37 +522,38 @@ function SpatialShell({ children }: { children: ReactNode }) {
   useEffect(() => {
     saveArchiveTheme(theme);
     document.documentElement.dataset.archiveTheme = theme;
-    return () => { delete document.documentElement.dataset.archiveTheme; };
+    return () => {
+      delete document.documentElement.dataset.archiveTheme;
+    };
   }, [theme]);
-  const landscape = ARCHIVE_THEMES.find(item => item.id === theme)!;
+  const landscape = ARCHIVE_THEMES.find((item) => item.id === theme)!;
   const reducedMotion = useReducedMotion();
-  const discovery = ['/', '/listen', '/presets', '/meditate', '/overnight', '/hypnosis', '/traditions', '/research-hub'].includes(location.pathname);
+  const discovery = true; // One navigation and visual system across every archive route.
   useEffect(() => {
     // New destinations start at their heading; changing filters on the same
     // page leaves the reader's position alone.
-    const route = ALL_ROUTES.find(item => item.path === location.pathname);
-    document.title = `${route?.label ?? 'Open Sync'} · Open Sync`;
-    const anchor = location.hash ? document.getElementById(location.hash.slice(1)) : null;
-    if (anchor) anchor.scrollIntoView(); else window.scrollTo(0, 0);
+    const route = ALL_ROUTES.find((item) => item.path === location.pathname);
+    document.title = `${route?.label ?? "Open Sync"} · Open Sync`;
+    const anchor = location.hash
+      ? document.getElementById(location.hash.slice(1))
+      : null;
+    if (anchor) anchor.scrollIntoView();
+    else window.scrollTo(0, 0);
   }, [location.pathname, location.hash]);
-  const { panic, rehearsePanic, running, fading, togglePause, muted, setMuted, startSleepFade } = useSession();
+  const {
+    panic,
+    rehearsePanic,
+    running,
+    fading,
+    togglePause,
+    muted,
+    setMuted,
+    startSleepFade,
+  } = useSession();
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const isMobile = useIsMobile();
   const [moreOpen, setMoreOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
-  // Collapsible sidebar (desktop only): full → icon → hidden, persisted.
-  const [sidebar, setSidebar] = useState<SidebarState>(readSidebarState);
-
-  useEffect(() => {
-    try {
-      window.localStorage.setItem(SIDEBAR_STORAGE_KEY, sidebar);
-    } catch {
-      /* storage unavailable — layout state stays session-local */
-    }
-  }, [sidebar]);
-
-  const cycleSidebar = () => setSidebar((s) => nextSidebarState(s));
-
   // Close the MORE drawer whenever the route changes (state-adjust-during-
   // render pattern; drawer links also close it on tap directly).
   const [lastPath, setLastPath] = useState(location.pathname);
@@ -789,31 +571,31 @@ function SpatialShell({ children }: { children: ReactNode }) {
       const hit = matchShortcut(e);
       if (!hit) return;
       switch (hit.id) {
-        case 'palette':
+        case "palette":
           e.preventDefault();
           setPaletteOpen((v) => !v);
           break;
-        case 'sidebar':
-          cycleSidebar();
+        case "sidebar":
+          setMoreOpen((v) => !v);
           break;
-        case 'pause':
+        case "pause":
           if (!running) return;
           e.preventDefault();
           togglePause();
           break;
-        case 'mute':
+        case "mute":
           setMuted(!muted);
           break;
-        case 'fade':
+        case "fade":
           if (running && !fading) startSleepFade();
           break;
-        case 'panic':
+        case "panic":
           panic();
           break;
-        case 'panic-rehearse':
+        case "panic-rehearse":
           rehearsePanic();
           break;
-        case 'help':
+        case "help":
           e.preventDefault();
           setShortcutsOpen((v) => !v);
           break;
@@ -821,35 +603,131 @@ function SpatialShell({ children }: { children: ReactNode }) {
           break;
       }
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [running, fading, muted, togglePause, setMuted, startSleepFade, panic, rehearsePanic]);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [
+    running,
+    fading,
+    muted,
+    togglePause,
+    setMuted,
+    startSleepFade,
+    panic,
+    rehearsePanic,
+  ]);
 
   return (
-    <div data-archive-theme={theme} className={`flex experience-shell archive-shell ${discovery ? 'discovery-shell' : ''} ${location.pathname === '/' ? 'archive-home' : location.pathname === '/listen' ? 'archive-listen' : ''}`} style={{ minHeight: '100vh' }}>
-      <div className="archive-landscape" aria-hidden="true"><img src={assetUrl(landscape.image)} alt="" fetchPriority="high" width="1536" height="1024" /></div>
-      <SpatialBackdrop />
+    <div
+      data-archive-theme={theme}
+      className={`flex experience-shell archive-shell ${discovery ? "discovery-shell" : ""} ${location.pathname === "/" ? "archive-home" : location.pathname === "/listen" ? "archive-listen" : ""}`}
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="archive-landscape" aria-hidden="true">
+        <img
+          src={assetUrl(landscape.image)}
+          alt=""
+          fetchPriority="high"
+          width="1536"
+          height="1024"
+        />
+      </div>
+      {location.pathname !== "/cymatics" && location.pathname !== "/" && (
+        <SpatialBackdrop />
+      )}
       <a href="#main" className="skip-link">
         Skip to content
       </a>
-      {!isMobile && !discovery && <ModuleRail state={sidebar} onCycle={cycleSidebar} />}
-      {!isMobile && !discovery && sidebar === 'hidden' && <SidebarReopenHandle onOpen={() => setSidebar('full')} />}
-      <div className="flex flex-col archive-workspace" style={{ flex: 1, minWidth: 0 }}>
+      <div
+        className="flex flex-col archive-workspace"
+        style={{ flex: 1, minWidth: 0 }}
+      >
         {isMobile ? (
           <MobileStatusBar onPalette={() => setPaletteOpen(true)} />
         ) : (
-          discovery ? <header className="observatory-header"><NavLink to="/" className="observatory-brand"><img src={assetUrl('favicon.svg')} alt="" width="30" height="30" /><span>Open Sync<small>SOUND · SPACE · ATTENTION</small></span></NavLink><nav aria-label="Main navigation" data-testid="observatory-navigation">{BOTTOM_TABS.map(route => <NavLink key={route.path} to={route.path} end={route.path === '/'}>{route.label}</NavLink>)}<button aria-expanded={moreOpen} onClick={() => setMoreOpen(!moreOpen)}>Workshop <MoreHorizontal size={16} /></button></nav><div className="observatory-utilities"><button className="observatory-search" data-testid="palette-hint" aria-label="Open command palette (Ctrl+K)" onClick={() => setPaletteOpen(true)}>Find <kbd>⌘ K</kbd></button><PwaUpdateChip /><PanicButton /></div></header> : <StatusBar onPalette={() => setPaletteOpen(true)} />
+          <header className="observatory-header">
+            <NavLink to="/" className="observatory-brand">
+              <img
+                src={assetUrl("favicon.svg")}
+                alt=""
+                width="30"
+                height="30"
+              />
+              <span>
+                Open Sync<small>SOUND & GEOMETRY</small>
+              </span>
+            </NavLink>
+            <nav
+              aria-label="Main navigation"
+              data-testid="observatory-navigation"
+            >
+              {[
+                ["/", "Discover"],
+                ["/presets", "Sounds"],
+                ["/studio", "Studio"],
+                ["/cymatics", "Cymatics"],
+                ["/research-hub", "Research"],
+              ].map(([path, label]) => (
+                <NavLink key={path} to={path} end={path === "/"}>
+                  {label}
+                </NavLink>
+              ))}
+              <button
+                aria-expanded={moreOpen}
+                onClick={() => setMoreOpen(!moreOpen)}
+              >
+                All tools <MoreHorizontal size={16} />
+              </button>
+            </nav>
+            <div className="observatory-utilities">
+              <button
+                className="observatory-search"
+                data-testid="palette-hint"
+                aria-label="Open command palette (Ctrl+K)"
+                onClick={() => setPaletteOpen(true)}
+              >
+                Find <kbd>⌘ K</kbd>
+              </button>
+              <PwaUpdateChip />
+              <PanicButton />
+            </div>
+          </header>
         )}
-        <div className="observatory-context"><ArchiveThemePicker value={theme} onChange={setTheme} /><SpatialPortal />{discovery && !isMobile && <div className="observatory-active"><SessionReadout /><PauseChip /></div>}</div>
-        {!discovery && <nav className="workshop-wayfinding" aria-label="Workspace journey"><NavLink to="/">Today</NavLink><span>/</span><button onClick={() => setMoreOpen(true)}>Workshop</button><span>/</span><strong>{ALL_ROUTES.find(route => route.path === location.pathname)?.label}</strong><NavLink to="/listen">Back to listening →</NavLink></nav>}
+        <WorkspaceNav />
+        <div className="observatory-context">
+          <ArchiveThemePicker value={theme} onChange={setTheme} />
+          <SpatialPortal />
+          {discovery && !isMobile && (
+            <div className="observatory-active" data-testid="status-bar">
+              <SessionReadout />
+              <PauseChip />
+            </div>
+          )}
+        </div>
+        {!discovery && (
+          <nav className="workshop-wayfinding" aria-label="Workspace journey">
+            <NavLink to="/">Today</NavLink>
+            <span>/</span>
+            <button onClick={() => setMoreOpen(true)}>Workshop</button>
+            <span>/</span>
+            <strong>
+              {
+                ALL_ROUTES.find((route) => route.path === location.pathname)
+                  ?.label
+              }
+            </strong>
+            <NavLink to="/listen">Back to listening →</NavLink>
+          </nav>
+        )}
         <main
           id="main"
           tabIndex={-1}
           style={{
             flex: 1,
-            background: 'transparent',
+            background: "transparent",
             // Keep content clear of the fixed bottom bar (§3.2 / AC8).
-            paddingBottom: isMobile ? `calc(${BOTTOM_BAR_H}px + env(safe-area-inset-bottom, 0px))` : 0,
+            paddingBottom: isMobile
+              ? `calc(${BOTTOM_BAR_H}px + env(safe-area-inset-bottom, 0px))`
+              : 0,
           }}
         >
           <AnimatePresence mode="wait">
@@ -859,7 +737,10 @@ function SpatialShell({ children }: { children: ReactNode }) {
               initial={reducedMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.15, ease: 'easeOut' }}
+              transition={{
+                duration: reducedMotion ? 0 : 0.15,
+                ease: "easeOut",
+              }}
             >
               {children}
             </motion.div>
@@ -868,19 +749,24 @@ function SpatialShell({ children }: { children: ReactNode }) {
       </div>
       {isMobile && (
         <>
-          <BottomBar onMore={() => setMoreOpen((v) => !v)} moreOpen={moreOpen} />
-
+          <BottomBar
+            onMore={() => setMoreOpen((v) => !v)}
+            moreOpen={moreOpen}
+          />
         </>
       )}
       <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />
       <PanicOverlay />
       <AdvisoryDialog />
-      <ShortcutsOverlay open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />
+      <ShortcutsOverlay
+        open={shortcutsOpen}
+        onClose={() => setShortcutsOpen(false)}
+      />
       <CommandPalette
         onShowShortcuts={() => setShortcutsOpen(true)}
         open={paletteOpen}
         onClose={() => setPaletteOpen(false)}
-        onToggleSidebar={isMobile ? undefined : cycleSidebar}
+        onToggleSidebar={isMobile ? undefined : () => setMoreOpen((v) => !v)}
       />
     </div>
   );

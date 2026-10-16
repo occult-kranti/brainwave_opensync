@@ -48,7 +48,7 @@ export const SHORTCUTS: readonly Shortcut[] = [
   {
     id: 'sidebar',
     keys: ['['],
-    label: 'Cycle sidebar: full → icons → hidden',
+    label: 'Open or close all tools',
     group: 'Navigation',
     match: (e) => noMods(e) && e.key === '[',
   },

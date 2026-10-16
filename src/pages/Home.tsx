@@ -1,31 +1,234 @@
-import { useState } from 'react';
-import { Link } from 'react-router';
-import { ArrowRight, ArrowUpRight, AudioLines, BookOpen, Compass, Moon, Sparkles, Wind } from 'lucide-react';
-import { PRACTICE_GOALS, type PracticeGoal } from '@/data/listeningPractice';
-import { PRESETS } from '@/data/presets';
-import { suggestSessions } from '@/data/sessionSuggestions';
-import { ResonanceField } from '@/ui/visuals/ResonanceField';
-import { assetUrl, projectUrl } from '@/lib/assetUrl';
-import './experience.css';
+import { useState } from "react";
+import { Link } from "react-router";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  AudioLines,
+  Orbit,
+  Waves,
+  BookOpen,
+} from "lucide-react";
+import { PRESETS } from "@/data/presets";
+import { ResonanceField } from "@/ui/visuals/ResonanceField";
+import { assetUrl, projectUrl } from "@/lib/assetUrl";
+import "./experience.css";
 
+const INTENTIONS = [
+  ["practice", "Meditation", "Make room for attention."],
+  ["hypnosis", "Self-hypnosis", "Imagery, rhythm and suggestion."],
+  ["sleep", "Sleep & dreaming", "Find a softer end to the day."],
+  ["focus", "Focus", "A steady background for your work."],
+  ["nature", "Nature", "Calls, rain and natural textures."],
+  ["bashar", "Bashar studies", "Explore the authored sound experiments."],
+];
 export default function Home() {
-  const [goal, setGoal] = useState<PracticeGoal>('unwind');
-  const [minutes, setMinutes] = useState(10);
-  const suggestion = suggestSessions({ goal, minutes, headphones: false, experimental: false })[0];
-  return <div className="observatory-home">
-    <div className="home-edition"><span><span className="status-point" />A place to return to yourself</span><span>01 / ARRIVE</span></div>
-    <section className="observatory-hero" aria-labelledby="home-title"><div className="observatory-hero-copy"><span className="overline">Sound, with space to breathe.</span><h1 id="home-title">Step out of<br />the noise.<br /><em>Into your own orbit.</em></h1><p>A quiet world of sound, shape and attention. Find a practice for this moment, then make room to simply listen.</p><div className="hero-actions"><Link className="journey-button" to="/listen?preset=practice-soft-landing">Take five minutes <ArrowRight size={17} /></Link><Link className="text-link" to="/presets?collection=all">Explore the library <ArrowUpRight size={16} /></Link></div><div className="hero-footnote"><span>Gentle rain · steady tone</span><span>Speakers welcome</span></div></div><div className="observatory-hero-art"><div className="spatial-art-label"><span>LIVE SCULPTURE</span><span>01 / THE FIELD</span></div><ResonanceField /><p className="geometry-caption">Turn, zoom, or step inside. A mathematical artwork, not a brainwave reading.</p></div></section>
-    <div className="arrival-path" aria-label="Your listening path"><span><b>01</b> Find your intention</span><span><b>02</b> Choose a sound</span><span><b>03</b> Settle into listening</span></div>
-    <section className="moment-finder" aria-labelledby="moment-title"><div className="moment-heading"><Compass size={21} strokeWidth={1.3} /><div><span className="overline">A practice for now</span><h2 id="moment-title">What would feel right?</h2></div><Link to="/meditate">Full session finder <ArrowUpRight size={15} /></Link></div><div className="moment-body"><div><div className="moment-intentions" aria-label="Your intention">{PRACTICE_GOALS.map(g => <button key={g.id} aria-pressed={goal === g.id} onClick={() => setGoal(g.id)}>{g.title.replace('Prepare for sleep', 'Sleep').replace('Explore dreaming', 'Dreaming')}</button>)}</div><div className="moment-time"><span>Time to yourself</span>{[5,10,20].map(n => <button key={n} aria-pressed={minutes === n} onClick={() => setMinutes(n)}>{n} min</button>)}</div></div><div className="moment-result"><span className="overline">A place to begin</span><h3>{suggestion?.preset.title.replace(/ — experimental tier$/, '') ?? 'Find a session'}</h3><p>{suggestion ? `${suggestion.shortened ? 'Full preset' : 'Fits your time'} · speaker-compatible` : 'Explore practices for your intention.'}</p><Link to={suggestion ? `/meditate?goal=${goal}&minutes=${minutes}` : '/meditate'}>Review this practice <ArrowRight size={18} /></Link></div></div></section>
-    <section className="home-collections"><div className="section-title"><div><span className="overline">02 / EXPLORE</span><h2>Four doors. Your own way in.</h2></div><Link to="/presets?collection=all">All {PRESETS.length} sounds <ArrowRight size={16} /></Link></div><div className="intention-grid">{[
-      {to:'/presets?collection=practice', number:'01', title:'Meditate', note:'Breathe. Listen. Begin again.', icon:Wind, kind:'meditate'},
-      {to:'/presets?collection=hypnosis', number:'02', title:'Self-hypnosis', note:'Attention, imagery & suggestion.', icon:Sparkles, kind:'hypnosis'},
-      {to:'/presets?collection=sleep', number:'03', title:'Sleep & dream', note:'A quieter way into the night.', icon:Moon, kind:'sleep'},
-      {to:'/presets?collection=focus', number:'04', title:'Focus', note:'One sound. One thing at a time.', icon:AudioLines, kind:'focus'},
-    ].map(({to,number,title,note,icon:Icon,kind}) => <Link key={to} className={`intention-card intention-${kind}`} to={to}><div className="intention-card-top"><span>{number}</span><ArrowUpRight size={18} /></div><div className={`intention-art art-${kind}`} style={{ backgroundImage: `url(${assetUrl('art/spatial-studies.webp')})` }} aria-hidden="true"/><span className="intention-icon" aria-hidden="true"><Icon size={16} /></span><h3>{title}</h3><p>{note}</p></Link>)}</div></section>
-    <section className="home-night"><div className="home-night-image"><img src={assetUrl('art/night-country.webp')} alt="A moonlit landscape reflected in still water" loading="lazy" /><span>Night practice / 07:00:00</span></div><div className="home-night-copy"><span className="overline">Make space for the night</span><h2>A gentle beginning.<br />Then, room for quiet.</h2><p>Build a seven-hour night around your intention. Start with 30 minutes of sound, or explore continuous listening with clear limits and speaker options.</p><Link className="journey-button" to="/overnight">Plan your night <ArrowRight size={17} /></Link><Link className="text-link" to="/presets?collection=overnight">Browse overnight presets</Link></div></section>
-    <section className="home-notebook"><div className="section-title"><div><span className="overline">Practice with perspective</span><h2>Curiosity, with a source.</h2></div><Link to="/research-hub">The research notebook <ArrowRight size={16} /></Link></div><div className="notebook-layout"><Link to="/hypnosis" className="notebook-feature"><img src={assetUrl('art/resonance-sculpture.webp')} alt="An original glass and fiber torus sculpture" loading="lazy" /><div><span className="overline">Sound / attention / mathematics</span><h3>What can a frequency actually do?</h3><span>Explore the evidence <ArrowUpRight size={16} /></span></div></Link><nav aria-label="Explore practices and research"><Link to="/lucid" data-testid="home-lab-lucid"><span>01</span><div>Dreaming & the mind<small>Sleep-onset imagery, recall and cue research</small></div><ArrowUpRight size={17} /></Link><Link to="/healing" data-testid="home-lab-healing"><span>02</span><div>Sound & healing traditions<small>Comfort, history and clinical limitations</small></div><ArrowUpRight size={17} /></Link><Link to="/nature" data-testid="home-lab-nature"><span>03</span><div>Patterns in nature<small>Acoustic portraits and natural textures</small></div><ArrowUpRight size={17} /></Link><Link to="/traditions"><span>04</span><div>Programs, books & archives<small>Government research and esoteric sources</small></div><ArrowUpRight size={17} /></Link></nav></div></section>
-    <section className="workshop-invitation"><BookOpen size={22} strokeWidth={1.3} /><div><h2>Curious about what is inside the sound?</h2><p>Open the workshop for layers, frequencies, sand patterns and the full set of labs.</p></div><Link to="/studio">Open the workshop <ArrowUpRight size={18} /></Link></section>
-    <footer className="editorial-footer"><span>Open Sync — made for listening and exploration.</span><div><Link to="/research-hub#tools">All tools</Link><Link to="/safety">Listening safely</Link><a href={projectUrl('previous/')}>Previous version ↗</a></div><p>Original listening designs. No medical treatment or particular mental state is promised.</p></footer>
-  </div>;
+  const [intention, setIntention] = useState("practice");
+  return (
+    <div className="res-home">
+      <section className="res-hero" aria-labelledby="home-title">
+        <img
+          className="res-hero-image"
+          src={assetUrl("art/resonance-gallery.webp")}
+          alt="An original copper filament and glass sound sculpture suspended in a dark gallery"
+          fetchPriority="high"
+        />
+        <div className="res-hero-shade" />
+        <div className="res-hero-copy">
+          <span className="res-kicker">
+            <i /> AN OPEN STUDIO FOR SOUND
+          </span>
+          <h1 id="home-title">
+            Listen.
+            <br />
+            See the sound.
+            <br />
+            <em>Stay curious.</em>
+          </h1>
+          <p>
+            Find a listening practice. Shape your own sound.
+            <br />
+            Explore the geometry that connects them.
+          </p>
+          <div className="res-actions">
+            <Link className="res-primary" to="/presets?collection=all">
+              Find a sound <ArrowUpRight size={18} />
+            </Link>
+            <Link className="res-text-link" to="/cymatics">
+              Enter the visual lab <ArrowRight size={17} />
+            </Link>
+          </div>
+          <span className="res-hero-note">
+            No account. Sound starts when you choose.
+          </span>
+        </div>
+        <div className="res-art-credit">
+          <span>STUDY 01 — RESONANCE</span>
+          <span>Original generative artwork</span>
+        </div>
+      </section>
+      <nav className="res-paths" aria-label="Choose your workspace">
+        {[
+          {
+            to: "/presets?collection=all",
+            number: "01",
+            title: "Listen",
+            description: `${PRESETS.length} sounds, organised by intention`,
+            icon: AudioLines,
+          },
+          {
+            to: "/studio",
+            number: "02",
+            title: "Create",
+            description: "Tones, textures and your own mixes",
+            icon: Waves,
+          },
+          {
+            to: "/cymatics",
+            number: "03",
+            title: "Visualise",
+            description: "Cymatics, 3D surfaces and 4D forms",
+            icon: Orbit,
+          },
+          {
+            to: "/research-hub",
+            number: "04",
+            title: "Understand",
+            description: "Sources, experiments and open questions",
+            icon: BookOpen,
+          },
+        ].map(({ to, number, title, description, icon: Icon }) => (
+          <Link to={to} key={to}>
+            <span className="res-path-number">{number}</span>
+            <Icon size={23} strokeWidth={1.3} />
+            <div>
+              <h2>{title}</h2>
+              <p>{description}</p>
+            </div>
+            <ArrowUpRight size={16} />
+          </Link>
+        ))}
+      </nav>
+      <section className="res-practice">
+        <div>
+          <span className="res-kicker">A SOUND FOR THIS MOMENT</span>
+          <h2>
+            Where would you
+            <br />
+            like to begin?
+          </h2>
+          <p>
+            Choose an intention, then preview a sound before loading it into
+            your player.
+          </p>
+        </div>
+        <div>
+          <div className="res-intentions">
+            {INTENTIONS.map(([id, title, note]) => (
+              <button
+                key={id}
+                aria-pressed={intention === id}
+                onClick={() => setIntention(id)}
+              >
+                <span>{title}</span>
+                <small>{note}</small>
+                <ArrowUpRight size={15} />
+              </button>
+            ))}
+          </div>
+          <Link className="res-primary" to={`/presets?collection=${intention}`}>
+            Explore{" "}
+            {INTENTIONS.find((i) => i[0] === intention)?.[1].toLowerCase()}{" "}
+            <ArrowRight size={16} />
+          </Link>
+          <Link className="res-text-link" to="/meditate">
+            Help me choose
+          </Link>
+        </div>
+      </section>
+      <section className="res-geometry">
+        <div className="res-geometry-copy">
+          <span className="res-kicker">THE VISUAL LAB</span>
+          <h2>
+            Sound has a shape.
+            <br />
+            <em>Take a closer look.</em>
+          </h2>
+          <p>
+            Turn a toroidal field. Rotate a Clifford torus through its fourth
+            coordinate. Change a virtual plate and watch its nodal patterns
+            emerge.
+          </p>
+          <Link className="res-primary" to="/cymatics">
+            Open Cymatics <ArrowUpRight size={18} />
+          </Link>
+          <small>
+            These are mathematical models and artworks. They are not
+            measurements of your brain or body.
+          </small>
+        </div>
+        <div className="res-live-field">
+          <ResonanceField />
+          <span className="res-kicker">
+            INTERACTIVE GEOMETRY · DRAG TO TURN
+          </span>
+        </div>
+      </section>
+      <section className="res-notebook">
+        <div>
+          <span className="res-kicker">FOLLOW YOUR CURIOSITY</span>
+          <h2>There is more to explore.</h2>
+        </div>
+        <div className="res-note-links">
+          {[
+            [
+              "/lucid",
+              "Dreaming & the mind",
+              "Sleep-onset imagery, recall and cue research",
+              "home-lab-lucid",
+            ],
+            [
+              "/healing",
+              "Sound & healing traditions",
+              "Comfort, history and clinical limitations",
+              "home-lab-healing",
+            ],
+            [
+              "/nature",
+              "Patterns in nature",
+              "Acoustic portraits and natural textures",
+              "home-lab-nature",
+            ],
+            [
+              "/traditions",
+              "Programs & archives",
+              "Original sources and reconstruction limits",
+              "",
+            ],
+            [
+              "/overnight",
+              "Plan your night",
+              "Sound, transitions and quiet time",
+              "",
+            ],
+          ].map(([to, title, note, test]) => (
+            <Link key={to} to={to} data-testid={test || undefined}>
+              <div>
+                <h3>{title}</h3>
+                <p>{note}</p>
+              </div>
+              <ArrowUpRight size={20} />
+            </Link>
+          ))}
+        </div>
+      </section>
+      <footer className="res-footer">
+        <strong>Open Sync</strong>
+        <span>An open space for sound & geometry.</span>
+        <Link to="/research-hub#tools">All tools</Link>
+        <Link to="/safety">Listening safely</Link>
+        <a href={projectUrl("previous/")}>Previous version ↗</a>
+        <a href={projectUrl("")}>Original workspace ↗</a>
+      </footer>
+    </div>
+  );
 }

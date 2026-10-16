@@ -72,7 +72,7 @@ export function CommandPalette({
           ? [
               {
                 id: 'sidebar',
-                label: 'TOGGLE SIDEBAR',
+                label: 'TOGGLE ALL TOOLS',
                 icon: PanelLeft,
                 hint: '[',
                 run: onToggleSidebar,

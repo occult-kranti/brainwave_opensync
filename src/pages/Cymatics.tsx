@@ -13,16 +13,35 @@
  * simulated response of a chosen virtual plate.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Download, Info, Play, Shuffle, Square, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useSession } from '@/ui/session/useSession';
-import { Chip, Led, Panel, Readout, WarningChip } from '@/ui/components/primitives';
-import { Knob } from '@/ui/components/Knob';
-import { GradeBadge } from '@/ui/components/GradeBadge';
-import { InfoPopover } from '@/ui/components/InfoPopover';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { FREQUENCIES } from '@/data/frequencies';
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Download,
+  Play,
+  Pause,
+  Shuffle,
+  Square,
+  Maximize2,
+  Minimize2,
+  Minus,
+  Plus,
+  RotateCcw,
+  ArrowLeft,
+  ArrowRight,
+} from "lucide-react";
+import { Link } from "react-router";
+import { createPortal } from "react-dom";
+import {
+  CymaticsSurface,
+  type SurfaceCamera,
+  type SurfaceStyle,
+} from "@/ui/visuals/CymaticsSurface";
+import { ResonanceField } from "@/ui/visuals/ResonanceField";
+import { PanicButton } from "@/ui/components/Panic";
+import { useModalA11y } from "@/ui/hooks";
+import "./cymatics-lab.css";
+import { useSession } from "@/ui/session/useSession";
+import { Chip, Readout } from "@/ui/components/primitives";
+import { FREQUENCIES } from "@/data/frequencies";
 import {
   VIRTUAL_PLATES,
   circularModeHz,
@@ -38,75 +57,14 @@ import {
   virtualPlateById,
   type PlateSign,
   type SandState,
-} from '@/cymatics/chladni';
-import { COLORMAPS, renderFrame, type ColormapName } from '@/cymatics/render';
-import { drawPlate3D, drawPlate5D } from '@/cymatics/plate3d';
-import { useOrbitCamera } from '@/hooks/useOrbitCamera';
-import { Field4D } from '@/ui/components/Field4D';
-import { useField4d } from '@/hooks/useField4d';
-import { sampleAudioFeatures, smoothDriveHz } from '@/cymatics/audioLink';
-import { STORAGE_KEYS } from '@/lib/storage';
+} from "@/cymatics/chladni";
+import { COLORMAPS, renderFrame, type ColormapName } from "@/cymatics/render";
+import { drawPlate3D, drawPlate5D } from "@/cymatics/plate3d";
+import { useOrbitCamera } from "@/hooks/useOrbitCamera";
+import { sampleAudioFeatures, smoothDriveHz } from "@/cymatics/audioLink";
 
-type DriveMode = 'manual' | 'frequency' | 'audio';
-type Interpretation = 'physics' | 'art';
-
-const COACH_KEY = STORAGE_KEYS.cymaticsCoach;
-
-const COACH_STEPS = [
-  {
-    title: 'PICK A VIRTUAL PLATE',
-    body: 'Patterns belong to a physical object, not a frequency. Choose a plate (shape, material, size) — it defines the eigenfrequency ladder everything else plays against.',
-  },
-  {
-    title: 'DRIVE IT',
-    body: 'MANUAL: scrub mode indices directly. FREQUENCY: type a Hz value (or pull one from the Library / live session). AUDIO: the running Studio engine\'s spectrum drives the plate live.',
-  },
-  {
-    title: 'SAND & CAPTURE',
-    body: 'Switch to SAND to watch grains migrate onto nodal lines. EXPORT PNG saves the current figure. The ⓘ panel explains what is physics and what is art.',
-  },
-];
-
-/** Primary / secondary buttons (design.md §5.6) — local, inline-styled. */
-function Btn({
-  primary,
-  onClick,
-  children,
-  title,
-}: {
-  primary?: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-  title?: string;
-}) {
-  return (
-    <button
-      type="button"
-      title={title}
-      onClick={onClick}
-      className="t-label flex items-center"
-      style={{
-        height: 36,
-        padding: '0 16px',
-        borderRadius: 2,
-        cursor: 'pointer',
-        background: primary ? 'var(--amber)' : 'transparent',
-        color: primary ? 'var(--text-inv)' : 'var(--text-1)',
-        border: primary ? 'none' : '1px solid var(--line-2)',
-      }}
-    >
-      {children}
-    </button>
-  );
-}
-
-function readCoachDone(): boolean {
-  try {
-    return window.localStorage.getItem(COACH_KEY) === 'done';
-  } catch {
-    return true;
-  }
-}
+type DriveMode = "manual" | "frequency" | "audio";
+type Interpretation = "physics" | "art";
 
 function Slider({
   label,
@@ -129,7 +87,10 @@ function Slider({
 }) {
   return (
     <div style={{ opacity: disabled ? 0.4 : 1 }}>
-      <div className="flex items-center justify-between" style={{ marginBottom: 4 }}>
+      <div
+        className="flex items-center justify-between"
+        style={{ marginBottom: 4 }}
+      >
         <span className="t-label">{label}</span>
         <Readout value={format ? format(value) : String(value)} size="sm" />
       </div>
@@ -142,25 +103,30 @@ function Slider({
         value={value}
         disabled={disabled}
         onChange={(e) => onChange(Number(e.target.value))}
-        style={{ width: '100%', accentColor: 'var(--amber)' }}
+        style={{ width: "100%", accentColor: "var(--amber)" }}
       />
     </div>
   );
 }
 
 export default function Cymatics() {
-  const isMobile = useIsMobile();
-  const { carrierHz: sessionCarrierHz, beatHz: sessionBeatHz, engineRef, previewId, previewTone } = useSession();
+  const {
+    carrierHz: sessionCarrierHz,
+    beatHz: sessionBeatHz,
+    engineRef,
+    previewId,
+    previewTone,
+  } = useSession();
 
   // ---- plate + mode state --------------------------------------------------
-  const [plateId, setPlateId] = useState('steel-square-30');
+  const [plateId, setPlateId] = useState("steel-square-30");
   const plate = virtualPlateById(plateId);
   const shape = plate.shape;
-  const [interp, setInterp] = useState<Interpretation>('physics');
-  const [driveMode, setDriveMode] = useState<DriveMode>('manual');
+  const [interp, setInterp] = useState<Interpretation>("physics");
+  const [driveMode, setDriveMode] = useState<DriveMode>("manual");
 
-  const [n, setN] = useState(1);
-  const [m, setM] = useState(2);
+  const [n, setN] = useState(3);
+  const [m, setM] = useState(4);
   const [sign, setSign] = useState<PlateSign>(1);
   const [mixA, setMixA] = useState(1);
   const [mixB, setMixB] = useState(-1);
@@ -172,19 +138,47 @@ export default function Cymatics() {
   const [audioActive, setAudioActive] = useState(false);
 
   // ---- render state --------------------------------------------------------
-  const [renderMode, setRenderMode] = useState<'lines' | 'sand' | 'plate3d' | 'plate5d'>('plate3d');
-  const [colormap, setColormap] = useState<ColormapName>('gold-plate');
-  const [field4dOn, setField4dOn] = useField4d();
-  const { cam: orbitCam, interacted: orbited, bind: orbitBind } = useOrbitCamera();
+  const [renderMode, setRenderMode] = useState<
+    "lines" | "sand" | "plate3d" | "plate5d"
+  >("plate3d");
+  const [colormap, setColormap] = useState<ColormapName>("gold-plate");
+  const [view, setView] = useState<
+    SurfaceStyle | "sand" | "lines" | "geometry"
+  >("surface");
+  const [gpu, setGpu] = useState(true);
+  const [paused, setPaused] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+  const [amplitude, setAmplitude] = useState(0.25);
+  const [expanded, setExpanded] = useState(false);
+  const [tab, setTab] = useState<"plate" | "drive" | "look">("plate");
+  const surfaceApi = useRef<SurfaceCamera | null>(null);
+  const surfacePoseRef = useRef({ position: [0, 3.5, 4.4], time: 0 });
+  useEffect(() => {
+    if (!expanded) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [expanded]);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const freezeTime = useRef(0);
+  useModalA11y(expanded, () => setExpanded(false), closeRef, stageRef);
+  const usingGpu = gpu && ["surface", "particles", "water"].includes(view);
+  const {
+    cam: orbitCamRef,
+    interacted: orbitedRef,
+    bind: orbitBind,
+  } = useOrbitCamera();
   const [threshold, setThreshold] = useState(0.08);
   const [particleCount, setParticleCount] = useState(6000);
   const [speed, setSpeed] = useState(1);
   const [resolution, setResolution] = useState(288);
   const [seed, setSeed] = useState(7);
-
-  // ---- popovers / coach marks ----------------------------------------------
-  const [infoOpen, setInfoOpen] = useState(false);
-  const [coachStep, setCoachStep] = useState(() => (readCoachDone() ? -1 : 0));
 
   // ---- canvas + sim refs -----------------------------------------------------
   const displayRef = useRef<HTMLCanvasElement>(null);
@@ -193,15 +187,19 @@ export default function Cymatics() {
   const energyRef = useRef(0);
   const smoothHzRef = useRef(0);
 
-  const driveHz = driveMode === 'audio' ? audioHz : freqHz;
-  const driven = driveMode !== 'manual';
+  const driveHz = driveMode === "audio" ? audioHz : freqHz;
+  const driven = driveMode !== "manual";
 
   // The field is the single source of truth for both render modes.
   const field = useMemo((): ((x: number, y: number) => number) => {
     if (driven && driveHz > 0) {
-      if (interp === 'physics') {
-        if (shape === 'square') return drivenSquareField(drivenSquareModes(driveHz, plate));
-        return drivenCircularField(drivenCircularModes(driveHz, plate), plate.boundary);
+      if (interp === "physics") {
+        if (shape === "square")
+          return drivenSquareField(drivenSquareModes(driveHz, plate));
+        return drivenCircularField(
+          drivenCircularModes(driveHz, plate),
+          plate.boundary,
+        );
       }
       // Art mode: snap to the nearest rung of the honest ladder, render pure.
       const best = frequencyToModes(driveHz, shape, {
@@ -212,14 +210,22 @@ export default function Cymatics() {
         limit: 1,
       })[0];
       if (best) {
-        if (best.kind === 'square') {
+        if (best.kind === "square") {
           const bn = best.n;
           const bm = best.m;
           const bs = best.sign;
           return (x, y) =>
             plateField({
-              shape: 'square', n: bn, m: bm, sign: bs, mixA: 1, mixB: -1,
-              useMix: false, circM: 0, circS: 1, boundary: 'clamped',
+              shape: "square",
+              n: bn,
+              m: bm,
+              sign: bs,
+              mixA: 1,
+              mixB: -1,
+              useMix: false,
+              circM: 0,
+              circS: 1,
+              boundary: "clamped",
             })(x, y);
         }
         const bm2 = best.m;
@@ -227,39 +233,87 @@ export default function Cymatics() {
         const bb = best.boundary;
         return (x, y) =>
           plateField({
-            shape: 'circular', n: 0, m: 1, sign: 1, mixA: 1, mixB: -1,
-            useMix: false, circM: bm2, circS: bs2, boundary: bb,
+            shape: "circular",
+            n: 0,
+            m: 1,
+            sign: 1,
+            mixA: 1,
+            mixB: -1,
+            useMix: false,
+            circM: bm2,
+            circS: bs2,
+            boundary: bb,
           })(x, y);
       }
     }
-    if (shape === 'square') {
-      if (interp === 'art') {
+    if (shape === "square") {
+      if (interp === "art") {
         const fn = n;
         const fm = m;
         return (x, y) =>
           plateField({
-            shape: 'square', n: fn, m: fm, sign, mixA, mixB, useMix: true,
-            circM: 0, circS: 1, boundary: 'clamped',
+            shape: "square",
+            n: fn,
+            m: fm,
+            sign,
+            mixA,
+            mixB,
+            useMix: true,
+            circM: 0,
+            circS: 1,
+            boundary: "clamped",
           })(x, y);
       }
       const ni = Math.round(n);
       const mi = Math.round(m);
       return plateField({
-        shape: 'square', n: ni, m: Math.max(ni === 0 && mi === 0 ? 1 : 0, mi), sign,
-        mixA: 1, mixB: -1, useMix: false, circM: 0, circS: 1, boundary: 'clamped',
+        shape: "square",
+        n: ni,
+        m: Math.max(ni === 0 && mi === 0 ? 1 : 0, mi),
+        sign,
+        mixA: 1,
+        mixB: -1,
+        useMix: false,
+        circM: 0,
+        circS: 1,
+        boundary: "clamped",
       });
     }
     return plateField({
-      shape: 'circular', n: 0, m: 1, sign: 1, mixA: 1, mixB: -1, useMix: false,
-      circM, circS, boundary: plate.boundary,
+      shape: "circular",
+      n: 0,
+      m: 1,
+      sign: 1,
+      mixA: 1,
+      mixB: -1,
+      useMix: false,
+      circM,
+      circS,
+      boundary: plate.boundary,
     });
-  }, [driven, driveHz, interp, shape, plate, n, m, sign, mixA, mixB, circM, circS]);
+  }, [
+    driven,
+    driveHz,
+    interp,
+    shape,
+    plate,
+    n,
+    m,
+    sign,
+    mixA,
+    mixB,
+    circM,
+    circS,
+  ]);
 
   // Modal-frequency readout for the current selection.
   const modalHz = useMemo(() => {
-    if (shape === 'square') {
+    if (shape === "square") {
       const ni = Math.round(n);
-      const mi = Math.max(ni === 0 && Math.round(m) === 0 ? 1 : 0, Math.round(m));
+      const mi = Math.max(
+        ni === 0 && Math.round(m) === 0 ? 1 : 0,
+        Math.round(m),
+      );
       return squareModeHz(ni, mi, plate.fundamentalHz, plate.scaling);
     }
     return circularModeHz(circM, circS, plate.fundamentalHz, plate.boundary);
@@ -267,7 +321,7 @@ export default function Cymatics() {
 
   // Sand lifecycle: reseed when count / shape / seed changes.
   useEffect(() => {
-    sandRef.current = createSand(particleCount, seed, shape === 'circular');
+    sandRef.current = createSand(particleCount, seed, shape === "circular");
   }, [particleCount, shape, seed]);
 
   // ---- animation loop --------------------------------------------------------
@@ -279,16 +333,25 @@ export default function Cymatics() {
       const dt = Math.min(0.1, (now - last) / 1000);
       last = now;
 
+      if (document.hidden) return;
+      if (!paused) freezeTime.current += dt * speed;
       // Audio link (degrades gracefully to a static frame when offline).
-      if (driveMode === 'audio') {
+      if (driveMode === "audio") {
         const analyser = engineRef.current?.analysers()?.spectrum ?? null;
-        const feats = sampleAudioFeatures(analyser, engineRef.current?.sampleRate ?? 48000);
+        const feats = sampleAudioFeatures(
+          analyser,
+          engineRef.current?.sampleRate ?? 48000,
+        );
         energyRef.current = feats.energy;
         setAudioActive(feats.active);
         if (feats.active) {
           const smoothed = smoothDriveHz(smoothHzRef.current, feats.peakHz);
           smoothHzRef.current = smoothed;
-          setAudioHz((cur) => (Math.abs(cur - smoothed) > 0.5 ? Math.round(smoothed * 10) / 10 : cur));
+          setAudioHz((cur) =>
+            Math.abs(cur - smoothed) > 0.5
+              ? Math.round(smoothed * 10) / 10
+              : cur,
+          );
         }
       } else {
         energyRef.current = 0;
@@ -296,11 +359,13 @@ export default function Cymatics() {
         setAudioActive(false);
       }
 
+      if (usingGpu || view === "geometry") return;
       const canvas = displayRef.current;
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext("2d");
       if (!ctx) return;
-      if (!bufferRef.current) bufferRef.current = document.createElement('canvas');
+      if (!bufferRef.current)
+        bufferRef.current = document.createElement("canvas");
       const buf = bufferRef.current;
       if (buf.width !== resolution || buf.height !== resolution) {
         buf.width = resolution;
@@ -308,18 +373,24 @@ export default function Cymatics() {
       }
 
       const sand = sandRef.current;
-      if ((renderMode === 'sand' || renderMode === 'plate3d' || renderMode === 'plate5d') && sand) {
+      if (
+        !paused &&
+        (renderMode === "sand" ||
+          renderMode === "plate3d" ||
+          renderMode === "plate5d") &&
+        sand
+      ) {
         stepParticles(sand, field, dt * speed, {
           jitter: 0.012 + energyRef.current * 0.05,
         });
       }
 
-      const orbit = orbited.current ? { ...orbitCam.current } : undefined;
-      if (renderMode === 'plate3d' || renderMode === 'plate5d') {
-        const drawFn = renderMode === 'plate5d' ? drawPlate5D : drawPlate3D;
-        drawFn(buf.getContext('2d')!, resolution, resolution, field, {
-          time: now / 1000,
-          amp: 0.34,
+      const orbit = orbitedRef.current ? { ...orbitCamRef.current } : undefined;
+      if (renderMode === "plate3d" || renderMode === "plate5d") {
+        const drawFn = renderMode === "plate5d" ? drawPlate5D : drawPlate3D;
+        drawFn(buf.getContext("2d")!, resolution, resolution, field, {
+          time: freezeTime.current,
+          amp: amplitude,
           energy: energyRef.current,
           gridX: resolution >= 512 ? 76 : 52,
           gridY: resolution >= 512 ? 54 : 36,
@@ -328,607 +399,762 @@ export default function Cymatics() {
           orbit,
         });
       } else {
-        renderFrame(buf.getContext('2d'), resolution, resolution, {
+        renderFrame(buf.getContext("2d"), resolution, resolution, {
           field,
-          circular: shape === 'circular',
+          circular: shape === "circular",
           mode: renderMode,
           colormap,
           threshold,
-          particles: renderMode === 'sand' ? sand : null,
+          particles: renderMode === "sand" ? sand : null,
           energy: energyRef.current,
         });
       }
       ctx.imageSmoothingEnabled = true;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(buf, 0, 0, canvas.width, canvas.height);
+      const size = Math.min(canvas.width, canvas.height);
+      ctx.drawImage(
+        buf,
+        (canvas.width - size) / 2,
+        (canvas.height - size) / 2,
+        size,
+        size,
+      );
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [field, renderMode, colormap, threshold, resolution, speed, shape, driveMode, engineRef, orbitCam, orbited]);
+  }, [
+    field,
+    renderMode,
+    colormap,
+    threshold,
+    resolution,
+    speed,
+    shape,
+    driveMode,
+    engineRef,
+    orbitCamRef,
+    orbitedRef,
+    paused,
+    amplitude,
+    usingGpu,
+    view,
+  ]);
 
   // ---- actions ----------------------------------------------------------------
   const exportPng = useCallback(() => {
-    const res = 768;
-    const off = document.createElement('canvas');
+    if (usingGpu) {
+      surfaceApi.current?.capture();
+      return;
+    }
+    const res = 1024;
+    const off = document.createElement("canvas");
     off.width = res;
     off.height = res;
-    if (renderMode === 'plate3d' || renderMode === 'plate5d') {
-      const drawFn = renderMode === 'plate5d' ? drawPlate5D : drawPlate3D;
-      drawFn(off.getContext('2d')!, res, res, field, {
-        time: 4, amp: 0.34, energy: 0, gridX: 76, gridY: 54, stride: 2,
-        particles: sandRef.current, still: true,
+    if (renderMode === "plate3d" || renderMode === "plate5d") {
+      const drawFn = renderMode === "plate5d" ? drawPlate5D : drawPlate3D;
+      drawFn(off.getContext("2d")!, res, res, field, {
+        time: freezeTime.current,
+        amp: amplitude,
+        energy: 0,
+        gridX: 76,
+        gridY: 54,
+        stride: 2,
+        particles: sandRef.current,
+        still: true,
+        orbit: { ...orbitCamRef.current },
       });
     } else {
-      renderFrame(off.getContext('2d'), res, res, {
+      renderFrame(off.getContext("2d"), res, res, {
         field,
-        circular: shape === 'circular',
+        circular: shape === "circular",
         mode: renderMode,
         colormap,
         threshold,
-        particles: renderMode === 'sand' ? sandRef.current : null,
+        particles: renderMode === "sand" ? sandRef.current : null,
         energy: 0,
       });
     }
     off.toBlob((blob) => {
       if (!blob) return;
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
       a.download = `cymatics-${shape}-${Date.now()}.png`;
       a.click();
       URL.revokeObjectURL(url);
-    }, 'image/png');
-  }, [field, shape, renderMode, colormap, threshold]);
+    }, "image/png");
+  }, [
+    field,
+    shape,
+    renderMode,
+    colormap,
+    threshold,
+    usingGpu,
+    amplitude,
+    orbitCamRef,
+  ]);
 
-  const finishCoach = useCallback(() => {
-    try {
-      window.localStorage.setItem(COACH_KEY, 'done');
-    } catch {
-      /* private mode */
-    }
-    setCoachStep(-1);
-  }, []);
-
-  // P0-4: coach-mark tips dismiss on Esc (non-modal, so no focus trap).
-  useEffect(() => {
-    if (coachStep < 0) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') finishCoach();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [coachStep, finishCoach]);
-
-  const selectShape = (next: 'square' | 'circular') => {
+  const selectShape = (next: "square" | "circular") => {
     if (next === shape) return;
     const first = VIRTUAL_PLATES.find((p) => p.shape === next);
     if (first) setPlateId(first.id);
   };
 
-  const libFrequencies = FREQUENCIES.filter((f) => typeof f.hz === 'number');
+  const libFrequencies = FREQUENCIES.filter((f) => typeof f.hz === "number");
 
   // "Hear this pattern": the drive frequency (audio-linked live peak, typed Hz)
   // or, in manual mode, the selected mode's eigenfrequency — as a capped tone.
   const hearHz = driven && driveHz > 0 ? driveHz : modalHz;
-  const hearing = previewId === 'cymatics:plate';
+  const hearing = previewId === "cymatics:plate";
 
   const modeLabel =
-    shape === 'square'
+    shape === "square"
       ? driven
-        ? 'DRIVEN'
-        : `(n=${interp === 'art' ? n.toFixed(2) : Math.round(n)}, m=${interp === 'art' ? m.toFixed(2) : Math.round(m)})`
+        ? "DRIVEN"
+        : `(n=${interp === "art" ? n.toFixed(2) : Math.round(n)}, m=${interp === "art" ? m.toFixed(2) : Math.round(m)})`
       : driven
-        ? 'DRIVEN'
+        ? "DRIVEN"
         : `(m=${circM}, s=${circS})`;
 
-  return (
-    <div style={{ padding: isMobile ? '16px' : '32px 40px', maxWidth: 1440 }}>
-      {/* header */}
-      <div className="flex items-center gap-3" style={{ marginBottom: 24, flexWrap: 'wrap' }}>
-        <h2 className="t-h2" style={{ marginRight: 4 }}>
-          Cymatic Studio
-        </h2>
-        <GradeBadge
-          grade="A"
-          citation={{
-            verdict: 'Ideal-plate physics is solid; the frequency→pattern shortcut is not.',
-            summary:
-              'Chladni figures are the nodal lines of real plate eigenmodes (Chladni 1787; Kirchhoff–Love plate theory). But which pattern appears depends on plate geometry, material, thickness, and boundary conditions — never on frequency alone. This module shows the simulated response of a declared virtual plate.',
-            source:
-              'COMSOL Multiphysics blog (Chladni plates); MDPI Entropy 26(3):264 (2024); Tuan et al., PMC6052176 (2018).',
-          }}
-        />
-        <span style={{ flex: 1 }} />
-        <WarningChip tone="amber">
-          PATTERNS DEPEND ON THE PLATE, NOT ON FREQUENCY ALONE
-        </WarningChip>
-        <button
-          type="button"
-          aria-label="About the physics"
-          onClick={() => setInfoOpen((v) => !v)}
-          className="flex items-center justify-center"
-          style={{
-            width: 32,
-            height: 32,
-            color: 'var(--text-2)',
-            background: infoOpen ? 'var(--ink-3)' : 'transparent',
-            border: '1px solid var(--line-1)',
-            borderRadius: 2,
-            cursor: 'pointer',
-          }}
-        >
-          <Info size={16} />
-        </button>
-      </div>
-
-      {/* info popover */}
-      <AnimatePresence>
-        {infoOpen && (
-          <>
-            <div
-              style={{ position: 'fixed', inset: 0, zIndex: 45 }}
-              onClick={() => setInfoOpen(false)}
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.14, ease: 'easeOut' }}
-              className="panel"
-              style={{
-                position: 'fixed',
-                top: 96,
-                right: isMobile ? 16 : 40,
-                width: 'min(420px, calc(100vw - 32px))',
-                zIndex: 46,
-                background: 'var(--ink-3)',
-                border: '1px solid var(--line-2)',
-                boxShadow: '0 12px 32px rgba(0,0,0,0.5)',
-                padding: 20,
-              }}
-            >
-              <div className="flex items-center justify-between" style={{ marginBottom: 12 }}>
-                <span className="t-label">WHAT THIS SIMULATES</span>
-                <button
-                  type="button"
-                  aria-label="Close"
-                  onClick={() => setInfoOpen(false)}
-                  style={{ color: 'var(--text-3)', cursor: 'pointer', background: 'none', border: 'none' }}
-                >
-                  <X size={14} />
-                </button>
-              </div>
-              <div className="t-body-sm" style={{ color: 'var(--text-2)', display: 'grid', gap: 10 }}>
-                <p>
-                  Sand on a vibrating plate collects along <em>nodal lines</em> — curves where the
-                  surface does not move. Square plate: cos(nπx)·cos(mπy) − cos(mπx)·cos(nπy) = 0
-                  (Chladni 1787, Bourke 2003 form). Circular plate: Bessel modes J_m(k·r)·cos(mθ)
-                  with k set by the rim condition.
-                </p>
-                <p>
-                  <strong style={{ color: 'var(--amber)' }}>Physics mode</strong> treats your Hz as
-                  the drive of the selected virtual plate and superposes nearby eigenmodes with
-                  Lorentzian weights — the physically motivated model of a real driven plate.{' '}
-                  <strong style={{ color: 'var(--teal-hi)' }}>Art mode</strong> maps frequency (or
-                  fractional sliders) straight onto pattern indices — an artistic interpretation,
-                  labeled as such.
-                </p>
-                <p>
-                  Honesty note: real patterns depend on geometry, thickness, material, and boundary
-                  conditions. The same 500&nbsp;Hz tone draws different figures on different plates.
-                  Nothing here shows "the cymatic pattern of a frequency" — only the simulated
-                  response of the plate you picked.
-                </p>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
-      <div
-        className="flex gap-6"
-        style={{ flexDirection: isMobile ? 'column' : 'row', alignItems: 'flex-start' }}
-      >
-        {/* ------------------------------------------------ scope panel */}
-        <Panel
-          title="PLATE SCOPE"
-          pad={false}
-          style={{ flex: isMobile ? 'none' : '1 1 auto', width: isMobile ? '100%' : undefined, minWidth: 0 }}
-          right={
-            <div className="flex items-center gap-3" style={{ paddingRight: 4 }}>
-              <span className="t-readout-sm text-3">{modeLabel}</span>
-              <InfoPopover featureId="cymatic-patterns" label="About the plate pattern view" />
-              <Led state={driveMode === 'audio' && audioActive ? 'teal' : 'off'} title="Audio link" />
-            </div>
+  const changeView = (next: typeof view) => {
+    setView(next);
+    if (next === "sand" || next === "lines") setRenderMode(next);
+    else setRenderMode("plate3d");
+  };
+  const zoom = (factor: number) => {
+    if (usingGpu) surfaceApi.current?.zoom(factor);
+    else {
+      orbitedRef.current = true;
+      orbitCamRef.current.dist = Math.max(
+        0.8,
+        Math.min(6, orbitCamRef.current.dist / factor),
+      );
+    }
+  };
+  const reset = () => {
+    surfaceApi.current?.reset();
+    orbitCamRef.current = { yaw: 0.42, tilt: 1.02, dist: 2.1 };
+    orbitedRef.current = true;
+  };
+  const cameraControls = !["geometry", "sand", "lines"].includes(view) && (
+    <div className="cym-camera" aria-label="Camera controls">
+      <button aria-label="Zoom out plate" onClick={() => zoom(1 / 1.15)}>
+        <Minus size={16} />
+      </button>
+      <button aria-label="Zoom in plate" onClick={() => zoom(1.15)}>
+        <Plus size={16} />
+      </button>
+      <span />
+      <button
+        aria-label="Rotate plate left"
+        onClick={() => {
+          if (usingGpu) surfaceApi.current?.turn(-1);
+          else {
+            orbitedRef.current = true;
+            orbitCamRef.current.yaw -= 0.2;
           }
-        >
-          <div
-            style={{
-              background: 'var(--ink-0)',
-              borderTop: '1px solid var(--line-1)',
-              borderBottom: '1px solid var(--line-1)',
-              position: 'relative',
-              isolation: 'isolate',
-            }}
+        }}
+      >
+        <ArrowLeft size={16} />
+      </button>
+      <button
+        aria-label="Rotate plate right"
+        onClick={() => {
+          if (usingGpu) surfaceApi.current?.turn(1);
+          else {
+            orbitedRef.current = true;
+            orbitCamRef.current.yaw += 0.2;
+          }
+        }}
+      >
+        <ArrowRight size={16} />
+      </button>
+      <button
+        onClick={() => {
+          if (usingGpu) surfaceApi.current?.top();
+          else {
+            orbitedRef.current = true;
+            orbitCamRef.current.tilt = 0.02;
+          }
+        }}
+      >
+        Top view
+      </button>
+      <button onClick={reset}>
+        <RotateCcw size={14} /> Reset
+      </button>
+    </div>
+  );
+  const stage = (
+    <div
+      className={`cym-stage ${expanded ? "cym-stage-expanded" : ""}`}
+      ref={stageRef}
+      role={expanded ? "dialog" : undefined}
+      aria-modal={expanded || undefined}
+      aria-label={expanded ? "Expanded cymatics stage" : undefined}
+    >
+      <div className="cym-stage-top">
+        <span>
+          <i />{" "}
+          {view === "geometry"
+            ? "MATHEMATICAL GEOMETRY"
+            : usingGpu
+              ? "LIVE 3D SURFACE"
+              : "CANVAS PLATE MODEL"}
+        </span>
+        <div>
+          {view !== "geometry" && (
+            <button aria-pressed={paused} onClick={() => setPaused(!paused)}>
+              {paused ? <Play size={14} /> : <Pause size={14} />}{" "}
+              {paused ? "Animate" : "Pause motion"}
+            </button>
+          )}
+          <button
+            ref={closeRef}
+            aria-label={
+              expanded ? "Exit expanded stage" : "Expand cymatics stage"
+            }
+            onClick={() => setExpanded(!expanded)}
           >
-            {field4dOn && <Field4D />}
-            <canvas
-              ref={displayRef}
-              width={640}
-              height={640}
-              {...orbitBind}
-              style={{ display: 'block', width: '100%', height: 'auto', aspectRatio: '1', touchAction: (renderMode === 'plate3d' || renderMode === 'plate5d') ? 'none' : 'auto', cursor: (renderMode === 'plate3d' || renderMode === 'plate5d') ? 'grab' : 'default' }}
-              aria-label={(renderMode === 'plate3d' || renderMode === 'plate5d') ? 'Interactive plate — drag to orbit, scroll or pinch to zoom, double-click to reset' : 'Cymatics plate display'}
-            />
-            {driveMode === 'audio' && !audioActive && (
-              <div
-                className="t-readout-sm"
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--text-3)',
-                  letterSpacing: '0.12em',
-                  pointerEvents: 'none',
-                }}
-              >
-                NO SIGNAL — START THE ENGINE IN STUDIO
-              </div>
-            )}
-          </div>
-          <div
-            className="flex items-center gap-6"
-            style={{ padding: '12px 16px', flexWrap: 'wrap' }}
-          >
-            <div>
-              <div className="t-label text-3" style={{ marginBottom: 2 }}>MODAL f</div>
-              <Readout value={modalHz.toFixed(1)} unit="Hz" size="md" color="var(--teal-hi)" />
-            </div>
-            <div>
-              <div className="t-label text-3" style={{ marginBottom: 2 }}>DRIVE</div>
-              <Readout
-                value={driven && driveHz > 0 ? driveHz.toFixed(1) : '—'}
-                unit={driven ? 'Hz' : undefined}
-                size="md"
-                color={driven ? 'var(--amber)' : 'var(--text-3)'}
-              />
-            </div>
-            <div>
-              <div className="t-label text-3" style={{ marginBottom: 2 }}>PLATE f₀</div>
-              <Readout value={plate.fundamentalHz.toFixed(0)} unit="Hz" size="md" />
-            </div>
-            <span style={{ flex: 1 }} />
-            <button
-              type="button"
-              className="t-label flex items-center"
-              style={{
-                minHeight: 40,
-                padding: '0 16px',
-                borderRadius: 2,
-                cursor: 'pointer',
-                background: hearing ? 'rgba(217,164,65,0.08)' : 'transparent',
-                color: hearing ? 'var(--amber)' : 'var(--text-1)',
-                border: `1px solid ${hearing ? 'var(--amber)' : 'var(--line-2)'}`,
-              }}
-              aria-label={hearing ? 'Stop the pattern tone' : `Hear this pattern: ${hearHz.toFixed(1)} Hz tone`}
-              title={`Plays the ${hearHz.toFixed(1)} Hz drive/modal frequency as a tone while the pattern animates (level capped by the safety governor)`}
-              onClick={() => previewTone('cymatics:plate', hearHz)}
-            >
-              {hearing ? (
-                <Square size={13} style={{ marginRight: 6, verticalAlign: '-2px' }} />
-              ) : (
-                <Play size={13} style={{ marginRight: 6, verticalAlign: '-2px' }} />
-              )}
-              {hearing ? 'STOP TONE' : 'HEAR THIS PATTERN'}
-            </button>
-            <button type="button" className="btn-secondary" onClick={() => setSeed((s) => s + 1)}>
-              <Shuffle size={13} style={{ marginRight: 6, verticalAlign: '-2px' }} />
-              SCATTER SAND
-            </button>
-            <button type="button" className="btn-primary" onClick={exportPng}>
-              <Download size={13} style={{ marginRight: 6, verticalAlign: '-2px' }} />
-              EXPORT PNG
-            </button>
-          </div>
-        </Panel>
-
-        {/* ------------------------------------------------ controls */}
-        <div
-          className="flex flex-col gap-6"
-          style={{ width: isMobile ? '100%' : 380, flexShrink: 0 }}
-        >
-          <Panel title="VIRTUAL PLATE">
-            <div className="flex gap-2" style={{ marginBottom: 16 }}>
-              <Chip active={shape === 'square'} onClick={() => selectShape('square')}>SQUARE</Chip>
-              <Chip active={shape === 'circular'} onClick={() => selectShape('circular')}>CIRCULAR</Chip>
-            </div>
-            <select
-              aria-label="Virtual plate preset"
-              value={plateId}
-              onChange={(e) => setPlateId(e.target.value)}
-              style={{
-                width: '100%',
-                background: 'var(--ink-4)',
-                color: 'var(--text-1)',
-                border: '1px solid var(--line-1)',
-                borderRadius: 2,
-                padding: '8px 10px',
-                fontFamily: 'IBM Plex Mono, monospace',
-                fontSize: 12,
-                marginBottom: 12,
-              }}
-            >
-              {VIRTUAL_PLATES.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.label} · f₀ {p.fundamentalHz} Hz
-                </option>
-              ))}
-            </select>
-            <p className="t-caption text-3" style={{ margin: 0 }}>{plate.note}</p>
-            <div className="flex gap-2" style={{ marginTop: 16 }}>
-              <Chip
-                active={interp === 'physics'}
-                onClick={() => setInterp('physics')}
-                title="Eigenfrequency-ladder drive — physically motivated"
-              >
-                PHYSICS
-              </Chip>
-              <Chip
-                active={interp === 'art'}
-                onClick={() => setInterp('art')}
-                title="Direct frequency→mode morph — artistic interpretation"
-              >
-                ART
-              </Chip>
-              <span className="t-caption text-3" style={{ alignSelf: 'center' }}>
-                {interp === 'physics' ? 'driven-plate superposition' : 'artistic interpretation'}
+            {expanded ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+          </button>
+          {expanded && <PanicButton />}
+        </div>
+      </div>
+      <div className="cym-stage-view">
+        {view === "geometry" ? (
+          <ResonanceField immersive />
+        ) : usingGpu ? (
+          <CymaticsSurface
+            field={field}
+            circular={shape === "circular"}
+            style={view as SurfaceStyle}
+            density={particleCount}
+            amplitude={amplitude}
+            speed={speed}
+            paused={paused}
+            api={surfaceApi}
+            poseRef={surfacePoseRef}
+            onUnavailable={() => setGpu(false)}
+          />
+        ) : (
+          <canvas
+            ref={displayRef}
+            width={1024}
+            height={760}
+            {...orbitBind}
+            aria-label="Interactive plate — drag to orbit, scroll or pinch to zoom, double-click to reset"
+          />
+        )}
+        {view !== "geometry" && (
+          <>
+            <div className="cym-stage-caption">
+              <span>
+                {shape === "square" ? "SQUARE" : "CIRCULAR"} / {modeLabel}
+              </span>
+              <span>
+                {!gpu && ["surface", "particles", "water"].includes(view)
+                  ? "Interactive Canvas fallback · GPU unavailable"
+                  : view === "water"
+                    ? "Fluid styling · artistic displacement"
+                    : view === "particles"
+                      ? "Sampled nodal points · not grain dynamics"
+                      : "Analytic virtual-plate approximation"}
               </span>
             </div>
-          </Panel>
-
-          <Panel title="DRIVE">
-            <div className="flex gap-2" style={{ marginBottom: 16, flexWrap: 'wrap' }}>
-              <Chip active={driveMode === 'manual'} onClick={() => setDriveMode('manual')}>MANUAL</Chip>
-              <Chip active={driveMode === 'frequency'} onClick={() => setDriveMode('frequency')}>FREQUENCY</Chip>
-              <Chip active={driveMode === 'audio'} onClick={() => setDriveMode('audio')}>AUDIO</Chip>
+            {cameraControls}
+          </>
+        )}
+      </div>
+      <div className="cym-stage-bottom">
+        <div>
+          <small>MODAL FREQUENCY</small>
+          <strong>
+            {modalHz.toFixed(1)} <em>Hz</em>
+          </strong>
+        </div>
+        <div>
+          <small>DRIVE</small>
+          <strong>
+            {driven ? driveHz.toFixed(1) : "Manual"} {driven && <em>Hz</em>}
+          </strong>
+        </div>
+        <div className="cym-stage-buttons">
+          <button
+            className={hearing ? "cym-active" : ""}
+            onClick={() => previewTone("cymatics:plate", hearHz)}
+            aria-label={
+              hearing
+                ? "Stop the pattern tone"
+                : `Hear this pattern: ${hearHz.toFixed(1)} Hz tone`
+            }
+          >
+            {hearing ? <Square size={14} /> : <Play size={14} />}{" "}
+            {hearing ? "Stop tone" : "Hear pattern"}
+          </button>
+          <button disabled={view === "geometry"} onClick={exportPng}>
+            <Download size={14} /> Save image
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+  return (
+    <div className="cym-lab">
+      <header className="cym-heading">
+        <div>
+          <span className="res-kicker">VISUAL LAB / 01</span>
+          <h1>
+            Cymatics<span>Sound, made visible.</span>
+          </h1>
+        </div>
+        <p>
+          Change the plate. Find a mode. Explore the pattern.
+          <br />
+          Sound only starts when you press Hear pattern.
+        </p>
+      </header>
+      <div className="cym-view-tabs" aria-label="Visualisation style">
+        {(
+          [
+            ["surface", "3D surface"],
+            ["particles", "Nodal particles"],
+            ["water", "Fluid art"],
+            ["sand", "Sand simulation"],
+            ["lines", "Nodal lines"],
+            ["geometry", "3D / 4D geometry"],
+          ] as const
+        ).map(([id, label]) => (
+          <button
+            key={id}
+            aria-pressed={view === id}
+            onClick={() => changeView(id)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <div className="cym-layout">
+        <div className="cym-main">
+          {expanded ? createPortal(stage, document.body) : stage}
+          <div className="cym-presets">
+            <div>
+              <span className="res-kicker">PATTERN STUDIES</span>
+              <p>Choose a starting point</p>
             </div>
-
-            {driveMode === 'manual' && shape === 'square' && (
-              <>
-                <div className="flex gap-6" style={{ justifyContent: 'center', marginBottom: 12 }}>
-                  <Knob
-                    label="N"
-                    value={n}
-                    min={interp === 'art' ? 0.25 : 0}
-                    max={8}
-                    onChange={(v) => setN(interp === 'art' ? v : Math.round(v))}
-                  />
-                  <Knob
-                    label="M"
-                    value={m}
-                    min={interp === 'art' ? 0.25 : 0}
-                    max={8}
-                    onChange={(v) => setM(interp === 'art' ? v : Math.round(v))}
-                    color="var(--teal)"
-                  />
-                </div>
-                {interp === 'physics' ? (
-                  <div className="flex gap-2" style={{ justifyContent: 'center' }}>
-                    <Chip active={sign === 1} onClick={() => setSign(1)} title="cos − cos">DIFF (−)</Chip>
-                    <Chip active={sign === -1} onClick={() => setSign(-1)} title="cos + cos">SUM (+)</Chip>
-                  </div>
-                ) : (
-                  <div className="flex flex-col gap-3">
-                    <Slider label="MIX A" value={mixA} min={-1} max={1} step={0.01} onChange={setMixA} format={(v) => v.toFixed(2)} />
-                    <Slider label="MIX B" value={mixB} min={-1} max={1} step={0.01} onChange={setMixB} format={(v) => v.toFixed(2)} />
-                    <p className="t-caption text-3" style={{ margin: 0 }}>
-                      a·sin(nπx)sin(mπy) + b·sin(mπx)sin(nπy) — fractional n/m morphs between modes.
-                    </p>
-                  </div>
-                )}
-              </>
-            )}
-
-            {driveMode === 'manual' && shape === 'circular' && (
-              <div className="flex gap-6" style={{ justifyContent: 'center' }}>
-                <Knob label="M (θ)" value={circM} min={0} max={5} onChange={(v) => setCircM(Math.round(v))} />
-                <Knob label="S (r)" value={circS} min={1} max={5} onChange={(v) => setCircS(Math.round(v))} color="var(--teal)" />
-              </div>
-            )}
-
-            {driveMode === 'frequency' && (
-              <div className="flex flex-col gap-3">
-                <div className="flex items-end gap-3">
-                  <div style={{ flex: 1 }}>
-                    <span className="t-label" style={{ display: 'block', marginBottom: 4 }}>DRIVE FREQUENCY</span>
-                    <input
-                      type="number"
-                      aria-label="Drive frequency in Hz"
-                      min={20}
-                      max={8000}
-                      step={1}
-                      value={freqHz}
-                      onChange={(e) => setFreqHz(Math.min(8000, Math.max(20, Number(e.target.value) || 20)))}
-                      className="t-readout-md"
-                      style={{
-                        width: '100%',
-                        background: 'var(--ink-4)',
-                        color: 'var(--amber)',
-                        border: '1px solid var(--line-1)',
-                        borderRadius: 2,
-                        padding: '6px 10px',
-                      }}
-                    />
-                  </div>
-                  <Readout value={freqHz.toFixed(1)} unit="Hz" size="lg" color="var(--amber)" />
-                </div>
-                <div className="flex gap-2" style={{ flexWrap: 'wrap' }}>
-                  <Chip onClick={() => setFreqHz(Math.max(20, sessionCarrierHz))} title="Current Studio carrier">
-                    CARRIER {sessionCarrierHz.toFixed(0)}
-                  </Chip>
-                  <Chip onClick={() => setFreqHz(Math.max(20, sessionBeatHz * 40))} title="Session beat × 40 (audible octave shift)">
-                    BEAT ×40
-                  </Chip>
-                </div>
-                <select
-                  aria-label="Library frequency"
-                  value=""
-                  onChange={(e) => {
-                    const v = Number(e.target.value);
-                    if (v > 0) setFreqHz(Math.min(8000, Math.max(20, v)));
-                  }}
-                  style={{
-                    background: 'var(--ink-4)',
-                    color: 'var(--text-2)',
-                    border: '1px solid var(--line-1)',
-                    borderRadius: 2,
-                    padding: '6px 10px',
-                    fontFamily: 'IBM Plex Mono, monospace',
-                    fontSize: 11,
-                  }}
+            {[
+              [1, 2, "Cross"],
+              [2, 3, "Lattice"],
+              [3, 4, "Petals"],
+              [4, 7, "Woven"],
+              [5, 8, "Interference"],
+              [6, 7, "Intricate"],
+            ].map(([pn, pm, title]) => (
+              <button
+                key={title}
+                aria-pressed={
+                  n === pn &&
+                  m === pm &&
+                  driveMode === "manual" &&
+                  shape === "square"
+                }
+                onClick={() => {
+                  selectShape("square");
+                  setN(Number(pn));
+                  setM(Number(pm));
+                  setDriveMode("manual");
+                  setInterp("physics");
+                  setSeed((v) => v + 1);
+                  if (view === "geometry") changeView("surface");
+                }}
+              >
+                <span>
+                  {pn} : {pm}
+                </span>
+                {title}
+              </button>
+            ))}
+          </div>
+          <p className="cym-model-note">
+            Patterns depend on the plate, its boundary and the selected mode. A
+            frequency alone does not determine a universal shape. Fluid art adds
+            visual displacement; the geometry view is independent of the audio
+            signal.
+          </p>
+          <details className="cym-method">
+            <summary>How this model works · sources & limits</summary>
+            <p>
+              The square model uses analytic cosine-mode combinations. Circular
+              patterns use Bessel modes. In frequency mode, the selected virtual
+              plate supplies an approximate eigenfrequency ladder, mixed with
+              Lorentzian weights. This is an educational model, not a calibrated
+              finite-element solver or prediction for an arbitrary real plate.
+            </p>
+            <p>
+              In the 3D view, surface height is an exaggerated oscillation of
+              the same field, and nodal particles sample its zero set. Sand
+              simulation uses the existing particle relaxation model. The fluid
+              view is artistic; no fluid dynamics are solved. The fourth
+              coordinate in the Clifford view is mathematical, not a measured
+              brain state.
+            </p>
+            <a
+              href="https://arxiv.org/abs/1308.5523"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Müller · Numerical Chladni figures ↗
+            </a>
+            <a
+              href="https://www.math.brown.edu/tbanchof/Beyond3d.new/chapter6/s6_8.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Banchoff · Beyond the Third Dimension ↗
+            </a>
+          </details>
+        </div>
+        <aside className="cym-inspector">
+          <div className="cym-inspector-title">
+            <span>Shape the experiment</span>
+            <span>↗</span>
+          </div>
+          <div className="cym-inspector-tabs" aria-label="Experiment controls">
+            {(["plate", "drive", "look"] as const).map((t) => (
+              <button
+                key={t}
+                aria-pressed={tab === t}
+                onClick={() => setTab(t)}
+              >
+                {t === "look"
+                  ? "Appearance"
+                  : t === "drive"
+                    ? "Signal"
+                    : "Plate"}
+              </button>
+            ))}
+          </div>
+          {tab === "plate" && (
+            <div className="cym-controls">
+              <h2>Virtual plate</h2>
+              <div className="cym-chips">
+                <Chip
+                  active={shape === "square"}
+                  onClick={() => selectShape("square")}
                 >
-                  <option value="">FROM THE FREQUENCY LIBRARY…</option>
-                  {libFrequencies.map((f) => (
-                    <option key={f.id} value={f.hz}>
-                      {f.name} [{f.grade}]
+                  Square
+                </Chip>
+                <Chip
+                  active={shape === "circular"}
+                  onClick={() => selectShape("circular")}
+                >
+                  Circular
+                </Chip>
+              </div>
+              <label>
+                Plate preset
+                <select
+                  aria-label="Virtual plate preset"
+                  value={plateId}
+                  onChange={(e) => setPlateId(e.target.value)}
+                >
+                  {VIRTUAL_PLATES.map((p) => (
+                    <option value={p.id} key={p.id}>
+                      {p.label}
                     </option>
                   ))}
                 </select>
-                <p className="t-caption text-3" style={{ margin: 0 }}>
-                  The Hz value drives the selected plate's eigenfrequency ladder
-                  {interp === 'physics' ? ' (Lorentzian mode mix)' : ' (nearest rung, art mode)'}.
-                </p>
+              </label>
+              <p>{plate.note}</p>
+              <div className="cym-stat">
+                <span>Fundamental</span>
+                <strong>{plate.fundamentalHz} Hz</strong>
               </div>
-            )}
-
-            {driveMode === 'audio' && (
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-3">
-                  <Led state={audioActive ? 'teal' : 'off'} />
-                  <span className="t-body-sm" style={{ color: 'var(--text-2)' }}>
-                    {audioActive
-                      ? 'Live spectrum driving the plate.'
-                      : 'No signal — start the engine in Studio.'}
-                  </span>
-                </div>
-                <div>
-                  <div className="t-label text-3" style={{ marginBottom: 2 }}>SPECTRAL PEAK</div>
-                  <Readout
-                    value={audioActive ? audioHz.toFixed(1) : '—'}
-                    unit={audioActive ? 'Hz' : undefined}
-                    size="lg"
-                    color={audioActive ? 'var(--amber)' : 'var(--text-3)'}
-                  />
-                </div>
-                <p className="t-caption text-3" style={{ margin: 0 }}>
-                  Peak frequency drives mode selection; spectral energy drives sand jitter and glow.
-                </p>
-              </div>
-            )}
-          </Panel>
-
-          <Panel title="RENDER">
-            <div className="flex gap-2" style={{ marginBottom: 16 }}>
-              <Chip active={renderMode === 'plate3d'} onClick={() => setRenderMode('plate3d')}>3D PLATE</Chip>
-              <Chip active={renderMode === 'plate5d'} onClick={() => setRenderMode('plate5d')}>5D PHASE</Chip>
-              <Chip active={renderMode === 'sand'} onClick={() => setRenderMode('sand')}>SAND</Chip>
-              <Chip active={renderMode === 'lines'} onClick={() => setRenderMode('lines')}>NODAL LINES</Chip>
-              <Chip active={field4dOn} onClick={() => setField4dOn(!field4dOn)}>4D FIELD</Chip>
-            </div>
-            <div className="flex flex-col gap-4">
-              <div>
-                <span className="t-label" style={{ display: 'block', marginBottom: 6 }}>COLORMAP</span>
-                <div className="flex gap-2" style={{ flexWrap: 'wrap' }}>
-                  {COLORMAPS.map((c) => (
-                    <Chip key={c.id} active={colormap === c.id} onClick={() => setColormap(c.id)}>
-                      {c.label}
-                    </Chip>
-                  ))}
-                </div>
-              </div>
-              {renderMode === 'lines' && (
-                <Slider label="LINE WIDTH" value={threshold} min={0.01} max={0.3} step={0.005} onChange={setThreshold} format={(v) => v.toFixed(3)} />
-              )}
-              {(renderMode === 'sand' || renderMode === 'plate3d' || renderMode === 'plate5d') && (
+              <h2>Mode shape</h2>
+              {shape === "square" ? (
                 <>
                   <Slider
-                    label="PARTICLES"
-                    value={particleCount}
-                    min={500}
-                    max={20000}
-                    step={500}
-                    onChange={setParticleCount}
-                    format={(v) => String(Math.round(v))}
+                    label="Mode N"
+                    value={n}
+                    min={0}
+                    max={12}
+                    step={1}
+                    onChange={setN}
                   />
-                  <Slider label="ANIMATION SPEED" value={speed} min={0} max={3} step={0.05} onChange={setSpeed} format={(v) => `${v.toFixed(2)}×`} />
+                  <Slider
+                    label="Mode M"
+                    value={m}
+                    min={1}
+                    max={12}
+                    step={1}
+                    onChange={setM}
+                  />
+                  <div className="cym-chips">
+                    <Chip active={sign === 1} onClick={() => setSign(1)}>
+                      Difference −
+                    </Chip>
+                    <Chip active={sign === -1} onClick={() => setSign(-1)}>
+                      Sum +
+                    </Chip>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Slider
+                    label="Angular mode"
+                    value={circM}
+                    min={0}
+                    max={5}
+                    step={1}
+                    onChange={setCircM}
+                  />
+                  <Slider
+                    label="Radial mode"
+                    value={circS}
+                    min={1}
+                    max={5}
+                    step={1}
+                    onChange={setCircS}
+                  />
                 </>
               )}
-              <Slider
-                label="RESOLUTION"
-                value={resolution}
-                min={128}
-                max={512}
-                step={32}
-                onChange={(v) => setResolution(Math.round(v))}
-                format={(v) => `${Math.round(v)} px`}
-              />
-            </div>
-          </Panel>
-        </div>
-      </div>
-
-      {/* ------------------------------------------------ coach marks */}
-      <AnimatePresence>
-        {coachStep >= 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 16 }}
-            transition={{ duration: 0.24, ease: 'easeOut' }}
-            className="panel"
-            style={{
-              position: 'fixed',
-              bottom: isMobile ? 88 : 24,
-              right: isMobile ? 16 : 24,
-              width: 'min(360px, calc(100vw - 32px))',
-              zIndex: 50,
-              background: 'var(--ink-3)',
-              border: '1px solid var(--line-2)',
-              boxShadow: '0 12px 32px rgba(0,0,0,0.5)',
-              padding: 20,
-            }}
-            role="dialog"
-            aria-label={`Tip ${coachStep + 1} of ${COACH_STEPS.length}`}
-          >
-            <div className="flex items-center justify-between" style={{ marginBottom: 8 }}>
-              <span className="t-label" style={{ color: 'var(--amber)' }}>
-                {COACH_STEPS[coachStep].title}
-              </span>
-              <span className="t-readout-sm text-3">
-                {coachStep + 1}/{COACH_STEPS.length}
-              </span>
-            </div>
-            <p className="t-body-sm" style={{ color: 'var(--text-2)', margin: '0 0 16px' }}>
-              {COACH_STEPS[coachStep].body}
-            </p>
-            <div className="flex gap-2">
-              <Btn onClick={finishCoach}>SKIP</Btn>
-              <span style={{ flex: 1 }} />
-              <Btn
-                primary
-                onClick={() => {
-                  if (coachStep + 1 >= COACH_STEPS.length) finishCoach();
-                  else setCoachStep(coachStep + 1);
-                }}
+              {driven && (
+                <button
+                  className="cym-control-link"
+                  onClick={() => setDriveMode("manual")}
+                >
+                  Use these manual modes
+                </button>
+              )}
+              <button
+                className="cym-control-link"
+                onClick={() => setSeed((v) => v + 1)}
               >
-                {coachStep + 1 >= COACH_STEPS.length ? 'GOT IT' : 'NEXT'}
-              </Btn>
+                <Shuffle size={14} /> Scatter sand
+              </button>
+              <p>
+                Scatter affects Sand simulation. Nodal particles show the
+                sampled zero set.
+              </p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+          {tab === "drive" && (
+            <div className="cym-controls">
+              <h2>Drive the pattern</h2>
+              <div className="cym-chips">
+                {(["manual", "frequency", "audio"] as const).map((v) => (
+                  <Chip
+                    key={v}
+                    active={driveMode === v}
+                    onClick={() => setDriveMode(v)}
+                  >
+                    {v === "audio" ? "Studio audio" : v}
+                  </Chip>
+                ))}
+              </div>
+              {driveMode === "manual" ? (
+                <p>
+                  Use the Plate tab to select mode numbers. This view is silent
+                  until you choose Hear pattern.
+                </p>
+              ) : driveMode === "frequency" ? (
+                <>
+                  <label>
+                    Drive frequency · Hz
+                    <input
+                      aria-label="Drive frequency in Hz"
+                      type="number"
+                      min={20}
+                      max={8000}
+                      value={freqHz}
+                      onChange={(e) =>
+                        setFreqHz(
+                          Math.min(
+                            8000,
+                            Math.max(20, Number(e.target.value) || 20),
+                          ),
+                        )
+                      }
+                    />
+                  </label>
+                  <Slider
+                    label="Frequency"
+                    value={freqHz}
+                    min={20}
+                    max={4000}
+                    step={1}
+                    onChange={setFreqHz}
+                  />
+                  <select
+                    aria-label="Library frequency"
+                    value=""
+                    onChange={(e) => {
+                      if (Number(e.target.value) > 0)
+                        setFreqHz(Math.min(8000, Number(e.target.value)));
+                    }}
+                  >
+                    <option value="">Choose a library frequency…</option>
+                    {libFrequencies.map((f) => (
+                      <option key={f.id} value={f.hz}>
+                        {f.name}
+                      </option>
+                    ))}
+                  </select>
+                  <button
+                    className="cym-control-link"
+                    onClick={() => setFreqHz(Math.max(20, sessionCarrierHz))}
+                  >
+                    Use Studio carrier · {sessionCarrierHz.toFixed(0)} Hz
+                  </button>
+                  <button
+                    className="cym-control-link"
+                    onClick={() => setFreqHz(Math.max(20, sessionBeatHz * 40))}
+                  >
+                    Use beat × 40 · {(sessionBeatHz * 40).toFixed(0)} Hz
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className="cym-signal" role="status">
+                    {audioActive
+                      ? `Live spectrum · ${audioHz.toFixed(1)} Hz`
+                      : "No signal · start a session in Studio"}
+                  </div>
+                  <Link to="/studio" className="cym-control-link">
+                    Open Studio →
+                  </Link>
+                  <p>
+                    The measured spectral peak drives the virtual plate. This
+                    does not measure a physical plate or your brain.
+                  </p>
+                </>
+              )}
+              <h2>Interpretation</h2>
+              <div className="cym-chips">
+                <Chip
+                  active={interp === "physics"}
+                  onClick={() => setInterp("physics")}
+                >
+                  Plate model
+                </Chip>
+                <Chip
+                  active={interp === "art"}
+                  onClick={() => setInterp("art")}
+                >
+                  Art mix
+                </Chip>
+              </div>
+              {interp === "art" && (
+                <>
+                  <Slider
+                    label="Mix A"
+                    value={mixA}
+                    min={-1}
+                    max={1}
+                    step={0.05}
+                    onChange={setMixA}
+                  />
+                  <Slider
+                    label="Mix B"
+                    value={mixB}
+                    min={-1}
+                    max={1}
+                    step={0.05}
+                    onChange={setMixB}
+                  />
+                  <p>
+                    Art mix applies to square manual modes. Frequency drive uses
+                    the nearest mode.
+                  </p>
+                </>
+              )}
+            </div>
+          )}
+          {tab === "look" && (
+            <div className="cym-controls">
+              <h2>Surface & motion</h2>
+              <Slider
+                label="Height exaggeration"
+                value={amplitude}
+                min={0}
+                max={0.65}
+                step={0.01}
+                onChange={setAmplitude}
+                format={(v) => v.toFixed(2)}
+              />
+              <Slider
+                label="Motion speed"
+                value={speed}
+                min={0}
+                max={2}
+                step={0.05}
+                onChange={setSpeed}
+                format={(v) => `${v.toFixed(2)}×`}
+              />
+              <Slider
+                label="Particle budget"
+                value={particleCount}
+                min={1000}
+                max={20000}
+                step={1000}
+                onChange={setParticleCount}
+              />
+              <p>
+                Particle budget affects nodal particles and sand. Motion speed
+                changes the visual animation, not the tone frequency.
+              </p>
+              <details>
+                <summary>Canvas settings</summary>
+                <label>
+                  Palette
+                  <select
+                    value={colormap}
+                    onChange={(e) =>
+                      setColormap(e.target.value as ColormapName)
+                    }
+                  >
+                    {COLORMAPS.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+                <Slider
+                  label="Line width"
+                  value={threshold}
+                  min={0.01}
+                  max={0.3}
+                  step={0.005}
+                  onChange={setThreshold}
+                />
+                <Slider
+                  label="Canvas detail"
+                  value={resolution}
+                  min={128}
+                  max={512}
+                  step={32}
+                  onChange={setResolution}
+                />
+                <p>
+                  Palette and line width apply to Sand simulation and Nodal
+                  lines.
+                </p>
+              </details>
+              <button
+                className="cym-control-link"
+                onClick={() => setPaused(!paused)}
+              >
+                {paused ? "Resume visual motion" : "Freeze visual motion"}
+              </button>
+            </div>
+          )}
+          <div className="cym-inspector-foot">
+            <PanicButton />
+            <span>Stop all sound is always available.</span>
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }

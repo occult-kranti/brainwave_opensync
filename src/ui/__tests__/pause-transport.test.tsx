@@ -332,14 +332,15 @@ describe('global pause/resume — surfaces + Space hotkey', () => {
 // ------------------------------------------------------- rail label
 
 describe('rail section label — RESEARCH (the · SOON suffix is retired)', () => {
-  it('desktop rail shows RESEARCH without SOON markers', async () => {
+  it('desktop all-tools drawer exposes active research and experiments', async () => {
     const c = await mountShell(1280);
-    const rail = c.querySelector('[data-testid="module-rail"]')!;
+    await act(async () => c.querySelector<HTMLButtonElement>('[data-testid="observatory-navigation"] button')!.click());
+    const rail = c.querySelector('[data-testid="more-drawer"]')!;
     expect(rail.textContent).toContain('Theory & research');
     expect(rail.textContent).not.toContain('RESEARCH · SOON');
     expect(rail.textContent).not.toContain('SOON');
     // Experiments remain available in their task group.
-    await act(async () => rail.querySelector<HTMLButtonElement>('[data-testid="rail-experiments-toggle"]')!.click());
+    await act(async () => rail.querySelector<HTMLButtonElement>('[data-testid="drawer-experiments-toggle"]')!.click());
     const lab = rail.querySelector('a[href="/lab"]')!;
     expect(lab).toBeTruthy();
     expect(lab.querySelector('div')!.style.opacity).not.toBe('0.45');

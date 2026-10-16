@@ -159,9 +159,9 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(c.querySelector('main')!.style.paddingBottom).toContain('calc(56px');
   });
 
-  it('renders rail + full status bar (no bottom bar) on desktop', async () => {
+  it('renders consistent horizontal navigation and transport on desktop', async () => {
     const c = await renderShell(1280);
-    expect(c.querySelector('[data-testid="module-rail"]')).toBeTruthy();
+    expect(c.querySelector('[data-testid="observatory-navigation"]')).toBeTruthy();
     expect(c.querySelector('[data-testid="status-bar"]')).toBeTruthy();
     expect(c.querySelector('[data-testid="mobile-bottom-bar"]')).toBeNull();
     expect(c.querySelector('[data-testid="status-bar-mobile"]')).toBeNull();
@@ -169,7 +169,7 @@ describe('W10 mobile shell — layout tiers', () => {
     const panicButtons = Array.from(c.querySelectorAll('button')).filter((b) =>
       b.textContent?.includes('Stop all sound'),
     );
-    expect(panicButtons.length).toBeGreaterThanOrEqual(2);
+    expect(panicButtons.length).toBeGreaterThanOrEqual(1);
   });
 
   it('MORE drawer starts with primary routes and reveals all routes through task disclosures', async () => {
@@ -278,7 +278,7 @@ describe('Observatory discovery navigation', () => {
     const nav = c.querySelector('[data-testid="observatory-navigation"]')!;
     expect(nav).not.toBeNull();
     expect(c.querySelector('[data-testid="module-rail"]')).toBeNull();
-    for (const path of ['/', '/presets', '/listen', '/research-hub']) expect(nav.querySelector(`a[href="${path}"]`)).not.toBeNull();
+    for (const path of ['/', '/presets', '/studio', '/cymatics', '/research-hub']) expect(nav.querySelector(`a[href="${path}"]`)).not.toBeNull();
     await act(async () => nav.querySelector<HTMLButtonElement>('button')!.click());
     const drawer = c.querySelector('[data-testid="more-drawer"]')!;
     expect(drawer.getAttribute('aria-modal')).toBe('true');

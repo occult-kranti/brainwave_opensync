@@ -1,0 +1,150 @@
+export type GovernmentRecord = {
+  id: string;
+  country: 'USA' | 'China' | 'Russia';
+  title: string;
+  agency: string;
+  recordType: string;
+  recordDate: string;
+  documented: string;
+  notEstablished: string;
+  url: string;
+  access: string;
+};
+
+export const GOVERNMENT_AUDIT_SCOPE =
+  'Eleven selected public records, checked 16 October 2026. Funding, laboratory descriptions and archival preservation establish research activity, not treatment efficacy. Country coverage is selective; unavailable documents and unknown dates are marked.';
+
+export const GOVERNMENT_RECORDS: readonly GovernmentRecord[] = [
+  {
+    id: 'us-nih-sound-health',
+    country: 'USA',
+    title: 'Sound Health: research concept',
+    agency: 'NIH · National Center for Complementary and Integrative Health',
+    recordType: 'Research initiative concept',
+    recordDate: '2018-06-01 · council date',
+    documented: 'A staged program concept proposed mechanistic music research followed by deeper investigations or pilot clinical trials, with milestones between phases.',
+    notEstablished: 'A research agenda is not a positive trial result or approval of any frequency preset. This historical concept is not an announcement of currently open funding.',
+    url: 'https://www.nccih.nih.gov/grants/concepts/the-science-of-music-interventions-a-sound-health-initiative',
+    access: 'Full concept body read: background, purpose and objectives.',
+  },
+  {
+    id: 'us-nea-sound-health-network',
+    country: 'USA',
+    title: 'Sound Health Network: completed partnership',
+    agency: 'National Endowment for the Arts',
+    recordType: 'Official program history',
+    recordDate: '2020–2025 · operating period; page undated',
+    documented: 'NEA describes a five-year partnership with UCSF supporting a research clearinghouse, professional connections and public education. It states the Sound Health partnership ended in 2025.',
+    notEstablished: 'The network is not listed here as an active 2026 partnership, and educational activity is not evidence that every music intervention works.',
+    url: 'https://www.arts.gov/initiatives/sound-health-network',
+    access: 'Entire short official program page read; no publication date displayed.',
+  },
+  {
+    id: 'us-gateway-archive',
+    country: 'USA',
+    title: 'Gateway Process: archived Army assessment',
+    agency: 'U.S. Army · official Government Publishing Office copy',
+    recordType: 'Historical speculative assessment',
+    recordDate: '1983-06-09 · signed memorandum',
+    documented: 'The Army author discusses Hemi-Sync, consciousness and remote viewing through vendor accounts and speculative physical models, then proposes further experiments.',
+    notEstablished: 'This is not a controlled clinical trial. Its favorable conclusion does not demonstrate healing, paranormal ability or the proposed physics; government preservation is not validation.',
+    url: 'https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo152943/pdf/GOVPUB-D101-PURL-gpo152943.pdf',
+    access: 'All 29 available scan pages reviewed using OCR; selected pages checked visually. Original page 25 is absent. CIA links redirected; official GovInfo copy retrieved.',
+  },
+  {
+    id: 'us-cia-remote-viewing-history',
+    country: 'USA',
+    title: 'Remote viewing: CIA program retrospective',
+    agency: 'Central Intelligence Agency',
+    recordType: 'Official retrospective · not the full evaluation',
+    recordDate: '2021-10-27',
+    documented: 'CIA states that it investigated remote viewing and declined to restore the program after a 1995 external review found it unreliable for intelligence use.',
+    notEstablished: 'This historical account is not a clinical study or validation of paranormal ability, Soviet capabilities or sound-healing presets.',
+    url: 'https://www.cia.gov/stories/story/ask-molly-did-cia-really-study-psychic-powers/',
+    access: 'Full official article read. Linked declassified evaluation and Soviet-assessment records still redirected; their full texts remain unaudited.',
+  },
+  {
+    id: 'us-fda-focused-ultrasound',
+    country: 'USA',
+    title: 'Edison System: focused ultrasound classification',
+    agency: 'U.S. Food and Drug Administration',
+    recordType: 'De Novo device classification order',
+    recordDate: '2023-10-06',
+    documented: 'FDA classified a prescription focused-ultrasound device for mechanical destruction of liver tumors into Class II with special controls.',
+    notEstablished: 'This does not validate headphone audio, a general cancer cure or a survival benefit. Required labeling states the device was not evaluated for treating a specific disease or condition.',
+    url: 'https://www.accessdata.fda.gov/cdrh_docs/pdf22/DEN220087.pdf',
+    access: 'Four-page order read: indications, classification, risks, special controls and labeling. No exposure settings reproduced.',
+  },
+  {
+    id: 'cn-nsfc-music-cognition',
+    country: 'China',
+    title: 'Music quantification and brain cognition project',
+    agency: 'National Natural Science Foundation of China',
+    recordType: 'Funded project review announcement',
+    recordDate: '2025-01-15 · announcement date',
+    documented: 'NSFC reports the 2024 annual review of a funded music-intelligence and brain-cognition project, including progress, spending and future research priorities.',
+    notEstablished: 'A funding review establishes a research program, not clinical effectiveness. The announcement provides no treatment effect estimate or validated listening prescription.',
+    url: 'https://www.nsfc.gov.cn/p1/3381/2823/69212.html',
+    access: 'Complete short Chinese announcement read; summary translated. The meeting date is not specified.',
+  },
+  {
+    id: 'cn-cas-stress-recovery',
+    country: 'China',
+    title: 'Music and recovery after acute stress',
+    agency: 'Chinese Academy of Sciences · Institute of Psychology',
+    recordType: 'Institutional research report',
+    recordDate: '2026-10-12 · displayed page date',
+    documented: 'CAS reports two experiments comparing relaxing music with natural sounds during acute-stress recovery and identifies Ministry of Science and Technology support.',
+    notEstablished: 'The report says music beforehand did not clearly reduce the subsequent stress response. Recovery findings do not establish disease treatment or a universal healing frequency.',
+    url: 'https://www.cas.cn/syky/202609/t20260910_5120087.shtml',
+    access: 'Full report body read. Displayed October date differs from September in URL. Linked full paper was not retrievable in this audit.',
+  },
+  {
+    id: 'cn-cas-blink-beat',
+    country: 'China',
+    title: 'Eye blinks and musical beats',
+    agency: 'Chinese Academy of Sciences · Institute of Psychology',
+    recordType: 'Institutional research report',
+    recordDate: '2025-11-18',
+    documented: 'Four experiments studied music listening, eye movements and neural measures in 123 young nonmusicians. The report names national Brain Science and Hong Kong research funding.',
+    notEstablished: 'A perception finding is not a diagnosis or therapy. Proposed future screening uses were not established by this report, and visual distraction altered the effect.',
+    url: 'https://psych.cas.cn/news/kyjz/202511/t20251118_8013468.html',
+    access: 'Full institutional report read, including methods overview, results and funding. Linked paper not fully retrieved.',
+  },
+  {
+    id: 'ru-pavlov-spatial-hearing',
+    country: 'Russia',
+    title: 'Laboratory of Hearing Physiology',
+    agency: 'Pavlov Institute of Physiology · Russian Academy of Sciences',
+    recordType: 'Official laboratory description',
+    recordDate: 'Undated · checked 2026-10-16',
+    documented: 'The laboratory describes human spatial-hearing research using psychophysics and EEG, including moving sounds, masking and perceived direction.',
+    notEstablished: 'A laboratory research description is not a clinical trial. It does not support disease-healing or paranormal claims about spatial audio.',
+    url: 'https://www.infran.ru/наука/научные-подразделения/лаборатория-физиологии-слуха/о-лаборатории/',
+    access: 'Complete research-description body read in Russian and summarized; no publication date displayed.',
+  },
+  {
+    id: 'ru-pavlov-speech-hearing',
+    country: 'Russia',
+    title: 'Speech psychophysiology and auditory training',
+    agency: 'Pavlov Institute of Physiology · Russian Academy of Sciences',
+    recordType: 'Official laboratory and applied-research description',
+    recordDate: 'Undated · describes work from 2020–2025',
+    documented: 'The laboratory describes speech-perception research and auditory-training software, including work associated with the Pavlov Center and hearing rehabilitation.',
+    notEstablished: 'Reported use and development do not provide controlled effect estimates. These training systems are not interchangeable with passive tone presets.',
+    url: 'https://www.infran.ru/наука/научные-подразделения/лаборатория-психофизиологии-речи/',
+    access: 'Full substantive laboratory description read, including training systems and current research themes; page publication date absent.',
+  },
+  {
+    id: 'ru-rsf-music-movement',
+    country: 'Russia',
+    title: 'Musical experience expressed through movement',
+    agency: 'Russian Science Foundation · project 24-28-01252',
+    recordType: 'Grant record and investigator-reported results',
+    recordDate: '2024–2025 · reporting years; page undated',
+    documented: 'The official grant record describes research into musical experience and expressive movement, with application aims and annual investigator reports.',
+    notEstablished: 'The record is authored by the investigators. Funding and reported subjective experiences do not establish a validated medical treatment or passive-audio effect.',
+    url: 'https://rscf.ru/project/24-28-01252/',
+    access: 'General information, application summary, 2024/2025 results and publication list read. Listed papers were not audited in full.',
+  },
+];

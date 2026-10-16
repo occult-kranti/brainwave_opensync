@@ -5,6 +5,7 @@
  * (W3) stays decoupled; the engine adapts these into its own runtime types.
  */
 
+import { SOUND_RESEARCH_PRESETS } from './soundResearchPresets';
 import { HYPNOSIS_PRESETS } from './hypnosisPractice';
 import { OVERNIGHT_PRESETS } from './overnightPractice';
 import { NANO_STUDIO_PRESETS } from './nanoPresets';
@@ -835,6 +836,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
   ...CROP_PRESETS,
   ...LUCID_LAB_PRESETS,
   ...EXPEDITION_PRESETS,
+  ...SOUND_RESEARCH_PRESETS,
   ...HEALING_PRESETS,
   ...HEALING_PRESETS_R4,
   ...BASHAR_PRESETS,

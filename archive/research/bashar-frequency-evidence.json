@@ -1,0 +1,1192 @@
+{
+  "asOf": "2026-10-16",
+  "scope": "Selected original-source audit and original proposals; no physical experiments or complete corpus coverage claimed.",
+  "indexCommit": "457dc2f2da10399bda2786573b7a77ec3fe34f62",
+  "sources": [
+    {
+      "id": "bashar-index-pin",
+      "title": "The Bashar Index: pinned research repository",
+      "url": "https://github.com/occult-kranti/bashar-index/tree/457dc2f2da10399bda2786573b7a77ec3fe34f62",
+      "kind": "repository",
+      "date": "2026-09-23 commit; inspected 2026-10-16",
+      "locator": "README.md, data/README.md, LICENSE and src/DIGEST_SPEC.md; 75 digest JSON files counted.",
+      "access": "Read-only local clone at exact commit; selected digests inspected, not 75 recordings watched.",
+      "summary": "Independent AI summaries generated through a third-party automatic-transcript workflow. README advertises 684 catalog items, 75 recording digests and 56 redrawn diagrams.",
+      "limitation": "MIT covers repository code and derived data, not Bashar recordings or transcripts. Catalogue dates extend through 2027 and do not establish that future events occurred. A digest is not a verified transcript."
+    },
+    {
+      "id": "bashar-sound-digest",
+      "title": "AI digest: sound layers and phi intervals",
+      "url": "https://github.com/occult-kranti/bashar-index/blob/457dc2f2da10399bda2786573b7a77ec3fe34f62/data/digests/Rcjd1TkZUMY.json",
+      "kind": "repository",
+      "date": "Digest generated 2026-09-11; recording date unresolved",
+      "locator": "researcher_note and qa_topics entries 5–6; linked YouTube ID Rcjd1TkZUMY.",
+      "access": "Selected JSON passages read; selected YouTube automatic captions also checked. The uploader is Divine Insights, not the official channel.",
+      "summary": "The digest connects phi intervals and layered sound to metaphysical effects.",
+      "limitation": "Its own provenance note warns that the Refresher title and 2025 date may label an older compilation. Caption concordance does not identify an official session or authenticate speaker turns."
+    },
+    {
+      "id": "bashar-frequency-digest",
+      "title": "AI digest: consciousness frequencies and reality frames",
+      "url": "https://github.com/occult-kranti/bashar-index/blob/457dc2f2da10399bda2786573b7a77ec3fe34f62/data/digests/ygzBrMyMAQA.json",
+      "kind": "repository",
+      "date": "Digest generated 2026-09-11; recording date unresolved",
+      "locator": "researcher_note and qa_topics entry 6; linked YouTube ID ygzBrMyMAQA.",
+      "access": "Selected JSON passages read; uploader my daily life is unofficial.",
+      "summary": "The digest assigns numerical frequencies to consciousness and a Planck-scale rate to reality frames.",
+      "limitation": "The repository flags a duplicate of p8JC21bFf5M with conflicting uploader dates. These copies are not independent corroboration or verified transcripts."
+    },
+    {
+      "id": "bashar-host-interview",
+      "title": "Darryl Anka: interview-host transcript",
+      "url": "https://batgap.com/darryl-anka-bashar-transcript/",
+      "kind": "transcript",
+      "date": "Interview recorded 2014-06-14",
+      "locator": "Interview 236; host chapters 00:14:33 and 01:29:10. YouTube automatic-caption windows checked: 00:14:30–00:15:30 and 01:30:10–01:31:40.",
+      "access": "Selected host transcript and matching automatic captions read. Host video 0zMDMtv5XwY; no full playback claimed.",
+      "summary": "Anka reports an EEG comparison and describes a frequency-based relocation account attributed to Bashar.",
+      "limitation": "Documented speech, not raw EEG, a force experiment, or a verified transport mechanism."
+    },
+    {
+      "id": "bashar-compilation-captions",
+      "title": "Unofficial compilation: selected automatic captions",
+      "url": "https://www.youtube.com/watch?v=Rcjd1TkZUMY",
+      "kind": "video",
+      "date": "Uploader date and original session identity unresolved",
+      "locator": "Caption windows 01:13:03–01:15:44, 01:17:04–01:18:58 and 01:19:15–01:20:04.",
+      "access": "Public en-orig automatic captions retrieved with yt-dlp; selected text read, no audio/video playback or transcript republication.",
+      "summary": "Caption passages broadly agree with the digest on layered sound, combined instruments and the 1:1.618 ratio.",
+      "limitation": "Automatic transcription can mishear words or confuse speakers. This is an unofficial upload with unresolved editing and session provenance, not an authenticated official recording."
+    },
+    {
+      "id": "bashar-host-chapters",
+      "title": "Interview 236: date, original video and chapter index",
+      "url": "https://batgap.com/darryl-anka-bashar/",
+      "kind": "official",
+      "date": "2014-06-14 recording date on host page",
+      "locator": "Recording-date line; YouTube chapter index; embedded video ID 0zMDMtv5XwY.",
+      "access": "Host metadata and links read. The source is the interview producer, not Bashar Communications.",
+      "summary": "The host links its transcript to this interview and supplies EEG and location-discussion chapter starts.",
+      "limitation": "The chapter index establishes provenance and navigation; it supplies no independent replication of the guest’s claims."
+    },
+    {
+      "id": "bashar-official-refresher",
+      "title": "Official Refresher Course highlights description",
+      "url": "https://vimeo.com/441207831",
+      "kind": "video",
+      "date": "Session date not established from inspected description",
+      "locator": "Bashar Communications owner attribution, ordering link, introductory description and Q&A list.",
+      "access": "Public video description read; no speech transcript or full paid session inspected.",
+      "summary": "The publisher describes a review of the 1–3–5–7–11 teachings and lists a question about Planck time.",
+      "limitation": "A similar title does not authenticate the unofficial Rcjd1TkZUMY compilation. Catalogue questions do not reveal the answers."
+    },
+    {
+      "id": "bashar-official-education",
+      "title": "Official Continuing Education highlights description",
+      "url": "https://vimeo.com/204088259",
+      "kind": "video",
+      "date": "2015-06-19 session date in publisher description",
+      "locator": "Bashar Communications description: session date, Los Angeles location and Q&A topic list.",
+      "access": "Public description read. Caption extraction requested login; no account access attempted.",
+      "summary": "The publisher’s Q&A list includes a question about antigravity physics.",
+      "limitation": "This verifies the advertised topic, not an answer, demonstration, or successful gravity modification."
+    },
+    {
+      "id": "bashar-official-artifacts",
+      "title": "The Artifacts: official catalogue search record",
+      "url": "https://tv.bashar.org/checkout/new?o=p3073483",
+      "kind": "official",
+      "date": "Undated listing; retrieved 2026-10-16",
+      "locator": "Search-indexed publisher Q&A list; direct route redirects to a purchase page.",
+      "access": "Search-indexed text inspected. Direct program page returned navigation only; no answer transcript obtained.",
+      "summary": "Advertised questions concern an antigravity/free-energy machine and changing object location through sound.",
+      "limitation": "Questions are not affirmative claims. Search metadata may lag the page. No purchase, full recording, answer or device was examined."
+    },
+    {
+      "id": "frontier-gorkov-1961",
+      "title": "Gor’kov: forces on a small particle in an acoustic field",
+      "url": "https://www.mathnet.ru/rus/dan25473",
+      "kind": "paper",
+      "date": "1961",
+      "locator": "Doklady AN SSSR 140(1), 88–91; original Russian pp. 88–91, especially equations 12–13 on p. 90.",
+      "access": "Reused prior audit: original four-page scan inspected, including equation images. The later English translation was not read.",
+      "summary": "A time-averaged radiation force follows from pressure and fluid-velocity fields, particle volume, density and compressibility contrast. A standing field can supply a restoring force while an external source supplies energy.",
+      "limitation": "Small-particle, ideal-fluid approximation; viscosity, streaming, finite size and scattering can change the answer. Axial force balance or a one-dimensional potential minimum does not establish three-dimensional confinement or reduced gravity. Historical Soviet research is not evidence of a current Russian program."
+    },
+    {
+      "id": "frontier-acoustoelectronic-2021",
+      "title": "Zhang, Rufo et al.: acoustoelectronic nanotweezers",
+      "url": "https://www.nature.com/articles/s41467-021-24101-z",
+      "kind": "paper",
+      "date": "2021-06-22",
+      "locator": "Nature Communications 12, 3844; Results, “Nanomanipulation with 1D acoustoelectronic fields”; Fig. 2a, equations 1–3 and smaller-particle caveats.",
+      "access": "New retrieval: publisher full-text HTML; selected mechanism, inert-particle control, equation and limitation passages read. Supplementary movies and raw data not reproduced.",
+      "summary": "Powered piezoelectric surface waves establish patterned electric fields. Polystyrene patterns disappeared in an electrically shielded region, supporting electric coupling as the dominant mechanism in that comparison.",
+      "limitation": "This is a hybrid acoustic–electric apparatus, not airborne sound alone. Streaming disturbed smaller-particle patterns as excitation increased; the authors allow an electrokinetic contribution for very small quantum dots. Frequency alone does not specify force or material response."
+    },
+    {
+      "id": "frontier-delic-2020",
+      "title": "Delić et al.: cooling an optically levitated nanoparticle to its motional ground state",
+      "url": "https://arxiv.org/abs/1911.04406",
+      "kind": "paper",
+      "date": "2020; author preprint 2019",
+      "locator": "Science 367, 892–895, DOI 10.1126/science.aba3993; author manuscript opening mechanism, sideband thermometry and Figs. 1–2.",
+      "access": "Reused prior audit: selected author-manuscript passages and figures; no independent rerun of thermometry or apparatus.",
+      "summary": "Optical trapping and cavity cooling act on a mechanical mode of a nanoparticle. The reported quantum observable concerns mode occupation under an externally powered laboratory arrangement.",
+      "limitation": "A controlled mechanical mode is not an entire object at zero temperature, a changed mass, or a consciousness measurement. A liquid Brownian-trap illustration does not reproduce this vacuum optomechanical experiment."
+    },
+    {
+      "id": "frontier-xie-2016",
+      "title": "Xie et al.: acoustic holography with a passive metamaterial phased array",
+      "url": "https://users.rowan.edu/~shenc/paper/Xie2016SR.pdf",
+      "kind": "paper",
+      "date": "2016-10-14",
+      "locator": "Scientific Reports 6, 35437, DOI 10.1038/srep35437; published reprint pp. 1–4, Results and Figs. 1–3.",
+      "access": "New retrieval: university-hosted published PDF; selected design, measured pressure maps and model-comparison passages read.",
+      "summary": "Geometry-dependent phase delays reshape sound from a powered source into measured pressure patterns and multiple foci. The paper explicitly describes non-resonant labyrinthine unit cells.",
+      "limitation": "A pressure image is not a particle-levitation measurement. The passive layer redirects incident energy; it does not create energy. Shared pattern geometry does not establish a common mechanism with symbolic diagrams or a universal special frequency."
+    },
+    {
+      "id": "frontier-hawkes-2013",
+      "title": "Hawkes, Katko and Cummer: microwave metamaterial power harvesting",
+      "url": "https://people.ee.duke.edu/~cummer/reprints/161_Hawkes13_APL_PowerHarvestingMetamaterial.pdf",
+      "kind": "paper",
+      "date": "2013-10-14",
+      "locator": "Applied Physics Letters 103, 163901, DOI 10.1063/1.4824473; pp. 1–3, efficiency definition, Fig. 4 apparatus and funding statement.",
+      "access": "New retrieval: author-hosted published three-page PDF read; no circuit reproduction or raw-data reanalysis.",
+      "summary": "A metamaterial rectifier converts externally supplied microwave energy into DC power. The paper identifies a signal generator and amplifier, measures incident power, and states Army Research Office MURI support.",
+      "limitation": "Reported efficiency depends on incident-power accounting, effective aperture and load. It is not an ambient-power guarantee, net energy creation, or evidence that military funding validates unrelated propulsion claims."
+    },
+    {
+      "id": "frontier-feynman-fields",
+      "title": "Feynman, Leighton and Sands: field energy and field momentum",
+      "url": "https://www.feynmanlectures.caltech.edu/II_27.html",
+      "kind": "book",
+      "date": "1964; Caltech online edition",
+      "locator": "The Feynman Lectures on Physics II, chapter 27, especially §§27–2 and 27–6.",
+      "access": "Reused prior audit: selected author-textbook sections on energy flow and momentum. Maxwell’s original papers were not newly read.",
+      "summary": "Electromagnetic fields exchange energy and momentum with matter. Poynting flux and field momentum belong in the accounting when light or radio waves exert force.",
+      "limitation": "Momentum conservation requires the chosen boundary to include sources, supports, radiation and interacting matter. Vacuum photon momentum alone is not a complete force law inside material media, and field support is not gravity cancellation."
+    },
+    {
+      "id": "frontier-feynman-energy",
+      "title": "Feynman, Leighton and Sands: conservation of energy",
+      "url": "https://www.feynmanlectures.caltech.edu/I_04.html",
+      "kind": "book",
+      "date": "1963; Caltech online edition",
+      "locator": "The Feynman Lectures on Physics I, chapter 4, §§4–1 and 4–2; energy accounting and reversible lifting arguments.",
+      "access": "Reused prior audit: selected author-textbook passages; this is a theoretical baseline, not a test of a particular product.",
+      "summary": "Stored energy and energy transferred across the system boundary must be accounted for together. A resonator or harvester can concentrate or convert energy supplied elsewhere.",
+      "limitation": "A balance is meaningful only after electrical, mechanical, thermal, radiative and stored-energy terms are measured with uncertainty. An unexplained residual first establishes an accounting problem, not its proposed cause."
+    },
+    {
+      "id": "frontier-einstein-brownian-1905",
+      "title": "Einstein: diffusion and displacement of suspended particles",
+      "url": "https://jxshix.people.wm.edu/math490-2009/AEinstein-1905-MovBrowniano.pdf",
+      "kind": "paper",
+      "date": "1905; received 1905-05-11",
+      "locator": "Annalen der Physik 17, 549–560; original German scan §§3–5, printed pp. 554–560 (PDF pp. 8–14).",
+      "access": "New retrieval: university-hosted bundle; original German equation and assumption pages visually read. The separately listed Cowper translation was not read.",
+      "summary": "For dilute spheres in a liquid, diffusion relates to temperature and viscous mobility: D = kBT/(6πηr). The one-axis free-displacement variance is 2Dt under the diffusion assumptions.",
+      "limitation": "Continuum drag, equilibrium and sufficiently separated time scales are assumptions. Molecular-size particles, walls, interactions, strong flows and rarefied gas require different treatment. Brownian motion does not reveal a universal particle-control frequency."
+    },
+    {
+      "id": "frontier-shannon-1949",
+      "title": "Shannon: Communication in the Presence of Noise",
+      "url": "https://fab.cba.mit.edu/classes/S62.12/docs/Shannon_noise.pdf",
+      "kind": "paper",
+      "date": "1949-01",
+      "locator": "Proceedings of the IRE 37(1), 10–21; §II, theorem 1 and sinc reconstruction, printed pp. 11–12; §III signal-space meaning.",
+      "access": "New retrieval: MIT-hosted scan of the original article; selected sampling and signal-coordinate passages read. Not a complete review of information theory.",
+      "summary": "Band limitation and sampling determine whether a continuous signal can be reconstructed. Sparse observation can produce ambiguous apparent motion; signal-space coordinates describe a representation of data.",
+      "limitation": "The theorem has mathematical bandwidth and ideal-sampling assumptions. It does not show that physical reality advances in video frames or that changing a signal coordinate relocates matter."
+    },
+    {
+      "id": "frontier-nasa-bpp",
+      "title": "Millis / NASA: Prospects for Breakthrough Propulsion From Physics",
+      "url": "https://ntrs.nasa.gov/citations/20040070788",
+      "kind": "government",
+      "date": "2004-05",
+      "locator": "NASA/TM-2004-213082; body pp. 1–8, especially §§3.1.4 and 3.2.3.",
+      "access": "Reused prior audit: NTRS record and report body read. The report’s cited private replication paper was not separately inspected.",
+      "summary": "A historical NASA review distinguishes speculative investigations, inconclusive tests and null findings. It reports an RF-confounded test and a NASA superconducting-gravity replication left incomplete because hardware exceeded available resources.",
+      "limitation": "The separately reported private null result must not be relabeled as NASA’s completed replication. This report neither validates the proposed effect nor establishes the outcome of every later investigation."
+    },
+    {
+      "id": "frontier-navy-patent",
+      "title": "Pais / U.S. Navy: US10144532B2 inertial-mass-reduction proposal",
+      "url": "https://patents.google.com/patent/US10144532B2/en",
+      "kind": "patent",
+      "date": "2018-12-04 grant; 2016-04-28 filing",
+      "locator": "Original six-page patent: front sheet, Figs. 1–2, description and claims 1–4.",
+      "access": "Reused prior audit: patent text and drawings inspected; no independent operational dataset inspected.",
+      "summary": "The patent documents a Navy-assigned proposal involving powered resonant cavities and claimed changes to local vacuum conditions and inertia.",
+      "limitation": "The document establishes the proposal and stated assignee, not measured performance. A grant, a drawing and references to known physics do not supply independently replicated force, mass-change or energy-balance data."
+    },
+    {
+      "id": "frontier-china-rack",
+      "title": "CAS / China Manned Space: electrostatic materials-processing rack",
+      "url": "https://csu.cas.cn/gb/zyxw/202305/t20230505_6748857.html",
+      "kind": "government",
+      "date": "2023-04-28 publication",
+      "locator": "Chinese official article on the space-station containerless materials experiment rack; electrostatic positioning and sample-processing account.",
+      "access": "Reused prior audit: complete Chinese article read; institutional program narrative, not raw telemetry or a full program audit.",
+      "summary": "The documented system uses electrostatic positioning for containerless materials research in orbital microgravity, alongside sample processing and observation.",
+      "limitation": "One documented program is not a survey of all Chinese work. Orbital microgravity and electric positioning do not demonstrate switched-off gravity, weightless conditions created on Earth, or a connection to channeling claims."
+    },
+    {
+      "id": "frontier-russia-maglev",
+      "title": "Russian Science Foundation project 17-19-01527: superconducting magnetic levitation",
+      "url": "https://www.rscf.ru/project/17-19-01527/",
+      "kind": "government",
+      "date": "2017 award; recorded work through 2020",
+      "locator": "RSF project metadata, application abstract and reported outputs; Rudnev / MEPhI superconducting tape and permanent-magnet systems.",
+      "access": "Reused prior audit: original Russian funder record read. Listed research papers were not all independently audited.",
+      "summary": "The funded research concerns magnetic levitation systems, superconducting materials, bearings, field behavior and losses.",
+      "limitation": "A funder narrative is not an independent reproduction. The recorded award period is not a claim of current funding; magnetic support does not establish anti-gravity or energy creation."
+    },
+    {
+      "id": "frontier-feynman-statmech",
+      "title": "Feynman, Leighton and Sands: Boltzmann statistics and thermal equilibrium",
+      "url": "https://www.feynmanlectures.caltech.edu/I_40.html",
+      "kind": "book",
+      "date": "1963; Caltech online edition",
+      "locator": "The Feynman Lectures on Physics I, chapter 40, §§40–1 and 40–2, equations 40.1–40.3 and conservative-potential discussion.",
+      "access": "New retrieval: selected author-textbook sections read. Harmonic-trap variance is our explicit reduction of the Boltzmann distribution.",
+      "summary": "In classical equilibrium, position probability depends on exp(−U/kBT). For an assumed harmonic potential U = Kx²/2, the resulting one-axis variance is kBT/K.",
+      "limitation": "This assumes a conservative trap and thermal equilibrium. It does not determine stiffness from an audio frequency and does not predict quantum ground-state occupation, active-flow statistics or performance of an unspecified apparatus."
+    }
+  ],
+  "claims": [
+    {
+      "id": "bashar-eeg-state",
+      "title": "EEG differences during channeling",
+      "status": "documented statement",
+      "attribution": "Anka reports an EEG comparison for his documentary and explicitly separates altered state from belief in Bashar’s existence.",
+      "physicalQuestion": "Does a repeatable EEG difference survive matched speech, breathing and movement controls?",
+      "ordinaryExplanation": "Task state and recording artifacts are alternative explanations to test.",
+      "missingEvidence": "Raw signals, protocol, artifact rejection, blinded analysis and independent replication.",
+      "sourceIds": [
+        "bashar-host-interview",
+        "bashar-host-chapters"
+      ]
+    },
+    {
+      "id": "bashar-location-variable",
+      "title": "Relocation by changing a frequency variable",
+      "status": "documented statement",
+      "attribution": "Anka attributes to Bashar relocation by imposing a destination-dependent frequency, without intervening motion.",
+      "physicalQuestion": "What measurable relation maps frequency to position, with what input and coupling?",
+      "ordinaryExplanation": "Moving interference patterns and trapped particles are separate mechanisms; they do not test this account.",
+      "missingEvidence": "An operational equation, apparatus, continuous tracking and controlled replication.",
+      "sourceIds": [
+        "bashar-host-interview",
+        "bashar-host-chapters"
+      ]
+    },
+    {
+      "id": "bashar-phi-sound",
+      "title": "Phi-based sound and metaphysical effects",
+      "status": "digest only",
+      "attribution": "An AI digest links a 1:1.618 interval to consciousness and healing. Unofficial automatic captions corroborate the ratio/theme, not the full healing interpretation.",
+      "physicalQuestion": "Does this interval change a predefined listening outcome under blinded, level-matched comparison?",
+      "ordinaryExplanation": "Pitch, timbre, preference and expectation can change experience.",
+      "missingEvidence": "Authenticated original context and controlled outcome data; no clinical benefit established.",
+      "sourceIds": [
+        "bashar-sound-digest",
+        "bashar-compilation-captions"
+      ]
+    },
+    {
+      "id": "bashar-layered-sound",
+      "title": "Physical, energetic and light layers of sound",
+      "status": "digest only",
+      "attribution": "The digest assigns three layers to sound and special significance to acoustic/electronic combinations; selected unofficial captions broadly agree.",
+      "physicalQuestion": "Which independently measured variable represents each proposed layer?",
+      "ordinaryExplanation": "Combining instruments changes the audible spectrum.",
+      "missingEvidence": "Authenticated original context and a detector or prediction distinguishing the added layers.",
+      "sourceIds": [
+        "bashar-sound-digest",
+        "bashar-compilation-captions"
+      ]
+    },
+    {
+      "id": "bashar-consciousness-frequency",
+      "title": "Numerical consciousness frequencies",
+      "status": "digest only",
+      "attribution": "The digest gives 30,000–50,000 cycles/s for an average state and higher values for other states.",
+      "physicalQuestion": "What oscillates, how is it measured, and how does it couple to audible sound?",
+      "ordinaryExplanation": "A stated frequency needs a specified observable; sharing units with sound supplies no mechanism.",
+      "missingEvidence": "Original passage, calibrated measurement, uncertainty and reproducible state classification.",
+      "sourceIds": [
+        "bashar-frequency-digest"
+      ]
+    },
+    {
+      "id": "bashar-planck-frames",
+      "title": "Planck-scale reality frames",
+      "status": "digest only",
+      "attribution": "The digest describes a roughly 10^43-per-second reality-frame rate.",
+      "physicalQuestion": "What observation would distinguish discrete frames from ordinary continuous motion?",
+      "ordinaryExplanation": "A frame animation is a representation, not evidence that reality updates at that rate.",
+      "missingEvidence": "Original explanation, dimensional derivation and an independently testable prediction.",
+      "sourceIds": [
+        "bashar-frequency-digest",
+        "bashar-official-refresher"
+      ]
+    },
+    {
+      "id": "bashar-antigravity-question",
+      "title": "Antigravity and free-energy catalogue questions",
+      "status": "unverified lead",
+      "attribution": "Official descriptions advertise questions on these topics; the relevant answers were not retrieved.",
+      "physicalQuestion": "Is any eventual claim ordinary force or energy transfer, or a claimed departure?",
+      "ordinaryExplanation": "A question in a programme does not establish what the speaker answered.",
+      "missingEvidence": "Answer transcript, device details, complete input/output accounting and force measurements.",
+      "sourceIds": [
+        "bashar-official-education",
+        "bashar-official-artifacts"
+      ]
+    },
+    {
+      "id": "bashar-sound-location-question",
+      "title": "A catalogue question about sound and location",
+      "status": "unverified lead",
+      "attribution": "The Artifacts listing asks whether sound can change an object’s locational variable.",
+      "physicalQuestion": "Does the answer describe acoustic force, or something beyond it?",
+      "ordinaryExplanation": "A sound-driven displacement would need a force model; the question alone supplies none.",
+      "missingEvidence": "The answer and a controlled measurement. The separate interview does not establish a sound mechanism.",
+      "sourceIds": [
+        "bashar-official-artifacts",
+        "bashar-host-interview"
+      ]
+    },
+    {
+      "id": "bashar-nanoparticle-gap",
+      "title": "Nanoparticle attribution remains unresolved",
+      "status": "unverified lead",
+      "attribution": "Nanoparticles are a requested research topic; this audit did not locate an attributable Bashar statement about them.",
+      "physicalQuestion": "Can an exact original statement be identified before comparing it with particle-trapping research?",
+      "ordinaryExplanation": "A thematic connection proposed by researchers is not automatically the speaker’s claim.",
+      "missingEvidence": "Original recording or transcript locator. Zero keyword hits in 75 digests are not a corpus-wide absence claim.",
+      "sourceIds": [
+        "bashar-index-pin"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "bashar-link-digest-chain",
+      "from": "Pinned index",
+      "to": "Sound and frequency summaries",
+      "relation": "documents",
+      "explanation": "The repository documents its AI summarization workflow. It does not authenticate every upstream transcript or uploader date.",
+      "sourceIds": [
+        "bashar-index-pin",
+        "bashar-sound-digest",
+        "bashar-frequency-digest"
+      ]
+    },
+    {
+      "id": "bashar-link-title-match",
+      "from": "Unofficial Refresher compilation",
+      "to": "Official Refresher session",
+      "relation": "unsupported",
+      "explanation": "Matching title words do not establish that these recordings contain the same session.",
+      "sourceIds": [
+        "bashar-sound-digest",
+        "bashar-official-refresher"
+      ]
+    },
+    {
+      "id": "bashar-link-phi-listening",
+      "from": "Phi sound digest",
+      "to": "Original pitch-ratio comparison",
+      "relation": "analogy",
+      "explanation": "A listening comparison may borrow a ratio as a design choice; it cannot inherit the digest’s metaphysical or healing conclusions.",
+      "sourceIds": [
+        "bashar-sound-digest"
+      ]
+    },
+    {
+      "id": "bashar-link-eeg-identity",
+      "from": "EEG state difference",
+      "to": "Identity of an external source",
+      "relation": "unsupported",
+      "explanation": "State differences alone do not identify an external information source.",
+      "sourceIds": [
+        "bashar-host-interview"
+      ]
+    },
+    {
+      "id": "bashar-link-question-answer",
+      "from": "Publisher Q&A topic",
+      "to": "A working antigravity or sound device",
+      "relation": "unsupported",
+      "explanation": "An advertised question supplies neither an affirmative answer nor experimental performance.",
+      "sourceIds": [
+        "bashar-official-education",
+        "bashar-official-artifacts"
+      ]
+    },
+    {
+      "id": "bashar-link-nano-attribution",
+      "from": "Requested nanoparticle topic",
+      "to": "Bashar teaching",
+      "relation": "unsupported",
+      "explanation": "No original attribution was located in this bounded audit. General particle research cannot fill that provenance gap.",
+      "sourceIds": [
+        "bashar-index-pin"
+      ]
+    },
+    {
+      "id": "science-acoustic-force",
+      "from": "Standing acoustic field",
+      "to": "Small-particle restoring force",
+      "relation": "documents",
+      "explanation": "Gor’kov derives a material-dependent, time-averaged force under stated small-particle assumptions. A wavelength or audible pitch alone leaves pressure, geometry and contrast unspecified.",
+      "sourceIds": [
+        "frontier-gorkov-1961"
+      ]
+    },
+    {
+      "id": "science-nano-electric-control",
+      "from": "Acoustoelectronic particle patterns",
+      "to": "Electrical-shield control",
+      "relation": "tests",
+      "explanation": "In the reported polystyrene comparison, electrical shielding removed patterning. The discriminating result favors the coupled electric mechanism over a pure acoustic-force explanation in that apparatus.",
+      "sourceIds": [
+        "frontier-acoustoelectronic-2021"
+      ]
+    },
+    {
+      "id": "science-nano-scaling",
+      "from": "Millimeter levitation demonstration",
+      "to": "Nanoparticle control",
+      "relation": "unsupported",
+      "explanation": "Reducing size changes the balance among radiation force, drag, streaming and Brownian motion. The inspected nano demonstration uses additional electric coupling; it is not obtained by simply choosing another audible pitch.",
+      "sourceIds": [
+        "frontier-gorkov-1961",
+        "frontier-acoustoelectronic-2021",
+        "frontier-einstein-brownian-1905"
+      ]
+    },
+    {
+      "id": "science-thermal-trap",
+      "from": "Classical harmonic potential",
+      "to": "Thermal position spread",
+      "relation": "tests",
+      "explanation": "Our model derives variance kBT/K from Boltzmann statistics and liquid diffusion from viscous mobility. Held-out position distributions could test those assumptions; matching a synthetic curve is not experimental validation.",
+      "sourceIds": [
+        "frontier-feynman-statmech",
+        "frontier-einstein-brownian-1905"
+      ]
+    },
+    {
+      "id": "science-quantum-scope",
+      "from": "Quantum motional cooling",
+      "to": "Audio-driven relocation or altered gravity",
+      "relation": "unsupported",
+      "explanation": "The optical experiment measures a nanoparticle mode under a defined laser–cavity coupling. It supplies no conversion rule from a headphone tone to location, gravity or a whole-object quantum state.",
+      "sourceIds": [
+        "frontier-delic-2020",
+        "frontier-feynman-fields"
+      ]
+    },
+    {
+      "id": "science-metamaterial-phase",
+      "from": "Patterned material geometry",
+      "to": "Controlled wavefront",
+      "relation": "documents",
+      "explanation": "Xie and colleagues measured pressure patterns produced by geometry-dependent phase delays. Their non-resonant cells are a counterexample to treating every metamaterial result as one universal resonance mechanism.",
+      "sourceIds": [
+        "frontier-xie-2016"
+      ]
+    },
+    {
+      "id": "science-pattern-analogy",
+      "from": "Symbolic geometry and frequency language",
+      "to": "Engineered acoustic hologram",
+      "relation": "analogy",
+      "explanation": "Both may use patterned images, but a physical connection needs a specified material, boundary condition, transfer function and measured field. Visual resemblance alone supplies none of those quantities.",
+      "sourceIds": [
+        "frontier-xie-2016"
+      ]
+    },
+    {
+      "id": "science-harvest-ledger",
+      "from": "Metamaterial RF harvester",
+      "to": "External-energy conversion",
+      "relation": "documents",
+      "explanation": "The measured DC output is compared with incident RF power supplied by a generator and amplifier. Army support is documented in the paper; it does not turn conversion into energy creation.",
+      "sourceIds": [
+        "frontier-hawkes-2013",
+        "frontier-feynman-energy"
+      ]
+    },
+    {
+      "id": "science-free-energy-bridge",
+      "from": "Resonance or ambient harvesting",
+      "to": "Net energy creation",
+      "relation": "unsupported",
+      "explanation": "A field maximum, high voltage or harvested output is insufficient. A new-energy claim needs repeatable excess beyond all measured inputs, stored-energy changes and uncertainty, followed by independent checks of ordinary explanations.",
+      "sourceIds": [
+        "frontier-hawkes-2013",
+        "frontier-feynman-energy",
+        "frontier-feynman-fields"
+      ]
+    },
+    {
+      "id": "science-government-mechanisms",
+      "from": "Chinese and Russian public levitation records",
+      "to": "Electric and magnetic support",
+      "relation": "documents",
+      "explanation": "The selected Chinese rack and Russian grant name different ordinary mechanisms and operating contexts. Neither record is evidence for a common undisclosed frequency-to-gravity technology.",
+      "sourceIds": [
+        "frontier-china-rack",
+        "frontier-russia-maglev"
+      ]
+    },
+    {
+      "id": "science-patent-validation",
+      "from": "Navy-assigned patent",
+      "to": "Demonstrated inertia reduction",
+      "relation": "unsupported",
+      "explanation": "Ownership and claimed mechanism are documented. The inspected material does not supply a reproducible calibrated performance dataset, and unrelated NASA investigations do not fill that gap.",
+      "sourceIds": [
+        "frontier-navy-patent",
+        "frontier-nasa-bpp"
+      ]
+    },
+    {
+      "id": "science-sampling-motion",
+      "from": "Sparse sampled motion",
+      "to": "Apparent jumps or reversals",
+      "relation": "tests",
+      "explanation": "Sampling gives an ordinary way for continuous motion to appear ambiguous. Higher temporal resolution and an independently observed path can discriminate aliasing from a proposed discontinuity.",
+      "sourceIds": [
+        "frontier-shannon-1949"
+      ]
+    },
+    {
+      "id": "science-location-bridge",
+      "from": "Bashar location-as-frequency claim",
+      "to": "Phase-controlled particle transport",
+      "relation": "unsupported",
+      "explanation": "The 2014 host transcript documents Anka attributing relocation to a changed locational variable. Measured field-driven transport has a coupling, force and continuous trajectory; the claim supplies no tested frequency-to-coordinate law or replacement dynamics.",
+      "sourceIds": [
+        "bashar-host-interview",
+        "frontier-acoustoelectronic-2021",
+        "frontier-feynman-fields"
+      ]
+    },
+    {
+      "id": "science-frames-analogy",
+      "from": "Reality described as successive frames",
+      "to": "Sampling theorem",
+      "relation": "analogy",
+      "explanation": "The host interview uses a frame metaphor. Shannon describes reconstructing band-limited signals from observations; his signal-space coordinates are mathematical representations, not a claim that matter teleports between physical frames.",
+      "sourceIds": [
+        "bashar-host-interview",
+        "frontier-shannon-1949"
+      ]
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "frontier-channel-match",
+      "title": "Same frequency, different physical channel",
+      "useCase": "Prevent a frequency label from being treated as a complete physical mechanism.",
+      "channel": "Ideal acoustic propagation in air versus electromagnetic propagation in vacuum; numerical comparison only.",
+      "variables": "Frequency f in Hz; sound speed 343 m/s; vacuum light speed 299792458 m/s; amplitude and coupling are deliberately unspecified.",
+      "model": "Period=1/f; acoustic wavelength=343/f; electromagnetic wavelength=c/f. The separate electromagnetic photon energy is hf.",
+      "prediction": "Doubling f halves both wavelengths and the period, while the electromagnetic-to-acoustic wavelength ratio stays c/343. Equal f does not make the channels interchangeable.",
+      "setup": "Use the channel comparison at several frequencies and record every quantity with units. This is an arithmetic study, not an apparatus test.",
+      "control": "Keep propagation speed assumptions fixed and verify both channels independently. Do not infer delivered energy from frequency alone.",
+      "observable": "Wavelength ratios, period and photon energy in the exported numerical row.",
+      "falsifier": "A failure of the scaling identities would falsify the implementation under its stated assumptions. A measured propagation mismatch requires a medium model, not a universal frequency explanation.",
+      "limitation": "No conversion mechanism, source amplitude, material coupling, efficacy or remote relocation is modeled. Photon energy is not the energy of an audio session.",
+      "sourceIds": [
+        "frontier-feynman-fields",
+        "frontier-feynman-energy"
+      ],
+      "presetIds": []
+    },
+    {
+      "id": "frontier-relative-phase",
+      "title": "Relative phase translates an interference pattern",
+      "useCase": "Separate ordinary interference geometry from a claim that a numerical frequency determines position.",
+      "channel": "Two equal, coherent, counterpropagating planar acoustic waves.",
+      "variables": "Frequency f; wavelength lambda; signed path difference deltaL; relative source phase phi; fixed source amplitudes.",
+      "model": "Normalized local mean-square amplitude=[1+cos(2pi*deltaL/lambda+phi)]/2. Only in counterpropagating geometry does deltaL=2z+constant.",
+      "prediction": "At a fixed point, a 180-degree relative phase change exchanges a maximum and a minimum. Counterpropagating nodes are lambda/2 apart and translate by minus lambda*deltaPhi/(4pi).",
+      "setup": "Sweep relative phase in the coherence panel and compare the exported local path window. A future calibrated pressure-map comparison would require measured source phase and geometry.",
+      "control": "Hold the equal-source normalization fixed; compare zero and 180-degree phase; use a single-source reference before interpreting cancellation.",
+      "observable": "Positions of local minima and mean-square amplitude relative to the fixed constructive maximum.",
+      "falsifier": "Within the ideal model, a half-wavelength path offset failing to exchange constructive and destructive interference would reject the implementation. Experimental residuals after calibration test its equal-wave and propagation assumptions.",
+      "limitation": "Local pressure cancellation is not zero energy everywhere or a net energy-flux measurement. Moving a pressure pattern does not establish a particle trap or instantaneous material relocation.",
+      "sourceIds": [
+        "frontier-gorkov-1961",
+        "frontier-feynman-energy"
+      ],
+      "presetIds": [
+        "frequency-study-phase-reference"
+      ]
+    },
+    {
+      "id": "frontier-phase-drift",
+      "title": "Detuning makes a stationary phase pattern drift",
+      "useCase": "Distinguish a stable geometric pattern from a slowly changing two-frequency superposition.",
+      "channel": "Ordinary acoustic or digital signal superposition; no extra force channel.",
+      "variables": "Carrier f, frequency difference deltaF, elapsed time t, initial relative phase and fixed component amplitudes.",
+      "model": "Our time-dependent extension is deltaPhi(t)=deltaPhi(0)+2pi*deltaF*t. The implemented coherence model supplies static phase snapshots; it does not solve moving-particle dynamics.",
+      "prediction": "Relative phase completes one cycle in 1/abs(deltaF). Returning deltaF to zero removes that deterministic drift, while phase noise can still reduce repeatability.",
+      "setup": "First compare calculated phase snapshots. A proposed digital follow-up would record two-tone signals and their time-resolved phase without normalizing each snapshot by its own maximum.",
+      "control": "Use identical frequencies as the zero-drift control; swap the sign of detuning; distinguish a two-line spectrum from amplitude modulation and its sidebands.",
+      "observable": "Measured relative-phase slope in radians per second and the repeat interval of the local squared-amplitude pattern.",
+      "falsifier": "A reproducible phase slope different from 2pi*deltaF after clock calibration rejects the ideal two-sinusoid description. Listening impressions alone do not establish a physical force.",
+      "limitation": "The static panel does not simulate capture, transport, viscosity, reaction forces or an oscillator clock with noise. This is our proposed signal test, not a test of an unspecified relocation mechanism.",
+      "sourceIds": [
+        "frontier-shannon-1949",
+        "frontier-feynman-energy"
+      ],
+      "presetIds": [
+        "frequency-study-phase-reference",
+        "frequency-study-phase-drift",
+        "frequency-study-sideband-pair"
+      ]
+    },
+    {
+      "id": "frontier-brownian-stiffness",
+      "title": "Does measured stiffness predict one-axis Brownian spread?",
+      "useCase": "Form a falsifiable classical confinement check for a hypothetical small particle.",
+      "channel": "Prescribed conservative harmonic potential in a continuum Newtonian liquid at thermal equilibrium.",
+      "variables": "Independently calibrated stiffness kappa in N/m, temperature T in K, one coordinate x in m and measurement uncertainty.",
+      "model": "U(x)=kappa*x^2/2; Boltzmann density proportional to exp[-U/(kBT)]; stationary variance=kBT/kappa.",
+      "prediction": "Doubling prescribed stiffness halves the stationary one-axis variance. At one RMS displacement the harmonic potential is kBT/2.",
+      "setup": "Explore the thermal distribution numerically. A future inert-particle study would estimate stiffness independently and predict variance in a held-out position record.",
+      "control": "Include source-off records, independently measured tracking noise, matched temperature and an electric-field-shielded condition when separating electric from acoustic explanations. Correct for correlated frames rather than treating every video frame as independent.",
+      "observable": "One-coordinate stationary variance and the position histogram, compared with a predicted Gaussian using measured stiffness and temperature.",
+      "falsifier": "Systematic held-out variance or distribution residuals beyond calibration and tracking uncertainty reject the harmonic-equilibrium description for that setup.",
+      "limitation": "Stiffness is supplied, not derived from frequency or shown achievable. Streaming, nonconservative forces, walls, finite trap depth and capture/escape are absent. A 1D RMS is not a 3D radius, quantum ground-state width or gravitational cancellation.",
+      "sourceIds": [
+        "frontier-feynman-statmech",
+        "frontier-einstein-brownian-1905"
+      ],
+      "presetIds": []
+    },
+    {
+      "id": "frontier-brownian-drag",
+      "title": "Drag changes relaxation without changing equilibrium spread",
+      "useCase": "Separate the kinetics of confined Brownian motion from its equilibrium distribution.",
+      "channel": "Classical overdamped Stokes sphere with a prescribed harmonic stiffness.",
+      "variables": "Dynamic viscosity eta in Pa s, radius a in m, temperature, stiffness, drag gamma=6pi*eta*a and sampling interval.",
+      "model": "Free diffusion D=kBT/gamma; relaxation time tau=gamma/kappa; corner frequency=1/(2pi*tau). Our derived identity is stationary variance=D*tau.",
+      "prediction": "At fixed stiffness and temperature, doubling radius or viscosity halves free diffusion and corner frequency, doubles relaxation time, and leaves stationary RMS unchanged.",
+      "setup": "Compare bounded thermal-panel inputs. A future calibrated record would compare its displacement autocorrelation decay with tau after independently characterizing viscosity and stiffness.",
+      "control": "Use a no-trap record for free diffusion; hold measured stiffness and temperature fixed when changing particle or fluid; retain timestamps and assess motion blur and frame correlation.",
+      "observable": "Free mean-square displacement over time and trapped autocorrelation or corner frequency, evaluated separately from stationary variance.",
+      "falsifier": "A reproducible failure of either independently predicted relaxation or variance beyond calibrated uncertainty rejects the jointly specified overdamped continuum model in that regime.",
+      "limitation": "Free one-axis displacement grows as sqrt(2Dt); trapped stationary RMS does not. Slip, walls, molecular-scale hydrodynamics, inertia, aggregation and changing fluid properties can invalidate the approximation. No material or medical outcome is predicted.",
+      "sourceIds": [
+        "frontier-einstein-brownian-1905",
+        "frontier-feynman-statmech"
+      ],
+      "presetIds": []
+    },
+    {
+      "id": "frontier-sampling-alias",
+      "title": "Can the recorder manufacture an apparent low frequency?",
+      "useCase": "Check whether a reported spectral line is a sampling artifact before assigning a mechanism.",
+      "channel": "Numerical sampling of a specified band-limited or deliberately undersampled signal.",
+      "variables": "Input frequency f, sample rate fs, sample time n/fs, analog bandwidth, filter response and record length.",
+      "model": "Our discrete identity cos[2pi*(fs-f)*n/fs]=cos[2pi*f*n/fs] makes distinct continuous frequencies indistinguishable in those cosine samples. Recoverability needs stated bandwidth and sampling conditions.",
+      "prediction": "A numerical 7712 Hz cosine sampled at 8000 samples/s has the same samples as a 288 Hz cosine. Raising the sample rate or applying an appropriate pre-sampling bandwidth limit changes the ambiguity.",
+      "setup": "Generate numerical sample arrays and compare them directly before any playback. The current interactive panels do not perform an actual recording or undersampling experiment.",
+      "control": "Record sample rate and anti-alias filtering; compare two sample rates; retain raw timestamps. An audible 288 Hz illustration alone is not evidence that aliasing occurred.",
+      "observable": "Sample-by-sample agreement and spectral peak placement with documented acquisition bandwidth.",
+      "falsifier": "For the stated ideal cosine samples, disagreement beyond numerical precision rejects the implementation. A physical line that remains under independent bandwidth and sample-rate checks is not explained by this simple alias alone.",
+      "limitation": "The example is proposed arithmetic, not high-frequency audio rendering. It supplies no explanation for effects outside the measured acquisition chain.",
+      "sourceIds": [
+        "frontier-shannon-1949"
+      ],
+      "presetIds": [
+        "frequency-study-alias-proxy"
+      ]
+    },
+    {
+      "id": "frontier-passive-resonance",
+      "title": "A larger resonant response still needs supplied power",
+      "useCase": "Distinguish stored oscillatory energy and response magnification from energy generation.",
+      "channel": "Ordinary driven spring–mass motion or the separately specified passive series RLC analogy.",
+      "variables": "Mass, stiffness, damping, driving frequency and force; or L, C, R, source voltage and the chosen electrical output.",
+      "model": "Use the existing vibration or RLC bench. In steady state, mean source work equals mean dissipation; displacement, current and capacitor-voltage peaks are distinct observables.",
+      "prediction": "Changing damping alters response height and bandwidth. Doubling drive amplitude doubles linear response and multiplies mean dissipation by four, with no additional energy source.",
+      "setup": "Compare saved numerical rows from the existing benches before proposing a separately calibrated passive-system measurement.",
+      "control": "Use a source-off baseline, include all source/load boundaries and stored-energy transients, and identify peak versus RMS quantities before calculating power.",
+      "observable": "Response amplitude and phase, mean input power, mean loss and stored-energy change over the observation window.",
+      "falsifier": "A closed numerical power budget that fails to balance rejects the implementation. A physical residual first challenges the measurement boundary, loss model and calibration; it does not itself establish a new energy source.",
+      "limitation": "The mechanical and circuit equations are analogies with different physical units. Their resonance labels do not establish transfer to a biological system or an unspecified device.",
+      "sourceIds": [
+        "frontier-feynman-energy"
+      ],
+      "presetIds": []
+    },
+    {
+      "id": "frontier-force-energy-budget",
+      "title": "Acoustic force balance is only one confinement condition",
+      "useCase": "Test the limits of transferring a small-sphere force calculation toward nanoscale confinement.",
+      "channel": "Ideal acoustic radiation force, conventional weight/buoyancy, and a separately stated thermal-noise comparison.",
+      "variables": "Pressure peak pA, particle volume V, material contrast, geometry, gravity, trap curvature and thermal energy kBT.",
+      "model": "The existing inviscid sphere model gives radiation force proportional to V*pA^2 and weight proportional to V. Their ratio cancels V, but potential depth and curvature still scale with V at fixed material contrast and field.",
+      "prediction": "Reducing radius by two reduces force, weight and ideal acoustic potential by eight. The force/weight ratio stays the same, while potential energy relative to kBT falls by eight at fixed temperature.",
+      "setup": "First verify these scaling identities in the existing bounded levitation model. Any extension to smaller particles requires a new validated hydrodynamic and field model rather than extrapolating its radius control.",
+      "control": "Separate pressure calibration, source-off behavior, gravity/buoyancy, electric-field shielding and streaming. Use independent particle tracking and require transverse as well as vertical confinement evidence.",
+      "observable": "Force ratios, potential-energy differences relative to kBT, restoring slopes and independently measured position distributions under the stated controls.",
+      "falsifier": "Violation of the numerical scaling identities rejects the implementation; failure of calibrated confinement predictions rejects the chosen approximation, not gravity or energy conservation.",
+      "limitation": "Volume cancellation does not prove a trap. A local vertical equilibrium is not a 3D minimum; finite depth, Brownian escape, streaming, viscosity, boundaries and electric forces require separate treatment. No nanoparticle experiment is claimed completed.",
+      "sourceIds": [
+        "frontier-gorkov-1961",
+        "frontier-feynman-statmech",
+        "frontier-feynman-energy"
+      ],
+      "presetIds": []
+    }
+  ],
+  "presets": [
+    {
+      "id": "bashar-study-matched-steps",
+      "title": "Matched pitch steps — experimental tier",
+      "category": "Experimental",
+      "grade": "D",
+      "purpose": "Compare four quiet 90-second tones, 248 → 310 → 372 → 496 Hz, identical in both channels, with the offset-channel version.",
+      "rationale": "Original listening comparison; benefits are unvalidated. The ratios to our 248 Hz reference are 1, 5/4, 3/2 and 2. This is a matched-channel control for an audio comparison, not a claim about personal alignment. The host transcript documents Anka’s reported interpretation; it does not prescribe these pitches or establish a measured consciousness state. This is our listening-study extension, without source endorsement. Starting pitches, durations and digital gains are app choices. Digital gain does not specify calibrated sound pressure.",
+      "citations": [
+        "https://batgap.com/darryl-anka-bashar-transcript/",
+        "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves"
+      ],
+      "spec": {
+        "autoShutoff": true,
+        "limitMin": 6,
+        "mix": {
+          "waveform": "sine",
+          "noiseDb": {},
+          "noiseOn": false,
+          "nature": {
+            "on": false,
+            "kind": "rain",
+            "db": -30
+          },
+          "bowls": [],
+          "bellEveryMin": 0,
+          "layersOn": true,
+          "volumeDb": -30
+        },
+        "phases": [
+          {
+            "name": "248 Hz in both channels",
+            "carrierHz": 248,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "310 Hz in both channels",
+            "carrierHz": 310,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "372 Hz in both channels",
+            "carrierHz": 372,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "496 Hz in both channels",
+            "carrierHz": 496,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "bashar-study-offset-steps",
+      "title": "Offset pitch steps — experimental tier",
+      "category": "Experimental",
+      "grade": "D",
+      "purpose": "The same four left-channel tones and timing, with the right channel 2 Hz higher at every step. Use stereo headphones for channel separation.",
+      "rationale": "Original listening comparison; benefits are unvalidated. Only the right-channel frequency differs from Matched pitch steps: 250, 312, 374 and 498 Hz. Relative phase advances at 2 turns per second; no separate 2 Hz tone is emitted. Neither condition measures a listener’s internal state. The host transcript documents Anka’s reported interpretation; it does not prescribe these pitches or establish a measured consciousness state. This is our listening-study extension, without source endorsement. Starting pitches, durations and digital gains are app choices. Digital gain does not specify calibrated sound pressure.",
+      "citations": [
+        "https://batgap.com/darryl-anka-bashar-transcript/",
+        "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves"
+      ],
+      "spec": {
+        "autoShutoff": true,
+        "limitMin": 6,
+        "mix": {
+          "waveform": "sine",
+          "noiseDb": {},
+          "noiseOn": false,
+          "nature": {
+            "on": false,
+            "kind": "rain",
+            "db": -30
+          },
+          "bowls": [],
+          "bellEveryMin": 0,
+          "layersOn": true,
+          "volumeDb": -30
+        },
+        "phases": [
+          {
+            "name": "248 Hz left / 250 Hz right",
+            "carrierHz": 248,
+            "beatHz": 2,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "310 Hz left / 312 Hz right",
+            "carrierHz": 310,
+            "beatHz": 2,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "372 Hz left / 374 Hz right",
+            "carrierHz": 372,
+            "beatHz": 2,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "496 Hz left / 498 Hz right",
+            "carrierHz": 496,
+            "beatHz": 2,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "bashar-study-fifth-return",
+      "title": "Fifth then return — experimental tier",
+      "category": "Experimental",
+      "grade": "D",
+      "purpose": "Listen to 372 → 248 → 496 → 248 Hz, 90 seconds per step in both channels. Compare the first return with the octave version.",
+      "rationale": "Original listening comparison; benefits are unvalidated. The first descent is from 3/2 of the 248 Hz root; the second is from twice that root. Only the first pitch differs from Octave then return. Equal digital gain does not guarantee equal perceived loudness. The host transcript documents Anka’s reported interpretation; it does not prescribe these pitches or establish a measured consciousness state. This is our listening-study extension, without source endorsement. Starting pitches, durations and digital gains are app choices. Digital gain does not specify calibrated sound pressure.",
+      "citations": [
+        "https://batgap.com/darryl-anka-bashar-transcript/",
+        "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves"
+      ],
+      "spec": {
+        "autoShutoff": true,
+        "limitMin": 6,
+        "mix": {
+          "waveform": "sine",
+          "noiseDb": {},
+          "noiseOn": false,
+          "nature": {
+            "on": false,
+            "kind": "rain",
+            "db": -30
+          },
+          "bowls": [],
+          "bellEveryMin": 0,
+          "layersOn": true,
+          "volumeDb": -30
+        },
+        "phases": [
+          {
+            "name": "372 Hz in both channels",
+            "carrierHz": 372,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "248 Hz in both channels",
+            "carrierHz": 248,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "496 Hz in both channels",
+            "carrierHz": 496,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "248 Hz in both channels",
+            "carrierHz": 248,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "bashar-study-octave-return",
+      "title": "Octave then return — experimental tier",
+      "category": "Experimental",
+      "grade": "D",
+      "purpose": "Listen to 496 → 248 → 496 → 248 Hz, 90 seconds per step in both channels. Both returns now span a 2:1 interval.",
+      "rationale": "Original listening comparison; benefits are unvalidated. Timing, gain and the final three pitches match Fifth then return; the first pitch changes from 372 to 496 Hz. This holds sequence structure fixed while changing the first interval. The host transcript documents Anka’s reported interpretation; it does not prescribe these pitches or establish a measured consciousness state. This is our listening-study extension, without source endorsement. Starting pitches, durations and digital gains are app choices. Digital gain does not specify calibrated sound pressure.",
+      "citations": [
+        "https://batgap.com/darryl-anka-bashar-transcript/",
+        "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves"
+      ],
+      "spec": {
+        "autoShutoff": true,
+        "limitMin": 6,
+        "mix": {
+          "waveform": "sine",
+          "noiseDb": {},
+          "noiseOn": false,
+          "nature": {
+            "on": false,
+            "kind": "rain",
+            "db": -30
+          },
+          "bowls": [],
+          "bellEveryMin": 0,
+          "layersOn": true,
+          "volumeDb": -30
+        },
+        "phases": [
+          {
+            "name": "496 Hz in both channels",
+            "carrierHz": 496,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "248 Hz in both channels",
+            "carrierHz": 248,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "496 Hz in both channels",
+            "carrierHz": 496,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          },
+          {
+            "name": "248 Hz in both channels",
+            "carrierHz": 248,
+            "beatHz": 0,
+            "durationSec": 90,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "frequency-study-phase-reference",
+      "title": "Phase drift reference — experimental tier",
+      "category": "Experimental",
+      "grade": "D",
+      "purpose": "Five minutes of 312 Hz in both channels. Compare with Phase drift at 1.25 Hz using the same comfortable device setting.",
+      "rationale": "Original listening comparison; benefits are unvalidated. Matched channel frequencies give zero relative phase drift in this ideal signal. The preset schema has no initial-phase parameter. Playback does not measure spatial interference, room pressure or biological coherence. Starting pitches, durations and digital gains are app choices. Digital gain does not specify calibrated sound pressure.",
+      "citations": [
+        "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves"
+      ],
+      "spec": {
+        "autoShutoff": true,
+        "limitMin": 5,
+        "mix": {
+          "waveform": "sine",
+          "noiseDb": {},
+          "noiseOn": false,
+          "nature": {
+            "on": false,
+            "kind": "rain",
+            "db": -30
+          },
+          "bowls": [],
+          "bellEveryMin": 0,
+          "layersOn": true,
+          "volumeDb": -30
+        },
+        "phases": [
+          {
+            "name": "312 Hz in both channels",
+            "carrierHz": 312,
+            "beatHz": 0,
+            "durationSec": 300,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "frequency-study-phase-drift",
+      "title": "Phase drift at 1.25 Hz — experimental tier",
+      "category": "Experimental",
+      "grade": "D",
+      "purpose": "Five minutes of 312 Hz left and 313.25 Hz right. This changes only the right-channel frequency from the matched reference.",
+      "rationale": "Original listening comparison; benefits are unvalidated. Relative phase changes by 2π × 1.25 × t radians and completes a turn every 0.8 seconds. This is detuning, not a fixed initial-phase offset; no isolated 1.25 Hz tone or measured neural rhythm is produced. Starting pitches, durations and digital gains are app choices. Digital gain does not specify calibrated sound pressure.",
+      "citations": [
+        "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves",
+        "https://openstax.org/books/university-physics-volume-1/pages/17-6-beats"
+      ],
+      "spec": {
+        "autoShutoff": true,
+        "limitMin": 5,
+        "mix": {
+          "waveform": "sine",
+          "noiseDb": {},
+          "noiseOn": false,
+          "nature": {
+            "on": false,
+            "kind": "rain",
+            "db": -30
+          },
+          "bowls": [],
+          "bellEveryMin": 0,
+          "layersOn": true,
+          "volumeDb": -30
+        },
+        "phases": [
+          {
+            "name": "312 Hz left / 313.25 Hz right",
+            "carrierHz": 312,
+            "beatHz": 1.25,
+            "durationSec": 300,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "frequency-study-sideband-pair",
+      "title": "Five-hertz spectral separation — experimental tier",
+      "category": "Experimental",
+      "grade": "D",
+      "purpose": "Five minutes of 288 Hz left and 293 Hz right. Compare the fixed 288 Hz reference with a second channel shifted by 5 Hz.",
+      "rationale": "Original listening comparison; benefits are unvalidated. The two lines illustrate the arithmetic distance from a chosen carrier to one upper AM sideband: 293 − 288 = 5 Hz. Actual AM at 5 Hz would also require a lower 283 Hz sideband and a specified amplitude relation. This stereo pair is not AM playback and does not produce a separate 5 Hz signal. Speaker or mono mixing changes the comparison. Starting pitches, durations and digital gains are app choices. Digital gain does not specify calibrated sound pressure.",
+      "citations": [
+        "https://openstax.org/books/university-physics-volume-1/pages/17-6-beats",
+        "https://openstax.org/books/university-physics-volume-1/pages/16-2-mathematics-of-waves"
+      ],
+      "spec": {
+        "autoShutoff": true,
+        "limitMin": 5,
+        "mix": {
+          "waveform": "sine",
+          "noiseDb": {},
+          "noiseOn": false,
+          "nature": {
+            "on": false,
+            "kind": "rain",
+            "db": -30
+          },
+          "bowls": [],
+          "bellEveryMin": 0,
+          "layersOn": true,
+          "volumeDb": -30
+        },
+        "phases": [
+          {
+            "name": "288 Hz left / 293 Hz right",
+            "carrierHz": 288,
+            "beatHz": 5,
+            "durationSec": 300,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "frequency-study-alias-proxy",
+      "title": "Alias arithmetic · audible reference — experimental tier",
+      "category": "Experimental",
+      "grade": "D",
+      "purpose": "Five minutes of a steady 288 Hz tone in both channels. Use it as the carrier control for Five-hertz spectral separation or as an audible reference for the sampling calculation.",
+      "rationale": "Original listening comparison; benefits are unvalidated. For an illustrative 8,000 samples/s clock, a 7,712 Hz sine folds to a 288 Hz magnitude-frequency alias because |7,712 − 8,000| = 288. Its ideal sampled sine has reversed sign relative to a positive-phase 288 Hz sine. This recipe directly synthesizes 288 Hz at the engine rate; it never generates 7,712 Hz or performs that undersampling. The chosen arithmetic does not establish a hidden physical signal. Starting pitches, durations and digital gains are app choices. Digital gain does not specify calibrated sound pressure.",
+      "citations": [
+        "https://www.analog.com/media/en/training-seminars/tutorials/mt-002.pdf"
+      ],
+      "spec": {
+        "autoShutoff": true,
+        "limitMin": 5,
+        "mix": {
+          "waveform": "sine",
+          "noiseDb": {},
+          "noiseOn": false,
+          "nature": {
+            "on": false,
+            "kind": "rain",
+            "db": -30
+          },
+          "bowls": [],
+          "bellEveryMin": 0,
+          "layersOn": true,
+          "volumeDb": -30
+        },
+        "phases": [
+          {
+            "name": "288 Hz in both channels",
+            "carrierHz": 288,
+            "beatHz": 0,
+            "durationSec": 300,
+            "mode": "binaural",
+            "gainDbFs": -30,
+            "rampSec": 15
+          }
+        ]
+      }
+    }
+  ]
+}

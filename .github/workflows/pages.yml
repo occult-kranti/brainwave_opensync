@@ -117,7 +117,7 @@ jobs:
             experience: 'Spatial Observatory',
             graphics: 'Three.js / WebGL 2 / GLSL',
             cameraZoom: [50, 180],
-            presetCount: 139
+            presetCount: JSON.parse(readFileSync('archive-source/public/previews/manifest.json', 'utf8')).files.length
           };
           writeFileSync('dist/deployments.json', JSON.stringify(manifest, null, 2) + '\n');
           NODE

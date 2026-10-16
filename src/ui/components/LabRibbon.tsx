@@ -7,6 +7,7 @@
 import { Link, useLocation } from 'react-router';
 
 const LABS = [
+  { path: '/sound-research', label: 'SOUND RESEARCH' },
   { path: '/lucid', label: 'LUCID AUDIO LAB' },
   { path: '/healing', label: 'HEALING SOUND LAB' },
   { path: '/nature', label: 'NATURE CALLS LAB' },

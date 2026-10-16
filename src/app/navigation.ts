@@ -52,6 +52,7 @@ const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/replication', 'experiments', 'Replication Bay', 'Compare published stimuli and inspect reconstruction limits.', ['replicate', 'protocol', 'Monroe', 'Gateway', 'stimulus']],
   ['/dream', 'practice', 'Sleep experiments', 'Review advanced sleep protocols and keep a dream journal.', ['sleep & dream', 'sleep and dream', 'dream lab', 'lucid', 'journal', 'TLR', 'WBTB']],
   ['/lucid', 'practice', 'Lucid Audio Lab', 'Study audio cue research, timing maps, and lucid practice sessions.', ['lucid dreaming', 'Gateway', 'REM', 'cue', 'octave portraits', 'hypotheses', 'hemi-sync']],
+  ['/sound-research', 'experiments', 'Sound Research', 'Explore signal models, biological mechanisms, government records, primary texts and original listening studies.', ['healing', 'research', 'SOTA', 'resonance', 'simulation', 'binaural', 'occult', 'products', 'hypotheses', 'government', 'Russia', 'China', 'physics', 'biology']],
   ['/healing', 'practice', 'Healing Sound Lab', 'Review healing-sound doses, VAT and bowl evidence, and nano portraits.', ['healing', 'vibroacoustic', 'bowls', 'VAT', 'whole body vibration', 'nanoparticle', 'ultrasound', 'tuning fork']],
   ['/nature', 'practice', 'Nature Calls Lab', 'Learn animal call bands, plant bioacoustics, and the cricket thermometer.', ['animals', 'birds', 'cat', 'sparrow', 'blue jay', 'squirrel', 'cricket', 'plants', 'bioacoustics', 'nature', 'Dolbear']],
   ['/levels', 'research', 'Levels', 'Inspect proposed levels and their evidence limits.', ['focus levels', 'ladder', 'frequency']],

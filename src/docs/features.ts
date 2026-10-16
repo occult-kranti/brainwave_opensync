@@ -71,6 +71,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/cymatics', label: 'Cymatic Studio' },
   { route: '/dream', label: 'Sleep & Dream' },
   { route: '/lucid', label: 'Lucid Audio Lab' },
+  { route: '/sound-research', label: 'Sound Research' },
   { route: '/healing', label: 'Healing Sound Lab' },
   { route: '/nature', label: 'Nature Calls Lab' },
   { route: '/replication', label: 'Replication Bay' },
@@ -86,6 +87,15 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'sound-research-bench', module: 'Sound Research', route: '/sound-research', name: 'Sound research bench',
+    grade: 'A', gradeScope: 'Signal algebra and generic mechanical response only; original listening presets remain experimental tier D.',
+    simple: 'Compare tones, beats and a model resonator, then explore the sources behind sound and health claims. Preview an original sound or load it into Studio.',
+    deep: 'Signal plots show a carrier, separate stereo channels or sine amplitude modulation; CSV also includes a two-tone comparison. A dimensionless oscillator and ideal acoustic interface expose model assumptions without tissue calibration. Source dossiers trace mechanisms, counterevidence, government records, historical texts and commercial claims. Research questions state null models and falsifiers. Exported rows are calculations, not biological measurements.',
+    howTo: ['Choose a signal mode and adjust the controls.', 'Inspect the waveform or compare damping scenarios.', 'Read the evidence and source limitations.', 'Preview quietly or load a preset into Studio.'],
+    plot: { axes: 'Waveforms show time and digital amplitude; resonance curves show frequency ratio and normalized displacement; ideal interface curves show impedance ratio and power fractions.', good: 'Compare known analytical limits and how each parameter changes the model.', bad: 'No curve establishes a healing effect or an acoustic exposure level; digital amplitude is not sound pressure.' },
+  },
+
   {
     id: 'focused-listening', module: 'Listen', route: '/listen', name: 'Focused listening player',
     simple: 'Choose a sound, then press Play when you are ready. Pause, stop, change the volume or watch the sand without opening the full sound editor.',

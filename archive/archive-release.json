@@ -1,7 +1,7 @@
 {
   "name": "Inside the Field",
   "sourceBranch": "archive/dark-landscapes",
-  "sourceCommit": "23b81ff6a1c1ad3435ec0f5bc13e5cdf8716ed2a",
+  "sourceCommit": "96b62177e4f6f9071f62173b7689684dd5b6535c",
   "protectedMaster": "22af1cd1a9a37dc8d1cacac2e52be0aabf065dd7",
   "verification": {
     "testFiles": 102,
@@ -12,6 +12,7 @@
       "390x844"
     ],
     "canvasFallback": true,
+    "sandFocusReturn": true,
     "archiveOnly": true
   }
 }

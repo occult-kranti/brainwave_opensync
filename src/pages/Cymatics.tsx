@@ -190,6 +190,13 @@ export default function Cymatics() {
   const closeRef = useRef<HTMLButtonElement>(null);
   const freezeTime = useRef(0);
   useModalA11y(expanded, () => setExpanded(false), closeRef, stageRef);
+  const wasExpanded = useRef(false);
+  useEffect(() => {
+    // Portalling remounts the stage, so the modal's original trigger is detached.
+    // Restore keyboard focus to the newly mounted inline expand button.
+    if (wasExpanded.current && !expanded) closeRef.current?.focus();
+    wasExpanded.current = expanded;
+  }, [expanded]);
   const usingGpu = gpu && ["surface", "particles", "water"].includes(view);
   const {
     cam: orbitCamRef,

@@ -73,6 +73,8 @@ Export builds a spec truncated to the session limit, renders in a module Worker 
 - `assetUrl.ts` — deploy-base-aware URLs for `public/` files (`import.meta.env.BASE_URL`).
 
 ### Content layers
+`sound-research/` contains source dossiers and bounded signal, resonance and ideal-acoustics models. `newton-tesla/` contains the typed concept network, primary-text and patent readings, proposed experiments, and independent field/circuit/refraction teaching models. These model modules do not control audio or simulate biology. Their pages use existing session playback only for explicitly selected original listening presets.
+
 `data/` (frequencies with A–D grades and split grades, presets, levels, knowledge), `research/` (experiments X01–X14, critiques, hypotheses, 42 programs, stimulus pack), `theory/` (claim audit chains), `replication/`, `dream/`, `quicklab/`, `soniclab/`, `samplelab/`, `cymatics/`. `docs/features.ts` is the single source of truth for every feature's simple + deep explanation; `docs/vocabulary.ts` is the banned-claim list every copy test imports.
 
 ## Shell and platform

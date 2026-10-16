@@ -40,3 +40,7 @@ The review includes selected recent primary studies, six mechanism chains, prima
 ## Publication check
 
 The deployment coordinator builds the archive source separately and reads its preset count from its preview manifest. Publish the archive commit before the master commit so the master workflow captures both updates. The authoritative deployed source SHAs are recorded by the coordinator in the site's `deployments.json`; verify those against the branch commits after its workflow completes.
+
+## Confirmed publication
+
+GitHub Pages workflow [38854543726](https://github.com/occult-kranti/brainwave_opensync/actions/runs/38854543726) completed successfully. Deployed `deployments.json` records master `3842217329f9f93b133eaba9c5672633d8287baf` and archive `0a885871c4a5258b2b3b654ddd034d0759f435bc`, with 151 archive presets. Both live `/sound-research/` routes returned HTTP 200; representative new WAV files in both editions returned HTTP 200 with RIFF headers. These identifiers describe the sound-lab release; later releases may extend it.

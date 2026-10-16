@@ -32,7 +32,7 @@ All physiological interpretations require evidence outside these equations. A re
 
 ## Original listening material
 
-The 12 `research-` presets are original experimental compositions. They add steady controls, two stereo differences, shared-channel beating, a slow amplitude pattern, tone-plus-noise textures, bowl models, pitch-sequence comparisons and rain. The catalog contains 151 presets after this addition. New files are rendered through the existing engine; earlier preview WAVs remain unchanged. The manifest stays below the repository's 60 MB budget.
+The 12 `research-` presets are original experimental compositions. They add steady controls, two stereo differences, shared-channel beating, a slow amplitude pattern, tone-plus-noise textures, bowl models, pitch-sequence comparisons and rain. This release brought the catalog to 151 presets; later additions are recorded in the current preview manifest. New files are rendered through the existing engine; earlier preview WAVs remain unchanged. The manifest stays below the repository's 60 MB budget.
 
 The presets are grade D and Experimental because their outcomes have not been validated. A supporting acoustics citation does not upgrade an original recipe to clinical evidence. Listening titles and details identify the actual composition rather than promising sleep stages, disease treatment or paranormal outcomes.
 

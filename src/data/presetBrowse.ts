@@ -3,7 +3,7 @@ import { needsHeadphones } from './sessionSuggestions';
 import { isBasharPreset } from '@/ui/components/presetPresentation';
 
 export const PRESET_COLLECTIONS = [
-  ['research', 'Sound research'], ['all', 'Browse all presets'], ['start', 'Start here'], ['hypnosis', 'Hypnosis & suggestion'],
+  ['research', 'Sound research'], ['newton-tesla', 'Newton–Tesla studies'], ['all', 'Browse all presets'], ['start', 'Start here'], ['hypnosis', 'Hypnosis & suggestion'],
   ['practice', 'Meditation & rest'], ['sleep', 'Sleep & wind-down'], ['dream', 'Dreaming & imagery'],
   ['focus', 'Focus & attention'], ['comfort', 'Comfort & healing traditions'], ['nature', 'Nature & soundscapes'],
   ['overnight', 'Overnight · 7 hours'], ['archive', 'Programs & traditions'], ['nano', 'NanoLab signals'],
@@ -12,6 +12,7 @@ export const PRESET_COLLECTIONS = [
 export type PresetCollection = typeof PRESET_COLLECTIONS[number][0];
 export const STARTER_IDS = ['practice-soft-landing', 'practice-bowl-attention', 'practice-evening-rain', 'practice-steady-focus'];
 export const COLLECTION_NOTES: Record<PresetCollection, string> = {
+ 'newton-tesla': 'Original acoustic comparisons inspired by questions about phase and tuning. These sounds are not electromagnetic apparatus or historical recordings.',
  research: 'Original experimental listening recipes for comparing sound structures. None has been validated as a treatment.',
  all: 'Every sound, organized by practice. Open a group to explore it.', start: 'Four easy places to begin: rain, bowls, a wind-down and a quiet task.',
  hypnosis: 'Attention, imagery and voluntary suggestion. Read the practice in Sound details before starting. These are sound beds, with no recorded voice.',
@@ -24,6 +25,7 @@ export const COLLECTION_NOTES: Record<PresetCollection, string> = {
  bashar: 'Four listening examples from the supplied digest. Starting pitches and timings are app choices.', saved: 'Your Studio presets, saved in this browser.',
 };
 export function presetFamily(p: Preset): string {
+ if (p.id.startsWith('nt-')) return 'Newton–Tesla studies';
  if (p.id.startsWith('research-')) return 'Sound research';
  if (p.id.startsWith('hypnosis-') || p.id === 'practice-suggestion-space' || p.id === 'practice-theta-comparison') return 'Hypnosis & suggestion';
  if (p.id.startsWith('night-')) return 'Overnight · seven hours';
@@ -43,6 +45,7 @@ export function presetFamily(p: Preset): string {
 export function matchesCollection(p: Preset, collection: PresetCollection): boolean {
  const family = presetFamily(p);
  switch (collection) {
+  case 'newton-tesla': return p.id.startsWith('nt-');
   case 'research': return p.id.startsWith('research-');
   case 'all': return true;
   case 'start': return STARTER_IDS.includes(p.id);
@@ -60,7 +63,7 @@ export function matchesCollection(p: Preset, collection: PresetCollection): bool
   case 'bashar': return isBasharPreset(p);
  }
 }
-export const FAMILY_ORDER = ['Sound research', 'Hypnosis & suggestion', 'Meditation & breath', 'Rest & relaxation', 'Sleep & wind-down', 'Dreaming & imagery', 'Focus & attention', 'Nature & acoustic portraits', 'Healing traditions & comfort', 'Overnight · seven hours', 'Programs & traditions', 'NanoLab · signal controls', 'Bashar sounds', 'Experimental listening', 'Infant · restricted listening'];
+export const FAMILY_ORDER = ['Sound research', 'Newton–Tesla studies', 'Hypnosis & suggestion', 'Meditation & breath', 'Rest & relaxation', 'Sleep & wind-down', 'Dreaming & imagery', 'Focus & attention', 'Nature & acoustic portraits', 'Healing traditions & comfort', 'Overnight · seven hours', 'Programs & traditions', 'NanoLab · signal controls', 'Bashar sounds', 'Experimental listening', 'Infant · restricted listening'];
 
 export function matchesListeningFilters(p: Preset, setup: string, duration: string, sound: string): boolean {
   const minutes = presetDurationMin(p);

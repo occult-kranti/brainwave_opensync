@@ -103,6 +103,10 @@ Comments still cite pre-release design documents (`design.md §…`, `safety.md`
 
 ## Sound Observatory and expanded catalog (October 2026)
 
-Both current editions share 139 presets and the `presetBrowse` collection/filter rules. Collections overlap by user intention; `presetFamily` assigns each result to a single collapsible group. Eight new hypnosis/imagery beds have explicit practice instructions, no recorded voice and grade C or D evidence boundaries. Main imports the existing practice, archive, overnight and NanoLab catalog additions. The 90-minute browser WAV export allocation guard also applies on main.
+Both current editions share 159 presets and the `presetBrowse` collection/filter rules. Collections overlap by user intention; `presetFamily` assigns each result to a single collapsible group. Eight new hypnosis/imagery beds have explicit practice instructions, no recorded voice and grade C or D evidence boundaries. Main imports the existing practice, archive, overnight and NanoLab catalog additions. The 90-minute browser WAV export allocation guard also applies on main.
 
 The archive presents horizontal primary navigation on discovery and Listen routes; a Workshop drawer exposes every registered tool. Specialist routes retain the existing collapsible rail. The same SessionProvider spans both flows. The home finder passes intention and time through the URL into Meditate. The visual field is an independent Canvas2D projection, with a 3D toroidal surface and rotated 4D Clifford projection, 30fps scheduling, DPR ceiling, visibility/offscreen suspension, reduced-motion handling, and native rotation controls. It neither reads nor modifies the audio engine and makes no physiological claims.
+
+## Levitation laboratory
+
+`levitation/` adds selected USA/China/Russia public records, typed evidence connections, quantum/media audits and three bounded force/vibration models. Models do not control audio or hardware. Four original listening illustrations reuse the existing playback gates; the catalog contains 159 presets.

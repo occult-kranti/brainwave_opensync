@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520" role="img" aria-labelledby="title description"><title id="title">Acoustic suspension: conceptual standing-wave section</title><desc id="description">A row of acoustic emitters faces a rigid reflector. Three illustrative pressure nodes are marked between them, with a particle near the middle node. Opposing arrows distinguish radiation force and effective weight. The right-hand curve is a signed pressure envelope, not a measured device field. This one-dimensional schematic is not a construction plan or a prediction of three-dimensional confinement.</desc><rect width="840" height="520" fill="#0e1d24"/><style>text{font-family:Arial,sans-serif;fill:#dbe6e1;font-size:15px}.title{font-size:23px;fill:#f0d0ab}.small{font-size:12px;fill:#aebeb8}.label{font-size:14px}.copper{stroke:#e6ac7a;fill:none;stroke-width:2}.teal{stroke:#8bd0c6;fill:none;stroke-width:2}.line{stroke:#658b85;fill:none;stroke-width:1.5}.node{stroke:#80b9ad;stroke-dasharray:5 5;stroke-width:1.2}.part{fill:#233f42;stroke:#8cb5a7;stroke-width:1.5}.muted{fill:#182b31;stroke:#597771;stroke-width:1.5}.force{stroke:#e6ac7a;stroke-width:2;marker-end:url(#arrow)}.guide{fill:none;stroke:#769a92;stroke-width:1.2}</style><defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#e6ac7a"/></marker></defs>
+<text x="30" y="38" class="title">Acoustic suspension · conceptual section</text>
+<text x="30" y="63" class="small">Ideal standing-wave geometry · not to scale · no drive settings or wiring</text>
+<rect class="part" x="120" y="100" width="330" height="18"/><text x="478" y="114">Rigid reflector</text><path class="guide" d="M450 109H468"/>
+<path class="node" d="M120 153H450M120 223H450M120 293H450"/>
+<text x="34" y="157" class="small">Node</text><text x="34" y="227" class="small">Node</text><text x="34" y="297" class="small">Node</text>
+<path class="guide" d="M92 153V223M87 153H97M87 223H97"/><text x="38" y="194">λ/2</text>
+<circle cx="282" cy="230" r="9" fill="#e6ac7a" stroke="#ffdfb2" stroke-width="1.5"/>
+<path class="force" d="M282 216V179"/><path class="force" d="M282 244V279"/>
+<text x="306" y="189" class="label">Radiation force ↑</text><text x="306" y="274" class="label">Effective weight ↓</text>
+<path class="guide" d="M278 230H176L155 252"/><text x="125" y="273" class="small">Particle</text>
+<rect class="part" x="124" y="328" width="34" height="25" rx="5"/><rect class="part" x="165" y="328" width="34" height="25" rx="5"/><rect class="part" x="206" y="328" width="34" height="25" rx="5"/><rect class="part" x="247" y="328" width="34" height="25" rx="5"/><rect class="part" x="288" y="328" width="34" height="25" rx="5"/><rect class="part" x="329" y="328" width="34" height="25" rx="5"/><rect class="part" x="370" y="328" width="34" height="25" rx="5"/><rect class="part" x="411" y="328" width="34" height="25" rx="5"/>
+<text x="147" y="378">Emitter array, shown in section</text>
+<path class="guide" d="M550 118V328M516 118H584M516 328H584"/>
+<path class="copper" d="M581 118C581 135 550 140 550 153S519 171 519 188S550 210 550 223S581 241 581 258S550 280 550 293S519 311 519 328"/>
+<text x="606" y="181">Illustrative signed</text><text x="606" y="202">pressure envelope</text>
+<text x="606" y="233" class="small">Node: pressure coefficient = 0</text><text x="606" y="253" class="small">Not instantaneous airflow</text>
+<text x="30" y="421" class="label">Force balance can shift equilibrium away from a pressure node.</text>
+<text x="30" y="445" class="small">Particle contrast, gravity, boundaries and lateral confinement need separate analysis.</text>
+<text x="30" y="473" class="small">Source context: Gor’kov radiation-force model; acoustic-source records in the Levitation Laboratory dossier.</text>
+<text x="30" y="496" class="small">Original explanatory SVG. No apparatus performance, safe exposure, or levitation by ordinary audio is implied.</text></svg>

@@ -1,0 +1,45 @@
+# Levitation laboratory: research and implementation
+
+Research cut: 16 October 2026. This is a selected, source-linked investigation, not an exhaustive survey of every government record, patent, book, video or experiment. The new page extends the existing Sound Research and Newton–Tesla laboratories in both current editions. Historical readings, physical models and listening illustrations have different evidentiary roles.
+
+## What the investigation supports
+
+Sound, magnetic fields, electric fields, optical fields and flowing gases can exert forces. Under appropriate conditions these forces support or trap objects. That fact does not establish a reduction in gravitational interaction. A supported particle, an orbiting laboratory and a material with a quantum state are three different physical situations. A shared word such as “frequency,” “field” or “resonance” is not a mechanism connecting them.
+
+The source registry records the exact edition or revision, inspected passage, access level, provenance, claim and limitation. Public program descriptions are separated from measured research. Patent claims and assignees are recorded without treating a grant as proof of performance. Source status applies to the stated claim, not everything the author or institution has ever said. The USA, China and Russia filters describe the record’s institutional context; the original Soviet Gor’kov paper is identified historically, not presented as a modern Russian program.
+
+There are two historical questions. First, what did Newton, Tesla and their contemporaries actually write? Second, can a modern testable model be constructed from a particular passage? The General Scholium is evidence about Newton’s reasoning and theology. Tesla’s tuning discussions describe electrical experiments, and his inspected aircraft patent describes aerodynamic arrangements. Neither supplies a verified occult route to gravity control. The earlier Newton–Tesla dossier contains the wider alchemical and historical reading; this page connects it to force and energy questions without pretending to have reread every book.
+
+Maxwell’s field framework enters through an inspected author derivation of electromagnetic energy and momentum. Einstein’s selected lecture passage concerns inertia, gravitation and reference frames. Casimir’s original final page gives a boundary-dependent quantum force. Gor’kov gives a restricted acoustic-scattering approximation. Berry and Geim analyze diamagnetic support; modern optical experiments address the quantum motion of externally trapped particles. These are specific mathematical connections, not evidence that the scientists all proposed the same device. Rayleigh and King remain historical antecedents cited by the inspected literature; their complete works were not newly audited here.
+
+## Three different meanings of “free energy”
+
+In equilibrium thermodynamics, Helmholtz free energy is F = U − TS and Gibbs free energy is G = H − TS. Under the appropriate fixed-temperature constraints, changes in these quantities bound obtainable work. “Free” describes availability under constraints, not energy appearing without a source. Environmental harvesting can also be real: a temperature difference, sunlight, vibration or radio-frequency input is an external resource and must be measured.
+
+A claim of net cyclic output without any source is a third meaning. Use a declared boundary and the residual R = Eout + ΔEstored − Ein. Heat, radiation, mechanical work and electrical inputs belong in the same ledger. Stored electric, magnetic, chemical, elastic and gravitational energy must return to its initial state before comparing repeated cycles. Correlated uncertainties and instrument bandwidth matter. For AC circuits, average real power is the time average of v(t)i(t); multiplying separate RMS magnitudes omits phase and distortion. A remaining discrepancy calls for instrument checks and independent replication before assigning a new physical mechanism.
+
+Casimir attraction alone is not such a cycle: restoring plate separation changes the energy budget. Resonance similarly exchanges and concentrates supplied energy. In the implemented damped oscillator, mean source power equals mean loss power at steady state. A stationary permanent-magnet support can exert force without doing mechanical work on an unmoving load; this does not make it a power generator. In each case, specify displacement, energy flow and the boundary before interpreting a striking demonstration.
+
+## Experiments and countermodels
+
+Every proposed experiment has a question, prediction, setup, variables, control, measurement, falsifier and limits. They include acoustic force-versus-potential checks, comparison with measured force maps, missing streaming forces, center-of-mass and apparent-weight controls, magnetic balance versus stability, quantum thermometry and an energy-cycle audit. None is reported as a newly completed physical experiment.
+
+The browser performs only bounded numerical calculations. Its acoustic pressure is a hypothetical peak field amplitude, not a device operating instruction or exposure recommendation. A real ultrasonic array needs calibrated spatial fields, appropriate facilities and an apparatus-specific review. The magnetic calculation supplies a local signed field-squared gradient without designing a magnet. Superconducting, high-voltage and laser experiments are referenced research setups rather than home-build prescriptions. Precise setup illustrations are original SVG schematics; they are not photographs or authenticated reconstructions of an inventor’s apparatus.
+
+The standing-wave model demonstrates that force balance and restoring slope are separate tests. It includes buoyancy and both signs of acoustic contrast. Its transverse directions are unconstrained. A positive sum of curvature values is insufficient: a Hessian with eigenvalues 3, −1 and −1 has positive trace but two unstable directions. Full conservative stability requires the relevant Hessian, and nonconservative or driven systems need their own dynamical analysis.
+
+## Software and media choices
+
+The existing React, TypeScript and Vite application remains the delivery stack. Pure bounded functions and SVG are sufficient for these teaching calculations and accessible exports. Adding a finite-element or boundary-element framework to the browser would not create missing calibration data. Pinned Levitate, AcousTools and Ultraino source inspections show how more complete array and field tools are organized. They are research references, not installed controller integrations. Their MIT license and inspected revisions are recorded. No external source code was copied into the product.
+
+An independent numerical comparison evaluates the actual app output against selected unmodified reference routines over 244 samples. Agreement at floating-point precision verifies the translation on those fields; the models share assumptions and this is not experimental confirmation. The separate code audit documents a verified AcousTools v7 equation/code sign discrepancy without claiming that its whole library is invalid.
+
+Official NASA/JPL text was read where available. A TU Delft lecture’s supplied English captions were genuinely downloaded with the open-source yt-dlp tool and read with timestamps. This is caption retrieval, not new speech recognition. The FLOAT lecture record states what could be established from its official page and what was not watched or transcribed. No inaccessible video is represented as reviewed, and no full third-party transcript is redistributed. WikiLeaks results are recorded as a bounded search and access log; irrelevant or inaccessible records are not evidence for gravity control.
+
+## Listening and preservation
+
+Four original grade-D recipes illustrate a steady frequency reference, stereo phase drift, rising frequencies and falling frequencies. They are grouped as “Levitation studies.” The name links the reading collection; the sounds do not levitate matter or establish a medical effect. Frequency is only one field parameter. Headphones do not reproduce a calibrated ultrasonic array or magnetic apparatus.
+
+The existing playback engine and safety gates are reused. The new model modules never emit sound. All 155 previous WAV previews are preserved byte-for-byte. Four compact, two-second 12 kHz PCM previews are valid for the new recipes, whose tones do not exceed 900 Hz. Per-entry format metadata is checked against every WAV header, while existing manifest defaults remain unchanged. Full listening recipes use the existing synthesis path. The catalog now contains 159 presets and stays below the existing 60 MB preview budget.
+
+Implementation locations: `src/levitation/`, `src/pages/LevitationLab.tsx`, `src/data/levitationPresets.ts`. The public dossier combines this introduction, individual topic audits, the source registry, typed connections, mathematical contracts and validation notes. It distinguishes observed results, analytical predictions and future proposals throughout.

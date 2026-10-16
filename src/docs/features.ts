@@ -67,6 +67,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/lucid', label: 'Lucid Audio Lab' },
   { route: '/sound-research', label: 'Sound Research' },
   { route: '/newton-tesla', label: 'Newton–Tesla Lab' },
+  { route: '/levitation', label: 'Levitation Lab' },
   { route: '/healing', label: 'Healing Sound Lab' },
   { route: '/nature', label: 'Nature Calls Lab' },
   { route: '/replication', label: 'Replication Bay' },
@@ -82,6 +83,14 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'levitation-laboratory', module: 'Levitation Lab', route: '/levitation', name: 'Levitation, fields and energy laboratory',
+    grade: 'A', gradeScope: 'Conditional teaching-model calculations only. Physical claims are source-specific and listening recipes remain experimental tier D.',
+    simple: 'Explore how fields can support a particle. Compare force balance and stability, read primary records and inspect proposed experiment setups.',
+    deep: 'Three bounded models cover ideal axial acoustic trapping, local diamagnetic force and externally driven vibration. Source dossiers distinguish government programs, patents, historical texts, quantum experiments and unsupported bridges. CSV exports preserve parameters and units; schematics are conceptual. The page neither drives hardware nor validates an antigravity, free-energy or medical device.',
+    howTo: ['Vary the virtual bench parameters.', 'Inspect the force budget and stated omissions.', 'Download numerical rows or a setup schematic.', 'Read source access notes, controls and falsifiers.', 'Preview a quiet listening illustration or load it into Studio.'],
+    plot: { axes: 'Acoustic position, force and potential; signed magnetic field-squared gradient; vibration frequency ratio and displacement.', good: 'Check units, restoring force, limiting cases and input/loss power.', bad: 'A one-dimensional equilibrium does not prove three-dimensional confinement; audio presets are not levitation apparatus.' },
+  },
   {
     id: 'newton-tesla-network', module: 'Newton–Tesla Lab', route: '/newton-tesla', name: 'Newton–Tesla network laboratory',
     grade: 'A', gradeScope: 'Conditional circuit, field-geometry and refraction calculations only. Historical claims are source-specific; original listening outcomes remain unvalidated tier D.',

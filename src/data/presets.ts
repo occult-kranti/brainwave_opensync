@@ -5,6 +5,7 @@
  * (W3) stays decoupled; the engine adapts these into its own runtime types.
  */
 
+import { LEVITATION_PRESETS } from './levitationPresets';
 import { NEWTON_TESLA_PRESETS } from './newtonTeslaPresets';
 import { SOUND_RESEARCH_PRESETS } from './soundResearchPresets';
 import { HYPNOSIS_PRESETS } from './hypnosisPractice';
@@ -839,6 +840,7 @@ const RAW_PRESETS: readonly PresetSpec[] = [
   ...EXPEDITION_PRESETS,
   ...SOUND_RESEARCH_PRESETS,
   ...NEWTON_TESLA_PRESETS,
+  ...LEVITATION_PRESETS,
   ...HEALING_PRESETS,
   ...HEALING_PRESETS_R4,
   ...BASHAR_PRESETS,

@@ -41,7 +41,7 @@ const ALL_ROUTE_PATHS = [
   '/cymatics',
   '/dream',
   '/lucid',
-  '/sound-research', '/newton-tesla', '/healing',
+  '/sound-research', '/newton-tesla', '/levitation', '/healing',
   '/nature',
   '/replication',
   '/safety',

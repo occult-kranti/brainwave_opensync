@@ -85,6 +85,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/lucid', 'LUCID AUDIO LAB', 'Lucid Audio Lab', MoonStar, 'tools', () => import('@/pages/LucidLab')),
   r('/sound-research', 'SOUND RESEARCH', 'Sound Research', FlaskConical, 'tools', () => import('@/pages/SoundResearch')),
   r('/newton-tesla', 'NEWTON–TESLA LAB', 'Newton–Tesla Lab', Orbit, 'tools', () => import('@/pages/NewtonTeslaLab')),
+  r('/levitation', 'LEVITATION LAB', 'Levitation Lab', Orbit, 'tools', () => import('@/pages/LevitationLab')),
   r('/healing', 'HEALING SOUND LAB', 'Healing Sound Lab', HeartPulse, 'tools', () => import('@/pages/HealingLab')),
   r('/nature', 'NATURE CALLS', 'Nature Calls Lab', Bird, 'tools', () => import('@/pages/NatureLab')),
   r('/nano-lab', 'NANOLAB AUDIO', 'NanoLab', FlaskConical, 'tools', () => import('@/pages/NanoLab')),

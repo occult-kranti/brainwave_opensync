@@ -1,0 +1,19 @@
+{
+  "reports": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "checks": "3 models / 9 presets, source filters, 6 numerical exports, search record + optional apply, clipboard URL round trip, invalid input rejection, keyboard tabs, images, no overflow"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "checks": "3 models / 9 presets, source filters, 6 numerical exports, search record + optional apply, clipboard URL round trip, invalid input rejection, keyboard tabs, images, no overflow"
+    }
+  ],
+  "errors": []
+}

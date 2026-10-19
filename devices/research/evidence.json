@@ -1,0 +1,870 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-10-16",
+  "scope": "Selected public primary sources; not exhaustive, and no hardware replication.",
+  "sources": [
+    {
+      "id": "openai-math-2026",
+      "title": "Sharing AI progress in mathematics",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+      "publisher": "OpenAI",
+      "date": "2026-10-06 (updated 2026-10-15)",
+      "kind": "Company research release",
+      "status": "Mixed verification; not independently checked here",
+      "readScope": "Official announcement and openai/math README; repository HEAD 1581d4cbdd69a0faf34b2089614fe2a814316a6a recorded; no individual proof or Lean build audited.",
+      "claim": "OpenAI released mathematical manuscripts and supporting formalizations from an internal model. The repository explicitly distinguishes results with and without formal proofs.",
+      "limit": "An announcement, a manuscript, and a kernel-checked theorem are different evidence levels. Mathematical results do not validate a physical device or establish that a simulated mechanism exists.",
+      "application": "Keep each hypothesis linked to its exact assumptions, source version, executable checks, and unresolved claims.",
+      "tags": [
+        "AI research",
+        "OpenAI",
+        "verification"
+      ]
+    },
+    {
+      "id": "openai-research-acceleration",
+      "title": "Research acceleration: The view inside OpenAI",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "publisher": "OpenAI",
+      "date": "2026-09-06",
+      "kind": "Company observational research report",
+      "status": "Internal observational evidence",
+      "readScope": "Main report and methodology appendix; underlying private logs unavailable.",
+      "claim": "The report tracks increasing agent use, code production, and experimental activity inside OpenAI, alongside continued human steering.",
+      "limit": "Compute availability also increased. Correlated productivity metrics do not isolate a causal AI effect or measure the correctness of new physical theories.",
+      "application": "Track valid experiments, failed checks, and reproducible results instead of counting only generated hypotheses or code.",
+      "tags": [
+        "AI research",
+        "OpenAI",
+        "research workflow"
+      ]
+    },
+    {
+      "id": "anthropic-quantum-circuits",
+      "title": "Discovering state-of-the-art quantum circuits with large language models",
+      "url": "https://arxiv.org/abs/2610.22367v1",
+      "publisher": "Gu, Kemeny, Yelin and Lukin; Anthropic / Harvard / QuEra",
+      "date": "2026-10-15; announced 2026-10-16",
+      "kind": "Research preprint",
+      "status": "Preprint; author results, not replicated here",
+      "readScope": "Abstract, introduction, evaluator formulation, and design-principles section of v1; appendices not fully audited.",
+      "claim": "Candidate circuits are checked by an independent program and ranked by resource cost. The paper reports both resource counts improving for seven tasks and a trade-off improvement for the eighth.",
+      "limit": "The evaluator exploits a restricted circuit class; this is not a universal efficient quantum simulator. Circuit resource reductions are not observed quantum hardware performance or evidence of antigravity.",
+      "application": "Separate candidate generation from deterministic constraint checking; publish both objective and correctness failures.",
+      "tags": [
+        "AI research",
+        "Anthropic",
+        "quantum",
+        "optimization"
+      ]
+    },
+    {
+      "id": "anthropic-science-workbench",
+      "title": "Claude Science, an AI workbench for scientists",
+      "url": "https://www.anthropic.com/news/claude-science-ai-workbench",
+      "publisher": "Anthropic",
+      "date": "2026-06-30",
+      "kind": "Product announcement",
+      "status": "Beta capabilities described by vendor",
+      "readScope": "Official product announcement; product not installed or benchmarked.",
+      "claim": "The workbench combines scientific tools, compute orchestration, and artifacts with histories intended to support audit and reproduction.",
+      "limit": "Vendor examples do not establish accuracy across disciplines; access to many tools does not resolve model error or supply missing experimental observations.",
+      "application": "Export a run record containing inputs, equations, software version, results, and limitations alongside every visualization.",
+      "tags": [
+        "AI research",
+        "Anthropic",
+        "software",
+        "provenance"
+      ]
+    },
+    {
+      "id": "anthropic-hardware-standard",
+      "title": "Previewing the Model Hardware Standard",
+      "url": "https://www.anthropic.com/news/model-hardware-standard-research-preview",
+      "publisher": "Anthropic",
+      "date": "2026-08-27",
+      "kind": "Research-preview announcement",
+      "status": "Partner preview; not a verified public SDK integration",
+      "readScope": "Overview, driver/command description, and reported limitations; no SDK executed.",
+      "claim": "MHS proposes a shared device interface with discoverable capabilities, metadata, and commands for scientific and manufacturing equipment.",
+      "limit": "The announcement describes an early partner preview ahead of open sourcing. Reported model errors show that an interface does not confer physical understanding or safe autonomous operation.",
+      "application": "Describe virtual instruments through explicit units, operating bounds, readouts, and a simulation-only mode; do not imply connection to real hardware.",
+      "tags": [
+        "AI research",
+        "Anthropic",
+        "instrumentation"
+      ]
+    },
+    {
+      "id": "aistats-physical-operators",
+      "title": "Learning Physical Operators using Neural Operators",
+      "url": "https://proceedings.mlr.press/v300/gopakumar26a.html",
+      "publisher": "Gopakumar et al.; PMLR / AISTATS 2026",
+      "date": "2026-05-02–05",
+      "kind": "Conference paper",
+      "status": "Published proceedings; selected sections audited",
+      "readScope": "Proceedings metadata plus PDF abstract, weaknesses, and Appendix D; experiments not reproduced.",
+      "claim": "The method separates physical operators and uses a neural ODE formulation for continuous-time prediction, evaluated on fluid equations.",
+      "limit": "The paper uses an additive spatial decomposition, not sequential fractional time steps. Its tested boundary conditions are periodic; choosing a useful decomposition still requires physical expertise.",
+      "application": "Keep source, propagation, boundary, and loss modules explicit; test each component and changes of scale separately.",
+      "tags": [
+        "conference",
+        "AISTATS 2026",
+        "surrogate models"
+      ]
+    },
+    {
+      "id": "icml-physics-anchored",
+      "title": "Physics-informed Neural Operator Learning for Nonlinear Grad-Shafranov Equation",
+      "url": "https://proceedings.mlr.press/v306/ding26w.html",
+      "publisher": "Ding et al.; PMLR / ICML 2026",
+      "date": "2026-07-06–11",
+      "kind": "Conference paper",
+      "status": "Published proceedings; selected sections audited",
+      "readScope": "Proceedings metadata plus PDF abstract, conclusion, operational-comparison section, and Appendix E; author code not executed.",
+      "claim": "The authors combine data anchors with equation residuals and study prediction under distribution shifts in fixed-boundary plasma equilibrium.",
+      "limit": "Reported error compares with an operational equilibrium solver; the study assumes static, fixed-boundary equilibria. Free-boundary coil coupling and closed-loop transient control remain outside this model.",
+      "application": "Validate boundary conditions and known reference solutions, then test withheld parameter regimes before trusting optimized designs.",
+      "tags": [
+        "conference",
+        "ICML 2026",
+        "surrogate models",
+        "validation"
+      ]
+    },
+    {
+      "id": "jwave",
+      "title": "j-Wave: Differentiable acoustic simulations in JAX",
+      "url": "https://github.com/ucl-bug/jwave",
+      "publisher": "UCL Biomedical Ultrasound Group / j-Wave contributors",
+      "date": "Accessed 2026-10-16",
+      "kind": "Open-source scientific software",
+      "status": "Repository documentation inspected; not executed",
+      "readScope": "README, pyproject (0.2.1, LGPL-3.0-only), and selected time_harmonic.py functions. HEAD d1918f4e6adbf3822108e0af8034063efed1d581; file header permits later LGPL versions.",
+      "claim": "A modular acoustic simulation framework uses JAX differentiation and compilation with CPU/GPU/TPU execution paths.",
+      "limit": "The inspected angular-spectrum function explicitly omits absorption. The Helmholtz wrapper returns a solution without forwarding the solver status; a later integration should check its residual independently.",
+      "application": "A future high-fidelity acoustic backend can use parameter gradients; compare them with finite differences and verify convergence before using them for design.",
+      "tags": [
+        "software",
+        "acoustics",
+        "inverse design"
+      ]
+    },
+    {
+      "id": "meep-adjoint",
+      "title": "Meep electromagnetic simulation and adjoint design",
+      "url": "https://meep.readthedocs.io/en/latest/Python_Tutorials/Adjoint_Solver/",
+      "publisher": "Meep / NanoComp contributors",
+      "date": "Accessed 2026-10-16",
+      "kind": "Open-source scientific software documentation",
+      "status": "Documentation inspected; not executed",
+      "readScope": "Adjoint overview, derivative convergence example, multilayer example, and repository license listing (GPL-2.0). Observed repository HEAD: e1ff04e62514c4860f917c52ca33977180dfdaee.",
+      "claim": "Meep models electromagnetic fields with FDTD and provides gradients for supported objectives; its tutorial explicitly compares adjoint and finite-difference derivatives.",
+      "limit": "Grid resolution, boundary treatment, material models, and objective definition affect the answer. A local field-intensity objective is not automatically transmitted power.",
+      "application": "Compare exact reduced models with a converged field solver and test several starting designs before making an optimization claim.",
+      "tags": [
+        "software",
+        "electromagnetism",
+        "inverse design"
+      ]
+    },
+    {
+      "id": "mujoco",
+      "title": "MuJoCo: Multi-Joint dynamics with Contact",
+      "url": "https://github.com/google-deepmind/mujoco",
+      "publisher": "Google DeepMind / MuJoCo contributors",
+      "date": "Accessed 2026-10-16",
+      "kind": "Open-source physics software",
+      "status": "Repository documentation inspected; not executed",
+      "readScope": "README capability and licensing sections; source Apache-2.0, documentation/media CC BY 4.0. Observed repository HEAD: 9f035384db1a0f023c68fb8388e736f8ff811f73.",
+      "claim": "MuJoCo supplies a physics engine for articulated bodies and contact, with applications including robotics and model-based control.",
+      "limit": "Rigid-body/contact simulations do not themselves solve acoustic scattering or Maxwell fields. Attractive animation is not a measurement of an unmodeled force.",
+      "application": "Use only for later mechanical mounts or moving components, coupled to an independently validated force model.",
+      "tags": [
+        "software",
+        "mechanics",
+        "digital twins"
+      ]
+    },
+    {
+      "id": "cirq",
+      "title": "Cirq quantum circuit framework",
+      "url": "https://github.com/quantumlib/Cirq",
+      "publisher": "Quantum AI / Cirq contributors",
+      "date": "Accessed 2026-10-16",
+      "kind": "Open-source scientific software",
+      "status": "Repository documentation inspected; not executed",
+      "readScope": "README capabilities and Apache-2.0 license listing. Observed repository HEAD: 501345094cb1c2a7eff4f7e83e0a3e303702a6bc.",
+      "claim": "Cirq supports circuit construction, transformations, noise models, and simulation, with interfaces to quantum devices.",
+      "limit": "Classical simulation cost can grow rapidly with qubit count. A simulated quantum circuit is a mathematical information-processing model, not evidence of macroscopic levitation.",
+      "application": "Keep any future quantum demo small and check unitarity, normalization, and measurement statistics against analytic cases.",
+      "tags": [
+        "software",
+        "quantum"
+      ]
+    },
+    {
+      "id": "genesis-anthropic",
+      "title": "Building on our commitment to American scientific discovery",
+      "url": "https://www.anthropic.com/news/genesis-mission-commitment",
+      "publisher": "Anthropic",
+      "date": "2026-10-08",
+      "kind": "Government-program partner announcement",
+      "status": "Commitment reported by participating company",
+      "readScope": "Official company announcement; funding disbursement and project outcomes not independently audited.",
+      "claim": "Anthropic describes a three-year commitment to provide AI access and support to projects in the US Genesis Mission.",
+      "limit": "A funding commitment or agency affiliation establishes program participation, not validation of a particular device, force, or energy claim.",
+      "application": "Separate program provenance and planned research from published methods and replicated physical observations.",
+      "tags": [
+        "government",
+        "AI research",
+        "Anthropic"
+      ]
+    },
+    {
+      "id": "newton-opticks",
+      "title": "Opticks, Book III: observations and Query 31",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/normalized/NATP00051",
+      "publisher": "Isaac Newton; scholarly transcription by the Newton Project",
+      "date": "1718",
+      "kind": "Historical primary text",
+      "status": "Selected passages read",
+      "readScope": "Opening diffraction observations and Query 31 closing analysis/synthesis discussion, printed pp. 380–382; normalized transcription, not every manuscript image.",
+      "claim": "Newton separates observations, inference about causes, and further consequences to be examined experimentally.",
+      "limit": "The Queries contain exploratory suggestions. They do not establish a modern quantum or frequency-healing mechanism.",
+      "application": "Keep measured input, fitted model, forward prediction, and independent test as separate stages.",
+      "tags": [
+        "Newton",
+        "Optics",
+        "Method"
+      ]
+    },
+    {
+      "id": "newton-vegetation",
+      "title": "Of Natures obvious laws & processes in vegetation",
+      "url": "https://newton.dlib.indiana.edu/text/ALCH00081/normalized",
+      "publisher": "Isaac Newton; Indiana University Chymistry of Isaac Newton",
+      "date": "Manuscript date not assigned here; digital edition 2006",
+      "kind": "Alchemy manuscript",
+      "status": "Selected passages read",
+      "readScope": "Catalogue metadata, opening propositions and similarities/dissimilarities, plus concluding distinction between mechanical rearrangement and vegetation.",
+      "claim": "Newton explored analogies between mineral and living processes, including a proposed latent spirit.",
+      "limit": "Historical vocabulary is not an operational definition of a field, energy source, or biological mechanism.",
+      "application": "Turn an analogy into a declared variable map, then test where that map fails.",
+      "tags": [
+        "Newton",
+        "Alchemy",
+        "Analogy"
+      ]
+    },
+    {
+      "id": "newton-emerald",
+      "title": "Hermes / Tabula Smaragdina, Keynes MS. 28",
+      "url": "https://newton.dlib.indiana.edu/text/ALCH00017/normalized",
+      "publisher": "Newton manuscript; Indiana University scholarly edition",
+      "date": "Manuscript date not assigned here; digital edition June 2010",
+      "kind": "Hermetic text in historical manuscript",
+      "status": "Selected passages read",
+      "readScope": "Metadata and English Emerald Tablet text on folios 2r–2v; the Latin commentary was not translated in full.",
+      "claim": "The manuscript preserves a Hermetic text about correspondences, transformation and unity.",
+      "limit": "Copying or translating a text is not proof of its physical claims, nor evidence of a modern levitation device.",
+      "application": "Use correspondence as a question about mathematical similarity, with an explicit failure case.",
+      "tags": [
+        "Newton",
+        "Hermetic",
+        "Occult history"
+      ]
+    },
+    {
+      "id": "tesla-wireless",
+      "title": "US645576A — System of transmission of electrical energy",
+      "url": "https://patents.google.com/patent/US645576A/en",
+      "publisher": "Nikola Tesla; US patent publication mirrored by Google Patents",
+      "date": "1900-03-20",
+      "kind": "Patent",
+      "status": "Selected description and claims read",
+      "readScope": "Publication metadata; source, transmitting/receiving transformers, atmospheric-conduction assumption, synchronism and loss passages; OCR text.",
+      "claim": "The proposal includes an electrical source, a propagation medium, tuned receiving circuits and a load.",
+      "limit": "This patent does not provide independently verified global power-transfer efficiency. A lumped coupled-resonator model is not a reconstruction of its atmospheric channel.",
+      "application": "Model source-to-load efficiency and detuning while retaining coupling and losses.",
+      "tags": [
+        "Tesla",
+        "Patent",
+        "Resonance",
+        "Energy"
+      ]
+    },
+    {
+      "id": "tesla-radiant",
+      "title": "US685957A — Apparatus for the utilization of radiant energy",
+      "url": "https://patents.google.com/patent/US685957A/en",
+      "publisher": "Nikola Tesla; US patent publication mirrored by Google Patents",
+      "date": "1901-11-05",
+      "kind": "Patent",
+      "status": "Selected description and claims read",
+      "readScope": "Publication metadata; external radiation, accumulation, discharge/load passages and claims 2–7 in OCR text.",
+      "claim": "A collector and capacitor receive energy from an external source, then discharge through a receiving circuit.",
+      "limit": "External radiation and any auxiliary circuit supply belong in the energy budget. Historical microscopic explanations are not adopted as modern physics.",
+      "application": "Compare accumulated input, stored energy, delivered work and losses over the same interval.",
+      "tags": [
+        "Tesla",
+        "Patent",
+        "Energy",
+        "Harvesting"
+      ]
+    },
+    {
+      "id": "tesla-colorado",
+      "title": "Colorado Springs Notes, June 21–22, 1899, page 43",
+      "url": "https://teslauniverse.com/nikola-tesla/books/nikola-tesla-colorado-springs-notes-1899-1900/43",
+      "publisher": "Tesla notebook; Tesla Universe transcription with separately marked editorial annotations",
+      "date": "1899-06-21/22",
+      "kind": "Notebook transcription",
+      "status": "Transcription read; original page not authenticated",
+      "readScope": "Page 43 text on assumptions, loss estimates and two-circuit tuning; editorial energy-equation commentary kept distinct.",
+      "claim": "Tesla recorded assumptions, material quantities, revised connections and sharp tuning of interacting oscillations.",
+      "limit": "This public transcription has weaker provenance than an inspected archival facsimile; it is not an independent replication.",
+      "application": "Record parameter assumptions and load conditions; show that higher voltage can accompany unchanged total energy.",
+      "tags": [
+        "Tesla",
+        "Notebook",
+        "Resonance"
+      ]
+    },
+    {
+      "id": "nasa-bpp",
+      "title": "Prospects for Breakthrough Propulsion From Physics — NASA/TM-2004-213082",
+      "url": "https://ntrs.nasa.gov/citations/20040070788",
+      "publisher": "Marc G. Millis, NASA Glenn Research Center",
+      "date": "2004-05",
+      "kind": "Government research assessment",
+      "status": "Selected report sections read",
+      "readScope": "Official PDF: abstract, methods, findings and selected task reports, including 3.1.4 and 3.2.3. Bibliography not independently re-audited.",
+      "claim": "The 1996–2002 program pursued incremental tests; the report separates non-viable, unresolved and follow-up opportunities.",
+      "limit": "Instrument interference, an unfinished NASA replication and a separately sponsored null replication are different outcomes. This historical report is not a current breakthrough announcement.",
+      "application": "Define success as a reliable discriminating result, including a bounded null result.",
+      "tags": [
+        "USA",
+        "NASA",
+        "Government",
+        "Propulsion"
+      ]
+    },
+    {
+      "id": "nasa-capacitor",
+      "title": "NASA Marshall Space Flight Center Barrel-Shaped Asymmetrical Capacitor",
+      "url": "https://ntrs.nasa.gov/citations/20040171466",
+      "publisher": "NASA/TM-2004-213283, Campbell and colleagues",
+      "date": "2004-06",
+      "kind": "Government experimental report",
+      "status": "Abstract and conclusions read",
+      "readScope": "Official record, PDF contents and section 9, printed p. 45. Full apparatus data and all 62 PDF pages were not audited in this pass.",
+      "claim": "The authors report thrust in air and no observed performance in hard vacuum; they interpret the observations using ordinary force and momentum mechanisms.",
+      "limit": "A null is limited by the tested apparatus and sensitivity. No onboard propellant does not mean no momentum exchange with ambient air.",
+      "application": "Expose environment and momentum boundaries; test a missing-medium control in simulation.",
+      "tags": [
+        "USA",
+        "NASA",
+        "Government",
+        "Controls"
+      ]
+    },
+    {
+      "id": "gateway-1983",
+      "title": "Analysis and Assessment of Gateway Process — CIA-RDP96-00788R001700210016-5",
+      "url": "https://archive.org/details/cia-readingroom-document-cia-rdp96-00788r001700210016-5",
+      "publisher": "Wayne M. McDonnell, US Army; released record mirrored by Internet Archive",
+      "date": "1983-06-09; release marking 2003-09-10",
+      "kind": "Released government memorandum",
+      "status": "Selected OCR passages read; primary host retrieval gap",
+      "readScope": "Mirror OCR: cover memorandum and sections 6–10. CIA record/PDF links redirected to the reading-room homepage on 2026-10-16; scan symbols not independently verified.",
+      "claim": "The author proposes connections among auditory beats, bodily resonance and consciousness using analogies and cited models.",
+      "limit": "The selected passages are an explanatory assessment, not controlled proof of levitation, telepathy, healing or an agency-endorsed physical mechanism.",
+      "application": "Separate an acoustic signal, a measured neural response and an extraordinary causal interpretation.",
+      "tags": [
+        "USA",
+        "Declassified record",
+        "Consciousness",
+        "Provenance"
+      ]
+    },
+    {
+      "id": "pais-inertia",
+      "title": "US10144532B2 — Craft using an inertial mass reduction device",
+      "url": "https://patents.google.com/patent/US10144532B2/en",
+      "publisher": "Salvatore Cezar Pais; original assignee US Department of the Navy",
+      "date": "2018-12-04",
+      "kind": "Government-assigned patent",
+      "status": "Selected description read",
+      "readScope": "Publication and original-assignee metadata, proposed cavity/vibration/vacuum mechanism in the description. No new legal-status determination.",
+      "claim": "The patent proposes that driven electromagnetic and mechanical behavior could produce an inertial-mass effect.",
+      "limit": "Publication and government assignment establish a proposal, not measured reduction of inertial mass. No independently verified performance dataset was identified in the inspected material.",
+      "application": "Treat any anomalous force as an additional hypothesis requiring a closed momentum budget and independent calibration.",
+      "tags": [
+        "USA",
+        "Patent",
+        "Government",
+        "Unverified mechanism"
+      ]
+    },
+    {
+      "id": "china-elf",
+      "title": "今日太空实验室｜在轨两年，无容器柜的工作小结",
+      "url": "https://csu.cas.cn/gb/zyxw/202305/t20230505_6748857.html",
+      "publisher": "Chinese Academy of Sciences space-utilization center; source credited to China Manned Space Engineering",
+      "date": "2023-04-28",
+      "kind": "Official program account",
+      "status": "Original Chinese article read",
+      "readScope": "Article and captions covering containerless materials experiments and alloy examples; English descriptions are paraphrases, not certified translations.",
+      "claim": "The account describes contactless sample processing in the space station’s microgravity environment, including electrostatic levitation experiments.",
+      "limit": "The rack does not generate orbital microgravity. Institutional reporting is not a raw-data audit or independent replication of every materials claim.",
+      "application": "Distinguish force-based sample positioning from the environmental gravity condition.",
+      "tags": [
+        "China",
+        "Government",
+        "Materials",
+        "Electrostatics"
+      ]
+    },
+    {
+      "id": "china-acoustic-sensor",
+      "title": "CN102384983A — 一种超声悬浮加速度计",
+      "url": "https://patents.google.com/patent/CN102384983A/zh",
+      "publisher": "Nanjing University of Aeronautics and Astronautics; Chinese patent application",
+      "date": "2012-03-21",
+      "kind": "University patent application",
+      "status": "Original Chinese description and claims read",
+      "readScope": "Metadata, mechanism description, force-balance equations (1), (7), (8), and claims 1–3; OCR algebra is not a verified facsimile transcription.",
+      "claim": "The proposal combines powered near-field acoustic support with capacitive displacement sensing; gravity remains in its balance equation.",
+      "limit": "A near-field squeeze-film proposal cannot be substituted directly into a far-field standing-wave particle model. Publication alone does not establish calibrated sensor performance.",
+      "application": "Separate equilibrium height, incremental stiffness, acceleration response and readout calibration.",
+      "tags": [
+        "China",
+        "Patent",
+        "Acoustics",
+        "Sensing"
+      ]
+    },
+    {
+      "id": "russia-hts-maglev",
+      "title": "РНФ 17-19-01527 — Magnetic levitation systems based on flexible HTS tapes",
+      "url": "https://www.rscf.ru/project/17-19-01527/",
+      "publisher": "Russian Science Foundation; MEPhI project led by Igor Rudnev",
+      "date": "2017 competition; historical project record",
+      "kind": "Government-funded project record",
+      "status": "Original Russian metadata and abstract read",
+      "readScope": "Project metadata, author-provided application abstract, proposed magnetic/electrical/thermal model. Listed publications were not independently audited.",
+      "claim": "The project proposes modeling and testing superconductor–permanent-magnet levitation systems, including thermal and magnetic losses.",
+      "limit": "A funded project and its author-written aims are not independently verified performance. Contactless support does not remove refrigeration or all dissipation.",
+      "application": "Retain thermal boundaries and dissipative channels when comparing nominally frictionless devices.",
+      "tags": [
+        "Russia",
+        "Government",
+        "Magnetism",
+        "Energy"
+      ]
+    },
+    {
+      "id": "russia-track-maglev",
+      "title": "RU2539304C2 — Устройство магнитной левитации транспортного средства",
+      "url": "https://patents.google.com/patent/RU2539304C2/ru",
+      "publisher": "Petersburg State Transport University; Russian patent publication",
+      "date": "2015-01-20",
+      "kind": "University patent",
+      "status": "Original Russian selected description read",
+      "readScope": "Metadata, comparison with onboard drive, proposed powered-track arrangement and operating description; English paraphrase, not certified translation.",
+      "claim": "The proposal relocates driven rotating magnets to the track and a conductive receiving element to the vehicle.",
+      "limit": "Avoiding onboard levitation power does not remove the track’s energy input. No independent efficiency dataset was audited.",
+      "application": "Expand the system boundary to include offboard supplies before calculating efficiency.",
+      "tags": [
+        "Russia",
+        "Patent",
+        "Magnetism",
+        "System boundary"
+      ]
+    },
+    {
+      "id": "physics-rlc-maxwell-2025",
+      "title": "A comparison of lumped parameter models and Maxwell’s equations for wireless power transfer",
+      "url": "https://link.springer.com/article/10.1007/s40324-025-00405-8",
+      "publisher": "SeMA Journal / Springer Nature",
+      "date": "2025-08-06",
+      "kind": "Research paper",
+      "status": "Published; online 2025, volume 83 (2026)",
+      "readScope": "Full-text abstract, §2, series-series efficiency Eq. 7, parameter estimation and §3 comparison setup inspected.",
+      "claim": "A two-coil circuit admits a real input-to-load efficiency calculation; fixed lumped parameters can misrepresent distributed eddy-current losses.",
+      "limit": "Our constant-parameter circuit is not a Maxwell field solve or measured end-to-end charger efficiency.",
+      "application": "Derives the RLC power-budget check and the explicit boundary for model upgrades.",
+      "tags": [
+        "rlc",
+        "energy",
+        "model limits"
+      ]
+    },
+    {
+      "id": "physics-marzo-2015",
+      "title": "Holographic acoustic elements for manipulation of levitated objects",
+      "url": "https://www.nature.com/articles/ncomms9661",
+      "publisher": "Nature Communications",
+      "date": "2015-10-27",
+      "kind": "Research paper",
+      "status": "Published experimental paper",
+      "readScope": "Results on focusing versus stable traps, holographic lens decomposition, and Methods field-superposition discussion inspected; equation images not re-transcribed.",
+      "claim": "Phase alignment creates a focus; experimentally useful traps add spatial structure and force-based objectives. The paper reports dense particles being repelled by a simple focus.",
+      "limit": "Our point sources omit piston directivity, scattering, radiation forces and object dynamics; a bright focus does not certify levitation.",
+      "application": "Supports conjugate-phase focusing and the focus-versus-trap distinction.",
+      "tags": [
+        "array",
+        "acoustics",
+        "levitation boundary"
+      ]
+    },
+    {
+      "id": "physics-smart-2025",
+      "title": "Semidefinite programming for manipulating acoustic traps in real time (SMART)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40394256/",
+      "publisher": "Scientific Reports; author abstract indexed by PubMed",
+      "date": "2025-05-20",
+      "kind": "Research paper",
+      "status": "Published; DOI 10.1038/s41598-025-93153-8",
+      "readScope": "Author abstract and publication metadata inspected. Full-text publisher access and institutional PDF retrieval were blocked in this pass.",
+      "claim": "The authors report semidefinite-programming control of a 256-element array for selected non-spherical Rayleigh objects and Mie spheres.",
+      "limit": "The browser model does not implement the semidefinite optimizer, force constraints or the experimental apparatus.",
+      "application": "A documented next step beyond maximizing pressure at one point.",
+      "tags": [
+        "array",
+        "optimization",
+        "recent methods"
+      ]
+    },
+    {
+      "id": "physics-sixdof-2026",
+      "title": "Six-degree-of-freedom acoustic manipulation of levitated macroscopic rigid bodies",
+      "url": "https://pubs.aip.org/aip/apl/article/129/11/114103/3404505/Six-degree-of-freedom-acoustic-manipulation-of",
+      "publisher": "Applied Physics Letters / AIP Publishing",
+      "date": "2026-09-15",
+      "kind": "Research paper",
+      "status": "Published; DOI 10.1063/5.0348018",
+      "readScope": "Official publisher search retrieval: article metadata, abstract and selected method/conclusion passages. Direct full-page opening blocked; no complete reproduction audit.",
+      "claim": "The authors report stationary-array manipulation using a Galerkin boundary-element force/torque model and semidefinite-programming field translation.",
+      "limit": "This is a specific reported apparatus, not antigravity or evidence that our monopole focus model controls rigid-body motion.",
+      "application": "Defines missing force, torque, object shape and pose-control layers for a future validated simulator.",
+      "tags": [
+        "array",
+        "2026",
+        "recent methods"
+      ]
+    },
+    {
+      "id": "physics-kwave-docs",
+      "title": "k-Wave numerical-model documentation",
+      "url": "https://www.k-wave.org/documentation.php",
+      "publisher": "k-Wave developers",
+      "date": "2026-10-16",
+      "kind": "Official software documentation",
+      "status": "Documentation checked on this date; not a new release date",
+      "readScope": "Overview of governing equations, numerical scheme, attenuation and absorbing boundaries inspected.",
+      "claim": "The toolbox models time-domain acoustic propagation with heterogeneous media, nonlinear effects and power-law absorption.",
+      "limit": "k-Wave is an external higher-fidelity option; it is not bundled, executed or validated against our browser model in this release.",
+      "application": "Upgrade route for boundaries and propagation effects excluded by free-space point-source summation.",
+      "tags": [
+        "array",
+        "software",
+        "model limits"
+      ]
+    },
+    {
+      "id": "physics-mit-absorber",
+      "title": "Lecture 26: Response of 2-DOF Systems by the Use of Transfer Functions",
+      "url": "https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/resources/lecture-26-response-of-2-dof-systems-by-the-use-of-transfer-functions/",
+      "publisher": "MIT OpenCourseWare, J. Kim Vandiver",
+      "date": "2011",
+      "kind": "University lecture and transcript",
+      "status": "Official teaching material",
+      "readScope": "Official transcript pp. 13–22 inspected: static limit, antiresonance, absorber motion, split modes and damping tradeoffs.",
+      "claim": "An attached oscillator can cancel primary motion at one drive frequency while introducing two modes and requiring finite absorber stroke.",
+      "limit": "A frequency-local notch is not broadband isolation. Our added relative-velocity dashpot is specified independently by force balance.",
+      "application": "Analytic low-frequency and antiresonance checks; compare full response curves instead of one favorable number.",
+      "tags": [
+        "absorber",
+        "mechanics",
+        "analytic control"
+      ]
+    },
+    {
+      "id": "physics-tmdi-2017",
+      "title": "The tuned mass-damper-inerter for harmonic vibrations suppression, attached mass reduction, and energy harvesting",
+      "url": "https://openaccess.city.ac.uk/id/eprint/17700/",
+      "publisher": "City Research Online / Smart Structures and Systems",
+      "date": "2017-06-30",
+      "kind": "Research paper",
+      "status": "Published; DOI 10.12989/sss.2017.19.6.665",
+      "readScope": "Author abstract and institutional publication record inspected; accepted manuscript not fully audited.",
+      "claim": "A grounded inerter modifies effective inertia in a driven damper system; the paper also analyzes a generator replacing dissipative damping.",
+      "limit": "An inerter is not implemented here. Harvested energy would come from external vibration and alter the mechanical load.",
+      "application": "A bounded future hypothesis: co-optimize vibration reduction and recovered energy with complete source accounting.",
+      "tags": [
+        "absorber",
+        "energy harvesting",
+        "extension"
+      ]
+    },
+    {
+      "id": "physics-fast-tmd",
+      "title": "Theory Manual for the Tuned Mass Damper Module in FAST v8",
+      "url": "https://arxiv.org/abs/2008.02650",
+      "publisher": "William La Cava and Matthew A. Lackner; arXiv author deposit",
+      "date": "2020-08-03",
+      "kind": "Technical manual",
+      "status": "2020 deposit of original 2015-03-31 manual",
+      "readScope": "Author abstract and version/date note inspected; the full nine-page equations were not audited in this pass.",
+      "claim": "The manual documents tuned-mass-damper functionality for structural control in the FAST 8 wind-turbine simulator.",
+      "limit": "A rotating turbine model has coordinate and loading effects beyond our fixed-base two-mass model.",
+      "application": "Application-scale comparison lead; not used as evidence of current FAST/OpenFAST capabilities.",
+      "tags": [
+        "absorber",
+        "software",
+        "model limits"
+      ]
+    }
+  ],
+  "devices": [
+    {
+      "id": "rlc",
+      "number": "01",
+      "title": "Resonant transfer",
+      "subtitle": "A source. Two coils. A load.",
+      "description": "Explore how coupling, detuning, and load resistance change externally powered transfer between two resonators. Account for every watt in this reduced circuit.",
+      "channel": "Electromagnetic · lumped circuit",
+      "evidence": "Established circuit model / proposed instrument",
+      "formula": "Zin = Z₁ + (ωM)²/Z₂ · I₂ = −iωM I₁/Z₂ · Pin = Pload + Ploss",
+      "assumptions": [
+        "Linear series-compensated coils; sinusoidal steady state; RMS voltage and current.",
+        "Mutual inductance M = k√(L₁L₂); fixed lumped elements and positive dissipation.",
+        "A real external AC source supplies energy. The power balance is at the model source terminals."
+      ],
+      "limitations": [
+        "No field solution, coil geometry, eddy currents, saturation, heating, or generator efficiency.",
+        "The circuit is inspired by resonant engineering, not a reconstruction of Tesla’s atmospheric-transmission patent.",
+        "Efficiency is conditional on this circuit boundary; it is not wall-plug efficiency."
+      ],
+      "sourceIds": [
+        "physics-rlc-maxwell-2025",
+        "tesla-wireless",
+        "tesla-radiant",
+        "tesla-colorado",
+        "meep-adjoint"
+      ],
+      "setup": [
+        "Concept: a driven resonator and separate receiver with a measured resistive load.",
+        "Record terminal voltage/current phase on both sides, winding resistance, load power, spacing, and temperature.",
+        "Begin with calibrated low-energy instrumentation; the browser supplies no hardware drive signal or construction rating.",
+        "Compare coupled and uncoupled states at the same drive, then sweep frequency and report all input and loss channels."
+      ],
+      "hypotheses": [
+        {
+          "id": "load-tracking",
+          "title": "Load-aware tuning",
+          "useCase": "A virtual receiver that retunes when its load changes.",
+          "prediction": "The frequency with maximum delivered load power need not coincide with the maximum efficiency or isolated coil resonance.",
+          "control": "Use the same RMS source voltage and coupling; compare a fixed-frequency baseline over the same frequency grid.",
+          "falsifier": "No improvement beyond measurement uncertainty on an independently sampled sweep, or omitted losses erase the gain."
+        },
+        {
+          "id": "coupling-map",
+          "title": "Coupling calibration",
+          "useCase": "Check a resonator model before planning a coil prototype.",
+          "prediction": "At fixed geometry, a fitted coupling should predict a second frequency sweep with a different load.",
+          "control": "Fit only one sweep, freeze the elements, keep spacing and alignment fixed, then evaluate a withheld load. Predicting a new spacing would require a separately calibrated coupling-versus-spacing model.",
+          "falsifier": "One coupling value cannot predict the withheld complex input impedance at the same geometry within instrument uncertainty."
+        },
+        {
+          "id": "energy-ledger",
+          "title": "Transient energy ledger",
+          "useCase": "Test a claimed excess-energy event without confusing storage with generation.",
+          "prediction": "A complete interval balance includes the change in stored electric and magnetic energy as well as dissipation.",
+          "control": "Discharge initial storage and measure a source-off baseline. The implemented bench is steady-state; this transient extension is proposed only.",
+          "falsifier": "An apparent excess disappears when storage, timing, bandwidth, or omitted input paths are included."
+        }
+      ],
+      "connections": [
+        {
+          "from": "Tesla’s tuned circuits",
+          "to": "Loaded complex impedance",
+          "type": "Mechanism inspiration",
+          "note": "The circuit model is modern and narrower than the historical patent."
+        },
+        {
+          "from": "Radiant-energy patent",
+          "to": "Explicit external input",
+          "type": "Source constraint",
+          "note": "A collector and capacitor do not imply source-free energy."
+        },
+        {
+          "from": "AI evaluator-guided search",
+          "to": "Power-balance rejection",
+          "type": "Method transfer",
+          "note": "A proposed optimum is rejected if it breaks the model’s conservation check."
+        }
+      ]
+    },
+    {
+      "id": "array",
+      "number": "02",
+      "title": "Acoustic focus",
+      "subtitle": "Phase turns an array into a lens.",
+      "description": "Steer an idealized sound field, change the aperture, and watch phase errors weaken coherence. Inspect the full cross-section rather than only the brightest point.",
+      "channel": "Acoustic · scalar point-source field",
+      "evidence": "Established interference model / proposed measurement rig",
+      "formula": "p̃(r) ∝ Σ exp[i(φⱼ − krⱼ)]/rⱼ · φⱼ = krⱼ,target",
+      "assumptions": [
+        "Identical isotropic point sources in a homogeneous, lossless medium; single-frequency linear superposition.",
+        "The plotted quantity is pressure squared normalized to the ideal target for the same geometry.",
+        "A deterministic seeded phase perturbation supports repeatable comparisons."
+      ],
+      "limitations": [
+        "No calibrated pascals, sound-pressure level, radiation force, particle scattering, or thermal dose.",
+        "A focus is not a stable levitation trap. Stability requires restoring forces and torques in all relevant directions.",
+        "No real transducer directivity, enclosure reflections, nonlinear acoustics, or absorption."
+      ],
+      "sourceIds": [
+        "physics-marzo-2015",
+        "physics-sixdof-2026",
+        "jwave",
+        "anthropic-quantum-circuits"
+      ],
+      "setup": [
+        "Concept: a planar array and scanning pressure probe, with externally powered electronics and an enclosure.",
+        "Measure amplitude and phase over a three-dimensional grid; this app displays a selected two-dimensional section.",
+        "Compare continuous-phase target settings with phase quantization and calibration error at fixed source strength.",
+        "A future trapping experiment would additionally need particle parameters, calibrated force, stability and thermal measurements; it is not implemented here."
+      ],
+      "hypotheses": [
+        {
+          "id": "phase-budget",
+          "title": "Spend calibration where it matters",
+          "useCase": "Choose phase-resolution and calibration tolerances for an array.",
+          "prediction": "Across repeated phase-error realizations, calibration is expected to preserve target coherence; an individual error can partly cancel a quantization error.",
+          "control": "Keep source amplitudes fixed; compare ideal continuous phases, quantization only, and error plus quantization over a declared seed set. The interactive display shows one seed.",
+          "falsifier": "A measured field disagrees with predicted coherence after uncertainty, directivity and reflections are accounted for."
+        },
+        {
+          "id": "robust-aperture",
+          "title": "Aperture versus ambiguity",
+          "useCase": "Trade compact hardware against off-target peaks.",
+          "prediction": "A larger aperture can sharpen the target region, while excessive pitch can introduce additional lobes.",
+          "control": "Compare full field maps at the same wavelength and target depth; do not renormalize each measured field to its own peak.",
+          "falsifier": "The apparent focus improvement is only a plotting normalization effect or produces a stronger undesired lobe."
+        },
+        {
+          "id": "trap-extension",
+          "title": "From a focus to a trap",
+          "useCase": "Plan a future force-aware inverse-design study.",
+          "prediction": "A force-aware optimizer may choose a different field from a pressure-maximizing optimizer.",
+          "control": "For a specified inert particle, compare all force and torque derivatives and perturbation recovery, not a bright focal image.",
+          "falsifier": "The candidate lacks a restoring response in any relevant direction. No force-aware solver is implemented in this release."
+        }
+      ],
+      "connections": [
+        {
+          "from": "Newton’s optical observations",
+          "to": "Vary geometry; predict a new field",
+          "type": "Experimental method",
+          "note": "An analogy in method, not a claim that light and sound have identical dynamics."
+        },
+        {
+          "from": "Hermetic correspondence",
+          "to": "An explicit similarity map",
+          "type": "Historical analogy",
+          "note": "A mathematical map must state which quantities and boundaries it preserves."
+        },
+        {
+          "from": "Quantum-circuit evaluator",
+          "to": "Independent acoustic objective",
+          "type": "Workflow inspiration",
+          "note": "Quantum algorithm results do not supply an acoustic levitation mechanism."
+        }
+      ]
+    },
+    {
+      "id": "absorber",
+      "number": "03",
+      "title": "Vibration absorber",
+      "subtitle": "A second oscillator changes the response.",
+      "description": "Tune an attached spring, mass, and damper to reduce motion of a driven structure. Compare the notch, split peaks, and energy dissipated by each damper.",
+      "channel": "Mechanical · two degrees of freedom",
+      "evidence": "Established linear dynamics / proposed adaptive instrument",
+      "formula": "[K − ω²M + iωC] X = F · Pin = c₁|ωX₁|² + c₂|ω(X₂−X₁)|²",
+      "assumptions": [
+        "Linear springs and viscous dampers; harmonic steady state; RMS force and displacement.",
+        "The primary structure has strictly positive damping. Positive masses and stiffnesses define a passive system.",
+        "The external force source supplies the average dissipated power."
+      ],
+      "limitations": [
+        "No nonlinear stops, actuator delay, friction, changing supports, structural modes, or transient settling.",
+        "A deep notch at one frequency can coexist with larger response elsewhere.",
+        "A model search is not a measured optimum, patent novelty opinion, or proof of broadband performance."
+      ],
+      "sourceIds": [
+        "physics-mit-absorber",
+        "physics-fast-tmd",
+        "newton-opticks",
+        "icml-physics-anchored",
+        "anthropic-quantum-circuits",
+        "mujoco"
+      ],
+      "setup": [
+        "Concept: an instrumented primary mass with an attached passive spring-mass-damper module.",
+        "Measure applied force and both mass motions; compare with the absorber detached at the same drive.",
+        "Sweep frequency in both directions and repeat at a second force level to test linearity.",
+        "Inspect internal stroke and dissipated power as well as primary motion; simulation parameters are not component ratings."
+      ],
+      "hypotheses": [
+        {
+          "id": "band-tuning",
+          "title": "Tune for a band, not one point",
+          "useCase": "A vibration absorber for a machine whose speed drifts.",
+          "prediction": "A bounded grid search over tuning and damping can lower the worst sampled response across a declared frequency band.",
+          "control": "Compare the same unmodified model and use interleaved frequencies excluded from optimization.",
+          "falsifier": "The gain fails on withheld points, a denser sweep, or measured mounting and parameter uncertainty."
+        },
+        {
+          "id": "stroke-cost",
+          "title": "Count the hidden stroke",
+          "useCase": "Screen a tuning that appears attractive at the primary mass.",
+          "prediction": "A small primary displacement can require appreciable absorber motion and damping power.",
+          "control": "Report both displacements and the external input power at the same frequency and force.",
+          "falsifier": "The design exceeds stroke or thermal constraints, even if the primary response is reduced."
+        },
+        {
+          "id": "drift-detection",
+          "title": "Use detuning as a diagnostic",
+          "useCase": "A hypothetical indicator of changing stiffness or mounting.",
+          "prediction": "A frozen fitted model predicts how a small parameter change moves the response peaks.",
+          "control": "Measure held-out frequencies and compare stiffness drift with damping or mass changes.",
+          "falsifier": "Several parameter combinations explain the observations equally well; the inference is then not identifiable."
+        }
+      ],
+      "connections": [
+        {
+          "from": "Newton’s analysis and synthesis",
+          "to": "Fit, freeze, predict, test",
+          "type": "Method transfer",
+          "note": "Fitting a response is separate from validating an unseen response."
+        },
+        {
+          "from": "Resonance engineering",
+          "to": "A complete passive energy budget",
+          "type": "Shared mathematics",
+          "note": "Related oscillator equations do not make electrical and mechanical devices interchangeable."
+        },
+        {
+          "from": "Modern operator research",
+          "to": "Withheld parameter regimes",
+          "type": "Validation constraint",
+          "note": "A small residual at training points does not guarantee the correct solution elsewhere."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "e1-skeptic-controls/1",
+  "frozen_round": 1,
+  "producer_outputs_read": false,
+  "domain": {
+    "epsilon": "2",
+    "p": "1/2",
+    "c_real": "0",
+    "c_imag": "3/10",
+    "d": "1/4"
+  },
+  "physicality": {
+    "initial_determinant": "4/25",
+    "dephased_determinant": "391/1600",
+    "initial_eigenvalues": [
+      "4/5",
+      "1/5"
+    ],
+    "dephased_eigenvalues": [
+      "23/40",
+      "17/40"
+    ]
+  },
+  "independent_construction": {
+    "unitary": "U = 1/sqrt(2) * [[-i,1],[i,1]]",
+    "matrix_identity": "For rho(a)=[[1/2,ia],[-ia,1/2]], U rho(a) U^dagger = diag(1/2+a,1/2-a).",
+    "optimality": "Every normalized candidate excited row has its rho quadratic form at least the smaller eigenvalue; the stated U attains it.",
+    "energy_before": "1",
+    "minimum_energy_initial": "2/5",
+    "minimum_energy_dephased": "17/20",
+    "work_initial": "3/5",
+    "work_dephased": "3/20",
+    "work_loss": "9/20",
+    "upper_bound": "9/20"
+  },
+  "withheld_wrong_model": {
+    "name": "retained_fraction_squared",
+    "mutation": "Replace the declared off-diagonal multiplier d by d^2 while retaining the declared input d and bound epsilon*abs(c)*(1-d).",
+    "expected_wrong_dephased_coherence": "3i/160",
+    "expected_wrong_dephased_work": "3/80",
+    "expected_wrong_loss": "9/16",
+    "expected_bound_excess": "9/80",
+    "expected_result": "Must fail the work-loss upper bound, on a valid mixed state and interior d; input rejection does not satisfy this control."
+  },
+  "phase_control": {
+    "mutation": "Replace abs(c) or the complex off-diagonal by abs(Re(c)).",
+    "expected_result": "Must fail the explicit unitary work comparison: the true initial work is 3/5, not zero."
+  },
+  "numeric_comparison": {
+    "normalization": "Divide energy quantities by positive epsilon before comparison.",
+    "expected_normalized_mutation_excess": "9/160",
+    "maximum_dimensionless_absolute_tolerance": 1e-12
+  },
+  "source_sha256": {
+    "research/dephasing-work-bound/contract.md": "ed0289dbad37b2059f781d500c7986ef8fde81e7e42f2ef96a08d51b33fb9ee2",
+    "research/dephasing-work-bound/panel/skeptic/stage0.md": "c676bd1a5049d434407c76c51a59b62cd0ba27be75ed95cc39f7bac9b3128263",
+    "src/quantum.mjs": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91"
+  }
+}

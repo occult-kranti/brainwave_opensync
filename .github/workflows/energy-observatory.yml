@@ -34,6 +34,7 @@ jobs:
           npm run check
           python3 -B research/math-crosswalk/analysis/check_release.py --output /tmp/math-crosswalk-check.json
           python3 -B research/roadmap-update-2026-10-22/check_plan.py
+          python3 -B research/dephasing-work-bound/check_release.py --output /tmp/e1-check.json
           python3 -B analysis/panel_crosscheck.py --output /tmp/energy-crosscheck.json
           python3 -B analysis/metrology_quantum_check.py --compare research/panel/metrology/round3-independent-quantum-fixtures.json --output /tmp/energy-quantum-check.json
           python3 -B analysis/metrology_reference.py --output /tmp/energy-metrology-check.json

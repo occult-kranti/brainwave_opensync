@@ -1,0 +1,45 @@
+{
+  "schema": "e1-final-admission/1",
+  "researchRounds": 3,
+  "specialistAgents": 6,
+  "dedicatedWorkers": 2,
+  "mathematicalClaim": "accepted within contract",
+  "novelty": "unverified; established theory applied in an elementary corollary",
+  "reports": {
+    "proof": {
+      "path": "panel/proof/round3.md",
+      "sha256": "00d3f2896bf057f94fdc76aa0c145f717020853b0ed1aee496da2babe45f1399"
+    },
+    "verification": {
+      "path": "panel/verification/round3.md",
+      "sha256": "817d38958e4ad4e54a7cb765f77348dd2a2bd75559619cb8ddf684a00b6b8227"
+    },
+    "sources": {
+      "path": "panel/sources/round3.md",
+      "sha256": "06d4078b70f736426ecc59aeed89e85b13c6783a0b20a75665dc84d00a398048"
+    },
+    "physics": {
+      "path": "panel/physics/round3.md",
+      "sha256": "5052d3cf69ce48dd137263be559a93df32103190f286a8bd3094bba8e13a05a7"
+    },
+    "workflow": {
+      "path": "panel/workflow/round3.md",
+      "sha256": "8838c8b22a412aaa7fd5ed7b95f015032035c72d29608bd5effab78f3385ba55"
+    },
+    "skeptic": {
+      "path": "panel/skeptic/round3.md",
+      "sha256": "d397b7a435e30ee664296c2842476bfed8ee387adc62f358b510ad25a0c1fe84"
+    }
+  },
+  "finalExecutionGates": [
+    "Rebuild accepted-data page and verify all research/report links",
+    "Replay six source-bound check groups",
+    "Verify pushed source revision, CI and live deployment separately"
+  ],
+  "notEstablished": [
+    "Hardware extraction or free-energy apparatus",
+    "Formal proof-assistant certification",
+    "Universal floating-point accuracy",
+    "Yang\u2013Mills continuum solution"
+  ]
+}

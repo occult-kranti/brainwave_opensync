@@ -1,0 +1,104 @@
+{
+  "schema": "e1-physics-ui-review/1",
+  "round": 3,
+  "method": "Node executes actual UI module against a minimal DOM/fetch fixture; not a full browser/layout test.",
+  "passed": false,
+  "count": 6,
+  "sourceHashes": {
+    "page": "3d91085f944f25f0c08d174ef0b980298f60e16684db5fdae77475fea4e5f779",
+    "ui": "d4b46a421bf6f97106f4fd3fbc80e155236deb14ca7770e36e2c67bc892ef7bb",
+    "module": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b",
+    "checker": "4264a9e0ad7c9b19a19794d86c484e6a2a2ebc53edc9434576eda24083bf3f59"
+  },
+  "checks": [
+    {
+      "id": "units-and-fraction-conversion",
+      "passed": true,
+      "input": {
+        "population": 0.3,
+        "fraction": 0.8,
+        "retention": 0.4,
+        "gap": 1e-24
+      },
+      "snapshot": {
+        "coherence": "Actual |c| = 0.36660605559646720 · maximum = 0.45825756949558399 · mean energy εp = 3.000000e-25 J (unchanged)",
+        "result": "<div class=\"e1-table-wrap\"><table class=\"e1-table e1-values\"><caption>Available work and loss</caption><thead><tr><th>Quantity</th><th>Divided by ε</th><th>Joules</th></tr></thead><tbody><tr><th>Work before</th><td data-result=\"workBeforeNormalized\">0.2176123<small>normal</small></td><td data-result=\"workBeforeJ\">2.176123e-25<small>normal</small></td></tr><tr><th>Work after</th><td data-result=\"workAfterNormalized\">0.048<small>normal</small></td><td data-result=\"workAfterJ\">4.800000e-26<small>normal</small></td></tr><tr><th>Work loss</th><td data-result=\"lossNormalized\">0.1696123<small>normal</small></td><td data-result=\"lossJ\">1.696123e-25<small>normal</small></td></tr><tr><th>Upper bound</th><td data-result=\"boundNormalized\">0.2199636<small>normal</small></td><td data-result=\"boundJ\">2.199636e-25<small>normal</small></td></tr></tbody></table></div><div class=\"e1-equality\"><p data-equality=\"lower\"><strong>Zero-loss equality:</strong> does not hold.</p><p data-equality=\"upper\"><strong>Upper-bound equality:</strong> does not hold.</p><p class=\"micro\">Flags follow exact input conditions |c| = 0, d = 1, and p = ½; they do not compare rounded outputs.</p></div>",
+        "error": "",
+        "errorVisible": false,
+        "exportDisabled": false
+      }
+    },
+    {
+      "id": "boundary-is-representable-magnitude",
+      "passed": true,
+      "input": {
+        "population": 0.3,
+        "fraction": 1,
+        "retention": 0.4,
+        "gap": 1e-24
+      },
+      "snapshot": {
+        "coherence": "Actual |c| = 0.45825756949558399 · maximum = 0.45825756949558399 · mean energy εp = 3.000000e-25 J (unchanged)",
+        "result": "<div class=\"e1-table-wrap\"><table class=\"e1-table e1-values\"><caption>Available work and loss</caption><thead><tr><th>Quantity</th><th>Divided by ε</th><th>Joules</th></tr></thead><tbody><tr><th>Work before</th><td data-result=\"workBeforeNormalized\">0.3<small>normal</small></td><td data-result=\"workBeforeJ\">3.000000e-25<small>normal</small></td></tr><tr><th>Work after</th><td data-result=\"workAfterNormalized\">0.0712932<small>normal</small></td><td data-result=\"workAfterJ\">7.129320e-26<small>normal</small></td></tr><tr><th>Work loss</th><td data-result=\"lossNormalized\">0.2287068<small>normal</small></td><td data-result=\"lossJ\">2.287068e-25<small>normal</small></td></tr><tr><th>Upper bound</th><td data-result=\"boundNormalized\">0.2749545<small>normal</small></td><td data-result=\"boundJ\">2.749545e-25<small>normal</small></td></tr></tbody></table></div><div class=\"e1-equality\"><p data-equality=\"lower\"><strong>Zero-loss equality:</strong> does not hold.</p><p data-equality=\"upper\"><strong>Upper-bound equality:</strong> does not hold.</p><p class=\"micro\">Flags follow exact input conditions |c| = 0, d = 1, and p = ½; they do not compare rounded outputs.</p></div>",
+        "error": "",
+        "errorVisible": false,
+        "exportDisabled": false
+      }
+    },
+    {
+      "id": "positive-fraction-conversion-underflow-rejects",
+      "passed": false,
+      "input": {
+        "population": 0.25,
+        "fraction": 5e-324,
+        "retention": 0.4,
+        "gap": 1e-24
+      },
+      "snapshot": {
+        "coherence": "Actual |c| = 0.0000000000000000 · maximum = 0.43301270189221930 · mean energy εp = 2.500000e-25 J (unchanged)",
+        "result": "<div class=\"e1-table-wrap\"><table class=\"e1-table e1-values\"><caption>Available work and loss</caption><thead><tr><th>Quantity</th><th>Divided by ε</th><th>Joules</th></tr></thead><tbody><tr><th>Work before</th><td data-result=\"workBeforeNormalized\">0<small>exact-zero</small></td><td data-result=\"workBeforeJ\">0<small>exact-zero</small></td></tr><tr><th>Work after</th><td data-result=\"workAfterNormalized\">0<small>exact-zero</small></td><td data-result=\"workAfterJ\">0<small>exact-zero</small></td></tr><tr><th>Work loss</th><td data-result=\"lossNormalized\">0<small>exact-zero</small></td><td data-result=\"lossJ\">0<small>exact-zero</small></td></tr><tr><th>Upper bound</th><td data-result=\"boundNormalized\">0<small>exact-zero</small></td><td data-result=\"boundJ\">0<small>exact-zero</small></td></tr></tbody></table></div><div class=\"e1-equality\"><p data-equality=\"lower\"><strong>Zero-loss equality:</strong> holds.</p><p data-equality=\"upper\"><strong>Upper-bound equality:</strong> holds.</p><p class=\"micro\">Flags follow exact input conditions |c| = 0, d = 1, and p = ½; they do not compare rounded outputs.</p></div>",
+        "error": "",
+        "errorVisible": false,
+        "exportDisabled": false
+      }
+    },
+    {
+      "id": "positive-stored-energy-underflow-visible",
+      "passed": false,
+      "input": {
+        "population": 0.25,
+        "fraction": 0,
+        "retention": 0.4,
+        "gap": 5e-324
+      },
+      "snapshot": {
+        "coherence": "Actual |c| = 0.0000000000000000 · maximum = 0.43301270189221930 · mean energy εp = 0 J (unchanged)",
+        "result": "<div class=\"e1-table-wrap\"><table class=\"e1-table e1-values\"><caption>Available work and loss</caption><thead><tr><th>Quantity</th><th>Divided by ε</th><th>Joules</th></tr></thead><tbody><tr><th>Work before</th><td data-result=\"workBeforeNormalized\">0<small>exact-zero</small></td><td data-result=\"workBeforeJ\">0<small>exact-zero</small></td></tr><tr><th>Work after</th><td data-result=\"workAfterNormalized\">0<small>exact-zero</small></td><td data-result=\"workAfterJ\">0<small>exact-zero</small></td></tr><tr><th>Work loss</th><td data-result=\"lossNormalized\">0<small>exact-zero</small></td><td data-result=\"lossJ\">0<small>exact-zero</small></td></tr><tr><th>Upper bound</th><td data-result=\"boundNormalized\">0<small>exact-zero</small></td><td data-result=\"boundJ\">0<small>exact-zero</small></td></tr></tbody></table></div><div class=\"e1-equality\"><p data-equality=\"lower\"><strong>Zero-loss equality:</strong> holds.</p><p data-equality=\"upper\"><strong>Upper-bound equality:</strong> holds.</p><p class=\"micro\">Flags follow exact input conditions |c| = 0, d = 1, and p = ½; they do not compare rounded outputs.</p></div>",
+        "error": "",
+        "errorVisible": false,
+        "exportDisabled": false
+      }
+    },
+    {
+      "id": "endpoint-fraction-still-valid",
+      "passed": true,
+      "input": {
+        "population": 1,
+        "fraction": 1,
+        "retention": 0,
+        "gap": 1e-24
+      },
+      "snapshot": {
+        "coherence": "Actual |c| = 0.0000000000000000 · maximum = 0.0000000000000000 · mean energy εp = 1.000000e-24 J (unchanged)",
+        "result": "<div class=\"e1-table-wrap\"><table class=\"e1-table e1-values\"><caption>Available work and loss</caption><thead><tr><th>Quantity</th><th>Divided by ε</th><th>Joules</th></tr></thead><tbody><tr><th>Work before</th><td data-result=\"workBeforeNormalized\">1<small>normal</small></td><td data-result=\"workBeforeJ\">1.000000e-24<small>normal</small></td></tr><tr><th>Work after</th><td data-result=\"workAfterNormalized\">1<small>normal</small></td><td data-result=\"workAfterJ\">1.000000e-24<small>normal</small></td></tr><tr><th>Work loss</th><td data-result=\"lossNormalized\">0<small>exact-zero</small></td><td data-result=\"lossJ\">0<small>exact-zero</small></td></tr><tr><th>Upper bound</th><td data-result=\"boundNormalized\">0<small>exact-zero</small></td><td data-result=\"boundJ\">0<small>exact-zero</small></td></tr></tbody></table></div><div class=\"e1-equality\"><p data-equality=\"lower\"><strong>Zero-loss equality:</strong> holds.</p><p data-equality=\"upper\"><strong>Upper-bound equality:</strong> holds.</p><p class=\"micro\">Flags follow exact input conditions |c| = 0, d = 1, and p = ½; they do not compare rounded outputs.</p></div>",
+        "error": "",
+        "errorVisible": false,
+        "exportDisabled": false
+      }
+    },
+    {
+      "id": "physical-wording",
+      "passed": true
+    }
+  ]
+}

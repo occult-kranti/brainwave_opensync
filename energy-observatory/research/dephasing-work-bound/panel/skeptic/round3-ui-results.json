@@ -1,0 +1,69 @@
+{
+  "schema": "e1-skeptic-ui-conversion/1",
+  "passed": true,
+  "sourceSha256": "697ada688c21d9fef058fb18beb41bb6927d27ff69bde2d5c9688e60f7ef50d2",
+  "sourceUnchangedDuringExecution": true,
+  "checks": [
+    {
+      "name": "positive product underflow",
+      "p": ".5",
+      "k": "5e-324",
+      "errorVisible": true,
+      "error": "The positive coherence fraction underflows when converted to |c|. Use a larger fraction; equality cannot be evaluated for the requested state.",
+      "resultCleared": true,
+      "exportDisabled": true,
+      "passed": true
+    },
+    {
+      "name": "positive text parse underflow",
+      "p": ".5",
+      "k": "1e-324",
+      "errorVisible": true,
+      "error": "A nonzero input is too small for binary64 and rounds to zero. Use a larger representable value or enter literal 0.",
+      "resultCleared": true,
+      "exportDisabled": true,
+      "passed": true
+    },
+    {
+      "name": "literal zero remains valid",
+      "p": ".5",
+      "k": "0",
+      "errorVisible": false,
+      "error": "A nonzero input is too small for binary64 and rounds to zero. Use a larger representable value or enter literal 0.",
+      "resultCleared": false,
+      "exportDisabled": false,
+      "passed": true
+    },
+    {
+      "name": "ground endpoint maximum is physically zero",
+      "p": "0",
+      "k": "5e-324",
+      "errorVisible": false,
+      "error": "A nonzero input is too small for binary64 and rounds to zero. Use a larger representable value or enter literal 0.",
+      "resultCleared": false,
+      "exportDisabled": false,
+      "passed": true
+    },
+    {
+      "name": "excited endpoint maximum is physically zero",
+      "p": "1",
+      "k": "5e-324",
+      "errorVisible": false,
+      "error": "A nonzero input is too small for binary64 and rounds to zero. Use a larger representable value or enter literal 0.",
+      "resultCleared": false,
+      "exportDisabled": false,
+      "passed": true
+    },
+    {
+      "name": "balanced ordinary coherent input",
+      "p": ".5",
+      "k": ".8",
+      "errorVisible": false,
+      "error": "A nonzero input is too small for binary64 and rounds to zero. Use a larger representable value or enter literal 0.",
+      "resultCleared": false,
+      "exportDisabled": false,
+      "passed": true
+    }
+  ],
+  "scope": "DOM harness independently exercises actual UI input handler. It does not certify browser input validity, layout, graph rendering or deployment; those remain browser gates."
+}

@@ -1,0 +1,174 @@
+{
+  "schema": "dephasing-work-claim-source-mapping/1",
+  "round": 1,
+  "date": "2026-10-22",
+  "contract": {
+    "path": "research/dephasing-work-bound/contract.md",
+    "sha256": "ed0289dbad37b2059f781d500c7986ef8fde81e7e42f2ef96a08d51b33fb9ee2"
+  },
+  "sourceLedger": {
+    "path": "research/dephasing-work-bound/panel/sources/sources.json",
+    "sha256": "89a039132249ac32467810f696897dfd1a285e42dc3495eef5b48ec755712658"
+  },
+  "workerArtifactsRead": false,
+  "recommendation": "Admit contract to Round 2; hold result acceptance pending local proof and independent implementation evidence.",
+  "claims": [
+    {
+      "id": "E1-functional",
+      "statement": "W(rho,H)=Tr(H rho)-min_U Tr(H U rho U\u2020); minimum from descending state eigenvalues paired with ascending energies.",
+      "classification": "known theorem applied",
+      "sources": [
+        {
+          "id": "abn-2004",
+          "sections": "pp.1\u20132; Eqs.(2),(5)\u2013(9)"
+        }
+      ],
+      "localEvidenceRequired": [
+        "proof.md: operational definition, spectrum, passive ordering and attaining unitary"
+      ],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "Arbitrary ideal controls; equal initial/final Hamiltonian; no full apparatus accounting."
+    },
+    {
+      "id": "E1-qubit-formula",
+      "statement": "W(d)=epsilon/2*(2*p-1+sqrt((1-2*p)^2+4*d^2*abs(c)^2))",
+      "classification": "elementary specialization of known theorem",
+      "sources": [
+        {
+          "id": "abn-2004",
+          "sections": "Eqs.(5)\u2013(9)"
+        },
+        {
+          "id": "francica-2020",
+          "sections": "Section V.A, Eq.(12), coherent component only"
+        }
+      ],
+      "localEvidenceRequired": [
+        "proof.md: explicit qubit eigenvalues and work derivation"
+      ],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "The source Eq.(12) is the coherent component, not verbatim total W(d); local algebra connects them."
+    },
+    {
+      "id": "E1-full-dephasing",
+      "statement": "W(1)-W(0) is coherent ergotropy for the declared Hamiltonian energy basis.",
+      "classification": "known identification",
+      "sources": [
+        {
+          "id": "francica-2020",
+          "sections": "Section III Eqs.(4),(5); Section V.A Eq.(12)"
+        }
+      ],
+      "localEvidenceRequired": [
+        "proof.md: d=0 specialization"
+      ],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "Basis and populations must remain fixed."
+    },
+    {
+      "id": "E1-partial-bound",
+      "statement": "0 <= W(1)-W(d) <= epsilon*abs(c)*(1-d) for all contract parameters.",
+      "classification": "local corollary; novelty unverified",
+      "sources": [
+        {
+          "id": "abn-2004",
+          "sections": "underlying work functional only"
+        },
+        {
+          "id": "francica-2020",
+          "sections": "qubit coherent-ergotropy formula only; no verbatim partial-d bound identified"
+        }
+      ],
+      "localEvidenceRequired": [
+        "proof.md: all-parameter algebraic proof"
+      ],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "Cannot be sourced to family 276, a numerical grid, or a paper title."
+    },
+    {
+      "id": "E1-equality-sharpness",
+      "statement": "Necessary and sufficient conditions for equality on both sides, including all endpoints; optimality of coefficient 1.",
+      "classification": "local proof obligation",
+      "sources": [],
+      "localEvidenceRequired": [
+        "proof.md: complete equality proof and sharpness example"
+      ],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "Source audit alone does not verify the cases; avoid division by zero at vanishing Bloch length."
+    },
+    {
+      "id": "E1-implementation",
+      "statement": "The implementation agrees with matrix/unitary calculations on its declared tested domain.",
+      "classification": "project numerical assurance",
+      "sources": [],
+      "localEvidenceRequired": [
+        "src/dephasing-bound.mjs",
+        "panel/verification/: independent executable checks and retained results"
+      ],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "Finite tests are not the all-parameter proof; numerical residuals must declare normalized versus Joule units."
+    },
+    {
+      "id": "E1-energy-scope",
+      "statement": "Energy-basis dephasing preserves Tr(H rho); lost ergotropy is lost work accessibility rather than lost mean energy.",
+      "classification": "direct model identity",
+      "sources": [
+        {
+          "id": "francica-2020",
+          "sections": "Section III, Eq.(4) discussion: same energy populations/average energy"
+        }
+      ],
+      "localEvidenceRequired": [
+        "proof.md: fixed population energy identity"
+      ],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "Does not assign the implementation cost of dephasing or extraction."
+    },
+    {
+      "id": "E1-family276",
+      "statement": "Family 276 generalized-damping channel overlap does not transfer its capacity theorem to the E1 work functional.",
+      "classification": "explicit non-transfer",
+      "sources": [
+        {
+          "id": "openai-276-scope",
+          "sections": "complete Scope section"
+        },
+        {
+          "id": "openai-276-paper-inherited",
+          "sections": "inherited channel mapping; not freshly re-read"
+        }
+      ],
+      "localEvidenceRequired": [
+        "publication: capacity/work distinction"
+      ],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "No Lean run, proof-kernel verification or arbitrary-partner additivity claim by this lane."
+    },
+    {
+      "id": "E1-experiment-context",
+      "statement": "Li et al. 2025 supplies relevant superconducting-qubit experimental context.",
+      "classification": "context only",
+      "sources": [
+        {
+          "id": "li-2025",
+          "sections": "abstract, introduction and Fig.1 caption"
+        }
+      ],
+      "localEvidenceRequired": [],
+      "status": "source-classification-only; local admission pending",
+      "scopeLimit": "No project hardware validation, raw-data audit or whole-apparatus efficiency inference."
+    }
+  ],
+  "sourceLicenseHandling": {
+    "abn-2004": "Specific reuse license not independently checked; retain links and brief original paraphrase only.",
+    "francica-2020": "Specific reuse license not independently checked; retain links and brief original paraphrase only.",
+    "li-2025": "Retrieved arXiv HTML displays CC BY 4.0; only link and brief paraphrase used.",
+    "openai-276-scope": "Local source scope read; no source text republished in this mapping.",
+    "openai-276-paper-inherited": "No fresh source retrieval or text republication."
+  },
+  "unresolved": [
+    "Local all-parameter proof and equality necessity not source-audited in Round 1.",
+    "Specific partial-d inequality not identified verbatim in bounded source reading; novelty unverified."
+  ],
+  "stop": "Round 1 complete; no production/verification output inspected."
+}

@@ -1,0 +1,78 @@
+{
+  "counts": {
+    "epsilon_rescalings": 15330,
+    "extraction_unitaries": 5110,
+    "sampled_unitaries": 16800,
+    "states": 2555
+  },
+  "fixed_grid_states": 1350,
+  "high_precision": [
+    {
+      "c": "1e-150",
+      "d": "0.2",
+      "decimal_matrix_loss": "1.920000000000000015292391414543E-300",
+      "decimal_upper_bound": "7.999999999999999939340563394868E-151",
+      "float64_matrix_loss": 0.0,
+      "p": "0.25",
+      "uses_exact_binary64_input_values": true
+    },
+    {
+      "c": "1e-150",
+      "d": "0.2",
+      "decimal_matrix_loss": "7.999999999999999939340563394868E-151",
+      "decimal_upper_bound": "7.999999999999999939340563394868E-151",
+      "float64_matrix_loss": 0.0,
+      "p": "0.5",
+      "uses_exact_binary64_input_values": true
+    },
+    {
+      "c": "0.3",
+      "d": "0.9999999999999999",
+      "decimal_matrix_loss": "2.558690857848019810050167892830E-17",
+      "decimal_upper_bound": "3.330669073875469498011378563489E-17",
+      "float64_matrix_loss": 2.7755575615628914e-17,
+      "p": "0.25",
+      "uses_exact_binary64_input_values": true
+    }
+  ],
+  "limitations": [
+    "Numerical samples do not prove the all-parameter theorem.",
+    "Float64 zeros cannot identify exact equality.",
+    "High-precision cases reconstruct binary64 input values exactly; unrepresentable distinctions must be specified before float conversion."
+  ],
+  "maximum_normalized_residuals": {
+    "characteristic_polynomial_work": 2.914335439641036e-16,
+    "energy_imaginary": 3.2627080211364484e-17,
+    "hermiticity": 0.0,
+    "input_positivity_violation": 2.7755575615628914e-17,
+    "loss_nonnegative": 2.220446049250313e-16,
+    "minimum_energy": 3.3306690738754696e-16,
+    "normalized_joule_accounting": 2.221443677790715e-16,
+    "passive_diagonalization": 7.895131587052029e-16,
+    "passive_order": 5.551115123125783e-17,
+    "positivity_violation": 8.326672684688674e-17,
+    "predicted_upper_equality": 2.1536671870303614e-16,
+    "random_unitary_beats_passive": 0.0,
+    "sampled_unitarity": 1.6919318537869784e-15,
+    "spectrum_preservation": 7.771561172376096e-16,
+    "trace": 0.0,
+    "trivial_lower_equality": 0.0,
+    "unitarity": 1.1778158057622852e-15,
+    "upper_bound_violation": 1.3877787807814457e-16,
+    "work_nonnegative": 5.551115123125783e-17
+  },
+  "normalized_absolute_tolerance": 5e-13,
+  "numpy_version": "2.3.5",
+  "seed": 2718281828,
+  "source_sha256": {
+    "research/dephasing-work-bound/contract.md": "ed0289dbad37b2059f781d500c7986ef8fde81e7e42f2ef96a08d51b33fb9ee2",
+    "research/dephasing-work-bound/panel/verification/check_independent.py": "27b8d92a37652d7b6756a051d35a6d6d13d02b7c64462ada5a2115881523339d",
+    "research/dephasing-work-bound/panel/verification/predeclared.md": "55552a1767ac10afb3b967adb5bd94510d81ed46e5486ab70a3a87d92e0a1808"
+  },
+  "status": "PASS",
+  "wrong_model_controls": {
+    "balanced_symmetry_preserved": true,
+    "false_exact_upper_bound_rejected_by": 0.10658671884831603,
+    "swap_only_control_rejected_by": 0.14051248379533268
+  }
+}

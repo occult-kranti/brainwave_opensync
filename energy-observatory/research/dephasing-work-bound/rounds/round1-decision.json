@@ -1,0 +1,49 @@
+{
+  "schema": "e1-round-admission/1",
+  "completedRound": 1,
+  "nextRound": 2,
+  "decision": "Admit analytic target to adversarial implementation and presentation review; no final release acceptance yet.",
+  "reports": {
+    "proof": {
+      "path": "panel/proof/round1.md",
+      "sha256": "96fd05e923d4244ac475cf938c63bb75780b5c2792753c2fa80960ea3fdb77a7"
+    },
+    "verification": {
+      "path": "panel/verification/round1.md",
+      "sha256": "9df5fc6eb4f7283465e6709b71cbbe94665aa21be2efbfd683a9ec321d4256ab"
+    },
+    "sources": {
+      "path": "panel/sources/round1.md",
+      "sha256": "3b32f091751bc14cac04368392f228e6a0f33b44ccaf70b9975be50f53c918d6"
+    },
+    "physics": {
+      "path": "panel/physics/round1.md",
+      "sha256": "9ddaca9a8ceb79b5820d6bf62c1bcb2aacd96d19c45e7f686cebd8962b2540ab"
+    },
+    "workflow": {
+      "path": "panel/workflow/round1.md",
+      "sha256": "7aa9f12a288e1821464226cd0c18a8d22b216f3604bdfffa342a8ccf8589ba22"
+    },
+    "skeptic": {
+      "path": "panel/skeptic/round1.md",
+      "sha256": "cb343258cc57a6cf5be101863e14db3a5c074d44c08fc5f2d65919c2eaa9d133"
+    }
+  },
+  "actualFindings": [
+    "Both independent workers derived the same bound and necessary/sufficient equality conditions from eigenvalue minimization.",
+    "Verifier float64 subtraction lost positive tiny losses; 400-digit reconstruction recovered them. Producer stable formula needs independent comparison.",
+    "Exact binary64 PSD validation can reject decimal pure-boundary pairs and the verifier sampled boundaries allowed small rounding deviations; distinguish these contracts in cross-checks.",
+    "Skeptic froze a valid complex-state d-to-d-squared wrong-model control.",
+    "Workflow found two incorrect skill navigation paths; corrected before round 2.",
+    "Source reviewer identified existing qubit coherent-ergotropy formula and capacity-versus-work non-transfer."
+  ],
+  "round2Tasks": {
+    "proof": "Review independent reconstruction, document source attribution and any exact-input/numerical limitation; answer objections without altering frozen R1 evidence.",
+    "verification": "Compare actual producer module with independent complex-unitary and high-precision oracles on exactly admissible inputs; test validity/representability and report precision limits.",
+    "sources": "Audit proof attribution and equality scope against primary sections; approve exact wording only.",
+    "physics": "Check proof and executable energy/control/phase examples; audit calculator specification.",
+    "workflow": "Implement execution page/calculator/typed graph using root summary.json/network.json and actual API; keep pending status until acceptance; verify navigation fix.",
+    "skeptic": "Execute withheld complex d\u00b2 mutation and audit proof equality/degenerate cases; challenge clipping/positivity as evidence laundering."
+  },
+  "stop": "Freeze round2 reports; advisor selects round3 only after all six are read."
+}

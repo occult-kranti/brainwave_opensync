@@ -1,0 +1,25 @@
+{
+  "schema": "e1-local-publication-gates/1",
+  "stage": "local verification before source publication",
+  "releaseReplay": "PASS; execution.json contains the actual six-check replay",
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "page/calculator/network render without document overflow at 1440",
+      "page/calculator/network render without document overflow at 390",
+      "positive fraction/text underflow rejected; physical endpoints retained; stored-energy underflow displayed and exported",
+      "passive, saturation, endpoint, underflow, invalid input and JSON export",
+      "eight visible relationship labels and keyboard artifact navigation",
+      "Quantum and Next tasks return links"
+    ],
+    "errors": [],
+    "pendingLinks": [],
+    "prefix": "/brainwave_opensync/devices/energy/",
+    "viewports": [
+      1440,
+      390
+    ]
+  },
+  "siteBuild": "10 pages and three preserved versions; all seven existing model tests passed",
+  "remotePublication": "Verified separately using GitHub source, workflow and live-content receipts; this file does not claim a live deployment."
+}

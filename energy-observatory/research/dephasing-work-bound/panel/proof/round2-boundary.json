@@ -1,0 +1,10 @@
+{
+  "case": {
+    "population": 0.2,
+    "coherenceMagnitude": 0.4
+  },
+  "exact_binary64_determinant": "-3602879701896397/324518553658426726783156020576256",
+  "approximate_determinant": -1.1102230246251566e-17,
+  "real_decimal_determinant": "0",
+  "conclusion": "Real decimal boundary is physical; its encoded binary64 pair is outside the exact admitted state set."
+}

@@ -1,0 +1,285 @@
+{
+  "schema": "e1-physics-controls/1",
+  "round": 2,
+  "status": "passed",
+  "count": 14,
+  "sourceHashes": {
+    "module": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b",
+    "proof": "f03a826adc11b734c5a7955dc11c4ebc6967529d96fcd3f3cc8f97ef85de0ccb",
+    "contract": "ed0289dbad37b2059f781d500c7986ef8fde81e7e42f2ef96a08d51b33fb9ee2",
+    "checker": "30f436dea7f39e454aea7940cd95fdf1348bc05adf747126f86e871f1ed6008c"
+  },
+  "scope": "Interpretation controls with explicit complex 2x2 rotation; finite checks, not a continuum proof, hardware test, or independent precision certificate.",
+  "tests": [
+    {
+      "id": "passive-is-not-all-stored-energy",
+      "passed": true,
+      "storedEnergyOverGap": 0.25,
+      "actual": {
+        "population": 0.25,
+        "coherenceMagnitude": 0,
+        "dephasing": 0.3,
+        "gapJ": 1,
+        "radiusBefore": 0.5,
+        "radiusAfter": 0.5,
+        "workBeforeNormalized": 0,
+        "workAfterNormalized": 0,
+        "lossNormalized": 0,
+        "boundNormalized": 0,
+        "workBeforeJ": 0,
+        "workAfterJ": 0,
+        "lossJ": 0,
+        "boundJ": 0,
+        "lossRatio": 0,
+        "lowerEquality": true,
+        "upperEquality": true,
+        "representability": {
+          "workBeforeNormalized": "exact-zero",
+          "workAfterNormalized": "exact-zero",
+          "lossNormalized": "exact-zero",
+          "boundNormalized": "exact-zero",
+          "workBeforeJ": "exact-zero",
+          "workAfterJ": "exact-zero",
+          "lossJ": "exact-zero",
+          "boundJ": "exact-zero"
+        }
+      },
+      "wrongModelWorkOverGap": 0.25
+    },
+    {
+      "id": "dephasing-loss-is-not-heat",
+      "passed": true,
+      "storedEnergyBeforeOverGap": 0.5,
+      "storedEnergyAfterOverGap": 0.5,
+      "stateEnergyChangeOverGap": 0,
+      "lossOverGap": 0.5
+    },
+    {
+      "id": "complex-phase-0",
+      "passed": true,
+      "phaseRadians": 0,
+      "energyOverGap": 0.25,
+      "passiveEnergyOverGap": 0.22049150281252625,
+      "workOverGap": 0.029508497187473753,
+      "residualOverGap": 4.163336342344337e-17,
+      "fixedZeroPhasePulseEnergyOverGap": 0.22049150281252625
+    },
+    {
+      "id": "complex-phase-1.5707963267948966",
+      "passed": true,
+      "phaseRadians": 1.5707963267948966,
+      "energyOverGap": 0.25,
+      "passiveEnergyOverGap": 0.22049150281252625,
+      "workOverGap": 0.029508497187473753,
+      "residualOverGap": 4.163336342344337e-17,
+      "fixedZeroPhasePulseEnergyOverGap": 0.276393202250021
+    },
+    {
+      "id": "complex-phase-3.141592653589793",
+      "passed": true,
+      "phaseRadians": 3.141592653589793,
+      "energyOverGap": 0.25,
+      "passiveEnergyOverGap": 0.22049150281252625,
+      "workOverGap": 0.029508497187473753,
+      "residualOverGap": 4.163336342344337e-17,
+      "fixedZeroPhasePulseEnergyOverGap": 0.3322949016875158
+    },
+    {
+      "id": "complex-phase--2.0943951023931953",
+      "passed": true,
+      "phaseRadians": -2.0943951023931953,
+      "energyOverGap": 0.25,
+      "passiveEnergyOverGap": 0.22049150281252625,
+      "workOverGap": 0.029508497187473753,
+      "residualOverGap": 4.163336342344337e-17,
+      "fixedZeroPhasePulseEnergyOverGap": 0.3043440519687684
+    },
+    {
+      "id": "phase-access-matters-for-fixed-pulse",
+      "passed": true,
+      "correctPhaseEnergyOverGap": 0.22049150281252625,
+      "wrongPhaseEnergyOverGap": 0.276393202250021
+    },
+    {
+      "id": "endpoint-0-0-0",
+      "passed": true,
+      "actual": {
+        "population": 0,
+        "coherenceMagnitude": 0,
+        "dephasing": 0,
+        "gapJ": 1,
+        "radiusBefore": 1,
+        "radiusAfter": 1,
+        "workBeforeNormalized": 0,
+        "workAfterNormalized": 0,
+        "lossNormalized": 0,
+        "boundNormalized": 0,
+        "workBeforeJ": 0,
+        "workAfterJ": 0,
+        "lossJ": 0,
+        "boundJ": 0,
+        "lossRatio": 0,
+        "lowerEquality": true,
+        "upperEquality": true,
+        "representability": {
+          "workBeforeNormalized": "exact-zero",
+          "workAfterNormalized": "exact-zero",
+          "lossNormalized": "exact-zero",
+          "boundNormalized": "exact-zero",
+          "workBeforeJ": "exact-zero",
+          "workAfterJ": "exact-zero",
+          "lossJ": "exact-zero",
+          "boundJ": "exact-zero"
+        }
+      }
+    },
+    {
+      "id": "endpoint-1-0-0",
+      "passed": true,
+      "actual": {
+        "population": 1,
+        "coherenceMagnitude": 0,
+        "dephasing": 0,
+        "gapJ": 1,
+        "radiusBefore": 1,
+        "radiusAfter": 1,
+        "workBeforeNormalized": 1,
+        "workAfterNormalized": 1,
+        "lossNormalized": 0,
+        "boundNormalized": 0,
+        "workBeforeJ": 1,
+        "workAfterJ": 1,
+        "lossJ": 0,
+        "boundJ": 0,
+        "lossRatio": 0,
+        "lowerEquality": true,
+        "upperEquality": true,
+        "representability": {
+          "workBeforeNormalized": "normal",
+          "workAfterNormalized": "normal",
+          "lossNormalized": "exact-zero",
+          "boundNormalized": "exact-zero",
+          "workBeforeJ": "normal",
+          "workAfterJ": "normal",
+          "lossJ": "exact-zero",
+          "boundJ": "exact-zero"
+        }
+      }
+    },
+    {
+      "id": "endpoint-0.5-0-0",
+      "passed": true,
+      "actual": {
+        "population": 0.5,
+        "coherenceMagnitude": 0,
+        "dephasing": 0,
+        "gapJ": 1,
+        "radiusBefore": 0,
+        "radiusAfter": 0,
+        "workBeforeNormalized": 0,
+        "workAfterNormalized": 0,
+        "lossNormalized": 0,
+        "boundNormalized": 0,
+        "workBeforeJ": 0,
+        "workAfterJ": 0,
+        "lossJ": 0,
+        "boundJ": 0,
+        "lossRatio": 0,
+        "lowerEquality": true,
+        "upperEquality": true,
+        "representability": {
+          "workBeforeNormalized": "exact-zero",
+          "workAfterNormalized": "exact-zero",
+          "lossNormalized": "exact-zero",
+          "boundNormalized": "exact-zero",
+          "workBeforeJ": "exact-zero",
+          "workAfterJ": "exact-zero",
+          "lossJ": "exact-zero",
+          "boundJ": "exact-zero"
+        }
+      }
+    },
+    {
+      "id": "endpoint-0.25-0.25-1",
+      "passed": true,
+      "actual": {
+        "population": 0.25,
+        "coherenceMagnitude": 0.25,
+        "dephasing": 1,
+        "gapJ": 1,
+        "radiusBefore": 0.7071067811865476,
+        "radiusAfter": 0.7071067811865476,
+        "workBeforeNormalized": 0.10355339059327376,
+        "workAfterNormalized": 0.10355339059327376,
+        "lossNormalized": 0,
+        "boundNormalized": 0,
+        "workBeforeJ": 0.10355339059327376,
+        "workAfterJ": 0.10355339059327376,
+        "lossJ": 0,
+        "boundJ": 0,
+        "lossRatio": 0,
+        "lowerEquality": true,
+        "upperEquality": true,
+        "representability": {
+          "workBeforeNormalized": "normal",
+          "workAfterNormalized": "normal",
+          "lossNormalized": "exact-zero",
+          "boundNormalized": "exact-zero",
+          "workBeforeJ": "normal",
+          "workAfterJ": "normal",
+          "lossJ": "exact-zero",
+          "boundJ": "exact-zero"
+        }
+      }
+    },
+    {
+      "id": "endpoint-0.5-0.5-0",
+      "passed": true,
+      "actual": {
+        "population": 0.5,
+        "coherenceMagnitude": 0.5,
+        "dephasing": 0,
+        "gapJ": 1,
+        "radiusBefore": 1,
+        "radiusAfter": 0,
+        "workBeforeNormalized": 0.5,
+        "workAfterNormalized": 0,
+        "lossNormalized": 0.5,
+        "boundNormalized": 0.5,
+        "workBeforeJ": 0.5,
+        "workAfterJ": 0,
+        "lossJ": 0.5,
+        "boundJ": 0.5,
+        "lossRatio": 1,
+        "lowerEquality": false,
+        "upperEquality": true,
+        "representability": {
+          "workBeforeNormalized": "normal",
+          "workAfterNormalized": "exact-zero",
+          "lossNormalized": "normal",
+          "boundNormalized": "normal",
+          "workBeforeJ": "normal",
+          "workAfterJ": "exact-zero",
+          "lossJ": "normal",
+          "boundJ": "normal"
+        }
+      }
+    },
+    {
+      "id": "historical-kappa-one-is-not-current-c",
+      "passed": true,
+      "kappa": 1,
+      "population": 0.25,
+      "representableMagnitudeAtKappaOne": 0.4330127018922193,
+      "explanation": "κ=1 cannot be passed as |c|=1; actual pure boundary is sqrt(p(1-p))."
+    },
+    {
+      "id": "representable-boundary-is-explicit",
+      "passed": true,
+      "population": 0.3,
+      "boundary": 0.458257569495584,
+      "nextUp": 0.45825756949558405,
+      "nextUpRejected": true
+    }
+  ]
+}

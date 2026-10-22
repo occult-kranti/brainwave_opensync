@@ -1,0 +1,161 @@
+{
+  "stage": "plan1",
+  "id": "corpus-C1",
+  "priority": "P0",
+  "class": "engineering-or-verification-task",
+  "noveltyLabel": "Project evidence infrastructure; no new mathematical result",
+  "exactQuestion": "Can the existing graph consume five exact-statement records while reliably refusing unsupported transitions among documentary matching, semantic review, proof execution and experimental evidence?",
+  "baselineAlreadyDone": "Five source-scope annotations, 17 documentary controls, corrected 372-family/719-manuscript inventory and a consolidated typed network. Zero Lean proofs executed.",
+  "distinctNewObjective": "A finite versioned schema, migration and shared claim-ID bindings with provenance-sensitive evidence validation; no second authority for proof truth.",
+  "premises": [
+    "Use only frozen exact source records and corrected inventory.",
+    "Agent-written statements are documentary annotations, not semantic certificates.",
+    "Proof receipts record observed execution, not imported labels or assumed correctness."
+  ],
+  "hypothesisLedger": [
+    {
+      "premise": "Five scope records match selected pinned source declarations",
+      "status": "Documentary matches already inspected",
+      "source": "research/math-crosswalk/panel/corpus/scope-records.json"
+    },
+    {
+      "premise": "Compiler success proves fidelity to intended mathematics",
+      "status": "Rejected; separate reviewer record required"
+    },
+    {
+      "premise": "An imported log establishes locally observed execution",
+      "status": "Rejected; label external-reported unless runner observation is recorded"
+    },
+    {
+      "premise": "Graph edges establish theorem equivalence",
+      "status": "Rejected; links resolve claim IDs only"
+    }
+  ],
+  "schema": {
+    "statement": [
+      "id",
+      "sourceCommit",
+      "manuscriptPath",
+      "manuscriptHashWhenRetrieved",
+      "declaration",
+      "objects",
+      "domain",
+      "boundaryData",
+      "quantifiers",
+      "observable",
+      "limits",
+      "conclusion",
+      "readingDepth",
+      "reviewerKind",
+      "sourceRefs"
+    ],
+    "evidence": [
+      "documentary:matched|mismatch|unknown",
+      "semanticReview:unreviewed|agent-reviewed|human-reviewed",
+      "proofExecution:not-run|external-reported|locally-passed|failed|incomplete",
+      "physicalEvidence:none|simulated|measured"
+    ],
+    "proofReceipt": [
+      "statementRecordHash",
+      "declaration",
+      "solutionSourceHash",
+      "toolchain",
+      "dependencyLockHash",
+      "commandArguments",
+      "workingDirectory",
+      "startedAt",
+      "finishedAt",
+      "exitStatus",
+      "stdoutHash",
+      "stderrHash",
+      "observedAxioms",
+      "axiomPolicy",
+      "runnerObservation",
+      "reviewerConclusion"
+    ],
+    "receiptSemantics": "A locally-passed label requires observed execution for this exact declaration/source/dependency tuple, successful checker result and recorded axiom-policy check. Timeout, unsupported axioms, missing output or a fixture receipt cannot pass. This says kernel/checker acceptance of an encoded statement, not semantic fidelity, external theorem reproduction or physical correctness.",
+    "provenance": "Agent and human reviewer kinds remain explicit; imported reports are not local execution. Never infer a missing content hash or review."
+  },
+  "migration": {
+    "sourceRecords": 5,
+    "sourcePath": "research/math-crosswalk/panel/corpus/scope-records.json",
+    "inventory": "research/math-crosswalk/panel/corpus/inventory-round2.json",
+    "claimMap": [
+      "YM-215 -> 215-finite-correlation as limited companion coverage, not headline coverage",
+      "energy-276 -> 276-repeated",
+      "acoustics-openai365 -> 365-conductivity as different-companion warning",
+      "acoustics-openai372 -> 372-full-map",
+      "342-legacy remains a version-control fixture; no new physics relevance edge"
+    ],
+    "otherClaims": "Retain all other existing claims and statuses; do not invent proof records for them.",
+    "history": "Preserve math-crosswalk files; new registry records carry hashes and explicit supersedes references."
+  },
+  "steps": [
+    {
+      "order": 1,
+      "action": "Freeze exact input hashes and schema with reviewer/evidence enums; list unresolved semantic questions."
+    },
+    {
+      "order": 2,
+      "action": "Migrate five records without changing scope; produce a claim-ID-to-registry-ID link map for the existing network."
+    },
+    {
+      "order": 3,
+      "action": "Implement validation and receipt consistency only; fixture receipts are visibly test-only and cannot establish local proof status."
+    },
+    {
+      "order": 4,
+      "action": "Run reused controls and frozen new adversarial fixtures; independently review status display and graph references."
+    }
+  ],
+  "artifactPaths": [
+    "research/claim-registry/schema.json",
+    "research/claim-registry/records.json",
+    "research/claim-registry/graph-bindings.json",
+    "research/claim-registry/validate.py",
+    "research/claim-registry/fixtures.json",
+    "research/claim-registry/verification.json"
+  ],
+  "proposedProofOrTest": "Finite schema validation and adversarial evidence-transition tests; no Lean build is included in this task.",
+  "positiveControl": "Exact pinned metadata match remains documentary matched with proofExecution not-run; source reading depth and provenance survive migration.",
+  "decisiveCountercontrol": "Reject a well-formed receipt that belongs to a different declaration/source hash even if its exit code is zero. Also reject family-wide badge transfer, test-only receipts and unsupported human-review provenance.",
+  "unseenWrongFixture": "Skeptic freezes a receipt/statement mutation before implementation and withholds its payload from the implementer until acceptance execution.",
+  "evidenceRequiredForAcceptance": [
+    "Five migrated records preserve all reviewed assumptions and limitations.",
+    "No dangling graph/claim references or implicit headline proof badges.",
+    "Unknown evidence abstains; every forbidden promotion fixture fails.",
+    "Actual validator execution log, fixture manifest hashes and independent reviewer receipt are saved.",
+    "ProofExecution remains not-run for all migrated records absent a separately authorized real checker run."
+  ],
+  "resourcesAndPrerequisites": {
+    "effortCapAgentHours": 4,
+    "computeCapMinutes": 15,
+    "memoryCapGiB": 2,
+    "gpu": false,
+    "runtime": "Existing project Python 3; JSON and standard library only unless schema dependency is explicitly pinned at implementation admission.",
+    "prerequisites": [
+      "Existing input files readable and frozen",
+      "Skeptic fixture frozen",
+      "Methods agrees proof-receipt semantics"
+    ]
+  },
+  "independentReview": {
+    "skeptic": "Withheld adversarial fixture and provenance/status check",
+    "methods": "Execution receipt/axiom semantics and semantic-fidelity separation",
+    "advisor": "No graph claim strengthened by migration"
+  },
+  "stopRule": "Stop before implementation if input hashes cannot be fixed or semantics remain disputed. During admitted implementation stop at 4 agent-hours or one failed withheld acceptance attempt; preserve failure and propose a bounded correction instead of expanding to full corpus proofs.",
+  "limits": [
+    "Planning only; no code or simulations executed now.",
+    "No automated semantic theorem equivalence.",
+    "No proof checker or all-719 audit promised.",
+    "No new physical measurements or solved grand challenge."
+  ],
+  "sourcesReused": [
+    "research/math-crosswalk/report.md",
+    "research/math-crosswalk/data/crosswalk.json",
+    "research/math-crosswalk/panel/corpus/round2.md",
+    "research/math-crosswalk/panel/corpus/round2-sources.json",
+    "research/math-crosswalk/panel/corpus/scope-records.json"
+  ]
+}

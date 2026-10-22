@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "round": 2,
+  "reviewScope": "Frozen skeptic countermodels and selected peer producer/record claims; no corpus-wide certification",
+  "findings": [
+    {
+      "id": "corpus-human-review-label",
+      "severity": "provenance correction required before publication",
+      "file": "panel/corpus/scope-records.json",
+      "observed": "Human-reviewed documentary annotations",
+      "reason": "Evidence establishes AI-agent annotation and review, not human review.",
+      "requestedCorrection": "Agent-reviewed documentary annotations",
+      "status": "corrected by corpus author; corrected bytes verified by skeptic",
+      "correctedSha256": "cbc1b207ded1f64ed2983e7dfad47d1919986a83013760e677638265b466b8e2",
+      "correctedValue": "Agent-reviewed documentary annotations; not a machine proof or exhaustive statement equivalence audit"
+    },
+    {
+      "id": "corpus-337-parser-erratum",
+      "severity": "preserved known metadata defect",
+      "file": "panel/corpus/inventory-round2.json",
+      "observed": "Round1 URL was truncated at CAT(0); corrected complete path in Round2.",
+      "status": "reviewed disclosure; counts unchanged; use corrected inventory"
+    },
+    {
+      "id": "peer-narrow-claim-checks",
+      "severity": "no blocking numerical finding in selected scope",
+      "file": "panel/skeptic/cross-review-results.json",
+      "observed": "Six thermal fixtures, two acoustic scales, exact oscillator substitution and Yang-Mills threshold boundary agree with frozen expectations.",
+      "status": "accepted only as specified; no global theorem or hardware certification"
+    }
+  ],
+  "createdUtc": "2026-10-22T04:09:09.347965+00:00"
+}

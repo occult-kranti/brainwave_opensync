@@ -1,0 +1,590 @@
+{
+  "schema": 1,
+  "round": 2,
+  "executedAtUTC": "2026-10-22T04:01:13.549212+00:00",
+  "pythonVersion": "3.12.14",
+  "contractSHA256": "18b28800a7663fbf86e45988efb00860ef65d2036dcfbfa282f2622c2221c60a",
+  "codeSHA256": "0cace097fcc1c50254be069a84b81f493bf762164407f6d1a847f016a2a3c016",
+  "allPassed": true,
+  "checkCount": 26,
+  "checks": [
+    {
+      "id": "symbolic-supply-identity",
+      "passed": true,
+      "detail": {
+        "residualTerms": [],
+        "arithmetic": "exact rational Laurent coefficients"
+      }
+    },
+    {
+      "id": "wrong-output-polynomial-rejected",
+      "passed": true,
+      "detail": {
+        "residualTerms": [
+          {
+            "coefficient": "1",
+            "powers": {
+              "p": 1,
+              "u": 1,
+              "m": -1
+            }
+          },
+          {
+            "coefficient": "-1",
+            "powers": {
+              "p": 1,
+              "u": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "wrong-output-witness",
+      "passed": true,
+      "detail": {
+        "residual": "-1/2",
+        "expected": "-1/2"
+      }
+    },
+    {
+      "id": "matrix-damped-energy-identity",
+      "passed": true,
+      "detail": {
+        "symmetricDerivativeMatrix": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1/20"
+          ]
+        ],
+        "dissipationGram": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/20"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-damped-supply-port",
+      "passed": true,
+      "detail": {
+        "supplyVector": [
+          [
+            "0"
+          ],
+          [
+            "1/2"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-damped-factor-certificate",
+      "passed": true,
+      "detail": {
+        "L": [
+          [
+            "0"
+          ],
+          [
+            "1/2"
+          ]
+        ],
+        "D": [
+          [
+            "1/5"
+          ]
+        ],
+        "factorProduct": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/20"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-damped-storage-positive",
+      "passed": true,
+      "detail": {
+        "firstLeadingMinor": "3",
+        "determinant": "3/2"
+      }
+    },
+    {
+      "id": "matrix-damped-dissipation-nonnegative",
+      "passed": true,
+      "detail": {
+        "weightOfSquare": "1/5",
+        "square": "(p/m)^2"
+      }
+    },
+    {
+      "id": "matrix-lossless-energy-identity",
+      "passed": true,
+      "detail": {
+        "symmetricDerivativeMatrix": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ],
+        "dissipationGram": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-lossless-supply-port",
+      "passed": true,
+      "detail": {
+        "supplyVector": [
+          [
+            "0"
+          ],
+          [
+            "3/7"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-lossless-factor-certificate",
+      "passed": true,
+      "detail": {
+        "L": [
+          [
+            "0"
+          ],
+          [
+            "3/7"
+          ]
+        ],
+        "D": [
+          [
+            "0"
+          ]
+        ],
+        "factorProduct": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-lossless-storage-positive",
+      "passed": true,
+      "detail": {
+        "firstLeadingMinor": "5/2",
+        "determinant": "15/14"
+      }
+    },
+    {
+      "id": "matrix-lossless-dissipation-nonnegative",
+      "passed": true,
+      "detail": {
+        "weightOfSquare": "0",
+        "square": "(p/m)^2"
+      }
+    },
+    {
+      "id": "matrix-nonunit-energy-identity",
+      "passed": true,
+      "detail": {
+        "symmetricDerivativeMatrix": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-144/13"
+          ]
+        ],
+        "dissipationGram": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "144/13"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-nonunit-supply-port",
+      "passed": true,
+      "detail": {
+        "supplyVector": [
+          [
+            "0"
+          ],
+          [
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-nonunit-factor-certificate",
+      "passed": true,
+      "detail": {
+        "L": [
+          [
+            "0"
+          ],
+          [
+            "4"
+          ]
+        ],
+        "D": [
+          [
+            "9/13"
+          ]
+        ],
+        "factorProduct": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "144/13"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "matrix-nonunit-storage-positive",
+      "passed": true,
+      "detail": {
+        "firstLeadingMinor": "11/7",
+        "determinant": "44/7"
+      }
+    },
+    {
+      "id": "matrix-nonunit-dissipation-nonnegative",
+      "passed": true,
+      "detail": {
+        "weightOfSquare": "9/13",
+        "square": "(p/m)^2"
+      }
+    },
+    {
+      "id": "negative-damping-domain-rejected",
+      "passed": true,
+      "detail": {
+        "b": "-1/5"
+      }
+    },
+    {
+      "id": "negative-damping-energy-growth",
+      "passed": true,
+      "detail": {
+        "unforcedStorageDerivative": "1/20"
+      }
+    },
+    {
+      "id": "perturbed-gram-rejected",
+      "passed": true,
+      "detail": {
+        "intended": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1/20"
+          ]
+        ],
+        "submitted": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "27/140"
+          ]
+        ],
+        "reason": "positive Gram matrix does not equal required dissipation polynomial"
+      }
+    },
+    {
+      "id": "wrong-factor-order-rejected",
+      "passed": true,
+      "detail": {
+        "printedOrder": "L^T D L",
+        "Lshape": "2x1",
+        "Dshape": "1x1",
+        "error": "matrix dimension mismatch: 1x2 times 1x1"
+      }
+    },
+    {
+      "id": "zero-mass-domain-rejected",
+      "passed": true,
+      "detail": {
+        "m": "0",
+        "k": "3",
+        "inversionAttempted": false
+      }
+    },
+    {
+      "id": "zero-stiffness-domain-rejected",
+      "passed": true,
+      "detail": {
+        "m": "2",
+        "k": "0",
+        "inversionAttempted": false
+      }
+    },
+    {
+      "id": "grid-positive",
+      "passed": true,
+      "detail": {
+        "gridPoints": 11,
+        "gridMinimum": "3/2000"
+      }
+    },
+    {
+      "id": "between-grid-negative",
+      "passed": true,
+      "detail": {
+        "x": "11/20",
+        "value": "-1/1000"
+      }
+    }
+  ],
+  "matrixCases": [
+    {
+      "id": "damped",
+      "parameters": {
+        "b": "1/5",
+        "id": "damped",
+        "k": "3",
+        "m": "2"
+      },
+      "Q": [
+        [
+          "3",
+          "0"
+        ],
+        [
+          "0",
+          "1/2"
+        ]
+      ],
+      "A": [
+        [
+          "0",
+          "1/2"
+        ],
+        [
+          "-3",
+          "-1/10"
+        ]
+      ]
+    },
+    {
+      "id": "lossless",
+      "parameters": {
+        "b": "0",
+        "id": "lossless",
+        "k": "5/2",
+        "m": "7/3"
+      },
+      "Q": [
+        [
+          "5/2",
+          "0"
+        ],
+        [
+          "0",
+          "3/7"
+        ]
+      ],
+      "A": [
+        [
+          "0",
+          "3/7"
+        ],
+        [
+          "-5/2",
+          "0"
+        ]
+      ]
+    },
+    {
+      "id": "nonunit",
+      "parameters": {
+        "b": "9/13",
+        "id": "nonunit",
+        "k": "11/7",
+        "m": "1/4"
+      },
+      "Q": [
+        [
+          "11/7",
+          "0"
+        ],
+        [
+          "0",
+          "4"
+        ]
+      ],
+      "A": [
+        [
+          "0",
+          "4"
+        ],
+        [
+          "-11/7",
+          "-36/13"
+        ]
+      ]
+    }
+  ],
+  "gridCounterexample": [
+    {
+      "x": "0",
+      "f": "603/2000"
+    },
+    {
+      "x": "1/10",
+      "f": "403/2000"
+    },
+    {
+      "x": "1/5",
+      "f": "243/2000"
+    },
+    {
+      "x": "3/10",
+      "f": "123/2000"
+    },
+    {
+      "x": "2/5",
+      "f": "43/2000"
+    },
+    {
+      "x": "1/2",
+      "f": "3/2000"
+    },
+    {
+      "x": "3/5",
+      "f": "3/2000"
+    },
+    {
+      "x": "7/10",
+      "f": "43/2000"
+    },
+    {
+      "x": "4/5",
+      "f": "123/2000"
+    },
+    {
+      "x": "9/10",
+      "f": "243/2000"
+    },
+    {
+      "x": "1",
+      "f": "403/2000"
+    }
+  ],
+  "generalAlgebra": {
+    "storage": [
+      {
+        "coefficient": "1/2",
+        "powers": {
+          "p": 2,
+          "m": -1
+        }
+      },
+      {
+        "coefficient": "1/2",
+        "powers": {
+          "q": 2,
+          "k": 1
+        }
+      }
+    ],
+    "storageDerivative": [
+      {
+        "coefficient": "1",
+        "powers": {
+          "p": 1,
+          "u": 1,
+          "m": -1
+        }
+      },
+      {
+        "coefficient": "-1",
+        "powers": {
+          "p": 2,
+          "m": -2,
+          "b": 1
+        }
+      }
+    ],
+    "identityResidual": [],
+    "wrongOutputResidual": [
+      {
+        "coefficient": "1",
+        "powers": {
+          "p": 1,
+          "u": 1,
+          "m": -1
+        }
+      },
+      {
+        "coefficient": "-1",
+        "powers": {
+          "p": 1,
+          "u": 1
+        }
+      }
+    ]
+  },
+  "scope": "General symbolic Laurent identity plus three exact rational matrix cases and declared controls. Universal signs follow analytically from the stated parameter domain, not from sampling.",
+  "notClaimed": [
+    "Lean/Comparator verification",
+    "new theorem",
+    "certified continuum spectrum",
+    "experimental passivity",
+    "OpenAI problem solved",
+    "Yang-Mills mass gap",
+    "free-energy device"
+  ]
+}

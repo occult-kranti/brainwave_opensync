@@ -1,0 +1,62 @@
+{
+  "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4190,
+      "sha256": "5e8878ee04866f52ec942852552b9c28db278f65691c7ab49a87c9e93a9199fd",
+      "gitBlob": "50feb63d396138f30dc1ff1e0af121d0263bf5a3",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/README.md"
+    },
+    {
+      "path": "history.md",
+      "bytes": 2281,
+      "sha256": "41c2a2d470014b3628695c7aabf5fd0c93f6f687621fca172062f22b59ed6a1e",
+      "gitBlob": "693874f398905b1bc59e01b898b223ae9956bfc2",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/history.md"
+    },
+    {
+      "path": "CONTENTS.md",
+      "bytes": 638727,
+      "sha256": "cc7c0b8a1cdedd845a777e77cf682657308503daf8346c1349e06e9259d063c2",
+      "gitBlob": "2c68c086fff36a5806c936ad1659cf1a8d0b6dd9",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/CONTENTS.md"
+    },
+    {
+      "path": "overview.tex",
+      "bytes": 321928,
+      "sha256": "aa54c8e14b7647226264045ae846df7ce6803d2ded48aa3183195e45f9f91962",
+      "gitBlob": "8f3b8cb6d5c4f5f7f0ac216b2c6db52b4b34b2fd",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/overview.tex"
+    },
+    {
+      "path": "lean/formalization.yaml",
+      "bytes": 79482,
+      "sha256": "5a8a164259591208886cd018416e61552665265ec9e20cff636f9d51117c2278",
+      "gitBlob": "275eee8cfab7ce49d3a5e88f02cbb8f28fe6fee6",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/formalization.yaml"
+    },
+    {
+      "path": "lean/README.md",
+      "bytes": 650,
+      "sha256": "292ff9d539f494158dfbf68d989ba85a82782a4343b2fe43088f8fa62525bf1b",
+      "gitBlob": "f1ab618366051a4b3683b14ed2a0ac4bb7c620fb",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/README.md"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "gitBlob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/LICENSE"
+    },
+    {
+      "path": "lean/ComparatorChallenges/README.md",
+      "bytes": 1060,
+      "sha256": "2ed835b3c59709be6feffe0dec54fc9783fb26aa22d35517475a82ef5199c555",
+      "gitBlob": "8ce7be24bf62c66104be5f733d168301ead4e4f3",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/ComparatorChallenges/README.md"
+    }
+  ],
+  "readDepth": "README/history/Lean README/Comparator instructions read fully; complete catalogue and overview structure parsed, selected summaries inspected; full proof collection not read."
+}

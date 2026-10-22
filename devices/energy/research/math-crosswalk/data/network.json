@@ -1,0 +1,564 @@
+{
+  "schema": "typed-research-network/1",
+  "scope": "Selected auditable additions; external statements are not marked solved by the project.",
+  "upstreamNetwork": {
+    "repository": "occult-kranti/yang_mills_workbench",
+    "commit": "f9364d617015e803fda9465aefddd9cbe41854a4",
+    "path": "research/round33/network.json",
+    "nodes": 489,
+    "edges": 785,
+    "scope": "Metadata parsed, relevant nodes inspected; not all underlying proofs audited."
+  },
+  "nodes": [
+    {
+      "id": "YM-215-external",
+      "kind": "external-claim",
+      "label": "Continuum O(3) and our fixed-spacing gauge model",
+      "status": "publisher statement / reading limits apply",
+      "family": "215",
+      "domain": "yangmills",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-canonical-massive-continuum-limit-of-the-two-dimensional-O3-model-October-4-2026/build/sections/introduction.tex"
+    },
+    {
+      "id": "YM-215-ours",
+      "kind": "project-model",
+      "label": "Fixed-spacing Z^3 SU(2) patterned model: named-box whole-sequence state limit and inherited representation gap alpha/16. Uniform route-B fixed-a strong-coupling certificate has an explicit weak-coupling admission obstruction.",
+      "status": "existing model or explicit open goal",
+      "family": "215",
+      "domain": "yangmills",
+      "source": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md"
+    },
+    {
+      "id": "YM-215-missing",
+      "kind": "required-premise",
+      "label": "Different dimension, fields and action: S² spins vs SU(2) gauge links; No cutoff-uniform estimates or admissible g(a)→0 trajectory for present certificate; Same-field continuum normalization, reconstruction and nontriviality must be supplied; Finite-domain formalization cannot be promoted to continuum proof",
+      "status": "not established",
+      "family": "215",
+      "domain": "yangmills",
+      "source": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md"
+    },
+    {
+      "id": "YM-265-external",
+      "kind": "external-claim",
+      "label": "An entropy area law assumes a gap",
+      "status": "publisher statement / reading limits apply",
+      "family": "265",
+      "domain": "yangmills",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/build/sections/00-introduction.tex"
+    },
+    {
+      "id": "YM-265-ours",
+      "kind": "project-model",
+      "label": "Reduced-state trace-norm locality and Wilson-loop area parity in fixed-spacing SU(2) model.",
+      "status": "existing model or explicit open goal",
+      "family": "265",
+      "domain": "yangmills",
+      "source": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md"
+    },
+    {
+      "id": "YM-265-missing",
+      "kind": "required-premise",
+      "label": "2D finite-q bounded terms differ from Z³ infinite-dimensional SU(2) link Hilbert spaces and unbounded electric terms; Global spectral gap is a premise, not an output; Entanglement entropy area law is not Wilson-loop confinement area law; Any truncation requires q-dependent constants and cutoff removal",
+      "status": "not established",
+      "family": "265",
+      "domain": "yangmills",
+      "source": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md"
+    },
+    {
+      "id": "YM-270-external",
+      "kind": "external-claim",
+      "label": "A threshold state is not a mass gap",
+      "status": "publisher statement / reading limits apply",
+      "family": "270",
+      "domain": "yangmills",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-unique-threshold-bound-state-of-the-SU-N-BFSS-model-September-24-2026/build/manuscript/sections/01-introduction.tex"
+    },
+    {
+      "id": "YM-270-ours",
+      "kind": "project-model",
+      "label": "SU(2) lattice gauge-invariant spectral analysis and representation-specific vacuum simplicity.",
+      "status": "existing model or explicit open goal",
+      "family": "270",
+      "domain": "yangmills",
+      "source": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md"
+    },
+    {
+      "id": "YM-270-missing",
+      "kind": "required-premise",
+      "label": "0+1D supersymmetric matrix quantum mechanics differs from pure 3+1D Yang–Mills; Threshold zero eigenstate coexists with continuum starting at zero; it does not yield a positive spectral gap; Finite-N constants are not uniform in rank or continuum cutoff",
+      "status": "not established",
+      "family": "270",
+      "domain": "yangmills",
+      "source": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md"
+    },
+    {
+      "id": "YM-CLAY-external",
+      "kind": "external-claim",
+      "label": "Our open continuum Yang–Mills goal",
+      "status": "publisher statement / reading limits apply",
+      "family": null,
+      "domain": "yangmills",
+      "source": "https://www.claymath.org/millennium/yang-mills-the-maths-gap/"
+    },
+    {
+      "id": "YM-CLAY-ours",
+      "kind": "project-model",
+      "label": "Explicit open parent goal; accepted finite and fixed-spacing subproblems.",
+      "status": "existing model or explicit open goal",
+      "family": null,
+      "domain": "yangmills",
+      "source": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round32/advisor/az1-gate.json"
+    },
+    {
+      "id": "YM-CLAY-missing",
+      "kind": "required-premise",
+      "label": "Nontrivial continuum QFT on R4 with required axioms; Physical mass scale and gap on same continuum fields; Uniform control along a valid continuum trajectory",
+      "status": "not established",
+      "family": null,
+      "domain": "yangmills",
+      "source": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round32/advisor/az1-gate.json"
+    },
+    {
+      "id": "energy-276-external",
+      "kind": "external-claim",
+      "label": "Generalized amplitude-damping classical capacity",
+      "status": "publisher statement / reading limits apply",
+      "family": "276",
+      "domain": "energy",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/build/paper.tex"
+    },
+    {
+      "id": "energy-276-ours",
+      "kind": "project-model",
+      "label": "Single-qubit ergotropy, passive energy and energy closure after zero-temperature amplitude damping followed by dephasing; finite numerical validation.",
+      "status": "existing model or explicit open goal",
+      "family": "276",
+      "domain": "energy",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs"
+    },
+    {
+      "id": "energy-276-missing",
+      "kind": "required-premise",
+      "label": "No Holevo information objective, input ensemble optimization, decoder, or n-use entangled channel analysis exists in our code.; Our ergotropy is a different functional of a prepared state. Extra dephasing is a composition outside the exact displayed channel unless separately treated.",
+      "status": "not established",
+      "family": "276",
+      "domain": "energy",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs"
+    },
+    {
+      "id": "energy-273-external",
+      "kind": "external-claim",
+      "label": "Entropy photon-number inequality",
+      "status": "publisher statement / reading limits apply",
+      "family": "273",
+      "domain": "energy",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-entropy-photon-number-inequality-September-24-2026/build/sections/00-introduction.tex"
+    },
+    {
+      "id": "energy-273-ours",
+      "kind": "project-model",
+      "label": "Two-dimensional qubit energy and ergotropy; no bosonic Fock-space beam splitter or entropy-power theorem.",
+      "status": "existing model or explicit open goal",
+      "family": "273",
+      "domain": "energy",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs"
+    },
+    {
+      "id": "energy-273-missing",
+      "kind": "required-premise",
+      "label": "No bosonic channel or receiver encoding is specified by the project.; A physical mode identification, measured input noise, cross-port independence and numerical cutoff/tail error would all need justification.",
+      "status": "not established",
+      "family": "273",
+      "domain": "energy",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs"
+    },
+    {
+      "id": "energy-362-external",
+      "kind": "external-claim",
+      "label": "Global classical relativistic Vlasov–Maxwell solutions",
+      "status": "publisher statement / reading limits apply",
+      "family": "362",
+      "domain": "energy",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-classical-solutions-of-the-three-dimensional-relativistic-Vlasov-Maxwell-system-September-23-2026/build/sections/introduction.tex"
+    },
+    {
+      "id": "energy-362-ours",
+      "kind": "project-model",
+      "label": "Driven fixed-mutual-inductance RLC circuits coupled to one mechanical mode; finite linear ODE/phasor energy identity.",
+      "status": "existing model or explicit open goal",
+      "family": "362",
+      "domain": "energy",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/em.mjs"
+    },
+    {
+      "id": "energy-362-missing",
+      "kind": "required-premise",
+      "label": "Our lumped finite-dimensional reciprocal circuit is not this kinetic PDE and has no phase-space distribution or Maxwell initial-value problem.; A solution-existence result neither supplies an uncounted source nor predicts a circuit conversion efficiency.",
+      "status": "not established",
+      "family": "362",
+      "domain": "energy",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/em.mjs"
+    },
+    {
+      "id": "energy-265-external",
+      "kind": "external-claim",
+      "label": "Two-dimensional ground-state area law",
+      "status": "publisher statement / reading limits apply",
+      "family": "265",
+      "domain": "energy",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/build/sections/00-introduction.tex"
+    },
+    {
+      "id": "energy-265-ours",
+      "kind": "project-model",
+      "label": "Single prepared qubit with fixed Hamiltonian, not an interacting two-dimensional ground-state family.",
+      "status": "existing model or explicit open goal",
+      "family": "265",
+      "domain": "energy",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs"
+    },
+    {
+      "id": "energy-265-missing",
+      "kind": "required-premise",
+      "label": "No such many-body Hamiltonian, unique ground state or uniform gap has been established in our qubit energy work.; A spectral gap is an input hypothesis, so this theorem cannot establish the missing Yang–Mills gap.; The associated PEPS existence statement is not by itself an efficient numerical construction.",
+      "status": "not established",
+      "family": "265",
+      "domain": "energy",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs"
+    },
+    {
+      "id": "acoustics-openai372-external",
+      "kind": "external-claim",
+      "label": "Full boundary data versus finite resonances",
+      "status": "publisher statement / reading limits apply",
+      "family": "372",
+      "domain": "acoustics",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf"
+    },
+    {
+      "id": "acoustics-openai372-ours",
+      "kind": "project-model",
+      "label": "Finite homogeneous-sphere forward modes, a passive fixture model, and finite transfer functions; existing source register explicitly distinguishes finite peaks from full boundary data.",
+      "status": "existing model or explicit open goal",
+      "family": "372",
+      "domain": "acoustics",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/src/models.mjs"
+    },
+    {
+      "id": "acoustics-openai372-missing",
+      "kind": "required-premise",
+      "label": "Complete static displacement-to-traction operator; Matching smooth domain and coefficient assumptions; Reconstruction and stability beyond uniqueness; Calibrated experimental data and model discrepancy control",
+      "status": "not established",
+      "family": "372",
+      "domain": "acoustics",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/src/models.mjs"
+    },
+    {
+      "id": "acoustics-openai365-external",
+      "kind": "external-claim",
+      "label": "Geometry recovery and companion scope",
+      "status": "publisher statement / reading limits apply",
+      "family": "365",
+      "domain": "acoustics",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Determination-of-a-metric-and-a-unitary-connection-from-one-boundary-patch-October-5-2026/paper.pdf"
+    },
+    {
+      "id": "acoustics-openai365-ours",
+      "kind": "project-model",
+      "label": "Source comparison and measurement-coordinate caveats only; no metric/connection recovery theorem or solver.",
+      "status": "existing model or explicit open goal",
+      "family": "365",
+      "domain": "acoustics",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/research/interpretation.md"
+    },
+    {
+      "id": "acoustics-openai365-missing",
+      "kind": "required-premise",
+      "label": "Same extended boundary operator; Smooth manifold, rank-two Hermitian bundle and unitary connection model; Explicit gauge and coordinate quotient; Correct manuscript-specific verification",
+      "status": "not established",
+      "family": "365",
+      "domain": "acoustics",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/research/interpretation.md"
+    },
+    {
+      "id": "acoustics-openai130-external",
+      "kind": "external-claim",
+      "label": "Exact fast DFT versus our sampled FFT",
+      "status": "publisher statement / reading limits apply",
+      "family": "130",
+      "domain": "acoustics",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/CONTENTS.md"
+    },
+    {
+      "id": "acoustics-openai130-ours",
+      "kind": "project-model",
+      "label": "Ordinary floating-point radix-two FFT and finite synthetic acquisition checks, with no sub-n-log-n complexity construction.",
+      "status": "existing model or explicit open goal",
+      "family": "130",
+      "domain": "acoustics",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/src/acquisition.mjs"
+    },
+    {
+      "id": "acoustics-openai130-missing",
+      "kind": "required-premise",
+      "label": "Matching exact arithmetic and coefficient-cost model; New asymptotic algorithm and complete complexity proof",
+      "status": "not established",
+      "family": "130",
+      "domain": "acoustics",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/src/acquisition.mjs"
+    },
+    {
+      "id": "acoustics-openai075-external",
+      "kind": "external-claim",
+      "label": "Infinite convergence versus finite data",
+      "status": "publisher statement / reading limits apply",
+      "family": "075",
+      "domain": "acoustics",
+      "source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/CONTENTS.md"
+    },
+    {
+      "id": "acoustics-openai075-ours",
+      "kind": "project-model",
+      "label": "Finite sampled Fourier and signal identities, not an infinite-dimensional convergence proof.",
+      "status": "existing model or explicit open goal",
+      "family": "075",
+      "domain": "acoustics",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/research/acquisition-model.md"
+    },
+    {
+      "id": "acoustics-openai075-missing",
+      "kind": "required-premise",
+      "label": "Quantification over the full function class; Almost-everywhere full-sequence proof rather than a finite signal test",
+      "status": "not established",
+      "family": "075",
+      "domain": "acoustics",
+      "source": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/research/acquisition-model.md"
+    },
+    {
+      "id": "test-0",
+      "kind": "executed-model-test",
+      "label": "A fixed-spacing certificate needs a new continuum bridge",
+      "status": "93 EXACT CHECKS",
+      "source": "research/math-crosswalk/panel/yangmills/round2-results.json"
+    },
+    {
+      "id": "test-1",
+      "kind": "executed-model-test",
+      "label": "Thermal damping has an explicit energy source",
+      "status": "5,184 NUMERICAL CASES",
+      "source": "research/math-crosswalk/panel/energy/round2-results.json"
+    },
+    {
+      "id": "test-2",
+      "kind": "executed-model-test",
+      "label": "Equal frequencies can hide unequal material parameters",
+      "status": "8 GATES / 144 SPHERE CASES",
+      "source": "research/math-crosswalk/panel/acoustics/round2-results.json"
+    },
+    {
+      "id": "test-3",
+      "kind": "executed-model-test",
+      "label": "Certify a finite energy identity algebraically",
+      "status": "26 EXACT CHECKS",
+      "source": "research/math-crosswalk/panel/methods/exact-results.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "YM-215-external",
+      "target": "YM-215-ours",
+      "relation": "restricted-model-overlap",
+      "evidence": "panel/yangmills/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "YM-215-ours",
+      "target": "YM-215-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/yangmills/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "YM-265-external",
+      "target": "YM-265-ours",
+      "relation": "method-transfer",
+      "evidence": "panel/yangmills/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "YM-265-ours",
+      "target": "YM-265-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/yangmills/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "YM-270-external",
+      "target": "YM-270-ours",
+      "relation": "restricted-model-overlap",
+      "evidence": "panel/yangmills/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "YM-270-ours",
+      "target": "YM-270-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/yangmills/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "YM-CLAY-external",
+      "target": "YM-CLAY-ours",
+      "relation": "same-claim-attempted",
+      "evidence": "panel/yangmills/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "YM-CLAY-ours",
+      "target": "YM-CLAY-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/yangmills/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "energy-276-external",
+      "target": "energy-276-ours",
+      "relation": "restricted-model-overlap",
+      "evidence": "panel/energy/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "energy-276-ours",
+      "target": "energy-276-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/energy/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "energy-273-external",
+      "target": "energy-273-ours",
+      "relation": "method-transfer",
+      "evidence": "panel/energy/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "energy-273-ours",
+      "target": "energy-273-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/energy/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "energy-362-external",
+      "target": "energy-362-ours",
+      "relation": "thematic-only",
+      "evidence": "panel/energy/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "energy-362-ours",
+      "target": "energy-362-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/energy/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "energy-265-external",
+      "target": "energy-265-ours",
+      "relation": "method-transfer",
+      "evidence": "panel/energy/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "energy-265-ours",
+      "target": "energy-265-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/energy/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "acoustics-openai372-external",
+      "target": "acoustics-openai372-ours",
+      "relation": "restricted-model-overlap",
+      "evidence": "panel/acoustics/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "acoustics-openai372-ours",
+      "target": "acoustics-openai372-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/acoustics/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "acoustics-openai365-external",
+      "target": "acoustics-openai365-ours",
+      "relation": "method-transfer",
+      "evidence": "panel/acoustics/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "acoustics-openai365-ours",
+      "target": "acoustics-openai365-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/acoustics/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "acoustics-openai130-external",
+      "target": "acoustics-openai130-ours",
+      "relation": "thematic-only",
+      "evidence": "panel/acoustics/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "acoustics-openai130-ours",
+      "target": "acoustics-openai130-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/acoustics/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "acoustics-openai075-external",
+      "target": "acoustics-openai075-ours",
+      "relation": "thematic-only",
+      "evidence": "panel/acoustics/round1.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "acoustics-openai075-ours",
+      "target": "acoustics-openai075-missing",
+      "relation": "requires-for-transfer",
+      "evidence": "panel/acoustics/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "test-0",
+      "target": "YM-215-missing",
+      "relation": "tests-limited-premise",
+      "evidence": "research/math-crosswalk/panel/yangmills/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "test-1",
+      "target": "energy-276-missing",
+      "relation": "tests-limited-premise",
+      "evidence": "research/math-crosswalk/panel/energy/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "test-2",
+      "target": "acoustics-openai372-missing",
+      "relation": "tests-limited-premise",
+      "evidence": "research/math-crosswalk/panel/acoustics/round2.md",
+      "sameTheoremEstablished": false
+    },
+    {
+      "source": "test-3",
+      "target": "energy-276-missing",
+      "relation": "tests-limited-premise",
+      "evidence": "research/math-crosswalk/panel/methods/round2.md",
+      "sameTheoremEstablished": false
+    }
+  ]
+}

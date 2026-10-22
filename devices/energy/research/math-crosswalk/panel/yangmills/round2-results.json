@@ -1,0 +1,1167 @@
+{
+  "test_id": "YM-T2",
+  "round": 2,
+  "arithmetic": "exact fractions and integer comparisons",
+  "comparison_cutoff": "2026-10-21",
+  "execution_date_utc": "2026-10-22",
+  "status": "all declared finite arithmetic checks passed",
+  "number_of_checks": 93,
+  "checks": [
+    {
+      "name": "P is a projector",
+      "passed": true
+    },
+    {
+      "name": "H_1 P = 0",
+      "passed": true
+    },
+    {
+      "name": "H_1 exact gap identity",
+      "passed": true
+    },
+    {
+      "name": "H_1 positive",
+      "passed": true
+    },
+    {
+      "name": "K_1 positive uniform-gap control",
+      "passed": true
+    },
+    {
+      "name": "H_1 candidate-bound verdict",
+      "passed": true
+    },
+    {
+      "name": "consistent energy-unit invariance at N=1",
+      "passed": true
+    },
+    {
+      "name": "H_2 P = 0",
+      "passed": true
+    },
+    {
+      "name": "H_2 exact gap identity",
+      "passed": true
+    },
+    {
+      "name": "H_2 positive",
+      "passed": true
+    },
+    {
+      "name": "K_2 positive uniform-gap control",
+      "passed": true
+    },
+    {
+      "name": "H_2 candidate-bound verdict",
+      "passed": true
+    },
+    {
+      "name": "consistent energy-unit invariance at N=2",
+      "passed": true
+    },
+    {
+      "name": "holding E_star while multiplying H is a different ratio at N=2",
+      "passed": true
+    },
+    {
+      "name": "H_16 P = 0",
+      "passed": true
+    },
+    {
+      "name": "H_16 exact gap identity",
+      "passed": true
+    },
+    {
+      "name": "H_16 positive",
+      "passed": true
+    },
+    {
+      "name": "K_16 positive uniform-gap control",
+      "passed": true
+    },
+    {
+      "name": "H_16 candidate-bound verdict",
+      "passed": true
+    },
+    {
+      "name": "consistent energy-unit invariance at N=16",
+      "passed": true
+    },
+    {
+      "name": "holding E_star while multiplying H is a different ratio at N=16",
+      "passed": true
+    },
+    {
+      "name": "H_17 P = 0",
+      "passed": true
+    },
+    {
+      "name": "H_17 exact gap identity",
+      "passed": true
+    },
+    {
+      "name": "H_17 positive",
+      "passed": true
+    },
+    {
+      "name": "K_17 positive uniform-gap control",
+      "passed": true
+    },
+    {
+      "name": "H_17 candidate-bound verdict",
+      "passed": true
+    },
+    {
+      "name": "consistent energy-unit invariance at N=17",
+      "passed": true
+    },
+    {
+      "name": "holding E_star while multiplying H is a different ratio at N=17",
+      "passed": true
+    },
+    {
+      "name": "H_100 P = 0",
+      "passed": true
+    },
+    {
+      "name": "H_100 exact gap identity",
+      "passed": true
+    },
+    {
+      "name": "H_100 positive",
+      "passed": true
+    },
+    {
+      "name": "K_100 positive uniform-gap control",
+      "passed": true
+    },
+    {
+      "name": "H_100 candidate-bound verdict",
+      "passed": true
+    },
+    {
+      "name": "consistent energy-unit invariance at N=100",
+      "passed": true
+    },
+    {
+      "name": "holding E_star while multiplying H is a different ratio at N=100",
+      "passed": true
+    },
+    {
+      "name": "H_10000 P = 0",
+      "passed": true
+    },
+    {
+      "name": "H_10000 exact gap identity",
+      "passed": true
+    },
+    {
+      "name": "H_10000 positive",
+      "passed": true
+    },
+    {
+      "name": "K_10000 positive uniform-gap control",
+      "passed": true
+    },
+    {
+      "name": "H_10000 candidate-bound verdict",
+      "passed": true
+    },
+    {
+      "name": "consistent energy-unit invariance at N=10000",
+      "passed": true
+    },
+    {
+      "name": "holding E_star while multiplying H is a different ratio at N=10000",
+      "passed": true
+    },
+    {
+      "name": "candidate lower-bound counterexample c=1/16",
+      "passed": true
+    },
+    {
+      "name": "candidate lower-bound counterexample c=1/1000003",
+      "passed": true
+    },
+    {
+      "name": "candidate lower-bound counterexample c=3/7",
+      "passed": true
+    },
+    {
+      "name": "candidate lower-bound counterexample c=7/2",
+      "passed": true
+    },
+    {
+      "name": "AM2/AX1 cap equivalence",
+      "passed": true
+    },
+    {
+      "name": "AL1 bridge equivalence",
+      "passed": true
+    },
+    {
+      "name": "admitted route-B cap threshold offset -1",
+      "passed": true
+    },
+    {
+      "name": "admitted route-B cap threshold offset 0",
+      "passed": true
+    },
+    {
+      "name": "admitted route-B cap threshold offset 1",
+      "passed": true
+    },
+    {
+      "name": "weaker AL1 bridge threshold offset -1",
+      "passed": true
+    },
+    {
+      "name": "weaker AL1 bridge threshold offset 0",
+      "passed": true
+    },
+    {
+      "name": "weaker AL1 bridge threshold offset 1",
+      "passed": true
+    },
+    {
+      "name": "independent integer-root threshold starts at admitted-cap equality/route-B cap",
+      "passed": true
+    },
+    {
+      "name": "last-admitted exact threshold starts at admitted-cap equality/route-B cap",
+      "passed": true
+    },
+    {
+      "name": "first-rejected exact threshold starts at admitted-cap equality/route-B cap",
+      "passed": true
+    },
+    {
+      "name": "independent integer-root threshold starts at admitted-cap equality/AL1 bridge",
+      "passed": true
+    },
+    {
+      "name": "last-admitted exact threshold starts at admitted-cap equality/AL1 bridge",
+      "passed": true
+    },
+    {
+      "name": "first-rejected exact threshold starts at admitted-cap equality/AL1 bridge",
+      "passed": true
+    },
+    {
+      "name": "independent integer-root threshold g_0=1000/route-B cap",
+      "passed": true
+    },
+    {
+      "name": "last-admitted exact threshold g_0=1000/route-B cap",
+      "passed": true
+    },
+    {
+      "name": "first-rejected exact threshold g_0=1000/route-B cap",
+      "passed": true
+    },
+    {
+      "name": "independent integer-root threshold g_0=1000/AL1 bridge",
+      "passed": true
+    },
+    {
+      "name": "last-admitted exact threshold g_0=1000/AL1 bridge",
+      "passed": true
+    },
+    {
+      "name": "first-rejected exact threshold g_0=1000/AL1 bridge",
+      "passed": true
+    },
+    {
+      "name": "dictionary exact for g=1000,s=1/1000",
+      "passed": true
+    },
+    {
+      "name": "tau unchanged under a->a/s, g=1000,s=1/1000",
+      "passed": true
+    },
+    {
+      "name": "alpha scales at fixed E_star, g=1000,s=1/1000",
+      "passed": true
+    },
+    {
+      "name": "length scaling does not repair admission, g=1000,s=1/1000",
+      "passed": true
+    },
+    {
+      "name": "dictionary exact for g=1000,s=1",
+      "passed": true
+    },
+    {
+      "name": "tau unchanged under a->a/s, g=1000,s=1",
+      "passed": true
+    },
+    {
+      "name": "alpha scales at fixed E_star, g=1000,s=1",
+      "passed": true
+    },
+    {
+      "name": "length scaling does not repair admission, g=1000,s=1",
+      "passed": true
+    },
+    {
+      "name": "dictionary exact for g=1000,s=1000",
+      "passed": true
+    },
+    {
+      "name": "tau unchanged under a->a/s, g=1000,s=1000",
+      "passed": true
+    },
+    {
+      "name": "alpha scales at fixed E_star, g=1000,s=1000",
+      "passed": true
+    },
+    {
+      "name": "length scaling does not repair admission, g=1000,s=1000",
+      "passed": true
+    },
+    {
+      "name": "dictionary exact for g=250,s=1/1000",
+      "passed": true
+    },
+    {
+      "name": "tau unchanged under a->a/s, g=250,s=1/1000",
+      "passed": true
+    },
+    {
+      "name": "alpha scales at fixed E_star, g=250,s=1/1000",
+      "passed": true
+    },
+    {
+      "name": "length scaling does not repair admission, g=250,s=1/1000",
+      "passed": true
+    },
+    {
+      "name": "dictionary exact for g=250,s=1",
+      "passed": true
+    },
+    {
+      "name": "tau unchanged under a->a/s, g=250,s=1",
+      "passed": true
+    },
+    {
+      "name": "alpha scales at fixed E_star, g=250,s=1",
+      "passed": true
+    },
+    {
+      "name": "length scaling does not repair admission, g=250,s=1",
+      "passed": true
+    },
+    {
+      "name": "dictionary exact for g=250,s=1000",
+      "passed": true
+    },
+    {
+      "name": "tau unchanged under a->a/s, g=250,s=1000",
+      "passed": true
+    },
+    {
+      "name": "alpha scales at fixed E_star, g=250,s=1000",
+      "passed": true
+    },
+    {
+      "name": "length scaling does not repair admission, g=250,s=1000",
+      "passed": true
+    },
+    {
+      "name": "reject invalid domain: zero reference energy",
+      "passed": true
+    },
+    {
+      "name": "reject invalid domain: zero coupling",
+      "passed": true
+    },
+    {
+      "name": "reject invalid domain: zero lattice spacing in finite-a formula",
+      "passed": true
+    }
+  ],
+  "spectral_counterexample": {
+    "family": "H_N=diag(0,1/N), N positive integer",
+    "positive_control": "K_N=diag(0,1)",
+    "fixed_E_star": {
+      "numerator": 7,
+      "denominator": 1
+    },
+    "finite_fixtures": [
+      {
+        "N": 1,
+        "eigenvalues": [
+          {
+            "numerator": 0,
+            "denominator": 1
+          },
+          {
+            "numerator": 1,
+            "denominator": 1
+          }
+        ],
+        "ground_projector": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "gap_over_fixed_E_star": {
+          "numerator": 1,
+          "denominator": 7
+        },
+        "candidate_gap_1_over_16_valid": true,
+        "consistent_unit_conversion_gap_ratio": {
+          "numerator": 1,
+          "denominator": 7
+        },
+        "Hamiltonian_multiplied_by_N_fixed_reference_gap_ratio": {
+          "numerator": 1,
+          "denominator": 7
+        }
+      },
+      {
+        "N": 2,
+        "eigenvalues": [
+          {
+            "numerator": 0,
+            "denominator": 1
+          },
+          {
+            "numerator": 1,
+            "denominator": 2
+          }
+        ],
+        "ground_projector": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "gap_over_fixed_E_star": {
+          "numerator": 1,
+          "denominator": 14
+        },
+        "candidate_gap_1_over_16_valid": true,
+        "consistent_unit_conversion_gap_ratio": {
+          "numerator": 1,
+          "denominator": 14
+        },
+        "Hamiltonian_multiplied_by_N_fixed_reference_gap_ratio": {
+          "numerator": 1,
+          "denominator": 7
+        }
+      },
+      {
+        "N": 16,
+        "eigenvalues": [
+          {
+            "numerator": 0,
+            "denominator": 1
+          },
+          {
+            "numerator": 1,
+            "denominator": 16
+          }
+        ],
+        "ground_projector": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "gap_over_fixed_E_star": {
+          "numerator": 1,
+          "denominator": 112
+        },
+        "candidate_gap_1_over_16_valid": true,
+        "consistent_unit_conversion_gap_ratio": {
+          "numerator": 1,
+          "denominator": 112
+        },
+        "Hamiltonian_multiplied_by_N_fixed_reference_gap_ratio": {
+          "numerator": 1,
+          "denominator": 7
+        }
+      },
+      {
+        "N": 17,
+        "eigenvalues": [
+          {
+            "numerator": 0,
+            "denominator": 1
+          },
+          {
+            "numerator": 1,
+            "denominator": 17
+          }
+        ],
+        "ground_projector": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "gap_over_fixed_E_star": {
+          "numerator": 1,
+          "denominator": 119
+        },
+        "candidate_gap_1_over_16_valid": false,
+        "consistent_unit_conversion_gap_ratio": {
+          "numerator": 1,
+          "denominator": 119
+        },
+        "Hamiltonian_multiplied_by_N_fixed_reference_gap_ratio": {
+          "numerator": 1,
+          "denominator": 7
+        }
+      },
+      {
+        "N": 100,
+        "eigenvalues": [
+          {
+            "numerator": 0,
+            "denominator": 1
+          },
+          {
+            "numerator": 1,
+            "denominator": 100
+          }
+        ],
+        "ground_projector": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "gap_over_fixed_E_star": {
+          "numerator": 1,
+          "denominator": 700
+        },
+        "candidate_gap_1_over_16_valid": false,
+        "consistent_unit_conversion_gap_ratio": {
+          "numerator": 1,
+          "denominator": 700
+        },
+        "Hamiltonian_multiplied_by_N_fixed_reference_gap_ratio": {
+          "numerator": 1,
+          "denominator": 7
+        }
+      },
+      {
+        "N": 10000,
+        "eigenvalues": [
+          {
+            "numerator": 0,
+            "denominator": 1
+          },
+          {
+            "numerator": 1,
+            "denominator": 10000
+          }
+        ],
+        "ground_projector": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "gap_over_fixed_E_star": {
+          "numerator": 1,
+          "denominator": 70000
+        },
+        "candidate_gap_1_over_16_valid": false,
+        "consistent_unit_conversion_gap_ratio": {
+          "numerator": 1,
+          "denominator": 70000
+        },
+        "Hamiltonian_multiplied_by_N_fixed_reference_gap_ratio": {
+          "numerator": 1,
+          "denominator": 7
+        }
+      }
+    ],
+    "candidate_gap_counterexamples": [
+      {
+        "candidate": {
+          "numerator": 1,
+          "denominator": 16
+        },
+        "N": 17,
+        "gap": {
+          "numerator": 1,
+          "denominator": 17
+        }
+      },
+      {
+        "candidate": {
+          "numerator": 1,
+          "denominator": 1000003
+        },
+        "N": 1000004,
+        "gap": {
+          "numerator": 1,
+          "denominator": 1000004
+        }
+      },
+      {
+        "candidate": {
+          "numerator": 3,
+          "denominator": 7
+        },
+        "N": 3,
+        "gap": {
+          "numerator": 1,
+          "denominator": 3
+        }
+      },
+      {
+        "candidate": {
+          "numerator": 7,
+          "denominator": 2
+        },
+        "N": 1,
+        "gap": {
+          "numerator": 1,
+          "denominator": 1
+        }
+      }
+    ],
+    "analytic_all_N_argument": "The common ground projector P is fixed. H_N=(I-P)/N, so gap=1/N. For every c>0, N=floor(1/c)+1 gives gap<c. Thus no positive N-uniform gap follows from common ground projector. K_N=I-P has uniform gap 1."
+  },
+  "AZ1_dictionary": {
+    "alpha": "g^2/(2a)",
+    "lambda": "2/(g^2*a)",
+    "tau": "96/g^4",
+    "domain": "a>0, g>0, E_star>0, hbar fixed; positive real bare coupling branch",
+    "inherited_gap_if_admitted": "alpha/16 = g^2/(32a)",
+    "boundary_checks": [
+      {
+        "condition": "admitted route-B cap",
+        "g_fourth": {
+          "numerator": 9599999999,
+          "denominator": 1
+        },
+        "tau": {
+          "numerator": 96,
+          "denominator": 9599999999
+        },
+        "tau_max": {
+          "numerator": 1,
+          "denominator": 100000000
+        },
+        "admitted": false
+      },
+      {
+        "condition": "admitted route-B cap",
+        "g_fourth": {
+          "numerator": 9600000000,
+          "denominator": 1
+        },
+        "tau": {
+          "numerator": 1,
+          "denominator": 100000000
+        },
+        "tau_max": {
+          "numerator": 1,
+          "denominator": 100000000
+        },
+        "admitted": true
+      },
+      {
+        "condition": "admitted route-B cap",
+        "g_fourth": {
+          "numerator": 9600000001,
+          "denominator": 1
+        },
+        "tau": {
+          "numerator": 96,
+          "denominator": 9600000001
+        },
+        "tau_max": {
+          "numerator": 1,
+          "denominator": 100000000
+        },
+        "admitted": true
+      },
+      {
+        "condition": "weaker AL1 bridge",
+        "g_fourth": {
+          "numerator": 31,
+          "denominator": 1
+        },
+        "tau": {
+          "numerator": 96,
+          "denominator": 31
+        },
+        "tau_max": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "admitted": false
+      },
+      {
+        "condition": "weaker AL1 bridge",
+        "g_fourth": {
+          "numerator": 32,
+          "denominator": 1
+        },
+        "tau": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "tau_max": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "admitted": true
+      },
+      {
+        "condition": "weaker AL1 bridge",
+        "g_fourth": {
+          "numerator": 33,
+          "denominator": 1
+        },
+        "tau": {
+          "numerator": 32,
+          "denominator": 11
+        },
+        "tau_max": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "admitted": true
+      }
+    ],
+    "trajectory_thresholds": [
+      {
+        "trajectory": "starts at admitted-cap equality",
+        "g0_fourth": {
+          "numerator": 9600000000,
+          "denominator": 1
+        },
+        "g_n_fourth_definition": "g0_fourth / N^4",
+        "rule": "route-B cap",
+        "tau_max": {
+          "numerator": 1,
+          "denominator": 100000000
+        },
+        "g_fourth_min": {
+          "numerator": 9600000000,
+          "denominator": 1
+        },
+        "last_admitted_N": 1,
+        "first_rejected_N": 2,
+        "tau_last_admitted": {
+          "numerator": 1,
+          "denominator": 100000000
+        },
+        "tau_first_rejected": {
+          "numerator": 1,
+          "denominator": 6250000
+        },
+        "two_independent_threshold_methods_agree": true
+      },
+      {
+        "trajectory": "starts at admitted-cap equality",
+        "g0_fourth": {
+          "numerator": 9600000000,
+          "denominator": 1
+        },
+        "g_n_fourth_definition": "g0_fourth / N^4",
+        "rule": "AL1 bridge",
+        "tau_max": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "g_fourth_min": {
+          "numerator": 32,
+          "denominator": 1
+        },
+        "last_admitted_N": 131,
+        "first_rejected_N": 132,
+        "tau_last_admitted": {
+          "numerator": 294499921,
+          "denominator": 100000000
+        },
+        "tau_first_rejected": {
+          "numerator": 1185921,
+          "denominator": 390625
+        },
+        "two_independent_threshold_methods_agree": true
+      },
+      {
+        "trajectory": "g_0=1000",
+        "g0_fourth": {
+          "numerator": 1000000000000,
+          "denominator": 1
+        },
+        "g_n_fourth_definition": "g0_fourth / N^4",
+        "rule": "route-B cap",
+        "tau_max": {
+          "numerator": 1,
+          "denominator": 100000000
+        },
+        "g_fourth_min": {
+          "numerator": 9600000000,
+          "denominator": 1
+        },
+        "last_admitted_N": 3,
+        "first_rejected_N": 4,
+        "tau_last_admitted": {
+          "numerator": 243,
+          "denominator": 31250000000
+        },
+        "tau_first_rejected": {
+          "numerator": 6,
+          "denominator": 244140625
+        },
+        "two_independent_threshold_methods_agree": true
+      },
+      {
+        "trajectory": "g_0=1000",
+        "g0_fourth": {
+          "numerator": 1000000000000,
+          "denominator": 1
+        },
+        "g_n_fourth_definition": "g0_fourth / N^4",
+        "rule": "AL1 bridge",
+        "tau_max": {
+          "numerator": 3,
+          "denominator": 1
+        },
+        "g_fourth_min": {
+          "numerator": 32,
+          "denominator": 1
+        },
+        "last_admitted_N": 420,
+        "first_rejected_N": 421,
+        "tau_last_admitted": {
+          "numerator": 1166886,
+          "denominator": 390625
+        },
+        "tau_first_rejected": {
+          "numerator": 94243116243,
+          "denominator": 31250000000
+        },
+        "two_independent_threshold_methods_agree": true
+      }
+    ],
+    "length_rescaling_fixed_reference": [
+      {
+        "g": {
+          "numerator": 1000,
+          "denominator": 1
+        },
+        "a": {
+          "numerator": 600,
+          "denominator": 1
+        },
+        "length_scale_factor": {
+          "numerator": 1,
+          "denominator": 1000
+        },
+        "fixed_E_star": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "admitted_routeB_cap": true,
+        "values": {
+          "alpha": {
+            "numerator": 2500,
+            "denominator": 3
+          },
+          "lambda": {
+            "numerator": 1,
+            "denominator": 300000000
+          },
+          "tau": {
+            "numerator": 3,
+            "denominator": 31250000000
+          },
+          "alpha_over_E_star": {
+            "numerator": 2500,
+            "denominator": 21
+          },
+          "gap_lower_over_E_star_if_admitted": {
+            "numerator": 625,
+            "denominator": 84
+          },
+          "dictionary_product": {
+            "numerator": 1,
+            "denominator": 1
+          }
+        },
+        "gap_formula_status": "inherited certificate applies"
+      },
+      {
+        "g": {
+          "numerator": 1000,
+          "denominator": 1
+        },
+        "a": {
+          "numerator": 3,
+          "denominator": 5
+        },
+        "length_scale_factor": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "fixed_E_star": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "admitted_routeB_cap": true,
+        "values": {
+          "alpha": {
+            "numerator": 2500000,
+            "denominator": 3
+          },
+          "lambda": {
+            "numerator": 1,
+            "denominator": 300000
+          },
+          "tau": {
+            "numerator": 3,
+            "denominator": 31250000000
+          },
+          "alpha_over_E_star": {
+            "numerator": 2500000,
+            "denominator": 21
+          },
+          "gap_lower_over_E_star_if_admitted": {
+            "numerator": 156250,
+            "denominator": 21
+          },
+          "dictionary_product": {
+            "numerator": 1,
+            "denominator": 1
+          }
+        },
+        "gap_formula_status": "inherited certificate applies"
+      },
+      {
+        "g": {
+          "numerator": 1000,
+          "denominator": 1
+        },
+        "a": {
+          "numerator": 3,
+          "denominator": 5000
+        },
+        "length_scale_factor": {
+          "numerator": 1000,
+          "denominator": 1
+        },
+        "fixed_E_star": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "admitted_routeB_cap": true,
+        "values": {
+          "alpha": {
+            "numerator": 2500000000,
+            "denominator": 3
+          },
+          "lambda": {
+            "numerator": 1,
+            "denominator": 300
+          },
+          "tau": {
+            "numerator": 3,
+            "denominator": 31250000000
+          },
+          "alpha_over_E_star": {
+            "numerator": 2500000000,
+            "denominator": 21
+          },
+          "gap_lower_over_E_star_if_admitted": {
+            "numerator": 156250000,
+            "denominator": 21
+          },
+          "dictionary_product": {
+            "numerator": 1,
+            "denominator": 1
+          }
+        },
+        "gap_formula_status": "inherited certificate applies"
+      },
+      {
+        "g": {
+          "numerator": 250,
+          "denominator": 1
+        },
+        "a": {
+          "numerator": 600,
+          "denominator": 1
+        },
+        "length_scale_factor": {
+          "numerator": 1,
+          "denominator": 1000
+        },
+        "fixed_E_star": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "admitted_routeB_cap": false,
+        "values": {
+          "alpha": {
+            "numerator": 625,
+            "denominator": 12
+          },
+          "lambda": {
+            "numerator": 1,
+            "denominator": 18750000
+          },
+          "tau": {
+            "numerator": 6,
+            "denominator": 244140625
+          },
+          "alpha_over_E_star": {
+            "numerator": 625,
+            "denominator": 84
+          },
+          "gap_lower_over_E_star_if_admitted": {
+            "numerator": 625,
+            "denominator": 1344
+          },
+          "dictionary_product": {
+            "numerator": 1,
+            "denominator": 1
+          }
+        },
+        "gap_formula_status": "formal expression only; certificate inapplicable"
+      },
+      {
+        "g": {
+          "numerator": 250,
+          "denominator": 1
+        },
+        "a": {
+          "numerator": 3,
+          "denominator": 5
+        },
+        "length_scale_factor": {
+          "numerator": 1,
+          "denominator": 1
+        },
+        "fixed_E_star": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "admitted_routeB_cap": false,
+        "values": {
+          "alpha": {
+            "numerator": 156250,
+            "denominator": 3
+          },
+          "lambda": {
+            "numerator": 1,
+            "denominator": 18750
+          },
+          "tau": {
+            "numerator": 6,
+            "denominator": 244140625
+          },
+          "alpha_over_E_star": {
+            "numerator": 156250,
+            "denominator": 21
+          },
+          "gap_lower_over_E_star_if_admitted": {
+            "numerator": 78125,
+            "denominator": 168
+          },
+          "dictionary_product": {
+            "numerator": 1,
+            "denominator": 1
+          }
+        },
+        "gap_formula_status": "formal expression only; certificate inapplicable"
+      },
+      {
+        "g": {
+          "numerator": 250,
+          "denominator": 1
+        },
+        "a": {
+          "numerator": 3,
+          "denominator": 5000
+        },
+        "length_scale_factor": {
+          "numerator": 1000,
+          "denominator": 1
+        },
+        "fixed_E_star": {
+          "numerator": 7,
+          "denominator": 1
+        },
+        "admitted_routeB_cap": false,
+        "values": {
+          "alpha": {
+            "numerator": 156250000,
+            "denominator": 3
+          },
+          "lambda": {
+            "numerator": 4,
+            "denominator": 75
+          },
+          "tau": {
+            "numerator": 6,
+            "denominator": 244140625
+          },
+          "alpha_over_E_star": {
+            "numerator": 156250000,
+            "denominator": 21
+          },
+          "gap_lower_over_E_star_if_admitted": {
+            "numerator": 9765625,
+            "denominator": 21
+          },
+          "dictionary_product": {
+            "numerator": 1,
+            "denominator": 1
+          }
+        },
+        "gap_formula_status": "formal expression only; certificate inapplicable"
+      }
+    ],
+    "rejected_domains": [
+      "zero reference energy",
+      "zero coupling",
+      "zero lattice spacing in finite-a formula"
+    ],
+    "claim_boundary": "Failure of a sufficient certificate says nothing about the actual spectral gap outside its admitted domain."
+  },
+  "limitations": [
+    "No new Yang--Mills estimate is proved; the existing AX1/AQ2 gap is inherited and not rerun.",
+    "No floating-point eigensolver, measured data, continuum simulation, Lean or OpenAI manuscript proof was executed.",
+    "The exact 2x2 example refutes a bare implication from state convergence to uniform gap; it does not refute BB2/AQ2 with their additional gap hypotheses.",
+    "The algebraic g_N=g0/N path is a toy, not a derived asymptotic-freedom trajectory. Any positive g(a)->0 eventually violates the fixed g^4 threshold by the definition of convergence.",
+    "Entropy area law, Wilson-loop area law and area parity remain distinct. Family215 finite-domain Lean scope supplies no continuum formalization."
+  ],
+  "source_code_sha256": "c8a063d151f101cc2dea4592c023debf931abb8a84fe4c3535478a38855c8e60"
+}

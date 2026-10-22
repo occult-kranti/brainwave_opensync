@@ -1,0 +1,11 @@
+{
+  "stage": "plan1",
+  "files": {
+    "gate.json": "65014255588cfb396f424e72fbb2bea442b50a5b0bd30f3671fb2cd2f806f033",
+    "gate-freeze.json": "1cc6b3ed13f72f2f805f4a7c181e846436ba342a29bd8cb9c35f0b98c0a4aae9",
+    "review.md": "d2715f6a094dcdcb3c7054bf578cdc0f7251ba12069173e533ed5e961590912d",
+    "candidates.json": "77acb76562af78f613187497aef89c891cf2fccdb6593ffb5aa13579358654e3",
+    "plan1.md": "fb197369a1268f9f76904b0075e2284c53937524a886a0e68119c3f33f1c58ec",
+    "plan1.json": "1a7f0380821bceade76a6c1ae75a75c921b466e2cb781433f5b6a90a49cbe699"
+  }
+}

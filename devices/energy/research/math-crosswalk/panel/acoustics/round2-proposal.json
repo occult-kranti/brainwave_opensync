@@ -1,0 +1,19 @@
+{
+  "id": "acoustics-identifiability-scale-control",
+  "status": "proposed, not executed in round 1; await advisor and skeptic",
+  "question": "Do equal modal frequencies imply equal static boundary data or separately identified stiffness and density?",
+  "expectedAnswer": "No within the stated homogeneous and linear models.",
+  "parameters": {"commonScale": [0.25, 0.5, 1, 2, 4], "poisson": [0.2, 0.34, 0.45], "radiusM": [0.01, 0.04445], "rootIndices": [0, 1, 2, 3], "referenceYoungPa": 123500000000, "referenceDensityKgM3": 8960},
+  "independentFormulations": ["Existing solidBreathing model in location-spectrum/src/models.mjs", "Independent generalized symmetric eigenvalue or spherical-Bessel implementation, without importing the production root routine"],
+  "predictions": [
+    "E and rho both multiplied by a leave ideal frequencies unchanged at fixed nu and R.",
+    "E multiplied by a at fixed rho multiplies frequencies by sqrt(a).",
+    "Scaled K,M,C give the same poles and a factor 1/a in calibrated displacement/force FRF.",
+    "Static displacement-to-traction data scale by a, so the equality hypothesis of OpenAI family 372 is not satisfied.",
+    "Frequency log-sensitivity matrix has rank 1, nullity 1 and kernel span{(1,1)} in coordinates log(E),log(rho).",
+    "Adding calibrated mass at known geometry adds sensitivity row (0,1) and yields rank 2 in this restricted two-parameter model."
+  ],
+  "negativeControls": ["Incorrect claim that modal frequencies alone identify E and rho must be rejected", "Uncalibrated sensor/force gain prevents treating raw amplitude as an independently known material scale"],
+  "bounds": ["No theorem 372 proof or counterexample", "No physical measurements", "No density identification from static elasticity alone", "No universal whole-object spectrum", "No free-energy claim", "No novelty claim for elementary scaling invariance"],
+  "optionalSourceAlgebraCheck": {"source": "arXiv:2602.03398v1, PDF p.2, equations (4)–(7)", "issue": "Printed projected data U* y and dictionary Sigma^-1 V* are inconsistent with H=U Sigma V* for a general nonunit singular value.", "correctProjection": "U* y = Sigma V* x", "consistentWhitening": "Sigma^-1 U* y = V* x", "scope": "Printed preprint equation; not an audit of authors' implementation"}
+}

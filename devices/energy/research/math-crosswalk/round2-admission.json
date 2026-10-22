@@ -1,0 +1,15 @@
+{
+  "status": "selected after all six Round1 reports",
+  "researchDate": "2026-10-21",
+  "round": 2,
+  "frozenRound1": {
+    "panel/corpus/round1.md": "4d0957ddb6bd4399d3635d7521456e0ba758c403287c56276c65f97e1bce306e",
+    "panel/yangmills/round1.md": "12ccb123a013a780ee4c5b52f94512d5ef6d4a7983b9ac0fe7fde87985d0902c",
+    "panel/energy/round1.md": "540fe82d2438d3c63117cfedb0a2070ab663cb930ec7d90f1acd96b259bffc2c",
+    "panel/acoustics/round1.md": "c532913846ed246f06be45d702bdeb1cd0aa043c035e8a55435109bef1816f19",
+    "panel/methods/round1.md": "77691c802fae4fec1106ced416fb4b4aa64d2a2d3a9acda69be71e210e61580a",
+    "panel/skeptic/round1.md": "f2be32f31c2ecb7486b2821c42099d935029d3a5e262555ecdc1dd3067aa1e94",
+    "advisor-round1.md": "df0aed3d7bcde6f3852c00112d7dca7fe18f91dc1d11e6f6288578d837e2582b"
+  },
+  "stopAfterResearchRound": 2
+}

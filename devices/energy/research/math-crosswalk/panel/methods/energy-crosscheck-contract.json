@@ -1,0 +1,66 @@
+{
+  "basis": "System first, bath second; |0> ground |1> excited. H_system=(h*f)*diag(0,1), same gap for bath.",
+  "cases": [
+    {
+      "bathPopulation": 0.08,
+      "coherence": 0.65,
+      "damping": 0.37,
+      "dephasing": 0.83,
+      "frequencyHz": 7000000000.0,
+      "id": "cold-release",
+      "phaseRadians": 0.7,
+      "population": 0.7
+    },
+    {
+      "bathPopulation": 0.31,
+      "coherence": 0.42,
+      "damping": 0.61,
+      "dephasing": 0.57,
+      "frequencyHz": 3200000000.0,
+      "id": "warm-absorption",
+      "phaseRadians": -1.1,
+      "population": 0.12
+    },
+    {
+      "bathPopulation": 0.76,
+      "coherence": 0.8,
+      "damping": 0.82,
+      "dephasing": 1.0,
+      "frequencyHz": 4400000000.0,
+      "id": "inverted-reservoir",
+      "phaseRadians": 1.7,
+      "population": 0.22
+    }
+  ],
+  "frozenAtUTC": "2026-10-22T04:02:39.439630+00:00",
+  "heat": "Take differences of independent operator expectations in system and bath; do not author reference using producer population-update or heat formula.",
+  "notClaimed": [
+    "universal channel proof",
+    "new Kraus derivation",
+    "full producer test suite",
+    "capacity or family276 solved",
+    "hardware validation",
+    "free energy"
+  ],
+  "oracle": "Construct rho tensor diag(1-nu,nu); apply excitation-preserving 4x4 rotation in |01>,|10> with cosine sqrt(1-gamma), sine sqrt(gamma); partial-trace bath; apply explicit probabilistic I/Z dephasing; numpy.linalg.eigvalsh for passive rearrangement and entropy.",
+  "physicalCaveat": "Third case is deliberately a population-inverted resource, not a passive positive-temperature reservoir.",
+  "round": 2,
+  "schema": 1,
+  "scope": "Optional independent three-case numerical cross-check of energy agent thermalQubitWork",
+  "timing": "Frozen after learning public API conventions only; before reading producer implementation, outputs or checker.",
+  "tolerances": {
+    "absoluteDimensionless": 1e-12,
+    "comparisonMethod": "Normalize all energies by the independently constructed h*f before comparison; no absolute joule tolerance hiding errors."
+  },
+  "verification": [
+    "complex density matrix",
+    "initial/final energy over gap",
+    "initial/final passive energy over gap",
+    "initial/final ergotropy over gap",
+    "initial/final entropy",
+    "system heat over gap",
+    "bath heat over gap",
+    "entropy production from reference entropy difference minus log((1-nu)/nu) times independently measured system heat over gap",
+    "unitarity and trace conservation"
+  ]
+}

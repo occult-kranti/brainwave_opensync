@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "status": "proposed-only; awaiting advisor selection after round1",
+  "role": "independent skeptic",
+  "scope": "Elementary countermodels and a documentary admission gate, not new physical laws or proof of a corpus theorem",
+  "independence": "Contract frozen before new peer reports. A second-round implementation may be independently compared with peers only after freeze.",
+  "experiments": [
+    {"id": "finite-gap-limit", "input": "H_n=diag(0,1/n,1), n positive integers; positive control K_n=diag(0,1,2)", "requiredProof": "For all n, gap(H_n)=1/n>0 but inf_n gap(H_n)=0; gap(K_n)=1 for all n", "execution": "Exact rational values for representative n and symbolic algebraic argument; no fit extrapolation", "reject": "Inferring a positive uniform physical gap solely from every sampled finite gap being positive", "boundary": "Elementary finite matrices; no claim that H_n is a Yang-Mills regulator"},
+    {"id": "partial-observation", "input": "A=diag(1,2,3), B=diag(1,2,4), projection P onto first two coordinates", "requiredProof": "A and B positive and unequal; P(zI+A)^(-1)P* equals P(zI+B)^(-1)P* for z>0; full resolvents differ", "execution": "Exact rational resolvents at held-out positive z, plus all-z derivation", "reject": "Inferring full-operator equality from the declared partial readout", "boundary": "Finite-dimensional information-loss analogue, not a counterexample to full-data elasticity uniqueness"},
+    {"id": "claim-record-controls", "input": "Explicit records for companion formalization, entropy/Wilson area-law mismatch, circuit/apparatus boundary mismatch, identical positive algebraic control", "requiredProof": "Report mismatch axes without treating field agreement as theorem verification", "execution": "Deterministic negative and positive record checks, with missing-data abstention", "reject": "Topic or family badge alone treated as exact solved overlap", "boundary": "Metadata-level audit only; no automated theorem equivalence claim"}
+  ],
+  "acceptance": ["Keep known controls and genuine inference limits visible", "Bind source and result bytes", "Separate analytic claims from finite computational samples", "Report abstention for missing evidence", "No additional round beyond user-requested two"]
+}

@@ -1,0 +1,31 @@
+{
+  "reviewed": [
+    {
+      "path": "panel/yangmills/crosswalk.json",
+      "sha256": "8d16662b85461e28a15788b59034ffa17914ba368d86caadcd4b1cb3173fbc8b",
+      "scope": "Round 1 selected theorem/model comparisons; inspected corpus counts and formalization-scope wording, not independent replication of the peer\u2019s physical derivations."
+    },
+    {
+      "path": "panel/energy/crosswalk.json",
+      "sha256": "633d648a2d3c52f9e781f6b0c369e606a1231267d1c9041c427807164581fdb3",
+      "scope": "Round 1 selected theorem/model comparisons; inspected corpus counts and formalization-scope wording, not independent replication of the peer\u2019s physical derivations."
+    },
+    {
+      "path": "panel/acoustics/crosswalk.json",
+      "sha256": "fd5766299d0b4aabe3a220cb368cfe9a229fcc0a1eaaf4e524a2982441524915",
+      "scope": "Round 1 selected theorem/model comparisons; inspected corpus counts and formalization-scope wording, not independent replication of the peer\u2019s physical derivations."
+    },
+    {
+      "path": "panel/methods/crosswalk.json",
+      "sha256": "98bed1ab005a08d738e2356a8ccd5636587761d7a100a797a3cd73436e251bbb",
+      "scope": "Round 1 selected theorem/model comparisons; inspected corpus counts and formalization-scope wording, not independent replication of the peer\u2019s physical derivations."
+    },
+    {
+      "path": "panel/skeptic/independent-gate.md",
+      "sha256": "5f4226309fd04f975f066c54eeed96ac605f8d0651acd948f3e65d576b346d55",
+      "scope": "Independent Round 1 admission criteria and positive-control requirement."
+    }
+  ],
+  "finding": "No corpus count or formalization-scope overreach found in the selected peer comparisons. Their no-exact-solve conclusions apply to reviewed targets, not all 719 manuscripts.",
+  "newCorrection": "Our frozen Round 1 family 337 URL truncation is corrected in inventory-round2.json only."
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "acoustics-gain-calibration",
+    "priority": 1,
+    "title": "Gain-aware calibration for a selected elastic mode",
+    "status": "open project subproblem; review proposal only",
+    "statement": "Identify the smallest useful calibrated data set for log(E), log(rho), log(g) in a fixed-geometry single-mode sphere/receptance model and quantify conditioning under declared measurement uncertainty.",
+    "assumptions": ["Known radius, Poisson ratio and damping within the benchmark", "Homogeneous isotropic linear material and matched mode", "g is one combined positive frequency-independent input/readout gain", "Data include selected frequency and nonzero off-resonance magnitude; calibrated mass is an additional candidate measurement"],
+    "unresolvedGap": "Previous scaling/kernel result does not give a gain-aware calibration uncertainty budget or test drift/model mismatch.",
+    "feasibleNow": "Existing production sphere and FRF functions plus independent roots and complex solves; only three declared log parameters.",
+    "modelVsHardware": "Synthetic identifiability and calibration design only; no calibrated sensor or specimen data exist. Separate input and receiver gains remain indistinguishable without another reference.",
+    "negativeControls": ["(E,rho,g) to (aE,a*rho,a*g) leaves frequency and raw response unchanged", "Duplicated channels do not increase rank", "Frequency-dependent gain must defeat a constant-gain fit", "Known density removes only the declared two-material-parameter ambiguity"],
+    "deliverable": "Exact parameter/observable map, kernel/rank conditions, frozen synthetic benchmark specification and uncertainty/calibration budget.",
+    "dependencies": ["Existing math-crosswalk acoustics scaling results", "Explicit noise and calibration model selected during planning"],
+    "candidateFutureCode": ["location-spectrum/src/models.mjs: solidBreathing and responseAt", "An isolated new calibration benchmark; no change proposed to accepted old outputs"],
+    "sourceReadingDepth": [{"source": "energy-observatory/research/math-crosswalk/report.md", "depth": "Consolidated report"}, {"source": "energy-observatory/research/math-crosswalk/panel/acoustics/round2.md", "depth": "Full own derivation and results; independent skeptic cross-review received"}, {"source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/372.md", "depth": "Entire short scope page; associated manuscript pp.1–3 and Theorem1.1 previously read; no proof or Lean audit"}],
+    "nonClaims": ["No general inverse uniqueness", "No complete object spectrum", "No new global theorem", "No hardware calibration completed"]
+  },
+  {
+    "id": "acoustics-position-pole-validation",
+    "priority": 2,
+    "title": "Position-comparison pole estimator under nuisance changes",
+    "status": "open project subproblem; review proposal only",
+    "statement": "Determine when selected finite transfer data distinguish a controlled sphere-pole perturbation from support, gain, temperature and mode-visibility changes in the declared two-mode model, including an abstention outcome.",
+    "assumptions": ["Selected frequency band and explicitly matched modes", "Linear passive forward fixture; support and receiver parameters tracked", "Conventional low-order estimator and frozen mode-selection rules", "No claim that modeled pole attribution is unique outside the declared model"],
+    "unresolvedGap": "Forward plots and finite FFT checks exist, but the current tool record has no accepted noisy pole-fit benchmark for A/B/A or ABBA comparisons.",
+    "feasibleNow": "Existing coupledSystem/responseAt, synthetic acquisition and verified pyFRF adapter provide independent forward and spectral baselines.",
+    "modelVsHardware": "First validate estimator behavior on synthetic records; later hardware sample size and uncertainty require pilot data. Existing experimental protocol is proposed, not performed.",
+    "negativeControls": ["Gain-only change and nodal mode suppression", "Unchanged intrinsic sphere with changed contact stiffness", "Trial-order-correlated drift", "Indistinguishable nuisance-only alternative must trigger ambiguity", "Omitted-mode injection and held-out positions", "Empty-table subtraction is not exact decoupling"],
+    "positiveControl": "Known sphere-parameter perturbation with declared matched-mode identity; recovery must be qualified by possible nuisance alternatives.",
+    "deliverable": "Frozen estimator benchmark with confusion/abstention schema and an updated preregistration for the existing position protocol.",
+    "dependencies": ["Gain assumptions from acoustics-gain-calibration", "Declared estimator, noise and model-discrepancy families"],
+    "candidateFutureCode": ["location-spectrum/src/models.mjs", "location-spectrum/src/acquisition.mjs", "Existing tool-bench interfaces; no accepted pyEMA fit assumed"],
+    "sourceReadingDepth": [{"source": "location-spectrum/research/protocol.md", "depth": "Full current protocol"}, {"source": "location-spectrum/research/tool-integration.md", "depth": "Synthetic tool checks and unexecuted-model list"}, {"source": "https://arxiv.org/html/2601.19491v1", "depth": "Primary page re-opened; prior §§1–3.2 including reciprocity and Helmholtz model; no trained model run"}],
+    "nonClaims": ["No physical location-dependent intrinsic frequency found", "No preselected hardware effect size or statistical power", "No neural model required"]
+  },
+  {
+    "id": "acoustics-finite-port-selection",
+    "priority": 3,
+    "title": "Minimum independent ports within a finite candidate model",
+    "status": "conditional optional project subproblem; review proposal only",
+    "statement": "Enumerate a finite candidate source/receiver menu for a fixed truncated passive model and identify the smallest subset meeting a declared normalized rank/conditioning criterion over a chosen band.",
+    "assumptions": ["Fixed finite mode truncation and candidate port menu", "Known units and noise normalization for singular values", "Gain model fixed or independently calibrated", "Minimality restricted to enumerated menu and declared criterion"],
+    "unresolvedGap": "Duplicate inputs were shown nonidentifying, but no selected port layout has been tested for hidden modes, weak coupling, symmetry and practical conditioning.",
+    "feasibleNow": "Small-matrix exhaustive subset enumeration is bounded; existing finite forward models and independent NumPy solves suffice.",
+    "modelVsHardware": "Model candidate layout only; real geometry, mode shapes, calibration and omitted modes require separate validation. Finite rank cannot certify a continuum boundary operator.",
+    "negativeControls": ["Duplicate source/receiver channels", "Model-node receiver and unexcited mode", "Full-rank but badly conditioned layout", "Omitted mode", "Changed candidate menu invalidates unqualified minimum claim"],
+    "deliverable": "Port-selection contract, machine-readable rank/nullity/singular-value table, held-out source/receiver checks and explicit rejected-layout kernels.",
+    "dependencies": ["acoustics-gain-calibration", "Stable target observable from acoustics-position-pole-validation"],
+    "sourceReadingDepth": [{"source": "location-spectrum/research/tool-integration.md", "depth": "Duplicate-input rank/nullspace and synthetic adapter sections"}, {"source": "https://arxiv.org/html/2602.03398v1", "depth": "Re-opened primary page; prior PDF §§1–4 and visual p2 equations4–7; official ICASSP2026 program verified; printed equation inconsistency independently confirmed"}, {"source": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/372.md", "depth": "Complete short scope page; no full proof or Lean run"}],
+    "nonClaims": ["No universal minimum number of sensors", "No full boundary-map reconstruction", "No wholesale adoption of printed ICASSP equations", "No hardware layout validated"]
+  }
+]

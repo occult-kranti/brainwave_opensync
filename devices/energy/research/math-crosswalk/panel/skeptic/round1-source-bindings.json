@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "round": 1,
+  "status": "ready-for-advisor",
+  "independence": "No new peer reports read before freeze or this source review",
+  "checksExecuted": "Source equivalence review only; no Round2 computation; no Lean build",
+  "files": {
+    "independent-gate.md": "5f4226309fd04f975f066c54eeed96ac605f8d0651acd948f3e65d576b346d55",
+    "gate-freeze.json": "67673f838198f68d9b0836ec44da946e751613811cd84dcd7b7ee0c470fc7fca",
+    "round1.md": "f2be32f31c2ecb7486b2821c42099d935029d3a5e262555ecdc1dd3067aa1e94",
+    "sources.json": "eb389a8a80cad741a3c4fef4a827b8ca4acb35d5de7c8419e9a7d6794c4db106",
+    "round2-candidate-contract.json": "eaf8106c643b62620897f104ad320b9367bb2744d541afe3f9d62ba08b92806e",
+    "round1-freeze.json": "8d6be8ab8e77df6c07fab27d40bc3b301d368a940606e25d544093edff3074f4"
+  }
+}

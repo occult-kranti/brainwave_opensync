@@ -1,0 +1,95 @@
+{
+  "stage": "plan1",
+  "date": "2026-10-22",
+  "candidate": "YM-P1",
+  "status": "proposed_bounded_attempt_no_execution",
+  "class": "bounded-mathematical-attempt",
+  "exactQuestion": "For the frozen zero-selected patterned SU(2) model, |tau|<=1e-8, F in {F1,F2}, N>=5, A in B(H_R), |theta|<=8, prove |c_A^(F,N)(theta)-c_A^infinity(theta)| <= C*N^(-1/4)*||A||^2 with an explicit finite C uniform in these declared parameters at fixed lattice spacing.",
+  "baselineAlreadyDone": "BB2 named-state whole-sequence convergence; compact-window correlation convergence; O(1/N) rate admitted only on 5<=N<=14000. Prior comparison executed spectral/scale countercontrols only.",
+  "distinctNewObjective": "An effective certificate valid at every N>=5, using a newly frozen approximation-radius schedule and an analytic tail argument.",
+  "noveltyLabel": "Candidate project bound; scientific priority unverified. Not a continuum theorem or new physical effect.",
+  "premises": {
+    "model": "AQ_patterned_zero_selected SU(2), Z^3, fixed lattice spacing, selected triple (0,0,0), |tau|<=1e-8, each sign separately",
+    "families": ["F1 centered whole-star boxes", "F2 padded all-contained-face boxes"],
+    "support": "R={0,e_z}; complete coarse factors; local approximant X_r=T_theta^(F1,r)(A), hence A*X_r supported on Lambda_r",
+    "state": "Same BB2 common named-construction limit state; no arbitrary-ground-state uniqueness assumed",
+    "clock": "theta=alpha*t/hbar; |theta|<=8; fixed positive reference energy",
+    "limit_order": "Check source uniformity in local cutoff, remove cutoff at fixed volume, then volume limit; no unproved exchange"
+  },
+  "frozenAnalysisChoices": {
+    "radius": "r_N=2 for 5<=N<16; r_N=floor(N^(1/4)) for N>=16",
+    "root_implementation_requirement": "integer fourth-root inequalities, not floating-point rounding",
+    "supportVolume": "V_N=(2*r_N+1)^3",
+    "finiteRange": [5,255],
+    "analyticTail": "N>=256",
+    "candidateBracket": "C_d/(r_N-1)+c_s*V_N*exp(V_N/1e8)*q^(N-r_N)+2*C_s*q^(N-1)",
+    "inputConstants": {"q":"1/64","C_d":"78057/622883200000000","c_s":"2/984375","C_s":"4/984375"},
+    "inputStatus": "Read from BB2 report; exact gate and hypothesis discharge reconciliation is a prerequisite, not yet newly executed",
+    "coefficientConstruction": "C=max(C_finite,C_tail), where C_finite is a certified upper bound on max_(5<=N<=255) N^(1/4)*B_N and C_tail is proved uniformly for N>=256",
+    "quantitativeTargetStatus": "N^(-1/4) is a proposed rate, not an achieved result; no unsupported numerical value of C is promised",
+    "noRetuning": "On failure, report obstruction; changing schedule or split would require a new explicit admission, not silent adjustment"
+  },
+  "hypothesisLedger": [
+    {"claim":"BB1 constants discharged at required targets","evidence":"Round33 BB1 and BB2 gates","status":"prerequisite recheck"},
+    {"claim":"Radius-parametrized BB2 four-term decomposition holds for new schedule","evidence":"BB2 Section6 and BA2 source inequalities","status":"new proof obligation"},
+    {"claim":"r_N>=2, R subset Lambda_r subset Lambda_N and F2 comparison lemma","evidence":"frozen integer schedule plus BA2 comparison","status":"new exact proof obligation"},
+    {"claim":"Actual support volume is (2r+1)^3","evidence":"local approximant algebra and complete-factor support","status":"independent review required"},
+    {"claim":"Combined volume/exponential/boundary factor has certified tail","evidence":"new analytic inequality","status":"open proposed attempt"}
+  ],
+  "proposedProofOrTest": [
+    "Check pinned source gates, topology, state, clock and cutoff order before arithmetic.",
+    "Re-derive the correlation decomposition and F2 comparison for the new radius.",
+    "Certify the finite interval with rational exponential/fourth-root enclosures and explicit remainder.",
+    "Prove tail inequalities controlling dynamics and the combined V exp(V/1e8) q^(N-r) factor; derive C_tail.",
+    "Join finite and tail coefficients by the frozen maximum rule; independently review proof and exact arithmetic."
+  ],
+  "positiveControl": "Recover the admitted original BB2 bracket at the original radius and retain its valid finite-range conclusion.",
+  "decisiveCountercontrol": [
+    "Old half-box radius must fail an all-N decay claim by the actual asymptotic exponent comparison, while its accepted finite range remains valid.",
+    "Replacing V_N by |R| must fail actual support accounting for A*X_r, not only a metadata label.",
+    "A sampled-grid pass without an analytic tail proof cannot satisfy all-N acceptance."
+  ],
+  "evidenceRequiredForAcceptance": [
+    "Exact statement and all imported hypotheses verified at the pinned revision",
+    "Analytic proof of finite/tail coverage for all N>=5",
+    "Complete documented arithmetic enclosures and remainder",
+    "Independent reviewer reconstructs support and tail before examining producer constants",
+    "Wrong-radius and wrong-support controls rejected on mathematical grounds"
+  ],
+  "resourcesAndPrerequisites": {
+    "producerAgentHoursCap": 5,
+    "reviewerAgentHoursCap": 3,
+    "cpuMinutesCap": 10,
+    "cpuCores": 1,
+    "memoryMiBCap": 512,
+    "runtime": "Python standard-library Fraction/integer arithmetic or equally auditable rational interval implementation; availability checked before future execution",
+    "prerequisites": ["Pinned source gates and proof clauses available", "Independent reviewer available", "No new external theorem assumption or physical data required"],
+    "estimateMeaning": "Capped attempt estimate, not promise of proof completion"
+  },
+  "independentReview": "Separate panel skeptic or assigned mathematical reviewer reconstructs the radius, support, F2 comparison and tail inequalities before producer-output comparison; correlated model ancestry disclosed.",
+  "artifactsIfLaterAuthorized": [
+    "research/roadmap-update-2026-10-22/attempts/ym-p1/contract.json",
+    "research/roadmap-update-2026-10-22/attempts/ym-p1/source-map.json",
+    "research/roadmap-update-2026-10-22/attempts/ym-p1/lemma.md",
+    "research/roadmap-update-2026-10-22/attempts/ym-p1/verify.py",
+    "research/roadmap-update-2026-10-22/attempts/ym-p1/results.json",
+    "research/roadmap-update-2026-10-22/attempts/ym-p1/independent-review.md",
+    "research/roadmap-update-2026-10-22/attempts/ym-p1/receipt.json"
+  ],
+  "reviewSourceMap": {
+    "commit": "f9364d617015e803fda9465aefddd9cbe41854a4",
+    "paths": ["research/round33/forward/bb2/report.md","research/round33/advisor/bb2-gate.json","research/round33/forward/ba2/report.md","research/round33/advisor/ba2-gate.json","research/round33/advisor/bb1-gate.json"],
+    "readingStatus": "BB2 correlation proof and BA2 relevant clauses read; recheck exact gate premises before future attempt",
+    "externalMethods": "OpenAI215 same-field/same-scale discipline only; no external theorem is a mathematical premise"
+  },
+  "stopRule": "Stop before arithmetic for unsupported imported premise; stop at failed proof or resource cap with an obstruction report. Do not retune radius/split, enlarge grids instead of proving the tail, or promote a finite result to all N.",
+  "limits": ["Fixed lattice spacing only", "Named F1/F2 construction states only", "Compact time window only", "No uniqueness of arbitrary ground states", "No continuum progress fraction or mass-gap solution claim", "Planning only; no code or new proof execution"],
+  "conditionalFallback": {
+    "candidate": "YM-P2",
+    "trigger": "YM-P1 prerequisite fails and advisor explicitly selects replacement",
+    "automaticExecution": false,
+    "initialScope": "At most 2 agent-hours source preflight for route-B quantitative finite-box dynamics",
+    "mustRetain": ["Selected-face single-factor groups", "Interaction norm 2349|tau|", "Existing inherited route-B limit dynamics distinguished from new finite-box quantitative comparison"],
+    "excluded": ["Automatic correlation bound", "Small-box sign task", "Continuum extension"]
+  }
+}

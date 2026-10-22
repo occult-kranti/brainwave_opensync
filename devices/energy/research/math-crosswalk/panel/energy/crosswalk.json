@@ -1,0 +1,142 @@
+{
+  "schema": "math-crosswalk-energy/1",
+  "round": 1,
+  "date": "2026-10-22",
+  "repoCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+  "openaiCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "coverage": "Four selected energy-relevant families; not a global assertion about every family.",
+  "classificationPolicy": "A shared word, channel or model does not establish an identical theorem target. External theorem statements are recorded as publisher claims; this lane has not independently audited their full proofs.",
+  "artifactAnchors": [
+    {
+      "path": "src/quantum.mjs",
+      "sha256": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91"
+    },
+    {
+      "path": "src/em.mjs",
+      "sha256": "09ee1be95fe4586b1633fb39dae11fdc7f6a5dc3604461632c320d1e91193984"
+    },
+    {
+      "path": "src/identifiability.mjs",
+      "sha256": "fa6e497e275d10c1656060883e8fb1b9c865d4686e25bb012e8cde4887683b29"
+    },
+    {
+      "path": "research/advisor.md",
+      "sha256": "a41f87d85c50aa9c374cd90a3d69b6d19a35d2a72d230837149ae15c9a48deff"
+    }
+  ],
+  "records": [
+    {
+      "id": "energy-276",
+      "family": 276,
+      "title": "Generalized amplitude-damping classical capacity",
+      "classification": "related_model",
+      "exactProblemSolvedHere": false,
+      "exactProblemAttemptedHere": false,
+      "existingArtifact": "src/quantum.mjs",
+      "ourResult": "Single-qubit ergotropy, passive energy and energy closure after zero-temperature amplitude damping followed by dephasing; finite numerical validation.",
+      "claimedExternalResult": "Single-letter unrestricted classical capacity and repeated-use Holevo additivity for every generalized amplitude-damping channel; paper additionally claims additivity with any finite-dimensional partner channel.",
+      "exactModelMap": "A_gamma,nu maps excited population p to (1-gamma)p+gamma*nu and coherence c to sqrt(1-gamma)c. Our pre-dephasing channel is the nu=0 special case.",
+      "hypotheses": [
+        "Qubit density matrix, 0<=gamma,nu<=1; nu is stationary EXCITED population.",
+        "Memoryless identical channel uses; arbitrary entangled block inputs and collective decoding permitted.",
+        "Unassisted communication: no pre-shared entanglement or feedback."
+      ],
+      "missingPremisesOrWork": [
+        "No Holevo information objective, input ensemble optimization, decoder, or n-use entangled channel analysis exists in our code.",
+        "Our ergotropy is a different functional of a prepared state. Extra dephasing is a composition outside the exact displayed channel unless separately treated."
+      ],
+      "transfer": "Add generalized thermal damping and signed reservoir heat to our fixed-Hamiltonian qubit model, independently of capacity claims.",
+      "formalizationScope": "Publisher scope doc lists repeated-use capacity/additivity and scalar attained maximum; expressly excludes additivity with arbitrary different partner and separate-measurement decoding. No Lean proof was run here.",
+      "sources": [
+        "openai-276",
+        "openai-276-scope",
+        "vetrano-2026"
+      ],
+      "priority": "high"
+    },
+    {
+      "id": "energy-273",
+      "family": 273,
+      "title": "Entropy photon-number inequality",
+      "classification": "method_transfer_candidate",
+      "exactProblemSolvedHere": false,
+      "exactProblemAttemptedHere": false,
+      "existingArtifact": "src/quantum.mjs",
+      "ourResult": "Two-dimensional qubit energy and ergotropy; no bosonic Fock-space beam splitter or entropy-power theorem.",
+      "claimedExternalResult": "For n modes of each independent input into a passive beam splitter, entropy photon number of output C is at least eta*N(rho_A)+(1-eta)*N(rho_B), where N(rho)=g^{-1}(S(rho)/n).",
+      "hypotheses": [
+        "n is a finite positive integer; both inputs have finite mean number.",
+        "Input is rho_A tensor rho_B: independence across the two ports; entanglement within either n-mode input is allowed.",
+        "0<=eta<=1; bosonic passive beam splitter c_j=sqrt(eta)*a_j+sqrt(1-eta)*b_j.",
+        "g(x)=(x+1)log(x+1)-x log(x), distinct from the determinant-entropy function used in family 276."
+      ],
+      "missingPremisesOrWork": [
+        "No bosonic channel or receiver encoding is specified by the project.",
+        "A physical mode identification, measured input noise, cross-port independence and numerical cutoff/tail error would all need justification."
+      ],
+      "transfer": "Possible future thermal-noise bounds for an explicitly modeled bosonic receiver; entropy photon number is not output energy created without an input.",
+      "formalizationScope": "Publisher scope document selects the EPnI itself; thermal-attenuator and broadcast-capacity consequences are outside that selected formalization. No Lean proof was run here.",
+      "sources": [
+        "openai-273",
+        "openai-273-scope"
+      ],
+      "priority": "future"
+    },
+    {
+      "id": "energy-362",
+      "family": 362,
+      "title": "Global classical relativistic Vlasov\u2013Maxwell solutions",
+      "classification": "no_exact_overlap",
+      "exactProblemSolvedHere": false,
+      "exactProblemAttemptedHere": false,
+      "existingArtifact": "src/em.mjs",
+      "ourResult": "Driven fixed-mutual-inductance RLC circuits coupled to one mechanical mode; finite linear ODE/phasor energy identity.",
+      "claimedExternalResult": "Global unique classical solutions for the 3D one-species relativistic Vlasov\u2013Maxwell system with arbitrary-size smooth compatible initial data in the stated class.",
+      "hypotheses": [
+        "Nonnegative f0 smooth and compactly supported in phase space R^3_x times R^3_v.",
+        "E0 and B0 are smooth with bounded derivatives and square-integrable, satisfying div E0=rho_f0 and div B0=0.",
+        "Relativistic velocity v/sqrt(1+|v|^2); collisionless one-species plasma, no background charge.",
+        "Conclusion is smoothness on every finite time interval and compact phase-space support there; no smallness, symmetry or neutrality premise."
+      ],
+      "missingPremisesOrWork": [
+        "Our lumped finite-dimensional reciprocal circuit is not this kinetic PDE and has no phase-space distribution or Maxwell initial-value problem.",
+        "A solution-existence result neither supplies an uncounted source nor predicts a circuit conversion efficiency."
+      ],
+      "transfer": "Keep as a distinct mathematical-physics node; do not attach a solved-by-us or energy-gain edge. Low priority for current tabletop protocol.",
+      "formalizationScope": "Scope document describes this selected global-existence theorem; proof not executed or independently audited in this lane.",
+      "sources": [
+        "openai-362",
+        "openai-362-scope"
+      ],
+      "priority": "low"
+    },
+    {
+      "id": "energy-265",
+      "family": 265,
+      "title": "Two-dimensional ground-state area law",
+      "classification": "method_transfer_candidate",
+      "exactProblemSolvedHere": false,
+      "exactProblemAttemptedHere": false,
+      "existingArtifact": "src/quantum.mjs",
+      "ourResult": "Single prepared qubit with fixed Hamiltonian, not an interacting two-dimensional ground-state family.",
+      "claimedExternalResult": "Entanglement entropy is bounded by C times boundary size for unique uniformly gapped ground states of bounded finite-range square-lattice Hamiltonians.",
+      "hypotheses": [
+        "Finite induced square-lattice domain; local dimension q fixed.",
+        "One self-adjoint term per nonempty support X, graph diameter <=R and norm <=J; internal graph distance matters for domains with holes.",
+        "Unique ground state Omega and assumed global spectral gap Delta>0: H-E0*I >= Delta*(I-|Omega><Omega|).",
+        "The bound constant depends on q,R,J,Delta, not domain size or shape."
+      ],
+      "missingPremisesOrWork": [
+        "No such many-body Hamiltonian, unique ground state or uniform gap has been established in our qubit energy work.",
+        "A spectral gap is an input hypothesis, so this theorem cannot establish the missing Yang\u2013Mills gap.",
+        "The associated PEPS existence statement is not by itself an efficient numerical construction."
+      ],
+      "transfer": "Conditional future tensor-network modeling after an independently justified many-body Hamiltonian and gap; no present theorem overlap.",
+      "formalizationScope": "Not assessed in this lane; no family-wide verified badge is inferred.",
+      "sources": [
+        "openai-265"
+      ],
+      "priority": "future"
+    }
+  ]
+}

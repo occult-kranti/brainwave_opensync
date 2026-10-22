@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "checks": [
+    "math page, search, pagination, graph and layout 1440",
+    "math page, search, pagination, graph and layout 390",
+    "24 local research links resolve"
+  ],
+  "errors": []
+}

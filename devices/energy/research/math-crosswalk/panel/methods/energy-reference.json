@@ -1,0 +1,222 @@
+{
+  "computedAtUTC": "2026-10-22T04:05:55.201637+00:00",
+  "referenceBeforeProducerImport": true,
+  "contractSHA256": "efc31402f1ccba3288ba19cfa7211d8b5ef2f9da8befc654333a2f36c290cf4f",
+  "referenceCodeSHA256": "733e2ddd71135b1e7cf2334e2955a07e41a48f39948870ecef300e790c3b141f",
+  "numpyVersion": "2.3.5",
+  "cases": [
+    {
+      "id": "cold-release",
+      "gapJ": 4.638249105e-24,
+      "initial": {
+        "densityMatrix": {
+          "real": [
+            [
+              0.30000000000000004,
+              0.2278215691652394
+            ],
+            [
+              0.2278215691652394,
+              0.7
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              0.1918914605267469
+            ],
+            [
+              -0.1918914605267469,
+              0.0
+            ]
+          ]
+        },
+        "energyJ": 3.2467743735e-24,
+        "passiveEnergyJ": 6.550011822280459e-25,
+        "ergotropyJ": 2.5917731912719542e-24,
+        "entropyNats": 0.40716716362612626
+      },
+      "final": {
+        "densityMatrix": {
+          "real": [
+            [
+              0.5294000000000001,
+              0.15008704461162342
+            ],
+            [
+              0.15008704461162342,
+              0.4706
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              0.12641657373441423
+            ],
+            [
+              -0.12641657373441423,
+              0.0
+            ]
+          ]
+        },
+        "energyJ": 2.182760028813e-24,
+        "passiveEnergyJ": 1.398789903148132e-24,
+        "ergotropyJ": 7.839701256648681e-25,
+        "entropyNats": 0.6121946936268386
+      },
+      "heatIntoQubitJ": -1.0640143446869998e-24,
+      "heatIntoBathJ": 1.0640143446869998e-24,
+      "betaGap": 2.4423470353692043,
+      "entropyProductionNats": 0.7653019399144076,
+      "operatorChecks": {
+        "unitarityError": 1.1102230246251565e-16,
+        "jointTraceError": 0.0,
+        "systemTraceError": 0.0,
+        "heatClosureOverGap": 0.0,
+        "dephasingEnergyChangeOverGap": 0.0
+      }
+    },
+    {
+      "id": "warm-absorption",
+      "gapJ": 2.120342448e-24,
+      "initial": {
+        "densityMatrix": {
+          "real": [
+            [
+              0.88,
+              0.061908542819009156
+            ],
+            [
+              0.061908542819009156,
+              0.12
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              -0.12163540736983995
+            ],
+            [
+              0.12163540736983995,
+              0.0
+            ]
+          ]
+        },
+        "energyJ": 2.5444109376e-25,
+        "passiveEnergyJ": 2.040467842721951e-25,
+        "ergotropyJ": 5.039430948780487e-26,
+        "entropyNats": 0.31672615848279256
+      },
+      "final": {
+        "densityMatrix": {
+          "real": [
+            [
+              0.7641,
+              0.022037267381342995
+            ],
+            [
+              0.022037267381342995,
+              0.23589999999999994
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              -0.04329793390686437
+            ],
+            [
+              0.04329793390686437,
+              0.0
+            ]
+          ]
+        },
+        "energyJ": 5.001887834831999e-25,
+        "passiveEnergyJ": 4.907925027356523e-25,
+        "ergotropyJ": 9.396280747547549e-27,
+        "entropyNats": 0.541044676725527
+      },
+      "heatIntoQubitJ": 2.457476897231999e-25,
+      "heatIntoBathJ": -2.457476897232e-25,
+      "betaGap": 0.8001193001121131,
+      "entropyProductionNats": 0.1315846913597406,
+      "operatorChecks": {
+        "unitarityError": 2.0090460959570714e-17,
+        "jointTraceError": 0.0,
+        "systemTraceError": 0.0,
+        "heatClosureOverGap": -4.331163404506403e-17,
+        "dephasingEnergyChangeOverGap": 0.0
+      }
+    },
+    {
+      "id": "inverted-reservoir",
+      "gapJ": 2.915470866e-24,
+      "initial": {
+        "densityMatrix": {
+          "real": [
+            [
+              0.78,
+              -0.04269868439515011
+            ],
+            [
+              -0.04269868439515011,
+              0.22
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              0.3286347856678038
+            ],
+            [
+              -0.3286347856678038,
+              0.0
+            ]
+          ]
+        },
+        "energyJ": 6.414035905200001e-25,
+        "passiveEnergyJ": 1.9286452139834146e-25,
+        "ergotropyJ": 4.485390691216586e-25,
+        "entropyNats": 0.24356992409147324
+      },
+      "final": {
+        "densityMatrix": {
+          "real": [
+            [
+              0.33720000000000006,
+              -0.018115517570132918
+            ],
+            [
+              -0.018115517570132918,
+              0.6628
+            ]
+          ],
+          "imag": [
+            [
+              0.0,
+              0.139427931287695
+            ],
+            [
+              -0.139427931287695,
+              0.0
+            ]
+          ]
+        },
+        "energyJ": 1.9323740899848e-24,
+        "passiveEnergyJ": 8.305895257513007e-25,
+        "ergotropyJ": 1.1017845642334992e-24,
+        "entropyNats": 0.5975129629922014
+      },
+      "heatIntoQubitJ": 1.2909704994648e-24,
+      "heatIntoBathJ": -1.2909704994648e-24,
+      "betaGap": -1.1526795099383855,
+      "entropyProductionNats": 0.8643495259014452,
+      "operatorChecks": {
+        "unitarityError": 5.830536435702827e-19,
+        "jointTraceError": 0.0,
+        "systemTraceError": 0.0,
+        "heatClosureOverGap": 0.0,
+        "dephasingEnergyChangeOverGap": 0.0
+      }
+    }
+  ]
+}

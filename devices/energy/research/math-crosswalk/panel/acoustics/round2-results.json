@@ -1,0 +1,5784 @@
+{
+  "schemaVersion": 1,
+  "round": 2,
+  "kind": "floating-point checks of analytic model identities",
+  "allPassed": true,
+  "noPhysicalMeasurements": true,
+  "noGeneralInverseTheoremProved": true,
+  "contractSha256": "1dcd784898d0cff9a4585d1bcf60eba773ce61c0f5959f66c23e63a0f1d0276f",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "node": "v24.19.0"
+  },
+  "checks": [
+    {
+      "name": "independent_sphere_roots_and_frequencies",
+      "pass": true,
+      "evidence": {
+        "frequencyRelative": 2.703337891814454e-15,
+        "rootAbsolute": 3.375077994860476e-14,
+        "commonScaleFrequencyRelative": 2.2925855851437993e-16,
+        "massScaleRelative": 2.817814299724918e-16,
+        "modalMassScaleRelative": 3.7911623272737084e-16,
+        "fixedDensityScaleRelative": 3.447708093534211e-16
+      }
+    },
+    {
+      "name": "common_scale_invariance_in_real_sphere_code",
+      "pass": true,
+      "evidence": {
+        "cases": 144,
+        "heldOutCases": 24
+      }
+    },
+    {
+      "name": "fixed_density_positive_control",
+      "pass": true,
+      "evidence": {
+        "maxRelativeError": 3.447708093534211e-16,
+        "claim": "Only this homogeneous two-parameter scaling ambiguity is removed by fixing density."
+      }
+    },
+    {
+      "name": "explicit_kernel_and_heldout_directions",
+      "pass": true,
+      "evidence": {
+        "kernel": [
+          1,
+          1
+        ],
+        "kernelResidual": 0.0,
+        "rank": {
+          "matrix": [
+            [
+              0.4999999999810711,
+              -0.4999999999810711
+            ],
+            [
+              0.4999999999810711,
+              -0.4999999999810711
+            ]
+          ],
+          "singularValues": [
+            0.9999999999621423,
+            6.434084198467754e-17
+          ],
+          "rank": 1,
+          "nullity": 1
+        }
+      }
+    },
+    {
+      "name": "independent_observable_removes_this_kernel",
+      "pass": true,
+      "evidence": {
+        "withMass": {
+          "matrix": [
+            [
+              0.4999999999810711,
+              -0.4999999999810711
+            ],
+            [
+              0.4999999999810711,
+              -0.4999999999810711
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "singularValues": [
+            1.3065629648516446,
+            0.5411961001359529
+          ],
+          "rank": 2,
+          "nullity": 0
+        },
+        "withCalibratedStaticTraction": {
+          "matrix": [
+            [
+              0.4999999999810711,
+              -0.4999999999810711
+            ],
+            [
+              0.4999999999810711,
+              -0.4999999999810711
+            ],
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "singularValues": [
+            1.3065629648516448,
+            0.5411961001359528
+          ],
+          "rank": 2,
+          "nullity": 0
+        },
+        "staticAlone": {
+          "matrix": [
+            [
+              1.0,
+              0.0
+            ]
+          ],
+          "singularValues": [
+            1.0
+          ],
+          "rank": 1,
+          "nullity": 1
+        }
+      }
+    },
+    {
+      "name": "calibrated_static_traction_distinguishes_scale",
+      "pass": true,
+      "evidence": {
+        "cases": 72,
+        "maxRelativeError": 2.1737535919949077e-16,
+        "densityInStaticFormula": false
+      }
+    },
+    {
+      "name": "finite_fixture_independent_eigensolver_and_frf",
+      "pass": true,
+      "evidence": {
+        "maxRelativeError": 7.385277889473195e-16,
+        "scales": [
+          0.25,
+          0.5,
+          1,
+          2,
+          4,
+          0.37,
+          1.73,
+          3.1
+        ],
+        "responseFrequenciesHz": [
+          0,
+          21382.80736711681,
+          41400.75468952404,
+          55959.26183309293
+        ],
+        "label": "Finite two-mode model; not a continuum reconstruction"
+      }
+    },
+    {
+      "name": "wrong_inference_controls_rejected",
+      "pass": true,
+      "evidence": {
+        "frequencyOnlyUniqueEAndRho": {
+          "claimAccepted": false,
+          "counterexampleVerified": true,
+          "distinctParameters": [
+            [
+              123500000000,
+              8960
+            ],
+            [
+              247000000000,
+              17920
+            ]
+          ],
+          "frequenciesHz": [
+            45495.33482365279,
+            45495.33482365279
+          ]
+        },
+        "equalFrequenciesImplyEqualStaticTraction": {
+          "claimAccepted": false,
+          "counterexampleVerified": true,
+          "tractionNormPa": [
+            385937.50000000006,
+            771875.0000000001
+          ]
+        },
+        "staticTractionIdentifiesDensity": {
+          "claimAccepted": false,
+          "counterexampleVerified": true,
+          "fixedYoungDistinctRho": [
+            8960,
+            26880
+          ],
+          "tractionNormPa": [
+            385937.50000000006,
+            385937.5
+          ]
+        },
+        "unknownGainBreaksScaleAmbiguity": {
+          "claimAccepted": false,
+          "counterexampleVerified": true,
+          "formula": "H_a=H/a and gain_a=a*gain, hence gain_a*H_a=gain*H",
+          "a": 2,
+          "gain": [
+            0.5,
+            1.0
+          ],
+          "measuredResponseRelativeDifference": 0.0,
+          "uncalibratedResponseFrequencyHz": 41400.75468952404
+        }
+      }
+    }
+  ],
+  "maxErrors": {
+    "frequencyRelative": 2.703337891814454e-15,
+    "rootAbsolute": 3.375077994860476e-14,
+    "commonScaleFrequencyRelative": 2.2925855851437993e-16,
+    "massScaleRelative": 2.817814299724918e-16,
+    "modalMassScaleRelative": 3.7911623272737084e-16,
+    "fixedDensityScaleRelative": 3.447708093534211e-16
+  },
+  "caseCounts": {
+    "sphere": 144,
+    "productionSphereCalls": 604,
+    "heldOutSphere": 24,
+    "static": 72,
+    "finiteFixture": 8
+  },
+  "sphereCases": [
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 153252.65211424718,
+      "commonScaledHz": 153252.65211424718,
+      "fixedDensityHz": 76626.32605712359,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 153252.65211424718,
+      "commonScaledHz": 153252.65211424718,
+      "fixedDensityHz": 108365.98954480706,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.3428489223872162e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 153252.65211424718,
+      "commonScaledHz": 153252.65211424718,
+      "fixedDensityHz": 153252.65211424718,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 153252.65211424718,
+      "commonScaledHz": 153252.65211424718,
+      "fixedDensityHz": 216731.97908961412,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.3428489223872162e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 153252.65211424718,
+      "commonScaledHz": 153252.65211424718,
+      "fixedDensityHz": 306505.30422849435,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 375530.05057029065,
+      "commonScaledHz": 375530.05057029065,
+      "fixedDensityHz": 187765.02528514533,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 375530.05057029065,
+      "commonScaledHz": 375530.05057029065,
+      "fixedDensityHz": 265539.8452975796,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.1920499670486913e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 375530.05057029065,
+      "commonScaledHz": 375530.05057029065,
+      "fixedDensityHz": 375530.05057029065,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 375530.05057029065,
+      "commonScaledHz": 375530.05057029065,
+      "fixedDensityHz": 531079.6905951592,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.1920499670486913e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 375530.05057029065,
+      "commonScaledHz": 375530.05057029065,
+      "fixedDensityHz": 751060.1011405813,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 576839.621230654,
+      "commonScaledHz": 576839.621230654,
+      "fixedDensityHz": 288419.810615327,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 576839.621230654,
+      "commonScaledHz": 576839.621230654,
+      "fixedDensityHz": 407887.20782927494,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.4270528664833923e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 576839.621230654,
+      "commonScaledHz": 576839.621230654,
+      "fixedDensityHz": 576839.621230654,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 576839.621230654,
+      "commonScaledHz": 576839.621230654,
+      "fixedDensityHz": 815774.4156585499,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.4270528664833923e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 576839.621230654,
+      "commonScaledHz": 576839.621230654,
+      "fixedDensityHz": 1153679.242461308,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 775143.8690774868,
+      "commonScaledHz": 775143.8690774868,
+      "fixedDensityHz": 387571.9345387434,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 775143.8690774868,
+      "commonScaledHz": 775143.8690774868,
+      "fixedDensityHz": 548109.4862198683,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 775143.8690774868,
+      "commonScaledHz": 775143.8690774868,
+      "fixedDensityHz": 775143.8690774868,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 775143.8690774868,
+      "commonScaledHz": 775143.8690774868,
+      "fixedDensityHz": 1096218.9724397366,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 775143.8690774868,
+      "commonScaledHz": 775143.8690774868,
+      "fixedDensityHz": 1550287.7381549736,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 34477.53703357642,
+      "commonScaledHz": 34477.53703357642,
+      "fixedDensityHz": 17238.76851678821,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 34477.53703357642,
+      "commonScaledHz": 34477.53703357642,
+      "fixedDensityHz": 24379.300235052207,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.492240865002794e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 34477.53703357642,
+      "commonScaledHz": 34477.53703357642,
+      "fixedDensityHz": 34477.53703357642,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 34477.53703357642,
+      "commonScaledHz": 34477.53703357642,
+      "fixedDensityHz": 48758.600470104415,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.492240865002794e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 34477.53703357642,
+      "commonScaledHz": 34477.53703357642,
+      "fixedDensityHz": 68955.07406715283,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 84483.70091570093,
+      "commonScaledHz": 84483.70091570093,
+      "fixedDensityHz": 42241.850457850465,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 84483.70091570093,
+      "commonScaledHz": 84483.70091570093,
+      "fixedDensityHz": 59738.997817228264,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 84483.70091570093,
+      "commonScaledHz": 84483.70091570093,
+      "fixedDensityHz": 84483.70091570093,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 84483.70091570093,
+      "commonScaledHz": 84483.70091570093,
+      "fixedDensityHz": 119477.99563445653,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 84483.70091570093,
+      "commonScaledHz": 84483.70091570093,
+      "fixedDensityHz": 168967.40183140186,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 129772.69319024835,
+      "commonScaledHz": 129772.69319024835,
+      "fixedDensityHz": 64886.346595124174,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 129772.69319024835,
+      "commonScaledHz": 129772.69319024835,
+      "fixedDensityHz": 91763.1513676659,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.5858124978796698e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 129772.69319024835,
+      "commonScaledHz": 129772.69319024835,
+      "fixedDensityHz": 129772.69319024835,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 129772.69319024835,
+      "commonScaledHz": 129772.69319024835,
+      "fixedDensityHz": 183526.3027353318,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.5858124978796698e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 129772.69319024835,
+      "commonScaledHz": 129772.69319024835,
+      "fixedDensityHz": 259545.3863804967,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 174385.5723458913,
+      "commonScaledHz": 174385.5723458913,
+      "fixedDensityHz": 87192.78617294565,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 174385.5723458913,
+      "commonScaledHz": 174385.5723458913,
+      "fixedDensityHz": 123309.220746877,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.1801157399444032e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 174385.5723458913,
+      "commonScaledHz": 174385.5723458913,
+      "fixedDensityHz": 174385.5723458913,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 174385.5723458913,
+      "commonScaledHz": 174385.5723458913,
+      "fixedDensityHz": 246618.441493754,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.1801157399444032e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 174385.5723458913,
+      "commonScaledHz": 174385.5723458913,
+      "fixedDensityHz": 348771.1446917826,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 202226.76329113665,
+      "commonScaledHz": 202226.76329113665,
+      "fixedDensityHz": 101113.38164556833,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 202226.76329113665,
+      "commonScaledHz": 202226.76329113665,
+      "fixedDensityHz": 142995.91566056953,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.0352910306765466e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 202226.76329113665,
+      "commonScaledHz": 202226.76329113665,
+      "fixedDensityHz": 202226.76329113665,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 202226.76329113665,
+      "commonScaledHz": 202226.76329113665,
+      "fixedDensityHz": 285991.83132113906,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.0352910306765466e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 202226.76329113665,
+      "commonScaledHz": 202226.76329113665,
+      "fixedDensityHz": 404453.5265822733,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 448783.6637811305,
+      "commonScaledHz": 448783.6637811305,
+      "fixedDensityHz": 224391.83189056526,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 448783.6637811305,
+      "commonScaledHz": 448783.6637811305,
+      "fixedDensityHz": 317337.97194538097,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 448783.6637811305,
+      "commonScaledHz": 448783.6637811305,
+      "fixedDensityHz": 448783.6637811305,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 448783.6637811305,
+      "commonScaledHz": 448783.6637811305,
+      "fixedDensityHz": 634675.9438907619,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 448783.6637811305,
+      "commonScaledHz": 448783.6637811305,
+      "fixedDensityHz": 897567.327562261,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 683215.1270671994,
+      "commonScaledHz": 683215.1270671994,
+      "fixedDensityHz": 341607.5635335997,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 683215.1270671994,
+      "commonScaledHz": 683215.1270671994,
+      "fixedDensityHz": 483106.0493584455,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 683215.1270671994,
+      "commonScaledHz": 683215.1270671994,
+      "fixedDensityHz": 683215.1270671994,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 683215.1270671994,
+      "commonScaledHz": 683215.1270671994,
+      "fixedDensityHz": 966212.098716891,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 683215.1270671994,
+      "commonScaledHz": 683215.1270671994,
+      "fixedDensityHz": 1366430.254134399,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 915484.1405724385,
+      "commonScaledHz": 915484.1405724385,
+      "fixedDensityHz": 457742.07028621924,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 915484.1405724385,
+      "commonScaledHz": 915484.1405724385,
+      "fixedDensityHz": 647345.0438675099,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.7983503995245107e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 915484.1405724385,
+      "commonScaledHz": 915484.1405724385,
+      "fixedDensityHz": 915484.1405724385,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 915484.1405724385,
+      "commonScaledHz": 915484.1405724385,
+      "fixedDensityHz": 1294690.0877350199,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.7983503995245107e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 915484.1405724385,
+      "commonScaledHz": 915484.1405724385,
+      "fixedDensityHz": 1830968.281144877,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 45495.33482365279,
+      "commonScaledHz": 45495.33482365279,
+      "fixedDensityHz": 22747.667411826395,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 45495.33482365279,
+      "commonScaledHz": 45495.33482365279,
+      "fixedDensityHz": 32170.05976615737,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 45495.33482365279,
+      "commonScaledHz": 45495.33482365279,
+      "fixedDensityHz": 45495.33482365279,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 45495.33482365279,
+      "commonScaledHz": 45495.33482365279,
+      "fixedDensityHz": 64340.11953231474,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 45495.33482365279,
+      "commonScaledHz": 45495.33482365279,
+      "fixedDensityHz": 90990.66964730558,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 100963.7038877684,
+      "commonScaledHz": 100963.7038877684,
+      "fixedDensityHz": 50481.8519438842,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 100963.7038877684,
+      "commonScaledHz": 100963.7038877684,
+      "fixedDensityHz": 71392.11967275162,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.0383083308172048e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 100963.7038877684,
+      "commonScaledHz": 100963.7038877684,
+      "fixedDensityHz": 100963.7038877684,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 100963.7038877684,
+      "commonScaledHz": 100963.7038877684,
+      "fixedDensityHz": 142784.23934550324,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.0383083308172048e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 100963.7038877684,
+      "commonScaledHz": 100963.7038877684,
+      "fixedDensityHz": 201927.4077755368,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 153704.1905662991,
+      "commonScaledHz": 153704.1905662991,
+      "fixedDensityHz": 76852.09528314955,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 153704.1905662991,
+      "commonScaledHz": 153704.1905662991,
+      "fixedDensityHz": 108685.27544621946,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.3389040206801104e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 153704.1905662991,
+      "commonScaledHz": 153704.1905662991,
+      "fixedDensityHz": 153704.1905662991,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 153704.1905662991,
+      "commonScaledHz": 153704.1905662991,
+      "fixedDensityHz": 217370.5508924389,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.3389040206801104e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 153704.1905662991,
+      "commonScaledHz": 153704.1905662991,
+      "fixedDensityHz": 307408.3811325982,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 205958.18685544175,
+      "commonScaledHz": 205958.18685544175,
+      "fixedDensityHz": 102979.09342772087,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 205958.18685544175,
+      "commonScaledHz": 205958.18685544175,
+      "fixedDensityHz": 145634.43056636894,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.9984168814716125e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 205958.18685544175,
+      "commonScaledHz": 205958.18685544175,
+      "fixedDensityHz": 205958.18685544175,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 205958.18685544175,
+      "commonScaledHz": 205958.18685544175,
+      "fixedDensityHz": 291268.8611327379,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.9984168814716125e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 205958.18685544175,
+      "commonScaledHz": 205958.18685544175,
+      "fixedDensityHz": 411916.3737108835,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 347158.08521304186,
+      "commonScaledHz": 347158.08521304186,
+      "fixedDensityHz": 173579.04260652093,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 347158.08521304186,
+      "commonScaledHz": 347158.08521304186,
+      "fixedDensityHz": 245477.83619787922,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 347158.08521304186,
+      "commonScaledHz": 347158.08521304186,
+      "fixedDensityHz": 347158.08521304186,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 347158.08521304186,
+      "commonScaledHz": 347158.08521304186,
+      "fixedDensityHz": 490955.67239575845,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 0,
+      "baselineHz": 347158.08521304186,
+      "commonScaledHz": 347158.08521304186,
+      "fixedDensityHz": 694316.1704260837,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 716285.0908307885,
+      "commonScaledHz": 716285.0908307885,
+      "fixedDensityHz": 358142.54541539424,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 716285.0908307885,
+      "commonScaledHz": 716285.0908307885,
+      "fixedDensityHz": 506490.04498927254,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 3.447708093534211e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 716285.0908307885,
+      "commonScaledHz": 716285.0908307885,
+      "fixedDensityHz": 716285.0908307885,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 716285.0908307885,
+      "commonScaledHz": 716285.0908307885,
+      "fixedDensityHz": 1012980.0899785451,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 3.447708093534211e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 1,
+      "baselineHz": 716285.0908307885,
+      "commonScaledHz": 716285.0908307885,
+      "fixedDensityHz": 1432570.181661577,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 1080121.473679797,
+      "commonScaledHz": 1080121.473679797,
+      "fixedDensityHz": 540060.7368398985,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 1080121.473679797,
+      "commonScaledHz": 1080121.473679797,
+      "fixedDensityHz": 763761.2185441914,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.5242371437611685e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 1080121.473679797,
+      "commonScaledHz": 1080121.473679797,
+      "fixedDensityHz": 1080121.473679797,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 1080121.473679797,
+      "commonScaledHz": 1080121.473679797,
+      "fixedDensityHz": 1527522.437088383,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.5242371437611685e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 2,
+      "baselineHz": 1080121.473679797,
+      "commonScaledHz": 1080121.473679797,
+      "fixedDensityHz": 2160242.947359594,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 1442783.6652921992,
+      "commonScaledHz": 1442783.6652921992,
+      "fixedDensityHz": 721391.8326460996,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 1442783.6652921992,
+      "commonScaledHz": 1442783.6652921992,
+      "fixedDensityHz": 1020202.113513296,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.282201149849266e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 1442783.6652921992,
+      "commonScaledHz": 1442783.6652921992,
+      "fixedDensityHz": 1442783.6652921992,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 1442783.6652921992,
+      "commonScaledHz": 1442783.6652921992,
+      "fixedDensityHz": 2040404.227026592,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.282201149849266e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "radiusM": 0.01,
+      "rootIndex": 3,
+      "baselineHz": 1442783.6652921992,
+      "commonScaledHz": 1442783.6652921992,
+      "fixedDensityHz": 2885567.3305843985,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 78100.80657211291,
+      "commonScaledHz": 78100.80657211291,
+      "fixedDensityHz": 39050.403286056455,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 78100.80657211291,
+      "commonScaledHz": 78100.80657211291,
+      "fixedDensityHz": 55225.60994327991,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.3174970130083272e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 78100.80657211291,
+      "commonScaledHz": 78100.80657211291,
+      "fixedDensityHz": 78100.80657211291,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 78100.80657211291,
+      "commonScaledHz": 78100.80657211291,
+      "fixedDensityHz": 110451.21988655982,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.3174970130083272e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "baselineHz": 78100.80657211291,
+      "commonScaledHz": 78100.80657211291,
+      "fixedDensityHz": 156201.61314422582,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 161144.00243662283,
+      "commonScaledHz": 161144.00243662283,
+      "fixedDensityHz": 80572.00121831142,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 161144.00243662283,
+      "commonScaledHz": 161144.00243662283,
+      "fixedDensityHz": 113946.01687047751,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.5541770792932614e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 161144.00243662283,
+      "commonScaledHz": 161144.00243662283,
+      "fixedDensityHz": 161144.00243662283,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 161144.00243662283,
+      "commonScaledHz": 161144.00243662283,
+      "fixedDensityHz": 227892.03374095503,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.5541770792932614e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 1,
+      "baselineHz": 161144.00243662283,
+      "commonScaledHz": 161144.00243662283,
+      "fixedDensityHz": 322288.00487324566,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 242996.95695833454,
+      "commonScaledHz": 242996.95695833454,
+      "fixedDensityHz": 121498.47847916727,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 242996.95695833454,
+      "commonScaledHz": 242996.95695833454,
+      "fixedDensityHz": 171824.79607293397,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 242996.95695833454,
+      "commonScaledHz": 242996.95695833454,
+      "fixedDensityHz": 242996.95695833454,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 242996.95695833454,
+      "commonScaledHz": 242996.95695833454,
+      "fixedDensityHz": 343649.59214586794,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 2,
+      "baselineHz": 242996.95695833454,
+      "commonScaledHz": 242996.95695833454,
+      "fixedDensityHz": 485993.9139166691,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 324585.75147181086,
+      "commonScaledHz": 324585.75147181086,
+      "fixedDensityHz": 162292.87573590543,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 324585.75147181086,
+      "commonScaledHz": 324585.75147181086,
+      "fixedDensityHz": 229516.78594224883,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.536096027769997e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 324585.75147181086,
+      "commonScaledHz": 324585.75147181086,
+      "fixedDensityHz": 324585.75147181086,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 324585.75147181086,
+      "commonScaledHz": 324585.75147181086,
+      "fixedDensityHz": 459033.57188449765,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 2.536096027769997e-16
+      }
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "radiusM": 0.04445,
+      "rootIndex": 3,
+      "baselineHz": 324585.75147181086,
+      "commonScaledHz": 324585.75147181086,
+      "fixedDensityHz": 649171.5029436217,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.11,
+      "radiusM": 0.023,
+      "rootIndex": 4,
+      "baselineHz": 406209.3000438995,
+      "commonScaledHz": 406209.30004389957,
+      "fixedDensityHz": 247087.47097656986,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.4329475200882117e-16,
+        "massScaleRelative": 1.6427383176981327e-16,
+        "modalMassScaleRelative": 2.2101838379605539e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.11,
+      "radiusM": 0.023,
+      "rootIndex": 4,
+      "baselineHz": 406209.3000438995,
+      "commonScaledHz": 406209.3000438995,
+      "fixedDensityHz": 534284.9166081031,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 1.8907931099315723e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.11,
+      "radiusM": 0.023,
+      "rootIndex": 4,
+      "baselineHz": 406209.3000438995,
+      "commonScaledHz": 406209.3000438995,
+      "fixedDensityHz": 715205.2753375632,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 1.5685501356085394e-16,
+        "modalMassScaleRelative": 2.1103690839881418e-16,
+        "fixedDensityScaleRelative": 1.6277190037781668e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.11,
+      "radiusM": 0.023,
+      "rootIndex": 7,
+      "baselineHz": 652809.1623116845,
+      "commonScaledHz": 652809.1623116846,
+      "fixedDensityHz": 397088.31119448825,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.783297915346234e-16,
+        "massScaleRelative": 1.6427383176981327e-16,
+        "modalMassScaleRelative": 2.19796724306105e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.11,
+      "radiusM": 0.023,
+      "rootIndex": 7,
+      "baselineHz": 652809.1623116845,
+      "commonScaledHz": 652809.1623116845,
+      "fixedDensityHz": 858636.3946098976,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.11,
+      "radiusM": 0.023,
+      "rootIndex": 7,
+      "baselineHz": 652809.1623116845,
+      "commonScaledHz": 652809.1623116845,
+      "fixedDensityHz": 1149389.1366434859,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 1.5685501356085394e-16,
+        "modalMassScaleRelative": 2.0987042062776475e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.11,
+      "radiusM": 0.061,
+      "rootIndex": 4,
+      "baselineHz": 153160.88362310966,
+      "commonScaledHz": 153160.88362310966,
+      "fixedDensityHz": 93164.12840100176,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 2.817814299724918e-16,
+        "modalMassScaleRelative": 3.7911623272737084e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.11,
+      "radiusM": 0.061,
+      "rootIndex": 4,
+      "baselineHz": 153160.88362310966,
+      "commonScaledHz": 153160.88362310966,
+      "fixedDensityHz": 201451.68986862907,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 1.6216532498164997e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.11,
+      "radiusM": 0.061,
+      "rootIndex": 4,
+      "baselineHz": 153160.88362310966,
+      "commonScaledHz": 153160.88362310966,
+      "fixedDensityHz": 269667.562832196,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 1.345279085029961e-16,
+        "modalMassScaleRelative": 3.6199485447516705e-16,
+        "fixedDensityScaleRelative": 2.158496939792786e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.11,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "baselineHz": 246141.15956014337,
+      "commonScaledHz": 246141.1595601434,
+      "fixedDensityHz": 149721.8222536595,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.1824040525665244e-16,
+        "massScaleRelative": 2.817814299724918e-16,
+        "modalMassScaleRelative": 3.7702070141657733e-16,
+        "fixedDensityScaleRelative": 1.9438602882768706e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.11,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "baselineHz": 246141.15956014337,
+      "commonScaledHz": 246141.15956014337,
+      "fixedDensityHz": 323748.14878733846,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.7979303088371468e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.11,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "baselineHz": 246141.15956014337,
+      "commonScaledHz": 246141.15956014337,
+      "fixedDensityHz": 433376.2318491832,
+      "errors": {
+        "commonScaleFrequencyRelative": 0.0,
+        "massScaleRelative": 1.345279085029961e-16,
+        "modalMassScaleRelative": 3.5999396006228026e-16,
+        "fixedDensityScaleRelative": 1.3431207490336923e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.417,
+      "radiusM": 0.023,
+      "rootIndex": 4,
+      "baselineHz": 633839.3978896972,
+      "commonScaledHz": 633839.3978896973,
+      "fixedDensityHz": 385549.45397102344,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.8366690712904183e-16,
+        "massScaleRelative": 1.6427383176981327e-16,
+        "modalMassScaleRelative": 2.202731653197464e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.417,
+      "radiusM": 0.023,
+      "rootIndex": 4,
+      "baselineHz": 633839.3978896972,
+      "commonScaledHz": 633839.3978896973,
+      "fixedDensityHz": 833685.5650715748,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.8366690712904183e-16,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.3963936369336102e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.417,
+      "radiusM": 0.023,
+      "rootIndex": 4,
+      "baselineHz": 633839.3978896972,
+      "commonScaledHz": 633839.3978896973,
+      "fixedDensityHz": 1115989.4198348117,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.8366690712904183e-16,
+        "massScaleRelative": 1.5685501356085394e-16,
+        "modalMassScaleRelative": 2.1032534495046753e-16,
+        "fixedDensityScaleRelative": 2.086315869269918e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.417,
+      "radiusM": 0.023,
+      "rootIndex": 7,
+      "baselineHz": 1015581.0328854774,
+      "commonScaledHz": 1015581.0328854776,
+      "fixedDensityHz": 617753.8253317346,
+      "errors": {
+        "commonScaleFrequencyRelative": 2.2925855851437993e-16,
+        "massScaleRelative": 1.6427383176981327e-16,
+        "modalMassScaleRelative": 2.1951365397849588e-16,
+        "fixedDensityScaleRelative": 1.8844937425425032e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.417,
+      "radiusM": 0.023,
+      "rootIndex": 7,
+      "baselineHz": 1015581.0328854774,
+      "commonScaledHz": 1015581.0328854776,
+      "fixedDensityHz": 1335788.2928956777,
+      "errors": {
+        "commonScaleFrequencyRelative": 2.2925855851437993e-16,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.7430205436907003e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.417,
+      "radiusM": 0.023,
+      "rootIndex": 7,
+      "baselineHz": 1015581.0328854774,
+      "commonScaledHz": 1015581.0328854776,
+      "fixedDensityHz": 1788114.9254189099,
+      "errors": {
+        "commonScaleFrequencyRelative": 2.2925855851437993e-16,
+        "massScaleRelative": 1.5685501356085394e-16,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.3021011141066526e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 4,
+      "baselineHz": 238988.6254338203,
+      "commonScaledHz": 238988.62543382033,
+      "fixedDensityHz": 145371.10559563182,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.21779144944256e-16,
+        "massScaleRelative": 2.817814299724918e-16,
+        "modalMassScaleRelative": 3.778379480143771e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 4,
+      "baselineHz": 238988.6254338203,
+      "commonScaledHz": 238988.62543382033,
+      "fixedDensityHz": 314340.4589614135,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.21779144944256e-16,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 1.616185442373636e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 4,
+      "baselineHz": 238988.6254338203,
+      "commonScaledHz": 238988.62543382033,
+      "fixedDensityHz": 420782.8960032897,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.21779144944256e-16,
+        "massScaleRelative": 1.345279085029961e-16,
+        "modalMassScaleRelative": 1.8038714937460584e-16,
+        "fixedDensityScaleRelative": 1.383318130711576e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "baselineHz": 382923.99600599974,
+      "commonScaledHz": 382923.9960059998,
+      "fixedDensityHz": 232923.573485736,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.5200839205844753e-16,
+        "massScaleRelative": 2.817814299724918e-16,
+        "modalMassScaleRelative": 3.7653514653034163e-16,
+        "fixedDensityScaleRelative": 0.0
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "baselineHz": 382923.99600599974,
+      "commonScaledHz": 382923.9960059998,
+      "fixedDensityHz": 503657.8809278785,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.5200839205844753e-16,
+        "massScaleRelative": 0.0,
+        "modalMassScaleRelative": 0.0,
+        "fixedDensityScaleRelative": 1.155698403968834e-16
+      }
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "baselineHz": 382923.99600599974,
+      "commonScaledHz": 382923.9960059998,
+      "fixedDensityHz": 674207.2669612285,
+      "errors": {
+        "commonScaleFrequencyRelative": 1.5200839205844753e-16,
+        "massScaleRelative": 1.345279085029961e-16,
+        "modalMassScaleRelative": 1.7976516673061473e-16,
+        "fixedDensityScaleRelative": 1.7266993034892564e-16
+      }
+    }
+  ],
+  "sensitivities": [
+    {
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "direction": [
+        1,
+        0
+      ],
+      "numerical": 0.4999999999810711,
+      "analytic": 0.5,
+      "absoluteError": 1.89289139918003e-11
+    },
+    {
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "direction": [
+        0,
+        1
+      ],
+      "numerical": -0.4999999999810711,
+      "analytic": -0.5,
+      "absoluteError": 1.89289139918003e-11
+    },
+    {
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "direction": [
+        1,
+        1
+      ],
+      "numerical": 0.0,
+      "analytic": 0.0,
+      "absoluteError": 0.0
+    },
+    {
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "direction": [
+        1,
+        -1
+      ],
+      "numerical": 0.9999999999621422,
+      "analytic": 1.0,
+      "absoluteError": 3.78578279836006e-11
+    },
+    {
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "direction": [
+        2,
+        -3
+      ],
+      "numerical": 2.4999999999941735,
+      "analytic": 2.5,
+      "absoluteError": 5.8264504332328215e-12
+    },
+    {
+      "poisson": 0.34,
+      "radiusM": 0.04445,
+      "rootIndex": 0,
+      "direction": [
+        -1,
+        4
+      ],
+      "numerical": -2.4999999999941735,
+      "analytic": -2.5,
+      "absoluteError": 5.8264504332328215e-12
+    },
+    {
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "direction": [
+        1,
+        0
+      ],
+      "numerical": 0.4999999999810711,
+      "analytic": 0.5,
+      "absoluteError": 1.89289139918003e-11
+    },
+    {
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "direction": [
+        0,
+        1
+      ],
+      "numerical": -0.4999999999810711,
+      "analytic": -0.5,
+      "absoluteError": 1.89289139918003e-11
+    },
+    {
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "direction": [
+        1,
+        1
+      ],
+      "numerical": 0.0,
+      "analytic": 0.0,
+      "absoluteError": 0.0
+    },
+    {
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "direction": [
+        1,
+        -1
+      ],
+      "numerical": 1.0000000000509601,
+      "analytic": 1.0,
+      "absoluteError": 5.0960125008714385e-11
+    },
+    {
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "direction": [
+        2,
+        -3
+      ],
+      "numerical": 2.4999999999941735,
+      "analytic": 2.5,
+      "absoluteError": 5.8264504332328215e-12
+    },
+    {
+      "poisson": 0.417,
+      "radiusM": 0.061,
+      "rootIndex": 7,
+      "direction": [
+        -1,
+        4
+      ],
+      "numerical": -2.4999999999941735,
+      "analytic": -2.5,
+      "absoluteError": 5.8264504332328215e-12
+    }
+  ],
+  "staticCases": [
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        205833.33333333334,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        51458.333333333336,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        102916.66666666667,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        25729.166666666668,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        205833.33333333334,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        51458.333333333336,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -102916.66666666667,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -25729.166666666668,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        205833.33333333334,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        102916.66666666667,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        102916.66666666667,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        51458.333333333336,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        205833.33333333334,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        102916.66666666667,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -102916.66666666667,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -51458.333333333336,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        205833.33333333334,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        205833.33333333334,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        102916.66666666667,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        102916.66666666667,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        205833.33333333334,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        205833.33333333334,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -102916.66666666667,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -102916.66666666667,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        205833.33333333334,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        411666.6666666667,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        102916.66666666667,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        205833.33333333334,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        205833.33333333334,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        411666.6666666667,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -102916.66666666667,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -205833.33333333334,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        205833.33333333334,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        823333.3333333334,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        102916.66666666667,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        411666.6666666667,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        205833.33333333334,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        823333.3333333334,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.41395127725022e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.2,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -102916.66666666667,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -411666.6666666667,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        385937.5,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        96484.375,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        92164.17910447759,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        23041.044776119397,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        385937.5,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        96484.375,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -92164.17910447759,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -23041.044776119397,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        385937.5,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        192968.75,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        92164.17910447759,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        46082.089552238795,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        385937.5,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        192968.75,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -92164.17910447759,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -46082.089552238795,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        385937.5,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        385937.5,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        92164.17910447759,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        92164.17910447759,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        385937.5,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        385937.5,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -92164.17910447759,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -92164.17910447759,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        385937.5,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        771875.0,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        92164.17910447759,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        184328.35820895518,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        385937.5,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        771875.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -92164.17910447759,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -184328.35820895518,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        385937.5,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        1543750.0,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        92164.17910447759,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        368656.71641791036,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        385937.5,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        1543750.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        1.5082146957335682e-16
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.34,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -92164.17910447759,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -368656.71641791036,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        1235000.0000000005,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        308750.0000000001,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        85172.41379310345,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        21293.103448275862,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        1235000.0000000005,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        308750.0000000001,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.25,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -85172.41379310345,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -21293.103448275862,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        1235000.0000000005,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        617500.0000000002,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        85172.41379310345,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        42586.206896551725,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        1235000.0000000005,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        617500.0000000002,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 0.5,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -85172.41379310345,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -42586.206896551725,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        1235000.0000000005,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        1235000.0000000005,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        85172.41379310345,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        85172.41379310345,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        1235000.0000000005,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        1235000.0000000005,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 1,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -85172.41379310345,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -85172.41379310345,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        1235000.0000000005,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        2470000.000000001,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        85172.41379310345,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        170344.8275862069,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        1235000.0000000005,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        2470000.000000001,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 2,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -85172.41379310345,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -170344.8275862069,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        1235000.0000000005,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        4940000.000000002,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        85172.41379310345,
+        0.0,
+        0.0
+      ],
+      "scaledTractionPa": [
+        340689.6551724138,
+        0.0,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1e-06
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        1235000.0000000005,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        4940000.000000002,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "development",
+      "scale": 4,
+      "poisson": 0.45,
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "strain": [
+        [
+          1e-06,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          -1e-06,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "baselineTractionPa": [
+        0.0,
+        -85172.41379310345,
+        0.0
+      ],
+      "scaledTractionPa": [
+        0.0,
+        -340689.6551724138,
+        0.0
+      ],
+      "relativeErrors": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.11,
+      "normal": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        124185.18329628171,
+        25351.695131857974,
+        67763.36555921435
+      ],
+      "scaledTractionPa": [
+        45948.517819624234,
+        9380.12719878745,
+        25072.445256909312
+      ],
+      "relativeErrors": [
+        6.841158168331365e-17,
+        0.0
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.11,
+      "normal": [
+        -0.8164965809277261,
+        0.4082482904638631,
+        0.4082482904638631
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        -152280.90324096874,
+        -105548.42719856818,
+        42073.786841912006
+      ],
+      "scaledTractionPa": [
+        -56343.93419915843,
+        -39052.918063470235,
+        15567.301131507444
+      ],
+      "relativeErrors": [
+        1.0668378548192354e-16,
+        0.0
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.11,
+      "normal": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        124185.18329628171,
+        25351.695131857974,
+        67763.36555921435
+      ],
+      "scaledTractionPa": [
+        214840.36710256737,
+        43858.43257811429,
+        117230.62241744083
+      ],
+      "relativeErrors": [
+        2.9262757483035894e-17,
+        0.0
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.11,
+      "normal": [
+        -0.8164965809277261,
+        0.4082482904638631,
+        0.4082482904638631
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        -152280.90324096874,
+        -105548.42719856818,
+        42073.786841912006
+      ],
+      "scaledTractionPa": [
+        -263445.96260687587,
+        -182598.77905352297,
+        72787.65123650778
+      ],
+      "relativeErrors": [
+        2.0287531729002496e-16,
+        0.0
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.11,
+      "normal": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        124185.18329628171,
+        25351.695131857974,
+        67763.36555921435
+      ],
+      "scaledTractionPa": [
+        384974.0682184733,
+        78590.2549087597,
+        210066.43323356446
+      ],
+      "relativeErrors": [
+        1.600056335992635e-16,
+        0.0
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.11,
+      "normal": [
+        -0.8164965809277261,
+        0.4082482904638631,
+        0.4082482904638631
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        -152280.90324096874,
+        -105548.42719856818,
+        42073.786841912006
+      ],
+      "scaledTractionPa": [
+        -472070.80004700297,
+        -327200.1243155614,
+        130428.73920992723
+      ],
+      "relativeErrors": [
+        1.9764869944665074e-16,
+        2.4706087430831345e-17
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.417,
+      "normal": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        166316.35770303188,
+        157932.13296330933,
+        260191.61043733123
+      ],
+      "scaledTractionPa": [
+        61537.0523501218,
+        58434.889196424454,
+        96270.89586181256
+      ],
+      "relativeErrors": [
+        1.2677527272126575e-16,
+        1.7008687660249497e-16
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 0.37,
+      "poisson": 0.417,
+      "normal": [
+        -0.8164965809277261,
+        0.4082482904638631,
+        0.4082482904638631
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        -330198.5005452647,
+        22774.158184313095,
+        138413.29550607246
+      ],
+      "scaledTractionPa": [
+        -122173.44520174792,
+        8426.438528195851,
+        51212.919337246814
+      ],
+      "relativeErrors": [
+        1.1708120524665994e-16,
+        1.0962654861739765e-16
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.417,
+      "normal": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        166316.35770303188,
+        157932.13296330933,
+        260191.61043733123
+      ],
+      "scaledTractionPa": [
+        287727.2988262452,
+        273222.5900265251,
+        450131.486056583
+      ],
+      "relativeErrors": [
+        9.700523212781984e-17,
+        9.700523212781984e-17
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 1.73,
+      "poisson": 0.417,
+      "normal": [
+        -0.8164965809277261,
+        0.4082482904638631,
+        0.4082482904638631
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        -330198.5005452647,
+        22774.158184313095,
+        138413.29550607246
+      ],
+      "scaledTractionPa": [
+        -571243.4059433078,
+        39399.29365886163,
+        239455.00122550534
+      ],
+      "relativeErrors": [
+        1.9894709890690598e-16,
+        4.6892280911488007e-17
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.417,
+      "normal": [
+        0.2672612419124244,
+        0.5345224838248488,
+        0.8017837257372732
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        166316.35770303188,
+        157932.13296330933,
+        260191.61043733123
+      ],
+      "scaledTractionPa": [
+        515580.7088793989,
+        489589.61218625883,
+        806593.9923557269
+      ],
+      "relativeErrors": [
+        1.531174056584656e-16,
+        1.2104993782417633e-16
+      ]
+    },
+    {
+      "split": "heldOut",
+      "scale": 3.1,
+      "poisson": 0.417,
+      "normal": [
+        -0.8164965809277261,
+        0.4082482904638631,
+        0.4082482904638631
+      ],
+      "strain": [
+        [
+          2e-06,
+          1e-06,
+          0.0
+        ],
+        [
+          1e-06,
+          -1e-06,
+          5e-07
+        ],
+        [
+          0.0,
+          5e-07,
+          2.5e-07
+        ]
+      ],
+      "baselineTractionPa": [
+        -330198.5005452647,
+        22774.158184313095,
+        138413.29550607246
+      ],
+      "scaledTractionPa": [
+        -1023615.3516903203,
+        70599.89037137057,
+        429081.2160688247
+      ],
+      "relativeErrors": [
+        2.1737535919949077e-16,
+        5.851547967319941e-17
+      ]
+    }
+  ],
+  "finiteFixtureCases": [
+    {
+      "scale": 0.25,
+      "eigenfrequenciesHz": [
+        37948.32808050355,
+        47095.37179188776
+      ],
+      "eigenRelativeError": 1.9173328529120483e-16,
+      "commonScaleEigenRelativeError": 0.0,
+      "responseRelativeErrors": [
+        0.0,
+        2.0511307028273922e-16,
+        3.5992436631404864e-16,
+        3.343608849110887e-18
+      ],
+      "scaledResponseRelativeError": 0.0
+    },
+    {
+      "scale": 0.5,
+      "eigenfrequenciesHz": [
+        37948.32808050354,
+        47095.37179188776
+      ],
+      "eigenRelativeError": 0.0,
+      "commonScaleEigenRelativeError": 1.9173328529120483e-16,
+      "responseRelativeErrors": [
+        0.0,
+        2.0511307028273922e-16,
+        3.5992436631404864e-16,
+        3.343608849110887e-18
+      ],
+      "scaledResponseRelativeError": 0.0
+    },
+    {
+      "scale": 1,
+      "eigenfrequenciesHz": [
+        37948.32808050355,
+        47095.37179188776
+      ],
+      "eigenRelativeError": 1.9173328529120483e-16,
+      "commonScaleEigenRelativeError": 0.0,
+      "responseRelativeErrors": [
+        0.0,
+        2.0511307028273922e-16,
+        3.5992436631404864e-16,
+        3.343608849110887e-18
+      ],
+      "scaledResponseRelativeError": 0.0
+    },
+    {
+      "scale": 2,
+      "eigenfrequenciesHz": [
+        37948.32808050354,
+        47095.37179188776
+      ],
+      "eigenRelativeError": 0.0,
+      "commonScaleEigenRelativeError": 1.9173328529120483e-16,
+      "responseRelativeErrors": [
+        0.0,
+        2.0511307028273922e-16,
+        3.5992436631404864e-16,
+        3.343608849110887e-18
+      ],
+      "scaledResponseRelativeError": 0.0
+    },
+    {
+      "scale": 4,
+      "eigenfrequenciesHz": [
+        37948.32808050355,
+        47095.37179188776
+      ],
+      "eigenRelativeError": 1.9173328529120483e-16,
+      "commonScaleEigenRelativeError": 0.0,
+      "responseRelativeErrors": [
+        0.0,
+        2.0511307028273922e-16,
+        3.5992436631404864e-16,
+        3.343608849110887e-18
+      ],
+      "scaledResponseRelativeError": 0.0
+    },
+    {
+      "scale": 0.37,
+      "eigenfrequenciesHz": [
+        37948.32808050354,
+        47095.37179188777
+      ],
+      "eigenRelativeError": 1.9173328529120486e-16,
+      "commonScaleEigenRelativeError": 1.9173328529120483e-16,
+      "responseRelativeErrors": [
+        1.9141438556009175e-16,
+        1.5176509314659003e-16,
+        3.528896342836349e-16,
+        1.5906700116919908e-16
+      ],
+      "scaledResponseRelativeError": 2.90620976171724e-16
+    },
+    {
+      "scale": 1.73,
+      "eigenfrequenciesHz": [
+        37948.32808050355,
+        47095.37179188776
+      ],
+      "eigenRelativeError": 1.5449411136057152e-16,
+      "commonScaleEigenRelativeError": 0.0,
+      "responseRelativeErrors": [
+        1.1186029432945305e-16,
+        1.7740108861054106e-16,
+        4.1191965337780863e-16,
+        1.8548610951705982e-16
+      ],
+      "scaledResponseRelativeError": 2.8672610684684544e-16
+    },
+    {
+      "scale": 3.1,
+      "eigenfrequenciesHz": [
+        37948.32808050355,
+        47095.37179188777
+      ],
+      "eigenRelativeError": 0.0,
+      "commonScaleEigenRelativeError": 1.5449411136057152e-16,
+      "responseRelativeErrors": [
+        2.004494189284245e-16,
+        1.5894317187649632e-16,
+        7.385277889473195e-16,
+        4.980029353198028e-16
+      ],
+      "scaledResponseRelativeError": 4.1864010891909753e-16
+    }
+  ],
+  "limits": [
+    "Homogeneous isotropic material, fixed geometry and Poisson ratio in each comparison",
+    "Selected radial modes do not exhaust a sphere spectrum",
+    "Common scaling is an analytic counterexample to frequency-only identification, not a counterexample to family 372",
+    "Added mass or traction gives rank two only within the declared two-parameter model",
+    "No reconstruction or noise-stability theorem, no laboratory data, no free energy"
+  ]
+}

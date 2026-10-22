@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-10-22T04:09:51.240557+00:00",
+  "independence": "Expected math cases frozen before producer code/results inspection; producer API mappings and code inspection occurred afterwards. This is separate-agent checking, not external human peer review.",
+  "fixturesSha256": "262582bed704ce59014937557cc678ee0931ea609296d2e7bb4a7f8aadb0e657",
+  "energy": {
+    "frozenCaseComparisons": [
+      {
+        "id": "heated-ground",
+        "maxExpectedError": 0.0,
+        "eigenvalueError": 0.0,
+        "valuesP_Q_W": [
+          0.125,
+          0.125,
+          0.0
+        ],
+        "resource": "positive-temperature bath"
+      },
+      {
+        "id": "thermal-fixed",
+        "maxExpectedError": 0.0,
+        "eigenvalueError": 0.0,
+        "valuesP_Q_W": [
+          0.25,
+          0.0,
+          0.0
+        ],
+        "resource": "positive-temperature bath"
+      },
+      {
+        "id": "inverted-bath",
+        "maxExpectedError": 1.1102230246251565e-16,
+        "eigenvalueError": 0.0,
+        "valuesP_Q_W": [
+          0.75,
+          0.75,
+          0.4999999999999999
+        ],
+        "resource": "population-inverted resource"
+      },
+      {
+        "id": "zero-temperature",
+        "maxExpectedError": 2.7755575615628914e-17,
+        "eigenvalueError": 0.0,
+        "valuesP_Q_W": [
+          0.5625,
+          -0.1875,
+          0.12499999999999997
+        ],
+        "resource": "zero-temperature limit"
+      },
+      {
+        "id": "pure-quarter-dephased",
+        "maxExpectedError": 0.0,
+        "eigenvalueError": 0.0,
+        "valuesP_Q_W": [
+          0.25,
+          0.0,
+          0.0
+        ],
+        "resource": "zero-temperature limit"
+      },
+      {
+        "id": "pure-quarter-retained",
+        "maxExpectedError": 0.0,
+        "eigenvalueError": 2.7755575615628914e-17,
+        "valuesP_Q_W": [
+          0.25,
+          0.0,
+          0.25
+        ],
+        "resource": "zero-temperature limit"
+      }
+    ],
+    "accepted": "Signed heat and passive-energy/ergotropy values for the six declared states; inverted resource labeled; apparatus efficiency withheld.",
+    "notReviewed": "No communication capacity theorem, all device costs, exhaustive floating-point domain or general proof."
+  },
+  "acoustics": {
+    "frozenCaseComparisons": [
+      {
+        "scale": 1,
+        "FRFAbsoluteError": 5.117875266520903e-16,
+        "frequencyAbsoluteErrorHz": 5.551115123125783e-17
+      },
+      {
+        "scale": 4,
+        "FRFAbsoluteError": 1.2794688166302258e-16,
+        "frequencyAbsoluteErrorHz": 5.551115123125783e-17
+      }
+    ],
+    "accepted": "Producer realizes the frozen 2DOF matrix fixture; common mass/stiffness/damping scale leaves modal frequencies and divides calibrated FRF by scale.",
+    "notReviewed": "No general inverse elasticity theorem, full-spectrum recovery, noise-stability guarantee or empirical location effect."
+  },
+  "methods": {
+    "frozenExpectedDerivative": "u*v-5*v^2",
+    "actualReducedCoefficients": [
+      {
+        "powers": {
+          "u": 1,
+          "v": 1
+        },
+        "coefficient": "1"
+      },
+      {
+        "powers": {
+          "v": 2
+        },
+        "coefficient": "-5"
+      }
+    ],
+    "observedWrongControls": {
+      "wrong-output-witness": true,
+      "negative-damping-domain-rejected": true,
+      "negative-damping-energy-growth": true,
+      "perturbed-gram-rejected": true,
+      "wrong-factor-order-rejected": true,
+      "between-grid-negative": true
+    },
+    "accepted": "Exact producer Laurent identity matches independently frozen velocity formulation after p=2v. Matrix signs admitted only for m,k>0,b>=0.",
+    "notReviewed": "No independent complete Laurent-library verification, NSPI execution, Lean build or hardware energy certification."
+  },
+  "yangmills": {
+    "thresholdControls": [
+      {
+        "gFourth": "9599999999",
+        "admitted": false
+      },
+      {
+        "gFourth": "9600000000",
+        "admitted": true
+      },
+      {
+        "gFourth": "9600000001",
+        "admitted": true
+      }
+    ],
+    "ownFrozenNCompared": [
+      1,
+      2,
+      3,
+      7,
+      97,
+      1000003
+    ],
+    "accepted": "Exact fixed-projector countermodel and tau admission arithmetic; reports distinguish fixed-a/volume uniformity from continuum uniformity.",
+    "notReviewed": "No historical Yang-Mills proof dependency revalidation or statement about true gap outside sufficient certificate."
+  },
+  "boundFiles": {
+    "energy-observatory/research/math-crosswalk/panel/skeptic/round2-independent-fixtures.json": "262582bed704ce59014937557cc678ee0931ea609296d2e7bb4a7f8aadb0e657",
+    "energy-observatory/research/math-crosswalk/panel/energy/thermal-channel.mjs": "cc3a6011d89ab2ad2904d216064a32e4af26bec56c54fd1718244165012727be",
+    "energy-observatory/research/math-crosswalk/panel/energy/round2-results.json": "ab05013a7ee420683a504706b104f71db6f568ed1ad5ebcdb5be9868485004de",
+    "energy-observatory/research/math-crosswalk/panel/acoustics/production-probe.mjs": "06cad8a3fd84c74106de96308930044f1ce1612a310c83de328695fd672e2971",
+    "energy-observatory/research/math-crosswalk/panel/acoustics/verify_scaling.py": "3f54535b930785cde36693fb85a99edbde666a465396635fcf588c8d8a22d7bc",
+    "energy-observatory/research/math-crosswalk/panel/acoustics/round2-results.json": "6e42f875d651ac1c6bb2cfe6329d2b30eb43b5aba42409806b246e41d59c36ef",
+    "location-spectrum/src/models.mjs": "2371578a26dba7cdb580940c8cd64b7fa361a3ec2ee2d52581a6fa8fba2445fe",
+    "energy-observatory/research/math-crosswalk/panel/methods/exact_certificate.py": "0cace097fcc1c50254be069a84b81f493bf762164407f6d1a847f016a2a3c016",
+    "energy-observatory/research/math-crosswalk/panel/methods/exact-results.json": "52a630a1c320489a6697e8d5a84746ed59141f4ce6cac1fca7c737181b2701af",
+    "energy-observatory/research/math-crosswalk/panel/yangmills/verify_round2.py": "c8a063d151f101cc2dea4592c023debf931abb8a84fe4c3535478a38855c8e60",
+    "energy-observatory/research/math-crosswalk/panel/yangmills/round2-results.json": "fa3cc336f4ddb48ebbb34a332b65d1d9dfc0ca651477be07ac9add5973b7ac4b"
+  },
+  "codeSha256": "11efc57d8aae29e25fca78f4cf29f2bba8ae209ec8fbb4e733270aed35715511"
+}

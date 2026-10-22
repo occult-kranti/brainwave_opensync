@@ -1,0 +1,52 @@
+name: Deploy Integrated Copper Experiment
+
+on:
+  push:
+    branches: [research/copper-experiment-integrated]
+    paths: ['copper-experiment/**', '.github/workflows/copper-experiment.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  copper-site:
+    if: github.ref == 'refs/heads/research/copper-experiment-integrated'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install pinned analysis and document-build dependencies
+        run: python -m pip install --disable-pip-version-check -r copper-experiment/analysis/requirements.txt -r copper-experiment/requirements-build.txt
+      - name: Check calculations, analyzer, provenance and build
+        working-directory: copper-experiment
+        run: npm run check
+      - name: Publish only the integrated experiment
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git clone --quiet --depth 1 --branch gh-pages "$REMOTE" site
+          mkdir -p site/devices/copper
+          rsync -a --delete copper-experiment/dist/ site/devices/copper/
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- devices/copper
+          if git diff --cached --quiet; then
+            echo "Integrated copper experiment already current"
+            exit 0
+          fi
+          git commit --quiet -m "Deploy Integrated Copper Experiment ${GITHUB_SHA::7}"
+          git push --quiet origin gh-pages

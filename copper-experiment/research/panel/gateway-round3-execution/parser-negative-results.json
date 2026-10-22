@@ -1,0 +1,278 @@
+{
+  "script": "/workspace/scratch/c230cc629529/sphere-lab-repo/copper-experiment/skills/gateway-evidence-audit/scripts/audit_corpus.py",
+  "script_sha256": "2df4cf19783d784cd7d80430442117108949ed3d06ca641cea8bab5a4ca33dea",
+  "results": [
+    {
+      "name": "real_pin",
+      "expected_behavior_for_audit": "10 blobs and five true checks; no audio/HTML/PDF claims",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "075bbab71bd4c83946fac1c3180dbc9460ce32d2",
+        "file_count": 10,
+        "bytes": 48846,
+        "preset_checks": [
+          {
+            "id": "gateway-theta-4hz",
+            "calculatedDifferenceHz": 4.0,
+            "specifiedDifferenceHz": 4.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "alpha-focus-10hz",
+            "calculatedDifferenceHz": 10.0,
+            "specifiedDifferenceHz": 10.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "theta-deep-6hz",
+            "calculatedDifferenceHz": 6.0,
+            "specifiedDifferenceHz": 6.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "delta-sleep-2hz",
+            "calculatedDifferenceHz": 2.0,
+            "specifiedDifferenceHz": 2.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "schumann-783-beat",
+            "calculatedDifferenceHz": 7.8300000000000125,
+            "specifiedDifferenceHz": 7.83,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          }
+        ],
+        "files": null
+      }
+    },
+    {
+      "name": "wrong_pin",
+      "expected_behavior_for_audit": "nonzero; reject mismatched pin",
+      "exit_code": 1,
+      "stderr_tail": "3, in main\n    result = inventory(args.checkout, args.expect_commit)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/c230cc629529/sphere-lab-repo/copper-experiment/skills/gateway-evidence-audit/scripts/audit_corpus.py\", line 17, in inventory\n    raise ValueError(f'Expected {expected}, found {commit}')\nValueError: Expected 0000000000000000000000000000000000000000, found 075bbab71bd4c83946fac1c3180dbc9460ce32d2\n",
+      "stdout_excerpt": ""
+    },
+    {
+      "name": "not_git_repository",
+      "expected_behavior_for_audit": "nonzero; no invented inventory",
+      "exit_code": 1,
+      "stderr_tail": "=timeout, check=True,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['git', '-C', '/workspace/scratch/c230cc629529/integration-panel/gateway/round3-execution', 'rev-parse', 'HEAD']' returned non-zero exit status 128.\n",
+      "stdout_excerpt": ""
+    },
+    {
+      "name": "not_list",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 1,
+      "stderr_tail": "experiment/skills/gateway-evidence-audit/scripts/audit_corpus.py\", line 73, in main\n    result = inventory(args.checkout, args.expect_commit)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/c230cc629529/sphere-lab-repo/copper-experiment/skills/gateway-evidence-audit/scripts/audit_corpus.py\", line 40, in inventory\n    raise ValueError('Preset metadata must be a list')\nValueError: Preset metadata must be a list\n",
+      "stdout_excerpt": ""
+    },
+    {
+      "name": "not_object",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 1,
+      "stderr_tail": "experiment/skills/gateway-evidence-audit/scripts/audit_corpus.py\", line 73, in main\n    result = inventory(args.checkout, args.expect_commit)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/c230cc629529/sphere-lab-repo/copper-experiment/skills/gateway-evidence-audit/scripts/audit_corpus.py\", line 43, in inventory\n    raise ValueError('Preset entry must be an object')\nValueError: Preset entry must be an object\n",
+      "stdout_excerpt": ""
+    },
+    {
+      "name": "malformed_json",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 1,
+      "stderr_tail": "decoder.py\", line 338, in decode\n    obj, end = self.raw_decode(s, idx=_w(s, 0).end())\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/decoder.py\", line 354, in raw_decode\n    obj, end = self.scan_once(s, idx)\n               ^^^^^^^^^^^^^^^^^^^^^^\njson.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 3 (char 2)\n",
+      "stdout_excerpt": ""
+    },
+    {
+      "name": "negative_carrier",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "3e7af9fc9d75d212a6ee1343db044ece6a8fe3d8",
+        "file_count": 1,
+        "bytes": 55,
+        "preset_checks": [],
+        "files": null
+      }
+    },
+    {
+      "name": "negative_beat",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "d94d6e5cadcb4480ad0975a77f93f5311207846e",
+        "file_count": 1,
+        "bytes": 59,
+        "preset_checks": [],
+        "files": null
+      }
+    },
+    {
+      "name": "missing_fields",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "572b599d831aab8bf606e4153ec2e61d66793fb8",
+        "file_count": 1,
+        "bytes": 21,
+        "preset_checks": [],
+        "files": null
+      }
+    },
+    {
+      "name": "nonfinite_tokens",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "eee327767d681f6c8615987ec3c2c96becea011b",
+        "file_count": 1,
+        "bytes": 45,
+        "preset_checks": [],
+        "files": null
+      }
+    },
+    {
+      "name": "duplicate_keys",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "c11bdc81bf0a44bdd07cfe7639a6c2f2f7da816a",
+        "file_count": 1,
+        "bytes": 84,
+        "preset_checks": [
+          {
+            "id": "dupkey",
+            "calculatedDifferenceHz": 10.0,
+            "specifiedDifferenceHz": 10.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          }
+        ],
+        "files": null
+      }
+    },
+    {
+      "name": "duplicate_ids",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "6dad7ca5ffdb824b6e903e885eeeca296d9d0abe",
+        "file_count": 1,
+        "bytes": 110,
+        "preset_checks": [
+          {
+            "id": "same",
+            "calculatedDifferenceHz": 4.0,
+            "specifiedDifferenceHz": 4.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "same",
+            "calculatedDifferenceHz": 10.0,
+            "specifiedDifferenceHz": 10.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          }
+        ],
+        "files": null
+      }
+    },
+    {
+      "name": "arithmetic_mismatch",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "e69b90209d0a24b903d775d4d4d578fcca90c72f",
+        "file_count": 1,
+        "bytes": 60,
+        "preset_checks": [
+          {
+            "id": "mismatch",
+            "calculatedDifferenceHz": 4.0,
+            "specifiedDifferenceHz": 40.0,
+            "arithmeticMatches": false,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          }
+        ],
+        "files": null
+      }
+    },
+    {
+      "name": "overflow",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 1,
+      "stderr_tail": "y-evidence-audit/scripts/audit_corpus.py\", line 73, in main\n    result = inventory(args.checkout, args.expect_commit)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/c230cc629529/sphere-lab-repo/copper-experiment/skills/gateway-evidence-audit/scripts/audit_corpus.py\", line 49, in inventory\n    raise ValueError('Carrier/difference metadata must be finite')\nValueError: Carrier/difference metadata must be finite\n",
+      "stdout_excerpt": ""
+    },
+    {
+      "name": "valid_reverse_carriers",
+      "expected_behavior_for_audit": "fail or explicitly mark invalid/unsupported metadata; mismatches must remain visibly false",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "78c33c6b26af84949ee46a833b20722dc9497b5b",
+        "file_count": 1,
+        "bytes": 59,
+        "preset_checks": [
+          {
+            "id": "reversed",
+            "calculatedDifferenceHz": 4.0,
+            "specifiedDifferenceHz": 4.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          }
+        ],
+        "files": null
+      }
+    },
+    {
+      "name": "symlink_not_followed",
+      "expected_behavior_for_audit": "symlink target string only; no target bytes",
+      "exit_code": 0,
+      "stderr_tail": "",
+      "returned": {
+        "commit": "e3e5eabc68076f50bd836a34610672cbb72435da",
+        "file_count": 2,
+        "bytes": 19,
+        "preset_checks": [],
+        "files": [
+          {
+            "path": "README.md",
+            "mode": "100644",
+            "blob": "ee8c1ee49b4799bbd170233915a897c19e3b55e1",
+            "bytes": 8,
+            "sha256": "e80b71cd14d3cbd65f4173abcbfcf01a545dbca32a72d575108b553a648cc96f",
+            "status": "bytes-inventoried-not-content-validated",
+            "lines": 1
+          },
+          {
+            "path": "outside.md",
+            "mode": "120000",
+            "blob": "3594e94c04db171e2767224db355f514b13715c5",
+            "bytes": 11,
+            "sha256": "74acf31844532670be412c65b8251ee55d072549080b1cffdbea6b1a192230a0",
+            "status": "symlink-target-text-only; not-followed"
+          }
+        ]
+      }
+    },
+    {
+      "name": "output_already_exists",
+      "expected_behavior_for_audit": "nonzero; preserve existing output",
+      "exit_code": 1,
+      "stderr_tail": "ream:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py\", line 1013, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileExistsError: [Errno 17] File exists: '/workspace/scratch/c230cc629529/integration-panel/gateway/round3-execution/exclusive-output.json'\n",
+      "stdout_excerpt": ""
+    }
+  ]
+}

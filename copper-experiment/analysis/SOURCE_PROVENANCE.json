@@ -1,0 +1,17 @@
+{
+  "schema": "copper-import-provenance/1",
+  "source_repository": "https://github.com/occult-kranti/brainwave_opensync",
+  "source_commit": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+  "source_subdirectory": "device-observatory/position",
+  "import_status": "derived MIT-licensed source, modified for stricter CSV and metadata contracts",
+  "original_sha256": {
+    "analysis/analyze.py": "f1e5193ef8c8034e463b3c686b73b0dd5cdd59bb8953ac33290f3eb98042ede0",
+    "analysis/make_demo.py": "5f82888ea163ad14bbd05e2b9427a391843e21756c504695d149d7fee2e0b9f9",
+    "analysis/requirements.txt": "1668a3152e33680d94637b13421c15e68bd97cd8701f7f555c691f5bc5c0b9f3",
+    "tests/analysis_test.py": "3041922c6469a0ddd5e4e04b85153bc218d99712c8981d9d8126d7b2542ab9ea",
+    "LICENSE": "905389c7a8a3fe4c251a3e8c9edc6f01add44b9d27226c107a4256ef7c042889"
+  },
+  "mechanics_source_commit": "07e57b446a9f480216ad1aa555088bc361006d9c",
+  "license": "MIT; preserved in analysis/LICENSE",
+  "review": "Internal model-agent implementation and checks, not external peer review"
+}

@@ -1,0 +1,30 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "/workspace/scratch/c230cc629529/sphere-lab-repo/copper-experiment/scripts/verify_design_independent.py",
+    "--app-root",
+    "/workspace/scratch/c230cc629529/sphere-lab-repo/copper-experiment",
+    "--output",
+    "/tmp/copper-design-portable-nuyxphh0/results.json"
+  ],
+  "cwd": "/tmp",
+  "output": "/tmp/copper-design-portable-nuyxphh0/results.json",
+  "status": "passed",
+  "counts_match_original": true,
+  "counts": {
+    "temporal_design_cases": 105,
+    "independent_O_and_K_rank_comparisons": 210,
+    "nuisance_design_cases": 2,
+    "location_reflection_cases": 8,
+    "malformed_inputs": 7
+  },
+  "unchanged_functions": {
+    "analytic_participation": true,
+    "independent_matrices": true,
+    "svd_diagnostic": true,
+    "build_cases": true,
+    "actual_producer": true
+  },
+  "scope": "Portability/path/hash custody only; no additional numerical or reviewer independence."
+}

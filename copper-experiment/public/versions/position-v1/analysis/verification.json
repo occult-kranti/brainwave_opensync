@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "scope": "Executable numerical checks and deterministic synthetic inputs; no physical measurements",
+  "python_version": "3.12.14",
+  "numpy_version": "2.3.5",
+  "scipy_version": "1.17.0",
+  "unit_tests": 11,
+  "test_command": "python -B device-observatory/position/tests/analysis_test.py",
+  "synthetic_trace": {
+    "samples": 4096,
+    "sample_rate_hz": 8192.0,
+    "welch": {
+      "window": "periodic Hann",
+      "nperseg": 512,
+      "noverlap": 256,
+      "segment_count": 15,
+      "bin_spacing_hz": 16.0,
+      "window_enbw_hz": 24.0,
+      "detrend": "constant per segment"
+    },
+    "candidate_response_peaks": [
+      {
+        "frequency_bin_hz": 688.0,
+        "coherence": 0.8264402088990199,
+        "h1_magnitude_m_s_per_N": 0.0686489566166022
+      },
+      {
+        "frequency_bin_hz": 1200.0,
+        "coherence": 0.9919381293863913,
+        "h1_magnitude_m_s_per_N": 0.002416091205664388
+      },
+      {
+        "frequency_bin_hz": 1456.0,
+        "coherence": 0.9864506288814647,
+        "h1_magnitude_m_s_per_N": 0.0016740183231870143
+      },
+      {
+        "frequency_bin_hz": 1568.0,
+        "coherence": 0.9828346680274086,
+        "h1_magnitude_m_s_per_N": 0.0014450858036536803
+      },
+      {
+        "frequency_bin_hz": 1648.0,
+        "coherence": 0.9385122372949195,
+        "h1_magnitude_m_s_per_N": 0.0013941677568394002
+      }
+    ]
+  },
+  "synthetic_blocks": {
+    "block_count": 6,
+    "mean_difference_hz": 3.0,
+    "confidence_interval_hz": [
+      2.575010957065302,
+      3.424989042934698
+    ],
+    "temperature_mean_B_minus_A_c": 0.0
+  },
+  "source_sha256": {
+    "analysis/analyze.py": "f1e5193ef8c8034e463b3c686b73b0dd5cdd59bb8953ac33290f3eb98042ede0",
+    "analysis/make_demo.py": "5f82888ea163ad14bbd05e2b9427a391843e21756c504695d149d7fee2e0b9f9",
+    "analysis/requirements.txt": "1668a3152e33680d94637b13421c15e68bd97cd8701f7f555c691f5bc5c0b9f3",
+    "tests/analysis_test.py": "3041922c6469a0ddd5e4e04b85153bc218d99712c8981d9d8126d7b2542ab9ea"
+  },
+  "review_note": "Independent skeptic requested explicit numerical guard vs physical excitation SNR metadata; arithmetic is unchanged."
+}

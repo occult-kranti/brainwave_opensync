@@ -1,0 +1,339 @@
+{
+  "schema": "copper-panel-software-round3/1",
+  "date": "2026-10-22",
+  "status": "passed-local-declared-scope",
+  "browser": {
+    "browser": "153.0.8010.0",
+    "prefix": "/brainwave_opensync/devices/copper/",
+    "checks": [
+      {
+        "name": "1440: index direct route",
+        "passed": true
+      },
+      {
+        "name": "1440: models direct route",
+        "passed": true
+      },
+      {
+        "name": "1440: design direct route",
+        "passed": true
+      },
+      {
+        "name": "1440: acquisition direct route",
+        "passed": true
+      },
+      {
+        "name": "1440: protocol direct route",
+        "passed": true
+      },
+      {
+        "name": "1440: gateway direct route",
+        "passed": true
+      },
+      {
+        "name": "1440: sources direct route",
+        "passed": true
+      },
+      {
+        "name": "1440: versions direct route",
+        "passed": true
+      },
+      {
+        "name": "390: index direct route",
+        "passed": true
+      },
+      {
+        "name": "390: models direct route",
+        "passed": true
+      },
+      {
+        "name": "390: design direct route",
+        "passed": true
+      },
+      {
+        "name": "390: acquisition direct route",
+        "passed": true
+      },
+      {
+        "name": "390: protocol direct route",
+        "passed": true
+      },
+      {
+        "name": "390: gateway direct route",
+        "passed": true
+      },
+      {
+        "name": "390: sources direct route",
+        "passed": true
+      },
+      {
+        "name": "390: versions direct route",
+        "passed": true
+      },
+      {
+        "name": "valid mechanical run carries source pins, units and finite raw values",
+        "passed": true
+      },
+      {
+        "name": "mechanical ZIP binds CSV and JSON with file hashes",
+        "passed": true
+      },
+      {
+        "name": "dirty or invalid mechanical conditions block cross-page bridge",
+        "passed": true
+      },
+      {
+        "name": "valid model bridges only its applied frequency and provenance",
+        "passed": true
+      },
+      {
+        "name": "capture rejects invalid inputs immediately and exports waveform sidecar",
+        "passed": true
+      },
+      {
+        "name": "nonfinite, undefined and missing array values reject before JSON conversion",
+        "passed": true
+      },
+      {
+        "name": "input changes while Apply is hashing cannot publish a stale valid model",
+        "passed": true
+      },
+      {
+        "name": "dirty inputs during mechanical ZIP hashing cannot trigger a download",
+        "passed": true
+      },
+      {
+        "name": "dirty capture during asynchronous JSON hashing cannot trigger a download",
+        "passed": true
+      },
+      {
+        "name": "failed storage writes/removals block a previous valid bridge across navigation",
+        "passed": true
+      },
+      {
+        "name": "corrupted missing model run identity is rejected without an initialization error",
+        "passed": true
+      },
+      {
+        "name": "finite design separates sensing, excitation and nuisance kernels",
+        "passed": true
+      },
+      {
+        "name": "canonical sources preserve observation reading text and graph keyboard access",
+        "passed": true
+      },
+      {
+        "name": "three preserved versions and linked Gateway report are inspectable",
+        "passed": true
+      }
+    ],
+    "screenshots": [
+      "/tmp/copper-browser-qa/index-1440.png",
+      "/tmp/copper-browser-qa/models-1440.png",
+      "/tmp/copper-browser-qa/design-1440.png",
+      "/tmp/copper-browser-qa/acquisition-1440.png",
+      "/tmp/copper-browser-qa/protocol-1440.png",
+      "/tmp/copper-browser-qa/gateway-1440.png",
+      "/tmp/copper-browser-qa/sources-1440.png",
+      "/tmp/copper-browser-qa/versions-1440.png",
+      "/tmp/copper-browser-qa/index-390.png",
+      "/tmp/copper-browser-qa/models-390.png",
+      "/tmp/copper-browser-qa/design-390.png",
+      "/tmp/copper-browser-qa/acquisition-390.png",
+      "/tmp/copper-browser-qa/protocol-390.png",
+      "/tmp/copper-browser-qa/gateway-390.png",
+      "/tmp/copper-browser-qa/sources-390.png",
+      "/tmp/copper-browser-qa/versions-390.png",
+      "/tmp/copper-browser-qa/model-response-1440.png",
+      "/tmp/copper-browser-qa/design-rank-1440.png",
+      "/tmp/copper-browser-qa/capture-spectrum-1440.png",
+      "/tmp/copper-browser-qa/network-detail-1440.png",
+      "/tmp/copper-browser-qa/model-response-390.png",
+      "/tmp/copper-browser-qa/design-rank-390.png",
+      "/tmp/copper-browser-qa/capture-spectrum-390.png",
+      "/tmp/copper-browser-qa/network-detail-390.png"
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "targeted_final": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "1440: responsive model axes retain readable screen text",
+        "passed": true,
+        "viewBoxWidth": 978,
+        "screenWidth": 978,
+        "textPixels": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "name": "390: responsive model axes retain readable screen text",
+        "passed": true,
+        "viewBoxWidth": 324,
+        "screenWidth": 324,
+        "textPixels": [
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10
+        ]
+      },
+      {
+        "name": "graph relationship exposes scope, type and origin",
+        "passed": true,
+        "source": "work-6f8133063dcd94f8cf04",
+        "scope": "Curated typed relationships among selected primary sources, patents, historical texts, methods and executed model checks. Not an exhaustive citation graph or validation of an absolute-location frequency."
+      },
+      {
+        "name": "unread cited book visibly labels report attribution locator",
+        "passed": true
+      },
+      {
+        "name": "Gateway corpus/skill/report access: documents/gateway-analysis.html",
+        "passed": true
+      },
+      {
+        "name": "Gateway corpus/skill/report access: data/corpus-gateway.json",
+        "passed": true
+      },
+      {
+        "name": "Gateway corpus/skill/report access: skills/gateway-evidence-audit/SKILL.md",
+        "passed": true
+      }
+    ],
+    "errors": [],
+    "screenshots": [
+      "/tmp/copper-browser-qa/responsive-model-1440.png",
+      "/tmp/copper-browser-qa/responsive-model-390.png",
+      "/tmp/copper-browser-qa/attribution-locator-390.png"
+    ]
+  },
+  "independent_zip_verification": {
+    "method": "Independent Python standard-library zipfile, CRC, hashlib SHA256 and csv reader; not the JavaScript ZIP writer/parser",
+    "passed": true,
+    "exports": [
+      {
+        "archive": "/tmp/copper-browser-qa/mechanics-run.zip",
+        "archive_sha256": "2e0c933513e76444f03283f43119aad819feeaeae42b1607d3b0879b24b45a82",
+        "members": [
+          "run.json",
+          "responses.csv",
+          "manifest.json"
+        ],
+        "run_id": "bf85ae31225dbf76e9bed7fa6af629f4e50aad330425abef8393d9ddd76a81b0",
+        "kind": "mechanical-comparison",
+        "status": "synthetic-model; no physical measurements",
+        "sourceCommit": "07e57b446a9f480216ad1aa555088bc361006d9c",
+        "sourcePins": {
+          "locationV1": "f9927a68fca491785bfca0a4782ffceeb37209dc",
+          "locationV11": "07e57b446a9f480216ad1aa555088bc361006d9c",
+          "positionV1": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+          "gateway": "075bbab71bd4c83946fac1c3180dbc9460ce32d2"
+        },
+        "file_hashes_verified": 2,
+        "crc_verified": true,
+        "csv_run_ids_verified": true,
+        "units": {
+          "frequency": "Hz",
+          "sphereResponse": "magnitude in m/N; projected displacement per generalized force; no phase exported",
+          "emptyTableResponse": "magnitude in m/N; local point displacement per local point force; no phase exported",
+          "mass": "kg",
+          "radiusInput": "mm",
+          "wallThicknessInput": "mm",
+          "temperatureDifference": "K",
+          "position": "x/L dimensionless"
+        }
+      },
+      {
+        "archive": "/tmp/copper-browser-qa/acquisition-run.zip",
+        "archive_sha256": "b5ec7138cdedaa7f6a9d3815625d9d3bd5a0059e27f44195131c62e8d64a8f12",
+        "members": [
+          "run.json",
+          "spectrum.csv",
+          "waveform.csv",
+          "manifest.json"
+        ],
+        "run_id": "ea54ff8920f6b3c8af6fdb3592eac173f911916295746cfba255acca6473071d",
+        "kind": "synthetic-acquisition",
+        "status": "synthetic-model; no physical measurements",
+        "sourceCommit": "07e57b446a9f480216ad1aa555088bc361006d9c",
+        "sourcePins": {
+          "locationV1": "f9927a68fca491785bfca0a4782ffceeb37209dc",
+          "locationV11": "07e57b446a9f480216ad1aa555088bc361006d9c",
+          "positionV1": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+          "gateway": "075bbab71bd4c83946fac1c3180dbc9460ce32d2"
+        },
+        "file_hashes_verified": 3,
+        "crc_verified": true,
+        "csv_run_ids_verified": true,
+        "units": {
+          "time": "s",
+          "frequency": "Hz",
+          "waveform": "arbitrary sensor units; synthetic",
+          "spectrum": "one-sided sinusoidal amplitude; arbitrary sensor units; coherent-gain normalized, not PSD",
+          "decayRate": "s^-1",
+          "phase": "rad"
+        }
+      }
+    ]
+  },
+  "standalone_package": {
+    "fresh_extraction": "/tmp/copper-published-code-check-h602f2sw/copper-experiment",
+    "git_metadata_absent": true,
+    "npm_run_check_exit_code": 0,
+    "node_tests": 46,
+    "python_tests": 24,
+    "documents_rendered": 13,
+    "originMode": "embedded-source-origin",
+    "sourceCommit": "07e57b446a9f480216ad1aa555088bc361006d9c",
+    "sourcePins": {
+      "locationV1": "f9927a68fca491785bfca0a4782ffceeb37209dc",
+      "locationV11": "07e57b446a9f480216ad1aa555088bc361006d9c",
+      "positionV1": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+      "gateway": "075bbab71bd4c83946fac1c3180dbc9460ce32d2"
+    },
+    "component_hashes_match_origin": true,
+    "source_files_compared": [
+      "src/app.mjs",
+      "src/run-export.mjs",
+      "src/acquisition-ui.mjs",
+      "src/styles.css"
+    ],
+    "log_sha256": "a312db411ed8e38943fd3e17ec3197bb595c80578b6c1460af36b2989c140788"
+  },
+  "selected_visuals": [
+    "/workspace/scratch/c230cc629529/integration-panel/software/evidence/index-1440.png",
+    "/workspace/scratch/c230cc629529/integration-panel/software/evidence/responsive-model-390.png",
+    "/workspace/scratch/c230cc629529/integration-panel/software/evidence/capture-spectrum-390.png",
+    "/workspace/scratch/c230cc629529/integration-panel/software/evidence/design-rank-1440.png",
+    "/workspace/scratch/c230cc629529/integration-panel/software/evidence/attribution-locator-390.png"
+  ],
+  "physical_measurements": 0,
+  "remote_publication_verified": false,
+  "final_commit_metadata_smoke_required": true,
+  "limits": [
+    "Chromium desktop1440x1000/mobile390x844 only; not a screen-reader or cross-engine certification",
+    "Forced storage failure poison verified for same-tab navigation; no claim to authenticate multi-tab/browser storage",
+    "Source commit currently reflects prepublication checkout HEAD; root must stamp and smoke exact published commit",
+    "Snapshots/source metadata reviewed and packaged by root; local browser accessibility does not prove remote Pages publication"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "date_utc": "2026-10-22T02:30:16.983234+00:00",
+  "links": [
+    {
+      "from": "gateway.html",
+      "href": "./src/styles.css",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./index.html",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./versions.html",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./documents/gateway-analysis.html",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./sources.html?group=gateway",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./versions.html",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./sources.html",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./LICENSE",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./source.zip",
+      "exists": true
+    },
+    {
+      "from": "gateway.html",
+      "href": "./documents/gateway-analysis.html",
+      "exists": true
+    },
+    {
+      "from": "documents/gateway-analysis.html",
+      "href": "../index.html",
+      "exists": true
+    },
+    {
+      "from": "documents/gateway-analysis.html",
+      "href": "../gateway.html",
+      "exists": true
+    },
+    {
+      "from": "documents/gateway-analysis.html",
+      "href": "../protocol.html",
+      "exists": true
+    },
+    {
+      "from": "documents/gateway-analysis.html",
+      "href": "../sources.html",
+      "exists": true
+    },
+    {
+      "from": "documents/gateway-analysis.html",
+      "href": "../versions.html",
+      "exists": true
+    },
+    {
+      "from": "documents/gateway-analysis.html",
+      "href": "../data/corpus-gateway.json",
+      "exists": true
+    },
+    {
+      "from": "documents/gateway-analysis.html",
+      "href": "../research/gateway-analysis.md",
+      "exists": true
+    },
+    {
+      "from": "documents/gateway-analysis.html",
+      "href": "../deployment.json",
+      "exists": true
+    },
+    {
+      "from": "data/content.json:gateway",
+      "href": "./documents/gateway-analysis.html",
+      "exists": true
+    },
+    {
+      "from": "data/content.json:gateway",
+      "href": "./documents/bridge-audit.html",
+      "exists": true
+    },
+    {
+      "from": "data/content.json:gateway",
+      "href": "./data/corpus-gateway.json",
+      "exists": true
+    },
+    {
+      "from": "data/content.json:gateway",
+      "href": "./skills/gateway-evidence-audit/SKILL.md",
+      "exists": true
+    }
+  ],
+  "local_link_count": 22,
+  "all_local_links_exist": true,
+  "scope": "Static built-file resolution, not a browser/network availability test",
+  "input_hashes": {
+    "research/gateway-analysis.md": "3e98aebb8124b88b7a278f5c86665860c57b27dc2416d027805b5224382acd1f",
+    "data/corpus-gateway.json": "295008bd3361c0089ab605ee34c04af22ec763e0503dab41124357d7415c6a1d",
+    "data/content.json": "f4b318cdf2994900ff987e7e695335f671fb91cabce571d75e6ee69b16cb8799",
+    "data/sources.json": "e87df78f897715baa5f351d238b06eef628720be98e347d518782ac4239c3c56",
+    "data/graph.json": "8d0c40117164bf8525cb967cdae08bcac7a11f4ce34047c4ab128833d3cb3438",
+    "skills/gateway-evidence-audit/scripts/audit_corpus.py": "6bd055af551332b1bf7058ae759571a77b8f383843b4830302f96ce085bd825b"
+  },
+  "script_hash": "6bd055af551332b1bf7058ae759571a77b8f383843b4830302f96ce085bd825b"
+}

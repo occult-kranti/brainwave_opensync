@@ -1,0 +1,21 @@
+{
+  "source_zip_sha256": "81c04390df2b3368aa0a7417e4060108963661c5930b376bae34c87bc6f66427",
+  "packaged_analyzer_sha256": "c6d6acb89ca0bd34724bbf76467f53e8aa1adeee8e3e6dde6b55adc9cc7e188b",
+  "fixture_reanalysis_status": "passed from extracted source.zip",
+  "data_kind": "synthetic",
+  "calibration_status": "not authenticated by this software",
+  "peak_status": "CANDIDATES: response-bin maxima, no pole fitting or mode identification implemented",
+  "source_pins": {
+    "position": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+    "location": "07e57b446a9f480216ad1aa555088bc361006d9c"
+  },
+  "calibration_or_input_schema_upgrade_performed": false,
+  "required_files_present": [
+    "analysis/analyze.py",
+    "analysis/LICENSE",
+    "analysis/SOURCE_PROVENANCE.json",
+    "analysis/run-contract-template.json",
+    "analysis/fixtures/passive-closure/passive-force-velocity.csv",
+    "analysis/fixtures/passive-closure/passive-force-velocity.metadata.json"
+  ]
+}

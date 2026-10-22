@@ -1,0 +1,337 @@
+{
+  "script_sha256": "b41ef5327b266df1e5dd0342077e39d1894195ed5843e49a99c825fb3228575c",
+  "skill_sha256": "062d144133405ad0cde4d6637bf8e66982bdf3715f6912706c80e3801ccae771",
+  "canonical_and_app_script_skill_and_references_identical": true,
+  "canonical_service_metadata_note": "agents/openai.yaml has service-added icons/policy; three human interface fields are semantically unchanged; not a script/source mismatch",
+  "case_count": 25,
+  "all_assertions_pass": true,
+  "results": [
+    {
+      "name": "actual_pinned_corpus",
+      "expected_ok": true,
+      "exit_code": 0,
+      "error": "",
+      "assertion_pass": true,
+      "returned": {
+        "schema": "gateway-committed-corpus/2",
+        "fileCount": 10,
+        "totalBytes": 48846,
+        "presetSummary": {
+          "recordCount": 7,
+          "carrierPairArithmeticCount": 5,
+          "nonCarrierPairCount": 2,
+          "unclassifiedCount": 0
+        },
+        "presetArithmetic": [
+          {
+            "id": "gateway-theta-4hz",
+            "calculatedDifferenceHz": 4.0,
+            "specifiedDifferenceHz": 4.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "alpha-focus-10hz",
+            "calculatedDifferenceHz": 10.0,
+            "specifiedDifferenceHz": 10.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "theta-deep-6hz",
+            "calculatedDifferenceHz": 6.0,
+            "specifiedDifferenceHz": 6.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "delta-sleep-2hz",
+            "calculatedDifferenceHz": 2.0,
+            "specifiedDifferenceHz": 2.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          },
+          {
+            "id": "schumann-783-beat",
+            "calculatedDifferenceHz": 7.8300000000000125,
+            "specifiedDifferenceHz": 7.83,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          }
+        ],
+        "presetConstructions": [
+          {
+            "id": "gateway-theta-4hz",
+            "kind": "carrier-pair",
+            "arithmeticStatus": "carrier-subtraction-checked"
+          },
+          {
+            "id": "alpha-focus-10hz",
+            "kind": "carrier-pair",
+            "arithmeticStatus": "carrier-subtraction-checked"
+          },
+          {
+            "id": "theta-deep-6hz",
+            "kind": "carrier-pair",
+            "arithmeticStatus": "carrier-subtraction-checked"
+          },
+          {
+            "id": "delta-sleep-2hz",
+            "kind": "carrier-pair",
+            "arithmeticStatus": "carrier-subtraction-checked"
+          },
+          {
+            "id": "gamma-40hz-clicks",
+            "kind": "pulse-train",
+            "carrierHz": 1000.0,
+            "pulseRateHz": 40.0,
+            "arithmeticStatus": "not-carrier-pair-arithmetic",
+            "scope": "Pulse metadata only; pulse shape and waveform not verified"
+          },
+          {
+            "id": "schumann-783-beat",
+            "kind": "carrier-pair",
+            "arithmeticStatus": "carrier-subtraction-checked"
+          },
+          {
+            "id": "pink-noise-bed",
+            "kind": "noise",
+            "arithmeticStatus": "not-carrier-pair-arithmetic",
+            "scope": "Noise label only; generator, seed and filter not verified"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wrong_pin",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Expected 0000000000000000000000000000000000000000, found 075bbab71bd4c83946fac1c3180dbc9460ce32d2",
+      "assertion_pass": true
+    },
+    {
+      "name": "not_git_repository",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "fatal: not a git repository (or any of the parent directories): .git\naudit failed: Command '['git', '-C', '/workspace/scratch/c230cc629529/integration-panel/gateway/round3-execution', 'rev-parse', 'HEAD']' returned non-zero exit status 128.",
+      "assertion_pass": true
+    },
+    {
+      "name": "not_list",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Preset metadata must be a list",
+      "assertion_pass": true
+    },
+    {
+      "name": "not_object",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Preset 0 must be an object",
+      "assertion_pass": true
+    },
+    {
+      "name": "malformed_json",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Expecting property name enclosed in double quotes: line 1 column 3 (char 2)",
+      "assertion_pass": true
+    },
+    {
+      "name": "negative_carrier",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: neg: unsupported or malformed carrier/beat format",
+      "assertion_pass": true
+    },
+    {
+      "name": "negative_beat",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: neg: carrier pair requires a nonnegative Hz difference",
+      "assertion_pass": true
+    },
+    {
+      "name": "zero_carrier",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: zero left carrier must be finite and positive",
+      "assertion_pass": true
+    },
+    {
+      "name": "missing_fields",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Preset 0: carriers must be a nonempty string",
+      "assertion_pass": true
+    },
+    {
+      "name": "numeric_typed_field",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Preset 0: carriers must be a nonempty string",
+      "assertion_pass": true
+    },
+    {
+      "name": "nonfinite_tokens",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Non-standard/non-finite JSON number: NaN",
+      "assertion_pass": true
+    },
+    {
+      "name": "nonfinite_unrelated_field",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Non-standard/non-finite JSON number: NaN",
+      "assertion_pass": true
+    },
+    {
+      "name": "overflow_nested_numeric_token",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: JSON numeric token overflows finite float: 1e400",
+      "assertion_pass": true
+    },
+    {
+      "name": "duplicate_keys",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Duplicate JSON key: carriers",
+      "assertion_pass": true
+    },
+    {
+      "name": "duplicate_ids",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: Duplicate preset id: same",
+      "assertion_pass": true
+    },
+    {
+      "name": "arithmetic_mismatch",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: mismatch: stated difference 40.0 Hz does not match 4.0 Hz",
+      "assertion_pass": true
+    },
+    {
+      "name": "overflow",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: huge left carrier must be finite and positive",
+      "assertion_pass": true
+    },
+    {
+      "name": "unknown_format",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: unknown: unsupported or malformed carrier/beat format",
+      "assertion_pass": true
+    },
+    {
+      "name": "invalid_pulse_rate",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: pulse: pulse construction requires a positive Hz rate",
+      "assertion_pass": true
+    },
+    {
+      "name": "invalid_noise_beat",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: noise: unsupported or malformed carrier/beat format",
+      "assertion_pass": true
+    },
+    {
+      "name": "valid_reverse_carriers",
+      "expected_ok": true,
+      "exit_code": 0,
+      "error": "",
+      "assertion_pass": true,
+      "returned": {
+        "schema": "gateway-committed-corpus/2",
+        "fileCount": 1,
+        "totalBytes": 59,
+        "presetSummary": {
+          "recordCount": 1,
+          "carrierPairArithmeticCount": 1,
+          "nonCarrierPairCount": 0,
+          "unclassifiedCount": 0
+        },
+        "presetArithmetic": [
+          {
+            "id": "reversed",
+            "calculatedDifferenceHz": 4.0,
+            "specifiedDifferenceHz": 4.0,
+            "arithmeticMatches": true,
+            "scope": "Metadata subtraction only; no waveform, physiology or mechanical validation"
+          }
+        ],
+        "presetConstructions": [
+          {
+            "id": "reversed",
+            "kind": "carrier-pair",
+            "arithmeticStatus": "carrier-subtraction-checked"
+          }
+        ]
+      }
+    },
+    {
+      "name": "valid_pulse_noise",
+      "expected_ok": true,
+      "exit_code": 0,
+      "error": "",
+      "assertion_pass": true,
+      "returned": {
+        "schema": "gateway-committed-corpus/2",
+        "fileCount": 1,
+        "totalBytes": 113,
+        "presetSummary": {
+          "recordCount": 2,
+          "carrierPairArithmeticCount": 0,
+          "nonCarrierPairCount": 2,
+          "unclassifiedCount": 0
+        },
+        "presetArithmetic": [],
+        "presetConstructions": [
+          {
+            "id": "pulse",
+            "kind": "pulse-train",
+            "carrierHz": 1000.0,
+            "pulseRateHz": 40.0,
+            "arithmeticStatus": "not-carrier-pair-arithmetic",
+            "scope": "Pulse metadata only; pulse shape and waveform not verified"
+          },
+          {
+            "id": "noise",
+            "kind": "noise",
+            "arithmeticStatus": "not-carrier-pair-arithmetic",
+            "scope": "Noise label only; generator, seed and filter not verified"
+          }
+        ]
+      }
+    },
+    {
+      "name": "symlink_not_followed",
+      "expected_ok": true,
+      "exit_code": 0,
+      "error": "",
+      "assertion_pass": true,
+      "returned": {
+        "schema": "gateway-committed-corpus/2",
+        "fileCount": 2,
+        "totalBytes": 19,
+        "presetSummary": null,
+        "presetArithmetic": [],
+        "presetConstructions": []
+      }
+    },
+    {
+      "name": "output_already_exists",
+      "expected_ok": false,
+      "exit_code": 2,
+      "error": "audit failed: [Errno 17] File exists: '/tmp/gateway-audit-fixed-wb74ohhj/existing.json'",
+      "assertion_pass": true
+    }
+  ]
+}

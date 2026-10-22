@@ -1,0 +1,133 @@
+{
+  "overview": {
+    "title": "Measure the system. Test the inference.",
+    "body": "A copper object at A and B has no single automatically defined true frequency. This workspace separates intrinsic modes, fixture interactions, sampled channels and the information needed to compare positions. All displayed physical curves are simulated; no copper experiment has been performed.",
+    "sections": [
+      {
+        "title": "One experiment, explicit layers",
+        "body": "Start with the same specimen, then name the support, source, receiver, calibrated observable and coordinate frame. A changed tallest peak is a different claim from a changed fitted pole.",
+        "items": [
+          "Models: compare membrane/solid references and a declared finite contact model.",
+          "Design: inspect invisible/unexcited modes, exact aliases and position–temperature confounding.",
+          "Acquisition: inspect finite sampling, windows, noise and covariance.",
+          "Protocol: prepare the force/velocity metadata contract and run the corrected offline analyzer."
+        ]
+      },
+      {
+        "title": "The working thesis",
+        "body": "A position-associated response belongs to a specified specimen–fixture–source–receiver ensemble. A usable inference needs a forward model and identifying information against nuisance alternatives. This is an application-specific synthesis of established methods, not a new physical law.",
+        "links": [
+          {
+            "label": "Thesis and falsifiers",
+            "href": "./documents/working-thesis.html"
+          },
+          {
+            "label": "Known issues and preserved versions",
+            "href": "./versions.html"
+          }
+        ]
+      },
+      {
+        "title": "Gateway contributes questions and controls",
+        "body": "The historical documents, derived preset metadata, electrical case accounts and copper mechanical models are separate evidence channels. The audited material supplies no calibrated body-to-sphere coupling.",
+        "links": [
+          {
+            "label": "Detailed Gateway audit",
+            "href": "./gateway.html"
+          }
+        ]
+      }
+    ]
+  },
+  "protocol": {
+    "title": "Acquire a declared channel. Preserve its origin.",
+    "body": "The current offline analyzer accepts force-referenced synchronized traces and separately entered same-mode block estimates. It reports candidate peaks, not fitted mechanical poles; input calibration and physical provenance remain unauthenticated.",
+    "sections": [
+      {
+        "title": "Admission before analysis",
+        "items": [
+          "Trace columns: time_s, force_N, sphere_velocity_m_s, table_acceleration_m_s2. A voltage drive is not force without an independently supplied valid calibration.",
+          "Create the metadata sidecar from the exact raw bytes; retain raw and analyzer SHA-256, source pins, units and synthetic-versus-input status.",
+          "Duplicate/blank/ambiguous headers, ragged rows, changed raw bytes, wrong units and existing output paths are rejected."
+        ]
+      },
+      {
+        "title": "A prospective physical sequence",
+        "items": [
+          "First validate the input/readout chain with known references and empty-holder/dummy controls.",
+          "Vary source/readout geometry at fixed specimen state; then vary orientation, temperature and support independently.",
+          "Preselect a matched mode or modal group, estimator, band, effect threshold, uncertainty model and exclusions before the A/B outcome.",
+          "Balance and randomize independent blocks/days. ABBA cancels simple timing terms under assumptions; it does not remove locked nuisance variables.",
+          "Reserve complete later records/configurations for replication. A residual rejects a specified model before it identifies a cause."
+        ]
+      },
+      {
+        "title": "Reproduce the numerical closure",
+        "body": "A synthetic passive multisine force/velocity example closes H_vF=iωH_xF on declared driven lines. That verifies interoperability within a known model, not hardware, all-band identifiability or a pole fitter.",
+        "links": [
+          {
+            "label": "Full integrated protocol",
+            "href": "./documents/protocol-integrated.html"
+          },
+          {
+            "label": "Analyzer instructions",
+            "href": "./analysis/README.md"
+          },
+          {
+            "label": "Analyzer source",
+            "href": "./analysis/analyze.py"
+          },
+          {
+            "label": "Metadata template",
+            "href": "./analysis/run-contract-template.json"
+          },
+          {
+            "label": "Closure fixture and receipt",
+            "href": "./analysis/closure_fixture.py"
+          }
+        ]
+      }
+    ]
+  },
+  "gateway": {
+    "title": "Gateway: a source audit, not a coupling law.",
+    "body": "All 10 tracked files at 075bbab were read. The advertised website HTML, PDFs, MP3s and original commercial recordings are absent from that commit. Selected primary report passages were checked using the official 29-page GovInfo copy. The requested Kimi site returned access errors/HTTP403 and its contents remain unaudited.",
+    "sections": [
+      {
+        "title": "Keep the quantities separate",
+        "items": [
+          "Audio carrier and interaural difference: waveform quantities; five metadata subtractions check arithmetic only.",
+          "Focus numbers: program labels, not calibrated Hz. EEG requires electrode voltage measurements and artifact processing.",
+          "Copper Wall: quasi-static electrical case accounts, not the copper-sphere elastic experiment.",
+          "Sphere modes: a specified mechanical observable with geometry, source, support, damping and measurement uncertainty."
+        ]
+      },
+      {
+        "title": "Critique both claim and rebuttal",
+        "body": "The report’s speed-versus-length Planck step is dimensionally invalid. The companion’s photon-energy and universal-Q rebuttal also cannot replace classical force/transfer/loss measurements. A torus illustration, shared frequency or government archive label does not supply a physical coupling.",
+        "links": [
+          {
+            "label": "Detailed analysis and page map",
+            "href": "./documents/gateway-analysis.html"
+          },
+          {
+            "label": "Cross-domain bridge audit",
+            "href": "./documents/bridge-audit.html"
+          },
+          {
+            "label": "Pinned corpus inventory",
+            "href": "./data/corpus-gateway.json"
+          },
+          {
+            "label": "Reusable agent skill",
+            "href": "./skills/gateway-evidence-audit/SKILL.md"
+          }
+        ]
+      },
+      {
+        "title": "Missing measured-coupling gate",
+        "body": "The candidate body–sphere coupling law, parameters, calibration, transfer function, delivered energy and held-out predictions remain unspecified. Null fields mean unspecified, not measured zero. No medical or practice protocol is imported into this experiment."
+      }
+    ]
+  }
+}

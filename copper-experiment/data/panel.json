@@ -1,0 +1,80 @@
+{
+  "status": "Three sequential rounds complete; admitted as a bounded numerical and source-research workspace",
+  "seats": [
+    {
+      "id": 1,
+      "agent": "panel_gateway",
+      "role": "Gateway sources",
+      "skills": "OpenSync audio research; resonance research advisor",
+      "round1": "./research/panel/round1-gateway.md",
+      "round2": "./research/panel/round2-gateway.md",
+      "round3": "./research/panel/round3-gateway.md"
+    },
+    {
+      "id": 2,
+      "agent": "panel_elasticity",
+      "role": "Elastic mechanics",
+      "skills": "Newton analysis/synthesis; paired physics",
+      "round1": "./research/panel/round1-elasticity.md",
+      "round2": "./research/panel/round2-elasticity.md",
+      "round3": "./research/panel/round3-elasticity.md"
+    },
+    {
+      "id": 3,
+      "agent": "panel_inverse",
+      "role": "Inverse problems and statistics",
+      "skills": "Newton analysis/synthesis; paired physics",
+      "round1": "./research/panel/round1-inverse.md",
+      "round2": "./research/panel/round2-inverse.md",
+      "round3": "./research/panel/round3-inverse.md"
+    },
+    {
+      "id": 4,
+      "agent": "panel_measurement",
+      "role": "Measurement and DSP",
+      "skills": "Tesla mechanism/resonance; OpenSync audio research",
+      "round1": "./research/panel/round1-measurement.md",
+      "round2": "./research/panel/round2-measurement.md",
+      "round3": "./research/panel/round3-measurement.md"
+    },
+    {
+      "id": 5,
+      "agent": "panel_history",
+      "role": "Historical and cross-domain critique",
+      "skills": "Historical physics panel; Tesla mechanism/resonance",
+      "round1": "./research/panel/round1-history.md",
+      "round2": "./research/panel/round2-history.md",
+      "round3": "./research/panel/round3-history.md"
+    },
+    {
+      "id": 6,
+      "agent": "panel_software",
+      "role": "Reproducibility and interface",
+      "skills": "Resonance research advisor; Impeccable",
+      "round1": "./research/panel/round1-software.md",
+      "round2": "./research/panel/round2-software.md",
+      "round3": "./research/panel/round3-software.md"
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "title": "Independent audit",
+      "status": "complete",
+      "decision": "./research/panel/round1-advisor.md"
+    },
+    {
+      "round": 2,
+      "title": "Cross-critique and revision",
+      "status": "complete",
+      "decision": "./research/panel/round2-advisor.md"
+    },
+    {
+      "round": 3,
+      "title": "Reverse verification and admission",
+      "status": "complete",
+      "decision": "./research/panel/round3-advisor.md"
+    }
+  ],
+  "limits": "Six AI agents, not human scientists or historical persons. No physical measurements; numerical and source-review evidence have separate scopes."
+}

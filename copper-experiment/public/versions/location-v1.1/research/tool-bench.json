@@ -1,0 +1,420 @@
+{
+  "snapshot": "2026-10-22",
+  "scope": "Synthetic software-adapter and radial-model benchmarks; no physical measurements.",
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "summary": {
+    "checksPassed": 18,
+    "checksTotal": 18,
+    "physicalMeasurements": 0
+  },
+  "tools": [
+    {
+      "name": "pyFRF",
+      "version": "1.5.0",
+      "license": "MIT",
+      "status": "executed",
+      "role": "Complex H1 transfer and coherence from paired excitation/response records.",
+      "limitation": "Executed on the declared synthetic fixtures only.",
+      "installedModuleSHA256": "f1988ae7252ca6a08e391d1a0e970c68f9f96b640f1f40ee7b9c24f740f279ba"
+    },
+    {
+      "name": "scikit-fem",
+      "version": "12.0.2",
+      "license": "BSD-3-Clause",
+      "status": "executed",
+      "role": "Radial elastic weak-form assembly.",
+      "limitation": "Executed on the declared synthetic fixtures only.",
+      "installedModuleSHA256": "e2c0e4f40c259bfcefd87c127870d475e759ee1d347ae57d6ac86792ea39f5fb"
+    },
+    {
+      "name": "pyuff",
+      "version": "2.5.8",
+      "license": "MIT",
+      "status": "executed",
+      "role": "UFF58 measurement-data interchange.",
+      "limitation": "Executed on the declared synthetic fixtures only.",
+      "installedModuleSHA256": "772be84f21be9c16cfcfc55255f4d9519802da98359d3635658354800bce946d"
+    },
+    {
+      "name": "numpy",
+      "version": "2.3.5",
+      "license": "BSD-3-Clause",
+      "status": "executed",
+      "role": "Array operations, FFTs and rank witness.",
+      "limitation": "Executed on the declared synthetic fixtures only.",
+      "installedModuleSHA256": "93924ac4b793328947dfd9eb9355e54eccdfd26a92c8dd52188aed2e52c7eb38"
+    },
+    {
+      "name": "scipy",
+      "version": "1.17.0",
+      "license": "BSD-3-Clause",
+      "status": "executed",
+      "role": "Independent CSD/coherence, roots and eigenproblem.",
+      "limitation": "Executed on the declared synthetic fixtures only.",
+      "installedModuleSHA256": "335bc6e0a9909dc7534f9569a3685a92dc8001cb8c63a6da4c239849ff02d4d0"
+    }
+  ],
+  "runs": [
+    {
+      "id": "frf",
+      "title": "Known transfer and coherence trap",
+      "tool": "pyFRF + SciPy",
+      "status": "executed",
+      "result": "Known complex transfer recovered to 1.45e-14; a single record still reports unity coherence despite added noise.",
+      "metrics": {
+        "sampleRateHz": 192000,
+        "samplesPerRecord": 4096,
+        "records": 48,
+        "selectedModeHz": 23317.724126,
+        "maxRelativeComplexError": 1.4459911231739016e-14,
+        "scipyFRFDifference": 6.622151143762973e-16,
+        "scipyCoherenceDifference": 1.5543122344752192e-15,
+        "averagedMedianCoherence": 0.11078037221505513,
+        "singleRecordUnityError": 6.661338147750939e-16
+      },
+      "limit": "Periodic synthetic linear response. No measured sphere data; unity coherence is not a calibration or validity certificate."
+    },
+    {
+      "id": "rank",
+      "title": "A good fit can hide an unidentifiable input",
+      "tool": "pyFRF + NumPy",
+      "status": "executed",
+      "result": "Two duplicate drive channels fit the output, but only their summed transfer is identifiable: rank 1, nullity 1.",
+      "metrics": {
+        "inputDimension": 2,
+        "rank": 1,
+        "nullity": 1,
+        "kernel": [
+          1,
+          -1
+        ],
+        "kernelResidual": 0.0,
+        "sumRelativeError": 1.458721420707174e-14
+      },
+      "limit": "The pseudoinverse selects one coefficient pair; it does not recover a physically unique pair."
+    },
+    {
+      "id": "fem",
+      "title": "Radial elastic finite-element convergence",
+      "tool": "scikit-fem + SciPy",
+      "status": "executed",
+      "result": "First three radial modes converge over 16\u2013256 elements; finest maximum relative error 3.65e-05.",
+      "metrics": {
+        "analyticFrequenciesHz": [
+          46836.62836918259,
+          103233.06910214732,
+          157039.38639364913
+        ],
+        "radialMeshLevels": [
+          {
+            "elements": 16,
+            "frequenciesHz": [
+              46853.00431267939,
+              103568.11252925843,
+              158504.75683742252
+            ],
+            "relativeErrors": [
+              0.00034963967448131683,
+              0.003245504856390413,
+              0.009331228791866097
+            ],
+            "equationResidual": 2.0511218290378113e-14
+          },
+          {
+            "elements": 32,
+            "frequenciesHz": [
+              46840.724015198604,
+              103316.90575539322,
+              157406.3622099492
+            ],
+            "relativeErrors": [
+              8.744536399452052e-05,
+              0.0008121104407246005,
+              0.0023368393415661437
+            ],
+            "equationResidual": 1.0747295677949039e-13
+          },
+          {
+            "elements": 64,
+            "frequenciesHz": [
+              46837.65238519768,
+              103254.03305451291,
+              157131.16796787456
+            ],
+            "relativeErrors": [
+              2.186357239519765e-05,
+              0.00020307400087893335,
+              0.000584449394086084
+            ],
+            "equationResidual": 6.453375206266853e-13
+          },
+          {
+            "elements": 128,
+            "frequenciesHz": [
+              46836.88437971167,
+              103238.31038967121,
+              157062.33409444574
+            ],
+            "relativeErrors": [
+              5.466032419354505e-06,
+              5.077140076803488e-05,
+              0.00014612704063354798
+            ],
+            "equationResidual": 2.833458681030996e-12
+          },
+          {
+            "elements": 256,
+            "frequenciesHz": [
+              46836.69237209128,
+              103234.37944264949,
+              157045.1234622321
+            ],
+            "relativeErrors": [
+              1.3665140066176917e-06,
+              1.2693030572163977e-05,
+              3.653267320213871e-05
+            ],
+            "equationResidual": 1.0018339175926416e-11
+          }
+        ],
+        "maxFinestRelativeError": 3.653267320213871e-05,
+        "scaleError": 2.1882495815361835e-13
+      },
+      "limit": "Radial symmetry is imposed. This is not a full 3D mesh or a spectrum of torsional, quadrupolar, support, seam or anisotropic modes."
+    },
+    {
+      "id": "uff",
+      "title": "Calibrated-channel exchange format",
+      "tool": "pyuff",
+      "status": "executed",
+      "result": "ASCII and binary UFF58 roundtrips preserve the synthetic complex FRF and explicit Hz, m, N labels.",
+      "metrics": {
+        "points": 2047,
+        "formats": [
+          {
+            "binary": false,
+            "relativeComplexError": 2.5128445614450852e-12,
+            "frequencyAxisErrorHz": 0.0,
+            "unitLabelsPreserved": true
+          },
+          {
+            "binary": true,
+            "relativeComplexError": 0.0,
+            "frequencyAxisErrorHz": 0.0,
+            "unitLabelsPreserved": true
+          }
+        ]
+      },
+      "limit": "Uniform frequency grid explicitly encoded. Uneven-grid ASCII rounded high frequencies in the initial run; use binary or audit precision for irregular grids. No sensor calibration or cross-vendor compatibility test."
+    }
+  ],
+  "checks": [
+    {
+      "id": "frf_known_complex_transfer",
+      "pass": true,
+      "observed": 1.4459911231739016e-14,
+      "criterion": "max relative complex error < 2e-12, 1\u201380 kHz"
+    },
+    {
+      "id": "frf_scipy_crosscheck",
+      "pass": true,
+      "observed": 6.622151143762973e-16,
+      "criterion": "normalized max complex difference < 1e-12"
+    },
+    {
+      "id": "coherence_scipy_crosscheck",
+      "pass": true,
+      "observed": 1.5543122344752192e-15,
+      "criterion": "absolute difference < 1e-12"
+    },
+    {
+      "id": "coherence_bounds",
+      "pass": true,
+      "observed": [
+        3.4678658681895877e-06,
+        0.9992254519221769
+      ],
+      "criterion": "averaged magnitude-squared coherence in [0,1], allowing roundoff"
+    },
+    {
+      "id": "single_record_false_assurance",
+      "pass": true,
+      "observed": 6.661338147750939e-16,
+      "criterion": "one unaveraged periodogram has unity coherence even with independent output noise"
+    },
+    {
+      "id": "averaging_exposes_noise",
+      "pass": true,
+      "observed": 0.11078037221505513,
+      "criterion": "48-record median coherence < 0.9 for this noise fixture"
+    },
+    {
+      "id": "duplicate_inputs_predict_sum",
+      "pass": true,
+      "observed": 1.458721420707174e-14,
+      "criterion": "sum of two fitted transfers recovers known response < 2e-12"
+    },
+    {
+      "id": "duplicate_inputs_have_kernel",
+      "pass": true,
+      "observed": 0.0,
+      "criterion": "explicit kernel witness [1,-1] for rank-one two-input design"
+    },
+    {
+      "id": "input_contract_zero_excitation",
+      "pass": true,
+      "observed": true,
+      "criterion": "lab wrapper rejects invalid records before estimator"
+    },
+    {
+      "id": "input_contract_nonfinite_response",
+      "pass": true,
+      "observed": true,
+      "criterion": "lab wrapper rejects invalid records before estimator"
+    },
+    {
+      "id": "input_contract_mismatched_lengths",
+      "pass": true,
+      "observed": true,
+      "criterion": "lab wrapper rejects invalid records before estimator"
+    },
+    {
+      "id": "fem_first_three_radial_modes",
+      "pass": true,
+      "observed": 3.653267320213871e-05,
+      "criterion": "256-element first-three radial relative errors < 7e-5"
+    },
+    {
+      "id": "fem_refinement_convergence",
+      "pass": true,
+      "observed": [
+        [
+          0.00034963967448131683,
+          0.003245504856390413,
+          0.009331228791866097
+        ],
+        [
+          8.744536399452052e-05,
+          0.0008121104407246005,
+          0.0023368393415661437
+        ],
+        [
+          2.186357239519765e-05,
+          0.00020307400087893335,
+          0.000584449394086084
+        ],
+        [
+          5.466032419354505e-06,
+          5.077140076803488e-05,
+          0.00014612704063354798
+        ],
+        [
+          1.3665140066176917e-06,
+          1.2693030572163977e-05,
+          3.653267320213871e-05
+        ]
+      ],
+      "criterion": "each of first three radial errors decreases at each refinement"
+    },
+    {
+      "id": "fem_ritz_upper_approach",
+      "pass": true,
+      "observed": [
+        [
+          0.00034963967448131683,
+          0.003245504856390413,
+          0.009331228791866097
+        ],
+        [
+          8.744536399452052e-05,
+          0.0008121104407246005,
+          0.0023368393415661437
+        ],
+        [
+          2.186357239519765e-05,
+          0.00020307400087893335,
+          0.000584449394086084
+        ],
+        [
+          5.466032419354505e-06,
+          5.077140076803488e-05,
+          0.00014612704063354798
+        ],
+        [
+          1.3665140066176917e-06,
+          1.2693030572163977e-05,
+          3.653267320213871e-05
+        ]
+      ],
+      "criterion": "conforming radial Ritz frequencies approach analytic values from above"
+    },
+    {
+      "id": "fem_physical_scaling",
+      "pass": true,
+      "observed": 2.1882495815361835e-13,
+      "criterion": "doubling R halves f; quadrupling E doubles f, fixed nu and rho"
+    },
+    {
+      "id": "fem_eigen_equation",
+      "pass": true,
+      "observed": 1.0018339175926416e-11,
+      "criterion": "normalized Kq\u2212lambda Mq residual < 1e-9"
+    },
+    {
+      "id": "uff58_0_roundtrip",
+      "pass": true,
+      "observed": {
+        "relativeComplexError": 2.5128445614450852e-12,
+        "frequencyAxisErrorHz": 0.0,
+        "unitLabelsPreserved": true
+      },
+      "criterion": "complex relative error < 1e-10, axis error < 1e-9 Hz and Hz/m/N metadata preserved"
+    },
+    {
+      "id": "uff58_1_roundtrip",
+      "pass": true,
+      "observed": {
+        "relativeComplexError": 0.0,
+        "frequencyAxisErrorHz": 0.0,
+        "unitLabelsPreserved": true
+      },
+      "criterion": "complex relative error < 1e-10, axis error < 1e-9 Hz and Hz/m/N metadata preserved"
+    }
+  ],
+  "warnings": [
+    "ResourceWarning: pyuff binary writer left a temporary-file handle unclosed; captured during cleanup."
+  ],
+  "limitations": [
+    "No full-spectrum capture or absolute-location inference.",
+    "No full 3D sphere/contact/air model; FEM is an explicitly radial subspace.",
+    "pyFRF and SciPy checks share FFT foundations; analytic transfer and FEM/Bessel comparisons provide additional distinct formulations.",
+    "No third-party code is vendored; Python tools run offline, not in the browser.",
+    "No exhaustive software audit, hardware validation, neural-operator training, or measured-data fit."
+  ],
+  "failuresAndRepairs": [
+    {
+      "stage": "optional isolated installation",
+      "observation": "--no-deps installation of pyFRF required sdypy-sep005; installed 1.0.1 before running the bench.",
+      "status": "resolved"
+    },
+    {
+      "stage": "pyEMA inspection",
+      "observation": "pyEMA 0.31.0 redirects to sdypy-ema; importing the latter first lacked tqdm. Import succeeded after adding it, but this package is not part of these accepted benchmark results.",
+      "status": "imported, not benchmarked"
+    },
+    {
+      "stage": "UFF58 binary overwrite",
+      "observation": "pyuff 2.5.8 mode=overwrite produced a 7-byte terminator-only file; source reopens wb and wt. Fresh temporary file with mode=add passes the roundtrip without changing vendor code.",
+      "status": "adapter workaround tested"
+    },
+    {
+      "stage": "UFF58 uneven ASCII frequency precision",
+      "observation": "Default uneven-grid ASCII writes frequencies with 6 significant digits; initial roundtrip failed the 1e-9 Hz axis contract. This fixture is uniform, so the adapter now explicitly sets abscissa_spacing=1. Binary remains preferred for irregular precise axes.",
+      "status": "uniform-grid encoding tested; irregular ASCII limitation retained"
+    }
+  ]
+}

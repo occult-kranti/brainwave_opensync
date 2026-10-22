@@ -1,0 +1,67 @@
+{
+  "status": "accepted-within-declared-scope",
+  "reviewer": "independent experimental-design skeptic model-agent",
+  "review_date": "2026-10-21",
+  "source_sha256": {
+    "research/derivation.md": "915ac4fd94217a9f967757d179e58e48d0d30466b454906dd965992b2ba91a2e",
+    "analysis/analyze.py": "f1e5193ef8c8034e463b3c686b73b0dd5cdd59bb8953ac33290f3eb98042ede0",
+    "analysis/README.md": "2d4277c99d2956b7ce625caed555fc2a7666c9719d764a8f42e2c86c04ac991f",
+    "src/evidence.json": "93bf0e6cb41f8e7ae310b9f5ad8b638279b5cf9ac898450a39cd66d16ad79605",
+    "src/model.mjs": "4d464f1a21bbadc88363fe666720994641079eecf7215f3d80e3fe6b4c18e3d6",
+    "index.html": "4b6a6c2f75b0c614591b8d7940cbaabb273d35aaa004238f0ba198a1e5c2fae7",
+    "src/app.mjs": "8990e29db1dce3f47dc5be4df8fcc590a51fc06e3c91db7cb4c00c1554adcc8c",
+    "assets/apparatus.svg": "83b63eaec361f736192ef7fdc55f0f0eeb7ed6e438b66f0a903bf98c477c086c",
+    "assets/signal-chain.svg": "4d62e96db3f5859976bef9113e4b7c93c81e102df16a54336af39b2581eeaffe"
+  },
+  "claims": {
+    "physical_experiment_run": false,
+    "new_physical_effect_established": false,
+    "complete_object_spectrum_claimed": false,
+    "ideal_radial_mode_calculator_accepted": true,
+    "synthetic_controls_labeled": true,
+    "ai_research_used_as_physical_premise": false
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "issue": "Low-Q plot included nonpositive frequencies",
+      "status": "resolved; independently checked in prior model review"
+    },
+    {
+      "id": "R2",
+      "issue": "Nyquist-only status omitted selected-mode band coverage",
+      "status": "resolved; independently checked in prior model review"
+    },
+    {
+      "id": "R3",
+      "issue": "Relative numerical excitation floor could be mistaken for measured SNR",
+      "status": "resolved; exact threshold metadata, result limit and README inspected"
+    },
+    {
+      "id": "R4",
+      "issue": "First-mode-only default-band claim stayed unqualified after material/size changes",
+      "status": "resolved; copy now explicitly refers to the default specimen and 200 kHz band"
+    },
+    {
+      "id": "R5",
+      "issue": "Download card advertised notebooks without a notebook artifact",
+      "status": "resolved; card now names code, tests and records"
+    }
+  ],
+  "blocking_findings": [],
+  "remaining_scientific_limits": [
+    "No calibrated copper-sphere experiment has been performed.",
+    "Only the first three positive l=0 radial-family modes are modeled; support shifts are an explicitly illustrative modal-spring example.",
+    "Finite-channel data do not determine an entire spectrum, an intrinsic location frequency or full inverse-material uniqueness.",
+    "Actual mode fitting, hardware calibration, uncertainty budgets, thermal/support discrimination and replication remain experimental work."
+  ],
+  "review_actions": [
+    "Read derivation and math assumptions.",
+    "Reviewed analysis code and README, including numerical excitation-guard clarification.",
+    "Reviewed all page text, calculator output strings and exported-model status.",
+    "Reviewed source-map statuses, relations, reading depths and AI-research limitations.",
+    "Inspected apparatus and signal-chain SVG source for support, drive, receiver, DAQ, unit and bandwidth labels.",
+    "Preserved initial frozen independent review and prior 312-root/edge-case results; did not repeat equivalent tests."
+  ],
+  "scope": "Scientific and mathematical source/copy review of the nine hashed files. SVG markup was inspected; rendered browser/visual and deployment verification are performed separately by root. External source proofs and all cited experiments were not independently reproduced."
+}

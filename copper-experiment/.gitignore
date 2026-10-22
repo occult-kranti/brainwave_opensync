@@ -1,0 +1,7 @@
+dist/
+__pycache__/
+*.pyc
+reference/producer-comparison.json
+analysis/generated/
+.venv/
+.venv-tools/

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gateway Evidence Audit"
+  short_description: "Audit Gateway sources and frequency claims"
+  default_prompt: "Use $gateway-evidence-audit to assess Gateway documents and test a claimed frequency mechanism."

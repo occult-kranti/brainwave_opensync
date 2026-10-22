@@ -1,0 +1,9 @@
+{
+  "site": "Fieldwork / Position spectroscopy",
+  "branch": "research/copper-position-spectroscopy",
+  "commit": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+  "path": "/brainwave_opensync/devices/position/",
+  "researchDate": "2026-10-21",
+  "hardwareMeasurements": 0,
+  "status": "Proposed apparatus; verified numerical models; synthetic examples"
+}

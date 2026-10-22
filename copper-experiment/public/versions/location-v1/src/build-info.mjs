@@ -1,0 +1,1 @@
+export const BUILD_INFO = {"modelVersion":"1.0.0","researchDate":"2026-10-21","sourceCommit":"f9927a68fca491785bfca0a4782ffceeb37209dc","branch":"research/location-spectrum","modelSHA256":"5bdf26177c864bc70948178d81e1e917137fa4960bfaeab5d523decf2c63ed9c"};

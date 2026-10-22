@@ -1,0 +1,52 @@
+name: Deploy Position Spectroscopy
+
+on:
+  push:
+    branches: [research/copper-position-spectroscopy]
+    paths: ['device-observatory/position/**', '.github/workflows/position-spectroscopy.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  position-site:
+    if: github.ref == 'refs/heads/research/copper-position-spectroscopy'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install analysis dependencies
+        run: python3 -m pip install -r device-observatory/position/analysis/requirements.txt
+      - name: Verify models, controls, data analysis and build
+        working-directory: device-observatory/position
+        run: |
+          npm run check
+          python3 -B research/verify_physics.py --check
+          python3 -B research/independent_checks.py --output /tmp/position-independent.json
+          cmp research/independent-results.json /tmp/position-independent.json
+      - name: Publish only devices/position
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch gh-pages "https://github.com/${GITHUB_REPOSITORY}.git" site
+          mkdir -p site/devices/position
+          rsync -a --delete device-observatory/position/dist/ site/devices/position/
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- devices/position
+          if git diff --cached --quiet; then exit 0; fi
+          git commit --quiet -m "Deploy position spectroscopy ${GITHUB_SHA::7}"
+          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)" push --quiet origin gh-pages

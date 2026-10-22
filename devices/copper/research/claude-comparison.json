@@ -1,0 +1,747 @@
+{
+  "schema": "fieldwork-claude-comparison/1",
+  "sourceCommit": "e628974ba018c775da41de304bd55afafd16b426",
+  "physicalMeasurements": 0,
+  "reviewer": "Single Codex integration review; cross-formulation numerical checks, no independent panel or human peer review",
+  "codeHashes": {
+    "sourceModes": "34f10a4f2a4d71a1905785aaa426c2cf78c76f25c2eb5adf07c95e1fa433032a",
+    "sourceModel": "1c0f722b72e5a0b2abcf3dd62ce60f40f6633df741a1c53cbe55afabdbcd8443",
+    "existingModels": "2371578a26dba7cdb580940c8cd64b7fa361a3ec2ee2d52581a6fa8fba2445fe"
+  },
+  "claudeGeometry": {
+    "outerRadiusMm": 44.45,
+    "innerRadiusMm": 43.45,
+    "midsurfaceRadiusMm": 43.95,
+    "wallMm": 1
+  },
+  "claudeMaterial": {
+    "youngPa": 127347814590.01424,
+    "poisson": 0.3460123160942996,
+    "densityKgM3": 8930.0
+  },
+  "comparison": {
+    "existingDefaultMembraneHz": 23317.724125641158,
+    "existingDefaultExactRadialShellHz": 23318.130751075474,
+    "claudeLowestS2Hz": 9943.394474518582,
+    "claudeT2Hz": 16667.67062584082,
+    "claudeBreathingS0Hz": 23916.17740203788,
+    "matchedMembraneHz": 23914.509849875536,
+    "matchedMembraneDifferenceHz": -1.6675558061397169,
+    "matchedMembraneErrorPpm": -69.72501407120913,
+    "matchedSolidHz": 47080.39276940067,
+    "sourceModeCount": 32,
+    "angularEigenfunctionCount": 682
+  },
+  "contactConvergence": {
+    "S2LastStepHz": -0.966929781017825,
+    "bounceLastStepHz": -6.889489226286628,
+    "S2LastStepPpm": -96.61898350665777,
+    "bounceLastStepPercent": -0.9849814714726457,
+    "meaning": "Last truncation difference, not a certified error bound; contact model is rigid-ground, radial, m=0 only."
+  },
+  "plateSymmetryRelativeDifference": 2.761262915531759e-09,
+  "plateThicknessToShortSpan": 0.20833333333333334,
+  "precisionAudit": {
+    "initialSignalPowerSNRdB": 40,
+    "samples": 8909,
+    "durationSeconds": 0.04350261843867983,
+    "originalSigmaHz": 0.0009494184859944312,
+    "realConstantAmplitudeSigmaHz": 0.0013429213045773015,
+    "realUnknownDecaySigmaHz": 0.0022443449039503682,
+    "constantToOriginalRatio": 1.4144671969081277,
+    "decayToOriginalRatio": 2.3639153198071736,
+    "assumptions": "Real samples; iid additive Gaussian noise; SNR=A0^2/(2 sigma_noise^2); unknown amplitude and phase; unknown decay rate in the decaying case. No systematic uncertainties or physical calibration included.",
+    "meaning": "Different noise conventions change the bound. The imported factor 6 is not an uncertainty certificate for this declared real-signal power-SNR convention."
+  },
+  "fullModelReproduction": {
+    "performed": true,
+    "freeModes": 32,
+    "maximumFreeModeDifferenceHz": 0.0,
+    "bounceDifferenceHz": 7.62456955953894e-05,
+    "scope": "Unmodified full fp_model.py, single-thread numerical run. Small eigenvalue-roundoff differences are recorded rather than requiring bit identity."
+  },
+  "checks": [
+    {
+      "name": "32 distinct computed free frequency multiplets",
+      "actual": 32.0,
+      "expected": 32.0,
+      "absoluteError": 0.0,
+      "relativeTolerance": 0,
+      "absoluteTolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "682 angular eigenfunctions including degeneracies",
+      "actual": 682.0,
+      "expected": 682.0,
+      "absoluteError": 0.0,
+      "relativeTolerance": 0,
+      "absoluteTolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S2",
+      "actual": 9943.394474518582,
+      "expected": 9943.394474518582,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S3",
+      "actual": 11852.851149138995,
+      "expected": 11852.851149138995,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S4",
+      "actual": 12674.467555139909,
+      "expected": 12674.467555139909,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S5",
+      "actual": 13192.725460128291,
+      "expected": 13192.725460128291,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S6",
+      "actual": 13661.378111473397,
+      "expected": 13661.378111473397,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S7",
+      "actual": 14199.413650906137,
+      "expected": 14199.413650906137,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S8",
+      "actual": 14878.921460201136,
+      "expected": 14878.921460201136,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S9",
+      "actual": 15748.694404788615,
+      "expected": 15748.694404788615,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free T2",
+      "actual": 16667.67062584082,
+      "expected": 16667.67062584082,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S10",
+      "actual": 16841.188814213958,
+      "expected": 16841.188814213958,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S11",
+      "actual": 18175.39642534257,
+      "expected": 18175.39642534257,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S12",
+      "actual": 19759.333114399484,
+      "expected": 19759.333114399484,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S13",
+      "actual": 21592.83908347797,
+      "expected": 21592.83908347797,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S14",
+      "actual": 23670.363350893327,
+      "expected": 23670.363350893327,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S0",
+      "actual": 23916.17740203788,
+      "expected": 23916.17740203788,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S15",
+      "actual": 25983.303757786256,
+      "expected": 25983.303757786256,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free T3",
+      "actual": 26353.90052768765,
+      "expected": 26353.90052768765,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S16",
+      "actual": 28521.704763063786,
+      "expected": 28521.704763063786,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S1",
+      "actual": 29285.73153997508,
+      "expected": 29285.73153997508,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S17",
+      "actual": 31275.340906091755,
+      "expected": 31275.340906091755,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S18",
+      "actual": 34234.325003732934,
+      "expected": 34234.325003732934,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free T4",
+      "actual": 35357.46656856092,
+      "expected": 35357.46656856092,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S19",
+      "actual": 37389.39656829727,
+      "expected": 37389.39656829727,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S2(2)",
+      "actual": 40101.042120870094,
+      "expected": 40101.042120870094,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S20",
+      "actual": 40732.01721752555,
+      "expected": 40732.01721752555,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free T5",
+      "actual": 44098.50668598415,
+      "expected": 44098.50668598415,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S21",
+      "actual": 44254.36101958296,
+      "expected": 44254.36101958296,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S22",
+      "actual": 47949.25468537002,
+      "expected": 47949.25468537002,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S23",
+      "actual": 51810.09942822969,
+      "expected": 51810.09942822969,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free T6",
+      "actual": 52707.79399819105,
+      "expected": 52707.79399819105,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S3(2)",
+      "actual": 53299.48281442305,
+      "expected": 53299.48281442305,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "recomputed free S24",
+      "actual": 55830.79110051324,
+      "expected": 55830.79110051324,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "identical shell breathing reduction after matching inputs",
+      "actual": 23914.50984987554,
+      "expected": 23914.509849875536,
+      "absoluteError": 3.637978807091713e-12,
+      "relativeTolerance": 1e-12,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "independent l=0 shell traction ansatz vs Claude S0",
+      "actual": 23916.177405681676,
+      "expected": 23916.17740203788,
+      "absoluteError": 3.6437959352042526e-06,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "JS solid radial root vs Claude elastodynamics",
+      "actual": 47080.39276940067,
+      "expected": 47080.39279937744,
+      "absoluteError": 2.9976770747452974e-05,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "exact shell geometric mass",
+      "actual": 0.21676932122311282,
+      "expected": 0.21676932122311282,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-12,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "membrane mass matches the declared midsurface convention",
+      "actual": 0.21675996974898087,
+      "expected": 0.21675996974898087,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-12,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "mirror-symmetric plate A/B driving-point magnitude",
+      "actual": 2.761262915531759e-09,
+      "expected": 0.0,
+      "absoluteError": 2.761262915531759e-09,
+      "relativeTolerance": 0,
+      "absoluteTolerance": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "real-sinusoid long-record power-SNR Fisher coefficient",
+      "actual": 1.4144671969081277,
+      "expected": 1.4142135623730951,
+      "absoluteError": 0.0002536345350325764,
+      "relativeTolerance": 0.003,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S2",
+      "actual": 9943.394474518582,
+      "expected": 9943.394474518582,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S3",
+      "actual": 11852.851149138995,
+      "expected": 11852.851149138995,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S4",
+      "actual": 12674.467555139909,
+      "expected": 12674.467555139909,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S5",
+      "actual": 13192.725460128291,
+      "expected": 13192.725460128291,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S6",
+      "actual": 13661.378111473397,
+      "expected": 13661.378111473397,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S7",
+      "actual": 14199.413650906137,
+      "expected": 14199.413650906137,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S8",
+      "actual": 14878.921460201136,
+      "expected": 14878.921460201136,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S9",
+      "actual": 15748.694404788615,
+      "expected": 15748.694404788615,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun T2",
+      "actual": 16667.67062584082,
+      "expected": 16667.67062584082,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S10",
+      "actual": 16841.188814213958,
+      "expected": 16841.188814213958,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S11",
+      "actual": 18175.39642534257,
+      "expected": 18175.39642534257,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S12",
+      "actual": 19759.333114399484,
+      "expected": 19759.333114399484,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S13",
+      "actual": 21592.83908347797,
+      "expected": 21592.83908347797,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S14",
+      "actual": 23670.363350893327,
+      "expected": 23670.363350893327,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S0",
+      "actual": 23916.17740203788,
+      "expected": 23916.17740203788,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S15",
+      "actual": 25983.303757786256,
+      "expected": 25983.303757786256,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun T3",
+      "actual": 26353.90052768765,
+      "expected": 26353.90052768765,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S16",
+      "actual": 28521.704763063786,
+      "expected": 28521.704763063786,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S1",
+      "actual": 29285.73153997508,
+      "expected": 29285.73153997508,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S17",
+      "actual": 31275.340906091755,
+      "expected": 31275.340906091755,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S18",
+      "actual": 34234.325003732934,
+      "expected": 34234.325003732934,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun T4",
+      "actual": 35357.46656856092,
+      "expected": 35357.46656856092,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S19",
+      "actual": 37389.39656829727,
+      "expected": 37389.39656829727,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S2(2)",
+      "actual": 40101.042120870094,
+      "expected": 40101.042120870094,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S20",
+      "actual": 40732.01721752555,
+      "expected": 40732.01721752555,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun T5",
+      "actual": 44098.50668598415,
+      "expected": 44098.50668598415,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S21",
+      "actual": 44254.36101958296,
+      "expected": 44254.36101958296,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S22",
+      "actual": 47949.25468537002,
+      "expected": 47949.25468537002,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S23",
+      "actual": 51810.09942822969,
+      "expected": 51810.09942822969,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun T6",
+      "actual": 52707.79399819105,
+      "expected": 52707.79399819105,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S3(2)",
+      "actual": 53299.48281442305,
+      "expected": 53299.48281442305,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script rerun S24",
+      "actual": 55830.79110051324,
+      "expected": 55830.79110051324,
+      "absoluteError": 0.0,
+      "relativeTolerance": 1e-08,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script contact bounce",
+      "actual": 692.564274811747,
+      "expected": 692.5641985660515,
+      "absoluteError": 7.62456955953894e-05,
+      "relativeTolerance": 2e-06,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    },
+    {
+      "name": "full-script contact S2_m0",
+      "actual": 10006.69146697614,
+      "expected": 10006.691461198969,
+      "absoluteError": 5.777172191301361e-06,
+      "relativeTolerance": 2e-06,
+      "absoluteTolerance": 1e-08,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Finite frequency/angular-order search is not a complete measured spectrum.",
+    "The rigid-ground contact projection and free-table FRF are separate calculations, not one fully coupled sphere/table/air model.",
+    "Plate thickness/short span = 0.2083. No computed Mindlin or 3D error bound supports a universal few-percent correction.",
+    "No absolute-position coupling, calibrated measurement floor or physical evidence has been established."
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "schema": "fieldwork-claude-import/1",
+  "repository": "https://github.com/occult-kranti/bashar-index",
+  "branch": "experiment-frequency-of-place",
+  "commit": "e628974ba018c775da41de304bd55afafd16b426",
+  "parent": "457dc2f2da10399bda2786573b7a77ec3fe34f62",
+  "changedFiles": 22,
+  "additionalFiles": [
+    "LICENSE"
+  ],
+  "license": "MIT; upstream copyright notice retained",
+  "physicalMeasurements": 0,
+  "originals": [
+    {
+      "path": ".gitignore",
+      "bytes": 19,
+      "sha256": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2791,
+      "sha256": "296e4091653df508417db957748fb40591acac40e3f1c4053f7fc8fec5064c52"
+    },
+    {
+      "path": "data/experiments/frequency-of-place/ai_lab_papers.md",
+      "bytes": 96339,
+      "sha256": "12185c82f178358725ef634221513e2e2e8825003e980c91d9d6c718851043df"
+    },
+    {
+      "path": "data/experiments/frequency-of-place/corpus_and_youtube.md",
+      "bytes": 52482,
+      "sha256": "27b050072384a683f3d705fe765352652ec83b1804cce4dc5563dd8ffc1ab5aa"
+    },
+    {
+      "path": "data/experiments/frequency-of-place/fp_series.npz",
+      "bytes": 201560,
+      "sha256": "732c9017dbeaa0bad8445fa622a49c59f2b645cd05e2f3a8b7c2ed834ec59f0c"
+    },
+    {
+      "path": "data/experiments/frequency-of-place/graph.json",
+      "bytes": 91814,
+      "sha256": "7053de04040a78197260ec98310703f72f3fd28e5b57705ed7eb613f49b2df84"
+    },
+    {
+      "path": "data/experiments/frequency-of-place/literature.md",
+      "bytes": 101351,
+      "sha256": "fcca0480f819dae4f0347cf34d86e35f747dbf9b7bbd6c99c463319a3c5240ed"
+    },
+    {
+      "path": "experiments/frequency-of-place/fp_model.py",
+      "bytes": 23725,
+      "sha256": "1c0f722b72e5a0b2abcf3dd62ce60f40f6633df741a1c53cbe55afabdbcd8443"
+    },
+    {
+      "path": "experiments/frequency-of-place/fp_results.json",
+      "bytes": 28389,
+      "sha256": "3d656d1da44efd155f2036b14ac9985adc01181b4ede0f980ad9f6afaec89274"
+    },
+    {
+      "path": "experiments/frequency-of-place/index.html",
+      "bytes": 444488,
+      "sha256": "aefcbb6f85b44374d923ed0ff2792a46945852ce15506c631fc22abb21765912"
+    },
+    {
+      "path": "experiments/frequency-of-place/render-bench.jpg",
+      "bytes": 90280,
+      "sha256": "1eb4f2d4e0e35ec6f6c424557942d71651e9daa6223943249fc0fe486206f74d"
+    },
+    {
+      "path": "experiments/frequency-of-place/render-station.jpg",
+      "bytes": 266842,
+      "sha256": "2ac9c6810a5649cf49e1a0965ae4477db5ecdab305b59dedf43033c5cac87f10"
+    },
+    {
+      "path": "experiments/frequency-of-place/sphere_modes.py",
+      "bytes": 15131,
+      "sha256": "34f10a4f2a4d71a1905785aaa426c2cf78c76f25c2eb5adf07c95e1fa433032a"
+    },
+    {
+      "path": "index.html",
+      "bytes": 2088800,
+      "sha256": "b8e4cb8df03df83c37f17ada3a0be3d805328f027d2baa5ca3657a430175af98"
+    },
+    {
+      "path": "src/build.py",
+      "bytes": 75173,
+      "sha256": "ead0ed71b777ddeeab98cbdbcad62680ea4530408b5ebd356d9847c5a0dd1bc0"
+    },
+    {
+      "path": "src/experiments/README.md",
+      "bytes": 847,
+      "sha256": "68624b12fea824fe7813c9074569f1acf8222377348b9e80547e264a65a76a69"
+    },
+    {
+      "path": "src/experiments/build_graph.py",
+      "bytes": 4250,
+      "sha256": "85f36e97125d375d0cde51469ed00aff77293e16bdfec4200c0c5aee8f9d49bd"
+    },
+    {
+      "path": "src/experiments/fop_bench.py",
+      "bytes": 12449,
+      "sha256": "1ed7950ea1609662d16cde6c4f0b9dc406aabeebd9282bec51d25678483741e2"
+    },
+    {
+      "path": "src/experiments/fop_diagrams.py",
+      "bytes": 28574,
+      "sha256": "7163cf59c777c74ad12754d691f65a24f57cd67e9d81e102bf3d25d73b448abe"
+    },
+    {
+      "path": "src/experiments/fop_page.py",
+      "bytes": 60067,
+      "sha256": "2f6e9e4833bbcb49dec2c7de7154815180257257fb29479ca7ec871d37491675"
+    },
+    {
+      "path": "src/experiments/fp_model.py",
+      "bytes": 23725,
+      "sha256": "1c0f722b72e5a0b2abcf3dd62ce60f40f6633df741a1c53cbe55afabdbcd8443"
+    },
+    {
+      "path": "src/experiments/sphere_modes.py",
+      "bytes": 15131,
+      "sha256": "34f10a4f2a4d71a1905785aaa426c2cf78c76f25c2eb5adf07c95e1fa433032a"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1429,
+      "sha256": "84abe1fbaac811fee292219181d0d5521b8d4d128246d01d226b2ec6b20ffbd4"
+    }
+  ],
+  "viewer": {
+    "path": "experiments/frequency-of-place/index.html",
+    "sha256": "e0b7f20ffb778caf90c5bf1ac18a8ed5f2bc4b66d5a50f80277d310307bbdd7c",
+    "changes": [
+      "Add review banner with comparison and exact-original links",
+      "Point both Index links at the imported Bashar Index snapshot"
+    ]
+  },
+  "scope": "All 22 changed files plus the upstream LICENSE, preserved byte for byte. Original source claims are not automatically promoted into the reviewed evidence graph."
+}

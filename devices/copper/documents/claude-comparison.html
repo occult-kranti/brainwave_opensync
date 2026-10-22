@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Claude frequency-of-place branch: numerical comparison and integration</title><style>body{margin:0;background:#eeeae1;color:#183b35;font:16px/1.7 Arial,sans-serif}header,main,footer{max-width:960px;margin:auto;padding:24px}header{border-bottom:1px solid #bbc5b6}h1,h2,h3{font-family:Georgia,serif;line-height:1.2}h1{font-size:42px}h2{margin-top:48px;font-size:30px}a{color:#8e422a;text-underline-offset:3px}table{width:100%;border-collapse:collapse;font-size:13px;display:block;overflow:auto}td,th{border:1px solid #bcc8b8;padding:10px;text-align:left;vertical-align:top}code,pre{font:13px/1.6 monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e3e3d7;padding:16px}code{overflow-wrap:anywhere}blockquote{border-left:3px solid #b35f3b;padding-left:20px}footer{font-size:12px}nav{display:flex;flex-wrap:wrap;gap:18px}@media(max-width:600px){h1{font-size:32px}main{padding:20px}}@media print{body{background:white;color:#111;font-size:11pt}header nav{display:none}h1{font-size:26pt}h2{font-size:18pt;break-after:avoid}tr,pre{break-inside:avoid}a{color:#222}table{display:table;overflow:visible;font-size:9pt}header,main,footer{padding:8px}h2{margin-top:24px}}</style><header><strong>FIELDWORK · COPPER EXPERIMENT</strong><nav><a href="../index.html">Overview</a><a href="../gateway.html">Gateway audit</a><a href="../protocol.html">Protocol</a><a href="../sources.html">Source network</a><a href="../versions.html">Versions & issues</a></nav></header><main><h1>Claude frequency-of-place branch: numerical comparison and integration</h1>
+<p>Research date: 22 October 2026. Source: <code>occult-kranti/bashar-index</code>, branch <code>experiment-frequency-of-place</code>, commit <code>e628974ba018c775da41de304bd55afafd16b426</code>, parent <code>457dc2f2da10399bda2786573b7a77ec3fe34f62</code>. Review target: the integrated Copper Experiment at <code>6cb8662</code>, preserving Location 1.0, Location 1.1 and Position 1.0.</p>
+<p>The import adds a fuller free hollow-sphere spectrum and apparatus studies. The shared membrane breathing equation agrees when the material and midsurface radius agree. It does not supply physical data or an established absolute-position coupling. This is one Codex integration review with several numerical formulations, not a newly convened independent panel, external peer review or reproduction of an experiment.</p>
+<h2>What was inspected and preserved</h2>
+<p>The source commit changes 22 files. All 22 plus its MIT LICENSE are copied without edits to <code>imports/bashar-index-e628974/</code>. The source models, generated results, full experiment page, two renders, research notes, source network, plate series and page-building code are retained. The import manifest records each original SHA-256.</p>
+<p>The public viewer at <code>experiments/frequency-of-place/</code> adds a review banner and redirects its two Index links to the imported Bashar Index snapshot. These are the only viewer HTML edits; their hash is recorded. <code>original-index.html</code> and the import directory retain the exact original HTML. The upstream branch and its main branch are not modified by this integration.</p>
+<p>The original corpus and AI-paper research map remain attributed source material. This review checked selected mechanics and primary references; it did not independently verify every transcript, paper, date or graph edge. Those imported assertions are not automatically added to the existing reviewed factual graph.</p>
+<h2>Common equations and specimen conventions</h2>
+<p>For an isotropic membrane shell undergoing uniform radial breathing,</p>
+<p><code>f_S0 = sqrt(2 E / [rho (1 - nu)]) / (2 pi R_mid)</code>.</p>
+<p>The membrane mass is <code>4 pi rho R_mid^2 h</code>; the exact geometric mass is <code>4 pi rho (R_outer^3 - R_inner^3)/3</code>. The approximations must not exchange their radius or mass conventions silently.</p>
+<table>
+<thead>
+<tr>
+  <th>Input</th>
+  <th style="text-align:right">Existing default</th>
+  <th style="text-align:right">Claude default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Midsurface radius</td>
+  <td style="text-align:right">44.45 mm</td>
+  <td style="text-align:right">43.95 mm</td>
+</tr>
+<tr>
+  <td>Outer radius</td>
+  <td style="text-align:right">44.70 mm</td>
+  <td style="text-align:right">44.45 mm</td>
+</tr>
+<tr>
+  <td>Wall</td>
+  <td style="text-align:right">0.5 mm</td>
+  <td style="text-align:right">1 mm</td>
+</tr>
+<tr>
+  <td>Young's modulus</td>
+  <td style="text-align:right">123.5 GPa</td>
+  <td style="text-align:right">127.34781459 GPa</td>
+</tr>
+<tr>
+  <td>Poisson's ratio</td>
+  <td style="text-align:right">0.35</td>
+  <td style="text-align:right">0.3460123161</td>
+</tr>
+<tr>
+  <td>Density</td>
+  <td style="text-align:right">8,960 kg/m³</td>
+  <td style="text-align:right">8,930 kg/m³</td>
+</tr>
+</tbody>
+</table>
+<p>The existing source uses a declared engineering reference. Claude derives an isotropic Hill average from cubic copper constants, with a distinct temperature model. Neither represents a measured certificate for the proposed specimen. A difference between those defaults is not an implementation contradiction.</p>
+<p>Claude solves the traction-free isotropic elastodynamic equation at the inner and outer surfaces using spherical Bessel determinants. The source supplies a separate radial Legendre Ritz formulation and membrane limits. This structure is consistent with the classical hollow-sphere boundary-value formulation described by Coccia et al., <em>A hollow sphere as a detector of gravitational radiation</em>, section II: <a href="https://arxiv.org/pdf/gr-qc/9707059">https://arxiv.org/pdf/gr-qc/9707059</a> . That paper establishes the stated classical boundary-value model, not a frequency-of-place law.</p>
+<p>For this integration an additional l=0 calculation starts from radial displacement <code>u(r) = A j1(k_L r) + B y1(k_L r)</code> and sets <code>(lambda + 2 mu) du/dr + 2 lambda u/r = 0</code> at both surfaces. This is a separately expressed check of the same radial boundary-value problem, not an independent experiment.</p>
+<h2>Quantified comparison</h2>
+<table>
+<thead>
+<tr>
+  <th>Quantity</th>
+  <th style="text-align:right">Result</th>
+  <th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Existing default membrane S0</td>
+  <td style="text-align:right">23,317.724126 Hz</td>
+  <td>Uniform shell breathing, existing parameters</td>
+</tr>
+<tr>
+  <td>Full radial shell at those same existing inputs</td>
+  <td style="text-align:right">23,318.130751 Hz</td>
+  <td>Membrane is lower by 0.406625 Hz</td>
+</tr>
+<tr>
+  <td>Claude lowest S2</td>
+  <td style="text-align:right">9,943.394475 Hz</td>
+  <td>Nonradial spheroidal deformation; a different mode from S0</td>
+</tr>
+<tr>
+  <td>Claude T2</td>
+  <td style="text-align:right">16,667.670626 Hz</td>
+  <td>Torsional mode; absent from the existing breathing reduction</td>
+</tr>
+<tr>
+  <td>Claude full radial S0</td>
+  <td style="text-align:right">23,916.177402 Hz</td>
+  <td>Uniform radial shell mode</td>
+</tr>
+<tr>
+  <td>Existing membrane formula at Claude's exact inputs</td>
+  <td style="text-align:right">23,914.509850 Hz</td>
+  <td>Identical to Claude's membrane S0 calculation</td>
+</tr>
+<tr>
+  <td>Membrane minus full radial at Claude inputs</td>
+  <td style="text-align:right">−1.667556 Hz, −69.725 ppm</td>
+  <td>Finite-thickness model discrepancy, not a position shift</td>
+</tr>
+<tr>
+  <td>Solid radial at matched Claude material and 44.45 mm radius</td>
+  <td style="text-align:right">47,080.392769 Hz</td>
+  <td>Existing JS and Claude solid l=0 determinant agree within the recorded numerical tolerance</td>
+</tr>
+</tbody>
+</table>
+<p>The unmodified full upstream <code>fp_model.py</code> was executed with NumPy 2.3.5 and SciPy 1.17.0. All 32 reported free frequencies reproduced with maximum difference 0 Hz. The coupled bounce differed by 0.00007625 Hz between numerical runs. Agreement should be tolerance based for generalized eigenvalues, not forced bit identity. The full integration receipt contains 75 passed numerical checks.</p>
+<p>The reported 32 frequencies are computed multiplets within the selected search, with 682 angular eigenfunctions when degeneracies are counted. Perfect-sphere degeneracy does not create 682 separate observed peaks. A sign-change grid, finite frequency band, finite angular cutoff and a particular source/sensor channel do not prove completeness of a measured spectrum.</p>
+<h2>Response functions cannot be overlaid by label alone</h2>
+<p>Under <code>exp(i omega t)</code>, for a matched linear system and input/output geometry,</p>
+<p><code>H_vF = i omega H_xF</code>, and <code>H_aF = -omega^2 H_xF</code>.</p>
+<p>Receptance has units m/N, mobility m/(N·s), and accelerance m/(N·s²). The existing mechanical UI calculates displacement per force; its offline force-channel analyzer calculates velocity per force. Claude's empty-table example is accelerance, mass-normalized through its Ritz basis. Normalized magnitude plots do not restore calibration, phase or matching sensor geometry.</p>
+<p>Claude uses the denominator <code>omega_n^2 - omega^2 + i eta omega_n^2</code> for its table curves, a structural loss-factor model. The existing toy uses viscous damping <code>i 2 zeta omega_n omega</code>. Equating eta to twice zeta only matches the damping term at the modal frequency; it does not make the two entire response functions identical.</p>
+<p>Claude's mirror points A=(-0.8,0) and B=(0.8,0) have the same driving-point magnitude in its symmetric free-plate model. The checked arrays agree to a relative maximum difference below 1e-7. C=(0.6,0.4) changes modal residues and visibility. These examples reinforce the distinction between an observed response change and a new free pole.</p>
+<h2>Findings that constrain use</h2>
+<h3>Contact and angular convergence</h3>
+<p>The source's m=0 shell modes are coupled to a radial point spring against rigid ground. It includes the spring cross terms and does not make the independent-spring error repaired in the earlier integrated lab. However, it is not the complete interaction of a flexible plate, a contact patch, tangential slip, air and a sphere.</p>
+<p>From angular cutoff 34 to 44, S2 changes by −0.966930 Hz (−96.619 ppm of the preceding value) and bounce by −6.889489 Hz (−0.984981%). These are last-truncation differences. The stated 0.01% / about 1% convergence descriptions are not certified error bounds on the infinite-order point-contact problem. Hertz half-space contact and the first-order m=1 estimate add separate physical approximations. The original source itself flags double counting if its Reissner series stiffness is added to an already compliant Ritz shell.</p>
+<h3>The table is not thin relative to its short span</h3>
+<p>The proposed plate is 2.4 × 1.2 × 0.25 m. Thickness/long span is 0.1042; thickness/short span is 0.2083. Its free Kirchhoff calculation reproduces the quoted square-plate reference values within their tabulated precision. This tests implementation of that thin-plate model; it does not establish a quantitative error for this thick specimen.</p>
+<p>Leissa's NASA SP-160 is the classical plate reference: <a href="https://ntrs.nasa.gov/api/citations/19700009156/downloads/19700009156.pdf">https://ntrs.nasa.gov/api/citations/19700009156/downloads/19700009156.pdf</a> . The original “a few percent lower” prediction requires a matching Mindlin or 3D calculation with actual supports, or measurements. This integration supplies no such error estimate. Point-mass loading expressions are conditional below the contact bounce scale, as the source notes; entries near or above bounce must not be treated as validated mounted-sphere shifts.</p>
+<h3>Precision needs a declared noise convention</h3>
+<p>The source uses <code>sqrt(6 / [(2 pi)^2 SNR N T^2])</code>, labels it a constant-amplitude bound and notes looser performance for a decaying record. The meaning of SNR must be specified before treating the coefficient as comparable across conventions.</p>
+<p>The new executable check uses a real sinusoid sampled with independent additive Gaussian noise, initial signal-power SNR <code>A0^2/(2 sigma_noise^2)</code>, and unknown amplitude and phase. It constructs the finite Fisher matrix from the actual derivatives and adds an unknown decay rate in the decaying case. At the source's 40 dB initial SNR, 204,800 Hz sampling, T=0.04350261844 s, N=8,909 and S2 frequency:</p>
+<table>
+<thead>
+<tr>
+  <th>Ideal calculation</th>
+  <th style="text-align:right">Conditional sigma_f</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Source coefficient</td>
+  <td style="text-align:right">0.0009494185 Hz</td>
+</tr>
+<tr>
+  <td>Explicit real-signal, constant amplitude</td>
+  <td style="text-align:right">0.0013429213 Hz</td>
+</tr>
+<tr>
+  <td>Real decaying sinusoid, unknown decay rate</td>
+  <td style="text-align:right">0.0022443449 Hz</td>
+</tr>
+</tbody>
+</table>
+<p>The constant-amplitude ratio is 1.41447, close to sqrt(2); the decaying/source ratio is 2.36392. The latter is consistent with the source's broad 2–3 multiplier under this chosen example. This is a clarification of a convention and idealization, not a claim that every original uncertainty estimate is wrong. The 2 ppm design floor elsewhere in the source is an assumption, not a calibrated measurement or combined uncertainty budget. Timing calibration, colored noise, mode overlap, thermal drift, support changes and model bias remain outside these Fisher bounds.</p>
+<h3>A common assembled model and physical dataset remain absent</h3>
+<p>The contact spectrum, empty-table FRF, first-order air loading and force budgets are separate calculations. Near an acoustic cavity pole, a first-order correction can fail; the source marks those cases for a coupled solve. Thermal, NMR, cavity, acoustic and mechanical frequencies refer to different channels and cannot be substituted for one universal scalar frequency. No translation-dependent intrinsic coupling is derived or measured.</p>
+<h2>Reproduction</h2>
+<p>From the <code>copper-experiment</code> directory, install the two pinned requirement files and run:</p>
+<pre><code class="language-sh">npm run check
+</code></pre>
+<p>The comparison gate checks the free mode search, a separately expressed radial-shell calculation, the shipped JavaScript at matched inputs, geometric/membrane mass conventions, mirror-plate arrays and a finite real-signal Fisher calculation. It leaves the recorded full-rerun receipt intact.</p>
+<p>For the entire upstream script and a new receipt, choose a temporary output directory and run:</p>
+<pre><code class="language-sh">mkdir -p /tmp/claude-frequency-rerun
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 FP_OUT=/tmp/claude-frequency-rerun \
+  python3 -B imports/bashar-index-e628974/experiments/frequency-of-place/fp_model.py
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 -B scripts/verify_claude.py \
+  --rerun /tmp/claude-frequency-rerun/fp_results.json \
+  --output /tmp/claude-frequency-rerun/comparison.json
+</code></pre>
+<p>The site build validates every imported original hash, the exact original page, the annotated viewer and all previously frozen snapshot hashes. It packages the import, verifier and requirements with the existing source bundle. The dedicated publisher updates only <code>devices/copper/</code> in the existing Pages branch. Master, archive, the source repository and sibling published labs remain outside this deployment's write boundary.</p>
+</main><footer>Original project analysis · AI-assisted review, not human peer review · No physical sphere measurements. <a href="../research/claude-comparison.md">Download Markdown</a> · <a href="../deployment.json">Exact build provenance</a></footer></html>

@@ -1,0 +1,24 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {solidBreathing,shellBreathing,breathingRoot,thermalShift,gravitationalShift,coupledSystem,responseAt,emptyTablePointResponse,simulateComparison} from '../src/models.mjs';
+const close=(a,b,rtol=1e-10)=>assert.ok(Math.abs(a-b)<=rtol*Math.max(Math.abs(a),Math.abs(b),1e-30),`${a} ≉ ${b}`);
+test('independent SciPy free solid-sphere fixture',()=>{const x=solidBreathing({youngPa:110e9,poisson:.34,densityKgM3:8960,radiusM:.01});close(x.root,2.7586362948830208);close(x.frequencyHz,190854.10026329546);});
+test('radius scaling and mass scaling',()=>{const a=solidBreathing({radiusM:.01}),b=solidBreathing({radiusM:.02});close(a.frequencyHz,2*b.frequencyHz);close(b.massKg,8*a.massKg);});
+test('finite first radial roots and ordered overtones',()=>{const roots=[0,1,2,3].map(rootIndex=>breathingRoot({poisson:.35,rootIndex}));assert.ok(roots.every((x,i)=>x>0&&(i===0||x>roots[i-1])));});
+test('first radial root is retained near the auxetic stability boundary',()=>{
+  // Independent 90-digit Decimal direct-traction fixtures, not the JS series.
+  for(const [poisson,expected,massRatio] of [[-.9999,.015811727126971393,.6000085719388047],[-.999999,.0015811391689224932,.6000000857143363],[-.999999999999,.000001581121341232471,.6000000000000884],[-.9999999999999999,1.666000468656264e-8,.6000000000000021]]) {
+    const first=breathingRoot({poisson});close(first,expected,2e-13);
+    assert.ok(breathingRoot({poisson,rootIndex:1})>first);
+    const solid=solidBreathing({poisson});close(solid.modalMassKg/solid.massKg,massRatio,2e-13);
+  }
+});
+test('shell frequency independent of thickness only within membrane approximation',()=>{const a=shellBreathing({thicknessM:.0005}),b=shellBreathing({thicknessM:.001});close(a.frequencyHz,b.frequencyHz);close(b.massKg,2*a.massKg);assert.ok(b.geometricMassKg>b.massKg);});
+test('zero-coupling translated sphere gives identical response',()=>{const a=simulateComparison({coupling:0,receiver:'comoving',tempDeltaK:0});assert.deepEqual(a.responseA,a.responseB);close(a.intrinsicHzA,a.intrinsicHzB);});
+test('mirror positions share fixture coupling and projection',()=>{const a=simulateComparison({positionA:.25,positionB:.75});a.responseA.forEach((x,i)=>close(x,a.responseB[i]));});
+test('fixed projection changes amplitudes but not natural frequencies',()=>{const a=simulateComparison({receiver:'fixed'}),b=simulateComparison({receiver:'comoving'});assert.deepEqual(a.coupledHzA,b.coupledHzA);for(let i=0;i<a.responseA.length;i++)close(a.responseA[i],b.responseA[i]*a.projectionA);});
+test('thermal model conserves mass through density and length',()=>{const t=thermalShift({frequencyHz:1000,deltaK:2});close(t.densityRatio*t.lengthRatio**3,1);close(t.ratio,Math.sqrt(t.lengthRatio*t.youngRatio));assert.ok(t.shiftHz<0);});
+test('same-height gravity comparison vanishes',()=>{assert.equal(gravitationalShift({frequencyHz:1000,heightM:0}).shiftHz,0);close(gravitationalShift({frequencyHz:1000,heightM:1}).fractionalShift,1.0911369672198217e-16);});
+test('positive spring remains passive and has finite damped response',()=>{for(const position of [0,.2,.5,.7,1]){const s=coupledSystem({sphereHz:23000,tableHz:21000,sphereModalMassKg:.1,tableModalMassKg:1,contactNpm:1e8,position});assert.ok(s.k11*s.k22>s.k12**2);assert.ok(s.frequencyHz.every(Number.isFinite));assert.ok(responseAt(s,23000).sphereMagnitude>0);}});
+test('empty-table local response vanishes exactly at nodes and scales with phi squared',()=>{const p={tableHz:21000,tableModalMassKg:1};for(const f of [0,1000,21000,25000]){assert.equal(emptyTablePointResponse({...p,position:0},f).magnitude,0);assert.equal(emptyTablePointResponse({...p,position:1},f).magnitude,0);close(emptyTablePointResponse({...p,position:.25},f).magnitude,.5*emptyTablePointResponse({...p,position:.5},f).magnitude);}});
+test('physical domain and finite input errors are rejected',()=>{assert.throws(()=>solidBreathing({radiusM:0}));assert.throws(()=>solidBreathing({poisson:.5}));assert.throws(()=>shellBreathing({radiusM:.01,thicknessM:.005}));assert.throws(()=>simulateComparison({coupling:-.1}));assert.throws(()=>simulateComparison({positionB:NaN}));});

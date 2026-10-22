@@ -4,7 +4,7 @@ A dedicated multipage workspace for the copper-sphere A/B position experiment, s
 
 - Source branch: `research/copper-experiment-integrated`.
 - Route: https://occult-kranti.github.io/brainwave_opensync/devices/copper/
-- Version 2.0.0. Research snapshot 22 October 2026 UTC.
+- Version 2.1.0. Research snapshot 22 October 2026 UTC.
 - Physical measurements: **zero**. No location law, healing effect, consciousness mechanism, complete-spectrum capture or scientific novelty is established.
 
 ## Run and reproduce
@@ -29,6 +29,7 @@ The downloadable `source.zip` contains this app, source pins, LICENSE, fixtures,
 |---|---|
 | Overview | State the question, status and useful next action. |
 | Models | Shell/solid reference, three radial modes, mode ratios and a declared rank-one point-spring projection. |
+| Claude comparison | Matched-input shell/solid checks, imported hollow-sphere spectrum, limitations, exact original page and source records. |
 | Design | Finite temporal observability, excitation reachability, nuisance estimability and exact global aliases. |
 | Acquisition | Synthetic finite records, FFT/window/alias/noise examples and covariance arithmetic. |
 | Protocol | Declared force/velocity channel, corrected analyzer, sidecar, closure fixture and proposed physical controls. |
@@ -37,6 +38,10 @@ The downloadable `source.zip` contains this app, source pins, LICENSE, fixtures,
 | Versions | Three frozen earlier snapshots and their known issues, plus current reproducibility and panel records. |
 
 ## Important interfaces
+
+- `comparison.html` and `src/claude-comparison.mjs`: checked reference cases alongside the preserved Claude experiment. The browser selects precomputed cases; it does not run the offline full-shell solver.
+- `imports/bashar-index-e628974/`: all 22 changed files from `occult-kranti/bashar-index` at e628974ba018c775da41de304bd55afafd16b426, plus its MIT LICENSE, copied byte for byte. `imports/claude-source.json` records every hash and the viewer's two disclosed annotations.
+- `scripts/verify_claude.py`: re-executes the free spectrum, compares the shipped JS to matched upstream material/geometry, checks an independently expressed radial-shell equation, and audits a declared real-signal Fisher precision convention. `npm run test:comparison` does not overwrite the full-rerun receipt. See `research/claude-comparison.md` for full upstream reproduction commands.
 
 - `src/models.mjs`: Location 1.1 mechanics copied byte-for-byte from 07e57b4; SI core and explicit physical reductions.
 - `src/acquisition.mjs`: original synthetic sampler/FFT/covariance implementation; arbitrary sensor amplitudes and no analog filter or fitted pole estimator.

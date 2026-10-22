@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "research_cutoff": "2026-10-21",
+  "question": "Does a stationary copper sphere show reproducible mode changes between table positions after controlling fixture, orientation, temperature, excitation and receiver geometry?",
+  "target": "finite-band mechanical velocity/force FRF, table acceleration PSD and matched modal-frequency differences; environmental channels recorded separately",
+  "not_defined": "An entire frequency of an object or spatial point is not a single calibrated observable.",
+  "model": "Homogeneous isotropic, traction-free sphere radial l=0 family; representative effective copper values; measured specimen calibration required.",
+  "protocol": "Balanced randomized ABBA/BAAB stationary acquisitions, fixed spacing; return-to-A; blank fixture; reference; environmental covariates.",
+  "controls": [
+    "ideal translation leaves free model eigenfrequencies invariant",
+    "receiver weights can change peaks without shifting eigenfrequencies",
+    "support stiffness can change coupled modes",
+    "radius scaling and independent boundary equation",
+    "sampling and FFT bin separation not estimator accuracy",
+    "no thermal coefficient inferred from expansion alone"
+  ],
+  "acceptance": [
+    "independent physics derivation and code comparison",
+    "model failures and invalid inputs exposed",
+    "sources with venue/date/reading-depth and typed graph",
+    "synthetic data distinguishable from observations",
+    "functional calculator/network/exports at desktop and mobile",
+    "isolated feature branch and reproducible build"
+  ],
+  "provenance": "Separate model-agent physics producer, source researcher, experiment skeptic and analysis implementer; root implements the interface, integrates and reviews. No human peer review.",
+  "source_base": "c2f79aaa46a520a14cab18ef56b13f3b89ca504b",
+  "source_branch": "research/copper-position-spectroscopy",
+  "deployment_scope": "Isolated page inside devices; no master or archive application changes."
+}

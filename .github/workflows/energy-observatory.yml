@@ -1,0 +1,57 @@
+name: Deploy Energy Observatory
+
+on:
+  push:
+    branches: [research/energy-observatory]
+    paths: ['energy-observatory/**', '.github/workflows/energy-observatory.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  energy-site:
+    if: github.ref == 'refs/heads/research/energy-observatory'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install analysis dependencies
+        run: python3 -m pip install -r energy-observatory/analysis/requirements.txt
+      - name: Verify reviewed models and preserved versions
+        working-directory: energy-observatory
+        run: |
+          npm run check
+          python3 -B research/math-crosswalk/analysis/check_release.py --output /tmp/math-crosswalk-check.json
+          python3 -B research/roadmap-update-2026-10-22/check_plan.py
+          python3 -B analysis/panel_crosscheck.py --output /tmp/energy-crosscheck.json
+          python3 -B analysis/metrology_quantum_check.py --compare research/panel/metrology/round3-independent-quantum-fixtures.json --output /tmp/energy-quantum-check.json
+          python3 -B analysis/metrology_reference.py --output /tmp/energy-metrology-check.json
+          npm --prefix versions/location-v1.0 test
+          npm --prefix versions/location-v1.1 test
+          npm --prefix versions/position-v1.0 test
+      - name: Publish only devices/energy
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch gh-pages "https://github.com/${GITHUB_REPOSITORY}.git" site
+          mkdir -p site/devices/energy
+          rsync -a --delete energy-observatory/dist/ site/devices/energy/
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- devices/energy
+          if git diff --cached --quiet; then exit 0; fi
+          git commit --quiet -m "Deploy energy observatory ${GITHUB_SHA::7}"
+          git -c http.extraheader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)" push --quiet origin gh-pages

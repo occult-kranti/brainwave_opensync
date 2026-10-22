@@ -1,0 +1,110 @@
+{
+  "status": "Agent-reviewed documentary annotations; not a machine proof or exhaustive statement equivalence audit",
+  "records": {
+    "365-conductivity": {
+      "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "family": "365",
+      "paperPath": "preprints/Nonuniqueness-for-Bounded-Measurable-Scalar-Conductivities-in-Three-Dimensions-September-23-2026/paper.pdf",
+      "declaration": "OAI.ScalarConductivity.main_nonuniqueness",
+      "scopeNote": "lean/docs/365.md",
+      "comparatorStatement": "lean/ComparatorChallenges/Conductivity.lean",
+      "comparatorConfig": "lean/ComparatorChallenges/Conductivity.json",
+      "currentCataloguePath": true,
+      "manifestDeclarationListed": true,
+      "readingDepth": "Full scope note, comparison target statement definitions, and comparator configuration; implementation proof module not read or executed.",
+      "statement": {
+        "objects": "Two bounded measurable uniformly positive scalar conductivities",
+        "domain": "Euclidean three-dimensional ball B(0,3)",
+        "boundary": "Both equal one near boundary; equal full weak Dirichlet-to-Neumann operator",
+        "quantifiers": "There exist two conductivities differing on positive volume; every boundary trace has a unique weak solution",
+        "observable": "Full weak Dirichlet-to-Neumann operator",
+        "limit": "No continuum or thermodynamic limit in selected statement",
+        "conclusion": "Nonuniqueness of conductivity from the full weak boundary operator"
+      }
+    },
+    "215-finite-correlation": {
+      "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "family": "215",
+      "paperPath": "preprints/Exponential-decay-in-two-dimensional-classical-On-models-September-23-2026/paper.pdf",
+      "declaration": "OAI.ClassicalON.main",
+      "scopeNote": "lean/docs/215.md",
+      "comparatorStatement": "lean/ComparatorChallenges/ClassicalON.lean",
+      "comparatorConfig": "lean/ComparatorChallenges/ClassicalON.json",
+      "currentCataloguePath": true,
+      "manifestDeclarationListed": true,
+      "readingDepth": "Full scope note, comparison target statement definitions, and comparator configuration; implementation proof module not read or executed.",
+      "statement": {
+        "objects": "Classical O(n) unit-vector spins, n at least three, ferromagnetic nearest-neighbor strengths",
+        "domain": "Every finite square-lattice subgraph in two dimensions",
+        "boundary": "Free boundary",
+        "quantifiers": "For every n>=3 and beta>0 there exist A and m>0 for every finite graph and strengths in [0,beta]",
+        "observable": "Two-point spin correlation between all sites",
+        "limit": "No infinite-volume construction or O(4) spectral-gap claim",
+        "conclusion": "Nonnegative correlation bounded by A exp(-m distance)"
+      }
+    },
+    "276-repeated": {
+      "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "family": "276",
+      "paperPath": "preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf",
+      "declaration": "OAI.GAD.main",
+      "scopeNote": "lean/docs/276.md",
+      "comparatorStatement": "lean/ComparatorChallenges/AmplitudeDamping.lean",
+      "comparatorConfig": "lean/ComparatorChallenges/AmplitudeDamping.json",
+      "currentCataloguePath": true,
+      "manifestDeclarationListed": true,
+      "readingDepth": "Full scope note, comparison target statement definitions, and comparator configuration; implementation proof module not read or executed.",
+      "statement": {
+        "objects": "Memoryless generalized amplitude-damping qubit channel",
+        "domain": "Damping gamma and stationary excited population nu in [0,1]^2",
+        "boundary": "Unassisted codes with one collective output POVM; no preshared entanglement or feedback",
+        "quantifiers": "Every positive number of repeated uses of the same channel; unrestricted finite ensembles",
+        "observable": "Holevo information and operational unassisted classical capacity per use",
+        "limit": "Vanishing-error code sequence with eventual lower rate bounds",
+        "conclusion": "Repeated-use Holevo additivity, attained scalar maximum, capacity equality and phase-pair product ensemble attainment"
+      }
+    },
+    "342-legacy": {
+      "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "family": "342",
+      "paperPath": "preprints/Taming-implies-compatibility-on-four-manifolds-September-23-2026/paper.pdf",
+      "declaration": "OAI.TamingCompatibility.taming_implies_compatibility",
+      "scopeNote": "lean/docs/342.md",
+      "comparatorStatement": "lean/ComparatorChallenges/TamingCompatibility.lean",
+      "comparatorConfig": "lean/ComparatorChallenges/TamingCompatibility.json",
+      "currentCataloguePath": false,
+      "manifestDeclarationListed": true,
+      "readingDepth": "Full scope note, comparison target statement definitions, and comparator configuration; implementation proof module not read or executed.",
+      "statement": {
+        "objects": "A fixed smooth almost-complex structure and symplectic forms",
+        "domain": "Every closed connected smooth four-manifold",
+        "boundary": "Closed manifold; no boundary",
+        "quantifiers": "For every almost-complex structure admitting a taming symplectic form, a compatible symplectic form exists",
+        "observable": "Existence of a compatible symplectic form",
+        "limit": "No limiting procedure",
+        "conclusion": "Taming implies compatibility without integrability or prescribed cohomology class"
+      }
+    },
+    "372-full-map": {
+      "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "family": "372",
+      "paperPath": "preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf",
+      "declaration": "OAI.Elasticity.global_uniqueness",
+      "scopeNote": "lean/docs/372.md",
+      "comparatorStatement": "lean/ComparatorChallenges/ElasticityUniqueness.lean",
+      "comparatorConfig": "lean/ComparatorChallenges/ElasticityUniqueness.json",
+      "currentCataloguePath": true,
+      "manifestDeclarationListed": false,
+      "readingDepth": "Full scope note, comparison target statement definitions, and comparator configuration; implementation proof module not read or executed.",
+      "statement": {
+        "objects": "Two pairs of smooth real Lame moduli mu>0 and 3lambda+2mu>0 on closure",
+        "domain": "Bounded connected smooth domain in three-dimensional Euclidean space",
+        "boundary": "Equality of full displacement-to-traction maps on variational trace data",
+        "quantifiers": "All admissible modulus pairs on every stated domain",
+        "observable": "Full static displacement-to-traction map",
+        "limit": "No finite-frequency or sampled-data replacement",
+        "conclusion": "Both Lame moduli agree throughout the domain; no reconstruction algorithm supplied"
+      }
+    }
+  }
+}

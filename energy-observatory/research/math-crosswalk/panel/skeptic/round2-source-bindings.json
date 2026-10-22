@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "readingDepth": "Full final peer reports and selected producer/checker code described in round2.md; corpus scope records read as documentary annotations; source theorem dependency closures not reviewed.",
+  "createdUtc": "2026-10-22T04:10:01.881538+00:00",
+  "files": [
+    {
+      "path": "energy-observatory/research/math-crosswalk/advisor-round1.md",
+      "sha256": "df0aed3d7bcde6f3852c00112d7dca7fe18f91dc1d11e6f6288578d837e2582b"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/round2-admission.json",
+      "sha256": "d77d9d2ec6a521788373ed82fe6ed028b6b8b25c932bed701c9dd52bead48476"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/corpus/round2.md",
+      "sha256": "6db3748e034a2f70137b2db4814485771b711902f5cda1a7820f8d015ba63fcc"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/yangmills/round2.md",
+      "sha256": "9dc13c12a7fab31de5a9fa92dde8e54f249a7249b84a7535babc318928fb337c"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/energy/round2.md",
+      "sha256": "fc422c8881171bc8d823e6158a061176701dd5e67775259200a614d92cea3fbc"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/acoustics/round2.md",
+      "sha256": "436e47741d40f0b3153811baa5ebd53365513830856d1c515c160445c83259a7"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/methods/round2.md",
+      "sha256": "d92fad2a5a56c5eec1f0cb37d1c467961508e6b17283fee0a90a0d8c7cb9cbe1"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/corpus/scope-records.json",
+      "sha256": "cbc1b207ded1f64ed2983e7dfad47d1919986a83013760e677638265b466b8e2"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/corpus/inventory-round2.json",
+      "sha256": "31ff102fe50c17501ce90ec92983447b535400d7c58d7df83dfe00fb0d59b9be"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/methods/exact-results.json",
+      "sha256": "52a630a1c320489a6697e8d5a84746ed59141f4ce6cac1fca7c737181b2701af"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/acoustics/round2-contract.json",
+      "sha256": "1dcd784898d0cff9a4585d1bcf60eba773ce61c0f5959f66c23e63a0f1d0276f"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/yangmills/round2-results.json",
+      "sha256": "fa3cc336f4ddb48ebbb34a332b65d1d9dfc0ca651477be07ac9add5973b7ac4b"
+    },
+    {
+      "path": "energy-observatory/research/math-crosswalk/panel/corpus/round2-freeze.json",
+      "sha256": "6b6710b6397fef40a129c8a2c1d3c61826b1c1f949431c0769b7bcf8a7218d83"
+    }
+  ]
+}

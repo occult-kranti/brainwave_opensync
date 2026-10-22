@@ -1,0 +1,1153 @@
+{
+  "researchDate": "2026-10-21",
+  "scope": "Selected primary records; actual reading depths; source records are not independent replications.",
+  "sources": [
+    {
+      "id": "EM-1",
+      "title": "Passive Reactance Compensation for Shape-Reconfigurable Wireless Power Transfer Surfaces",
+      "url": "https://arxiv.org/html/2503.02183v1",
+      "year": 2025,
+      "kind": "conference-author-manuscript",
+      "venue": "2025 IEEE Wireless Power Technology Conference and Expo (WPTCE), accepted-author manuscript",
+      "status": "published-venue author manuscript; experiments reported by authors",
+      "readingDepth": "HTML abstract, acceptance statement, Sections I\u2013II and equation (1); experiment claim read in abstract. Full final proceedings version and supplementary data not independently reproduced.",
+      "claim": "Passive attached reactances can compensate adjacent-resonator detuning in the specified homogeneous relay arrays.",
+      "limits": "Particular array geometry and circuit assumptions; no energy creation or universal compensation theorem. Conference ranking is not asserted.",
+      "topics": [
+        "electromagnetic-transfer",
+        "passive-compensation",
+        "robustness"
+      ],
+      "discipline": "tesla"
+    },
+    {
+      "id": "EM-2",
+      "title": "Dispersive gains enhance wireless power transfer with asymmetric resonance",
+      "url": "https://doi.org/10.1088/1361-6633/ada637",
+      "year": 2025,
+      "kind": "journal-paper",
+      "venue": "Reports on Progress in Physics 88(2), 020501",
+      "status": "published; published metadata checked against authors institution",
+      "readingDepth": "Read arXiv:2408.06913v1 abstract, model discussion and experimental Section 2.2; publication date and DOI from CityUHK author-institution record. Final published PDF not read.",
+      "claim": "A powered dispersive-gain circuit selects asymmetric resonant modes to improve transfer efficiency under the paper model.",
+      "limits": "Gain-element supplies and whole-system power must be included; the project has not reproduced its hardware or audited all efficiency denominators.",
+      "topics": [
+        "electromagnetic-transfer",
+        "active-gain",
+        "energy-boundary"
+      ],
+      "openUrl": "https://arxiv.org/html/2408.06913v1",
+      "metadataUrl": "https://scholars.cityu.edu.hk/en/publications/dispersive-gains-enhance-wireless-power-transfer-with-asymmetric-/",
+      "discipline": "tesla"
+    },
+    {
+      "id": "EM-3",
+      "title": "Clock Pulling Enables Maximum-Efficiency Wireless Power Transfer",
+      "url": "https://arxiv.org/html/2507.22907v1",
+      "year": 2025,
+      "kind": "preprint",
+      "venue": "arXiv:2507.22907v1 [physics.app-ph], 15 July 2025",
+      "status": "preprint; peer-reviewed publication not verified",
+      "readingDepth": "HTML abstract and Section II equations (1), feedback/PLL discussion and Figure 2 caption. HTML rendering also shows a later 2026 date; version history date retained.",
+      "claim": "Authors propose classical-clock/PLL feedback for selecting a higher-efficiency state in a powered nonlinear WPT system.",
+      "limits": "Not a source of quantum energy; control power, gain-element power and dynamical stability must be independently audited before system claims.",
+      "topics": [
+        "electromagnetic-transfer",
+        "active-gain",
+        "feedback"
+      ],
+      "discipline": "tesla"
+    },
+    {
+      "id": "EM-4",
+      "title": "Coupling-aware efficiency modeling of outphasing power amplifiers for wearable wireless power transfer",
+      "url": "https://www.nature.com/articles/s41598-026-56108-1",
+      "year": 2026,
+      "kind": "journal-paper",
+      "venue": "Scientific Reports 16, 25397; published 3 June 2026",
+      "status": "published analytical/simulation study",
+      "readingDepth": "Publisher HTML abstract, introduction and system-level model through PA assumptions/equations (1)\u2013(4); full transistor-level model and all later results not independently audited.",
+      "claim": "A system-level efficiency model combines amplifier, combiner and coupling-dependent inductive-link contributions.",
+      "limits": "Uses ideal source and fixed intrinsic amplifier-efficiency assumptions; analytical and circuit simulation results do not supply a measured apparatus power budget.",
+      "topics": [
+        "energy-boundary",
+        "electromagnetic-transfer",
+        "efficiency"
+      ],
+      "discipline": "tesla"
+    },
+    {
+      "id": "EM-5",
+      "title": "US649621A: Apparatus for transmission of electrical energy",
+      "url": "https://patents.google.com/patent/US649621A/en",
+      "year": 1900,
+      "kind": "patent",
+      "venue": "United States patent US649621A, granted 15 May 1900; inventor Nikola Tesla",
+      "status": "historical granted patent; no performance validation inferred",
+      "readingDepth": "Patent text description of transmitter source, receiving load and claims 7\u201310; metadata and related US645576A family entry. Mirror transcription, not a physical replication.",
+      "claim": "The proposed transmitting transformer includes an external current source; receiving coils power loads using transferred energy.",
+      "limits": "The historical high-voltage propagation proposal and its stated atmospheric behavior are not validated by this review. Related family records are not counted as independent inventions.",
+      "topics": [
+        "historical-tesla",
+        "patents",
+        "energy-boundary"
+      ],
+      "discipline": "tesla"
+    },
+    {
+      "id": "acoustic-peng-2023",
+      "title": "Ultra-broadband low-frequency high-efficiency acoustic energy harvesting with metamaterial-enhanced loudspeakers",
+      "url": "https://doi.org/10.1063/5.0158079",
+      "year": 2023,
+      "kind": "primary-research",
+      "venue": "Applied Physics Letters 123, 073903",
+      "status": "published; reported experiments",
+      "readingDepth": "Primary PDF retrieved from NSF public-access repository; printed pages 073903-1 to -5 read, including equations 1-21 and experimental method. Supplement not read.",
+      "claim": "A passive electrodynamic receiver and acoustic matching structure convert incident acoustic power; losses and load affect conversion separately from absorption.",
+      "limits": "Reported hardware not reproduced. The source's RMS wording alongside factors 1/2 requires an explicit amplitude convention. Its performance is not a prediction for our apparatus.",
+      "topics": [
+        "acoustic-harvesting",
+        "impedance-matching",
+        "energy-accounting",
+        "measurement"
+      ],
+      "openUrl": "https://par.nsf.gov/servlets/purl/10525533",
+      "section": "Printed pp. 1-5; equations 7-12, 20; experimental tube schematic Fig. 4",
+      "sourceSha256": "7b92930eae915d61b7279d0e6feaed6f25da0b8df5d3c370e49da4a91f38ede5",
+      "discipline": "acoustic"
+    },
+    {
+      "id": "acoustic-ren-2024",
+      "title": "Wireless acoustic energy harvesting through an air-water metasurface with dual coupling resonators",
+      "url": "https://doi.org/10.1103/PhysRevApplied.22.024023",
+      "year": 2024,
+      "kind": "primary-research",
+      "venue": "Physical Review Applied 22, 024023",
+      "status": "published; reported experiments",
+      "readingDepth": "Publisher abstract and bibliographic metadata read. Full text required subscription and was not read.",
+      "claim": "A metasurface improves acoustic transmission across an impedance-mismatched air-water interface and supports a harvesting demonstration.",
+      "limits": "Relative transmission enhancement is not absolute conversion efficiency or evidence of additional energy. Detailed power-budget methods not inspected.",
+      "topics": [
+        "acoustic-harvesting",
+        "impedance-matching"
+      ],
+      "discipline": "acoustic"
+    },
+    {
+      "id": "acoustic-feng-2025",
+      "title": "Hierarchical piezoelectric metasurface for acoustic energy harvesting and noise mitigation",
+      "url": "https://doi.org/10.1016/j.device.2025.100756",
+      "year": 2025,
+      "kind": "primary-research",
+      "venue": "Device 3(8), 100756",
+      "status": "published; reported experiments",
+      "readingDepth": "Search-indexed publisher highlights and summary read; direct publisher HTML/PDF returned access errors. Full text not read.",
+      "claim": "A porous piezoelectric metasurface combines acoustic attenuation with electrical harvesting; reported optima use different frequencies and sound conditions.",
+      "limits": "Do not combine peak absorption, insulation and output into one operating point or infer conversion from an open-circuit voltage. Hardware claims unreplicated.",
+      "topics": [
+        "acoustic-harvesting",
+        "metamaterials",
+        "measurement"
+      ],
+      "discipline": "acoustic"
+    },
+    {
+      "id": "acoustic-che-2025",
+      "title": "A Membrane Magnetoelastic Generator for Acoustic Energy Harvesting",
+      "url": "https://doi.org/10.1002/advs.202409063",
+      "year": 2025,
+      "kind": "primary-research",
+      "venue": "Advanced Science 12(20), 2409063",
+      "status": "published; reported experiments",
+      "readingDepth": "PubMed abstract and figure captions 1-4 read. Indexed PMC abstract inspected; direct full PMC access hit a browser check, so full article not read.",
+      "claim": "A membrane couples acoustic motion through magnetoelasticity and induction, with load sweeps and capacitor charging reported.",
+      "limits": "A capacitor's energy gain is measurable, but does not alone give total source efficiency. Source acoustic/electrical budget and smartphone demonstration not independently reproduced.",
+      "topics": [
+        "acoustic-harvesting",
+        "electromagnetic-coupling",
+        "storage-accounting"
+      ],
+      "openUrl": "https://pubmed.ncbi.nlm.nih.gov/40278831/",
+      "discipline": "acoustic"
+    },
+    {
+      "id": "acoustic-ibrahim-2026",
+      "title": "Active-Learning-Guided Acoustic Metamaterial Resonators for Low-Frequency Noise Suppression and Piezoelectric Energy Harvesting",
+      "url": "https://doi.org/10.3390/mi17060685",
+      "year": 2026,
+      "kind": "primary-research",
+      "venue": "Micromachines 17(6), 685",
+      "status": "published; reported experiments",
+      "readingDepth": "Search-indexed publisher results and PubMed abstract/metadata read. Direct publisher page returned 429 and PDF request failed; full text not read.",
+      "claim": "A Gaussian-process/active-learning and FEM workflow designs resonant cavities that enhance local pressure and reported piezoelectric output.",
+      "limits": "Geometry optimization does not create energy. Reported normalization, coupling and experimental performance have not been independently reproduced here.",
+      "topics": [
+        "acoustic-harvesting",
+        "metamaterials",
+        "inverse-design"
+      ],
+      "openUrl": "https://pubmed.ncbi.nlm.nih.gov/42354716/",
+      "discipline": "acoustic"
+    },
+    {
+      "id": "Q-ERG-2004",
+      "title": "Maximal work extraction from finite quantum systems",
+      "authors": [
+        "A. E. Allahverdyan",
+        "R. Balian",
+        "Th. M. Nieuwenhuizen"
+      ],
+      "url": "https://arxiv.org/html/cond-mat/0401574v1",
+      "doi": "10.1209/epl/i2004-10101-2",
+      "year": 2004,
+      "kind": "theory-paper",
+      "venue": "Europhysics Letters 67, 565 (2004)",
+      "status": "published; foundational result applied here",
+      "readingDepth": "Primary arXiv v1, cyclic-control definition and Eqs. (1)-(9), eigenvalue ordering and passive-state derivation read; not every later example audited.",
+      "claim": "Unitary-orbit minimization gives maximum extractable work from a specified nonequilibrium state.",
+      "limits": "Arbitrary cyclic control and initial-state assumptions matter; preparation and apparatus overhead are not a free resource.",
+      "topics": [
+        "quantum",
+        "ergotropy",
+        "passivity",
+        "energy-accounting"
+      ],
+      "discipline": "quantum"
+    },
+    {
+      "id": "Q-NV-2024",
+      "title": "Experimental Investigation of Coherent Ergotropy in a Single Spin System",
+      "authors": [
+        "Zhibo Niu",
+        "Yang Wu",
+        "Yunhan Wang",
+        "Xing Rong",
+        "Jiangfeng Du"
+      ],
+      "url": "https://arxiv.org/html/2409.06249v1",
+      "doi": "10.1103/PhysRevLett.133.180401",
+      "year": 2024,
+      "kind": "experimental-paper",
+      "venue": "Physical Review Letters 133, 180401 (2024)",
+      "status": "published experimental report; not reproduced here",
+      "readingDepth": "Primary arXiv v1: definitions Eqs. (1)-(2), NV-center preparation/readout paragraphs and supplementary mean-energy measurement description read. Publication status checked at APS.",
+      "claim": "An NV-center spin experiment distinguishes coherent and incoherent ergotropy for prepared states.",
+      "limits": "Model-Hamiltonian expectation measurements do not establish whole-laboratory net energy output.",
+      "topics": [
+        "quantum",
+        "ergotropy",
+        "measurement",
+        "coherence"
+      ],
+      "discipline": "quantum"
+    },
+    {
+      "id": "Q-COST-2025",
+      "title": "Experimental extraction of coherent ergotropy and its energetic cost in a superconducting qubit",
+      "authors": [
+        "Li Li",
+        "Silu Zhao",
+        "Yun-Hao Shi",
+        "Kai Xu",
+        "Heng Fan",
+        "Dongning Zheng",
+        "Zhongcheng Xiang"
+      ],
+      "url": "https://arxiv.org/html/2506.16881v2",
+      "doi": "10.1103/ptr1-59tv",
+      "year": 2025,
+      "kind": "experimental-paper",
+      "venue": "Physical Review Research 7, 043236 (2025)",
+      "status": "published experimental report; cost definition scoped",
+      "readingDepth": "Primary arXiv v2 dated 29 September 2025: state/preparation model, extraction definition, Eq. (4), efficiency definition and conclusions read. APS publication date 1 December 2025 verified.",
+      "claim": "Prepared-state coherence, decoherence and control-cost choices change extraction performance.",
+      "limits": "Sigma is time-averaged drive-Hamiltonian norm. Reported efficiency is not a measured wall-plug or cryogenic efficiency.",
+      "topics": [
+        "quantum",
+        "coherence",
+        "control-cost",
+        "energy-accounting"
+      ],
+      "discipline": "quantum"
+    },
+    {
+      "id": "Q-OPTICAL-2026",
+      "title": "Superextensive electrical power from a quantum battery",
+      "authors": [
+        "Kieran Hymas",
+        "Jack B. Muir",
+        "Daniel Tibben",
+        "Joel van Embden",
+        "Tadahiko Hirai",
+        "Christopher J. Dunn",
+        "Daniel E. G\u00f3mez",
+        "James A. Hutchison",
+        "Trevor A. Smith",
+        "James Q. Quach"
+      ],
+      "url": "https://www.nature.com/articles/s41377-026-02240-6",
+      "doi": "10.1038/s41377-026-02240-6",
+      "year": 2026,
+      "kind": "experimental-paper",
+      "venue": "Light: Science & Applications 15, 168 (2026)",
+      "status": "published 13 March 2026; authors report optical conversion experiment",
+      "readingDepth": "Publisher abstract and introductory paragraphs read. A subsequent attempt to inspect later sections encountered an inaccessible publisher identity redirect; full methods not audited.",
+      "claim": "An illuminated microcavity with charge-transport layers exhibits reported superextensive steady-state electrical output scaling.",
+      "limits": "Incident light supplies energy. Scaling with device size is not efficiency above unity; no complete independent metrology assessment performed here.",
+      "topics": [
+        "quantum",
+        "photovoltaics",
+        "energy-harvesting",
+        "collective-effects"
+      ],
+      "discipline": "quantum"
+    },
+    {
+      "id": "Q-QET-2024",
+      "title": "Quantum Energy Teleportation versus Information Teleportation",
+      "authors": [
+        "Jinzhao Wang",
+        "Shunyu Yao"
+      ],
+      "url": "https://arxiv.org/html/2405.13886v2",
+      "doi": "10.22331/q-2024-12-12-1564",
+      "year": 2024,
+      "kind": "theory-paper",
+      "venue": "Quantum 8, 1564 (2024)",
+      "status": "published theoretical analysis",
+      "readingDepth": "Journal metadata and primary arXiv v2 abstract/introduction and finite-dimensional setup overview read; appendix theorem proofs not independently checked.",
+      "claim": "Entanglement-assisted local operations and classical communication enable constrained work extraction; energy and information teleportation need not optimize together.",
+      "limits": "This is not a demonstrated macroscopic generator; preparation, measurement, feedback and reset resources must be accounted for.",
+      "topics": [
+        "quantum",
+        "quantum-energy-teleportation",
+        "information",
+        "passivity"
+      ],
+      "discipline": "quantum"
+    },
+    {
+      "id": "Q-DCE-2011",
+      "title": "Observation of the dynamical Casimir effect in a superconducting circuit",
+      "authors": [
+        "C. M. Wilson",
+        "G. Johansson",
+        "A. Pourkabirian",
+        "J. R. Johansson",
+        "T. Duty",
+        "F. Nori",
+        "P. Delsing"
+      ],
+      "url": "https://arxiv.org/html/1105.4714v1",
+      "doi": "10.1038/nature10561",
+      "year": 2011,
+      "kind": "experimental-paper",
+      "venue": "Nature 479, 376\u2013379 (2011)",
+      "status": "published experimental report; driven photon generation",
+      "readingDepth": "Primary arXiv v1 abstract, drive/boundary mechanism, pair-frequency condition and Eqs. (1)-(2) read. Publisher page failed. HTML rendering displays 2026 but submission/journal year is 2011.",
+      "claim": "High-frequency SQUID boundary modulation produces correlated photon pairs in a superconducting transmission line.",
+      "limits": "The modulation drive supplies energy; no static-vacuum engine or net apparatus-energy claim follows. Specialized cryogenic hardware is required.",
+      "topics": [
+        "quantum",
+        "dynamical-casimir",
+        "parametric-drive",
+        "energy-accounting"
+      ],
+      "discipline": "quantum"
+    },
+    {
+      "id": "metrology-nist-tn1297",
+      "title": "NIST TN 1297, Appendix A: Law of Propagation of Uncertainty",
+      "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-law-propagation-uncertainty",
+      "year": 1994,
+      "kind": "metrology-guidance",
+      "venue": "NIST Technical Note 1297; current official HTML",
+      "status": "established-method",
+      "readingDepth": "Full short Appendix A, A.1-A.5; official web page updated 2025-09-11",
+      "claim": "Measurement models include corrections and relevant uncertainty sources; first-order covariance propagation uses sensitivity coefficients.",
+      "limits": "Nonlinear propagation needs its approximation checked. This source does not provide this apparatus calibration or a free-energy result.",
+      "topics": [
+        "uncertainty",
+        "covariance",
+        "measurement-model"
+      ],
+      "discipline": "metrology"
+    },
+    {
+      "id": "metrology-jcgm100",
+      "title": "Evaluation of measurement data: Guide to the expression of uncertainty in measurement",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_100_2008_E.pdf",
+      "year": 2008,
+      "kind": "metrology-guidance",
+      "venue": "JCGM 100:2008, BIPM",
+      "status": "established-method",
+      "readingDepth": "Section 5.2, especially 5.2.1-5.2.5, printed pages21-23 / PDF pages32-34; covariance formulas and shared-instrument discussion",
+      "claim": "Significant correlations between input estimates must be accounted for, including common references and environmental influences.",
+      "limits": "A covariance model requires empirical or justified Type B information; a coverage factor is not a universal confidence guarantee.",
+      "topics": [
+        "uncertainty",
+        "covariance",
+        "calibration"
+      ],
+      "discipline": "metrology"
+    },
+    {
+      "id": "metrology-npl-power",
+      "title": "AC power wattmeters and voltmeters",
+      "url": "https://www.npl.co.uk/products-services/dc-lf/ac-power-wattmeters-voltmeters",
+      "year": null,
+      "kind": "primary-institutional-documentation",
+      "venue": "National Physical Laboratory",
+      "status": "documented-measurement-method",
+      "readingDepth": "Full technical text and scope table on official page; accessed 2026-10-21",
+      "claim": "Average power is calculated from synchronized voltage-current sample products; transducers and sampling channels require characterization and calibration.",
+      "limits": "Published calibration scope is instrument/service-specific; no transfer of the listed uncertainty to our proposed apparatus.",
+      "topics": [
+        "real-power",
+        "phase-error",
+        "calibration"
+      ],
+      "discipline": "metrology"
+    },
+    {
+      "id": "metrology-hughes2024",
+      "title": "JCGM 101-compliant uncertainty evaluation using virtual experiments",
+      "url": "https://arxiv.org/abs/2404.10530v2",
+      "year": 2024,
+      "kind": "preprint",
+      "venue": "arXiv:2404.10530v2; metadata says submitted to XXIV IMEKO World Congress2024",
+      "status": "reported-method",
+      "readingDepth": "Abstract, PDF sections3.1-3.3 including equations/Algorithms1-2, and conclusion; downloaded PDF bytes preserved in private research scratch",
+      "claim": "Authors derive a virtual-experiment Monte Carlo equivalence for a stated nonlinear class under known Gaussian measurement-variance assumptions.",
+      "limits": "Not a general license to use arbitrary simulation as measurement evidence; publication acceptance was not independently verified.",
+      "topics": [
+        "uncertainty",
+        "simulation",
+        "inverse-inference"
+      ],
+      "discipline": "metrology"
+    },
+    {
+      "id": "metrology-nist-power-archive",
+      "title": "Power and Energy Measurements Low Frequency Calibrations",
+      "url": "https://www.nist.gov/calibrations/power-and-energy-measurements-low-frequency-calibrations",
+      "year": 2010,
+      "kind": "archived-institutional-documentation",
+      "venue": "NIST calibration-services page; updated2026-05-27 but explicitly no longer maintained",
+      "status": "historical-service-scope",
+      "readingDepth": "Official technical service conditions, scope, uncertainty descriptions and maintenance warning",
+      "claim": "Calibration scope depends on voltage/current range, frequency, power factor and instrument performance; power and energy calibration are explicit measurement services.",
+      "limits": "Page warns information may be out of date; historical prices, availability and uncertainty are not current purchase guidance or this project specifications.",
+      "topics": [
+        "calibration",
+        "real-power",
+        "limitations"
+      ],
+      "discipline": "metrology"
+    },
+    {
+      "id": "systems-ph-passivity-2025",
+      "title": "Nonlinear port-Hamiltonian systems and their connection to passivity",
+      "url": "https://arxiv.org/html/2409.06256v2",
+      "year": 2025,
+      "kind": "preprint",
+      "venue": "arXiv:2409.06256v2",
+      "status": "primary mathematical preprint; selected equations inspected",
+      "readingDepth": "Introduction, definition of passivity and pH-A/pH-B structural assumptions; no full proof audit. v2 dated 16 April 2025.",
+      "claim": "A nonnegative storage function and conjugate power ports express passivity; skew interconnection and positive-semidefinite dissipation yield an energy inequality.",
+      "limits": "The cited results have smoothness/model assumptions. A passive numerical realization does not establish the behavior of an uncalibrated device.",
+      "topics": [
+        "passivity",
+        "energy-closure",
+        "system-boundary"
+      ],
+      "discipline": "systems"
+    },
+    {
+      "id": "systems-isophnn-2026",
+      "title": "Nonlinear port-Hamiltonian system identification from input-state-output data (ISO-pHNN)",
+      "url": "https://arxiv.org/html/2501.06118v3",
+      "year": 2026,
+      "kind": "preprint",
+      "venue": "arXiv:2501.06118v3",
+      "status": "primary computational-method preprint; selected sections inspected",
+      "readingDepth": "Abstract, introduction and sections 2.1\u20132.2, including J/R parameterizations and compact-neighborhood Hamiltonian lower-bound caveat. v3 dated 20 August 2026.",
+      "claim": "The authors identify structured nonlinear dynamics from input-state-output trajectories and report benefits of incorporating prior model structure.",
+      "limits": "No neural training or author benchmark was reproduced. State access, model class and training-region assumptions matter; this is not a source of energy or an independent experimental conservation test.",
+      "topics": [
+        "inverse-problems",
+        "passivity",
+        "tools"
+      ],
+      "discipline": "systems"
+    },
+    {
+      "id": "systems-phdae-2026",
+      "title": "Identification of Port-Hamiltonian Differential-Algebraic Equations from Input-Output Data",
+      "url": "https://arxiv.org/html/2601.16827v1",
+      "year": 2026,
+      "kind": "preprint",
+      "venue": "arXiv:2601.16827v1",
+      "status": "primary method proposal; reported simulation",
+      "readingDepth": "Abstract and introduction/declared contributions. v1 dated 23 January 2026. Full algorithm and proof not audited.",
+      "claim": "Proposes constrained pH identification from noisy input-output records using an implicit DAE solver, demonstrated by its authors on a DC power network.",
+      "limits": "Not executed in this project. Reported DC-network performance does not validate a mixed-domain energy apparatus or uniquely identify every hidden parameter.",
+      "topics": [
+        "inverse-problems",
+        "tools",
+        "energy-closure"
+      ],
+      "discipline": "systems"
+    },
+    {
+      "id": "systems-linear-learnability-2023",
+      "title": "Learnability of Linear Port-Hamiltonian Systems",
+      "url": "https://arxiv.org/abs/2303.15779v1",
+      "year": 2023,
+      "kind": "preprint",
+      "venue": "arXiv:2303.15779v1",
+      "status": "primary abstract; theorem lead",
+      "readingDepth": "Official arXiv abstract and version/date metadata only; submitted 28 March 2023.",
+      "claim": "Describes a structure-preserving identification scheme for SISO linear port-Hamiltonian systems and discusses uniquely identifiable canonical cases.",
+      "limits": "Full theorem hypotheses and proofs not inspected. Included as a relevant lead, not as a proved identifiability guarantee for the proposed apparatus.",
+      "topics": [
+        "inverse-problems",
+        "passivity"
+      ],
+      "discipline": "systems"
+    },
+    {
+      "id": "systems-modelica-translationalemf",
+      "title": "Modelica.Electrical.Analog.Basic.TranslationalEMF",
+      "url": "https://doc.modelica.org/om/Modelica.Electrical.Analog.Basic.TranslationalEMF.html",
+      "year": 2020,
+      "kind": "software-documentation",
+      "venue": "Modelica Association official generated documentation",
+      "status": "documented software component; not executed",
+      "readingDepth": "Complete short component-description page and revision note; generated 5 June 2020, component initially implemented 2009. Current build-host request timed out; raw versioned-source request failed.",
+      "claim": "Documents a component that converts electrical energy to translational mechanical energy and connects to the translational mechanics library.",
+      "limits": "No implementation source inspected and no Modelica simulation run. Historical documentation date must not be presented as a new 2026 research result.",
+      "topics": [
+        "tools",
+        "electromagnetic",
+        "system-boundary"
+      ],
+      "discipline": "systems"
+    },
+    {
+      "id": "records-power-2025",
+      "title": "DARPA program sets distance record for power beaming",
+      "url": "https://www.darpa.mil/news/2025/darpa-program-distance-record-power-beaming",
+      "year": 2025,
+      "kind": "government-report",
+      "venue": "DARPA",
+      "status": "agency-reported demonstration",
+      "readingDepth": "Full short agency release, particularly paragraphs on distance/power and efficiency.",
+      "claim": "DARPA reports more than 800 W delivered during a 30-second transmission over 8.6 km. The greater-than-20% efficiency statement concerns shorter-distance optical-input to electrical-output measurements.",
+      "limits": "This release does not report wall-plug efficiency for the 8.6 km run or provide independent raw-data replication. Power comes from an externally powered laser.",
+      "topics": [
+        "electromagnetic",
+        "energy-ledger",
+        "government"
+      ],
+      "date": "2025-05-16",
+      "sourceFamily": "DARPA-POWER-PRAD",
+      "locator": "Release paragraphs 1, 11 and 13; web lines 5, 21, 23",
+      "checkedOn": "2026-10-21",
+      "discipline": "records"
+    },
+    {
+      "id": "records-arpa-lenr-2023",
+      "title": "U.S. Department of Energy Announces $10 Million in Funding to Projects Studying Low-Energy Nuclear Reactions",
+      "url": "https://arpa-e.energy.gov/news-and-events/news-and-insights/us-department-energy-announces-10-million-funding-projects-studying-low-energy-nuclear-reactions",
+      "year": 2023,
+      "kind": "funding-announcement",
+      "venue": "ARPA-E",
+      "status": "official funding announcement; limited retrieval",
+      "readingDepth": "Official indexed title/date and search excerpt; direct HTML retrieved only a JavaScript shell. Article body not read.",
+      "claim": "The official indexed release dated February 17, 2023 announces $10 million for eight research projects investigating LENR.",
+      "limits": "Funding is not a physical result, disbursement audit, current project completion record or net-gain demonstration. The article body and final award reports were not acquired.",
+      "topics": [
+        "government",
+        "verification"
+      ],
+      "date": "2023-02-17",
+      "sourceFamily": "ARPA-E-LENR-announcement",
+      "locator": "Official indexed release title/date and search excerpt",
+      "checkedOn": "2026-10-21",
+      "discipline": "records"
+    },
+    {
+      "id": "records-marrs-program",
+      "title": "MARRS: Mechanisms for Amplification of fusion Reaction Rates in Solids",
+      "url": "https://www.darpa.mil/research/programs/marrs-mechanisms-amplification-fusion-reaction-rates-solids",
+      "year": 2026,
+      "kind": "government-program",
+      "venue": "DARPA Defense Sciences Office",
+      "status": "exploratory program described by agency",
+      "readingDepth": "Full program overview, including Exploring Advances, Why Fusion Matters and Exploring the Unknown.",
+      "claim": "DARPA describes research into mechanisms that might increase fusion rates in solids; useful power is a conditional future application.",
+      "limits": "Its cited evidence and replication claims remain attributed to DARPA; the underlying papers were not independently reproduced in this records task. No useful net-energy system is documented by the overview.",
+      "topics": [
+        "government",
+        "verification",
+        "energy-ledger"
+      ],
+      "date": null,
+      "sourceFamily": "DARPA-MARRS",
+      "locator": "Program overview, Exploring the Unknown; observed 2026-10-21",
+      "checkedOn": "2026-10-21",
+      "discipline": "records"
+    },
+    {
+      "id": "records-marrs-baa",
+      "title": "MARRS Broad Agency Announcement HR001126S0007",
+      "url": "https://files.simpler.grants.gov/opportunities/83d366fd-a0b1-409b-9649-e01f44949bba/attachments/77a783f5-6bc1-4abc-848d-e3b0f7970d0e/HR001126S0007.pdf",
+      "year": 2025,
+      "kind": "government-solicitation",
+      "venue": "DARPA / official Grants.gov attachment",
+      "status": "solicitation, not demonstrated performance",
+      "readingDepth": "Downloaded original PDF; text read printed/PDF pages 1\u20138; printed/PDF page 4 visually inspected.",
+      "claim": "The solicitation was posted December 30, 2025, with a March 12, 2026 proposal deadline; it requires falsifiable models and measurements. Page 4 contains a cross-section unit inconsistency: picobarn is paired with 10^-12 cm\u00b2.",
+      "limits": "Initial solicitation dates do not establish present award status. The literal unit inconsistency must not enter simulations: 1 pb = 10^-36 cm\u00b2. This correction does not validate or refute the cited experiments.",
+      "topics": [
+        "government",
+        "verification"
+      ],
+      "date": "2025-12-30",
+      "sourceFamily": "DARPA-MARRS",
+      "locator": "Printed/PDF pp. 2, 4\u20135; PDF SHA256 af99ec0fa3bb94f7a520e0b92f7e57e864e1800afa9089bf03e7343dd6434733",
+      "checkedOn": "2026-10-21",
+      "discipline": "records"
+    },
+    {
+      "id": "records-marrs-faq",
+      "title": "HR001126S0007 MARRS Frequently Asked Questions, as of February 26, 2026",
+      "url": "https://www.darpa.mil/sites/default/files/attachment/2026-03/darpa-program-marrs-faq.pdf",
+      "year": 2026,
+      "kind": "government-guidance",
+      "venue": "DARPA",
+      "status": "program requirements and limitations",
+      "readingDepth": "All five PDF pages opened; focused Q24, Q17, Q4 and Q3.",
+      "claim": "The FAQ says calorimetry alone is insufficient; energy gain is a long-term vision rather than a program metric. A proposed brute-force route must still address trigger efficiency and a path to gain.",
+      "limits": "These are proposal requirements, not evidence that any awardee attained gain. Reaction rates, calorimetry, and net system energy remain different quantities.",
+      "topics": [
+        "government",
+        "verification",
+        "energy-ledger"
+      ],
+      "date": "2026-02-26",
+      "sourceFamily": "DARPA-MARRS",
+      "locator": "Q24 p. 2, Q17 p. 3, Q4 and Q3 p. 5",
+      "checkedOn": "2026-10-21",
+      "discipline": "records"
+    },
+    {
+      "id": "records-nasa-bpp-2004",
+      "title": "Prospects for Breakthrough Propulsion From Physics",
+      "url": "https://ntrs.nasa.gov/citations/20040070788",
+      "year": 2004,
+      "kind": "government-technical-report",
+      "venue": "NASA/TM-2004-213082; 2004 Conference on Evolvable Hardware",
+      "status": "historical research assessment",
+      "readingDepth": "NTRS metadata and report abstract, overview, selected task summaries and Casimir discussion; PDF pp. 4\u20138.",
+      "claim": "The report describes NASA support during 1996\u20132002 and classifies sixteen tasks from NASA and other sponsors as six nonviable, six unresolved/debatable, and four candidates for follow-up.",
+      "limits": "This is a historical, bounded assessment. Follow-up opportunity is not a demonstrated space drive or energy source, and its bibliography is not automatically verified evidence.",
+      "topics": [
+        "government",
+        "quantum",
+        "verification"
+      ],
+      "date": "2004-05-01",
+      "sourceFamily": "NASA-BPP-assessment",
+      "locator": "NTRS document 20040070788; printed pp. 1\u20135, especially p. 2 result counts",
+      "checkedOn": "2026-10-21",
+      "discipline": "records"
+    },
+    {
+      "id": "records-tesla-685957",
+      "title": "US685957A: Apparatus for the utilization of radiant energy",
+      "url": "https://patents.google.com/patent/US685957A/en",
+      "year": 1901,
+      "kind": "patent",
+      "venue": "U.S. patent, reproduced by Google Patents",
+      "status": "historical granted patent; performance not independently verified here",
+      "readingDepth": "Patent description, claims, metadata and figure descriptions read; original scan linked but not separately compared.",
+      "claim": "Filed March 21 and granted November 5, 1901, the patent describes radiant input charging a capacitor. Its artificial-source variant also identifies a local current source.",
+      "limits": "A patent grant does not validate claimed efficiency or modern microscopic explanations. Incoming radiation, initial stored energy, switches and any local supply belong in the budget. Aggregator legal-status labels are not a current legal opinion.",
+      "topics": [
+        "patents",
+        "electromagnetic",
+        "energy-ledger"
+      ],
+      "date": "1901-11-05",
+      "sourceFamily": "Tesla-US685957",
+      "locator": "Description of Figs. 1 and 3; claims; filing and grant metadata",
+      "checkedOn": "2026-10-21",
+      "discipline": "records"
+    },
+    {
+      "id": "records-gateway-1983",
+      "title": "Analysis and Assessment of Gateway Process",
+      "url": "https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo152943/pdf/GOVPUB-D101-PURL-gpo152943.pdf",
+      "year": 1983,
+      "kind": "government-custody-historical-report",
+      "venue": "Department of the Army; GovInfo archive",
+      "status": "historical interpretive assessment",
+      "readingDepth": "Official 29-page PDF downloaded; PDF pages 1, 7 and 28 OCR-read; pages 1 and 28 visually inspected. Selected passages only.",
+      "claim": "The Army assessment is dated June 9, 1983 and bears a September 10, 2003 release stamp. Inspected passages discuss consciousness, resonance interpretations and proposed future exercises.",
+      "limits": "The inspected passages provide no calibrated electrical-output, calorimetric or closed-cycle energy measurement. Government custody authenticates this record, not its physical interpretations; no conclusion about every related document is claimed.",
+      "topics": [
+        "historical",
+        "government",
+        "verification"
+      ],
+      "date": "1983-06-09",
+      "sourceFamily": "Army-Gateway-assessment",
+      "locator": "CIA-RDP96-00788R001700210016-5; PDF pp. 1, 7, 28; SHA256 c97fdf7c5372c1ff740f4ad713177f9828faeb52a345c0313de07a40852541de",
+      "checkedOn": "2026-10-21",
+      "discipline": "records"
+    },
+    {
+      "id": "systems-bipm-units-2026",
+      "title": "The International System of Units (SI), 9th edition, V4.01",
+      "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf",
+      "year": 2026,
+      "kind": "official-metrology-reference",
+      "venue": "BIPM, June2026 revision",
+      "status": "unit definitions inspected",
+      "readingDepth": "Table7 printed p138/PDF p28: pico and centi; Table8 printed p140/PDF p30: barn. Selected definitions, not whole brochure.",
+      "claim": "Pico means 10^-12; centi means 10^-2; one barn is10^-28 square metres. Together these imply one picobarn is10^-36 square centimetres.",
+      "limits": "This establishes a unit conversion only, not a reaction cross section, achieved energy output or the validity of a government program.",
+      "topics": [
+        "verification",
+        "government",
+        "units"
+      ],
+      "discipline": "systems"
+    },
+    {
+      "id": "legacy-location-v1.0",
+      "title": "Location Lab \u00b7 v1.0",
+      "url": "https://github.com/occult-kranti/brainwave_opensync/tree/f9927a68fca491785bfca0a4782ffceeb37209dc/location-spectrum",
+      "year": 2026,
+      "kind": "project-source",
+      "venue": "Pinned prior Fieldwork release",
+      "status": "computed models and proposed experiments; zero physical measurements",
+      "readingDepth": "Project contracts, model descriptions and recorded limitations inspected; imported source bytes inventoried. Current integration tests are recorded separately.",
+      "claim": "Original solid/shell sphere, fixture-coupling and receiver models with protocols and a research network.",
+      "limits": "Prior calculations do not establish energy generation or supply a quantum coupling law. Source histories retain their original scope.",
+      "topics": [
+        "legacy",
+        "energy"
+      ],
+      "discipline": "legacy"
+    },
+    {
+      "id": "legacy-location-v1.1",
+      "title": "Location Lab \u00b7 v1.1",
+      "url": "https://github.com/occult-kranti/brainwave_opensync/tree/07e57b446a9f480216ad1aa555088bc361006d9c/location-spectrum",
+      "year": 2026,
+      "kind": "project-source",
+      "venue": "Pinned prior Fieldwork release",
+      "status": "computed models and proposed experiments; zero physical measurements",
+      "readingDepth": "Project contracts, model descriptions and recorded limitations inspected; imported source bytes inventoried. Current integration tests are recorded separately.",
+      "claim": "Expanded capture simulator, acquisition/aliasing controls, source network and software-benchmark record.",
+      "limits": "Prior calculations do not establish energy generation or supply a quantum coupling law. Source histories retain their original scope.",
+      "topics": [
+        "legacy",
+        "energy"
+      ],
+      "discipline": "legacy"
+    },
+    {
+      "id": "legacy-position-v1.0",
+      "title": "Position Spectroscopy \u00b7 v1.0",
+      "url": "https://github.com/occult-kranti/brainwave_opensync/tree/a8913c825d24299283c9379282ae3876e2a0c0cd/device-observatory/position",
+      "year": 2026,
+      "kind": "project-source",
+      "venue": "Pinned prior Fieldwork release",
+      "status": "computed models and proposed experiments; zero physical measurements",
+      "readingDepth": "Project contracts, model descriptions and recorded limitations inspected; imported source bytes inventoried. Current integration tests are recorded separately.",
+      "claim": "Radial-mode calculator, A/B experiment design, sampling checks and offline measured-data analysis tools.",
+      "limits": "Prior calculations do not establish energy generation or supply a quantum coupling law. Source histories retain their original scope.",
+      "topics": [
+        "legacy",
+        "energy"
+      ],
+      "discipline": "legacy"
+    }
+  ],
+  "topics": [
+    {
+      "id": "energy",
+      "label": "Energy boundaries",
+      "status": "established methods",
+      "description": "A non-overlapping source, load, loss and storage ledger is required. Model closure does not establish boundary completeness in a device."
+    },
+    {
+      "id": "em",
+      "label": "EM conversion",
+      "status": "computed model",
+      "description": "Passive reciprocal transfer at fixed mutual inductance. Active controllers and moving couplers add energy ports."
+    },
+    {
+      "id": "acoustic",
+      "label": "Acoustic conversion",
+      "status": "computed model",
+      "description": "Loading changes motion. Receiver conversion, acoustic capture and speaker-system efficiency use different boundaries."
+    },
+    {
+      "id": "quantum",
+      "label": "Quantum work",
+      "status": "computed model",
+      "description": "Ergotropy describes extractable work from a specified prepared state. It is not a source-free apparatus power rating."
+    },
+    {
+      "id": "measurement",
+      "label": "Measurement errors",
+      "status": "computed controls",
+      "description": "Phase skew, aliasing, hidden storage and missing inputs produce distinct diagnostic problems. One residual cannot identify them all."
+    },
+    {
+      "id": "inference",
+      "label": "Identifiability",
+      "status": "conditional result",
+      "description": "Within a known model, different internal parameter sets can produce identical electrical spectra. Additional calibrated channels can resolve a declared ambiguity."
+    },
+    {
+      "id": "programs",
+      "label": "Programs & patents",
+      "status": "documented records",
+      "description": "Government custody, funding, program targets and patent grants have distinct evidential meanings. Demonstrated net energy is a separate claim."
+    },
+    {
+      "id": "legacy",
+      "label": "Earlier experiments",
+      "status": "preserved versions",
+      "description": "Earlier copper-sphere calculations and acquisition controls inform experimental design. Their source bytes and original limitations are preserved."
+    }
+  ],
+  "edges": [
+    {
+      "source": "EM-1",
+      "target": "em",
+      "relation": "method or model source"
+    },
+    {
+      "source": "EM-1",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "EM-2",
+      "target": "em",
+      "relation": "method or model source"
+    },
+    {
+      "source": "EM-2",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "EM-3",
+      "target": "em",
+      "relation": "method or model source"
+    },
+    {
+      "source": "EM-3",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "EM-4",
+      "target": "em",
+      "relation": "method or model source"
+    },
+    {
+      "source": "EM-4",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "EM-5",
+      "target": "em",
+      "relation": "method or model source"
+    },
+    {
+      "source": "EM-5",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "acoustic-peng-2023",
+      "target": "acoustic",
+      "relation": "method or model source"
+    },
+    {
+      "source": "acoustic-peng-2023",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "acoustic-ren-2024",
+      "target": "acoustic",
+      "relation": "method or model source"
+    },
+    {
+      "source": "acoustic-ren-2024",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "acoustic-feng-2025",
+      "target": "acoustic",
+      "relation": "method or model source"
+    },
+    {
+      "source": "acoustic-feng-2025",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "acoustic-che-2025",
+      "target": "acoustic",
+      "relation": "method or model source"
+    },
+    {
+      "source": "acoustic-che-2025",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "acoustic-ibrahim-2026",
+      "target": "acoustic",
+      "relation": "method or model source"
+    },
+    {
+      "source": "acoustic-ibrahim-2026",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "Q-ERG-2004",
+      "target": "quantum",
+      "relation": "method or model source"
+    },
+    {
+      "source": "Q-ERG-2004",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "Q-NV-2024",
+      "target": "quantum",
+      "relation": "method or model source"
+    },
+    {
+      "source": "Q-COST-2025",
+      "target": "quantum",
+      "relation": "method or model source"
+    },
+    {
+      "source": "Q-OPTICAL-2026",
+      "target": "quantum",
+      "relation": "method or model source"
+    },
+    {
+      "source": "Q-QET-2024",
+      "target": "quantum",
+      "relation": "method or model source"
+    },
+    {
+      "source": "Q-DCE-2011",
+      "target": "quantum",
+      "relation": "method or model source"
+    },
+    {
+      "source": "metrology-nist-tn1297",
+      "target": "measurement",
+      "relation": "method or model source"
+    },
+    {
+      "source": "metrology-nist-tn1297",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "metrology-jcgm100",
+      "target": "measurement",
+      "relation": "method or model source"
+    },
+    {
+      "source": "metrology-jcgm100",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "metrology-npl-power",
+      "target": "measurement",
+      "relation": "method or model source"
+    },
+    {
+      "source": "metrology-npl-power",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "metrology-hughes2024",
+      "target": "measurement",
+      "relation": "method or model source"
+    },
+    {
+      "source": "metrology-hughes2024",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "metrology-nist-power-archive",
+      "target": "measurement",
+      "relation": "method or model source"
+    },
+    {
+      "source": "metrology-nist-power-archive",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "systems-ph-passivity-2025",
+      "target": "inference",
+      "relation": "method or model source"
+    },
+    {
+      "source": "systems-ph-passivity-2025",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "systems-isophnn-2026",
+      "target": "inference",
+      "relation": "method or model source"
+    },
+    {
+      "source": "systems-isophnn-2026",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "systems-phdae-2026",
+      "target": "inference",
+      "relation": "method or model source"
+    },
+    {
+      "source": "systems-phdae-2026",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "systems-linear-learnability-2023",
+      "target": "inference",
+      "relation": "method or model source"
+    },
+    {
+      "source": "systems-linear-learnability-2023",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "systems-modelica-translationalemf",
+      "target": "inference",
+      "relation": "method or model source"
+    },
+    {
+      "source": "systems-modelica-translationalemf",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "records-power-2025",
+      "target": "programs",
+      "relation": "documents"
+    },
+    {
+      "source": "records-arpa-lenr-2023",
+      "target": "programs",
+      "relation": "documents"
+    },
+    {
+      "source": "records-marrs-program",
+      "target": "programs",
+      "relation": "documents"
+    },
+    {
+      "source": "records-marrs-baa",
+      "target": "programs",
+      "relation": "documents"
+    },
+    {
+      "source": "records-marrs-faq",
+      "target": "programs",
+      "relation": "documents"
+    },
+    {
+      "source": "records-nasa-bpp-2004",
+      "target": "programs",
+      "relation": "documents"
+    },
+    {
+      "source": "records-tesla-685957",
+      "target": "programs",
+      "relation": "documents"
+    },
+    {
+      "source": "records-gateway-1983",
+      "target": "programs",
+      "relation": "documents"
+    },
+    {
+      "source": "systems-bipm-units-2026",
+      "target": "inference",
+      "relation": "method or model source"
+    },
+    {
+      "source": "systems-bipm-units-2026",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "systems-bipm-units-2026",
+      "target": "programs",
+      "relation": "checks reported units"
+    },
+    {
+      "source": "legacy-location-v1.0",
+      "target": "legacy",
+      "relation": "preserves"
+    },
+    {
+      "source": "legacy-location-v1.0",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "legacy-location-v1.1",
+      "target": "legacy",
+      "relation": "preserves"
+    },
+    {
+      "source": "legacy-location-v1.1",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    },
+    {
+      "source": "legacy-position-v1.0",
+      "target": "legacy",
+      "relation": "preserves"
+    },
+    {
+      "source": "legacy-position-v1.0",
+      "target": "energy",
+      "relation": "boundary / inference context"
+    }
+  ]
+}

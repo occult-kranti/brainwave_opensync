@@ -1,0 +1,19 @@
+[
+  {
+    "id": "systems-bipm-units-2026",
+    "title": "The International System of Units (SI), 9th edition, V4.01",
+    "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf",
+    "year": 2026,
+    "kind": "official-metrology-reference",
+    "venue": "BIPM, June2026 revision",
+    "status": "unit definitions inspected",
+    "readingDepth": "Table7 printed p138/PDF p28: pico and centi; Table8 printed p140/PDF p30: barn. Selected definitions, not whole brochure.",
+    "claim": "Pico means 10^-12; centi means 10^-2; one barn is10^-28 square metres. Together these imply one picobarn is10^-36 square centimetres.",
+    "limits": "This establishes a unit conversion only, not a reaction cross section, achieved energy output or the validity of a government program.",
+    "topics": [
+      "verification",
+      "government",
+      "units"
+    ]
+  }
+]

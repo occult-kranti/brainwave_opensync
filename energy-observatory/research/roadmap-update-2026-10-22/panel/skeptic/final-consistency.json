@@ -1,0 +1,153 @@
+{
+  "schema": 1,
+  "stage": "plan2-final-file-consistency",
+  "createdUtc": "2026-10-22T04:42:42.725606+00:00",
+  "oneAuthorizedCheck": true,
+  "newResearchImplementationOrSimulation": false,
+  "status": "Final producer replies read; specified resolutions accepted at planning level only",
+  "verdicts": [
+    {
+      "id": "corpus-P0",
+      "verdict": "adequately-specified-bounded-engineering-plan",
+      "resolved": [
+        "R1-R7 frozen with non-evidentiary synthetic provenance",
+        "Imported origins cannot become local proof",
+        "Exact graph IDs and no status propagation"
+      ],
+      "remaining": [
+        "Stage-specific control outcomes, not fixtureOnly short-circuit",
+        "Withheld fixture before implementation",
+        "Methods/provenance review and actual validator/migration evidence"
+      ]
+    },
+    {
+      "id": "METHODS-1",
+      "verdict": "adequately-specified-bounded-verification-plan",
+      "resolved": [
+        "All15 explicit solver parameters",
+        "F=0,RMS,derivedM and full key/echo gates",
+        "Positive signed state/port transform",
+        "Time-varying coefficients excluded but source waveforms u(t) allowed"
+      ],
+      "remaining": [
+        "Independent state/unit/port mapping review",
+        "Actual exact certificate and browser-adapter controls",
+        "Optional Lean separately pinned/executed or parked"
+      ],
+      "correctionRecorded": "Root identified overbroad time-dependent-input wording; final corrected source bytes explicitly permit time-dependent drive with fixed model coefficients."
+    },
+    {
+      "id": "energy-E1",
+      "verdict": "adequately-specified-bounded-proof-attempt",
+      "resolved": [
+        "Domain/equality/degenerate endpoints"
+      ],
+      "remaining": [
+        "Full-domain proof review",
+        "Independent direct-unitary/eigenvalue controls"
+      ]
+    },
+    {
+      "id": "energy-E2",
+      "verdict": "adequately-specified-conditional-model-attempt-after-E1",
+      "resolved": [
+        "Explicit16D joint swap",
+        "Complete used-reservoir state retained",
+        "Constructive unitary-orbit preparation",
+        "Direct state-closure correlated control",
+        "Separate trace/positivity/MI/energy thresholds"
+      ],
+      "remaining": [
+        "Operation and cycle identities proved under stated premises",
+        "Independent operator/entropy and closure review",
+        "No reusable-reservoir or apparatus closure without regeneration/control evidence"
+      ],
+      "matrixCap": 16
+    },
+    {
+      "id": "acoustics-A1",
+      "verdict": "conditional-preimplementation-statistical-gate",
+      "resolved": [
+        "Four fixed absolute fit frequencies and two heldouts",
+        "Restricted separating gain slope/delay cases",
+        "Shared clock and calibration nuisance declared",
+        "Finite1800+200record allocation",
+        "No arbitrary gain-function detection claim"
+      ],
+      "remaining": [
+        "Exact likelihood",
+        "Interval construction",
+        "Bootstrap residual statistic",
+        "Seed and deterministic-control manifest",
+        "Independent fixed-frequency Jacobian/covariance/profiling approval"
+      ]
+    },
+    {
+      "id": "YM-P1",
+      "verdict": "conditional-source-gate-before-arithmetic",
+      "resolved": [
+        "Full support and derived-constant obligations explicit",
+        "New-radius decomposition/F2 comparison required",
+        "Finite interval plus analytic tail required",
+        "No retuning or automatic fallback"
+      ],
+      "remaining": [
+        "Pinned-source premise reconciliation",
+        "Actual support/new-radius proof",
+        "Certified finite arithmetic",
+        "Analytic all-N tail and independent reconstruction"
+      ]
+    }
+  ],
+  "parked": [
+    "acoustics-A2 pendingA1 and new bounded contract",
+    "sensor optimization",
+    "energy-E3",
+    "METHODS-2",
+    "YM-P3",
+    "continuum parent as near-term solved target",
+    "reusable reservoir/full apparatus cycle"
+  ],
+  "producerFileBindings": [
+    {
+      "path": "panel/corpus/plan2.md",
+      "sha256": "21f6f2aa92eb18160bcbf4a0607c8d133899596114487bc479173d802d3fe164"
+    },
+    {
+      "path": "panel/corpus/plan2.json",
+      "sha256": "a8e45d4d04389ed5aab59c0a0c0ddf45c5c397a92819baf5227900f52a21d64c"
+    },
+    {
+      "path": "panel/methods/plan2.md",
+      "sha256": "b024aac3f4acc88d040be573caea2fc8c01b76cac2c5df84b0e576fee80c56ec"
+    },
+    {
+      "path": "panel/methods/plan2.json",
+      "sha256": "d1f6c0afefa6835de490f0ce8e31ee8ecb26ebbcfaa20be9645ea99af20607f7"
+    },
+    {
+      "path": "panel/energy/plan2.md",
+      "sha256": "8da5e4d79c776883fb1f179a573ce42b1d74849f9cfcc0021c7e0be6c46780e0"
+    },
+    {
+      "path": "panel/energy/plan2.json",
+      "sha256": "bd69191e6f66f7671aa4728989195794ac9141303c9e55cfa9a419832473ab12"
+    },
+    {
+      "path": "panel/acoustics/plan2.md",
+      "sha256": "87b1ef2fc3bfcfb3b646289110319f9d88645ba81a1659e65bc2bd69268c9c2e"
+    },
+    {
+      "path": "panel/acoustics/plan2.json",
+      "sha256": "0270cf47b18dffd95cc846611124e567ea8599ccce07fc1404485376b1a1308e"
+    },
+    {
+      "path": "panel/yangmills/plan2.md",
+      "sha256": "1598d978657f75a22a7f661558f0afbbda63c1303800338b15efb02f18d935e2"
+    },
+    {
+      "path": "panel/yangmills/plan2.json",
+      "sha256": "bdd24b44546e40f26649319c9fb82ec1e1e6a7d4edd93b49b5c45773f3a44c03"
+    }
+  ]
+}

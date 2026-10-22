@@ -1,0 +1,88 @@
+{
+  "stage": "review",
+  "date": "2026-10-22",
+  "role": "corpus",
+  "openaiCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "candidates": [
+    {
+      "id": "corpus-C1",
+      "priority": "P0",
+      "title": "Exact-statement and proof-evidence registry",
+      "target": "Turn the existing documentary gate into a small typed registry that binds an imported claim to exact revision, manuscript, declaration, assumptions, quantifiers, observable, limits, conclusion and evidence level.",
+      "priorGap": "The current 17 controls compare agent-written scope strings. They do not establish semantic equivalence or enforce a separate executable proof receipt. The earlier CAT(0) parser defect and human-review provenance label show why revisions and evidence transitions need explicit records.",
+      "sourceRefs": [
+        {
+          "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/215.md",
+          "readingDepth": "Full short scope note read in prior corpus round; reused without new lookup.",
+          "limit": "Publisher scope statement, not locally executed proof."
+        },
+        {
+          "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/276.md",
+          "readingDepth": "Full short scope note read in prior corpus round; reused without new lookup.",
+          "limit": "Publisher scope statement, not locally executed proof."
+        },
+        {
+          "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/342.md",
+          "readingDepth": "Full short scope note read in prior corpus round; reused without new lookup.",
+          "limit": "Publisher scope statement, not locally executed proof."
+        },
+        {
+          "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/365.md",
+          "readingDepth": "Full short scope note read in prior corpus round; reused without new lookup.",
+          "limit": "Publisher scope statement, not locally executed proof."
+        },
+        {
+          "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/372.md",
+          "readingDepth": "Full short scope note read in prior corpus round; reused without new lookup.",
+          "limit": "Publisher scope statement, not locally executed proof."
+        },
+        {
+          "path": "research/math-crosswalk/panel/corpus/scope-records.json",
+          "readingDepth": "Full five-record annotated statement registry read.",
+          "limit": "Agent-reviewed annotations, no semantic theorem checker."
+        },
+        {
+          "path": "research/math-crosswalk/panel/corpus/round2-results.json",
+          "readingDepth": "Prior executed 17-control results and alternate-parser census.",
+          "limit": "Metadata checks only; zero Lean proofs."
+        },
+        {
+          "path": "research/math-crosswalk/report.md",
+          "readingDepth": "Full consolidated report read.",
+          "limit": "Selected comparisons, not all 719 proof audits."
+        },
+        {
+          "path": "research/math-crosswalk/data/crosswalk.json",
+          "readingDepth": "Consolidated claims, roadmap and proof-scope fields inspected.",
+          "limit": "Existing source reading depths retained; no broader proof acceptance."
+        }
+      ],
+      "whyNowFeasible": "Five scoped records, 17 positive/negative/abstention controls, a corrected complete inventory and consolidated claim IDs already exist. No new mathematical theorem or broad literature collection is needed.",
+      "requiredAssumptions": [
+        "The registry is documentary infrastructure, not a semantic proof checker.",
+        "Reviewer kind and reading depth are explicit; agent review never becomes human review by relabeling.",
+        "Metadata match, statement-fidelity review, proof execution and experiment validation are distinct evidence levels.",
+        "A proof receipt names the exact declaration, source hash, toolchain/dependency pins, command, exit status, log and observed axiom check.",
+        "Unknown or missing evidence causes abstention; a scope/version mismatch is not a theorem disproof."
+      ],
+      "decisiveFalsifier": "A control that assigns proof-verified status without an execution receipt, transfers family365 nonuniqueness coverage to headline uniqueness, silently bridges family342 versions, or promotes the family215 finite-correlation statement to a continuum claim must fail admission. One accepted forbidden promotion invalidates the implementation.",
+      "deliverable": "Versioned claim/evidence schema, validator, append-only provenance records, reproducible receipts and discriminating fixtures integrated with the existing graph. Preserve prior math-crosswalk files.",
+      "controls": [
+        "Positive exact documentary match remains metadata-only.",
+        "Known missing evidence abstains.",
+        "Wrong paper/version/declaration/quantifier and unsupported reviewer kind are rejected.",
+        "Independent skeptic supplies at least one fixture unseen by the implementer."
+      ],
+      "resourceEstimate": "One bounded implementation block of roughly 2–4 agent-hours, CPU only; no corpus-wide proof builds. Refine in planning1.",
+      "stopRule": "Stop after the declared fixture set and independent review; unsupported semantic or build questions remain pending. Do not expand to auditing all manuscripts.",
+      "independentReview": "Skeptic freezes adversarial evidence transitions before implementation; methods reviewer checks proof-receipt semantics.",
+      "classification": {
+        "establishedResult": "Prior census, exact scope distinctions and 17 documentary controls were executed and recorded.",
+        "derivedConjecture": "No new physical or mathematical conjecture proposed; the expected engineering benefit is fewer unsupported evidence promotions.",
+        "solvableFiniteTask": "A finite schema/validator/receipt workflow with bounded fixtures.",
+        "openGrandChallenge": "Yang–Mills continuum existence/mass gap, source-free energy and general inverse uniqueness remain outside this task."
+      },
+      "status": "Review proposal only; not implemented or solved"
+    }
+  ]
+}

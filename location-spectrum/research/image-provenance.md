@@ -1,0 +1,26 @@
+# Generated apparatus illustrations
+
+Date: 22 October 2026. Created with the built-in image generation tool, then encoded as WebP for the website. These are conceptual illustrations, not photographs of built or tested apparatus. They do not specify actual instrument models, bandwidth, laser class, transducer preload or certified geometry. The protocol and deterministic diagrams govern experimental interpretation. No physical measurements were produced.
+
+Assets: `public/images/suspended-rus.webp`, `public/images/position-ab.webp`, `public/images/modal-scan.webp`.
+
+The first image shows a lightly contacted RUS concept despite its legacy filename `suspended-rus`; it is not a truly free or frictionless sphere. The portable frame image uses illustrative support hardware. The scanning image's surface dots and screen are illustrative, not acquired data; reflective patches and any support can perturb modes. Validate loading before using them.
+
+## Exact prompts
+
+### suspended-rus
+
+Use case: scientific-educational. Asset type: photorealistic proposed apparatus illustration for a physics research website, landscape 3:2. Create a realistic precision laboratory scene showing ONE polished copper hollow sphere about 9cm diameter resting very lightly between TWO opposed small piezoelectric transducer tips on adjustable micrometer stages, the contacts at opposite sides of the sphere. The stages stand on a black optical breadboard, not a tabletop contact supporting the sphere. Coax cables from piezos lead to a small signal generator and digitizer; a laptop in background shows generic unlabeled resonance peaks. Include a calibrated noncontact laser vibrometer head on a separate stand pointed at an unobstructed visible patch of sphere, laser beam not drawn. Clean neutral university laboratory, physically plausible wiring and scale, soft daylight, close three-quarter overhead camera, copper and silver metal. No people, logos, legible screen measurements, dimension labels, floating objects, magical energy or visible force fields. This is a conceptual render, not a photo of a performed experiment; add unobtrusive exact bottom-left text 'PROPOSED APPARATUS · AI ILLUSTRATION'. Show connection topology clearly but do not attempt an exact scientific diagram.
+
+### position-ab
+
+Use case: scientific-educational. Asset type: photorealistic proposed apparatus illustration, landscape 3:2 for a research website. A long level optical laboratory table, two marked test positions A and B on the surface, about 1 metre apart. ONE copper sphere about 9 cm diameter at position A mounted inside a compact rigid portable frame on three tiny soft support points. The same portable base holds a small laser Doppler vibrometer head aimed at the sphere, and a small piezo exciter touches the sphere lightly from the other side with wiring to a digitizer. Position B is EMPTY, showing a registration outline where the complete portable assembly can be moved. Small digital level on table, ambient thermometer off to side, tidy strain-relieved cables with slack, laptop at table's rear edge. No duplicate second sphere or second assembly. This illustrates matched-support A/B measurements, not frictionless levitation. Polished realistic copper, silver and matte black apparatus, natural lab light, oblique wide view with both locations clear. Do not draw glowing lasers, force fields or phantom levitation. Text on table only A and B. Add unobtrusive exact bottom-left text 'PROPOSED APPARATUS · AI ILLUSTRATION'. Screens may be abstract traces with no claims or numbers.
+
+### modal-scan
+
+Use case: scientific-educational. Asset type: photorealistic proposed experimental apparatus illustration, landscape 3:2 for an elastic resonance research website. ONE copper sphere about 9cm diameter sits in a minimal three point soft cradle on a precision rotary stage. A scanning laser Doppler vibrometer is on a separate rigid stand aimed at the sphere; several tiny pale removable target dots on visible surface indicate sequential measurement points, with no laser beam rendered. A small piezo exciter on a micrometer support contacts the sphere from rear-left. Optical breadboard, digitizer and orderly connected signal cables, laptop showing a generic colored sphere displacement-mode visualization and a blank-axis spectral trace; no readable frequencies or claims. Composition close three-quarter view, show sphere, stage, probe head and cable paths with plausible sizes. Scientific instrument photography appearance, neutral clean university lab, soft realistic lighting, no humans or logos, no floating objects, no energy glows. The experiment is a proposed orientation/surface-point scan to reveal missing modes, not full-state reconstruction. Add unobtrusive exact bottom-left text 'PROPOSED APPARATUS · AI ILLUSTRATION'.
+
+### Position A/B revision
+
+Edit this proposed laboratory apparatus illustration. Preserve the full composition, sphere, marked A and empty B locations, portable frame, sensor, wiring, laboratory, and existing bottom-left concept-art caption. Remove all manufacturer names, logos, model numbers and lettering from the gray laser vibrometer head, leaving its front and side surfaces plain unbranded gray. Keep the rest unchanged. This remains an AI illustration, not a performed experiment.
+

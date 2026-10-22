@@ -1,0 +1,325 @@
+{
+  "stage": "plan2-final",
+  "candidate": "METHODS-1",
+  "status": "final bounded execution proposal; no implementation or result produced in planning",
+  "class": "engineering-or-verification-task",
+  "noveltyLabel": "Established passive-network identity newly implemented and checked for this project; no new mathematical or physical discovery.",
+  "exactQuestion": "Does an independently checked rational six-state representation of the existing fixed-parameter two-coil/mechanical model satisfy its stated positive storage, dissipative block and two-port identities, and reject specified misleading mutations?",
+  "baselineAlreadyDone": "Scalar oscillator exact identity; floating-point EM phasor/storage comparisons; no exact six-state certificate bound to the full model.",
+  "state": [
+    "q1",
+    "q2",
+    "x",
+    "i1",
+    "i2",
+    "v"
+  ],
+  "input": [
+    "Vs",
+    "F"
+  ],
+  "output": [
+    "i1",
+    "v"
+  ],
+  "fixture": {
+    "coefficientUnitSystem": "SI magnitudes; all decimal values stored as exact numerator/denominator strings",
+    "L1H": "1/100",
+    "L2H": "1/25",
+    "mutualH": "1/200",
+    "C1F": "1/1000000",
+    "C2F": "1/2000000",
+    "massKg": "1/100",
+    "stiffnessNpm": "10000",
+    "R1Ohm": "2",
+    "R2Ohm": "3",
+    "loadOhm": "7",
+    "dampingNsPm": "1/5",
+    "mechanicalLoadNsPm": "3/10",
+    "transducerNA": "1"
+  },
+  "equations": [
+    "q1dot=i1; q2dot=i2; xdot=v",
+    "[[L1,M],[M,L2]]*[i1dot,i2dot]^T=[Vs-R1*i1-q1/C1, -(R2+RL)*i2-q2/C2-g*v]^T",
+    "m*vdot=g*i2-(b+bL)*v-k*x+F"
+  ],
+  "storage": "H=1/2*(q1^2/C1+q2^2/C2+k*x^2+L1*i1^2+2*M*i1*i2+L2*i2^2+m*v^2)",
+  "premises": [
+    "All parameters fixed in time",
+    "C1,C2,L1,L2,m,k>0",
+    "L1*L2-M^2>0",
+    "R1,R2,RL,b,bL>=0; g real",
+    "No omitted mathematical input: two-port model includes external F; browser specialization sets F=0",
+    "RMS browser phasors; physical derivative/storage use instantaneous real variables"
+  ],
+  "targetCertificates": [
+    "Q=Q^T=T^T*diag(d)*T; rank(T)=6; every d strictly positive",
+    "QA+A^TQ=-2*Lloss*Dloss*Lloss^T with exact dimensions and nonnegative diagonal Dloss",
+    "QB=C^T"
+  ],
+  "witnessDesign": {
+    "storageFactor": "T is identity except T[i1,i2]=M/L1; diagonal d=(1/C1,1/C2,k,L1,L2-M^2/L1,m). Check factor orientation and exact rank.",
+    "lossFactor": "Lloss is 6x3 selecting i1,i2,v; Dloss=diag(R1,R2+RL,b+bL).",
+    "portDimensions": "A,Q 6x6; B 6x2; C 2x6; T 6x6; Lloss 6x3; Dloss 3x3."
+  },
+  "generalVersusFinite": {
+    "exactExecution": "Frozen rational base, zero-loss specialization, positive rational coordinate rescaling and signed state/port transform only. Exact arithmetic makes these fixed identities decisive, not a universal parameter sweep.",
+    "generalDerivation": "An independently reviewed differentiation of the stated fixed-parameter equations gives the energy identity throughout the declared domain. This is a separate analytic artifact; execution of finite instances does not prove it.",
+    "optionalFormal": "Any Lean receipt names the actual finite matrix/quadratic-form theorem, hypotheses, source/dependency hashes and trusted axioms; it does not automatically certify general derivation or hardware."
+  },
+  "objectionRevisionAcceptance": [
+    {
+      "objection": "Browser defaults differ from rational fixture.",
+      "revision": "Pass all 15 documented emSolve parameters explicitly; full mapping below. Never use default-dependent spread of a partial object.",
+      "remainingAcceptance": "Compare exact set of required keys with pinned API, verify every echoed parameter and derived mutualH=1/200 H. Missing/changed key or source revision causes abstention until reviewed."
+    },
+    {
+      "objection": "Sign convention change could be misclassified as nonreciprocity.",
+      "revision": "Add complete signed state and dual input/output transformation with g=-1 in both reciprocal terms; retain unilateral-sign error as negative control.",
+      "remainingAcceptance": "Transformed exact certificate must pass, supply and stored energy remain equal; F=0 browser current phasors and powers unchanged, mechanical velocity phasor reverses."
+    },
+    {
+      "objection": "Constant-Q certificate might silently cover driven parameter changes.",
+      "revision": "Contract excludes Qdot and all time-varying parameters. Explicit chain-rule term and additional physical actuator/dynamics obligations recorded below.",
+      "remainingAcceptance": "Time-dependent model coefficients are rejected as out-of-scope; time-dependent source inputs u(t) remain allowed with fixed coefficients. Coefficient variation cannot be admitted by rerunning constant-parameter cases or omitting controller work."
+    },
+    {
+      "objection": "Instance tests and compilation can overstate proof scope.",
+      "revision": "Separate exact finite receipt, reviewed all-parameter algebra, floating adapter and optional kernel receipt.",
+      "remainingAcceptance": "Skeptic and corpus review each status and its exact statement; no sampled or compiler-only promotion."
+    }
+  ],
+  "browserAdapter": {
+    "source": "energy-observatory/src/em.mjs",
+    "explicitParameters": {
+      "frequencyHz": {
+        "value": "omega/(2*pi), omega in [100,1000,5000] rad/s",
+        "unit": "Hz",
+        "source": "frozen angular-frequency design"
+      },
+      "coupling": {
+        "value": "1/4",
+        "unit": "dimensionless",
+        "source": "M/sqrt(L1*L2); M=1/200 H"
+      },
+      "loadOhm": {
+        "value": "7",
+        "unit": "ohm",
+        "source": "RL"
+      },
+      "driveVrms": {
+        "value": "1",
+        "unit": "V RMS",
+        "source": "electrical input; F=0 separately imposed"
+      },
+      "L1H": {
+        "value": "1/100",
+        "unit": "H",
+        "source": "L1"
+      },
+      "L2H": {
+        "value": "1/25",
+        "unit": "H",
+        "source": "L2"
+      },
+      "C1F": {
+        "value": "1/1000000",
+        "unit": "F",
+        "source": "C1"
+      },
+      "C2F": {
+        "value": "1/2000000",
+        "unit": "F",
+        "source": "C2"
+      },
+      "R1Ohm": {
+        "value": "2",
+        "unit": "ohm",
+        "source": "R1"
+      },
+      "R2Ohm": {
+        "value": "3",
+        "unit": "ohm",
+        "source": "R2"
+      },
+      "massKg": {
+        "value": "1/100",
+        "unit": "kg",
+        "source": "m"
+      },
+      "stiffnessNpm": {
+        "value": "10000",
+        "unit": "N/m",
+        "source": "k"
+      },
+      "dampingNsPm": {
+        "value": "1/5",
+        "unit": "N s/m",
+        "source": "b"
+      },
+      "mechanicalLoadNsPm": {
+        "value": "3/10",
+        "unit": "N s/m",
+        "source": "bL"
+      },
+      "transducerNA": {
+        "value": "1 for base; -1 only for consistent signed-coordinate control",
+        "unit": "N/A",
+        "source": "g, with both reciprocal terms transformed"
+      }
+    },
+    "requiredParameterCount": 15,
+    "defaultPolicy": "None of the 15 parameters may be inherited from EM_DEFAULTS; source is hashed and exact key set reviewed.",
+    "forceBoundary": "F=0 exactly; F is not an emSolve parameter and must not be passed as if supported.",
+    "phaseConvention": "RMS complex phasors; source voltage has phase zero; signed velocity is compared as a complex phasor, not magnitude only.",
+    "conversion": "Store fixture as rational strings; convert once to IEEE doubles for browser call. Independent reference uses exact rational omega before converting results for comparison.",
+    "acceptance": "Normalize declared SI observables and use abs(error)<=1e-11+1e-9*abs(reference). Verify every echoed parameter before output comparison. No all-frequency guarantee.",
+    "derivedQuantityCheck": "mutualH must match 1/200 H within explicitly frozen float conversion tolerance; this is not a sixteenth API input."
+  },
+  "positiveControls": [
+    {
+      "id": "base",
+      "meaning": "Nonzero M and g, all losses positive; exact full block certificate."
+    },
+    {
+      "id": "lossless",
+      "meaning": "Set R1,R2,RL,b,bL to zero; accept semidefinite dissipation without claiming asymptotic stability. No lossless-resonance browser solve required."
+    },
+    {
+      "id": "coordinate",
+      "meaning": "z=S*znew for S=diag(2,1/3,1,5,1,1/2); transform A,B,C,Q consistently and retain exact certificate."
+    },
+    {
+      "id": "signed-coordinate-and-port",
+      "definition": "z=S*znew, u=P*unew, ynew=P^T*y; S=diag(1,1,-1,1,1,-1), P=diag(1,-1).",
+      "transforms": [
+        "Anew=S^-1*A*S",
+        "Bnew=S^-1*B*P",
+        "Cnew=P^T*C*S",
+        "Qnew=S^T*Q*S"
+      ],
+      "effect": "x,v,F change orientation; both transducer signs consistently give gnew=-g. Supply unew^T*ynew=u^T*y and storage are invariant.",
+      "browser": "For F=0, use full parameter map with transducerNA=-1; voltage and current phasors unchanged, velocity reverses, energies/powers unchanged."
+    }
+  ],
+  "wrongControls": [
+    {
+      "id": "nonreciprocal",
+      "mutation": "Reverse only secondary-circuit g*v sign",
+      "expected": "Nonzero i2*v coefficient in energy residual."
+    },
+    {
+      "id": "missing-cross-storage",
+      "mutation": "Delete Q[i1,i2] and Q[i2,i1] while retaining M in dynamics",
+      "expected": "Exact derivative matrix mismatch."
+    },
+    {
+      "id": "indefinite-or-singular-inductance",
+      "mutation": "Set M=1/50 or M=3/100 H",
+      "expected": "Reject zero or negative magnetic determinant before inverse."
+    },
+    {
+      "id": "missing-force-port",
+      "mutation": "Delete F*v supply term while mechanical input B[:,F] remains",
+      "expected": "QB=C^T fails; reviewer retains an explicit nonzero F*v witness."
+    },
+    {
+      "id": "negative-loss",
+      "mutation": "Set R1=-1",
+      "expected": "Parameter/domain and nonnegative-loss witness rejected."
+    },
+    {
+      "id": "rank-deficient-factor",
+      "mutation": "Zero one row of T",
+      "expected": "Exact rank gate fails."
+    },
+    {
+      "id": "factor-perturbation",
+      "mutation": "Change one loss witness coefficient by 1/7",
+      "expected": "Exact factor or derivative equality fails."
+    },
+    {
+      "id": "unit-mismatch",
+      "mutation": "Treat a mA current input/output field as A without conversion",
+      "expected": "Typed unit/scale binding rejects even if an untyped numeric identity can be made to pass."
+    },
+    {
+      "id": "default-leakage",
+      "mutation": "Omit one nondefault parameter such as L2H or massKg",
+      "expected": "Adapter completeness/key gate rejects before comparing a different circuit."
+    },
+    {
+      "id": "time-varying-storage",
+      "mutation": "Provide M(t) or other time-dependent storage coefficient while requesting the constant-Q receipt",
+      "expected": "Out-of-scope rejection; no silent freezing of the coefficient."
+    }
+  ],
+  "timeVaryingExclusion": {
+    "identity": "For H(t,z)=1/2*z^T*Q(t)*z, dH/dt=z^T*Q(t)*zdot+1/2*z^T*Qdot(t)*z.",
+    "constantMatrixSubstitution": "If the declared instantaneous A,B still satisfy the frozen-style identity, the additional term is +1/2*z^T*Qdot*z; omitting it is invalid.",
+    "physicalInductanceCaveat": "A varying inductance also changes circuit dynamics through d(L*i)/dt=L*idot+Ldot*i. Therefore inserting only the chain-rule storage term into the old constant-L ODE is not a complete actuator-energy model.",
+    "futureGate": "Derive the full variable-parameter dynamics and signed actuator/control power port before any new admission; that extension is excluded from this attempt.",
+    "sourceInputsAllowed": "Arbitrary time-dependent source inputs u(t)=(Vs(t),F(t)) are permitted by the fixed-coefficient identity, with sufficient regularity for the stated derivative. The exclusion concerns time-varying model parameters/coefficients, not source waveforms."
+  },
+  "steps": [
+    "Freeze source hashes, instantaneous equations, state ordering, units, fixture and two ports before code.",
+    "Author producer assembly from circuit/mechanical equations; independently author checker to consume matrices and witnesses, not reconstruct them through the producer functions.",
+    "Check Q=Q^T, Q=T^T diag(d) T, rank(T)=6 and every d>0 with exact Fraction arithmetic.",
+    "Check QA+A^TQ=-2*Lloss*Dloss*Lloss^T, Dloss diagonal nonnegative, QB=C^T and every matrix dimension.",
+    "Run fixed positive and wrong controls, recording exact mismatch coefficients or rank/domain reasons.",
+    "For F=0 only, compare independent rational-frequency complex response to emSolve using omega=(100,1000,5000) rad/s and frequencyHz=omega/(2*pi), driveVrms=1, coupling=1/4; this is separately labeled floating-point adapter checking.",
+    "Independent skeptic checks frozen negative cases, storage/port semantics and F=0 specialization; corpus records the resulting exact statement and evidence class.",
+    "Optional bounded Lean gate only after exact receipt: pin toolchain/dependencies and encode selected finite matrix/quadratic-form proposition; build and inventory axioms. No success label without actual execution."
+  ],
+  "artifacts": {
+    "root": "energy-observatory/research/roadmap-update-2026-10-22/execution/methods/",
+    "files": [
+      "model-contract.json",
+      "source-binding.md",
+      "assemble_six_state.py",
+      "check_certificate.py",
+      "certificate.json",
+      "certificate-results.json",
+      "wrong-controls.json",
+      "browser-adapter-results.json",
+      "independent-review.md",
+      "hashes.json"
+    ],
+    "optionalLean": [
+      "FiniteCertificate.lean",
+      "lean-toolchain",
+      "lake-manifest.json",
+      "build.log",
+      "axioms.txt",
+      "formal-receipt.json"
+    ]
+  },
+  "acceptance": [
+    "All exact positive cases admitted; all declared wrong controls rejected for expected reasons",
+    "Every artifact has hash and source/contract binding",
+    "Independent reviewer explicitly approves mathematical state/port/unit mapping; unavailable review means not accepted",
+    "General analytic statement, finite matrix check, float browser adapter and optional Lean execution receive distinct statuses",
+    "No metric counts presented as independent physical experiments",
+    "All 15 API parameters explicitly bound, not inherited defaults",
+    "Signed full transformation admitted and unilateral-sign mutation rejected",
+    "Constant-Q exclusion visible in contract, source binding and final receipt"
+  ],
+  "independentReview": {
+    "lead": "skeptic role",
+    "physicsBinding": "energy role or prior systems-review maintainer; must not be sole producer",
+    "registry": "corpus role consumes exact statement and receipt"
+  },
+  "resourcesAndPrerequisites": {
+    "base": "At most 14 agent-hours including 3 hours independent review; CPU only, each exact run capped at 5 minutes and 1 GiB memory. Existing Python stdlib Fraction and Node suffice.",
+    "optionalLean": "Bootstrap cap 2 agent-hours; if a pinned trusted toolchain/dependency environment is unavailable, stop that stage. If available, proof attempt cap 4 further agent-hours; record incomplete status on timeout.",
+    "noSearch": "No parameter optimization, new broad source search or recursive extra agents."
+  },
+  "stopRule": "Stop after frozen cases and independent review or first unreconciled domain/semantic contradiction. Preserve failure evidence and revise contract explicitly if needed; do not expand cases to conceal failure. Optional Lean cap cannot delay acceptance of a correctly labeled rational receipt indefinitely. This is the final planning stage; no additional planning/research round or reduced-model implementation is opened.",
+  "limits": [
+    "Finite known-model verification, not new theorem",
+    "No hardware, gap, continuum, capacity or free-energy claim",
+    "No global browser implementation verification",
+    "No reduction METHODS-2 work in this admission"
+  ],
+  "preservation": "review.md, candidates.json, plan1.md and plan1.json remain unchanged."
+}

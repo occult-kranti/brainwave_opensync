@@ -1,0 +1,72 @@
+[
+  {
+    "id": "acoustic-peng-2023",
+    "title": "Ultra-broadband low-frequency high-efficiency acoustic energy harvesting with metamaterial-enhanced loudspeakers",
+    "url": "https://doi.org/10.1063/5.0158079",
+    "year": 2023,
+    "kind": "primary-research",
+    "venue": "Applied Physics Letters 123, 073903",
+    "status": "published; reported experiments",
+    "readingDepth": "Primary PDF retrieved from NSF public-access repository; printed pages 073903-1 to -5 read, including equations 1-21 and experimental method. Supplement not read.",
+    "claim": "A passive electrodynamic receiver and acoustic matching structure convert incident acoustic power; losses and load affect conversion separately from absorption.",
+    "limits": "Reported hardware not reproduced. The source's RMS wording alongside factors 1/2 requires an explicit amplitude convention. Its performance is not a prediction for our apparatus.",
+    "topics": ["acoustic-harvesting", "impedance-matching", "energy-accounting", "measurement"],
+    "openUrl": "https://par.nsf.gov/servlets/purl/10525533",
+    "section": "Printed pp. 1-5; equations 7-12, 20; experimental tube schematic Fig. 4",
+    "sourceSha256": "7b92930eae915d61b7279d0e6feaed6f25da0b8df5d3c370e49da4a91f38ede5"
+  },
+  {
+    "id": "acoustic-ren-2024",
+    "title": "Wireless acoustic energy harvesting through an air-water metasurface with dual coupling resonators",
+    "url": "https://doi.org/10.1103/PhysRevApplied.22.024023",
+    "year": 2024,
+    "kind": "primary-research",
+    "venue": "Physical Review Applied 22, 024023",
+    "status": "published; reported experiments",
+    "readingDepth": "Publisher abstract and bibliographic metadata read. Full text required subscription and was not read.",
+    "claim": "A metasurface improves acoustic transmission across an impedance-mismatched air-water interface and supports a harvesting demonstration.",
+    "limits": "Relative transmission enhancement is not absolute conversion efficiency or evidence of additional energy. Detailed power-budget methods not inspected.",
+    "topics": ["acoustic-harvesting", "impedance-matching"]
+  },
+  {
+    "id": "acoustic-feng-2025",
+    "title": "Hierarchical piezoelectric metasurface for acoustic energy harvesting and noise mitigation",
+    "url": "https://doi.org/10.1016/j.device.2025.100756",
+    "year": 2025,
+    "kind": "primary-research",
+    "venue": "Device 3(8), 100756",
+    "status": "published; reported experiments",
+    "readingDepth": "Search-indexed publisher highlights and summary read; direct publisher HTML/PDF returned access errors. Full text not read.",
+    "claim": "A porous piezoelectric metasurface combines acoustic attenuation with electrical harvesting; reported optima use different frequencies and sound conditions.",
+    "limits": "Do not combine peak absorption, insulation and output into one operating point or infer conversion from an open-circuit voltage. Hardware claims unreplicated.",
+    "topics": ["acoustic-harvesting", "metamaterials", "measurement"]
+  },
+  {
+    "id": "acoustic-che-2025",
+    "title": "A Membrane Magnetoelastic Generator for Acoustic Energy Harvesting",
+    "url": "https://doi.org/10.1002/advs.202409063",
+    "year": 2025,
+    "kind": "primary-research",
+    "venue": "Advanced Science 12(20), 2409063",
+    "status": "published; reported experiments",
+    "readingDepth": "PubMed abstract and figure captions 1-4 read. Indexed PMC abstract inspected; direct full PMC access hit a browser check, so full article not read.",
+    "claim": "A membrane couples acoustic motion through magnetoelasticity and induction, with load sweeps and capacitor charging reported.",
+    "limits": "A capacitor's energy gain is measurable, but does not alone give total source efficiency. Source acoustic/electrical budget and smartphone demonstration not independently reproduced.",
+    "topics": ["acoustic-harvesting", "electromagnetic-coupling", "storage-accounting"],
+    "openUrl": "https://pubmed.ncbi.nlm.nih.gov/40278831/"
+  },
+  {
+    "id": "acoustic-ibrahim-2026",
+    "title": "Active-Learning-Guided Acoustic Metamaterial Resonators for Low-Frequency Noise Suppression and Piezoelectric Energy Harvesting",
+    "url": "https://doi.org/10.3390/mi17060685",
+    "year": 2026,
+    "kind": "primary-research",
+    "venue": "Micromachines 17(6), 685",
+    "status": "published; reported experiments",
+    "readingDepth": "Search-indexed publisher results and PubMed abstract/metadata read. Direct publisher page returned 429 and PDF request failed; full text not read.",
+    "claim": "A Gaussian-process/active-learning and FEM workflow designs resonant cavities that enhance local pressure and reported piezoelectric output.",
+    "limits": "Geometry optimization does not create energy. Reported normalization, coupling and experimental performance have not been independently reproduced here.",
+    "topics": ["acoustic-harvesting", "metamaterials", "inverse-design"],
+    "openUrl": "https://pubmed.ncbi.nlm.nih.gov/42354716/"
+  }
+]

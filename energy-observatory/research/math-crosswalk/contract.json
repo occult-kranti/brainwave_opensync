@@ -1,0 +1,41 @@
+{
+  "researchDate": "2026-10-21",
+  "question": "Which exact OpenAI mathematical claims overlap with executed Yang\u2013Mills, energy and acoustic work, and which methods can be transferred with their assumptions intact?",
+  "rounds": 2,
+  "panelSize": 6,
+  "roles": [
+    "corpus",
+    "yangmills",
+    "energy",
+    "acoustics",
+    "methods",
+    "skeptic"
+  ],
+  "classification": [
+    "same-claim-solved",
+    "same-claim-attempted",
+    "restricted-model-overlap",
+    "method-transfer",
+    "thematic-only",
+    "insufficient-evidence"
+  ],
+  "acceptance": [
+    "Pin catalogue and project revisions",
+    "Screen complete catalogue metadata; disclose selected statement-level reading",
+    "Bind every overlap to exact target, hypotheses, data, limit and evidence path",
+    "Freeze independent skepticism before peer reports",
+    "Choose Round2 from Round1 objections",
+    "Execute bounded tests and discriminating controls; preserve failures",
+    "Publish reviewed crosswalk, graph, roadmap and source-reading limits"
+  ],
+  "notClaimed": [
+    "377 independently established solutions",
+    "full proof audit of 719 manuscripts",
+    "physical energy surplus",
+    "Yang\u2013Mills continuum solution from a finite model",
+    "Lean execution unless run and logged"
+  ],
+  "baseEnergyCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+  "openaiCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "latestYangMillsCommit": "f9364d617015e803fda9465aefddd9cbe41854a4"
+}

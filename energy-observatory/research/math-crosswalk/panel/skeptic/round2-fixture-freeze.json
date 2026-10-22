@@ -1,0 +1,12 @@
+{
+  "createdUtc": "2026-10-22T03:59:05.008241+00:00",
+  "artifact": "round2-independent-fixtures.json",
+  "sha256": "262582bed704ce59014937557cc678ee0931ea609296d2e7bb4a7f8aadb0e657",
+  "readBeforeFreeze": [
+    "advisor-round1.md",
+    "round2-admission.json",
+    "panel/energy/round1.md",
+    "panel/acoustics/round1.md"
+  ],
+  "peerRound2CodeReadBeforeFreeze": false
+}

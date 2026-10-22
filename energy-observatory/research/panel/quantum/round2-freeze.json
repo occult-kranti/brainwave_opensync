@@ -1,0 +1,13 @@
+{
+  "round": 2,
+  "date": "2026-10-21",
+  "status": "frozen-before-round3-review",
+  "agent": "energy_quantum",
+  "sameAuthorReference": true,
+  "sha256": {
+    "src/quantum.mjs": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91",
+    "analysis/quantum_reference.py": "fee288584dbebc20cbda3104dce3b048dfd5f06b6e3ae7714adbb5cebcafb1ed",
+    "research/panel/quantum/round2.md": "c1ac2028f13a2ebe3ef40b0db6ebfdfaa24457caf90f6cf66c3f89d91a0c2d31",
+    "research/panel/quantum/round2-results.json": "62a87c7e40d5eb313ff1ffa72cbb763835a6819f68910490225d8cbc332e3ea4"
+  }
+}

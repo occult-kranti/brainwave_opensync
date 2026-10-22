@@ -1,0 +1,187 @@
+[
+  {
+    "id": "METHODS-1",
+    "priority": "primary",
+    "status": "proposal only; wait for advisor plan1",
+    "title": "Exact six-state two-coil/mechanical energy certificate",
+    "question": "Can the actual project six-state fixed-parameter coupled model carry a reproducible exact storage, dissipation and port certificate that rejects sign, storage and domain mutations?",
+    "finiteTarget": {
+      "states": [
+        "q1",
+        "q2",
+        "x",
+        "i1",
+        "i2",
+        "v"
+      ],
+      "input": [
+        "Vs",
+        "F"
+      ],
+      "output": [
+        "i1",
+        "v"
+      ],
+      "storage": "H=1/2*(q1^2/C1+q2^2/C2+k*x^2+L1*i1^2+2*M*i1*i2+L2*i2^2+m*v^2)",
+      "equations": [
+        "q1dot=i1; q2dot=i2; xdot=v",
+        "[[L1,M],[M,L2]]*[i1dot,i2dot]^T=[Vs-R1*i1-q1/C1, -(R2+RL)*i2-q2/C2-g*v]^T",
+        "m*vdot=g*i2-(b+bL)*v-k*x+F"
+      ],
+      "certificate": [
+        "Q=Q^T and Q=T^T*diag(d)*T with invertible rational T and all d>0",
+        "Q*A+A^T*Q=-2*L*D*L^T, D diagonal nonnegative",
+        "Q*B=C^T with all matrix dimensions explicit"
+      ],
+      "conclusion": "For the exact supplied rational matrix instance, directional storage rate equals Vs*i1+F*v-R1*i1^2-(R2+RL)*i2^2-(b+bL)*v^2. Model interpretation is separately reviewed."
+    },
+    "premises": [
+      "All coefficients fixed in time",
+      "C1,C2,L1,L2,m,k strictly positive",
+      "L1*L2-M^2 strictly positive",
+      "R1,R2,RL,b,bL nonnegative; reciprocal g real",
+      "State/input/output units and normalization frozen before assembly",
+      "Initial exact checker accepts rational parameter instances only; displayed analytic identity is not proved universally by instance tests",
+      "Browser emSolve binds only to the F=0 specialization and RMS convention"
+    ],
+    "whyFeasibleNow": "Full storage and independent frequency-domain equations already exist, while prior exact execution covered one oscillator only. Six-state rational matrix sizes are small; no optimizer, learned model or full proof library required.",
+    "novelty": "New project certificate and mutation coverage; conservation law and passive-network structure are established mathematics.",
+    "dependencies": [
+      "Python standard-library Fraction",
+      "Explicit rational model serialization",
+      "Separately authored equation assembler and certificate checker",
+      "Pinned source hashes and typed statement/boundary record from corpus lane"
+    ],
+    "optionalLean": "After exact receipt and environment preflight only, build a tiny pinned finite matrix-equality/quadratic-form certificate. lean and lake were not found on PATH in this review. Do not promise a successful build or substitute this for the model-binding review.",
+    "controls": {
+      "positive": [
+        "Nonzero mutual inductance and reciprocal g",
+        "Zero-loss limit admitted without claiming asymptotic stability",
+        "Invertible rational state-coordinate transform preserves certificate with transformed ports"
+      ],
+      "negative": [
+        "Reverse only mechanical/electrical reciprocal coupling sign",
+        "Omit mutual-inductance cross term from storage",
+        "Use L1*L2-M^2<=0",
+        "Drop F*v while the independent mechanical input is nonzero",
+        "Negative dissipation coefficient",
+        "Rank-deficient storage factor T",
+        "Perturb one Gram factor or port matrix entry"
+      ]
+    },
+    "deliverables": [
+      "frozen model/units/port contract",
+      "exact rational six-state A,B,C,Q and factor witnesses",
+      "independent checker receipt plus rejected mutations",
+      "source-binding note identifying F=0 browser specialization",
+      "optional genuinely executed Lean receipt with theorem and axiom inventory"
+    ],
+    "resources": "Approximately 1\u20132 focused implementation days plus independent review; exact instances n=6 fit ordinary CPU memory; no GPU or broad brute force.",
+    "stopRule": "Stop after frozen nontrivial coupled instance, declared degeneracy/control set and independent review. If domain/factor/port checks fail, publish failure and corrected contract as a revision, not a passed certificate. Lean bootstrap is a separate bounded optional gate.",
+    "notClaimed": [
+      "Complete producer-program verification",
+      "General parameter-family proof from finite samples",
+      "Uniform spectral gap",
+      "Continuum result",
+      "Apparatus passivity",
+      "Free-energy surplus"
+    ],
+    "sourceReading": [
+      {
+        "url": "https://proceedings.mlr.press/v306/ammanamanchi26a.html",
+        "readingDepth": "Previously read official metadata/abstract and PDF pp2\u20134; statement/acceptance trust-boundary method only, benchmark not reproduced."
+      },
+      {
+        "url": "https://proceedings.mlr.press/v306/zuo26f.html",
+        "readingDepth": "Previously read PDF pp2\u20134 and visually checked p4 Eq6; exact-certificate idea only, NSPI and Lean not executed."
+      },
+      {
+        "path": "energy-observatory/research/math-crosswalk/report.md",
+        "readingDepth": "Entire consolidated report read for this review."
+      },
+      {
+        "path": "energy-observatory/src/em.mjs",
+        "readingDepth": "Storage, impedance, parameter validation and solve implementation read; no new execution in this review."
+      },
+      {
+        "path": "energy-observatory/analysis/systems_reference.py",
+        "readingDepth": "Independent six-state EM fixture and surrounding equations read."
+      },
+      {
+        "path": "energy-observatory/research/panel/systems/round3.md",
+        "readingDepth": "Entire final independent-review report read."
+      }
+    ]
+  },
+  {
+    "id": "METHODS-2",
+    "priority": "defer until METHODS-1 passes and there is a concrete reduced-model consumer",
+    "status": "proposal only",
+    "title": "Energy-metric reduction with a rank certificate",
+    "question": "Can a declared 6-to-4 rational reduction preserve the accepted finite energy inequality while explicitly retaining the lost observation information?",
+    "finiteTarget": {
+      "input": "Accepted Q,A,B,C,G from METHODS-1 and rational full-column-rank V in Q^(6x4)",
+      "definitions": [
+        "Qr=V^T*Q*V",
+        "Ar=Qr^-1*V^T*Q*A*V",
+        "Br=Qr^-1*V^T*Q*B",
+        "Cr=C*V",
+        "Gr=V^T*G*V"
+      ],
+      "identities": [
+        "Qr*Ar+Ar^T*Qr=-2*Gr",
+        "Qr*Br=Cr^T"
+      ],
+      "rankGate": "Exact full column rank of V and positive definite Qr before inversion"
+    },
+    "premises": [
+      "Constant Q and V",
+      "Accepted full-order storage/port certificate",
+      "Explicit reduced state z\u2248V*zr",
+      "No assertion that unobserved modes vanish or input/output error is uniformly bounded"
+    ],
+    "whyFeasibleNow": "Uses the same tiny exact matrix backend and certified full-order model. No PDE or inverse reconstruction required.",
+    "novelty": "Project-specific reusable reduction receipt; structure-preserving projection is established mathematics.",
+    "dependencies": [
+      "METHODS-1 accepted result",
+      "Exact rational rank and matrix products",
+      "Independent reduction and port reviewer"
+    ],
+    "controls": {
+      "positive": [
+        "Full-rank nontrivial V",
+        "Equivalent V*S for invertible rational S"
+      ],
+      "negative": [
+        "Rank-deficient V rejected before inversion",
+        "Inconsistent output projection",
+        "Euclidean projection negative fixture Q=diag(1,4), A=[[0,4],[-1,0]], V=[1,1]^T: Ar=3/2 produces growth although full model is lossless; energy-metric projection gives zero. This is an analytic planning fixture, not an executed result."
+      ]
+    },
+    "deliverables": [
+      "frozen V and reduced matrices",
+      "exact reduction and rank receipt",
+      "lost-state/observable ledger",
+      "optional selected-frequency error table explicitly labeled sampled, only if a real consumer needs it"
+    ],
+    "resources": "Approximately one focused implementation day after METHODS-1 plus review; CPU only.",
+    "stopRule": "Do not implement until advisor names a reduced-model consumer. Stop at exact passivity/rank receipt; no unbounded search for globally optimal modes.",
+    "notClaimed": [
+      "Response accuracy outside assessed frequencies",
+      "Identifiability",
+      "Completeness of spectrum",
+      "Continuum reduction theorem",
+      "Hardware validation"
+    ],
+    "sourceReading": [
+      {
+        "path": "energy-observatory/research/math-crosswalk/report.md",
+        "readingDepth": "Entire report; especially partial-observation countermodel and declared finite certificates."
+      },
+      {
+        "path": "energy-observatory/research/math-crosswalk/panel/skeptic/independent-gate.md",
+        "readingDepth": "Entire gate read."
+      }
+    ]
+  }
+]

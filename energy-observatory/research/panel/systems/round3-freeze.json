@@ -1,0 +1,24 @@
+{
+  "round": 3,
+  "researchCutoff": "2026-10-21",
+  "status": "passed-final-round-complete",
+  "reviewType": "Independent AI-agent mathematical and software review; no hardware or human peer review",
+  "source_sha256": {
+    "analysis/panel_crosscheck.py": "0a97fced2eb6f5ec35d8cdf77b3386079e1dabeff2c9c0df107518fd600182ba",
+    "research/panel/systems/round3.md": "af7280c118e98f6e728c02f7495beeb6ef5c2a10ec1accd03131a1d11569c5fa",
+    "research/panel/systems/round3-results.json": "c294272806dfd536ca102e75a7e2919e3edfb574c4055487c98a54bc523f3b1b",
+    "research/panel/systems/round2-freeze.json": "20c61984389398285d77079dfad5e0bbcd3d8320176d90cc2c99a1ecb513becb"
+  },
+  "reviewedImplementationSha256": {
+    "src/em.mjs": "09ee1be95fe4586b1633fb39dae11fdc7f6a5dc3604461632c320d1e91193984",
+    "src/acoustic.mjs": "d14db2f4843f328e016dd1f7f29b16612a910b1362599a4bbc74c9cca1f8dff3",
+    "src/identifiability.mjs": "fa6e497e275d10c1656060883e8fb1b9c865d4686e25bb012e8cde4887683b29",
+    "analysis/systems_reference.py": "0ac8d7ae3535f2714c0195a4682f164abe2dc100ca542e50023f8b46a8c7d2b9",
+    "research/panel/systems/independent-reference.json": "ae84d7291729b9490771f5dd5fe5d112d0a3a8585489a1662c24c61cfaf573a7"
+  },
+  "checksPassed": 613,
+  "normalOptimizedByteIdentical": true,
+  "physicalMeasurements": 0,
+  "fixtureLimitation": "Original frozen fixture has external mechanical forcePeak=0.01 and cannot be passed to voltage-only emSolve. Compared its Fext=0 specialization; original two-input fixture remains independently solved but not cross-compared.",
+  "scope": "Declared synthetic cases and source hashes only. Prior round2 references and freeze retained unchanged. No further research round executed."
+}

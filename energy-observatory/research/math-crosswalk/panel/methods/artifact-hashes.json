@@ -1,0 +1,22 @@
+{
+  "recordedAtUTC": "2026-10-22T04:09:33.896559+00:00",
+  "scope": "Methods-owned Round 1 and Round 2 files; manifest excludes itself. Execution timestamps make rerun result hashes differ.",
+  "sha256": {
+    "crosswalk.json": "f259f81b4be0e0b09d2814bbbe0020b1705de6b7f2fd3a2402c64535d1debe53",
+    "energy-crosscheck-contract.json": "efc31402f1ccba3288ba19cfa7211d8b5ef2f9da8befc654333a2f36c290cf4f",
+    "energy-crosscheck-freeze.json": "009f53d1653161e0256df48995afa28a5bfcf5303e1df510a36125c495ef5ee6",
+    "energy-crosscheck-results.json": "e34e96396cdc793ce72c938f59452c7bd3e1ae84db3f93baa8217fcf83a87e02",
+    "energy-producer-output.json": "585ed4bd93051bed61978ca50ee337e688a23c827d29b46d0190ab4fca6a4fa9",
+    "energy-reference.json": "4538003097c0fc304e40e9fdcb21571239e048292edcd74b2834cf9ac5600698",
+    "energy_reference.py": "733e2ddd71135b1e7cf2334e2955a07e41a48f39948870ecef300e790c3b141f",
+    "exact-results.json": "52a630a1c320489a6697e8d5a84746ed59141f4ce6cac1fca7c737181b2701af",
+    "exact_certificate.py": "0cace097fcc1c50254be069a84b81f493bf762164407f6d1a847f016a2a3c016",
+    "round1.md": "77691c802fae4fec1106ced416fb4b4aa64d2a2d3a9acda69be71e210e61580a",
+    "round2-contract.json": "18b28800a7663fbf86e45988efb00860ef65d2036dcfbfa282f2622c2221c60a",
+    "round2-freeze.json": "7e9b237ca463f7e1cb68c3b314f32509646ca6fc08e86d6e8cd5850e4f1f56b8",
+    "round2-proposal.json": "0d6b107fbab4edafd0a962c2b365052a5dde93a133e6d5f4f99d6f765e50737d",
+    "round2.md": "d92fad2a5a56c5eec1f0cb37d1c467961508e6b17283fee0a90a0d8c7cb9cbe1",
+    "run_energy_producer.mjs": "b481f1fdb6a2738e0f4f42ec2b9a8c3755320eb24f41472ec0babb298090b3df",
+    "sources.json": "3bce0b95be60b9d07883c72affe3ca1176d7ada6da15a5a5bd0b4c65b5e035ca"
+  }
+}

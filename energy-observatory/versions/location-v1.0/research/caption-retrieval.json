@@ -1,0 +1,24 @@
+{
+  "tools": {
+    "youtube-transcript-api": "1.2.4",
+    "yt-dlp": "2026.10.21"
+  },
+  "caption_success": {
+    "video_id": "98KsASkO8Cs",
+    "segments": 57,
+    "path": "98KsASkO8Cs.json"
+  },
+  "caption_failure": {
+    "video_id": "771EL_Aikio",
+    "status": "failed",
+    "exception": "VideoUnplayable",
+    "error": "\nCould not retrieve a transcript for the video https://www.youtube.com/watch?v=771EL_Aikio! This is most likely caused by:\n\nThe video is unplayable for the following reason: This video has been removed for violating YouTube's Terms of Service\n\nIf you are sure that the described cause is not responsible for this error and that a transcript should be retrievable, please create an issue at https://github.com/jdepoix/youtube-transcript-api/issues. Please add which version of youtube_transcript_api you are using and provide the information needed to replicate the error. Also make sure that there are no open issues which already describe your problem!"
+  },
+  "metadata_attempts": {
+    "98KsASkO8Cs": "yt-dlp failed SSL certificate verification; no bypass attempted",
+    "771EL_Aikio": "yt-dlp failed SSL certificate verification; no bypass attempted"
+  },
+  "audio_transcription_performed": false,
+  "fallback": "Existing timestamped transcript at https://lilys.ai/ko/notes/363403",
+  "publication_note": "Publish original paraphrases and source locators, not complete raw captions."
+}

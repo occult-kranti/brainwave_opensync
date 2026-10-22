@@ -1,0 +1,478 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-10-22T04:08:38.578525+00:00",
+  "frozenFixturesSha256": "262582bed704ce59014937557cc678ee0931ea609296d2e7bb4a7f8aadb0e657",
+  "finiteGap": {
+    "exactSamples": [
+      {
+        "n": 1,
+        "gapH": "1",
+        "gapK": "1",
+        "sameGroundProjector": true
+      },
+      {
+        "n": 2,
+        "gapH": "1/2",
+        "gapK": "1",
+        "sameGroundProjector": true
+      },
+      {
+        "n": 3,
+        "gapH": "1/3",
+        "gapK": "1",
+        "sameGroundProjector": true
+      },
+      {
+        "n": 7,
+        "gapH": "1/7",
+        "gapK": "1",
+        "sameGroundProjector": true
+      },
+      {
+        "n": 97,
+        "gapH": "1/97",
+        "gapK": "1",
+        "sameGroundProjector": true
+      },
+      {
+        "n": 1000003,
+        "gapH": "1/1000003",
+        "gapK": "1",
+        "sameGroundProjector": true
+      }
+    ],
+    "epsilonWitnesses": [
+      {
+        "epsilon": "1",
+        "n": 2,
+        "gap": "1/2"
+      },
+      {
+        "epsilon": "1/7",
+        "n": 8,
+        "gap": "1/8"
+      },
+      {
+        "epsilon": "1/1000000",
+        "n": 1000001,
+        "gap": "1/1000001"
+      }
+    ],
+    "allNArgument": "For every epsilon>0, choose integer n>1/epsilon. Then 0<1/n<epsilon. The ground projector is constant, yet no common positive gap exists.",
+    "narrowVerdict": "finite positive gaps and a common vacuum projector alone do not entail a uniform gap",
+    "notEstablished": "No H_n is identified with a Yang-Mills regulator; no physical counterexample is asserted."
+  },
+  "partialObservation": {
+    "exactSamples": [
+      {
+        "z": "1/7",
+        "observedA": [
+          "7/8",
+          "7/15"
+        ],
+        "observedB": [
+          "7/8",
+          "7/15"
+        ],
+        "fullDifference33": "49/638"
+      },
+      {
+        "z": "2/3",
+        "observedA": [
+          "3/5",
+          "3/8"
+        ],
+        "observedB": [
+          "3/5",
+          "3/8"
+        ],
+        "fullDifference33": "9/154"
+      },
+      {
+        "z": "1",
+        "observedA": [
+          "1/2",
+          "1/3"
+        ],
+        "observedB": [
+          "1/2",
+          "1/3"
+        ],
+        "fullDifference33": "1/20"
+      },
+      {
+        "z": "13/2",
+        "observedA": [
+          "2/15",
+          "2/17"
+        ],
+        "observedB": [
+          "2/15",
+          "2/17"
+        ],
+        "fullDifference33": "4/399"
+      },
+      {
+        "z": "101/3",
+        "observedA": [
+          "3/104",
+          "3/107"
+        ],
+        "observedB": [
+          "3/104",
+          "3/107"
+        ],
+        "fullDifference33": "9/12430"
+      }
+    ],
+    "allZArgument": "For z>0, retained entries are 1/(z+1),1/(z+2) for both diagonal operators. The omitted entry differs by 1/((z+3)(z+4))>0.",
+    "narrowVerdict": "The declared compressed resolvent readout is non-injective.",
+    "notEstablished": "This is not a counterexample to full-static-boundary-data elasticity uniqueness."
+  },
+  "documentaryGate": {
+    "cases": [
+      {
+        "id": "identicalAlgebraic",
+        "left": {
+          "object": "finite real symmetric positive-definite matrix",
+          "domain": "R^2",
+          "hypotheses": "fixed entries and positive definiteness",
+          "observations": "full entries",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "exact equality of the same quadratic forms",
+          "statementEvidence": "synthetic positive control; identical statement supplied"
+        },
+        "right": {
+          "object": "finite real symmetric positive-definite matrix",
+          "domain": "R^2",
+          "hypotheses": "fixed entries and positive definiteness",
+          "observations": "full entries",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "exact equality of the same quadratic forms",
+          "statementEvidence": "synthetic positive control; identical statement supplied"
+        },
+        "expected": "eligible-for-proof-review",
+        "actual": {
+          "classification": "eligible-for-proof-review",
+          "missing": [],
+          "mismatchedAxes": [],
+          "warning": "Agreement of curated fields is not semantic equivalence or proof verification."
+        }
+      },
+      {
+        "id": "companionFormalization",
+        "left": {
+          "object": "smooth Riemannian metrics and connections",
+          "domain": "R^2",
+          "hypotheses": "fixed entries and positive definiteness",
+          "observations": "full entries",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "uniqueness from complete boundary data",
+          "statementEvidence": "OpenAI365 headline paper"
+        },
+        "right": {
+          "object": "bounded measurable scalar conductivities",
+          "domain": "R^2",
+          "hypotheses": "fixed entries and positive definiteness",
+          "observations": "full entries",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "nonuniqueness with same weak DN map",
+          "statementEvidence": "OpenAI365 Lean companion declaration"
+        },
+        "expected": "scope-mismatch",
+        "actual": {
+          "classification": "scope-mismatch",
+          "missing": [],
+          "mismatchedAxes": [
+            "object",
+            "conclusion"
+          ]
+        }
+      },
+      {
+        "id": "entropyWilson",
+        "left": {
+          "object": "local finite-dimensional lattice spins",
+          "domain": "R^2",
+          "hypotheses": "uniform gap assumed",
+          "observations": "region entanglement entropy",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "entropy bounded by boundary area",
+          "statementEvidence": "OpenAI265 catalogue abstract"
+        },
+        "right": {
+          "object": "Yang-Mills gauge fields",
+          "domain": "R^2",
+          "hypotheses": "confinement target not presumed",
+          "observations": "Wilson-loop expectation",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "loop logarithm scales with enclosed area",
+          "statementEvidence": "YM Wilson-loop research target"
+        },
+        "expected": "scope-mismatch",
+        "actual": {
+          "classification": "scope-mismatch",
+          "missing": [],
+          "mismatchedAxes": [
+            "object",
+            "hypotheses",
+            "observations",
+            "conclusion"
+          ]
+        }
+      },
+      {
+        "id": "circuitApparatus",
+        "left": {
+          "object": "ideal RLC mechanical state",
+          "domain": "closed selected model boundary",
+          "hypotheses": "fixed entries and positive definiteness",
+          "observations": "analytic stored energy and modeled ports",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "energy balance identity",
+          "statementEvidence": "project ideal transducer model"
+        },
+        "right": {
+          "object": "laboratory apparatus and environment",
+          "domain": "all material energy reservoirs and calibration",
+          "hypotheses": "fixed entries and positive definiteness",
+          "observations": "measured calibrated input/output and reservoir changes",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "apparatus net energy claim",
+          "statementEvidence": "hypothetical broader claim, not asserted by repository"
+        },
+        "expected": "scope-mismatch",
+        "actual": {
+          "classification": "scope-mismatch",
+          "missing": [],
+          "mismatchedAxes": [
+            "object",
+            "domain",
+            "observations",
+            "conclusion"
+          ]
+        }
+      },
+      {
+        "id": "finiteContinuum",
+        "left": {
+          "object": "regulated gauge Hamiltonian",
+          "domain": "R^2",
+          "hypotheses": "admitted restricted boundary family",
+          "observations": "full entries",
+          "scale": "fixed lattice spacing, admitted strong coupling",
+          "topology": "fixed-spacing volume limit",
+          "conclusion": "restricted fixed-spacing local construction",
+          "statementEvidence": "YM Round33 HANDOFF"
+        },
+        "right": {
+          "object": "continuum gauge quantum field",
+          "domain": "R^2",
+          "hypotheses": "continuum reconstruction hypotheses",
+          "observations": "full entries",
+          "scale": "a approaches 0 at physical renormalized scale",
+          "topology": "continuum constructive limit",
+          "conclusion": "nontrivial continuum field with positive physical mass gap",
+          "statementEvidence": "continuum Yang-Mills goal"
+        },
+        "expected": "scope-mismatch",
+        "actual": {
+          "classification": "scope-mismatch",
+          "missing": [],
+          "mismatchedAxes": [
+            "object",
+            "hypotheses",
+            "scale",
+            "topology",
+            "conclusion"
+          ]
+        }
+      },
+      {
+        "id": "noStatement",
+        "left": {
+          "object": "finite real symmetric positive-definite matrix",
+          "domain": "R^2",
+          "hypotheses": "fixed entries and positive definiteness",
+          "observations": "full entries",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "exact equality of the same quadratic forms",
+          "statementEvidence": "synthetic positive control; identical statement supplied"
+        },
+        "right": {
+          "object": "finite real symmetric positive-definite matrix",
+          "domain": "R^2",
+          "hypotheses": "fixed entries and positive definiteness",
+          "observations": "full entries",
+          "scale": "fixed dimension",
+          "topology": "none; algebraic identity",
+          "conclusion": "exact equality of the same quadratic forms",
+          "statementEvidence": null
+        },
+        "expected": "insufficient-evidence",
+        "actual": {
+          "classification": "insufficient-evidence",
+          "missing": [
+            "right:statementEvidence"
+          ],
+          "mismatchedAxes": []
+        }
+      },
+      {
+        "id": "sameTitleOnly",
+        "left": {
+          "title": "spectral bounds"
+        },
+        "right": {
+          "title": "spectral bounds"
+        },
+        "expected": "insufficient-evidence",
+        "actual": {
+          "classification": "insufficient-evidence",
+          "missing": [
+            "left:statementEvidence",
+            "left:object",
+            "left:domain",
+            "left:hypotheses",
+            "left:observations",
+            "left:scale",
+            "left:topology",
+            "left:conclusion",
+            "right:statementEvidence",
+            "right:object",
+            "right:domain",
+            "right:hypotheses",
+            "right:observations",
+            "right:scale",
+            "right:topology",
+            "right:conclusion"
+          ],
+          "mismatchedAxes": []
+        }
+      }
+    ],
+    "narrowVerdict": "Five explicit nonmatching or absent-scope controls are rejected/abstained; one additional title-only control abstains; the identical algebraic record is only admitted to proof review.",
+    "notEstablished": "No software decision here proves equivalence, truth, formalization dependency closure, or relevance."
+  },
+  "independentEnergyFixtures": {
+    "cases": [
+      {
+        "id": "heated-ground",
+        "population": 0.12500000000000003,
+        "signedBathHeatPerGap": 0.12500000000000003,
+        "ergotropyPerGap": 0.0,
+        "entropyProduction": 0.23944362517292317,
+        "expectedMaxError": 2.7755575615628914e-17,
+        "minEigenvalue": 0.12500000000000003
+      },
+      {
+        "id": "thermal-fixed",
+        "population": 0.24999999999999997,
+        "signedBathHeatPerGap": -2.7755575615628914e-17,
+        "ergotropyPerGap": 0.0,
+        "entropyProduction": 1.4151491891290252e-16,
+        "expectedMaxError": 2.7755575615628914e-17,
+        "minEigenvalue": 0.24999999999999997
+      },
+      {
+        "id": "inverted-bath",
+        "population": 0.7499999999999999,
+        "signedBathHeatPerGap": 0.7499999999999999,
+        "ergotropyPerGap": 0.4999999999999999,
+        "entropyProduction": null,
+        "expectedMaxError": 1.1102230246251565e-16,
+        "minEigenvalue": 0.25
+      },
+      {
+        "id": "zero-temperature",
+        "population": 0.5625,
+        "signedBathHeatPerGap": -0.1875,
+        "ergotropyPerGap": 0.125,
+        "entropyProduction": null,
+        "expectedMaxError": 0.0,
+        "minEigenvalue": 0.4375
+      },
+      {
+        "id": "pure-quarter-dephased",
+        "population": 0.25,
+        "signedBathHeatPerGap": 0.0,
+        "ergotropyPerGap": 0.0,
+        "entropyProduction": null,
+        "expectedMaxError": 0.0,
+        "minEigenvalue": 0.25
+      },
+      {
+        "id": "pure-quarter-retained",
+        "population": 0.25,
+        "signedBathHeatPerGap": 0.0,
+        "ergotropyPerGap": 0.24999999999999997,
+        "entropyProduction": null,
+        "expectedMaxError": 2.7755575615628914e-17,
+        "minEigenvalue": 2.7755575615628914e-17
+      }
+    ],
+    "maxExpectedError": 1.1102230246251565e-16,
+    "method": "Independent NumPy Kraus matrices and Hermitian eigensolver, fixed before peer producer code inspection."
+  },
+  "independentAcousticFixture": {
+    "generalizedEigenvalues": [
+      2.0,
+      3.5
+    ],
+    "scaledEigenvalueError": 0.0,
+    "calibratedFRFScalingError": 0.0,
+    "frequencySensitivityKernel": [
+      1,
+      1
+    ],
+    "augmentedMassDeterminant": "1/2",
+    "staticTraction": [
+      0.16417910447761194,
+      0.713152985074627,
+      0.0
+    ],
+    "scaledStaticTraction": [
+      0.6567164179104478,
+      2.852611940298508,
+      0.0
+    ],
+    "staticScalingError": 0.0,
+    "narrowVerdict": "Common-scale mode ambiguity survives; calibrated force response or static traction distinguishes this family. No general inverse reconstruction is claimed."
+  },
+  "independentExactAlgebra": {
+    "energyDerivativeCoefficients": {
+      "q*v": "0",
+      "u*v": "1",
+      "v*v": "-5"
+    },
+    "negativeDampingAtZeroInput": "5",
+    "gridCounterexample": {
+      "points": [
+        "0",
+        "1/2",
+        "1"
+      ],
+      "values": [
+        "3/16",
+        "-1/16",
+        "3/16"
+      ]
+    },
+    "tauThreshold": {
+      "tauMax": "1/100000000",
+      "necessaryAndSufficientGFourth": "9600000000",
+      "conditions": "g>0, tau=96/g^4"
+    },
+    "narrowVerdict": "Exact finite algebra, including sign and sampling controls; no NSPI/Lean execution or continuum inference."
+  },
+  "codeSha256": "f6d02d7e008dad1ab7bd953a61cb994bcbab7ba9dede528f8e2fde8ada0b3856"
+}

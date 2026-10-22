@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "dateUTC": "2026-10-22",
+  "checkCount": 15,
+  "checks": [
+    {
+      "name": "A resolved positive ledger residual does not identify an energy source",
+      "status": "passed"
+    },
+    {
+      "name": "A negative ledger residual also remains an identification problem",
+      "status": "passed"
+    },
+    {
+      "name": "Supplied uncertainty broadens the interval without changing the energy ledger",
+      "status": "passed"
+    },
+    {
+      "name": "Zero uncertainty and numerical PSD tolerance are not a calibration certificate",
+      "status": "passed"
+    },
+    {
+      "name": "Reactive apparent power is not substituted for real power",
+      "status": "passed"
+    },
+    {
+      "name": "Zero EM source has zero output and undefined efficiency",
+      "status": "passed"
+    },
+    {
+      "name": "EM declares its terminal boundary and the omitted changing-M work port",
+      "status": "passed"
+    },
+    {
+      "name": "EM matched-input result retains finite-grid scope and final-response limits",
+      "status": "passed"
+    },
+    {
+      "name": "Zero receiver force has zero load power and undefined efficiency",
+      "status": "passed"
+    },
+    {
+      "name": "Acoustic efficiency declares receiver boundary, without amplifier or capture claims",
+      "status": "passed"
+    },
+    {
+      "name": "Plane-wave reference is neither device output nor a universal capture bound",
+      "status": "passed"
+    },
+    {
+      "name": "Acoustic matched-input constraints act after amplitude rescaling",
+      "status": "passed"
+    },
+    {
+      "name": "Qubit prepared-state energy is not apparatus efficiency",
+      "status": "passed"
+    },
+    {
+      "name": "A passive mixed quantum state can contain energy without unitary extractable work",
+      "status": "passed"
+    },
+    {
+      "name": "Identifiability rank is local and does not certify unmeasured hardware",
+      "status": "passed"
+    }
+  ],
+  "producerSHA256": {
+    "metrology.mjs": "3c607824849b41131bdf6a6908ad186d9bde8161e97ecb14f959a10dcdb655b1",
+    "em.mjs": "09ee1be95fe4586b1633fb39dae11fdc7f6a5dc3604461632c320d1e91193984",
+    "acoustic.mjs": "d14db2f4843f328e016dd1f7f29b16612a910b1362599a4bbc74c9cca1f8dff3",
+    "quantum.mjs": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91",
+    "identifiability.mjs": "fa6e497e275d10c1656060883e8fb1b9c865d4686e25bb012e8cde4887683b29"
+  },
+  "scope": "Selected integration semantics checked by direct API calls. Numerical tolerances are arithmetic checks, not instrument uncertainties. Government/patent evidence is reviewed in prose, not validated by these APIs."
+}

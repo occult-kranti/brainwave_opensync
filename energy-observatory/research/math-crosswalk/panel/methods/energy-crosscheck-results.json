@@ -1,0 +1,392 @@
+{
+  "comparedAtUTC": "2026-10-22T04:06:04.220805+00:00",
+  "allPassed": true,
+  "checkCount": 63,
+  "maximumDimensionlessError": 3.3306690738754696e-16,
+  "tolerance": 1e-12,
+  "contractSHA256": "efc31402f1ccba3288ba19cfa7211d8b5ef2f9da8befc654333a2f36c290cf4f",
+  "referenceSHA256": "4538003097c0fc304e40e9fdcb21571239e048292edcd74b2834cf9ac5600698",
+  "producerOutputSHA256": "585ed4bd93051bed61978ca50ee337e688a23c827d29b46d0190ab4fca6a4fa9",
+  "producerCodeSHA256": "cc3a6011d89ab2ad2904d216064a32e4af26bec56c54fd1718244165012727be",
+  "checks": [
+    {
+      "case": "cold-release",
+      "metric": "gapJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "initial.densityMatrix.real",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "initial.densityMatrix.imag",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "initial.energyJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "initial.passiveEnergyJ",
+      "dimensionlessError": 1.9799604134886413e-17,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "initial.ergotropyJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "initial.entropyNats",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "final.densityMatrix.real",
+      "dimensionlessError": 5.551115123125783e-17,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "final.densityMatrix.imag",
+      "dimensionlessError": 2.7755575615628914e-17,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "final.energyJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "final.passiveEnergyJ",
+      "dimensionlessError": 3.9599208269772825e-17,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "final.ergotropyJ",
+      "dimensionlessError": 3.9599208269772825e-17,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "final.entropyNats",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "heatIntoQubitJ",
+      "dimensionlessError": 3.9599208269772825e-17,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "heatIntoBathJ",
+      "dimensionlessError": 3.9599208269772825e-17,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "entropyProductionNats",
+      "dimensionlessError": 3.3306690738754696e-16,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "oracle.unitarityError",
+      "dimensionlessError": 1.1102230246251565e-16,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "oracle.jointTraceError",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "oracle.systemTraceError",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "oracle.heatClosureOverGap",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "cold-release",
+      "metric": "oracle.dephasingEnergyChangeOverGap",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "gapJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "initial.densityMatrix.real",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "initial.densityMatrix.imag",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "initial.energyJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "initial.passiveEnergyJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "initial.ergotropyJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "initial.entropyNats",
+      "dimensionlessError": 5.551115123125783e-17,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "final.densityMatrix.real",
+      "dimensionlessError": 5.551115123125783e-17,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "final.densityMatrix.imag",
+      "dimensionlessError": 6.938893903907228e-18,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "final.energyJ",
+      "dimensionlessError": 4.331163404506403e-17,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "final.passiveEnergyJ",
+      "dimensionlessError": 4.331163404506403e-17,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "final.ergotropyJ",
+      "dimensionlessError": 8.662326809012806e-17,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "final.entropyNats",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "heatIntoQubitJ",
+      "dimensionlessError": 4.331163404506403e-17,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "heatIntoBathJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "entropyProductionNats",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "oracle.unitarityError",
+      "dimensionlessError": 2.0090460959570714e-17,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "oracle.jointTraceError",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "oracle.systemTraceError",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "oracle.heatClosureOverGap",
+      "dimensionlessError": 4.331163404506403e-17,
+      "passed": true
+    },
+    {
+      "case": "warm-absorption",
+      "metric": "oracle.dephasingEnergyChangeOverGap",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "gapJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "initial.densityMatrix.real",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "initial.densityMatrix.imag",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "initial.energyJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "initial.passiveEnergyJ",
+      "dimensionlessError": 1.259974808583681e-16,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "initial.ergotropyJ",
+      "dimensionlessError": 1.259974808583681e-16,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "initial.entropyNats",
+      "dimensionlessError": 3.0531133177191805e-16,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "final.densityMatrix.real",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "final.densityMatrix.imag",
+      "dimensionlessError": 2.7755575615628914e-17,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "final.energyJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "final.passiveEnergyJ",
+      "dimensionlessError": 6.299874042918405e-17,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "final.ergotropyJ",
+      "dimensionlessError": 6.299874042918405e-17,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "final.entropyNats",
+      "dimensionlessError": 1.1102230246251565e-16,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "heatIntoQubitJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "heatIntoBathJ",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "entropyProductionNats",
+      "dimensionlessError": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "oracle.unitarityError",
+      "dimensionlessError": 5.830536435702827e-19,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "oracle.jointTraceError",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "oracle.systemTraceError",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "oracle.heatClosureOverGap",
+      "dimensionlessError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inverted-reservoir",
+      "metric": "oracle.dephasingEnergyChangeOverGap",
+      "dimensionlessError": 0.0,
+      "passed": true
+    }
+  ],
+  "scope": "Three frozen cases only, independent author and inputs; no full software audit, channel-capacity result or experiment."
+}

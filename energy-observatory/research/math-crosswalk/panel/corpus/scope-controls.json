@@ -1,0 +1,183 @@
+{
+  "controlDesign": "Known documentary positives, adversarial transfers and missing-evidence controls; not empirical theorem validation",
+  "cases": [
+    {
+      "id": "positive-365-conductivity",
+      "record": "365-conductivity",
+      "purpose": "Exact paper/version/declaration/scope match; legacy 342 remains outside current catalogue and 372 need not be in partial YAML manifest.",
+      "expectedStatus": "metadata-accepted-not-proof-verified"
+    },
+    {
+      "id": "positive-215-finite-correlation",
+      "record": "215-finite-correlation",
+      "purpose": "Exact paper/version/declaration/scope match; legacy 342 remains outside current catalogue and 372 need not be in partial YAML manifest.",
+      "expectedStatus": "metadata-accepted-not-proof-verified"
+    },
+    {
+      "id": "positive-276-repeated",
+      "record": "276-repeated",
+      "purpose": "Exact paper/version/declaration/scope match; legacy 342 remains outside current catalogue and 372 need not be in partial YAML manifest.",
+      "expectedStatus": "metadata-accepted-not-proof-verified"
+    },
+    {
+      "id": "positive-342-legacy",
+      "record": "342-legacy",
+      "purpose": "Exact paper/version/declaration/scope match; legacy 342 remains outside current catalogue and 372 need not be in partial YAML manifest.",
+      "expectedStatus": "metadata-accepted-not-proof-verified"
+    },
+    {
+      "id": "positive-372-full-map",
+      "record": "372-full-map",
+      "purpose": "Exact paper/version/declaration/scope match; legacy 342 remains outside current catalogue and 372 need not be in partial YAML manifest.",
+      "expectedStatus": "metadata-accepted-not-proof-verified"
+    },
+    {
+      "id": "365-family-badge-does-not-cover-headline",
+      "record": "365-conductivity",
+      "replace": {
+        "paperPath": "preprints/Determination-of-a-metric-and-a-unitary-connection-from-one-boundary-patch-October-5-2026/paper.pdf",
+        "statement.conclusion": "Uniqueness of smooth metric and unitary connection from one boundary patch"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "paper-mismatch",
+        "scope-mismatch:conclusion"
+      ],
+      "purpose": "Reject transferring a companion nonuniqueness formalization to the family headline uniqueness paper."
+    },
+    {
+      "id": "342-current-version-not-exactly-documented",
+      "record": "342-legacy",
+      "replace": {
+        "paperPath": "preprints/Taming-implies-compatibility-on-four-manifolds-October-6-2026/paper.pdf"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "version-mismatch"
+      ],
+      "purpose": "Require a documented bridge from September 23 to October 6; no inference of theorem falsehood."
+    },
+    {
+      "id": "215-family-badge-does-not-cover-continuum",
+      "record": "215-finite-correlation",
+      "replace": {
+        "paperPath": "preprints/The-canonical-massive-continuum-limit-of-the-two-dimensional-O3-model-October-4-2026/massive-continuum-o3.pdf",
+        "statement.limit": "Canonical massive continuum limit with continuum fields"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "paper-mismatch",
+        "scope-mismatch:limit"
+      ],
+      "purpose": "Reject transferring finite-graph correlation coverage to another continuum-limit paper."
+    },
+    {
+      "id": "215-no-infinite-volume-by-same-paper-label",
+      "record": "215-finite-correlation",
+      "replace": {
+        "statement.limit": "Infinite-volume construction and separate O(4) spectral gap"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "scope-mismatch:limit"
+      ],
+      "purpose": "Even exact paper metadata cannot silently extend the encoded conclusion."
+    },
+    {
+      "id": "276-no-arbitrary-partner",
+      "record": "276-repeated",
+      "replace": {
+        "statement.quantifiers": "Every generalized amplitude-damping channel tensored with every arbitrary different finite-dimensional partner channel"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "scope-mismatch:quantifiers"
+      ],
+      "purpose": "Repeated identical uses and arbitrary different partners have distinct quantifiers."
+    },
+    {
+      "id": "276-no-separate-decoding",
+      "record": "276-repeated",
+      "replace": {
+        "statement.boundary": "Codes restricted to separate output measurements"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "scope-mismatch:boundary"
+      ],
+      "purpose": "Selected scope permits collective measurements and does not certify separate-measurement attainment."
+    },
+    {
+      "id": "372-finite-peaks-not-full-map",
+      "record": "372-full-map",
+      "replace": {
+        "statement.observable": "A finite measured list of resonance frequencies"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "scope-mismatch:observable"
+      ],
+      "purpose": "Finite peaks do not constitute the full static boundary operator."
+    },
+    {
+      "id": "declaration-must-match",
+      "record": "276-repeated",
+      "replace": {
+        "declaration": "OAI.GAD.uninspected_claim"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "declaration-mismatch"
+      ],
+      "purpose": "An exact paper citation cannot certify an uninspected declaration."
+    },
+    {
+      "id": "revision-must-match",
+      "record": "276-repeated",
+      "replace": {
+        "commit": "uninspected-revision"
+      },
+      "expectedStatus": "metadata-match-rejected",
+      "expectedIssues": [
+        "commit-mismatch"
+      ],
+      "purpose": "An uninspected revision cannot inherit this pinned inspection."
+    },
+    {
+      "id": "abstain-missing-paperPath",
+      "record": "276-repeated",
+      "omit": [
+        "paperPath"
+      ],
+      "expectedStatus": "insufficient-evidence",
+      "expectedIssues": [
+        "paperPath"
+      ],
+      "purpose": "Missing documentary evidence causes abstention, never theorem rejection or acceptance."
+    },
+    {
+      "id": "abstain-missing-declaration",
+      "record": "276-repeated",
+      "omit": [
+        "declaration"
+      ],
+      "expectedStatus": "insufficient-evidence",
+      "expectedIssues": [
+        "declaration"
+      ],
+      "purpose": "Missing documentary evidence causes abstention, never theorem rejection or acceptance."
+    },
+    {
+      "id": "abstain-missing-statement-boundary",
+      "record": "276-repeated",
+      "omit": [
+        "statement.boundary"
+      ],
+      "expectedStatus": "insufficient-evidence",
+      "expectedIssues": [
+        "statement.boundary"
+      ],
+      "purpose": "Missing documentary evidence causes abstention, never theorem rejection or acceptance."
+    }
+  ]
+}

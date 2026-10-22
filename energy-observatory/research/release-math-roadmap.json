@@ -1,0 +1,42 @@
+{
+  "scope": "Reviewed math comparison and follow-on roadmap release",
+  "baseCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+  "mathComparison": {
+    "agents": 6,
+    "researchRounds": 2,
+    "replaySuitesPassed": 7,
+    "exactOpenAITheoremsSolvedEstablished": 0,
+    "readingLimit": "All catalogue metadata; selected statements; no Lean run"
+  },
+  "followOnRoadmap": {
+    "agents": 6,
+    "reviewStages": 1,
+    "planningRounds": 2,
+    "reports": 18,
+    "tasks": 6,
+    "implementation": false
+  },
+  "website": {
+    "pages": 9,
+    "preservedApps": 3,
+    "integrationTestsPassed": 7,
+    "browserViewports": [
+      1440,
+      390
+    ],
+    "browserErrors": [],
+    "researchLinksChecked": 44
+  },
+  "filesSHA256": {
+    "build.mjs": "67fc01490722eddb518c9e2d5d939ca31e07cecda39b835c62aba80aa132e527",
+    "site.mjs": "79a27d6e2041cf91e44caab6c61048263aadc893d35a4a81c223432ce2331967",
+    "math-crosswalk-page.mjs": "840da74b357c3382c5a045d2651656ecb71aaa9d85408ca7d717cc68d9ac8770",
+    "roadmap-page.mjs": "3fd96b4123897f30672d1e7c75e87c9370aaf9c1dace395e7bfd4b346a1ba29e",
+    "src/math-crosswalk-ui.mjs": "04aeaecf970492015813b7cc13250b6440d0e47f75e64d361ee38da240f1baaa",
+    "src/roadmap-ui.mjs": "192a11edddf56dd5521ce0d067db1ac16c9ec6b2a3a1f673b265c6f5077d8f10",
+    "src/styles.css": "08a78551e48eddf44779be34cac11a3086d43252df940f75976ecb7728996ca8",
+    "scripts/math-browser-check.cjs": "e86411722e651a57d4ba62f3ea6c154c3ee5fe4b15a5e27e5d117265e6ea4ff0",
+    "research/math-crosswalk/verification.json": "3c0b7d3a4f09031ac4438e0f53f842ef41b64b7b37720f9ed37796d178a43166",
+    "research/roadmap-update-2026-10-22/verification.json": "1a8c98ce96c93b7a1e5576384fc5b4ce71cef3bba98cb875307361fb0750a001"
+  }
+}

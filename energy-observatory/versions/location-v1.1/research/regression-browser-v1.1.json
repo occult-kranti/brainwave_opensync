@@ -1,0 +1,89 @@
+{
+  "browser": "153.0.8010.0",
+  "checks": [
+    {
+      "name": "1440: first render",
+      "passed": true
+    },
+    {
+      "name": "1440: five scenarios",
+      "passed": true
+    },
+    {
+      "name": "1440: invalid input and recovery",
+      "passed": true
+    },
+    {
+      "name": "1440: thin-shell applicability warning",
+      "passed": true
+    },
+    {
+      "name": "1440: sphere and empty-table channels",
+      "passed": true
+    },
+    {
+      "name": "1440: raw exports",
+      "passed": true
+    },
+    {
+      "name": "1440: share URL round trip",
+      "passed": true
+    },
+    {
+      "name": "1440: keyboard tabs",
+      "passed": true
+    },
+    {
+      "name": "1440: network and text fallback",
+      "passed": true
+    },
+    {
+      "name": "1440: protocol diagrams and source filter",
+      "passed": true
+    },
+    {
+      "name": "390: first render",
+      "passed": true
+    },
+    {
+      "name": "390: five scenarios",
+      "passed": true
+    },
+    {
+      "name": "390: invalid input and recovery",
+      "passed": true
+    },
+    {
+      "name": "390: thin-shell applicability warning",
+      "passed": true
+    },
+    {
+      "name": "390: sphere and empty-table channels",
+      "passed": true
+    },
+    {
+      "name": "390: raw exports",
+      "passed": true
+    },
+    {
+      "name": "390: share URL round trip",
+      "passed": true
+    },
+    {
+      "name": "390: keyboard tabs",
+      "passed": true
+    },
+    {
+      "name": "390: network and text fallback",
+      "passed": true
+    },
+    {
+      "name": "390: protocol diagrams and source filter",
+      "passed": true
+    }
+  ],
+  "runtimeErrors": [],
+  "passed": true,
+  "researchDate": "2026-10-22",
+  "scope": "Local Chromium browser checks, desktop1440x1000 and mobile390x844; physical measurements none."
+}

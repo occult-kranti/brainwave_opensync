@@ -1,0 +1,14 @@
+{
+  "round": 3,
+  "status": "implemented and internally checked; separate systems review in progress",
+  "hardwareMeasurements": 0,
+  "testGroupsPassed": 7,
+  "sha256": {
+    "src/acoustic.mjs": "d14db2f4843f328e016dd1f7f29b16612a910b1362599a4bbc74c9cca1f8dff3",
+    "analysis/acoustic_reference.py": "c35425fedc8daaf0aa4b7479af851e122f6bb0d421a5de34431753477bd3a59d",
+    "research/panel/acoustic/test_acoustic.mjs": "e8dad110fb257f2b365b60b4a781828fe85763595e2372698d781c09990e6fc8",
+    "research/panel/acoustic/round3-results.json": "a59b80fd69828fd214701d89b8e0f30dcb98e2c5c32a0546095bcc33831b312e",
+    "research/panel/acoustic/round3.md": "32c742476fd2c8a1346f3b36bf8ecf349d0f3cf2ee1c93af27ffdfe4b634089f",
+    "research/panel/acoustic/round2-preservation.json": "ce07d44d399146488a016906d6c4b902cf00521abe0e768083fbc78227bd461c"
+  }
+}

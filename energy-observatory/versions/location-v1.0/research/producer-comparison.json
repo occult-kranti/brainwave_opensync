@@ -1,0 +1,465 @@
+{
+  "passed": true,
+  "producerSHA256": "5bdf26177c864bc70948178d81e1e917137fa4960bfaeab5d523decf2c63ed9c",
+  "numericalComparisons": 127,
+  "maxRelativeError": 4.7905426653088645e-12,
+  "deviations": [
+    {
+      "label": "solid root",
+      "relativeError": 1.6098142791559773e-16
+    },
+    {
+      "label": "solid frequency",
+      "relativeError": 3.0498512126889716e-16
+    },
+    {
+      "label": "solid physical mass",
+      "relativeError": 0
+    },
+    {
+      "label": "radial mode 0",
+      "relativeError": 3.0498512126889716e-16
+    },
+    {
+      "label": "radial mode 1",
+      "relativeError": 4.1228876340901987e-16
+    },
+    {
+      "label": "radial mode 2",
+      "relativeError": 1.8054680431599267e-16
+    },
+    {
+      "label": "radial mode 3",
+      "relativeError": 2.6947994484142e-16
+    },
+    {
+      "label": "shell frequency",
+      "relativeError": 1.6658137043415972e-16
+    },
+    {
+      "label": "shell exact geometric mass",
+      "relativeError": 0
+    },
+    {
+      "label": "NIST-reference frequency",
+      "relativeError": 0
+    },
+    {
+      "label": "A eigen 0",
+      "relativeError": 0
+    },
+    {
+      "label": "A eigen 1",
+      "relativeError": 0
+    },
+    {
+      "label": "A/21000 sphere real",
+      "relativeError": 0
+    },
+    {
+      "label": "A/21000 sphere imag",
+      "relativeError": 9.003342755287522e-16
+    },
+    {
+      "label": "A/21000 table real",
+      "relativeError": 0
+    },
+    {
+      "label": "A/21000 table imag",
+      "relativeError": 2.1470628110277967e-16
+    },
+    {
+      "label": "A/22000 sphere real",
+      "relativeError": 1.6665555181628964e-16
+    },
+    {
+      "label": "A/22000 sphere imag",
+      "relativeError": 1.339302264878615e-16
+    },
+    {
+      "label": "A/22000 table real",
+      "relativeError": 1.8249361940651785e-16
+    },
+    {
+      "label": "A/22000 table imag",
+      "relativeError": 1.9412309641306038e-16
+    },
+    {
+      "label": "A/23000 sphere real",
+      "relativeError": 1.2975448002055823e-16
+    },
+    {
+      "label": "A/23000 sphere imag",
+      "relativeError": 1.5736315098091058e-16
+    },
+    {
+      "label": "A/23000 table real",
+      "relativeError": 1.1344871028431978e-16
+    },
+    {
+      "label": "A/23000 table imag",
+      "relativeError": 0
+    },
+    {
+      "label": "B eigen 0",
+      "relativeError": 0
+    },
+    {
+      "label": "B eigen 1",
+      "relativeError": 0
+    },
+    {
+      "label": "B/21000 sphere real",
+      "relativeError": 0
+    },
+    {
+      "label": "B/21000 sphere imag",
+      "relativeError": 2.0130175111728243e-16
+    },
+    {
+      "label": "B/21000 table real",
+      "relativeError": 0
+    },
+    {
+      "label": "B/21000 table imag",
+      "relativeError": 1.8569607696137429e-16
+    },
+    {
+      "label": "B/22000 sphere real",
+      "relativeError": 0
+    },
+    {
+      "label": "B/22000 sphere imag",
+      "relativeError": 0
+    },
+    {
+      "label": "B/22000 table real",
+      "relativeError": 0
+    },
+    {
+      "label": "B/22000 table imag",
+      "relativeError": 1.5512992105080131e-16
+    },
+    {
+      "label": "B/23000 sphere real",
+      "relativeError": 0
+    },
+    {
+      "label": "B/23000 sphere imag",
+      "relativeError": 1.1248413603262183e-15
+    },
+    {
+      "label": "B/23000 table real",
+      "relativeError": 1.645754874099619e-16
+    },
+    {
+      "label": "B/23000 table imag",
+      "relativeError": 3.7864858512125976e-16
+    },
+    {
+      "label": "mass-conserving thermal fraction",
+      "relativeError": 4.7905426653088645e-12
+    },
+    {
+      "label": "gravity comparison",
+      "relativeError": 1.643116994058295e-16
+    },
+    {
+      "label": "solid modal mass vs midpoint quadrature",
+      "relativeError": 6.808733199843566e-13
+    },
+    {
+      "label": "table 0/0 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/0 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/0 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/17440 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/17440 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/17440 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/21800 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/21800 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/21800 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/26160 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/26160 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0/26160 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.1/0 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.1/0 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.1/0 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.1/17440 real",
+      "relativeError": 3.2059440090734667e-16
+    },
+    {
+      "label": "table 0.1/17440 imaginary",
+      "relativeError": 6.762538144139347e-16
+    },
+    {
+      "label": "table 0.1/17440 magnitude",
+      "relativeError": 1.6013911639110107e-16
+    },
+    {
+      "label": "table 0.1/21800 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.1/21800 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.1/21800 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.1/26160 real",
+      "relativeError": 1.9611431316761509e-16
+    },
+    {
+      "label": "table 0.1/26160 imaginary",
+      "relativeError": 3.370714757568383e-16
+    },
+    {
+      "label": "table 0.1/26160 magnitude",
+      "relativeError": 3.916464444959049e-16
+    },
+    {
+      "label": "table 0.25/0 real",
+      "relativeError": 1.6974271206463568e-16
+    },
+    {
+      "label": "table 0.25/0 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.25/0 magnitude",
+      "relativeError": 1.6974271206463568e-16
+    },
+    {
+      "label": "table 0.25/17440 real",
+      "relativeError": 3.6736849363108895e-16
+    },
+    {
+      "label": "table 0.25/17440 imaginary",
+      "relativeError": 5.16611944168719e-16
+    },
+    {
+      "label": "table 0.25/17440 magnitude",
+      "relativeError": 3.670061971981513e-16
+    },
+    {
+      "label": "table 0.25/21800 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.25/21800 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.25/21800 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.25/26160 real",
+      "relativeError": 1.4981800389937582e-16
+    },
+    {
+      "label": "table 0.25/26160 imaginary",
+      "relativeError": 3.433329256027361e-16
+    },
+    {
+      "label": "table 0.25/26160 magnitude",
+      "relativeError": 1.4959563022438648e-16
+    },
+    {
+      "label": "table 0.5/0 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.5/0 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.5/0 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.5/17440 real",
+      "relativeError": 3.673684936310889e-16
+    },
+    {
+      "label": "table 0.5/17440 imaginary",
+      "relativeError": 5.166119441687189e-16
+    },
+    {
+      "label": "table 0.5/17440 magnitude",
+      "relativeError": 3.6700619719815127e-16
+    },
+    {
+      "label": "table 0.5/21800 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.5/21800 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.5/21800 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.5/26160 real",
+      "relativeError": 1.498180038993758e-16
+    },
+    {
+      "label": "table 0.5/26160 imaginary",
+      "relativeError": 3.4333292560273604e-16
+    },
+    {
+      "label": "table 0.5/26160 magnitude",
+      "relativeError": 1.4959563022438646e-16
+    },
+    {
+      "label": "table 0.75/0 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.75/0 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.75/0 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.75/17440 real",
+      "relativeError": 4.898246581747851e-16
+    },
+    {
+      "label": "table 0.75/17440 imaginary",
+      "relativeError": 6.888159255582917e-16
+    },
+    {
+      "label": "table 0.75/17440 magnitude",
+      "relativeError": 4.893415962642017e-16
+    },
+    {
+      "label": "table 0.75/21800 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.75/21800 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.75/21800 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.75/26160 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 0.75/26160 imaginary",
+      "relativeError": 3.43332925602736e-16
+    },
+    {
+      "label": "table 0.75/26160 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/0 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/0 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/0 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/17440 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/17440 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/17440 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/21800 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/21800 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/21800 magnitude",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/26160 real",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/26160 imaginary",
+      "relativeError": 0
+    },
+    {
+      "label": "table 1/26160 magnitude",
+      "relativeError": 0
+    }
+  ],
+  "limits": [
+    "No physical apparatus validated",
+    "Model agreement covers declared radial, coupled two-mode and empty-table point-response systems",
+    "Thick shell and anisotropic specimens require additional modeling"
+  ]
+}

@@ -1,0 +1,14 @@
+# Advisor admission to planning round 1
+
+All six roadmap REVIEW reports are present. Their hashes and candidate records are frozen in `planning1-admission.json`. The independently frozen skeptic gate controls admission; this stage designs attempts, not new implementation.
+
+Choose these bounded tracks:
+
+- **Corpus P0:** exact-statement and proof-evidence registry, consuming existing scope records. Separate metadata, semantic review, proof execution and physical evidence; no title-based promotion. Integrate with the network rather than inventing a second proof authority.
+- **Methods METHODS-1:** exact six-state two-coil/mechanical certificate, including nonzero mutual inductance and transduction. State ordering, Q positivity, dimensions, losses and both input ports must be explicit. Browser comparison is the F=0 specialization. Lean is optional after a bootstrap gate, not promised.
+- **Energy E1 → E2:** an all-parameter dephasing/work-loss lemma as a small first milestone; then a joint-state single-temperature cycle ledger including correlations and signed reset/preparation work. The first cycle model uses d=1 to avoid silently dropping a dephasing environment. No equality between free-energy lower bounds and actually achieved control cost is assumed. Thermal bosonic E3 is deferred.
+- **Acoustics gain calibration → pole benchmark:** first identify the rank and conditioning of log(E), log(rho), log(combined gain) for a fixed finite measurement model. Specify a concrete noise/calibration budget and abstention. The noisy A/B/A or ABBA pole classifier is dependent, not a claim of an intrinsic position law. Sensor optimization is deferred.
+- **Yang–Mills YM-P1:** prioritize an all-size compact-window correlation certificate using the combined support-volume exponential and boundary decay. Correct the prospective wording that a divergent prefactor could stay bounded. Freeze a radius schedule, finite/tail split and support assumptions before arithmetic. Keep route-B quantitative dynamics as a fallback; small-box Wilson signs are deferred until the missing finite-box lemma is admitted.
+- **Skeptic:** independently assess these selections using the existing frozen gate. Name fatal missing premises, weak negative controls, duplicate past work and exaggerated feasibility. Give exact revisions for planning2; no expectation of blanket acceptance.
+
+Each producer writes `plan1.md` and `plan1.json`: exact question, novelty label, prerequisites, steps, artifact paths, positive/negative controls, acceptance, independent reviewer, bounded estimated effort/compute and stop rule. Be concise and actionable. Reuse consolidated source evidence; only a specific unresolved prerequisite justifies new lookup. Do not run new implementations or simulations in the planning stage. Planning2 will respond to actual objections from these plans and the skeptic.

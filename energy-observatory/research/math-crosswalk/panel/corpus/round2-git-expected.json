@@ -1,0 +1,17 @@
+{
+  "lean/ComparatorChallenges/AmplitudeDamping.json": "5ecbb645f1bd6340692db50f670d3c34ee60490f",
+  "lean/ComparatorChallenges/AmplitudeDamping.lean": "ac5f251c095417ac4a798d59959db85f6865fee8",
+  "lean/ComparatorChallenges/ClassicalON.json": "efe82f734b5aa3f6414779109d993f27f9738baf",
+  "lean/ComparatorChallenges/ClassicalON.lean": "c217967fbf85e6066bf39aebfdf4f5656a46d612",
+  "lean/ComparatorChallenges/Conductivity.json": "e6d8d20f84bedd72e8285337afcb8b0816b3d2ec",
+  "lean/ComparatorChallenges/Conductivity.lean": "a9ec5e895aa395a437c9386a9e790315dba193f4",
+  "lean/ComparatorChallenges/ElasticityUniqueness.json": "d35e9d039a184a87f2594a57185dbf67d3facec2",
+  "lean/ComparatorChallenges/ElasticityUniqueness.lean": "6f68a5b3ff2d69b7f43b7d2b3b4576e490b208cc",
+  "lean/ComparatorChallenges/TamingCompatibility.json": "d46322e905c8a9352677dcfb190ce348a9b81f45",
+  "lean/ComparatorChallenges/TamingCompatibility.lean": "29c1972e51832260b92e9fe40714d816246c647a",
+  "lean/docs/215.md": "3ced0c5a2d64b6d104d0de14aaa55757c62327c8",
+  "lean/docs/276.md": "657963d5d9ffa8dae2294ad608fa6ac1d9e77087",
+  "lean/docs/342.md": "890c10b573d2d383741d727fba384d4e52c0942e",
+  "lean/docs/365.md": "d84860a9139731d3ffc3a481b79851d022170440",
+  "lean/docs/372.md": "2d818b463d3b4c98c181639b1b56d300eb3fa445"
+}

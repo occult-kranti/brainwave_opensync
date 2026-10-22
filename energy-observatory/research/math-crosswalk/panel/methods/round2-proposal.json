@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "status": "proposed, not executed",
+  "round": 2,
+  "target": "Finite dimensionless canonical oscillator energy identity and certificate admission",
+  "model": {
+    "state": [
+      "q",
+      "p"
+    ],
+    "parameters": {
+      "mass": "m>0",
+      "stiffness": "k>0",
+      "damping": "b>=0"
+    },
+    "input": "u",
+    "output": "y=p/m",
+    "storage": "H=k*q^2/2+p^2/(2*m)",
+    "dynamics": [
+      "qdot=p/m",
+      "pdot=-k*q-b*p/m+u"
+    ],
+    "identity": "Hdot=u*y-b*(p/m)^2",
+    "units": "dimensionless demonstrator; no physical calibration claim"
+  },
+  "methods": [
+    "Exact rational polynomial coefficient expansion",
+    "Separate exact rational matrix multiplication and factor certificate"
+  ],
+  "acceptance": [
+    "Correct identity coefficients all vanish",
+    "Storage positive with declared domain",
+    "Dissipation has a nonnegative exact square witness",
+    "Wrong output y=p at m !=1 rejected",
+    "Negative damping rejected",
+    "Perturbed Gram certificate rejected",
+    "A coarse sample grid positive case with an exact negative between-grid witness is preserved"
+  ],
+  "notClaimed": [
+    "Lean proof unless compiled",
+    "New mathematical theorem",
+    "Experimental passivity",
+    "Any OpenAI problem solved",
+    "Continuum Yang\u2013Mills consequence"
+  ],
+  "advisorMustSelect": true
+}

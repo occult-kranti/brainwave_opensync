@@ -1,0 +1,133 @@
+{
+  "acceptance": "All declared exact identities and factor/dimension/domain checks must pass; all wrong controls must be rejected for their declared reason. Report every control explicitly.",
+  "artifacts": [
+    "exact_certificate.py",
+    "exact-results.json",
+    "round2-contract.json",
+    "round2-freeze.json",
+    "round2.md"
+  ],
+  "domain": {
+    "b": ">=0",
+    "k": ">0",
+    "m": ">0",
+    "q,p,u": "arbitrary real"
+  },
+  "domainReasoning": "H>0 for any nonzero(q,p) follows from m>0,k>0. b*(p/m)^2>=0 follows from b>=0. Finite matrix cases do not prove these universal sign facts.",
+  "input": "u",
+  "matrixCases": [
+    {
+      "b": "1/5",
+      "id": "damped",
+      "k": "3",
+      "m": "2"
+    },
+    {
+      "b": "0",
+      "id": "lossless",
+      "k": "5/2",
+      "m": "7/3"
+    },
+    {
+      "b": "9/13",
+      "id": "nonunit",
+      "k": "11/7",
+      "m": "1/4"
+    }
+  ],
+  "matrixMethod": {
+    "A": "[[0,1/m],[-k,-b/m]]",
+    "B": "[0,1]^T",
+    "Q": "diag(k,1/m)",
+    "arithmetic": "Python fractions.Fraction, independently assembled matrices at three frozen rational parameter cases",
+    "factor": "L*D*L^T, L=[[0],[1/m]], D=[[b]]",
+    "storageDerivative": "(Q*A+A^T*Q)/2",
+    "supply": "Q*B=[0,1/m]^T",
+    "target": "-Q*diag(0,b)*Q"
+  },
+  "model": {
+    "H": "k*q^2/2+p^2/(2*m)",
+    "identity": "dH/dt-u*y+b*(p/m)^2=0",
+    "pdot": "-k*q-b*p/m+u",
+    "qdot": "p/m",
+    "y": "p/m"
+  },
+  "notClaimed": [
+    "Lean/Comparator verification",
+    "new theorem",
+    "certified continuum spectrum",
+    "experimental passivity",
+    "OpenAI problem solved",
+    "Yang-Mills mass gap",
+    "free-energy device"
+  ],
+  "researchStop": "No third round; any rerun verifies the same frozen contract.",
+  "round": 2,
+  "schema": 1,
+  "state": [
+    "q",
+    "p"
+  ],
+  "status": "frozen before implementation and execution",
+  "symbolicMethod": "Sparse Laurent-polynomial arithmetic over exact rational coefficients in q,p,u,m,k,b; m is nonzero by domain. Expand derivative and compare every coefficient. This is not a formal theorem-prover kernel.",
+  "target": "Exact canonical-oscillator identity and certificate admission; no data or hardware inference",
+  "units": "dimensionless",
+  "wrongControls": [
+    {
+      "expected": "nonzero supply-identity residual",
+      "id": "wrong-output",
+      "mutation": "y=p",
+      "witness": {
+        "b": "1/5",
+        "k": "3",
+        "m": "2",
+        "p": "1",
+        "q": "0",
+        "u": "1"
+      }
+    },
+    {
+      "expected": "domain rejection and positive unforced storage derivative",
+      "id": "negative-damping",
+      "mutation": "b=-1/5 at m=2,k=3",
+      "witness": {
+        "p": "1",
+        "q": "0",
+        "u": "0"
+      }
+    },
+    {
+      "expected": "coefficient/matrix mismatch with dissipation target",
+      "id": "perturbed-gram",
+      "mutation": "add 1/7 to lower-right Gram entry for damped case"
+    },
+    {
+      "expected": "dimension check rejects",
+      "id": "factor-shape",
+      "mutation": "replace L*D*L^T with L^T*D*L using L 2x1 and D 1x1"
+    },
+    {
+      "expected": "domain rejection before inversion",
+      "id": "nonpositive-storage",
+      "mutations": [
+        {
+          "b": "1/5",
+          "k": "3",
+          "m": "0"
+        },
+        {
+          "b": "1/5",
+          "k": "0",
+          "m": "2"
+        }
+      ]
+    },
+    {
+      "expected": "positive at all 11 grid points; negative exact between-grid witness",
+      "grid": "j/10 for j=0,...,10",
+      "id": "grid-is-not-proof",
+      "polynomial": "(x-11/20)^2-1/1000",
+      "witness": "x=11/20"
+    }
+  ]
+}

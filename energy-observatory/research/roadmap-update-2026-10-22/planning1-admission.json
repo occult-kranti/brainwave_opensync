@@ -1,0 +1,20 @@
+{
+  "stage": "plan1",
+  "status": "selected after all six review reports",
+  "filesSHA256": {
+    "advisor-plan1.md": "7211ee5dbad03b5bc9322e04cbb5723fb3ac02c93a7023ec9f41cf4017761589",
+    "panel/corpus/review.md": "a2be0efbd0435db4b59af312627835dbad589234c886f97d3406001a77eb507f",
+    "panel/corpus/candidates.json": "a97b84177da86621815789291c816958ec30faed565e9d8f6a49535bd61c8a3a",
+    "panel/yangmills/review.md": "74a9172cbb62405af87c6c47b695c7cb3e28620d5f6de30e78db3edccbab31a2",
+    "panel/yangmills/candidates.json": "2899512527e5f4998ffd4ad698b108cac52b74d93e3e8c916cbc1ef13a7ff7e8",
+    "panel/energy/review.md": "a6fa937d9c2553ab70b50d945c53e4723dee47d976448c603e323a901f25098f",
+    "panel/energy/candidates.json": "b096b4d4458f25b1a26d328028c4b99a3ff08f6ed41d557dd7ffed7987ebba77",
+    "panel/acoustics/review.md": "c05bfbe56a4602ffca7ac0fb95e008c16f4d6b664a414aa083531bd0acbbe856",
+    "panel/acoustics/candidates.json": "e652238fa24cc998466af9f66e715bb32c0a6d9a8c8fcb92eeafdb6506211b8a",
+    "panel/methods/review.md": "039ad342ea3cc8f245cbcbaa9a5a9f74277209ace13495dda63ecf12de34b446",
+    "panel/methods/candidates.json": "2a0067a3b2afa3c133d056b81eaf8b684ece7e4cd4bcb842e8d74a5661274703",
+    "panel/skeptic/review.md": "d2715f6a094dcdcb3c7054bf578cdc0f7251ba12069173e533ed5e961590912d",
+    "panel/skeptic/candidates.json": "77acb76562af78f613187497aef89c891cf2fccdb6593ffb5aa13579358654e3"
+  },
+  "implementation": false
+}

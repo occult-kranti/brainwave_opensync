@@ -1,0 +1,216 @@
+{
+  "schema": 1,
+  "createdUtc": "2026-10-22T03:59:05.008241+00:00",
+  "status": "frozen before reading any peer Round2 code or results",
+  "basis": "Round1 contracts and advisor Round2 admission were available; independence is implementation and expected-result independence, not blindness to shared premises",
+  "round1GateSha256": "5f4226309fd04f975f066c54eeed96ac605f8d0651acd948f3e65d576b346d55",
+  "ownCases": {
+    "finiteGap": {
+      "n": [
+        1,
+        2,
+        3,
+        7,
+        97,
+        1000003
+      ],
+      "H": "diag(0,1/n,1)",
+      "expectedGap": "1/n",
+      "positiveControl": "diag(0,1,2) has gap1",
+      "allN": "For every epsilon>0 choose integer n>1/epsilon; 0<gap(H_n)<epsilon."
+    },
+    "partialResolvent": {
+      "A": [
+        1,
+        2,
+        3
+      ],
+      "B": [
+        1,
+        2,
+        4
+      ],
+      "retainedCoordinates": [
+        0,
+        1
+      ],
+      "positiveZ": [
+        "1/7",
+        "2/3",
+        "1",
+        "13/2",
+        "101/3"
+      ],
+      "expectedRetained": "diag(1/(z+1),1/(z+2))",
+      "expectedOmittedDifference": "1/((z+3)*(z+4))>0"
+    },
+    "documentaryGate": {
+      "categories": [
+        "scope-mismatch",
+        "insufficient-evidence",
+        "eligible-for-proof-review"
+      ],
+      "expectedControls": {
+        "identicalAlgebraic": "eligible-for-proof-review",
+        "companionFormalization": "scope-mismatch",
+        "entropyWilson": "scope-mismatch",
+        "circuitApparatus": "scope-mismatch",
+        "finiteContinuum": "scope-mismatch",
+        "noStatement": "insufficient-evidence",
+        "sameTitleOnly": "insufficient-evidence"
+      },
+      "limitation": "Metadata equality is not theorem or dependency verification."
+    }
+  },
+  "peerReviewIndependentCases": {
+    "energy": {
+      "units": "epsilon=1",
+      "convention": "p excited population; gamma damping; nu bath stationary excited population; offdiagonal c; retained dephasing d",
+      "formula": "p'=(1-gamma)*p+gamma*nu; c'=sqrt(1-gamma)*d*c; Q=gamma*(nu-p); W=(sqrt((2*p-1)^2+4*abs(c)^2)+2*p-1)/2",
+      "cases": [
+        {
+          "name": "heated-ground",
+          "p": "0",
+          "c": "0",
+          "gamma": "1/2",
+          "nu": "1/4",
+          "d": "1",
+          "expectedP": "1/8",
+          "expectedQ": "1/8",
+          "expectedW": "0"
+        },
+        {
+          "name": "thermal-fixed",
+          "p": "1/4",
+          "c": "0",
+          "gamma": "3/7",
+          "nu": "1/4",
+          "d": "1",
+          "expectedP": "1/4",
+          "expectedQ": "0",
+          "expectedW": "0"
+        },
+        {
+          "name": "inverted-bath",
+          "p": "0",
+          "c": "0",
+          "gamma": "1",
+          "nu": "3/4",
+          "d": "1",
+          "expectedP": "3/4",
+          "expectedQ": "3/4",
+          "expectedW": "1/2"
+        },
+        {
+          "name": "zero-temperature",
+          "p": "3/4",
+          "c": "0",
+          "gamma": "1/4",
+          "nu": "0",
+          "d": "1",
+          "expectedP": "9/16",
+          "expectedQ": "-3/16",
+          "expectedW": "1/8"
+        },
+        {
+          "name": "pure-quarter-dephased",
+          "p": "1/4",
+          "c": "sqrt(3)/4",
+          "gamma": "0",
+          "nu": "0",
+          "d": "0",
+          "expectedP": "1/4",
+          "expectedQ": "0",
+          "expectedW": "0"
+        },
+        {
+          "name": "pure-quarter-retained",
+          "p": "1/4",
+          "c": "sqrt(3)/4",
+          "gamma": "0",
+          "nu": "0",
+          "d": "1",
+          "expectedP": "1/4",
+          "expectedQ": "0",
+          "expectedW": "1/4"
+        }
+      ],
+      "additionalChecks": [
+        "trace1",
+        "positive semidefinite",
+        "Gibbs entropy production for 0<nu<1/2",
+        "zero-temperature old-code match if API available"
+      ],
+      "boundary": "Ideal fixed Hamiltonian channel; not apparatus efficiency or capacity."
+    },
+    "acoustics": {
+      "M": [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "K": [
+        [
+          "5",
+          "-1"
+        ],
+        [
+          "-1",
+          "3"
+        ]
+      ],
+      "C": [
+        [
+          "1/5",
+          "0"
+        ],
+        [
+          "0",
+          "1/10"
+        ]
+      ],
+      "scale": "4",
+      "omega": "2",
+      "expected": "generalized K/M eigenvalues unchanged; Hscaled=H/4 for H=(K-omega^2*M+i*omega*C)^-1",
+      "elasticSphere": "E,rho scaled by4 at fixed R,nu: frequencies unchanged; Lam\u00e9 moduli and full static traction map scaled by4",
+      "sensitivity": {
+        "frequencyRow": [
+          "1/2",
+          "-1/2"
+        ],
+        "nullDirection": [
+          "1",
+          "1"
+        ],
+        "massRow": [
+          "0",
+          "1"
+        ],
+        "augmentedDeterminant": "1/2"
+      },
+      "boundary": "No full inverse elasticity reconstruction; uncalibrated gain can preserve ambiguity."
+    },
+    "methods": {
+      "energy": "E=(3*q^2+2*v^2)/2",
+      "ode": [
+        "qdot=v",
+        "vdot=(u-5*v-3*q)/2"
+      ],
+      "expectedIdentity": "dE/dt=u*v-5*v^2",
+      "negativeDamping": "replace5by-5, at q=0,v=1,u=0 gives dE/dt=5>0",
+      "betweenGrid": "P(x)=x^2-x+3/16; P(0)=P(1)=3/16>0; P(1/2)=-1/16",
+      "boundary": "Finite-dimensional exact polynomial identity only, not NSPI, Lean or physical validation."
+    },
+    "yangmills": {
+      "tau": "96/g^4",
+      "threshold": "tau<=1/100000000 iff g^4>=9600000000 for g>0",
+      "fixedProjector": "diag(0,1/n,1) shares ground projection diag(1,0,0) for every n but infgap0",
+      "boundary": "No physical mapping a(n), continuum field existence, uniform continuum gap or general ground-state uniqueness established."
+    }
+  }
+}

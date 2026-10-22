@@ -1,0 +1,587 @@
+{
+  "schema": 1,
+  "round": 3,
+  "status": "passed for reviewed hashes and stated synthetic cases",
+  "physicalMeasurements": 0,
+  "reviewedSha256": {
+    "src/em.mjs": "09ee1be95fe4586b1633fb39dae11fdc7f6a5dc3604461632c320d1e91193984",
+    "src/acoustic.mjs": "d14db2f4843f328e016dd1f7f29b16612a910b1362599a4bbc74c9cca1f8dff3",
+    "src/identifiability.mjs": "fa6e497e275d10c1656060883e8fb1b9c865d4686e25bb012e8cde4887683b29",
+    "analysis/systems_reference.py": "0ac8d7ae3535f2714c0195a4682f164abe2dc100ca542e50023f8b46a8c7d2b9",
+    "research/panel/systems/independent-reference.json": "ae84d7291729b9490771f5dd5fe5d112d0a3a8585489a1662c24c61cfaf573a7"
+  },
+  "referenceOrigin": "Complex matrix equations and original fixtures frozen in round2; API adapter and held-out cases authored in round3 after code inspection.",
+  "fixtureScope": {
+    "acoustic": "Exact frozen parameters and drive, with explicit peak-to-RMS conversion.",
+    "em": "Original frozen fixture has external mechanical forcePeak=0.01 and cannot be passed to voltage-only emSolve. Compared its Fext=0 specialization; original two-input fixture remains independently solved but not cross-compared."
+  },
+  "solveCases": [
+    {
+      "label": "frozen-equation-Fext-zero-specialization",
+      "model": "em",
+      "parameters": {
+        "frequencyHz": 1000.0,
+        "coupling": 0.5,
+        "loadOhm": 10.0,
+        "driveVrms": 0.7071067811865475,
+        "L1H": 0.01,
+        "L2H": 0.01,
+        "C1F": 2.533e-06,
+        "C2F": 2.533e-06,
+        "R1Ohm": 2.0,
+        "R2Ohm": 2.0,
+        "massKg": 0.01,
+        "stiffnessNpm": 15791.367041742973,
+        "dampingNsPm": 0.2,
+        "mechanicalLoadNsPm": 0.1,
+        "transducerNA": 1.0
+      },
+      "status": "passed"
+    },
+    {
+      "label": "heldout-detuned-signed",
+      "model": "em",
+      "parameters": {
+        "frequencyHz": 1379.0,
+        "coupling": -0.45,
+        "loadOhm": 13.0,
+        "driveVrms": 0.73,
+        "transducerNA": -0.81,
+        "mechanicalLoadNsPm": 0.07
+      },
+      "status": "passed"
+    },
+    {
+      "label": "heldout-asymmetric",
+      "model": "em",
+      "parameters": {
+        "frequencyHz": 477.0,
+        "coupling": 0.61,
+        "loadOhm": 7.5,
+        "L1H": 0.017,
+        "L2H": 0.006,
+        "C1F": 4.8e-06,
+        "C2F": 1.3e-06,
+        "R1Ohm": 0.7,
+        "R2Ohm": 3.2,
+        "driveVrms": 0.21,
+        "massKg": 0.004,
+        "stiffnessNpm": 9012.0
+      },
+      "status": "passed"
+    },
+    {
+      "label": "zero-drive",
+      "model": "em",
+      "parameters": {
+        "driveVrms": 0.0
+      },
+      "status": "passed"
+    },
+    {
+      "label": "zero-coil-coupling",
+      "model": "em",
+      "parameters": {
+        "coupling": 0.0,
+        "frequencyHz": 1173.0
+      },
+      "status": "passed"
+    },
+    {
+      "label": "zero-mechanical-transducer",
+      "model": "em",
+      "parameters": {
+        "transducerNA": 0.0,
+        "frequencyHz": 941.0
+      },
+      "status": "passed"
+    },
+    {
+      "label": "zero-electrical-load",
+      "model": "em",
+      "parameters": {
+        "loadOhm": 0.0,
+        "frequencyHz": 783.0
+      },
+      "status": "passed"
+    },
+    {
+      "label": "exact-frozen-peak-to-RMS",
+      "model": "acoustic",
+      "parameters": {
+        "frequencyHz": 100.0,
+        "loadOhm": 10000.0,
+        "forceRmsN": 0.0070710678118654745,
+        "massKg": 0.01,
+        "stiffnessNPerM": 4000.0,
+        "dampingNsPerM": 0.2,
+        "couplingNPerV": 0.02,
+        "capacitanceF": 1e-06,
+        "dielectricConductanceS": 1e-07
+      },
+      "status": "passed"
+    },
+    {
+      "label": "heldout-dielectric-loss",
+      "model": "acoustic",
+      "parameters": {
+        "frequencyHz": 173.4,
+        "loadOhm": 7312.0,
+        "forceRmsN": 0.0017,
+        "massKg": 0.008,
+        "stiffnessNPerM": 11620.0,
+        "couplingNPerV": 0.019,
+        "dielectricConductanceS": 2.3e-05,
+        "capacitanceF": 2.1e-07,
+        "dampingNsPerM": 0.34
+      },
+      "status": "passed"
+    },
+    {
+      "label": "heldout-zero-mechanical-damping",
+      "model": "acoustic",
+      "parameters": {
+        "frequencyHz": 239.3,
+        "dampingNsPerM": 0.0,
+        "dielectricConductanceS": 1e-06
+      },
+      "status": "passed"
+    },
+    {
+      "label": "zero-force",
+      "model": "acoustic",
+      "parameters": {
+        "forceRmsN": 0.0,
+        "frequencyHz": 189.0
+      },
+      "status": "passed"
+    },
+    {
+      "label": "zero-piezo-coupling",
+      "model": "acoustic",
+      "parameters": {
+        "couplingNPerV": 0.0,
+        "frequencyHz": 121.0
+      },
+      "status": "passed"
+    }
+  ],
+  "fixedInputSweepCases": [
+    {
+      "label": "heldout-unsorted-grid",
+      "model": "em",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 0.03,
+        "maxDriveVrms": 10.0,
+        "maxCurrentRmsA": 0.7,
+        "maxStoredEnergyJ": 0.01,
+        "frequenciesHz": [
+          1500.0,
+          700.0,
+          1000.0
+        ],
+        "couplings": [
+          -0.2,
+          0.0,
+          0.5
+        ],
+        "loadsOhm": [
+          30.0,
+          5.0,
+          15.0
+        ]
+      },
+      "feasibleCount": 18,
+      "rejections": {
+        "zeroInputResponse": 0,
+        "zeroUsefulResponse": 9,
+        "driveLimit": 0,
+        "currentLimit": 0,
+        "storageLimit": 0,
+        "undefinedObjective": 0
+      }
+    },
+    {
+      "label": "heldout-single-cell",
+      "model": "em",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 0.017,
+        "maxDriveVrms": 10.0,
+        "maxCurrentRmsA": 0.7,
+        "maxStoredEnergyJ": 0.01,
+        "frequenciesHz": [
+          1379.0
+        ],
+        "couplings": [
+          0.45
+        ],
+        "loadsOhm": [
+          13.0
+        ],
+        "driveVrms": 0.0
+      },
+      "feasibleCount": 1,
+      "rejections": {
+        "zeroInputResponse": 0,
+        "zeroUsefulResponse": 0,
+        "driveLimit": 0,
+        "currentLimit": 0,
+        "storageLimit": 0,
+        "undefinedObjective": 0
+      }
+    },
+    {
+      "label": "postscale-drive-limit",
+      "model": "em",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 0.017,
+        "maxDriveVrms": 0.5115448803339214,
+        "maxCurrentRmsA": 0.7,
+        "maxStoredEnergyJ": 0.01,
+        "frequenciesHz": [
+          1379.0
+        ],
+        "couplings": [
+          0.45
+        ],
+        "loadsOhm": [
+          13.0
+        ]
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "zeroInputResponse": 0,
+        "zeroUsefulResponse": 0,
+        "driveLimit": 1,
+        "currentLimit": 0,
+        "storageLimit": 0,
+        "undefinedObjective": 0
+      }
+    },
+    {
+      "label": "postscale-current-limit",
+      "model": "em",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 0.017,
+        "maxDriveVrms": 10.0,
+        "maxCurrentRmsA": 0.031412816081034745,
+        "maxStoredEnergyJ": 0.01,
+        "frequenciesHz": [
+          1379.0
+        ],
+        "couplings": [
+          0.45
+        ],
+        "loadsOhm": [
+          13.0
+        ]
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "zeroInputResponse": 0,
+        "zeroUsefulResponse": 0,
+        "driveLimit": 0,
+        "currentLimit": 1,
+        "storageLimit": 0,
+        "undefinedObjective": 0
+      }
+    },
+    {
+      "label": "postscale-peak-storage-limit",
+      "model": "em",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 0.017,
+        "maxDriveVrms": 10.0,
+        "maxCurrentRmsA": 0.7,
+        "maxStoredEnergyJ": 1.1087723713871255e-05,
+        "frequenciesHz": [
+          1379.0
+        ],
+        "couplings": [
+          0.45
+        ],
+        "loadsOhm": [
+          13.0
+        ]
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "zeroInputResponse": 0,
+        "zeroUsefulResponse": 0,
+        "driveLimit": 0,
+        "currentLimit": 0,
+        "storageLimit": 1,
+        "undefinedObjective": 0
+      }
+    },
+    {
+      "label": "no-coupling-no-useful-response",
+      "model": "em",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 0.017,
+        "maxDriveVrms": 10.0,
+        "maxCurrentRmsA": 0.7,
+        "maxStoredEnergyJ": 0.01,
+        "frequenciesHz": [
+          1379.0
+        ],
+        "couplings": [
+          0.0
+        ],
+        "loadsOhm": [
+          13.0
+        ]
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "zeroInputResponse": 0,
+        "zeroUsefulResponse": 1,
+        "driveLimit": 0,
+        "currentLimit": 0,
+        "storageLimit": 0,
+        "undefinedObjective": 0
+      }
+    },
+    {
+      "label": "no-dissipative-input-response",
+      "model": "em",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 0.017,
+        "maxDriveVrms": 10.0,
+        "maxCurrentRmsA": 0.7,
+        "maxStoredEnergyJ": 0.01,
+        "frequenciesHz": [
+          1379.0
+        ],
+        "couplings": [
+          0.0
+        ],
+        "loadsOhm": [
+          13.0
+        ],
+        "R1Ohm": 0.0
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "zeroInputResponse": 1,
+        "zeroUsefulResponse": 0,
+        "driveLimit": 0,
+        "currentLimit": 0,
+        "storageLimit": 0,
+        "undefinedObjective": 0
+      }
+    },
+    {
+      "label": "heldout-lossy-grid",
+      "model": "acoustic",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 1.7e-06,
+        "maxForceRmsN": 0.02,
+        "maxVelocityRmsMps": 0.02,
+        "maxVoltageRmsV": 0.5,
+        "frequencyMinHz": 113.0,
+        "frequencyMaxHz": 269.0,
+        "frequencyPoints": 9,
+        "loadMinOhm": 330.0,
+        "loadMaxOhm": 82000.0,
+        "loadPoints": 11,
+        "dielectricConductanceS": 2.3e-05,
+        "couplingNPerV": 0.019,
+        "capacitanceF": 2.1e-07
+      },
+      "feasibleCount": 99,
+      "rejections": {}
+    },
+    {
+      "label": "heldout-repeated-cell",
+      "model": "acoustic",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 1.7e-06,
+        "maxForceRmsN": 0.02,
+        "maxVelocityRmsMps": 0.02,
+        "maxVoltageRmsV": 0.5,
+        "frequencyMinHz": 173.4,
+        "frequencyMaxHz": 173.4,
+        "frequencyPoints": 2,
+        "loadMinOhm": 7312.0,
+        "loadMaxOhm": 7312.0,
+        "loadPoints": 2,
+        "dielectricConductanceS": 2.3e-05,
+        "couplingNPerV": 0.019,
+        "capacitanceF": 2.1e-07,
+        "forceRmsN": 0.0
+      },
+      "feasibleCount": 4,
+      "rejections": {}
+    },
+    {
+      "label": "postscale-force-limit",
+      "model": "acoustic",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 1.7e-06,
+        "maxForceRmsN": 0.0036429386098794543,
+        "maxVelocityRmsMps": 0.02,
+        "maxVoltageRmsV": 0.5,
+        "frequencyMinHz": 173.4,
+        "frequencyMaxHz": 173.4,
+        "frequencyPoints": 2,
+        "loadMinOhm": 7312.0,
+        "loadMaxOhm": 7312.0,
+        "loadPoints": 2,
+        "dielectricConductanceS": 2.3e-05,
+        "couplingNPerV": 0.019,
+        "capacitanceF": 2.1e-07
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "constraint-limit": 4
+      }
+    },
+    {
+      "label": "postscale-velocity-limit",
+      "model": "acoustic",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 1.7e-06,
+        "maxForceRmsN": 0.02,
+        "maxVelocityRmsMps": 0.0012099218903650366,
+        "maxVoltageRmsV": 0.5,
+        "frequencyMinHz": 173.4,
+        "frequencyMaxHz": 173.4,
+        "frequencyPoints": 2,
+        "loadMinOhm": 7312.0,
+        "loadMaxOhm": 7312.0,
+        "loadPoints": 2,
+        "dielectricConductanceS": 2.3e-05,
+        "couplingNPerV": 0.019,
+        "capacitanceF": 2.1e-07
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "constraint-limit": 4
+      }
+    },
+    {
+      "label": "postscale-voltage-limit",
+      "model": "acoustic",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 1.7e-06,
+        "maxForceRmsN": 0.02,
+        "maxVelocityRmsMps": 0.02,
+        "maxVoltageRmsV": 0.082380081804264,
+        "frequencyMinHz": 173.4,
+        "frequencyMaxHz": 173.4,
+        "frequencyPoints": 2,
+        "loadMinOhm": 7312.0,
+        "loadMaxOhm": 7312.0,
+        "loadPoints": 2,
+        "dielectricConductanceS": 2.3e-05,
+        "couplingNPerV": 0.019,
+        "capacitanceF": 2.1e-07
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "constraint-limit": 4
+      }
+    },
+    {
+      "label": "no-coupling-damping-only",
+      "model": "acoustic",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 1.7e-06,
+        "maxForceRmsN": 0.02,
+        "maxVelocityRmsMps": 0.02,
+        "maxVoltageRmsV": 0.5,
+        "frequencyMinHz": 173.4,
+        "frequencyMaxHz": 173.4,
+        "frequencyPoints": 2,
+        "loadMinOhm": 7312.0,
+        "loadMaxOhm": 7312.0,
+        "loadPoints": 2,
+        "dielectricConductanceS": 2.3e-05,
+        "couplingNPerV": 0.0,
+        "capacitanceF": 2.1e-07
+      },
+      "feasibleCount": 4,
+      "rejections": {}
+    },
+    {
+      "label": "zero-mean-input-not-rescalable",
+      "model": "acoustic",
+      "status": "passed",
+      "parameters": {
+        "mode": "fixed-input",
+        "targetInputW": 1.7e-06,
+        "maxForceRmsN": 0.02,
+        "maxVelocityRmsMps": 0.02,
+        "maxVoltageRmsV": 0.5,
+        "frequencyMinHz": 173.4,
+        "frequencyMaxHz": 173.4,
+        "frequencyPoints": 2,
+        "loadMinOhm": 7312.0,
+        "loadMaxOhm": 7312.0,
+        "loadPoints": 2,
+        "dielectricConductanceS": 2.3e-05,
+        "couplingNPerV": 0.0,
+        "capacitanceF": 2.1e-07,
+        "dampingNsPerM": 0.0
+      },
+      "feasibleCount": 0,
+      "rejections": {
+        "nonpositive-unit-input": 4
+      }
+    }
+  ],
+  "zeroTargetRejections": 2,
+  "conditionalAcousticLoadOptimum": {
+    "loadOhm": 3254.8681377974613,
+    "efficiency": 0.7321136473785289,
+    "assumptions": "Fixed frequency and positive matched receiver mechanical input; b>0, theta nonzero; unconstrained amplitudes. Does not imply feasibility under force/velocity/voltage caps."
+  },
+  "identifiability": {
+    "scale": 7.3,
+    "rank": 3,
+    "nullity": 1,
+    "rankWithVelocity": 4,
+    "scope": "Four-state known electrical model, nonzero coupling, no independent force input, calibrated complex velocity and fixed orientation/phase. Unknown sensor gain or unmeasured force can reintroduce ambiguity; speed magnitude does not determine coupling sign."
+  },
+  "checksPassed": 613,
+  "maximumToleranceFraction": 6.578963813747143e-07,
+  "tolerance": {
+    "relative": 2e-09,
+    "absolute": 2e-12,
+    "overrides": "Input matching1e-15W; conditional derivative1e-20; velocity scaling1e-13."
+  },
+  "limits": [
+    "No hardware certification, global optimum, new energy source or full floating-point-domain proof.",
+    "Fixed input means ideal AC terminal (EM) or receiver mechanical work (acoustic), not upstream wall-supply input.",
+    "No measured finite bandwidth, sensor response, radiation capture, transients, nonlinearities or temperature dependence modeled.",
+    "EM rejects useful response below its declared1e-15W unit-probe floor; acoustic may retain a dissipative zero-output cell. These are distinct selection policies, not different conservation laws."
+  ],
+  "crosscheckSha256": "0a97fced2eb6f5ec35d8cdf77b3386079e1dabeff2c9c0df107518fd600182ba"
+}

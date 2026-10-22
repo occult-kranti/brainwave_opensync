@@ -1,0 +1,62 @@
+[
+  {
+    "id": "record-claim-boundary",
+    "claim": "Source-reported efficiencies can be compared only after matching their input/output boundaries and acquisition conditions.",
+    "status": "methodological synthesis; not new physics",
+    "sourceIds": [
+      "records-power-2025",
+      "records-tesla-685957"
+    ],
+    "objection": "A receiver-only efficiency or capacitor discharge can look like an overall energy source.",
+    "response": "Name every external input and storage endpoint; preserve separate nested ledgers rather than adding internal transfer twice.",
+    "decision": "Adopt for every displayed energy ratio.",
+    "nextMissingMeasurement": "Calibrated same-run input/output and storage data."
+  },
+  {
+    "id": "record-claim-government",
+    "claim": "Government funding, custody and a patent grant are different evidence stages from a measured energy result.",
+    "status": "documentary distinction",
+    "sourceIds": [
+      "records-arpa-lenr-2023",
+      "records-marrs-faq",
+      "records-gateway-1983",
+      "records-tesla-685957"
+    ],
+    "objection": "A prestigious custodian could be mistaken for independent experimental validation.",
+    "response": "Graph relations explicitly label funds, proposes, archives, reports or challenges.",
+    "decision": "No program or patent edge becomes demonstrates-net-energy.",
+    "nextMissingMeasurement": "Actual replicated result and complete measurement boundary."
+  },
+  {
+    "id": "record-claim-marrs-unit",
+    "claim": "MARRS BAA page 4 contains inconsistent picobarn-to-cm\u00b2 notation.",
+    "status": "visually checked source inconsistency; independent arithmetic review pending",
+    "sourceIds": [
+      "records-marrs-baa"
+    ],
+    "objection": "OCR corruption or a different source version could explain the apparent mismatch.",
+    "response": "Downloaded official PDF and rendered page confirm literal notation; exact hash and page retained. One picobarn is 10^-36 cm\u00b2, while the source prints 10^-12 cm\u00b2.",
+    "decision": "Quarantine that numerical value; retain source wording. Do not infer anything about underlying reactor performance from the typo.",
+    "nextMissingMeasurement": "Independent unit reconstruction and any corrected agency version."
+  },
+  {
+    "id": "record-claim-quantum-cost",
+    "claim": "A Hamiltonian-norm cost metric is not measured apparatus electricity consumption.",
+    "status": "cross-panel scope correction",
+    "sourceIds": [],
+    "objection": "A quantum paper cost ratio could be ranked against optical or acoustic hardware efficiency.",
+    "response": "Use the quantum panel source definition and units; retain unknown apparatus power as unmeasured, not zero.",
+    "decision": "Do not combine the quantum cost ratio with hardware conversion efficiencies.",
+    "nextMissingMeasurement": "Prepared-state, control, reset, refrigeration and readout energy on a common boundary."
+  },
+  {
+    "id": "record-claim-finite-search",
+    "claim": "A brute-force parameter search can test a declared model but cannot resolve an unidentifiable inverse problem by increasing sample count.",
+    "status": "cross-panel inference constraint",
+    "sourceIds": [],
+    "objection": "A good fit might be presented as finding a hidden source.",
+    "response": "Use the systems/metrology panel rank and kernel witnesses; add independent calibrated observations.",
+    "decision": "Report sampled domain, objective, missing channels and analytic limits alongside any optimum.",
+    "nextMissingMeasurement": "A measurement that changes under the unresolved parameter family."
+  }
+]

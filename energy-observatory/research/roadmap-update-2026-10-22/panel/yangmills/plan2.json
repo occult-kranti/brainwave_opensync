@@ -1,0 +1,118 @@
+{
+  "stage": "plan2_final",
+  "date": "2026-10-22",
+  "candidate": "YM-P1",
+  "class": "bounded-mathematical-attempt",
+  "decision": "conditional_planning_admission_pending_source_gates_and_proof",
+  "implementationExecuted": false,
+  "newProofExecuted": false,
+  "priorStagesPreserved": true,
+  "exactTarget": "For N>=5, F in {F1,F2}, |theta|<=8 and |tau|<=1e-8, prove |c_A^(F,N)(theta)-c_A^infinity(theta)|<=C*N^(-1/4)*||A||^2 with explicit finite C in the unchanged zero-selected patterned SU(2) model at fixed spacing.",
+  "noveltyLabel": "Candidate effective project bound; scientific priority unverified; already established convergence is not counted as new.",
+  "objectionRevisions": [
+    {
+      "objection": "Exact upstream constants and hypotheses may not support the proposed expression.",
+      "revision": "Prerequisite ledger checks pinned BB1/BB2/BA2 gates and proofs, BB1 discharge, state identity, clocks, model, complete-factor geometry and cutoff order. Reconstruct C_d=2K_F1+K_cmp/4 from its actual inputs.",
+      "remainingAcceptance": "Independent source-to-equation reconciliation before arithmetic. Derived constants are distinguished from literal gate fields. Missing evidence means abstention."
+    },
+    {
+      "objection": "A radius substitution does not reprove a frozen theorem.",
+      "revision": "Re-derive the four-term correlation decomposition for the new local approximant and establish each geometry and comparison inequality for the frozen schedule.",
+      "remainingAcceptance": "Proof of r>=2, R subset Lambda_r subset Lambda_N and (5N+1)(r-1)<=N^3/4, plus the actual BA2 Cauchy-bound hypotheses."
+    },
+    {
+      "objection": "Charging only R omits support reached by local dynamics.",
+      "revision": "X_r=T_theta^(F1,r)(A); prove A*X_r belongs to B(H_Lambda_r), with the full volume V=(2r+1)^3 of complete factors.",
+      "remainingAcceptance": "Independent support reconstruction and mathematical rejection of |R| substitution; a metadata match alone does not count."
+    },
+    {
+      "objection": "Finite samples do not prove all-N decay of the growing-volume expression.",
+      "revision": "Require rationally certified finite exceptions and an analytic tail inequality for V exp(V/1e8) q^(N-r), together with the dynamics term and mean term.",
+      "remainingAcceptance": "Both components cover every N>=5 with one consistent input ledger and C=max(C_finite,C_tail)."
+    }
+  ],
+  "frozenPlan": {
+    "radius": "r_N=2 for 5<=N<16; r_N=floor(N^(1/4)) for N>=16",
+    "supportVolume": "V_N=(2*r_N+1)^3",
+    "finiteInterval": [5,255],
+    "analyticTail": "N>=256",
+    "candidateBracket": "C_d/(r_N-1)+c_s*V_N*exp(V_N/1e8)*q^(N-r_N)+2*C_s*q^(N-1)",
+    "candidateInputsPendingGateReconciliation": {
+      "q": "1/64",
+      "C_d": "78057/622883200000000",
+      "C_d_derivation": "2*K_F1+K_cmp/4",
+      "c_s": "2/984375",
+      "C_s": "4/984375"
+    },
+    "coefficientRule": "C=max(C_finite,C_tail), with C_finite certifying max_(5<=N<=255)N^(1/4)B_N and C_tail analytically valid for N>=256",
+    "arithmeticRequirement": "Exact integer-root comparisons; rational exponential/root enclosures with explicit remainders",
+    "retuningAllowed": false
+  },
+  "sourcePremiseGates": [
+    "Exact model, selected triple, coupling domain, F1/F2 boundaries, clock and energy reference match.",
+    "BB1 frozen targets are actually discharged by the referenced gate.",
+    "BB2 state identity and BA2 topology/time-window estimates apply to the same objects.",
+    "Inherited finite-cutoff uniformity and fixed-volume cutoff-removal order are retained.",
+    "Derived C_d is checked through K_F1 and K_cmp; the new comparison inequality is proved.",
+    "Actual product support includes the entire approximant volume before the state bound is used."
+  ],
+  "sourceMap": {
+    "upstreamCommit": "f9364d617015e803fda9465aefddd9cbe41854a4",
+    "paths": [
+      "research/round33/forward/bb2/report.md",
+      "research/round33/advisor/bb2-gate.json",
+      "research/round33/forward/ba2/report.md",
+      "research/round33/advisor/ba2-gate.json",
+      "research/round33/advisor/bb1-gate.json"
+    ],
+    "externalTheoremsImported": [],
+    "externalMethodNote": "OpenAI215 remains a same-field/same-scale review template only; no continuum theorem or formalization claim is transferred."
+  },
+  "controls": {
+    "positive": "Recover original BB2 expression at original radius and retain its valid finite-range conclusion.",
+    "negative": [
+      "Old half-box schedule must reject an unrestricted decay claim by the actual asymptotic exponent comparison.",
+      "Replacing V_N by |R| must fail the actual product-support audit.",
+      "A finite numerical grid without an analytic tail proof cannot pass all-N admission."
+    ],
+    "signMirror": "Changing tau sign is not independent replication."
+  },
+  "remainingAcceptance": [
+    "All source-premise gates pass with exact locators and reading depth.",
+    "New-radius four-term proof and support/comparison lemmas are complete.",
+    "Finite arithmetic has controlled remainders and full interval coverage.",
+    "Analytic tail proves the combined factor bound for every N>=256.",
+    "Separate reviewer reconstructs support and tail before seeing produced constants.",
+    "Wrong controls fail for mathematical reasons and valid controls retain their scope."
+  ],
+  "prospectiveRoadmapCorrections": [
+    "Control the combined V exp(V/1e8)q^(N-r) factor; exp(V/1e8) itself diverges for every growing radius.",
+    "BC2 already inherits route-B limit dynamics/stationarity; a future YM-P2 would seek a quantitative finite-box comparison, not newly construct those inherited objects.",
+    "Preserve historical source bytes and prior review/plan files."
+  ],
+  "artifactRootIfExecutionLaterAuthorized": "research/roadmap-update-2026-10-22/attempts/ym-p1/",
+  "artifacts": ["contract.json","source-map.json","lemma.md","verify.py","results.json","independent-review.md","receipt.json"],
+  "resourceCaps": {
+    "producerAgentHours": 5,
+    "reviewerAgentHours": 3,
+    "cpuMinutes": 10,
+    "cores": 1,
+    "memoryMiB": 512,
+    "meaning": "Risk caps, not completion promises"
+  },
+  "stopRule": "Stop on missing source premise, unsupported new-radius decomposition, failed support/comparison/tail inequality or exhausted cap. Save the obstruction; no radius/split retuning, enlarged-grid substitute, automatic fallback or grand-problem interpretation.",
+  "fallback": {
+    "candidate": "YM-P2",
+    "status": "parked",
+    "automatic": false,
+    "activation": "Requires separate advisor selection and execution authorization; not part of this final planning stage."
+  },
+  "limits": [
+    "Fixed lattice spacing and named construction states only",
+    "Compact |theta|<=8 window only",
+    "No uniqueness of arbitrary infinite-volume ground states",
+    "No cutoff-uniform continuum bridge or new physical mass result",
+    "Small-box signs and the continuum parent remain deferred",
+    "Final planning stage ends here; no implementation, calculation, broad source survey or additional round executed"
+  ]
+}

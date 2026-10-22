@@ -1,0 +1,184 @@
+{
+  "schema": "energy-roadmap-plan2/1",
+  "stage": "plan2",
+  "date": "2026-10-22",
+  "status": "Final bounded plan; no implementation, simulation or experiment executed",
+  "noveltyLabel": "Known finite-dimensional theory applied in new project artifacts",
+  "sequence": [
+    "E1",
+    "E2"
+  ],
+  "deferred": [
+    "E3 bosonic bridge",
+    "Arbitrary-state preparation attainability",
+    "Repeated use without reservoir regeneration",
+    "Apparatus efficiency and actual controller closure"
+  ],
+  "objectionRevisionAcceptance": [
+    {
+      "objection": "One-shot four-state reset exceeds8D cap.",
+      "revision": "Use explicit16D SWAP with identical four-state reference Hamiltonian; retain complete reference output. Matrix cap becomes16, other caps unchanged.",
+      "remainingAcceptance": "Verify unitarity, energy commutator, both partial states and system-reference product closure; review all dimension labels."
+    },
+    {
+      "objection": "Correct marginals or energy can conceal joint correlations.",
+      "revision": "Require joint trace-distance closure and full used-reservoir receipt; freeze correlated diagonal versus product control.",
+      "remainingAcceptance": "Reject the correlated state despite matching local energies; preserve internal reservoir mutual information."
+    },
+    {
+      "objection": "Lower bound and ideal drive can be mistaken for achieved full-device cost.",
+      "revision": "Separate theoretical bounds, simulated work, measured cost and unmodeled physical controllers. Restrict preparation to a constructive unitary orbit.",
+      "remainingAcceptance": "No apparatus or repeat-cycle claim without regeneration, switching and control evidence."
+    }
+  ],
+  "E1": {
+    "exactTarget": "For all epsilon>0, p,d in[0,1], abs(c)^2<=p(1-p): 0<=W(1)-W(d)<=epsilon*abs(c)*(1-d).",
+    "lowerEquality": "c=0 or d=1",
+    "upperEquality": "c=0 or d=1 or p=1/2",
+    "endpoints": [
+      "p=0 or1 forces c=0",
+      "p=1/2,d=0 uses absolute-value branch; no singular derivative division"
+    ],
+    "acceptance": [
+      "Reviewed full-domain proof",
+      "Frozen direct-unitary checks",
+      "Reject W=E passive-state control"
+    ],
+    "Wdefinition": "W(d)=epsilon/2*(2*p-1+sqrt((1-2*p)^2+4*d^2*abs(c)^2))"
+  },
+  "E2": {
+    "exactTarget": "For the explicitly defined d=1 single-temperature device cycle, prove W_cycle,on=D(omega_X||tau_X)/beta>=0 while retaining the used-reservoir state. This is ideal-model device closure, not full apparatus closure.",
+    "domain": {
+      "nu": "0<nu<1/2",
+      "epsilon": "epsilon>0",
+      "beta": "log((1-nu)/nu)/epsilon",
+      "theta": "0<=theta<=pi/2",
+      "phi": "0<=phi<2pi",
+      "gamma": "0<=gamma<=1",
+      "d": 1
+    },
+    "operationIdentityPrerequisite": "beta*(W_on-DeltaF_system)=D(final_bath||initial_Gibbs_bath)+I_final, for initial product state, unitary evolution, same bath beta and zero endpoint interactions.",
+    "operations": [
+      {
+        "step": "initial",
+        "state": "tau_S tensor tau_B = tau_X",
+        "dimension": 4,
+        "Hamiltonian": "H_X=H_S tensor I + I tensor H_B, equal gaps"
+      },
+      {
+        "step": "prepare",
+        "operator": "U(theta,phi) on S tensor identity_B",
+        "dimension": 4,
+        "state": "rho=U tau U\u2020; rho tensor tau_B",
+        "work": "Simulated total endpoint energy change; entropy unchanged",
+        "restriction": "No arbitrary-state synthesis or claim that generic preparation lower bounds are attained",
+        "unitaryMatrix": "[[cos(theta),-exp(i*phi)*sin(theta)],[exp(-i*phi)*sin(theta),cos(theta)]]"
+      },
+      {
+        "step": "exchange",
+        "operator": "Existing energy-conserving one-excitation rotation U_gamma",
+        "dimension": 4,
+        "work": "Zero in the declared endpoint model"
+      },
+      {
+        "step": "extract",
+        "operator": "Local cyclic unitary on S minimizing its energy",
+        "dimension": 4,
+        "state": "Retain full omega_X",
+        "work": "Negative of local ergotropy as supplied-work convention",
+        "unitaryConvention": "Map larger-eigenvalue eigenvector to ground and smaller to excited; fix each eigenvector first nonzero component real positive; use identity at an exactly degenerate reduced state."
+      },
+      {
+        "step": "reset",
+        "operator": "SWAP_XR",
+        "dimension": 16,
+        "input": "omega_X tensor tau_R, R four-dimensional with H_R identical to H_X",
+        "output": "tau_X tensor omega_R; omega_R equals full pre-reset omega_X",
+        "work": "Simulated zero because [SWAP,H_X+H_R]=0; physical switching cost unmeasured",
+        "heat": "Record both opposite energy transfers",
+        "signedWorkBound": "W_reset,on >= F(tau_X)-F(omega_X), possibly negative",
+        "retention": "Store complete used R state, internal mutual information and resource change; no marginal replacement or reuse without regeneration model"
+      }
+    ],
+    "correlatedCountercontrol": {
+      "state": "diag(1-nu,0,0,nu)",
+      "wrongAcceptedCriterion": "Both marginal populations and total energy equal those of tau tensor tau",
+      "jointTraceDistance": "2*nu*(1-nu)>0",
+      "mutualInformationNats": "h(nu)>0",
+      "correlationFreeEnergy": "h(nu)/beta",
+      "requiredOutcome": "Reject joint closure despite energy/marginal agreement",
+      "testLocation": "Direct density-state closure gate accepting all valid4D density matrices; not a claim that this rank2 fixture is reachable from the MVP full-rank Gibbs orbit. A history/domain rejection must not substitute for exercising the incorrect marginal-only closure gate."
+    },
+    "numericalGates": {
+      "jointTraceDistanceMax": 1e-12,
+      "traceAbsoluteErrorMax": 1e-12,
+      "negativeEigenvalueSlack": 1e-12,
+      "systemReferenceMutualInformationNatsMax": 1e-12,
+      "energyResidualOverGapMax": 1e-12,
+      "policy": "Separate observables; an energy pass never certifies state closure"
+    },
+    "otherWrongControls": [
+      "Omitted reset operation",
+      "Inverted or second-temperature bath mislabeled ordinary single bath",
+      "Preparation lower bound labeled achieved or measured cost",
+      "Dropped used-reservoir correlations"
+    ],
+    "proposedFiniteGrid": {
+      "nu": [
+        0.1,
+        0.25,
+        0.4
+      ],
+      "theta": [
+        "0",
+        "pi/4",
+        "pi/2"
+      ],
+      "phi": [
+        "0",
+        "pi/2"
+      ],
+      "gamma": [
+        0,
+        0.5,
+        1
+      ],
+      "maximumCases": 54,
+      "status": "Proposal to freeze before future implementation; not run"
+    },
+    "physicalGates": [
+      "No actual quantum instrumentation presumed",
+      "Classical drive is ideal; its real controller is not proven cyclic",
+      "No reset reservoir reuse without complete regeneration/resource model",
+      "Measured apparatus costs remain unknown rather than zero"
+    ]
+  },
+  "artifacts": [
+    "research/thermal-cycle-v1/contracts/E1.json",
+    "research/thermal-cycle-v1/derivations/dephasing.md",
+    "research/thermal-cycle-v1/contracts/E2.json",
+    "research/thermal-cycle-v1/derivations/cycle.md",
+    "research/thermal-cycle-v1/src/cycle-ledger.mjs",
+    "research/thermal-cycle-v1/checks/operator_check.py",
+    "research/thermal-cycle-v1/results.json",
+    "research/thermal-cycle-v1/review.json"
+  ],
+  "artifactStatus": "Future paths only; none created during planning",
+  "independentReview": {
+    "methods": "Freeze independent operator/entropy examples before producer results; audit16D reset and signed work.",
+    "skeptic": "Review exact premises, correlated control, missing resource and evidence categories.",
+    "meaning": "Separate-agent review; no human review implied"
+  },
+  "caps": {
+    "E1AgentHours": 3,
+    "E2AgentHours": 10,
+    "reviewAgentHours": 3,
+    "totalAgentHours": 16,
+    "cpuMinutes": 5,
+    "memoryMiB": 512,
+    "largestMatrixDimension": 16,
+    "hardwarePurchase": false
+  },
+  "stopRule": "Stop on unresolved proof/domain, unavailable dependencies, omitted resource, failed independent control or cap exhaustion; retain obstruction. No automatic dimension/scope expansion or extra planning round.",
+  "sources": "Reuse pinned exact source references and reading depths from candidates.json; no new search."
+}

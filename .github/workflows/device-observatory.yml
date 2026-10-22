@@ -1,0 +1,48 @@
+name: Deploy Device Observatory
+
+on:
+  push:
+    branches: [research/device-observatory]
+    paths: ['device-observatory/**', '.github/workflows/device-observatory.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Same lock as the main coordinator: both mutate gh-pages, in separate folders.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  device-site:
+    if: github.ref == 'refs/heads/research/device-observatory'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Check models, provenance, and build the isolated site
+        working-directory: device-observatory
+        run: npm run check
+      - name: Publish only the devices directory
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git clone --quiet --depth 1 --branch gh-pages "$REMOTE" site
+          mkdir -p site/devices
+          rsync -a --delete --exclude /location/ device-observatory/dist/ site/devices/
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- devices
+          if git diff --cached --quiet; then
+            echo "Device Observatory already up to date"
+            exit 0
+          fi
+          git commit --quiet -m "Deploy Device Observatory ${GITHUB_SHA::7}"
+          git push --quiet origin gh-pages

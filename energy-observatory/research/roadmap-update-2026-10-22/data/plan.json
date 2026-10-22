@@ -1,0 +1,217 @@
+{
+  "schema": "research-roadmap-plan/1",
+  "date": "2026-10-22",
+  "summary": "Start with a minimal evidence registry, the exact coupled-system certificate and the short qubit lemma. Prepare calibration and full-cycle studies after their explicit gates. Treat the Yang–Mills rate as a separately capped proof attempt. These are estimates of tractability, not promises that a target will be proved.",
+  "newScientificImplementation": false,
+  "newPhysicalMeasurements": 0,
+  "tasks": [
+    {
+      "id": "P0",
+      "role": "corpus",
+      "lane": "Evidence / verification",
+      "category": "engineering",
+      "status": "BOUNDED ENGINEERING PLAN",
+      "title": "Make theorem scope enforceable in the research graph",
+      "effort": "Cap: 4 agent-hours · 15 CPU minutes · 2 GiB",
+      "whyNow": "The five exact scope records and adversarial examples already exist; the missing piece is a shared evidence workflow.",
+      "target": "Migrate five statement records into a typed registry and bind four selected claim pairs without strengthening any theorem claim.",
+      "premises": "Exact revisions, manuscript/declaration identity and separate documentary, semantic-review, executed-proof and physical-evidence fields. Imported logs and test fixtures retain immutable provenance.",
+      "acceptance": "Five lossless records; all seven frozen receipt mutations and an independent withheld control handled correctly; no dangling graph IDs or unsupported proof promotion. Each mutation must reach its intended validator stage; a generic fixture-only rejection is insufficient.",
+      "negativeControl": "A zero-exit log for the wrong declaration, source or dependency hash must fail association; disallowed or missing axiom evidence cannot pass.",
+      "stopRule": "Stop on disputed semantics, unavailable pins, a failed withheld acceptance or the four-hour cap. Preserve the failure.",
+      "novelty": "Project verification infrastructure; no new mathematics.",
+      "deliverable": "research/claim-registry/: schema, records, graph bindings, validator, fixtures and verification receipt.",
+      "sourceUse": "OpenAI 215/276/342/365/372 exact scope records; ICML 2026 statement-fidelity research. No external theorem is newly certified."
+    },
+    {
+      "id": "M1",
+      "role": "methods",
+      "lane": "Electromagnetism / mechanics",
+      "category": "engineering",
+      "status": "BOUNDED CERTIFICATE PLAN",
+      "title": "Certify the full coupled circuit’s energy balance",
+      "effort": "Cap: 14 agent-hours · 5 CPU minutes/run · 1 GiB; optional Lean separately capped",
+      "whyNow": "The six-state equations and independent phasor model exist. Exact scalar checks can now be extended to mutual inductance, reciprocal coupling and both source ports.",
+      "target": "Check positive storage Q and exact rational identities QA+AᵀQ=−2L D Lᵀ and QB=Cᵀ for the frozen six-state fixture.",
+      "premises": "Constant physical coefficients, positive magnetic determinant and storage, nonnegative losses, explicit units and both voltage/force ports. Arbitrary time-dependent drives remain allowed.",
+      "acceptance": "Independent exact checker accepts fixture, lossless case and consistent signed coordinate transform; all wrong controls fail. A separately labeled browser adapter passes all 15 parameters with F=0 and RMS units.",
+      "negativeControl": "Reverse only one reciprocal sign, omit mutual storage or nonzero force work, change A to mA without conversion, or omit a nondefault adapter parameter.",
+      "stopRule": "Stop on domain, semantic or source-binding failure or cap. Time-varying coefficients require rederived dynamics and control-work terms; no silent extension.",
+      "novelty": "New project coverage of established passive-network mathematics. Rational instance, general derivation, browser comparison and Lean are distinct evidence.",
+      "deliverable": "execution/methods/: contract, matrices, factor witnesses, independent checker, mutation and adapter results, review.",
+      "sourceUse": "ICML 2026 exact-certificate and statement-fidelity methods; actual emSolve source. No neural solver or full NSPI reproduction required."
+    },
+    {
+      "id": "E1",
+      "role": "energy",
+      "lane": "Quantum work",
+      "category": "math",
+      "status": "BOUNDED MATHEMATICAL ATTEMPT",
+      "title": "Prove exactly how dephasing reduces accessible work",
+      "effort": "Cap: 3 producer hours; review shared with E2",
+      "whyNow": "The thermal-channel calculator is independently checked; its all-parameter work-loss bound and endpoint cases remain to be packaged and reviewed.",
+      "target": "For a valid qubit with gap ε>0 and dephasing d∈[0,1], prove 0≤W(1)−W(d)≤ε|c|(1−d), including all equality and degenerate cases.",
+      "premises": "Fixed energy population and energy-basis dephasing. Ergotropy assumes unrestricted ideal cyclic unitaries; actual hardware control cost is separate.",
+      "acceptance": "A complete algebraic proof plus independently selected direct-unitary examples, including p=1/2,d=0 and positivity-forced c=0 endpoints.",
+      "negativeControl": "Reject W=E for a passive diagonal state and reject a derivative that divides by a zero Bloch-vector length.",
+      "stopRule": "Stop on an unresolved domain/equality case or failed independent example. Numerical samples cannot replace the proof.",
+      "novelty": "Established qubit theory applied and certified in this project; global mathematical novelty is not claimed.",
+      "deliverable": "An exact lemma, equality ledger, operator checks and review under research/thermal-cycle-v1/.",
+      "sourceUse": "OpenAI 276 supplies the related damping channel, not this work theorem; coherent-ergotropy experiment and current damping literature motivate the application."
+    },
+    {
+      "id": "E2",
+      "role": "energy",
+      "lane": "Quantum thermodynamics",
+      "category": "engineering",
+      "status": "CONDITIONAL CYCLE STUDY",
+      "title": "Close an ideal cycle without hiding the used reservoir",
+      "effort": "Cap: 10 producer + 3 shared review hours · 5 CPU minutes · 512 MiB · dimension ≤16",
+      "whyNow": "The generalized channel and separately reviewed heat ledger provide a concrete starting state and an energy-conserving interaction.",
+      "target": "Construct Gibbs-orbit preparation, excitation exchange, local extraction and a 16-dimensional joint swap; target W_cycle,on=D(ω_X‖τ_X)/β≥0 for the declared ideal device cycle.",
+      "premises": "One positive temperature, equal gaps, d=1, endpoint-decoupled Hamiltonians and initially product references. Retain the complete used four-state reservoir, including its correlations.",
+      "acceptance": "Derive the operation/free-energy identity under its premises, then pass frozen state-closure, positivity, entropy and energy gates and independent operator/resource review. Bounds, simulated work and measured cost are separate.",
+      "negativeControl": "Correlated diagonal and product states can share marginal energies; the full-state reset check must distinguish them. Omitted reset, inverted resources and lower-bound-as-achieved-cost claims must fail.",
+      "stopRule": "Stop on missing ports, unresolved proof, failed independent control or cap. Prohibit reservoir reuse or apparatus-efficiency claims without regeneration and real control accounting.",
+      "novelty": "A project cycle model applying established thermodynamics; no new energy source or capacity theorem.",
+      "deliverable": "research/thermal-cycle-v1/: constructive operators, ≤54 frozen producer cases, resource ledger, countercontrols and review.",
+      "sourceUse": "OpenAI 276 channel map plus relative-entropy thermodynamics; full joint-state accounting extends the earlier model. No generic capacity conclusion imported."
+    },
+    {
+      "id": "A1",
+      "role": "acoustics",
+      "lane": "Copper / sound measurements",
+      "category": "experiment",
+      "status": "CONDITIONAL MEASUREMENT DESIGN",
+      "title": "Find what calibrated data identify despite unknown gain",
+      "effort": "Cap: 8 producer + 2 reviewer hours · 60 CPU minutes · 1 GB · ≤2,000 records",
+      "whyNow": "The earlier scaling ambiguity is established. Calibrated mass and several complex responses can now test a specified three-parameter model with nuisance uncertainty.",
+      "target": "Assess log(E), log(ρ), log(g) using fixed fit frequencies 30/36/54/63 kHz and held-out 33/59 kHz, with calibrated mass, radius, Poisson reference and a separate pole estimate.",
+      "premises": "Fixed finite sphere/receptance model; shared clock, geometry, phase and calibration uncertainty. Gain stresses are only the declared slopes ±0.25 and delays ±1 μs.",
+      "acceptance": "Freeze likelihood/statistic/seeds and obtain independent covariance review first. Then require rank/conditioning, interval coverage and held-out discrimination under predeclared thresholds; publish abstentions and failures.",
+      "negativeControl": "Common E/ρ/g scaling, duplicated channels, zero excitation and gain functions identical at sampled points must not yield false identification. One frequency cannot certify constant gain.",
+      "stopRule": "Stop on structural ambiguity, unresolved covariance or cap. Arbitrary unsampled gain behavior remains unknowable; the dependent position-pole benchmark stays parked.",
+      "novelty": "Synthetic calibration and experiment-design work. No actual copper movement or intrinsic location-dependent frequency effect measured.",
+      "deliverable": "Calibration map/Jacobian, frozen nine-scenario benchmark, uncertainty budget and acceptance/abstention ledger.",
+      "sourceUse": "OpenAI 372 specifies the much stronger full boundary operator; ICASSP 2026 SVD and current inverse-acoustics sources inform finite measurement rank, not general uniqueness."
+    },
+    {
+      "id": "Y1",
+      "role": "yangmills",
+      "lane": "Yang–Mills / fixed-spacing theory",
+      "category": "math",
+      "status": "CONDITIONAL PROOF ATTEMPT",
+      "title": "Replace a finite-range rate with an effective all-size bound",
+      "effort": "Cap: 5 producer + 3 reviewer hours · 10 CPU minutes · 512 MiB",
+      "whyNow": "Round33 supplies the correlation decomposition and shows why the old half-box schedule eventually loses its useful bound.",
+      "target": "In the unchanged patterned SU(2) model, seek an explicit C with correlation error ≤C N^(−1/4)‖A‖² for every N≥5, F1/F2 and |θ|≤8.",
+      "premises": "Fixed spacing and |τ|≤10⁻⁸; source-to-equation reconciliation, complete approximant-product support and a new radius-dependent decomposition must be established before arithmetic.",
+      "acceptance": "Frozen r=2 for N<16, floor(N^(1/4)) thereafter; certify N=5…255 and prove an analytic tail for N≥256. Construct one common C and obtain independent support/tail review.",
+      "negativeControl": "The old half-box schedule must fail unrestricted decay while retaining its valid finite interval. Replacing the full support volume with the original observable support must be rejected.",
+      "stopRule": "Stop on missing source premise, unsupported decomposition, failed tail or cap. No automatic radius retuning or fallback.",
+      "novelty": "Candidate new effective bound within the project; scientific priority unverified. This does not establish continuum Yang–Mills.",
+      "deliverable": "attempts/ym-p1/: source map, lemma, exact/interval checker, independent review and receipt or explicit obstruction.",
+      "sourceUse": "Pinned Round33 BB1/BB2/BA2 obligations. OpenAI 215 provides a limit/normalization checklist only; none of its spin-model constants are imported."
+    }
+  ],
+  "roles": [
+    {
+      "id": "corpus",
+      "title": "Corpus auditor",
+      "focus": "Exact statement and proof provenance"
+    },
+    {
+      "id": "yangmills",
+      "title": "Gauge-theory reviewer",
+      "focus": "Effective bounds with fixed model scope"
+    },
+    {
+      "id": "energy",
+      "title": "Quantum thermodynamics reviewer",
+      "focus": "Work accessibility and complete resources"
+    },
+    {
+      "id": "acoustics",
+      "title": "Acoustics reviewer",
+      "focus": "Calibration, uncertainty and identifiability"
+    },
+    {
+      "id": "methods",
+      "title": "Verification methods reviewer",
+      "focus": "Exact certificates tied to real code"
+    },
+    {
+      "id": "skeptic",
+      "title": "Independent skeptic",
+      "focus": "Controls that can reject the attractive claim"
+    }
+  ],
+  "stages": [
+    {
+      "title": "Roadmap review / identify distinct unfinished tasks",
+      "result": "Six specialists compared current project gaps with the consolidated sources and proposed bounded candidates.",
+      "objection": "Repeating a previous simulation is not a new result; complete boundary data, uniform gaps and free resets cannot be assumed.",
+      "revision": "Prioritize six concrete targets; separate mathematical attempts, engineering work and measurement design. Correct the Yang–Mills prefactor wording."
+    },
+    {
+      "title": "Planning 1 / specify attempts and challenge assumptions",
+      "result": "The advisor selected tracks, and every specialist wrote a contract with controls, effort caps and stop rules.",
+      "objection": "A single magnitude hides frequency-dependent gain; an 8×8 limit cannot hold the proposed joint reset; browser defaults describe another circuit.",
+      "revision": "Require multiple held-out frequencies, an explicit reset construction and every solver parameter. Keep proof receipts distinct from locally observed execution."
+    },
+    {
+      "title": "Planning 2 / resolve objections and freeze remaining gates",
+      "result": "Final plans use a 16D joint swap with the used reservoir retained, fixed acoustic samples with nuisance covariance, full EM parameter binding and explicit all-N proof gates.",
+      "objection": "A corrected plan still needs implementation and evidence; arbitrary driving is allowed even though time-varying model coefficients require extra work terms.",
+      "revision": "Keep pre-execution gates and independent reviews visible. Park the pole classifier, bosonic expansion, reduced models and grand open targets."
+    }
+  ],
+  "dependencies": [
+    {
+      "to": "M1",
+      "reason": "Publication of the certificate needs an exact statement, source and receipt binding; derivation may proceed in parallel.",
+      "status": "Planning dependency; no new result implied",
+      "from": "P0"
+    },
+    {
+      "to": "Y1",
+      "reason": "Source hypotheses and proof status must remain attached to the prospective bound.",
+      "status": "Planning dependency; no new result implied",
+      "from": "P0"
+    },
+    {
+      "to": "A1",
+      "reason": "A finite measurement claim must not inherit a full-boundary uniqueness badge.",
+      "status": "Planning dependency; no new result implied",
+      "from": "P0"
+    },
+    {
+      "to": "E2",
+      "reason": "Recommended work sequence only: E2 uses d=1, so its thermodynamic proof does not assume E1.",
+      "status": "Planning dependency; no new result implied",
+      "from": "E1"
+    }
+  ],
+  "deferred": [
+    {
+      "title": "Noisy copper-position pole comparison",
+      "status": "PARKED AFTER A1",
+      "reason": "Requires accepted calibration and a separate nuisance-aware estimator contract. Support, temperature, gain and omitted modes can mimic a pole change."
+    },
+    {
+      "title": "Bosonic expansion, sensor optimization and reduced models",
+      "status": "DEFERRED",
+      "reason": "These expand the model or add a new consumer. Complete the selected finite targets before taking on their extra independence, cutoff or accuracy obligations."
+    },
+    {
+      "title": "Continuum Yang–Mills and full-object reconstruction",
+      "status": "GRAND OPEN TARGETS",
+      "reason": "The missing cutoff-uniform field/gap argument and complete measurement conditions remain. Success on a finite project task does not supply them."
+    },
+    {
+      "title": "Reusable source-free energy apparatus",
+      "status": "NOT ESTABLISHED",
+      "reason": "The selected cycle has explicit resources and an ideal-drive assumption. New physical measurements, regeneration and controller accounting would be needed for apparatus claims."
+    }
+  ]
+}

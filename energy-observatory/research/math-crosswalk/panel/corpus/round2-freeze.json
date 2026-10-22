@@ -1,0 +1,21 @@
+{
+  "round": 2,
+  "status": "Completed documentary audit and controls; no proof execution",
+  "commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "files": {
+    "round2.md": "6db3748e034a2f70137b2db4814485771b711902f5cda1a7820f8d015ba63fcc",
+    "round2_audit.py": "fa69a9530aee96b34824d47e25100a67801f68a9165bf362dfe7268d79a01e45",
+    "scope-records.json": "cbc1b207ded1f64ed2983e7dfad47d1919986a83013760e677638265b466b8e2",
+    "scope-controls.json": "d7c17f0c024f18ffbca05562df2391aa0bbcfec2299816d9687aaedabe527fe2",
+    "round2-results.json": "eed1895dc75b446030b4f939bda304ab763c847b5c59d14a5b3a9587d18cd310",
+    "inventory-round2.json": "31ff102fe50c17501ce90ec92983447b535400d7c58d7df83dfe00fb0d59b9be",
+    "round2-sources.json": "c99a5c5010f57f7ef78dbfadba4c9cb5c4f9d8ec2b31d978a86b9e402d31f45d",
+    "round2-peer-review.json": "517af0b7d76de94d8a7265874623fc53bfd8d711a4855cf468e392e9af6aaef2",
+    "round2-git-expected.json": "63b4bbd88958d78d610f311d7ecd03f5d2c298c17c704224bc068fc0b484bd52"
+  },
+  "round1Preserved": {
+    "unchanged": true,
+    "filesChecked": 7,
+    "freezeSha256": "5ff4bb17a3f18f9750d8f8d8d3bfb38b94b0fbce0c847c308bb59429e34fff80"
+  }
+}

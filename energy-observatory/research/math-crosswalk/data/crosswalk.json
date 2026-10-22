@@ -1,0 +1,514 @@
+{
+  "schema": "math-crosswalk/1",
+  "researchDate": "2026-10-21",
+  "sourcePins": {
+    "researchDate": "2026-10-21",
+    "question": "Which exact OpenAI mathematical claims overlap with executed Yang–Mills, energy and acoustic work, and which methods can be transferred with their assumptions intact?",
+    "rounds": 2,
+    "panelSize": 6,
+    "roles": [
+      "corpus",
+      "yangmills",
+      "energy",
+      "acoustics",
+      "methods",
+      "skeptic"
+    ],
+    "classification": [
+      "same-claim-solved",
+      "same-claim-attempted",
+      "restricted-model-overlap",
+      "method-transfer",
+      "thematic-only",
+      "insufficient-evidence"
+    ],
+    "acceptance": [
+      "Pin catalogue and project revisions",
+      "Screen complete catalogue metadata; disclose selected statement-level reading",
+      "Bind every overlap to exact target, hypotheses, data, limit and evidence path",
+      "Freeze independent skepticism before peer reports",
+      "Choose Round2 from Round1 objections",
+      "Execute bounded tests and discriminating controls; preserve failures",
+      "Publish reviewed crosswalk, graph, roadmap and source-reading limits"
+    ],
+    "notClaimed": [
+      "377 independently established solutions",
+      "full proof audit of 719 manuscripts",
+      "physical energy surplus",
+      "Yang–Mills continuum solution from a finite model",
+      "Lean execution unless run and logged"
+    ],
+    "baseEnergyCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+    "openaiCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+    "latestYangMillsCommit": "f9364d617015e803fda9465aefddd9cbe41854a4"
+  },
+  "coverage": {
+    "familiesIndexed": 372,
+    "manuscriptsIndexed": 719,
+    "candidatesScreened": 32,
+    "distinctSelectedFamilies": 10,
+    "selectedComparisons": 12,
+    "fullProofsVerified": 0
+  },
+  "claims": [
+    {
+      "id": "YM-215",
+      "family": "215",
+      "domain": "yangmills",
+      "role": "yangmills",
+      "classification": "restricted-model-overlap",
+      "title": "Continuum O(3) and our fixed-spacing gauge model",
+      "external": "Canonical continuum limit of 2D nearest-neighbor O(3) spins at beta→infinity, with field normalization, Schwinger convergence, OS reconstruction, positive gap and non-Gaussianity; formalization scope only finite-domain O(n) correlation decay.",
+      "ours": "Fixed-spacing Z^3 SU(2) patterned model: named-box whole-sequence state limit and inherited representation gap alpha/16. Uniform route-B fixed-a strong-coupling certificate has an explicit weak-coupling admission obstruction.",
+      "missing": "Different dimension, fields and action: S² spins vs SU(2) gauge links; No cutoff-uniform estimates or admissible g(a)→0 trajectory for present certificate; Same-field continuum normalization, reconstruction and nontriviality must be supplied; Finite-domain formalization cannot be promoted to continuum proof",
+      "use": "Use canonical length/field normalization and the separate field/gap/reconstruction obligations as a review template; no constants or theorem conclusions imported.",
+      "proofScope": "Selected publisher statement; no full proof audit or Lean execution. Family 215 formalization covers finite-domain correlations only.",
+      "readingDepth": "Introduction and main theorem clauses read; full proof not audited",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-canonical-massive-continuum-limit-of-the-two-dimensional-O3-model-October-4-2026/build/sections/introduction.tex",
+      "evidenceURL": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md",
+      "graphExternal": "2D O(3) continuum",
+      "graphOurs": "Fixed-spacing SU(2)",
+      "graphMissing": "Cutoff-uniform field control"
+    },
+    {
+      "id": "YM-265",
+      "family": "265",
+      "domain": "yangmills",
+      "role": "yangmills",
+      "classification": "method-transfer",
+      "title": "An entropy area law assumes a gap",
+      "external": "Entanglement entropy area law for finite induced Z² graph with fixed finite local dimension q, bounded finite-range interactions, unique ground vector and assumed uniform global spectral gap.",
+      "ours": "Reduced-state trace-norm locality and Wilson-loop area parity in fixed-spacing SU(2) model.",
+      "missing": "2D finite-q bounded terms differ from Z³ infinite-dimensional SU(2) link Hilbert spaces and unbounded electric terms; Global spectral gap is a premise, not an output; Entanglement entropy area law is not Wilson-loop confinement area law; Any truncation requires q-dependent constants and cutoff removal",
+      "use": "Consider conditional-information or tensor approximations only in a separately specified finite-q planar truncation; existence does not provide efficient tensor construction.",
+      "proofScope": "Selected publisher statement; no full proof audit or Lean execution.",
+      "readingDepth": "Introduction and main theorem clauses read; full proof not audited",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/build/sections/00-introduction.tex",
+      "evidenceURL": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md",
+      "graphExternal": "Gapped 2D entropy area law",
+      "graphOurs": "Fixed-spacing SU(2)",
+      "graphMissing": "Matching model and conclusion"
+    },
+    {
+      "id": "YM-270",
+      "family": "270",
+      "domain": "yangmills",
+      "role": "yangmills",
+      "classification": "restricted-model-overlap",
+      "title": "A threshold state is not a mass gap",
+      "external": "For undeformed supersymmetric SU(N) BFSS on gauge-invariant L²(R^(9(N²−1)))⊗fermions, every fixed N≥2 has a one-dimensional zero kernel at the threshold of continuous spectrum.",
+      "ours": "SU(2) lattice gauge-invariant spectral analysis and representation-specific vacuum simplicity.",
+      "missing": "0+1D supersymmetric matrix quantum mechanics differs from pure 3+1D Yang–Mills; Threshold zero eigenstate coexists with continuum starting at zero; it does not yield a positive spectral gap; Finite-N constants are not uniform in rank or continuum cutoff",
+      "use": "Retain full operator domain and norm-exhaustion checks when using deformations; no direct theorem transfer.",
+      "proofScope": "Selected publisher statement; no full proof audit or Lean execution.",
+      "readingDepth": "Introduction and main theorem clauses read; full proof not audited",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-unique-threshold-bound-state-of-the-SU-N-BFSS-model-September-24-2026/build/manuscript/sections/01-introduction.tex",
+      "evidenceURL": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md",
+      "graphExternal": "BFSS threshold state",
+      "graphOurs": "Fixed-spacing SU(2)",
+      "graphMissing": "Matching model and conclusion"
+    },
+    {
+      "id": "YM-CLAY",
+      "family": null,
+      "domain": "yangmills",
+      "role": "yangmills",
+      "classification": "same-claim-attempted",
+      "title": "Our open continuum Yang–Mills goal",
+      "external": "Not located as an OpenAI catalogue problem; Clay 4D continuum Yang–Mills existence and mass gap.",
+      "ours": "Explicit open parent goal; accepted finite and fixed-spacing subproblems.",
+      "missing": "Nontrivial continuum QFT on R4 with required axioms; Physical mass scale and gap on same continuum fields; Uniform control along a valid continuum trajectory",
+      "use": "Keep open-continuum node open and add proposed-transfer edges from 215 rather than solved-equivalence edges.",
+      "proofScope": "No proof execution here; the project parent remains open.",
+      "readingDepth": "Official current status page read",
+      "sourceURL": "https://www.claymath.org/millennium/yang-mills-the-maths-gap/",
+      "evidenceURL": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round32/advisor/az1-gate.json",
+      "graphExternal": "4D continuum existence and gap",
+      "graphOurs": "Fixed-spacing SU(2)",
+      "graphMissing": "Cutoff-uniform field control"
+    },
+    {
+      "id": "energy-276",
+      "family": "276",
+      "domain": "energy",
+      "role": "energy",
+      "classification": "restricted-model-overlap",
+      "title": "Generalized amplitude-damping classical capacity",
+      "external": "Single-letter unrestricted classical capacity and repeated-use Holevo additivity for every generalized amplitude-damping channel; paper additionally claims additivity with any finite-dimensional partner channel.",
+      "ours": "Single-qubit ergotropy, passive energy and energy closure after zero-temperature amplitude damping followed by dephasing; finite numerical validation.",
+      "missing": "No Holevo information objective, input ensemble optimization, decoder, or n-use entangled channel analysis exists in our code.; Our ergotropy is a different functional of a prepared state. Extra dephasing is a composition outside the exact displayed channel unless separately treated.",
+      "use": "Add generalized thermal damping and signed reservoir heat to our fixed-Hamiltonian qubit model, independently of capacity claims.",
+      "proofScope": "Publisher scope doc lists repeated-use capacity/additivity and scalar attained maximum; expressly excludes additivity with arbitrary different partner and separate-measurement decoding. No Lean proof was run here.",
+      "readingDepth": "Lines 1–295: model, main capacity theorem, arbitrary-partner additivity corollary, and beginning of proof strategy; not full proof audit.",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/build/paper.tex",
+      "evidenceURL": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs",
+      "graphExternal": "Qubit communication capacity",
+      "graphOurs": "Prepared-state energy",
+      "graphMissing": "Different observable / hypotheses"
+    },
+    {
+      "id": "energy-273",
+      "family": "273",
+      "domain": "energy",
+      "role": "energy",
+      "classification": "method-transfer",
+      "title": "Entropy photon-number inequality",
+      "external": "For n modes of each independent input into a passive beam splitter, entropy photon number of output C is at least eta*N(rho_A)+(1-eta)*N(rho_B), where N(rho)=g^{-1}(S(rho)/n).",
+      "ours": "Two-dimensional qubit energy and ergotropy; no bosonic Fock-space beam splitter or entropy-power theorem.",
+      "missing": "No bosonic channel or receiver encoding is specified by the project.; A physical mode identification, measured input noise, cross-port independence and numerical cutoff/tail error would all need justification.",
+      "use": "Possible future thermal-noise bounds for an explicitly modeled bosonic receiver; entropy photon number is not output energy created without an input.",
+      "proofScope": "Publisher scope document selects the EPnI itself; thermal-attenuator and broadcast-capacity consequences are outside that selected formalization. No Lean proof was run here.",
+      "readingDepth": "First 160 lines: exact main theorem, equality model, thermal-attenuator corollary and surrounding assumptions; not full proof audit.",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-entropy-photon-number-inequality-September-24-2026/build/sections/00-introduction.tex",
+      "evidenceURL": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs",
+      "graphExternal": "Bosonic entropy inequality",
+      "graphOurs": "Prepared-state energy",
+      "graphMissing": "Different observable / hypotheses"
+    },
+    {
+      "id": "energy-362",
+      "family": "362",
+      "domain": "energy",
+      "role": "energy",
+      "classification": "thematic-only",
+      "title": "Global classical relativistic Vlasov–Maxwell solutions",
+      "external": "Global unique classical solutions for the 3D one-species relativistic Vlasov–Maxwell system with arbitrary-size smooth compatible initial data in the stated class.",
+      "ours": "Driven fixed-mutual-inductance RLC circuits coupled to one mechanical mode; finite linear ODE/phasor energy identity.",
+      "missing": "Our lumped finite-dimensional reciprocal circuit is not this kinetic PDE and has no phase-space distribution or Maxwell initial-value problem.; A solution-existence result neither supplies an uncounted source nor predicts a circuit conversion efficiency.",
+      "use": "Keep as a distinct mathematical-physics node; do not attach a solved-by-us or energy-gain edge. Low priority for current tabletop protocol.",
+      "proofScope": "Scope document describes this selected global-existence theorem; proof not executed or independently audited in this lane.",
+      "readingDepth": "First 160 lines: equation, initial data, global classical-solution theorem and beginning of proof strategy; not full proof audit.",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-classical-solutions-of-the-three-dimensional-relativistic-Vlasov-Maxwell-system-September-23-2026/build/sections/introduction.tex",
+      "evidenceURL": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/em.mjs",
+      "graphExternal": "Global kinetic PDE solution",
+      "graphOurs": "Driven lumped RLC model",
+      "graphMissing": "Different observable / hypotheses"
+    },
+    {
+      "id": "energy-265",
+      "family": "265",
+      "domain": "energy",
+      "role": "energy",
+      "classification": "method-transfer",
+      "title": "Two-dimensional ground-state area law",
+      "external": "Entanglement entropy is bounded by C times boundary size for unique uniformly gapped ground states of bounded finite-range square-lattice Hamiltonians.",
+      "ours": "Single prepared qubit with fixed Hamiltonian, not an interacting two-dimensional ground-state family.",
+      "missing": "No such many-body Hamiltonian, unique ground state or uniform gap has been established in our qubit energy work.; A spectral gap is an input hypothesis, so this theorem cannot establish the missing Yang–Mills gap.; The associated PEPS existence statement is not by itself an efficient numerical construction.",
+      "use": "Conditional future tensor-network modeling after an independently justified many-body Hamiltonian and gap; no present theorem overlap.",
+      "proofScope": "Not assessed in this lane; no family-wide verified badge is inferred.",
+      "readingDepth": "First 160 lines: local-Hamiltonian class, exact gap hypothesis, area-law theorem and PEPS corollary; not full proof audit.",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/build/sections/00-introduction.tex",
+      "evidenceURL": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/src/quantum.mjs",
+      "graphExternal": "Gapped many-body ground states",
+      "graphOurs": "Prepared-state energy",
+      "graphMissing": "Different observable / hypotheses"
+    },
+    {
+      "id": "acoustics-openai372",
+      "family": "372",
+      "domain": "acoustics",
+      "role": "acoustics",
+      "classification": "restricted-model-overlap",
+      "title": "Full boundary data versus finite resonances",
+      "external": "Full static boundary displacement-to-traction data identify both smooth real Lamé moduli on a bounded connected smooth three-dimensional domain with positive elastic energy.",
+      "ours": "Finite homogeneous-sphere forward modes, a passive fixture model, and finite transfer functions; existing source register explicitly distinguishes finite peaks from full boundary data.",
+      "missing": "Complete static displacement-to-traction operator; Matching smooth domain and coefficient assumptions; Reconstruction and stability beyond uniqueness; Calibrated experimental data and model discrepancy control",
+      "use": "Use calibrated force or traction and an explicit observability test before trying material inversion.",
+      "proofScope": "No full proof audit or Lean execution. Catalogue-only comparisons do not establish theorem truth.",
+      "readingDepth": "Manuscript pp.1–3 and full short scope page; no full proof audit or Lean execution",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf",
+      "evidenceURL": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/src/models.mjs",
+      "graphExternal": "Full static elastic boundary map",
+      "graphOurs": "Finite sampled observations",
+      "graphMissing": "Complete data and matching target"
+    },
+    {
+      "id": "acoustics-openai365",
+      "family": "365",
+      "domain": "acoustics",
+      "role": "acoustics",
+      "classification": "method-transfer",
+      "title": "Geometry recovery and companion scope",
+      "external": "Full zero-frequency patch boundary forms identify a smooth metric and a rank-two unitary connection up to patch-fixed diffeomorphism and unitary gauge.",
+      "ours": "Source comparison and measurement-coordinate caveats only; no metric/connection recovery theorem or solver.",
+      "missing": "Same extended boundary operator; Smooth manifold, rank-two Hermitian bundle and unitary connection model; Explicit gauge and coordinate quotient; Correct manuscript-specific verification",
+      "use": "Record measurement coordinates and gauge freedom; bind proof status to the exact companion statement.",
+      "proofScope": "lean/docs/365.md covers a different bounded measurable scalar-conductivity nonuniqueness companion; this distinction was already recorded by the project.",
+      "readingDepth": "Headline manuscript pp.1–3 and full scope page; no full proof audit or Lean execution",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Determination-of-a-metric-and-a-unitary-connection-from-one-boundary-patch-October-5-2026/paper.pdf",
+      "evidenceURL": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/research/interpretation.md",
+      "graphExternal": "Metric and connection recovery",
+      "graphOurs": "Finite sampled observations",
+      "graphMissing": "Complete data and matching target"
+    },
+    {
+      "id": "acoustics-openai130",
+      "family": "130",
+      "domain": "acoustics",
+      "role": "acoustics",
+      "classification": "thematic-only",
+      "title": "Exact fast DFT versus our sampled FFT",
+      "external": "Deterministic exact-complex-arithmetic length-n DFT in O(n(log n)^(1-delta)) with explicit delta=10^-13 and a stated arithmetic model.",
+      "ours": "Ordinary floating-point radix-two FFT and finite synthetic acquisition checks, with no sub-n-log-n complexity construction.",
+      "missing": "Matching exact arithmetic and coefficient-cost model; New asymptotic algorithm and complete complexity proof",
+      "use": "Keep arithmetic complexity and floating-point acquisition as separate questions; no algorithm transfer claimed.",
+      "proofScope": "No full proof audit or Lean execution. Catalogue-only comparisons do not establish theorem truth.",
+      "readingDepth": "Catalogue only; manuscript proof not read",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/CONTENTS.md",
+      "evidenceURL": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/src/acquisition.mjs",
+      "graphExternal": "Exact arithmetic DFT",
+      "graphOurs": "Finite sampled observations",
+      "graphMissing": "Complete data and matching target"
+    },
+    {
+      "id": "acoustics-openai075",
+      "family": "075",
+      "domain": "acoustics",
+      "role": "acoustics",
+      "classification": "thematic-only",
+      "title": "Infinite convergence versus finite data",
+      "external": "Full-sequence almost-everywhere convergence of ordinary symmetric Fourier partial sums for every complex-valued function in L log L(T).",
+      "ours": "Finite sampled Fourier and signal identities, not an infinite-dimensional convergence proof.",
+      "missing": "Quantification over the full function class; Almost-everywhere full-sequence proof rather than a finite signal test",
+      "use": "Retain finite-band acquisition limitations; an infinite convergence statement does not recover unmeasured data.",
+      "proofScope": "No full proof audit or Lean execution. Catalogue-only comparisons do not establish theorem truth.",
+      "readingDepth": "Catalogue only; manuscript proof not read",
+      "sourceURL": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/CONTENTS.md",
+      "evidenceURL": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/location-spectrum/research/acquisition-model.md",
+      "graphExternal": "Almost-everywhere convergence",
+      "graphOurs": "Finite sampled observations",
+      "graphMissing": "Complete data and matching target"
+    }
+  ],
+  "experiments": [
+    {
+      "status": "93 EXACT CHECKS",
+      "title": "A fixed-spacing certificate needs a new continuum bridge",
+      "equation": "τ = 96 / g⁴ ≤ 10⁻⁸  ⇒  g⁴ ≥ 9.6 × 10⁹",
+      "result": "Exact arithmetic confirms the current sufficient strong-coupling certificate cannot follow a trajectory g(a) → 0 indefinitely. Common ground-state projectors can coexist with gaps tending to zero.",
+      "limit": "This is a limit of this certificate, not a disproof of a physical Yang–Mills mass gap.",
+      "report": "research/math-crosswalk/panel/yangmills/round2.md",
+      "code": "research/math-crosswalk/panel/yangmills/verify_round2.py",
+      "results": "research/math-crosswalk/panel/yangmills/round2-results.json"
+    },
+    {
+      "status": "5,184 NUMERICAL CASES",
+      "title": "Thermal damping has an explicit energy source",
+      "equation": "p′ = (1 − γ)p + γν ; Q = hf γ(ν − p)",
+      "result": "The generalized channel matches Kraus matrices and an energy-conserving reservoir dilation. 864 cases recover the existing zero-temperature calculator; separate reviewers checked six and three frozen states.",
+      "limit": "State ergotropy is not channel capacity or apparatus efficiency. Inverted reservoirs are resources; no laboratory data.",
+      "report": "research/math-crosswalk/panel/energy/round2.md",
+      "code": "research/math-crosswalk/panel/energy/thermal-channel.mjs",
+      "results": "research/math-crosswalk/panel/energy/round2-results.json"
+    },
+    {
+      "status": "8 GATES / 144 SPHERE CASES",
+      "title": "Equal frequencies can hide unequal material parameters",
+      "equation": "(E, ρ) → (aE, aρ) leaves f unchanged; static traction → a × traction",
+      "result": "Independent roots and actual production calls confirm the common-scaling ambiguity. Calibrated mass or nonzero traction removes this direction in the two-parameter model. Unknown gain can hide a response-amplitude change.",
+      "limit": "Hypothetical candidate materials, not copper changing density when moved. No general inverse-uniqueness or full-spectrum result.",
+      "report": "research/math-crosswalk/panel/acoustics/round2.md",
+      "code": "research/math-crosswalk/panel/acoustics/verify_scaling.py",
+      "results": "research/math-crosswalk/panel/acoustics/round2-results.json"
+    },
+    {
+      "status": "26 EXACT CHECKS",
+      "title": "Certify a finite energy identity algebraically",
+      "equation": "H = kq²/2 + p²/(2m) ; Ḣ = u(p/m) − b(p/m)²",
+      "result": "Exact coefficient cancellation and rational matrix checks agree. Wrong port definitions, negative damping, incorrect Gram factors and a misleading positive sampling grid are rejected.",
+      "limit": "Requires m,k > 0 and b ≥ 0. This known identity is not a new theorem, a Lean build, a complete SOS system reproduction or a hardware test.",
+      "report": "research/math-crosswalk/panel/methods/round2.md",
+      "code": "research/math-crosswalk/panel/methods/exact_certificate.py",
+      "results": "research/math-crosswalk/panel/methods/exact-results.json"
+    }
+  ],
+  "papers": [
+    {
+      "kind": "CONFERENCE / PUBLISHED",
+      "title": "Faults in Our Formal Benchmarking: Dataset Defects and Evaluation Failures in Lean Theorem Proving",
+      "url": "https://proceedings.mlr.press/v306/ammanamanchi26a.html",
+      "venue": "ICML 2026 · PMLR 306",
+      "use": "Separate proof acceptance from fidelity to the intended mathematical statement.",
+      "limit": "Our documentary checks are not a semantic theorem checker; the benchmark was not reproduced.",
+      "readingDepth": "Official proceedings metadata/abstract; PDF pp.2–4 on trust boundary and taxonomy. Full benchmark and software not reproduced."
+    },
+    {
+      "kind": "CONFERENCE / PUBLISHED",
+      "title": "Decompose, Structure, and Repair: A Neuro-Symbolic Framework for Autoformalization via Operator Trees",
+      "url": "https://proceedings.mlr.press/v306/liu26z.html",
+      "venue": "ICML 2026 · PMLR 306",
+      "use": "Structure objects, hypotheses, quantifiers and conclusions before formalization.",
+      "limit": "No DSR system or reported benchmark executed.",
+      "readingDepth": "Proceedings metadata/abstract; PDF pp.3–4 methodology and p.12 limitations. No trained system executed."
+    },
+    {
+      "kind": "CONFERENCE / PUBLISHED",
+      "title": "From LLM-Generated Conjectures to Lean Formalizations: Automated Polynomial Inequality Proving via Sum-of-Squares Certificates",
+      "url": "https://proceedings.mlr.press/v306/zuo26f.html",
+      "venue": "ICML 2026 · PMLR 306",
+      "use": "Adopt exact finite polynomial certificates and discriminating wrong controls.",
+      "limit": "Only a small algebraic identity implemented; no Lean or NSPI run. A bounded printed factor-dimension issue is recorded in the methods report.",
+      "readingDepth": "Proceedings metadata/abstract; PDF pp.2–4; p.4 Eq(6) visually checked. No NSPI model/benchmark or Lean build executed."
+    },
+    {
+      "kind": "CONFERENCE PROGRAM VERIFIED",
+      "title": "A Unified SVD-Modal Solution for Sparse Sound Field Reconstruction with Hybrid Spherical-Linear Microphone Arrays",
+      "url": "https://arxiv.org/abs/2602.03398v1",
+      "venue": "ICASSP 2026 · inspected arXiv v1",
+      "use": "Use singular values and measurement rank to design a sparse microphone array.",
+      "limit": "No author implementation reproduced. Two reviewers identified an inconsistency in the inspected preprint’s displayed reduced operator; final proceedings text was not compared.",
+      "readingDepth": "Official program page; arXiv abstract and PDF sections 1–4, equations (1)–(13); PDF p.2 equations (4)–(7) visually inspected"
+    },
+    {
+      "kind": "JOURNAL / PUBLISHED",
+      "title": "Superextensive electrical power from a quantum battery",
+      "url": "https://www.nature.com/articles/s41377-026-02240-6",
+      "venue": "Light: Science & Applications 15, 168 (2026)",
+      "use": "Distinguish charging-power scaling from total energy and efficiency.",
+      "limit": "The battery is optically driven. Scaling does not establish source-free power; raw experiment not reproduced.",
+      "readingDepth": "Publisher abstract and introduction read; full experimental methods and raw data not independently audited."
+    },
+    {
+      "kind": "JOURNAL / PUBLISHED",
+      "title": "Experimental Extraction of Coherent Ergotropy and Its Energetic Cost in a Superconducting Qubit",
+      "url": "https://arxiv.org/abs/2506.16881",
+      "venue": "Physical Review Research 7, 043236 (2025)",
+      "use": "Include energetic control and extraction costs when interpreting ergotropy.",
+      "limit": "Single-qubit evidence does not certify a complete energy-harvesting apparatus.",
+      "readingDepth": "Abstract, metadata and journal reference rechecked this round; earlier project quantum report had reviewed selected text."
+    },
+    {
+      "kind": "PREPRINT",
+      "title": "Generalized multilevel amplitude damping channels and their thermodynamic performances",
+      "url": "https://arxiv.org/abs/2605.27369",
+      "venue": "arXiv:2605.27369 (2026)",
+      "use": "Motivates explicit reservoir population in damping models.",
+      "limit": "Abstract and metadata only; no multilevel result imported.",
+      "readingDepth": "Abstract and submission metadata only. Reported thermodynamic phenomena not independently reproduced."
+    },
+    {
+      "kind": "PREPRINT",
+      "title": "On an inverse boundary problem in elastodynamics",
+      "url": "https://arxiv.org/abs/2609.20134v1",
+      "venue": "arXiv:2609.20134v1 (2026)",
+      "use": "Specify exactly which dynamical boundary observations identify elastic coefficients.",
+      "limit": "Selected theorem statements only; not a finite-sensor reconstruction algorithm or stability proof.",
+      "readingDepth": "PDF pp.1–6: formulation, Theorems 1.1–1.3, Remarks 1.1–1.5, weak boundary form; proofs not audited"
+    },
+    {
+      "kind": "PREPRINT",
+      "title": "Permutation-Invariant Physics-Informed Neural Network for Region-to-Region Sound Field Reconstruction",
+      "url": "https://arxiv.org/html/2601.19491v1",
+      "venue": "arXiv:2601.19491v1 (2026)",
+      "use": "Use Helmholtz and reciprocity constraints for sound-field modeling.",
+      "limit": "No trained model or benchmark reproduced; physics loss does not itself ensure unique inversion.",
+      "readingDepth": "Abstract, sections 1–3.2, acoustic transfer-function/Helmholtz/reciprocity definitions and equations (1)–(6)"
+    },
+    {
+      "kind": "PREPRINT",
+      "title": "Resurrecting the coherent state variational algorithm for large N gauge theories",
+      "url": "https://arxiv.org/abs/2601.20150",
+      "venue": "arXiv:2601.20150, v2 (2026)",
+      "use": "Potential numerical variational strategy for large-N gauge theory.",
+      "limit": "Abstract-level comparison; not a continuum-existence or mass-gap proof.",
+      "readingDepth": "Abstract and publication metadata read"
+    },
+    {
+      "kind": "CONFERENCE CONTRIBUTION / PREPRINT",
+      "title": "Update on the computation of the quenched SU(6) Yang–Mills lattice spectrum",
+      "url": "https://arxiv.org/abs/2603.13138",
+      "venue": "LATTICE2025 contribution · arXiv:2603.13138 (2026)",
+      "use": "Keep lattice spectroscopy, continuum extrapolation and proof obligations distinct.",
+      "limit": "Proceedings publication not independently verified; SU(6) numerical spectrum is not our SU(2) theorem.",
+      "readingDepth": "Abstract and conference/submission metadata read"
+    }
+  ],
+  "roles": [
+    {
+      "id": "corpus",
+      "title": "Corpus auditor",
+      "focus": "Count, version and exact scope",
+      "skills": "Documentary evidence audit; independent Markdown/TeX census; manuscript-specific scope controls."
+    },
+    {
+      "id": "yangmills",
+      "title": "Gauge-theory reviewer",
+      "focus": "Keep the continuum limit explicit",
+      "skills": "Paired physics research and Newton analysis/synthesis; exact spectral and coupling countercontrols."
+    },
+    {
+      "id": "energy",
+      "title": "Quantum thermodynamics reviewer",
+      "focus": "Identify every energy reservoir",
+      "skills": "Tesla mechanism/resonance and resonance research advisor; Kraus channels, passive energy and signed heat."
+    },
+    {
+      "id": "acoustics",
+      "title": "Acoustics and inverse-problem reviewer",
+      "focus": "Ask what the sensors identify",
+      "skills": "Resonance research advisor and Newton analysis/synthesis; elasticity, rank, calibrated response and nuisance gain."
+    },
+    {
+      "id": "methods",
+      "title": "Verification methods reviewer",
+      "focus": "Prove the statement we mean",
+      "skills": "Paired physics and Newton analysis/synthesis; exact rational algebra, source fidelity and independent thermal cases."
+    },
+    {
+      "id": "skeptic",
+      "title": "Independent skeptic",
+      "focus": "Try to break the proposed bridge",
+      "skills": "Frozen equivalence gate and separately specified countermodels; cross-review of producer implementations."
+    }
+  ],
+  "rounds": [
+    {
+      "number": 1,
+      "title": "Compare the statements before transferring a result",
+      "summary": "Six specialists inspected pinned project artifacts, the complete catalogue metadata and selected primary statements. The advisor froze all six reports before choosing the next tests.",
+      "criticism": "Family IDs are not solved counts; related Hamiltonians are not identical problems; full boundary maps are not finite peaks; a proof may cover only a companion statement.",
+      "decision": "Select four bounded physics/maths tests plus independent catalogue and skeptic gates. Freeze expected cases before producer inspection.",
+      "result": "32 candidate families screened; 10 distinct selected families retained in 12 comparisons including one separate open parent goal. No exact solved or exact attempted catalogue target established."
+    },
+    {
+      "number": 2,
+      "title": "Execute the tests and preserve what failed",
+      "summary": "The panel carried out the selected calculations and reviewed the results. The source parser’s CAT(0) link failure and an incorrect human-review label were corrected with receipts; frozen Round 1 remains intact.",
+      "criticism": "A model passing its own tests is insufficient. Positive controls, wrong controls, statement scope and independent expected cases are needed.",
+      "decision": "Accept only scoped model and workflow transfers; keep continuum existence, source-free power and full-object reconstruction open.",
+      "result": "93 exact gauge checks; 5,184 thermal cases; eight acoustic gates; 26 exact energy checks; 17 corpus controls; independent skeptic and three-state methods comparisons. No third research round."
+    }
+  ],
+  "roadmap": [
+    {
+      "title": "Pin each theorem before importing it",
+      "action": "Attach exact manuscript revision, target declaration, assumptions and conclusion to every proposed theorem edge. Preserve companion and headline distinctions.",
+      "acceptance": "Matching statements are reviewed and any claimed proof execution has a reproducible log and dependency/axiom record.",
+      "status": "Documentary gate implemented; Lean execution remains unperformed."
+    },
+    {
+      "title": "Build a new continuum bridge for Yang–Mills",
+      "action": "Use family 215 as a list of obligations: scale/field normalization, same-field limits, reconstruction, nontriviality and a cutoff-uniform gap. Keep the existing strong-coupling gate visible.",
+      "acceptance": "A justified trajectory and estimates survive cutoff removal in the actual gauge model.",
+      "status": "Open research goal. Fixed-spacing results retained; no new continuum theorem."
+    },
+    {
+      "title": "Make reservoir cost explicit in quantum experiments",
+      "action": "Use the tested thermal-channel module for parameter studies, then specify preparation, bath reset, switching and readout work before any apparatus claim.",
+      "acceptance": "All energy inputs and stored-energy changes are calibrated; a complete cycle closes within a predeclared uncertainty budget.",
+      "status": "Generalized channel code executed; apparatus measurements not performed."
+    },
+    {
+      "title": "Add a calibrated acoustic observable",
+      "action": "For the copper experiment, combine repeatable finite-band frequency data with known mass or calibrated displacement/force and temperature/support controls. Randomize A/B/A positions and retain sensor-gain uncertainty.",
+      "acceptance": "The chosen parameterization is locally identifiable after nuisance parameters and model discrepancy are included.",
+      "status": "Scaling ambiguity and two-parameter discriminator tested; physical protocol remains proposed."
+    },
+    {
+      "title": "Use exact certificates where the model permits them",
+      "action": "Extend exact energy identities only after defining domains, units and input/output ports; retain negative controls and separately check omitted physics.",
+      "acceptance": "Exact residual vanishes and the sign certificate holds on the declared domain; hardware claims receive independent measurements.",
+      "status": "Known one-mode identity verified exactly. No full SOS/Lean pipeline reproduced."
+    }
+  ]
+}

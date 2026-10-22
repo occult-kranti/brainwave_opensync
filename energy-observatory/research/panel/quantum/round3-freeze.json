@@ -1,0 +1,19 @@
+{
+  "round": 3,
+  "status": "complete; accepted round2 code unchanged",
+  "frozenAtUTC": "2026-10-22T02:41:54.005179+00:00",
+  "physicalMeasurements": 0,
+  "roundsComplete": 3,
+  "blindDiagnosisFrozenBeforeKeyAccess": true,
+  "sha256": {
+    "src/quantum.mjs": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91",
+    "analysis/quantum_reference.py": "fee288584dbebc20cbda3104dce3b048dfd5f06b6e3ae7714adbb5cebcafb1ed",
+    "research/panel/quantum/round3.md": "fe41684136e061b2108da734ccf8b17e7e0112ede378d30fdf9b811b0df12bbd",
+    "research/panel/quantum/blind-freeze.json": "815331506d2be16ebb208f927e32d11bb4a8b97e8c6a699a548eda6e5bd3bb37",
+    "research/panel/quantum/blind-diagnosis.md": "a3c492740fb4c055b1f130621c8eb70b2a83814bb830806eab21f38c8992433b",
+    "research/panel/quantum/blind-diagnosis.json": "a96c5126c6474f4b7fc77c9e3b1abfd19adb464320c882971f4a5fa4917a12f4",
+    "research/panel/systems/round2.md": "e02932123907dd47887b4f5540bdfb55d56acc2e9d51b153307775e3adf65f5e",
+    "research/panel/metrology/round3-quantum-results.json": "a3d42d0be03d6f00af35381e0f2c10f2579e64d3926580094b2012aef0620e78",
+    "research/panel/metrology/round3-independent-freeze.json": "b90b605e509c13cee391043c47320cceeb2d13d8653466afcbe85379c62d41ab"
+  }
+}

@@ -1,0 +1,1 @@
+{"name":"fieldwork-energy-observatory","version":"1.0.0","private":true,"type":"module","license":"MIT","engines":{"node":">=22"},"scripts":{"test":"node --test tests/*.test.mjs","build":"node build.mjs","check":"npm test && npm run build","serve":"python3 -m http.server 4180 --directory dist"}}

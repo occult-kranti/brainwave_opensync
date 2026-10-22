@@ -1,0 +1,91 @@
+{
+  "status": "blind-response-frozen-before-key-access",
+  "date": "2026-10-22",
+  "agent": "energy_quantum",
+  "readInputs": [
+    "cards.json",
+    "card-41.csv",
+    "card-72.csv",
+    "card-19.csv"
+  ],
+  "inputSHA256": {
+    "cards.json": "099e2d50496ad67f89ebf75a3313804ef3283118d09daf8e66fa8b2815838c81",
+    "card-41.csv": "5ce9e50089b4f354bd5ecba814aacea9da213ecb6f6367d5c76a61f37ea4d878",
+    "card-72.csv": "d23b7b86a681c595e5486fd9f081701821713dcb13a9332f57099c8e737d5c91",
+    "card-19.csv": "c6f50ed8799cea774ee1e6c7e3001d38019e605176d9383f9f6cc8657917176a"
+  },
+  "method": "Independent CSV time-product trapezoid integration; sinusoidal least-squares calibration; capacitor endpoint energy.",
+  "sign": "positive residual means apparent excess output: load + loss + storage change - recorded input",
+  "physicalMeasurements": 0,
+  "diagnoses": [
+    {
+      "id": "card-41",
+      "inputEnergyJ": 0.0016178957532415228,
+      "loadEnergyJ": 0.0015999999999999999,
+      "statedLossJ": 0.00014311485495316272,
+      "residualBeforeAdditionalAccountingJ": 0.00012521910171163974,
+      "status": "phase-calibration inconsistency; closure restored under stated common-transfer assumption",
+      "frequencyHz": 1000.0,
+      "referenceCurrentRelativeLagRad": 0.00628318530718186,
+      "equivalentPrincipalDelayS": 1.0000000000003618e-06,
+      "rawInputPhaseDeg": 85.36000000000004,
+      "correctedInputPhaseDeg": 84.99999999999991,
+      "conditionalCorrectedInputEnergyJ": 0.0017431148549531992,
+      "conditionalCorrectedResidualJ": -3.664603343001005e-17,
+      "fits": {
+        "reference_voltage_V": {
+          "amplitude": 1.4142135623730958,
+          "lagRadians": -2.040055734465123e-18,
+          "offset": 4.14353568391123e-17,
+          "maxFitError": 6.661338147750939e-16
+        },
+        "reference_current_A": {
+          "amplitude": 1.4142135623730951,
+          "lagRadians": 0.006283185307181862,
+          "offset": 8.084352377815793e-18,
+          "maxFitError": 3.788636071533347e-15
+        },
+        "input_voltage_V": {
+          "amplitude": 1.4142135623730958,
+          "lagRadians": -2.040055734465123e-18,
+          "offset": 4.14353568391123e-17,
+          "maxFitError": 6.661338147750939e-16
+        },
+        "input_current_A": {
+          "amplitude": 1.4142135623730951,
+          "lagRadians": 1.4898130495023603,
+          "offset": 1.2203247754527086e-16,
+          "maxFitError": 8.906070325664928e-15
+        }
+      },
+      "ambiguity": "Single-frequency phase identifies delay modulo a period. Applying the reference correction to the input channel requires the same transfer-path calibration; simultaneous acquisition alone does not prove that.",
+      "nextMeasurement": "Verify identical current/voltage transfer paths, then calibrate differential gain and phase across the occupied bandwidth using a common-clock reference."
+    },
+    {
+      "id": "card-72",
+      "inputEnergyJ": 0.1,
+      "loadEnergyJ": 0.18,
+      "statedLossJ": 0.02,
+      "residualBeforeAdditionalAccountingJ": 0.09999999999999998,
+      "status": "apparent surplus accounted for by measured capacitor depletion in the admitted model",
+      "capacitorInitialEnergyJ": 0.10000000000000002,
+      "capacitorFinalEnergyJ": 0.0,
+      "storageChangeJ": -0.10000000000000002,
+      "correctedResidualJ": -4.163336342344337e-17,
+      "ambiguity": "Closure is conditional on the stated linear, constant-capacitance certificate and admitted channels; it does not independently certify a physical apparatus.",
+      "nextMeasurement": "Include preparation/recharge and reset within the measurement window; confirm endpoint voltage and capacitance calibration."
+    },
+    {
+      "id": "card-19",
+      "inputEnergyJ": 0.1,
+      "loadEnergyJ": 0.12000000000000004,
+      "statedLossJ": 0.02,
+      "residualBeforeAdditionalAccountingJ": 0.040000000000000036,
+      "status": "unresolved residual with known incomplete boundary",
+      "requiredAdditionalInputIfOnlyMissingTermJ": 0.040000000000000036,
+      "ambiguity": "The listed unmetered controller supply is a plausible omitted input. Its actual energy is not measured; one scalar residual cannot distinguish it from calibration bias, omitted storage or another missing transfer.",
+      "nextMeasurement": "Acquire signed simultaneous voltage-current data on the controller supply; audit every port and initial/final storage before assigning a cause."
+    }
+  ],
+  "newEnergyClaim": false
+}

@@ -1,0 +1,2 @@
+# Location & Resonance
+An isolated research lab within Fieldwork. Visitors compare the copper sphere's modeled intrinsic resonance with a measured-channel response at two table positions, then inspect a proposed apparatus, falsifiable hypotheses, and typed source connections. Audience: curious non-specialists and technically capable experimenters. Every result is simulated; no full-spectrum capture, hardware finding, or teleportation claim is presented as established. Deployment base /brainwave_opensync/devices/location/. No autoplay or hardware output.

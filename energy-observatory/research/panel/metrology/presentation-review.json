@@ -1,0 +1,73 @@
+{
+  "schema": "metrology-presentation-review/1",
+  "dateUTC": "2026-10-22",
+  "scope": "Release scientific copy and code-rendering review within Round3; no new research or hardware validation. Root owns browser functional/visual inspection.",
+  "status": "changes-requested",
+  "reviewedSHA256": {
+    "site.mjs": "8b5beca7705c9a3fbee327d7dbc54db6fcb3db0e321ff1cbd51d447a6f8af413",
+    "src/app.mjs": "31dcf02c1486c6969b78929c2e6b30d6abb9832753b428327c7971becf05c48b",
+    "data/panel.json": "951c2ac412daf739f96f085284d4ed7bfd6fbdb5d45d1e9e097f79251b3e4135",
+    "assets/acoustic-tube.svg": "b19f1a5439af4e472130ea3a9bc7287e4e251ab218adce2abfc87fdca511938f",
+    "assets/em-bench.svg": "db88facc8e5f57fbfa9d55223d0f6b3e428c9706e31bd4b4f8f36f2f1092dfe0",
+    "assets/energy-boundary.svg": "90f05ab4ef4563dcfd5ec0b4b80a1162d86e26f723f07f02863198eba3d30dc5"
+  },
+  "findings": [
+    {
+      "id": "M-UI-01",
+      "blocking": true,
+      "location": "src/app.mjs sweep result efficiency and optimum text",
+      "problem": "Fixed-drive zero-voltage and zero-force sweeps return a best cell with inputW=0 and efficiency=null; b.efficiency*100 coerces null to zero and renders 0%. The output also calls this an optimum.",
+      "reproduction": {
+        "emSweepOptions": {
+          "driveVrms": 0
+        },
+        "acousticSweepOptions": {
+          "forceRmsN": 0
+        },
+        "bothObserved": {
+          "hasBest": true,
+          "inputW": 0,
+          "efficiency": null,
+          "renderedPercent": "0%"
+        }
+      },
+      "requestedChange": "Preserve undefined efficiency for null values and state no positive-input transfer at this drive, rather than describing an efficiency or meaningful conversion optimum."
+    },
+    {
+      "id": "M-UI-02",
+      "blocking": true,
+      "location": "site.mjs homepage CONVERT card",
+      "problem": "The phrase equal measured input power mislabels the model comparison as measured. The site has no hardware measurements.",
+      "requestedChange": "Use equal model input power."
+    },
+    {
+      "id": "M-UI-03",
+      "blocking": false,
+      "location": "site.mjs identity scale input",
+      "problem": "HTML allows .001\u20131000 but identifiabilityDemo accepts .01\u2013100, causing avoidable input rejection.",
+      "requestedChange": "Align displayed min/max to .01\u2013100."
+    },
+    {
+      "id": "M-UI-04",
+      "blocking": false,
+      "location": "data/panel.json metrology role focus",
+      "problem": "Independent uncertainty is ambiguous wording where covariance and correlated channels matter.",
+      "requestedChange": "Prefer covariance-aware uncertainty and independent diagnostic checks."
+    }
+  ],
+  "accepted": [
+    "J versus W are kept separate; phase example explicitly retains VA and RMS assumptions.",
+    "Signed ledger and chosen expanded interval match API; user-supplied standard uncertainty, k-factor limitation and no double-counted heat are stated.",
+    "Zero uncertainty inherits the API caution rather than being presented as exact measurement.",
+    "Main conversion readout already preserves null efficiency as Undefined.",
+    "EM terminal and acoustic receiver efficiencies exclude their named upstream supplies; acoustic nested boundaries avoid double counting.",
+    "Quantum GHz-to-Hz conversion, prepared-state meaning, damping/dephasing definitions and ideal ergotropy boundary are correct.",
+    "Independent formulations and selected synthetic diagnostics are distinguished from human peer review and physical replication; panel explicitly says three cards are not a reliability benchmark.",
+    "Schematics are conceptual/topology drawings with no measured traces or physical dimensions asserted."
+  ],
+  "notAssessed": [
+    "Browser layout/interaction/accessible focus paths; root owns that verification.",
+    "Accuracy of every external evidence record; this review covers the supplied page templates, calculator-rendering copy, panel summary and SVG text."
+  ],
+  "sharedFilesEdited": false
+}

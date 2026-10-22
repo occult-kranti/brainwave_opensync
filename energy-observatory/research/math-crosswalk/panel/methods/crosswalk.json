@@ -1,0 +1,88 @@
+[
+  {
+    "id": "methods-scope372",
+    "domain": "sound/inverse problems",
+    "family": "372",
+    "classification": "related model; method transfer",
+    "ourEvidence": [
+      "location-spectrum/research/independent-review.md",
+      "location-spectrum/public/data/sources.json"
+    ],
+    "ourCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+    "ourResult": "Traction-free sphere modes and finite source/receiver transfer functions; no full boundary-map inversion.",
+    "externalResult": "Publisher claims uniqueness of smooth Lam\u00e9 moduli from full static displacement-to-traction map.",
+    "requiredBridge": [
+      "Complete data operator instead of finite peaks",
+      "Matching regularity/domain assumptions",
+      "Algorithm/stability result beyond uniqueness"
+    ],
+    "exactSameSolved": false
+  },
+  {
+    "id": "methods-scope365",
+    "domain": "inverse problems/proof scope",
+    "family": "365",
+    "classification": "method transfer; no exact theorem claim",
+    "ourEvidence": [
+      "location-spectrum/public/data/sources.json"
+    ],
+    "ourCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+    "ourResult": "Prior register already warned that a companion formalization does not certify the headline.",
+    "externalResult": "Selected formalized statement is nonuniqueness of bounded measurable scalar conductivities.",
+    "requiredBridge": [
+      "Same manuscript and conclusion",
+      "Correct Comparator declaration",
+      "Actual verification log"
+    ],
+    "exactSameSolved": false
+  },
+  {
+    "id": "methods-passivity-certificate",
+    "domain": "energy and finite spectral models",
+    "family": null,
+    "classification": "method transfer from separate conference work",
+    "ourEvidence": [
+      "energy-observatory/research/advisor.md",
+      "energy-observatory/research/panel/systems/round3.md"
+    ],
+    "ourCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+    "ourResult": "Finite synthetic checks of reciprocal energy identities; independent numerical formulations.",
+    "externalResult": "NSPI proposes exact polynomial SOS certificates with formal verification.",
+    "requiredBridge": [
+      "Choose finite polynomial and units",
+      "Exact coefficient identity and PSD witness",
+      "Proof-assistant execution if claiming formal certification",
+      "Separate omitted-mode and continuum argument"
+    ],
+    "exactSameSolved": false,
+    "round2Result": {
+      "status": "bounded exact algebra adoption executed",
+      "artifacts": [
+        "panel/methods/round2-contract.json",
+        "panel/methods/exact_certificate.py",
+        "panel/methods/exact-results.json"
+      ],
+      "checksPassed": 26,
+      "checksTotal": 26,
+      "scope": "General rational Laurent identity; three rational matrix cases; analytic sign assumptions; all declared wrong controls. Not Lean, NSPI execution, continuum certification or empirical passivity."
+    }
+  },
+  {
+    "id": "methods-formal-fidelity",
+    "domain": "all research claims",
+    "family": null,
+    "classification": "workflow adoption",
+    "ourEvidence": [
+      "energy-observatory/research/verification.json"
+    ],
+    "ourCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+    "ourResult": "Hash-bound scopes and distinct numerical vs experimental claims.",
+    "externalResult": "ICML2026 benchmark-audit and DSR papers motivate structured statements and separate acceptance/fidelity gates.",
+    "requiredBridge": [
+      "Human-readable target to formal-statement review",
+      "Trusted axioms and dependency versions",
+      "Failed cases retained"
+    ],
+    "exactSameSolved": false
+  }
+]

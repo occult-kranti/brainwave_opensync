@@ -1,0 +1,6 @@
+{
+  "createdUtc": "2026-10-22T04:20:01.702986+00:00",
+  "artifact": "gate.json",
+  "sha256": "65014255588cfb396f424e72fbb2bea442b50a5b0bd30f3671fb2cd2f806f033",
+  "newPeerProposalsReadBeforeFreeze": false
+}

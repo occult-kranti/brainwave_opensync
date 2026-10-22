@@ -1,0 +1,14 @@
+{
+  "schema": "energy-round2-freeze/1",
+  "date": "2026-10-22",
+  "scope": "Producer code, frozen input, result and report; independent reviews are separate.",
+  "filesSha256": {
+    "round2-inputs.json": "75aa4c7b213d2986f6cf0410829c0774adc4013d27dae5957afd09d2824b6a15",
+    "thermal-channel.mjs": "cc3a6011d89ab2ad2904d216064a32e4af26bec56c54fd1718244165012727be",
+    "emit-thermal-grid.mjs": "f5b444ce48729271bd410a9bccf5ab2eb159cd146578245973415f270c22d130",
+    "check-thermal.py": "86278cc285bfbe5421b3065ec2215fa01d84f76b4cdfdbb558cff215217025a5",
+    "round2-results.json": "ab05013a7ee420683a504706b104f71db6f568ed1ad5ebcdb5be9868485004de",
+    "round2.md": "fc422c8881171bc8d823e6158a061176701dd5e67775259200a614d92cea3fbc",
+    "round2-sources.json": "becd08c0a9dba23bcc1366bb38e32246c0b30eddf9aae42a2bb1c45a23093036"
+  }
+}

@@ -1,0 +1,16 @@
+# Corpus planning round 1
+
+**P0: exact-statement and proof-evidence registry.** This is an engineering task, not new mathematics. The new objective is a shared schema, controlled migration and graph bindings beyond the existing five annotations and 17 documentary tests.
+
+Use separate evidence fields: documentary match; semantic-review status and reviewer kind; proof execution; physical evidence. None automatically promotes another. Agent review remains agent review. A locally successful proof-checker receipt means acceptance of an encoded statement under a declared axiom policy; it does not establish intended-statement fidelity or physical truth.
+
+1. Freeze input hashes and the finite schema. Each statement names revision, manuscript, declaration, objects, domain, boundary data, quantifiers, observable, limits, conclusion, reading depth and provenance. Missing evidence remains unknown.
+2. Migrate the five existing scoped records into new `research/claim-registry/` files. Preserve previous files. Bind existing claim IDs to these records through `graph-bindings.json`; family215 and365 links must display limited/different-companion coverage. Family342 stays a version-control fixture, without a new physics-relevance edge. Leave other claims unchanged.
+3. Specify and implement receipt consistency, not a new proof authority. Receipts bind the statement/source/dependency hashes, declaration, toolchain, command, execution timestamps, exit status, logs, observed axioms and axiom-policy result. Imported logs are externally reported; only observed runner execution can support a local-execution label. Test fixtures cannot certify a real proof. No Lean build is included in this task.
+4. Execute the finite validator controls and inspect the graph/status display. Positive control: exact metadata survives migration while proof status remains not-run. Decisive wrong control: an otherwise valid zero-exit receipt for another declaration or source hash must be rejected. Retain companion, version, missing-evidence and reviewer-provenance controls. The skeptic supplies one withheld mutation frozen before implementation.
+
+Acceptance requires five lossless scoped records, no dangling graph references or headline proof badges, explicit abstention, rejection of every forbidden promotion, actual validator logs and independent review. All migrated proof statuses remain not-run unless a separate actual checker execution is authorized and recorded. A schema-valid imported receipt alone cannot change that status.
+
+Deliverables: schema, records, graph bindings, validator, fixtures and verification receipt under `research/claim-registry/`. Existing Python3 and standard-library JSON are sufficient; any added dependency requires an exact pin at admission. Cap: four agent-hours, fifteen CPU minutes, two GiB memory, no GPU. Stop early if source pins or evidence semantics are unresolved; stop at the cap or a failed withheld acceptance test and preserve that outcome.
+
+The methods reviewer checks receipt and axiom semantics; the skeptic checks provenance and the withheld case; the advisor confirms migration strengthened no claim. This plan reuses existing pinned sources and their disclosed reading depths. No implementation, simulation, new proof or physical experiment was performed in this planning stage. Await planning2 objections.

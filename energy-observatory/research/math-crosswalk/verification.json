@@ -1,0 +1,266 @@
+{
+  "status": "passed",
+  "scope": "Bounded model and documentary replays, not full proof verification or measurements",
+  "metadata": {
+    "families": 372,
+    "manuscripts": 719,
+    "selectedComparisons": 12,
+    "reports": 12,
+    "networkNodes": 40,
+    "networkEdges": 28,
+    "frozenRound1Preserved": true,
+    "acceptedCoreModelsUnchanged": true
+  },
+  "replays": {
+    "yangmills": {
+      "passed": true,
+      "commands": 1,
+      "seconds": 0.068,
+      "logs": [
+        {
+          "returncode": 0,
+          "stdoutSha256": "be2921bf9d1aa5d777828a8c61c774b7354c47c21b1d4e0fad1672afdbcb0152"
+        }
+      ]
+    },
+    "energy": {
+      "passed": true,
+      "commands": 1,
+      "seconds": 2.107,
+      "logs": [
+        {
+          "returncode": 0,
+          "stdoutSha256": "6f7e379584c979b132741e1f8f031e11b6fa0edd97c220f4325996e58f782365"
+        }
+      ]
+    },
+    "acoustics": {
+      "passed": true,
+      "commands": 1,
+      "seconds": 1.339,
+      "logs": [
+        {
+          "returncode": 0,
+          "stdoutSha256": "e5fe28dab29ace3e9fa3263d9565d9a9e1e05d58fde6a17225ed56ea2980d43d"
+        }
+      ]
+    },
+    "methods": {
+      "passed": true,
+      "commands": 1,
+      "seconds": 0.041,
+      "logs": [
+        {
+          "returncode": 0,
+          "stdoutSha256": "a7b1aa812f99ffc2bc16b9a53684821f08a3e9f913c70b21ab70a5d25844ed67"
+        }
+      ]
+    },
+    "methods-thermal": {
+      "passed": true,
+      "commands": 3,
+      "seconds": 0.555,
+      "logs": [
+        {
+          "returncode": 0,
+          "stdoutSha256": "4da4b87415906a570e5b3a6b1e825ae2d341c52db665fc2076f15ba20db06a90"
+        },
+        {
+          "returncode": 0,
+          "stdoutSha256": "ad09c66aa0039a2e0f877915940f21dcbef8f52336a7d681b65535ea678c7b03"
+        },
+        {
+          "returncode": 0,
+          "stdoutSha256": "118d7d5777650b1fbd8f3b15b22f69639783dad2ecd0037a965ef3c09bd97139"
+        }
+      ]
+    },
+    "skeptic": {
+      "passed": true,
+      "commands": 2,
+      "seconds": 0.791,
+      "logs": [
+        {
+          "returncode": 0,
+          "stdoutSha256": "47573afc7cae30581b6e83f6815bb77f6587c90c7d3c617f9de6e779af92bbcb"
+        },
+        {
+          "returncode": 0,
+          "stdoutSha256": "8d8558c083af89bc080e13b1b0619ef60a2fd5aa81f2503cde77c4c5728942bb"
+        }
+      ]
+    },
+    "corpus": {
+      "passed": true,
+      "commands": 1,
+      "seconds": 0.657,
+      "logs": [
+        {
+          "returncode": 0,
+          "stdoutSha256": "407985eaf7d6165c0425c3c63c3f7c196203e597f994b7606f7bfe514a73442a"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "yangMillsExactChecks": 93,
+    "thermalCases": {
+      "cases": 5184,
+      "zeroTemperatureCompatibility": 864,
+      "fullRankEntropyProduction": 3456,
+      "ordinaryBathEntropyProduction": 2592,
+      "invertedBathEntropyProduction": 864,
+      "ordinaryFixedPointPassivity": 192,
+      "invertedFixedPointWork": 96,
+      "zeroDampingIdentityBeforeDephasing": 432,
+      "fullDampingReplacement": 1296,
+      "phaseInvariantComparisons": 3888
+    },
+    "acousticCases": {
+      "sphere": 144,
+      "productionSphereCalls": 604,
+      "heldOutSphere": 24,
+      "static": 72,
+      "finiteFixture": 8
+    },
+    "acousticAllPassed": true,
+    "exactOscillatorChecks": 26,
+    "independentThermalComparisons": 63,
+    "independentThermalAllPassed": true,
+    "catalogueCensus": {
+      "source": "overview.tex",
+      "algorithm": "balanced TeX command argument scanner",
+      "families": 372,
+      "manuscripts": 719,
+      "highestFamilyIdentifier": 377,
+      "absentIdentifiers": [
+        "045",
+        "061",
+        "070",
+        "123",
+        "163"
+      ],
+      "allFamilyIdsMatchFrozenInventory": true,
+      "allPaperPathSetsMatchFrozenInventory": false,
+      "mismatches": [
+        "337"
+      ],
+      "errata": [
+        {
+          "family": "337",
+          "oldPath": "preprints/Sharp-integral-fillings-in-CAT(0",
+          "correctedPath": "preprints/Sharp-integral-fillings-in-CAT(0)-spaces-September-23-2026/paper.pdf",
+          "cause": "Round 1 regex truncated at a parenthesis inside a Markdown URL",
+          "effect": "One manuscript URL corrected; no family/manuscript count change"
+        }
+      ],
+      "entries": "omitted from replay receipt; see frozen full results",
+      "allPaperPathSetsMatchCorrectedInventory": true,
+      "yamlSourcePathsMatchedToCurrentCatalogueAfterCorrection": 172
+    }
+  },
+  "catalogueSourceReplay": true,
+  "noLeanRun": true,
+  "scriptSHA256": "6f7a56a28cd4dadd98984cd2a48349dd8a1d3820fa348cb7b53beb890c8aeafc",
+  "coverageLimits": [
+    "All catalogue metadata parsed; selected statements only",
+    "No Lean execution",
+    "No physical measurements",
+    "No exact selected OpenAI theorem solution established",
+    "Historical Yang\u2013Mills dependency chain not revalidated"
+  ],
+  "filesSHA256": {
+    "ATTRIBUTION.md": "818ae6250de16cc7f8ac32320326df2154a65350bef8794902bb4e128a9fc15b",
+    "OPENAI-MATH-LICENSE": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "advisor-round1.md": "df0aed3d7bcde6f3852c00112d7dca7fe18f91dc1d11e6f6288578d837e2582b",
+    "analysis/README.md": "1d893e5b400bea98ddd7b7ec942e64f7657f6617ca65c96fddd2088fd7700777",
+    "analysis/browser-check.json": "44bf70a9681c90b753c8d9d9cb5c5b1d088635a989843b75e39ea36846086f31",
+    "analysis/check_release.py": "6f7a56a28cd4dadd98984cd2a48349dd8a1d3820fa348cb7b53beb890c8aeafc",
+    "contract.json": "e4edca78b06bec7e892141161685317d49aaf36a30b14e06c9bc40d434880546",
+    "data/crosswalk.json": "cf04598798370df485d7f9990e9d32b07a0e94a17fd131cd1ac81f7579cd9820",
+    "data/network.json": "059b5960e5b0b4d366ce0fd0525318bf7afc06eb661d34fae66ae3a4059e91af",
+    "panel/acoustics/crosswalk.json": "fd5766299d0b4aabe3a220cb368cfe9a229fcc0a1eaaf4e524a2982441524915",
+    "panel/acoustics/production-probe.mjs": "06cad8a3fd84c74106de96308930044f1ce1612a310c83de328695fd672e2971",
+    "panel/acoustics/round1.md": "c532913846ed246f06be45d702bdeb1cd0aa043c035e8a55435109bef1816f19",
+    "panel/acoustics/round2-contract.json": "1dcd784898d0cff9a4585d1bcf60eba773ce61c0f5959f66c23e63a0f1d0276f",
+    "panel/acoustics/round2-hashes.json": "e153b70d8494c00055203a40c60a8f472d3aa2982b83ce05d7ce9b86db576fd6",
+    "panel/acoustics/round2-proposal.json": "8d3e67f354ba0a3ad0490798268f01afbee647cdb67bc36b72d6ec2a613c7915",
+    "panel/acoustics/round2-results.json": "6e42f875d651ac1c6bb2cfe6329d2b30eb43b5aba42409806b246e41d59c36ef",
+    "panel/acoustics/round2.md": "436e47741d40f0b3153811baa5ebd53365513830856d1c515c160445c83259a7",
+    "panel/acoustics/sources.json": "52d43e8d4cdc5e37732678170b968fbe9e67aedf94746236b5dcd534d70235b8",
+    "panel/acoustics/verify_scaling.py": "3f54535b930785cde36693fb85a99edbde666a465396635fcf588c8d8a22d7bc",
+    "panel/corpus/candidates.json": "e928a1b5f50c611297eea1f78e43498e49221be2d734aa5cd2b5899fe1fd983f",
+    "panel/corpus/git-expected.json": "c2265779091f6a0d40d90f131726ab0e142d5c7d60e7b244482cac9a20000985",
+    "panel/corpus/inventory-round2.json": "31ff102fe50c17501ce90ec92983447b535400d7c58d7df83dfe00fb0d59b9be",
+    "panel/corpus/inventory.json": "d2e9f3b8799a7b1204af126e89573cef740450b3180c76db9bb4a21d0906304a",
+    "panel/corpus/parse_catalogue.py": "36e0d6094898b352a307f98ac30c80a238932b8e1ffe8b924ac504cd4bd9472b",
+    "panel/corpus/round1-freeze.json": "5ff4bb17a3f18f9750d8f8d8d3bfb38b94b0fbce0c847c308bb59429e34fff80",
+    "panel/corpus/round1.md": "4d0957ddb6bd4399d3635d7521456e0ba758c403287c56276c65f97e1bce306e",
+    "panel/corpus/round2-freeze.json": "6b6710b6397fef40a129c8a2c1d3c61826b1c1f949431c0769b7bcf8a7218d83",
+    "panel/corpus/round2-git-expected.json": "63b4bbd88958d78d610f311d7ecd03f5d2c298c17c704224bc068fc0b484bd52",
+    "panel/corpus/round2-peer-review.json": "517af0b7d76de94d8a7265874623fc53bfd8d711a4855cf468e392e9af6aaef2",
+    "panel/corpus/round2-results.json": "eed1895dc75b446030b4f939bda304ab763c847b5c59d14a5b3a9587d18cd310",
+    "panel/corpus/round2-sources.json": "c99a5c5010f57f7ef78dbfadba4c9cb5c4f9d8ec2b31d978a86b9e402d31f45d",
+    "panel/corpus/round2.md": "6db3748e034a2f70137b2db4814485771b711902f5cda1a7820f8d015ba63fcc",
+    "panel/corpus/round2_audit.py": "fa69a9530aee96b34824d47e25100a67801f68a9165bf362dfe7268d79a01e45",
+    "panel/corpus/scope-controls.json": "d7c17f0c024f18ffbca05562df2391aa0bbcfec2299816d9687aaedabe527fe2",
+    "panel/corpus/scope-records.json": "cbc1b207ded1f64ed2983e7dfad47d1919986a83013760e677638265b466b8e2",
+    "panel/corpus/snapshot-manifest.json": "1562785292a04313e6d95e5328e8f96dbfd90b1911c44d966be2e625fe9eb032",
+    "panel/corpus/sources.json": "62be44e8ee3bfde89290f853c1e0a552db0b236cb3081f64980afcfb770f7c1f",
+    "panel/energy/check-thermal.py": "86278cc285bfbe5421b3065ec2215fa01d84f76b4cdfdbb558cff215217025a5",
+    "panel/energy/crosswalk.json": "633d648a2d3c52f9e781f6b0c369e606a1231267d1c9041c427807164581fdb3",
+    "panel/energy/emit-thermal-grid.mjs": "f5b444ce48729271bd410a9bccf5ab2eb159cd146578245973415f270c22d130",
+    "panel/energy/proposed-round2.json": "c16b9cb7b6d9534df4ac947df6f52215686e6f8fc5989b288d7fb79d942dcca8",
+    "panel/energy/round1.md": "540fe82d2438d3c63117cfedb0a2070ab663cb930ec7d90f1acd96b259bffc2c",
+    "panel/energy/round2-freeze.json": "899d2bcb365f8d21b84ec50708a1eff95c90219d7d373bb393e94fe32fae9f01",
+    "panel/energy/round2-inputs.json": "75aa4c7b213d2986f6cf0410829c0774adc4013d27dae5957afd09d2824b6a15",
+    "panel/energy/round2-results.json": "ab05013a7ee420683a504706b104f71db6f568ed1ad5ebcdb5be9868485004de",
+    "panel/energy/round2-sources.json": "becd08c0a9dba23bcc1366bb38e32246c0b30eddf9aae42a2bb1c45a23093036",
+    "panel/energy/round2.md": "fc422c8881171bc8d823e6158a061176701dd5e67775259200a614d92cea3fbc",
+    "panel/energy/sources.json": "90b45b245001120c964bb23e86b1a81b9b0ea268a766095cba46d9e2c5aec0b8",
+    "panel/energy/thermal-channel.mjs": "cc3a6011d89ab2ad2904d216064a32e4af26bec56c54fd1718244165012727be",
+    "panel/methods/artifact-hashes.json": "95df76280894afd210e990f874ad277f79ce0bfd4de7feeb8caee02706910ab0",
+    "panel/methods/crosswalk.json": "f259f81b4be0e0b09d2814bbbe0020b1705de6b7f2fd3a2402c64535d1debe53",
+    "panel/methods/energy-crosscheck-contract.json": "efc31402f1ccba3288ba19cfa7211d8b5ef2f9da8befc654333a2f36c290cf4f",
+    "panel/methods/energy-crosscheck-freeze.json": "009f53d1653161e0256df48995afa28a5bfcf5303e1df510a36125c495ef5ee6",
+    "panel/methods/energy-crosscheck-results.json": "e34e96396cdc793ce72c938f59452c7bd3e1ae84db3f93baa8217fcf83a87e02",
+    "panel/methods/energy-producer-output.json": "585ed4bd93051bed61978ca50ee337e688a23c827d29b46d0190ab4fca6a4fa9",
+    "panel/methods/energy-reference.json": "4538003097c0fc304e40e9fdcb21571239e048292edcd74b2834cf9ac5600698",
+    "panel/methods/energy_reference.py": "733e2ddd71135b1e7cf2334e2955a07e41a48f39948870ecef300e790c3b141f",
+    "panel/methods/exact-results.json": "52a630a1c320489a6697e8d5a84746ed59141f4ce6cac1fca7c737181b2701af",
+    "panel/methods/exact_certificate.py": "0cace097fcc1c50254be069a84b81f493bf762164407f6d1a847f016a2a3c016",
+    "panel/methods/round1.md": "77691c802fae4fec1106ced416fb4b4aa64d2a2d3a9acda69be71e210e61580a",
+    "panel/methods/round2-contract.json": "18b28800a7663fbf86e45988efb00860ef65d2036dcfbfa282f2622c2221c60a",
+    "panel/methods/round2-freeze.json": "7e9b237ca463f7e1cb68c3b314f32509646ca6fc08e86d6e8cd5850e4f1f56b8",
+    "panel/methods/round2-proposal.json": "0d6b107fbab4edafd0a962c2b365052a5dde93a133e6d5f4f99d6f765e50737d",
+    "panel/methods/round2.md": "d92fad2a5a56c5eec1f0cb37d1c467961508e6b17283fee0a90a0d8c7cb9cbe1",
+    "panel/methods/run_energy_producer.mjs": "b481f1fdb6a2738e0f4f42ec2b9a8c3755320eb24f41472ec0babb298090b3df",
+    "panel/methods/sources.json": "3bce0b95be60b9d07883c72affe3ca1176d7ada6da15a5a5bd0b4c65b5e035ca",
+    "panel/skeptic/cross-review-results.json": "4a6bac3c92e2b8cc098f58cd6e375da1f9e0dd4892087bee1b21326fb83dfd8c",
+    "panel/skeptic/cross_review.py": "11efc57d8aae29e25fca78f4cf29f2bba8ae209ec8fbb4e733270aed35715511",
+    "panel/skeptic/gate-freeze.json": "67673f838198f68d9b0836ec44da946e751613811cd84dcd7b7ee0c470fc7fca",
+    "panel/skeptic/independent-gate.md": "5f4226309fd04f975f066c54eeed96ac605f8d0651acd948f3e65d576b346d55",
+    "panel/skeptic/peer-review-findings.json": "fba302904218547c19beb2b3224f47bd17f2156068f994be345a1a060469661f",
+    "panel/skeptic/round1-freeze.json": "8d6be8ab8e77df6c07fab27d40bc3b301d368a940606e25d544093edff3074f4",
+    "panel/skeptic/round1-source-bindings.json": "a2efcb946287a9c80910090e6f12b8328047ec03f2699c3a2efbb74bdb339cda",
+    "panel/skeptic/round1.md": "f2be32f31c2ecb7486b2821c42099d935029d3a5e262555ecdc1dd3067aa1e94",
+    "panel/skeptic/round2-candidate-contract.json": "eaf8106c643b62620897f104ad320b9367bb2744d541afe3f9d62ba08b92806e",
+    "panel/skeptic/round2-fixture-freeze.json": "35bdf840d44d0d5f0582373db17fff69ad509af9a0a0b30a320c909e7774af9e",
+    "panel/skeptic/round2-hashes.json": "b5f8ca708751a82ede0790487c32d92ee5483da1f20b1a9e1daef449e15265bb",
+    "panel/skeptic/round2-independent-fixtures.json": "262582bed704ce59014937557cc678ee0931ea609296d2e7bb4a7f8aadb0e657",
+    "panel/skeptic/round2-results.json": "a18ae07041085e957fd11673d9e87483e42e76e1fe97e2847d57e95c4b76afb0",
+    "panel/skeptic/round2-source-bindings.json": "a061875df0d30abd58e9f22fac8f22781cc542a8b9c23617d42ddd974b2a414f",
+    "panel/skeptic/round2.md": "e8a8c044e26793876f1e33965b61eb9e47ee75e6bb17e9cac5c3c04bb260fdc0",
+    "panel/skeptic/round2_checks.py": "f6d02d7e008dad1ab7bd953a61cb994bcbab7ba9dede528f8e2fde8ada0b3856",
+    "panel/skeptic/sources.json": "eb389a8a80cad741a3c4fef4a827b8ca4acb35d5de7c8419e9a7d6794c4db106",
+    "panel/yangmills/crosswalk.json": "8d16662b85461e28a15788b59034ffa17914ba368d86caadcd4b1cb3173fbc8b",
+    "panel/yangmills/round1.md": "12ccb123a013a780ee4c5b52f94512d5ef6d4a7983b9ac0fe7fde87985d0902c",
+    "panel/yangmills/round2-hashes.json": "a4b548646c2a95d8ad8b873020f9eeb925075a4c9b21f866dc21cd02c7347f5a",
+    "panel/yangmills/round2-results.json": "fa3cc336f4ddb48ebbb34a332b65d1d9dfc0ca651477be07ac9add5973b7ac4b",
+    "panel/yangmills/round2.md": "9dc13c12a7fab31de5a9fa92dde8e54f249a7249b84a7535babc318928fb337c",
+    "panel/yangmills/sources.json": "5333580f79b8f8c4938b1877d91321f450b3d5e0c8f6282d3c0962497def2a63",
+    "panel/yangmills/verify_round2.py": "c8a063d151f101cc2dea4592c023debf931abb8a84fe4c3535478a38855c8e60",
+    "report.md": "47f73c2253f0a19a225c18bd11d15da69d8b9cf1d9b086390429414317d606c4",
+    "round2-admission.json": "d77d9d2ec6a521788373ed82fe6ed028b6b8b25c932bed701c9dd52bead48476"
+  }
+}

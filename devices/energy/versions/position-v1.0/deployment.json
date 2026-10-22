@@ -6,6 +6,6 @@
   "researchDate": "2026-10-21",
   "hardwareMeasurements": 0,
   "status": "Proposed apparatus; verified numerical models; synthetic examples",
-  "hostCommit": "2bf9252f17f38db500b1e920612ddb43565c4fe7",
+  "hostCommit": "5cccca5ee835cc778ad21921dc956800a13802dd",
   "hostAdaptation": "Added navigation; pinned original source metadata. Scientific code unchanged."
 }

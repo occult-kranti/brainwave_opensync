@@ -1,0 +1,574 @@
+{
+  "provenance": {
+    "method": "Independent Python/SciPy derivation and execution",
+    "measured": false,
+    "source_model_read_before_derivation": false,
+    "input_note": "E=110GPa, nu=.34, rho=8960kg/m3 illustrative; separate NIST-reference case included"
+  },
+  "solid_20mm": {
+    "E_Pa": 110000000000.0,
+    "nu": 0.34,
+    "rho_kg_m3": 8960.0,
+    "radius_m": 0.01,
+    "cL_m_s": 4346.9727445174785,
+    "cT_m_s": 2140.301425476714,
+    "roots": [
+      2.7586362948830208,
+      6.121993366797196,
+      9.319943691267584,
+      12.48839538581295
+    ],
+    "frequencies_Hz": [
+      190854.1002632954,
+      423545.33578972117,
+      644793.0345152216,
+      863999.8935389525
+    ],
+    "first_root_stress_residual": 8.881784197001252e-16,
+    "mass_kg": 0.03753156023488607
+  },
+  "solid_20mm_NIST_reference": {
+    "E_Pa": 123500000000.0,
+    "nu": 0.35,
+    "rho_kg_m3": 8960.0,
+    "radius_m": 0.01,
+    "cL_m_s": 4703.364541161431,
+    "cT_m_s": 2259.423241945472,
+    "roots": [
+      2.7811769216435223,
+      6.130019160948708,
+      9.32505887879946,
+      12.492174971566698
+    ],
+    "frequencies_Hz": [
+      208188.8131010166,
+      458870.9921590448,
+      698040.0725197704,
+      935118.8916251354
+    ],
+    "first_root_stress_residual": 4.440892098500626e-16,
+    "mass_kg": 0.03753156023488607
+  },
+  "shells_illustrative": [
+    {
+      "mid_radius_m": 0.038099999999999995,
+      "thickness_m": 0.0005,
+      "thickness_ratio": 0.013123359580052495,
+      "thin_breathing_Hz": 25478.891170193623,
+      "elastic_shell_breathing_Hz": 25479.46183098842,
+      "relative_thin_frequency_error": -2.239689356797747e-05,
+      "mass_exact_kg": 0.08172295509010184,
+      "mass_membrane_kg": 0.08172178222884442,
+      "relative_mass_underestimate": 1.4351674583079621e-05,
+      "exact_root": 1.403163172288983,
+      "determinant_residual": -8.326672684688674e-17
+    },
+    {
+      "mid_radius_m": 0.044449999999999996,
+      "thickness_m": 0.0005,
+      "thickness_ratio": 0.011248593925759281,
+      "thin_breathing_Hz": 21839.049574451677,
+      "elastic_shell_breathing_Hz": 21839.40894202357,
+      "relative_thin_frequency_error": -1.6455004475890433e-05,
+      "mass_exact_kg": 0.1112335986727404,
+      "mass_membrane_kg": 0.11123242581148268,
+      "relative_mass_underestimate": 1.0544127599043662e-05,
+      "exact_root": 1.4031548347118405,
+      "determinant_residual": 0.0
+    },
+    {
+      "mid_radius_m": 0.0508,
+      "thickness_m": 0.0005,
+      "thickness_ratio": 0.00984251968503937,
+      "thin_breathing_Hz": 19109.168377645216,
+      "elastic_shell_breathing_Hz": 19109.40912628075,
+      "relative_thin_frequency_error": -1.2598434307564688e-05,
+      "mass_exact_kg": 0.14528434126809184,
+      "mass_membrane_kg": 0.14528316840683453,
+      "relative_mass_underestimate": 8.072867640596115e-06,
+      "exact_root": 1.4031494232785875,
+      "determinant_residual": 5.551115123125783e-17
+    }
+  ],
+  "shells_NIST_reference": [
+    {
+      "mid_radius_m": 0.038099999999999995,
+      "thickness_m": 0.0005,
+      "thickness_ratio": 0.013123359580052495,
+      "thin_breathing_Hz": 27204.011479914694,
+      "elastic_shell_breathing_Hz": 27204.657184992113,
+      "relative_thin_frequency_error": -2.37350933345315e-05,
+      "mass_exact_kg": 0.08172295509010184,
+      "mass_membrane_kg": 0.08172178222884442,
+      "relative_mass_underestimate": 1.4351674583079621e-05,
+      "exact_root": 1.3846482493708188,
+      "determinant_residual": 0.0
+    },
+    {
+      "mid_radius_m": 0.044449999999999996,
+      "thickness_m": 0.0005,
+      "thickness_ratio": 0.011248593925759281,
+      "thin_breathing_Hz": 23317.724125641165,
+      "elastic_shell_breathing_Hz": 23318.130751075656,
+      "relative_thin_frequency_error": -1.743816598476222e-05,
+      "mass_exact_kg": 0.1112335986727404,
+      "mass_membrane_kg": 0.11123242581148268,
+      "relative_mass_underestimate": 1.0544127599043662e-05,
+      "exact_root": 1.384639530189341,
+      "determinant_residual": 2.7755575615628914e-17
+    },
+    {
+      "mid_radius_m": 0.0508,
+      "thickness_m": 0.0005,
+      "thickness_ratio": 0.00984251968503937,
+      "thin_breathing_Hz": 20403.008609936016,
+      "elastic_shell_breathing_Hz": 20403.281017497524,
+      "relative_thin_frequency_error": -1.3351164514840974e-05,
+      "mass_exact_kg": 0.14528434126809184,
+      "mass_membrane_kg": 0.14528316840683453,
+      "relative_mass_underestimate": 8.072867640596115e-06,
+      "exact_root": 1.3846338710899901,
+      "determinant_residual": 2.7755575615628914e-17
+    }
+  ],
+  "shell_thickness_scan": [
+    {
+      "mid_radius_m": 0.04445,
+      "thickness_m": 4.445e-05,
+      "thickness_ratio": 0.001,
+      "thin_breathing_Hz": 21839.049574451674,
+      "elastic_shell_breathing_Hz": 21839.052414629878,
+      "relative_thin_frequency_error": -1.300504320900231e-07,
+      "mass_exact_kg": 0.009888563478688,
+      "mass_membrane_kg": 0.009888562654640814,
+      "relative_mass_underestimate": 8.333335654864271e-08,
+      "exact_root": 1.4031319282706685,
+      "determinant_residual": 0.0
+    },
+    {
+      "mid_radius_m": 0.04445,
+      "thickness_m": 0.00022225,
+      "thickness_ratio": 0.005,
+      "thin_breathing_Hz": 21839.049574451674,
+      "elastic_shell_breathing_Hz": 21839.12057882843,
+      "relative_thin_frequency_error": -3.2512470683476735e-06,
+      "mass_exact_kg": 0.049442916279063304,
+      "mass_membrane_kg": 0.049442813273204066,
+      "relative_mass_underestimate": 2.083328957680486e-06,
+      "exact_root": 1.403136307735562,
+      "determinant_residual": -2.7755575615628914e-17
+    },
+    {
+      "mid_radius_m": 0.04445,
+      "thickness_m": 0.0004445,
+      "thickness_ratio": 0.01,
+      "thin_breathing_Hz": 21839.049574451674,
+      "elastic_shell_breathing_Hz": 21839.333590652644,
+      "relative_thin_frequency_error": -1.3004801625138285e-05,
+      "mass_exact_kg": 0.09888645059329611,
+      "mass_membrane_kg": 0.09888562654640813,
+      "relative_mass_underestimate": 8.333263890381026e-06,
+      "exact_root": 1.4031499934800704,
+      "determinant_residual": 2.7755575615628914e-17
+    },
+    {
+      "mid_radius_m": 0.04445,
+      "thickness_m": 0.000889,
+      "thickness_ratio": 0.02,
+      "thin_breathing_Hz": 21839.049574451674,
+      "elastic_shell_breathing_Hz": 21840.18561834367,
+      "relative_thin_frequency_error": -5.201621963513148e-05,
+      "mass_exact_kg": 0.1977778454679198,
+      "mass_membrane_kg": 0.19777125309281626,
+      "relative_mass_underestimate": 3.333222226142851e-05,
+      "exact_root": 1.4032047351984538,
+      "determinant_residual": 8.326672684688674e-17
+    },
+    {
+      "mid_radius_m": 0.04445,
+      "thickness_m": 0.0022225,
+      "thickness_ratio": 0.049999999999999996,
+      "thin_breathing_Hz": 21839.049574451674,
+      "elastic_shell_breathing_Hz": 21846.148930879124,
+      "relative_thin_frequency_error": -0.0003249706138098718,
+      "mass_exact_kg": 0.4945311385930266,
+      "mass_membrane_kg": 0.49442813273204067,
+      "relative_mass_underestimate": 0.00020828993959609576,
+      "exact_root": 1.4035878706046014,
+      "determinant_residual": -2.7755575615628914e-17
+    }
+  ],
+  "coupled_A": {
+    "phi": 0.1,
+    "M": [
+      [
+        0.1,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "K": [
+      [
+        2010755412.0508993,
+        -10000000.0
+      ],
+      [
+        -10000000.0,
+        18762723182.294827
+      ]
+    ],
+    "C": [
+      [
+        55.29203070318036,
+        0.0
+      ],
+      [
+        0.0,
+        2739.4687939303
+      ]
+    ],
+    "eigenfrequencies_Hz": [
+      21800.14920585605,
+      22568.76427297048
+    ],
+    "frf": [
+      {
+        "frequency_Hz": 21000.0,
+        "sphere_compliance_m_N": {
+          "real": 3.7052604894444767e-09,
+          "imag": -1.0048809865075291e-10
+        },
+        "table_compliance_m_N": {
+          "real": 2.538011013643549e-11,
+          "imag": -7.524638429740453e-12
+        },
+        "input_power_W": 6.629546122382646e-06,
+        "dissipated_power_W": 6.6295461223826455e-06
+      },
+      {
+        "frequency_Hz": 22000.0,
+        "sphere_compliance_m_N": {
+          "real": 9.926829361974792e-09,
+          "imag": -7.720256978621603e-10
+        },
+        "table_compliance_m_N": {
+          "real": -1.4164546807908228e-10,
+          "imag": -1.331598074619574e-10
+        },
+        "input_power_W": 5.335858573729851e-05,
+        "dissipated_power_W": 5.3358585737298494e-05
+      },
+      {
+        "frequency_Hz": 23000.0,
+        "sphere_compliance_m_N": {
+          "real": -1.2749935299682441e-08,
+          "imag": -1.3141269213867156e-09
+        },
+        "table_compliance_m_N": {
+          "real": 5.6962732492726427e-11,
+          "imag": 1.682516193444033e-11
+        },
+        "input_power_W": 9.495438408860078e-05,
+        "dissipated_power_W": 9.495438408860078e-05
+      }
+    ]
+  },
+  "coupled_B": {
+    "phi": 1.0,
+    "M": [
+      [
+        0.1,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "K": [
+      [
+        2010755412.0508993,
+        -100000000.0
+      ],
+      [
+        -100000000.0,
+        18861723182.294827
+      ]
+    ],
+    "C": [
+      [
+        55.29203070318036,
+        0.0
+      ],
+      [
+        0.0,
+        2739.4687939303
+      ]
+    ],
+    "eigenfrequencies_Hz": [
+      21814.129581647863,
+      22610.773451979
+    ],
+    "frf": [
+      {
+        "frequency_Hz": 21000.0,
+        "sphere_compliance_m_N": {
+          "real": 3.794020989653125e-09,
+          "imag": -1.2841117376679818e-10
+        },
+        "table_compliance_m_N": {
+          "real": 2.440130063644495e-10,
+          "imag": -6.960134690314141e-11
+        },
+        "input_power_W": 8.471727603036926e-06,
+        "dissipated_power_W": 8.471727603036926e-06
+      },
+      {
+        "frequency_Hz": 22000.0,
+        "sphere_compliance_m_N": {
+          "real": 8.460511723042653e-09,
+          "imag": -1.9796836621637545e-09
+        },
+        "table_compliance_m_N": {
+          "real": -1.388180626092221e-09,
+          "imag": -1.333044919622801e-09
+        },
+        "input_power_W": 0.00013682591228867855,
+        "dissipated_power_W": 0.00013682591228867853
+      },
+      {
+        "frequency_Hz": 23000.0,
+        "sphere_compliance_m_N": {
+          "real": -1.3516638724122853e-08,
+          "imag": -1.6545945445183071e-09
+        },
+        "table_compliance_m_N": {
+          "real": 6.282683903682591e-10,
+          "imag": 2.0480251471694274e-10
+        },
+        "input_power_W": 0.00011955542751175466,
+        "dissipated_power_W": 0.0001195554275117546
+      }
+    ]
+  },
+  "empty_table": [
+    {
+      "position": 0.0,
+      "phi": 0.0,
+      "table_frequency_Hz": 21800.0,
+      "modal_mass_kg": 1.4,
+      "damping_ratio": 0.01,
+      "values": [
+        {
+          "frequency_Hz": 0.0,
+          "real": 0.0,
+          "imag": 0.0,
+          "magnitude": 0.0
+        },
+        {
+          "frequency_Hz": 17440.0,
+          "real": 0.0,
+          "imag": 0.0,
+          "magnitude": 0.0
+        },
+        {
+          "frequency_Hz": 21800.0,
+          "real": 0.0,
+          "imag": 0.0,
+          "magnitude": 0.0
+        },
+        {
+          "frequency_Hz": 26160.0,
+          "real": 0.0,
+          "imag": 0.0,
+          "magnitude": 0.0
+        }
+      ]
+    },
+    {
+      "position": 0.1,
+      "phi": 0.3090169943749474,
+      "table_frequency_Hz": 21800.0,
+      "modal_mass_kg": 1.4,
+      "damping_ratio": 0.01,
+      "values": [
+        {
+          "frequency_Hz": 0.0,
+          "real": 3.635498489767121e-12,
+          "imag": 0.0,
+          "magnitude": 3.635498489767121e-12
+        },
+        {
+          "frequency_Hz": 17440.0,
+          "real": 1.0078698376017768e-11,
+          "imag": -4.4794215004523395e-13,
+          "magnitude": 1.00886477351789e-11
+        },
+        {
+          "frequency_Hz": 21800.0,
+          "real": 0.0,
+          "imag": -1.8177492448835607e-10,
+          "magnitude": 1.8177492448835607e-10
+        },
+        {
+          "frequency_Hz": 26160.0,
+          "real": -8.237986854696431e-12,
+          "imag": -4.493447375288964e-13,
+          "magnitude": 8.250232609526601e-12
+        }
+      ]
+    },
+    {
+      "position": 0.25,
+      "phi": 0.7071067811865475,
+      "table_frequency_Hz": 21800.0,
+      "modal_mass_kg": 1.4,
+      "damping_ratio": 0.01,
+      "values": [
+        {
+          "frequency_Hz": 0.0,
+          "real": 1.903571722451847e-11,
+          "imag": 0.0,
+          "magnitude": 1.903571722451847e-11
+        },
+        {
+          "frequency_Hz": 17440.0,
+          "real": 5.277274982154577e-11,
+          "imag": -2.3454555476242555e-12,
+          "magnitude": 5.282484534244601e-11
+        },
+        {
+          "frequency_Hz": 21800.0,
+          "real": 0.0,
+          "imag": -9.517858612259235e-10,
+          "magnitude": 9.517858612259235e-10
+        },
+        {
+          "frequency_Hz": 26160.0,
+          "real": -4.3134659168940194e-11,
+          "imag": -2.3527995910331025e-12,
+          "magnitude": 4.319877877366676e-11
+        }
+      ]
+    },
+    {
+      "position": 0.5,
+      "phi": 1.0,
+      "table_frequency_Hz": 21800.0,
+      "modal_mass_kg": 1.4,
+      "damping_ratio": 0.01,
+      "values": [
+        {
+          "frequency_Hz": 0.0,
+          "real": 3.8071434449036945e-11,
+          "imag": 0.0,
+          "magnitude": 3.8071434449036945e-11
+        },
+        {
+          "frequency_Hz": 17440.0,
+          "real": 1.0554549964309155e-10,
+          "imag": -4.690911095248512e-12,
+          "magnitude": 1.0564969068489203e-10
+        },
+        {
+          "frequency_Hz": 21800.0,
+          "real": 0.0,
+          "imag": -1.9035717224518474e-09,
+          "magnitude": 1.9035717224518474e-09
+        },
+        {
+          "frequency_Hz": 26160.0,
+          "real": -8.62693183378804e-11,
+          "imag": -4.705599182066206e-12,
+          "magnitude": 8.639755754733353e-11
+        }
+      ]
+    },
+    {
+      "position": 0.75,
+      "phi": 0.7071067811865476,
+      "table_frequency_Hz": 21800.0,
+      "modal_mass_kg": 1.4,
+      "damping_ratio": 0.01,
+      "values": [
+        {
+          "frequency_Hz": 0.0,
+          "real": 1.9035717224518476e-11,
+          "imag": 0.0,
+          "magnitude": 1.9035717224518476e-11
+        },
+        {
+          "frequency_Hz": 17440.0,
+          "real": 5.277274982154578e-11,
+          "imag": -2.3454555476242563e-12,
+          "magnitude": 5.2824845342446024e-11
+        },
+        {
+          "frequency_Hz": 21800.0,
+          "real": 0.0,
+          "imag": -9.51785861225924e-10,
+          "magnitude": 9.51785861225924e-10
+        },
+        {
+          "frequency_Hz": 26160.0,
+          "real": -4.31346591689402e-11,
+          "imag": -2.3527995910331033e-12,
+          "magnitude": 4.3198778773666766e-11
+        }
+      ]
+    },
+    {
+      "position": 1.0,
+      "phi": 0.0,
+      "table_frequency_Hz": 21800.0,
+      "modal_mass_kg": 1.4,
+      "damping_ratio": 0.01,
+      "values": [
+        {
+          "frequency_Hz": 0.0,
+          "real": 0.0,
+          "imag": 0.0,
+          "magnitude": 0.0
+        },
+        {
+          "frequency_Hz": 17440.0,
+          "real": 0.0,
+          "imag": 0.0,
+          "magnitude": 0.0
+        },
+        {
+          "frequency_Hz": 21800.0,
+          "real": 0.0,
+          "imag": 0.0,
+          "magnitude": 0.0
+        },
+        {
+          "frequency_Hz": 26160.0,
+          "real": 0.0,
+          "imag": 0.0,
+          "magnitude": 0.0
+        }
+      ]
+    }
+  ],
+  "thermal": {
+    "alpha_per_K": 1.65e-05,
+    "beta_E_per_K": -0.00048,
+    "delta_T_K": 0.1,
+    "nu_fixed": true,
+    "mass_conserved": true,
+    "fractional_shift": -2.3175308147549423e-05,
+    "first_mode_shift_Hz": -4.423102584842127,
+    "derivative_per_K": -0.00023175
+  },
+  "redshift": {
+    "delta_height_m": 0.001,
+    "g_m_s2": 9.80665,
+    "c_m_s": 299792458.0,
+    "fractional_shift": 1.0911369672198218e-19,
+    "shift_at_22000_Hz": 2.4005013278836077e-15
+  }
+}

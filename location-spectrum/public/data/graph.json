@@ -1,0 +1,600 @@
+{
+  "title": "From claims to measurements",
+  "asOf": "2026-10-21",
+  "nodes": [
+    {
+      "id": "topic-measurement",
+      "label": "Measured spectrum",
+      "kind": "topic",
+      "status": "Established measurement method",
+      "summary": "A specified physical channel, finite bandwidth and calibrated instrument.",
+      "type": "physics",
+      "description": "A specified physical channel, finite bandwidth and calibrated instrument."
+    },
+    {
+      "id": "topic-material",
+      "label": "Material inference",
+      "kind": "topic",
+      "status": "Conditional inverse problem",
+      "summary": "Elastic parameters inferred under geometry, boundary and noise assumptions.",
+      "type": "physics",
+      "description": "Elastic parameters inferred under geometry, boundary and noise assumptions."
+    },
+    {
+      "id": "topic-location",
+      "label": "Position comparison",
+      "kind": "topic",
+      "status": "Proposed experiment",
+      "summary": "A/B motion with environmental, support and receiver controls.",
+      "type": "physics",
+      "description": "A/B motion with environmental, support and receiver controls."
+    },
+    {
+      "id": "topic-uncertainty",
+      "label": "Identifiability & uncertainty",
+      "kind": "topic",
+      "status": "Required analysis",
+      "summary": "Separate parameter ambiguity, statistical uncertainty and model error.",
+      "type": "physics",
+      "description": "Separate parameter ambiguity, statistical uncertainty and model error."
+    },
+    {
+      "id": "topic-ai-review",
+      "label": "Independent verification",
+      "kind": "topic",
+      "status": "Workflow principle",
+      "summary": "Evaluate code and claimed results independently; retain failed tests.",
+      "type": "ai",
+      "description": "Evaluate code and claimed results independently; retain failed tests."
+    },
+    {
+      "id": "topic-surrogate",
+      "label": "Optional learned model",
+      "kind": "topic",
+      "status": "Future work",
+      "summary": "Only useful after enough calibrated data and a costly validated forward solver.",
+      "type": "ai",
+      "description": "Only useful after enough calibrated data and a costly validated forward solver."
+    },
+    {
+      "id": "topic-bashar",
+      "label": "Location-frequency claim",
+      "kind": "hypothesis",
+      "status": "Unverified physical interpretation",
+      "summary": "Needs a defined measurable quantity and discriminating prediction.",
+      "type": "claim",
+      "description": "Needs a defined measurable quantity and discriminating prediction."
+    },
+    {
+      "id": "lit-openai-release",
+      "label": "Sharing AI progress in mathematics",
+      "kind": "source",
+      "status": "Release inventory; mixed verification",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+      "sourceId": "lit-openai-release",
+      "type": "ai",
+      "description": "The inspected README lists 719 manuscripts in 372 families after withdrawals. Results have different verification levels.",
+      "shortLabel": "Sharing AI progress in mathematics"
+    },
+    {
+      "id": "lit-openai-elasticity",
+      "label": "Global Uniqueness for the Smooth Isotropic Elasticity Inverse Problem",
+      "kind": "source",
+      "status": "Claimed theorem; formalization listed by publisher",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf",
+      "sourceId": "lit-openai-elasticity",
+      "type": "ai",
+      "description": "Claims uniqueness of two smooth Lamé moduli from the full static displacement-to-traction operator in a bounded smooth three-dimensional domain, with positive elastic energy.",
+      "shortLabel": "Global Uniqueness for the Smooth Isotropic Elasticity Inverse Problem"
+    },
+    {
+      "id": "lit-openai-patch",
+      "label": "Determination of a metric and a unitary connection from one boundary patch",
+      "kind": "source",
+      "status": "Claimed theorem; independent verification not performed",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Determination-of-a-metric-and-a-unitary-connection-from-one-boundary-patch-October-5-2026/paper.pdf",
+      "sourceId": "lit-openai-patch",
+      "type": "ai",
+      "description": "Claims joint recovery of a smooth metric and rank-two unitary connection, up to boundary-fixed coordinate and gauge changes, from all specified patch boundary measurements.",
+      "shortLabel": "Determination of a metric and a unitary connection from one boundary patch"
+    },
+    {
+      "id": "lit-claude-circuits",
+      "label": "Discovering state-of-the-art quantum circuits with large language models",
+      "kind": "source",
+      "status": "Preprint; reported computational results",
+      "url": "https://arxiv.org/abs/2610.22367v1",
+      "sourceId": "lit-claude-circuits",
+      "type": "ai",
+      "description": "Reports improved Toffoli and qubit counts in seven of eight tasks, with a resource trade-off in the eighth.",
+      "shortLabel": "Discovering state-of-the-art quantum circuits with large language models"
+    },
+    {
+      "id": "lit-bootloops",
+      "label": "Claude-shaped science",
+      "kind": "source",
+      "status": "Research workflow account; not a peer-reviewed umbrella theorem",
+      "url": "https://www.anthropic.com/research/claude-shaped-science",
+      "sourceId": "lit-bootloops",
+      "type": "ai",
+      "description": "Describes tool building, domain-expert guidance, separate validation sessions and documented failure modes in AI-assisted research.",
+      "shortLabel": "Claude-shaped science"
+    },
+    {
+      "id": "lit-afdonet",
+      "label": "Adaptive Fourier Decomposition-guided Neural Operator Design for Inverse PDE Problems",
+      "kind": "source",
+      "status": "Conference paper; reported theory and benchmarks",
+      "url": "https://proceedings.mlr.press/v337/song26a.html",
+      "sourceId": "lit-afdonet",
+      "type": "ai",
+      "description": "Introduces AFDONet-inv, a learned inverse-PDE operator with Banach-space motivation.",
+      "shortLabel": "Adaptive Fourier Decomposition-guided Neural Operator Design for Inverse PDE Problems"
+    },
+    {
+      "id": "lit-latent-imh",
+      "label": "Latent-IMH: Efficient Bayesian Inference for Inverse Problems with Approximate Operators",
+      "kind": "source",
+      "status": "Conference paper; reported numerical and conditional theoretical results",
+      "url": "https://proceedings.mlr.press/v300/chen26g.html",
+      "sourceId": "lit-latent-imh",
+      "type": "ai",
+      "description": "Uses approximate operators to propose latent samples, followed by correction using the exact model.",
+      "shortLabel": "Latent-IMH: Efficient Bayesian Inference for Inverse Problems with Approximate Operators"
+    },
+    {
+      "id": "lit-input-design",
+      "label": "Informative Input Design for Dynamic Mode Decomposition",
+      "kind": "source",
+      "status": "Conference paper; reported simulation results",
+      "url": "https://proceedings.mlr.press/v283/ott25a.html",
+      "sourceId": "lit-input-design",
+      "type": "ai",
+      "description": "Plans bounded informative inputs to reduce system-identification uncertainty under a current model.",
+      "shortLabel": "Informative Input Design for Dynamic Mode Decomposition"
+    },
+    {
+      "id": "lit-energy-model",
+      "label": "Learning Normalized Energy Models for Linear Inverse Problems",
+      "kind": "source",
+      "status": "Conference paper; reported imaging results",
+      "url": "https://proceedings.mlr.press/v306/zilberstein26b.html",
+      "sourceId": "lit-energy-model",
+      "type": "ai",
+      "description": "Trains a covariance-conditioned energy model supporting posterior evaluation and corrected sampling for linear inverse imaging.",
+      "shortLabel": "Learning Normalized Energy Models for Linear Inverse Problems"
+    },
+    {
+      "id": "lit-rus-toolbox",
+      "label": "Resonant ultrasound spectroscopy: The essential toolbox",
+      "kind": "source",
+      "status": "Peer-reviewed instrumentation paper",
+      "url": "https://doi.org/10.1063/1.5123165",
+      "sourceId": "lit-rus-toolbox",
+      "type": "physics",
+      "description": "Describes resonant-ultrasound instrumentation and inference of elastic properties from mechanical modes.",
+      "shortLabel": "Resonant ultrasound spectroscopy: The essential toolbox"
+    },
+    {
+      "id": "lit-rus-sensitivity",
+      "label": "Resonant Ultrasound Spectroscopy: Sensitivity Analysis for Anisotropic Materials with Hexagonal Symmetry",
+      "kind": "source",
+      "status": "Research paper; parameter-sensitivity analysis",
+      "url": "https://arxiv.org/abs/2108.04442",
+      "sourceId": "lit-rus-sensitivity",
+      "type": "physics",
+      "description": "Studies weak sensitivity of spectra to combinations of elastic constants and complementary measurements.",
+      "shortLabel": "Resonant Ultrasound Spectroscopy: Sensitivity Analysis for Anisotropic Materials with Hexagonal Symmetry"
+    },
+    {
+      "id": "lit-scipy-spectra",
+      "label": "SciPy signal: Welch power spectra and magnitude-squared coherence",
+      "kind": "source",
+      "status": "Software documentation",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.welch.html",
+      "sourceId": "lit-scipy-spectra",
+      "type": "physics",
+      "description": "Defines segmented averaged power spectra and cross-channel magnitude-squared coherence.",
+      "shortLabel": "SciPy signal: Welch power spectra and magnitude-squared coherence"
+    },
+    {
+      "id": "bashar-game-chess-transcript",
+      "label": "Bashar: sphere proposal",
+      "type": "claim",
+      "sourceId": "bashar-game-chess-transcript",
+      "url": "https://www.superphysics.org/research/other/alien/essassani/transmissions/2013/2013-06-01b/",
+      "status": "attributed-claim",
+      "description": "Describes A/B measurements of an excited thin hollow copper sphere, followed by asserted destination-specific excitation and motion."
+    },
+    {
+      "id": "bashar-technology-transcript",
+      "label": "Follow-up transcript",
+      "type": "claim",
+      "sourceId": "bashar-technology-transcript",
+      "url": "https://lilys.ai/ko/notes/363403",
+      "status": "fallback-transcript",
+      "description": "Discusses thin nickel-copper sphere and explicitly includes room, table and excitation effects; declines to prescribe one universal frequency band."
+    },
+    {
+      "id": "metrology-ldv",
+      "label": "Laser vibrometry",
+      "type": "physics",
+      "sourceId": "metrology-ldv",
+      "url": "https://www.polytec.com/en/vibrometry/know-how/laser-doppler-vibrometry",
+      "status": "Method source; scope limited",
+      "description": "defines a calibrated optical velocity channel"
+    },
+    {
+      "id": "metrology-mobility",
+      "label": "Force-referenced response",
+      "type": "physics",
+      "sourceId": "metrology-mobility",
+      "url": "https://www.bksv.com/doc/br0458.pdf",
+      "status": "Method source; scope limited",
+      "description": "method for force-referenced response measurement"
+    },
+    {
+      "id": "metrology-emar",
+      "label": "Contactless ultrasound",
+      "type": "physics",
+      "sourceId": "metrology-emar",
+      "url": "https://www.nist.gov/publications/contactless-mode-selective-resonance-ultrasound-spectroscopy-electromagnetic-acoustic",
+      "status": "Method source; scope limited",
+      "description": "established noncontact elastic-mode metrology for conductive specimens"
+    },
+    {
+      "id": "history-tesla-resonance",
+      "label": "Tesla: tuning and losses",
+      "type": "physics",
+      "sourceId": "history-tesla-resonance",
+      "url": "https://www.gutenberg.org/files/13476/old/13476-h/13476-h.htm",
+      "status": "Historical method; not sphere evidence",
+      "description": "Electrical resonance is investigated through circuit design, tuning, loading and losses."
+    },
+    {
+      "id": "history-newton-method",
+      "label": "Newton: inverse reasoning",
+      "type": "physics",
+      "sourceId": "history-newton-method",
+      "url": "https://www.newtonproject.ox.ac.uk/view/texts/normalized/NATP00051",
+      "status": "Historical method; modern application",
+      "description": "Newton describes analysis from observations toward causes and synthesis back to predicted phenomena."
+    },
+    {
+      "id": "physics-copper-reference",
+      "label": "Copper elastic constants",
+      "type": "physics",
+      "sourceId": "physics-copper-reference",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.3253150.pdf",
+      "status": "Reference or reported method; see reading scope",
+      "description": "Reference compilation for copper elastic properties; reviewer inspected Tables 10 and 12 for illustrative polycrystal values and the local temperature coefficient used by the model."
+    },
+    {
+      "id": "physics-lamb-radial",
+      "label": "Solid sphere breathing",
+      "type": "physics",
+      "sourceId": "physics-lamb-radial",
+      "url": "https://arxiv.org/html/1506.09212v1",
+      "status": "Reference or reported method; see reading scope",
+      "description": "Section II.1 gives the radial displacement of an isotropic sphere. The project derives the free-surface traction equation from this displacement and linear elastic stress."
+    },
+    {
+      "id": "physics-shell-imperfections",
+      "label": "Shells and imperfections",
+      "type": "physics",
+      "sourceId": "physics-shell-imperfections",
+      "url": "https://www.osti.gov/servlets/purl/977882",
+      "status": "Reference or reported method; see reading scope",
+      "description": "LANL manuscript compares shell theory, finite elements and measurements, including the splitting of degenerate modes by geometric imperfections. It identifies midsurface radius in the shell-frequency formula."
+    },
+    {
+      "id": "physics-ruscal",
+      "label": "RUScal inverse fitting",
+      "type": "physics",
+      "sourceId": "physics-ruscal",
+      "url": "https://www.ornl.gov/publication/ruscal-software-analysis-resonant-ultrasound-spectroscopy-measurements",
+      "status": "Reference or reported method; see reading scope",
+      "description": "Provides Rayleigh–Ritz eigenvalue calculations and fitting tools across material symmetries and several specimen geometries. Useful extension for multi-mode inverse fitting and orientation effects."
+    },
+    {
+      "id": "model-breathing",
+      "label": "Checked breathing models",
+      "type": "physics",
+      "sourceId": "physics-lamb-radial",
+      "status": "Executed model checks; not a new experimental discovery",
+      "description": "Solid radial roots and thin-shell breathing checked against independent numerical formulations; physical fit unmeasured.",
+      "url": "./research/independent-review.md"
+    },
+    {
+      "id": "model-coupling",
+      "label": "Checked support model",
+      "type": "physics",
+      "sourceId": "lit-rus-toolbox",
+      "status": "Executed model checks; not a new experimental discovery",
+      "description": "Passive two-mode and empty-table responses checked independently; fixture parameters are illustrative.",
+      "url": "./research/independent-review.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "lit-rus-toolbox",
+      "target": "topic-measurement",
+      "type": "supports",
+      "label": "Practical mode measurements",
+      "relation": "supports: Practical mode measurements",
+      "sourceId": "lit-rus-toolbox"
+    },
+    {
+      "source": "lit-rus-toolbox",
+      "target": "topic-material",
+      "type": "method",
+      "label": "Fit specified elastic models",
+      "relation": "method: Fit specified elastic models",
+      "sourceId": "lit-rus-toolbox"
+    },
+    {
+      "source": "lit-rus-sensitivity",
+      "target": "topic-uncertainty",
+      "type": "supports",
+      "label": "Some parameters weakly observable",
+      "relation": "supports: Some parameters weakly observable",
+      "sourceId": "lit-rus-sensitivity"
+    },
+    {
+      "source": "lit-scipy-spectra",
+      "target": "topic-measurement",
+      "type": "tool",
+      "label": "PSD and cross-channel coherence",
+      "relation": "tool: PSD and cross-channel coherence",
+      "sourceId": "lit-scipy-spectra"
+    },
+    {
+      "source": "lit-openai-elasticity",
+      "target": "topic-material",
+      "type": "analogy",
+      "label": "Claims uniqueness with full boundary data",
+      "relation": "analogy: Claims uniqueness with full boundary data",
+      "sourceId": "lit-openai-elasticity"
+    },
+    {
+      "source": "lit-openai-patch",
+      "target": "topic-location",
+      "type": "analogy",
+      "label": "Coordinates and gauge remain qualified",
+      "relation": "analogy: Coordinates and gauge remain qualified",
+      "sourceId": "lit-openai-patch"
+    },
+    {
+      "source": "lit-openai-release",
+      "target": "topic-ai-review",
+      "type": "method",
+      "label": "Track revision and proof scope",
+      "relation": "method: Track revision and proof scope",
+      "sourceId": "lit-openai-release"
+    },
+    {
+      "source": "lit-claude-circuits",
+      "target": "topic-ai-review",
+      "type": "analogy",
+      "label": "Proposals tested by external evaluator",
+      "relation": "analogy: Proposals tested by external evaluator",
+      "sourceId": "lit-claude-circuits"
+    },
+    {
+      "source": "lit-bootloops",
+      "target": "topic-ai-review",
+      "type": "method",
+      "label": "Independent code and relevance review",
+      "relation": "method: Independent code and relevance review",
+      "sourceId": "lit-bootloops"
+    },
+    {
+      "source": "lit-input-design",
+      "target": "topic-location",
+      "type": "method",
+      "label": "Choose discriminating input trials",
+      "relation": "method: Choose discriminating input trials",
+      "sourceId": "lit-input-design"
+    },
+    {
+      "source": "lit-input-design",
+      "target": "topic-uncertainty",
+      "type": "method",
+      "label": "Reduce modeled parameter covariance",
+      "relation": "method: Reduce modeled parameter covariance",
+      "sourceId": "lit-input-design"
+    },
+    {
+      "source": "lit-latent-imh",
+      "target": "topic-uncertainty",
+      "type": "method",
+      "label": "Correct approximate forward proposals",
+      "relation": "method: Correct approximate forward proposals",
+      "sourceId": "lit-latent-imh"
+    },
+    {
+      "source": "lit-latent-imh",
+      "target": "topic-surrogate",
+      "type": "method",
+      "label": "Preserve exact-model acceptance step",
+      "relation": "method: Preserve exact-model acceptance step",
+      "sourceId": "lit-latent-imh"
+    },
+    {
+      "source": "lit-afdonet",
+      "target": "topic-surrogate",
+      "type": "method",
+      "label": "Learn restricted inverse-PDE map",
+      "relation": "method: Learn restricted inverse-PDE map",
+      "sourceId": "lit-afdonet"
+    },
+    {
+      "source": "lit-energy-model",
+      "target": "topic-uncertainty",
+      "type": "analogy",
+      "label": "Separate prior from likelihood",
+      "relation": "analogy: Separate prior from likelihood",
+      "sourceId": "lit-energy-model"
+    },
+    {
+      "source": "lit-energy-model",
+      "target": "topic-surrogate",
+      "type": "method",
+      "label": "Learned posterior with explicit assumptions",
+      "relation": "method: Learned posterior with explicit assumptions",
+      "sourceId": "lit-energy-model"
+    },
+    {
+      "source": "topic-measurement",
+      "target": "topic-location",
+      "type": "method",
+      "label": "Compare the same channel and protocol",
+      "relation": "method: Compare the same channel and protocol",
+      "sourceId": "project-design"
+    },
+    {
+      "source": "topic-uncertainty",
+      "target": "topic-location",
+      "type": "supports",
+      "label": "Require shift beyond a stated error budget",
+      "relation": "supports: Require shift beyond a stated error budget",
+      "sourceId": "project-design"
+    },
+    {
+      "source": "topic-bashar",
+      "target": "topic-location",
+      "type": "unverified",
+      "label": "Motivates a test; does not supply a mechanism",
+      "relation": "unverified: Motivates a test; does not supply a mechanism",
+      "sourceId": "project-design"
+    },
+    {
+      "source": "bashar-game-chess-transcript",
+      "target": "topic-bashar",
+      "type": "documents",
+      "relation": "documents",
+      "sourceId": "bashar-game-chess-transcript",
+      "label": "Describes A/B measurements of an excited thin hollow copper sphere, followed by asserted destination-specific excitation and motion."
+    },
+    {
+      "source": "bashar-technology-transcript",
+      "target": "topic-measurement",
+      "type": "documents",
+      "relation": "documents",
+      "sourceId": "bashar-technology-transcript",
+      "label": "Discusses thin nickel-copper sphere and explicitly includes room, table and excitation effects; declines to prescribe one universal frequency band."
+    },
+    {
+      "source": "metrology-ldv",
+      "target": "topic-measurement",
+      "type": "method",
+      "relation": "method",
+      "sourceId": "metrology-ldv",
+      "label": "defines a calibrated optical velocity channel"
+    },
+    {
+      "source": "metrology-mobility",
+      "target": "topic-measurement",
+      "type": "method",
+      "relation": "method",
+      "sourceId": "metrology-mobility",
+      "label": "method for force-referenced response measurement"
+    },
+    {
+      "source": "metrology-emar",
+      "target": "topic-measurement",
+      "type": "method",
+      "relation": "method",
+      "sourceId": "metrology-emar",
+      "label": "established noncontact elastic-mode metrology for conductive specimens"
+    },
+    {
+      "source": "history-tesla-resonance",
+      "target": "topic-measurement",
+      "type": "analogy",
+      "relation": "analogy",
+      "sourceId": "history-tesla-resonance",
+      "label": "Name the actual driver, stored energy, coupling and loss terms in each proposed experiment."
+    },
+    {
+      "source": "history-newton-method",
+      "target": "topic-uncertainty",
+      "type": "analogy",
+      "relation": "analogy",
+      "sourceId": "history-newton-method",
+      "label": "Start with an explicit observation, then test competing forward models and controls."
+    },
+    {
+      "source": "physics-copper-reference",
+      "target": "topic-material",
+      "relation": "supports",
+      "type": "supports",
+      "sourceId": "physics-copper-reference",
+      "label": "Reference compilation for copper elastic properties; reviewer inspected Tables 10 and 12 for illustrative polycrystal values and the local temperature coefficient used by the model."
+    },
+    {
+      "source": "physics-lamb-radial",
+      "target": "topic-material",
+      "relation": "method",
+      "type": "method",
+      "sourceId": "physics-lamb-radial",
+      "label": "Section II.1 gives the radial displacement of an isotropic sphere. The project derives the free-surface traction equation from this displacement and linear elastic stress."
+    },
+    {
+      "source": "physics-shell-imperfections",
+      "target": "topic-material",
+      "relation": "method",
+      "type": "method",
+      "sourceId": "physics-shell-imperfections",
+      "label": "LANL manuscript compares shell theory, finite elements and measurements, including the splitting of degenerate modes by geometric imperfections. It identifies midsurface radius in the shell-frequency formula."
+    },
+    {
+      "source": "physics-ruscal",
+      "target": "topic-material",
+      "relation": "tool",
+      "type": "tool",
+      "sourceId": "physics-ruscal",
+      "label": "Provides Rayleigh–Ritz eigenvalue calculations and fitting tools across material symmetries and several specimen geometries. Useful extension for multi-mode inverse fitting and orientation effects."
+    },
+    {
+      "source": "physics-lamb-radial",
+      "target": "model-breathing",
+      "relation": "method",
+      "type": "method",
+      "sourceId": "physics-lamb-radial",
+      "label": "Model context; implementation independently checked here"
+    },
+    {
+      "source": "model-breathing",
+      "target": "topic-location",
+      "relation": "tests model alternatives",
+      "type": "method",
+      "sourceId": "project-design",
+      "label": "Defines a simulated control, not physical confirmation"
+    },
+    {
+      "source": "lit-rus-toolbox",
+      "target": "model-coupling",
+      "relation": "method",
+      "type": "method",
+      "sourceId": "lit-rus-toolbox",
+      "label": "Model context; implementation independently checked here"
+    },
+    {
+      "source": "model-coupling",
+      "target": "topic-location",
+      "relation": "tests model alternatives",
+      "type": "method",
+      "sourceId": "project-design",
+      "label": "Defines a simulated control, not physical confirmation"
+    }
+  ],
+  "legend": {
+    "supports": "Direct support for the narrow stated topic",
+    "method": "A method that may be adapted under its assumptions",
+    "tool": "Documented analysis software",
+    "analogy": "Conceptual or workflow transfer, not physical validation",
+    "unverified": "An unresolved claim to operationalize"
+  },
+  "scope": "Curated research connection map; not a complete citation graph or validation of a frequency-to-location law."
+}

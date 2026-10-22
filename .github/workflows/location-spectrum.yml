@@ -1,0 +1,47 @@
+name: Deploy Location Spectrum Lab
+
+on:
+  push:
+    branches: [research/location-spectrum]
+    paths: ['location-spectrum/**', '.github/workflows/location-spectrum.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  location-site:
+    if: github.ref == 'refs/heads/research/location-spectrum'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Verify models and build
+        working-directory: location-spectrum
+        run: npm run check
+      - name: Publish only the location lab
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git clone --quiet --depth 1 --branch gh-pages "$REMOTE" site
+          mkdir -p site/devices/location
+          rsync -a --delete location-spectrum/dist/ site/devices/location/
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- devices/location
+          if git diff --cached --quiet; then
+            echo "Location Spectrum Lab already current"
+            exit 0
+          fi
+          git commit --quiet -m "Deploy Location Spectrum Lab ${GITHUB_SHA::7}"
+          git push --quiet origin gh-pages

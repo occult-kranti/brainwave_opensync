@@ -1,0 +1,38 @@
+[
+  {
+    "repo": "ffb-LANL/resonant-ultrasound",
+    "url": "https://github.com/ffb-LANL/resonant-ultrasound",
+    "commit": "bb81db274201bd5bc62786b25f607d2c2ca4888e",
+    "licenseMetadata": {
+      "key": "other",
+      "name": "Other",
+      "spdx_id": "NOASSERTION",
+      "url": null,
+      "node_id": "MDc6TGljZW5zZTA="
+    },
+    "inspection": "Repository metadata and README only; not installed or executed",
+    "role": "RUS acquisition hardware/software reference; README requires LabVIEW runtime and Red Pitaya"
+  },
+  {
+    "repo": "josh0tt/InputOptimization",
+    "url": "https://github.com/josh0tt/InputOptimization",
+    "commit": "687317792c9d70e8f05f41d0f7f43382b5f10c52",
+    "licenseMetadata": null,
+    "inspection": "Repository metadata and README only; not installed or executed",
+    "role": "Julia implementation of informative input design; no license declared in inspected API metadata, so link only"
+  },
+  {
+    "repo": "BootLoops-ai/bootloops",
+    "url": "https://github.com/BootLoops-ai/bootloops",
+    "commit": "e16ba2820a6cdfffd0f0ce970163b867c554db41",
+    "licenseMetadata": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "inspection": "Repository metadata and README only; not installed or executed",
+    "role": "Optional quantitative-science harness; linked article commit differs from current HEAD"
+  }
+]

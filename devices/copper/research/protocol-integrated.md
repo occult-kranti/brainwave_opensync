@@ -1,0 +1,51 @@
+# Integrated finite-band copper measurement protocol
+
+Status: proposed physical experiment plus executed synthetic interoperability controls. No apparatus was built and no copper measurements were supplied. Internal reviewers are model agents, not human specialists. Imported source versions are Location `07e57b446a9f480216ad1aa555088bc361006d9c` and Position `a8913c825d24299283c9379282ae3876e2a0c0cd`; their original limitations remain inspectable.
+
+## Observable and boundary
+
+The question is whether the **same identified mechanical mode** of a characterized specimen shows a reproducible A/B difference after known support, temperature, drive and observation changes are independently constrained. A result is a finite-band response of a specimen–fixture–source–receiver system, not an entire-object frequency or an absolute coordinate code.
+
+Retain calibrated complex velocity/force mobility `(m/s)/N`, raw synchronized force N, surface velocity component m/s, table acceleration m/s², temperature, geometry and timebase records. The current offline trace tool is force-only: voltage input is rejected, and no N/V conversion is inferred. For the same declared mechanical port and `exp(+iωt)`, `H_vF=iωH_xF`; table acceleration PSD alone is not a table FRF. Digital dBFS, acoustic pressure Pa, force N and EEG μV are separate measurements.
+
+A thin shell, solid sphere and joined shell require different model assumptions. Record radius convention, thickness/seam, mass, dimensions, material certificate, surface fiducial, orientation and temperature. Chemistry alone does not establish elastic isotropy, texture or modal effective masses. Selected radial families do not represent all modes; contact, fluid loading and nonradial/rigid modes can matter.
+
+## Apparatus admission and operating range
+
+Use a common timebase and verified synchronized input/output channels. Verify actual force and receiver transfer functions, relative phase, range and analog anti-alias attenuation over the retained band. Sampling above twice the nominal band is necessary but does not demonstrate a usable source, sensor or filter. The 23.3 kHz shell example and 166.6 kHz solid example require different bands; consumer audio cannot substitute for a calibrated ultrasonic chain. A force-monitor voltage remains volts until a valid frequency-dependent force calibration is supplied.
+
+Translate the same cradle/source assembly without rolling the specimen; stop and settle before stationary acquisition. Match the surface fiducial and laser incidence direction. Log surveyed room/table coordinates, level/height, orientation, contact preload N, air supply, cable strain relief, specimen/fixture temperatures and acquisition midpoints. An air bearing changes friction and loading; it does not isolate gravity or remove vertical support. Static weight can alter preload. Gravitational clock redshift is a separate potential-comparison effect, not a local copper-resonance correction when the whole apparatus moves together.
+
+Establish the operating range from a specimen/instrument-specific low-amplitude pilot: randomized drive amplitudes, response/force scaling, baseline recovery, temperature and harmonic/distortion checks. Do not adopt the virtual pulse amplitudes as hardware instructions. Preload N is not incremental contact stiffness N/m. Calibrate a local dependence empirically; neither prescribed spring sliders nor a generic solid Hertz model certify a thin shell/cradle contact.
+
+## Prospective acquisition design
+
+1. Freeze one primary mode or matched modal subspace, band, externally validated estimator, exclusions, smallest meaningful difference and analysis version using pilot information. Save raw records, calibration/noise files and the randomization schedule. A pilot block count is not a power guarantee; use measured variance and a serial-dependence sensitivity analysis to plan the main run.
+2. Record empty fixture, drive-off, stationary reference, same-position handling, lift/remount and return-to-initial-state controls. An electrical dummy/reference and independent optical readout help identify force-proportional pickup. A fixed table reference and independent room-pressure channel separate nuisance channels.
+3. Independently cross surveyed position A/B with at least two measured preload settings within the validated operating range. Hold specimen orientation and optical geometry fixed. Randomize preload-state order and repeat the original state to expose hysteresis. Within each state use balanced ABBA/BAAB blocks with equal acquisition-midpoint spacing, rather than inferring preload from the position label.
+4. Interleave a finite source pulse and its phase reversal at matched initial states as a diagnostic. The odd half-difference includes linear **and higher odd-order** response; it cannot by itself certify linearity. Retain amplitude-scaling tests, measured input force, independent readout, electrical dummy and drive-off controls. A source-proportional pickup can reverse too. Use a validated transient estimator separately from stationary Welch H1.
+5. Independently perturb a small measured temperature range, readout geometry and orientation at fixed position to estimate nuisance sensitivities before attributing A/B changes. Reserve complete blocks on another day or instrument configuration for held-out validation. Nearby FFT bins and overlapping Welch segments are not independent holdouts.
+
+## Analysis and inference limits
+
+The supplied trace tool returns **CANDIDATE response-bin maxima**, complex H1, coherence and table PSD. It does not fit poles or establish mode identity. Do not supply its tallest bin to the block tool as if it were a fitted common mode. A future common-pole estimator needs independent validation, residuals, uncertainty, phase/channel calibration and mode/subspace matching. The noiseless in-model tail fit from the Round 1 example was a synthetic self-check, not that validation.
+
+Frequency ratios can cancel common multiplicative scale only for correctly matched modes under the stated model. Contact, Poisson ratio and anisotropy can change natural-frequency ratios. Readout weighting alone changes visibility or peak selection and can bias estimated ratios; it does not move the natural eigenfrequencies. Wrong mode identity remains another alternative. A ratio cannot identify a unique location, support law or material property by itself. Require identifiable nuisance design and held-out predictions before causal language.
+
+ABBA/BAAB cancels intercept and linear drift at equal spacing. Quadratic drift cancels across reversals only with additional matched-curvature assumptions. A nuisance permanently locked to position is not separated by repetition: `beta_position*x + cT*(a*x)` identifies only a combination of coefficients. Cross/independently constrain the nuisance settings and inspect design rank/conditioning under recorded scaling and tolerances. Full rank in one declared family does not prove all physical alternatives have been controlled.
+
+The block tool's Student-t interval is a sampling interval under independent approximately normal block contrasts. It does not include calibration systematic error, thermal correction, support-model discrepancy or external fit uncertainty. Preserve those terms separately and combine only with justified covariance/coverage, avoiding repeated counting of repeatability. Common constant clock scale acts on a difference; nonshared drift and channel delay remain. Zero in an interval does not prove equivalence; significant association does not establish an intrinsic location mechanism. Predeclare multiplicity and equivalence/power rules where applicable.
+
+## Energy and software closure controls
+
+For a passive coordinate, track `E=mv²/2+kx²/2`, input work `∫Fv dt` and dissipation `∫cv² dt`. For the coupled fixture include both coordinates and contact energy `kc(us−φut)²/2`, with source/support losses. One mechanical-port work balance is not whole-apparatus electrical efficiency and provides no energy-generation or gravity-control claim.
+
+Executed `analysis/closure_fixture.py` uses a separately constructed analytical impedance and periodic multisine force, generates declared SI force/velocity samples, and runs the H1 pipeline. On 28 nonzero driven lines, maximum relative complex mobility error is about `2.71e−15`; converting by `1/(iω)` recovers receptance at the same accuracy. Periodic source power and viscous loss agree to about `1.51e−16` relative. The toy has known mass/damping/stiffness; zero table acceleration is a declared placeholder. This is deterministic interoperability closure, not hardware calibration, noisy pole-fit accuracy or copper data. Wrong quantity/units, duplicate headers and ragged records are rejecting controls in the suite.
+
+Every admitted analysis requires a JSON sidecar with exact declared quantity/unit pairs, raw SHA-256, analyzer SHA-256 and imported source pins. Outputs preserve those values, dependency versions and sidecar/registry hashes. Status is `synthetic` or `measurement-input-unverified`; calibration is never authenticated automatically. Sidecar omission, altered raw bytes, changed code, wrong source pins and voltage-as-force declarations are rejected. No prior output is overwritten. Hashes bind records and code, not physical truth; retain the actual calibration and acquisition history for review.
+
+## Documentary and audio boundary
+
+Phase/envelope control and reproducible stimuli are generic engineering practices that can be discussed alongside historical audio material. Binaural L/R carrier separation is not a difference-frequency mechanical force in copper. AM/two-tone sidebands and any nonlinear demodulation require explicit source and material models. Gateway Focus labels and claimed consciousness states do not supply copper constitutive constants, a brain-frequency-to-material law or a relocation mechanism. Keep historical/source interpretation separate from tested mechanical outcomes.
+
+Next missing premise: a prospectively recorded, independently calibrated physical experiment with a sufficiently identifiable nuisance design and externally validated mode estimates. No simulation in this package supplies that premise.

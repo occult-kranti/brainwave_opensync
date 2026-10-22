@@ -1,0 +1,52 @@
+{
+  "schema": "copper-run-contract/1",
+  "record_type": "trace",
+  "data_kind": "synthetic",
+  "raw_file": "passive-force-velocity.csv",
+  "raw_sha256": "465a0a5eb521ab517dfb90fc8762831974956e841d60160c88577385c5cf6c2a",
+  "analysis_code_sha256": "c6d6acb89ca0bd34724bbf76467f53e8aa1adeee8e3e6dde6b55adc9cc7e188b",
+  "source_pins": {
+    "position": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+    "location": "07e57b446a9f480216ad1aa555088bc361006d9c"
+  },
+  "channels": {
+    "time_s": {
+      "quantity": "time",
+      "unit": "s"
+    },
+    "force_N": {
+      "quantity": "force",
+      "unit": "N"
+    },
+    "sphere_velocity_m_s": {
+      "quantity": "velocity_component",
+      "unit": "m/s"
+    },
+    "table_acceleration_m_s2": {
+      "quantity": "acceleration_component",
+      "unit": "m/s^2"
+    }
+  },
+  "run_id": null,
+  "specimen_id": null,
+  "fixture_id": "passive-periodic-single-coordinate-frequency-domain/1",
+  "calibration_references": {},
+  "hardware_bandwidth_and_filter": null,
+  "clock_and_channel_phase_reference": null,
+  "nuisance_design": {
+    "position_locked_covariates": "unknown",
+    "independent_variation_record": null
+  },
+  "warning": "Unit declarations and hashes do not authenticate calibration or physical provenance. ABBA/BAAB does not separate position from temperature, preload, receiver geometry or another nuisance locked to position. Repetition cannot identify their separate coefficients; independently vary or constrain them.",
+  "fixture_generation": {
+    "script_sha256": "01b9a283b25149d708bcd31abbdf21c9870040cabc84fe25e2b9986962d16af2",
+    "seed": 20261022,
+    "mass_kg": 0.1,
+    "natural_frequency_hz": 700.0,
+    "Q": 30.0,
+    "source": "finite periodic multisine force, 2 mN amplitude per driven line",
+    "response": "analytical steady-state impedance; no initial transient",
+    "table_channel": "zero placeholder; no modeled table dynamics",
+    "admission": "synthetic mathematical quantities; no hardware calibration implied"
+  }
+}

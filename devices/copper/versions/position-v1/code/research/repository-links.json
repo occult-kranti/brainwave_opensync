@@ -1,0 +1,26 @@
+{
+  "checked": "2026-10-21",
+  "reuse": "Methods and linking only; no numerical claim imported without local reproduction.",
+  "repositories": [
+    {
+      "name": "brainwave_opensync",
+      "revision": "c2f79aaa46a520a14cab18ef56b13f3b89ca504b",
+      "path": "device-observatory",
+      "role": "Parent static page architecture and visual identity",
+      "license": "MIT"
+    },
+    {
+      "name": "newton-tesla-research-lab",
+      "revision": "2faece1d6dde6be63f7758c2754a0369d1a34fce",
+      "url": "https://github.com/occult-kranti/newton-tesla-research-lab",
+      "role": "Source/receiver ambiguity, environmental witness and diagram methods; README inspected",
+      "license": "MIT per README"
+    },
+    {
+      "name": "resonant-vessels",
+      "url": "https://github.com/occult-kranti/resonant-vessels",
+      "readme_blob": "cabd9b0a5672cdcb04b8bc74eef3910465ddbe13",
+      "role": "Read corrected archive scope; inherited unexecuted simulations excluded from evidence"
+    }
+  ]
+}

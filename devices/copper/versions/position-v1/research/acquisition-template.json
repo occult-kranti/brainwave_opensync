@@ -1,0 +1,67 @@
+{
+  "record_type": "blank acquisition metadata template",
+  "data_status": "no measurements supplied",
+  "specimen": {
+    "id": null,
+    "material_grade": null,
+    "purity_certificate": null,
+    "diameter_m": null,
+    "mass_kg": null,
+    "orientation_fiducial": null
+  },
+  "run": {
+    "id": null,
+    "block": null,
+    "order": null,
+    "position": "A or B",
+    "coordinate_m": null,
+    "acquisition_midpoint_s": null,
+    "settling_time_s": null,
+    "air_supply_state": null,
+    "contact_preload_N": null
+  },
+  "channels": {
+    "sphere": {
+      "quantity": "surface velocity component",
+      "unit": "m/s",
+      "calibration_id": null,
+      "beam_angle_deg": null,
+      "sample_rate_Hz": null,
+      "analogue_passband_Hz": null
+    },
+    "drive": {
+      "quantity": "force if calibrated, otherwise monitored voltage",
+      "unit": "N or V; choose before analysis",
+      "calibration_id": null,
+      "noise_floor_record": null
+    },
+    "table": {
+      "quantity": "acceleration",
+      "unit": "m/s^2",
+      "coordinate_m": null,
+      "calibration_id": null
+    },
+    "environment": {
+      "sphere_temperature_C": null,
+      "room_temperature_C": null,
+      "air_pressure_Pa": null
+    }
+  },
+  "primary_mode": {
+    "id": null,
+    "fit_method": null,
+    "frequency_Hz": null,
+    "standard_uncertainty_Hz": null,
+    "shape_match_score": null,
+    "residuals_file": null
+  },
+  "raw_data": {
+    "file": null,
+    "sha256": null
+  },
+  "exclusions": {
+    "saturation": null,
+    "double_hit": null,
+    "reason": null
+  }
+}

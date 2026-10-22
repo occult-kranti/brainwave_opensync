@@ -1,0 +1,101 @@
+[
+  {
+    "file": "/tmp/copper-browser-qa/mechanics-run.zip",
+    "zip_sha256": "2e0c933513e76444f03283f43119aad819feeaeae42b1607d3b0879b24b45a82",
+    "kind": "mechanical-comparison",
+    "status": "synthetic-model; no physical measurements",
+    "run_id": "bf85ae31225dbf76e9bed7fa6af629f4e50aad330425abef8393d9ddd76a81b0",
+    "CRC_and_manifest_hashes": "pass",
+    "all_CSV_values_match_sidecar_arrays": true,
+    "source_pins": {
+      "locationV1": "f9927a68fca491785bfca0a4782ffceeb37209dc",
+      "locationV11": "07e57b446a9f480216ad1aa555088bc361006d9c",
+      "positionV1": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+      "gateway": "075bbab71bd4c83946fac1c3180dbc9460ce32d2"
+    },
+    "component_hashes": {
+      "src/models.mjs": "2371578a26dba7cdb580940c8cd64b7fa361a3ec2ee2d52581a6fa8fba2445fe",
+      "src/acquisition.mjs": "45af3ac9c2a447ef80328e5f9c2e3b3e4c6f9271c497b5c525618aa4a30f44cd",
+      "src/modal-diagnostics.mjs": "8be4f095c62d19e4742844efc0965c6cf7726b21587c3d2ab0811a2d10daf510",
+      "src/design-diagnostics.mjs": "3661b2aa99cd6e1f0292543fde54a30bae7652378bc5f85972a8b541d58daccb",
+      "analysis/analyze.py": "c6d6acb89ca0bd34724bbf76467f53e8aa1adeee8e3e6dde6b55adc9cc7e188b"
+    },
+    "units": {
+      "frequency": "Hz",
+      "sphereResponse": "magnitude in m/N; projected displacement per generalized force; no phase exported",
+      "emptyTableResponse": "magnitude in m/N; local point displacement per local point force; no phase exported",
+      "mass": "kg",
+      "radiusInput": "mm",
+      "wallThicknessInput": "mm",
+      "temperatureDifference": "K",
+      "position": "x/L dimensionless"
+    },
+    "csv_headers": {
+      "responses.csv": [
+        "run_id",
+        "frequency_Hz",
+        "sphere_A_magnitude_m_per_N",
+        "sphere_B_magnitude_m_per_N",
+        "empty_table_A_magnitude_m_per_N",
+        "empty_table_B_magnitude_m_per_N"
+      ]
+    },
+    "row_counts": {
+      "responses.csv": 1097
+    },
+    "seed": null,
+    "direct_browser_sidecar_rejection": "Unsupported metadata schema",
+    "typed_sidecar_still_rejects_non_force_velocity_columns": "Missing CSV columns: force_N, sphere_velocity_m_s, table_acceleration_m_s2, time_s",
+    "source_context": {}
+  },
+  {
+    "file": "/tmp/copper-browser-qa/acquisition-run.zip",
+    "zip_sha256": "b5ec7138cdedaa7f6a9d3815625d9d3bd5a0059e27f44195131c62e8d64a8f12",
+    "kind": "synthetic-acquisition",
+    "status": "synthetic-model; no physical measurements",
+    "run_id": "ea54ff8920f6b3c8af6fdb3592eac173f911916295746cfba255acca6473071d",
+    "CRC_and_manifest_hashes": "pass",
+    "all_CSV_values_match_sidecar_arrays": true,
+    "source_pins": {
+      "locationV1": "f9927a68fca491785bfca0a4782ffceeb37209dc",
+      "locationV11": "07e57b446a9f480216ad1aa555088bc361006d9c",
+      "positionV1": "a8913c825d24299283c9379282ae3876e2a0c0cd",
+      "gateway": "075bbab71bd4c83946fac1c3180dbc9460ce32d2"
+    },
+    "component_hashes": {
+      "src/models.mjs": "2371578a26dba7cdb580940c8cd64b7fa361a3ec2ee2d52581a6fa8fba2445fe",
+      "src/acquisition.mjs": "45af3ac9c2a447ef80328e5f9c2e3b3e4c6f9271c497b5c525618aa4a30f44cd",
+      "src/modal-diagnostics.mjs": "8be4f095c62d19e4742844efc0965c6cf7726b21587c3d2ab0811a2d10daf510",
+      "src/design-diagnostics.mjs": "3661b2aa99cd6e1f0292543fde54a30bae7652378bc5f85972a8b541d58daccb",
+      "analysis/analyze.py": "c6d6acb89ca0bd34724bbf76467f53e8aa1adeee8e3e6dde6b55adc9cc7e188b"
+    },
+    "units": {
+      "time": "s",
+      "frequency": "Hz",
+      "waveform": "arbitrary sensor units; synthetic",
+      "spectrum": "one-sided sinusoidal amplitude; arbitrary sensor units; coherent-gain normalized, not PSD",
+      "decayRate": "s^-1",
+      "phase": "rad"
+    },
+    "csv_headers": {
+      "spectrum.csv": [
+        "run_id",
+        "frequency_Hz",
+        "synthetic_amplitude_arbitrary_sensor_units"
+      ],
+      "waveform.csv": [
+        "run_id",
+        "time_s",
+        "synthetic_signal_arbitrary_sensor_units"
+      ]
+    },
+    "row_counts": {
+      "spectrum.csv": 4097,
+      "waveform.csv": 8192
+    },
+    "seed": 42,
+    "direct_browser_sidecar_rejection": "Unsupported metadata schema",
+    "typed_sidecar_still_rejects_non_force_velocity_columns": "Missing CSV columns: force_N, sphere_velocity_m_s, table_acceleration_m_s2",
+    "source_context": {}
+  }
+]

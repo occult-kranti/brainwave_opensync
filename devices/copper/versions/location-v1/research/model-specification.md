@@ -1,0 +1,125 @@
+# Copper sphere location experiment: model and measurement contract
+
+Research date: 21 October 2026. Status: proposed experiments and executed numerical models; no physical sphere was measured. This document describes bounded observables, not an entire-object frequency signature.
+
+## The question that can be tested
+
+For the same specimen, identify the same mechanical modes and compare their fitted frequency, damping and calibrated response at positions A and B. The primary observable is a frequency-response function (FRF): displacement divided by applied force, in m/N, with geometry, temperature, support, orientation and receiver calibration recorded. A separate measurement maps the empty table's local response.
+
+Chemical purity does not imply a homogeneous isotropic specimen. Copper can be a single crystal, textured polycrystal, worked material, shell with a seam, or a stressed part. Those distinctions affect elasticity. A sphere has many spheroidal and torsional modes. Its electromagnetic, optical and thermal spectra require different sensors and definitions. A finite acquisition cannot capture every mode or all possible physical channels.
+
+The source team's reported Bashar geometry is a thin hollow copper sphere. The solid sphere requested by the user is therefore a separate reference model. Never substitute the solid formula for the hollow source geometry. The default midsurface radius 44.45 mm corresponds to a 3.5 inch diameter; 0.5 mm wall thickness is our illustrative choice, not a recovered source specification.
+
+## Translation null hypothesis
+
+If all physical coefficients and boundary conditions are translation invariant, translating an isolated stationary body changes its coordinates, not its intrinsic normal-mode frequencies. For a spatial Fourier transform, translation multiplies a component by exp(-i k·a); this changes spatial phase rather than the component's temporal frequency. In a real laboratory, moving a body relative to supports, fields, walls, source and receiver changes the experiment. These environmental changes are testable alternatives to an intrinsic location signature.
+
+A table point does not own one fundamental frequency. A local input/output FRF samples the table's global modes with position-dependent weights. A node can hide a mode without changing its eigenfrequency. Measurements while the sphere is moving introduce velocity, rotation, contact noise and possibly Doppler effects; the primary A/B protocol measures after motion stops.
+
+## Material reference and reproducible inputs
+
+The browser defaults use E=123.5 GPa, ν=0.350 and ρ=8960 kg/m³. E and ν are illustrative polycrystalline copper reference values from the NIST-hosted Ledbetter–Naimon review, Table 10, as checked by the independent reviewer. The implemented shear modulus is derived consistently as E/[2(1+ν)]; separately rounded tabulated elastic constants are not mixed into the same isotropic model. Density is an approximate room-temperature value and should be replaced by the specimen's measured mass and geometry. Linear expansion α=16.5×10^-6 K^-1 is also a reference approximation. The fractional Young-modulus slope β_E=-4.8×10^-4 K^-1 follows Table 12's room-temperature coefficient. It is a local sensitivity approximation, not a reliable extrapolation across large temperature intervals.
+
+Specimen-specific inference must include uncertainties in radius, wall thickness, elasticity, density, temperature, orientation and support. For an isotropic mode at fixed ν, f scales as sqrt(E/ρ)/R. One frequency cannot uniquely infer all three quantities. For example, changing E and ρ by the same factor leaves this frequency unchanged. Multiple modes and independent metrology are needed to constrain an inverse fit.
+
+## Solid sphere: exact radial mode within linear isotropic elasticity
+
+Let λ and μ be Lamé moduli, c_L=sqrt[(λ+2μ)/ρ] and c_T=sqrt(μ/ρ). For the spherically symmetric displacement, u(r)=A j₁(kr), k=ω/c_L. The stress-free surface condition is
+
+    σ_rr(R) = (λ+2μ) u'(R) + 2λ u(R)/R = 0.
+
+Using j₁'(x)=j₀(x)-2j₁(x)/x gives
+
+    x j₀(x) − 4(c_T/c_L)² j₁(x) = 0,  x=ωR/c_L,
+    f = x c_L/(2πR).
+
+The implementation solves [sin(x)-4(c_T/c_L)²j₁(x)]/x=0 and excludes the spurious x=0 solution. It scans for a bracket and bisects. Its fundamental means the first radial breathing solution; other non-radial modes can be lower. This is not the entire spectrum.
+
+For a surface-displacement-normalized coordinate, the modal mass is
+
+    m_s = 4πρ ∫₀ᴿ [j₁(xr/R)/j₁(x)]² r² dr
+        = (3M/2) [1 − j₀(x)j₂(x)/j₁(x)²].
+
+This modal mass can exceed the total physical mass because internal displacement may exceed surface displacement under this normalization. It is not an additional mass. The reviewer checked the integral by independent numerical quadrature.
+
+Default prediction: first radial breathing frequency 46,836.628369 Hz, solid mass 3.296187552 kg. A separate 10 mm radius fixture with E=110 GPa, ν=.34 and ρ=8960 gives root 2.758636294883021 and frequency 190,854.100263 Hz. These are calculations, not measurements. Reference: Galstyan, Pak and Stone, section II.1 and free-surface limit; CNRS Saviot Lamb calculator for the model family.
+
+## Hollow sphere: thin membrane breathing approximation
+
+For midsurface radius R and wall thickness t≪R, uniform radial displacement u gives equal tangential strains u/R. Plane-stress elasticity gives σθ=σφ=Eu/[(1−ν)R]. The restoring pressure is 2tσθ/R. Dividing by surface mass density ρt gives
+
+    ω_b² = 2E/[ρ(1−ν)R²],
+    f_b = (1/2πR) sqrt[2E/(ρ(1−ν))].
+
+Thickness cancels only at leading membrane order. Thickness still changes mass, bending modes, imperfections, fluid loading, stiffness corrections and detectability. The model assumes a uniform, unpressurized, stress-free, closed shell without seam effects. It excludes the internal/external air load and all bending/torsional families. The browser marks t/R≤.05 as within the chosen thin-shell working range, .05<t/R≤.1 as an approximation warning, and rejects t/R>.1. Those are explicit modeling cutoffs rather than a theorem about a universal error bound.
+
+The membrane mass is 4πρR²t. The separately returned geometric mass is (4πρ/3)[(R+t/2)³−(R−t/2)³]. The former is used consistently by the membrane dynamics; the latter should label the physical specimen mass in the interface.
+
+Default prediction: f_b=23,317.724126 Hz, membrane mass .111232426 kg, geometric mass .111233599 kg, t/R=.0112486. The independent reviewer compared another fixture against the full 3D stress-free shell determinant and found the expected small finite-thickness correction. This is a check of an approximation, not proof that a fabricated shell has that exact frequency. Duffey et al. discuss shell mode families, imperfections and degeneracy splitting; their model is a relevant general reference.
+
+## Positive, passive sphere–fixture coupling
+
+Retain one sphere elastic coordinate u_s and one fixture modal coordinate u_t. The assumed fixture shape at normalized position p=x/L is φ(p)=sin(πp). Its modal mass is chosen as ten times the sphere modal mass. Its natural frequency is the user's selected ratio times the sphere reference frequency. This is a deliberately small model for studying confounds; it does not predict the mode shape or frequency of a real six-to-ten-foot table.
+
+Use coupling potential κ(u_s−φu_t)²/2 with κ≥0. Then
+
+    M = diag(m_s,m_t)
+    K11=m_s ω_s²+κ, K22=m_t ω_t²+κφ², K12=K21=−κφ.
+
+Keeping the diagonal terms is essential. An off-diagonal coupling alone would be a different model. The UI coupling value is κ/(m_s ω_s,A²), fixed between A and B. The core API default .08 is an illustrative coupling ratio; the page opens with zero coupling for its translation-only comparison. This ratio, not a measured copper-contact stiffness. It is not a hardware design prescription.
+
+The two undamped natural frequencies are obtained from the symmetric matrix M^-1/2 K M^-1/2. If its entries are a,b,d, λ_+=(a+d+sqrt[(a−d)²+4b²])/2 and λ_-=(ad−b²)/λ_+. This determinant form avoids cancellation in the low eigenvalue. Frequencies are sqrt(λ)/(2π). Damped poles are complex; they are not identical to these real undamped frequencies or necessarily to response-peak locations.
+
+For harmonic forcing e^(iωt), D=K−ω²M+iωC, with diagonal Cii=2ζ_i m_i ω_i. The sphere's unit modal force response is H_ss=D22/det(D), H_ts=−D12/det(D), in m/N. The defaults ζ_s=.002 and ζ_t=.01 are chosen damping assumptions. The model is passive: the stiffness energy is the sum of two positive oscillator energies and the nonnegative contact spring energy; damping dissipates C11·u̇_s²+C22·u̇_t².
+
+One newton is normalization for the FRF. Real experiments should find a small excitation range with linear response and record the actual input force; this document does not advise applying a one-newton ultrasonic drive.
+
+## Empty table point channel
+
+Remove the sphere. Apply a point force and measure displacement at that same point. The one-mode driving-point FRF is
+
+    H_empty(p,ω) = φ(p)² / {m_t[ω_t²−ω²+i2ζ_tω_tω]}.
+
+Both force participation and displacement readout contribute a factor φ. The table's undamped natural frequency is unchanged with p. Its observed magnitude changes, and the mode vanishes at a node. For ζ_t<1/sqrt(2), the displacement-response peak is at f_t sqrt(1−2ζ_t²). The site does not claim that the empty table has the same transfer function when a sphere is attached; these are separate experimental conditions. A real table requires many modes and two-dimensional position scans.
+
+## Fixed versus co-moving readout
+
+The response plotted for the sphere is a projected mechanical displacement/force channel. A fixed receiver is modeled with g(p)=.5/sqrt[.25+(p−.5)²], corresponding to a beam viewing a fixed-orientation surface marker from the table midpoint at height L/2. A co-moving, normal-aligned receiver has g=1. No acoustic 1/r factor is imposed on a laser vibrometer. This simple projection changes amplitudes only. It neither moves the natural frequencies nor changes the model's dynamics. Real optical speckle, target position and direction calibration require additional characterization.
+
+The interface may normalize both curves by one shared maximum to improve display, but CSV/JSON exports preserve the raw m/N values. Never normalize A and B independently when comparing amplitude. The plot uses a finite frequency grid with extra points around analytic undamped frequencies; it is a visual sample, not a fitted experimental peak estimator.
+
+## Temperature and gravity controls
+
+At fixed ν, let s=1+αΔT, R(T)=R₀s, ρ(T)=ρ₀/s³ and E(T)=E₀(1+β_EΔT). Mass is conserved. Both reference frequency models then obey
+
+    f(T)/f₀ = sqrt[(1+β_EΔT)(1+αΔT)].
+
+The linear fractional slope is (β_E+α)/2. With the chosen copper coefficients it is −231.75 parts per million per kelvin. At the default shell geometry, +1 K changes the model frequency by −5.404601 Hz. This sensitivity is large enough to confound a small A/B claim. The browser changes the sphere temperature at B only; real table temperature and support stiffness may also change and must be recorded.
+
+For comparison of oscillators at different gravitational potentials, Δf/f≈gΔh/c² relative to a common lower reference. One metre gives 1.0911×10^-16, or about 2.54×10^-12 Hz at the default shell frequency. This is a clock-comparison effect, not a locally observed change in the sphere's material resonance when sphere and clock move together. Horizontal positions at the same potential have no first-order height term. It is far below the intended apparatus's measurement scope.
+
+## Proposed experimental sequence
+
+1. Measure specimen mass, radius, wall thickness, sphericity and orientation. Identify whether it is solid, seamless shell or joined hemispheres. Record material certificate where available.
+2. Map the empty table's local force/displacement FRFs at A and B using the same force calibration and receiver geometry. Record room sound, temperature, floor vibration and electrical pickup in separate channels.
+3. Put the specimen on an unchanged low-load mount carried by the same translation carriage. An air-bearing puck can reduce sliding friction but introduces gas flow, pressure, acoustic noise and stiffness. A rolling sphere changes its orientation and contact patch. Neither arrangement creates a physically isolated sphere.
+4. Start with a stationary supported sphere and a small calibrated swept or impulse excitation. Establish repeatable fitted modes over a declared band. Verify drive-amplitude independence and sensor bandwidth. Measure settling time and temperature stability rather than assuming a fixed waiting period is enough.
+5. Randomize blocks containing A, B, B, A and repeat them on different days. A practical pilot is twelve ABBA blocks; it is a planning choice, not a power calculation. Keep the support and material orientation fixed. Include same-position remounts and A-to-A movement shams to quantify handling variation.
+6. Repeat with a co-moving receiver, an independently mounted reference sensor, and the fixture translated/rotated. This distinguishes table coordinates, laboratory coordinates, source/receiver geometry and instrument drift. Inspect low drive, normal drive, drive-off and empty-holder records.
+7. Fit the same modes jointly, with a consistent model and held-out blocks. Report Δf/f, linewidth, calibrated amplitude and phase, uncertainty, residuals and missing modes. Keep all trials, including failed fits. A reproducible residual is a result requiring further explanation, not immediate evidence for a location code.
+
+## Apparatus tiers and acquisition
+
+Exploratory tier: a measured specimen, repeatable compliant mount, carriage, small instrumented impulse or low-energy piezo excitation, contact pickup or verified ultrasonic receiver, temperature sensor, and multichannel recorder with known passband. Consumer microphones usually cannot assess the default ~23 kHz shell breathing mode. A high audio sample rate alone does not establish transducer bandwidth. A contact sensor alters the specimen's loading and is a confound to characterize.
+
+Metrology tier: calibrated ultrasonic laser Doppler vibrometer or appropriate RUS receiver, calibrated excitation/reference force channel, anti-alias-filtered simultaneous DAQ, traceable frequency/time reference, controlled mounting, environmental logging and an independent sphere/table reference channel. For an exploratory 5–100 kHz passband, a 500 kS/s DAQ with validated analog response is a reasonable design starting point. Smaller solid spheres may require a wider band and faster acquisition. Actual passband, anti-alias attenuation and sensor calibration determine the achievable result.
+
+FFT bin spacing is 1/T for a record of duration T; it is not a guaranteed frequency uncertainty. Windowing, damping, SNR, clock error, fit bias and drift all matter. A fitted resonance can be estimated between bins under a valid model, while zero-padding alone adds no information. Store raw time series, calibration, sample rate, input-force record, temperature, position, orientation and exact analysis version.
+
+Recent RUS work provides relevant tools rather than support for a location-specific essence: the 2025 ultrasound-microphone paper demonstrates selected noncontact detection; 2026 high-temperature RUS shows why environment and transducer coupling need controlled engineering; the fixed-phase NRUS study emphasizes protocol history and slowly evolving parameters. Its online date is 17 August 2026 although the journal issue is January 2027.
+
+## Validation and reproducibility
+
+Run `npm test` from `location-spectrum/`. Independent review used SciPy root solvers, generalized eigensolvers, complex matrix solves, full-shell radial determinants and direct modal-mass quadrature. The final model hash reviewed was `5bdf26177c864bc70948178d81e1e917137fa4960bfaeab5d523decf2c63ed9c`: 127 numerical comparisons and properties passed, maximum reported relative discrepancy 4.79×10^-12. That checks the implemented equations against independent numerical formulations. It does not verify the model's fit to a real copper sphere, establish novelty, or validate the underlying extraordinary claim.
+
+Next missing evidence: physical measurements from a characterized specimen and apparatus, together with uncertainty and a prespecified comparison protocol.

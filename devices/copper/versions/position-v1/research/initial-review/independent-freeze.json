@@ -1,0 +1,11 @@
+{
+  "status": "frozen-before-producer-review",
+  "producer_files_inspected": false,
+  "sha256": {
+    "independent_checks.py": "4d9a6a6712798ffd28688ffdd14e8df2435ee6cc9830c186062b5d21cec7f6d7",
+    "independent-results.json": "74269ad57e376115a56b1c8d61587927ab269cb35e00432fe864546b0e2fa5ff",
+    "independent-results-optimized.json": "74269ad57e376115a56b1c8d61587927ab269cb35e00432fe864546b0e2fa5ff",
+    "independent-protocol.md": "02e361a2b16912c16f8a23d4520cb2e09d4ae1b0d4366f759791167409afb927",
+    "source-ledger.json": "779e6eda76f3398aa2be7d959e788772346a6f9ff7bbb1977e18f38959283af5"
+  }
+}

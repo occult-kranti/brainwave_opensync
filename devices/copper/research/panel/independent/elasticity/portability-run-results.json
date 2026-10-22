@@ -1,0 +1,5176 @@
+{
+  "schema": "copper-elasticity-independent-design-review/1",
+  "status": "passed",
+  "review_seat": "elasticity agent, reviewing inverse agent source; not physical replication",
+  "numpy_version": "2.3.5",
+  "portability_adaptation": {
+    "scope": "Path/hash custody only; numerical algorithms and cases unchanged; no additional independence",
+    "original_review_script_sha256": "f03b046c16d05dc6c05c0b78b511d200d5fe758ef05447e667fc6c6963c9c42a",
+    "verified_archive_sha256": {
+      "L": "2371578a26dba7cdb580940c8cd64b7fa361a3ec2ee2d52581a6fa8fba2445fe",
+      "P": "4d464f1a21bbadc88363fe666720994641079eecf7215f3d80e3fe6b4c18e3d6"
+    },
+    "source_path_base": "app-root"
+  },
+  "source_sha256": {
+    "src/design-diagnostics.mjs": "3661b2aa99cd6e1f0292543fde54a30bae7652378bc5f85972a8b541d58daccb",
+    "public/versions/location-v1.1/src/models.mjs": "2371578a26dba7cdb580940c8cd64b7fa361a3ec2ee2d52581a6fa8fba2445fe",
+    "public/versions/position-v1/src/model.mjs": "4d464f1a21bbadc88363fe666720994641079eecf7215f3d80e3fe6b4c18e3d6",
+    "research/design-diagnostics.md": "81fa971d099a59a1913f48dabd04679ec4925a67aeb8b043af43721d2525bc3f",
+    "research/protocol-integrated.md": "dbf6e3e744294a07a63fb5de5fc668f9506af5fdccb946a271828f0846f81ede"
+  },
+  "script_sha256": "c3eb410164965033bdeb18fbc1cb2b56ed10de53eb9c8c904601032f104997c6",
+  "method": "Independent NumPy block-state A,B,C construction, matrix powers, column-normalized SVD, explicit nulls, actual Node archive API execution. No producer elimination reused.",
+  "temporal_cases": [
+    {
+      "id": "center_tol1e-14",
+      "input": {
+        "id": "center_tol1e-14",
+        "sensorPositions": [
+          0.5
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186288,
+          0.5961439632186288,
+          2.137880849182914e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "center_tol1e-10",
+      "input": {
+        "id": "center_tol1e-10",
+        "sensorPositions": [
+          0.5
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186288,
+          0.5961439632186288,
+          2.137880849182914e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "center_tol0.0001",
+      "input": {
+        "id": "center_tol0.0001",
+        "sensorPositions": [
+          0.5
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186288,
+          0.5961439632186288,
+          2.137880849182914e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "sensor_only_repair_tol1e-14",
+      "input": {
+        "id": "sensor_only_repair_tol1e-14",
+        "sensorPositions": [
+          0.5,
+          0.25
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929095,
+          1.2728066431929093,
+          1.0971383274434012,
+          1.0971383274434012,
+          0.41982227132287137,
+          0.41982227132287137
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "sensor_only_repair_tol1e-10",
+      "input": {
+        "id": "sensor_only_repair_tol1e-10",
+        "sensorPositions": [
+          0.5,
+          0.25
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929095,
+          1.2728066431929093,
+          1.0971383274434012,
+          1.0971383274434012,
+          0.41982227132287137,
+          0.41982227132287137
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "sensor_only_repair_tol0.0001",
+      "input": {
+        "id": "sensor_only_repair_tol0.0001",
+        "sensorPositions": [
+          0.5,
+          0.25
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929095,
+          1.2728066431929093,
+          1.0971383274434012,
+          1.0971383274434012,
+          0.41982227132287137,
+          0.41982227132287137
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "source_and_sensor_repair_tol1e-14",
+      "input": {
+        "id": "source_and_sensor_repair_tol1e-14",
+        "sensorPositions": [
+          0.5,
+          0.25
+        ],
+        "drivePositions": [
+          0.5,
+          0.25
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929095,
+          1.2728066431929093,
+          1.0971383274434012,
+          1.0971383274434012,
+          0.41982227132287137,
+          0.41982227132287137
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929097,
+          1.2728066431929088,
+          1.097138327443402,
+          1.0971383274434008,
+          0.41982227132287125,
+          0.41982227132287125
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "source_and_sensor_repair_tol1e-10",
+      "input": {
+        "id": "source_and_sensor_repair_tol1e-10",
+        "sensorPositions": [
+          0.5,
+          0.25
+        ],
+        "drivePositions": [
+          0.5,
+          0.25
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929095,
+          1.2728066431929093,
+          1.0971383274434012,
+          1.0971383274434012,
+          0.41982227132287137,
+          0.41982227132287137
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929097,
+          1.2728066431929088,
+          1.097138327443402,
+          1.0971383274434008,
+          0.41982227132287125,
+          0.41982227132287125
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "source_and_sensor_repair_tol0.0001",
+      "input": {
+        "id": "source_and_sensor_repair_tol0.0001",
+        "sensorPositions": [
+          0.5,
+          0.25
+        ],
+        "drivePositions": [
+          0.5,
+          0.25
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929095,
+          1.2728066431929093,
+          1.0971383274434012,
+          1.0971383274434012,
+          0.41982227132287137,
+          0.41982227132287137
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728066431929097,
+          1.2728066431929088,
+          1.097138327443402,
+          1.0971383274434008,
+          0.41982227132287125,
+          0.41982227132287125
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "generic_single_tol1e-14",
+      "input": {
+        "id": "generic_single_tol1e-14",
+        "sensorPositions": [
+          0.25
+        ],
+        "drivePositions": [
+          0.25
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "generic_single_tol1e-10",
+      "input": {
+        "id": "generic_single_tol1e-10",
+        "sensorPositions": [
+          0.25
+        ],
+        "drivePositions": [
+          0.25
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "generic_single_tol0.0001",
+      "input": {
+        "id": "generic_single_tol0.0001",
+        "sensorPositions": [
+          0.25
+        ],
+        "drivePositions": [
+          0.25
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "duplicate_center_tol1e-14",
+      "input": {
+        "id": "duplicate_center_tol1e-14",
+        "sensorPositions": [
+          0.5,
+          0.5
+        ],
+        "drivePositions": [
+          0.5,
+          0.5
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186287,
+          0.5961439632186287,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          3.6109396915702444e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "duplicate_center_tol1e-10",
+      "input": {
+        "id": "duplicate_center_tol1e-10",
+        "sensorPositions": [
+          0.5,
+          0.5
+        ],
+        "drivePositions": [
+          0.5,
+          0.5
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186287,
+          0.5961439632186287,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          3.6109396915702444e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "duplicate_center_tol0.0001",
+      "input": {
+        "id": "duplicate_center_tol0.0001",
+        "sensorPositions": [
+          0.5,
+          0.5
+        ],
+        "drivePositions": [
+          0.5,
+          0.5
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186287,
+          0.5961439632186287,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          3.6109396915702444e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "endpoints_tol1e-14",
+      "input": {
+        "id": "endpoints_tol1e-14",
+        "sensorPositions": [
+          0,
+          1
+        ],
+        "drivePositions": [
+          0,
+          1
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 0,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 0,
+        "producer_rank": 0,
+        "nullity": 6,
+        "normalized_singular_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 0,
+        "producer_rank": 0,
+        "nullity": 6,
+        "normalized_singular_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "endpoints_tol1e-10",
+      "input": {
+        "id": "endpoints_tol1e-10",
+        "sensorPositions": [
+          0,
+          1
+        ],
+        "drivePositions": [
+          0,
+          1
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 0,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 0,
+        "producer_rank": 0,
+        "nullity": 6,
+        "normalized_singular_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 0,
+        "producer_rank": 0,
+        "nullity": 6,
+        "normalized_singular_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "endpoints_tol0.0001",
+      "input": {
+        "id": "endpoints_tol0.0001",
+        "sensorPositions": [
+          0,
+          1
+        ],
+        "drivePositions": [
+          0,
+          1
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 0,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 0,
+        "producer_rank": 0,
+        "nullity": 6,
+        "normalized_singular_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 0,
+        "producer_rank": 0,
+        "nullity": 6,
+        "normalized_singular_values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "canonical_third_node_tol1e-14",
+      "input": {
+        "id": "canonical_third_node_tol1e-14",
+        "sensorPositions": [
+          0.3333333333333333
+        ],
+        "drivePositions": [
+          0.3333333333333333
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.3167381614069456,
+          1.3167381614069453,
+          0.515946328889602,
+          0.5159463288896018,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.3167381614069456,
+          1.3167381614069453,
+          0.5159463288896019,
+          0.5159463288896018,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "canonical_third_node_tol1e-10",
+      "input": {
+        "id": "canonical_third_node_tol1e-10",
+        "sensorPositions": [
+          0.3333333333333333
+        ],
+        "drivePositions": [
+          0.3333333333333333
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.3167381614069456,
+          1.3167381614069453,
+          0.515946328889602,
+          0.5159463288896018,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.3167381614069456,
+          1.3167381614069453,
+          0.5159463288896019,
+          0.5159463288896018,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "canonical_third_node_tol0.0001",
+      "input": {
+        "id": "canonical_third_node_tol0.0001",
+        "sensorPositions": [
+          0.3333333333333333
+        ],
+        "drivePositions": [
+          0.3333333333333333
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.3167381614069456,
+          1.3167381614069453,
+          0.515946328889602,
+          0.5159463288896018,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.3167381614069456,
+          1.3167381614069453,
+          0.5159463288896019,
+          0.5159463288896018,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "two_canonical_third_nodes_tol1e-14",
+      "input": {
+        "id": "two_canonical_third_nodes_tol1e-14",
+        "sensorPositions": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "drivePositions": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.0,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.0000000000000002,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "two_canonical_third_nodes_tol1e-10",
+      "input": {
+        "id": "two_canonical_third_nodes_tol1e-10",
+        "sensorPositions": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "drivePositions": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.0,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.0000000000000002,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "two_canonical_third_nodes_tol0.0001",
+      "input": {
+        "id": "two_canonical_third_nodes_tol0.0001",
+        "sensorPositions": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "drivePositions": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.0,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.9999999999999999,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.0000000000000002,
+          1.0,
+          1.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_endpoint_nonzero_tol1e-14",
+      "input": {
+        "id": "near_endpoint_nonzero_tol1e-14",
+        "sensorPositions": [
+          1e-16
+        ],
+        "drivePositions": [
+          1e-16
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046776,
+          0.049999399512450915,
+          0.049999399512450915
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_endpoint_nonzero_tol1e-10",
+      "input": {
+        "id": "near_endpoint_nonzero_tol1e-10",
+        "sensorPositions": [
+          1e-16
+        ],
+        "drivePositions": [
+          1e-16
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046776,
+          0.049999399512450915,
+          0.049999399512450915
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_endpoint_nonzero_tol0.0001",
+      "input": {
+        "id": "near_endpoint_nonzero_tol0.0001",
+        "sensorPositions": [
+          1e-16
+        ],
+        "drivePositions": [
+          1e-16
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046776,
+          0.049999399512450915,
+          0.049999399512450915
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_center_nonzero_tol1e-14",
+      "input": {
+        "id": "near_center_nonzero_tol1e-14",
+        "sensorPositions": [
+          0.5000000000000002
+        ],
+        "drivePositions": [
+          0.5000000000000002
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.608877003873748,
+          0.6395426854046776,
+          0.6395426854046774,
+          0.04999939951245094,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_center_nonzero_tol1e-10",
+      "input": {
+        "id": "near_center_nonzero_tol1e-10",
+        "sensorPositions": [
+          0.5000000000000002
+        ],
+        "drivePositions": [
+          0.5000000000000002
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.608877003873748,
+          0.6395426854046776,
+          0.6395426854046774,
+          0.04999939951245094,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_center_nonzero_tol0.0001",
+      "input": {
+        "id": "near_center_nonzero_tol0.0001",
+        "sensorPositions": [
+          0.5000000000000002
+        ],
+        "drivePositions": [
+          0.5000000000000002
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.608877003873748,
+          0.6395426854046776,
+          0.6395426854046774,
+          0.04999939951245094,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_third_node_nonzero_tol1e-14",
+      "input": {
+        "id": "near_third_node_nonzero_tol1e-14",
+        "sensorPositions": [
+          0.33333333333333337
+        ],
+        "drivePositions": [
+          0.33333333333333337
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_third_node_nonzero_tol1e-10",
+      "input": {
+        "id": "near_third_node_nonzero_tol1e-10",
+        "sensorPositions": [
+          0.33333333333333337
+        ],
+        "drivePositions": [
+          0.33333333333333337
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "near_third_node_nonzero_tol0.0001",
+      "input": {
+        "id": "near_third_node_nonzero_tol0.0001",
+        "sensorPositions": [
+          0.33333333333333337
+        ],
+        "drivePositions": [
+          0.33333333333333337
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "weak_sensor_nodal_drive_tol1e-14",
+      "input": {
+        "id": "weak_sensor_nodal_drive_tol1e-14",
+        "sensorPositions": [
+          1e-16
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "weak_sensor_nodal_drive_tol1e-10",
+      "input": {
+        "id": "weak_sensor_nodal_drive_tol1e-10",
+        "sensorPositions": [
+          1e-16
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "weak_sensor_nodal_drive_tol0.0001",
+      "input": {
+        "id": "weak_sensor_nodal_drive_tol0.0001",
+        "sensorPositions": [
+          1e-16
+        ],
+        "drivePositions": [
+          0.5
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          8.802983935338271e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "nodal_sensor_weak_drive_tol1e-14",
+      "input": {
+        "id": "nodal_sensor_weak_drive_tol1e-14",
+        "sensorPositions": [
+          0.5
+        ],
+        "drivePositions": [
+          1e-16
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186288,
+          0.5961439632186288,
+          2.137880849182914e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046776,
+          0.049999399512450915,
+          0.049999399512450915
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "nodal_sensor_weak_drive_tol1e-10",
+      "input": {
+        "id": "nodal_sensor_weak_drive_tol1e-10",
+        "sensorPositions": [
+          0.5
+        ],
+        "drivePositions": [
+          1e-16
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186288,
+          0.5961439632186288,
+          2.137880849182914e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046776,
+          0.049999399512450915,
+          0.049999399512450915
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "nodal_sensor_weak_drive_tol0.0001",
+      "input": {
+        "id": "nodal_sensor_weak_drive_tol0.0001",
+        "sensorPositions": [
+          0.5
+        ],
+        "drivePositions": [
+          1e-16
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.282424413023234,
+          1.282424413023234,
+          0.5961439632186288,
+          0.5961439632186288,
+          2.137880849182914e-17,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046776,
+          0.049999399512450915,
+          0.049999399512450915
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "endpoint_and_center_tol1e-14",
+      "input": {
+        "id": "endpoint_and_center_tol1e-14",
+        "sensorPositions": [
+          0,
+          0.5,
+          1
+        ],
+        "drivePositions": [
+          0,
+          0.5,
+          1
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.2824244130232338,
+          1.2824244130232338,
+          0.596143963218629,
+          0.596143963218629,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.2824244130232338,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "endpoint_and_center_tol1e-10",
+      "input": {
+        "id": "endpoint_and_center_tol1e-10",
+        "sensorPositions": [
+          0,
+          0.5,
+          1
+        ],
+        "drivePositions": [
+          0,
+          0.5,
+          1
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.2824244130232338,
+          1.2824244130232338,
+          0.596143963218629,
+          0.596143963218629,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.2824244130232338,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "endpoint_and_center_tol0.0001",
+      "input": {
+        "id": "endpoint_and_center_tol0.0001",
+        "sensorPositions": [
+          0,
+          0.5,
+          1
+        ],
+        "drivePositions": [
+          0,
+          0.5,
+          1
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.2824244130232338,
+          1.2824244130232338,
+          0.596143963218629,
+          0.596143963218629,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 4,
+        "producer_rank": 4,
+        "nullity": 2,
+        "normalized_singular_values": [
+          1.2824244130232338,
+          1.2824244130232338,
+          0.5961439632186291,
+          0.596143963218629,
+          0.0,
+          0.0
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "four_duplicate_generic_tol1e-14",
+      "input": {
+        "id": "four_duplicate_generic_tol1e-14",
+        "sensorPositions": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "drivePositions": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.608877003873748,
+          0.6395426854046782,
+          0.6395426854046775,
+          0.049999399512450915,
+          0.04999939951245089
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.6088770038737479,
+          0.6395426854046776,
+          0.6395426854046772,
+          0.04999939951245096,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "four_duplicate_generic_tol1e-10",
+      "input": {
+        "id": "four_duplicate_generic_tol1e-10",
+        "sensorPositions": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "drivePositions": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.608877003873748,
+          0.6395426854046782,
+          0.6395426854046775,
+          0.049999399512450915,
+          0.04999939951245089
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.6088770038737479,
+          0.6395426854046776,
+          0.6395426854046772,
+          0.04999939951245096,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "four_duplicate_generic_tol0.0001",
+      "input": {
+        "id": "four_duplicate_generic_tol0.0001",
+        "sensorPositions": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "drivePositions": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.608877003873748,
+          0.6395426854046782,
+          0.6395426854046775,
+          0.049999399512450915,
+          0.04999939951245089
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.6088770038737479,
+          0.6395426854046776,
+          0.6395426854046772,
+          0.04999939951245096,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_00_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_00_tol1e-14",
+        "sensorPositions": [
+          0.4005598524297829
+        ],
+        "drivePositions": [
+          0.3850157987647123
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737488,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046771,
+          0.04999939951245096,
+          0.04999939951245094
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_00_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_00_tol1e-10",
+        "sensorPositions": [
+          0.4005598524297829
+        ],
+        "drivePositions": [
+          0.3850157987647123
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737488,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046771,
+          0.04999939951245096,
+          0.04999939951245094
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_00_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_00_tol0.0001",
+        "sensorPositions": [
+          0.4005598524297829
+        ],
+        "drivePositions": [
+          0.3850157987647123
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737483,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737488,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046771,
+          0.04999939951245096,
+          0.04999939951245094
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_01_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_01_tol1e-14",
+        "sensorPositions": [
+          0.7956152650641243,
+          0.2454736074935414,
+          0.26170130316122736,
+          0.8813205079116361
+        ],
+        "drivePositions": [
+          0.48673259885707865,
+          0.7983431498755001,
+          0.1345207790668898
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728391559324042,
+          1.2728391559324035,
+          1.0145596506427776,
+          1.0145596506427772,
+          0.5920719537462411,
+          0.5920719537462409
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.0733829063230795,
+          1.073382906323079,
+          1.0056653573967194,
+          1.0056653573967191,
+          0.9145962635751081,
+          0.9145962635751079
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_01_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_01_tol1e-10",
+        "sensorPositions": [
+          0.7956152650641243,
+          0.2454736074935414,
+          0.26170130316122736,
+          0.8813205079116361
+        ],
+        "drivePositions": [
+          0.48673259885707865,
+          0.7983431498755001,
+          0.1345207790668898
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728391559324042,
+          1.2728391559324035,
+          1.0145596506427776,
+          1.0145596506427772,
+          0.5920719537462411,
+          0.5920719537462409
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.0733829063230795,
+          1.073382906323079,
+          1.0056653573967194,
+          1.0056653573967191,
+          0.9145962635751081,
+          0.9145962635751079
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_01_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_01_tol0.0001",
+        "sensorPositions": [
+          0.7956152650641243,
+          0.2454736074935414,
+          0.26170130316122736,
+          0.8813205079116361
+        ],
+        "drivePositions": [
+          0.48673259885707865,
+          0.7983431498755001,
+          0.1345207790668898
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2728391559324042,
+          1.2728391559324035,
+          1.0145596506427776,
+          1.0145596506427772,
+          0.5920719537462411,
+          0.5920719537462409
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.0733829063230795,
+          1.073382906323079,
+          1.0056653573967194,
+          1.0056653573967191,
+          0.9145962635751081,
+          0.9145962635751079
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_02_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_02_tol1e-14",
+        "sensorPositions": [
+          0.7019282459483691,
+          0.9341580214028189,
+          0.9703571193656267
+        ],
+        "drivePositions": [
+          0.2630173176706354,
+          0.16289217533177344,
+          0.32659231186860027
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.517261031025217,
+          1.517261031025217,
+          0.7523281974693906,
+          0.7523281974693906,
+          0.36320964610642315,
+          0.36320964610642315
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.5254475013039583,
+          1.525447501303958,
+          0.7485417857923611,
+          0.7485417857923606,
+          0.33570093191454603,
+          0.335700931914546
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_02_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_02_tol1e-10",
+        "sensorPositions": [
+          0.7019282459483691,
+          0.9341580214028189,
+          0.9703571193656267
+        ],
+        "drivePositions": [
+          0.2630173176706354,
+          0.16289217533177344,
+          0.32659231186860027
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.517261031025217,
+          1.517261031025217,
+          0.7523281974693906,
+          0.7523281974693906,
+          0.36320964610642315,
+          0.36320964610642315
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.5254475013039583,
+          1.525447501303958,
+          0.7485417857923611,
+          0.7485417857923606,
+          0.33570093191454603,
+          0.335700931914546
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_02_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_02_tol0.0001",
+        "sensorPositions": [
+          0.7019282459483691,
+          0.9341580214028189,
+          0.9703571193656267
+        ],
+        "drivePositions": [
+          0.2630173176706354,
+          0.16289217533177344,
+          0.32659231186860027
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.517261031025217,
+          1.517261031025217,
+          0.7523281974693906,
+          0.7523281974693906,
+          0.36320964610642315,
+          0.36320964610642315
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.5254475013039583,
+          1.525447501303958,
+          0.7485417857923611,
+          0.7485417857923606,
+          0.33570093191454603,
+          0.335700931914546
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_03_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_03_tol1e-14",
+        "sensorPositions": [
+          0.46177780644829536,
+          0.5987434163891496,
+          0.574416370096549
+        ],
+        "drivePositions": [
+          0.4874376678038638,
+          0.031160499551067457,
+          0.17373269582226292,
+          0.32718045480333785
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.418308496658541,
+          1.418308496658541,
+          0.7906930676603656,
+          0.7906930676603656,
+          0.6026653142997619,
+          0.6026653142997619
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2923714361946448,
+          1.292371436194644,
+          1.0605979228718883,
+          1.0605979228718876,
+          0.45266777763391675,
+          0.4526677776339167
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_03_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_03_tol1e-10",
+        "sensorPositions": [
+          0.46177780644829536,
+          0.5987434163891496,
+          0.574416370096549
+        ],
+        "drivePositions": [
+          0.4874376678038638,
+          0.031160499551067457,
+          0.17373269582226292,
+          0.32718045480333785
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.418308496658541,
+          1.418308496658541,
+          0.7906930676603656,
+          0.7906930676603656,
+          0.6026653142997619,
+          0.6026653142997619
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2923714361946448,
+          1.292371436194644,
+          1.0605979228718883,
+          1.0605979228718876,
+          0.45266777763391675,
+          0.4526677776339167
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_03_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_03_tol0.0001",
+        "sensorPositions": [
+          0.46177780644829536,
+          0.5987434163891496,
+          0.574416370096549
+        ],
+        "drivePositions": [
+          0.4874376678038638,
+          0.031160499551067457,
+          0.17373269582226292,
+          0.32718045480333785
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.418308496658541,
+          1.418308496658541,
+          0.7906930676603656,
+          0.7906930676603656,
+          0.6026653142997619,
+          0.6026653142997619
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2923714361946448,
+          1.292371436194644,
+          1.0605979228718883,
+          1.0605979228718876,
+          0.45266777763391675,
+          0.4526677776339167
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_04_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_04_tol1e-14",
+        "sensorPositions": [
+          0.44165864876336275,
+          0.23389546770036532,
+          0.6009446661580254,
+          0.33241326568085444
+        ],
+        "drivePositions": [
+          0.7481568764081852,
+          0.5002785305915681,
+          0.6918444453301896,
+          0.13540160793926564
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.204124034938389,
+          1.204124034938389,
+          1.1076321744603455,
+          1.1076321744603455,
+          0.568538718632197,
+          0.5685387186321966
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.1715762324584198,
+          1.1715762324584194,
+          0.9953979214904098,
+          0.9953979214904097,
+          0.7978672254398653,
+          0.7978672254398647
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_04_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_04_tol1e-10",
+        "sensorPositions": [
+          0.44165864876336275,
+          0.23389546770036532,
+          0.6009446661580254,
+          0.33241326568085444
+        ],
+        "drivePositions": [
+          0.7481568764081852,
+          0.5002785305915681,
+          0.6918444453301896,
+          0.13540160793926564
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.204124034938389,
+          1.204124034938389,
+          1.1076321744603455,
+          1.1076321744603455,
+          0.568538718632197,
+          0.5685387186321966
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.1715762324584198,
+          1.1715762324584194,
+          0.9953979214904098,
+          0.9953979214904097,
+          0.7978672254398653,
+          0.7978672254398647
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_04_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_04_tol0.0001",
+        "sensorPositions": [
+          0.44165864876336275,
+          0.23389546770036532,
+          0.6009446661580254,
+          0.33241326568085444
+        ],
+        "drivePositions": [
+          0.7481568764081852,
+          0.5002785305915681,
+          0.6918444453301896,
+          0.13540160793926564
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.204124034938389,
+          1.204124034938389,
+          1.1076321744603455,
+          1.1076321744603455,
+          0.568538718632197,
+          0.5685387186321966
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.1715762324584198,
+          1.1715762324584194,
+          0.9953979214904098,
+          0.9953979214904097,
+          0.7978672254398653,
+          0.7978672254398647
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_05_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_05_tol1e-14",
+        "sensorPositions": [
+          0.45313840505184655,
+          0.2807050736631697,
+          0.3519397259035473
+        ],
+        "drivePositions": [
+          0.28438339009629454,
+          0.9566512880766517,
+          0.22203993004421424,
+          0.6554189411823014
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2982773777981225,
+          1.2982773777981225,
+          1.0170266863053221,
+          1.0170266863053221,
+          0.5292755139248803,
+          0.5292755139248803
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3862285396774432,
+          1.3862285396774432,
+          0.9110932563887033,
+          0.9110932563887032,
+          0.49827654364496476,
+          0.4982765436449646
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_05_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_05_tol1e-10",
+        "sensorPositions": [
+          0.45313840505184655,
+          0.2807050736631697,
+          0.3519397259035473
+        ],
+        "drivePositions": [
+          0.28438339009629454,
+          0.9566512880766517,
+          0.22203993004421424,
+          0.6554189411823014
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2982773777981225,
+          1.2982773777981225,
+          1.0170266863053221,
+          1.0170266863053221,
+          0.5292755139248803,
+          0.5292755139248803
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3862285396774432,
+          1.3862285396774432,
+          0.9110932563887033,
+          0.9110932563887032,
+          0.49827654364496476,
+          0.4982765436449646
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_05_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_05_tol0.0001",
+        "sensorPositions": [
+          0.45313840505184655,
+          0.2807050736631697,
+          0.3519397259035473
+        ],
+        "drivePositions": [
+          0.28438339009629454,
+          0.9566512880766517,
+          0.22203993004421424,
+          0.6554189411823014
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2982773777981225,
+          1.2982773777981225,
+          1.0170266863053221,
+          1.0170266863053221,
+          0.5292755139248803,
+          0.5292755139248803
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3862285396774432,
+          1.3862285396774432,
+          0.9110932563887033,
+          0.9110932563887032,
+          0.49827654364496476,
+          0.4982765436449646
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_06_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_06_tol1e-14",
+        "sensorPositions": [
+          0.4972256809755259
+        ],
+        "drivePositions": [
+          0.8457526744032653,
+          0.04086094129791584,
+          0.8629676399302459
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.569091904510347,
+          1.5690919045103464,
+          0.6424044613337645,
+          0.6424044613337642,
+          0.3539309300676744,
+          0.3539309300676744
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_06_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_06_tol1e-10",
+        "sensorPositions": [
+          0.4972256809755259
+        ],
+        "drivePositions": [
+          0.8457526744032653,
+          0.04086094129791584,
+          0.8629676399302459
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.569091904510347,
+          1.5690919045103464,
+          0.6424044613337645,
+          0.6424044613337642,
+          0.3539309300676744,
+          0.3539309300676744
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_06_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_06_tol0.0001",
+        "sensorPositions": [
+          0.4972256809755259
+        ],
+        "drivePositions": [
+          0.8457526744032653,
+          0.04086094129791584,
+          0.8629676399302459
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.6088770038737472,
+          0.6395426854046777,
+          0.6395426854046775,
+          0.04999939951245091,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.569091904510347,
+          1.5690919045103464,
+          0.6424044613337645,
+          0.6424044613337642,
+          0.3539309300676744,
+          0.3539309300676744
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_07_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_07_tol1e-14",
+        "sensorPositions": [
+          0.2406881384670016,
+          0.3707904536628669,
+          0.4921739595442143
+        ],
+        "drivePositions": [
+          0.44194630295812537,
+          0.716181474066024
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.244224034951478,
+          1.244224034951478,
+          1.0937898382692204,
+          1.0937898382692204,
+          0.5055000895628572,
+          0.5055000895628569
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3169416231690372,
+          1.3169416231690372,
+          1.0666368912144617,
+          1.0666368912144613,
+          0.3577016962012506,
+          0.3577016962012502
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_07_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_07_tol1e-10",
+        "sensorPositions": [
+          0.2406881384670016,
+          0.3707904536628669,
+          0.4921739595442143
+        ],
+        "drivePositions": [
+          0.44194630295812537,
+          0.716181474066024
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.244224034951478,
+          1.244224034951478,
+          1.0937898382692204,
+          1.0937898382692204,
+          0.5055000895628572,
+          0.5055000895628569
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3169416231690372,
+          1.3169416231690372,
+          1.0666368912144617,
+          1.0666368912144613,
+          0.3577016962012506,
+          0.3577016962012502
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_07_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_07_tol0.0001",
+        "sensorPositions": [
+          0.2406881384670016,
+          0.3707904536628669,
+          0.4921739595442143
+        ],
+        "drivePositions": [
+          0.44194630295812537,
+          0.716181474066024
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.244224034951478,
+          1.244224034951478,
+          1.0937898382692204,
+          1.0937898382692204,
+          0.5055000895628572,
+          0.5055000895628569
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3169416231690372,
+          1.3169416231690372,
+          1.0666368912144617,
+          1.0666368912144613,
+          0.3577016962012506,
+          0.3577016962012502
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_08_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_08_tol1e-14",
+        "sensorPositions": [
+          0.9509546273886895,
+          0.3098974079444521,
+          0.1785591041153932
+        ],
+        "drivePositions": [
+          0.5973332088192593,
+          0.5774179225016134,
+          0.5406502814389069,
+          0.40913858677193693
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.477153603517023,
+          1.477153603517023,
+          0.7393819325920246,
+          0.7393819325920246,
+          0.5208949888155544,
+          0.5208949888155544
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3806023933174123,
+          1.3806023933174116,
+          0.8630836867792807,
+          0.8630836867792804,
+          0.5907821774408231,
+          0.590782177440823
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_08_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_08_tol1e-10",
+        "sensorPositions": [
+          0.9509546273886895,
+          0.3098974079444521,
+          0.1785591041153932
+        ],
+        "drivePositions": [
+          0.5973332088192593,
+          0.5774179225016134,
+          0.5406502814389069,
+          0.40913858677193693
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.477153603517023,
+          1.477153603517023,
+          0.7393819325920246,
+          0.7393819325920246,
+          0.5208949888155544,
+          0.5208949888155544
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3806023933174123,
+          1.3806023933174116,
+          0.8630836867792807,
+          0.8630836867792804,
+          0.5907821774408231,
+          0.590782177440823
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_08_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_08_tol0.0001",
+        "sensorPositions": [
+          0.9509546273886895,
+          0.3098974079444521,
+          0.1785591041153932
+        ],
+        "drivePositions": [
+          0.5973332088192593,
+          0.5774179225016134,
+          0.5406502814389069,
+          0.40913858677193693
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.477153603517023,
+          1.477153603517023,
+          0.7393819325920246,
+          0.7393819325920246,
+          0.5208949888155544,
+          0.5208949888155544
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3806023933174123,
+          1.3806023933174116,
+          0.8630836867792807,
+          0.8630836867792804,
+          0.5907821774408231,
+          0.590782177440823
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_09_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_09_tol1e-14",
+        "sensorPositions": [
+          0.1263444128844341,
+          0.5538994276276992,
+          0.2973950013635544
+        ],
+        "drivePositions": [
+          0.9529515580715398,
+          0.13559133003173665,
+          0.22336267289174094
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.344135964557887,
+          1.344135964557887,
+          1.029986020170761,
+          1.029986020170761,
+          0.36390562929808407,
+          0.36390562929808407
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.5529643740202805,
+          1.5529643740202799,
+          0.647168317138024,
+          0.647168317138024,
+          0.41167319844330014,
+          0.4116731984432999
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_09_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_09_tol1e-10",
+        "sensorPositions": [
+          0.1263444128844341,
+          0.5538994276276992,
+          0.2973950013635544
+        ],
+        "drivePositions": [
+          0.9529515580715398,
+          0.13559133003173665,
+          0.22336267289174094
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.344135964557887,
+          1.344135964557887,
+          1.029986020170761,
+          1.029986020170761,
+          0.36390562929808407,
+          0.36390562929808407
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.5529643740202805,
+          1.5529643740202799,
+          0.647168317138024,
+          0.647168317138024,
+          0.41167319844330014,
+          0.4116731984432999
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_09_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_09_tol0.0001",
+        "sensorPositions": [
+          0.1263444128844341,
+          0.5538994276276992,
+          0.2973950013635544
+        ],
+        "drivePositions": [
+          0.9529515580715398,
+          0.13559133003173665,
+          0.22336267289174094
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.344135964557887,
+          1.344135964557887,
+          1.029986020170761,
+          1.029986020170761,
+          0.36390562929808407,
+          0.36390562929808407
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.5529643740202805,
+          1.5529643740202799,
+          0.647168317138024,
+          0.647168317138024,
+          0.41167319844330014,
+          0.4116731984432999
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_10_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_10_tol1e-14",
+        "sensorPositions": [
+          0.6026559577118299,
+          0.10391796703230945,
+          0.5904961081469617,
+          0.7148467351184766
+        ],
+        "drivePositions": [
+          0.4774942803062861,
+          0.8210216038734552,
+          0.3164756260248043,
+          0.2282190076064802
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.335006542941721,
+          1.335006542941721,
+          0.910144728711996,
+          0.9101447287119957,
+          0.6240145055209556,
+          0.6240145055209555
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.1466055053277966,
+          1.1466055053277961,
+          1.004159523075083,
+          1.0041595230750828,
+          0.8227754659502257,
+          0.8227754659502249
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_10_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_10_tol1e-10",
+        "sensorPositions": [
+          0.6026559577118299,
+          0.10391796703230945,
+          0.5904961081469617,
+          0.7148467351184766
+        ],
+        "drivePositions": [
+          0.4774942803062861,
+          0.8210216038734552,
+          0.3164756260248043,
+          0.2282190076064802
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.335006542941721,
+          1.335006542941721,
+          0.910144728711996,
+          0.9101447287119957,
+          0.6240145055209556,
+          0.6240145055209555
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.1466055053277966,
+          1.1466055053277961,
+          1.004159523075083,
+          1.0041595230750828,
+          0.8227754659502257,
+          0.8227754659502249
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_10_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_10_tol0.0001",
+        "sensorPositions": [
+          0.6026559577118299,
+          0.10391796703230945,
+          0.5904961081469617,
+          0.7148467351184766
+        ],
+        "drivePositions": [
+          0.4774942803062861,
+          0.8210216038734552,
+          0.3164756260248043,
+          0.2282190076064802
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.335006542941721,
+          1.335006542941721,
+          0.910144728711996,
+          0.9101447287119957,
+          0.6240145055209556,
+          0.6240145055209555
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.1466055053277966,
+          1.1466055053277961,
+          1.004159523075083,
+          1.0041595230750828,
+          0.8227754659502257,
+          0.8227754659502249
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_11_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_11_tol1e-14",
+        "sensorPositions": [
+          0.6058588442423561,
+          0.1602245072356352
+        ],
+        "drivePositions": [
+          0.09056561180179067,
+          0.8228452418273661,
+          0.6967217415882175,
+          0.12875570017890822
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.4106742033032533,
+          1.4106742033032524,
+          0.9980610108638154,
+          0.9980610108638152,
+          0.11778162304974636,
+          0.11778162304974629
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2730991321926322,
+          1.2730991321926322,
+          0.9865251208526232,
+          0.9865251208526227,
+          0.6371709233299052,
+          0.6371709233299051
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_11_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_11_tol1e-10",
+        "sensorPositions": [
+          0.6058588442423561,
+          0.1602245072356352
+        ],
+        "drivePositions": [
+          0.09056561180179067,
+          0.8228452418273661,
+          0.6967217415882175,
+          0.12875570017890822
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.4106742033032533,
+          1.4106742033032524,
+          0.9980610108638154,
+          0.9980610108638152,
+          0.11778162304974636,
+          0.11778162304974629
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2730991321926322,
+          1.2730991321926322,
+          0.9865251208526232,
+          0.9865251208526227,
+          0.6371709233299052,
+          0.6371709233299051
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_11_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_11_tol0.0001",
+        "sensorPositions": [
+          0.6058588442423561,
+          0.1602245072356352
+        ],
+        "drivePositions": [
+          0.09056561180179067,
+          0.8228452418273661,
+          0.6967217415882175,
+          0.12875570017890822
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.4106742033032533,
+          1.4106742033032524,
+          0.9980610108638154,
+          0.9980610108638152,
+          0.11778162304974636,
+          0.11778162304974629
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2730991321926322,
+          1.2730991321926322,
+          0.9865251208526232,
+          0.9865251208526227,
+          0.6371709233299052,
+          0.6371709233299051
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_12_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_12_tol1e-14",
+        "sensorPositions": [
+          0.321164380316418
+        ],
+        "drivePositions": [
+          0.10830178819280938
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.6088770038737479,
+          0.6395426854046775,
+          0.6395426854046775,
+          0.04999939951245094,
+          0.04999939951245089
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.608877003873748,
+          0.6395426854046776,
+          0.6395426854046774,
+          0.04999939951245094,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_12_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_12_tol1e-10",
+        "sensorPositions": [
+          0.321164380316418
+        ],
+        "drivePositions": [
+          0.10830178819280938
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.6088770038737479,
+          0.6395426854046775,
+          0.6395426854046775,
+          0.04999939951245094,
+          0.04999939951245089
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.608877003873748,
+          0.6395426854046776,
+          0.6395426854046774,
+          0.04999939951245094,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_12_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_12_tol0.0001",
+        "sensorPositions": [
+          0.321164380316418
+        ],
+        "drivePositions": [
+          0.10830178819280938
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.6088770038737479,
+          0.6395426854046775,
+          0.6395426854046775,
+          0.04999939951245094,
+          0.04999939951245089
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.608877003873748,
+          1.608877003873748,
+          0.6395426854046776,
+          0.6395426854046774,
+          0.04999939951245094,
+          0.04999939951245092
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_13_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_13_tol1e-14",
+        "sensorPositions": [
+          0.9027642159839231,
+          0.8358379690729154
+        ],
+        "drivePositions": [
+          0.9301754838182752
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6070635559891535,
+          1.607063555989153,
+          0.6421105311264723,
+          0.6421105311264719,
+          0.07099854102710544,
+          0.07099854102710536
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737488,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046771,
+          0.04999939951245096,
+          0.04999939951245094
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_13_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_13_tol1e-10",
+        "sensorPositions": [
+          0.9027642159839231,
+          0.8358379690729154
+        ],
+        "drivePositions": [
+          0.9301754838182752
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6070635559891535,
+          1.607063555989153,
+          0.6421105311264723,
+          0.6421105311264719,
+          0.07099854102710544,
+          0.07099854102710536
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737488,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046771,
+          0.04999939951245096,
+          0.04999939951245094
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_13_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_13_tol0.0001",
+        "sensorPositions": [
+          0.9027642159839231,
+          0.8358379690729154
+        ],
+        "drivePositions": [
+          0.9301754838182752
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6070635559891535,
+          1.607063555989153,
+          0.6421105311264723,
+          0.6421105311264719,
+          0.07099854102710544,
+          0.07099854102710536
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737488,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046771,
+          0.04999939951245096,
+          0.04999939951245094
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_14_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_14_tol1e-14",
+        "sensorPositions": [
+          0.7103750613980377
+        ],
+        "drivePositions": [
+          0.915321037160961
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.6088770038737483,
+          0.6395426854046776,
+          0.639542685404677,
+          0.04999939951245098,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046773,
+          0.04999939951245095,
+          0.04999939951245093
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_14_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_14_tol1e-10",
+        "sensorPositions": [
+          0.7103750613980377
+        ],
+        "drivePositions": [
+          0.915321037160961
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.6088770038737483,
+          0.6395426854046776,
+          0.639542685404677,
+          0.04999939951245098,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046773,
+          0.04999939951245095,
+          0.04999939951245093
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_14_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_14_tol0.0001",
+        "sensorPositions": [
+          0.7103750613980377
+        ],
+        "drivePositions": [
+          0.915321037160961
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.6088770038737483,
+          0.6395426854046776,
+          0.639542685404677,
+          0.04999939951245098,
+          0.0499993995124509
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737483,
+          1.608877003873748,
+          0.6395426854046775,
+          0.6395426854046773,
+          0.04999939951245095,
+          0.04999939951245093
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_15_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_15_tol1e-14",
+        "sensorPositions": [
+          0.5458973358479816,
+          0.8676481975050668
+        ],
+        "drivePositions": [
+          0.2134253756318657,
+          0.4070390998260092,
+          0.4627991892203267,
+          0.28724560788240794
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2457671958406105,
+          1.2457671958406102,
+          1.1099253624152379,
+          1.1099253624152374,
+          0.4648976055378492,
+          0.46489760553784903
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2771118654738254,
+          1.2771118654738254,
+          1.0631350898772303,
+          1.06313508987723,
+          0.4885990828252737,
+          0.48859908282527353
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_15_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_15_tol1e-10",
+        "sensorPositions": [
+          0.5458973358479816,
+          0.8676481975050668
+        ],
+        "drivePositions": [
+          0.2134253756318657,
+          0.4070390998260092,
+          0.4627991892203267,
+          0.28724560788240794
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2457671958406105,
+          1.2457671958406102,
+          1.1099253624152379,
+          1.1099253624152374,
+          0.4648976055378492,
+          0.46489760553784903
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2771118654738254,
+          1.2771118654738254,
+          1.0631350898772303,
+          1.06313508987723,
+          0.4885990828252737,
+          0.48859908282527353
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_15_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_15_tol0.0001",
+        "sensorPositions": [
+          0.5458973358479816,
+          0.8676481975050668
+        ],
+        "drivePositions": [
+          0.2134253756318657,
+          0.4070390998260092,
+          0.4627991892203267,
+          0.28724560788240794
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2457671958406105,
+          1.2457671958406102,
+          1.1099253624152379,
+          1.1099253624152374,
+          0.4648976055378492,
+          0.46489760553784903
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2771118654738254,
+          1.2771118654738254,
+          1.0631350898772303,
+          1.06313508987723,
+          0.4885990828252737,
+          0.48859908282527353
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_16_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_16_tol1e-14",
+        "sensorPositions": [
+          0.9712732928244945
+        ],
+        "drivePositions": [
+          0.9131313752471759,
+          0.49335651180140816,
+          0.612822085662032
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.256777413569334,
+          1.2567774135693333,
+          1.0455845723508033,
+          1.0455845723508033,
+          0.5720694318034875,
+          0.5720694318034873
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_16_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_16_tol1e-10",
+        "sensorPositions": [
+          0.9712732928244945
+        ],
+        "drivePositions": [
+          0.9131313752471759,
+          0.49335651180140816,
+          0.612822085662032
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.256777413569334,
+          1.2567774135693333,
+          1.0455845723508033,
+          1.0455845723508033,
+          0.5720694318034875,
+          0.5720694318034873
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_16_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_16_tol0.0001",
+        "sensorPositions": [
+          0.9712732928244945
+        ],
+        "drivePositions": [
+          0.9131313752471759,
+          0.49335651180140816,
+          0.612822085662032
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 1,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737485,
+          1.608877003873748,
+          0.6395426854046778,
+          0.6395426854046776,
+          0.04999939951245099,
+          0.049999399512450866
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.256777413569334,
+          1.2567774135693333,
+          1.0455845723508033,
+          1.0455845723508033,
+          0.5720694318034875,
+          0.5720694318034873
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_17_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_17_tol1e-14",
+        "sensorPositions": [
+          0.2046002447485729,
+          0.4828083776858469,
+          0.20650417333561252
+        ],
+        "drivePositions": [
+          0.07326066453180499,
+          0.4828389930288264,
+          0.6123107852793928
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3878573884324743,
+          1.3878573884324743,
+          0.9804915929756461,
+          0.9804915929756461,
+          0.3353924648489725,
+          0.3353924648489725
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3505723410993355,
+          1.3505723410993355,
+          0.8566973304252588,
+          0.8566973304252586,
+          0.6648488817014692,
+          0.6648488817014692
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_17_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_17_tol1e-10",
+        "sensorPositions": [
+          0.2046002447485729,
+          0.4828083776858469,
+          0.20650417333561252
+        ],
+        "drivePositions": [
+          0.07326066453180499,
+          0.4828389930288264,
+          0.6123107852793928
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3878573884324743,
+          1.3878573884324743,
+          0.9804915929756461,
+          0.9804915929756461,
+          0.3353924648489725,
+          0.3353924648489725
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3505723410993355,
+          1.3505723410993355,
+          0.8566973304252588,
+          0.8566973304252586,
+          0.6648488817014692,
+          0.6648488817014692
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_17_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_17_tol0.0001",
+        "sensorPositions": [
+          0.2046002447485729,
+          0.4828083776858469,
+          0.20650417333561252
+        ],
+        "drivePositions": [
+          0.07326066453180499,
+          0.4828389930288264,
+          0.6123107852793928
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 3,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3878573884324743,
+          1.3878573884324743,
+          0.9804915929756461,
+          0.9804915929756461,
+          0.3353924648489725,
+          0.3353924648489725
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.3505723410993355,
+          1.3505723410993355,
+          0.8566973304252588,
+          0.8566973304252586,
+          0.6648488817014692,
+          0.6648488817014692
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_18_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_18_tol1e-14",
+        "sensorPositions": [
+          0.5415942499912534,
+          0.8966872632824973
+        ],
+        "drivePositions": [
+          0.7608913269772242
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2170850858223194,
+          1.2170850858223192,
+          1.1284972109943667,
+          1.1284972109943665,
+          0.4951746546894456,
+          0.4951746546894454
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_18_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_18_tol1e-10",
+        "sensorPositions": [
+          0.5415942499912534,
+          0.8966872632824973
+        ],
+        "drivePositions": [
+          0.7608913269772242
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2170850858223194,
+          1.2170850858223192,
+          1.1284972109943667,
+          1.1284972109943665,
+          0.4951746546894456,
+          0.4951746546894454
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_18_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_18_tol0.0001",
+        "sensorPositions": [
+          0.5415942499912534,
+          0.8966872632824973
+        ],
+        "drivePositions": [
+          0.7608913269772242
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2170850858223194,
+          1.2170850858223192,
+          1.1284972109943667,
+          1.1284972109943665,
+          0.4951746546894456,
+          0.4951746546894454
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.6088770038737479,
+          1.6088770038737477,
+          0.6395426854046773,
+          0.6395426854046773,
+          0.049999399512450915,
+          0.049999399512450894
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_19_tol1e-14",
+      "input": {
+        "id": "seeded_geometry_19_tol1e-14",
+        "sensorPositions": [
+          0.17679989148312675,
+          0.4527739126863427
+        ],
+        "drivePositions": [
+          0.781170516424703,
+          0.03974991685712837,
+          0.4818996119132418
+        ],
+        "tolerance": 1e-14
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2835929772496646,
+          1.2835929772496641,
+          1.0756001750821977,
+          1.0756001750821975,
+          0.4421236615682188,
+          0.44212366156821853
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2827108992037086,
+          1.2827108992037086,
+          1.0543108008500146,
+          1.0543108008500146,
+          0.49303294441144097,
+          0.4930329444114407
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_19_tol1e-10",
+      "input": {
+        "id": "seeded_geometry_19_tol1e-10",
+        "sensorPositions": [
+          0.17679989148312675,
+          0.4527739126863427
+        ],
+        "drivePositions": [
+          0.781170516424703,
+          0.03974991685712837,
+          0.4818996119132418
+        ],
+        "tolerance": 1e-10
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2835929772496646,
+          1.2835929772496641,
+          1.0756001750821977,
+          1.0756001750821975,
+          0.4421236615682188,
+          0.44212366156821853
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2827108992037086,
+          1.2827108992037086,
+          1.0543108008500146,
+          1.0543108008500146,
+          0.49303294441144097,
+          0.4930329444114407
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    },
+    {
+      "id": "seeded_geometry_19_tol0.0001",
+      "input": {
+        "id": "seeded_geometry_19_tol0.0001",
+        "sensorPositions": [
+          0.17679989148312675,
+          0.4527739126863427
+        ],
+        "drivePositions": [
+          0.781170516424703,
+          0.03974991685712837,
+          0.4818996119132418
+        ],
+        "tolerance": 0.0001
+      },
+      "instantaneous_sensor_rank": 2,
+      "generator_max_abs_error": 0.0,
+      "observability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2835929772496646,
+          1.2835929772496641,
+          1.0756001750821977,
+          1.0756001750821975,
+          0.4421236615682188,
+          0.44212366156821853
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      },
+      "controllability": {
+        "numpy_rank": 6,
+        "producer_rank": 6,
+        "nullity": 0,
+        "normalized_singular_values": [
+          1.2827108992037086,
+          1.2827108992037086,
+          1.0543108008500146,
+          1.0543108008500146,
+          0.49303294441144097,
+          0.4930329444114407
+        ],
+        "independent_original_kernel_residual": 0.0,
+        "rank_matches": true
+      }
+    }
+  ],
+  "nuisance_cases": [
+    {
+      "design": "locked-temperature",
+      "rank": 3,
+      "nullity": 1,
+      "normalized_singular_values": [
+        1.618033988749895,
+        1.0,
+        0.6180339887498948,
+        8.3754161464929e-18
+      ],
+      "numpy_kernel_in_original_units": [
+        [
+          -0.0,
+          -0.0,
+          0.2,
+          -1.0
+        ]
+      ],
+      "producer_kernel_residual": 0.0,
+      "target_estimable": false,
+      "matches": true
+    },
+    {
+      "design": "independent-temperature",
+      "rank": 4,
+      "nullity": 0,
+      "normalized_singular_values": [
+        1.5520690735576923,
+        1.0057827221162297,
+        0.6533768746191695,
+        0.3906166490449678
+      ],
+      "numpy_kernel_in_original_units": [],
+      "producer_kernel_residual": 0,
+      "target_estimable": true,
+      "matches": true
+    }
+  ],
+  "independent_inference_stress": {
+    "locked_800_rows_rank": 3,
+    "independent_temperature_rank": 4,
+    "with_omitted_locked_preload_rank": 4,
+    "with_omitted_locked_preload_columns": 5,
+    "explicit_preload_null": [
+      0,
+      0,
+      0.7,
+      0,
+      -1
+    ],
+    "preload_null_max_residual": 0.0,
+    "quadratic_drift_contrasts": {
+      "ABBA_c1": -2.0,
+      "BAAB_c1": 2.0,
+      "balanced_different_curvatures_mean": 1.0
+    }
+  },
+  "actual_location_alias_function": {
+    "schema": "copper-forward-global-alias/1",
+    "status": "calculated forward-model ambiguity; no measurements",
+    "source": "retained Location simulateComparison in ./models.mjs",
+    "parameters": {
+      "positionA": 0.25,
+      "positionB": 0.75,
+      "tempDeltaK": 0,
+      "coupling": 0.08,
+      "receiver": "fixed"
+    },
+    "positions": [
+      0.25,
+      0.75
+    ],
+    "maxPoleDifferenceHz": 0,
+    "maxResponseDifference": 0,
+    "responseUnit": "m/N (projected displacement per modal force)",
+    "frequencySamples": 1148,
+    "coupledHzA": [
+      21022.223272776402,
+      24245.921761776888
+    ],
+    "coupledHzB": [
+      21022.223272776402,
+      24245.921761776888
+    ],
+    "projectionA": 0.8944271909999159,
+    "projectionB": 0.8944271909999159,
+    "ambiguityEstablished": true,
+    "reason": "Both sin(pi*p) and the fixed receiver projection are invariant under p \u2192 1\u2212p. The forward matrices and complete modeled response coincide, so denser sampling cannot select one location.",
+    "scope": "This exact alias is a property of the chosen forward model; it is not an experiment or a universal statement about physical locations.",
+    "inference": "Return an ambiguity class under these assumptions; do not report a unique location."
+  },
+  "retained_location_reflection_cases": [
+    {
+      "positionA": 0,
+      "positionB": 1,
+      "maxPoleDifferenceHz": 0,
+      "maxRelativeResponseDifference": 0
+    },
+    {
+      "positionA": 0.01,
+      "positionB": 0.99,
+      "maxPoleDifferenceHz": 0,
+      "maxRelativeResponseDifference": 0
+    },
+    {
+      "positionA": 0.123,
+      "positionB": 0.877,
+      "maxPoleDifferenceHz": 0,
+      "maxRelativeResponseDifference": 0
+    },
+    {
+      "positionA": 0.25,
+      "positionB": 0.75,
+      "maxPoleDifferenceHz": 0,
+      "maxRelativeResponseDifference": 0
+    },
+    {
+      "positionA": 0.3,
+      "positionB": 0.7,
+      "maxPoleDifferenceHz": 0,
+      "maxRelativeResponseDifference": 2.906471468594298e-16
+    },
+    {
+      "positionA": 0.5,
+      "positionB": 0.5,
+      "maxPoleDifferenceHz": 0,
+      "maxRelativeResponseDifference": 0
+    },
+    {
+      "positionA": 0.75,
+      "positionB": 0.25,
+      "maxPoleDifferenceHz": 0,
+      "maxRelativeResponseDifference": 0
+    },
+    {
+      "positionA": 0.99,
+      "positionB": 0.010000000000000009,
+      "maxPoleDifferenceHz": 0,
+      "maxRelativeResponseDifference": 0
+    }
+  ],
+  "retained_position_product_alias": {
+    "maxPoleDifferenceHz": 0,
+    "maxResponseDifferenceDb": 0,
+    "sameFrequencyGrid": true,
+    "addedStiffnessA": 50000000,
+    "addedStiffnessB": 50000000
+  },
+  "invalid_input_rejections": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "archive_bindings": {
+    "location_archive_equals_verified_sha256": true,
+    "position_archive_equals_verified_sha256": true
+  },
+  "counts": {
+    "temporal_design_cases": 105,
+    "independent_O_and_K_rank_comparisons": 210,
+    "nuisance_design_cases": 2,
+    "location_reflection_cases": 8,
+    "malformed_inputs": 7
+  },
+  "failures": [],
+  "limits": [
+    "SVD rank cutoff and column scaling are algebraic conventions; no physical noise calibration or finite-time estimation result.",
+    "Fixtures use a known dimensionless sine basis with three distinct frequencies, not Lamb modes or a complete apparatus.",
+    "Exact aliases establish nonuniqueness only in their retained forward models.",
+    "No review of this seat own modal module is counted as independent evidence."
+  ]
+}

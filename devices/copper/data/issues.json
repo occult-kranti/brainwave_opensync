@@ -1,0 +1,138 @@
+[
+  {
+    "id": "INT-01",
+    "severity": "high",
+    "title": "Duplicate CSV headers changed the result",
+    "status": "Fixed in current analyzer",
+    "detail": "The historic Position parser accepts a duplicate force column; a scaled duplicate changes inferred mobility while coherence can remain high. Current admission rejects ambiguous/duplicate headers.",
+    "origin": "position-v1"
+  },
+  {
+    "id": "INT-02",
+    "severity": "high",
+    "title": "Force and voltage were not one channel",
+    "status": "Force-only contract enforced",
+    "detail": "Current traces require explicit force_N and matching units. Voltage-to-force conversion is not implemented and is rejected.",
+    "origin": "position-v1"
+  },
+  {
+    "id": "INT-03",
+    "severity": "high",
+    "title": "Invalid inputs could reuse a previous result",
+    "status": "Current validated-run boundary",
+    "detail": "The integrated interface must block export/bridging after invalid or unapplied changes. Archived interfaces retain their known behavior.",
+    "origin": "location-v1.1; position-v1"
+  },
+  {
+    "id": "INT-04",
+    "severity": "high",
+    "title": "Standalone tests depended on a missing directory",
+    "status": "Fixed in current source package",
+    "detail": "Current acquisition tests do not write a frozen research receipt; extracted source instructions are verified separately.",
+    "origin": "location-v1.1"
+  },
+  {
+    "id": "INT-05",
+    "severity": "medium",
+    "title": "Six source pointers were unresolved",
+    "status": "Explicit project-interpretation record",
+    "detail": "The integrated graph resolves every evidence pointer and retains source-version observations through conservative deduplication. A project inference is not primary evidence.",
+    "origin": "location-v1.1"
+  },
+  {
+    "id": "LIM-01",
+    "severity": "scope",
+    "title": "Selected modes are not the entire spectrum",
+    "status": "Open physical-model limitation",
+    "detail": "Radial families omit nonradial/torsional, rigid, seam, anisotropic and real fixture modes. The finite contact and sine-basis diagnostic models are declared reductions.",
+    "origin": "all versions"
+  },
+  {
+    "id": "LIM-02",
+    "severity": "scope",
+    "title": "Thin-shell accuracy is conditional",
+    "status": "Quantified model difference",
+    "detail": "The default membrane and full radial shell models differ by about0.4066Hz. This model discrepancy is not a measured specimen calibration or automatically independent A/B noise.",
+    "origin": "location models"
+  },
+  {
+    "id": "LIM-03",
+    "severity": "scope",
+    "title": "Candidate peaks are not fitted poles",
+    "status": "No joint pole fitter implemented",
+    "detail": "The offline analyzer returns candidate spectral peaks; the browser uses known synthetic frequencies. A preregistered fitted same-mode estimate remains necessary for a real block trial.",
+    "origin": "current analyzer"
+  },
+  {
+    "id": "LIM-04",
+    "severity": "scope",
+    "title": "Full rank is not global or physical uniqueness",
+    "status": "Explicit kernels and scope retained",
+    "detail": "Temporal observability, drive reachability, nuisance estimability and global aliases answer different questions. Rank does not certify a complete apparatus model or absence of noise.",
+    "origin": "current diagnostics"
+  },
+  {
+    "id": "LIM-05",
+    "severity": "scope",
+    "title": "A/B balance does not eliminate confounding",
+    "status": "Prospective controls required",
+    "detail": "ABBA assumptions, serial dependence, mode selection, covariance, power and missingness must be declared. Locked temperature/preload cannot be separated by repeating the same design.",
+    "origin": "all physical proposals"
+  },
+  {
+    "id": "GW-01",
+    "severity": "evidence",
+    "title": "Hosted Gateway site inaccessible",
+    "status": "Unaudited access limit",
+    "detail": "gatewayresearch.kimi.page returned access errors/HTTP403. Repository promises cannot substitute for inspecting that site.",
+    "origin": "Gateway requested site"
+  },
+  {
+    "id": "GW-02",
+    "severity": "evidence",
+    "title": "Originals and media absent from pinned repo",
+    "status": "Manifest/transcript distinction",
+    "detail": "A manifest is not a verified binary; the1977 cleaned transcript is not an authenticated scan; cited books remain leads unless actually read. No proprietary audio is republished.",
+    "origin": "Gateway075bbab"
+  },
+  {
+    "id": "GW-03",
+    "severity": "evidence",
+    "title": "A numerical or historical analogy is not coupling",
+    "status": "No measured coupling supplied",
+    "detail": "Focus, beats, EEG, electrical voltage, mechanical modes and location stay separate. The dimensional Planck derivation and photon/Q rebuttal are specifically invalid; broader experiential claims remain unverified.",
+    "origin": "Gateway bridge audit"
+  },
+  {
+    "id": "INT-06",
+    "severity": "medium",
+    "title": "Near-node geometry was clipped to an exact node",
+    "status": "Fixed during Round 3",
+    "detail": "The first integrated design module clipped small sine participation to zero. Only explicitly represented exact model nodes are now zeroed; nearby nonnodes retain participation. Column-scaled structural rank still does not measure noisy detectability.",
+    "origin": "integration Round 2"
+  },
+  {
+    "id": "INT-07",
+    "severity": "high",
+    "title": "Failed storage could retain a stale bridge",
+    "status": "Fixed and forced-failure browser case passed",
+    "detail": "A failed dirty-state storage write could leave an older valid model record. Current same-tab/per-tab blocking and run-identity checks reject stale or corrupted bridge records; delayed-hash guards are exercised.",
+    "origin": "integration Round 2"
+  },
+  {
+    "id": "INT-08",
+    "severity": "medium",
+    "title": "Protocol commands omitted required metadata",
+    "status": "Fixed and packaged paths checked",
+    "detail": "Current examples include mandatory sidecars and conservative input status. Browser synthetic bundles remain intentionally inadmissible as calibrated force/velocity records.",
+    "origin": "integration Round 2"
+  },
+  {
+    "id": "GW-04",
+    "severity": "medium",
+    "title": "Skill metadata parser silently skipped malformed records",
+    "status": "Fail-closed revision tested in Round 3",
+    "detail": "Duplicate JSON keys/IDs, unsupported or missing carrier/beat formats and nonfinite/invalid values require explicit rejection. Pulse/noise entries receive explicit non-carrier-pair status, not a false subtraction check.",
+    "origin": "Gateway skill initial parser"
+  }
+]

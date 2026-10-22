@@ -1,0 +1,108 @@
+{
+  "status": "passed",
+  "scope": "Numerical model and synthetic controls only; no physical experiment has run.",
+  "source_sha256": "4d464f1a21bbadc88363fe666720994641079eecf7215f3d80e3fe6b4c18e3d6",
+  "default_inputs": {
+    "radiusMm": 12.5,
+    "E_GPa": 123.5,
+    "nu": 0.35,
+    "rhoKgM3": 8960
+  },
+  "default_model": {
+    "massKg": 0.07330382858376185,
+    "cL": 4703.36454116143,
+    "cT": 2259.423241945472,
+    "roots": [
+      2.7811769216435223,
+      6.130019160948705,
+      9.32505887879946
+    ],
+    "frequenciesHz": [
+      166551.05048081325,
+      367096.79372723564,
+      558432.0580158163
+    ]
+  },
+  "sampling_example": {
+    "validNyquist": true,
+    "modeWithinBand": true,
+    "validPlan": true,
+    "nyquistHz": 500000,
+    "binHz": 10,
+    "ringdownS": 0.001911185100693556,
+    "linewidthHz": 166.55105048081327,
+    "samples": 100000,
+    "guardBand": true,
+    "note": "Nyquist is necessary, not sufficient: require a calibrated analog passband and anti-alias filter. 1/T is Fourier-bin spacing, not a universal fitted-frequency uncertainty. Ringdown uses Q=1/(2*zeta) and the undamped natural frequency. The linewidth f/Q is a weak-damping approximation."
+  },
+  "uncertainty_example": {
+    "frequencyHz": 166551.05048081325,
+    "relativeStd": 0.017106327383553672,
+    "uHz": 2849.0767955995657,
+    "terms": {
+      "radius": 0.0008,
+      "modulus": 0.008097165991902834,
+      "density": 0.0005580357142857143,
+      "poisson": 0.015036985588690042
+    },
+    "sensitivityNu": 3.0073971177380083,
+    "note": "First-order independent-input standard uncertainty, excluding model bias, anisotropy, support, thermal drift and parameter covariance. It is not the uncertainty of an A/B measured frequency difference."
+  },
+  "synthetic_path_example": {
+    "polesAHz": [
+      166551.05048081325,
+      367096.79372723575,
+      558432.0580158163
+    ],
+    "polesBHz": [
+      166551.05048081325,
+      367096.79372723575,
+      558432.0580158163
+    ],
+    "peakAHz": 166551.05048081325,
+    "peakBHz": 367096.79372723575,
+    "disclaimer": "Synthetic deterministic example, not measured copper data. Three selected radial modes only. Added-spring shifts use an illustrative effective modal mass and do not predict a real table-contact shift."
+  },
+  "synthetic_contact_example": {
+    "polesAHz": [
+      166551.05048081325,
+      367096.79372723575,
+      558432.0580158163
+    ],
+    "polesBHz": [
+      166654.75580290696,
+      367143.8562474944,
+      558462.9966571144
+    ],
+    "addedStiffnessNPerM": 100000000,
+    "effectiveModalMassKg": 0.07330382858376185,
+    "disclaimer": "Synthetic deterministic example, not measured copper data. Three selected radial modes only. Added-spring shifts use an illustrative effective modal mass and do not predict a real table-contact shift."
+  },
+  "checks": [
+    {
+      "name": "29 material/geometry cases, independent spherical-Bessel/Brent formulation",
+      "passed": true,
+      "max_relative_frequency_difference": 3.182417435545132e-14
+    },
+    {
+      "name": "Radius inverse scaling; modulus square-root and density inverse-square-root scaling",
+      "passed": true
+    },
+    {
+      "name": "11 invalid/domain controls",
+      "passed": true
+    },
+    {
+      "name": "Sampling, strict Nyquist boundary, ordinary-audio rejection and ringdown",
+      "passed": true
+    },
+    {
+      "name": "Translation null, residue-only peak switching, zero spring, positive-spring perturbation",
+      "passed": true
+    },
+    {
+      "name": "Independent implicit derivative of Poisson-ratio sensitivity",
+      "passed": true
+    }
+  ]
+}

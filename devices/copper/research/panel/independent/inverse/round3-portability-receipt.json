@@ -1,0 +1,12 @@
+{
+  "schema": "seat3-modal-portability-reproduction/1",
+  "classification": "path-wiring reproduction; not new independent derivation",
+  "case_count": 794,
+  "numeric_case_results_and_all_controls_equal": true,
+  "output_from_fresh_run": "/tmp/copper-modal-portable-q4tgys_y/results.json",
+  "preserved_original_script_sha256": "9edd410e376a16118eb742084c69d5dd41dc581a672475a53239c6594d0b77e5",
+  "preserved_original_result_sha256": "3640aefcffda1521318f6335588d86d7eb4eec8d124e806d61522991268ae9d1",
+  "portable_script_sha256": "b7003e1828d48a1543b1d4a0bf4319394f4223f4d652726e28916ccd83275923",
+  "command": "python scripts/verify_modal_independent.py --output /tmp/copper-modal-review.json",
+  "app_root_default": "parent of scripts directory"
+}

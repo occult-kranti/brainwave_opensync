@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Source and graph merge</title><style>body{margin:0;background:#eeeae1;color:#183b35;font:16px/1.7 Arial,sans-serif}header,main,footer{max-width:960px;margin:auto;padding:24px}header{border-bottom:1px solid #bbc5b6}h1,h2,h3{font-family:Georgia,serif;line-height:1.2}h1{font-size:42px}h2{margin-top:48px;font-size:30px}a{color:#8e422a;text-underline-offset:3px}table{width:100%;border-collapse:collapse;font-size:13px;display:block;overflow:auto}td,th{border:1px solid #bcc8b8;padding:10px;text-align:left;vertical-align:top}code,pre{font:13px/1.6 monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e3e3d7;padding:16px}code{overflow-wrap:anywhere}blockquote{border-left:3px solid #b35f3b;padding-left:20px}footer{font-size:12px}nav{display:flex;flex-wrap:wrap;gap:18px}@media(max-width:600px){h1{font-size:32px}main{padding:20px}}@media print{body{background:white;color:#111;font-size:11pt}header nav{display:none}h1{font-size:26pt}h2{font-size:18pt;break-after:avoid}tr,pre{break-inside:avoid}a{color:#222}table{display:table;overflow:visible;font-size:9pt}header,main,footer{padding:8px}h2{margin-top:24px}}</style><header><strong>FIELDWORK · COPPER EXPERIMENT</strong><nav><a href="../index.html">Overview</a><a href="../gateway.html">Gateway audit</a><a href="../protocol.html">Protocol</a><a href="../sources.html">Source network</a><a href="../versions.html">Versions & issues</a></nav></header><main><h1>Source and graph merge</h1>
+<p>Generated 2026-10-22 by <code>scripts/merge_sources.py</code>. This is a reproducible metadata integration, not a source re-review, physical experiment or scientific endorsement.</p>
+<p><strong>139 original source records</strong> (80 Location, 28 Position, 13 Gateway, 18 historical-panel), <strong>one original project-interpretation observation</strong>, and <strong>one separate Round 3 analytical-audit observation</strong> produce <strong>131 conservative work identities and 141 observations</strong>. All 140 earlier observations remain auditable; the current audit is appended to the existing project work, not substituted or assigned a new work identity. Every record retains a qualified alias, original raw record, reading depth, status, limits, review date/basis and source commit/revision.</p>
+<p>The graph has <strong>192 unique nodes and 151 retained edges</strong>. Original source nodes collapse only when their node ID itself matches an origin-qualified source alias. Other nodes retain <code>oldL:</code>, <code>oldP:</code> or <code>history:</code> namespaces, even if they happen to carry a sourceId. All work records also have a source node; some are intentionally unconnected.</p>
+<h2>Identity rules</h2>
+<ul>
+<li>DOI identity is case-insensitive. An exact shared URL may supply an explicitly recorded DOI to a DOI-less observation. Similar titles, mirror content, editions and guessed DOIs do not trigger merging.</li>
+<li>URL identity lowercases the host and removes only explicit tracking parameters. Path case, arXiv suffixes, git revision paths, patent publication IDs, fragments, ordinary query fields and query order are retained. DOI identities are not used to erase explicit software version/inspection qualifiers.</li>
+<li>Versioned software records retain explicit package versions and inspected repository revisions in identity and observations; unversioned README observations remain separate. An unversioned arXiv link is not silently identified with v1.</li>
+<li>History H2/H3 are unread Bentov/Purce book leads. Their shared GovInfo URL is an attribution locator, not the original books' identity. They remain distinct cited-work records with originalUrl=null and readStatus=UNREAD. This explicitly documented exception avoids falsely merging either book into the inspected report.</li>
+<li>Official GovInfo, CIA endpoint, Black Vault mirror and annotated lead remain distinct URL observations/identities unless their supplied canonical URL or DOI actually matches. Source custody and page-version reading differences remain inspectable.</li>
+</ul>
+<h2>Merged duplicate identities</h2>
+<table>
+<thead>
+<tr>
+  <th>Canonical work</th>
+  <th>Qualified original aliases</th>
+  <th>Identity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Analysis and Assessment of Gateway Process — official GovInfo scan</td>
+  <td>gateway:GW-1983-GOVINFO, history:H1</td>
+  <td><code>url:https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo152943/pdf/GOVPUB-D101-PURL-gpo152943.pdf</code></td>
+</tr>
+<tr>
+  <td>Vibrational eigenmodes of an isotropic sphere</td>
+  <td>location:physics-saviot-calculator, position:PHY-CNRS-CALCULATOR</td>
+  <td><code>url:https://saviot.cnrs.fr/lamb/index.en.html</code></td>
+</tr>
+<tr>
+  <td>On the Vibrations of an Elastic Sphere</td>
+  <td>location:hist2-lamb-sphere, position:lamb1881</td>
+  <td><code>doi:10.1112/plms/s1-13.1.189</code></td>
+</tr>
+<tr>
+  <td>Fixed-phase resonance tracking for fast Nonlinear Resonant Ultrasound Spectroscopy</td>
+  <td>location:physics-phase-tracking-2026, history:H11</td>
+  <td><code>doi:10.1016/j.ultras.2026.108257</code></td>
+</tr>
+<tr>
+  <td>Resonant Ultrasound Spectroscopy for Irregularly Shaped Samples and Its Application to Uranium Ditelluride</td>
+  <td>location:lit2-irregular-rus, position:skeptic-rus-loading, history:H10</td>
+  <td><code>doi:10.1103/physrevlett.132.066003</code></td>
+</tr>
+<tr>
+  <td>Global Uniqueness for the Smooth Isotropic Elasticity Inverse Problem</td>
+  <td>location:lit-openai-elasticity, position:openai-elasticity372</td>
+  <td><code>url:https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf</code></td>
+</tr>
+<tr>
+  <td>Sharing AI progress in mathematics</td>
+  <td>location:lit-openai-release, position:openai-release2026</td>
+  <td><code>url:https://openai.com/index/sharing-ai-progress-in-mathematics/</code></td>
+</tr>
+<tr>
+  <td>Elastic Properties of Metals and Alloys. II. Copper</td>
+  <td>location:physics-copper-reference, position:PHY-NIST-COPPER-1974</td>
+  <td><code>doi:10.1063/1.3253150</code></td>
+</tr>
+<tr>
+  <td>Project interpretation: location-spectrum connection graph</td>
+  <td>location:project-design, integration-round3-audit:bridge-audit</td>
+  <td><code>url:/devices/copper/research/working-thesis.md</code></td>
+</tr>
+</tbody>
+</table>
+<p>Every duplicate observation retains its own reading/implementation status. For example, a reviewed abstract and a selected full-text reading do not become a blanket full-paper review after merging. Different software observations do not transfer execution status to each other.</p>
+<h2>Six repaired evidence pointers</h2>
+<p>The original Location graph referenced absent <code>project-design</code> evidence six times. The new <code>location:project-design</code> record explicitly identifies project-authored reasoning about comparison protocols, simulated controls and a thematic patent relation. It is labelled project interpretation and not primary physical evidence. All six original edge objects, types and scope are preserved alongside their canonical evidence pointer.</p>
+<h2>Display links and analytical evaluations</h2>
+<p>Public display URLs are separate from original identity locators. Seven imported local: locators and the original deployment-root project path remain unchanged in identityUrl and observation/raw provenance. Display links use pinned GitHub records or ./ paths resolved against the deployed app root, preserving any GitHub Pages base path. Work graph-node URLs match their source records. Local provenance strings are explicitly labelled nonpublic; an observation URL is not used as a display link.</p>
+<p>The graph contains 52 evaluative/analogical edges. Each retains its original citations and now also points explicitly to the existing project work and its separately appended <code>integration-round3-audit:bridge-audit</code> observation. Its primary sourceId is that interpretation work; sourceIds/evidence retain all original claim evidence. Primary historical text does not itself prove this project's rejection. The original edge object is retained unchanged, and evaluationProvenance/evaluationNote identify the current analytical observation and its bounded scope.</p>
+<h2>Raw imports and regeneration</h2>
+<p><code>imports/source-records.json</code> preserves all six raw JSON inputs and capture receipts (path, SHA-256 and bytes), plus origin commits. It includes bibliographic/graph metadata only; no full Gateway transcript, PDF, commercial audio or book was imported. Gateway display titles were supplied by the Gateway source seat; inaccessible-site and unread-transcript qualifiers remain in those titles.</p>
+<pre><code class="language-sh">python scripts/merge_sources.py
+python scripts/merge_sources.py --check
+python scripts/merge_sources.py --check --build-target dist
+</code></pre>
+<p>The default validates relative targets against the app/public build inputs. The build-target option checks the actual assembled output and must be run after its build/copy step.</p>
+<p>To intentionally refresh the original workspace snapshot:</p>
+<pre><code class="language-sh">python scripts/merge_sources.py --capture --workspace-root /workspace/scratch/c230cc629529
+</code></pre>
+<p><code>--check</code> writes nothing. It verifies exact regeneration, unique source/node/edge IDs, complete alias/observation coverage, all endpoints, all sourceId/sourceIds/evidence pointers and the six interpretation repairs. Internal identity controls cover DOI case, nontracking queries, path case, arXiv/git/patent/software versions and the cited-book collision.</p>
+<p>Groups exposed to the frontend are <code>gateway</code>, <code>patents</code>, <code>software</code>, <code>history</code>, <code>measurement</code>, <code>ai</code>, <code>physics</code>. Grouping is navigational and carries no evidence grade. The source array contract is id/title/url/group/description/observations/aliases; the graph retains nodes/edges/legend/scope plus original provenance.</p>
+<h2>Remaining boundaries</h2>
+<p>This conservative merge can retain separate identities for the same intellectual work when only different mirrors or a DOI-less publication URL were supplied. That is preferable to asserting unverified equivalence. Capture/review dates are distinguished from publication dates; null sourceCommit for local panel reports is explicit. The raw original record is authoritative for any nuance not represented by normalized display fields. No stronger reading depth, completed theorem, calibrated apparatus result or novel physical law is inferred by the merger.</p>
+</main><footer>Original project analysis · AI-assisted review, not human peer review · No physical sphere measurements. <a href="../research/source-merge.md">Download Markdown</a> · <a href="../deployment.json">Exact build provenance</a></footer></html>

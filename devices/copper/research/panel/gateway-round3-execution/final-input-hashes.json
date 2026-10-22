@@ -1,0 +1,13 @@
+{
+  "date_utc": "2026-10-22T02:36:46.562620+00:00",
+  "files": {
+    "research/gateway-analysis.md": "012bf109d10acf33c911f024ee34c8d3c7e8f7913419e2b0215c82549bf14167",
+    "data/corpus-gateway.json": "9b7641bffe61466e7e64a02385594aca7d209d7b49fe66ada67f5997c797eec0",
+    "data/content.json": "f4b318cdf2994900ff987e7e695335f671fb91cabce571d75e6ee69b16cb8799",
+    "data/sources.json": "f781861ea2bfa57e2263efe77e13962450704beb464b88ff5e76ef8e748f5d59",
+    "data/graph.json": "b36dace979dd8ca91919e11eda5fa04c0513986414b64d919f67aaa2c65cde26",
+    "src/app.mjs": "cc3221c4e031812d76b8b9014099864d66a655fd5396406f3b52f448585eaa00",
+    "skills/gateway-evidence-audit/SKILL.md": "062d144133405ad0cde4d6637bf8e66982bdf3715f6912706c80e3801ccae771",
+    "skills/gateway-evidence-audit/scripts/audit_corpus.py": "b41ef5327b266df1e5dd0342077e39d1894195ed5843e49a99c825fb3228575c"
+  }
+}

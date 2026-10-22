@@ -1,0 +1,112 @@
+{
+  "review_date": "2026-10-21",
+  "scope": "Selected primary/theory/institutional physics sources; not an exhaustive literature review and not a conference-ranking claim.",
+  "sources": [
+    {
+      "id": "PHY-LAMB-1881",
+      "title": "On the Vibrations of an Elastic Sphere",
+      "authors": "Horace Lamb",
+      "year": 1881,
+      "venue": "Proceedings of the London Mathematical Society, s1-13, 189–212",
+      "doi": "10.1112/plms/s1-13.1.189",
+      "url": "https://academic.oup.com/plms/article-abstract/s1-13/1/189/1474935",
+      "reading_depth": "Publisher bibliographic record; full original paper not read.",
+      "claim": "Historical origin of the elastic-sphere mode problem; the implemented boundary expression is checked in the accessible 2005 primary paper.",
+      "caveat": "Publisher issue date is November1881; later literature commonly cites1882. Preserve this bibliographic distinction."
+    },
+    {
+      "id": "PHY-SAVIOT-2005",
+      "title": "Longitudinal versus transverse spheroidal vibrational modes of an elastic sphere",
+      "authors": "Lucien Saviot and Daniel B. Murray",
+      "year": 2005,
+      "venue": "Physical Review B72,205433",
+      "doi": "10.1103/PhysRevB.72.205433",
+      "url": "https://arxiv.org/html/cond-mat/0506353v3",
+      "metadata_url": "https://arxiv.org/abs/cond-mat/0506353",
+      "reading_depth": "Full SectionII free-sphere formulation, equations1–3 and l=0 reduction; SectionIII opening and derivative interpretation; abstract and original metadata.",
+      "claim": "A homogeneous isotropic traction-free sphere has distinct torsional and spheroidal families. Radial l=0 modes use the T11 boundary condition, with size and sound-speed dependence.",
+      "caveat": "The HTML conversion displays an August2026 date; original version/publication metadata establish2005. Selected l=0 implementation is not full-mode completeness."
+    },
+    {
+      "id": "PHY-CNRS-CALCULATOR",
+      "title": "Vibrational eigenmodes of an isotropic sphere",
+      "authors": "Lucien Saviot/CNRS research calculator",
+      "year": null,
+      "venue": "Author institutional research tool",
+      "url": "https://saviot.cnrs.fr/lamb/index.en.html",
+      "reading_depth": "Full explanatory page and reference list; interactive outputs were not used as the independent numerical implementation.",
+      "claim": "Useful external mode-family tool and reference; inputs are longitudinal/transverse speeds, diameter, family and indices.",
+      "caveat": "The page specifically warns about an incorrect spheroidal l=0 frequency expression in a cited textbook. Its disclaimer is use at own risk."
+    },
+    {
+      "id": "PHY-NIST-COPPER-1974",
+      "title": "Elastic Properties of Metals and Alloys. II. Copper",
+      "authors": "H.M. Ledbetter and E.R. Naimon",
+      "year": 1974,
+      "venue": "Journal of Physical and Chemical Reference Data3,897",
+      "doi": "10.1063/1.3253150",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.3253150.pdf",
+      "reading_depth": "Introduction, Sections9–10, Table10 (PDFpage28/printed923), Table12 (PDFpage30/printed925), selected density entries in Table9.",
+      "claim": "Compiled copper elastic properties distinguish polycrystal effective values, single-crystal constants, temperature and processing effects. Table10 averages E123.5GPa and nu0.350 inform illustrative defaults.",
+      "caveat": "Literature averages and their standard errors are not a certificate of the proposed ball. Independently averaged constants may not obey one exact isotropic identity. Density8960kg/m3 is a rounded illustrative input."
+    },
+    {
+      "id": "PHY-REESE-LASER-CU-2008",
+      "title": "On the establishment of a method for characterization of material microstructure through laser-based resonant ultrasound spectroscopy",
+      "authors": "Stephen J. Reese, Kenneth L. Telschow, Thomas M. Lillo and David H. Hurley",
+      "year": 2008,
+      "venue": "IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control55(4),770–776",
+      "url": "https://inl.elsevierpure.com/en/publications/on-the-establishment-of-a-method-for-characterization-of-material/",
+      "reading_depth": "Institutional abstract and metadata; full paper not read.",
+      "claim": "Laser-based RUS was applied to high-purity polycrystalline copper, comparing measured modes with elastic constants informed by microstructure.",
+      "caveat": "This demonstrates a relevant approach, not the current project's proposed A/B experiment or its achievable precision.",
+      "doi": "10.1109/TUFFC.2008.711"
+    },
+    {
+      "id": "PHY-KAPLAN-2009",
+      "title": "Resonant ultrasound spectroscopy and homogeneity in polycrystals",
+      "authors": "Gunes Kaplan, T.W. Darling and K.R. McCall",
+      "year": 2009,
+      "venue": "Ultrasonics49(1),139–142",
+      "doi": "10.1016/j.ultras.2008.08.001",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18804831/",
+      "reading_depth": "Primary abstract via PubMed and publication metadata; full paper not read.",
+      "claim": "Pure copper's grain-size distribution can violate the homogeneous effective model assumed when interpreting RUS.",
+      "caveat": "The source's particular observed grain-size criterion is sample/study-specific and is not adopted as a universal acceptance threshold here. Online publication2008, journal issue2009."
+    },
+    {
+      "id": "PHY-CONTACT-SPHERE-2021",
+      "title": "Resonance ultrasonic spectroscopy applied to normal and tangential contact modes investigation of a constrained metallic sphere",
+      "authors": "M. de Billy and F. Cohen Tenoudji",
+      "year": 2021,
+      "venue": "Ultrasonics117,106539",
+      "doi": "10.1016/j.ultras.2021.106539",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34390917/",
+      "reading_depth": "Primary abstract, highlights and bibliographic records; full paper not read.",
+      "claim": "A compressed steel sphere has contact-conditioned low-frequency motion in addition to internal deformation modes; applied force changes contact spectral peaks.",
+      "caveat": "Material and loading differ from the proposed copper experiment. The browser's spring example is pedagogical, not a reproduced fit to this experiment."
+    }
+  ],
+  "access_limited_leads": [
+    {
+      "title": "Laser Doppler vibrometry",
+      "year": 2026,
+      "url": "https://www.nature.com/articles/s43586-026-00487-2",
+      "status": "Search metadata only; publisher open redirected to inaccessible identity service. No detailed method or performance claim imported."
+    },
+    {
+      "title": "Resonant Ultrasound Spectroscopy Detection Using a Non-Contact Ultrasound Microphone",
+      "year": 2025,
+      "doi": "10.3390/s25196154",
+      "url": "https://www.mdpi.com/1424-8220/25/19/6154",
+      "status": "Search abstract/metadata inspected; full-text access attempts returned rate limit or browser challenge. Candidate for broader team source review."
+    },
+    {
+      "title": "Spectral Content Effects Study in Non-Contact Resonance Ultrasound Spectroscopy",
+      "year": 2025,
+      "doi": "10.3390/s25010265",
+      "url": "https://www.mdpi.com/1424-8220/25/1/265",
+      "status": "Search abstract/metadata inspected; full-text access attempts returned rate limit or browser challenge. Candidate for broader team source review."
+    }
+  ]
+}

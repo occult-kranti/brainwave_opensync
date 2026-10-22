@@ -1,0 +1,675 @@
+{
+  "schema_version": 2,
+  "panel_seat": "Gateway source/evidence specialist; AI agent",
+  "round": 3,
+  "date_utc": "2026-10-22",
+  "repository": "occult-kranti/gateway-files",
+  "pinned_commit": "075bbab71bd4c83946fac1c3180dbc9460ce32d2",
+  "local_checkout": "/workspace/scratch/c230cc629529/gateway-review",
+  "clone_status": "SUCCESS; detached at requested commit",
+  "working_tree_clean": true,
+  "tracked_blob_count": 10,
+  "markdown_count": 9,
+  "json_count": 1,
+  "total_tracked_bytes": 48846,
+  "license_file_found": false,
+  "all_available_text_read": true,
+  "untracked_advertised_assets": [
+    "index.html",
+    "files/documents/01_Analysis-and-Assessment-of-Gateway-Process_1983_CIA-FOIA.pdf",
+    "files/documents/02_Analysis-and-Assessment_ANNOTATED-with-page-25_clearhat.pdf",
+    "seven files/audio/*.mp3"
+  ],
+  "file_count_correction": "10 tracked blobs = 9 Markdown + 1 JSON; not 11 and not empty. Repository metadata size is not a corpus measure.",
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob_sha1": "40b9f474fcbcaa8d5293bb4b48532b2aed73d183",
+      "bytes": 2813,
+      "sha256": "020ea5db6dc5a35b0e0bcf2f091abe66716938b2c6cad965d9a440723fe50149",
+      "line_count": 49,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-49, all available text",
+      "role": "derivative_project_description",
+      "limits": "Advertises untracked index.html and binary assets; not a source document.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/README.md"
+    },
+    {
+      "path": "archive/BINARIES.md",
+      "git_blob_sha1": "4f0f6ee344a367ef30a34e9fc4002474c87822b7",
+      "bytes": 2229,
+      "sha256": "f50fc971373dd719fab6be3924dd5f47276057d03506766511c2c56c145a8f07",
+      "line_count": 38,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-38, all available text",
+      "role": "derivative_manifest",
+      "limits": "Hashes and source links only; no corresponding PDF or MP3 bytes in pinned tree.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/archive/BINARIES.md"
+    },
+    {
+      "path": "archive/FREQUENCY-RESEARCH.md",
+      "git_blob_sha1": "dd2917486fa9b71fdee2aa5e8a6fd5dec8af86aa",
+      "bytes": 7520,
+      "sha256": "54c6a6487cfd0f8b5ada808ff7aa39e659e29838593794ca5228e62b36558305",
+      "line_count": 70,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-70, all available text",
+      "role": "derivative_evidence_dossier",
+      "limits": "Selective literature/program digest compiled 2026-10-14. Claims not all independently checked.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/archive/FREQUENCY-RESEARCH.md"
+    },
+    {
+      "path": "archive/INDEX.md",
+      "git_blob_sha1": "1a9783c626b69b49856ff06e2ef5b44c742897a2",
+      "bytes": 5549,
+      "sha256": "bb3bd933a3028e9fc131afda54e2a7d778c9ce639926940b3f559cb911d969a5",
+      "line_count": 72,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-72, all available text",
+      "role": "derivative_archive_catalog",
+      "limits": "Page map and provenance assertions; not evidence that listed files exist in this commit.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/archive/INDEX.md"
+    },
+    {
+      "path": "archive/PRACTICE-PROGRAM.md",
+      "git_blob_sha1": "2e77bd8ae45fc696ec8f606339d2f5803399c25e",
+      "bytes": 5372,
+      "sha256": "0efaac0f09e51d57b674bab1172c8a891d98da3f60212b14b96bb53c4702db91",
+      "line_count": 70,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-70, all available text",
+      "role": "derivative_training_reconstruction",
+      "limits": "Combines workbook/report/commercial-manual claims and new timetable; sources not aligned line by line.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/archive/PRACTICE-PROGRAM.md"
+    },
+    {
+      "path": "archive/READING-LIST.md",
+      "git_blob_sha1": "893f5a541a26305360378743b08c663f6ae20cdc",
+      "bytes": 3110,
+      "sha256": "14570398f32bbbb0b03ab6ce44ea3af24f9851016e6de2f49fd9ee96bfcdf895",
+      "line_count": 58,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-58, all available text",
+      "role": "derivative_bibliography",
+      "limits": "Bibliography and leads; books/papers not read merely because listed.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/archive/READING-LIST.md"
+    },
+    {
+      "path": "files/03_Gateway-Intermediate-Workbook_1977_transcript.md",
+      "git_blob_sha1": "685bfd32c04301734695e901d422bc5c1fd3af90",
+      "bytes": 19038,
+      "sha256": "97553256fb8413be51571b94afe720a3d5b0a5b7b98b3d53b38eb5d478d292f8",
+      "line_count": 367,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-367, all available text",
+      "role": "derivative_transcription_of_primary_monroe_document",
+      "limits": "367-line transcript. Header admits silent OCR cleanup. Original 21-page scan unavailable in this run; no facsimile or change log.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/files/03_Gateway-Intermediate-Workbook_1977_transcript.md"
+    },
+    {
+      "path": "files/FREQUENCY-RESEARCH.md",
+      "git_blob_sha1": "7480953a37e4dd029ad71ee0a4d6919abaaaa29b",
+      "bytes": 160,
+      "sha256": "eb7926b6710ca3220c5d4b8a0c921c7cff9f1bfee6aa67382685b7905e2558c3",
+      "line_count": 1,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-1, all available text",
+      "role": "pointer_stub",
+      "limits": "One-line pointer to archive/FREQUENCY-RESEARCH.md, not an identical content copy.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/files/FREQUENCY-RESEARCH.md"
+    },
+    {
+      "path": "files/PRACTICE-PROGRAM.md",
+      "git_blob_sha1": "695c1ca6488e28fb040c80609dbedf7cef724f6e",
+      "bytes": 158,
+      "sha256": "fef174d492c026fea51a1aa52bed8beb815812ad459f01d368875f4c1a132709",
+      "line_count": 1,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-1, all available text",
+      "role": "pointer_stub",
+      "limits": "One-line pointer to archive/PRACTICE-PROGRAM.md, not an identical content copy.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/files/PRACTICE-PROGRAM.md"
+    },
+    {
+      "path": "files/audio/presets.json",
+      "git_blob_sha1": "a3b7865e5a7ac8e879f0e006a604a4c9d81e7b9e",
+      "bytes": 2897,
+      "sha256": "7d4f0c2e9632cb7058ee75ec278e134ded24328d3b327886ace047e24294eac9",
+      "line_count": 65,
+      "reading_status": "READ_FULL_TEXT",
+      "reading_depth": "Lines 1-65, all available text",
+      "role": "derivative_synthesized_audio_metadata",
+      "limits": "Seven new study presets, not original Monroe recordings or executable synthesis code.",
+      "canonical_repo_url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/files/audio/presets.json"
+    }
+  ],
+  "executed_checks": {
+    "preset_carrier_arithmetic": [
+      {
+        "id": "gateway-theta-4hz",
+        "left_hz": 200.0,
+        "right_hz": 204.0,
+        "difference_hz": 4.0,
+        "stated_difference_hz": 4.0,
+        "tolerance_hz": 1e-10,
+        "pass": true
+      },
+      {
+        "id": "alpha-focus-10hz",
+        "left_hz": 200.0,
+        "right_hz": 210.0,
+        "difference_hz": 10.0,
+        "stated_difference_hz": 10.0,
+        "tolerance_hz": 1e-10,
+        "pass": true
+      },
+      {
+        "id": "theta-deep-6hz",
+        "left_hz": 180.0,
+        "right_hz": 186.0,
+        "difference_hz": 6.0,
+        "stated_difference_hz": 6.0,
+        "tolerance_hz": 1e-10,
+        "pass": true
+      },
+      {
+        "id": "delta-sleep-2hz",
+        "left_hz": 100.0,
+        "right_hz": 102.0,
+        "difference_hz": 2.0,
+        "stated_difference_hz": 2.0,
+        "tolerance_hz": 1e-10,
+        "pass": true
+      },
+      {
+        "id": "schumann-783-beat",
+        "left_hz": 200.0,
+        "right_hz": 207.83,
+        "difference_hz": 7.8300000000000125,
+        "stated_difference_hz": 7.83,
+        "tolerance_hz": 1e-10,
+        "pass": true
+      }
+    ],
+    "preset_count": 7,
+    "all_five_binaural_differences_pass": true,
+    "exact_mp3_regeneration": "NOT_VERIFIED: no generator, seed, filter, gain/envelope/phase/duration/encoder contract or binaries in pinned tree",
+    "audio_dsp_or_eeg_validation": "NOT_RUN: no implementation or raw recordings in this corpus"
+  },
+  "status": "REVERSE_CHECKS_COMPLETED_PENDING_ADVISOR_ADMISSION",
+  "audited_source_commit": "075bbab71bd4c83946fac1c3180dbc9460ce32d2",
+  "sources": [
+    {
+      "id": "GW-REPO",
+      "category": "derivative_source_corpus",
+      "url": "https://github.com/occult-kranti/gateway-files/tree/075bbab71bd4c83946fac1c3180dbc9460ce32d2",
+      "status": "READ_FULL_AVAILABLE_TREE",
+      "read_depth": "All 10 tracked blobs; detailed per-file ranges/hashes in corpus.json",
+      "limits": "No website HTML, PDFs, MP3s, original Gateway tapes, raw EEG, experimental copper measurements or license file present."
+    },
+    {
+      "id": "GW-1983-OFFICIAL",
+      "category": "government_archive_endpoint",
+      "url": "https://www.cia.gov/readingroom/docs/CIA-RDP96-00788R001700210016-5.pdf",
+      "status": "CIA_ENDPOINT_REDIRECTED_OFFICIAL_COPY_AVAILABLE_ELSEWHERE",
+      "read_depth": "Endpoint and search metadata checked; no PDF bytes supplied by official endpoint",
+      "limits": "This CIA URL returned Reading Room HTML, not the report. This is not a claim that all official copies are unavailable; use GW-1983-GOVINFO.",
+      "web_refs": [
+        "turn402search0",
+        "turn402search2",
+        "turn403view0"
+      ]
+    },
+    {
+      "id": "GW-1983-GOVINFO",
+      "category": "primary_historical_assessment_in_official_government_custody",
+      "author": "Wayne M. McDonnell, Department of the Army",
+      "date": "1983-06-09",
+      "document_id": "CIA-RDP96-00788R001700210016-5",
+      "url": "https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo152943/pdf/GOVPUB-D101-PURL-gpo152943.pdf",
+      "status": "DOWNLOADED_HASHED_SELECTED_PAGE_IMAGES_READ",
+      "actual_pdf_page_count": 29,
+      "bytes": 3190399,
+      "sha256": "c97fdf7c5372c1ff740f4ad713177f9828faeb52a345c0313de07a40852541de",
+      "reading_agent": "Gateway panel seat, Round2; independent access/hash and image inspection after history-seat lead",
+      "read_depth": "Own visual inspection: PDF7-8 (printed5-6, sections7-10); PDF10 (printed8, sections13-14); PDF14 (printed12, section19); PDF17 (printed15, section24); PDF18 (Exhibit4, printed16); PDF26 (printed24) and PDF27 (printed26); PDF29 bibliography. Selected pages only, not full manuscript. The file has no extractable pdftotext text layer in checked pages.",
+      "page_images_read": [
+        7,
+        8,
+        10,
+        14,
+        17,
+        18,
+        26,
+        27,
+        29
+      ],
+      "limits": "Official custody authenticates this archived record, not its mechanism. Printed25 absent from this specific29-page scan. No restored25 version read. Original Bentov/Purce/Jager sources and underlying EEG/biomedical data not independently inspected. Official bytes differ from both repository manifest hashes; that establishes version difference, not corruption.",
+      "web_refs": [
+        "turn434view0",
+        "turn435view0",
+        "turn435view1",
+        "turn435view2",
+        "turn437view0",
+        "turn437view1",
+        "turn437view2",
+        "turn437view3",
+        "turn437view4",
+        "turn437view5"
+      ],
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "GW-1983-SCAN",
+      "category": "primary_historical_report_in_secondary_custody",
+      "author": "Wayne M. McDonnell, US Army INSCOM",
+      "date": "1983-06-09",
+      "document_id": "CIA-RDP96-00788R001700210016-5",
+      "url": "https://documents2.theblackvault.com/documents/cia/CIA-RDP96-00788R001700210016-5.pdf",
+      "status": "READ_SELECTED_TEXT_AND_PAGE_IMAGES",
+      "actual_pdf_page_count": 30,
+      "read_depth": "Selected parsed text on PDF pages 1,3-4,7-10,25-30 (1-based); substantive selection: letter, sections 5-10,31-34,37-38, bibliography. Screenshots visually inspected for PDF pages 8,9,29 (1-based), printed pages 5,6,27. Other pages not substantively reviewed.",
+      "printed_vs_pdf": "Mirror contains an inserted Black Vault page (PDF page 2). Printed page 25 is absent between printed 24 and 26; no restored text was checked. Repository page map omits mirror PDF page 30 bibliography.",
+      "limits": "Historical assessment and theoretical narrative, not new controlled validation. Direct urllib download returned403, so byte hash could not be compared with repo manifest. OCR-wide search found no copper string; absence from OCR is narrower than proving no relevant content anywhere. Distinct container/version: not byte-identical to the official GovInfo file. Use its30-page numbering only with this mirror.",
+      "web_refs": [
+        "turn405view0",
+        "turn412view0",
+        "turn412view1",
+        "turn412view2",
+        "turn412view3",
+        "turn415view0",
+        "turn415view1",
+        "turn417view0",
+        "turn417view1",
+        "turn417view2"
+      ],
+      "preferred_document_version": "GW-1983-GOVINFO"
+    },
+    {
+      "id": "GW-1977-OFFICIAL",
+      "category": "primary_monroe_document_in_government_archive_unavailable",
+      "document_id": "CIA-RDP96-00788R001700210023-7",
+      "url": "https://www.cia.gov/readingroom/docs/CIA-RDP96-00788R001700210023-7.pdf",
+      "status": "UNAVAILABLE_SCAN",
+      "read_depth": "Endpoint attempted via web and urllib; official endpoint returned HTML homepage. Search index identifies 21 pages, not a read scan.",
+      "reported_page_count": 21,
+      "limits": "Original scan not read or aligned to transcript. Black Vault guessed matching canonical document path also inaccessible; no authentication bypass attempted. Round2 domain/document-number searches did not locate a relevant GovInfo workbook copy; this is a bounded search result, not proof of nonexistence.",
+      "web_refs": [
+        "turn418search0",
+        "turn418search6",
+        "turn415view2"
+      ]
+    },
+    {
+      "id": "GW-1977-TEXT",
+      "category": "derivative_transcript",
+      "url": "https://github.com/occult-kranti/gateway-files/blob/075bbab71bd4c83946fac1c3180dbc9460ce32d2/files/03_Gateway-Intermediate-Workbook_1977_transcript.md",
+      "status": "READ_FULL_TEXT",
+      "read_depth": "Lines1-367 in full; title/affirmations/EBT/LBM/EBM/Focus10-12/REBAL/movement/daily tools/Game Plan/end note",
+      "limits": "Header identifies private Monroe copyright1977 and silent OCR cleanup. Diagrams described rather than reproduced. No page-to-line alignment or original fidelity verification."
+    },
+    {
+      "id": "MONROE-EARLY",
+      "category": "primary_institutional_historical_account",
+      "author": "Robert A. Monroe",
+      "date": "copyright1987 on page; underlying chronology earlier",
+      "url": "https://www.monroeinstitute.org/pages/early-history-research-article",
+      "status": "READ_SELECTED_MAIN_TEXT",
+      "read_depth": "HTML body lines41-177 read across sequential opens, with particular claim checks at lines49-51,79-116 and139-141",
+      "limits": "First-person institutional account, explicit absence of statistical tables/graphs/external references. Raw EEG and independent protocols not attached. Historical claims are not confirmations.",
+      "web_refs": [
+        "turn403view1",
+        "turn404view0",
+        "turn418view0"
+      ]
+    },
+    {
+      "id": "MONROE-WAVE1",
+      "category": "primary_current_program_description",
+      "url": "https://www.monroeinstitute.org/products/gateway-experience-wave-i-discovery",
+      "status": "READ_MAIN_PRODUCT_DESCRIPTION",
+      "read_depth": "HTML lines56-67; six named exercises",
+      "limits": "Commercial training description; no audio original or guidance-manual file accessed. Listed order places Release and Recharge before Exploration Sleep, unlike repo practice table.",
+      "web_refs": [
+        "turn403view2"
+      ]
+    },
+    {
+      "id": "MONROE-COPPER2018",
+      "category": "primary_institutional_research_proposal",
+      "author": "Ross Dunseath",
+      "date": "2018-11-06",
+      "url": "https://www.monroeinstitute.org/blogs/blog/the-copper-wall-project",
+      "status": "READ_MAIN_BODY",
+      "read_depth": "HTML lines44-76; proposal apparatus/aims/artifact concerns",
+      "limits": "Project announcement and source assertions about earlier work; not a replication dataset or sphere-acoustics experiment. Earlier Green technical notes not retrieved.",
+      "web_refs": [
+        "turn424view0"
+      ]
+    },
+    {
+      "id": "MONROE-COPPER2023",
+      "category": "primary_institutional_case_report",
+      "author": "Ross Dunseath",
+      "date": "2023-11-06",
+      "url": "https://www.monroeinstitute.org/blogs/blog/quasi-static-electric-fields-of-the-human-body-copper-wall-research-at-the-monroe-institute",
+      "status": "READ_MAIN_BODY",
+      "read_depth": "HTML lines43-82, including apparatus channel, artifact changes, three cases and stated next steps; inline plots were described in captions but not visually inspected",
+      "limits": "Case reports without raw data, blinded randomized protocol, calibrated V/m transfer function or independent replication in accessed text. Does not establish intention coupling or mechanical sphere forces.",
+      "web_refs": [
+        "turn421view1"
+      ]
+    },
+    {
+      "id": "INGENDOH2023",
+      "category": "primary_publication_of_systematic_review",
+      "authors": "Ingendoh, Posny and Heine",
+      "date": "2023-05-19",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0286023",
+      "doi": "10.1371/journal.pone.0286023",
+      "status": "READ_SELECTED_SECTIONS",
+      "read_depth": "Abstract/introduction lines132-183; study-design/results/discussion/conclusion excerpts271-349; not all methods, quality tables, supporting files or underlying studies",
+      "limits": "Primary source for what this review counted, secondary for underlying experiments. No clinical efficacy claim assessed. Review has 5positive/8negative/1mixed summary; results count six at least partial positives because mixed overlaps. Four pink-noise-embedded studies were negative within reviewed sample, not proof of universal impossibility.",
+      "web_refs": [
+        "turn424view1",
+        "turn428view0",
+        "turn428view1"
+      ]
+    },
+    {
+      "id": "KIMI-GATEWAY",
+      "category": "user_identified_site_unavailable",
+      "url": "https://gatewayresearch.kimi.page",
+      "status": "UNAVAILABLE",
+      "read_depth": "Root web-open returned internal accessibility error; urllib returned HTTP403; domain-limited and exact-domain searches did not return site content",
+      "limits": "No site chapter, claim, bibliography, audio or interactive behavior inspected. No inference that site is empty; no access-control bypass attempted.",
+      "web_refs": [
+        "turn402view0"
+      ],
+      "round2_status": "No new legitimate site content obtained; Round1 failure preserved without repeated unchanged requests."
+    },
+    {
+      "id": "CLEARHAT-ANNOTATED",
+      "category": "derivative_annotated_report_lead_unread",
+      "url": "https://www.clearhat.org/public/analysis-and-assessment-of-the-gateway-process-4mb.pdf",
+      "status": "NOT_READ",
+      "read_depth": "Only repository manifest/index description read",
+      "limits": "No restored-page25 verification, checksum verification or annotation audit; do not substitute for official scan."
+    }
+  ],
+  "page_versions": [
+    {
+      "content": "sections7-8",
+      "official_govinfo_pdf_page": 7,
+      "printed_page": "5",
+      "blackvault_pdf_page": 8
+    },
+    {
+      "content": "sections9-10",
+      "official_govinfo_pdf_page": 8,
+      "printed_page": "6",
+      "blackvault_pdf_page": 9
+    },
+    {
+      "content": "sections13-14",
+      "official_govinfo_pdf_page": 10,
+      "printed_page": "8",
+      "blackvault_pdf_page": 11
+    },
+    {
+      "content": "section19",
+      "official_govinfo_pdf_page": 14,
+      "printed_page": "12",
+      "blackvault_pdf_page": 15
+    },
+    {
+      "content": "section24",
+      "official_govinfo_pdf_page": 17,
+      "printed_page": "15",
+      "blackvault_pdf_page": 18
+    },
+    {
+      "content": "Exhibit4",
+      "official_govinfo_pdf_page": 18,
+      "printed_page": "16",
+      "blackvault_pdf_page": 19
+    },
+    {
+      "content": "section34 and lastpage before gap",
+      "official_govinfo_pdf_page": 26,
+      "printed_page": "24",
+      "blackvault_pdf_page": 27
+    },
+    {
+      "content": "sections37-38 and firstpage after gap",
+      "official_govinfo_pdf_page": 27,
+      "printed_page": "26",
+      "blackvault_pdf_page": 28
+    },
+    {
+      "content": "bibliography",
+      "official_govinfo_pdf_page": 29,
+      "printed_page": null,
+      "blackvault_pdf_page": 30
+    }
+  ],
+  "missing_page_scope": {
+    "document_version": "GW-1983-GOVINFO",
+    "gap": "printed24 to printed26, official PDF26 to27",
+    "not_missing": "PDF page25 exists; missing printed25 is a pagination/content gap, not an absent25th PDF leaf",
+    "restored_claim_status": "UNVERIFIED; annotated/restored versions not read",
+    "unsupported_inferences": [
+      "purposeful suppression",
+      "extraordinary content proved by the gap",
+      "all versions lack printed25",
+      "remaining report is authenticated science"
+    ]
+  },
+  "supersedes": "Round1 availability generalization only; original Round1 report and ledger remain historical records.",
+  "source_coverage": {
+    "repository_text": "10of10 tracked blobs, all available lines read",
+    "official1983report": "Selected nine pages visually inspected in official29-page GovInfo version; not full manuscript",
+    "1977workbook": "Full derivative367-line transcript; original21-page scan not available in this audit",
+    "original_monroe_audio": "NOT_ACCESSED",
+    "kimi_site": "UNAVAILABLE_CONTENT_NOT_AUDITED"
+  },
+  "measured_coupling_gate": {
+    "status": "NOT_SPECIFIED_NO_INFERRED_BRIDGE",
+    "sourceChannel": null,
+    "targetChannel": null,
+    "couplingLaw": null,
+    "units": null,
+    "parameters": null,
+    "inputCalibration": null,
+    "predictedTransferFunction": null,
+    "energyBudget": null,
+    "measurementData": null,
+    "predictions": [],
+    "admissionRequirements": [
+      "dimensioned physical term with defined source and target",
+      "independent input/readout calibration including phase and bandwidth",
+      "source work, load response and loss accounting",
+      "predeclared off/detuned/geometry/amplitude controls",
+      "held-out prediction and nuisance-identifiability check"
+    ],
+    "allowUntilSatisfied": [
+      "historical documents edge",
+      "methodological analogy edge",
+      "proposed test edge"
+    ],
+    "disallowUntilSatisfied": [
+      "measured coupling badge",
+      "frequency-to-location law",
+      "Focus-to-EEG or material mode conversion",
+      "new engineering stimulus labelled originalHemi-Sync"
+    ]
+  },
+  "round2_cross_critique": [
+    {
+      "objection": "Generic signal controls risk being described as Gateway-derived support for physical coupling.",
+      "decision": "Retain as methodological analogy; no efficacy or causal-support edge."
+    },
+    {
+      "objection": "Force reversal odd half-difference also contains odd-order nonlinear responses and force-proportional pickup.",
+      "response": "Measurement seat accepted; protocol retains amplitude scaling plus independent optical/dummy/drive-off controls.",
+      "decision": "Parity control admitted only within stated scope; no linearity certificate."
+    },
+    {
+      "objection": "Position-dependent K deformation could become an invented Gateway field.",
+      "decision": "Keep only as declared hypothetical model deformation; coupling gate remains empty."
+    }
+  ],
+  "clinical_boundary": {
+    "clinical_efficacy_review": "NOT_PERFORMED",
+    "health_or_practice_instructions": "NOT_IMPORTED",
+    "adjacent_clinical_source_claims": "UNVERIFIED_LEADS_UNLESS_SEPARATELY_AUDITED",
+    "forbidden_grade_transfer": "No A-D preset badge carries efficacy across stimuli, populations, endpoints or mechanical channels."
+  },
+  "source_count": 13,
+  "claims": [
+    {
+      "id": "GW-C01",
+      "source_id": "GW-1983-GOVINFO",
+      "locator": {
+        "pdf_page": 7,
+        "printed_page": 5,
+        "section": 7
+      },
+      "claim_type": "historical_mechanism_assertion",
+      "status": "DOCUMENTED_NOT_VALIDATED",
+      "content": "10 Hz interaural difference in the report’s FFR explanation",
+      "does_not_establish": "a calibrated low-frequency force on a sphere"
+    },
+    {
+      "id": "GW-C02",
+      "source_id": "GW-1983-GOVINFO",
+      "locator": {
+        "pdf_pages": [
+          7,
+          8
+        ],
+        "printed_pages": [
+          5,
+          6
+        ],
+        "sections": [
+          8,
+          9
+        ]
+      },
+      "claim_type": "attributed_biomedical_model",
+      "status": "DOCUMENTED_NOT_VALIDATED",
+      "content": "approximately 7 Hz body resonance and 0.005–0.010 mm micromotion",
+      "does_not_establish": "copper-shell transduction"
+    },
+    {
+      "id": "GW-C03",
+      "source_id": "GW-1983-GOVINFO",
+      "locator": {
+        "pdf_page": 8,
+        "printed_page": 6,
+        "section": 9
+      },
+      "claim_type": "historical_cross_domain_coupling_assertion",
+      "status": "MISSING_COUPLING_EVIDENCE",
+      "content": "6.8–7.5 Hz body range and about 7–7.5 Hz cavity",
+      "does_not_establish": "coupling strength, spatial overlap or energy transfer"
+    },
+    {
+      "id": "GW-C04",
+      "source_id": "GW-1983-SCAN",
+      "locator": {
+        "pdf_page": 25,
+        "printed_page": 22,
+        "section": 31
+      },
+      "claim_type": "historical_signal_label",
+      "status": "CATEGORY_MISMATCH_PRESERVED",
+      "content": "around 2877.3 CPS labelled Beta",
+      "does_not_establish": "EEG interpretation, beat rate or shell mode"
+    },
+    {
+      "id": "GW-C05",
+      "source_id": "MONROE-EARLY",
+      "locator": {
+        "html_lines_round1": [
+          99,
+          116
+        ]
+      },
+      "claim_type": "historical_terminology",
+      "status": "DOCUMENTED_TERMINOLOGY",
+      "content": "200/210 Hz example and arbitrary Focus 10 designation",
+      "does_not_establish": "a calibrated Focus-to-frequency mapping"
+    },
+    {
+      "id": "GW-C06",
+      "source_id": "GW-1977-TEXT",
+      "locator": {
+        "sections": [
+          "EBT",
+          "Focus12",
+          "GamePlan"
+        ]
+      },
+      "claim_type": "derivative_training_text",
+      "status": "TRANSCRIPT_ONLY_FIDELITY_UNVERIFIED",
+      "content": "imagery tools and observation prompts",
+      "does_not_establish": "calibrated emitter, force law or efficacy"
+    },
+    {
+      "id": "GW-C07",
+      "source_id": "GW-1983-GOVINFO",
+      "locator": {
+        "pdf_page": 14,
+        "printed_page": 12,
+        "section": 19
+      },
+      "claim_type": "historical_derivational_step",
+      "status": "DIMENSIONALLY_INVALID_INFERENCE",
+      "content": "speed compared with a length scale",
+      "does_not_establish": "leaving time at an oscillator turning point"
+    },
+    {
+      "id": "GW-C08",
+      "source_id": "GW-1983-GOVINFO",
+      "locator": {
+        "pdf_pages": [
+          17,
+          18
+        ],
+        "printed_pages": [
+          15,
+          16
+        ],
+        "section": 24,
+        "exhibit": 4
+      },
+      "claim_type": "historical_model_and_illustration",
+      "status": "DOCUMENTED_ANALOGY_NOT_MECHANISM",
+      "content": "cosmic-egg and torus illustration attribution",
+      "does_not_establish": "same operators, frequency or propulsion"
+    }
+  ],
+  "round3_validation": {
+    "scope": "Documentary/source identity and committed-byte inventory; no physical or clinical validation",
+    "pinned_blob_checks": 10,
+    "all_blob_size_line_sha256_checks_pass": true,
+    "official_govinfo_page_count": 29,
+    "official_govinfo_bytes": 3190399,
+    "official_govinfo_sha256": "c97fdf7c5372c1ff740f4ad713177f9828faeb52a345c0313de07a40852541de",
+    "source_aliases_preserved": 13,
+    "measured_coupling_fields_remain_null": true,
+    "built_local_links_resolved": 22,
+    "parser_cli_cases": 25,
+    "parser_all_cases_pass": true,
+    "parser_script_sha256": "b41ef5327b266df1e5dd0342077e39d1894195ed5843e49a99c825fb3228575c",
+    "parser_schema": "gateway-committed-corpus/2",
+    "historical_trial_script_sha256": "9c4ca249d073e2134903ab967eb2416423376948ab160158b3b417056277b7ef",
+    "historical_trial_not_relabelled_as_revised_execution": true,
+    "presentation_findings": "Unread-book attribution and graph type/scope templates repaired; source inspection confirmed. Software-seat targeted-final-report.json subsequently reports passed visible-label and Gateway-route browser checks; Gateway seat inspected receipt.",
+    "admission": "Bounded documentary audit and repaired inventory behavior only; advisor decision pending",
+    "root_critic_repair": "Added finite parse_float callback after root identified overflow1e400 in unused nested metadata; regression case executed.",
+    "browser_evidence_origin": "software-seat actual execution; receipt integration-panel/software/evidence/targeted-final-report.json"
+  }
+}

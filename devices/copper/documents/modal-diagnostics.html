@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Three radial modes and one projected point spring</title><style>body{margin:0;background:#eeeae1;color:#183b35;font:16px/1.7 Arial,sans-serif}header,main,footer{max-width:960px;margin:auto;padding:24px}header{border-bottom:1px solid #bbc5b6}h1,h2,h3{font-family:Georgia,serif;line-height:1.2}h1{font-size:42px}h2{margin-top:48px;font-size:30px}a{color:#8e422a;text-underline-offset:3px}table{width:100%;border-collapse:collapse;font-size:13px;display:block;overflow:auto}td,th{border:1px solid #bcc8b8;padding:10px;text-align:left;vertical-align:top}code,pre{font:13px/1.6 monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e3e3d7;padding:16px}code{overflow-wrap:anywhere}blockquote{border-left:3px solid #b35f3b;padding-left:20px}footer{font-size:12px}nav{display:flex;flex-wrap:wrap;gap:18px}@media(max-width:600px){h1{font-size:32px}main{padding:20px}}@media print{body{background:white;color:#111;font-size:11pt}header nav{display:none}h1{font-size:26pt}h2{font-size:18pt;break-after:avoid}tr,pre{break-inside:avoid}a{color:#222}table{display:table;overflow:visible;font-size:9pt}header,main,footer{padding:8px}h2{margin-top:24px}}</style><header><strong>FIELDWORK · COPPER EXPERIMENT</strong><nav><a href="../index.html">Overview</a><a href="../gateway.html">Gateway audit</a><a href="../protocol.html">Protocol</a><a href="../sources.html">Source network</a><a href="../versions.html">Versions & issues</a></nav></header><main><h1>Three radial modes and one projected point spring</h1>
+<p>Round 2 implementation, 22 October 2026. This is an original project integration of established elastic-mode and finite-matrix methods, not a new physical theory or a scientific-novelty claim. All outputs are synthetic model calculations. No physical sphere, support or fixture has been calibrated.</p>
+<h2>Model and coordinates</h2>
+<p><code>src/modal-diagnostics.mjs</code> imports the copied Location model's <code>solidBreathing</code> API. It computes the first three positive radial <code>l=0</code> modes of a homogeneous isotropic traction-free <strong>solid</strong> sphere. These are not the three lowest modes of the full sphere. The solid model is distinct from the thin-shell model elsewhere in this workspace.</p>
+<p>The radial displacement field is</p>
+<p>[
+u_r(r,t)=\sum_{n=1}^3 q_n(t)\frac{j_1(x_n r/R)}{j_1(x_n)},\qquad
+m_n=4\pi\rho\int_0^R\left[\frac{j_1(x_n r/R)}{j_1(x_n)}\right]^2r^2,dr.
+]</p>
+<p>Each <code>q_n</code> is a surface radial displacement in metres. Its generalized mass <code>m_n</code> is returned by the copied solver; it must not be replaced by whole-sphere mass without changing the coordinate model. Orthogonality of the free modes gives</p>
+<p>[
+M=\operatorname{diag}(m_n),\qquad K_0=\operatorname{diag}(m_n\omega_n^2).
+]</p>
+<p>A single point on the surface has radial displacement <code>q_1+q_2+q_3</code> in this radial-only projection. Attach <strong>one grounded linear point spring</strong> of prescribed stiffness <code>k &gt;= 0</code> there:</p>
+<p>[
+V_c=\tfrac12 k(q_1+q_2+q_3)^2,\qquad
+\Delta K=k\mathbf 1\mathbf 1^T,\qquad K=K_0+\Delta K.
+]</p>
+<p>Every entry of <code>Delta K</code>, including every off-diagonal entry, is <code>k</code>. The vector <code>(1,-1,0)</code> is in the contact contribution's kernel; three independent springs would instead give it positive contact energy. That distinction is tested. The full energy is</p>
+<p>[
+T=\tfrac12\dot q^T M\dot q,\qquad
+V=\tfrac12\sum_n m_n\omega_n^2q_n^2+\tfrac12 k(\sum_nq_n)^2.
+]</p>
+<p>Positive modal masses and free stiffnesses plus nonnegative <code>k</code> give a positive conservative energy. There is no damping or actuator in this calculation; this passivity statement is not a claim about whole-apparatus electrical efficiency. A dynamic fixture would add coordinates and use its actual participation in the contact vector. Rigid translation/rotation and nonradial elastic motion are omitted here even though a real point contact can excite them.</p>
+<h2>API and units</h2>
+<pre><code class="language-js">import {
+  solidRadialModes, groundedPointSpringDiagnostics, MODAL_DIAGNOSTIC_DOMAIN,
+} from './src/modal-diagnostics.mjs';
+
+const specimen = {
+  radiusM: .0125, youngPa: 123.5e9, poisson: .35, densityKgM3: 8960,
+};
+const free = solidRadialModes(specimen);
+const contact = groundedPointSpringDiagnostics({ ...specimen, contactNpm: 1e8 });
+</code></pre>
+<p>Both functions are synchronous and always retain exactly three modes. Unknown keys are rejected, so <code>radiusMm</code>, <code>E_GPa</code>, a requested mode count or a position coefficient cannot silently select an unintended model. Defaults match the copied Location core: radius 0.04445 m and its copper reference constants. The example above deliberately uses Position's original 0.0125 m radius for comparison.</p>
+<table>
+<thead>
+<tr>
+  <th>Input</th>
+  <th>Declared numerical domain</th>
+  <th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>radiusM</code></td>
+  <td>0.00001 to 1</td>
+  <td>Solid sphere radius, m</td>
+</tr>
+<tr>
+  <td><code>youngPa</code></td>
+  <td>1e6 to 1e12</td>
+  <td>Effective isotropic Young modulus, Pa</td>
+</tr>
+<tr>
+  <td><code>poisson</code></td>
+  <td>-0.9 to 0.49</td>
+  <td>Effective Poisson ratio</td>
+</tr>
+<tr>
+  <td><code>densityKgM3</code></td>
+  <td>1 to 30000</td>
+  <td>Density, kg/m³</td>
+</tr>
+<tr>
+  <td><code>contactNpm</code></td>
+  <td>0 to 1e12, also <code>k/(m_1 omega_1²) &lt;= 100</code></td>
+  <td>Grounded spring stiffness, N/m; not preload N</td>
+</tr>
+</tbody>
+</table>
+<p>These are numerical demonstration bounds, not a validated physical applicability domain or a contact design recommendation. Nonfinite, wrong-type and out-of-domain values are rejected. No root-count or solver-iteration input can create unbounded CPU work.</p>
+<p><code>solidRadialModes</code> returns <code>parameters</code>, three-element <code>frequencyHz</code>, <code>roots</code>, <code>modalMassKg</code>, <code>ratiosToFirst</code>, full copied <code>modes</code>, total <code>massKg</code>, and coordinate/limit metadata. <code>frequencyHz</code> is undamped natural cyclic frequency in Hz.</p>
+<p><code>groundedPointSpringDiagnostics</code> returns the <code>free</code> result, original <code>massMatrixKg</code>, <code>freeStiffnessNpm</code>, <code>contactStiffnessNpm</code>, <code>stiffnessNpm</code>, <code>massNormalizedStiffnessPerS2</code>, and <code>eigenvaluePerS2</code>. It also returns sorted <code>coupledFrequencyHz</code>, <code>frequencyShiftHz</code>, <code>fractionalShift</code>, <code>coupledRatiosToFirst</code>, and <code>ratioChange</code> (loaded ratio minus free ratio). Sorting is spectral order, not proof that an experimentally observed peak has retained mode identity.</p>
+<p><code>massNormalizedEigenvectors</code> and <code>physicalCoordinateEigenvectors</code> are arrays of <strong>column vectors</strong>. The former have Euclidean unit norm; the latter are <code>u=M^(-1/2)v</code> and satisfy <code>u_i^T M u_j=delta_ij</code>. The original mass coordinate is retained rather than implicitly assigned a unit or whole-sphere mass.</p>
+<p>The returned <code>legacyIndependentSpring</code> is explicitly a <strong>different illustrative toy</strong>: three separate diagonal springs each using total sphere mass, as in the original Position demonstration. It is provided only for comparison. Its shifts must not be described as the one-point contact prediction.</p>
+<h2>Ratios are conditional diagnostics</h2>
+<p>For the free isotropic radial model,</p>
+<p>[
+f_n=\frac{x_n(\nu)}{2\pi R}\sqrt{\frac{E(1-\nu)}{\rho(1+\nu)(1-2\nu)}},\qquad
+\frac{f_n}{f_1}=\frac{x_n(\nu)}{x_1(\nu)}.
+]</p>
+<p>At fixed Poisson ratio, changing <code>E</code>, <code>rho</code> or <code>R</code> changes a common scale and leaves the <strong>free</strong> ratios unchanged. Fixed-Poisson, mass-conserving uniform thermal scaling and one truly common multiplicative clock error cancel for the same reason. A fixed grounded stiffness does not scale with the specimen automatically; these cancellation statements do not apply to loaded ratios while arbitrarily holding <code>k</code> fixed.</p>
+<p>There are only two nontrivial ratios among three frequencies; the first returned ratio is one. Ratios sharing a denominator have correlated uncertainty. Different clocks, changing timebase drift, incorrect mode identity and state-dependent biases do not necessarily cancel. Ratios must be calculated from valid matched natural-frequency estimates, not whichever FFT or FRF peak is tallest. This module fits no poles and accepts no measured spectra.</p>
+<p>A changed ratio can arise from contact, changing Poisson ratio, anisotropy, imperfect geometry or mode misassignment. Neither unchanged nor changed ratios uniquely identify an absolute position or a physical cause. The companion inverse-design work must separately assess temporal observability, drive reachability, finite-time noise conditioning, nuisance estimability and global aliases. An instantaneous sensor-count/rank argument cannot substitute for those gates.</p>
+<h2>Bounded numerical solver and checks</h2>
+<p>The generalized eigenproblem <code>K u = lambda M u</code> is transformed to the symmetric matrix <code>A=M^(-1/2) K M^(-1/2)</code>. A scaled largest-off-diagonal Jacobi solver uses at most <strong>64 rotations</strong>, and rejects nonconvergence, nonpositive/nonfinite eigenvalues or failed residual/orthogonality checks. Scaling prevents needlessly large intermediate matrix entries. The relative-contact bound avoids an extreme rank-one update erasing the free stiffness numerically.</p>
+<p>The returned <code>eigensolver</code> record includes the iteration count, orthogonality error, and</p>
+<p>[
+\max_j\frac{\lVert A v_j-\lambda_jv_j\rVert_2}{\lVert A\rVert_F+|\lambda_j|},\qquad
+\max_j\frac{\lVert K u_j-\lambda_j M u_j\rVert_2}{\lVert K\rVert_F\lVert u_j\rVert_2+|\lambda_j|\lVert M u_j\rVert_2}.
+]</p>
+<p>The acceptance threshold is <code>2e-12</code> for these dimensionless residuals and orthogonality. These are numerical backward checks, not rigorous interval enclosures or physical-model accuracy bounds. Binary64 can round a sufficiently tiny positive spring shift to zero; a zero displayed change does not prove exact equality or an experimental detection limit.</p>
+<p>Run the focused gate from this directory:</p>
+<pre><code class="language-sh">node --test tests/modal-diagnostics.test.mjs
+</code></pre>
+<p>The eight tests check independent direct-traction/quadrature mode fixtures; common-scale invariance and a changed-Poisson counterexample; all contact cross-terms and an independent-spring wrong-model energy control; independent SciPy generalized eigenvalues; matrix determinant/trace identities and rank-one eigenvalue interlacing; original mass-coordinate orthogonality; zero contact and legacy separation; domain edges and rejection controls.</p>
+<p>For the example specimen above, independent direct-traction root solving and volume quadrature give free frequencies <code>166551.050481, 367096.793727, 558432.058016 Hz</code> and modal masses <code>0.082702449660, 0.104345875959, 0.107531517140 kg</code>. SciPy <code>eigh(K0 + k*ones((3,3)), diag(m))</code> independently gives:</p>
+<table>
+<thead>
+<tr>
+  <th style="text-align:right">k / N/m</th>
+  <th style="text-align:right">First / Hz</th>
+  <th style="text-align:right">Second / Hz</th>
+  <th style="text-align:right">Third / Hz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:right">1e8</td>
+  <td style="text-align:right">166642.945123</td>
+  <td style="text-align:right">367129.861224</td>
+  <td style="text-align:right">558453.154122</td>
+</tr>
+<tr>
+  <td style="text-align:right">1e10</td>
+  <td style="text-align:right">175236.816154</td>
+  <td style="text-align:right">370436.591777</td>
+  <td style="text-align:right">560589.361740</td>
+</tr>
+</tbody>
+</table>
+<p>At <code>k=1e8</code>, first-mode shift is 91.894643 Hz in the projected point-spring model, versus 103.705322 Hz in the legacy whole-mass diagonal toy. This difference is a model comparison, not observed copper behavior. Eight targeted Node tests passed on implementation; independent review of the actual source remains a separate Round 3 gate.</p>
+<h2>Sources and review scope</h2>
+<p>The copied <code>models.mjs</code> and its archived model specification retain the original traction equation, mass derivation and provenance. <a href="https://arxiv.org/html/cond-mat/0506353v3">Saviot and Murray, Section II, equations 1–4 and the l=0 condition</a> supplies primary free-sphere family/boundary and mass-inner-product context. It does not validate the present contact model or ratios as an attribution method. The rank-one spring update follows directly from the declared quadratic potential, and the scaling cancellation follows from the displayed equation. No novelty search or physical experiment establishes new theory here.</p>
+</main><footer>Original project analysis · AI-assisted review, not human peer review · No physical sphere measurements. <a href="../research/modal-diagnostics.md">Download Markdown</a> · <a href="../deployment.json">Exact build provenance</a></footer></html>

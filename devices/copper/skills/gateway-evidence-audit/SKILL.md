@@ -1,0 +1,23 @@
+---
+name: gateway-evidence-audit
+description: Audit Gateway, Hemi-Sync, Monroe and related frequency or consciousness claims using pinned documents, source-level provenance, calibrated channel definitions and falsifiable tests. Use for Gateway repositories, declassified reports, transcripts, study presets, cross-domain resonance claims or integration with physical experiments; distinguish historical assertions, arithmetic, measurements and interpretations.
+---
+
+# Gateway evidence audit
+
+Use the [evidence contract](references/evidence-contract.md) for the source/version example and channel rules. Use [source leads](references/source-leads.md) to find the primary records. These are selected sources and a dated example, not all Gateway knowledge or independent validation of its interpretations.
+
+## Workflow
+
+1. Freeze the question and actual material. Inspect the git tree or file bytes, not repository-size metadata or README promises. Record commit, path, blob/hash, size, custody, source category and actual reading depth. Run `scripts/audit_corpus.py CHECKOUT --expect-commit SHA` for a reproducible available-file inventory. The script inspects committed blobs; it does not verify a hosted site, missing binaries, transcript fidelity or waveform identity. Its legacy-preset parser rejects duplicate JSON keys/IDs, non-finite tokens, missing fields, invalid numbers (including overflowing JSON floats in nested metadata), inconsistent differences and unknown formats. Inspect the explicit coverage counts: pulse/noise records are labelled non-carrier-pair metadata, never silently counted as successful subtraction checks. A nonzero exit means the audit did not complete.
+2. Separate originals, archive copies, mirrors, cleaned transcripts, reconstructed practice guides, synthetic study presets and pointers. Preserve copyright notices and transcription changes. Read a bibliography as leads until the cited works are actually inspected. Never republish complete proprietary tapes or privately authored workbooks merely because a government archive holds a copy.
+3. Read the named passages and their page images where OCR or diagrams affect an inference. Record document ID, exact version/hash, PDF page, printed page, section and access result. An insertion or missing printed page changes the mapping. A failed CIA endpoint does not mean every official copy is unavailable.
+4. Create one claim card per inference: source assertion, present interpretation, observable, units, input, readout, assumptions, alternative, discriminator and evidence status. Government custody proves provenance of a document, not its mechanism. Preserve contradictory claims and errors in both a source and its rebuttal.
+5. Keep audio carrier, interaural difference, pulse/modulation rate, EEG voltage spectrum, Focus label, quasi-static electrical output, mechanical mode and spatial coordinates distinct. Equal numerical Hz or a shared torus image supplies no coupling. Require a dimensioned law, independent calibration, measured transfer and source/load/loss budget before importing a cross-domain mechanism. Null coupling fields mean unspecified, not measured zero.
+6. Verify narrowly. Carrier subtraction checks metadata only. Exact audio reproduction also requires generator revision, routing, sample rate, phase, gain/envelopes, duration, noise seed/filter, encoder and output hashes. A spectral or arithmetic check does not establish EEG, subjective, clinical or mechanical outcomes. Audit the actual stimulus, population and endpoint before borrowing an evidence grade.
+7. Translate usable ideas into controls: fixed support and readout, independent input reference, handling shams, dummy channels, thermal/clock records, preselected outcomes and held-out runs. Phase reversal alone also admits odd nonlinearities and pickup; combine amplitude scaling with independent channels. Reject a tallest-bin change as sufficient evidence of an intrinsic pole change.
+8. Report the supported scope and what is missing. Mark invalid dimensional arguments as such without pretending they settle every associated experiential claim. Keep method analogies separate from positive evidence. For panels, record actual objection→response→decision rounds and independent derivations; never claim human or historical-scientist participation.
+
+## Completion record
+
+Deliver the source ledger, claim/channel map, calculations and rejected controls, access/fidelity limits, and next discriminating premise. State which code ran and which physical data exist. Do not generate a new law, health recommendation, frequency ladder or a successful-effect claim to fill an evidential gap.

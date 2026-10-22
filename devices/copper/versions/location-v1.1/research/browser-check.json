@@ -1,0 +1,98 @@
+{
+  "browser": "153.0.8010.0",
+  "checks": [
+    {
+      "name": "1440: first render",
+      "passed": true
+    },
+    {
+      "name": "1440: five scenarios",
+      "passed": true
+    },
+    {
+      "name": "1440: invalid input and recovery",
+      "passed": true
+    },
+    {
+      "name": "1440: thin-shell applicability warning",
+      "passed": true
+    },
+    {
+      "name": "1440: sphere and empty-table channels",
+      "passed": true
+    },
+    {
+      "name": "1440: raw exports",
+      "passed": true
+    },
+    {
+      "name": "1440: share URL round trip",
+      "passed": true
+    },
+    {
+      "name": "1440: keyboard tabs",
+      "passed": true
+    },
+    {
+      "name": "1440: network and text fallback",
+      "passed": true
+    },
+    {
+      "name": "1440: protocol diagrams and source filter",
+      "passed": true
+    },
+    {
+      "name": "390: first render",
+      "passed": true
+    },
+    {
+      "name": "390: five scenarios",
+      "passed": true
+    },
+    {
+      "name": "390: invalid input and recovery",
+      "passed": true
+    },
+    {
+      "name": "390: thin-shell applicability warning",
+      "passed": true
+    },
+    {
+      "name": "390: sphere and empty-table channels",
+      "passed": true
+    },
+    {
+      "name": "390: raw exports",
+      "passed": true
+    },
+    {
+      "name": "390: share URL round trip",
+      "passed": true
+    },
+    {
+      "name": "390: keyboard tabs",
+      "passed": true
+    },
+    {
+      "name": "390: network and text fallback",
+      "passed": true
+    },
+    {
+      "name": "390: protocol diagrams and source filter",
+      "passed": true
+    }
+  ],
+  "runtimeErrors": [],
+  "screenshots": [
+    "home-1440.png",
+    "spectrum-1440.png",
+    "network-1440.png",
+    "protocol-1440.png",
+    "home-390.png",
+    "spectrum-390.png",
+    "network-390.png",
+    "protocol-390.png"
+  ],
+  "passed": true,
+  "screenshotNote": "Development screenshots inspected separately; not part of the deployed content."
+}

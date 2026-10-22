@@ -1,0 +1,819 @@
+{
+  "as_of": "2026-10-21",
+  "scope": "Selected primary sources and official software documentation for a proposed copper-sphere position spectroscopy experiment. This is not an exhaustive SOTA survey or validation of every cited result.",
+  "venue_policy": "Actual venue and publication status are stated. ICLR 2025 and NeurIPS 2024 accepted main-conference papers are included for inverse-model methodology; direct experimental evidence primarily comes from specialist physics and metrology journals. No universal Tier A label is assigned.",
+  "ai_release_note": "The OpenAI October 6 mathematics release is identified and its relevant family 372 scoped. No equivalent single Anthropic bulk mathematics release was established in this targeted search; specific official September/October reports are included.",
+  "sources": [
+    {
+      "id": "lamb1881",
+      "title": "On the Vibrations of an Elastic Sphere",
+      "authors": [
+        "Horace Lamb"
+      ],
+      "year": 1881,
+      "date": "1881-11",
+      "venue": "Proceedings of the London Mathematical Society, s1-13, 189\u2013212",
+      "url": "https://doi.org/10.1112/plms/s1-13.1.189",
+      "kind": "paper",
+      "status": "published",
+      "claim": "Classical elastic-sphere normal-mode formulation.",
+      "relevance": "Foundation for distinguishing radial, spheroidal and torsional modes.",
+      "limits": "Publisher dates this article 1881; many later references cite 1882. Metadata checked; original derivation not independently reconstructed from this scan.",
+      "access_read_depth": "Publisher bibliographic record",
+      "channel": "physics"
+    },
+    {
+      "id": "rus2004",
+      "title": "Resonant Ultrasound Spectroscopy: theory and application",
+      "authors": [
+        "Brian J. Zadler",
+        "J\u00e9r\u00f4me H. L. Le Rousseau",
+        "John A. Scales",
+        "Martin L. Smith"
+      ],
+      "year": 2004,
+      "date": "2004-01-01",
+      "venue": "Geophysical Journal International 156, 154\u2013169",
+      "url": "https://doi.org/10.1111/j.1365-246X.2004.02093.x",
+      "kind": "paper",
+      "status": "published",
+      "claim": "RUS infers elastic parameters by matching normal modes; measured response also depends on excitation and readout sites.",
+      "relevance": "Separates eigenfrequencies from transfer-function amplitudes and gives a forward/inverse workflow.",
+      "limits": "Its case study is rock and cylinder spectroscopy. Coupling, mode assignment and model adequacy remain necessary for the copper sphere.",
+      "access_read_depth": "Full text sections 1\u20133.3, including generalized eigenproblem and excitation discussion",
+      "channel": "physics"
+    },
+    {
+      "id": "contact2004",
+      "title": "Vibration analysis of an elastic-sphere oscillator contacting semi-infinite viscoelastic solids in resonant ultrasound microscopy",
+      "authors": [
+        "Jiayong Tian",
+        "Hirotsugu Ogi",
+        "Masahiko Hirao"
+      ],
+      "year": 2004,
+      "date": "2004-06-15",
+      "venue": "Journal of Applied Physics 95, 8366\u20138375",
+      "url": "https://doi.org/10.1063/1.1737472",
+      "kind": "paper",
+      "status": "published",
+      "claim": "Dynamic sphere-contact modeling predicts resonance shifts; the reported experiment better matched the dynamic model than a quasistatic approximation.",
+      "relevance": "Direct control for an apparent location effect caused by a different support contact.",
+      "limits": "Steel sphere and specified contacting media; reported shifts cannot be copied numerically to copper on an arbitrary table.",
+      "access_read_depth": "Institutional full PDF: introduction, model scope, results and experimental comparison",
+      "channel": "physics",
+      "open_url": "https://ir.library.osaka-u.ac.jp/repo/ouka/all/84220/JApplPhys_95_12_8366.pdf"
+    },
+    {
+      "id": "copper2008",
+      "title": "On the establishment of a method for characterization of material microstructure through laser-based resonant ultrasound spectroscopy",
+      "authors": [
+        "Stephen J. Reese",
+        "Kenneth L. Telschow",
+        "Thomas M. Lillo",
+        "David H. Hurley"
+      ],
+      "year": 2008,
+      "date": "2008-04",
+      "venue": "IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control 55(4), 770\u2013776",
+      "url": "https://doi.org/10.1109/TUFFC.2008.711",
+      "kind": "paper",
+      "status": "published",
+      "claim": "Laser RUS measured 40 of the first 50 resonant modes in high-purity polycrystalline copper.",
+      "relevance": "Direct material precedent for optical detection and mode-shape matching.",
+      "limits": "High chemical purity does not remove microstructure or elastic anisotropy. The paper does not establish a unique location frequency.",
+      "access_read_depth": "Idaho National Laboratory abstract and bibliographic record; full paper not read",
+      "channel": "physics",
+      "open_url": "https://inl.elsevierpure.com/en/publications/on-the-establishment-of-a-method-for-characterization-of-material/"
+    },
+    {
+      "id": "balls2008",
+      "title": "Elastic characterization of ceramic balls using resonant ultrasound spectroscopy of spheroidal modes",
+      "authors": [
+        "Fran\u00e7ois Deneuville",
+        "Marc Duquennoy",
+        "Mohammadi Ouaftouh",
+        "Fr\u00e9d\u00e9ric Jenot",
+        "Mohamed Ourak",
+        "S\u00e9bastien Desvaux"
+      ],
+      "year": 2008,
+      "date": "2008",
+      "venue": "Acoustics 08 Paris conference proceedings",
+      "url": "https://dael.euracoustics.org/confs/acoustics2008/data/articles/000773.pdf",
+      "kind": "conference-paper",
+      "status": "published",
+      "claim": "A ball-spectroscopy setup combines ultrasonic excitation and optical interferometric detection of spheroidal modes.",
+      "relevance": "Concrete geometry and readout precedent for ball experiments.",
+      "limits": "Ceramic specimens, not copper; radial optical sensitivity does not guarantee detection of every torsional mode.",
+      "access_read_depth": "Six-page conference PDF: abstract, sphere mode model and experimental method",
+      "channel": "physics"
+    },
+    {
+      "id": "climate2024",
+      "title": "Evaluation of 3D optical techniques for modal analysis during climatic test inside environmental chamber",
+      "authors": [
+        "Manuel Pastor-Cintas",
+        "Luis Felipe-Ses\u00e9",
+        "\u00c1ngel Molina-Viedma",
+        "El\u00edas L\u00f3pez-Alba",
+        "Francisco A. D\u00edaz"
+      ],
+      "year": 2024,
+      "date": "2024-02-29",
+      "venue": "Measurement 229, 114403",
+      "url": "https://ruja.ujaen.es/items/facfdbcc-1264-4f40-92cf-834e535e2ef6",
+      "kind": "paper",
+      "status": "published",
+      "claim": "SLDV and DIC measured temperature-dependent modal parameters; optical paths through a chamber introduced measurement limitations.",
+      "relevance": "Supports temperature logging, matched optical geometry and environment controls.",
+      "limits": "The specimen is curved polymer; its temperature coefficients are not copper coefficients.",
+      "access_read_depth": "Institutional PDF: experimental details, temperature validation, results and conclusions",
+      "channel": "physics"
+    },
+    {
+      "id": "ldv2025",
+      "title": "Multi-beam full-field laser Doppler vibrometer based on a high-speed area scan CMOS camera",
+      "authors": [
+        "Junrui Li",
+        "Vyacheslav Aranchuk",
+        "Ina Aranchuk"
+      ],
+      "year": 2025,
+      "date": "2025-06-09",
+      "venue": "Applied Optics 64(17), 4934\u20134940",
+      "url": "https://doi.org/10.1364/AO.554352",
+      "kind": "paper",
+      "status": "published",
+      "claim": "A simultaneous 17 \u00d7 17-point LDV demonstrates full-field phase-preserving vibration measurements over a finite band up to 25 kHz.",
+      "relevance": "Explains why multipoint sensing helps distinguish mode shape from a single-point spectral peak.",
+      "limits": "The reported bandwidth may miss higher copper-sphere modes. Abstract and instrument performance summary only; underlying data are request-only.",
+      "access_read_depth": "Publisher abstract, publication history and data-availability statement",
+      "channel": "physics"
+    },
+    {
+      "id": "frf2026",
+      "title": "Full-field laser-Doppler-vibrometry FRF dataset for a four-bolt aluminum plate under bolt-torque variation",
+      "authors": [
+        "Berkay Kullukcu",
+        "Dina Hannebauer"
+      ],
+      "year": 2026,
+      "date": "2026-09-04",
+      "venue": "arXiv:2609.05378",
+      "url": "https://arxiv.org/abs/2609.05378",
+      "kind": "preprint",
+      "status": "reported-preprint",
+      "claim": "Authors report spatial amplitude/phase FRFs for multiple bolt-torque states.",
+      "relevance": "A recent example of how support state changes a spatial vibration dataset.",
+      "limits": "Aluminum plate, not copper sphere. Abstract indexed by search; direct page and full text fetch failed. Dataset and claimed performance were not replayed.",
+      "access_read_depth": "Search-indexed primary abstract only; direct access failed",
+      "channel": "physics"
+    },
+    {
+      "id": "scipy-csd",
+      "title": "scipy.signal.csd",
+      "authors": [
+        "SciPy contributors"
+      ],
+      "year": 2026,
+      "date": null,
+      "venue": "Official SciPy documentation",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.csd.html",
+      "kind": "software-docs",
+      "status": "documentation",
+      "claim": "Welch cross-spectral density uses conjugate(X) \u00d7 Y by convention.",
+      "relevance": "With input force x and response y, H1 = Pxy/Pxx has the correct complex phase convention.",
+      "limits": "Correct units, sample timing, windowing and calibration remain caller responsibilities.",
+      "access_read_depth": "Official API parameters, units, convention and notes",
+      "channel": "tools"
+    },
+    {
+      "id": "scipy-coherence",
+      "title": "scipy.signal.coherence",
+      "authors": [
+        "SciPy contributors"
+      ],
+      "year": 2026,
+      "date": null,
+      "venue": "Official SciPy documentation",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.coherence.html",
+      "kind": "software-docs",
+      "status": "documentation",
+      "claim": "Magnitude-squared coherence is |Pxy|\u00b2/(Pxx Pyy).",
+      "relevance": "Quality control for paired input/response measurements.",
+      "limits": "High coherence alone does not establish causation or eliminate shared disturbances.",
+      "access_read_depth": "Official API formula and Welch settings",
+      "channel": "tools"
+    },
+    {
+      "id": "pyfrf",
+      "title": "pyFRF",
+      "authors": [
+        "LADISK contributors"
+      ],
+      "year": 2026,
+      "date": null,
+      "venue": "Official source repository",
+      "url": "https://github.com/ladisk/pyFRF",
+      "kind": "software",
+      "status": "documentation",
+      "claim": "Open-source structural-dynamics FRF estimation includes H1, H2 and Hv estimators.",
+      "relevance": "Candidate offline implementation for measured force/response runs.",
+      "limits": "Not installed or benchmarked in this source review; pin a version before production use.",
+      "access_read_depth": "Repository README, API example and MIT license label",
+      "channel": "tools",
+      "license": "MIT"
+    },
+    {
+      "id": "pyoma2",
+      "title": "pyOMA2: A Python module for conducting operational modal analysis",
+      "authors": [
+        "Dag P. Pasca",
+        "Diego Federico Margoni"
+      ],
+      "year": 2025,
+      "date": "2025-11-17",
+      "venue": "Journal of Open Source Software 10(115), 7656",
+      "url": "https://doi.org/10.21105/joss.07656",
+      "kind": "software-paper",
+      "status": "published",
+      "claim": "Open-source operational modal-analysis package.",
+      "relevance": "Candidate ambient table modal-identification workflow after calibrated recording.",
+      "limits": "Operational analysis assumptions must be checked; it cannot identify an entire intrinsic spectrum from arbitrary ambient noise.",
+      "access_read_depth": "JOSS publication record and official repository README/license label",
+      "channel": "tools",
+      "repository": "https://github.com/dagghe/pyOMA2",
+      "license": "MIT (code); CC BY 4.0 (paper)"
+    },
+    {
+      "id": "sfepy",
+      "title": "SfePy: Simple Finite Elements in Python",
+      "authors": [
+        "SfePy developers"
+      ],
+      "year": 2026,
+      "date": null,
+      "venue": "Official source repository and documentation",
+      "url": "https://github.com/sfepy/sfepy",
+      "kind": "software",
+      "status": "documentation",
+      "claim": "Finite-element framework for coupled PDE models.",
+      "relevance": "Future anisotropic sphere, cradle and table-coupling model after measured geometry is available.",
+      "limits": "No complete FEM mesh or converged copper experiment was executed by this source review.",
+      "access_read_depth": "Official introduction and BSD three-clause license text",
+      "channel": "tools",
+      "license": "BSD-3-Clause"
+    },
+    {
+      "id": "pidion2025",
+      "title": "Physics-Informed Deep Inverse Operator Networks for Solving PDE Inverse Problems",
+      "authors": [
+        "Sung Woong Cho",
+        "Hwijae Son"
+      ],
+      "year": 2025,
+      "date": "2025",
+      "venue": "ICLR 2025 main conference",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/cbe1fd3136e0f049bb8bc104231ccb99-Abstract-Conference.html",
+      "kind": "conference-paper",
+      "status": "published",
+      "claim": "PI-DION combines measurement and PDE-residual losses with problem-specific stability estimates.",
+      "relevance": "Useful future inverse-model methodology after declaring the measurement operator and identifiability assumptions.",
+      "limits": "Its stated PDE examples and regularity hypotheses do not prove recovery of copper properties or position from two spectra. No neural operator is trained here.",
+      "access_read_depth": "Official proceedings PDF sections 1\u20133, including stability assumptions",
+      "channel": "methods"
+    },
+    {
+      "id": "lno2024",
+      "title": "Latent Neural Operator for Solving Forward and Inverse PDE Problems",
+      "authors": [
+        "Tian Wang",
+        "Chuang Wang"
+      ],
+      "year": 2024,
+      "date": "2024",
+      "venue": "NeurIPS 2024 main conference, volume 37",
+      "url": "https://proceedings.nips.cc/paper_files/paper/2024/hash/39f6d5c2e310a5a629dcfc4d517aa0d1-Abstract-Conference.html",
+      "kind": "conference-paper",
+      "status": "published",
+      "claim": "LNO learns forward/inverse PDE maps in a latent representation and evaluates at requested spatial points.",
+      "relevance": "Potential surrogate for a validated multi-position simulation campaign.",
+      "limits": "Benchmark accuracy and speed are not transferable guarantees; a surrogate needs held-out support, temperature and geometry tests.",
+      "access_read_depth": "Official proceedings abstract and accepted venue metadata",
+      "channel": "methods"
+    },
+    {
+      "id": "openai-release2026",
+      "title": "Sharing AI progress in mathematics / openai/math release",
+      "authors": [
+        "OpenAI"
+      ],
+      "year": 2026,
+      "date": "2026-10-06",
+      "venue": "Official research announcement and manuscript repository",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+      "kind": "research-release",
+      "status": "reported-preprint",
+      "claim": "A public mathematics manuscript collection includes proof artifacts at differing verification stages.",
+      "relevance": "Identifies the requested recent OpenAI paper release and encourages explicit dependency and verification records.",
+      "limits": "This is not an experimental copper dataset; the collection was not comprehensively audited. Current README count is 719 manuscripts in 372 families, not a timeless count.",
+      "access_read_depth": "Official announcement, README, catalogue keyword search and family 372 scope note",
+      "channel": "ai-methods",
+      "repository": "https://github.com/openai/math",
+      "snapshot_commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "snapshot_commit_date": "2026-10-12T21:55:24Z"
+    },
+    {
+      "id": "openai-elasticity372",
+      "title": "Global Uniqueness for the Smooth Isotropic Elasticity Inverse Problem",
+      "authors": [
+        "OpenAI"
+      ],
+      "year": 2026,
+      "date": "2026-09-24",
+      "venue": "OpenAI mathematics release, family 372",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf",
+      "kind": "preprint",
+      "status": "reported-preprint",
+      "claim": "The release claims uniqueness of smooth isotropic Lam\u00e9 moduli from a full static boundary displacement-to-traction map.",
+      "relevance": "Highlights how demanding complete inverse recovery is compared with finite-band measurements at two positions.",
+      "limits": "Not independently proved or Lean-checked here. The stated result gives uniqueness, not a reconstruction algorithm, and requires full boundary data. It is not used as a calculator premise.",
+      "access_read_depth": "Catalogue abstract and author formalization-scope note; paper proof not audited",
+      "channel": "ai-methods",
+      "scope_url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/372.md"
+    },
+    {
+      "id": "anthropic-flt2026",
+      "title": "Formalizing Fermat\u2019s Last Theorem",
+      "authors": [
+        "Anthropic"
+      ],
+      "year": 2026,
+      "date": "2026-09-04",
+      "venue": "Official Anthropic research report",
+      "url": "https://www.anthropic.com/research/formalizing-fermats-last-theorem",
+      "kind": "research-report",
+      "status": "reported-preprint",
+      "claim": "Anthropic reports a Lean formalization organized with a dependency graph and independent statement checks.",
+      "relevance": "Methodology inspiration: retain explicit claims, dependencies and executable checks.",
+      "limits": "Number-theory formalization is not evidence for position-dependent copper resonances. This project has not replayed that Lean development.",
+      "access_read_depth": "Official report methodology and verification sections; linked repository existence",
+      "channel": "ai-methods",
+      "repository": "https://github.com/anthropics/fermats-last-theorem"
+    },
+    {
+      "id": "anthropic-circuits2026",
+      "title": "Discovering state-of-the-art quantum circuits with large language models",
+      "authors": [
+        "Andi Gu",
+        "Alek H. Kemeny",
+        "Susanne F. Yelin",
+        "Mikhail D. Lukin"
+      ],
+      "year": 2026,
+      "date": "2026-10-15",
+      "venue": "arXiv:2610.22367; official Anthropic report October 16",
+      "url": "https://arxiv.org/abs/2610.22367",
+      "kind": "preprint",
+      "status": "reported-preprint",
+      "claim": "The reported workflow combines circuit specifications with automated correctness and resource evaluators.",
+      "relevance": "Methodology inspiration for code proposals judged by an independently specified physical model and tests.",
+      "limits": "Quantum-circuit optimization is not a measurement of a copper ball and supplies no resonant frequency or location law.",
+      "access_read_depth": "Primary abstract, submission metadata and official report workflow",
+      "channel": "ai-methods",
+      "report_url": "https://www.anthropic.com/research/designing-efficient-quantum-circuits"
+    },
+    {
+      "id": "PHY-SAVIOT-2005",
+      "title": "Longitudinal versus transverse spheroidal vibrational modes of an elastic sphere",
+      "authors": "Lucien Saviot and Daniel B. Murray",
+      "year": 2005,
+      "venue": "Physical Review B72,205433",
+      "url": "https://arxiv.org/html/cond-mat/0506353v3",
+      "kind": "paper",
+      "status": "published",
+      "claim": "A homogeneous isotropic traction-free sphere has distinct torsional and spheroidal families. Radial l=0 modes use the T11 boundary condition, with size and sound-speed dependence.",
+      "relevance": "Material, boundary and measurement assumptions in the local calculator.",
+      "limits": "The HTML conversion displays an August2026 date; original version/publication metadata establish2005. Selected l=0 implementation is not full-mode completeness.",
+      "access_read_depth": "Full SectionII free-sphere formulation, equations1\u20133 and l=0 reduction; SectionIII opening and derivative interpretation; abstract and original metadata.",
+      "channel": "physics"
+    },
+    {
+      "id": "PHY-CNRS-CALCULATOR",
+      "title": "Vibrational eigenmodes of an isotropic sphere",
+      "authors": "Lucien Saviot/CNRS research calculator",
+      "year": null,
+      "venue": "Author institutional research tool",
+      "url": "https://saviot.cnrs.fr/lamb/index.en.html",
+      "kind": "tool",
+      "status": "documented tool",
+      "claim": "Useful external mode-family tool and reference; inputs are longitudinal/transverse speeds, diameter, family and indices.",
+      "relevance": "Material, boundary and measurement assumptions in the local calculator.",
+      "limits": "The page specifically warns about an incorrect spheroidal l=0 frequency expression in a cited textbook. Its disclaimer is use at own risk.",
+      "access_read_depth": "Full explanatory page and reference list; interactive outputs were not used as the independent numerical implementation.",
+      "channel": "physics"
+    },
+    {
+      "id": "PHY-NIST-COPPER-1974",
+      "title": "Elastic Properties of Metals and Alloys. II. Copper",
+      "authors": "H.M. Ledbetter and E.R. Naimon",
+      "year": 1974,
+      "venue": "Journal of Physical and Chemical Reference Data3,897",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.3253150.pdf",
+      "kind": "paper",
+      "status": "published",
+      "claim": "Compiled copper elastic properties distinguish polycrystal effective values, single-crystal constants, temperature and processing effects. Table10 averages E123.5GPa and nu0.350 inform illustrative defaults.",
+      "relevance": "Material, boundary and measurement assumptions in the local calculator.",
+      "limits": "Literature averages and their standard errors are not a certificate of the proposed ball. Independently averaged constants may not obey one exact isotropic identity. Density8960kg/m3 is a rounded illustrative input.",
+      "access_read_depth": "Introduction, Sections9\u201310, Table10 (PDFpage28/printed923), Table12 (PDFpage30/printed925), selected density entries in Table9.",
+      "channel": "physics"
+    },
+    {
+      "id": "PHY-KAPLAN-2009",
+      "title": "Resonant ultrasound spectroscopy and homogeneity in polycrystals",
+      "authors": "Gunes Kaplan, T.W. Darling and K.R. McCall",
+      "year": 2009,
+      "venue": "Ultrasonics49(1),139\u2013142",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18804831/",
+      "kind": "paper",
+      "status": "published",
+      "claim": "Pure copper's grain-size distribution can violate the homogeneous effective model assumed when interpreting RUS.",
+      "relevance": "Material, boundary and measurement assumptions in the local calculator.",
+      "limits": "The source's particular observed grain-size criterion is sample/study-specific and is not adopted as a universal acceptance threshold here. Online publication2008, journal issue2009.",
+      "access_read_depth": "Primary abstract via PubMed and publication metadata; full paper not read.",
+      "channel": "physics"
+    },
+    {
+      "id": "PHY-CONTACT-SPHERE-2021",
+      "title": "Resonance ultrasonic spectroscopy applied to normal and tangential contact modes investigation of a constrained metallic sphere",
+      "authors": "M. de Billy and F. Cohen Tenoudji",
+      "year": 2021,
+      "venue": "Ultrasonics117,106539",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34390917/",
+      "kind": "paper",
+      "status": "published",
+      "claim": "A compressed steel sphere has contact-conditioned low-frequency motion in addition to internal deformation modes; applied force changes contact spectral peaks.",
+      "relevance": "Material, boundary and measurement assumptions in the local calculator.",
+      "limits": "Material and loading differ from the proposed copper experiment. The browser's spring example is pedagogical, not a reproduced fit to this experiment.",
+      "access_read_depth": "Primary abstract, highlights and bibliographic records; full paper not read.",
+      "channel": "physics"
+    },
+    {
+      "id": "skeptic-rus-loading",
+      "title": "Resonant Ultrasound Spectroscopy for Irregularly Shaped Samples and Its Application to Uranium Ditelluride",
+      "authors": "Florian Theuss et al.",
+      "year": 2024,
+      "venue": "Physical Review Letters 132, 066003",
+      "url": "https://doi.org/10.1103/PhysRevLett.132.066003",
+      "kind": "paper",
+      "status": "published",
+      "claim": "Finite mounting force and orientation contribute to the uncertainty; remounting is an experimental control.",
+      "relevance": "Independent review of experimental controls and uncertainty.",
+      "limits": "Published 2024 source. HTML also displays a later generated date; canonical version is arXiv v2 dated 12 March 2024. Numerical values are not applied to copper.",
+      "access_read_depth": "Methods, measurement uncertainty, and Supplement VII.5",
+      "channel": "physics"
+    },
+    {
+      "id": "skeptic-gas-loading",
+      "title": "The effect of gas loading on the RUS spectra of spheres",
+      "authors": "R. S. Sorbello, J. Feller, M. Levy, D. G. Isaak, J. D. Carnes, O. L. Anderson",
+      "year": 2000,
+      "venue": "Journal of the Acoustical Society of America 107, 808\u2013818",
+      "url": "https://doi.org/10.1121/1.428264",
+      "kind": "paper",
+      "status": "published",
+      "claim": "Sphere resonance frequencies and Q respond to gas-loading conditions; model agreement is mode-dependent.",
+      "relevance": "Independent review of experimental controls and uncertainty.",
+      "limits": "Fused silica at elevated gas pressures, not copper at ambient pressure.",
+      "access_read_depth": "Primary article abstract indexed by PubMed",
+      "channel": "physics"
+    },
+    {
+      "id": "skeptic-gum",
+      "title": "Evaluation of measurement data: Guide to the expression of uncertainty in measurement",
+      "authors": "Joint Committee for Guides in Metrology",
+      "year": 2008,
+      "venue": "JCGM 100:2008",
+      "url": "https://doi.org/10.59161/JCGM100-2008E",
+      "kind": "standard",
+      "status": "published",
+      "claim": "Use sensitivities and covariances in the combined uncertainty; correlated inputs cannot always be combined as independent terms.",
+      "relevance": "Independent review of experimental controls and uncertainty.",
+      "limits": "Linearized uncertainty propagation requires checking its approximation and coverage assumptions.",
+      "access_read_depth": "Sections 4 and 5 of the accessible standard text",
+      "channel": "physics"
+    },
+    {
+      "id": "local-position-model",
+      "title": "Fieldwork position spectroscopy: executable model and independent controls",
+      "authors": [
+        "Hruday N M / BUNZEEY",
+        "Model-agent research and implementation assistance"
+      ],
+      "year": 2026,
+      "date": "2026-10-21",
+      "venue": "This project; internal model-agent review",
+      "url": "https://github.com/occult-kranti/brainwave_opensync/tree/research/copper-position-spectroscopy/device-observatory/position",
+      "kind": "project",
+      "status": "computed, not physically measured",
+      "claim": "Independent radial-stress checks, scaling and sampling controls, fixed-pole peak-switching examples, and synthetic data-analysis tests passed.",
+      "relevance": "Reproducible local implementation of established methods.",
+      "limits": "No hardware measurements, external peer review, full-mode completeness or novelty proof.",
+      "access_read_depth": "Implemented sources and executed tests; review receipts available in the reproduction bundle.",
+      "channel": "physics"
+    }
+  ],
+  "topics": [
+    {
+      "id": "elastic-modes",
+      "label": "Object modes",
+      "status": "established",
+      "description": "A linear elastic model has mode families determined by material, shape and boundary conditions."
+    },
+    {
+      "id": "contact-loading",
+      "label": "Support and contact",
+      "status": "established",
+      "description": "Contact stiffness and damping can shift resonances and alter visibility."
+    },
+    {
+      "id": "spatial-frf",
+      "label": "Spatial transfer functions",
+      "status": "established",
+      "description": "At a table point, response depends on forcing, mode shapes, propagation and readout."
+    },
+    {
+      "id": "thermal-drift",
+      "label": "Temperature drift",
+      "status": "established",
+      "description": "Material parameters and geometry can vary with temperature; fit or control this effect."
+    },
+    {
+      "id": "finite-band",
+      "label": "Finite measurement band",
+      "status": "established",
+      "description": "Sensors and acquisition observe a declared band and channel, not every possible frequency."
+    },
+    {
+      "id": "mode-identification",
+      "label": "Match the same mode",
+      "status": "established",
+      "description": "Compare mode shape and complex response, not only the largest peak."
+    },
+    {
+      "id": "inverse-identifiability",
+      "label": "Inverse uniqueness limits",
+      "status": "unresolved",
+      "description": "Full object-property recovery from the proposed finite observations is not established."
+    },
+    {
+      "id": "verified-computation",
+      "label": "Executable verification",
+      "status": "computed",
+      "description": "Local numerical calculations and synthetic controls were independently checked; apparatus performance remains unmeasured."
+    },
+    {
+      "id": "inverse-learning",
+      "label": "Future inverse surrogate",
+      "status": "proposed",
+      "description": "Train only after validated forward models and measured data support the intended inverse problem."
+    },
+    {
+      "id": "position-hypothesis",
+      "label": "Residual position effect",
+      "status": "unresolved",
+      "description": "A residual A/B change after controlled support, sensor, temperature and time effects requires real measurements."
+    }
+  ],
+  "edges": [
+    {
+      "source": "lamb1881",
+      "target": "elastic-modes",
+      "relation": "foundation",
+      "evidence": "lamb1881"
+    },
+    {
+      "source": "rus2004",
+      "target": "elastic-modes",
+      "relation": "supports",
+      "evidence": "rus2004"
+    },
+    {
+      "source": "rus2004",
+      "target": "spatial-frf",
+      "relation": "supports",
+      "evidence": "rus2004"
+    },
+    {
+      "source": "rus2004",
+      "target": "mode-identification",
+      "relation": "requires",
+      "evidence": "rus2004"
+    },
+    {
+      "source": "contact2004",
+      "target": "contact-loading",
+      "relation": "control",
+      "evidence": "contact2004"
+    },
+    {
+      "source": "contact2004",
+      "target": "position-hypothesis",
+      "relation": "confound",
+      "evidence": "contact2004"
+    },
+    {
+      "source": "copper2008",
+      "target": "elastic-modes",
+      "relation": "experimental-precedent",
+      "evidence": "copper2008"
+    },
+    {
+      "source": "copper2008",
+      "target": "finite-band",
+      "relation": "limits",
+      "evidence": "copper2008"
+    },
+    {
+      "source": "balls2008",
+      "target": "mode-identification",
+      "relation": "experimental-precedent",
+      "evidence": "balls2008"
+    },
+    {
+      "source": "climate2024",
+      "target": "thermal-drift",
+      "relation": "control",
+      "evidence": "climate2024"
+    },
+    {
+      "source": "climate2024",
+      "target": "position-hypothesis",
+      "relation": "confound",
+      "evidence": "climate2024"
+    },
+    {
+      "source": "ldv2025",
+      "target": "spatial-frf",
+      "relation": "instrumentation",
+      "evidence": "ldv2025"
+    },
+    {
+      "source": "ldv2025",
+      "target": "finite-band",
+      "relation": "limits",
+      "evidence": "ldv2025"
+    },
+    {
+      "source": "frf2026",
+      "target": "contact-loading",
+      "relation": "reported-example",
+      "evidence": "frf2026"
+    },
+    {
+      "source": "scipy-csd",
+      "target": "spatial-frf",
+      "relation": "implementation",
+      "evidence": "scipy-csd"
+    },
+    {
+      "source": "scipy-coherence",
+      "target": "mode-identification",
+      "relation": "quality-control",
+      "evidence": "scipy-coherence"
+    },
+    {
+      "source": "pyfrf",
+      "target": "spatial-frf",
+      "relation": "tool",
+      "evidence": "pyfrf"
+    },
+    {
+      "source": "pyoma2",
+      "target": "mode-identification",
+      "relation": "tool",
+      "evidence": "pyoma2"
+    },
+    {
+      "source": "sfepy",
+      "target": "elastic-modes",
+      "relation": "tool",
+      "evidence": "sfepy"
+    },
+    {
+      "source": "pidion2025",
+      "target": "inverse-learning",
+      "relation": "methodology-only",
+      "evidence": "pidion2025"
+    },
+    {
+      "source": "pidion2025",
+      "target": "inverse-identifiability",
+      "relation": "requires-assumptions",
+      "evidence": "pidion2025"
+    },
+    {
+      "source": "lno2024",
+      "target": "inverse-learning",
+      "relation": "methodology-only",
+      "evidence": "lno2024"
+    },
+    {
+      "source": "openai-release2026",
+      "target": "verified-computation",
+      "relation": "methodology-only",
+      "evidence": "openai-release2026"
+    },
+    {
+      "source": "openai-elasticity372",
+      "target": "inverse-identifiability",
+      "relation": "reported-full-data-theorem",
+      "evidence": "openai-elasticity372"
+    },
+    {
+      "source": "openai-elasticity372",
+      "target": "position-hypothesis",
+      "relation": "does-not-establish",
+      "evidence": "openai-elasticity372"
+    },
+    {
+      "source": "anthropic-flt2026",
+      "target": "verified-computation",
+      "relation": "methodology-only",
+      "evidence": "anthropic-flt2026"
+    },
+    {
+      "source": "anthropic-circuits2026",
+      "target": "verified-computation",
+      "relation": "methodology-only",
+      "evidence": "anthropic-circuits2026"
+    },
+    {
+      "source": "PHY-SAVIOT-2005",
+      "target": "elastic-modes",
+      "relation": "supports",
+      "evidence": "PHY-SAVIOT-2005"
+    },
+    {
+      "source": "PHY-CNRS-CALCULATOR",
+      "target": "mode-identification",
+      "relation": "supports",
+      "evidence": "PHY-CNRS-CALCULATOR"
+    },
+    {
+      "source": "PHY-NIST-COPPER-1974",
+      "target": "elastic-modes",
+      "relation": "calibration-context",
+      "evidence": "PHY-NIST-COPPER-1974"
+    },
+    {
+      "source": "PHY-KAPLAN-2009",
+      "target": "elastic-modes",
+      "relation": "supports",
+      "evidence": "PHY-KAPLAN-2009"
+    },
+    {
+      "source": "PHY-CONTACT-SPHERE-2021",
+      "target": "contact-loading",
+      "relation": "supports",
+      "evidence": "PHY-CONTACT-SPHERE-2021"
+    },
+    {
+      "source": "skeptic-rus-loading",
+      "target": "contact-loading",
+      "relation": "control",
+      "evidence": "skeptic-rus-loading"
+    },
+    {
+      "source": "skeptic-gas-loading",
+      "target": "contact-loading",
+      "relation": "control",
+      "evidence": "skeptic-gas-loading"
+    },
+    {
+      "source": "skeptic-gum",
+      "target": "verified-computation",
+      "relation": "uncertainty-framework",
+      "evidence": "skeptic-gum"
+    },
+    {
+      "source": "local-position-model",
+      "target": "verified-computation",
+      "relation": "executed-model-checks",
+      "evidence": "local-position-model"
+    },
+    {
+      "source": "local-position-model",
+      "target": "spatial-frf",
+      "relation": "synthetic-counterexample",
+      "evidence": "local-position-model"
+    },
+    {
+      "source": "local-position-model",
+      "target": "position-hypothesis",
+      "relation": "does-not-establish",
+      "evidence": "local-position-model"
+    }
+  ]
+}

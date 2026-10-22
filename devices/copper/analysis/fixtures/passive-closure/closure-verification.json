@@ -1,0 +1,25 @@
+{
+  "status": "executed synthetic interoperability closure, not apparatus validation",
+  "input_sha256": "465a0a5eb521ab517dfb90fc8762831974956e841d60160c88577385c5cf6c2a",
+  "metadata_sha256": "3192a24da89e35ffbead76974b238041b8fbc8f798443ea36f24614c4c4c1f5e",
+  "analyzer_sha256": "c6d6acb89ca0bd34724bbf76467f53e8aa1adeee8e3e6dde6b55adc9cc7e188b",
+  "generator_sha256": "01b9a283b25149d708bcd31abbdf21c9870040cabc84fe25e2b9986962d16af2",
+  "samples": 8192,
+  "sample_rate_hz": 8192.0,
+  "driven_line_count": 28,
+  "max_relative_complex_mobility_error_on_driven_lines": 2.7085419120765344e-15,
+  "max_relative_receptance_error_after_i_omega_conversion": 2.7080600232134553e-15,
+  "minimum_driven_line_coherence": 0.9999999999999989,
+  "mechanical_average_source_power_W": 1.755304848761002e-07,
+  "mechanical_average_dissipation_W": 1.7553048487610017e-07,
+  "relative_periodic_energy_balance_error": 1.5079876079862038e-16,
+  "max_displacement_m": 5.678910642962097e-08,
+  "passivity_real_mobility_min": 2.5302777810827637e-05,
+  "comparison": "H_vF = i*omega*H_xF with exp(+i*omega*t); nonzero driven lines only",
+  "limits": [
+    "Deterministic in-model steady periodic data; not a noisy fit or an uncertainty estimate.",
+    "Unexcited/leakage bins are excluded from the closure comparison.",
+    "Candidate peaks are not fitted modes; no pole fitter is implemented.",
+    "No analog filtering, force calibration, ADC, sensor loading or physical copper measurement."
+  ]
+}

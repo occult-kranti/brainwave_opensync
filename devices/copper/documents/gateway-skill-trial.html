@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gateway skill trial — repository audit</title><style>body{margin:0;background:#eeeae1;color:#183b35;font:16px/1.7 Arial,sans-serif}header,main,footer{max-width:960px;margin:auto;padding:24px}header{border-bottom:1px solid #bbc5b6}h1,h2,h3{font-family:Georgia,serif;line-height:1.2}h1{font-size:42px}h2{margin-top:48px;font-size:30px}a{color:#8e422a;text-underline-offset:3px}table{width:100%;border-collapse:collapse;font-size:13px;display:block;overflow:auto}td,th{border:1px solid #bcc8b8;padding:10px;text-align:left;vertical-align:top}code,pre{font:13px/1.6 monospace}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#e3e3d7;padding:16px}code{overflow-wrap:anywhere}blockquote{border-left:3px solid #b35f3b;padding-left:20px}footer{font-size:12px}nav{display:flex;flex-wrap:wrap;gap:18px}@media(max-width:600px){h1{font-size:32px}main{padding:20px}}@media print{body{background:white;color:#111;font-size:11pt}header nav{display:none}h1{font-size:26pt}h2{font-size:18pt;break-after:avoid}tr,pre{break-inside:avoid}a{color:#222}table{display:table;overflow:visible;font-size:9pt}header,main,footer{padding:8px}h2{margin-top:24px}}</style><header><strong>FIELDWORK · COPPER EXPERIMENT</strong><nav><a href="../index.html">Overview</a><a href="../gateway.html">Gateway audit</a><a href="../protocol.html">Protocol</a><a href="../sources.html">Source network</a><a href="../versions.html">Versions & issues</a></nav></header><main><h1>Gateway skill trial — repository audit</h1>
+<p>Audit date: 22 October 2026. Question: can this checkout regenerate its listed audio exactly, and do its Gateway/Focus frequency labels support a copper-object location experiment?</p>
+<p><strong>Neither claim is established by the inspected repository.</strong> It provides enough information to construct broadly similar study tones, but not to reproduce the listed MP3 bytes. Its labels do not supply evidence that a listener can locate copper, or a calibrated physical coupling that predicts copper position.</p>
+<h2>What the bytes establish</h2>
+<p>Pinned local checkout: <code>075bbab71bd4c83946fac1c3180dbc9460ce32d2</code>; declared origin: <code>https://github.com/occult-kranti/gateway-files.git</code>. The bundled inventory tool found <strong>10 committed text files, 48,846 bytes, no <code>index.html</code>, no PDFs, and no audio binaries</strong>. Working-tree status was clean before and after the audit. README claims about a deployed website were not checked against a deployment.</p>
+<p><code>archive/BINARIES.md:34–38</code> claims exact regeneration from the presets and a browser Frequency Lab. The committed tree has neither that lab nor any generator. Available details include stereo 44.1 kHz MP3, sine pairs, 1 kHz pulses repeated at 40 pulses/s, low-passed pink noise, approximately 62–63-second loops, and MP3 V4 (<code>BINARIES.md:22–38</code>; <code>archive/FREQUENCY-RESEARCH.md:45–58</code>). Missing details include a pinned generator, exact per-file sample count, phase, gains/envelopes, pulse shape/width, noise algorithm/seed/filter, and encoder implementation/version/options and file metadata. V4 alone does not fix the encoder output. The published hashes could verify a supplied file; they cannot reconstruct absent bytes.</p>
+<p>The bundled script and an independent Decimal subtraction both checked these five metadata pairs:</p>
+<table>
+<thead>
+<tr>
+  <th>Preset</th>
+  <th style="text-align:right">Carriers (Hz)</th>
+  <th style="text-align:right">Difference (Hz)</th>
+  <th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Gateway Theta</td>
+  <td style="text-align:right">200 / 204</td>
+  <td style="text-align:right">4</td>
+  <td>matches metadata</td>
+</tr>
+<tr>
+  <td>Alpha Focus</td>
+  <td style="text-align:right">200 / 210</td>
+  <td style="text-align:right">10</td>
+  <td>matches metadata</td>
+</tr>
+<tr>
+  <td>Deep Theta</td>
+  <td style="text-align:right">180 / 186</td>
+  <td style="text-align:right">6</td>
+  <td>matches metadata</td>
+</tr>
+<tr>
+  <td>Delta Sleep</td>
+  <td style="text-align:right">100 / 102</td>
+  <td style="text-align:right">2</td>
+  <td>matches metadata</td>
+</tr>
+<tr>
+  <td>Schumann Octave</td>
+  <td style="text-align:right">200 / 207.83</td>
+  <td style="text-align:right">7.83</td>
+  <td>matches metadata</td>
+</tr>
+</tbody>
+</table>
+<p>No waveform was generated, decoded, listened to, or spectrally measured. The arithmetic does not verify channel routing, original Hemi-Sync processing, EEG effects, or physical effects.</p>
+<h2>Claim and channel map</h2>
+<table>
+<thead>
+<tr>
+  <th>Source assertion / present interpretation</th>
+  <th>Observable, units, input and readout</th>
+  <th>Alternative, discriminator and status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Exact audio regeneration (<code>BINARIES.md:34–38</code>)</td>
+  <td>Input: complete generator/configuration. Readout: PCM samples and encoded file SHA-256.</td>
+  <td>Many waveforms/encoders share these carrier labels. Supply deterministic code and all parameters, regenerate, and compare to the listed hashes. <strong>Unsupported from this tree.</strong></td>
+</tr>
+<tr>
+  <td>Focus 10/12 represent experiential stages (transcript:95–105,166–180); the Alpha Focus preset also uses a 10 Hz difference</td>
+  <td>Carrier and interaural difference: Hz. Focus: a named subjective stage, without a calibrated numerical unit here. EEG would require recorded voltage and its spectrum.</td>
+  <td>Shared digits do not identify a state with a frequency. The transcript describes counting and subjective changes, not a 10/12 Hz specification. <strong>Terminology is documented; Hz-to-Focus calibration is absent.</strong></td>
+</tr>
+<tr>
+  <td>40 Hz clicks and 7.83 Hz beat labels (<code>presets.json:39–54</code>)</td>
+  <td>40 Hz is pulse repetition; 1 kHz is its carrier. 7.83 Hz is a chosen difference between carriers.</td>
+  <td>Neither is a measured copper resonance or a measured environmental field. The dossier's “exact geophysics” label supplies no field measurement. <strong>Metadata only.</strong></td>
+</tr>
+<tr>
+  <td>Remote viewing/spatial orientation (transcript:86–122) might motivate a copper-location hypothesis</td>
+  <td>Input: concealed, independently randomized target. Readout: a preselected hit rate or position error in cm against recorded ground truth.</td>
+  <td>Chance, sensory leakage, cueing and flexible scoring remain alternatives. The repo contains instructions, not target trials or location outcomes. <strong>No copper-location support found.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>For a copper-location hypothesis, source channel, target channel, dimensioned law, parameters, calibration, transfer function, source/load/loss budget, raw data and held-out predictions are all <strong>null / unspecified</strong> in this corpus. This is an evidence gap, not a measurement of zero coupling. Acoustic pressure, interaural difference, pulse rate, EEG voltage, quasi-static electric fields, copper mechanical modes and spatial coordinates must remain separate channels. A grade attached to a health or EEG study cannot be transferred to copper location.</p>
+<p>A discriminating first test would conceal randomized copper, a matched dummy and empty conditions from both participant and scorer; prevent target/audio/handling cues; fix trial count, scoring and chance model beforehand; and reserve held-out trials. Use matched control audio and audio-off trials to distinguish any location performance from an audio-specific effect. If a physical mechanism is claimed, independently measure the proposed input and copper response with units and calibration. Numerical frequency matches, a subjective Focus report, phase reversal alone, or the tallest spectral bin changing are insufficient controls.</p>
+<p>One source rebuttal also fails its own stated standard: <code>archive/FREQUENCY-RESEARCH.md:21,24–28</code> acknowledges sound is a pressure wave but uses photon-energy arithmetic and an unspecified universal tissue Q to dismiss acoustic effects. Those do not replace a classical source/transfer/loss calculation. Rejecting that argument does not establish Gateway or copper-location efficacy.</p>
+<h2>Source and fidelity limits</h2>
+<p>All ten tracked texts were read. The workbook is explicitly a cleaned transcript with silent OCR corrections (<code>transcript:3–9</code>), carries a 1977 Monroe copyright notice, and was not compared with scan images. No original report/workbook PDF, commercial tape, cited paper/book, external site, or hosted audio was accessed. No original/official-archive-copy document was therefore validated here; document IDs and page maps remain repository assertions. Declassification/custody is not empirical confirmation or a general rights conclusion. The two tiny <code>files/</code> dossier/program files are pointers, despite their “identical content” wording. No physical, EEG, electrical, mechanical, or location data were supplied or produced.</p>
+<h2>Execution evidence</h2>
+<p>Applied the local <code>gateway-evidence-audit/SKILL.md</code>, its evidence contract and source-leads reference, and read the bundled script before execution. The dated reference examples were treated as leads, not as fresh verification of external sources. A second agent independently inspected the regeneration claim and carrier arithmetic and agreed with the missing-parameter finding; this was an AI review, not human or historical-scientist participation.</p>
+<p>Commands executed successfully (exit 0):</p>
+<pre><code class="language-text">python /root/.codex/skills/remote-skills/gateway-evidence-audit/scripts/audit_corpus.py /workspace/scratch/c230cc629529/gateway-review --expect-commit 075bbab71bd4c83946fac1c3180dbc9460ce32d2
+git -C /workspace/scratch/c230cc629529/gateway-review rev-parse HEAD
+git -C /workspace/scratch/c230cc629529/gateway-review ls-tree -rl HEAD
+git -C /workspace/scratch/c230cc629529/gateway-review diff --exit-code
+git -C /workspace/scratch/c230cc629529/gateway-review status --porcelain
+</code></pre>
+<p>The inventory returned <code>trackedFileCount=10</code>, <code>totalBytes=48846</code>, <code>indexHtmlPresent=false</code>, <code>pdfFilesPresent=[]</code>, <code>audioFilesPresent=[]</code>; all five <code>presetArithmetic.arithmeticMatches</code> values were true. Binary floating-point subtraction returned <code>7.8300000000000125</code> for the fifth pair; the independent <code>decimal.Decimal</code> calculation returned exactly <code>7.83</code>. Clean status was <code>''</code>; <code>git diff --exit-code</code> returned 0. Read-only <code>cat</code>, <code>sed</code>, <code>nl</code>, <code>rg</code>, and <code>git remote -v</code> supplied the cited passages and provenance. No repository or skill was edited, and nothing was deployed or sent to a third party.</p>
+<h3>Committed source ledger</h3>
+<p>Custody for every row: local committed copy, origin declared above. Reading depth: full text. Hashes identify inspected bytes, not historical fidelity or scientific validity.</p>
+<table>
+<thead>
+<tr>
+  <th>Path</th>
+  <th>Source category</th>
+  <th style="text-align:right">Bytes / lines</th>
+  <th>Git blob</th>
+  <th>SHA-256</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>README.md</code></td>
+  <td>project description / pointer</td>
+  <td style="text-align:right">2813 / 49</td>
+  <td><code>40b9f474fcbcaa8d5293bb4b48532b2aed73d183</code></td>
+  <td><code>020ea5db6dc5a35b0e0bcf2f091abe66716938b2c6cad965d9a440723fe50149</code></td>
+</tr>
+<tr>
+  <td><code>archive/BINARIES.md</code></td>
+  <td>binary manifest / pointer</td>
+  <td style="text-align:right">2229 / 38</td>
+  <td><code>4f0f6ee344a367ef30a34e9fc4002474c87822b7</code></td>
+  <td><code>f50fc971373dd719fab6be3924dd5f47276057d03506766511c2c56c145a8f07</code></td>
+</tr>
+<tr>
+  <td><code>archive/FREQUENCY-RESEARCH.md</code></td>
+  <td>compiled derivative dossier + synthesized study metadata</td>
+  <td style="text-align:right">7520 / 70</td>
+  <td><code>dd2917486fa9b71fdee2aa5e8a6fd5dec8af86aa</code></td>
+  <td><code>54c6a6487cfd0f8b5ada808ff7aa39e659e29838593794ca5228e62b36558305</code></td>
+</tr>
+<tr>
+  <td><code>archive/INDEX.md</code></td>
+  <td>archive index / pointer</td>
+  <td style="text-align:right">5549 / 72</td>
+  <td><code>1a9783c626b69b49856ff06e2ef5b44c742897a2</code></td>
+  <td><code>bb3bd933a3028e9fc131afda54e2a7d778c9ce639926940b3f559cb911d969a5</code></td>
+</tr>
+<tr>
+  <td><code>archive/PRACTICE-PROGRAM.md</code></td>
+  <td>reconstructed practice guide</td>
+  <td style="text-align:right">5372 / 70</td>
+  <td><code>2e77bd8ae45fc696ec8f606339d2f5803399c25e</code></td>
+  <td><code>0efaac0f09e51d57b674bab1172c8a891d98da3f60212b14b96bb53c4702db91</code></td>
+</tr>
+<tr>
+  <td><code>archive/READING-LIST.md</code></td>
+  <td>bibliographic pointers</td>
+  <td style="text-align:right">3110 / 58</td>
+  <td><code>893f5a541a26305360378743b08c663f6ae20cdc</code></td>
+  <td><code>14570398f32bbbb0b03ab6ce44ea3af24f9851016e6de2f49fd9ee96bfcdf895</code></td>
+</tr>
+<tr>
+  <td><code>files/03_Gateway-Intermediate-Workbook_1977_transcript.md</code></td>
+  <td>derivative transcript</td>
+  <td style="text-align:right">19038 / 367</td>
+  <td><code>685bfd32c04301734695e901d422bc5c1fd3af90</code></td>
+  <td><code>97553256fb8413be51571b94afe720a3d5b0a5b7b98b3d53b38eb5d478d292f8</code></td>
+</tr>
+<tr>
+  <td><code>files/FREQUENCY-RESEARCH.md</code></td>
+  <td>one-line pointer</td>
+  <td style="text-align:right">160 / 1</td>
+  <td><code>7480953a37e4dd029ad71ee0a4d6919abaaaa29b</code></td>
+  <td><code>eb7926b6710ca3220c5d4b8a0c921c7cff9f1bfee6aa67382685b7905e2558c3</code></td>
+</tr>
+<tr>
+  <td><code>files/PRACTICE-PROGRAM.md</code></td>
+  <td>one-line pointer</td>
+  <td style="text-align:right">158 / 1</td>
+  <td><code>695c1ca6488e28fb040c80609dbedf7cef724f6e</code></td>
+  <td><code>fef174d492c026fea51a1aa52bed8beb815812ad459f01d368875f4c1a132709</code></td>
+</tr>
+<tr>
+  <td><code>files/audio/presets.json</code></td>
+  <td>synthesized study metadata</td>
+  <td style="text-align:right">2897 / 65</td>
+  <td><code>a3b7865e5a7ac8e879f0e006a604a4c9d81e7b9e</code></td>
+  <td><code>7d4f0c2e9632cb7058ee75ec278e134ded24328d3b327886ace047e24294eac9</code></td>
+</tr>
+</tbody>
+</table>
+<p>Bundled tool SHA-256: <code>9c4ca249d073e2134903ab967eb2416423376948ab160158b3b417056277b7ef</code>.</p>
+</main><footer>Original project analysis · AI-assisted review, not human peer review · No physical sphere measurements. <a href="../research/gateway-skill-trial.md">Download Markdown</a> · <a href="../deployment.json">Exact build provenance</a></footer></html>

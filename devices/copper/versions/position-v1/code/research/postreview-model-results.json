@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "reviewer": "Independent skeptic",
+  "producer_files_mutated": false,
+  "model_sha256": "4d464f1a21bbadc88363fe666720994641079eecf7215f3d80e3fe6b4c18e3d6",
+  "checks": [
+    {
+      "name": "104 Poisson values, 312 positive roots, independent radial stress formulation",
+      "passed": true,
+      "poisson_values": 104,
+      "roots_checked": 312,
+      "max_relative_frequency_error": 3.881058895663914e-14,
+      "max_normalized_traction_residual": 2.8298117897727274e-14,
+      "scope": "Numerical root-count sampling over the declared domain, not a proof of continuum completeness."
+    },
+    {
+      "name": "Q=0.51 positive-frequency drawing and finite response",
+      "passed": true,
+      "minimum_frequency_Hz": 3265.706872172799
+    },
+    {
+      "name": "Nyquist alone does not ensure selected-mode coverage",
+      "passed": true,
+      "field": "modeWithinBand"
+    },
+    {
+      "name": "Zero uncertainty input and five invalid-domain controls",
+      "passed": true
+    }
+  ],
+  "scope": "Mathematical and numerical model review; not a lab measurement or full elastic spectrum."
+}

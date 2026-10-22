@@ -1,0 +1,434 @@
+{
+  "schema": "panel-seat3-round1/1",
+  "status": "executed synthetic mathematical counterexamples; no physical measurement",
+  "novelty": "Established linear observability, regression identifiability and paired-t power methods applied to these apps; scientific novelty is not claimed.",
+  "design_identifiability": {
+    "columns": [
+      "intercept",
+      "linear_drift",
+      "location_beta",
+      "temperature_slope"
+    ],
+    "assumptions": "Declared finite linear response, no omitted nuisance variables; full rank is necessary here, not proof of causal attribution or nonlinear global identifiability.",
+    "position_locked_temperature": {
+      "shape": [
+        8,
+        4
+      ],
+      "rank": 3,
+      "nullity": 1,
+      "singular_values": [
+        6.480740698407863,
+        3.253994606196163,
+        1.2536024500798815,
+        3.2142514533198567e-17
+      ],
+      "rank_tolerance": 1.1512108063996363e-14,
+      "design": [
+        [
+          1.0,
+          -3.5,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          -2.5,
+          1.0,
+          0.2
+        ],
+        [
+          1.0,
+          -1.5,
+          1.0,
+          0.2
+        ],
+        [
+          1.0,
+          -0.5,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.5,
+          1.0,
+          0.2
+        ],
+        [
+          1.0,
+          1.5,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          2.5,
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          3.5,
+          1.0,
+          0.2
+        ]
+      ],
+      "null_direction": [
+        0.0,
+        0.0,
+        0.2,
+        -1.0
+      ],
+      "max_null_residual": 0.0,
+      "location_coefficient_estimable": false
+    },
+    "independently_varied_temperature": {
+      "shape": [
+        8,
+        4
+      ],
+      "rank": 4,
+      "nullity": 0,
+      "singular_values": [
+        6.481036549016556,
+        3.254122584802291,
+        1.2544742324817206,
+        0.2704549009181543
+      ],
+      "rank_tolerance": 1.1512633600248556e-14,
+      "design": [
+        [
+          1.0,
+          -3.5,
+          0.0,
+          -0.1
+        ],
+        [
+          1.0,
+          -2.5,
+          1.0,
+          0.30000000000000004
+        ],
+        [
+          1.0,
+          -1.5,
+          1.0,
+          0.1
+        ],
+        [
+          1.0,
+          -0.5,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          0.5,
+          1.0,
+          0.1
+        ],
+        [
+          1.0,
+          1.5,
+          0.0,
+          0.1
+        ],
+        [
+          1.0,
+          2.5,
+          0.0,
+          -0.1
+        ],
+        [
+          1.0,
+          3.5,
+          1.0,
+          0.30000000000000004
+        ]
+      ],
+      "location_coefficient_estimable": true
+    },
+    "meaning": "Additional repeats of the locked design cannot separate beta from temperature_slope; independently varied controls can separate them within this declared model."
+  },
+  "finite_modal_observability": {
+    "assumptions": "Known finite linear undamped generator, distinct frequencies, ideal full time record, noiseless calibrated participations. Rank is structural and says nothing by itself about finite-time noisy conditioning or omitted modes.",
+    "state_dimension": 6,
+    "generator": [
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        -1.0,
+        -0.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.0,
+        -4.0,
+        -0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        -0.0,
+        -0.0,
+        -9.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "cases": {
+      "center_drive_center_sensor": {
+        "controllability": {
+          "shape": [
+            6,
+            6
+          ],
+          "rank": 4,
+          "nullity": 2,
+          "singular_values": [
+            81.51225002661882,
+            81.51225002661882,
+            1.324045164630002,
+            1.3240451646300007,
+            7.051401681778467e-17,
+            0.0
+          ],
+          "rank_tolerance": 1.0859613212226569e-13
+        },
+        "observability": {
+          "shape": [
+            6,
+            6
+          ],
+          "rank": 4,
+          "nullity": 2,
+          "singular_values": [
+            81.51225002661883,
+            81.51225002661883,
+            1.3240451646300009,
+            1.3240451646299998,
+            5.421363378645177e-16,
+            0.0
+          ],
+          "rank_tolerance": 1.085961321222657e-13
+        },
+        "input_participation": [
+          [
+            1.0,
+            0.0,
+            -1.0
+          ]
+        ],
+        "sensor_participation": [
+          [
+            1.0,
+            0.0,
+            -1.0
+          ]
+        ]
+      },
+      "center_drive_two_sensors": {
+        "controllability": {
+          "shape": [
+            6,
+            6
+          ],
+          "rank": 4,
+          "nullity": 2,
+          "singular_values": [
+            81.51225002661882,
+            81.51225002661882,
+            1.324045164630002,
+            1.3240451646300007,
+            7.051401681778467e-17,
+            0.0
+          ],
+          "rank_tolerance": 1.0859613212226569e-13
+        },
+        "observability": {
+          "shape": [
+            12,
+            6
+          ],
+          "rank": 6,
+          "nullity": 0,
+          "singular_values": [
+            100.27718028078318,
+            100.27718028078316,
+            13.57261197261672,
+            13.572611972616707,
+            1.5070896377095706,
+            1.5070896377095704
+          ],
+          "rank_tolerance": 2.671920825413117e-13
+        },
+        "input_participation": [
+          [
+            1.0,
+            0.0,
+            -1.0
+          ]
+        ],
+        "sensor_participation": [
+          [
+            1.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.7071067811865476,
+            1.0,
+            0.7071067811865476
+          ]
+        ]
+      },
+      "two_independent_drives_two_sensors": {
+        "controllability": {
+          "shape": [
+            6,
+            12
+          ],
+          "rank": 6,
+          "nullity": 6,
+          "singular_values": [
+            100.27718028078321,
+            100.2771802807832,
+            13.572611972616723,
+            13.572611972616714,
+            1.5070896377095713,
+            1.5070896377095697
+          ],
+          "rank_tolerance": 2.6719208254131177e-13
+        },
+        "observability": {
+          "shape": [
+            12,
+            6
+          ],
+          "rank": 6,
+          "nullity": 0,
+          "singular_values": [
+            100.27718028078318,
+            100.27718028078316,
+            13.57261197261672,
+            13.572611972616707,
+            1.5070896377095706,
+            1.5070896377095704
+          ],
+          "rank_tolerance": 2.671920825413117e-13
+        },
+        "input_participation": [
+          [
+            1.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.7071067811865476,
+            1.0,
+            0.7071067811865476
+          ]
+        ],
+        "sensor_participation": [
+          [
+            1.0,
+            0.0,
+            -1.0
+          ],
+          [
+            0.7071067811865476,
+            1.0,
+            0.7071067811865476
+          ]
+        ]
+      }
+    },
+    "meaning": "Sensor independence and source independence are separate. More sensors do not fix a mode that every drive fails to excite. A generic single sensor may observe distinct known modes over time; instantaneous sensor-matrix rank alone is not the temporal observability test."
+  },
+  "conditional_power_and_selection": {
+    "assumptions": "Two-sided one-sample t test of independent normal block contrasts, fixed effect delta=0.5*sigma_d, alpha=.05; sigma_d treated as the true planning SD. This is conditional illustrative power, not estimated experimental power or an equivalence calculation.",
+    "alpha": 0.05,
+    "effect_in_block_sd_units": 0.5,
+    "target_power": 0.8,
+    "minimum_independent_blocks": 34,
+    "power_at_minimum": 0.8077775012792738,
+    "power_at_previous_n": 0.7953658414875041,
+    "power_at_12_blocks": 0.3528241493273389,
+    "ar1_variance_illustration": {
+      "block_count": 12,
+      "rho": 0.6,
+      "variance_of_mean_inflation_over_iid_same_marginal_sd": 3.3763604889599996,
+      "standard_error_inflation": 1.837487547974135,
+      "meaning": "Exact variance for a stationary AR(1) covariance matrix; not a correction that validates an ordinary t interval."
+    },
+    "20_independent_null_mode_tests": {
+      "per_test_alpha": 0.05,
+      "chance_of_at_least_one_false_positive": 0.6415140775914581,
+      "meaning": "Selecting the largest significant mode and reporting one unadjusted test is invalid; independence is assumed only in this illustration."
+    }
+  },
+  "actual_app_counterexamples": {
+    "symmetric_positions": {
+      "positions": [
+        0.25,
+        0.75
+      ],
+      "maxPoleDifferenceHz": 0,
+      "maxResponseDifference": 0,
+      "projection": [
+        0.8944271909999159,
+        0.8944271909999159
+      ]
+    },
+    "contact_product": {
+      "positions": [
+        0.5,
+        1
+      ],
+      "stiffnessNpm": [
+        100000000,
+        50000000
+      ],
+      "addedStiffnessNpm": [
+        50000000,
+        50000000
+      ],
+      "maxPoleDifferenceHz": 0,
+      "maxResponseDifferenceDb": 0
+    },
+    "source_sha256": {
+      "sphere-lab-repo/location-spectrum/src/models.mjs": "2371578a26dba7cdb580940c8cd64b7fa361a3ec2ee2d52581a6fa8fba2445fe",
+      "sphere-lab-repo/location-spectrum/src/acquisition.mjs": "45af3ac9c2a447ef80328e5f9c2e3b3e4c6f9271c497b5c525618aa4a30f44cd",
+      "position-review/device-observatory/position/src/model.mjs": "4d464f1a21bbadc88363fe666720994641079eecf7215f3d80e3fe6b4c18e3d6",
+      "position-review/device-observatory/position/analysis/analyze.py": "f1e5193ef8c8034e463b3c686b73b0dd5cdd59bb8953ac33290f3eb98042ede0"
+    }
+  }
+}

@@ -9,7 +9,8 @@
       "status": "Established measurement method",
       "summary": "A specified physical channel, finite bandwidth and calibrated instrument.",
       "type": "physics",
-      "description": "A specified physical channel, finite bandwidth and calibrated instrument."
+      "description": "A specified physical channel, finite bandwidth and calibrated instrument.",
+      "shortLabel": "Measured spectrum"
     },
     {
       "id": "topic-material",
@@ -18,7 +19,8 @@
       "status": "Conditional inverse problem",
       "summary": "Elastic parameters inferred under geometry, boundary and noise assumptions.",
       "type": "physics",
-      "description": "Elastic parameters inferred under geometry, boundary and noise assumptions."
+      "description": "Elastic parameters inferred under geometry, boundary and noise assumptions.",
+      "shortLabel": "Material inference"
     },
     {
       "id": "topic-location",
@@ -27,7 +29,8 @@
       "status": "Proposed experiment",
       "summary": "A/B motion with environmental, support and receiver controls.",
       "type": "physics",
-      "description": "A/B motion with environmental, support and receiver controls."
+      "description": "A/B motion with environmental, support and receiver controls.",
+      "shortLabel": "Position comparison"
     },
     {
       "id": "topic-uncertainty",
@@ -36,7 +39,8 @@
       "status": "Required analysis",
       "summary": "Separate parameter ambiguity, statistical uncertainty and model error.",
       "type": "physics",
-      "description": "Separate parameter ambiguity, statistical uncertainty and model error."
+      "description": "Separate parameter ambiguity, statistical uncertainty and model error.",
+      "shortLabel": "Identifiability & uncertainty"
     },
     {
       "id": "topic-ai-review",
@@ -45,7 +49,8 @@
       "status": "Workflow principle",
       "summary": "Evaluate code and claimed results independently; retain failed tests.",
       "type": "ai",
-      "description": "Evaluate code and claimed results independently; retain failed tests."
+      "description": "Evaluate code and claimed results independently; retain failed tests.",
+      "shortLabel": "Independent verification"
     },
     {
       "id": "topic-surrogate",
@@ -54,7 +59,8 @@
       "status": "Future work",
       "summary": "Only useful after enough calibrated data and a costly validated forward solver.",
       "type": "ai",
-      "description": "Only useful after enough calibrated data and a costly validated forward solver."
+      "description": "Only useful after enough calibrated data and a costly validated forward solver.",
+      "shortLabel": "Optional learned model"
     },
     {
       "id": "topic-bashar",
@@ -63,7 +69,8 @@
       "status": "Unverified physical interpretation",
       "summary": "Needs a defined measurable quantity and discriminating prediction.",
       "type": "claim",
-      "description": "Needs a defined measurable quantity and discriminating prediction."
+      "description": "Needs a defined measurable quantity and discriminating prediction.",
+      "shortLabel": "Location-frequency claim"
     },
     {
       "id": "lit-openai-release",
@@ -204,7 +211,8 @@
       "sourceId": "bashar-game-chess-transcript",
       "url": "https://www.superphysics.org/research/other/alien/essassani/transmissions/2013/2013-06-01b/",
       "status": "attributed-claim",
-      "description": "Describes A/B measurements of an excited thin hollow copper sphere, followed by asserted destination-specific excitation and motion."
+      "description": "Describes A/B measurements of an excited thin hollow copper sphere, followed by asserted destination-specific excitation and motion.",
+      "shortLabel": "Bashar: sphere proposal"
     },
     {
       "id": "bashar-technology-transcript",
@@ -213,7 +221,8 @@
       "sourceId": "bashar-technology-transcript",
       "url": "https://lilys.ai/ko/notes/363403",
       "status": "fallback-transcript",
-      "description": "Discusses thin nickel-copper sphere and explicitly includes room, table and excitation effects; declines to prescribe one universal frequency band."
+      "description": "Discusses thin nickel-copper sphere and explicitly includes room, table and excitation effects; declines to prescribe one universal frequency band.",
+      "shortLabel": "Follow-up transcript"
     },
     {
       "id": "metrology-ldv",
@@ -222,7 +231,8 @@
       "sourceId": "metrology-ldv",
       "url": "https://www.polytec.com/en/vibrometry/know-how/laser-doppler-vibrometry",
       "status": "Method source; scope limited",
-      "description": "defines a calibrated optical velocity channel"
+      "description": "defines a calibrated optical velocity channel",
+      "shortLabel": "Laser vibrometry"
     },
     {
       "id": "metrology-mobility",
@@ -231,7 +241,8 @@
       "sourceId": "metrology-mobility",
       "url": "https://www.bksv.com/doc/br0458.pdf",
       "status": "Method source; scope limited",
-      "description": "method for force-referenced response measurement"
+      "description": "method for force-referenced response measurement",
+      "shortLabel": "Force-referenced response"
     },
     {
       "id": "metrology-emar",
@@ -240,7 +251,8 @@
       "sourceId": "metrology-emar",
       "url": "https://www.nist.gov/publications/contactless-mode-selective-resonance-ultrasound-spectroscopy-electromagnetic-acoustic",
       "status": "Method source; scope limited",
-      "description": "established noncontact elastic-mode metrology for conductive specimens"
+      "description": "established noncontact elastic-mode metrology for conductive specimens",
+      "shortLabel": "Contactless ultrasound"
     },
     {
       "id": "history-tesla-resonance",
@@ -249,7 +261,8 @@
       "sourceId": "history-tesla-resonance",
       "url": "https://www.gutenberg.org/files/13476/old/13476-h/13476-h.htm",
       "status": "Historical method; not sphere evidence",
-      "description": "Electrical resonance is investigated through circuit design, tuning, loading and losses."
+      "description": "Electrical resonance is investigated through circuit design, tuning, loading and losses.",
+      "shortLabel": "Tesla: tuning and losses"
     },
     {
       "id": "history-newton-method",
@@ -258,7 +271,8 @@
       "sourceId": "history-newton-method",
       "url": "https://www.newtonproject.ox.ac.uk/view/texts/normalized/NATP00051",
       "status": "Historical method; modern application",
-      "description": "Newton describes analysis from observations toward causes and synthesis back to predicted phenomena."
+      "description": "Newton describes analysis from observations toward causes and synthesis back to predicted phenomena.",
+      "shortLabel": "Newton: inverse reasoning"
     },
     {
       "id": "physics-copper-reference",
@@ -267,7 +281,8 @@
       "sourceId": "physics-copper-reference",
       "url": "https://srd.nist.gov/jpcrdreprint/1.3253150.pdf",
       "status": "Reference or reported method; see reading scope",
-      "description": "Reference compilation for copper elastic properties; reviewer inspected Tables 10 and 12 for illustrative polycrystal values and the local temperature coefficient used by the model."
+      "description": "Reference compilation for copper elastic properties; reviewer inspected Tables 10 and 12 for illustrative polycrystal values and the local temperature coefficient used by the model.",
+      "shortLabel": "Copper elastic constants"
     },
     {
       "id": "physics-lamb-radial",
@@ -276,7 +291,8 @@
       "sourceId": "physics-lamb-radial",
       "url": "https://arxiv.org/html/1506.09212v1",
       "status": "Reference or reported method; see reading scope",
-      "description": "Section II.1 gives the radial displacement of an isotropic sphere. The project derives the free-surface traction equation from this displacement and linear elastic stress."
+      "description": "Section II.1 gives the radial displacement of an isotropic sphere. The project derives the free-surface traction equation from this displacement and linear elastic stress.",
+      "shortLabel": "Solid sphere breathing"
     },
     {
       "id": "physics-shell-imperfections",
@@ -285,7 +301,8 @@
       "sourceId": "physics-shell-imperfections",
       "url": "https://www.osti.gov/servlets/purl/977882",
       "status": "Reference or reported method; see reading scope",
-      "description": "LANL manuscript compares shell theory, finite elements and measurements, including the splitting of degenerate modes by geometric imperfections. It identifies midsurface radius in the shell-frequency formula."
+      "description": "LANL manuscript compares shell theory, finite elements and measurements, including the splitting of degenerate modes by geometric imperfections. It identifies midsurface radius in the shell-frequency formula.",
+      "shortLabel": "Shells and imperfections"
     },
     {
       "id": "physics-ruscal",
@@ -294,7 +311,8 @@
       "sourceId": "physics-ruscal",
       "url": "https://www.ornl.gov/publication/ruscal-software-analysis-resonant-ultrasound-spectroscopy-measurements",
       "status": "Reference or reported method; see reading scope",
-      "description": "Provides Rayleigh–Ritz eigenvalue calculations and fitting tools across material symmetries and several specimen geometries. Useful extension for multi-mode inverse fitting and orientation effects."
+      "description": "Provides Rayleigh–Ritz eigenvalue calculations and fitting tools across material symmetries and several specimen geometries. Useful extension for multi-mode inverse fitting and orientation effects.",
+      "shortLabel": "RUScal inverse fitting"
     },
     {
       "id": "model-breathing",
@@ -303,7 +321,8 @@
       "sourceId": "physics-lamb-radial",
       "status": "Executed model checks; not a new experimental discovery",
       "description": "Solid radial roots and thin-shell breathing checked against independent numerical formulations; physical fit unmeasured.",
-      "url": "./research/independent-review.md"
+      "url": "./research/independent-review.md",
+      "shortLabel": "Checked breathing models"
     },
     {
       "id": "model-coupling",
@@ -312,7 +331,559 @@
       "sourceId": "lit-rus-toolbox",
       "status": "Executed model checks; not a new experimental discovery",
       "description": "Passive two-mode and empty-table responses checked independently; fixture parameters are illustrative.",
-      "url": "./research/independent-review.md"
+      "url": "./research/independent-review.md",
+      "shortLabel": "Checked support model"
+    },
+    {
+      "id": "hist2-topic-energy",
+      "label": "Input, storage and loss",
+      "type": "physics",
+      "status": "Research topic",
+      "description": "An energy budget is required for any amplification claim.",
+      "shortLabel": "Input, storage and loss"
+    },
+    {
+      "id": "hist2-topic-identifiability",
+      "label": "Signature versus unique state",
+      "type": "physics",
+      "status": "Research topic",
+      "description": "Finite-band comparisons need explicit tolerances and alternative models.",
+      "shortLabel": "Signature versus unique state"
+    },
+    {
+      "id": "hist2-topic-modes",
+      "label": "Modes, shape and visibility",
+      "type": "physics",
+      "status": "Research topic",
+      "description": "Spatial excitation/readout and imperfections control which modes are seen.",
+      "shortLabel": "Modes, shape and visibility"
+    },
+    {
+      "id": "hist2-topic-spatial",
+      "label": "Spatial response and propagation",
+      "type": "physics",
+      "status": "Research topic",
+      "description": "Position is a coordinate in a specified field and apparatus, not automatically a frequency.",
+      "shortLabel": "Spatial response and propagation"
+    },
+    {
+      "id": "hist2-topic-context",
+      "label": "Historical and philosophical context",
+      "type": "claim",
+      "status": "Research topic",
+      "description": "Context and unresolved attribution do not validate a physical mechanism.",
+      "shortLabel": "Historical and philosophical context"
+    },
+    {
+      "id": "hist2-tesla-engine",
+      "label": "US514169A: Reciprocating engine",
+      "shortLabel": "US514169A",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-tesla-engine",
+      "url": "https://patents.google.com/patent/US514169A/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Separate drive energy, natural period and observed response.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-tesla-control",
+      "label": "US517900A: Steam-engine",
+      "shortLabel": "US517900A",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-tesla-control",
+      "url": "https://patents.google.com/patent/US517900A/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Test source stability and thermal drift separately from specimen frequencies.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-tesla-generator",
+      "label": "US511916A: Electric generator",
+      "shortLabel": "US511916A",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-tesla-generator",
+      "url": "https://patents.google.com/patent/US511916A/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Include sensor/actuator back-action and the coupled system.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-tesla-radiant",
+      "label": "US685957A: Apparatus for the utilization of radiant energy",
+      "shortLabel": "US685957A",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-tesla-radiant",
+      "url": "https://patents.google.com/patent/US685957A/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Audit input, storage and dissipation before interpreting amplification.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-rus-instrument",
+      "label": "US4976148A: Resonant ultrasound spectrometer",
+      "shortLabel": "US4976148A",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-rus-instrument",
+      "url": "https://patents.google.com/patent/US4976148A/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Add empty-fixture records and missing/spurious-mode controls.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-rus-signature",
+      "label": "US5062296A: Resonant ultrasound spectroscopy",
+      "shortLabel": "US5062296A",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-rus-signature",
+      "url": "https://patents.google.com/patent/US5062296A/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Treat a signature as a task-specific feature, not a complete physical state.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-rus-sphericity",
+      "label": "US5355731A: Sphericity determination using RUS",
+      "shortLabel": "US5355731A",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-rus-sphericity",
+      "url": "https://patents.google.com/patent/US5355731A/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Test rotation, geometry and multiplet splitting before assigning a location effect.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-rus-bearing",
+      "label": "US5257544A: Resonant frequency method for bearing ball inspection",
+      "shortLabel": "US5257544A",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-rus-bearing",
+      "url": "https://patents.google.com/patent/US5257544A/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Compare independent channels and measure linewidth as well as frequency.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-rus-spatial",
+      "label": "US10444202B2: Nondestructive inspection using continuous ultrasonic wave generation",
+      "shortLabel": "US10444202B2",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-rus-spatial",
+      "url": "https://patents.google.com/patent/US10444202B2/en",
+      "status": "Patent specification; technical proposal",
+      "description": "Map the table spatially rather than assigning one natural frequency to each point.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-rus-cw2026",
+      "label": "US20260036553A1: RUS using continuous-wave lasers",
+      "shortLabel": "US20260036553A1",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-rus-cw2026",
+      "url": "https://patents.google.com/patent/US20260036553A1/en",
+      "status": "Published application; not treated as a grant or replicated benchmark",
+      "description": "Vary source and readout location to test missing-mode observability.",
+      "group": "patents"
+    },
+    {
+      "id": "hist2-newton-waves",
+      "label": "Principia, BookII SectionVIII, PropositionXLVIII",
+      "shortLabel": "Principia, BookII SectionVIII, PropositionXLVIII",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-newton-waves",
+      "url": "https://en.wikisource.org/wiki/The_Mathematical_Principles_of_Natural_Philosophy_(1729)/Book_2/Section_8",
+      "status": "Historical derivation under stated approximations",
+      "description": "Keep propagation in the room distinct from an elastic mode of the sphere.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-newton-notes",
+      "label": "Experiments, Portsmouth Add.MS.3973",
+      "shortLabel": "Experiments, Portsmouth Add.MS.3973",
+      "kind": "source",
+      "type": "claim",
+      "sourceId": "hist2-newton-notes",
+      "url": "https://newton.dlib.indiana.edu/text/ALCH00109/normalized",
+      "status": "Historical laboratory record",
+      "description": "Borrow dated logs, measured quantities and negative-result reporting.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-chladni",
+      "label": "Entdeckungen über die Theorie des Klanges",
+      "shortLabel": "Entdeckungen über die Theorie des Klanges",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-chladni",
+      "url": "https://archive.org/details/entdeckungenuber00chla",
+      "status": "Selected historical observations",
+      "description": "Distinguish a mode shape from a scalar frequency and test multiple sensor positions.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-faraday",
+      "label": "On a peculiar class of acoustical figures",
+      "shortLabel": "On a peculiar class of acoustical figures",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-faraday",
+      "url": "https://jimclifford.ca/philosophical-transactions-ocr-1665-1869/articles/jstor-107936/",
+      "status": "Historical experimental report; transcription checked against archival identity",
+      "description": "Use airflow, particle-size and optical motion controls before interpreting visible patterns.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-rayleigh",
+      "label": "The Theory of Sound, volumeI",
+      "shortLabel": "The Theory of Sound, volumeI",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-rayleigh",
+      "url": "https://archive.org/details/theorysound06raylgoog",
+      "status": "Selected derivation; modern reconstruction required",
+      "description": "Audit the complete mass/stiffness system and its boundary conditions.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-lamb-sphere",
+      "label": "On the Vibrations of an Elastic Sphere",
+      "shortLabel": "On the Vibrations of an Elastic Sphere",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-lamb-sphere",
+      "url": "https://doi.org/10.1112/plms/s1-13.1.189",
+      "status": "Historical primary paper; selected scan only",
+      "description": "Breathing is one selected family, not the sphere’s complete spectrum.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-lamb-shell",
+      "label": "On the Vibrations of a Spherical Shell",
+      "shortLabel": "On the Vibrations of a Spherical Shell",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-lamb-shell",
+      "url": "https://doi.org/10.1112/plms/s1-14.1.50",
+      "status": "Reading lead; full paper not retrieved",
+      "description": "Relevant next reference for shell mode families omitted by the membrane-breathing approximation.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-feynman",
+      "label": "The Feynman Lectures on Physics I, chapter23: Resonance",
+      "shortLabel": "The Feynman Lectures on Physics I, chapter23",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-feynman",
+      "url": "https://www.feynmanlectures.caltech.edu/I_23.html",
+      "status": "Established linear model explanation",
+      "description": "Compare complex response, poles and linewidth; stress-test assumptions behind a peak.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-vivekananda",
+      "label": "Letter to E.T.Sturdy,13February1896",
+      "shortLabel": "Letter to E.T.Sturdy,13February1896",
+      "kind": "source",
+      "type": "claim",
+      "sourceId": "hist2-vivekananda",
+      "url": "https://www.ramakrishnavivekananda.info/vivekananda/volume_5/epistles_first_series/057_blessed_and_beloved.htm",
+      "status": "Documented philosophical correspondence",
+      "description": "Retain philosophical inspiration in a provenance layer.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-friedmann",
+      "label": "Alexander Friedmann papers at the Instituut-Lorentz",
+      "shortLabel": "Alexander Friedmann papers at the Instituut-Lorentz",
+      "kind": "source",
+      "type": "claim",
+      "sourceId": "hist2-friedmann",
+      "url": "https://www.lorentz.leidenuniv.nl/history/Ehrenfest_archive/full_size_scans/Friedmann_archive/",
+      "status": "Identity candidate only; no subject-relevance established",
+      "description": "Preserve the unresolved name Freidman instead of merging different people.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-helmholtz",
+      "label": "On the Sensations of Tone: selected introduction and chapterI",
+      "shortLabel": "On the Sensations of Tone",
+      "kind": "source",
+      "type": "physics",
+      "sourceId": "hist2-helmholtz",
+      "url": "https://germanhistory-intersections.org/en/knowledge-and-education/ghis:document-24",
+      "status": "Historical acoustics and perception; selected excerpt",
+      "description": "A microphone, vibrometer and human ear measure different channels.",
+      "group": "history"
+    },
+    {
+      "id": "hist2-rex-compilation",
+      "label": "Tesla mechanical oscillator and telegeodynamics compilation",
+      "shortLabel": "Tesla mechanical oscillator and telegeodynamics compilation",
+      "kind": "source",
+      "type": "claim",
+      "sourceId": "hist2-rex-compilation",
+      "url": "https://www.rexresearch.com/teslamos/tmosc.htm",
+      "status": "Attributed historical claims; uneven provenance",
+      "description": "Trace each assertion back to the named patent or original newspaper.",
+      "group": "history"
+    },
+    {
+      "id": "topic2-sampling",
+      "label": "Sampling & finite records",
+      "kind": "topic",
+      "status": "Measurement constraint",
+      "type": "physics",
+      "description": "Bandwidth, time window and noise constrain the recorded spectrum.",
+      "shortLabel": "Sampling & finite records"
+    },
+    {
+      "id": "topic2-observability",
+      "label": "Mode visibility",
+      "kind": "topic",
+      "status": "Conditional inverse problem",
+      "type": "physics",
+      "description": "Input and sensor placement may suppress observable modal residues.",
+      "shortLabel": "Mode visibility"
+    },
+    {
+      "id": "topic2-geometry",
+      "label": "Specimen & fixture geometry",
+      "kind": "topic",
+      "status": "Calibration requirement",
+      "type": "physics",
+      "description": "Measured geometry, material direction and support loading enter elastic predictions.",
+      "shortLabel": "Specimen & fixture geometry"
+    },
+    {
+      "id": "lit2-irregular-rus",
+      "label": "Resonant Ultrasound Spectroscopy for Irregularly Shaped Samples and Its Application to Uranium Ditelluride",
+      "shortLabel": "Geometry-aware RUS",
+      "kind": "source",
+      "sourceId": "lit2-irregular-rus",
+      "type": "physics",
+      "status": "Peer-reviewed; reported experimental validation",
+      "description": "Uses measured geometry and surface-mesh integration to infer elastic tensors of irregular specimens, with FEM and reference-shape comparisons.",
+      "url": "https://doi.org/10.1103/PhysRevLett.132.066003"
+    },
+    {
+      "id": "lit2-sensor-selection",
+      "label": "Optimal measurement point selection for resonant ultrasound spectroscopy of complex-shaped specimens using principal component analysis",
+      "shortLabel": "Sensor point selection",
+      "kind": "source",
+      "sourceId": "lit2-sensor-selection",
+      "type": "physics",
+      "status": "Peer-reviewed; abstract-level review",
+      "description": "Uses principal-component analysis to select a small set of measurement points that retains useful modal information.",
+      "url": "https://doi.org/10.1016/j.ndteint.2023.103000"
+    },
+    {
+      "id": "lit2-snr-shaping",
+      "label": "SNR equalization in non-contact resonant ultrasound spectroscopy measurements",
+      "shortLabel": "SNR-shaped excitation",
+      "kind": "source",
+      "sourceId": "lit2-snr-shaping",
+      "type": "physics",
+      "status": "Peer-reviewed; abstract-level review",
+      "description": "Reports that shaped excitation accounting for both spectral losses and noise improves useful-band signal-to-noise in selected samples.",
+      "url": "https://doi.org/10.1016/j.ndteint.2025.103386"
+    },
+    {
+      "id": "lit2-ldv-primer",
+      "label": "Laser Doppler vibrometry",
+      "shortLabel": "LDV primer2026",
+      "kind": "source",
+      "sourceId": "lit2-ldv-primer",
+      "type": "physics",
+      "status": "Methods review; abstract-level review",
+      "description": "Reviews interferometric vibration measurement across different instruments, bandwidths, amplitudes and target types.",
+      "url": "https://doi.org/10.1038/s43586-026-00487-2"
+    },
+    {
+      "id": "lit2-hybrid-rus",
+      "label": "An improved inversion process for measuring the elastic parameters of TI samples via resonant ultrasound spectroscopy",
+      "shortLabel": "Hybrid RUS inversion",
+      "kind": "source",
+      "sourceId": "lit2-hybrid-rus",
+      "type": "physics",
+      "status": "Peer-reviewed; selected-section review",
+      "description": "Combines particle-swarm and L-BFGS optimization with a spectrum-based misfit to reduce dependence on mode matching and initial values.",
+      "url": "https://doi.org/10.1093/jge/gxaf122"
+    },
+    {
+      "id": "lit2-free-vibration-uq",
+      "label": "Uncertainty Laws of Free-Vibration Modal Identification",
+      "shortLabel": "Ring-down uncertainty",
+      "kind": "source",
+      "sourceId": "lit2-free-vibration-uq",
+      "type": "physics",
+      "status": "Conference paper; conditional asymptotic formulas",
+      "description": "Relates modal-parameter uncertainty to signal-to-noise, damping, observation length and initial-condition knowledge.",
+      "url": "https://www.dpi-proceedings.com/index.php/shm2025/article/download/37321/35895"
+    },
+    {
+      "id": "lit2-active-uq",
+      "label": "Active operator learning with predictive uncertainty quantification for partial differential equations",
+      "shortLabel": "Active operator UQ",
+      "kind": "source",
+      "sourceId": "lit2-active-uq",
+      "type": "ai",
+      "status": "Preprint; reported computational benchmarks",
+      "description": "Uses learned predictive uncertainty to guide operator-model data acquisition; reports problem-dependent calibration and runtime tradeoffs.",
+      "url": "https://arxiv.org/abs/2503.03178v4"
+    },
+    {
+      "id": "lit2-luno",
+      "label": "Linearization Turns Neural Operators into Function-Valued Gaussian Processes",
+      "shortLabel": "LUNO uncertainty",
+      "kind": "source",
+      "sourceId": "lit2-luno",
+      "type": "ai",
+      "status": "Peer-reviewed conference paper; selected-section review",
+      "description": "Propagates Gaussian weight uncertainty through a linearized trained operator to obtain predictive function-space covariance.",
+      "url": "https://proceedings.mlr.press/v267/magnani25a.html"
+    },
+    {
+      "id": "lit2-crop",
+      "label": "Discretization-invariance? On the Discretization Mismatch Errors in Neural Operators",
+      "shortLabel": "Grid mismatch",
+      "kind": "source",
+      "sourceId": "lit2-crop",
+      "type": "ai",
+      "status": "Peer-reviewed conference paper; selected-section review",
+      "description": "Shows that accepting multiple grid resolutions does not ensure consistent prediction; proposes a band-limited cross-resolution pipeline.",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/313829757739365201b5adb3a1cbd9bd-Abstract-Conference.html"
+    },
+    {
+      "id": "lit2-pile",
+      "label": "Uncertainty-Aware Diagnostics for Physics-Informed Machine Learning",
+      "shortLabel": "Physics-informed diagnostics",
+      "kind": "source",
+      "sourceId": "lit2-pile",
+      "type": "ai",
+      "status": "Peer-reviewed conference paper; selected-section review",
+      "description": "Proposes an evidence-based diagnostic for selecting physics-informed Gaussian-process models when data and physics losses conflict.",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d5a84b5c2d49bccdabed32098085fe65-Abstract-Conference.html"
+    },
+    {
+      "id": "lit2-ood-uq",
+      "label": "Using Uncertainty Quantification to Characterize and Improve Out-of-Domain Learning for PDEs",
+      "shortLabel": "Out-of-domain limits",
+      "kind": "source",
+      "sourceId": "lit2-ood-uq",
+      "type": "ai",
+      "status": "Peer-reviewed conference paper; abstract-level review",
+      "description": "Reports failures of several uncertainty estimators outside training distributions and studies diverse predictions with conservation constraints.",
+      "url": "https://proceedings.mlr.press/v235/mouli24a.html"
+    },
+    {
+      "id": "lit2-gum-covariance",
+      "label": "Evaluation of measurement data: Guide to the expression of uncertainty in measurement",
+      "shortLabel": "Covariance budget",
+      "kind": "source",
+      "sourceId": "lit2-gum-covariance",
+      "type": "physics",
+      "status": "Metrology guidance; selected clauses",
+      "description": "Shared instruments and environmental corrections can correlate input quantities; covariance contributes to combined uncertainty.",
+      "url": "https://www.bipm.org/documents/20126/2071204/JCGM_100_2008_E.pdf"
+    },
+    {
+      "id": "tool2-pyfrf",
+      "label": "pyFRF 1.5.0: paired-channel transfer estimation",
+      "shortLabel": "pyFRF 1.5.0: paired-channel transfer estimation",
+      "type": "software",
+      "group": "software",
+      "sourceId": "tool2-pyfrf",
+      "url": "https://github.com/ladisk/pyFRF",
+      "status": "Executed on synthetic fixtures",
+      "description": "Estimates transfer functions and coherence from measured input/output records. Known synthetic transfer and independent SciPy CSD agree in the executed benchmark."
+    },
+    {
+      "id": "tool2-skfem",
+      "label": "scikit-fem 12.0.2: finite-element weak-form assembly",
+      "shortLabel": "scikit-fem 12.0.2: finite-element weak-form assembly",
+      "type": "software",
+      "group": "software",
+      "sourceId": "tool2-skfem",
+      "url": "https://github.com/kinnala/scikit-fem",
+      "status": "Executed radial elastic model",
+      "description": "Assembles weak-form matrices. The lab executes a radial elastic sphere eigenproblem and checks mesh convergence against spherical-Bessel roots."
+    },
+    {
+      "id": "tool2-pyuff",
+      "label": "pyuff 2.5.8: UFF measurement-data interchange",
+      "shortLabel": "pyuff 2.5.8: UFF measurement-data interchange",
+      "type": "software",
+      "group": "software",
+      "sourceId": "tool2-pyuff",
+      "url": "https://github.com/ladisk/pyuff",
+      "status": "Executed with documented adapter workaround",
+      "description": "Reads/writes vibration-data formats. ASCII and binary UFF58 synthetic complex-transfer roundtrips preserve the selected uniform grid and units."
+    },
+    {
+      "id": "tool2-scipy-spectra",
+      "label": "SciPy cross spectra and coherence",
+      "shortLabel": "SciPy cross spectra and coherence",
+      "type": "software",
+      "group": "software",
+      "sourceId": "tool2-scipy-spectra",
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.csd.html",
+      "status": "Executed numerical reference",
+      "description": "Welch cross-spectral estimates and magnitude-squared coherence support paired-channel analysis with explicit averaging and units."
+    },
+    {
+      "id": "tool2-pyema",
+      "label": "pyEMA migration to sdypy-ema 0.31",
+      "shortLabel": "pyEMA migration to sdypy-ema 0.31",
+      "type": "software",
+      "group": "software",
+      "sourceId": "tool2-pyema",
+      "url": "https://github.com/ladisk/pyEMA",
+      "status": "Source inspected and import checked; no accepted fit benchmark",
+      "description": "Modal fitting uses frequency-response data, pole selection and residue reconstruction; the current pyEMA package redirects to sdypy-ema."
+    },
+    {
+      "id": "tool2-gmsh",
+      "label": "Gmsh 4.15.2 reference manual",
+      "shortLabel": "Gmsh 4.15.2 reference manual",
+      "type": "software",
+      "group": "software",
+      "sourceId": "tool2-gmsh",
+      "url": "https://gmsh.info/doc/texinfo/",
+      "status": "Selected documentation inspected; not executed",
+      "description": "Provides 3D mesh generation, physical groups, CAD and mesh-size control."
+    },
+    {
+      "id": "tool2-dolfinx",
+      "label": "DOLFINx elastic-model expansion route",
+      "shortLabel": "DOLFINx elastic-model expansion route",
+      "type": "software",
+      "group": "software",
+      "sourceId": "tool2-dolfinx",
+      "url": "https://docs.fenicsproject.org/dolfinx/main/python/",
+      "status": "Documentation entry points inspected; not executed",
+      "description": "Provides a finite-element problem-solving framework with mesh and solver interfaces."
+    },
+    {
+      "id": "lit2-gum-amendment2026",
+      "label": "2026 nonlinear uncertainty amendment",
+      "shortLabel": "Nonlinear uncertainty (2026)",
+      "type": "measurement",
+      "group": "measurement",
+      "sourceId": "lit2-gum-amendment2026",
+      "url": "https://doi.org/10.59161/PPDI3267",
+      "status": "Official guidance; selected amendment read",
+      "description": "Significant nonlinearity requires higher-order contributions or suitable distribution propagation when evaluating the estimate and its uncertainty."
     }
   ],
   "edges": [
@@ -587,6 +1158,406 @@
       "type": "method",
       "sourceId": "project-design",
       "label": "Defines a simulated control, not physical confirmation"
+    },
+    {
+      "source": "hist2-tesla-engine",
+      "target": "topic-measurement",
+      "type": "analogy",
+      "relation": "analogy",
+      "label": "Separate drive energy, natural period and observed response.",
+      "sourceId": "hist2-tesla-engine"
+    },
+    {
+      "source": "hist2-tesla-control",
+      "target": "topic-uncertainty",
+      "type": "analogy",
+      "relation": "analogy",
+      "label": "Test source stability and thermal drift separately from specimen frequencies.",
+      "sourceId": "hist2-tesla-control"
+    },
+    {
+      "source": "hist2-tesla-generator",
+      "target": "topic-material",
+      "type": "analogy",
+      "relation": "analogy",
+      "label": "Include sensor/actuator back-action and the coupled system.",
+      "sourceId": "hist2-tesla-generator"
+    },
+    {
+      "source": "hist2-tesla-radiant",
+      "target": "hist2-topic-energy",
+      "type": "analogy",
+      "relation": "analogy",
+      "label": "Audit input, storage and dissipation before interpreting amplification.",
+      "sourceId": "hist2-tesla-radiant"
+    },
+    {
+      "source": "hist2-rus-instrument",
+      "target": "hist2-topic-identifiability",
+      "type": "method",
+      "relation": "method",
+      "label": "Add empty-fixture records and missing/spurious-mode controls.",
+      "sourceId": "hist2-rus-instrument"
+    },
+    {
+      "source": "hist2-rus-signature",
+      "target": "hist2-topic-identifiability",
+      "type": "method",
+      "relation": "method",
+      "label": "Treat a signature as a task-specific feature, not a complete physical state.",
+      "sourceId": "hist2-rus-signature"
+    },
+    {
+      "source": "hist2-rus-sphericity",
+      "target": "hist2-topic-modes",
+      "type": "method",
+      "relation": "method",
+      "label": "Test rotation, geometry and multiplet splitting before assigning a location effect.",
+      "sourceId": "hist2-rus-sphericity"
+    },
+    {
+      "source": "hist2-rus-bearing",
+      "target": "topic-measurement",
+      "type": "method",
+      "relation": "method",
+      "label": "Compare independent channels and measure linewidth as well as frequency.",
+      "sourceId": "hist2-rus-bearing"
+    },
+    {
+      "source": "hist2-rus-spatial",
+      "target": "hist2-topic-spatial",
+      "type": "method",
+      "relation": "method",
+      "label": "Map the table spatially rather than assigning one natural frequency to each point.",
+      "sourceId": "hist2-rus-spatial"
+    },
+    {
+      "source": "hist2-rus-cw2026",
+      "target": "hist2-topic-modes",
+      "type": "method",
+      "relation": "method",
+      "label": "Vary source and readout location to test missing-mode observability.",
+      "sourceId": "hist2-rus-cw2026"
+    },
+    {
+      "source": "hist2-newton-waves",
+      "target": "hist2-topic-spatial",
+      "type": "method",
+      "relation": "method",
+      "label": "Keep propagation in the room distinct from an elastic mode of the sphere.",
+      "sourceId": "hist2-newton-waves"
+    },
+    {
+      "source": "hist2-newton-notes",
+      "target": "hist2-topic-context",
+      "type": "analogy",
+      "relation": "analogy",
+      "label": "Borrow dated logs, measured quantities and negative-result reporting.",
+      "sourceId": "hist2-newton-notes"
+    },
+    {
+      "source": "hist2-chladni",
+      "target": "hist2-topic-modes",
+      "type": "method",
+      "relation": "method",
+      "label": "Distinguish a mode shape from a scalar frequency and test multiple sensor positions.",
+      "sourceId": "hist2-chladni"
+    },
+    {
+      "source": "hist2-faraday",
+      "target": "hist2-topic-spatial",
+      "type": "method",
+      "relation": "method",
+      "label": "Use airflow, particle-size and optical motion controls before interpreting visible patterns.",
+      "sourceId": "hist2-faraday"
+    },
+    {
+      "source": "hist2-rayleigh",
+      "target": "hist2-topic-modes",
+      "type": "method",
+      "relation": "method",
+      "label": "Audit the complete mass/stiffness system and its boundary conditions.",
+      "sourceId": "hist2-rayleigh"
+    },
+    {
+      "source": "hist2-lamb-sphere",
+      "target": "hist2-topic-modes",
+      "type": "method",
+      "relation": "method",
+      "label": "Breathing is one selected family, not the sphere’s complete spectrum.",
+      "sourceId": "hist2-lamb-sphere"
+    },
+    {
+      "source": "hist2-lamb-shell",
+      "target": "hist2-topic-modes",
+      "type": "lead",
+      "relation": "lead",
+      "label": "Relevant next reference for shell mode families omitted by the membrane-breathing approximation.",
+      "sourceId": "hist2-lamb-shell"
+    },
+    {
+      "source": "hist2-feynman",
+      "target": "topic-measurement",
+      "type": "method",
+      "relation": "method",
+      "label": "Compare complex response, poles and linewidth; stress-test assumptions behind a peak.",
+      "sourceId": "hist2-feynman"
+    },
+    {
+      "source": "hist2-vivekananda",
+      "target": "hist2-topic-context",
+      "type": "analogy",
+      "relation": "analogy",
+      "label": "Retain philosophical inspiration in a provenance layer.",
+      "sourceId": "hist2-vivekananda"
+    },
+    {
+      "source": "hist2-friedmann",
+      "target": "hist2-topic-context",
+      "type": "analogy",
+      "relation": "analogy",
+      "label": "Preserve the unresolved name Freidman instead of merging different people.",
+      "sourceId": "hist2-friedmann"
+    },
+    {
+      "source": "hist2-helmholtz",
+      "target": "topic-measurement",
+      "type": "method",
+      "relation": "method",
+      "label": "A microphone, vibrometer and human ear measure different channels.",
+      "sourceId": "hist2-helmholtz"
+    },
+    {
+      "source": "hist2-rex-compilation",
+      "target": "hist2-topic-context",
+      "type": "analogy",
+      "relation": "analogy",
+      "label": "Trace each assertion back to the named patent or original newspaper.",
+      "sourceId": "hist2-rex-compilation"
+    },
+    {
+      "source": "hist2-tesla-control",
+      "target": "hist2-tesla-engine",
+      "type": "cites",
+      "relation": "cites",
+      "label": "References earlier oscillator application483563",
+      "sourceId": "hist2-tesla-control"
+    },
+    {
+      "source": "hist2-tesla-generator",
+      "target": "hist2-tesla-engine",
+      "type": "cites",
+      "relation": "cites",
+      "label": "References same-day oscillator application483563",
+      "sourceId": "hist2-tesla-generator"
+    },
+    {
+      "source": "hist2-rus-cw2026",
+      "target": "hist2-rus-sphericity",
+      "type": "cites",
+      "relation": "cites",
+      "label": "Explicitly citesUS5355731",
+      "sourceId": "hist2-rus-cw2026"
+    },
+    {
+      "source": "hist2-rus-cw2026",
+      "target": "hist2-rus-signature",
+      "type": "cites",
+      "relation": "cites",
+      "label": "Explicitly citesUS5062296",
+      "sourceId": "hist2-rus-cw2026"
+    },
+    {
+      "source": "hist2-rus-sphericity",
+      "target": "hist2-rus-signature",
+      "type": "method",
+      "relation": "method",
+      "label": "Related inspection methods; thematic link, not an asserted citation",
+      "sourceId": "project-design"
+    },
+    {
+      "source": "lit2-irregular-rus",
+      "target": "topic2-geometry",
+      "type": "method",
+      "label": "Measured geometry enters the forward model",
+      "relation": "method: Measured geometry enters the forward model",
+      "sourceId": "lit2-irregular-rus"
+    },
+    {
+      "source": "lit2-irregular-rus",
+      "target": "topic-material",
+      "type": "method",
+      "label": "Shape-aware elastic inversion",
+      "relation": "method: Shape-aware elastic inversion",
+      "sourceId": "lit2-irregular-rus"
+    },
+    {
+      "source": "lit2-sensor-selection",
+      "target": "topic2-observability",
+      "type": "method",
+      "label": "Choose multiple informative readout points",
+      "relation": "method: Choose multiple informative readout points",
+      "sourceId": "lit2-sensor-selection"
+    },
+    {
+      "source": "lit2-snr-shaping",
+      "target": "topic-measurement",
+      "type": "method",
+      "label": "Match excitation to calibrated noise and bandwidth",
+      "relation": "method: Match excitation to calibrated noise and bandwidth",
+      "sourceId": "lit2-snr-shaping"
+    },
+    {
+      "source": "lit2-ldv-primer",
+      "target": "topic-measurement",
+      "type": "method",
+      "label": "Specify an optical measurement channel",
+      "relation": "method: Specify an optical measurement channel",
+      "sourceId": "lit2-ldv-primer"
+    },
+    {
+      "source": "lit2-hybrid-rus",
+      "target": "topic-material",
+      "type": "method",
+      "label": "Compare inversion objectives and initial guesses",
+      "relation": "method: Compare inversion objectives and initial guesses",
+      "sourceId": "lit2-hybrid-rus"
+    },
+    {
+      "source": "lit2-free-vibration-uq",
+      "target": "topic-uncertainty",
+      "type": "supports",
+      "label": "Duration, damping and SNR affect inference",
+      "relation": "supports: Duration, damping and SNR affect inference",
+      "sourceId": "lit2-free-vibration-uq"
+    },
+    {
+      "source": "lit2-free-vibration-uq",
+      "target": "topic2-observability",
+      "type": "supports",
+      "label": "Initial excitation affects modal visibility",
+      "relation": "supports: Initial excitation affects modal visibility",
+      "sourceId": "lit2-free-vibration-uq"
+    },
+    {
+      "source": "lit2-active-uq",
+      "target": "topic-surrogate",
+      "type": "method",
+      "label": "Calibrate uncertainty before adaptive sampling",
+      "relation": "method: Calibrate uncertainty before adaptive sampling",
+      "sourceId": "lit2-active-uq"
+    },
+    {
+      "source": "lit2-luno",
+      "target": "topic-surrogate",
+      "type": "method",
+      "label": "Approximate predictive covariance",
+      "relation": "method: Approximate predictive covariance",
+      "sourceId": "lit2-luno"
+    },
+    {
+      "source": "lit2-crop",
+      "target": "topic2-sampling",
+      "type": "analogy",
+      "label": "Grid changes can introduce numerical error",
+      "relation": "analogy: Grid changes can introduce numerical error",
+      "sourceId": "lit2-crop"
+    },
+    {
+      "source": "lit2-crop",
+      "target": "topic-surrogate",
+      "type": "limits",
+      "label": "Resolution flexibility is not new measurement information",
+      "relation": "limits: Resolution flexibility is not new measurement information",
+      "sourceId": "lit2-crop"
+    },
+    {
+      "source": "lit2-pile",
+      "target": "topic-ai-review",
+      "type": "method",
+      "label": "Check physics/data fit conflict",
+      "relation": "method: Check physics/data fit conflict",
+      "sourceId": "lit2-pile"
+    },
+    {
+      "source": "lit2-ood-uq",
+      "target": "topic-surrogate",
+      "type": "limits",
+      "label": "Hold out changed operating conditions",
+      "relation": "limits: Hold out changed operating conditions",
+      "sourceId": "lit2-ood-uq"
+    },
+    {
+      "source": "lit2-gum-covariance",
+      "target": "topic-uncertainty",
+      "type": "method",
+      "label": "Retain correlated input uncertainties",
+      "relation": "method: Retain correlated input uncertainties",
+      "sourceId": "lit2-gum-covariance"
+    },
+    {
+      "source": "tool2-pyfrf",
+      "target": "topic-measurement",
+      "type": "tool",
+      "relation": "tool",
+      "label": "Separates forcing from response; exposes single-record coherence and duplicate-input identifiability traps.",
+      "sourceId": "tool2-pyfrf"
+    },
+    {
+      "source": "tool2-skfem",
+      "target": "topic-measurement",
+      "type": "tool",
+      "relation": "tool",
+      "label": "A reproducible path beyond a single closed-form oscillator, with an explicit restricted mode family.",
+      "sourceId": "tool2-skfem"
+    },
+    {
+      "source": "tool2-pyuff",
+      "target": "topic-measurement",
+      "type": "tool",
+      "relation": "tool",
+      "label": "Preserves channel units and raw complex responses in a format used by modal-analysis tools.",
+      "sourceId": "tool2-pyuff"
+    },
+    {
+      "source": "tool2-scipy-spectra",
+      "target": "topic-measurement",
+      "type": "tool",
+      "relation": "tool",
+      "label": "Independent library path for cross-checking the pyFRF adapter; also supplies sphere root and eigenvalue solvers.",
+      "sourceId": "tool2-scipy-spectra"
+    },
+    {
+      "source": "tool2-pyema",
+      "target": "topic-measurement",
+      "type": "tool",
+      "relation": "tool",
+      "label": "Candidate next step for fitted poles rather than peak-bin identification.",
+      "sourceId": "tool2-pyema"
+    },
+    {
+      "source": "tool2-gmsh",
+      "target": "topic-measurement",
+      "type": "tool",
+      "relation": "tool",
+      "label": "Candidate for a future measured sphere/seam/support geometry model.",
+      "sourceId": "tool2-gmsh"
+    },
+    {
+      "source": "tool2-dolfinx",
+      "target": "topic-measurement",
+      "type": "tool",
+      "relation": "tool",
+      "label": "Future general 3D elastic weak-form and boundary-condition implementation.",
+      "sourceId": "tool2-dolfinx"
+    },
+    {
+      "source": "lit2-gum-amendment2026",
+      "target": "topic-uncertainty",
+      "type": "qualifies",
+      "relation": "qualifies",
+      "label": "First-order propagation has a limited domain.",
+      "sourceId": "lit2-gum-amendment2026"
     }
   ],
   "legend": {
@@ -594,7 +1565,12 @@
     "method": "A method that may be adapted under its assumptions",
     "tool": "Documented analysis software",
     "analogy": "Conceptual or workflow transfer, not physical validation",
-    "unverified": "An unresolved claim to operationalize"
+    "unverified": "An unresolved claim to operationalize",
+    "lead": "Unread or unresolved source; not evidence for model equations",
+    "cites": "Explicit source citation, not endorsement",
+    "documents": "Records an attributed claim or historical proposal, not confirmation",
+    "inspires": "Motivates a controlled question without establishing its truth",
+    "qualifies": "Limits applicability or highlights missing assumptions"
   },
-  "scope": "Curated research connection map; not a complete citation graph or validation of a frequency-to-location law."
+  "scope": "Curated typed relationships among selected primary sources, patents, historical texts, methods and executed model checks. Not an exhaustive citation graph or validation of an absolute-location frequency."
 }

@@ -13,7 +13,7 @@ const hz = x => Number.isFinite(x) ? `${num(Math.abs(x) >= 1000 ? x / 1000 : x)}
 const safeURL = value => {try {const u = new URL(value, location.href); return ['https:','http:'].includes(u.protocol) ? u.href : '#';} catch {return '#';}};
 let toastTimer;
 function toast(message) {$('toast').textContent = message; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').textContent = '', 4500);}
-const pages = [['index','Overview'],['models','Models'],['design','Design'],['acquisition','Acquisition'],['protocol','Protocol'],['gateway','Gateway'],['sources','Sources'],['versions','Versions']];
+const pages = [['index','Overview'],['models','Models'],['comparison','Claude comparison'],['design','Design'],['acquisition','Acquisition'],['protocol','Protocol'],['gateway','Gateway'],['sources','Sources'],['versions','Versions']];
 const page = document.documentElement.dataset.page;
 $('main-nav').innerHTML = pages.map(([id,label]) => `<a href="./${id === 'index' ? 'index' : id}.html" ${id === page ? 'aria-current="page"' : ''}>${label}</a>`).join('');
 $('version-tag').textContent = `${BUILD_INFO.version || BUILD_INFO.appVersion || BUILD_INFO.modelVersion || 'Integrated workspace'} · ${String(BUILD_INFO.sourceCommit || 'development').slice(0,12)} →`;

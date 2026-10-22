@@ -1,0 +1,21 @@
+{
+  "schema": "e1-skill-update/1",
+  "status": "locally validated; Skills remote save failed HTTP 422",
+  "localSkillCommits": [
+    "9a23115",
+    "b51f290",
+    "575d740"
+  ],
+  "existingSkillFallbackCommit": "caac525",
+  "remoteHeadObserved": "a171397e71a69a870643b8ecf6f321bcb596c5a4",
+  "savedOrInstalledClaim": false,
+  "validation": "quick_validate.py passed for both new worker skills and both updated existing skills",
+  "forwardUse": "Two fresh-context dedicated workers are using the role skills on E1; this is a task trial, not a comparative benchmark.",
+  "actualFix": "Workflow reviewer found two relative paths inconsistent with the declared repository base; both corrected before round 2.",
+  "publicationCopy": "workflow/ contains the reviewed worker procedures and shared navigation for reproducibility.",
+  "observedRound3Lessons": [
+    "Reject nonzero-to-zero parameter conversion before equality classification",
+    "Report stored-energy representability",
+    "Require nonempty explicit source-manifest coverage"
+  ]
+}

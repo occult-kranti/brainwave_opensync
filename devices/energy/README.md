@@ -17,3 +17,7 @@ The `versions/` directory preserves original source bytes for the earlier copper
 `math.html` adds a separate six-agent, two-round review comparing the pinned OpenAI mathematics catalogue with the existing Yang–Mills, quantum/energy and acoustic work. The searchable index contains 372 families and 719 manuscript links; 377 is the highest family identifier. Read `research/math-crosswalk/report.md` for scope, actual tests and revised priorities. No exact selected OpenAI theorem is evidenced solved by this project. The earlier three-round energy review remains preserved.
 
 `roadmap.html` records the follow-on roadmap review and two planning rounds requested on 22 October 2026. It separates bounded mathematical attempts, verification work and measurement design. Proposed tasks are not reported as completed research.
+
+## E1 proof execution
+
+`dephasing.html` completes the roadmap's smallest mathematical target with six roles, two dedicated workers and three adaptive rounds. The qubit dephasing work-loss bound has an all-parameter analytic proof, complete equality cases, independent matrix/high-precision checks and a calculator with explicit numerical limits. This is an established-theory application, not a new physical energy source. Read `research/dephasing-work-bound/advisor.md`; reproduce with `python3 -B research/dephasing-work-bound/check_release.py --output /tmp/e1-replay.json`. Earlier planning records are preserved.

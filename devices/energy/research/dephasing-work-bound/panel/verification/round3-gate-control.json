@@ -1,0 +1,12 @@
+{
+  "control": "accepted empty source manifest must fail before numerical replay",
+  "gate_exit_code": 1,
+  "guard_message": "Receipt omits required sources",
+  "required_paths_missing": 40,
+  "required_report_paths_missing": 18,
+  "source_sha256": {
+    "research/dephasing-work-bound/check_release.py": "6740dc1fef2e4d74ce8d5a42521e63d1d802e84a7e95a2d99a6a907c5f526a83",
+    "research/dephasing-work-bound/panel/verification/check_release_coverage.py": "a56890a523c52e958e4d618fcc62b4fcfdbda77630ae6868556edafb5e395149"
+  },
+  "status": "PASS"
+}

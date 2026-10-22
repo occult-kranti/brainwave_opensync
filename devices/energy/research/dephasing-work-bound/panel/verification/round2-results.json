@@ -1,0 +1,439 @@
+{
+  "exact_helper_boundary_checks": 315,
+  "high_precision": [
+    {
+      "input": {
+        "coherenceMagnitude": 1e-150,
+        "dephasing": 0.2,
+        "gapJ": 1.0,
+        "population": 0.25
+      },
+      "lowerEquality": false,
+      "outputs": {
+        "boundJ": {
+          "oracle": "7.9999999999999999393405634E-151",
+          "producer": 8.000000000000001e-151,
+          "status": "normal"
+        },
+        "boundNormalized": {
+          "oracle": "7.9999999999999999393405634E-151",
+          "producer": 8.000000000000001e-151,
+          "status": "normal"
+        },
+        "lossJ": {
+          "oracle": "1.9200000000000000152923914E-300",
+          "producer": 1.92e-300,
+          "status": "normal"
+        },
+        "lossNormalized": {
+          "oracle": "1.9200000000000000152923914E-300",
+          "producer": 1.92e-300,
+          "status": "normal"
+        },
+        "workAfterJ": {
+          "oracle": "8.0000000000000009889041514E-302",
+          "producer": 8.000000000000002e-302,
+          "status": "normal"
+        },
+        "workAfterNormalized": {
+          "oracle": "8.0000000000000009889041514E-302",
+          "producer": 8.000000000000002e-302,
+          "status": "normal"
+        },
+        "workBeforeJ": {
+          "oracle": "2.0000000000000000251814329E-300",
+          "producer": 2e-300,
+          "status": "normal"
+        },
+        "workBeforeNormalized": {
+          "oracle": "2.0000000000000000251814329E-300",
+          "producer": 2e-300,
+          "status": "normal"
+        }
+      },
+      "upperEquality": false
+    },
+    {
+      "input": {
+        "coherenceMagnitude": 1e-150,
+        "dephasing": 0.2,
+        "gapJ": 1.0,
+        "population": 0.5
+      },
+      "lowerEquality": false,
+      "outputs": {
+        "boundJ": {
+          "oracle": "7.9999999999999999393405634E-151",
+          "producer": 8.000000000000001e-151,
+          "status": "normal"
+        },
+        "boundNormalized": {
+          "oracle": "7.9999999999999999393405634E-151",
+          "producer": 8.000000000000001e-151,
+          "status": "normal"
+        },
+        "lossJ": {
+          "oracle": "7.9999999999999999393405634E-151",
+          "producer": 8.000000000000001e-151,
+          "status": "normal"
+        },
+        "lossNormalized": {
+          "oracle": "7.9999999999999999393405634E-151",
+          "producer": 8.000000000000001e-151,
+          "status": "normal"
+        },
+        "workAfterJ": {
+          "oracle": "2.0000000000000001236130189E-151",
+          "producer": 2.0000000000000002e-151,
+          "status": "normal"
+        },
+        "workAfterNormalized": {
+          "oracle": "2.0000000000000001236130189E-151",
+          "producer": 2.0000000000000002e-151,
+          "status": "normal"
+        },
+        "workBeforeJ": {
+          "oracle": "1.0000000000000000062953582E-150",
+          "producer": 1e-150,
+          "status": "normal"
+        },
+        "workBeforeNormalized": {
+          "oracle": "1.0000000000000000062953582E-150",
+          "producer": 1e-150,
+          "status": "normal"
+        }
+      },
+      "upperEquality": true
+    },
+    {
+      "input": {
+        "coherenceMagnitude": 0.3,
+        "dephasing": 0.9999999999999999,
+        "gapJ": 1.0,
+        "population": 0.25
+      },
+      "lowerEquality": false,
+      "outputs": {
+        "boundJ": {
+          "oracle": "3.3306690738754694980113786E-17",
+          "producer": 3.3306690738754695e-17,
+          "status": "normal"
+        },
+        "boundNormalized": {
+          "oracle": "3.3306690738754694980113786E-17",
+          "producer": 3.3306690738754695e-17,
+          "status": "normal"
+        },
+        "lossJ": {
+          "oracle": "2.5586908578480198100501679E-17",
+          "producer": 2.5586908578480203e-17,
+          "status": "normal"
+        },
+        "lossNormalized": {
+          "oracle": "2.5586908578480198100501679E-17",
+          "producer": 2.5586908578480203e-17,
+          "status": "normal"
+        },
+        "workAfterJ": {
+          "oracle": "1.4051248379533268559060803E-1",
+          "producer": 0.14051248379533268,
+          "status": "normal"
+        },
+        "workAfterNormalized": {
+          "oracle": "1.4051248379533268559060803E-1",
+          "producer": 0.14051248379533268,
+          "status": "normal"
+        },
+        "workBeforeJ": {
+          "oracle": "1.4051248379533271117751661E-1",
+          "producer": 0.1405124837953327,
+          "status": "normal"
+        },
+        "workBeforeNormalized": {
+          "oracle": "1.4051248379533271117751661E-1",
+          "producer": 0.1405124837953327,
+          "status": "normal"
+        }
+      },
+      "upperEquality": false
+    },
+    {
+      "input": {
+        "coherenceMagnitude": 1e-200,
+        "dephasing": 0.5,
+        "gapJ": 1e+300,
+        "population": 0.2
+      },
+      "lowerEquality": false,
+      "outputs": {
+        "boundJ": {
+          "oracle": "5.0000000000000001730251133E+99",
+          "producer": 5e+99,
+          "status": "normal"
+        },
+        "boundNormalized": {
+          "oracle": "4.9999999999999999105013120E-201",
+          "producer": 5e-201,
+          "status": "normal"
+        },
+        "lossJ": {
+          "oracle": "1.2500000000000000671408990E-100",
+          "producer": 1.25e-100,
+          "status": "normal"
+        },
+        "lossNormalized": {
+          "oracle": "1.2500000000000000015099487E-400",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "workAfterJ": {
+          "oracle": "4.1666666666666668904696634E-101",
+          "producer": 4.166666666666667e-101,
+          "status": "normal"
+        },
+        "workAfterNormalized": {
+          "oracle": "4.1666666666666666716998290E-401",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "workBeforeJ": {
+          "oracle": "1.6666666666666667561878653E-100",
+          "producer": 1.6666666666666669e-100,
+          "status": "normal"
+        },
+        "workBeforeNormalized": {
+          "oracle": "1.6666666666666666686799316E-400",
+          "producer": 0,
+          "status": "underflow"
+        }
+      },
+      "upperEquality": false
+    },
+    {
+      "input": {
+        "coherenceMagnitude": 5e-324,
+        "dephasing": 0.5,
+        "gapJ": 1e+300,
+        "population": 0.5
+      },
+      "lowerEquality": false,
+      "outputs": {
+        "boundJ": {
+          "oracle": "2.4703282292062328505868354E-24",
+          "producer": 2.470328229206233e-24,
+          "status": "normal"
+        },
+        "boundNormalized": {
+          "oracle": "2.4703282292062327208828440E-324",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "lossJ": {
+          "oracle": "2.4703282292062328505868354E-24",
+          "producer": 2.470328229206233e-24,
+          "status": "normal"
+        },
+        "lossNormalized": {
+          "oracle": "2.4703282292062327208828440E-324",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "workAfterJ": {
+          "oracle": "2.4703282292062328505868354E-24",
+          "producer": 2.470328229206233e-24,
+          "status": "normal"
+        },
+        "workAfterNormalized": {
+          "oracle": "2.4703282292062327208828440E-324",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "workBeforeJ": {
+          "oracle": "4.9406564584124657011736708E-24",
+          "producer": 4.940656458412466e-24,
+          "status": "normal"
+        },
+        "workBeforeNormalized": {
+          "oracle": "4.9406564584124654417656879E-324",
+          "producer": 5e-324,
+          "status": "subnormal"
+        }
+      },
+      "upperEquality": true
+    },
+    {
+      "input": {
+        "coherenceMagnitude": 0.3,
+        "dephasing": 0.2,
+        "gapJ": 1e-320,
+        "population": 0.25
+      },
+      "lowerEquality": false,
+      "outputs": {
+        "boundJ": {
+          "oracle": "2.3999732812384390908689274E-321",
+          "producer": 2.4e-321,
+          "status": "subnormal"
+        },
+        "boundNormalized": {
+          "oracle": "2.3999999999999998778754673E-1",
+          "producer": 0.24,
+          "status": "normal"
+        },
+        "lossJ": {
+          "oracle": "1.3341179588599716915223666E-321",
+          "producer": 1.334e-321,
+          "status": "subnormal"
+        },
+        "lossNormalized": {
+          "oracle": "1.3341328115168389168615358E-1",
+          "producer": 0.1334132811516839,
+          "status": "normal"
+        },
+        "workAfterJ": {
+          "oracle": "7.0991236095226914240359745E-323",
+          "producer": 7e-323,
+          "status": "subnormal"
+        },
+        "workAfterNormalized": {
+          "oracle": "7.0992026436488194913630267E-3",
+          "producer": 0.007099202643648819,
+          "status": "normal"
+        },
+        "workBeforeJ": {
+          "oracle": "1.4051091949551986057627264E-321",
+          "producer": 1.403e-321,
+          "status": "subnormal"
+        },
+        "workBeforeNormalized": {
+          "oracle": "1.4051248379533271117751661E-1",
+          "producer": 0.1405124837953327,
+          "status": "normal"
+        }
+      },
+      "upperEquality": false
+    },
+    {
+      "input": {
+        "coherenceMagnitude": 0.5,
+        "dephasing": 0.5,
+        "gapJ": 5e-324,
+        "population": 0.5
+      },
+      "lowerEquality": false,
+      "outputs": {
+        "boundJ": {
+          "oracle": "1.2351641146031163604414220E-324",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "boundNormalized": {
+          "oracle": "2.5000000000000000000000000E-1",
+          "producer": 0.25,
+          "status": "normal"
+        },
+        "lossJ": {
+          "oracle": "1.2351641146031163604414220E-324",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "lossNormalized": {
+          "oracle": "2.5000000000000000000000000E-1",
+          "producer": 0.25,
+          "status": "normal"
+        },
+        "workAfterJ": {
+          "oracle": "1.2351641146031163604414220E-324",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "workAfterNormalized": {
+          "oracle": "2.5000000000000000000000000E-1",
+          "producer": 0.25,
+          "status": "normal"
+        },
+        "workBeforeJ": {
+          "oracle": "2.4703282292062327208828440E-324",
+          "producer": 0,
+          "status": "underflow"
+        },
+        "workBeforeNormalized": {
+          "oracle": "5.0000000000000000000000000E-1",
+          "producer": 0.5,
+          "status": "normal"
+        }
+      },
+      "upperEquality": true
+    },
+    {
+      "input": {
+        "coherenceMagnitude": 0.3,
+        "dephasing": 0.2,
+        "gapJ": 1e+300,
+        "population": 0.25
+      },
+      "lowerEquality": false,
+      "outputs": {
+        "boundJ": {
+          "oracle": "2.4000000000000000038868919E+299",
+          "producer": 2.4000000000000003e+299,
+          "status": "normal"
+        },
+        "boundNormalized": {
+          "oracle": "2.3999999999999998778754673E-1",
+          "producer": 0.24,
+          "status": "normal"
+        },
+        "lossJ": {
+          "oracle": "1.3341328115168389869098593E+299",
+          "producer": 1.3341328115168392e+299,
+          "status": "normal"
+        },
+        "lossNormalized": {
+          "oracle": "1.3341328115168389168615358E-1",
+          "producer": 0.1334132811516839,
+          "status": "normal"
+        },
+        "workAfterJ": {
+          "oracle": "7.0992026436488198641049595E+297",
+          "producer": 7.09920264364882e+297,
+          "status": "normal"
+        },
+        "workAfterNormalized": {
+          "oracle": "7.0992026436488194913630267E-3",
+          "producer": 0.007099202643648819,
+          "status": "normal"
+        },
+        "workBeforeJ": {
+          "oracle": "1.4051248379533271855509089E+299",
+          "producer": 1.4051248379533271e+299,
+          "status": "normal"
+        },
+        "workBeforeNormalized": {
+          "oracle": "1.4051248379533271117751661E-1",
+          "producer": 0.1405124837953327,
+          "status": "normal"
+        }
+      },
+      "upperEquality": false
+    }
+  ],
+  "inadmissible_original_api_pairs_rejected": 600,
+  "invalid_cases_rejected": 17,
+  "matrix_cases": 3780,
+  "matrix_normalized_absolute_tolerance": 5e-13,
+  "max_nextafter_repair_steps": 2,
+  "maximum_independent_upper_residual": 2.027351494796801e-16,
+  "maximum_normalized_matrix_producer_error": 2.93839617399499e-16,
+  "maximum_phase_assembly_magnitude_difference": 5.551115123125783e-17,
+  "rounding_repairs": 714,
+  "source_sha256": {
+    "research/dephasing-work-bound/panel/verification/check_independent.py": "27b8d92a37652d7b6756a051d35a6d6d13d02b7c64462ada5a2115881523339d",
+    "research/dephasing-work-bound/panel/verification/compare_producer.py": "28dfd3126ef6dc43a19335316d0cc52ef93742d940ad30e6cc676b2c1bb6d17f",
+    "research/dephasing-work-bound/panel/verification/producer_bridge.mjs": "48250a34e828b49a651d6f985d16cc5ca98234ed361ad3b304698e1edd422a97",
+    "research/dephasing-work-bound/proof.md": "f03a826adc11b734c5a7955dc11c4ebc6967529d96fcd3f3cc8f97ef85de0ccb",
+    "research/dephasing-work-bound/rounds/round1-decision.json": "8ab3f74db475d0ec106b668f06fa81fde3fb27c304d0315789f60768fb09b060",
+    "src/dephasing-bound.mjs": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b"
+  },
+  "status": "PASS"
+}

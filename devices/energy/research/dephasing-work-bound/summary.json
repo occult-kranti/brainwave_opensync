@@ -1,0 +1,68 @@
+{
+  "schema": "e1-execution-summary/1",
+  "date": "2026-10-22",
+  "task": "E1",
+  "status": "Proved in the stated model \u00b7 three-round review complete",
+  "accepted": true,
+  "proofKind": "Analytic mathematical argument; not a proof-assistant certificate",
+  "novelty": "Known-theory application and project-derived corollary; novelty unverified",
+  "physicalMeasurements": 0,
+  "specialistAgents": 6,
+  "dedicatedWorkers": 2,
+  "researchRounds": 3,
+  "statement": "0 \u2264 W(1) \u2212 W(d) \u2264 \u03b5 |c| (1\u2212d)",
+  "equality": [
+    {
+      "bound": "lower",
+      "iff": "|c|=0 or d=1"
+    },
+    {
+      "bound": "upper",
+      "iff": "|c|=0 or d=1 or p=1/2"
+    }
+  ],
+  "checks": {
+    "Independent reconstruction": "2,555 states and 5,110 extraction unitaries; sampled checks complement the proof.",
+    "Producer comparison": "3,780 complex-state comparisons; maximum normalized discrepancy 2.94 \u00d7 10\u207b\u00b9\u2076.",
+    "Strict input domain": "315 boundary-helper cases; 600 inadmissible rounded pairs and 17 invalid-domain cases rejected.",
+    "Precision": "Eight 800-digit operator comparisons; subnormal relative accuracy is not guaranteed.",
+    "Wrong channel": "Independent exact control: d\u00b2 substitution exceeds the original bound by 9/80.",
+    "Physical interpretation": "14 checks distinguish stored energy, accessible work and ideal control assumptions."
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "title": "Independent derivation",
+      "result": "Two workers independently derived the bound, equality cases and attaining unitary.",
+      "objection": "Tiny positive losses vanish under direct float64 subtraction; source formulas are established theory.",
+      "revision": "Freeze matrix/high-precision oracles and an exact wrong-channel control before exchange."
+    },
+    {
+      "round": 2,
+      "title": "Adversarial comparison",
+      "result": "Independent comparisons, exact input checks and the withheld wrong-model control pass.",
+      "objection": "Rounded boundary states and subnormal outputs require explicit contracts; proof lacked primary citations.",
+      "revision": "Add attribution, exact binary64 admission, range warnings and an execution-page implementation."
+    },
+    {
+      "round": 3,
+      "title": "Final proof and publication audit",
+      "result": "All six roles accept the scoped result; final numerical and interface objections are closed.",
+      "objection": "Check final attribution, tiny UI conversion, graph links and execution receipts.",
+      "revision": "Reject lossy input conversion, flag stored-energy underflow, require complete source manifests, and verify readable graph links."
+    }
+  ],
+  "limitations": [
+    "Fixed Hamiltonian and population; energy-basis dephasing d in [0,1].",
+    "Arbitrary cyclic single-qubit unitary control and suitable phase access are assumed.",
+    "No preparation, controller, reset, efficiency or output-power experiment."
+  ],
+  "artifacts": {
+    "contract": "research/dephasing-work-bound/contract.md",
+    "proof": "research/dephasing-work-bound/proof.md",
+    "receipt": "research/dephasing-work-bound/receipt.json",
+    "advisor": "research/dephasing-work-bound/advisor.md",
+    "execution": "research/dephasing-work-bound/execution.json",
+    "workflow": "research/dephasing-work-bound/workflow/navigation.md"
+  }
+}

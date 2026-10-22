@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "kind": "Final proof and source-binding review; no new numerical grid",
+  "obligations": {
+    "state_spectrum_and_unitary_attainment": "accepted",
+    "lower_inequality_and_iff_equality": "accepted",
+    "upper_inequality_and_iff_equality": "accepted",
+    "zero_denominators_and_endpoints": "accepted",
+    "sharp_constant": "accepted",
+    "source_attribution_and_no_novelty_claim": "accepted",
+    "clipping_not_verification": "accepted",
+    "exact_input_domain_separate_from_rounding": "accepted",
+    "range_flags_not_error_bounds": "accepted",
+    "positive_fraction_conversion_underflow": "UI responsibility; evaluator receives actual coherence magnitude"
+  },
+  "source_sha256": {
+    "src/dephasing-bound.mjs": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b",
+    "research/dephasing-work-bound/proof.md": "f03a826adc11b734c5a7955dc11c4ebc6967529d96fcd3f3cc8f97ef85de0ccb",
+    "research/dephasing-work-bound/panel/proof/frozen-round1/dephasing-bound.mjs": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b",
+    "research/dephasing-work-bound/panel/proof/frozen-round1/proof.md": "2e14ee2bc47318f811899e8a866519ce98ad2ee41d10bb5076d85df6bcd63847",
+    "research/dephasing-work-bound/panel/verification/compare_producer.py": "28dfd3126ef6dc43a19335316d0cc52ef93742d940ad30e6cc676b2c1bb6d17f",
+    "research/dephasing-work-bound/panel/verification/producer_bridge.mjs": "48250a34e828b49a651d6f985d16cc5ca98234ed361ad3b304698e1edd422a97",
+    "research/dephasing-work-bound/panel/verification/round2-results.json": "b1eb21420d851b1b1485e8bfc32633caec11c0a02a7a3db4394a613670867e43",
+    "research/dephasing-work-bound/panel/skeptic/round2-results.json": "8497e8e3399585f970f19e1df1b1f090aa6acccd7f7913e5c8e8ce07b06c03f4"
+  },
+  "unchanged_module_since_round1": true,
+  "unchanged_proof_since_round2": true,
+  "unresolved": [
+    "No universal correctly-rounded or relative-error guarantee, particularly for subnormals.",
+    "No apparatus or whole-cycle performance claim.",
+    "UI conversion and deployment require their separate release checks."
+  ]
+}

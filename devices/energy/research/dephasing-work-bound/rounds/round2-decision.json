@@ -1,0 +1,49 @@
+{
+  "schema": "e1-round-admission/1",
+  "completedRound": 2,
+  "nextRound": 3,
+  "decision": "Accept the analytic bound within its model and the finite implementation comparisons; hold release for final attribution, interface, graph and replay audit.",
+  "reports": {
+    "proof": {
+      "path": "panel/proof/round2.md",
+      "sha256": "1f2520c9c2f1aa1d839123b788df2a140bc20c445aa143409cb719deb62c5ed0"
+    },
+    "verification": {
+      "path": "panel/verification/round2.md",
+      "sha256": "c343ee304cefa44154d1a39c8ea99496dd63e59dc7d15a2b2baebffe9d3b2a32"
+    },
+    "sources": {
+      "path": "panel/sources/round2.md",
+      "sha256": "77a52e68ea9a34882e841b17ce95b3ad61046904c5957092a232dec8ab565356"
+    },
+    "physics": {
+      "path": "panel/physics/round2.md",
+      "sha256": "053551b43e763efc096ff71f59539d5f3d422822c704679d357ecfa65462c2a9"
+    },
+    "workflow": {
+      "path": "panel/workflow/round2.md",
+      "sha256": "1fe161293044242176c15229f892512580987b8b352e7fb90fe16fc83a08a02d"
+    },
+    "skeptic": {
+      "path": "panel/skeptic/round2.md",
+      "sha256": "7c50cd962a4da343356d788494a7108427c852bdb9ca6121df8caebca165e959"
+    }
+  },
+  "actualFindings": [
+    "3,780 independent producer/matrix comparisons pass; exact PSD rejects 600 rounded boundary pairs plus 17 invalid-domain cases.",
+    "800-digit checks confirm recovered Joule losses despite normalized underflow. Subnormal output can have 2.93% relative error; range flags are not accuracy guarantees.",
+    "Skeptic wrong d-to-d-squared channel exceeds the independently computed bound by 9/80 after valid inputs pass admission.",
+    "Source citation objection S2-A was repaired after the source role inspected earlier bytes; final source review must confirm the repaired proof.",
+    "R2 page passes mobile/desktop behavior but advisor link is pending and graph edge geometry needs final inspection.",
+    "Root additionally requests checking positive UI coherence fractions whose product rounds to zero, so a converted incoherent input cannot be mistaken for the requested positive coherence."
+  ],
+  "round3Tasks": {
+    "proof": "Check final proof/current module and independently answer any final mathematical objection; retain unchanged source or justify scoped fix.",
+    "verification": "Review finite-sample claim wording, reproduction commands, frozen receipts and root release replay; no new broad grid unless a concrete defect appears.",
+    "sources": "Verify repaired proof attribution and public known/local distinction, close S2-A explicitly.",
+    "physics": "Audit actual calculator units, coherence conversion, fixed energy and phase/control limitations; record any interface mismatch.",
+    "workflow": "Improve graph edge readability; verify final data/18 report links, visible precision caveats and positive-fraction conversion underflow; finalize focused browser checks.",
+    "skeptic": "Audit full release claim, tiny-input conversion/equality and domain boundaries; require independent replay and complete receipts, not consensus."
+  },
+  "stop": "Final round: close supported claims or record obstruction; no new scientific target or fourth round."
+}

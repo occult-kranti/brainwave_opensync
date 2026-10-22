@@ -1,0 +1,110 @@
+{
+  "schema": "e1-typed-evidence-network/1",
+  "status": "Accepted scoped statement; numeric and apparatus limitations retained",
+  "nodes": [
+    {
+      "id": "ABN",
+      "kind": "source",
+      "label": "Ergotropy / 2004",
+      "href": "https://arxiv.org/abs/cond-mat/0401574"
+    },
+    {
+      "id": "Francica",
+      "kind": "source",
+      "label": "Coherent ergotropy / 2020",
+      "href": "https://arxiv.org/abs/2006.05424"
+    },
+    {
+      "id": "E1",
+      "kind": "statement",
+      "label": "E1 dephasing bound",
+      "href": "research/dephasing-work-bound/contract.md"
+    },
+    {
+      "id": "proof",
+      "kind": "proof",
+      "label": "All-parameter argument",
+      "href": "research/dephasing-work-bound/proof.md"
+    },
+    {
+      "id": "code",
+      "kind": "implementation",
+      "label": "Stable calculator",
+      "href": "src/dephasing-bound.mjs"
+    },
+    {
+      "id": "matrix",
+      "kind": "numerical-check",
+      "label": "Independent unitary checks",
+      "href": "research/dephasing-work-bound/panel/verification/round1.md"
+    },
+    {
+      "id": "panel",
+      "kind": "review",
+      "label": "Three adaptive rounds",
+      "href": "research/dephasing-work-bound/advisor.md"
+    },
+    {
+      "id": "276",
+      "kind": "different-functional",
+      "label": "OpenAI family 276: capacity",
+      "href": "math.html"
+    },
+    {
+      "id": "apparatus",
+      "kind": "open-scope",
+      "label": "Controller and reset costs",
+      "href": "research/dephasing-work-bound/panel/physics/stage0.md"
+    }
+  ],
+  "edges": [
+    {
+      "source": "ABN",
+      "target": "proof",
+      "type": "supports",
+      "scope": "Passive rearrangement defines ideal work; local specialization still required."
+    },
+    {
+      "source": "Francica",
+      "target": "proof",
+      "type": "context",
+      "scope": "Established coherent-ergotropy formula; no novelty claim."
+    },
+    {
+      "source": "proof",
+      "target": "E1",
+      "type": "proves",
+      "scope": "Reviewed all-parameter argument under the fixed-Hamiltonian, valid-qubit and fixed-population contract."
+    },
+    {
+      "source": "code",
+      "target": "E1",
+      "type": "implements",
+      "scope": "Numerical values within explicit floating-point limitations."
+    },
+    {
+      "source": "matrix",
+      "target": "code",
+      "type": "tests",
+      "scope": "Finite independent operator checks do not prove every input."
+    },
+    {
+      "source": "panel",
+      "target": "proof",
+      "type": "reviews",
+      "scope": "Model-agent review is not human peer review."
+    },
+    {
+      "source": "276",
+      "target": "E1",
+      "type": "non-transfer",
+      "scope": "Channel overlap does not transfer a capacity theorem to ergotropy."
+    },
+    {
+      "source": "E1",
+      "target": "apparatus",
+      "type": "does-not-establish",
+      "scope": "Supplied-state work bound omits apparatus resource accounting."
+    }
+  ]
+}

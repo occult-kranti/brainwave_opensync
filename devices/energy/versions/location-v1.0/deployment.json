@@ -10,6 +10,6 @@
   "graphEdges": 34,
   "physicalMeasurements": 0,
   "runtimeDependencies": 0,
-  "hostCommit": "8e9f131cb8f9da82532812a66e144b67e969cb0d",
+  "hostCommit": "2bf9252f17f38db500b1e920612ddb43565c4fe7",
   "hostAdaptation": "Added navigation; pinned original source metadata. Scientific code unchanged."
 }

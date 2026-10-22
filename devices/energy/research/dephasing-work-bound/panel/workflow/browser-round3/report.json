@@ -1,0 +1,20 @@
+{
+  "status": "UI passed; publication links pending",
+  "checks": [
+    "page/calculator/network render without document overflow at 1440",
+    "page/calculator/network render without document overflow at 390",
+    "positive fraction/text underflow rejected; physical endpoints retained; stored-energy underflow displayed and exported",
+    "passive, saturation, endpoint, underflow, invalid input and JSON export",
+    "eight visible relationship labels and keyboard artifact navigation",
+    "Quantum and Next tasks return links"
+  ],
+  "errors": [],
+  "pendingLinks": [
+    "research/dephasing-work-bound/panel/workflow/round3.md"
+  ],
+  "prefix": "/brainwave_opensync/devices/energy/",
+  "viewports": [
+    1440,
+    390
+  ]
+}

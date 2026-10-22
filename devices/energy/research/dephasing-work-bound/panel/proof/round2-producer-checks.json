@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "matrixStates": 4000,
+  "maxMatrixResidual": 1.7651322188527265e-12,
+  "maxSpectrumResidual": 1.6653345369377348e-16,
+  "cancellationCase": {
+    "population": 0.2,
+    "coherenceMagnitude": 1e-12,
+    "dephasing": 0.5,
+    "gapJ": 1,
+    "radiusBefore": 0.6,
+    "radiusAfter": 0.6,
+    "workBeforeNormalized": 1.6666666666666667e-24,
+    "workAfterNormalized": 4.166666666666667e-25,
+    "lossNormalized": 1.2500000000000001e-24,
+    "boundNormalized": 5e-13,
+    "workBeforeJ": 1.6666666666666667e-24,
+    "workAfterJ": 4.166666666666667e-25,
+    "lossJ": 1.2500000000000001e-24,
+    "boundJ": 5e-13,
+    "lossRatio": 2.5000000000000003e-12,
+    "lowerEquality": false,
+    "upperEquality": false,
+    "representability": {
+      "workBeforeNormalized": "normal",
+      "workAfterNormalized": "normal",
+      "lossNormalized": "normal",
+      "boundNormalized": "normal",
+      "workBeforeJ": "normal",
+      "workAfterJ": "normal",
+      "lossJ": "normal",
+      "boundJ": "normal"
+    }
+  },
+  "normalizedUnderflowRescuedJ": 1.25e-100,
+  "subnormalCoherenceRescuedJ": 2.470328229206233e-24
+}

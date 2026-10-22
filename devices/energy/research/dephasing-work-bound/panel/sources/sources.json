@@ -1,0 +1,113 @@
+{
+  "schema": "dephasing-work-bound-sources/1",
+  "accessDate": "2026-10-22",
+  "stage": 0,
+  "scope": "Bounded primary-source audit; no exhaustive novelty conclusion",
+  "noveltyStatus": "unverified; present as known-theory application with project assurance",
+  "sources": [
+    {
+      "id": "abn-2004",
+      "title": "Maximal work extraction from quantum systems",
+      "authors": [
+        "A. E. Allahverdyan",
+        "R. Balian",
+        "Th. M. Nieuwenhuizen"
+      ],
+      "url": "https://arxiv.org/abs/cond-mat/0401574",
+      "exactReadUrl": "https://arxiv.org/pdf/cond-mat/0401574",
+      "versionPinnedUrl": "https://arxiv.org/pdf/cond-mat/0401574v1",
+      "version": "v1",
+      "readingDepth": "Pages 1\u20132: cyclic fixed-endpoint Hamiltonian setting; equations (2), (5)\u2013(9), spectral ordering and attaining-unitary construction. Later examples and complete paper not audited.",
+      "supports": [
+        "ideal unitary-orbit ergotropy",
+        "passive spectral ordering",
+        "attainability under arbitrary ideal cyclic driving"
+      ],
+      "doesNotSupport": [
+        "full apparatus efficiency",
+        "partial-dephasing Lipschitz bound attributed verbatim",
+        "novelty"
+      ],
+      "accessDate": "2026-10-22",
+      "independentFullProofVerified": false
+    },
+    {
+      "id": "francica-2020",
+      "title": "Quantum Coherence and Ergotropy",
+      "url": "https://arxiv.org/abs/2006.05424",
+      "exactReadUrl": "https://arxiv.org/pdf/2006.05424",
+      "versionPinnedUrl": "https://arxiv.org/pdf/2006.05424v2",
+      "version": "v2",
+      "doi": "10.1103/PhysRevLett.125.180603",
+      "journal": "Physical Review Letters 125, 180603 (2020)",
+      "readingDepth": "Sections II\u2013III and V.A qubit example; equations (4), (5), (12); stated Appendix-A general-monotonicity limitation. Did not audit the full Appendix-A calculation or all bounds.",
+      "supports": [
+        "coherent ergotropy equals full minus fully dephased ergotropy",
+        "known exact qubit coherent-ergotropy formula",
+        "coherent ergotropy is not a general coherence monotone"
+      ],
+      "doesNotSupport": [
+        "arbitrary incoherent-channel monotonicity",
+        "partial-dephasing bound claimed verbatim",
+        "novelty"
+      ],
+      "accessDate": "2026-10-22",
+      "independentFullProofVerified": false
+    },
+    {
+      "id": "li-2025",
+      "title": "Experimental Extraction of Coherent Ergotropy and Its Energetic Cost in a Superconducting Qubit",
+      "url": "https://arxiv.org/abs/2506.16881",
+      "exactReadUrl": "https://arxiv.org/html/2506.16881v2",
+      "version": "v2",
+      "doi": "10.1103/ptr1-59tv",
+      "journal": "Physical Review Research 7, 043236 (2025)",
+      "readingDepth": "Abstract, publication metadata, introduction and Figure 1 caption; no independent methods/raw-data or full cost-boundary audit.",
+      "supports": [
+        "contemporary experimental motivation for separating energy and coherent extractable work"
+      ],
+      "doesNotSupport": [
+        "project hardware validation",
+        "complete real apparatus cost",
+        "E1 all-parameter proof"
+      ],
+      "accessDate": "2026-10-22",
+      "independentFullProofVerified": false
+    },
+    {
+      "id": "openai-276-scope",
+      "title": "Family 276 formalization scope",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/276.md",
+      "localReadPath": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/openai/lean/docs/276.md",
+      "readingDepth": "Full local scope document; no Lean or kernel execution.",
+      "supports": [
+        "capacity formalization scope and explicit exclusions"
+      ],
+      "doesNotSupport": [
+        "ergotropy theorem",
+        "proof-kernel verification by this lane"
+      ],
+      "accessDate": "2026-10-22",
+      "independentFullProofVerified": false
+    },
+    {
+      "id": "openai-276-paper-inherited",
+      "title": "Classical capacity and entropy inequalities for generalized amplitude damping",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/build/paper.tex",
+      "readingDepth": "Not re-read directly in this lane. Inherited from project math-crosswalk energy round1 and sources.json, which record lines 1\u2013295 inspection; manuscript TeX unavailable in current local snapshot.",
+      "inheritedEvidence": true,
+      "inheritedManifest": "research/math-crosswalk/panel/energy/sources.json",
+      "gitBlobSha1RecordedPreviously": "8da177e1ce5eb326bb37a77197659e8a59ea2cd5",
+      "supports": [
+        "prior project channel comparison only"
+      ],
+      "doesNotSupport": [
+        "E1 work functional",
+        "fresh independent source verification",
+        "capacity proof verification"
+      ],
+      "accessDate": "2026-10-22",
+      "independentFullProofVerified": false
+    }
+  ]
+}

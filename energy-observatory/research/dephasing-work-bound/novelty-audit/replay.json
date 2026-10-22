@@ -1,0 +1,936 @@
+{
+  "schema": "e1-release-replay/1",
+  "status": "PASS",
+  "reports": 18,
+  "sourceHashCount": 95,
+  "checks": {
+    "producer": {
+      "command": "node research/dephasing-work-bound/panel/proof/check-round1.mjs",
+      "exitCode": 0,
+      "result": {
+        "status": "PASS",
+        "matrixStates": 4000,
+        "maxMatrixResidual": 1.7651322188527265e-12,
+        "maxSpectrumResidual": 1.6653345369377348e-16,
+        "cancellationCase": {
+          "population": 0.2,
+          "coherenceMagnitude": 1e-12,
+          "dephasing": 0.5,
+          "gapJ": 1,
+          "radiusBefore": 0.6,
+          "radiusAfter": 0.6,
+          "workBeforeNormalized": 1.6666666666666667e-24,
+          "workAfterNormalized": 4.166666666666667e-25,
+          "lossNormalized": 1.2500000000000001e-24,
+          "boundNormalized": 5e-13,
+          "workBeforeJ": 1.6666666666666667e-24,
+          "workAfterJ": 4.166666666666667e-25,
+          "lossJ": 1.2500000000000001e-24,
+          "boundJ": 5e-13,
+          "lossRatio": 2.5000000000000003e-12,
+          "lowerEquality": false,
+          "upperEquality": false,
+          "representability": {
+            "workBeforeNormalized": "normal",
+            "workAfterNormalized": "normal",
+            "lossNormalized": "normal",
+            "boundNormalized": "normal",
+            "workBeforeJ": "normal",
+            "workAfterJ": "normal",
+            "lossJ": "normal",
+            "boundJ": "normal"
+          }
+        },
+        "normalizedUnderflowRescuedJ": 1.25e-100,
+        "subnormalCoherenceRescuedJ": 2.470328229206233e-24
+      },
+      "stdoutSha256": "0ad6be036787f240f520ba0d36cc1149bc2941f60e5236568fa7b3f05d1a255d"
+    },
+    "independent": {
+      "command": "python3 -B research/dephasing-work-bound/panel/verification/check_independent.py",
+      "exitCode": 0,
+      "result": {
+        "counts": {
+          "epsilon_rescalings": 15330,
+          "extraction_unitaries": 5110,
+          "sampled_unitaries": 16800,
+          "states": 2555
+        },
+        "fixed_grid_states": 1350,
+        "high_precision": [
+          {
+            "c": "1e-150",
+            "d": "0.2",
+            "decimal_matrix_loss": "1.920000000000000015292391414543E-300",
+            "decimal_upper_bound": "7.999999999999999939340563394868E-151",
+            "float64_matrix_loss": 0.0,
+            "p": "0.25",
+            "uses_exact_binary64_input_values": true
+          },
+          {
+            "c": "1e-150",
+            "d": "0.2",
+            "decimal_matrix_loss": "7.999999999999999939340563394868E-151",
+            "decimal_upper_bound": "7.999999999999999939340563394868E-151",
+            "float64_matrix_loss": 0.0,
+            "p": "0.5",
+            "uses_exact_binary64_input_values": true
+          },
+          {
+            "c": "0.3",
+            "d": "0.9999999999999999",
+            "decimal_matrix_loss": "2.558690857848019810050167892830E-17",
+            "decimal_upper_bound": "3.330669073875469498011378563489E-17",
+            "float64_matrix_loss": 2.7755575615628914e-17,
+            "p": "0.25",
+            "uses_exact_binary64_input_values": true
+          }
+        ],
+        "limitations": [
+          "Numerical samples do not prove the all-parameter theorem.",
+          "Float64 zeros cannot identify exact equality.",
+          "High-precision cases reconstruct binary64 input values exactly; unrepresentable distinctions must be specified before float conversion."
+        ],
+        "maximum_normalized_residuals": {
+          "characteristic_polynomial_work": 2.914335439641036e-16,
+          "energy_imaginary": 3.2627080211364484e-17,
+          "hermiticity": 0.0,
+          "input_positivity_violation": 2.7755575615628914e-17,
+          "loss_nonnegative": 2.220446049250313e-16,
+          "minimum_energy": 3.3306690738754696e-16,
+          "normalized_joule_accounting": 2.221443677790715e-16,
+          "passive_diagonalization": 7.895131587052029e-16,
+          "passive_order": 5.551115123125783e-17,
+          "positivity_violation": 8.326672684688674e-17,
+          "predicted_upper_equality": 2.1536671870303614e-16,
+          "random_unitary_beats_passive": 0.0,
+          "sampled_unitarity": 1.6919318537869784e-15,
+          "spectrum_preservation": 7.771561172376096e-16,
+          "trace": 0.0,
+          "trivial_lower_equality": 0.0,
+          "unitarity": 1.1778158057622852e-15,
+          "upper_bound_violation": 1.3877787807814457e-16,
+          "work_nonnegative": 5.551115123125783e-17
+        },
+        "normalized_absolute_tolerance": 5e-13,
+        "numpy_version": "2.3.5",
+        "seed": 2718281828,
+        "source_sha256": {
+          "research/dephasing-work-bound/contract.md": "ed0289dbad37b2059f781d500c7986ef8fde81e7e42f2ef96a08d51b33fb9ee2",
+          "research/dephasing-work-bound/panel/verification/check_independent.py": "27b8d92a37652d7b6756a051d35a6d6d13d02b7c64462ada5a2115881523339d",
+          "research/dephasing-work-bound/panel/verification/predeclared.md": "55552a1767ac10afb3b967adb5bd94510d81ed46e5486ab70a3a87d92e0a1808"
+        },
+        "status": "PASS",
+        "wrong_model_controls": {
+          "balanced_symmetry_preserved": true,
+          "false_exact_upper_bound_rejected_by": 0.10658671884831603,
+          "swap_only_control_rejected_by": 0.14051248379533268
+        }
+      },
+      "stdoutSha256": "8cab7cf918c89342faffdcbb956579cac5a2252db02af71c6211211309cac272"
+    },
+    "comparison": {
+      "command": "python3 -B research/dephasing-work-bound/panel/verification/compare_producer.py",
+      "exitCode": 0,
+      "result": {
+        "exact_helper_boundary_checks": 315,
+        "high_precision": [
+          {
+            "input": {
+              "coherenceMagnitude": 1e-150,
+              "dephasing": 0.2,
+              "gapJ": 1.0,
+              "population": 0.25
+            },
+            "lowerEquality": false,
+            "outputs": {
+              "boundJ": {
+                "oracle": "7.9999999999999999393405634E-151",
+                "producer": 8.000000000000001e-151,
+                "status": "normal"
+              },
+              "boundNormalized": {
+                "oracle": "7.9999999999999999393405634E-151",
+                "producer": 8.000000000000001e-151,
+                "status": "normal"
+              },
+              "lossJ": {
+                "oracle": "1.9200000000000000152923914E-300",
+                "producer": 1.92e-300,
+                "status": "normal"
+              },
+              "lossNormalized": {
+                "oracle": "1.9200000000000000152923914E-300",
+                "producer": 1.92e-300,
+                "status": "normal"
+              },
+              "workAfterJ": {
+                "oracle": "8.0000000000000009889041514E-302",
+                "producer": 8.000000000000002e-302,
+                "status": "normal"
+              },
+              "workAfterNormalized": {
+                "oracle": "8.0000000000000009889041514E-302",
+                "producer": 8.000000000000002e-302,
+                "status": "normal"
+              },
+              "workBeforeJ": {
+                "oracle": "2.0000000000000000251814329E-300",
+                "producer": 2e-300,
+                "status": "normal"
+              },
+              "workBeforeNormalized": {
+                "oracle": "2.0000000000000000251814329E-300",
+                "producer": 2e-300,
+                "status": "normal"
+              }
+            },
+            "upperEquality": false
+          },
+          {
+            "input": {
+              "coherenceMagnitude": 1e-150,
+              "dephasing": 0.2,
+              "gapJ": 1.0,
+              "population": 0.5
+            },
+            "lowerEquality": false,
+            "outputs": {
+              "boundJ": {
+                "oracle": "7.9999999999999999393405634E-151",
+                "producer": 8.000000000000001e-151,
+                "status": "normal"
+              },
+              "boundNormalized": {
+                "oracle": "7.9999999999999999393405634E-151",
+                "producer": 8.000000000000001e-151,
+                "status": "normal"
+              },
+              "lossJ": {
+                "oracle": "7.9999999999999999393405634E-151",
+                "producer": 8.000000000000001e-151,
+                "status": "normal"
+              },
+              "lossNormalized": {
+                "oracle": "7.9999999999999999393405634E-151",
+                "producer": 8.000000000000001e-151,
+                "status": "normal"
+              },
+              "workAfterJ": {
+                "oracle": "2.0000000000000001236130189E-151",
+                "producer": 2.0000000000000002e-151,
+                "status": "normal"
+              },
+              "workAfterNormalized": {
+                "oracle": "2.0000000000000001236130189E-151",
+                "producer": 2.0000000000000002e-151,
+                "status": "normal"
+              },
+              "workBeforeJ": {
+                "oracle": "1.0000000000000000062953582E-150",
+                "producer": 1e-150,
+                "status": "normal"
+              },
+              "workBeforeNormalized": {
+                "oracle": "1.0000000000000000062953582E-150",
+                "producer": 1e-150,
+                "status": "normal"
+              }
+            },
+            "upperEquality": true
+          },
+          {
+            "input": {
+              "coherenceMagnitude": 0.3,
+              "dephasing": 0.9999999999999999,
+              "gapJ": 1.0,
+              "population": 0.25
+            },
+            "lowerEquality": false,
+            "outputs": {
+              "boundJ": {
+                "oracle": "3.3306690738754694980113786E-17",
+                "producer": 3.3306690738754695e-17,
+                "status": "normal"
+              },
+              "boundNormalized": {
+                "oracle": "3.3306690738754694980113786E-17",
+                "producer": 3.3306690738754695e-17,
+                "status": "normal"
+              },
+              "lossJ": {
+                "oracle": "2.5586908578480198100501679E-17",
+                "producer": 2.5586908578480203e-17,
+                "status": "normal"
+              },
+              "lossNormalized": {
+                "oracle": "2.5586908578480198100501679E-17",
+                "producer": 2.5586908578480203e-17,
+                "status": "normal"
+              },
+              "workAfterJ": {
+                "oracle": "1.4051248379533268559060803E-1",
+                "producer": 0.14051248379533268,
+                "status": "normal"
+              },
+              "workAfterNormalized": {
+                "oracle": "1.4051248379533268559060803E-1",
+                "producer": 0.14051248379533268,
+                "status": "normal"
+              },
+              "workBeforeJ": {
+                "oracle": "1.4051248379533271117751661E-1",
+                "producer": 0.1405124837953327,
+                "status": "normal"
+              },
+              "workBeforeNormalized": {
+                "oracle": "1.4051248379533271117751661E-1",
+                "producer": 0.1405124837953327,
+                "status": "normal"
+              }
+            },
+            "upperEquality": false
+          },
+          {
+            "input": {
+              "coherenceMagnitude": 1e-200,
+              "dephasing": 0.5,
+              "gapJ": 1e+300,
+              "population": 0.2
+            },
+            "lowerEquality": false,
+            "outputs": {
+              "boundJ": {
+                "oracle": "5.0000000000000001730251133E+99",
+                "producer": 5e+99,
+                "status": "normal"
+              },
+              "boundNormalized": {
+                "oracle": "4.9999999999999999105013120E-201",
+                "producer": 5e-201,
+                "status": "normal"
+              },
+              "lossJ": {
+                "oracle": "1.2500000000000000671408990E-100",
+                "producer": 1.25e-100,
+                "status": "normal"
+              },
+              "lossNormalized": {
+                "oracle": "1.2500000000000000015099487E-400",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "workAfterJ": {
+                "oracle": "4.1666666666666668904696634E-101",
+                "producer": 4.166666666666667e-101,
+                "status": "normal"
+              },
+              "workAfterNormalized": {
+                "oracle": "4.1666666666666666716998290E-401",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "workBeforeJ": {
+                "oracle": "1.6666666666666667561878653E-100",
+                "producer": 1.6666666666666669e-100,
+                "status": "normal"
+              },
+              "workBeforeNormalized": {
+                "oracle": "1.6666666666666666686799316E-400",
+                "producer": 0,
+                "status": "underflow"
+              }
+            },
+            "upperEquality": false
+          },
+          {
+            "input": {
+              "coherenceMagnitude": 5e-324,
+              "dephasing": 0.5,
+              "gapJ": 1e+300,
+              "population": 0.5
+            },
+            "lowerEquality": false,
+            "outputs": {
+              "boundJ": {
+                "oracle": "2.4703282292062328505868354E-24",
+                "producer": 2.470328229206233e-24,
+                "status": "normal"
+              },
+              "boundNormalized": {
+                "oracle": "2.4703282292062327208828440E-324",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "lossJ": {
+                "oracle": "2.4703282292062328505868354E-24",
+                "producer": 2.470328229206233e-24,
+                "status": "normal"
+              },
+              "lossNormalized": {
+                "oracle": "2.4703282292062327208828440E-324",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "workAfterJ": {
+                "oracle": "2.4703282292062328505868354E-24",
+                "producer": 2.470328229206233e-24,
+                "status": "normal"
+              },
+              "workAfterNormalized": {
+                "oracle": "2.4703282292062327208828440E-324",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "workBeforeJ": {
+                "oracle": "4.9406564584124657011736708E-24",
+                "producer": 4.940656458412466e-24,
+                "status": "normal"
+              },
+              "workBeforeNormalized": {
+                "oracle": "4.9406564584124654417656879E-324",
+                "producer": 5e-324,
+                "status": "subnormal"
+              }
+            },
+            "upperEquality": true
+          },
+          {
+            "input": {
+              "coherenceMagnitude": 0.3,
+              "dephasing": 0.2,
+              "gapJ": 1e-320,
+              "population": 0.25
+            },
+            "lowerEquality": false,
+            "outputs": {
+              "boundJ": {
+                "oracle": "2.3999732812384390908689274E-321",
+                "producer": 2.4e-321,
+                "status": "subnormal"
+              },
+              "boundNormalized": {
+                "oracle": "2.3999999999999998778754673E-1",
+                "producer": 0.24,
+                "status": "normal"
+              },
+              "lossJ": {
+                "oracle": "1.3341179588599716915223666E-321",
+                "producer": 1.334e-321,
+                "status": "subnormal"
+              },
+              "lossNormalized": {
+                "oracle": "1.3341328115168389168615358E-1",
+                "producer": 0.1334132811516839,
+                "status": "normal"
+              },
+              "workAfterJ": {
+                "oracle": "7.0991236095226914240359745E-323",
+                "producer": 7e-323,
+                "status": "subnormal"
+              },
+              "workAfterNormalized": {
+                "oracle": "7.0992026436488194913630267E-3",
+                "producer": 0.007099202643648819,
+                "status": "normal"
+              },
+              "workBeforeJ": {
+                "oracle": "1.4051091949551986057627264E-321",
+                "producer": 1.403e-321,
+                "status": "subnormal"
+              },
+              "workBeforeNormalized": {
+                "oracle": "1.4051248379533271117751661E-1",
+                "producer": 0.1405124837953327,
+                "status": "normal"
+              }
+            },
+            "upperEquality": false
+          },
+          {
+            "input": {
+              "coherenceMagnitude": 0.5,
+              "dephasing": 0.5,
+              "gapJ": 5e-324,
+              "population": 0.5
+            },
+            "lowerEquality": false,
+            "outputs": {
+              "boundJ": {
+                "oracle": "1.2351641146031163604414220E-324",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "boundNormalized": {
+                "oracle": "2.5000000000000000000000000E-1",
+                "producer": 0.25,
+                "status": "normal"
+              },
+              "lossJ": {
+                "oracle": "1.2351641146031163604414220E-324",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "lossNormalized": {
+                "oracle": "2.5000000000000000000000000E-1",
+                "producer": 0.25,
+                "status": "normal"
+              },
+              "workAfterJ": {
+                "oracle": "1.2351641146031163604414220E-324",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "workAfterNormalized": {
+                "oracle": "2.5000000000000000000000000E-1",
+                "producer": 0.25,
+                "status": "normal"
+              },
+              "workBeforeJ": {
+                "oracle": "2.4703282292062327208828440E-324",
+                "producer": 0,
+                "status": "underflow"
+              },
+              "workBeforeNormalized": {
+                "oracle": "5.0000000000000000000000000E-1",
+                "producer": 0.5,
+                "status": "normal"
+              }
+            },
+            "upperEquality": true
+          },
+          {
+            "input": {
+              "coherenceMagnitude": 0.3,
+              "dephasing": 0.2,
+              "gapJ": 1e+300,
+              "population": 0.25
+            },
+            "lowerEquality": false,
+            "outputs": {
+              "boundJ": {
+                "oracle": "2.4000000000000000038868919E+299",
+                "producer": 2.4000000000000003e+299,
+                "status": "normal"
+              },
+              "boundNormalized": {
+                "oracle": "2.3999999999999998778754673E-1",
+                "producer": 0.24,
+                "status": "normal"
+              },
+              "lossJ": {
+                "oracle": "1.3341328115168389869098593E+299",
+                "producer": 1.3341328115168392e+299,
+                "status": "normal"
+              },
+              "lossNormalized": {
+                "oracle": "1.3341328115168389168615358E-1",
+                "producer": 0.1334132811516839,
+                "status": "normal"
+              },
+              "workAfterJ": {
+                "oracle": "7.0992026436488198641049595E+297",
+                "producer": 7.09920264364882e+297,
+                "status": "normal"
+              },
+              "workAfterNormalized": {
+                "oracle": "7.0992026436488194913630267E-3",
+                "producer": 0.007099202643648819,
+                "status": "normal"
+              },
+              "workBeforeJ": {
+                "oracle": "1.4051248379533271855509089E+299",
+                "producer": 1.4051248379533271e+299,
+                "status": "normal"
+              },
+              "workBeforeNormalized": {
+                "oracle": "1.4051248379533271117751661E-1",
+                "producer": 0.1405124837953327,
+                "status": "normal"
+              }
+            },
+            "upperEquality": false
+          }
+        ],
+        "inadmissible_original_api_pairs_rejected": 600,
+        "invalid_cases_rejected": 17,
+        "matrix_cases": 3780,
+        "matrix_normalized_absolute_tolerance": 5e-13,
+        "max_nextafter_repair_steps": 2,
+        "maximum_independent_upper_residual": 2.027351494796801e-16,
+        "maximum_normalized_matrix_producer_error": 2.93839617399499e-16,
+        "maximum_phase_assembly_magnitude_difference": 5.551115123125783e-17,
+        "rounding_repairs": 714,
+        "source_sha256": {
+          "research/dephasing-work-bound/panel/verification/check_independent.py": "27b8d92a37652d7b6756a051d35a6d6d13d02b7c64462ada5a2115881523339d",
+          "research/dephasing-work-bound/panel/verification/compare_producer.py": "28dfd3126ef6dc43a19335316d0cc52ef93742d940ad30e6cc676b2c1bb6d17f",
+          "research/dephasing-work-bound/panel/verification/producer_bridge.mjs": "48250a34e828b49a651d6f985d16cc5ca98234ed361ad3b304698e1edd422a97",
+          "research/dephasing-work-bound/proof.md": "f03a826adc11b734c5a7955dc11c4ebc6967529d96fcd3f3cc8f97ef85de0ccb",
+          "research/dephasing-work-bound/rounds/round1-decision.json": "8ab3f74db475d0ec106b668f06fa81fde3fb27c304d0315789f60768fb09b060",
+          "src/dephasing-bound.mjs": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b"
+        },
+        "status": "PASS"
+      },
+      "stdoutSha256": "b1eb21420d851b1b1485e8bfc32633caec11c0a02a7a3db4394a613670867e43"
+    },
+    "skeptic": {
+      "command": "python3 -B research/dephasing-work-bound/panel/skeptic/check_skeptic.py",
+      "exitCode": 0,
+      "result": {
+        "schema": "e1-skeptic-round2/1",
+        "passed": true,
+        "failures": [],
+        "source_sha256": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b",
+        "checker_sha256": "26cbfad32ec1d661bac1b19f9180ef0363d2a143fd5f95ad908c0f412a97be56",
+        "control_sha256": "e5d1dce887710b6a59b2846e7ab40452962482826ea4952b054a27786362c160",
+        "exact_matrix_control": {
+          "initial_work": "3/5",
+          "dephased_work": "3/20",
+          "loss": "9/20",
+          "bound": "9/20",
+          "wrong_dephased_work": "3/80",
+          "wrong_loss": "9/16",
+          "wrong_excess": "9/80",
+          "module_base_difference": 0.44999999999999996,
+          "module_mutated_difference": 0.5625,
+          "wrong_model_rejection_stage": "independent work-difference comparison after both valid inputs accepted"
+        },
+        "exact_psd_cases": [
+          {
+            "input": {
+              "population": 0.0,
+              "coherenceMagnitude": 5e-324,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": false,
+            "module_accepted": false,
+            "error": "coherenceMagnitude violates |c|\u00b2 \u2264 population(1\u2212population); use maxCoherenceMagnitude(population) for the representable boundary"
+          },
+          {
+            "input": {
+              "population": 1.0,
+              "coherenceMagnitude": 5e-324,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": false,
+            "module_accepted": false,
+            "error": "coherenceMagnitude violates |c|\u00b2 \u2264 population(1\u2212population); use maxCoherenceMagnitude(population) for the representable boundary"
+          },
+          {
+            "input": {
+              "population": 0.5,
+              "coherenceMagnitude": 0.0,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": true,
+            "module_accepted": true,
+            "error": null
+          },
+          {
+            "input": {
+              "population": 0.3,
+              "coherenceMagnitude": 0.458257569495584,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": true,
+            "module_accepted": true,
+            "error": null
+          },
+          {
+            "input": {
+              "population": 0.25,
+              "coherenceMagnitude": 0.4330127018922193,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": true,
+            "module_accepted": true,
+            "error": null
+          },
+          {
+            "input": {
+              "population": 5e-324,
+              "coherenceMagnitude": 2.2227587494850775e-162,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": false,
+            "module_accepted": false,
+            "error": "coherenceMagnitude violates |c|\u00b2 \u2264 population(1\u2212population); use maxCoherenceMagnitude(population) for the representable boundary"
+          },
+          {
+            "input": {
+              "population": 0.1,
+              "coherenceMagnitude": 0.3,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": true,
+            "module_accepted": true,
+            "error": null
+          },
+          {
+            "input": {
+              "population": 0.1,
+              "coherenceMagnitude": 0.30000000000000004,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": false,
+            "module_accepted": false,
+            "error": "coherenceMagnitude violates |c|\u00b2 \u2264 population(1\u2212population); use maxCoherenceMagnitude(population) for the representable boundary"
+          },
+          {
+            "input": {
+              "population": 0.5,
+              "coherenceMagnitude": 0.5000000000000001,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": false,
+            "module_accepted": false,
+            "error": "coherenceMagnitude must be a finite number in [0, 0.5]"
+          },
+          {
+            "input": {
+              "population": 0.1,
+              "coherenceMagnitude": "NaN",
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": false,
+            "module_accepted": false,
+            "error": "coherenceMagnitude must be a finite number in [0, 0.5]"
+          },
+          {
+            "input": {
+              "population": -0.1,
+              "coherenceMagnitude": 0.0,
+              "dephasing": 0.5,
+              "gapJ": 1
+            },
+            "exact_admissible": false,
+            "module_accepted": false,
+            "error": "population must be a finite number in [0, 1]"
+          }
+        ],
+        "max_coherence_cases": [
+          {
+            "p": 5e-324,
+            "r": 2.2227587494850772e-162,
+            "next": 2.2227587494850775e-162
+          },
+          {
+            "p": 1e-300,
+            "r": 1e-150,
+            "next": 1.0000000000000001e-150
+          },
+          {
+            "p": 0.1,
+            "r": 0.3,
+            "next": 0.30000000000000004
+          },
+          {
+            "p": 0.25,
+            "r": 0.4330127018922193,
+            "next": 0.43301270189221935
+          },
+          {
+            "p": 0.3,
+            "r": 0.458257569495584,
+            "next": 0.45825756949558405
+          },
+          {
+            "p": 0.5,
+            "r": 0.5,
+            "next": 0.5000000000000001
+          },
+          {
+            "p": 0.5000000000000001,
+            "r": 0.49999999999999994,
+            "next": 0.5
+          },
+          {
+            "p": 0.9999999999999999,
+            "r": 1.0536712127723507e-08,
+            "next": 1.0536712127723509e-08
+          }
+        ],
+        "decimal_spectrum_cases": [
+          {
+            "input": {
+              "population": 0.25,
+              "coherenceMagnitude": 1e-200,
+              "dephasing": 0.5,
+              "gapJ": 1e+300
+            },
+            "expected_lossJ": "1.50000000000000002505792758005490682235655341038429995408847225457440589754654383212055819295534984283021518765434724638949721832918389762611361920239301845242218849693781335170960664340021763391501856031206687947280949213437022247575159585356696046703744008772280275595228221002358161198829207941585424469788462374784283093485279801186305705671189536509757544990861788392066955566406249999999999999921210007084108339307252754451447208051424765127502898844399083365649345745231950706090830547290259641472642833909955277776820103658454268986114601829788455282485429521922381695494342437586289271228251033909563067765940579025111317912466294505379193004219020404513714318681222504474200851064814777139200E-100",
+            "module_lossJ": 1.5e-100,
+            "relative_error": "3.2866147492329456831728889350649787499833300116459585114102596240821287667970593728209672432210174484134795552971189008277910056538488594847106866552368406254775670073515289584977690768727252299089429231027734337162129067054679178991453180281893929945287215326874044715641641834979300712114867389969487944240486701825472541212289474270889816217108491591772276536459910603744100978808871929592484249371373294645516781919876083312399781188499223862926980751687464027589149742713282524751428664509716016855106616425774121262333454199674279070343402806912552707735892991199703161277297766946949287926115280043221816644389934485313920015344293156878607205712493680969685023831469812065354107440867520842348440082471216683921113061284557386565359955253675990894450489031797303464260011667677367230377601439E-18",
+            "representability": {
+              "workBeforeNormalized": "underflow",
+              "workAfterNormalized": "underflow",
+              "lossNormalized": "underflow",
+              "boundNormalized": "normal",
+              "workBeforeJ": "normal",
+              "workAfterJ": "normal",
+              "lossJ": "normal",
+              "boundJ": "normal"
+            }
+          },
+          {
+            "input": {
+              "population": 0.25,
+              "coherenceMagnitude": 1e-150,
+              "dephasing": 0.2,
+              "gapJ": 1e-23
+            },
+            "expected_lossJ": "1.9199999999999999393270116031496023088184383122153425107346120336131780986694599838469508941151772636896533524991954652759411945757919267674650525280127403687279087142420246581537650604985142602343058891348149294473227535160531176369538675935086236573187142694067969871502398686083619724907839039443935504479499208674805581057962578615232752715417209015044671879207335936905638466146517371111191062169149638528688630169146058453880284096205957745100802981931718761070379616536846118177834125580463176808877314070884230146937090627532212095984386187968097810390373839616040552158438003971241414546966552734375E-323",
+            "module_lossJ": 2e-323,
+            "relative_error": "0.029303428835930332894369878163341471058385397242640633708758386914991344023897122919608009821409961370618222395949802282766131961733033119554969864488838426631200135941309751796499283966865061408494868322476502171582439685341861016361215589405784660587187885387368845137809391037852627918617822789764367249671885292188490332911133962176825584722036938917121065100896441725480058868089613463676783236330219025773703961248260480828809214369241162657992511315075463546770446338237727724747072489788602898000493561344932737954348665727696937978456017021475493435054415317574900636800519431127307849489236210864176829679727555255986673472812574779709376511975746412181798223622381994787307973288465530050631157671134220486945203581629348947213188068816462482157976987327335355008051441211051726076914611337",
+            "representability": {
+              "workBeforeNormalized": "normal",
+              "workAfterNormalized": "normal",
+              "lossNormalized": "normal",
+              "boundNormalized": "normal",
+              "workBeforeJ": "subnormal",
+              "workAfterJ": "underflow",
+              "lossJ": "subnormal",
+              "boundJ": "normal"
+            }
+          },
+          {
+            "input": {
+              "population": 0.5000000000000001,
+              "coherenceMagnitude": 1e-150,
+              "dephasing": 0.2,
+              "gapJ": 1e+23
+            },
+            "expected_lossJ": "4.3234556422756758317576582536808986576636362256997809146622869289852390702667062901524089412432049117771418546112668089909776765794694773818258601841728268119186252980437988445742193808834510925632145940207795906198417654892102263260459097760293227480911007888078859710771212355919485648643793633896349804274791252110219366514254305815076707435205465969823448515763310621928495943031975769565732032490075084969734212907448374530245466812543829241274487135627468448102579207061878884006427398985521280138960752013042628225093803110953853471343757454475264E-262",
+            "module_lossJ": 4.3234556422756756e-262,
+            "relative_error": "6.4574102229162400371627323721712395168222441784883432055875754328880444574566278821469211225167632697626923128418420552298466902662350835871857419376680167241070342394691171994852233743358970535629400087307271121967182094261963814883842789423467529162819921076713738920915019193803104885793953525666190878410492208945789776792221044776165749760764315153916186042176500888342085936798222689160568611128428578735207301939522994189688370299058577572601574513109358366017692581433406889886603389093828948022675764804488649277422522725642046821570133282831801671033972422516622966759119873413313974037366147387426466643899039207984936818399099740498909334086667431778404099627465188469862752016739912518813803723939367236851711552888018479470632183430361889112567164516575783982593321841782618815035086132E-17",
+            "representability": {
+              "workBeforeNormalized": "normal",
+              "workAfterNormalized": "normal",
+              "lossNormalized": "normal",
+              "boundNormalized": "normal",
+              "workBeforeJ": "normal",
+              "workAfterJ": "normal",
+              "lossJ": "normal",
+              "boundJ": "normal"
+            }
+          },
+          {
+            "input": {
+              "population": 0.5,
+              "coherenceMagnitude": 5e-324,
+              "dephasing": 0.5,
+              "gapJ": 1e+300
+            },
+            "expected_lossJ": "2.4703282292062328505868353904780299345113608618241405206084076616110389856828533083898946642875671386718750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E-24",
+            "module_lossJ": 2.470328229206233e-24,
+            "relative_error": "0",
+            "representability": {
+              "workBeforeNormalized": "subnormal",
+              "workAfterNormalized": "underflow",
+              "lossNormalized": "underflow",
+              "boundNormalized": "underflow",
+              "workBeforeJ": "normal",
+              "workAfterJ": "normal",
+              "lossJ": "normal",
+              "boundJ": "normal"
+            }
+          },
+          {
+            "input": {
+              "population": 0.25,
+              "coherenceMagnitude": 0.2,
+              "dephasing": 0.9999999999999999,
+              "gapJ": 1.0
+            },
+            "expected_lossJ": "1.3871016503284578841847024281149822488775295111566076810930010913581341220210268332104184405222381692525088637082096097997231319150289108564316952842654827473577390746831032571917657929403435721908368519767245046553645361371097981319834489925860640647178082744127730750364399574491955213923904257338110294944299492064106105704020358482567259630299713117172254487955770036725655389944728124332608075857836128702369137276920144867495632364023467556346787538947868482095401860448136894432184006759753065072320953890469439102487685990964132591769549818762644294347105339816123214402965788521208784324253917675377886237827860603035352308202838451701625225416403573650253820368329933105703134740048168710461905321093766266154917011753834083832019536893986868569189979335159290283696661751200E-17",
+            "module_lossJ": 1.387101650328458e-17,
+            "relative_error": "5.1898624734612561782384964483652206322129999494534624925634082288084736184380775149566602226652895427740408257400494079054250971661461759334620340943345708794710098413224987363678034769811300931285857911386377035941443442862767466453651806611277527014838208635422219007393818240895467876130532126463712112794147820779065668572668326255669942929711282916764402511263890319017369921319777272657787562221369932711385969626422699813330390089110089023782852562955836794818247100344426767949106141305011645598038716619731644500499318465410973202415012146403429978628510902531202915772713349777423905116490296073558170871363832732244035091759678152622901883156910055297737664346656594589667588721481309333679627856228039180098014166065680849357116048116256251111052691812515675747282204933975584510953124185E-17",
+            "representability": {
+              "workBeforeNormalized": "normal",
+              "workAfterNormalized": "normal",
+              "lossNormalized": "normal",
+              "boundNormalized": "normal",
+              "workBeforeJ": "normal",
+              "workAfterJ": "normal",
+              "lossJ": "normal",
+              "boundJ": "normal"
+            }
+          }
+        ],
+        "limits": "Finite implementation audit only. 800-digit Decimal spectrum and exact rational control independently assess the clipped producer expression. Subnormal accuracy is assessed absolutely; range classification alone does not certify an error bound."
+      },
+      "stdoutSha256": "8497e8e3399585f970f19e1df1b1f090aa6acccd7f7913e5c8e8ce07b06c03f4"
+    },
+    "physics": {
+      "command": "node research/dephasing-work-bound/panel/physics/round2-controls.mjs",
+      "exitCode": 0,
+      "result": {
+        "status": "passed",
+        "count": 14,
+        "sourceHashes": {
+          "module": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b",
+          "proof": "f03a826adc11b734c5a7955dc11c4ebc6967529d96fcd3f3cc8f97ef85de0ccb",
+          "contract": "ed0289dbad37b2059f781d500c7986ef8fde81e7e42f2ef96a08d51b33fb9ee2",
+          "checker": "30f436dea7f39e454aea7940cd95fdf1348bc05adf747126f86e871f1ed6008c"
+        }
+      },
+      "stdoutSha256": "1e377e51ad97932cf1154076f037a5beeaf063b798324bd3f79df06011404ca2"
+    },
+    "ui-boundaries": {
+      "command": "node research/dephasing-work-bound/panel/physics/round3-ui-controls.mjs",
+      "exitCode": 0,
+      "result": {
+        "passed": true,
+        "count": 7,
+        "checks": [
+          {
+            "id": "units-and-fraction-conversion",
+            "passed": true
+          },
+          {
+            "id": "boundary-is-representable-magnitude",
+            "passed": true
+          },
+          {
+            "id": "positive-fraction-conversion-underflow-rejects",
+            "passed": true
+          },
+          {
+            "id": "positive-text-input-underflow-rejects",
+            "passed": true
+          },
+          {
+            "id": "positive-stored-energy-underflow-visible",
+            "passed": true
+          },
+          {
+            "id": "endpoint-fraction-still-valid",
+            "passed": true
+          },
+          {
+            "id": "physical-wording",
+            "passed": true
+          }
+        ],
+        "sourceHashes": {
+          "page": "a7a30fae419d1377f12a1ec39a9c553ca11fa6eecb1673244c7665ffd8b04b7e",
+          "ui": "697ada688c21d9fef058fb18beb41bb6927d27ff69bde2d5c9688e60f7ef50d2",
+          "module": "05b2ad552c3bb0c1812dd3553163a59f28bc77b9bc55861c96d673fd85afb78b",
+          "checker": "951bd5811fda38ec2b8838e9a324e88db70a5c1aa02cf93a0a94e011aa56fca4"
+        }
+      },
+      "stdoutSha256": "871a8ece9d0bab96bb40cc572632537598a9099e254b2b6867db99bd7fb2a5da"
+    }
+  },
+  "scope": "Replayed finite implementation checks and record integrity; analytic proof is separately reviewed. No hardware or proof-assistant execution."
+}

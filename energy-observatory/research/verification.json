@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "researchDate": "2026-10-21",
+  "status": "passed for recorded numerical, scientific-copy, browser and source-archive checks; deployment status is recorded separately by GitHub Actions",
+  "physicalMeasurements": 0,
+  "rounds": 3,
+  "specialists": 6,
+  "gates": {
+    "integrationTests": 7,
+    "independentEMAcousticChecks": 613,
+    "independentQuantumCases": 648,
+    "sameAuthorMetrologyPhaseCells": 105,
+    "sameAuthorStorageCases": 16,
+    "preservedNodeTests": {
+      "location-v1.0": 13,
+      "location-v1.1": 28,
+      "position-v1.0": 6
+    },
+    "preservedSourceFiles": 147,
+    "browser": {
+      "status": "passed",
+      "pageViewportChecks": 14,
+      "functionalGroups": 7,
+      "errors": 0,
+      "report": "release/browser-check.json"
+    },
+    "sourceArchive": {
+      "status": "passed",
+      "method": "Extract source ZIP outside a git repository; npm run check validates 7 integration tests and builds 7 pages plus 3 preserved applications",
+      "scope": "Build and scientific sources unchanged by subsequent receipt inclusion and CSS wrap correction."
+    }
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "node": "v24.19.0"
+  },
+  "reviews": [
+    "panel/records/presentation-review.json",
+    "panel/metrology/presentation-review.json",
+    "panel/metrology/presentationfix-recheck.json"
+  ],
+  "limitations": [
+    "No apparatus data or excess-energy demonstration",
+    "Finite synthetic cases and bounded grids, not global proofs",
+    "Model-agent peer review, not external human peer review",
+    "Source readings have individually recorded depth"
+  ],
+  "reviewedFiles": {
+    "site.mjs": "25d4927c54810862646ed96ce20835568b91f86602afe35fe5d4ea8d6d25e74c",
+    "src/app.mjs": "ad33cd6d3e2abace4592e8893f6240493decd4739abe49aa1c0db271fd68beff",
+    "src/em.mjs": "09ee1be95fe4586b1633fb39dae11fdc7f6a5dc3604461632c320d1e91193984",
+    "src/acoustic.mjs": "d14db2f4843f328e016dd1f7f29b16612a910b1362599a4bbc74c9cca1f8dff3",
+    "src/quantum.mjs": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91",
+    "src/metrology.mjs": "3c607824849b41131bdf6a6908ad186d9bde8161e97ecb14f959a10dcdb655b1",
+    "src/identifiability.mjs": "fa6e497e275d10c1656060883e8fb1b9c865d4686e25bb012e8cde4887683b29",
+    "data/evidence.json": "376535fa652c989b9603d4426d921404a36ddc049c8a76a66bd7d7ec8a5eb6de",
+    "data/panel.json": "0722afb35028f2665e7e1f05e59542d98eae83d88e7391875c11ad486111cbdf",
+    "data/programs.json": "5064debca8319ac08573612ae6d05a3e1756aff55cd66b00e5ccf8218c4c1165",
+    "data/versions.json": "b6385c7eecfd6e0e442a6a237bd22df09cc3e22c9e817dba1e9e297a8eefa6fd",
+    "research/advisor.md": "a41f87d85c50aa9c374cd90a3d69b6d19a35d2a72d230837149ae15c9a48deff",
+    "src/styles.css": "676ae6e938104d47103dbc249dbbf2633f15feaaa2bb844a12da7774f66e7f26",
+    "build.mjs": "33dd8c4153df030fad3f1332a60426536619eb7a4670b63dc696bf9ed910dc8f",
+    "scripts/browser-check.cjs": "cbbb19f4bf6724351cde0c77dc3a5db8edc7e35f73a1eeb219fe2478749d8b6b",
+    "research/release/browser-check.json": "9218d46fa83f38a27f9c0ebc1a99b49bb95a379b37f642dc69c5d023473a1a57",
+    "research/release/crosscheck-replay.json": "c294272806dfd536ca102e75a7e2919e3edfb574c4055487c98a54bc523f3b1b",
+    "research/release/quantum-replay.json": "a3d42d0be03d6f00af35381e0f2c10f2579e64d3926580094b2012aef0620e78",
+    "research/release/metrology-replay.json": "b0d77397e082e164b7f184a3b64e02900092a4e192984c08cd8cf019e0c21e7e"
+  },
+  "visualReview": {
+    "status": "passed after one correction batch",
+    "views": [
+      "desktop overview",
+      "phone workbench readout",
+      "phone evidence page",
+      "quantum source network"
+    ],
+    "corrections": [
+      "Stack numeric metrics on phones",
+      "Wrap long source names"
+    ],
+    "testHarnessCorrection": "Lazy images are explicitly decoded before checking; source images remain unchanged."
+  }
+}

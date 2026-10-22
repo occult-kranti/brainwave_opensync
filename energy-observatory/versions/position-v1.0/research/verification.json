@@ -1,0 +1,88 @@
+{
+  "status": "passed-within-declared-scope",
+  "date": "2026-10-22",
+  "hardware_measurements": 0,
+  "review_type": "model-agent review plus executed software checks; no external human peer review",
+  "source_sha256": {
+    "index.html": "4b6a6c2f75b0c614591b8d7940cbaabb273d35aaa004238f0ba198a1e5c2fae7",
+    "src/app.mjs": "8990e29db1dce3f47dc5be4df8fcc590a51fc06e3c91db7cb4c00c1554adcc8c",
+    "src/model.mjs": "4d464f1a21bbadc88363fe666720994641079eecf7215f3d80e3fe6b4c18e3d6",
+    "src/styles.css": "990af679031ccdeaa51903630e5a93dfd1c680d326a05db7dd1746393f041ba0",
+    "src/evidence.json": "93bf0e6cb41f8e7ae310b9f5ad8b638279b5cf9ac898450a39cd66d16ad79605",
+    "assets/apparatus.svg": "83b63eaec361f736192ef7fdc55f0f0eeb7ed6e438b66f0a903bf98c477c086c",
+    "assets/signal-chain.svg": "4d62e96db3f5859976bef9113e4b7c93c81e102df16a54336af39b2581eeaffe",
+    "analysis/analyze.py": "f1e5193ef8c8034e463b3c686b73b0dd5cdd59bb8953ac33290f3eb98042ede0",
+    "analysis/make_demo.py": "5f82888ea163ad14bbd05e2b9427a391843e21756c504695d149d7fee2e0b9f9",
+    "tests/model.test.mjs": "0cb2f8903ad9e1cb21aafe997dd81c91b81260cbbe76f74e67639da7ade45bd2",
+    "tests/analysis_test.py": "3041922c6469a0ddd5e4e04b85153bc218d99712c8981d9d8126d7b2542ab9ea",
+    "scripts/browser-check.cjs": "369b37d8fd3e06d02db16a3b4606d5c0f23753f0a34f5aefdfa944f8b93d4ada",
+    "build.mjs": "0466172c36dea6c21731c6ab10649fd8fa138e777f97835e93bbeca54c7b279c",
+    "research/final-scientific-review.json": "2cacc5f880ea5ac76a4348a83c00c3f741c24dab9d95c38e12255777baeeee62"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "chromium": "153.0.8010.0"
+  },
+  "checks": {
+    "node_tests": 6,
+    "python_analysis_tests": 11,
+    "producer_physics_material_cases": 29,
+    "independent_radial_roots": 312,
+    "independent_control_groups": 8,
+    "independent_root_max_relative_error": 3.8811e-14,
+    "standalone_source_archive": "extracted without Git metadata; all 17 tests and build passed",
+    "scientific_copy_review": "accepted; nine file hashes matched",
+    "browser": {
+      "status": "passed",
+      "mode": "render-routes-and-interactions",
+      "checks": [
+        {
+          "viewport": {
+            "width": 1440,
+            "height": 1000
+          },
+          "sections": [
+            "overview",
+            "apparatus",
+            "calculator",
+            "protocol",
+            "network",
+            "reproduce"
+          ],
+          "overflow": false
+        },
+        {
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "sections": [
+            "overview",
+            "apparatus",
+            "calculator",
+            "protocol",
+            "network",
+            "reproduce"
+          ],
+          "overflow": false
+        }
+      ],
+      "interactions": [
+        "radius scaling; invalid input rejected; reset",
+        "position and support scenario update spectrum",
+        "Nyquist and mode-band failures displayed",
+        "source search/filter; unresolved topic; keyboard graph navigation",
+        "model JSON download parsed"
+      ],
+      "errors": [],
+      "urlPrefix": "/brainwave_opensync/devices/position/"
+    },
+    "visual_review": "desktop/mobile layout, source graph, apparatus and spectrum inspected; scrollable plots on small screens"
+  },
+  "limits": [
+    "Numerical agreement applies to the specified ideal models.",
+    "No full spectrum or intrinsic location effect measured.",
+    "Deployment success is verified separately after publication."
+  ]
+}

@@ -1,0 +1,50 @@
+/** Fixed-parameter, passive two-coil RLC plus reciprocal mechanical transducer.
+ * RMS phasors; measured physical-device efficiency is not claimed.
+ */
+export const EM_DEFAULTS = Object.freeze({frequencyHz:1000,coupling:.3,loadOhm:20,driveVrms:1,L1H:.01,L2H:.01,C1F:2.5330295910584444e-6,C2F:2.5330295910584444e-6,R1Ohm:2,R2Ohm:2,massKg:.001,stiffnessNpm:39478.41760435743,dampingNsPm:.05,mechanicalLoadNsPm:.1,transducerNA:.5});
+const add=(a,b)=>[a[0]+b[0],a[1]+b[1]],sub=(a,b)=>[a[0]-b[0],a[1]-b[1]],mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]],scale=(a,s)=>[a[0]*s,a[1]*s],abs2=a=>a[0]*a[0]+a[1]*a[1];
+const div=(a,b)=>{const d=abs2(b);if(!(d>0&&Number.isFinite(d)))throw new RangeError('Singular/nonfinite complex impedance.');return [(a[0]*b[0]+a[1]*b[1])/d,(a[1]*b[0]-a[0]*b[1])/d];};
+function solve(a,b){a=a.map((r,i)=>[...r.map(z=>[...z]),[...b[i]]]);for(let i=0;i<a.length;i++){const s=Math.max(...a[i].slice(0,3).map(z=>Math.hypot(...z)));if(!(s>0))throw new RangeError('Underdetermined ideal steady state.');a[i]=a[i].map(z=>scale(z,1/s));}for(let j=0;j<3;j++){let p=j;for(let i=j+1;i<3;i++)if(abs2(a[i][j])>abs2(a[p][j]))p=i;if(abs2(a[p][j])<1e-28)throw new RangeError('Singular or ill-conditioned ideal steady state; add physical losses.');[a[j],a[p]]=[a[p],a[j]];const pivot=a[j][j];a[j]=a[j].map(z=>div(z,pivot));for(let i=0;i<3;i++)if(i!==j){const f=a[i][j];for(let k=j;k<4;k++)a[i][k]=sub(a[i][k],mul(f,a[j][k]));}}return a.map(r=>r[3]);}
+function parameters(options){const p={...EM_DEFAULTS,...options};for(const key of Object.keys(EM_DEFAULTS))if(!Number.isFinite(p[key]))throw new RangeError(key+' must be finite.');for(const key of ['frequencyHz','L1H','L2H','C1F','C2F','massKg','stiffnessNpm'])if(!(p[key]>0))throw new RangeError(key+' must be positive.');for(const key of ['loadOhm','driveVrms','R1Ohm','R2Ohm','dampingNsPm','mechanicalLoadNsPm'])if(p[key]<0)throw new RangeError(key+' must be nonnegative.');if(Math.abs(p.coupling)>=1)throw new RangeError('|coupling| must be below 1 for positive magnetic storage.');return p;}
+export function emSolve(options={}){
+ const p=parameters(options),w=2*Math.PI*p.frequencyHz,M=p.coupling*Math.sqrt(p.L1H*p.L2H),g=p.transducerNA;
+ const matrix=[[[p.R1Ohm,w*p.L1H-1/(w*p.C1F)],[0,w*M],[0,0]],[[0,w*M],[p.R2Ohm+p.loadOhm,w*p.L2H-1/(w*p.C2F)],[g,0]],[[0,0],[-g,0],[p.dampingNsPm+p.mechanicalLoadNsPm,w*p.massKg-p.stiffnessNpm/w]]];
+ const [i1,i2,v]=p.driveVrms===0?[[0,0],[0,0],[0,0]]:solve(matrix,[[p.driveVrms,0],[0,0],[0,0]]),a=abs2(i1),b=abs2(i2),c=abs2(v);
+ const inputW=p.driveVrms*i1[0],electricalLoadW=p.loadOhm*b,mechanicalLoadW=p.mechanicalLoadNsPm*c,lossW=p.R1Ohm*a+p.R2Ohm*b+p.dampingNsPm*c,outputW=electricalLoadW+mechanicalLoadW;
+ const averageStoredJ=.5*(p.L1H*a+p.L2H*b)+M*(i1[0]*i2[0]+i1[1]*i2[1])+.5*(a/p.C1F+b/p.C2F)/(w*w)+.5*(p.massKg+p.stiffnessNpm/(w*w))*c;
+ const harmonicEnergy=add(add(scale(mul(i1,i1),.5*(p.L1H-1/(w*w*p.C1F))),scale(mul(i2,i2),.5*(p.L2H-1/(w*w*p.C2F)))),add(scale(mul(i1,i2),M),scale(mul(v,v),.5*(p.massKg-p.stiffnessNpm/(w*w))))),peakStoredJ=averageStoredJ+Math.hypot(...harmonicEnergy);
+ const apparentInputVA=p.driveVrms*Math.sqrt(a),reactiveInputVar=-p.driveVrms*i1[1],efficiencyFloorW=1e-15;
+ const out={inputW,electricalLoadW,mechanicalLoadW,outputW,lossW,residualW:outputW+lossW-inputW,primaryCurrentRmsA:Math.sqrt(a),secondaryCurrentRmsA:Math.sqrt(b),velocityRmsMps:Math.sqrt(c),averageStoredJ,peakStoredJ,apparentInputVA,reactiveInputVar,inputPowerFactor:apparentInputVA>efficiencyFloorW?inputW/apparentInputVA:null,efficiency:inputW>efficiencyFloorW?outputW/inputW:null,efficiencyFloorW,phasors:{primaryCurrentRmsA:i1,secondaryCurrentRmsA:i2,velocityRmsMps:v},parameters:p,mutualH:M,limits:['Synthetic linear fixed-M steady state; no physical measurements.','RMS phasors; electrical load and mechanical load are distinct output ports.','Input is the ideal AC source terminal, excluding upstream converter/control losses.','Positive residualW denotes apparent excess output plus dissipation relative to input.','Changing mutual inductance during motion requires an additional work port.']};
+ for(const [name,value]of Object.entries(out))if(typeof value==='number'&&!Number.isFinite(value))throw new RangeError('Nonfinite result '+name+'; rescale parameters or add physical losses.');
+ return out;
+}
+export function emSweep(options={}){
+ const {frequenciesHz=Array.from({length:31},(_,i)=>300+i*60),couplings=[0,.1,.3,.6,.8],loadsOhm=[1,2,5,10,20,40,60,80,100],maxCurrentRmsA=.5,maxStoredEnergyJ=.01,objective='outputW',mode='fixed-voltage',targetInputW=.05,maxDriveVrms=5,...base}=options;
+ if(!['outputW','efficiency'].includes(objective))throw new RangeError('objective must be outputW or efficiency.');
+ if(!['fixed-voltage','fixed-input'].includes(mode))throw new RangeError('mode must be fixed-voltage or fixed-input.');
+ for(const a of [frequenciesHz,couplings,loadsOhm])if(!Array.isArray(a)||!a.length||a.some(x=>!Number.isFinite(x)))throw new RangeError('Grid arrays must contain finite numbers.');
+ const total=frequenciesHz.length*couplings.length*loadsOhm.length;if(total>20000)throw new RangeError('Sweep is limited to 20,000 declared cells.');
+ if(!Number.isFinite(maxCurrentRmsA)||maxCurrentRmsA<=0||!Number.isFinite(maxStoredEnergyJ)||maxStoredEnergyJ<=0)throw new RangeError('Constraints must be positive finite values.');
+ if(mode==='fixed-input'&&(!Number.isFinite(targetInputW)||targetInputW<=0||!Number.isFinite(maxDriveVrms)||maxDriveVrms<=0))throw new RangeError('Fixed-input target and drive limit must be positive finite values.');
+ let best=null,feasibleCount=0,rejectedCount=0,maxAbsoluteResidualW=0,maximumInputTargetErrorW=0;
+ const rejectionReasons={zeroInputResponse:0,zeroUsefulResponse:0,driveLimit:0,currentLimit:0,storageLimit:0,undefinedObjective:0};
+ const reject=reason=>{rejectedCount++;rejectionReasons[reason]++;};
+ for(const frequencyHz of frequenciesHz)for(const coupling of couplings)for(const loadOhm of loadsOhm){
+  let r=emSolve({...base,frequencyHz,coupling,loadOhm,...(mode==='fixed-input'?{driveVrms:1}:{})});
+  if(mode==='fixed-input'){
+   if(!(r.inputW>r.efficiencyFloorW)){reject('zeroInputResponse');continue;}
+   if(!(r.outputW>r.efficiencyFloorW)){reject('zeroUsefulResponse');continue;}
+   const requiredDriveVrms=Math.sqrt(targetInputW/r.inputW);
+   if(!Number.isFinite(requiredDriveVrms)||requiredDriveVrms>maxDriveVrms){reject('driveLimit');continue;}
+   r=emSolve({...base,frequencyHz,coupling,loadOhm,driveVrms:requiredDriveVrms});
+   maximumInputTargetErrorW=Math.max(maximumInputTargetErrorW,Math.abs(r.inputW-targetInputW));
+  }
+  maxAbsoluteResidualW=Math.max(maxAbsoluteResidualW,Math.abs(r.residualW));
+  if(Math.max(r.primaryCurrentRmsA,r.secondaryCurrentRmsA)>maxCurrentRmsA){reject('currentLimit');continue;}
+  if(r.peakStoredJ>maxStoredEnergyJ){reject('storageLimit');continue;}
+  if(r[objective]===null){reject('undefinedObjective');continue;}
+  feasibleCount++;if(best===null||r[objective]>best[objective])best=r;
+ }
+ const onBoundary=(value,grid)=>value===Math.min(...grid)||value===Math.max(...grid);
+ return {sampledBest:best,best,objective,mode,normalizationReferenceVrms:mode==='fixed-input'?1:null,normalizationFloorW:mode==='fixed-input'?1e-15:null,rejectionPolicy:mode==='fixed-input'?'Reject reference input or useful power at/below 1e-15 W, then apply drive/current/peak-storage constraints to the rescaled response.':null,targetInputW:mode==='fixed-input'?targetInputW:null,totalCount:total,feasibleCount,rejectedCount,rejectionReasons,maxAbsoluteResidualW,maximumInputTargetErrorW:mode==='fixed-input'?maximumInputTargetErrorW:null,grid:{frequenciesHz,couplings,loadsOhm},constraints:{maxCurrentRmsA,maxStoredEnergyJ,storedEnergyStatistic:'cycle-maximum',maxDriveVrms:mode==='fixed-input'?maxDriveVrms:null},driveComparison:mode==='fixed-input'?'Equal ideal AC-terminal input power after linear amplitude rescaling; initial driveVrms option is replaced by the required drive.':'Fixed RMS source voltage; input power changes across cells.',bestAtGridBoundary:best?{frequency:onBoundary(best.parameters.frequencyHz,frequenciesHz),coupling:onBoundary(best.parameters.coupling,couplings),load:onBoundary(best.parameters.loadOhm,loadsOhm)}:null,status:'Finite declared grid; sampled optimum only, not a global optimum or energy-source discovery.'};
+}

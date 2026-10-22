@@ -1,0 +1,60 @@
+{
+  "schema": "blind-energy-card/1",
+  "status": "synthetic; no hardware",
+  "cards": [
+    {
+      "id": "card-41",
+      "file": "card-41.csv",
+      "window_s": [
+        0,
+        0.02
+      ],
+      "sample_rate_hz": 100000,
+      "loss_J": 0.00014311485495316272,
+      "storage_change_J": 0,
+      "notes": [
+        "Reference channels were simultaneously acquired from a declared in-phase, unit-RMS calibration source.",
+        "Each trace includes both integration endpoints; estimate by trapezoidal integration.",
+        "Treat supplied calibration and loss values as exact for this synthetic exercise."
+      ]
+    },
+    {
+      "id": "card-72",
+      "file": "card-72.csv",
+      "window_s": [
+        0,
+        1
+      ],
+      "sample_rate_hz": 100,
+      "loss_J": 0.02,
+      "component_certificate": {
+        "capacitor_F": 0.02
+      },
+      "notes": [
+        "Auxiliary voltage probe is connected across the capacitor.",
+        "Treat stated component values as exact for this synthetic exercise."
+      ]
+    },
+    {
+      "id": "card-19",
+      "file": "card-19.csv",
+      "window_s": [
+        0,
+        1
+      ],
+      "sample_rate_hz": 100,
+      "loss_J": 0.02,
+      "storage_change_J": 0,
+      "notes": [
+        "Recorded ports: main input and load.",
+        "Boundary wiring inventory also lists a controller supply with no corresponding power channel.",
+        "No calibration bounds on an unmeasured port are supplied."
+      ]
+    }
+  ],
+  "files_sha256": {
+    "card-19.csv": "c6f50ed8799cea774ee1e6c7e3001d38019e605176d9383f9f6cc8657917176a",
+    "card-41.csv": "5ce9e50089b4f354bd5ecba814aacea9da213ecb6f6367d5c76a61f37ea4d878",
+    "card-72.csv": "d23b7b86a681c595e5486fd9f081701821713dcb13a9332f57099c8e737d5c91"
+  }
+}

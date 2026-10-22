@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "sourceSHA256": "45af3ac9c2a447ef80328e5f9c2e3b3e4c6f9271c497b5c525618aa4a30f44cd",
+  "fixtureSHA256": "c6e8f11ed6e0b01f864b6de03550fd5a88ab7a1eb989335d8a6592b8cc4ac848",
+  "independentSignalCases": 13,
+  "independentUncertaintyCases": 5,
+  "numericalComparisons": 15395,
+  "maxAbsoluteAmplitudeError": 6.0285110237146e-14,
+  "maxAbsoluteSampleError": 4.440892098500626e-16,
+  "limits": [
+    "Synthetic samples only; no physical measurements",
+    "Compares independent NumPy FFT and first-order covariance propagation",
+    "Near-tied FFT maxima accepted within declared arithmetic tolerance; no unique-frequency claim",
+    "Phase/modality, analog transfer, anti-alias filtering and calibration remain experimental obligations"
+  ]
+}

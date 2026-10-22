@@ -1,0 +1,7 @@
+dist/
+__pycache__/
+*.pyc
+.venv-tools/
+reference/caption-reproduction/
+reference/generated-diagrams/
+reference/producer-comparison.json

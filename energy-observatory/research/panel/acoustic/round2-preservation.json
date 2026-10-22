@@ -1,0 +1,7 @@
+{
+  "status": "round2 originals preserved before adaptive round3 extension",
+  "preservedSourcePaths": {
+    "src/acoustic.mjs": "research/panel/acoustic/round2-source/acoustic.mjs",
+    "research/panel/acoustic/test_acoustic.mjs": "research/panel/acoustic/round2-source/test_acoustic.mjs"
+  }
+}

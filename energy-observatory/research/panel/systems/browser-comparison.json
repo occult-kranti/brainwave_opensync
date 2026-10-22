@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "scope": "Browser vs independent Python impedance functions and SVD rank; synthetic only",
+  "scaleCases": 8,
+  "curveComparisons": 3216,
+  "invalidInputsRejected": 5,
+  "maxRelativeCurveDifference": 1.5744826957433457e-16,
+  "sourceSha256": {
+    "src/identifiability.mjs": "fa6e497e275d10c1656060883e8fb1b9c865d4686e25bb012e8cde4887683b29",
+    "analysis/systems_reference.py": "0ac8d7ae3535f2714c0195a4682f164abe2dc100ca542e50023f8b46a8c7d2b9",
+    "research/panel/systems/compare_identifiability.py": "e2218d81f2d4555577de93b2760225bc22de48d14479b90aff8523e19444dc1b"
+  }
+}

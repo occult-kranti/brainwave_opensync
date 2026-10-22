@@ -1,0 +1,12 @@
+{
+  "originalFreeze": "round2-freeze.json",
+  "sourceSnapshots": {
+    "src/em.mjs": "research/panel/tesla/round2-source/em.mjs",
+    "analysis/em_reference.py": "research/panel/tesla/round2-source/em_reference.py"
+  },
+  "allSnapshotHashesMatchOriginalFreeze": true,
+  "unchangedHistoricalReports": [
+    "round2.md",
+    "em-results.json"
+  ]
+}

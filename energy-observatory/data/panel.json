@@ -1,0 +1,110 @@
+{
+  "roles": [
+    {
+      "id": "tesla",
+      "name": "Electromagnetic",
+      "title": "Follow source and load",
+      "skill": "Tesla: mechanism, resonance and imagination",
+      "focus": "Coupled RLC networks, reciprocal transduction, full-system power boundaries."
+    },
+    {
+      "id": "acoustic",
+      "name": "Acoustic",
+      "title": "Match the actual input",
+      "skill": "Resonance research advisor + measurement contracts",
+      "focus": "Piezoelectric backaction, impedance matching and control-surface flux."
+    },
+    {
+      "id": "quantum",
+      "name": "Quantum",
+      "title": "Separate energy and work",
+      "skill": "Paired physics + historical physics panel",
+      "focus": "Prepared quantum states, ergotropy, damping and resource accounting."
+    },
+    {
+      "id": "metrology",
+      "name": "Metrology",
+      "title": "Try to break the reading",
+      "skill": "Newton: analysis, synthesis and observable inference",
+      "focus": "Covariance-aware uncertainty, phase/aliasing errors and blind diagnostics."
+    },
+    {
+      "id": "records",
+      "name": "Public records",
+      "title": "Verify what was claimed",
+      "skill": "Investigative evidence + historical panel + Gateway audit",
+      "focus": "Government programs, patent status, original documents and evidence limits."
+    },
+    {
+      "id": "systems",
+      "name": "Systems mathematics",
+      "title": "Test what can be inferred",
+      "skill": "Newton analysis + paired forward/reverse physics",
+      "focus": "Independent matrix fixtures, passivity, parameter ambiguity and calibrated channels."
+    }
+  ],
+  "rounds": [
+    {
+      "number": 1,
+      "title": "Freeze the question before computing",
+      "summary": "Six separate proposals defined models, evidence limits and discriminating controls before peer exchange.",
+      "criticism": "Resonant peaks, patent grants, program funding and quantum terminology do not specify net energy. Pressure-only capture estimates and scalar residuals omit necessary information.",
+      "decision": "Admit fixed-coupling reciprocal conversion, a loaded piezoelectric receiver, one-qubit work, and independent metrology/identifiability controls. Freeze units, boundaries and tests.",
+      "result": "Six source-bound reports; complete energy identities and explicit inverse ambiguities; original version scopes recovered. No sweep or hardware trial was claimed in this round."
+    },
+    {
+      "number": 2,
+      "title": "Build the models and expose misleading comparisons",
+      "summary": "Producers implemented their admitted models while independent reviewers froze alternate formulations and fixtures.",
+      "criticism": "At fixed drive amplitude, input power varies with load. Maximum output can differ from maximum efficiency. Shared equations alone do not constitute independent authorship.",
+      "decision": "Use explicit RMS conventions, external work/loss quadrature, bounded grids, source-off/storage controls and matrix-based quantum reconstruction. Preserve both passing and deliberately wrong cases.",
+      "result": "1,395-cell electromagnetic and 4,941-cell acoustic grids; metrology phase/storage/aliasing controls; quantum state and unitary-search checks; an exact electrical-identifiability family."
+    },
+    {
+      "number": 3,
+      "title": "Match input power and challenge the inference",
+      "summary": "The advisor selected equal-input sweeps and independent reverse verification in response to Round 2 results.",
+      "criticism": "Rescaling a drive can violate current, storage, force or voltage constraints. An unexplained residual cannot be assigned to a new source without additional observations.",
+      "decision": "Check constraints after rescaling; compare producer implementations with independently frozen matrix formulations; diagnose three raw synthetic cards before revealing their key.",
+      "result": "613 cross-checks of EM/acoustic calculations and rescaling passed; 648 separately authored quantum cases passed; all three selected blind cases met the rubric, including abstention for the missing-input case. No physical surplus was established."
+    }
+  ],
+  "findings": [
+    {
+      "status": "KNOWN METHODS APPLIED",
+      "title": "Equal-input comparisons change the engineering decision",
+      "detail": "The revised sweeps normalize model input, then enforce drive and response constraints. Fixed-voltage or fixed-force output rankings answer a different question.",
+      "limit": "Finite grids and illustrative linear models; efficiencies exclude named upstream hardware."
+    },
+    {
+      "status": "EXACT MODEL RESULT",
+      "title": "An electrical fit can leave a mechanical scaling ambiguity",
+      "detail": "The transformation (m,b,k,g) \u2192 (am,ab,ak,\u221aa g) leaves the declared electrical impedance unchanged. Calibrated velocity breaks that positive scaling family.",
+      "limit": "Known electrical parameters, linear reciprocal model, nonzero coupling and specified inputs; not universal system identification."
+    },
+    {
+      "status": "COMPUTED CONTROL",
+      "title": "Stored energy and phase error can mimic an energy surplus",
+      "detail": "Synthetic tests preserve the wrong reading and its correction. A scalar residual also admits hidden inputs and bias; it does not select a unique cause.",
+      "limit": "Three blind examples are a selected mechanism check, not a reliability benchmark."
+    },
+    {
+      "status": "ESTABLISHED THEORY APPLIED",
+      "title": "Coherence changes extractable work at fixed mean energy",
+      "detail": "The one-qubit calculator contrasts a pure coherent state and its dephased counterpart, using the same energy reference.",
+      "limit": "Ideal cyclic-unitary bound; restricted controls may extract less. Device preparation and overhead remain unmodeled."
+    },
+    {
+      "status": "DOCUMENT CORRECTION",
+      "title": "An official unit statement required independent checking",
+      "detail": "The MARRS solicitation\u2019s picobarn/cm\u00b2 parenthesis differs from the BIPM conversion by 10\u00b2\u2074. The original text is preserved and excluded from model inputs.",
+      "limit": "A source-notation inconsistency does not determine reaction performance or refute the cited studies."
+    },
+    {
+      "status": "PROPOSED / NOVELTY UNVERIFIED",
+      "title": "Joint energy closure and identifiability as an admission rule",
+      "detail": "Only promote a conversion claim when it survives a matched-input control, independent energy ledger and sufficient calibrated observations.",
+      "limit": "A project research thesis and protocol synthesis, not a newly proved law or an observed new energy source."
+    }
+  ]
+}

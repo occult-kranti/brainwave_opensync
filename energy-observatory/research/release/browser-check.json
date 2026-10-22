@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "checks": [
+    "index rendered at 1440",
+    "workbench rendered at 1440",
+    "quantum rendered at 1440",
+    "experiments rendered at 1440",
+    "evidence rendered at 1440",
+    "panel rendered at 1440",
+    "versions rendered at 1440",
+    "index rendered at 390",
+    "workbench rendered at 390",
+    "quantum rendered at 390",
+    "experiments rendered at 390",
+    "evidence rendered at 390",
+    "panel rendered at 390",
+    "versions rendered at 390",
+    "two conversion models; zero-input semantics; matched-input grids; invalid input; parsed export",
+    "quantum same-energy coherent/dephased comparison",
+    "closure residual and calibrated-velocity discriminator",
+    "source filter and keyboard evidence graph",
+    "preserved app loads and calculates: location-v1.0",
+    "preserved app loads and calculates: location-v1.1",
+    "preserved app loads and calculates: position-v1.0"
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "prefix": "/brainwave_opensync/devices/energy/"
+}

@@ -1,0 +1,89 @@
+[
+  {
+    "id": "EM-1",
+    "title": "Passive Reactance Compensation for Shape-Reconfigurable Wireless Power Transfer Surfaces",
+    "url": "https://arxiv.org/html/2503.02183v1",
+    "year": 2025,
+    "kind": "conference-author-manuscript",
+    "venue": "2025 IEEE Wireless Power Technology Conference and Expo (WPTCE), accepted-author manuscript",
+    "status": "published-venue author manuscript; experiments reported by authors",
+    "readingDepth": "HTML abstract, acceptance statement, Sections I\u2013II and equation (1); experiment claim read in abstract. Full final proceedings version and supplementary data not independently reproduced.",
+    "claim": "Passive attached reactances can compensate adjacent-resonator detuning in the specified homogeneous relay arrays.",
+    "limits": "Particular array geometry and circuit assumptions; no energy creation or universal compensation theorem. Conference ranking is not asserted.",
+    "topics": [
+      "electromagnetic-transfer",
+      "passive-compensation",
+      "robustness"
+    ]
+  },
+  {
+    "id": "EM-2",
+    "title": "Dispersive gains enhance wireless power transfer with asymmetric resonance",
+    "url": "https://doi.org/10.1088/1361-6633/ada637",
+    "year": 2025,
+    "kind": "journal-paper",
+    "venue": "Reports on Progress in Physics 88(2), 020501",
+    "status": "published; published metadata checked against authors institution",
+    "readingDepth": "Read arXiv:2408.06913v1 abstract, model discussion and experimental Section 2.2; publication date and DOI from CityUHK author-institution record. Final published PDF not read.",
+    "claim": "A powered dispersive-gain circuit selects asymmetric resonant modes to improve transfer efficiency under the paper model.",
+    "limits": "Gain-element supplies and whole-system power must be included; the project has not reproduced its hardware or audited all efficiency denominators.",
+    "topics": [
+      "electromagnetic-transfer",
+      "active-gain",
+      "energy-boundary"
+    ],
+    "openUrl": "https://arxiv.org/html/2408.06913v1",
+    "metadataUrl": "https://scholars.cityu.edu.hk/en/publications/dispersive-gains-enhance-wireless-power-transfer-with-asymmetric-/"
+  },
+  {
+    "id": "EM-3",
+    "title": "Clock Pulling Enables Maximum-Efficiency Wireless Power Transfer",
+    "url": "https://arxiv.org/html/2507.22907v1",
+    "year": 2025,
+    "kind": "preprint",
+    "venue": "arXiv:2507.22907v1 [physics.app-ph], 15 July 2025",
+    "status": "preprint; peer-reviewed publication not verified",
+    "readingDepth": "HTML abstract and Section II equations (1), feedback/PLL discussion and Figure 2 caption. HTML rendering also shows a later 2026 date; version history date retained.",
+    "claim": "Authors propose classical-clock/PLL feedback for selecting a higher-efficiency state in a powered nonlinear WPT system.",
+    "limits": "Not a source of quantum energy; control power, gain-element power and dynamical stability must be independently audited before system claims.",
+    "topics": [
+      "electromagnetic-transfer",
+      "active-gain",
+      "feedback"
+    ]
+  },
+  {
+    "id": "EM-4",
+    "title": "Coupling-aware efficiency modeling of outphasing power amplifiers for wearable wireless power transfer",
+    "url": "https://www.nature.com/articles/s41598-026-56108-1",
+    "year": 2026,
+    "kind": "journal-paper",
+    "venue": "Scientific Reports 16, 25397; published 3 June 2026",
+    "status": "published analytical/simulation study",
+    "readingDepth": "Publisher HTML abstract, introduction and system-level model through PA assumptions/equations (1)\u2013(4); full transistor-level model and all later results not independently audited.",
+    "claim": "A system-level efficiency model combines amplifier, combiner and coupling-dependent inductive-link contributions.",
+    "limits": "Uses ideal source and fixed intrinsic amplifier-efficiency assumptions; analytical and circuit simulation results do not supply a measured apparatus power budget.",
+    "topics": [
+      "energy-boundary",
+      "electromagnetic-transfer",
+      "efficiency"
+    ]
+  },
+  {
+    "id": "EM-5",
+    "title": "US649621A: Apparatus for transmission of electrical energy",
+    "url": "https://patents.google.com/patent/US649621A/en",
+    "year": 1900,
+    "kind": "patent",
+    "venue": "United States patent US649621A, granted 15 May 1900; inventor Nikola Tesla",
+    "status": "historical granted patent; no performance validation inferred",
+    "readingDepth": "Patent text description of transmitter source, receiving load and claims 7\u201310; metadata and related US645576A family entry. Mirror transcription, not a physical replication.",
+    "claim": "The proposed transmitting transformer includes an external current source; receiving coils power loads using transferred energy.",
+    "limits": "The historical high-voltage propagation proposal and its stated atmospheric behavior are not validated by this review. Related family records are not counted as independent inventions.",
+    "topics": [
+      "historical-tesla",
+      "patents",
+      "energy-boundary"
+    ]
+  }
+]

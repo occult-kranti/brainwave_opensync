@@ -1,0 +1,15 @@
+{
+  "round": 2,
+  "status": "implemented-and-checked-within-model",
+  "hardwareMeasurements": 0,
+  "nodeTestGroupsPassed": 5,
+  "sameAuthorDifferentNumericalFormulations": true,
+  "sha256": {
+    "src/acoustic.mjs": "7606861a6e71df440b0279f0918a19106bab529b6ab327a0e2725378af90a827",
+    "analysis/acoustic_reference.py": "c35425fedc8daaf0aa4b7479af851e122f6bb0d421a5de34431753477bd3a59d",
+    "research/panel/acoustic/results.json": "f7b73e333498afc960519b60e673833ade2228426eaa4d741eb8750e562949c3",
+    "research/panel/acoustic/producer-results.json": "c687aa9f42960772e0f0c739507f492ce59b61f8f22960fb88d583a586f86e16",
+    "research/panel/acoustic/test_acoustic.mjs": "bc955580d77afc206cdd9abf307db6d1343d69e091a53b3285d3cb18bac5112c",
+    "research/panel/acoustic/round2.md": "04ed0ac76205fbd42480e20b62f3a22c69b8a655bb1b088f62e664e20ca72842"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "status": "Round3 implementation frozen before systems review",
+  "sha256": {
+    "src/acoustic.mjs": "d14db2f4843f328e016dd1f7f29b16612a910b1362599a4bbc74c9cca1f8dff3",
+    "research/panel/acoustic/test_acoustic.mjs": "e8dad110fb257f2b365b60b4a781828fe85763595e2372698d781c09990e6fc8",
+    "research/panel/acoustic/round3-results.json": "a59b80fd69828fd214701d89b8e0f30dcb98e2c5c32a0546095bcc33831b312e"
+  }
+}

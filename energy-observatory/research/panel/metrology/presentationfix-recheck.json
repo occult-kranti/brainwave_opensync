@@ -1,0 +1,53 @@
+{
+  "schema": "metrology-presentationfix-recheck/1",
+  "dateUTC": "2026-10-22",
+  "status": "accepted-within-reviewed-scientific-copy-scope",
+  "previousReviewSHA256": "7f8dcbec7a8f1e55edb604304a5b8a3ee71f449b66683ce2a62e3e5a4af0bb8b",
+  "reviewedSHA256": {
+    "site.mjs": "25d4927c54810862646ed96ce20835568b91f86602afe35fe5d4ea8d6d25e74c",
+    "src/app.mjs": "ad33cd6d3e2abace4592e8893f6240493decd4739abe49aa1c0db271fd68beff",
+    "data/panel.json": "0722afb35028f2665e7e1f05e59542d98eae83d88e7391875c11ad486111cbdf",
+    "dist/src/app.mjs": "ad33cd6d3e2abace4592e8893f6240493decd4739abe49aa1c0db271fd68beff",
+    "dist/data/panel.json": "0722afb35028f2665e7e1f05e59542d98eae83d88e7391875c11ad486111cbdf",
+    "dist/index.html": "d711a33037ba4ceb6edf16ac8e07475b7f17d90abb49d72203113f5d6aac0c88",
+    "dist/workbench.html": "6435ea67c6ba1328936672bda80f85665e12ed2353022e7051ddd18e82d33eca",
+    "dist/quantum.html": "a3d6fb84be24c948a7f6f99333a29c5478cf15450caa9fb5d4f4ed1a4be1d7b5",
+    "dist/experiments.html": "37a26076ef5a60e08c419ad260f4e6e3099345062276258dbe409c4f9d659b42"
+  },
+  "resolved": [
+    "M-UI-01",
+    "M-UI-02",
+    "M-UI-03",
+    "M-UI-04"
+  ],
+  "openBlockingFindings": 0,
+  "controls": [
+    {
+      "name": "zero-voltage",
+      "positiveInputEfficiencyBranch": false,
+      "inputW": 0,
+      "efficiency": null
+    },
+    {
+      "name": "zero-force",
+      "positiveInputEfficiencyBranch": false,
+      "inputW": 0,
+      "efficiency": null
+    },
+    {
+      "name": "positive-EM",
+      "positiveInputEfficiencyBranch": true,
+      "inputW": 0.1502003649131613,
+      "efficiency": 0.6298361631572323
+    },
+    {
+      "name": "positive-acoustic",
+      "positiveInputEfficiencyBranch": true,
+      "inputW": 0.0000025416925861045045,
+      "efficiency": 0.4841699880712195
+    }
+  ],
+  "method": "Targeted source and built-page reread; direct evaluation of the actual sweep admission predicate against zero and positive producer outputs. Source and built JS/panel data hashes match.",
+  "scope": "Accept corrected scientific copy for the bounded simulation/protocol release. Browser functional and visual inspection remains owned by the advisor; no hardware claim or broader independent-verification claim is added.",
+  "sharedFilesEdited": false
+}

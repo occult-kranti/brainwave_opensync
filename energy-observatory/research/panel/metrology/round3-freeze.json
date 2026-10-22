@@ -1,0 +1,25 @@
+{
+  "schema": "metrology-round3-freeze/1",
+  "dateUTC": "2026-10-22",
+  "status": "three rounds completed; bounded model and diagnostic verdict",
+  "artifacts": {
+    "round3-blind-key-revealed.json": "6ad1a3cf240ac5f705fc4d0fe3e969a35a63d1bf8e87c8641624e7ba24d809e3",
+    "round3-blind-review.json": "f03789332eb984a9f28f5e40d2d224978928526d302ac8a0909e4e3022803dde",
+    "round3-independent-freeze.json": "b90b605e509c13cee391043c47320cceeb2d13d8653466afcbe85379c62d41ab",
+    "round3-independent-quantum-fixtures.json": "deb23447536aff8fc0ee9cf71553958e47741d40254a06335d33c9a82c9cc038",
+    "round3-independent-reference.py": "dc3221416f5a95b02fd926d075c5562628e3db8e460c8ff403ed7fefca2a1c5c",
+    "round3-quantum-results.json": "a3d42d0be03d6f00af35381e0f2c10f2579e64d3926580094b2012aef0620e78",
+    "round3-semantic-guards.mjs": "c2890b9a427679ce1a99d8df28c7bd8147772b54d0a915a876c1615f369f8691",
+    "round3-semantic-results.json": "c5d14f72a888082759d7f631bfb0a9449ff23e8a29c41ecbfcfa1d68657636ec",
+    "round3.md": "914e17a0426dab3bbb948e359c25b0c4cb85bce34f04a3499a4c75eea3e0785b",
+    "round3-blind-cards/card-19.csv": "c6f50ed8799cea774ee1e6c7e3001d38019e605176d9383f9f6cc8657917176a",
+    "round3-blind-cards/card-41.csv": "5ce9e50089b4f354bd5ecba814aacea9da213ecb6f6367d5c76a61f37ea4d878",
+    "round3-blind-cards/card-72.csv": "d23b7b86a681c595e5486fd9f081701821713dcb13a9332f57099c8e737d5c91",
+    "round3-blind-cards/cards.json": "099e2d50496ad67f89ebf75a3313804ef3283118d09daf8e66fa8b2815838c81"
+  },
+  "checker": {
+    "analysis/metrology_quantum_check.py": "604ed0426fee2ec6cf36dd48f0647fa52ab0b963592dfc76088d2b3f6975c035"
+  },
+  "physicalMeasurements": 0,
+  "uiReview": "Pending parent UI file notification; no UI claims pre-approved."
+}

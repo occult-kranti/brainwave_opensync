@@ -1,0 +1,20 @@
+{
+  "status": "synthetic injection key, withheld until diagnostic review",
+  "cards": {
+    "card-41": {
+      "injected_differential_current_delay_s": 1e-06,
+      "true_input_phase_deg": 85,
+      "expected": "Use in-phase reference to estimate/correct channel skew; corrected input balances load plus loss. A generic unknown device phase alone is not enough to identify skew."
+    },
+    "card-72": {
+      "initial_storage_J": 0.1,
+      "final_storage_J": 0,
+      "expected": "Initial capacitor energy release accounts for 0.1 J apparent surplus if storage was omitted."
+    },
+    "card-19": {
+      "unrecorded_controller_input_J": 0.04,
+      "expected": "The records leave an unmetered input and do not uniquely identify the residual cause or actual controller energy. State the 0.04 J budget gap conditionally, not as a measurement."
+    }
+  },
+  "raw_cards_manifest_sha256": "099e2d50496ad67f89ebf75a3313804ef3283118d09daf8e66fa8b2815838c81"
+}

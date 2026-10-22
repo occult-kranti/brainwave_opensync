@@ -1,0 +1,10 @@
+{
+  "round": 1,
+  "status": "proposal-frozen-before-panel-exchange",
+  "hardwareMeasurements": 0,
+  "sources": 5,
+  "artifacts": {
+    "round1.md": "11881fc564741a71a9a0f3641ebfc1866cb54bb10399216eff7c9a8185845969",
+    "sources.json": "afde9cd7ef1f64cff50e6cce426cc885e2342aa268a5e0e3626fc76214b7de88"
+  }
+}

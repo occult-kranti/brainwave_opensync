@@ -1,0 +1,4 @@
+{
+  "status": "passed",
+  "method": "Extract source ZIP outside a git repository; npm run check validates 7 integration tests and builds 7 pages plus 3 preserved applications"
+}

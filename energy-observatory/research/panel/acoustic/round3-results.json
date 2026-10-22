@@ -1,0 +1,219 @@
+{
+  "status": "passed",
+  "fixedForce": {
+    "mode": "fixed-force",
+    "criterion": "Largest feasible load power on the finite grid at fixed RMS force; not fixed input power or a global optimum.",
+    "sourceBoundary": "Receiver mechanical port: mean F(t)*velocity(t). Excludes speaker/amplifier electrical supply and acoustic capture efficiency.",
+    "targetInputW": null,
+    "grid": {
+      "frequencyMinHz": 100,
+      "frequencyMaxHz": 300,
+      "frequencyPoints": 61,
+      "loadMinOhm": 100,
+      "loadMaxOhm": 1000000,
+      "loadPoints": 81,
+      "cells": 4941
+    },
+    "constraints": {
+      "maxForceRmsN": 0.01,
+      "maxVelocityRmsMps": 0.05,
+      "maxVoltageRmsV": 10,
+      "applied": "to final response after fixed-input amplitude rescaling"
+    },
+    "feasibleCount": 4941,
+    "rejectedCount": 0,
+    "rejectionCounts": {},
+    "best": {
+      "frequencyHz": 200,
+      "loadOhm": 1995.2623149688804,
+      "forceRmsN": 0.001,
+      "inputW": 0.0000025416925861045045,
+      "loadW": 0.0000012306112690949251,
+      "efficiency": 0.4841699880712195,
+      "residualW": -4.235164736271502e-22,
+      "voltageRmsV": 0.049551915095192155,
+      "velocityRmsMps": 0.002560352824328689,
+      "feasible": true,
+      "reason": null,
+      "violations": []
+    },
+    "bestAtSelectedFrequency": {
+      "frequencyHz": 200,
+      "loadOhm": 1995.2623149688804,
+      "forceRmsN": 0.001,
+      "inputW": 0.0000025416925861045045,
+      "loadW": 0.0000012306112690949251,
+      "efficiency": 0.4841699880712195,
+      "residualW": -4.235164736271502e-22,
+      "voltageRmsV": 0.049551915095192155,
+      "velocityRmsMps": 0.002560352824328689,
+      "feasible": true,
+      "reason": null,
+      "violations": []
+    },
+    "maxAbsoluteResidualW": 2.541098841762901e-21
+  },
+  "matchedInput": {
+    "mode": "fixed-input",
+    "criterion": "Largest feasible load power on the finite grid at matched receiver mechanical input power; not a global optimum.",
+    "sourceBoundary": "Receiver mechanical port: mean F(t)*velocity(t). Excludes speaker/amplifier electrical supply and acoustic capture efficiency.",
+    "targetInputW": 0.000001,
+    "grid": {
+      "frequencyMinHz": 100,
+      "frequencyMaxHz": 300,
+      "frequencyPoints": 61,
+      "loadMinOhm": 100,
+      "loadMaxOhm": 1000000,
+      "loadPoints": 81,
+      "cells": 4941
+    },
+    "constraints": {
+      "maxForceRmsN": 0.01,
+      "maxVelocityRmsMps": 0.05,
+      "maxVoltageRmsV": 10,
+      "applied": "to final response after fixed-input amplitude rescaling"
+    },
+    "feasibleCount": 4083,
+    "rejectedCount": 858,
+    "rejectionCounts": {
+      "constraint-limit": 858
+    },
+    "best": {
+      "frequencyHz": 103.33333333333333,
+      "loadOhm": 15848.931924611119,
+      "forceRmsN": 0.009905916352956358,
+      "inputW": 0.000001,
+      "loadW": 7.93769729788234e-7,
+      "efficiency": 0.793769729788234,
+      "residualW": -4.235164736271502e-22,
+      "voltageRmsV": 0.11216239303452241,
+      "velocityRmsMps": 0.0010154562280368503,
+      "feasible": true,
+      "reason": null,
+      "violations": []
+    },
+    "bestAtSelectedFrequency": {
+      "frequencyHz": 200,
+      "loadOhm": 7943.282347242815,
+      "forceRmsN": 0.0009282854983750181,
+      "inputW": 0.000001,
+      "loadW": 6.654884608369207e-7,
+      "efficiency": 0.6654884608369208,
+      "residualW": 0,
+      "voltageRmsV": 0.0727060021130285,
+      "velocityRmsMps": 0.0012932740219363395,
+      "feasible": true,
+      "reason": null,
+      "violations": []
+    },
+    "maxAbsoluteResidualW": 8.470329472543003e-22
+  },
+  "tightConstraints": {
+    "mode": "fixed-input",
+    "criterion": "Largest feasible load power on the finite grid at matched receiver mechanical input power; not a global optimum.",
+    "sourceBoundary": "Receiver mechanical port: mean F(t)*velocity(t). Excludes speaker/amplifier electrical supply and acoustic capture efficiency.",
+    "targetInputW": 0.000001,
+    "grid": {
+      "frequencyMinHz": 100,
+      "frequencyMaxHz": 300,
+      "frequencyPoints": 61,
+      "loadMinOhm": 100,
+      "loadMaxOhm": 1000000,
+      "loadPoints": 81,
+      "cells": 4941
+    },
+    "constraints": {
+      "maxForceRmsN": 0.002,
+      "maxVelocityRmsMps": 0.003,
+      "maxVoltageRmsV": 0.3,
+      "applied": "to final response after fixed-input amplitude rescaling"
+    },
+    "feasibleCount": 848,
+    "rejectedCount": 4093,
+    "rejectionCounts": {
+      "constraint-limit": 4093
+    },
+    "best": {
+      "frequencyHz": 186.66666666666669,
+      "loadOhm": 8912.509381337468,
+      "forceRmsN": 0.0018384118449601948,
+      "inputW": 0.0000010000000000000002,
+      "loadW": 6.804548234621373e-7,
+      "efficiency": 0.6804548234621371,
+      "residualW": 4.235164736271502e-22,
+      "voltageRmsV": 0.07787528489631758,
+      "velocityRmsMps": 0.001264011820628793,
+      "feasible": true,
+      "reason": null,
+      "violations": []
+    },
+    "bestAtSelectedFrequency": {
+      "frequencyHz": 200,
+      "loadOhm": 7943.282347242815,
+      "forceRmsN": 0.0009282854983750181,
+      "inputW": 0.000001,
+      "loadW": 6.654884608369207e-7,
+      "efficiency": 0.6654884608369208,
+      "residualW": 0,
+      "voltageRmsV": 0.0727060021130285,
+      "velocityRmsMps": 0.0012932740219363395,
+      "feasible": true,
+      "reason": null,
+      "violations": []
+    },
+    "maxAbsoluteResidualW": 8.470329472543003e-22
+  },
+  "zeroCoupling": {
+    "mode": "fixed-input",
+    "criterion": "Largest feasible load power on the finite grid at matched receiver mechanical input power; not a global optimum.",
+    "sourceBoundary": "Receiver mechanical port: mean F(t)*velocity(t). Excludes speaker/amplifier electrical supply and acoustic capture efficiency.",
+    "targetInputW": 0.000001,
+    "grid": {
+      "frequencyMinHz": 200,
+      "frequencyMaxHz": 200,
+      "frequencyPoints": 2,
+      "loadMinOhm": 100,
+      "loadMaxOhm": 1000000,
+      "loadPoints": 3,
+      "cells": 6
+    },
+    "constraints": {
+      "maxForceRmsN": 0.01,
+      "maxVelocityRmsMps": 0.05,
+      "maxVoltageRmsV": 10,
+      "applied": "to final response after fixed-input amplitude rescaling"
+    },
+    "feasibleCount": 6,
+    "rejectedCount": 0,
+    "rejectionCounts": {},
+    "best": {
+      "frequencyHz": 200,
+      "loadOhm": 100.00000000000004,
+      "forceRmsN": 0.00044721359549995795,
+      "inputW": 0.0000010000000000000002,
+      "loadW": 0,
+      "efficiency": 0,
+      "residualW": 0,
+      "voltageRmsV": 0,
+      "velocityRmsMps": 0.00223606797749979,
+      "feasible": true,
+      "reason": null,
+      "violations": []
+    },
+    "bestAtSelectedFrequency": {
+      "frequencyHz": 200,
+      "loadOhm": 100.00000000000004,
+      "forceRmsN": 0.00044721359549995795,
+      "inputW": 0.0000010000000000000002,
+      "loadW": 0,
+      "efficiency": 0,
+      "residualW": 0,
+      "voltageRmsV": 0,
+      "velocityRmsMps": 0.00223606797749979,
+      "feasible": true,
+      "reason": null,
+      "violations": []
+    },
+    "maxAbsoluteResidualW": 0
+  }
+}

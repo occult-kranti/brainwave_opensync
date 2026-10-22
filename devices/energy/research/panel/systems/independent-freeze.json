@@ -1,0 +1,10 @@
+{
+  "status": "frozen-before-producer-code-comparison",
+  "date": "2026-10-21",
+  "em_or_acoustic_js_inspected": false,
+  "files": {
+    "analysis/systems_reference.py": "0ac8d7ae3535f2714c0195a4682f164abe2dc100ca542e50023f8b46a8c7d2b9",
+    "research/panel/systems/independent-reference.json": "ae84d7291729b9490771f5dd5fe5d112d0a3a8585489a1662c24c61cfaf573a7"
+  },
+  "inputs": "Tesla and acoustic round1 equations only; matrix solve independently derived by systems agent."
+}

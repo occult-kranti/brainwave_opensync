@@ -1,0 +1,15 @@
+{
+  "site": "Fieldwork / Location Spectrum Lab",
+  "branch": "research/location-spectrum",
+  "commit": "f9927a68fca491785bfca0a4782ffceeb37209dc",
+  "modelSHA256": "5bdf26177c864bc70948178d81e1e917137fa4960bfaeab5d523decf2c63ed9c",
+  "path": "/brainwave_opensync/devices/energy/versions/location-v1.0/",
+  "researchDate": "2026-10-21",
+  "sourceCount": 38,
+  "graphNodes": 32,
+  "graphEdges": 34,
+  "physicalMeasurements": 0,
+  "runtimeDependencies": 0,
+  "hostCommit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+  "hostAdaptation": "Added navigation; pinned original source metadata. Scientific code unchanged."
+}

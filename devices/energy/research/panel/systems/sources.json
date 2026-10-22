@@ -1,0 +1,86 @@
+[
+  {
+    "id": "systems-ph-passivity-2025",
+    "title": "Nonlinear port-Hamiltonian systems and their connection to passivity",
+    "url": "https://arxiv.org/html/2409.06256v2",
+    "year": 2025,
+    "kind": "preprint",
+    "venue": "arXiv:2409.06256v2",
+    "status": "primary mathematical preprint; selected equations inspected",
+    "readingDepth": "Introduction, definition of passivity and pH-A/pH-B structural assumptions; no full proof audit. v2 dated 16 April 2025.",
+    "claim": "A nonnegative storage function and conjugate power ports express passivity; skew interconnection and positive-semidefinite dissipation yield an energy inequality.",
+    "limits": "The cited results have smoothness/model assumptions. A passive numerical realization does not establish the behavior of an uncalibrated device.",
+    "topics": [
+      "passivity",
+      "energy-closure",
+      "system-boundary"
+    ]
+  },
+  {
+    "id": "systems-isophnn-2026",
+    "title": "Nonlinear port-Hamiltonian system identification from input-state-output data (ISO-pHNN)",
+    "url": "https://arxiv.org/html/2501.06118v3",
+    "year": 2026,
+    "kind": "preprint",
+    "venue": "arXiv:2501.06118v3",
+    "status": "primary computational-method preprint; selected sections inspected",
+    "readingDepth": "Abstract, introduction and sections 2.1\u20132.2, including J/R parameterizations and compact-neighborhood Hamiltonian lower-bound caveat. v3 dated 20 August 2026.",
+    "claim": "The authors identify structured nonlinear dynamics from input-state-output trajectories and report benefits of incorporating prior model structure.",
+    "limits": "No neural training or author benchmark was reproduced. State access, model class and training-region assumptions matter; this is not a source of energy or an independent experimental conservation test.",
+    "topics": [
+      "inverse-problems",
+      "passivity",
+      "tools"
+    ]
+  },
+  {
+    "id": "systems-phdae-2026",
+    "title": "Identification of Port-Hamiltonian Differential-Algebraic Equations from Input-Output Data",
+    "url": "https://arxiv.org/html/2601.16827v1",
+    "year": 2026,
+    "kind": "preprint",
+    "venue": "arXiv:2601.16827v1",
+    "status": "primary method proposal; reported simulation",
+    "readingDepth": "Abstract and introduction/declared contributions. v1 dated 23 January 2026. Full algorithm and proof not audited.",
+    "claim": "Proposes constrained pH identification from noisy input-output records using an implicit DAE solver, demonstrated by its authors on a DC power network.",
+    "limits": "Not executed in this project. Reported DC-network performance does not validate a mixed-domain energy apparatus or uniquely identify every hidden parameter.",
+    "topics": [
+      "inverse-problems",
+      "tools",
+      "energy-closure"
+    ]
+  },
+  {
+    "id": "systems-linear-learnability-2023",
+    "title": "Learnability of Linear Port-Hamiltonian Systems",
+    "url": "https://arxiv.org/abs/2303.15779v1",
+    "year": 2023,
+    "kind": "preprint",
+    "venue": "arXiv:2303.15779v1",
+    "status": "primary abstract; theorem lead",
+    "readingDepth": "Official arXiv abstract and version/date metadata only; submitted 28 March 2023.",
+    "claim": "Describes a structure-preserving identification scheme for SISO linear port-Hamiltonian systems and discusses uniquely identifiable canonical cases.",
+    "limits": "Full theorem hypotheses and proofs not inspected. Included as a relevant lead, not as a proved identifiability guarantee for the proposed apparatus.",
+    "topics": [
+      "inverse-problems",
+      "passivity"
+    ]
+  },
+  {
+    "id": "systems-modelica-translationalemf",
+    "title": "Modelica.Electrical.Analog.Basic.TranslationalEMF",
+    "url": "https://doc.modelica.org/om/Modelica.Electrical.Analog.Basic.TranslationalEMF.html",
+    "year": 2020,
+    "kind": "software-documentation",
+    "venue": "Modelica Association official generated documentation",
+    "status": "documented software component; not executed",
+    "readingDepth": "Complete short component-description page and revision note; generated 5 June 2020, component initially implemented 2009. Current build-host request timed out; raw versioned-source request failed.",
+    "claim": "Documents a component that converts electrical energy to translational mechanical energy and connects to the translational mechanics library.",
+    "limits": "No implementation source inspected and no Modelica simulation run. Historical documentation date must not be presented as a new 2026 research result.",
+    "topics": [
+      "tools",
+      "electromagnetic",
+      "system-boundary"
+    ]
+  }
+]

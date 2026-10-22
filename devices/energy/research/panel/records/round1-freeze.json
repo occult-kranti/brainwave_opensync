@@ -1,0 +1,8 @@
+{
+  "status": "frozen before peer reading",
+  "sha256": {
+    "round1.md": "9d96bef9598f8146a1170b0de6fc047b7d77decab026304f5347e6643be9baaa",
+    "sources.json": "819a0d0a813b345527db1734e277a446eda9767270a4c00cb3b46cba3c0eae73",
+    "program-patent-ledger.json": "e3d62b92f1df149f0bce7090cec7cfda8009989271e206d8055029faa312e10e"
+  }
+}

@@ -1,0 +1,441 @@
+{
+  "status": "passed-within-declared-model",
+  "researchDate": "2026-10-21",
+  "hardwareMeasurements": 0,
+  "authorship": "EM producer wrote JS and a separate NumPy/SciPy formulation; separate-agent review is required in round 3.",
+  "sourceSha256": {
+    "src/em.mjs": "dd0ca4f139a2f843b1b182c54c6fe816bc5b2278302cc8078b2b908d350dd69e",
+    "analysis/em_reference.py": "a0ea5dc87b704c1b842b1f58b089cda1184bf80987b163f3623af7ec2e74bd87"
+  },
+  "convention": "RMS phasors; positive residual = outputs + internal loss + storage change - source work.",
+  "scope": "Fixed mutual inductance and fixed reciprocal coupling; external mechanical drive is zero in this lane.",
+  "checks": {
+    "phasorComparison": {
+      "cases": [
+        {
+          "options": {},
+          "maxAbsoluteFieldDifference": 2.7755575615628914e-17,
+          "inputW": 0.05877885965438226,
+          "outputW": 0.046268078329907016
+        },
+        {
+          "options": {
+            "coupling": 0
+          },
+          "maxAbsoluteFieldDifference": 0.0,
+          "inputW": 0.5,
+          "outputW": 0.0
+        },
+        {
+          "options": {
+            "coupling": -0.3
+          },
+          "maxAbsoluteFieldDifference": 2.7755575615628914e-17,
+          "inputW": 0.05877885965438226,
+          "outputW": 0.046268078329907016
+        },
+        {
+          "options": {
+            "transducerNA": 0
+          },
+          "maxAbsoluteFieldDifference": 6.938893903907228e-18,
+          "inputW": 0.055095624180308146,
+          "outputW": 0.04456778961152058
+        },
+        {
+          "options": {
+            "driveVrms": 0
+          },
+          "maxAbsoluteFieldDifference": 0.0,
+          "inputW": 0.0,
+          "outputW": 0.0
+        },
+        {
+          "options": {
+            "loadOhm": 0
+          },
+          "maxAbsoluteFieldDifference": 1.3877787807814457e-17,
+          "inputW": 0.010111062899325883,
+          "outputW": 0.003001998701035646
+        },
+        {
+          "options": {
+            "frequencyHz": 1379,
+            "coupling": 0.45,
+            "loadOhm": 13
+          },
+          "maxAbsoluteFieldDifference": 2.0816681711721685e-17,
+          "inputW": 0.05262189155624564,
+          "outputW": 0.039068060418936464
+        },
+        {
+          "options": {
+            "frequencyHz": 400,
+            "coupling": 0.8,
+            "loadOhm": 100
+          },
+          "maxAbsoluteFieldDifference": 8.673617379884035e-19,
+          "inputW": 0.0002058415335601907,
+          "outputW": 8.591761764170624e-05
+        },
+        {
+          "options": {
+            "frequencyHz": 2100,
+            "coupling": 0.1,
+            "loadOhm": 2
+          },
+          "maxAbsoluteFieldDifference": 2.168404344971009e-19,
+          "inputW": 0.00020526868480713338,
+          "outputW": 3.3190088912556926e-06
+        },
+        {
+          "options": {
+            "driveVrms": 3
+          },
+          "maxAbsoluteFieldDifference": 2.220446049250313e-16,
+          "inputW": 0.5290097368894402,
+          "outputW": 0.41641270496916305
+        },
+        {
+          "options": {
+            "coupling": 0.98
+          },
+          "maxAbsoluteFieldDifference": 6.938893903907228e-18,
+          "inputW": 0.0061650559059224196,
+          "outputW": 0.005431538097100767
+        }
+      ],
+      "maxAbsoluteFieldDifference": 2.220446049250313e-16
+    },
+    "periodicTimeDomain": {
+      "ledger": {
+        "samples": 4001,
+        "samplesPerCycle": 200,
+        "durationS": 0.02,
+        "inputJ": 0.0011755771930902468,
+        "electricalLoadJ": 0.0008766583262686777,
+        "mechanicalLoadJ": 4.870324034487678e-05,
+        "lossJ": 0.0002502156264907005,
+        "initialStoredJ": 8.081762175260269e-05,
+        "finalStoredJ": 8.081762175094108e-05,
+        "deltaStoredJ": -1.6616075919698159e-15,
+        "residualJ": 1.234646065939593e-14,
+        "largestEnergyIncreaseJ": 5.183482990760065e-07
+      },
+      "meanPowerErrorsW": {
+        "inputW": 1.300834440165488e-13,
+        "electricalLoadW": 8.903919268554716e-13,
+        "mechanicalLoadW": 1.196868125441508e-13,
+        "lossW": 5.978030570563675e-14
+      }
+    },
+    "startupQuadratureRefinement": [
+      {
+        "samples": 2001,
+        "samplesPerCycle": 25,
+        "durationS": 0.08,
+        "inputJ": 0.004628452692656311,
+        "electricalLoadJ": 0.003448971916495086,
+        "mechanicalLoadJ": 0.00014352601685686627,
+        "lossJ": 0.0009553086948513121,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 8.067552812728097e-05,
+        "deltaStoredJ": 8.067552812728097e-05,
+        "residualJ": 2.9463674234772586e-08,
+        "largestEnergyIncreaseJ": 4.28631911589764e-06
+      },
+      {
+        "samples": 4001,
+        "samplesPerCycle": 50,
+        "durationS": 0.08,
+        "inputJ": 0.004628474822385134,
+        "electricalLoadJ": 0.003448971918890464,
+        "mechanicalLoadJ": 0.0001435260162875337,
+        "lossJ": 0.0009553086953474384,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 8.067552812728097e-05,
+        "deltaStoredJ": 8.067552812728097e-05,
+        "residualJ": 7.336267583007983e-09,
+        "largestEnergyIncreaseJ": 2.1709297168352986e-06
+      },
+      {
+        "samples": 8001,
+        "samplesPerCycle": 100,
+        "durationS": 0.08,
+        "inputJ": 0.0046284803263929525,
+        "electricalLoadJ": 0.003448971919044419,
+        "mechanicalLoadJ": 0.00014352601614547314,
+        "lossJ": 0.000955308695345501,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 8.067552812728097e-05,
+        "deltaStoredJ": 8.067552812728097e-05,
+        "residualJ": 1.832269721363522e-09,
+        "largestEnergyIncreaseJ": 1.0861868552020836e-06
+      },
+      {
+        "samples": 16001,
+        "samplesPerCycle": 200,
+        "durationS": 0.08,
+        "inputJ": 0.004628481700626935,
+        "electricalLoadJ": 0.003448971919042888,
+        "mechanicalLoadJ": 0.0001435260161096112,
+        "lossJ": 0.0009553086953342489,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 8.067552812728097e-05,
+        "deltaStoredJ": 8.067552812728097e-05,
+        "residualJ": 4.5798709442934626e-10,
+        "largestEnergyIncreaseJ": 5.438745785393278e-07
+      },
+      {
+        "samples": 32001,
+        "samplesPerCycle": 400,
+        "durationS": 0.08,
+        "inputJ": 0.0046284820440768756,
+        "electricalLoadJ": 0.003448971919043217,
+        "mechanicalLoadJ": 0.0001435260161007143,
+        "lossJ": 0.0009553086953315267,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 8.067552812728097e-05,
+        "deltaStoredJ": 8.067552812728097e-05,
+        "residualJ": 1.1452586361898609e-10,
+        "largestEnergyIncreaseJ": 2.7201261308877584e-07
+      }
+    ],
+    "odeToleranceRefinement": {
+      "relativeTolerances": [
+        1e-07,
+        1e-12
+      ],
+      "fixedScales": [
+        0.0001,
+        0.0001,
+        1,
+        1,
+        0.001,
+        1
+      ],
+      "maximumScaledStateDifference": 5.285195892046346e-11
+    },
+    "storedEnergyDecay": {
+      "samples": 80001,
+      "samplesPerCycle": 800,
+      "durationS": 0.1,
+      "inputJ": 0.0,
+      "electricalLoadJ": 3.68800358176412e-05,
+      "mechanicalLoadJ": 1.7844772740002804e-07,
+      "lossJ": 1.2941517504727858e-05,
+      "initialStoredJ": 5e-05,
+      "finalStoredJ": 9.760747085192492e-14,
+      "deltaStoredJ": -4.9999999902392533e-05,
+      "residualJ": 1.1473765459870527e-12,
+      "largestEnergyIncreaseJ": -3.477657564762953e-19
+    },
+    "conservativeDriftJ": 3.388490930986837e-15,
+    "zeroDriveZeroState": true,
+    "zeroMutualDownstream": true,
+    "zeroTransducerMechanical": true,
+    "couplingSignPowerInvariance": true,
+    "driveSquaredPowerScaling": true
+  },
+  "sweep": {
+    "grid": {
+      "frequenciesHz": [
+        300,
+        360,
+        420,
+        480,
+        540,
+        600,
+        660,
+        720,
+        780,
+        840,
+        900,
+        960,
+        1020,
+        1080,
+        1140,
+        1200,
+        1260,
+        1320,
+        1380,
+        1440,
+        1500,
+        1560,
+        1620,
+        1680,
+        1740,
+        1800,
+        1860,
+        1920,
+        1980,
+        2040,
+        2100
+      ],
+      "couplings": [
+        0,
+        0.1,
+        0.3,
+        0.6,
+        0.8
+      ],
+      "loadsOhm": [
+        1,
+        2,
+        5,
+        10,
+        20,
+        40,
+        60,
+        80,
+        100
+      ]
+    },
+    "totalCount": 1395,
+    "feasibleCount": 1395,
+    "constraints": {
+      "maxCurrentRmsA": 0.5,
+      "maxStoredEnergyJ": 0.01,
+      "storedEnergyStatistic": "cycle-maximum"
+    },
+    "objective": "outputW",
+    "best": {
+      "inputW": 0.1502003649131613,
+      "electricalLoadW": 0.0943223399249866,
+      "mechanicalLoadW": 0.0002792816167350829,
+      "outputW": 0.09460162154172169,
+      "lossW": 0.055598743371439635,
+      "residualW": 2.7755575615628914e-17,
+      "primaryCurrentRmsA": 0.16366529223475018,
+      "secondaryCurrentRmsA": 0.03071194229041638,
+      "velocityRmsMps": 0.05284710178761773,
+      "averageStoredJ": 0.00027439242670898313,
+      "peakStoredJ": 0.00029016049307121377,
+      "apparentInputVA": 0.16366529223475018,
+      "reactiveInputVar": 0.0650090629238675,
+      "inputPowerFactor": 0.9177288774074608,
+      "efficiency": 0.6298361631572323,
+      "efficiencyFloorW": 1e-15,
+      "phasors": {
+        "primaryCurrentRmsA": [
+          0.1502003649131613,
+          -0.0650090629238675
+        ],
+        "secondaryCurrentRmsA": [
+          -0.012679116832084468,
+          -0.027972547177692247
+        ],
+        "velocityRmsMps": [
+          -0.052486652958514415,
+          -0.00616177154423134
+        ]
+      },
+      "parameters": {
+        "frequencyHz": 1020,
+        "coupling": 0.3,
+        "loadOhm": 100,
+        "driveVrms": 1,
+        "L1H": 0.01,
+        "L2H": 0.01,
+        "C1F": 2.5330295910584444e-06,
+        "C2F": 2.5330295910584444e-06,
+        "R1Ohm": 2,
+        "R2Ohm": 2,
+        "massKg": 0.001,
+        "stiffnessNpm": 39478.41760435743,
+        "dampingNsPm": 0.05,
+        "mechanicalLoadNsPm": 0.1,
+        "transducerNA": 0.5
+      },
+      "mutualH": 0.003,
+      "limits": [
+        "Synthetic linear fixed-M steady state; no physical measurements.",
+        "RMS phasors; electrical load and mechanical load are distinct output ports.",
+        "Input is the ideal AC source terminal, excluding upstream converter/control losses.",
+        "Positive residualW denotes apparent excess output plus dissipation relative to input.",
+        "Changing mutual inductance during motion requires an additional work port."
+      ]
+    },
+    "maximumIndependentResidualW": 5.551115123125783e-17,
+    "efficiencyObjectiveBest": {
+      "inputW": 0.010382751160311206,
+      "electricalLoadW": 0.009819561052792235,
+      "mechanicalLoadW": 2.357807344003768e-08,
+      "outputW": 0.009819584630865675,
+      "lossW": 0.0005631665294455291,
+      "residualW": -1.734723475976807e-18,
+      "primaryCurrentRmsA": 0.013541852150886973,
+      "secondaryCurrentRmsA": 0.009909369835056232,
+      "velocityRmsMps": 0.0004855725840699584,
+      "averageStoredJ": 9.68172186897471e-07,
+      "peakStoredJ": 1.3510034731499831e-06,
+      "apparentInputVA": 0.013541852150886973,
+      "reactiveInputVar": 0.008693689551596518,
+      "inputPowerFactor": 0.7667157375980619,
+      "efficiency": 0.9457594118600978,
+      "efficiencyFloorW": 1e-15,
+      "phasors": {
+        "primaryCurrentRmsA": [
+          0.010382751160311206,
+          -0.008693689551596518
+        ],
+        "secondaryCurrentRmsA": [
+          -0.009870762788267338,
+          -0.0008738721334835928
+        ],
+        "velocityRmsMps": [
+          -4.992659931419524e-05,
+          0.0004829990363150807
+        ]
+      },
+      "parameters": {
+        "frequencyHz": 2100,
+        "coupling": 0.8,
+        "loadOhm": 100,
+        "driveVrms": 1,
+        "L1H": 0.01,
+        "L2H": 0.01,
+        "C1F": 2.5330295910584444e-06,
+        "C2F": 2.5330295910584444e-06,
+        "R1Ohm": 2,
+        "R2Ohm": 2,
+        "massKg": 0.001,
+        "stiffnessNpm": 39478.41760435743,
+        "dampingNsPm": 0.05,
+        "mechanicalLoadNsPm": 0.1,
+        "transducerNA": 0.5
+      },
+      "mutualH": 0.008,
+      "limits": [
+        "Synthetic linear fixed-M steady state; no physical measurements.",
+        "RMS phasors; electrical load and mechanical load are distinct output ports.",
+        "Input is the ideal AC source terminal, excluding upstream converter/control losses.",
+        "Positive residualW denotes apparent excess output plus dissipation relative to input.",
+        "Changing mutual inductance during motion requires an additional work port."
+      ]
+    },
+    "tighterCurrentConstraint": {
+      "maxCurrentRmsA": 0.05,
+      "feasibleCount": 1180,
+      "rejectedCount": 215
+    },
+    "boundaryWarning": "The maximum-output sampled point uses the largest tested load. This is not a global optimum.",
+    "holdout": {
+      "options": {
+        "frequencyHz": 1379,
+        "coupling": 0.45,
+        "loadOhm": 13
+      },
+      "maxAbsoluteFieldDifference": 2.0816681711721685e-17,
+      "inputW": 0.05262189155624564,
+      "outputW": 0.039068060418936464
+    }
+  },
+  "limits": [
+    "No actual power source or load was measured.",
+    "Ideal AC-source efficiency excludes upstream amplifier, controller and DAQ power.",
+    "Both delivered electrical and mechanical load power enter outputW; compare each separately as needed.",
+    "Numerical closure does not bound experimental calibration uncertainty.",
+    "Time-varying mutual inductance needs motion work and is not simulated here."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "site": "Fieldwork / Energy Observatory",
+  "branch": "research/energy-observatory",
+  "commit": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+  "path": "/brainwave_opensync/devices/energy/",
+  "researchDate": "2026-10-21",
+  "specialistAgents": 6,
+  "researchRounds": 3,
+  "physicalMeasurements": 0,
+  "preservedVersions": [
+    {
+      "id": "location-v1.0",
+      "sourceCommit": "f9927a68fca491785bfca0a4782ffceeb37209dc"
+    },
+    {
+      "id": "location-v1.1",
+      "sourceCommit": "07e57b446a9f480216ad1aa555088bc361006d9c"
+    },
+    {
+      "id": "position-v1.0",
+      "sourceCommit": "a8913c825d24299283c9379282ae3876e2a0c0cd"
+    }
+  ],
+  "status": "Reviewed mathematical models and proposed experiments; no new energy source established"
+}

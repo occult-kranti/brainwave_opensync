@@ -1,0 +1,12 @@
+{
+  "status": "round2 frozen before reading other producer code",
+  "source_sha256": {
+    "src/metrology.mjs": "3c607824849b41131bdf6a6908ad186d9bde8161e97ecb14f959a10dcdb655b1",
+    "analysis/metrology_reference.py": "b193b2e837c40e5fbc68605ef885699bc1ae67f372b683f6fccbc205f5674bc9",
+    "research/panel/metrology/round1.md": "e95f60634102de63d5a457d2373023ee00b62e65e79d6aadc738a7254424e404",
+    "research/panel/metrology/round2.md": "e79ff967b7490fe741653a17002db3ab052397c352c66cb8e57f7fd870549266",
+    "research/panel/metrology/round2-results.json": "b0d77397e082e164b7f184a3b64e02900092a4e192984c08cd8cf019e0c21e7e",
+    "research/panel/metrology/independent-contract.json": "9e3526954cb29d6d4ec3ce8ce7972b16911459293692d97129e7af1965ce29bb"
+  },
+  "blind_cards_manifest_sha256": "099e2d50496ad67f89ebf75a3313804ef3283118d09daf8e66fa8b2815838c81"
+}

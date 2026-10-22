@@ -1,0 +1,42 @@
+{
+  "question": "Can a specified electromagnetic-acoustic-quantum mechanism deliver reproducible net usable energy after all inputs, storage changes and losses are measured?",
+  "researchDate": "2026-10-21",
+  "scope": "Three sequential adaptive six-agent panel rounds, selected primary research and official records, simulations and proposed experiments. No physical measurements.",
+  "target": "Closed-system energy accounting and identifiability; distinguish harvesting, conversion, transfer, storage, free energy in thermodynamics, and an unsupported source-free-power claim.",
+  "units": {
+    "energy": "J",
+    "realPower": "W",
+    "time": "s",
+    "frequency": "Hz",
+    "pressure": "Pa",
+    "voltage": "V",
+    "current": "A"
+  },
+  "acceptance": [
+    "Explicit model and source/load/storage/loss identity",
+    "Independent computation and wrong-model controls",
+    "Recorded objection-response-decision for each of exactly three rounds",
+    "Every new variable classified and units defined",
+    "Typed evidence graph and limitations beside claims",
+    "Preserved versions and working multipage interface",
+    "Passing tests, published separate branch and live deployment"
+  ],
+  "notClaimed": [
+    "perpetual power",
+    "constructed hardware",
+    "human or historical-scientist participation",
+    "exhaustive literature coverage",
+    "discovered new law from a fitted residual"
+  ],
+  "roles": [
+    "electromagnetic resonance",
+    "acoustic conversion",
+    "quantum thermodynamics",
+    "independent metrology",
+    "government and patent evidence",
+    "systems mathematics"
+  ],
+  "branch": "research/energy-observatory",
+  "sourceBase": "07e57b446a9f480216ad1aa555088bc361006d9c",
+  "path": "/brainwave_opensync/devices/energy/"
+}

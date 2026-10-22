@@ -1,0 +1,113 @@
+{
+  "schema": "energy-records-ledger/1",
+  "cutoff": "2026-10-21",
+  "scope": "Eight selected public primary records; no independent experimental replication.",
+  "records": [
+    {
+      "id": "records-power-2025",
+      "sourceFamily": "DARPA-POWER-PRAD",
+      "date": "2025-05-16",
+      "stage": "agency-reported demonstration",
+      "url": "https://www.darpa.mil/news/2025/darpa-program-distance-record-power-beaming",
+      "locator": "Release paragraphs 1, 11 and 13; web lines 5, 21, 23",
+      "readingDepth": "Full short agency release, particularly paragraphs on distance/power and efficiency.",
+      "supported": "DARPA reports more than 800 W delivered during a 30-second transmission over 8.6 km. The greater-than-20% efficiency statement concerns shorter-distance optical-input to electrical-output measurements.",
+      "notEstablished": "This release does not report wall-plug efficiency for the 8.6 km run or provide independent raw-data replication. Power comes from an externally powered laser.",
+      "reviewStatus": "round1-unreviewed"
+    },
+    {
+      "id": "records-arpa-lenr-2023",
+      "sourceFamily": "ARPA-E-LENR-announcement",
+      "date": "2023-02-17",
+      "stage": "official funding announcement; limited retrieval",
+      "url": "https://arpa-e.energy.gov/news-and-events/news-and-insights/us-department-energy-announces-10-million-funding-projects-studying-low-energy-nuclear-reactions",
+      "locator": "Official indexed release title/date and search excerpt",
+      "readingDepth": "Official indexed title/date and search excerpt; direct HTML retrieved only a JavaScript shell. Article body not read.",
+      "supported": "The official indexed release dated February 17, 2023 announces $10 million for eight research projects investigating LENR.",
+      "notEstablished": "Funding is not a physical result, disbursement audit, current project completion record or net-gain demonstration. The article body and final award reports were not acquired.",
+      "reviewStatus": "round1-unreviewed"
+    },
+    {
+      "id": "records-marrs-program",
+      "sourceFamily": "DARPA-MARRS",
+      "date": null,
+      "stage": "exploratory program described by agency",
+      "url": "https://www.darpa.mil/research/programs/marrs-mechanisms-amplification-fusion-reaction-rates-solids",
+      "locator": "Program overview, Exploring the Unknown; observed 2026-10-21",
+      "readingDepth": "Full program overview, including Exploring Advances, Why Fusion Matters and Exploring the Unknown.",
+      "supported": "DARPA describes research into mechanisms that might increase fusion rates in solids; useful power is a conditional future application.",
+      "notEstablished": "Its cited evidence and replication claims remain attributed to DARPA; the underlying papers were not independently reproduced in this records task. No useful net-energy system is documented by the overview.",
+      "reviewStatus": "round1-unreviewed"
+    },
+    {
+      "id": "records-marrs-baa",
+      "sourceFamily": "DARPA-MARRS",
+      "date": "2025-12-30",
+      "stage": "solicitation, not demonstrated performance",
+      "url": "https://files.simpler.grants.gov/opportunities/83d366fd-a0b1-409b-9649-e01f44949bba/attachments/77a783f5-6bc1-4abc-848d-e3b0f7970d0e/HR001126S0007.pdf",
+      "locator": "Printed/PDF pp. 2, 4\u20135; PDF SHA256 af99ec0fa3bb94f7a520e0b92f7e57e864e1800afa9089bf03e7343dd6434733",
+      "readingDepth": "Downloaded original PDF; text read printed/PDF pages 1\u20138; printed/PDF page 4 visually inspected.",
+      "supported": "The solicitation was posted December 30, 2025, with a March 12, 2026 proposal deadline; it requires falsifiable models and measurements. Page 4 contains a cross-section unit inconsistency: picobarn is paired with 10^-12 cm\u00b2.",
+      "notEstablished": "Initial solicitation dates do not establish present award status. The literal unit inconsistency must not enter simulations: 1 pb = 10^-36 cm\u00b2. This correction does not validate or refute the cited experiments.",
+      "reviewStatus": "round1-unreviewed"
+    },
+    {
+      "id": "records-marrs-faq",
+      "sourceFamily": "DARPA-MARRS",
+      "date": "2026-02-26",
+      "stage": "program requirements and limitations",
+      "url": "https://www.darpa.mil/sites/default/files/attachment/2026-03/darpa-program-marrs-faq.pdf",
+      "locator": "Q24 p. 2, Q17 p. 3, Q4 and Q3 p. 5",
+      "readingDepth": "All five PDF pages opened; focused Q24, Q17, Q4 and Q3.",
+      "supported": "The FAQ says calorimetry alone is insufficient; energy gain is a long-term vision rather than a program metric. A proposed brute-force route must still address trigger efficiency and a path to gain.",
+      "notEstablished": "These are proposal requirements, not evidence that any awardee attained gain. Reaction rates, calorimetry, and net system energy remain different quantities.",
+      "reviewStatus": "round1-unreviewed"
+    },
+    {
+      "id": "records-nasa-bpp-2004",
+      "sourceFamily": "NASA-BPP-assessment",
+      "date": "2004-05-01",
+      "stage": "historical research assessment",
+      "url": "https://ntrs.nasa.gov/citations/20040070788",
+      "locator": "NTRS document 20040070788; printed pp. 1\u20135, especially p. 2 result counts",
+      "readingDepth": "NTRS metadata and report abstract, overview, selected task summaries and Casimir discussion; PDF pp. 4\u20138.",
+      "supported": "The report describes NASA support during 1996\u20132002 and classifies sixteen tasks from NASA and other sponsors as six nonviable, six unresolved/debatable, and four candidates for follow-up.",
+      "notEstablished": "This is a historical, bounded assessment. Follow-up opportunity is not a demonstrated space drive or energy source, and its bibliography is not automatically verified evidence.",
+      "reviewStatus": "round1-unreviewed"
+    },
+    {
+      "id": "records-tesla-685957",
+      "sourceFamily": "Tesla-US685957",
+      "date": "1901-11-05",
+      "stage": "historical granted patent; performance not independently verified here",
+      "url": "https://patents.google.com/patent/US685957A/en",
+      "locator": "Description of Figs. 1 and 3; claims; filing and grant metadata",
+      "readingDepth": "Patent description, claims, metadata and figure descriptions read; original scan linked but not separately compared.",
+      "supported": "Filed March 21 and granted November 5, 1901, the patent describes radiant input charging a capacitor. Its artificial-source variant also identifies a local current source.",
+      "notEstablished": "A patent grant does not validate claimed efficiency or modern microscopic explanations. Incoming radiation, initial stored energy, switches and any local supply belong in the budget. Aggregator legal-status labels are not a current legal opinion.",
+      "reviewStatus": "round1-unreviewed"
+    },
+    {
+      "id": "records-gateway-1983",
+      "sourceFamily": "Army-Gateway-assessment",
+      "date": "1983-06-09",
+      "stage": "historical interpretive assessment",
+      "url": "https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo152943/pdf/GOVPUB-D101-PURL-gpo152943.pdf",
+      "locator": "CIA-RDP96-00788R001700210016-5; PDF pp. 1, 7, 28; SHA256 c97fdf7c5372c1ff740f4ad713177f9828faeb52a345c0313de07a40852541de",
+      "readingDepth": "Official 29-page PDF downloaded; PDF pages 1, 7 and 28 OCR-read; pages 1 and 28 visually inspected. Selected passages only.",
+      "supported": "The Army assessment is dated June 9, 1983 and bears a September 10, 2003 release stamp. Inspected passages discuss consciousness, resonance interpretations and proposed future exercises.",
+      "notEstablished": "The inspected passages provide no calibrated electrical-output, calorimetric or closed-cycle energy measurement. Government custody authenticates this record, not its physical interpretations; no conclusion about every related document is claimed.",
+      "reviewStatus": "round1-unreviewed"
+    }
+  ],
+  "excludedLeads": [
+    {
+      "url": "https://www.darpa.mil/news/2026/threads",
+      "reason": "Useful thermal-management example, omitted to keep selected set bounded; no effect conclusion adopted."
+    },
+    {
+      "url": "https://arpa-e.energy.gov/programs-and-initiatives/search-all-projects/nuclear-product-detection-deuterated-nanoparticles-under-phonon-stimulation",
+      "reason": "Direct response was JavaScript shell; indexed content not enough for project-result claim."
+    }
+  ]
+}

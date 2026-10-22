@@ -1,0 +1,150 @@
+{
+  "schema": "energy-independent-contract/1",
+  "round": 1,
+  "date": "2026-10-21",
+  "role": "independent metrology/reverse-inference skeptic model-agent",
+  "status": "frozen before viewing producer reports; proposed tests not yet executed",
+  "observable": {
+    "name": "energy closure residual",
+    "symbol": "R",
+    "unit": "J",
+    "sign": "positive means apparent excess output",
+    "equation": "E_load + E_loss + U1 - U0 - E_source - E_environment",
+    "coefficient_order": [
+      "E_load",
+      "E_loss",
+      "U1",
+      "U0",
+      "E_source",
+      "E_environment"
+    ],
+    "coefficients": [
+      1,
+      1,
+      1,
+      -1,
+      -1,
+      -1
+    ]
+  },
+  "boundary_rules": [
+    "All ports non-overlapping and signed.",
+    "Do not count load heat as both useful output and loss.",
+    "Thermal storage and loss classification follows chosen physical boundary.",
+    "Changing component parameters require a work port.",
+    "No missing-input value fitted only to force closure."
+  ],
+  "phase_grid": {
+    "phi_deg": [
+      0,
+      30,
+      60,
+      80,
+      85,
+      88,
+      89
+    ],
+    "frequency_hz": [
+      100,
+      1000,
+      10000
+    ],
+    "delay_s": [
+      -1e-05,
+      -1e-06,
+      0,
+      1e-06,
+      1e-05
+    ],
+    "cells": 105,
+    "measurement_convention": "i_measured(t)=sqrt(2)*I*cos(omega*t-phi-omega*delay)",
+    "expected_power_W": "V_rms*I_rms*cos(phi+2*pi*f*delay)"
+  },
+  "aliasing_control": {
+    "duration_s": 1,
+    "voltage_frequency_hz": 700,
+    "current_frequency_hz": 300,
+    "voltage_rms_V": 1,
+    "current_rms_A": 1,
+    "invalid_sample_rate_hz": 1000,
+    "valid_sample_rate_hz": 10000,
+    "true_energy_J": 0,
+    "invalid_sampled_energy_J": 1
+  },
+  "storage_grid": {
+    "source_J": 1,
+    "loss_J": 0.2,
+    "released_storage_J": [
+      0,
+      0.01,
+      0.1,
+      0.5
+    ],
+    "hidden_input_J": [
+      0,
+      0.01,
+      0.1,
+      0.5
+    ],
+    "cells": 16,
+    "load_J": "0.8+s+h",
+    "delta_U_J": "-s",
+    "complete_R_J": 0,
+    "omit_hidden_R_J": "h",
+    "omit_both_R_J": "s+h"
+  },
+  "covariance": {
+    "formula": "c^T Sigma c",
+    "requirements": [
+      "finite",
+      "symmetric",
+      "positive semidefinite",
+      "primitive parameter provenance"
+    ],
+    "controls": [
+      "shared calibration gain",
+      "independent gain",
+      "correlated storage endpoints",
+      "invalid non-PSD matrix"
+    ]
+  },
+  "identifiability": {
+    "toy_observation_matrix": [
+      [
+        1,
+        1,
+        1
+      ]
+    ],
+    "domain_dimension": 3,
+    "rank": 1,
+    "nullity": 2,
+    "kernel_witnesses": [
+      [
+        1,
+        -1,
+        0
+      ],
+      [
+        1,
+        0,
+        -1
+      ]
+    ],
+    "meaning": "omitted input, released storage and bias cannot be identified from one residual"
+  },
+  "acceptance": [
+    "independent analytic or matrix-exponential formulation versus producer integration",
+    "separate work/loss quadrature",
+    "wrong-model controls trigger expected failures",
+    "no unobserved-channel completeness claim",
+    "finite sweeps labeled numerical evidence, not all-parameter proof",
+    "no physical data claim",
+    "coverage method and practical tolerance stated before measured-data decision"
+  ],
+  "source_files": {
+    "prior_position_protocol_sha256": "02e361a2b16912c16f8a23d4520cb2e09d4ae1b0d4366f759791167409afb927",
+    "round1_report_sha256": "e95f60634102de63d5a457d2373023ee00b62e65e79d6aadc738a7254424e404",
+    "sources_sha256": "7752dc6043d4891bf189a1be2875a16e3f8d5dd7de86bfb0795b0dfb551330e8"
+  }
+}

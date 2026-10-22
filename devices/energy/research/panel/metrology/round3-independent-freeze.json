@@ -1,0 +1,8 @@
+{
+  "status": "frozen before first reading quantum.mjs",
+  "date": "2026-10-21",
+  "source_sha256": {
+    "round3-independent-reference.py": "dc3221416f5a95b02fd926d075c5562628e3db8e460c8ff403ed7fefca2a1c5c",
+    "round3-independent-quantum-fixtures.json": "deb23447536aff8fc0ee9cf71553958e47741d40254a06335d33c9a82c9cc038"
+  }
+}

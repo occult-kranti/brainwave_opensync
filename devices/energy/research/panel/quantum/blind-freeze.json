@@ -1,0 +1,18 @@
+{
+  "schema": "fieldwork-blind-freeze/1",
+  "agent": "energy_quantum",
+  "frozenAtUTC": "2026-10-22T02:38:42.063529+00:00",
+  "keyAndReferenceAccessBeforeFreeze": false,
+  "physicalMeasurements": 0,
+  "inputs": {
+    "cards.json": "099e2d50496ad67f89ebf75a3313804ef3283118d09daf8e66fa8b2815838c81",
+    "card-41.csv": "5ce9e50089b4f354bd5ecba814aacea9da213ecb6f6367d5c76a61f37ea4d878",
+    "card-72.csv": "d23b7b86a681c595e5486fd9f081701821713dcb13a9332f57099c8e737d5c91",
+    "card-19.csv": "c6f50ed8799cea774ee1e6c7e3001d38019e605176d9383f9f6cc8657917176a"
+  },
+  "artifacts": {
+    "blind_analyze.py": "0b640b2edb4598178a18ab2c8abc267bca322fa1efd372e42c303ccd51130750",
+    "blind-diagnosis.md": "a3c492740fb4c055b1f130621c8eb70b2a83814bb830806eab21f38c8992433b",
+    "blind-diagnosis.json": "a96c5126c6474f4b7fc77c9e3b1abfd19adb464320c882971f4a5fa4917a12f4"
+  }
+}

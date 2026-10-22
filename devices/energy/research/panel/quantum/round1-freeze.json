@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-21",
+  "round": 1,
+  "agent": "energy_quantum",
+  "status": "proposal-frozen-before-panel-exchange",
+  "futureRoundsExecuted": false,
+  "sourceCount": 6,
+  "sha256": {
+    "round1.md": "85667a81adf610c7dfd14f8f663179b5ac949eb550752ad605232452671e325c",
+    "sources.json": "c46ec9fb256eb4189fd19d78c65a8b884c9a1853c7622867ea8c8cc7fd0c0d3b"
+  }
+}

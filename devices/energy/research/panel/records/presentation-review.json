@@ -1,0 +1,44 @@
+{
+  "status": "reviewed source templates and evidence data; no blocking claim error found",
+  "round": 3,
+  "reviewBatch": 1,
+  "researchDate": "2026-10-21",
+  "blockingErrors": [],
+  "scope": "Single bounded textual/source-data presentation audit. No browser, deployment, accessibility or numerical producer audit in this receipt.",
+  "sha256": {
+    "site.mjs": "8b5beca7705c9a3fbee327d7dbc54db6fcb3db0e321ff1cbd51d447a6f8af413",
+    "src/app.mjs": "31dcf02c1486c6969b78929c2e6b30d6abb9832753b428327c7971becf05c48b",
+    "data/evidence.json": "376535fa652c989b9603d4426d921404a36ddc049c8a76a66bd7d7ec8a5eb6de",
+    "data/programs.json": "5064debca8319ac08573612ae6d05a3e1756aff55cd66b00e5ccf8218c4c1165",
+    "data/panel.json": "951c2ac412daf739f96f085284d4ed7bfd6fbdb5d45d1e9e097f79251b3e4135"
+  },
+  "changesDetectedDuringReview": {},
+  "counts": {
+    "sourceRecords": 38,
+    "panelPrimarySourceRecords": 35,
+    "legacyProjectRecords": 3,
+    "topics": 8,
+    "typedRelationships": 64,
+    "programCards": 6,
+    "panelRoles": 6,
+    "debateRounds": 3
+  },
+  "checks": [
+    "All original panel-source claim, limit, reading-depth, date/year and URL fields preserved in aggregate evidence.",
+    "All source IDs, topic IDs and typed edges unique; all graph and program-source references resolve.",
+    "BIPM unit reference present; MARRS correction is reviewed, original wording preserved, no performance inference.",
+    "POWER short-distance efficiency separated from record-distance power and duration; wall-plug boundary excluded explicitly.",
+    "ARPA-E indexed-only retrieval, historical funding status and absent result record retained.",
+    "MARRS gain goal separated from achieved results; initial deadline identified as passed.",
+    "Patent, NASA historical report and selected Gateway passages do not become demonstrations.",
+    "Quantum norm retains energy dimensions without an apparatus-work or efficiency claim.",
+    "Graph connections describe documents/method/context; no net-energy success edge appears.",
+    "613 software checks, 648 separately authored quantum cases, 1395/4941 grids and three rubric-scored blind cases match frozen panel reports.",
+    "Simulations, agent reviews, conditional identifiability and zero hardware measurements remain explicit."
+  ],
+  "limits": [
+    "No fresh external source retrieval was performed; original admitted source depths remain the limit.",
+    "Generated HTML and browser rendering are assigned to the advisor; this audit inspected templates and data.",
+    "Legacy source entries were checked for bounded claims and pinned references; original imported file inventories were not re-run by this reviewer."
+  ]
+}

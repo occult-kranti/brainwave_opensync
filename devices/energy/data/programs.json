@@ -1,0 +1,100 @@
+[
+  {
+    "id": "program-power",
+    "title": "DARPA POWER / optical energy transfer",
+    "date": "2025-05-16",
+    "stage": "Agency-reported demonstration",
+    "currentStatus": "Reported 2025 test; subsequent milestone completion not verified here.",
+    "sourceIds": [
+      "records-power-2025"
+    ],
+    "summary": "Externally powered laser-to-receiver energy transfer: more than 800 W over 8.6 km during a 30-second test.",
+    "energyBoundary": "Optical power leaving laser \u2192 electrical power leaving receiver. Laser wall-plug and supporting equipment are outside that efficiency boundary.",
+    "limits": "Greater-than-20% efficiency belongs to shorter-distance tests, not a documented efficiency of the 8.6 km record.",
+    "nextMeasurement": "Synchronized source-wall, optical-input and receiver-load records with losses, timing and uncertainty for the same run.",
+    "url": "https://www.darpa.mil/news/2025/darpa-program-distance-record-power-beaming",
+    "readingDepth": "Full short agency release, particularly paragraphs on distance/power and efficiency."
+  },
+  {
+    "id": "program-arpa-lenr",
+    "title": "ARPA-E LENR exploratory funding",
+    "date": "2023-02-17",
+    "stage": "Funding announcement",
+    "currentStatus": "Historical announcement; current completion, payments and technical results not established by this retrieval.",
+    "sourceIds": [
+      "records-arpa-lenr-2023"
+    ],
+    "summary": "Official indexed announcement of $10 million across eight research projects.",
+    "energyBoundary": "No measured device energy boundary is supplied by the acquired excerpt.",
+    "limits": "Only official title/date/indexed excerpt were read; full article body returned a JavaScript shell. Funding is not gain.",
+    "nextMeasurement": "Acquire final project reports and raw, independently calibrated reaction and energy measurements; audit actual scope before comparing outcomes.",
+    "url": "https://arpa-e.energy.gov/news-and-events/news-and-insights/us-department-energy-announces-10-million-funding-projects-studying-low-energy-nuclear-reactions",
+    "readingDepth": "Official indexed title/date and search excerpt; direct HTML retrieved only a JavaScript shell. Article body not read."
+  },
+  {
+    "id": "program-marrs",
+    "title": "DARPA MARRS / exploratory solid-state fusion",
+    "date": "2025-12-30",
+    "stage": "Solicitation and exploratory program",
+    "currentStatus": "Public program overview and initial BAA/2026 FAQ inspected. Awards, performer starts and achieved metrics not verified. Initial proposal deadline March 12, 2026 has passed.",
+    "sourceIds": [
+      "records-marrs-program",
+      "records-marrs-baa",
+      "records-marrs-faq"
+    ],
+    "summary": "Investigates whether reaction-rate amplification can be understood and scaled; useful energy gain remains a future objective.",
+    "energyBoundary": "Any prospective device requires trigger, fuel/nuclear-energy, control, cooling, detection and reset accounting; a reaction-rate target is not net energy.",
+    "limits": "FAQ Q4 says gain is not a program metric. Q24 requires particle evidence beyond calorimetry. The BAA page-4 picobarn/cm\u00b2 notation is inconsistent and excluded from model inputs.",
+    "nextMeasurement": "Independently replicated mechanism-specific reaction evidence plus a complete energy budget for any later power claim. This web lab does not implement nuclear hardware.",
+    "url": "https://www.darpa.mil/research/programs/marrs-mechanisms-amplification-fusion-reaction-rates-solids",
+    "readingDepth": "Program overview; BAA pp. 1\u20138 and visual page 4; FAQ Q24/Q17/Q4/Q3. Three records share one program origin."
+  },
+  {
+    "id": "program-nasa-bpp",
+    "title": "NASA Breakthrough Propulsion Physics / historical assessment",
+    "date": "2004-05-01",
+    "stage": "Historical technical review",
+    "currentStatus": "The report covers NASA support from 1996 through 2002; it is not a current program-status claim.",
+    "sourceIds": [
+      "records-nasa-bpp-2004"
+    ],
+    "summary": "A task-by-task review preserves negative, unresolved and follow-up results.",
+    "energyBoundary": "Speculative propulsion and vacuum-energy ideas require their own complete momentum and energy budgets.",
+    "limits": "Sixteen reviewed tasks include work funded by others; a possible sequel is not a successful device.",
+    "nextMeasurement": "The specific follow-up or independent replication for a named mechanism, rather than citing the program title.",
+    "url": "https://ntrs.nasa.gov/citations/20040070788",
+    "readingDepth": "NTRS metadata and report abstract, overview, selected task summaries and Casimir discussion; PDF pp. 4\u20138."
+  },
+  {
+    "id": "patent-tesla-radiant",
+    "title": "Tesla radiant-energy patent US685957A",
+    "date": "1901-11-05",
+    "stage": "Historical granted patent",
+    "currentStatus": "Historical grant metadata inspected; no current legal-status opinion or independent performance test.",
+    "sourceIds": [
+      "records-tesla-685957"
+    ],
+    "summary": "Radiation charges a capacitor; a later discharge operates a load.",
+    "energyBoundary": "Incident radiation, any auxiliary current source, stored charge, switching and load are separate energy terms.",
+    "limits": "The patent is an invention record and historical mechanism claim, not an efficiency certificate or proof of energy without input.",
+    "nextMeasurement": "Controlled incident flux, electrical input where present, initial/final storage and measured load work over a complete cycle.",
+    "url": "https://patents.google.com/patent/US685957A/en",
+    "readingDepth": "Patent description, claims, metadata and figure descriptions read; original scan linked but not separately compared."
+  },
+  {
+    "id": "record-gateway",
+    "title": "Gateway / source custody versus energy evidence",
+    "date": "1983-06-09",
+    "stage": "Historical interpretive assessment",
+    "currentStatus": "Official archived report, released September 10, 2003; selected passages inspected.",
+    "sourceIds": [
+      "records-gateway-1983"
+    ],
+    "summary": "Historical consciousness and resonance interpretations are preserved as source assertions.",
+    "energyBoundary": "No calibrated source-to-load energy boundary appears in the inspected passages.",
+    "limits": "Government custody does not validate a coupling or energy mechanism. Shared frequency words do not specify a transfer law. No assertion about every related record is made.",
+    "nextMeasurement": "A dimensioned coupling law and independently calibrated physical energy transfer, if any such specific mechanism is proposed.",
+    "url": "https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo152943/pdf/GOVPUB-D101-PURL-gpo152943.pdf",
+    "readingDepth": "Official 29-page PDF downloaded; PDF pages 1, 7 and 28 OCR-read; pages 1 and 28 visually inspected. Selected passages only."
+  }
+]

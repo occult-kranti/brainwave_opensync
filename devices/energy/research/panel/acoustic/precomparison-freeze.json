@@ -1,0 +1,9 @@
+{
+  "status": "frozen before producer/reference comparison",
+  "method": "state-matrix and sampled-time formulations; same acoustic agent authorship disclosed",
+  "sha256": {
+    "analysis/acoustic_reference.py": "c35425fedc8daaf0aa4b7479af851e122f6bb0d421a5de34431753477bd3a59d",
+    "research/panel/acoustic/results.json": "f7b73e333498afc960519b60e673833ade2228426eaa4d741eb8750e562949c3",
+    "src/acoustic.mjs": "7606861a6e71df440b0279f0918a19106bab529b6ab327a0e2725378af90a827"
+  }
+}

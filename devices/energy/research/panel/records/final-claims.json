@@ -1,0 +1,276 @@
+[
+  {
+    "id": "record-claim-boundary",
+    "claim": "Source-reported efficiencies can be compared only after matching their input/output boundaries and acquisition conditions.",
+    "status": "reviewed: operating conditions and denominators must match",
+    "sourceIds": [
+      "records-power-2025",
+      "records-tesla-685957",
+      "EM-2"
+    ],
+    "objection": "A receiver-only efficiency or capacitor discharge can look like an overall energy source.",
+    "response": "POWER reports >800 W at 8.6 km during a 30-second transmission, while >20% optical-to-receiver-electrical efficiency belongs to shorter-distance tests. These are different conditions; neither is laser wall-plug efficiency. The Tesla patent and powered gain circuit require external inputs and storage accounting.",
+    "decision": "Adopt for every displayed energy ratio.",
+    "nextMissingMeasurement": "Synchronized, calibrated same-run external input/output, controller power and storage endpoints, with uncertainty.",
+    "round": 3,
+    "physicalValidation": "No hardware measurements or independent physical replications performed in this project.",
+    "verdict": "resolved interpretation; physical performance unestablished",
+    "evidencePaths": [
+      "research/panel/records/sources.json",
+      "research/panel/records/programs.json"
+    ],
+    "sources": [
+      {
+        "id": "records-power-2025",
+        "url": "https://www.darpa.mil/news/2025/darpa-program-distance-record-power-beaming",
+        "readingDepth": "Full short agency release, particularly paragraphs on distance/power and efficiency."
+      },
+      {
+        "id": "records-tesla-685957",
+        "url": "https://patents.google.com/patent/US685957A/en",
+        "readingDepth": "Patent description, claims, metadata and figure descriptions read; original scan linked but not separately compared."
+      },
+      {
+        "id": "EM-2",
+        "url": "https://doi.org/10.1088/1361-6633/ada637",
+        "readingDepth": "Read arXiv:2408.06913v1 abstract, model discussion and experimental Section 2.2; publication date and DOI from CityUHK author-institution record. Final published PDF not read."
+      }
+    ]
+  },
+  {
+    "id": "record-claim-government",
+    "claim": "Government funding, custody and a patent grant are different evidence stages from a measured energy result.",
+    "status": "reviewed: documentary stages kept separate",
+    "sourceIds": [
+      "records-arpa-lenr-2023",
+      "records-marrs-faq",
+      "records-gateway-1983",
+      "records-tesla-685957"
+    ],
+    "objection": "A prestigious custodian could be mistaken for independent experimental validation.",
+    "response": "ARPA-E funding is documented only at retrieved title/date/excerpt depth. MARRS FAQ Q4 identifies energy gain as a long-term vision, not a program metric. Gateway government custody and a Tesla patent grant do not add physical output observations.",
+    "decision": "Use funds, proposes, archives, reports or challenges graph edges; do not convert them into demonstrates-net-energy edges.",
+    "nextMissingMeasurement": "Completed result records, calibrated full-boundary measurements and independent replication appropriate to each specific claim.",
+    "round": 3,
+    "physicalValidation": "No hardware measurements or independent physical replications performed in this project.",
+    "verdict": "resolved interpretation; physical performance unestablished",
+    "evidencePaths": [
+      "research/panel/records/program-patent-ledger.json"
+    ],
+    "sources": [
+      {
+        "id": "records-arpa-lenr-2023",
+        "url": "https://arpa-e.energy.gov/news-and-events/news-and-insights/us-department-energy-announces-10-million-funding-projects-studying-low-energy-nuclear-reactions",
+        "readingDepth": "Official indexed title/date and search excerpt; direct HTML retrieved only a JavaScript shell. Article body not read."
+      },
+      {
+        "id": "records-marrs-faq",
+        "url": "https://www.darpa.mil/sites/default/files/attachment/2026-03/darpa-program-marrs-faq.pdf",
+        "readingDepth": "All five PDF pages opened; focused Q24, Q17, Q4 and Q3."
+      },
+      {
+        "id": "records-gateway-1983",
+        "url": "https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo152943/pdf/GOVPUB-D101-PURL-gpo152943.pdf",
+        "readingDepth": "Official 29-page PDF downloaded; PDF pages 1, 7 and 28 OCR-read; pages 1 and 28 visually inspected. Selected passages only."
+      },
+      {
+        "id": "records-tesla-685957",
+        "url": "https://patents.google.com/patent/US685957A/en",
+        "readingDepth": "Patent description, claims, metadata and figure descriptions read; original scan linked but not separately compared."
+      }
+    ]
+  },
+  {
+    "id": "record-claim-marrs-unit",
+    "claim": "MARRS BAA page 4 contains inconsistent picobarn-to-cm² notation.",
+    "status": "reviewed: independently reconstructed unit mismatch",
+    "sourceIds": [
+      "records-marrs-baa",
+      "systems-bipm-units-2026"
+    ],
+    "objection": "OCR corruption or a different source version could explain the apparent mismatch.",
+    "response": "Records visually checked official PDF page 4; the systems reviewer separately inspected that image and BIPM Tables 7/8, and used exact decimal arithmetic. 1 pb = 10^-40 m² = 10^-36 cm²; the printed 10^-12 cm² parenthesis differs by 10^24. Review reused the preserved official PDF bytes rather than independently downloading a second copy.",
+    "decision": "Retain the literal source, page and SHA256; exclude the inconsistent parenthesis from all physical model inputs. Do not guess its intended cross section or infer reactor/program performance.",
+    "nextMissingMeasurement": "An agency correction or clarification of the intended value; no further measurement is needed for the stated SI conversion.",
+    "round": 3,
+    "physicalValidation": "No hardware measurements or independent physical replications performed in this project.",
+    "verdict": "resolved unit conversion; agency correction and intended value unresolved",
+    "evidencePaths": [
+      "research/panel/systems/round2.md",
+      "research/panel/systems/round2-sources.json",
+      "research/panel/systems/independent-reference.json"
+    ],
+    "sourceArtifact": {
+      "name": "HR001126S0007.pdf",
+      "page": 4,
+      "sha256": "af99ec0fa3bb94f7a520e0b92f7e57e864e1800afa9089bf03e7343dd6434733"
+    },
+    "unitCheck": {
+      "onePicobarn_m2": "1e-40",
+      "onePicobarn_cm2": "1e-36",
+      "sourceParenthesis_cm2": "1e-12",
+      "ratio": "1e24"
+    },
+    "sources": [
+      {
+        "id": "records-marrs-baa",
+        "url": "https://files.simpler.grants.gov/opportunities/83d366fd-a0b1-409b-9649-e01f44949bba/attachments/77a783f5-6bc1-4abc-848d-e3b0f7970d0e/HR001126S0007.pdf",
+        "readingDepth": "Downloaded original PDF; text read printed/PDF pages 1–8; printed/PDF page 4 visually inspected."
+      },
+      {
+        "id": "systems-bipm-units-2026",
+        "url": "https://www.bipm.org/documents/20126/41483022/SI-Brochure-9-EN.pdf",
+        "readingDepth": "Table7 printed p138/PDF p28: pico and centi; Table8 printed p140/PDF p30: barn. Selected definitions, not whole brochure."
+      }
+    ]
+  },
+  {
+    "id": "record-claim-quantum-cost",
+    "claim": "A Hamiltonian-norm cost metric is not measured apparatus electricity consumption.",
+    "status": "reviewed: energy-dimensional proxy, not measured work",
+    "sourceIds": [
+      "Q-COST-2025"
+    ],
+    "objection": "A quantum paper cost ratio could be ranked against optical or acoustic hardware efficiency.",
+    "response": "For Sigma=(1/tau) integral ||H_d(t)|| dt, H_d in joules makes Sigma energy-dimensional. The definition is a time-averaged drive-Hamiltonian norm, not a calorimetric or wall-plug energy transfer. The two quantities must not be equated merely because their units match.",
+    "decision": "Keep the paper-defined proxy and extraction ratio separate from apparatus conversion efficiency; do not call it dimensionally invalid. Missing preparation, control, refrigeration, readout and reset costs stay unmeasured.",
+    "nextMissingMeasurement": "Calibrated preparation, drive, bath, readout and reset transfers on a common complete cycle and boundary.",
+    "round": 3,
+    "physicalValidation": "No hardware measurements or independent physical replications performed in this project.",
+    "verdict": "resolved interpretation; physical performance unestablished",
+    "evidencePaths": [
+      "research/panel/quantum/round2.md"
+    ],
+    "sources": [
+      {
+        "id": "Q-COST-2025",
+        "url": "https://arxiv.org/html/2506.16881v2",
+        "readingDepth": "Primary arXiv v2 dated 29 September 2025: state/preparation model, extraction definition, Eq. (4), efficiency definition and conclusions read. APS publication date 1 December 2025 verified."
+      }
+    ]
+  },
+  {
+    "id": "record-claim-finite-search",
+    "claim": "A brute-force parameter search can test a declared model but cannot resolve an unidentifiable inverse problem by increasing sample count.",
+    "status": "reviewed: exact ambiguity outranks additional search samples",
+    "sourceIds": [
+      "systems-ph-passivity-2025",
+      "systems-linear-learnability-2023",
+      "metrology-nist-tn1297"
+    ],
+    "objection": "A good fit might be presented as finding a hidden source.",
+    "response": "The systems panel derives the exact invariant Ze+g²/Zm under (m,b,k,g) -> (a m,a b,a k,sqrt(a) g). Metrology separately gives a rank-one residual model with two null directions. More samples of the same ambiguous observables cannot identify a unique cause. These are local project derivations; listed papers provide methodological context, not the exact project equations.",
+    "decision": "Use the analytic invariance and kernel witnesses as the central evidence. Numerical ranks and bounded grids are corroboration under stated inputs, not universal proofs or hardware discoveries.",
+    "nextMissingMeasurement": "An independently calibrated observable that changes across the ambiguity, such as mechanical velocity in the stated converter model.",
+    "round": 3,
+    "physicalValidation": "No hardware measurements or independent physical replications performed in this project.",
+    "verdict": "resolved interpretation; physical performance unestablished",
+    "evidencePaths": [
+      "research/panel/systems/round2.md",
+      "research/panel/systems/independent-reference.json",
+      "research/panel/metrology/independent-contract.json",
+      "research/panel/metrology/round2.md"
+    ],
+    "sources": [
+      {
+        "id": "systems-ph-passivity-2025",
+        "url": "https://arxiv.org/html/2409.06256v2",
+        "readingDepth": "Introduction, definition of passivity and pH-A/pH-B structural assumptions; no full proof audit. v2 dated 16 April 2025."
+      },
+      {
+        "id": "systems-linear-learnability-2023",
+        "url": "https://arxiv.org/abs/2303.15779v1",
+        "readingDepth": "Official arXiv abstract and version/date metadata only; submitted 28 March 2023."
+      },
+      {
+        "id": "metrology-nist-tn1297",
+        "url": "https://www.nist.gov/pml/nist-technical-note-1297/nist-tn-1297-appendix-law-propagation-uncertainty",
+        "readingDepth": "Full short Appendix A, A.1-A.5; official web page updated 2025-09-11"
+      }
+    ]
+  },
+  {
+    "id": "record-claim-acoustic-boundary",
+    "round": 3,
+    "claim": "Local resonant pressure or open-circuit voltage gain does not establish additional net energy.",
+    "status": "reviewed: source and model conditions retained",
+    "verdict": "resolved interpretation; apparatus performance unestablished",
+    "sourceIds": [
+      "acoustic-peng-2023",
+      "acoustic-ren-2024",
+      "acoustic-feng-2025"
+    ],
+    "objection": "Peak pressure, absorption and electrical output can occur under different conditions or use different amplitude conventions.",
+    "response": "The 2023 source has RMS wording alongside a factor 1/2, so the model states its own peak convention explicitly. The later abstract/index-only records cannot supply an audited common-condition budget. Plane-wave flux through a chosen aperture is a conditional reference, not a universal capture-area bound.",
+    "decision": "Use loading-aware power conversion and one outer energy ledger; do not double-count speaker electricity and the internal sound transfer.",
+    "nextMissingMeasurement": "Calibrated pressure-velocity flux or validated wave decomposition, loaded electrical power, source input and storage change acquired under the same conditions.",
+    "evidencePaths": [
+      "research/panel/acoustic/round2.md",
+      "research/panel/metrology/round2.md",
+      "research/panel/systems/round2.md"
+    ],
+    "physicalValidation": "No acoustic hardware replication was performed.",
+    "sources": [
+      {
+        "id": "acoustic-peng-2023",
+        "url": "https://doi.org/10.1063/5.0158079",
+        "readingDepth": "Primary PDF retrieved from NSF public-access repository; printed pages 073903-1 to -5 read, including equations 1-21 and experimental method. Supplement not read."
+      },
+      {
+        "id": "acoustic-ren-2024",
+        "url": "https://doi.org/10.1103/PhysRevApplied.22.024023",
+        "readingDepth": "Publisher abstract and bibliographic metadata read. Full text required subscription and was not read."
+      },
+      {
+        "id": "acoustic-feng-2025",
+        "url": "https://doi.org/10.1016/j.device.2025.100756",
+        "readingDepth": "Search-indexed publisher highlights and summary read; direct publisher HTML/PDF returned access errors. Full text not read."
+      }
+    ]
+  },
+  {
+    "id": "record-claim-model-evidence",
+    "round": 3,
+    "claim": "The project supplies model and documentary checks; it does not establish a net-energy device.",
+    "status": "reviewed: evidence level separated from physical result",
+    "verdict": "physical outcome unresolved; no net-energy result established here",
+    "sourceIds": [
+      "Q-ERG-2004",
+      "Q-DCE-2011",
+      "records-marrs-faq",
+      "metrology-npl-power"
+    ],
+    "objection": "Closed model residuals, a dense search or a prestigious program may be mistaken for measured generation.",
+    "response": "The passive model checks verify specified equations; prepared-state ergotropy assumes an initial resource; driven Casimir photon production has a modulation input; agency research goals are not achieved energy-gain measurements. None supplies the absent calibrated apparatus records.",
+    "decision": "Label simulations as simulations, distinguish agent review from human peer review, and make no discovered-energy or independent hardware-replication claim.",
+    "nextMissingMeasurement": "A complete repeatable physical energy ledger, calibration and storage budget, held-out measurements and independent replication.",
+    "evidencePaths": [
+      "research/panel/quantum/round2.md",
+      "research/panel/systems/round2.md",
+      "research/panel/metrology/round2.md"
+    ],
+    "physicalValidation": "Zero physical measurements used by this project.",
+    "sources": [
+      {
+        "id": "Q-ERG-2004",
+        "url": "https://arxiv.org/html/cond-mat/0401574v1",
+        "readingDepth": "Primary arXiv v1, cyclic-control definition and Eqs. (1)-(9), eigenvalue ordering and passive-state derivation read; not every later example audited."
+      },
+      {
+        "id": "Q-DCE-2011",
+        "url": "https://arxiv.org/html/1105.4714v1",
+        "readingDepth": "Primary arXiv v1 abstract, drive/boundary mechanism, pair-frequency condition and Eqs. (1)-(2) read. Publisher page failed. HTML rendering displays 2026 but submission/journal year is 2011."
+      },
+      {
+        "id": "records-marrs-faq",
+        "url": "https://www.darpa.mil/sites/default/files/attachment/2026-03/darpa-program-marrs-faq.pdf",
+        "readingDepth": "All five PDF pages opened; focused Q24, Q17, Q4 and Q3."
+      },
+      {
+        "id": "metrology-npl-power",
+        "url": "https://www.npl.co.uk/products-services/dc-lf/ac-power-wattmeters-voltmeters",
+        "readingDepth": "Full technical text and scope table on official page; accessed 2026-10-21"
+      }
+    ]
+  }
+]

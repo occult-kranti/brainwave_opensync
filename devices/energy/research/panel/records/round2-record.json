@@ -1,0 +1,20 @@
+{
+  "status": "round2-complete; round3 independent unit/page review pending",
+  "sourceCount": 8,
+  "programCards": 6,
+  "claimCards": 5,
+  "checks": [
+    "unique source IDs",
+    "all external source references resolve",
+    "every card names a next missing measurement"
+  ],
+  "sha256": {
+    "round1.md": "9d96bef9598f8146a1170b0de6fc047b7d77decab026304f5347e6643be9baaa",
+    "round1-freeze.json": "7fd6534e17fa4970740ec22196cd102f0fe1803c24a3718d0ab8e650a4a83b26",
+    "round2.md": "8960131c9876d4081ec8d37d32fca38a2b5398865231358cac693fa1662b8345",
+    "sources.json": "819a0d0a813b345527db1734e277a446eda9767270a4c00cb3b46cba3c0eae73",
+    "program-patent-ledger.json": "e3d62b92f1df149f0bce7090cec7cfda8009989271e206d8055029faa312e10e",
+    "programs.json": "5064debca8319ac08573612ae6d05a3e1756aff55cd66b00e5ccf8218c4c1165",
+    "claims.json": "6a78ee70e7b8d0a88d63ebebbfe61fcb9fe68ff96d8de56b53e36c015730b334"
+  }
+}

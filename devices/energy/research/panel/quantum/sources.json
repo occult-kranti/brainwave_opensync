@@ -1,0 +1,162 @@
+[
+  {
+    "id": "Q-ERG-2004",
+    "title": "Maximal work extraction from finite quantum systems",
+    "authors": [
+      "A. E. Allahverdyan",
+      "R. Balian",
+      "Th. M. Nieuwenhuizen"
+    ],
+    "url": "https://arxiv.org/html/cond-mat/0401574v1",
+    "doi": "10.1209/epl/i2004-10101-2",
+    "year": 2004,
+    "kind": "theory-paper",
+    "venue": "Europhysics Letters 67, 565 (2004)",
+    "status": "published; foundational result applied here",
+    "readingDepth": "Primary arXiv v1, cyclic-control definition and Eqs. (1)-(9), eigenvalue ordering and passive-state derivation read; not every later example audited.",
+    "claim": "Unitary-orbit minimization gives maximum extractable work from a specified nonequilibrium state.",
+    "limits": "Arbitrary cyclic control and initial-state assumptions matter; preparation and apparatus overhead are not a free resource.",
+    "topics": [
+      "quantum",
+      "ergotropy",
+      "passivity",
+      "energy-accounting"
+    ]
+  },
+  {
+    "id": "Q-NV-2024",
+    "title": "Experimental Investigation of Coherent Ergotropy in a Single Spin System",
+    "authors": [
+      "Zhibo Niu",
+      "Yang Wu",
+      "Yunhan Wang",
+      "Xing Rong",
+      "Jiangfeng Du"
+    ],
+    "url": "https://arxiv.org/html/2409.06249v1",
+    "doi": "10.1103/PhysRevLett.133.180401",
+    "year": 2024,
+    "kind": "experimental-paper",
+    "venue": "Physical Review Letters 133, 180401 (2024)",
+    "status": "published experimental report; not reproduced here",
+    "readingDepth": "Primary arXiv v1: definitions Eqs. (1)-(2), NV-center preparation/readout paragraphs and supplementary mean-energy measurement description read. Publication status checked at APS.",
+    "claim": "An NV-center spin experiment distinguishes coherent and incoherent ergotropy for prepared states.",
+    "limits": "Model-Hamiltonian expectation measurements do not establish whole-laboratory net energy output.",
+    "topics": [
+      "quantum",
+      "ergotropy",
+      "measurement",
+      "coherence"
+    ]
+  },
+  {
+    "id": "Q-COST-2025",
+    "title": "Experimental extraction of coherent ergotropy and its energetic cost in a superconducting qubit",
+    "authors": [
+      "Li Li",
+      "Silu Zhao",
+      "Yun-Hao Shi",
+      "Kai Xu",
+      "Heng Fan",
+      "Dongning Zheng",
+      "Zhongcheng Xiang"
+    ],
+    "url": "https://arxiv.org/html/2506.16881v2",
+    "doi": "10.1103/ptr1-59tv",
+    "year": 2025,
+    "kind": "experimental-paper",
+    "venue": "Physical Review Research 7, 043236 (2025)",
+    "status": "published experimental report; cost definition scoped",
+    "readingDepth": "Primary arXiv v2 dated 29 September 2025: state/preparation model, extraction definition, Eq. (4), efficiency definition and conclusions read. APS publication date 1 December 2025 verified.",
+    "claim": "Prepared-state coherence, decoherence and control-cost choices change extraction performance.",
+    "limits": "Sigma is time-averaged drive-Hamiltonian norm. Reported efficiency is not a measured wall-plug or cryogenic efficiency.",
+    "topics": [
+      "quantum",
+      "coherence",
+      "control-cost",
+      "energy-accounting"
+    ]
+  },
+  {
+    "id": "Q-OPTICAL-2026",
+    "title": "Superextensive electrical power from a quantum battery",
+    "authors": [
+      "Kieran Hymas",
+      "Jack B. Muir",
+      "Daniel Tibben",
+      "Joel van Embden",
+      "Tadahiko Hirai",
+      "Christopher J. Dunn",
+      "Daniel E. Gómez",
+      "James A. Hutchison",
+      "Trevor A. Smith",
+      "James Q. Quach"
+    ],
+    "url": "https://www.nature.com/articles/s41377-026-02240-6",
+    "doi": "10.1038/s41377-026-02240-6",
+    "year": 2026,
+    "kind": "experimental-paper",
+    "venue": "Light: Science & Applications 15, 168 (2026)",
+    "status": "published 13 March 2026; authors report optical conversion experiment",
+    "readingDepth": "Publisher abstract and introductory paragraphs read. A subsequent attempt to inspect later sections encountered an inaccessible publisher identity redirect; full methods not audited.",
+    "claim": "An illuminated microcavity with charge-transport layers exhibits reported superextensive steady-state electrical output scaling.",
+    "limits": "Incident light supplies energy. Scaling with device size is not efficiency above unity; no complete independent metrology assessment performed here.",
+    "topics": [
+      "quantum",
+      "photovoltaics",
+      "energy-harvesting",
+      "collective-effects"
+    ]
+  },
+  {
+    "id": "Q-QET-2024",
+    "title": "Quantum Energy Teleportation versus Information Teleportation",
+    "authors": [
+      "Jinzhao Wang",
+      "Shunyu Yao"
+    ],
+    "url": "https://arxiv.org/html/2405.13886v2",
+    "doi": "10.22331/q-2024-12-12-1564",
+    "year": 2024,
+    "kind": "theory-paper",
+    "venue": "Quantum 8, 1564 (2024)",
+    "status": "published theoretical analysis",
+    "readingDepth": "Journal metadata and primary arXiv v2 abstract/introduction and finite-dimensional setup overview read; appendix theorem proofs not independently checked.",
+    "claim": "Entanglement-assisted local operations and classical communication enable constrained work extraction; energy and information teleportation need not optimize together.",
+    "limits": "This is not a demonstrated macroscopic generator; preparation, measurement, feedback and reset resources must be accounted for.",
+    "topics": [
+      "quantum",
+      "quantum-energy-teleportation",
+      "information",
+      "passivity"
+    ]
+  },
+  {
+    "id": "Q-DCE-2011",
+    "title": "Observation of the dynamical Casimir effect in a superconducting circuit",
+    "authors": [
+      "C. M. Wilson",
+      "G. Johansson",
+      "A. Pourkabirian",
+      "J. R. Johansson",
+      "T. Duty",
+      "F. Nori",
+      "P. Delsing"
+    ],
+    "url": "https://arxiv.org/html/1105.4714v1",
+    "doi": "10.1038/nature10561",
+    "year": 2011,
+    "kind": "experimental-paper",
+    "venue": "Nature 479, 376–379 (2011)",
+    "status": "published experimental report; driven photon generation",
+    "readingDepth": "Primary arXiv v1 abstract, drive/boundary mechanism, pair-frequency condition and Eqs. (1)-(2) read. Publisher page failed. HTML rendering displays 2026 but submission/journal year is 2011.",
+    "claim": "High-frequency SQUID boundary modulation produces correlated photon pairs in a superconducting transmission line.",
+    "limits": "The modulation drive supplies energy; no static-vacuum engine or net apparatus-energy claim follows. Specialized cryogenic hardware is required.",
+    "topics": [
+      "quantum",
+      "dynamical-casimir",
+      "parametric-drive",
+      "energy-accounting"
+    ]
+  }
+]

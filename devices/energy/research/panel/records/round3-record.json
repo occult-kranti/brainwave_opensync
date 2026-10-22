@@ -1,0 +1,17 @@
+{
+  "status": "round3-content-complete; one generated-page review pending",
+  "priorFreezeVerified": true,
+  "claimCount": 7,
+  "sourceIdsAllResolve": true,
+  "newProgramSources": 0,
+  "newMetrologySourceFromPeer": "systems-bipm-units-2026",
+  "sha256": {
+    "round3.md": "ec6d63656e59ffd7fe6fdc8afc34549ea31f5c4ab54339a820962b058305c235",
+    "final-claims.json": "1c45ab96f1b278e4b5b3494499b2a559a9f4dacf1666630b6ef3997a4015ce08"
+  },
+  "independentEvidenceSha256": {
+    "round2.md": "e02932123907dd47887b4f5540bdfb55d56acc2e9d51b153307775e3adf65f5e",
+    "round2-sources.json": "15812a1b41378997cb2b1d9cb76294d91a1db4bd2507747d9acb3dd7ea8d0dec",
+    "independent-reference.json": "ae84d7291729b9490771f5dd5fe5d112d0a3a8585489a1662c24c61cfaf573a7"
+  }
+}

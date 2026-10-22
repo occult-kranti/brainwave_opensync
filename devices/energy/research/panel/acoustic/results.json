@@ -1,0 +1,254 @@
+{
+  "status": "passed",
+  "scope": "Two numerical formulations and external quadrature by the same acoustic panel author; not independent human review or hardware validation.",
+  "amplitudeConvention": "RMS phasors; time forcing sqrt(2)*F_rms*cos(omega*t)",
+  "fixtures": [
+    {
+      "name": "default",
+      "parameters": {
+        "frequencyHz": 200.0,
+        "loadOhm": 10000.0,
+        "forceRmsN": 0.001,
+        "massKg": 0.005,
+        "stiffnessNPerM": 7895.683520871487,
+        "dampingNsPerM": 0.2,
+        "couplingNPerV": 0.01,
+        "capacitanceF": 1e-07,
+        "dielectricConductanceS": 0.0
+      },
+      "inputW": 1.008423472289669e-06,
+      "loadW": 6.652627546183907e-07,
+      "mechanicalLossW": 3.4316071767127834e-07,
+      "dielectricLossW": 0.0,
+      "residualW": 2.117582368135751e-22,
+      "voltageRmsV": 0.08156364107973545,
+      "velocityRmsMps": 0.001309886860899212
+    },
+    {
+      "name": "held-out",
+      "parameters": {
+        "frequencyHz": 237.5,
+        "loadOhm": 17321.0,
+        "forceRmsN": 0.0007,
+        "massKg": 0.005,
+        "stiffnessNPerM": 7895.683520871487,
+        "dampingNsPerM": 0.31,
+        "couplingNPerV": 0.01,
+        "capacitanceF": 1e-07,
+        "dielectricConductanceS": 2e-06
+      },
+      "inputW": 9.373001228189849e-08,
+      "loadW": 3.870056785826464e-08,
+      "mechanicalLossW": 5.368877935188784e-08,
+      "dielectricLossW": 1.3406650717460036e-09,
+      "residualW": 0.0,
+      "voltageRmsV": 0.02589078090504421,
+      "velocityRmsMps": 0.00041616055893433897
+    },
+    {
+      "name": "zero-coupling",
+      "parameters": {
+        "frequencyHz": 200.0,
+        "loadOhm": 10000.0,
+        "forceRmsN": 0.001,
+        "massKg": 0.005,
+        "stiffnessNPerM": 7895.683520871487,
+        "dampingNsPerM": 0.2,
+        "couplingNPerV": 0.0,
+        "capacitanceF": 1e-07,
+        "dielectricConductanceS": 0.0
+      },
+      "inputW": 5e-06,
+      "loadW": 0.0,
+      "mechanicalLossW": 5e-06,
+      "dielectricLossW": 0.0,
+      "residualW": 0.0,
+      "voltageRmsV": 0.0,
+      "velocityRmsMps": 0.005
+    },
+    {
+      "name": "zero-drive",
+      "parameters": {
+        "frequencyHz": 200.0,
+        "loadOhm": 10000.0,
+        "forceRmsN": 0.0,
+        "massKg": 0.005,
+        "stiffnessNPerM": 7895.683520871487,
+        "dampingNsPerM": 0.2,
+        "couplingNPerV": 0.01,
+        "capacitanceF": 1e-07,
+        "dielectricConductanceS": 0.0
+      },
+      "inputW": 0.0,
+      "loadW": 0.0,
+      "mechanicalLossW": 0.0,
+      "dielectricLossW": 0.0,
+      "residualW": 0.0,
+      "voltageRmsV": 0.0,
+      "velocityRmsMps": 0.0
+    }
+  ],
+  "timeChecks": {
+    "startup": [
+      {
+        "samplesPerCycle": 32,
+        "inputJ": 1.9977911309116114e-07,
+        "loadJ": 1.2539799403608302e-07,
+        "mechanicalLossJ": 6.51646189263529e-08,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 9.21644811030703e-09,
+        "storageChangeJ": 9.21644811030703e-09,
+        "residualJ": -5.201841817891389e-14,
+        "relativeResidual": 2.603796631892013e-07
+      },
+      {
+        "samplesPerCycle": 64,
+        "inputJ": 1.9977906074628466e-07,
+        "loadJ": 1.2539800746646853e-07,
+        "mechanicalLossJ": 6.516460196838034e-08,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 9.21644811030703e-09,
+        "storageChangeJ": 9.21644811030703e-09,
+        "residualJ": -3.2011287518316232e-15,
+        "relativeResidual": 1.602334468824534e-08
+      },
+      {
+        "samplesPerCycle": 128,
+        "inputJ": 1.9977905752615379e-07,
+        "loadJ": 1.2539800829294671e-07,
+        "mechanicalLossJ": 6.51646009238683e-08,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 9.21644811030703e-09,
+        "storageChangeJ": 9.21644811030703e-09,
+        "residualJ": -1.9903172559975683e-16,
+        "relativeResidual": 9.96259207868677e-10
+      }
+    ],
+    "heldOut": [
+      {
+        "samplesPerCycle": 32,
+        "inputJ": 1.6785195328124126e-08,
+        "loadJ": 6.689635704060452e-09,
+        "mechanicalLossJ": 9.184962713231247e-09,
+        "dielectricLossJ": 2.3174236006006216e-10,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 6.788637321504138e-10,
+        "storageChangeJ": 6.788637321504138e-10,
+        "residualJ": 9.181378049761759e-15,
+        "relativeResidual": 5.469926247672595e-07
+      },
+      {
+        "samplesPerCycle": 64,
+        "inputJ": 1.6785203646078916e-08,
+        "loadJ": 6.689634086815262e-09,
+        "mechanicalLossJ": 9.18496408999826e-09,
+        "dielectricLossJ": 2.3174230403545426e-10,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 6.788637321504138e-10,
+        "storageChangeJ": 6.788637321504138e-10,
+        "residualJ": 5.669204717775609e-16,
+        "relativeResidual": 3.37750130252364e-08
+      },
+      {
+        "samplesPerCycle": 128,
+        "inputJ": 1.678520415939941e-08,
+        "loadJ": 6.6896339871508475e-09,
+        "mechanicalLossJ": 9.18496417481087e-09,
+        "dielectricLossJ": 2.3174230058287965e-10,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 6.788637321504138e-10,
+        "storageChangeJ": 6.788637321504138e-10,
+        "residualJ": 3.529559821429068e-17,
+        "relativeResidual": 2.102780393917686e-09
+      }
+    ],
+    "sourceOffDecay": [
+      {
+        "samplesPerCycle": 32,
+        "inputJ": 0.0,
+        "loadJ": 1.0459049969341708e-06,
+        "mechanicalLossJ": 5.37730407200749e-07,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 1.5836367041742977e-06,
+        "finalStoredJ": 1.0515349463072278e-16,
+        "storageChangeJ": -1.5836367040691443e-06,
+        "residualJ": -1.2999342245605745e-12,
+        "relativeResidual": 8.208538114417823e-07
+      },
+      {
+        "samplesPerCycle": 64,
+        "inputJ": 0.0,
+        "loadJ": 1.0459061468552755e-06,
+        "mechanicalLossJ": 5.377304847397803e-07,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 1.5836367041742977e-06,
+        "finalStoredJ": 1.0515349463072278e-16,
+        "storageChangeJ": -1.5836367040691443e-06,
+        "residualJ": -7.247408841340604e-14,
+        "relativeResidual": 4.576433990344633e-08
+      },
+      {
+        "samplesPerCycle": 128,
+        "inputJ": 0.0,
+        "loadJ": 1.045906209879472e-06,
+        "mechanicalLossJ": 5.377304898078253e-07,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 1.5836367041742977e-06,
+        "finalStoredJ": 1.0515349463072278e-16,
+        "storageChangeJ": -1.5836367040691443e-06,
+        "residualJ": -4.381847125813423e-15,
+        "relativeResidual": 2.766952239906628e-09
+      }
+    ],
+    "zeroDrive": [
+      {
+        "samplesPerCycle": 32,
+        "inputJ": 0.0,
+        "loadJ": 0.0,
+        "mechanicalLossJ": 0.0,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 0.0,
+        "storageChangeJ": 0.0,
+        "residualJ": 0.0,
+        "relativeResidual": 0.0
+      },
+      {
+        "samplesPerCycle": 64,
+        "inputJ": 0.0,
+        "loadJ": 0.0,
+        "mechanicalLossJ": 0.0,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 0.0,
+        "storageChangeJ": 0.0,
+        "residualJ": 0.0,
+        "relativeResidual": 0.0
+      },
+      {
+        "samplesPerCycle": 128,
+        "inputJ": 0.0,
+        "loadJ": 0.0,
+        "mechanicalLossJ": 0.0,
+        "dielectricLossJ": 0.0,
+        "initialStoredJ": 0.0,
+        "finalStoredJ": 0.0,
+        "storageChangeJ": 0.0,
+        "residualJ": 0.0,
+        "relativeResidual": 0.0
+      }
+    ]
+  },
+  "controls": [
+    "full state-matrix harmonic solution",
+    "held-out off-grid frequency and load",
+    "external Simpson quadrature refinement",
+    "zero coupling",
+    "zero drive/zero initial state",
+    "source-off stored-energy decay"
+  ],
+  "sourceSha256": "c35425fedc8daaf0aa4b7479af851e122f6bb0d421a5de34431753477bd3a59d"
+}

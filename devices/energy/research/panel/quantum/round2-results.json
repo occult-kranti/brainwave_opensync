@@ -1,0 +1,144 @@
+{
+  "status": "passed-within-declared-model",
+  "researchDate": "2026-10-21",
+  "provenance": "Scalar JS producer versus matrix/Kraus/eigensolver reference by the same model-agent; separate panel review follows.",
+  "modelSHA256": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91",
+  "referenceSHA256": "fee288584dbebc20cbda3104dce3b048dfd5f06b6e3ae7714adbb5cebcafb1ed",
+  "grid": {
+    "populations": 21,
+    "coherenceFractions": 11,
+    "dampingProbabilities": 5,
+    "dephasingRetentions": 5,
+    "cases": 5775
+  },
+  "randomCases": 512,
+  "randomSeed": 20261021,
+  "boundaryCases": 8,
+  "totalCases": 6295,
+  "invalidInputsRejected": 10,
+  "maxEnergyErrorInGapUnits": 3.10457792835019e-15,
+  "maxPurityError": 4.440892098500626e-16,
+  "maxClosureResidualInGapUnits": 1.9803656855192557e-16,
+  "unitarySearch": {
+    "states": 20,
+    "thetaCount": 257,
+    "phiCount": 128,
+    "totalRotations": 657920,
+    "maxSampledMinusExactInGapUnits": 7.196060012037986e-06,
+    "results": [
+      {
+        "population": 0.1,
+        "coherence": 0.0,
+        "sampledMinusExactInGapUnits": 0.0
+      },
+      {
+        "population": 0.1,
+        "coherence": 0.3,
+        "sampledMinusExactInGapUnits": 3.637047028826057e-08
+      },
+      {
+        "population": 0.1,
+        "coherence": 0.7,
+        "sampledMinusExactInGapUnits": 5.302460688687283e-06
+      },
+      {
+        "population": 0.1,
+        "coherence": 1.0,
+        "sampledMinusExactInGapUnits": 7.196060012024108e-06
+      },
+      {
+        "population": 0.25,
+        "coherence": 0.0,
+        "sampledMinusExactInGapUnits": 0.0
+      },
+      {
+        "population": 0.25,
+        "coherence": 0.3,
+        "sampledMinusExactInGapUnits": 5.317150642003554e-08
+      },
+      {
+        "population": 0.25,
+        "coherence": 0.7,
+        "sampledMinusExactInGapUnits": 1.178595561715512e-06
+      },
+      {
+        "population": 0.25,
+        "coherence": 1.0,
+        "sampledMinusExactInGapUnits": 4.183277824643117e-06
+      },
+      {
+        "population": 0.5,
+        "coherence": 0.0,
+        "sampledMinusExactInGapUnits": -1.6653345369377348e-16
+      },
+      {
+        "population": 0.5,
+        "coherence": 0.3,
+        "sampledMinusExactInGapUnits": 0.0
+      },
+      {
+        "population": 0.5,
+        "coherence": 0.7,
+        "sampledMinusExactInGapUnits": 0.0
+      },
+      {
+        "population": 0.5,
+        "coherence": 1.0,
+        "sampledMinusExactInGapUnits": 0.0
+      },
+      {
+        "population": 0.75,
+        "coherence": 0.0,
+        "sampledMinusExactInGapUnits": -2.7755575615628914e-17
+      },
+      {
+        "population": 0.75,
+        "coherence": 0.3,
+        "sampledMinusExactInGapUnits": 5.317150644779112e-08
+      },
+      {
+        "population": 0.75,
+        "coherence": 0.7,
+        "sampledMinusExactInGapUnits": 1.1785955617432675e-06
+      },
+      {
+        "population": 0.75,
+        "coherence": 1.0,
+        "sampledMinusExactInGapUnits": 4.183277824643117e-06
+      },
+      {
+        "population": 0.9,
+        "coherence": 0.0,
+        "sampledMinusExactInGapUnits": -1.3877787807814457e-17
+      },
+      {
+        "population": 0.9,
+        "coherence": 0.3,
+        "sampledMinusExactInGapUnits": 3.637047030213836e-08
+      },
+      {
+        "population": 0.9,
+        "coherence": 0.7,
+        "sampledMinusExactInGapUnits": 5.302460688708099e-06
+      },
+      {
+        "population": 0.9,
+        "coherence": 1.0,
+        "sampledMinusExactInGapUnits": 7.196060012037986e-06
+      }
+    ],
+    "scope": "Finite sampled search corroborates the eigenvalue-ordering bound; it does not prove the continuous optimum."
+  },
+  "wrongEstimatorControl": {
+    "state": "population .25, zero coherence",
+    "wrongStoredEnergyAsWorkJ": 8.282587687499999e-25,
+    "correctErgotropyJ": 0.0,
+    "rejected": true
+  },
+  "limits": [
+    "No physical measurements.",
+    "No wall-plug or complete-cycle efficiency calculated.",
+    "No acoustic-to-qubit coupling inferred from frequency equality.",
+    "Matrix channel assumptions and ideal unrestricted unitary extraction define the result."
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "status": "passed",
+  "provenance": "Independent skeptic; no producer imports",
+  "kind": "synthetic mathematical controls; no physical experiment has been run",
+  "checks_count": 8,
+  "checks": [
+    {
+      "name": "linear_drift_and_wrong_order_control",
+      "passed": true,
+      "true_shift_Hz": 0.375,
+      "ABBA_Hz": 0.375,
+      "BAAB_Hz": 0.375,
+      "AABB_bias_Hz": 1.0769230769230769
+    },
+    {
+      "name": "quadratic_drift_limitation",
+      "passed": true,
+      "ABBA_bias_Hz": -0.2222222222222222,
+      "BAAB_bias_Hz": 0.2222222222222222,
+      "scope": "Opposite signs cancel only for matched curvature and symmetric timing; inspect actual timestamps."
+    },
+    {
+      "name": "prospective_example_schedule",
+      "passed": true,
+      "seed": 20261021,
+      "blocks": [
+        "ABBA",
+        "ABBA",
+        "BAAB",
+        "ABBA",
+        "BAAB",
+        "BAAB",
+        "ABBA",
+        "BAAB",
+        "ABBA",
+        "ABBA",
+        "ABBA",
+        "ABBA",
+        "BAAB",
+        "BAAB",
+        "ABBA",
+        "BAAB",
+        "BAAB",
+        "ABBA",
+        "BAAB",
+        "BAAB"
+      ],
+      "scope": "Illustrative 20-block schedule. Choose sample size from a pilot before final data."
+    },
+    {
+      "name": "largest_peak_is_not_mode_identity",
+      "passed": true,
+      "same_undamped_poles_Hz": [
+        1000,
+        1100
+      ],
+      "Q": 80,
+      "residues_A": [
+        1,
+        0.1
+      ],
+      "residues_B": [
+        0.1,
+        1
+      ],
+      "largest_peak_A_Hz": 999.92,
+      "largest_peak_B_Hz": 1100.01,
+      "apparent_peak_shift_Hz": 100.09000000000003,
+      "intrinsic_pole_shift_Hz": 0,
+      "scope": "Synthetic two-mode observation. The frequency grid determines peak display precision."
+    },
+    {
+      "name": "translation_vs_boundary_change",
+      "passed": true,
+      "coupling_A_N_per_m": 1000,
+      "coupling_B_N_per_m": 10000,
+      "modes_A_Hz": [
+        900.2776924306467,
+        1001.2690507655872
+      ],
+      "same_system_translated_Hz": [
+        900.2776924306467,
+        1001.2690507655872
+      ],
+      "changed_support_modes_B_Hz": [
+        902.4730012355809,
+        1012.8863890553296
+      ],
+      "scope": "Synthetic 2-DOF passive model, not fitted copper or table data."
+    },
+    {
+      "name": "covariance_in_frequency_difference",
+      "passed": true,
+      "u_A_Hz": 0.5,
+      "u_B_Hz": 0.5,
+      "correlation": 0.9,
+      "u_difference_Hz": 0.22360679774997894,
+      "uncorrelated_assumption_Hz": 0.7071067811865476,
+      "scope": "Assumed example correlation, not measured instrument uncertainty."
+    },
+    {
+      "name": "shared_clock_correlation",
+      "passed": true,
+      "scale_error": 1e-06,
+      "true_difference_Hz": 0.3000000000029104,
+      "observed_difference_Hz": 0.30000030000519473,
+      "scope": "Same constant clock error during both records. Differential clock drift remains a separate input."
+    },
+    {
+      "name": "thermal_scaling_bookkeeping",
+      "passed": true,
+      "radius_ratio": 1.0001,
+      "frequency_ratio_if_E_and_nu_fixed": 1.0000499987500624,
+      "scope": "Bookkeeping control only. Actual copper E(T), nu(T), and thermal state must be measured or sourced."
+    }
+  ]
+}

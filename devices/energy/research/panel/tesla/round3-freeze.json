@@ -1,0 +1,11 @@
+{
+  "round": 3,
+  "status": "frozen-for-final-independent-review",
+  "no_more_research_rounds": true,
+  "files": {
+    "src/em.mjs": "09ee1be95fe4586b1633fb39dae11fdc7f6a5dc3604461632c320d1e91193984",
+    "analysis/em_reference.py": "e2595d98c71fe847c4743c12c9e78e6bb5dab08dfc1ecd4fbfab45b6f5e092ed",
+    "research/panel/tesla/round3.md": "fd50537d4514507cd9e2c17d578eb237c1219a24eb13516fdce52d6fb5b6b66f",
+    "research/panel/tesla/em-round3-results.json": "f2b5df8b504f7c0b42912622bb723a5b0a98df53c77e7404bc9b57a980049035"
+  }
+}

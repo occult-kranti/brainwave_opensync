@@ -1,0 +1,125 @@
+{
+  "repository": "occult-kranti/bashar-index",
+  "commit": "457dc2f2da10399bda2786573b7a77ec3fe34f62",
+  "text_file_count": 131,
+  "digests": 75,
+  "catalogue_entries": 684,
+  "raw_transcript_files": 0,
+  "query_results": {
+    "copper": [
+      {
+        "path": "index.html",
+        "occurrences": 10
+      },
+      {
+        "path": "data/diagrams.json",
+        "occurrences": 5
+      },
+      {
+        "path": "analysis/demand.py",
+        "occurrences": 5
+      },
+      {
+        "path": "analysis/doctrine_dynamics.py",
+        "occurrences": 4
+      },
+      {
+        "path": "analysis/doctrine_graph.py",
+        "occurrences": 4
+      },
+      {
+        "path": "analysis/common.py",
+        "occurrences": 2
+      },
+      {
+        "path": "analysis/rubric_calibration.py",
+        "occurrences": 2
+      },
+      {
+        "path": "analysis/predictions.py",
+        "occurrences": 6
+      },
+      {
+        "path": "panel/r2_design.md",
+        "occurrences": 3
+      },
+      {
+        "path": "panel/image_specs.md",
+        "occurrences": 5
+      },
+      {
+        "path": "src/diagrams_b.py",
+        "occurrences": 4
+      },
+      {
+        "path": "src/css.py",
+        "occurrences": 1
+      }
+    ],
+    "locational": [
+      {
+        "path": "index.html",
+        "occurrences": 9
+      },
+      {
+        "path": "data/videos.json",
+        "occurrences": 4
+      },
+      {
+        "path": "data/digests/98KsASkO8Cs.json",
+        "occurrences": 4
+      }
+    ],
+    "frictionless": [],
+    "location sphere": [],
+    "signature vibration": [
+      {
+        "path": "index.html",
+        "occurrences": 6
+      },
+      {
+        "path": "data/videos.json",
+        "occurrences": 3
+      },
+      {
+        "path": "data/digests/jQbxp4e6bfg.json",
+        "occurrences": 1
+      },
+      {
+        "path": "data/digests/1x7Z68os7HE.json",
+        "occurrences": 1
+      }
+    ],
+    "hollow sphere": [],
+    "hollow ball": [],
+    "ringing the bell": [
+      {
+        "path": "index.html",
+        "occurrences": 3
+      },
+      {
+        "path": "data/catalog_sessions.json",
+        "occurrences": 1
+      },
+      {
+        "path": "data/session_catalog.csv",
+        "occurrences": 1
+      }
+    ],
+    "game of chess": [
+      {
+        "path": "index.html",
+        "occurrences": 3
+      },
+      {
+        "path": "data/catalog_sessions.json",
+        "occurrences": 1
+      },
+      {
+        "path": "data/session_catalog.csv",
+        "occurrences": 1
+      }
+    ]
+  },
+  "method": "Case-insensitive literal search across all tracked-readable text files excluding .git; duplicates in generated index and aggregate JSON are not independent evidence."
+}

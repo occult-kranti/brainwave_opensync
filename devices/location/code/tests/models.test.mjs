@@ -5,6 +5,14 @@ const close=(a,b,rtol=1e-10)=>assert.ok(Math.abs(a-b)<=rtol*Math.max(Math.abs(a)
 test('independent SciPy free solid-sphere fixture',()=>{const x=solidBreathing({youngPa:110e9,poisson:.34,densityKgM3:8960,radiusM:.01});close(x.root,2.7586362948830208);close(x.frequencyHz,190854.10026329546);});
 test('radius scaling and mass scaling',()=>{const a=solidBreathing({radiusM:.01}),b=solidBreathing({radiusM:.02});close(a.frequencyHz,2*b.frequencyHz);close(b.massKg,8*a.massKg);});
 test('finite first radial roots and ordered overtones',()=>{const roots=[0,1,2,3].map(rootIndex=>breathingRoot({poisson:.35,rootIndex}));assert.ok(roots.every((x,i)=>x>0&&(i===0||x>roots[i-1])));});
+test('first radial root is retained near the auxetic stability boundary',()=>{
+  // Independent 90-digit Decimal direct-traction fixtures, not the JS series.
+  for(const [poisson,expected,massRatio] of [[-.9999,.015811727126971393,.6000085719388047],[-.999999,.0015811391689224932,.6000000857143363],[-.999999999999,.000001581121341232471,.6000000000000884],[-.9999999999999999,1.666000468656264e-8,.6000000000000021]]) {
+    const first=breathingRoot({poisson});close(first,expected,2e-13);
+    assert.ok(breathingRoot({poisson,rootIndex:1})>first);
+    const solid=solidBreathing({poisson});close(solid.modalMassKg/solid.massKg,massRatio,2e-13);
+  }
+});
 test('shell frequency independent of thickness only within membrane approximation',()=>{const a=shellBreathing({thicknessM:.0005}),b=shellBreathing({thicknessM:.001});close(a.frequencyHz,b.frequencyHz);close(b.massKg,2*a.massKg);assert.ok(b.geometricMassKg>b.massKg);});
 test('zero-coupling translated sphere gives identical response',()=>{const a=simulateComparison({coupling:0,receiver:'comoving',tempDeltaK:0});assert.deepEqual(a.responseA,a.responseB);close(a.intrinsicHzA,a.intrinsicHzB);});
 test('mirror positions share fixture coupling and projection',()=>{const a=simulateComparison({positionA:.25,positionB:.75});a.responseA.forEach((x,i)=>close(x,a.responseB[i]));});

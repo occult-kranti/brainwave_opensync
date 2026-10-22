@@ -25,19 +25,45 @@ export function materialSpeeds(params = {}) {
 }
 export function sphericalJ1(x) {
   finite('x',x);
-  if (Math.abs(x)<1e-3) return x/3-x**3/30+x**5/840-x**7/45360;
+  if (Math.abs(x)<.5) {
+    let term=x/3,sum=term;
+    for(let k=1;k<=10;k++){term*=-x*x/(2*k*(2*k+3));sum+=term;}
+    return sum;
+  }
   return Math.sin(x)/x**2-Math.cos(x)/x;
+}
+function sphericalJ2(x) {
+  if(Math.abs(x)<.5) {
+    let term=x*x/15,sum=term;
+    for(let k=1;k<=10;k++){term*=-x*x/(2*k*(2*k+5));sum+=term;}
+    return sum;
+  }
+  return 3*sphericalJ1(x)/x-Math.sin(x)/x;
 }
 /** Dimensionless traction residual divided by x: removes the spurious x=0 root. */
 export function breathingResidual(x, poisson=.350) {
   positive('x',x); if (!(poisson>-1 && poisson<.5)) throw new RangeError('invalid poisson');
+  // Direct subtraction loses the small root as nu approaches -1. Expand the
+  // combined residual, including its exact constant (1+nu)/(3*(1-nu)).
+  if (x<.5) {
+    const z=x*x;
+    let sum=(1+poisson)/(3*(1-poisson)),power=1,factorial=6;
+    for(let k=1;k<=10;k++) {
+      factorial*=(2*k+2)*(2*k+3);power*=z;
+      const coefficient=2*(k+1)*((2*k+1)+(1-2*k)*poisson)/((1-poisson)*factorial);
+      sum+=(k%2?-1:1)*coefficient*power;
+    }
+    return sum;
+  }
   const q=(1-2*poisson)/(2*(1-poisson));
   return Math.sin(x)/x-4*q*sphericalJ1(x)/x;
 }
 export function breathingRoot({poisson=.350, rootIndex=0}={}) {
   if (!Number.isInteger(rootIndex) || rootIndex<0 || rootIndex>19) throw new RangeError('rootIndex must be an integer from 0 to 19');
   if (!(poisson>-1 && poisson<.5)) throw new RangeError('invalid poisson');
-  let left=1e-5, fl=breathingResidual(left,poisson), found=0;
+  // The continuous x=0 residual is positive for every supported nu>-1.
+  // Starting at a fixed positive cutoff can skip a legitimate auxetic root.
+  let left=0, fl=(1+poisson)/(3*(1-poisson)), found=0;
   const step=Math.PI/64, limit=(rootIndex+3)*Math.PI;
   for(let right=left+step; right<=limit; right+=step) {
     const fr=breathingResidual(right,poisson);
@@ -59,7 +85,7 @@ export function solidBreathing(params={}) {
   const speed=materialSpeeds(p), massKg=4*Math.PI*p.densityKgM3*radiusM**3/3;
   // Exact spherical-Bessel integral for the surface-displacement-normalized radial mode.
   // integral_0^1 y² j1(xy)² dy = [j1(x)²-j0(x)j2(x)]/2.
-  const j1=sphericalJ1(root),j0=Math.sin(root)/root,j2=3*j1/root-j0;
+  const j1=sphericalJ1(root),j0=Math.sin(root)/root,j2=sphericalJ2(root);
   const modalMassKg=massKg*1.5*(1-j0*j2/j1**2);
   return {kind:'solid',radiusM,massKg,modalMassKg,frequencyHz:root*speed.longitudinalMps/(TAU*radiusM),root,rootResidual:breathingResidual(root,p.poisson),...speed};
 }

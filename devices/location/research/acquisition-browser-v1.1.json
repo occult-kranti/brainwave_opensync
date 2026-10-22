@@ -1,0 +1,81 @@
+{
+  "browser": "153.0.8010.0",
+  "checks": [
+    {
+      "name": "1440: four keyboard tabs",
+      "passed": true
+    },
+    {
+      "name": "1440: all six acquisition scenarios",
+      "passed": true
+    },
+    {
+      "name": "1440: alias and duration comparisons",
+      "passed": true
+    },
+    {
+      "name": "1440: synthetic exports match displayed inputs",
+      "passed": true
+    },
+    {
+      "name": "1440: invalid capture input and recovery",
+      "passed": true
+    },
+    {
+      "name": "1440: uncertainty and waveform controls",
+      "passed": true
+    },
+    {
+      "name": "1440: expanded research groups",
+      "passed": true
+    },
+    {
+      "name": "1440: generated image provenance and benchmark",
+      "passed": true
+    },
+    {
+      "name": "1440: scientific acquisition diagrams",
+      "passed": true
+    },
+    {
+      "name": "390: four keyboard tabs",
+      "passed": true
+    },
+    {
+      "name": "390: all six acquisition scenarios",
+      "passed": true
+    },
+    {
+      "name": "390: alias and duration comparisons",
+      "passed": true
+    },
+    {
+      "name": "390: synthetic exports match displayed inputs",
+      "passed": true
+    },
+    {
+      "name": "390: invalid capture input and recovery",
+      "passed": true
+    },
+    {
+      "name": "390: uncertainty and waveform controls",
+      "passed": true
+    },
+    {
+      "name": "390: expanded research groups",
+      "passed": true
+    },
+    {
+      "name": "390: generated image provenance and benchmark",
+      "passed": true
+    },
+    {
+      "name": "390: scientific acquisition diagrams",
+      "passed": true
+    }
+  ],
+  "runtimeErrors": [],
+  "passed": true,
+  "researchDate": "2026-10-22",
+  "scope": "Local Chromium browser checks, desktop1440x1000 and mobile390x844; physical measurements none."
+}

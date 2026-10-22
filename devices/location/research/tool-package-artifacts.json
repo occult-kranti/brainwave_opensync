@@ -1,0 +1,165 @@
+{
+  "pyFRF": {
+    "version": "1.5.0",
+    "license": "MIT",
+    "files": [
+      {
+        "filename": "pyfrf-1.5.0-py3-none-any.whl",
+        "sha256": "ecdc4d1b99c8717b56d57ba9c9f5137d7187d013f1161202f8a0debaaee6e280",
+        "url": "https://files.pythonhosted.org/packages/ec/a7/fb5bbfa05f7f4a044b27d69f4ee0f2063c2b9973a7af57af397c96b4fe80/pyfrf-1.5.0-py3-none-any.whl"
+      },
+      {
+        "filename": "pyfrf-1.5.0.tar.gz",
+        "sha256": "468ce4d6061554cd6a2a4ccca14d58f9734d2dc238e6ba31383adc86d1757e15",
+        "url": "https://files.pythonhosted.org/packages/98/c3/afabeef5c0d83e4cd232190ad118271138a5d3ec5a06bb91dd8c64a01679/pyfrf-1.5.0.tar.gz"
+      }
+    ],
+    "requires": [
+      "colorama",
+      "lvm-read",
+      "matplotlib",
+      "numpy>=1.11.0",
+      "py",
+      "pyexsi",
+      "scipy>=1.2.0",
+      "sdypy-sep005",
+      "jupyter; extra == \"dev\"",
+      "nbsphinx; extra == \"dev\"",
+      "nbsphinx-link; extra == \"dev\"",
+      "pylump; python_version >= \"3.10\" and extra == \"dev\"",
+      "pytest; extra == \"dev\"",
+      "sphinx; extra == \"dev\"",
+      "sphinx-book-theme; extra == \"dev\"",
+      "sphinx-rtd-theme; extra == \"dev\"",
+      "twine; extra == \"dev\"",
+      "wheel; extra == \"dev\""
+    ]
+  },
+  "pyuff": {
+    "version": "2.5.8",
+    "license": "MIT",
+    "files": [
+      {
+        "filename": "pyuff-2.5.8-py3-none-any.whl",
+        "sha256": "d71a86d69c74c6249b3ad2d43adb0ac20e47a6022322af0df6290ebe7486cf78",
+        "url": "https://files.pythonhosted.org/packages/44/92/bba8fa744fba3f6b84c65841247e7c60b667d2af9f9fcf262aca616723be/pyuff-2.5.8-py3-none-any.whl"
+      },
+      {
+        "filename": "pyuff-2.5.8.tar.gz",
+        "sha256": "42ed104e0b267b185b27a9cc149038b5f897571e1ca9d3546fd7c1d4cfa54e97",
+        "url": "https://files.pythonhosted.org/packages/3d/03/9a90aae2ddbf57027fa065c41f316e8f49275497ed0b6e75c10d3e2ce25f/pyuff-2.5.8.tar.gz"
+      }
+    ],
+    "requires": [
+      "numpy",
+      "build; extra == \"dev\"",
+      "pytest; extra == \"dev\"",
+      "sphinx; extra == \"dev\"",
+      "sphinx-copybutton; extra == \"dev\"",
+      "sphinx-rtd-theme; extra == \"dev\"",
+      "twine; extra == \"dev\"",
+      "wheel; extra == \"dev\""
+    ]
+  },
+  "scikit-fem": {
+    "version": "12.0.2",
+    "license": null,
+    "files": [
+      {
+        "filename": "scikit_fem-12.0.2-py3-none-any.whl",
+        "sha256": "34cd891f80072c0c1eb759a2371e82f0eeec91ff7c08acab96d27b6edbbe1b05",
+        "url": "https://files.pythonhosted.org/packages/5b/13/d46cf943bd1b04b1b010094eb08493d6660c99c49652fa46cf7c3bf36ab5/scikit_fem-12.0.2-py3-none-any.whl"
+      },
+      {
+        "filename": "scikit_fem-12.0.2.tar.gz",
+        "sha256": "0a38764cdb93411c5a994451c22c1da07808ebabf920f462c6253f78f5703f8a",
+        "url": "https://files.pythonhosted.org/packages/a7/5f/77643ece20e33a770fdfb6cafb9b2a5a1dd51b8a1ee1d3dc5bac8c72bdfa/scikit_fem-12.0.2.tar.gz"
+      }
+    ],
+    "requires": [
+      "numpy",
+      "scipy",
+      "matplotlib; extra == \"all\"",
+      "meshio; extra == \"all\""
+    ]
+  },
+  "sdypy-sep005": {
+    "version": "1.0.1",
+    "license": "The MIT License (MIT)  Copyright (c) Domen Gorjup 2019  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+    "files": [
+      {
+        "filename": "sdypy_sep005-1.0.1-py3-none-any.whl",
+        "sha256": "9ec27ccf70c4d931617c8c9d5711779953c28ff7b4594b191db0c00f4109da04",
+        "url": "https://files.pythonhosted.org/packages/a1/b4/05209f3e4c4fb936f4343da90b5b099a0dd0a65b2ca38576636f45f46114/sdypy_sep005-1.0.1-py3-none-any.whl"
+      },
+      {
+        "filename": "sdypy_sep005-1.0.1.tar.gz",
+        "sha256": "ca050a96a61751b0a64f22c8074f71e7f0cf25be0378b207b4fdc01496bc0858",
+        "url": "https://files.pythonhosted.org/packages/d8/46/b00e53209e84c5150892f4101dfb684fd6cb2f9b55dabc1e191f40704c46/sdypy_sep005-1.0.1.tar.gz"
+      }
+    ],
+    "requires": [
+      "numpy",
+      "pydantic"
+    ]
+  },
+  "pyEMA": {
+    "version": "0.31.0",
+    "license": "MIT",
+    "files": [
+      {
+        "filename": "pyema-0.31.0-py3-none-any.whl",
+        "sha256": "23db39995a5a2d638a5ca5d9f58900d24c80c988421f33ce8bd9b05d2e3b1ee5",
+        "url": "https://files.pythonhosted.org/packages/dc/57/d05051a6753dad29cd4503ce90abeaa136451aed25ec55e8b741b11ccd77/pyema-0.31.0-py3-none-any.whl"
+      },
+      {
+        "filename": "pyema-0.31.0.tar.gz",
+        "sha256": "61587d914c96b58c9edd53f65cd78c85e0de05585f78da8ce376f39f649d2c7c",
+        "url": "https://files.pythonhosted.org/packages/63/6c/e77902a3bb00ef2130b14ca748c4b6f745b86c487a1aa2a76b42b5a7094e/pyema-0.31.0.tar.gz"
+      }
+    ],
+    "requires": [
+      "sdypy-ema>=0.31",
+      "pytest; extra == \"dev\"",
+      "sphinx; extra == \"dev\"",
+      "sphinx-rtd-theme; extra == \"dev\""
+    ]
+  },
+  "sdypy-ema": {
+    "version": "0.31.0",
+    "license": "MIT",
+    "files": [
+      {
+        "filename": "sdypy_ema-0.31.0-py3-none-any.whl",
+        "sha256": "cea03fec5cde21c71f4ef4fbd7370cda57bd28b356fe5541829959a7bb31ff2e",
+        "url": "https://files.pythonhosted.org/packages/c0/6f/5b5e200b2656eac412fa78905609587fc62854b96b9e0d4e85136ec28a2e/sdypy_ema-0.31.0-py3-none-any.whl"
+      },
+      {
+        "filename": "sdypy_ema-0.31.0.tar.gz",
+        "sha256": "f267d47faad5f99f64e0af8899681e447e906d8a92d0341fb390277edeb27e4d",
+        "url": "https://files.pythonhosted.org/packages/e5/b5/97aadefd8cecb09644b0f00c61f34f683b2e8b58ff561d3009a1e223bff5/sdypy_ema-0.31.0.tar.gz"
+      }
+    ],
+    "requires": [
+      "matplotlib>=3.3.1",
+      "numpy>=1.14.3",
+      "pyuff>=2.1",
+      "scipy>=1.1.0",
+      "tqdm>=4.23.4",
+      "build; extra == \"dev\"",
+      "flake8; extra == \"dev\"",
+      "pydata-sphinx-theme; extra == \"dev\"",
+      "pyfrf>=1.4; extra == \"dev\"",
+      "pylump; extra == \"dev\"",
+      "pytest; extra == \"dev\"",
+      "sphinx; extra == \"dev\"",
+      "sphinx-copybutton>=0.5.2; extra == \"dev\"",
+      "twine; extra == \"dev\"",
+      "wheel; extra == \"dev\"",
+      "pydata-sphinx-theme; extra == \"docs\"",
+      "sphinx; extra == \"docs\"",
+      "sphinx-copybutton>=0.5.2; extra == \"docs\"",
+      "pyside6>=6.5; extra == \"qt\""
+    ]
+  }
+}

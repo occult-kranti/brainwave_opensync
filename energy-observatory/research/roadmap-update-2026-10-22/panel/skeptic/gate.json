@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "stage": "review",
+  "role": "independent skeptic",
+  "createdUtc": "2026-10-22T04:20:01.702986+00:00",
+  "independence": {
+    "newPeerProposalsRead": false,
+    "sourceInputsRead": [
+      "math-crosswalk/report.md",
+      "math-crosswalk/contract.json",
+      "roadmap-update-2026-10-22/contract.json"
+    ],
+    "meaning": "Criteria frozen before new peer candidate proposals; prior completed panel knowledge is available."
+  },
+  "scope": "Planning admission, not theorem certification or a promise of success. No implementation in this stage.",
+  "classes": {
+    "bounded-mathematical-attempt": {
+      "publicMeaning": "A precisely stated finite or otherwise controlled mathematical question admitted for a bounded attempt; never guaranteed solved.",
+      "admitOnlyIf": [
+        "Objects, parameter domain, quantifiers, coordinate/gauge equivalence, observable and conclusion are explicit.",
+        "At least one proof route or exact counterexample route fits the declared resource cap.",
+        "All imported results have exact hypotheses that are independently available; the desired conclusion is not assumed.",
+        "Successful completion is a proof/counterexample on the declared domain, not a sampled numerical agreement.",
+        "The objective differs substantively from already completed controls."
+      ]
+    },
+    "engineering-or-verification-task": {
+      "publicMeaning": "Build, integrate, instrument, reproduce or formally check an already specified finite result. This can improve assurance without creating new mathematics.",
+      "admitOnlyIf": [
+        "Target artifact, runtime/toolchain, dependency source, input contract and observable acceptance are named.",
+        "A meaningful deliberately wrong control is rejected by the actual execution.",
+        "Availability of toolchain/data and an independent review route are established or listed as admission prerequisites.",
+        "No compiler success is promoted to semantic fidelity or physical correctness."
+      ]
+    },
+    "experimental-hypothesis": {
+      "publicMeaning": "A falsifiable question requiring new calibrated physical measurements; no simulation-only closure.",
+      "admitOnlyIf": [
+        "Effect and null are operationally distinct after nuisance parameters and calibration uncertainty.",
+        "Apparatus boundary, inputs, reservoirs, measurement operator and randomization/control plan are specified.",
+        "Finite model simulation is labeled a design aid rather than physical evidence.",
+        "Instrument access, uncertainty budget, stopping rule and empirical decision threshold are prerequisites."
+      ]
+    },
+    "grand-open-problem": {
+      "publicMeaning": "A long-horizon unresolved target, not presently claimed solvable by the panel.",
+      "admitOnlyIf": [
+        "Remaining bridge is stated without silently strengthening hypotheses or changing target.",
+        "Any funded near-term subtask is separately classified and has bounded acceptance.",
+        "Repeated success on toys is not represented as progress on a missing continuum/global premise."
+      ]
+    },
+    "park-or-reject": {
+      "publicMeaning": "Missing decisive data, imported assumption, new objective, resource feasibility or a test capable of distinguishing the desired claim."
+    }
+  },
+  "mandatoryCandidateFields": [
+    "exactQuestion",
+    "baselineAlreadyDone",
+    "distinctNewObjective",
+    "class",
+    "premises",
+    "hypothesisLedger",
+    "proposedProofOrTest",
+    "positiveControl",
+    "decisiveCountercontrol",
+    "evidenceRequiredForAcceptance",
+    "noveltyLabel",
+    "resourcesAndPrerequisites",
+    "independentReview",
+    "stopRule",
+    "limits"
+  ],
+  "noncircularityRules": [
+    "Do not assume a uniform gap to advertise proving that same uniform gap.",
+    "Do not assume complete boundary data when proposed measurements are finitely many peaks.",
+    "Do not use a capacity theorem as a bound on ergotropy without an explicit valid reduction.",
+    "Do not assume costless preparation, correlations, cooling, gain calibration or reset to infer a closed energy cycle.",
+    "An external theorem result is usable only after exact statement/hypothesis mapping; a badge or title is insufficient."
+  ],
+  "noveltyPolicy": {
+    "knownIdentity": "State established result newly reproduced or applied.",
+    "newCodeOrProtocol": "State project implementation/protocol, not a discovery.",
+    "newLemmaCandidate": "No novelty claim until bounded literature/prior-art comparison and proof review.",
+    "newPhysicalEffect": "No discovery claim without calibrated measurement and independent replication."
+  },
+  "adversarialReviewRules": [
+    "Require one control that the attractive wrong conclusion would wrongly accept.",
+    "Unknown or missing evidence causes abstention, not a default pass.",
+    "Matched metadata is eligible for proof review only.",
+    "Separate global uniqueness, local Jacobian rank and practical noise conditioning.",
+    "Separate physical gauge conventions from genuine distinguishable parameters.",
+    "Report proposal downgrades and stop outcomes rather than expanding scope to avoid failure."
+  ],
+  "resourceRule": "Use capped person/agent-hours, compute, memory and dependency/instrument prerequisites as estimates. State what causes stopping before the cap. No indefinite search or recursive agent escalation.",
+  "stopRule": "Exactly review, planning round1 and adaptive planning round2; no coding, new simulation or experiment in this review task. Await advisor admission before critiquing peer plans.",
+  "inputs": {
+    "consolidatedReportSHA256": "47f73c2253f0a19a225c18bd11d15da69d8b9cf1d9b086390429414317d606c4",
+    "roadmapContractSHA256": "5d77ce305266ffdcd8a1867bed3c0a4108a4821f34bfcc019a06ae6587e6d1d5"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "stage": "plan1",
+  "createdUtc": "2026-10-22T04:32:45.404967+00:00",
+  "gateSHA256": "65014255588cfb396f424e72fbb2bea442b50a5b0bd30f3671fb2cd2f806f033",
+  "status": "conditional planning review; no implementation or solved result",
+  "read": [
+    "advisor-plan1.md",
+    "all five peer frozen review.md/candidates.json",
+    "corpus/plan1.md",
+    "energy/plan1.md",
+    "yangmills/plan1.md",
+    "methods/plan1.md",
+    "acoustics revision message"
+  ],
+  "plans": [
+    {
+      "id": "corpus-P0",
+      "decision": "admit-planning",
+      "class": "engineering-or-verification-task",
+      "priority": 0,
+      "requiredRevision": [
+        "Freeze transplanted/stale zero-exit receipt tests against exact declaration/source/dependencies and axiom policy.",
+        "Preserve observed runner execution versus externally reported logs; fixtures cannot certify real proofs."
+      ],
+      "countercontrols": [
+        "Correct exit status but wrong declaration.",
+        "Matching declaration with stale source/dependency hash.",
+        "Schema-valid log falsely labeled locally observed."
+      ],
+      "resourceCritique": "Four agent-hour cap is reasonable for five-record engineering scope; no proof builds or authenticity platform expansion."
+    },
+    {
+      "id": "METHODS-1",
+      "decision": "conditional-planning",
+      "class": "engineering-or-verification-task",
+      "priority": 1,
+      "requiredRevision": [
+        "Browser adapter passes every exact fixture parameter rather than relying on different defaults.",
+        "Freeze F=0, RMS, frequency and SI conversion binding.",
+        "Accept simultaneous signed coordinate-and-port changes; reject only inconsistent one-sided changes.",
+        "Explicitly exclude time-varying Q/parameters or add their storage/control work terms in a separately scoped model."
+      ],
+      "countercontrols": [
+        "One reciprocal sign reversed with g nonzero.",
+        "Omitted M energy with M nonzero.",
+        "Omitted force power with F and v nonzero.",
+        "Unconverted mA/A.",
+        "Positive signed coordinate/port transform."
+      ],
+      "resourceCritique": "Fourteen base hours is a capped attempt; optional2h Lean bootstrap and4h proof stage may be parked without blocking exact rational work."
+    },
+    {
+      "id": "energy-E1",
+      "decision": "admit-planning",
+      "class": "bounded-mathematical-attempt",
+      "priority": 1,
+      "requiredRevision": [
+        "Freeze all equality/degenerate cases and distinguish fixed-population dephasing from damping."
+      ],
+      "countercontrols": [
+        "p=1/2,d=0 zero-Bloch-length derivative failure.",
+        "Passive diagonal state rejects W=E."
+      ],
+      "resourceCritique": "Three producer hours plus separate review is proportionate; known theory application, not novelty."
+    },
+    {
+      "id": "energy-E2",
+      "decision": "conditional-planning",
+      "class": "bounded-mathematical-attempt-with-ledger-engineering",
+      "priority": 2,
+      "dependsOn": [
+        "energy-E1"
+      ],
+      "requiredRevision": [
+        "Specify actual reset construction and per-operation dimensions.",
+        "One-shot4D-system/4D-reference reset requires16D total; sequential fresh-qubit reset can stay8D with explicit endpoints and ancilla ledger.",
+        "Derive operation identity under initial-product Gibbs bath, global unitary, endpoint interaction and work conventions before telescoping.",
+        "Keep joint closure distinct from marginal/energy closure and actual work distinct from lower bounds.",
+        "Declare ideal classical drive/controller boundary instead of claiming all controller resources modeled."
+      ],
+      "countercontrols": [
+        "Correlated diag(1-nu,0,0,nu) and product marginals have identical local energies but different mutual information.",
+        "Missing reset.",
+        "Inverted/second-temperature resource mislabeled ordinary single bath."
+      ],
+      "resourceCritique": "Ten producer hours plus review can support a conditional finite theorem/ledger only; unprovided hardware costs remain incomplete."
+    },
+    {
+      "id": "acoustics-A1",
+      "decision": "conditional-planning",
+      "class": "engineering-or-verification-task",
+      "priority": 2,
+      "requiredRevision": [
+        "Fix multiple measured and held-out frequencies plus a gain perturbation family separated on those frequencies.",
+        "Abstain for perturbations agreeing at every measured point.",
+        "Freeze numeric uncertainty, whitening/conditioning and acceptance thresholds.",
+        "Fix laboratory versus pole-normalized drive selection and propagate shared estimated-pole covariance."
+      ],
+      "countercontrols": [
+        "A single response datum with nonconstant gain remains exactly absorbable into scalar gain.",
+        "Duplicate channels do not add rank.",
+        "Indistinguishable sampled gain functions cannot be universally flagged."
+      ],
+      "resourceCritique": "Restrict to fixed finite model and predeclared gain/noise families; do not spend on hardware or global gain-function inversion."
+    },
+    {
+      "id": "acoustics-A2",
+      "decision": "park-pending-prerequisites",
+      "class": "engineering-or-verification-task",
+      "priority": 3,
+      "dependsOn": [
+        "acoustics-A1"
+      ],
+      "requiredRevision": [
+        "Name estimator, finite band/mode identity, nuisance alternatives, noise family, false-positive/abstention targets and holdout protocol after A1 is fixed."
+      ],
+      "countercontrols": [
+        "Support-only change with unchanged intrinsic sphere.",
+        "Omitted mode, nodal suppression and order-correlated drift."
+      ],
+      "resourceCritique": "No hardware power/sample-size or intrinsic-position-effect promise from a synthetic benchmark."
+    },
+    {
+      "id": "YM-P1",
+      "decision": "conditional-planning",
+      "class": "bounded-mathematical-attempt",
+      "priority": "parallel capped proof track",
+      "requiredRevision": [
+        "Reconcile every candidate constant and complete support with pinned source gates before arithmetic.",
+        "Derive arbitrary-admitted-radius decomposition and preserve state/clock/cutoff order.",
+        "Certify finite5..255 plus analytic tail from256 for frozen quarter-power schedule; no sampled all-N inference.",
+        "Keep fallback separately selected and do not retune after failure."
+      ],
+      "countercontrols": [
+        "Old half-box schedule must fail unrestricted decay while retaining valid finite range.",
+        "Substituting|R| for full approximant support fails."
+      ],
+      "resourceCritique": "Five producer plus three reviewer hours is a strict risk cap; stop at source/analytic obstruction rather than promise an effective bound."
+    }
+  ],
+  "parked": [
+    "energy-E3",
+    "acoustics-finite-port-selection",
+    "METHODS-2",
+    "YM-P3",
+    "continuum-Yang-Mills-as-near-term-solve"
+  ],
+  "next": "Planning2 reviews concrete producer replies only."
+}

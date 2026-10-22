@@ -1,0 +1,120 @@
+{
+  "schema": "math-crosswalk-energy-sources/1",
+  "accessed": "2026-10-22",
+  "scope": "Selected primary sources, not exhaustive latest-literature review",
+  "sources": [
+    {
+      "id": "openai-276",
+      "title": "Classical capacity and entropy inequalities for generalized amplitude damping",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/build/paper.tex",
+      "path": "preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/build/paper.tex",
+      "gitCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlobSha1": "8da177e1ce5eb326bb37a77197659e8a59ea2cd5",
+      "readingDepth": "Lines 1\u2013295: model, main capacity theorem, arbitrary-partner additivity corollary, and beginning of proof strategy; not full proof audit.",
+      "independentProofVerified": false,
+      "publicationStatus": "Repository research manuscript"
+    },
+    {
+      "id": "openai-276-scope",
+      "title": "Family 276 formalization scope",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/276.md",
+      "path": "lean/docs/276.md",
+      "gitCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlobSha1": "657963d5d9ffa8dae2294ad608fa6ac1d9e77087",
+      "readingDepth": "Full scope document; Lean source and kernel not run.",
+      "independentProofVerified": false,
+      "publicationStatus": "Publisher formalization-scope description"
+    },
+    {
+      "id": "openai-273",
+      "title": "The entropy photon-number inequality",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-entropy-photon-number-inequality-September-24-2026/build/sections/00-introduction.tex",
+      "path": "preprints/The-entropy-photon-number-inequality-September-24-2026/build/sections/00-introduction.tex",
+      "gitCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlobSha1": "f5225e23f43d43602b1dff966884448f3a8ed875",
+      "readingDepth": "First 160 lines: exact main theorem, equality model, thermal-attenuator corollary and surrounding assumptions; not full proof audit.",
+      "independentProofVerified": false,
+      "publicationStatus": "Repository research manuscript"
+    },
+    {
+      "id": "openai-273-scope",
+      "title": "Family 273 formalization scope",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/273.md",
+      "path": "lean/docs/273.md",
+      "gitCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlobSha1": "d46c3d65b74c8831e63194b5c174e4f4b863f0fd",
+      "readingDepth": "Full scope document; Lean source and kernel not run.",
+      "independentProofVerified": false,
+      "publicationStatus": "Publisher formalization-scope description"
+    },
+    {
+      "id": "openai-362",
+      "title": "Global classical solutions of the three-dimensional relativistic Vlasov\u2013Maxwell system",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-classical-solutions-of-the-three-dimensional-relativistic-Vlasov-Maxwell-system-September-23-2026/build/sections/introduction.tex",
+      "path": "preprints/Global-classical-solutions-of-the-three-dimensional-relativistic-Vlasov-Maxwell-system-September-23-2026/build/sections/introduction.tex",
+      "gitCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlobSha1": "e0ce7bdeff579dddecad7d868a7c38e67c8b9f8e",
+      "readingDepth": "First 160 lines: equation, initial data, global classical-solution theorem and beginning of proof strategy; not full proof audit.",
+      "independentProofVerified": false,
+      "publicationStatus": "Repository research manuscript"
+    },
+    {
+      "id": "openai-362-scope",
+      "title": "Family 362 formalization scope",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/362.md",
+      "path": "lean/docs/362.md",
+      "gitCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlobSha1": "94f617ef2ae2126220f1e251ebe3c4688cdcb715",
+      "readingDepth": "Full scope document; Lean source and kernel not run.",
+      "independentProofVerified": false,
+      "publicationStatus": "Publisher formalization-scope description"
+    },
+    {
+      "id": "openai-265",
+      "title": "A two-dimensional area law from a global spectral gap",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/build/sections/00-introduction.tex",
+      "path": "preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/build/sections/00-introduction.tex",
+      "gitCommit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlobSha1": "7358b19bfe22251ce7156c86b46ea7e8adde373a",
+      "readingDepth": "First 160 lines: local-Hamiltonian class, exact gap hypothesis, area-law theorem and PEPS corollary; not full proof audit.",
+      "independentProofVerified": false,
+      "publicationStatus": "Repository research manuscript"
+    },
+    {
+      "id": "vetrano-2026",
+      "title": "Generalized multilevel amplitude damping channels and their thermodynamic performances",
+      "authors": [
+        "Vito Vetrano",
+        "Vittorio Giovannetti",
+        "Vasco Cavina"
+      ],
+      "url": "https://arxiv.org/abs/2605.27369",
+      "version": "v1",
+      "date": "2026-05-26",
+      "publicationStatus": "Preprint; no journal reference shown on retrieved record",
+      "readingDepth": "Abstract and submission metadata only. Reported thermodynamic phenomena not independently reproduced.",
+      "relevance": "Extends thermal-environment channel models to qudits and examines ergotropic work functionals. Motivates a thermal channel extension; not evidence for energy without input."
+    },
+    {
+      "id": "li-2025",
+      "title": "Experimental Extraction of Coherent Ergotropy and Its Energetic Cost in a Superconducting Qubit",
+      "url": "https://arxiv.org/abs/2506.16881",
+      "doi": "10.1103/ptr1-59tv",
+      "version": "v2",
+      "date": "2025-09-29",
+      "publicationStatus": "Phys. Rev. Research 7, 043236 (2025)",
+      "readingDepth": "Abstract, metadata and journal reference rechecked this round; earlier project quantum report had reviewed selected text.",
+      "relevance": "Physical transmon work-extraction experiment supports distinguishing coherent work accessibility from energy. Its control-cost metric must not be equated to full apparatus electricity."
+    },
+    {
+      "id": "hymas-2026",
+      "title": "Superextensive electrical power from a quantum battery",
+      "url": "https://www.nature.com/articles/s41377-026-02240-6",
+      "doi": "10.1038/s41377-026-02240-6",
+      "date": "2026-03-13",
+      "publicationStatus": "Light: Science & Applications 15, 168 (2026)",
+      "readingDepth": "Publisher abstract and introduction read; full experimental methods and raw data not independently audited.",
+      "relevance": "A microcavity device converts incident optical energy to electric current. Its scaling advantage does not establish source-free energy."
+    }
+  ]
+}

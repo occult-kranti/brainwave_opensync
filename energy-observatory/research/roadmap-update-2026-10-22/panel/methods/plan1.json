@@ -1,0 +1,178 @@
+{
+  "stage": "plan1",
+  "candidate": "METHODS-1",
+  "status": "bounded proposal; no implementation authorized in this stage",
+  "class": "engineering-or-verification-task",
+  "exactQuestion": "Does an independently checked rational six-state representation of the existing fixed-parameter two-coil/mechanical model satisfy its stated positive storage, dissipative block and two-port identities, and reject specified misleading mutations?",
+  "baselineAlreadyDone": "Scalar oscillator exact identity; floating-point EM phasor/storage comparisons; no exact six-state certificate bound to the full model.",
+  "distinctNewObjective": "Exact nonzero-mutual-inductance and transducer block certificate with both source ports, rank/domain gates, SI normalization and explicit F=0 browser mapping.",
+  "noveltyLabel": "Established passive-network identity newly implemented and checked for this project; no new mathematical or physical discovery.",
+  "state": [
+    "q1",
+    "q2",
+    "x",
+    "i1",
+    "i2",
+    "v"
+  ],
+  "input": [
+    "Vs",
+    "F"
+  ],
+  "output": [
+    "i1",
+    "v"
+  ],
+  "fixture": {
+    "coefficientUnitSystem": "SI magnitudes; all decimal values stored as exact numerator/denominator strings",
+    "L1H": "1/100",
+    "L2H": "1/25",
+    "mutualH": "1/200",
+    "C1F": "1/1000000",
+    "C2F": "1/2000000",
+    "massKg": "1/100",
+    "stiffnessNpm": "10000",
+    "R1Ohm": "2",
+    "R2Ohm": "3",
+    "loadOhm": "7",
+    "dampingNsPm": "1/5",
+    "mechanicalLoadNsPm": "3/10",
+    "transducerNA": "1"
+  },
+  "premises": [
+    "All parameters fixed in time",
+    "C1,C2,L1,L2,m,k>0",
+    "L1*L2-M^2>0",
+    "R1,R2,RL,b,bL>=0; g real",
+    "No omitted mathematical input: two-port model includes external F; browser specialization sets F=0",
+    "RMS browser phasors; physical derivative/storage use instantaneous real variables"
+  ],
+  "hypothesisLedger": {
+    "analyticalDomain": "General stated energy identity follows by differentiating the displayed quadratic storage and substituting the fixed-parameter equations; independent reviewer must inspect this derivation. Finite certificate executions alone do not prove the full parameter family.",
+    "numericalContract": "Three finite exact cases: base fixture, zero-loss specialization, invertible coordinate transform. A,B,C,Q assembly has no fitted parameters.",
+    "units": "q in C, x in m, i in A, v in m/s; u=(V,N), y=(A,m/s); each supply product is W. Record dimension exponents and normalize with 1 s,1 J,1 V,1 A,1 N,1 m, hence 1 W. A numeric identity without this mapping is not semantic admission."
+  },
+  "proposedProofOrTest": [
+    "Freeze source hashes, instantaneous equations, state ordering, units, fixture and two ports before code.",
+    "Author producer assembly from circuit/mechanical equations; independently author checker to consume matrices and witnesses, not reconstruct them through the producer functions.",
+    "Check Q=Q^T, Q=T^T diag(d) T, rank(T)=6 and every d>0 with exact Fraction arithmetic.",
+    "Check QA+A^TQ=-2*Lloss*Dloss*Lloss^T, Dloss diagonal nonnegative, QB=C^T and every matrix dimension.",
+    "Run fixed positive and wrong controls, recording exact mismatch coefficients or rank/domain reasons.",
+    "For F=0 only, compare independent rational-frequency complex response to emSolve using omega=(100,1000,5000) rad/s and frequencyHz=omega/(2*pi), driveVrms=1, coupling=1/4; this is separately labeled floating-point adapter checking.",
+    "Independent skeptic checks frozen negative cases, storage/port semantics and F=0 specialization; corpus records the resulting exact statement and evidence class.",
+    "Optional bounded Lean gate only after exact receipt: pin toolchain/dependencies and encode selected finite matrix/quadratic-form proposition; build and inventory axioms. No success label without actual execution."
+  ],
+  "witnessDesign": {
+    "storageFactor": "T is identity except T[i1,i2]=M/L1; diagonal d=(1/C1,1/C2,k,L1,L2-M^2/L1,m). Check factor orientation and exact rank.",
+    "lossFactor": "Lloss is 6x3 selecting i1,i2,v; Dloss=diag(R1,R2+RL,b+bL).",
+    "portDimensions": "A,Q 6x6; B 6x2; C 2x6; T 6x6; Lloss 6x3; Dloss 3x3."
+  },
+  "positiveControl": [
+    {
+      "id": "base",
+      "meaning": "Nonzero M and g, all losses positive; exact full block certificate."
+    },
+    {
+      "id": "lossless",
+      "meaning": "Set R1,R2,RL,b,bL to zero; accept semidefinite dissipation without claiming asymptotic stability. No lossless-resonance browser solve required."
+    },
+    {
+      "id": "coordinate",
+      "meaning": "z=S*znew for S=diag(2,1/3,1,5,1,1/2); transform A,B,C,Q consistently and retain exact certificate."
+    }
+  ],
+  "decisiveCountercontrol": [
+    {
+      "id": "nonreciprocal",
+      "mutation": "Reverse only secondary-circuit g*v sign",
+      "expected": "Nonzero i2*v coefficient in energy residual."
+    },
+    {
+      "id": "missing-cross-storage",
+      "mutation": "Delete Q[i1,i2] and Q[i2,i1] while retaining M in dynamics",
+      "expected": "Exact derivative matrix mismatch."
+    },
+    {
+      "id": "indefinite-or-singular-inductance",
+      "mutation": "Set M=1/50 or M=3/100 H",
+      "expected": "Reject zero or negative magnetic determinant before inverse."
+    },
+    {
+      "id": "missing-force-port",
+      "mutation": "Delete F*v supply term while mechanical input B[:,F] remains",
+      "expected": "QB=C^T fails; reviewer retains an explicit nonzero F*v witness."
+    },
+    {
+      "id": "negative-loss",
+      "mutation": "Set R1=-1",
+      "expected": "Parameter/domain and nonnegative-loss witness rejected."
+    },
+    {
+      "id": "rank-deficient-factor",
+      "mutation": "Zero one row of T",
+      "expected": "Exact rank gate fails."
+    },
+    {
+      "id": "factor-perturbation",
+      "mutation": "Change one loss witness coefficient by 1/7",
+      "expected": "Exact factor or derivative equality fails."
+    },
+    {
+      "id": "unit-mismatch",
+      "mutation": "Treat a mA current input/output field as A without conversion",
+      "expected": "Typed unit/scale binding rejects even if an untyped numeric identity can be made to pass."
+    }
+  ],
+  "evidenceRequiredForAcceptance": [
+    "All exact positive cases admitted; all declared wrong controls rejected for expected reasons",
+    "Every artifact has hash and source/contract binding",
+    "Independent reviewer explicitly approves mathematical state/port/unit mapping; unavailable review means not accepted",
+    "General analytic statement, finite matrix check, float browser adapter and optional Lean execution receive distinct statuses",
+    "No metric counts presented as independent physical experiments"
+  ],
+  "browserAdapterAcceptance": {
+    "inputMapping": "F=0; coupling=M/sqrt(L1*L2)=1/4; listed rational SI parameters converted once to doubles; RMS convention",
+    "comparison": "Compare complex currents/velocity and energy/power after declared SI normalization. Proposed per-field tolerance 1e-11+1e-9*abs(reference); freeze before execution. No continuum-frequency claim.",
+    "source": "energy-observatory/src/em.mjs"
+  },
+  "artifacts": {
+    "root": "energy-observatory/research/roadmap-update-2026-10-22/execution/methods/",
+    "files": [
+      "model-contract.json",
+      "source-binding.md",
+      "assemble_six_state.py",
+      "check_certificate.py",
+      "certificate.json",
+      "certificate-results.json",
+      "wrong-controls.json",
+      "browser-adapter-results.json",
+      "independent-review.md",
+      "hashes.json"
+    ],
+    "optionalLean": [
+      "FiniteCertificate.lean",
+      "lean-toolchain",
+      "lake-manifest.json",
+      "build.log",
+      "axioms.txt",
+      "formal-receipt.json"
+    ]
+  },
+  "resourcesAndPrerequisites": {
+    "base": "At most 14 agent-hours including 3 hours independent review; CPU only, each exact run capped at 5 minutes and 1 GiB memory. Existing Python stdlib Fraction and Node suffice.",
+    "optionalLean": "Bootstrap cap 2 agent-hours; if a pinned trusted toolchain/dependency environment is unavailable, stop that stage. If available, proof attempt cap 4 further agent-hours; record incomplete status on timeout.",
+    "noSearch": "No parameter optimization, new broad source search or recursive extra agents."
+  },
+  "independentReview": {
+    "lead": "skeptic role",
+    "physicsBinding": "energy role or prior systems-review maintainer; must not be sole producer",
+    "registry": "corpus role consumes exact statement and receipt"
+  },
+  "stopRule": "Stop after frozen cases and independent review or first unreconciled domain/semantic contradiction. Preserve failure evidence and revise contract explicitly if needed; do not expand cases to conceal failure. Optional Lean cap cannot delay acceptance of a correctly labeled rational receipt indefinitely.",
+  "limits": [
+    "Finite known-model verification, not new theorem",
+    "No hardware, gap, continuum, capacity or free-energy claim",
+    "No global browser implementation verification",
+    "No reduction METHODS-2 work in this admission"
+  ]
+}

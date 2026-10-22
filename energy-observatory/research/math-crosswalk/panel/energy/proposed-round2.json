@@ -1,0 +1,77 @@
+{
+  "schema": "energy-panel-round2-contract/1",
+  "status": "proposed; awaiting advisor selection; no round2 execution yet",
+  "title": "Generalized thermal amplitude damping with signed heat ledger",
+  "goal": "Expose omitted reservoir input and distinguish stored energy from extractable work while retaining exact zero-temperature compatibility.",
+  "outputScope": "Only panel/energy/ standalone exploratory implementation and independent test; integration is advisor-owned.",
+  "variables": {
+    "p": "input excited population in [0,1]",
+    "kappa": "coherence magnitude fraction in [0,1]",
+    "gamma": "damping probability in [0,1]",
+    "nu": "bath stationary excited population in [0,1]; [0,1/2] ordinary nonnegative-temperature bath, >1/2 inverted resource",
+    "d": "retained dephasing coherence fraction in [0,1]",
+    "gap": "hf>0"
+  },
+  "model": {
+    "population": "p_out=(1-gamma)*p+gamma*nu",
+    "coherence": "c_out=d*sqrt(1-gamma)*kappa*sqrt(p*(1-p))",
+    "signedHeatIntoBattery": "Q=gap*gamma*(nu-p)",
+    "closure": "E_out-E_in-Q=0 for this fixed-H channel model",
+    "ergotropy": "E_out minus gap times smallest eigenvalue of rho_out"
+  },
+  "independentOracle": "Direct matrix action of four generalized-amplitude-damping Kraus operators, followed by a separate dephasing channel; eigenvalues from independent Hermitian eigensolver.",
+  "acceptance": [
+    "Direct Kraus action and scalar prediction agree over a frozen finite grid, including boundary cases.",
+    "Trace one and nonnegative spectrum within stated floating-point tolerance.",
+    "gamma=0 identity before optional dephasing; gamma=1 thermal population and zero coherence; nu=0 matches existing quantum.mjs.",
+    "Signed heat closure holds, including heating and cooling.",
+    "Every diagonal thermal fixed point nu<=1/2 has zero ergotropy even when energy is positive.",
+    "For 0<nu<1/2, entropy production DeltaS - log((1-nu)/nu)*Q/gap is nonnegative within tolerance.",
+    "All wrong-model controls below fail the corresponding conservation/passivity criterion with nonzero margins."
+  ],
+  "wrongModelControls": [
+    {
+      "id": "omitted-bath",
+      "parameters": {
+        "p": 0,
+        "kappa": 0,
+        "gamma": 0.5,
+        "nu": 0.25,
+        "d": 1
+      },
+      "error": "Set heat input to zero and call output energy new work.",
+      "expectedDimensionlessError": 0.125
+    },
+    {
+      "id": "energy-equals-work",
+      "parameters": {
+        "p": 0.25,
+        "kappa": 0,
+        "gamma": 1,
+        "nu": 0.25,
+        "d": 1
+      },
+      "error": "Use W=E for passive thermal diagonal state.",
+      "expectedDimensionlessError": 0.25
+    },
+    {
+      "id": "old-zero-temperature-ledger",
+      "parameters": {
+        "p": 0.75,
+        "kappa": 0,
+        "gamma": 0.5,
+        "nu": 0.25,
+        "d": 1
+      },
+      "error": "Retain old environment loss gamma*gap*p after allowing bath excitation.",
+      "expectedDimensionlessError": 0.125
+    }
+  ],
+  "exclusions": [
+    "No proof of OpenAI capacity/additivity theorem.",
+    "No whole-apparatus efficiency estimate.",
+    "No source-free-energy or hardware claim.",
+    "Finite numerical sampling is not a proof over a continuous parameter domain."
+  ],
+  "allowedAnalyticLemma": "For the displayed channel and fixed H, heat into the battery equals gap*gamma*(nu-p); positive-temperature diagonal fixed points are passive. Both are elementary identities, not novel theorem discoveries."
+}

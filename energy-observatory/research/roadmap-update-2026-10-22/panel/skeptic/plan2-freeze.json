@@ -1,0 +1,16 @@
+{
+  "stage": "plan2-with-final-consistency",
+  "earlierFrozenFilesUnchanged": true,
+  "files": {
+    "gate.json": "65014255588cfb396f424e72fbb2bea442b50a5b0bd30f3671fb2cd2f806f033",
+    "gate-freeze.json": "1cc6b3ed13f72f2f805f4a7c181e846436ba342a29bd8cb9c35f0b98c0a4aae9",
+    "review.md": "d2715f6a094dcdcb3c7054bf578cdc0f7251ba12069173e533ed5e961590912d",
+    "candidates.json": "77acb76562af78f613187497aef89c891cf2fccdb6593ffb5aa13579358654e3",
+    "plan1.md": "fb197369a1268f9f76904b0075e2284c53937524a886a0e68119c3f33f1c58ec",
+    "plan1.json": "1a7f0380821bceade76a6c1ae75a75c921b466e2cb781433f5b6a90a49cbe699",
+    "plan2.md": "7ea969bf0dcdb8fc7e585a43f965e83a06577b4369e52997dbad2e3b15e9f766",
+    "plan2.json": "30ea7549e5d197af08e7348e02c8f603c04407680e78f56b50d6732ef0555421",
+    "final-consistency.md": "e3e35c6ae4613da1bc8d70ac54cd19176e940a4fc0adaa709880e8e5f37e8d6a",
+    "final-consistency.json": "f6740b8774a360488d4d438d164e500577a744efb5a38c10ae03f416b47f8920"
+  }
+}

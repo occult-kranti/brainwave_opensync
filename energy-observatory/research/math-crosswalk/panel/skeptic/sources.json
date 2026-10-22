@@ -1,0 +1,168 @@
+{
+  "researchDate": "2026-10-21",
+  "role": "independent skeptic",
+  "round": 1,
+  "LeanExecuted": false,
+  "sources": [
+    {
+      "id": "openai-readme",
+      "title": "OpenAI mathematics release README",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/README.md",
+      "date": "2026-10-12 snapshot",
+      "locator": "Navigating the collection; How the results were produced",
+      "readingDepth": "Full README",
+      "supports": "719 manuscripts in 372 families; varied verification; family aggregation of results",
+      "limits": "Publisher inventory, not independent proof certification"
+    },
+    {
+      "id": "openai-history",
+      "title": "OpenAI mathematics release history",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/history.md",
+      "date": "2026-10-07 update in pinned snapshot",
+      "locator": "Withdrawals, Fixes, Additional Formalizations",
+      "readingDepth": "Full history",
+      "supports": "Three withdrawn manuscripts; 14 repairs; 13 dependent reference updates; publisher reports 300/719 top-line formalized",
+      "limits": "Not a new independent count or dependency audit"
+    },
+    {
+      "id": "openai-catalogue-265-268",
+      "title": "OpenAI catalogue: families 265 and 268",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/CONTENTS.md",
+      "date": "2026-10-06 release, pinned October12 revision",
+      "locator": "A two-dimensional area law from a global spectral gap; The periodic spin-one Haldane gap",
+      "readingDepth": "Two catalogue abstracts and corresponding overview.tex entries",
+      "supports": "Entropy area law assumes a gap for local spin models; Haldane target is even-periodic spin-one Heisenberg chain",
+      "limits": "Proofs not examined in this role; direct PDF web retrieval unavailable; no formalization status inferred from failed scope-file requests"
+    },
+    {
+      "id": "openai-comparator-readme",
+      "title": "OpenAI Comparator instructions",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/ComparatorChallenges/README.md",
+      "date": "Pinned October12 revision",
+      "locator": "Supporting-result comparisons",
+      "readingDepth": "Full README",
+      "supports": "Five named configurations verify supporting results rather than main paper theorems",
+      "limits": "No Comparator or Lean build performed"
+    },
+    {
+      "id": "scope365",
+      "title": "lean/docs/365.md",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/365.md",
+      "revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlob": "d84860a9139731d3ffc3a481b79851d022170440",
+      "readingDepth": "Complete scope note",
+      "supports": "Family365 scope specifically covers conductivity nonuniqueness companion",
+      "limits": "Does not establish smooth metric/connection uniqueness formalization"
+    },
+    {
+      "id": "scope372",
+      "title": "lean/docs/372.md",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/372.md",
+      "revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlob": "2d818b463d3b4c98c181639b1b56d300eb3fa445",
+      "readingDepth": "Complete scope note",
+      "supports": "Full-data static isotropic elasticity uniqueness, not reconstruction",
+      "limits": "Publisher scope; no independent build"
+    },
+    {
+      "id": "challenge372",
+      "title": "lean/ComparatorChallenges/ElasticityUniqueness.lean",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/ComparatorChallenges/ElasticityUniqueness.lean",
+      "revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlob": "6f68a5b3ff2d69b7f43b7d2b3b4576e490b208cc",
+      "readingDepth": "Complete statement module; trace/DN definitions and MainClaim reviewed",
+      "supports": "Exact data/hypothesis/conclusion and variational trace quotient caveat",
+      "limits": "Challenge template sorry is expected; separate solution must be checked"
+    },
+    {
+      "id": "challenge365",
+      "title": "lean/ComparatorChallenges/Conductivity.lean",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/ComparatorChallenges/Conductivity.lean",
+      "revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlob": "a9ec5e895aa395a437c9386a9e790315dba193f4",
+      "readingDepth": "Complete statement module; MainStatement and DN definitions reviewed",
+      "supports": "Bounded measurable conductivity pair, full weak DN equality and solution uniqueness",
+      "limits": "Different from geometry uniqueness headline; not a build"
+    },
+    {
+      "id": "config372",
+      "title": "lean/ComparatorChallenges/ElasticityUniqueness.json",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/ComparatorChallenges/ElasticityUniqueness.json",
+      "revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlob": "d35e9d039a184a87f2594a57185dbf67d3facec2",
+      "readingDepth": "Full configuration",
+      "supports": "Names challenge/solution modules, theorem and permitted axioms",
+      "limits": "Configuration alone is not execution"
+    },
+    {
+      "id": "config365",
+      "title": "lean/ComparatorChallenges/Conductivity.json",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/ComparatorChallenges/Conductivity.json",
+      "revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlob": "e6d8d20f84bedd72e8285337afcb8b0816b3d2ec",
+      "readingDepth": "Full configuration",
+      "supports": "Names challenge/solution modules, theorem and permitted axioms",
+      "limits": "Configuration alone is not execution"
+    },
+    {
+      "id": "solution372",
+      "title": "lean/OAI/MathematicalPhysics/Elasticity/Uniqueness.lean",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/OAI/MathematicalPhysics/Elasticity/Uniqueness.lean",
+      "revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlob": "efc1ea51d4988b3326af7165027c3b4792045026",
+      "readingDepth": "Imports and final source/global_uniqueness proof reviewed; full file searched for sorry/axiom",
+      "supports": "Actual exported solution declaration is distinct from challenge template; no sorry or axiom declaration in this inspected module",
+      "limits": "Dependency closure not audited; no kernel run"
+    },
+    {
+      "id": "solution365",
+      "title": "lean/OAI/Analysis/Conductivity/Main.lean",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/OAI/Analysis/Conductivity/Main.lean",
+      "revision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+      "gitBlob": "4946318f6ceb4f3dbf4ae2cbd673123e5f6f8d68",
+      "readingDepth": "Imports and main_nonuniqueness proof reviewed; full file searched for sorry/axiom",
+      "supports": "Actual exported solution declaration is distinct from challenge template; no sorry or axiom declaration in this inspected module",
+      "limits": "Dependency closure not audited; no kernel run"
+    },
+    {
+      "id": "yangmills-current",
+      "title": "Yang–Mills workbench current README and Round33 handoff",
+      "url": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/HANDOFF.md",
+      "revision": "f9364d617015e803fda9465aefddd9cbe41854a4",
+      "locator": "What Round33 admitted; Next goals; current root README",
+      "readingDepth": "Current README selected scope/status paragraphs; full HANDOFF; BB2 report opening through inherited/not-inherited sections",
+      "supports": "Current work goes beyond old514f2aa; named fixed-spacing constructions remain separated from continuum and general ground-state uniqueness",
+      "limits": "Claims read from reviewed project artifacts; scientific programs and proof chain not rerun here"
+    },
+    {
+      "id": "energy-current",
+      "title": "Energy Observatory advisor and model sources",
+      "url": "https://github.com/occult-kranti/brainwave_opensync/blob/4574d16bbf489a4f505baee7b0653486fcc94ff6/energy-observatory/research/advisor.md",
+      "revision": "4574d16bbf489a4f505baee7b0653486fcc94ff6",
+      "locator": "Accepted model results; verification; src/quantum.mjs and src/identifiability.mjs",
+      "readingDepth": "Full advisor; quantum/identifiability source; systems round3 frozen review metadata",
+      "supports": "Declared restricted ideal models, scope, energy boundary and identifiability; no physical measurements",
+      "limits": "Previous numerical gates not rerun in this Round1 source review"
+    },
+    {
+      "id": "sound-current",
+      "title": "Location-spectrum model specification and source graph",
+      "url": "https://github.com/occult-kranti/brainwave_opensync/blob/07e57b446a9f480216ad1aa555088bc361006d9c/location-spectrum/research/model-specification.md",
+      "revision": "07e57b446a9f480216ad1aa555088bc361006d9c",
+      "locator": "Material model; inverse ambiguity; theory scope; public/data/sources.json and graph.json",
+      "readingDepth": "Selected exact model and inverse-data passages; full OpenAI source cards; all relevant graph edge records",
+      "supports": "Finite resonances and parameter sensitivities; existing OpenAI links explicitly analogy/method",
+      "limits": "No empirical fit or new inverse uniqueness theorem"
+    },
+    {
+      "id": "clay-current-status",
+      "title": "Clay Mathematics Institute: Yang–Mills & the Mass Gap",
+      "url": "https://www.claymath.org/millennium/yang-mills-the-maths-gap/",
+      "date": "Read 2026-10-21 client date",
+      "locator": "Unsolved heading and overview",
+      "readingDepth": "Official overview page",
+      "supports": "Official problem page continues to list the problem unsolved",
+      "limits": "General problem status; official technical problem PDF not read by this role"
+    }
+  ]
+}

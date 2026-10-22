@@ -1,0 +1,12 @@
+{
+  "kind": "administrative-link-correction",
+  "change": "Relative site link was corrected before the recorded gate input hashes; current report and contract both match frozen gate inputs exactly.",
+  "frozenGateInputs": {
+    "consolidatedReportSHA256": "47f73c2253f0a19a225c18bd11d15da69d8b9cf1d9b086390429414317d606c4",
+    "roadmapContractSHA256": "5d77ce305266ffdcd8a1867bed3c0a4108a4821f34bfcc019a06ae6587e6d1d5"
+  },
+  "currentReportSHA256": "47f73c2253f0a19a225c18bd11d15da69d8b9cf1d9b086390429414317d606c4",
+  "currentContractSHA256": "5d77ce305266ffdcd8a1867bed3c0a4108a4821f34bfcc019a06ae6587e6d1d5",
+  "frozenGatePreserved": true,
+  "postFreezeChange": false
+}

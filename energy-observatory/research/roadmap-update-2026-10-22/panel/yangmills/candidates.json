@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-22",
+  "stage": "review",
+  "role": "yangmills",
+  "status": "proposals_only_not_implemented",
+  "upstream_commit": "f9364d617015e803fda9465aefddd9cbe41854a4",
+  "openai_commit": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "prior_work_preserved": true,
+  "grand_goal": {
+    "name": "Four-dimensional continuum Yang–Mills existence and mass gap",
+    "status": "open_separate",
+    "reason": "No candidate supplies cutoff-uniform estimates along g(a)->0; fixed-spacing tau=96/g^4 admission obstruction unchanged."
+  },
+  "planning_corrections": [
+    {
+      "id": "YM-CORR-EXP",
+      "old_phrase": "Choose growing r_N to keep exp(|Lambda_r_N|/1e8) bounded",
+      "correction": "The exponential factor diverges for every r_N->infinity. Control the combined |Lambda_r| exp(|Lambda_r|/1e8) q^(N-r) and the dynamics remainder.",
+      "action": "Correct the prospective plan, preserve the frozen Round33 report."
+    },
+    {
+      "id": "YM-ROUTEB-EXISTS",
+      "old_possible_inference": "Route-B dynamics does not exist yet",
+      "correction": "BC2 inherits route-B limit dynamics, stationarity and GNS strong continuity; quantitative finite-box comparison and correlation statements remain open."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "YM-P1",
+      "review_rank": 1,
+      "title": "All-size compact-window correlation certificate",
+      "roadmap_goal": "correlation_rate",
+      "type": "fixed_spacing_proof_and_exact_certificate",
+      "exact_target": "For N>=5, F in {F1,F2}, |theta|<=8 and A in B(H_R), establish |c_A^(F,N)(theta)-c_A^infinity(theta)| <= ||A||^2 epsilon_N with an explicit effective epsilon_N->0 for all integer N.",
+      "premises": [
+        "AQ_patterned_zero_selected SU(2) model on Z^3 at fixed lattice spacing; selected triple (0,0,0); |tau|<=1e-8, signs treated separately.",
+        "F1 centered whole-star and F2 padded all-contained-face boxes; R={0,e_z}; same BB2 limit state.",
+        "Clock theta=alpha*t/hbar; fixed positive energy reference; compact window |theta|<=8.",
+        "Use actual complete local-approximant support Lambda_r in the BB2 region estimate; retain cutoff then fixed-box limit ordering."
+      ],
+      "missing_premise": "Current frozen half-box radius makes the displayed bracket vacuous at large N; the reviewed O(1/N) range ends at N=14000. General convergence already exists, but no effective all-N rate is admitted.",
+      "proposed_route": "Before any production calculation, freeze r_N=2 for 5<=N<16 and floor(N^(1/4)) for N>=16, or justify another selection. Re-derive the radius-parametrized comparison; certify a finite initial range plus an analytic all-N tail.",
+      "quantitative_status": "O(N^(-1/4)) is a proposed rate, not achieved. All constants, threshold splits and all-N inequalities await planning and proof. The radius is an analysis choice, not a physical parameter.",
+      "deliverables": ["New same-model derivation with exact source premises", "Exact/interval finite-range bounds", "Analytic tail certificate", "Independent reviewer reconstruction of support and exponent balance"],
+      "negative_controls": ["Old r_N=floor((N-1)/2) must fail an unrestricted decay claim while retaining its valid finite range", "Replacing |Lambda_r| by |R| must be rejected", "A finite sampled plot cannot pass the all-N proof gate"],
+      "positive_controls": ["Recover the admitted BB2 bracket when its original radius and constants are supplied", "Preserve the already admitted finite-range conclusion"],
+      "stop_rule": "If no explicit tail inequality is proved under the unchanged premises, retain a bounded-range result and record the all-N rate as open; do not infer convergence rate from samples.",
+      "feasibility": "Exact constants, bracket and failure mechanism already available; no new physical data or large lattice simulation needed.",
+      "resource_estimate": "Planning estimate: one focused analytic derivation with a separate reviewer; arithmetic script likely seconds to minutes once bounds are frozen. This is not a guaranteed completion time.",
+      "openai_connection": {"215": "Same observable and same scale must survive the limiting argument; template only.", "265": "Retain support-size dependence; no entropy or Wilson area-law conclusion imported."},
+      "sources": [
+        {"path": "research/round33/advisor/roadmap.json", "reading_depth": "Read all goals and inherited dispositions"},
+        {"path": "research/round33/forward/bb2/report.md", "locator": "Section 6 / HNM-BB2-F07 and F08, limitations", "reading_depth": "Correlation decomposition and relevant exact constants read"},
+        {"path": "research/round33/advisor/bc1-gate.json", "locator": "rate limits in accepted and decision fields", "reading_depth": "Accepted statement and limitations read"}
+      ]
+    },
+    {
+      "id": "YM-P2",
+      "review_rank": 2,
+      "title": "Route-B quantitative finite-box dynamics",
+      "roadmap_goal": "route_b_dynamics",
+      "type": "fixed_spacing_operator_bound",
+      "exact_target": "For route-B FB boxes, N>=2, |theta|<=8 and A in B(H_R), derive sup_(M>N)||T_theta^(FB,M)(A)-T_theta^(FB,N)(A)|| <= K_B(tau)/(N-1)||A|| with explicit supported K_B.",
+      "premises": [
+        "AQ_uniform_routeB, every elementary face nu=alpha*tau/24, selected triple (tau/24,tau/24,tau/24), Haar reference h_b=8 sum C_e.",
+        "FB centered whole-star-plus-single-group boxes; retain every selected single-factor group in the volume.",
+        "Fixed spacing, |tau|<=1e-8; R={0,e_z}; theta=alpha*t/hbar; |theta|<=8.",
+        "Interaction norm <=2349|tau|, per-site sum 29|tau|; prove actual boundary ledger, do not substitute only a scalar constant into BA2.",
+        "Use the applicable unbounded-on-site interaction-picture theorem and actual operator domains."
+      ],
+      "missing_premise": "No quantitative route-B finite-box comparison/correlation estimate; BC2 already inherits a limit dynamics and static named-state convergence.",
+      "proposed_route": "Reconstruct the Duhamel source, embedding, star and single-group incidence and distance counts, then evaluate the time integral and shell tail. Treat correlations as a dependent milestone only after this bound is admitted.",
+      "quantitative_status": "1/(N-1) structure is proposed from the BA2 route; K_B and any margin target must be justified and frozen during planning.",
+      "deliverables": ["Frozen FB Hamiltonian and boundary-source dictionary", "Analytic norm bound with exact evaluated coefficient", "Independent shell-count and time-integral check"],
+      "negative_controls": ["Omit selected single-factor groups", "Use patterned norm 2268|tau| as a route-B admitted constant", "Treat a bounded perturbation proof as permission to drop unbounded on-site domain requirements"],
+      "positive_controls": ["Exterior on-site factors acting away from R cancel exactly where the tensor-factor argument applies", "Correct separately labeled reduction to the patterned special model can recover BA2 assumptions"],
+      "stop_rule": "If the source geometry, operator-domain hypothesis or norm bound fails, report that failed premise before any numerical constant is promoted; no automatic correlations, arbitrary-boundary uniqueness or continuum extension.",
+      "feasibility": "Route-B construction and norms are explicit; previous BA2 derivation supplies a source-matched proof route. Work is finite geometry plus a compact-window analytic estimate.",
+      "resource_estimate": "Planning estimate: one producer and separate reviewer, source inspection before computation; geometry checks on a few boxes and exact rational constants should be modest CPU work, with proof completeness the primary cost.",
+      "openai_connection": {"270": "Preserve closed domains and norm limits; no BFSS threshold conclusion transferred.", "215": "Keep the same state, time scale and observable throughout inheritance."},
+      "sources": [
+        {"path": "research/round33/advisor/roadmap.json", "locator": "route_b_dynamics", "reading_depth": "Read target and missing premise"},
+        {"path": "research/round33/forward/bc2/report.md", "locator": "model, inherited properties, obligations", "reading_depth": "Selected model and inheritance/limitation clauses read; full proof not audited"},
+        {"path": "research/round33/forward/ba2/report.md", "locator": "Sections 1,3,5 and model", "reading_depth": "Duhamel source and Cauchy statements selectively read"}
+      ]
+    },
+    {
+      "id": "YM-P3",
+      "review_rank": 3,
+      "title": "Padded-box Wilson sign at N=2 and N=3",
+      "roadmap_goal": "finite_box_certificates",
+      "scope_reduction": "Static sign only; finite-box Euclidean nodes deferred.",
+      "type": "two_finite_box_lemma_and_sign_certificate",
+      "exact_target": "At tau=+1e-8, prove omega^(F2,N)(W)>0 for N=2,3 in the untruncated zero-selected patterned ground states, for the original xz Wilson W on R={0,e_z}.",
+      "premises": [
+        "Unchanged patterned SU(2) model and F2 padding/face convention at fixed spacing.",
+        "||W||<=1; first-order trace Tr(rho_R^(1) W)=tau/144.",
+        "Box-level reduced-density remainder must be proved before using an AY1 limit bound; remove local cutoff at each fixed N with the applicable ground-vector result.",
+        "Negative tau is a documented mirror only if applicable, not independent replication."
+      ],
+      "missing_premise": "AY1 gate states the trace-norm remainder for subsequential limits; BC1 explicitly leaves the box-level reading of AY1 F13-F14 ungated. Coarse limit-to-box transfer certifies F2 N>=4 only.",
+      "proposed_route": "Audit and prove the box-level finite-cutoff inequality and fixed-N removal; obtain K_box in ||rho_R^(F2,N)-P_R-rho_R^(1)||_1<=K_box*tau^2, then compute the sign interval.",
+      "quantitative_status": "K_box<6250000/9 is an algebraically derived sufficient condition at tau=1e-8, not a supplied constant. The prior approximate margin 51.8 is contingent preview only and is not adopted.",
+      "deliverables": ["Audited finite-box lemma or explicit failure report", "Complete first-order and remainder interval for each of N=2,3", "Independent boundary/observable check"],
+      "negative_controls": ["A remainder that makes the enclosure include zero must prevent sign certification", "Omit 616 extra F2 faces at N=2 or 1344 at N=3", "Relabel a limit-state lemma as a finite-box lemma without its domain and cutoff passage"],
+      "positive_controls": ["F1 signs at N=2,3 are existing certified results and can serve as regression controls", "Retain existing F2 N>=4 sign statement without claiming it as new"],
+      "stop_rule": "If the box-level lemma or cutoff removal cannot be justified, stop at the obstruction; no favorable arithmetic or truncated numerical diagonalization can replace it.",
+      "feasibility": "Two named boxes and one observable; coefficients and source lemma are identified. No full-space brute-force diagonalization is proposed.",
+      "resource_estimate": "Planning estimate: source lemma review dominates; small geometry/remainder computation only after that gate. A separate reviewer should check the box-to-limit distinction.",
+      "openai_connection": {"265": "A trace-norm or entropy theorem for another local space is not substituted for this finite-box inequality.", "270": "Preserve the finite-cutoff versus full-operator distinction; no threshold theorem imported."},
+      "sources": [
+        {"path": "research/round33/advisor/roadmap.json", "locator": "finite_box_certificates", "reading_depth": "Read target and contingent margin preview"},
+        {"path": "research/round33/advisor/bc1-gate.json", "locator": "N2,N3,N4 obligations and limitations", "reading_depth": "Accepted statement, decision and limitations read"},
+        {"path": "research/round32/advisor/ay1-gate.json", "locator": "K_2' bound and state scope", "reading_depth": "Accepted statement, decision and limitations read; underlying F13-F14 proof still requires reading before admission"},
+        {"path": "research/round33/forward/ba2/report.md", "locator": "extra-face geometry", "reading_depth": "N=2,3 counts and all-N count statement read"}
+      ]
+    }
+  ],
+  "source_url_rule": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/{path}",
+  "openai_reading_depth": "Families215/265/270 introductions and main statements, plus lean/docs/215.md; full proofs not audited and no Lean executed. Reuse is methodological only.",
+  "deferred": ["Uniqueness beyond a named class of constructions", "Full Z2 AM2/AQ chain", "Zero-free-region area-law route", "Cutoff-uniform continuum construction"],
+  "next_action": "Wait for advisor plan1 selection; do not execute candidate code or proof campaigns during review."
+}

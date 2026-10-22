@@ -1,0 +1,801 @@
+[
+  {
+    "familyId": "211",
+    "lane": "yangmills-adjacent",
+    "title": "The geometric phase diagram, diffusion, and spectra of random planar maps",
+    "papers": [
+      {
+        "title": "Random Walks on Critical FK–Ising Maps and Liouville Brownian Motion",
+        "path": "preprints/Random-Walks-on-Critical-FK-Ising-Maps-and-Liouville-Brownian-Motion-October-5-2026/fk-ising-walk-limit.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Random-Walks-on-Critical-FK-Ising-Maps-and-Liouville-Brownian-Motion-October-5-2026/fk-ising-walk-limit.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Spectral convergence for critical FK–Ising planar maps",
+        "path": "preprints/Spectral-convergence-for-critical-FK-Ising-planar-maps-October-5-2026/spectral-convergence-critical-fk-ising-planar-maps.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Spectral-convergence-for-critical-FK-Ising-planar-maps-October-5-2026/spectral-convergence-critical-fk-ising-planar-maps.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "A Linear Clock for Random Walk on Tree-Weighted Planar Maps",
+        "path": "preprints/A-Linear-Clock-for-Random-Walk-on-Tree-Weighted-Planar-Maps-October-5-2026/linear-clock-random-walk-tree-weighted-planar-maps.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-Linear-Clock-for-Random-Walk-on-Tree-Weighted-Planar-Maps-October-5-2026/linear-clock-random-walk-tree-weighted-planar-maps.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Canonical conformal limits of subcritical FK planar maps",
+        "path": "preprints/Canonical-conformal-limits-of-subcritical-FK-planar-maps-September-24-2026/main.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Canonical-conformal-limits-of-subcritical-FK-planar-maps-September-24-2026/main.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "The critical Liouville quantum sphere and geometric limits of FK maps at q=4",
+        "path": "preprints/The-critical-Liouville-quantum-sphere-and-geometric-limits-of-FK-maps-at-q-equals-4-September-24-2026/main.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-critical-Liouville-quantum-sphere-and-geometric-limits-of-FK-maps-at-q-equals-4-September-24-2026/main.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Metric-measure limits of subcritical FK and spanning-tree planar maps",
+        "path": "preprints/Metric-measure-limits-of-subcritical-FK-and-spanning-tree-planar-maps-September-24-2026/main.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Metric-measure-limits-of-subcritical-FK-and-spanning-tree-planar-maps-September-24-2026/main.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Brownian continuum random tree limits of finite Fortuin–Kasteleyn maps above four",
+        "path": "preprints/Brownian-continuum-random-tree-limits-of-finite-Fortuin-Kasteleyn-maps-above-four-September-24-2026/main.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Brownian-continuum-random-tree-limits-of-finite-Fortuin-Kasteleyn-maps-above-four-September-24-2026/main.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/211.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "215",
+    "lane": "yangmills-adjacent",
+    "title": "Canonical O(3) continuum limit and exact O(4) mass asymptotics",
+    "papers": [
+      {
+        "title": "The canonical massive continuum limit of the two-dimensional O(3) model",
+        "path": "preprints/The-canonical-massive-continuum-limit-of-the-two-dimensional-O3-model-October-4-2026/massive-continuum-o3.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-canonical-massive-continuum-limit-of-the-two-dimensional-O3-model-October-4-2026/massive-continuum-o3.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "An Isolated Particle Pole for the Two-Dimensional O(3) Spin Field",
+        "path": "preprints/An-Isolated-Particle-Pole-for-the-Two-Dimensional-O3-Spin-Field-October-4-2026/o3-particle-pole.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/An-Isolated-Particle-Pole-for-the-Two-Dimensional-O3-Spin-Field-October-4-2026/o3-particle-pole.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Exact mass asymptotics for the two-dimensional O(4) lattice model",
+        "path": "preprints/Exact-mass-asymptotics-for-the-two-dimensional-O4-lattice-model-October-5-2026/exact-mass-o4.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Exact-mass-asymptotics-for-the-two-dimensional-O4-lattice-model-October-5-2026/exact-mass-o4.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Sharp mass bounds for the two-dimensional O(4) model",
+        "path": "preprints/Sharp-mass-bounds-for-the-two-dimensional-O4-model-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Sharp-mass-bounds-for-the-two-dimensional-O4-model-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Exponential decay in two-dimensional classical O(n) models",
+        "path": "preprints/Exponential-decay-in-two-dimensional-classical-On-models-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Exponential-decay-in-two-dimensional-classical-On-models-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/215.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "261",
+    "lane": "yangmills-adjacent",
+    "title": "Localization and delocalization in the Anderson model",
+    "papers": [
+      {
+        "title": "Absolutely Continuous Spectrum for Weak-Disorder Anderson Models in Dimensions at Least Three",
+        "path": "preprints/Absolutely-Continuous-Spectrum-for-Weak-Disorder-Anderson-Models-in-Dimensions-at-Least-Three-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Absolutely-Continuous-Spectrum-for-Weak-Disorder-Anderson-Models-in-Dimensions-at-Least-Three-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Pure-Point Spectrum for the Two-Dimensional Anderson Model at Every Positive Disorder",
+        "path": "preprints/Pure-Point-Spectrum-for-the-Two-Dimensional-Anderson-Model-at-Every-Positive-Disorder-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Pure-Point-Spectrum-for-the-Two-Dimensional-Anderson-Model-at-Every-Positive-Disorder-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/261.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "262",
+    "lane": "yangmills-adjacent",
+    "title": "Sharp finite-matrix Lieb–Thirring inequalities and all equality cases",
+    "papers": [
+      {
+        "title": "Equality cases in the sharp one-dimensional matrix Lieb–Thirring inequality",
+        "path": "preprints/Equality-cases-in-the-sharp-one-dimensional-matrix-Lieb-Thirring-inequality-October-5-2026/sharp-one-dimensional-lieb-thirring-inequalities-matrix-potentials.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Equality-cases-in-the-sharp-one-dimensional-matrix-Lieb-Thirring-inequality-October-5-2026/sharp-one-dimensional-lieb-thirring-inequalities-matrix-potentials.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Sharp one-dimensional Lieb–Thirring inequalities for matrix potentials",
+        "path": "preprints/Sharp-one-dimensional-Lieb-Thirring-inequalities-for-matrix-potentials-October-5-2026/sharp-matrix-lieb-thirring.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Sharp-one-dimensional-Lieb-Thirring-inequalities-for-matrix-potentials-October-5-2026/sharp-matrix-lieb-thirring.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Sharp one-dimensional Lieb–Thirring constants",
+        "path": "preprints/Sharp-One-Dimensional-Lieb-Thirring-Constants-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Sharp-One-Dimensional-Lieb-Thirring-Constants-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/262.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "265",
+    "lane": "yangmills-adjacent",
+    "title": "Area laws and tensor networks for two-dimensional gapped systems",
+    "papers": [
+      {
+        "title": "A two-dimensional area law from a global spectral gap",
+        "path": "preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Polynomial PEPS approximation of gapped square-grid ground states",
+        "path": "preprints/Polynomial-PEPS-approximation-of-gapped-square-grid-ground-states-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Polynomial-PEPS-approximation-of-gapped-square-grid-ground-states-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "268",
+    "lane": "yangmills-adjacent",
+    "title": "The spin-one Haldane gap",
+    "papers": [
+      {
+        "title": "The periodic spin-one Haldane gap",
+        "path": "preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "A boundary-field gap for the spin-one Heisenberg chain",
+        "path": "preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "269",
+    "lane": "yangmills-adjacent",
+    "title": "Uniform Laughlin gap and stability under bounded scalar disorder",
+    "papers": [
+      {
+        "title": "Uniform Stability of the Spherical Laughlin Gap",
+        "path": "preprints/Uniform-Stability-of-the-Spherical-Laughlin-Gap-October-5-2026/uniform-stability-spherical-laughlin-gap.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Uniform-Stability-of-the-Spherical-Laughlin-Gap-October-5-2026/uniform-stability-spherical-laughlin-gap.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "A Fock-space inequality and the Laughlin spectral gap",
+        "path": "preprints/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/269.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "270",
+    "lane": "yangmills-adjacent",
+    "title": "Threshold and positive-energy bound states of the BFSS matrix model",
+    "papers": [
+      {
+        "title": "The unique threshold bound state of the SU(N) BFSS model",
+        "path": "preprints/The-unique-threshold-bound-state-of-the-SU-N-BFSS-model-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-unique-threshold-bound-state-of-the-SU-N-BFSS-model-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Positive eigenvalues of the relative SU(2) BFSS Hamiltonian",
+        "path": "preprints/Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026/positive-eigenvalues-relative-su2-bfss.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Positive-eigenvalues-of-the-relative-SU-2-BFSS-Hamiltonian-October-5-2026/positive-eigenvalues-relative-su2-bfss.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "271",
+    "lane": "yangmills-adjacent",
+    "title": "Bloch's law, its lattice correction, and the spherical magnetization law",
+    "papers": [
+      {
+        "title": "Bloch's Law for Finite-Range Heisenberg Ferromagnets in Three Dimensions",
+        "path": "preprints/Blochs-Law-for-Finite-Range-Heisenberg-Ferromagnets-in-Three-Dimensions-October-5-2026/bloch-law-heisenberg.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Blochs-Law-for-Finite-Range-Heisenberg-Ferromagnets-in-Three-Dimensions-October-5-2026/bloch-law-heisenberg.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "The first lattice correction to Bloch's law",
+        "path": "preprints/The-first-lattice-correction-to-Blochs-law-October-5-2026/first-lattice-correction-bloch-law.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-first-lattice-correction-to-Blochs-law-October-5-2026/first-lattice-correction-bloch-law.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "The spherical magnetization law for the three-dimensional quantum Heisenberg ferromagnet",
+        "path": "preprints/The-spherical-magnetization-law-for-the-three-dimensional-quantum-Heisenberg-ferromagnet-October-5-2026/spherical-magnetization.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-spherical-magnetization-law-for-the-three-dimensional-quantum-Heisenberg-ferromagnet-October-5-2026/spherical-magnetization.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Spontaneous magnetization in the quantum Heisenberg ferromagnet",
+        "path": "preprints/Spontaneous-magnetization-in-the-quantum-Heisenberg-ferromagnet-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Spontaneous-magnetization-in-the-quantum-Heisenberg-ferromagnet-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/271.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "282",
+    "lane": "yangmills-adjacent",
+    "title": "From scale symmetry to local conformal symmetry in four-dimensional QFT",
+    "papers": [
+      {
+        "title": "Scale and conformal symmetry in four-dimensional operational quantum field theory",
+        "path": "preprints/Scale-and-conformal-symmetry-in-four-dimensional-operational-quantum-field-theory-September-26-2026/main.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Scale-and-conformal-symmetry-in-four-dimensional-operational-quantum-field-theory-September-26-2026/main.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "290",
+    "lane": "yangmills-adjacent",
+    "title": "Relative bicentralizers and modular spectral recovery",
+    "papers": [
+      {
+        "title": "Expected amenable subalgebras preserving core commutants",
+        "path": "preprints/Expected-amenable-subalgebras-preserving-core-commutants-September-23-2026/Expected-amenable-subalgebras-preserving-core-commutants-September-23-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Expected-amenable-subalgebras-preserving-core-commutants-September-23-2026/Expected-amenable-subalgebras-preserving-core-commutants-September-23-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Bounded recovery for modular spectral averages",
+        "path": "preprints/Bounded-recovery-for-modular-spectral-averages-September-23-2026/Bounded-recovery-for-modular-spectral-averages-September-23-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Bounded-recovery-for-modular-spectral-averages-September-23-2026/Bounded-recovery-for-modular-spectral-averages-September-23-2026.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/290.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "300",
+    "lane": "yangmills-adjacent",
+    "title": "Approximation and quadratic strong-operator paving",
+    "papers": [
+      {
+        "title": "Approximation Paving over Arbitrary Maximal Abelian Subalgebras",
+        "path": "preprints/Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026/Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026/Approximation-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Quadratic Strong-Operator Paving over Arbitrary Maximal Abelian Subalgebras",
+        "path": "preprints/Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026/Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026/Quadratic-Strong-Operator-Paving-over-Arbitrary-Maximal-Abelian-Subalgebras-September-25-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "273",
+    "lane": "energy-channel",
+    "title": "The entropy photon-number inequality",
+    "papers": [
+      {
+        "title": "The entropy photon-number inequality",
+        "path": "preprints/The-entropy-photon-number-inequality-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-entropy-photon-number-inequality-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/273.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "276",
+    "lane": "energy-channel",
+    "title": "Classical capacity of generalized amplitude damping",
+    "papers": [
+      {
+        "title": "Classical capacity and entropy inequalities for generalized amplitude damping",
+        "path": "preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/276.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "362",
+    "lane": "energy-channel",
+    "title": "Global smoothness for relativistic Vlasov–Maxwell",
+    "papers": [
+      {
+        "title": "Global classical solutions of the three-dimensional relativistic Vlasov–Maxwell system",
+        "path": "preprints/Global-classical-solutions-of-the-three-dimensional-relativistic-Vlasov-Maxwell-system-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-classical-solutions-of-the-three-dimensional-relativistic-Vlasov-Maxwell-system-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/362.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "217",
+    "lane": "statistical-free-energy",
+    "title": "The low-temperature Sherrington–Kirkpatrick fluctuation law",
+    "papers": [
+      {
+        "title": "The low-temperature Sherrington–Kirkpatrick free-energy limiting law",
+        "path": "preprints/The-low-temperature-Sherrington-Kirkpatrick-free-energy-limiting-law-September-24-2026/The-low-temperature-Sherrington-Kirkpatrick-free-energy-limiting-law-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-low-temperature-Sherrington-Kirkpatrick-free-energy-limiting-law-September-24-2026/The-low-temperature-Sherrington-Kirkpatrick-free-energy-limiting-law-September-24-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "The low-temperature Sherrington–Kirkpatrick fluctuation scale",
+        "path": "preprints/The-low-temperature-Sherrington-Kirkpatrick-fluctuation-scale-September-24-2026/The-low-temperature-Sherrington-Kirkpatrick-fluctuation-scale-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-low-temperature-Sherrington-Kirkpatrick-fluctuation-scale-September-24-2026/The-low-temperature-Sherrington-Kirkpatrick-fluctuation-scale-September-24-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "221",
+    "lane": "statistical-free-energy",
+    "title": "The Mézard–Parisi formula for diluted spin glasses",
+    "papers": [
+      {
+        "title": "The Mézard–Parisi formula for diluted spin glasses",
+        "path": "preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-Mezard-Parisi-formula-for-diluted-spin-glasses-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/221.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "222",
+    "lane": "statistical-free-energy",
+    "title": "Perceptron free energies and microscopic jamming exponents",
+    "papers": [
+      {
+        "title": "The free energy of the Ising random perceptron",
+        "path": "preprints/The-free-energy-of-the-Ising-random-perceptron-September-24-2026/The-free-energy-of-the-Ising-random-perceptron-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-free-energy-of-the-Ising-random-perceptron-September-24-2026/The-free-energy-of-the-Ising-random-perceptron-September-24-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Microscopic jamming in the negative spherical perceptron",
+        "path": "preprints/Microscopic-jamming-in-the-negative-spherical-perceptron-September-24-2026/Microscopic-jamming-in-the-negative-spherical-perceptron-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Microscopic-jamming-in-the-negative-spherical-perceptron-September-24-2026/Microscopic-jamming-in-the-negative-spherical-perceptron-September-24-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "The spherical perceptron with bi-orthogonally invariant disorder",
+        "path": "preprints/The-spherical-perceptron-with-bi-orthogonally-invariant-disorder-September-24-2026/The-spherical-perceptron-with-bi-orthogonally-invariant-disorder-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-spherical-perceptron-with-bi-orthogonally-invariant-disorder-September-24-2026/The-spherical-perceptron-with-bi-orthogonally-invariant-disorder-September-24-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "The free energy of the spherical random perceptron",
+        "path": "preprints/The-free-energy-of-the-spherical-random-perceptron-September-24-2026/The-free-energy-of-the-spherical-random-perceptron-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-free-energy-of-the-spherical-random-perceptron-September-24-2026/The-free-energy-of-the-spherical-random-perceptron-September-24-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/222.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "234",
+    "lane": "statistical-free-energy",
+    "title": "All-temperature pressure of orthogonally invariant Ising spin glasses",
+    "papers": [
+      {
+        "title": "All-temperature pressure for orthogonally invariant Ising spin glasses",
+        "path": "preprints/All-temperature-pressure-for-orthogonally-invariant-Ising-spin-glasses-September-25-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/All-temperature-pressure-for-orthogonally-invariant-Ising-spin-glasses-September-25-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/234.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "075",
+    "lane": "sound-and-inverse",
+    "title": "The L\\log L Fourier-convergence conjecture",
+    "papers": [
+      {
+        "title": "Almost-everywhere Fourier convergence in L log L",
+        "path": "preprints/Almost-everywhere-Fourier-convergence-in-L-log-L-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Almost-everywhere-Fourier-convergence-in-L-log-L-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/075.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "077",
+    "lane": "sound-and-inverse",
+    "title": "Fourier restriction for positively curved surfaces",
+    "papers": [
+      {
+        "title": "Elliptic capacity propagation and Fourier restriction to the sphere",
+        "path": "preprints/Elliptic-capacity-propagation-and-Fourier-restriction-to-the-sphere-September-24-2026/Elliptic-capacity-propagation-and-Fourier-restriction-to-the-sphere-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Elliptic-capacity-propagation-and-Fourier-restriction-to-the-sphere-September-24-2026/Elliptic-capacity-propagation-and-Fourier-restriction-to-the-sphere-September-24-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Diagonal Fourier extension for positively curved surfaces in three dimensions",
+        "path": "preprints/Diagonal-Fourier-extension-for-positively-curved-surfaces-in-three-dimensions-September-24-2026/Diagonal-Fourier-extension-for-positively-curved-surfaces-in-three-dimensions-September-24-2026.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Diagonal-Fourier-extension-for-positively-curved-surfaces-in-three-dimensions-September-24-2026/Diagonal-Fourier-extension-for-positively-curved-surfaces-in-three-dimensions-September-24-2026.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "079",
+    "lane": "sound-and-inverse",
+    "title": "Local smoothing in three dimensions",
+    "papers": [
+      {
+        "title": "Critical local smoothing for the three-dimensional wave equation",
+        "path": "preprints/Critical-local-smoothing-for-the-three-dimensional-wave-equation-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Critical-local-smoothing-for-the-three-dimensional-wave-equation-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "080",
+    "lane": "sound-and-inverse",
+    "title": "The exact Sobolev endpoint for Schrödinger convergence",
+    "papers": [
+      {
+        "title": "Endpoint convergence for the planar Schrodinger equation",
+        "path": "preprints/Endpoint-convergence-for-the-planar-Schrodinger-equation-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Endpoint-convergence-for-the-planar-Schrodinger-equation-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Endpoint pointwise convergence for the Schrodinger equation in higher dimensions",
+        "path": "preprints/Endpoint-pointwise-convergence-for-the-Schrodinger-equation-in-higher-dimensions-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Endpoint-pointwise-convergence-for-the-Schrodinger-equation-in-higher-dimensions-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "130",
+    "lane": "sound-and-inverse",
+    "title": "Exact Fourier transforms below n\\log n",
+    "papers": [
+      {
+        "title": "An explicit power saving for the exact discrete Fourier transform",
+        "path": "preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/main.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/An-explicit-power-saving-for-the-exact-discrete-Fourier-transform-September-25-2026/main.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Finite tensor savings and exact Fourier circuits",
+        "path": "preprints/Finite-tensor-savings-and-exact-Fourier-circuits-September-25-2026/main.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Finite-tensor-savings-and-exact-Fourier-circuits-September-25-2026/main.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/130.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "365",
+    "lane": "sound-and-inverse",
+    "title": "Joint metric and connection recovery from one boundary patch",
+    "papers": [
+      {
+        "title": "Determination of a metric and a unitary connection from one boundary patch",
+        "path": "preprints/Determination-of-a-metric-and-a-unitary-connection-from-one-boundary-patch-October-5-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Determination-of-a-metric-and-a-unitary-connection-from-one-boundary-patch-October-5-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Smooth anisotropic uniqueness in the Calderón problem from one boundary patch",
+        "path": "preprints/Smooth-Anisotropic-Uniqueness-in-the-Calderon-Problem-from-One-Boundary-Patch-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Smooth-Anisotropic-Uniqueness-in-the-Calderon-Problem-from-One-Boundary-Patch-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Nonuniqueness for bounded measurable scalar conductivities in three dimensions",
+        "path": "preprints/Nonuniqueness-for-Bounded-Measurable-Scalar-Conductivities-in-Three-Dimensions-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Nonuniqueness-for-Bounded-Measurable-Scalar-Conductivities-in-Three-Dimensions-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": true,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/365.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "369",
+    "lane": "sound-and-inverse",
+    "title": "The hot spots conjecture for simply connected planar domains",
+    "papers": [
+      {
+        "title": "Strict hot spots and absence of interior critical points on smooth simply connected planar domains",
+        "path": "preprints/Strict-hot-spots-and-absence-of-interior-critical-points-on-smooth-simply-connected-planar-domains-September-24-2026/main.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Strict-hot-spots-and-absence-of-interior-critical-points-on-smooth-simply-connected-planar-domains-September-24-2026/main.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/369.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "372",
+    "lane": "sound-and-inverse",
+    "title": "Global uniqueness in smooth isotropic elasticity",
+    "papers": [
+      {
+        "title": "Global Uniqueness for the Smooth Isotropic Elasticity Inverse Problem",
+        "path": "preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Global-Uniqueness-for-the-Smooth-Isotropic-Elasticity-Inverse-Problem-September-24-2026/article.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/372.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "363",
+    "lane": "dynamics-boundary",
+    "title": "Nonuniqueness with local conservation for the hard-sphere Boltzmann equation",
+    "papers": [
+      {
+        "title": "Nonuniqueness with local conservation for the hard-sphere Boltzmann equation",
+        "path": "preprints/Nonuniqueness-with-local-conservation-for-the-hard-sphere-Boltzmann-equation-October-5-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Nonuniqueness-with-local-conservation-for-the-hard-sphere-Boltzmann-equation-October-5-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Nonuniqueness for the periodic hard-sphere Boltzmann equation",
+        "path": "preprints/Nonuniqueness-for-the-periodic-hard-sphere-Boltzmann-equation-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Nonuniqueness-for-the-periodic-hard-sphere-Boltzmann-equation-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/363.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "364",
+    "lane": "dynamics-boundary",
+    "title": "Kinetic limits and fluctuations over the Boltzmann lifespan",
+    "papers": [
+      {
+        "title": "The Boltzmann–Grad limit for stable radial potentials on regular kinetic intervals",
+        "path": "preprints/The-Boltzmann-Grad-limit-for-stable-radial-potentials-on-regular-kinetic-intervals-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-Boltzmann-Grad-limit-for-stable-radial-potentials-on-regular-kinetic-intervals-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Hard-sphere fluctuations on the regular Boltzmann lifespan",
+        "path": "preprints/Hard-sphere-fluctuations-on-the-regular-Boltzmann-lifespan-September-23-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Hard-sphere-fluctuations-on-the-regular-Boltzmann-lifespan-September-23-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": null,
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "371",
+    "lane": "dynamics-boundary",
+    "title": "Stable blowup for the defocusing Schrödinger equation",
+    "papers": [
+      {
+        "title": "Stable self-similar blowup for a supercritical defocusing Schrödinger equation on the torus",
+        "path": "preprints/Stable-Self-Similar-Blowup-for-a-Supercritical-Defocusing-Schrodinger-Equation-on-the-Torus-September-24-2026/paper.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Stable-Self-Similar-Blowup-for-a-Supercritical-Defocusing-Schrodinger-Equation-on-the-Torus-September-24-2026/paper.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/371.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "374",
+    "lane": "dynamics-boundary",
+    "title": "Sharp one-third stability of Brenier maps",
+    "papers": [
+      {
+        "title": "Sharp One-Third Stability of Brenier Maps",
+        "path": "preprints/Sharp-One-Third-Stability-of-Brenier-Maps-September-25-2026/article.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Sharp-One-Third-Stability-of-Brenier-Maps-September-25-2026/article.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/374.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  },
+  {
+    "familyId": "376",
+    "lane": "dynamics-boundary",
+    "title": "Universal computation in forced Navier–Stokes flows",
+    "papers": [
+      {
+        "title": "Finite Instructions and Solenoidal Shear Flows",
+        "path": "preprints/Finite-Instructions-and-Solenoidal-Shear-Flows-September-27-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Finite-Instructions-and-Solenoidal-Shear-Flows-September-27-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "A Fixed Particle Test for Computation in a Forced Viscous Flow",
+        "path": "preprints/A-Fixed-Particle-Test-for-Computation-in-a-Forced-Viscous-Flow-September-27-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-Fixed-Particle-Test-for-Computation-in-a-Forced-Viscous-Flow-September-27-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Universal Computation with Eventually Stationary Navier–Stokes Forcing",
+        "path": "preprints/Universal-Computation-with-Eventually-Stationary-Navier-Stokes-Forcing-September-27-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Universal-Computation-with-Eventually-Stationary-Navier-Stokes-Forcing-September-27-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Geometric Programs for Solenoidal Forcing",
+        "path": "preprints/Geometric-Programs-for-Solenoidal-Forcing-September-27-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Geometric-Programs-for-Solenoidal-Forcing-September-27-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Prefix Instructions and Incompressible Flows",
+        "path": "preprints/Prefix-Instructions-and-Incompressible-Flows-September-27-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Prefix-Instructions-and-Incompressible-Flows-September-27-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Computation under Rapidly Vanishing Navier–Stokes Forcing",
+        "path": "preprints/Computation-under-Rapidly-Vanishing-Navier-Stokes-Forcing-September-27-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Computation-under-Rapidly-Vanishing-Navier-Stokes-Forcing-September-27-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Velocity-Field Detection of Computation in Forced Navier–Stokes Flows",
+        "path": "preprints/Velocity-Field-Detection-of-Computation-in-Forced-Navier-Stokes-Flows-September-27-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Velocity-Field-Detection-of-Computation-in-Forced-Navier-Stokes-Flows-September-27-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Scalar Potentials and Slow Clocks for Forced Fluid Computation",
+        "path": "preprints/Scalar-Potentials-and-Slow-Clocks-for-Forced-Fluid-Computation-September-27-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Scalar-Potentials-and-Slow-Clocks-for-Forced-Fluid-Computation-September-27-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      },
+      {
+        "title": "Incompressible Box Transport and Finite Computation",
+        "path": "preprints/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/manuscript.pdf",
+        "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Incompressible-Box-Transport-and-Finite-Computation-October-6-2026/manuscript.pdf",
+        "listedInFormalizationYaml": false,
+        "verificationByThisAudit": "not proof-checked"
+      }
+    ],
+    "scopeNote": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/376.md",
+    "assessment": "candidate for domain-specialist comparison; no equivalence or proof transfer established by this screening"
+  }
+]

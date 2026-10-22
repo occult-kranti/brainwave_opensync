@@ -1,0 +1,145 @@
+{
+  "round": 1,
+  "specialist": "Yang\u2013Mills",
+  "source_commits": {
+    "openai_math": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+    "yang_mills_workbench_main": "f9364d617015e803fda9465aefddd9cbe41854a4",
+    "historical_round30_release": "514f2aaead39673c4d9c591f54cc7712977c851b"
+  },
+  "sources": [
+    {
+      "id": "oa215",
+      "title": "Canonical massive continuum limit of two-dimensional O(3)",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-canonical-massive-continuum-limit-of-the-two-dimensional-O3-model-October-4-2026/build/sections/introduction.tex",
+      "reading_depth": "Introduction and main theorem clauses read; full proof not audited",
+      "status": "OpenAI manuscript claim; no kernel verification or independent full proof check",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/openai-215-introduction.txt",
+      "sha256": "a4a5757512aa7903a6c3ffcfb4773eef17d97b34864d682cab9a67e0d86b6576"
+    },
+    {
+      "id": "oa265",
+      "title": "Two-dimensional area law from a global spectral gap",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/build/sections/00-introduction.tex",
+      "reading_depth": "Introduction and main theorem clauses read; full proof not audited",
+      "status": "OpenAI manuscript claim; no kernel verification or independent full proof check",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/openai-265-introduction.txt",
+      "sha256": "92ff9dc112c5d93cfb73145849ec91c927ab5614070facff211f89de424b0bb7"
+    },
+    {
+      "id": "oa270",
+      "title": "Unique threshold bound state of SU(N) BFSS",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-unique-threshold-bound-state-of-the-SU-N-BFSS-model-September-24-2026/build/manuscript/sections/01-introduction.tex",
+      "reading_depth": "Introduction and main theorem clauses read; full proof not audited",
+      "status": "OpenAI manuscript claim; no kernel verification or independent full proof check",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/openai-270-introduction.txt",
+      "sha256": "0e00182c58ace464b54712af200fffbe92a1bfd5885c0759a10dfbe9b15ba2bd"
+    },
+    {
+      "id": "oa215lean",
+      "title": "Family 215 formalization scope",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/215.md",
+      "reading_depth": "Read in full",
+      "status": "Scope note, finite-domain correlation theorem only",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/openai-215-formalization.txt",
+      "sha256": "3ef6bbd37d967b02f1edf97f3ff7952403ed00daf59525a72261a08106e8f31a"
+    },
+    {
+      "id": "ym-readme",
+      "title": "README.md",
+      "url": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/README.md",
+      "reading_depth": "Round33 current status and earlier result summaries read",
+      "status": "Repository-reported reviewed result or planning; computations not rerun in this round",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/README.md",
+      "sha256": "97e22493a155f8f1d2b7bfc853f447fa26dee3d5944fb2c38860ffe053db6d85"
+    },
+    {
+      "id": "ym-network",
+      "title": "research/round33/network.json",
+      "url": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/network.json",
+      "reading_depth": "All node and edge metadata parsed; relevant source, gap, continuum and latest result nodes read; not every underlying proof",
+      "status": "Repository-reported reviewed result or planning; computations not rerun in this round",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/research/round33/network.json",
+      "sha256": "c81658d4ad6712fb9c3953ce423b11aaae009b50778fc4728557cdea7fd834f2"
+    },
+    {
+      "id": "ym-bb2",
+      "title": "research/round33/forward/bb2/report.md",
+      "url": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/bb2/report.md",
+      "reading_depth": "Model, clock, assumptions, main convergence and inheritance statements, limitations read",
+      "status": "Repository-reported reviewed result or planning; computations not rerun in this round",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/research/round33/forward/bb2/report.md",
+      "sha256": "caa77a5c0ed682d33d905d25eb56dc29c5c98a29cbbb9d62a61106840af7621d"
+    },
+    {
+      "id": "ym-ba2",
+      "title": "research/round33/forward/ba2/report.md",
+      "url": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/forward/ba2/report.md",
+      "reading_depth": "Model and conclusions selectively read",
+      "status": "Repository-reported reviewed result or planning; computations not rerun in this round",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/research/round33/forward/ba2/report.md",
+      "sha256": "5cdbe4fddc7c5319f389ef3ce1e1f9d6be58d3f53e49ba0b6cf4c69e0948a74a"
+    },
+    {
+      "id": "ym-az1",
+      "title": "research/round32/advisor/az1-gate.json",
+      "url": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round32/advisor/az1-gate.json",
+      "reading_depth": "Read accepted statement, model and all limitations",
+      "status": "Repository-reported reviewed result or planning; computations not rerun in this round",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/research/round32/advisor/az1-gate.json",
+      "sha256": "1f03564c87b92213fd49555edaf3d3cc53fb46d392a03e5dc40ee2e5c11f6699"
+    },
+    {
+      "id": "ym-roadmap",
+      "title": "research/round33/advisor/roadmap.json",
+      "url": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/advisor/roadmap.json",
+      "reading_depth": "Read current planned-only priorities",
+      "status": "Repository-reported reviewed result or planning; computations not rerun in this round",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/research/round33/advisor/roadmap.json",
+      "sha256": "892a70a80ddf303dcddd16b6816df43ebc32bccb9561eaef6f46cca3d819a149"
+    },
+    {
+      "id": "ym-findings",
+      "title": "research/round33/advisor/findings.json",
+      "url": "https://github.com/occult-kranti/yang_mills_workbench/blob/f9364d617015e803fda9465aefddd9cbe41854a4/research/round33/advisor/findings.json",
+      "reading_depth": "All result summaries, model contracts and limitations selectively reviewed",
+      "status": "Repository-reported reviewed result or planning; computations not rerun in this round",
+      "accessed": "2026-10-22",
+      "snapshot": "/workspace/scratch/f431d34f6f71/math-crosswalk-sources/yang-mills/research/round33/advisor/findings.json",
+      "sha256": "886db706e56f524bb45b1be82a32c11db761c9f46c6a768c3cf8549fc8166f43"
+    },
+    {
+      "id": "clay",
+      "title": "Yang\u2013Mills and the Mass Gap",
+      "url": "https://www.claymath.org/millennium/yang-mills-the-maths-gap/",
+      "reading_depth": "Official current status page read",
+      "status": "Official problem remains marked unsolved",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "yaffe2026",
+      "title": "Resurrecting the coherent state variational algorithm for large N gauge theories",
+      "url": "https://arxiv.org/abs/2601.20150",
+      "reading_depth": "Abstract and publication metadata read",
+      "status": "Preprint v2 2026-02-03; initially 2026-01-28; journal acceptance not verified",
+      "accessed": "2026-10-22"
+    },
+    {
+      "id": "falzetti2026",
+      "title": "Update on the computation of the quenched SU(6) Yang\u2013Mills lattice spectrum",
+      "url": "https://arxiv.org/abs/2603.13138",
+      "reading_depth": "Abstract and conference/submission metadata read",
+      "status": "2026-03-13 preprint; contribution to LATTICE2025 (2025-11-02 to 2025-11-08); proceedings publication not separately verified",
+      "accessed": "2026-10-22"
+    }
+  ]
+}

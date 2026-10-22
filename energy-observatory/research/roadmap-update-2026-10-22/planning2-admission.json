@@ -1,0 +1,21 @@
+{
+  "stage": "plan2",
+  "status": "selected after all six planning1 reports",
+  "filesSHA256": {
+    "advisor-plan2.md": "02173287b74e2760110f531cbced69d441131f13b62e55dd55953cb5eec86ba3",
+    "panel/corpus/plan1.md": "62f0aefdbe0da1756a75b57682819b27691f5768fe8fd69ee23e71c27967c7e5",
+    "panel/corpus/plan1.json": "4b6dd855290138be56a42745936f0d8264e7920ec19540a22351a5cabb2d55c3",
+    "panel/yangmills/plan1.md": "6bac75fb9711dd2ec3e85e0cf3a10af73a3dab6538f7566630afdc55f5528258",
+    "panel/yangmills/plan1.json": "822a4ca29b1ec2edfc8e2e7a0bd74caa0cc37ff5c2193666815312e39c69466a",
+    "panel/energy/plan1.md": "4ca47b8ec996bef4b117a3036078d23a08685ac0cbeca98b590160a612cb3bfd",
+    "panel/energy/plan1.json": "e8a8408f206b9011550ec55daf64cbb08a8e7ef2f9076d8a6fb5903dd380168b",
+    "panel/acoustics/plan1.md": "d27b285ee4d6e34d4fc7e2bdc19368513f2de420699dd90b7efcad817b241f0b",
+    "panel/acoustics/plan1.json": "05aeb0e234309d0d1d5f7a1cd00994ec3ea9931dfdd435de1611baec70b11cb2",
+    "panel/methods/plan1.md": "4ac4d7c0d5a0fbd6d166803eabdf715cfc47fd2d28e3bd8e7d58ba066a6d37fe",
+    "panel/methods/plan1.json": "ec1ab10ffb4140695fdfe431b74972d7b39d965f499877d13c66fb2be7709eac",
+    "panel/skeptic/plan1.md": "fb197369a1268f9f76904b0075e2284c53937524a886a0e68119c3f33f1c58ec",
+    "panel/skeptic/plan1.json": "1a7f0380821bceade76a6c1ae75a75c921b466e2cb781433f5b6a90a49cbe699"
+  },
+  "implementation": false,
+  "lastPlanningRound": true
+}

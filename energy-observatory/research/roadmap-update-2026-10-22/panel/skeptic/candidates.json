@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "stage": "review",
+  "gateSHA256": "65014255588cfb396f424e72fbb2bea442b50a5b0bd30f3671fb2cd2f806f033",
+  "newPeerProposalsRead": false,
+  "implementationExecuted": false,
+  "candidates": [
+    {
+      "id": "SK1-observable-sufficiency",
+      "class": "bounded-mathematical-attempt",
+      "priority": "high, if selected as a narrow measurement-design lemma",
+      "exactQuestion": "For a real symmetric positive-definite two-coordinate stiffness matrix with known calibrated masses and signed coordinate conventions, which of two modal frequencies, one diagonal static compliance and one signed cross compliance determine the stiffness matrix?",
+      "baselineAlreadyDone": "Common stiffness/density scaling and a selected calibrated static discriminator; partial-resolvent noninjectivity countermodel.",
+      "distinctNewObjective": "Establish sufficiency and a precise remaining ambiguity for a specified finite measurement set; do not just repeat the known scale symmetry.",
+      "premises": [
+        "Mass-normalize coordinates using known positive masses.",
+        "K is a real symmetric positive-definite 2x2 matrix.",
+        "Mode labels, signed force/displacement ports and compliance calibration are known.",
+        "Static compliance is K inverse; no hidden modes, unknown supports or nonlinear terms."
+      ],
+      "hypothesisLedger": [
+        "No external inverse-elasticity theorem is needed.",
+        "If sensor orientation is unknown, sign-related matrices may be coordinate-equivalent: report that equivalence, not a new physical ambiguity."
+      ],
+      "proposedProofOrTest": "Use trace/determinant from squared modal frequencies and exact inverse-matrix entries; prove the admitted sufficiency statement and construct alternatives when an observable is omitted.",
+      "positiveControl": "A nonsingular SPD matrix reconstructed from its exact declared measurements.",
+      "decisiveCountercontrol": "K+=[[2,1],[1,3]] and K-=[[2,-1],[-1,3]] have the same frequencies and diagonal compliance but opposite signed cross compliance. Preserve or quotient the sign convention explicitly.",
+      "evidenceRequiredForAcceptance": [
+        "Exact algebraic proof on the declared domain.",
+        "Independent review of omitted-observable and sign-convention controls.",
+        "State separately that exact identification does not establish conditioning under noise."
+      ],
+      "noveltyLabel": "Known finite linear algebra applied to project measurement design; no novel inverse theorem claim.",
+      "resourcesAndPrerequisites": {
+        "estimate": "4-8 agent-hours including independent mathematical review; negligible compute; no instrument requirement",
+        "prerequisite": "Advisor freezes exact observation set and coordinate conventions."
+      },
+      "independentReview": "A reviewer specifies indistinguishable pairs before seeing any producer reconstruction code.",
+      "stopRule": "Stop after proof/counterexample for this 2x2 contract; if calibration is unknown, classify the equivalence class instead of widening the claim. No continuum or full-spectrum extension.",
+      "limits": [
+        "No general object reconstruction.",
+        "No experimental result.",
+        "No location-dependent intrinsic frequency conclusion."
+      ]
+    },
+    {
+      "id": "SK2-global-cycle-admission",
+      "class": "engineering-or-verification-task",
+      "priority": "high before any complete-cycle energy wording",
+      "exactQuestion": "Can the proposed cycle ledger reject a claimed reset that restores subsystem marginals while consuming joint correlations or another omitted resource?",
+      "baselineAlreadyDone": "Signed heat in a single fixed-H thermal channel, passive energy versus ergotropy, and ideal reservoir dilation.",
+      "distinctNewObjective": "Define and test cycle closure for joint states/resources rather than equating local energy closure with a reusable apparatus cycle.",
+      "premises": [
+        "Explicit noninteracting reference Hamiltonian for the states being compared, with interaction off at cycle endpoints.",
+        "Reference temperature T>0 is declared.",
+        "List system, finite reservoir, controller/memory and work-storage states or explicitly mark unmodeled resources.",
+        "Work accessibility and reset implementation are not assumed costless."
+      ],
+      "hypothesisLedger": [
+        "The identity F(rho_AB)-F(rho_A tensor rho_B)=k_B*T*I(A:B) is a resource-accounting identity for additive H, not by itself an achievable-work theorem.",
+        "Any reset/work bound requires a separately named operational class and exact theorem hypotheses."
+      ],
+      "proposedProofOrTest": "Prepare a finite ledger specification distinguishing joint-state reset, marginal reset, energy closure and implementation cost; independently verify one correlated-state countercontrol and a genuine product-state closure control.",
+      "positiveControl": "Identical initial and final product state with identical endpoint Hamiltonian and all declared resource accounts restored.",
+      "decisiveCountercontrol": "A classically correlated diagonal two-qubit state with probabilities (1-nu,0,0,nu) and its product of marginals share local populations and additive energy but differ in joint entropy and correlation free energy, for 0<nu<1.",
+      "evidenceRequiredForAcceptance": [
+        "The ledger refuses an unconditional reusable-cycle label when joint correlations, control, memory or reset costs remain unmodeled.",
+        "Any computed work bound is explicitly conditional on the declared operations.",
+        "No modeled gain is described as source-free energy."
+      ],
+      "noveltyLabel": "A project accounting specification and established-information-theory control, not a new energy source or thermodynamic theorem.",
+      "resourcesAndPrerequisites": {
+        "estimate": "6-12 agent-hours for specification, exact two-qubit derivation and independent review; small matrices only",
+        "prerequisite": "Choose one complete idealized cycle and operational boundary first; otherwise park after specification."
+      },
+      "independentReview": "Separate reviewer checks global-state and Hamiltonian endpoint conditions before accepting the cycle label.",
+      "stopRule": "If no complete operational cycle can be specified within the cap, return missing-resource obligations. Do not infer apparatus efficiency or enlarge the task into unrestricted quantum thermodynamics.",
+      "limits": [
+        "No hardware efficiency.",
+        "No blanket achievable-work assertion from mutual information.",
+        "No implementation or experiment performed in this review."
+      ]
+    }
+  ]
+}

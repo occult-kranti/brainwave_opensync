@@ -1,0 +1,125 @@
+{
+  "schema": "thermal-channel-round2-results/1",
+  "status": "PASS",
+  "date": "2026-10-22",
+  "authorship": "Producer and numerical alternate formulations have the same author; independent panel cross-review is separate.",
+  "scope": "Finite-grid ideal channel tests and explicit qubit/bath model; not a general capacity proof or hardware evidence.",
+  "counts": {
+    "cases": 5184,
+    "zeroTemperatureCompatibility": 864,
+    "fullRankEntropyProduction": 3456,
+    "ordinaryBathEntropyProduction": 2592,
+    "invertedBathEntropyProduction": 864,
+    "ordinaryFixedPointPassivity": 192,
+    "invertedFixedPointWork": 96,
+    "zeroDampingIdentityBeforeDephasing": 432,
+    "fullDampingReplacement": 1296,
+    "phaseInvariantComparisons": 3888
+  },
+  "invalidInputsRejected": 10,
+  "tolerances": {
+    "dimensionlessAbsolute": 2e-12,
+    "entropyProductionNegativeSlack": 2e-12,
+    "wrongControlMinimumMargin": 0.1
+  },
+  "maximumAbsoluteDimensionlessErrors": {
+    "krausCompleteness": 4.440892098500626e-16,
+    "initialStateValues": 4.845243236956522e-15,
+    "finalStateValues": 4.845243236956522e-15,
+    "traceOne": 6.661338147750939e-16,
+    "hermitian": 5.551115123125783e-17,
+    "negativeEigenvalue": 1.3877787807814457e-16,
+    "dephasingEnergyNeutral": 2.220446049250313e-16,
+    "dilationUnitarity": 2.220446049250313e-16,
+    "dilationEnergyCommutator": 0.0,
+    "dilationEqualsKraus": 2.220446049250313e-16,
+    "signedSystemHeat": 3.3306690738754696e-16,
+    "signedBathHeat": 1.1102230246251565e-16,
+    "jointEnergyClosure": 3.3306690738754696e-16,
+    "reportedEnergyClosure": 1.9403612052188688e-16,
+    "zeroTemperatureCompatibility": 3.3306690738754696e-16,
+    "ordinaryFixedPointPassivity": 0.0,
+    "phaseInvariantEnergyWorkEntropy": 0.0,
+    "zeroDampingIdentity": 2.220446049250313e-16,
+    "entropyProductionAgreement": 5.10702591327572e-15,
+    "entropyRelativeEntropyIdentity": 6.661338147750939e-16,
+    "betaGapAgreement": 4.440892098500626e-16,
+    "fullDampingReplacement": 2.220446049250313e-16,
+    "invertedFixedPointErgotropy": 1.1102230246251565e-16
+  },
+  "maximumErrorCaseIndices": {
+    "krausCompleteness": 180,
+    "initialStateValues": 4033,
+    "finalStateValues": 4041,
+    "traceOne": 2772,
+    "hermitian": 2405,
+    "negativeEigenvalue": 3189,
+    "dephasingEnergyNeutral": 276,
+    "dilationUnitarity": 144,
+    "dilationEnergyCommutator": 0,
+    "dilationEqualsKraus": 36,
+    "signedSystemHeat": 2772,
+    "signedBathHeat": 204,
+    "jointEnergyClosure": 2772,
+    "reportedEnergyClosure": 3564,
+    "zeroTemperatureCompatibility": 2664,
+    "ordinaryFixedPointPassivity": 0,
+    "phaseInvariantEnergyWorkEntropy": 1,
+    "zeroDampingIdentity": 44,
+    "entropyProductionAgreement": 4201,
+    "entropyRelativeEntropyIdentity": 1056,
+    "betaGapAgreement": 12,
+    "fullDampingReplacement": 216,
+    "invertedFixedPointErgotropy": 3504
+  },
+  "minimumEntropyProductionNats": {
+    "ordinary": -4.490280002890911e-15,
+    "inverted": -4.109096800802195e-15
+  },
+  "wrongModelControls": [
+    {
+      "id": "omitted-bath",
+      "wrongModelErrorInGapUnits": 0.125,
+      "expectedErrorInGapUnits": 0.125,
+      "correctModelErrorInGapUnits": 0.0,
+      "detected": true
+    },
+    {
+      "id": "energy-equals-work",
+      "wrongModelErrorInGapUnits": 0.25,
+      "expectedErrorInGapUnits": 0.25,
+      "correctModelErrorInGapUnits": 0.0,
+      "detected": true
+    },
+    {
+      "id": "old-zero-temperature-ledger",
+      "wrongModelErrorInGapUnits": 0.12500000000000003,
+      "expectedErrorInGapUnits": 0.125,
+      "correctModelErrorInGapUnits": 5.543889157768197e-17,
+      "detected": true
+    }
+  ],
+  "frozenInputsSha256": "75aa4c7b213d2986f6cf0410829c0774adc4013d27dae5957afd09d2824b6a15",
+  "replayOutputSha256": "b5ca49b4641ca3a0457e1ea4b828d54ee61a76779f307b3a55ad0259f18a1cd7",
+  "filesSha256": {
+    "round2-inputs.json": "75aa4c7b213d2986f6cf0410829c0774adc4013d27dae5957afd09d2824b6a15",
+    "thermal-channel.mjs": "cc3a6011d89ab2ad2904d216064a32e4af26bec56c54fd1718244165012727be",
+    "emit-thermal-grid.mjs": "f5b444ce48729271bd410a9bccf5ab2eb159cd146578245973415f270c22d130",
+    "check-thermal.py": "86278cc285bfbe5421b3065ec2215fa01d84f76b4cdfdbb558cff215217025a5"
+  },
+  "acceptedQuantumSha256": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91",
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "node": "v24.19.0"
+  },
+  "replayCommand": "python energy-observatory/research/math-crosswalk/panel/energy/check-thermal.py",
+  "apparatusEfficiency": null,
+  "limitations": [
+    "Floating-point sampled verification, not a continuous-domain theorem proof.",
+    "The heat ledger assumes a fixed system Hamiltonian and equal-gap thermal ancilla interaction.",
+    "Bath re-preparation, physical dephasing, measurement, controls and refrigeration are omitted.",
+    "Negative-temperature references are labeled inverted resources; rank-deficient references skip the finite-beta entropy expression.",
+    "No classical channel capacity/additivity calculation or physical surplus-power measurement."
+  ]
+}

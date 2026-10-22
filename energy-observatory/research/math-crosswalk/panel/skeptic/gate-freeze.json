@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "role": "independent skeptic",
+  "round": 1,
+  "createdUTC": "2026-10-22T03:47:12.917148+00:00",
+  "beforeNewPeerReports": true,
+  "file": "independent-gate.md",
+  "sha256": "5f4226309fd04f975f066c54eeed96ac605f8d0651acd948f3e65d576b346d55",
+  "classes": [
+    "exact-solved",
+    "same-attempted-target",
+    "restricted-model-overlap",
+    "useful-method-transfer",
+    "thematic-only",
+    "insufficient-evidence"
+  ],
+  "researchRoundsExecutedByThisAgent": 0
+}

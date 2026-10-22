@@ -1,0 +1,16 @@
+{
+  "schema": "energy-round2-sources/1",
+  "accessed": "2026-10-22",
+  "sources": [
+    {
+      "id": "lindblad-1975",
+      "title": "Completely positive maps and entropy inequalities",
+      "author": "Göran Lindblad",
+      "journal": "Communications in Mathematical Physics 40, 147–151 (1975)",
+      "doi": "10.1007/BF01609396",
+      "url": "https://link.springer.com/article/10.1007/BF01609396",
+      "readingDepth": "Publisher abstract and bibliographic metadata; the full proof was not re-audited.",
+      "role": "Established relative-entropy data processing used with the explicitly Gibbs-preserving composed channel. This is a prior theorem, not a result discovered by the panel."
+    }
+  ]
+}

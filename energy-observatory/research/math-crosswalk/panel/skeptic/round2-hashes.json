@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "round": 2,
+  "status": "completed; two research rounds only",
+  "createdUtc": "2026-10-22T04:10:31.251155+00:00",
+  "scope": "Artifact integrity and exact review scope only; not a blanket mathematical or physical certificate.",
+  "files": [
+    {
+      "path": "independent-gate.md",
+      "sha256": "5f4226309fd04f975f066c54eeed96ac605f8d0651acd948f3e65d576b346d55"
+    },
+    {
+      "path": "gate-freeze.json",
+      "sha256": "67673f838198f68d9b0836ec44da946e751613811cd84dcd7b7ee0c470fc7fca"
+    },
+    {
+      "path": "round1.md",
+      "sha256": "f2be32f31c2ecb7486b2821c42099d935029d3a5e262555ecdc1dd3067aa1e94"
+    },
+    {
+      "path": "round1-freeze.json",
+      "sha256": "8d6be8ab8e77df6c07fab27d40bc3b301d368a940606e25d544093edff3074f4"
+    },
+    {
+      "path": "round2-candidate-contract.json",
+      "sha256": "eaf8106c643b62620897f104ad320b9367bb2744d541afe3f9d62ba08b92806e"
+    },
+    {
+      "path": "round2-independent-fixtures.json",
+      "sha256": "262582bed704ce59014937557cc678ee0931ea609296d2e7bb4a7f8aadb0e657"
+    },
+    {
+      "path": "round2-fixture-freeze.json",
+      "sha256": "35bdf840d44d0d5f0582373db17fff69ad509af9a0a0b30a320c909e7774af9e"
+    },
+    {
+      "path": "round2_checks.py",
+      "sha256": "f6d02d7e008dad1ab7bd953a61cb994bcbab7ba9dede528f8e2fde8ada0b3856"
+    },
+    {
+      "path": "round2-results.json",
+      "sha256": "a18ae07041085e957fd11673d9e87483e42e76e1fe97e2847d57e95c4b76afb0"
+    },
+    {
+      "path": "cross_review.py",
+      "sha256": "11efc57d8aae29e25fca78f4cf29f2bba8ae209ec8fbb4e733270aed35715511"
+    },
+    {
+      "path": "cross-review-results.json",
+      "sha256": "4a6bac3c92e2b8cc098f58cd6e375da1f9e0dd4892087bee1b21326fb83dfd8c"
+    },
+    {
+      "path": "round2.md",
+      "sha256": "e8a8c044e26793876f1e33965b61eb9e47ee75e6bb17e9cac5c3c04bb260fdc0"
+    },
+    {
+      "path": "peer-review-findings.json",
+      "sha256": "fba302904218547c19beb2b3224f47bd17f2156068f994be345a1a060469661f"
+    },
+    {
+      "path": "round2-source-bindings.json",
+      "sha256": "a061875df0d30abd58e9f22fac8f22781cc542a8b9c23617d42ddd974b2a414f"
+    }
+  ]
+}

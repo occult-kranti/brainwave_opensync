@@ -1,0 +1,175 @@
+{
+  "schema": "energy-roadmap-review-candidates/1",
+  "stage": "review",
+  "date": "2026-10-22",
+  "implementationAuthorizedAtThisStage": false,
+  "baselineReportSha256": "47f73c2253f0a19a225c18bd11d15da69d8b9cf1d9b086390429414317d606c4",
+  "skills": [
+    "tesla-mechanism-resonance",
+    "resonance-research-advisor"
+  ],
+  "recommendation": "Prioritize E2, use E1 as a small separately provable component, keep E3 optional. No free reset or source-free-energy interpretation.",
+  "sources": [
+    {
+      "id": "thermal-baseline",
+      "path": "math-crosswalk/panel/energy/round2.md",
+      "readingDepth": "Complete own report and associated implementation; consolidated report read in full.",
+      "role": "Validated ideal-channel baseline, not device evidence."
+    },
+    {
+      "id": "openai-276",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/build/paper.tex",
+      "readingDepth": "Previously read lines1\u2013295 and complete lean/docs/276.md scope; no full proof audit or Lean execution.",
+      "role": "Exact generalized damping channel map; proposed work is not its capacity theorem."
+    },
+    {
+      "id": "openai-273",
+      "url": "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/The-entropy-photon-number-inequality-September-24-2026/build/sections/00-introduction.tex",
+      "readingDepth": "Previously read first160lines including theorem/product-input assumptions and complete lean/docs/273.md scope.",
+      "role": "Motivates a thermal-Gaussian special-case admission test; generic EPnI proof not adopted."
+    },
+    {
+      "id": "li-2025",
+      "url": "https://arxiv.org/abs/2506.16881",
+      "doi": "10.1103/ptr1-59tv",
+      "readingDepth": "Abstract and publication metadata rechecked; earlier project quantum review inspected selected text.",
+      "role": "Experimental coherent-ergotropy motivation; published control-cost metric is not full apparatus electricity."
+    },
+    {
+      "id": "vetrano-2026",
+      "url": "https://arxiv.org/abs/2605.27369",
+      "readingDepth": "Abstract and submission metadata only; v1 preprint, no full reproduction.",
+      "role": "Current thermal-channel work-functionals context; no detailed theorem imported."
+    },
+    {
+      "id": "lindblad-1975",
+      "url": "https://link.springer.com/article/10.1007/BF01609396",
+      "readingDepth": "Publisher abstract and metadata inspected; full proof not re-audited.",
+      "role": "Established relative-entropy contraction used in an explicitly Gibbs-preserving finite model."
+    },
+    {
+      "id": "hymas-2026",
+      "url": "https://www.nature.com/articles/s41377-026-02240-6",
+      "readingDepth": "Publisher abstract and introduction; not full raw-data/methods audit.",
+      "role": "Actual incident-light-to-electricity conversion illustrates why energy inputs belong in the cycle ledger."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "energy-E1",
+      "priority": 2,
+      "title": "Exact work lost to energy-basis dephasing at fixed post-damping population",
+      "status": "review proposal; no new implementation or measurements",
+      "kind": "Mathematical lemma plus small code certificate",
+      "priorUnresolvedGap": "Existing grid validates ergotropy values but has not packaged an all-parameter monotonicity/loss bound or handled its degenerate differentiability endpoint in a reusable certificate.",
+      "target": "For fixed p_star and coherence magnitude c_star allowed by a qubit state, W(d)=epsilon/2*(2*p_star-1+sqrt((1-2*p_star)^2+4*d^2*|c_star|^2)). Prove 0<=W(1)-W(d)<=epsilon*|c_star|*(1-d) for 0<=d<=1, with strict loss iff d<1 and c_star!=0.",
+      "assumptions": [
+        "Fixed positive energy gap and energy-basis dephasing; p_star does not change during this step.",
+        "p_star=(1-gamma)*p+gamma*nu and c_star=sqrt(1-gamma)*c may come from the accepted thermal channel.",
+        "Ergotropy permits arbitrary cyclic unitary control; no statement about actual control electricity or restricted-device work."
+      ],
+      "mathematicalDeliverable": "Short algebraic proof, equality/degeneracy cases and a statement of work accessibility versus unchanged mean energy.",
+      "codeTask": "A separately scoped certificate and operator-based check of chosen extraction unitaries; no replacement of the accepted calculator.",
+      "measuredExperiment": "Protocol only: repeat state tomography and extraction at a fixed calibrated population while varying dephasing; hardware/access, readout calibration and control-energy measurement are prerequisites. No data collection is currently authorized or presumed available.",
+      "acceptance": [
+        "Prove the continuum inequality algebraically, including c_star=0 and p_star=1/2; do not treat a sampled grid as the proof.",
+        "An independently selected finite rational/symmetric set agrees with direct Hermitian eigenvalues and unitary energy extraction.",
+        "Keep mean energy unchanged while work decreases under stronger dephasing."
+      ],
+      "wrongControls": [
+        "Reject W=E for the diagonal passive p_star=1/4 state.",
+        "Expose a derivative implementation that divides by the zero Bloch length at p_star=1/2,d=0.",
+        "Reject the assertion that damping itself preserves population when nu differs from p."
+      ],
+      "sources": [
+        "thermal-baseline",
+        "openai-276",
+        "li-2025",
+        "vetrano-2026"
+      ],
+      "feasibility": "Closed-form 2x2 algebra; no external proof adoption or new hardware required for lemma/code.",
+      "estimate": "About half a focused day for derivation, implementation and independent review; CPU seconds. Hardware protocol only.",
+      "stopRule": "Stop after the algebraic proof and a frozen independent check pass; if restricted controls are required, open a separate model rather than silently reusing ergotropy."
+    },
+    {
+      "id": "energy-E2",
+      "priority": 1,
+      "title": "Single-temperature full-cycle resource certificate with explicit reset and correlations",
+      "status": "review proposal; no new implementation or measurements",
+      "kind": "Mathematical cycle bound plus finite-dimensional ledger",
+      "priorUnresolvedGap": "The accepted channel measures signed exchange for one use but omits preparation, bath re-preparation, switching, measurement and reset. A reduced battery state also loses joint correlations needed for a reset claim.",
+      "target": "For a fixed finite-dimensional Hamiltonian, one full-rank positive-temperature Gibbs reference tau, and an otherwise closed cycle returning all auxiliary states and correlations, certify total work supplied minus work extracted >=0. Restricted one-qubit corollary: W_erg(Phi(rho)) <= F_beta(rho)-F_beta(tau) <= required preparation work, for Gibbs-preserving Phi.",
+      "assumptions": [
+        "0<nu<1/2 fixes one bath temperature; H=diag(0,epsilon) and beta*epsilon=log((1-nu)/nu).",
+        "No second temperature, inverted bath, unreturned phase reference, consumed measurement record or unrecorded controller resource. If present, record its resource change and abstain from the single-bath claim.",
+        "Average-work free-energy bounds are necessary bounds, not a claim of exact finite-copy attainability.",
+        "Initial implementation uses the existing equal-gap two-qubit exchange dilation with d=1; dephasing/controller environments may be added only when their bookkeeping is explicit.",
+        "The joint reset state includes correlations: F(omega_SB)=F(omega_S)+F(omega_B)+k_B*T*I(S:B) for a noninteracting endpoint Hamiltonian."
+      ],
+      "mathematicalDeliverable": "Telescoping nonequilibrium free-energy inequality, explicit one-qubit corollary, and conditions for resource closure.",
+      "codeTask": "Record states and energy/entropy/free-energy changes across preparation, exchange, local extraction and joint reset. Include mutual information and lower bounds on signed reset work; do not assume resetting must always cost positive work or silently set its hardware cost to zero.",
+      "measuredExperiment": "A calibrated one-cycle protocol and accounting schema only. Actual control/preparation/refrigeration/switching meters and state reconstructions are needed before any apparatus-efficiency estimate. Missing channels must return incomplete ledger, not a numeric efficiency.",
+      "acceptance": [
+        "Prove the finite-dimensional free-energy identity and its telescoping cycle bound before using a sweep.",
+        "For the declared one-qubit channel, verify W_erg <= deltaF_preparation on independently frozen ordinary-bath examples.",
+        "For the joint two-qubit model, account for every endpoint and correlation term; show resetting marginals alone is not joint closure.",
+        "Allow a signed reset-work bound and explicit heat/entropy exchange; distinguish mathematical lower bounds from measured cost.",
+        "A complete ledger can support the bound, while an incomplete ledger returns abstention with missing ports listed."
+      ],
+      "wrongControls": [
+        "Omit bath re-preparation and obtain an apparent repeatable gain; ledger must flag a missing operation/resource.",
+        "Set nu>1/2 or use two different temperatures but label it a single ordinary bath; reject the premise rather than the physical possibility of driven work.",
+        "Replace a correlated joint state by the product of its marginals without recording the lost mutual-information free energy.",
+        "Identify a preparation lower bound with measured or necessarily attainable hardware energy."
+      ],
+      "sources": [
+        "thermal-baseline",
+        "openai-276",
+        "lindblad-1975",
+        "li-2025",
+        "vetrano-2026",
+        "hymas-2026"
+      ],
+      "feasibility": "At most4x4 matrices and established finite-dimensional free-energy identities; useful completion of the existing ledger without attempting channel capacity or new thermodynamics.",
+      "estimate": "One to two focused days for a bounded MVP and independent review; no hardware purchase required. Full apparatus measurement depends on external lab access.",
+      "stopRule": "Stop with a conditional mathematical certificate and explicit incomplete-hardware status. Do not optimize an efficiency until all physical input/reset channels are measured."
+    },
+    {
+      "id": "energy-E3",
+      "priority": 3,
+      "title": "Thermal bosonic beam-splitter bridge and a correlated-input countercontrol",
+      "status": "optional review proposal; no new implementation or measurements",
+      "kind": "Restricted Gaussian lemma plus covariance validation",
+      "priorUnresolvedGap": "Family273 has no current bosonic-mode counterpart in the repository; product-input hypotheses and entropy photon number could otherwise be confused with real generated energy.",
+      "target": "For two independent same-frequency thermal bosonic inputs with means N_A,N_B>=0, show a passive beam splitter yields N_C=eta*N_A+(1-eta)*N_B and N_D=(1-eta)*N_A+eta*N_B, preserves total energy, and saturates the thermal EPnI special case. Exhibit a physical correlated input with identical thermal marginals that violates the product-input conclusion when that premise is omitted.",
+      "assumptions": [
+        "One mode per port, same frequency, finite mean number, passive beam splitter and no pump port.",
+        "Independent thermal inputs for the equality statement; the correlated countercontrol is deliberately outside that premise.",
+        "Quadratures use vacuum covariance I/2; all modeled Gaussian covariances must satisfy the uncertainty relation.",
+        "No claim about non-Gaussian inputs, arbitrary multimode EPnI, capacity or a quantum-to-classical sound conversion."
+      ],
+      "mathematicalDeliverable": "Covariance proof for thermal product inputs and an analytic correlated coherent-mixture countercontrol: a=alpha,b=-alpha with complex Gaussian alpha, balanced sum port vacuum and other port mean2N.",
+      "codeTask": "Small4x4 covariance model with symplectic, uncertainty, total-energy and thermal-entropy checks; avoid claiming that a finite Fock cutoff certifies infinite-dimensional entropy.",
+      "measuredExperiment": "A thermal-light/beam-splitter protocol could later measure output powers and covariances with independently calibrated ports; correlated RF-noise cancellation is only a classical energy-accounting analogue and must not be reported as a quantum entropy measurement. No apparatus is assumed available.",
+      "acceptance": [
+        "Prove product-thermal equality using g(N)=(N+1)log(N+1)-NlogN and the output thermal marginals.",
+        "Check symplectic beam-splitter maps, covariance positivity/uncertainty and total power conservation.",
+        "For correlated marginals with N>0 and eta=1/2, demonstrate N_C=0 while the product-input RHS=N; label the failed independence assumption.",
+        "Keep frequency conversion/pumped cases outside the passive same-frequency certificate."
+      ],
+      "wrongControls": [
+        "Drop cross-covariance and falsely classify the correlated input as a product.",
+        "Count destructive interference at one port as missing energy while ignoring the second output.",
+        "Use sub-vacuum isotropic covariance as a physical thermal state; uncertainty gate must reject."
+      ],
+      "sources": [
+        "openai-273",
+        "lindblad-1975",
+        "hymas-2026"
+      ],
+      "feasibility": "Gaussian covariance algebra is closed form; it tests a precise missing premise without depending on the unreviewed full EPnI proof. Lower priority than closing the existing thermal ledger.",
+      "estimate": "One focused day for a restricted module/proof and independent review; experimental realization separately gated.",
+      "stopRule": "Stop at the thermal Gaussian special case and its countercontrol. Any non-Gaussian/Fock extension requires a new input-energy and truncation-error contract."
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "stage": "plan2",
+  "id": "corpus-C1",
+  "priority": "P0",
+  "class": "engineering-or-verification-task",
+  "noveltyLabel": "Project evidence infrastructure; no new mathematical result",
+  "exactQuestion": "Can the existing graph consume five exact-statement records while reliably refusing unsupported transitions among documentary matching, semantic review, proof execution and experimental evidence?",
+  "baselineAlreadyDone": "Five source-scope annotations, 17 documentary controls, corrected 372-family/719-manuscript inventory and a consolidated typed network. Zero Lean proofs executed.",
+  "distinctNewObjective": "A finite versioned schema, migration and shared claim-ID bindings with provenance-sensitive evidence validation; no second authority for proof truth.",
+  "premises": [
+    "Use only frozen exact source records and corrected inventory.",
+    "Agent-written statements are documentary annotations, not semantic certificates.",
+    "Proof receipts record observed execution, not imported labels or assumed correctness."
+  ],
+  "hypothesisLedger": [
+    {
+      "premise": "Five scope records match selected pinned source declarations",
+      "status": "Documentary matches already inspected",
+      "source": "research/math-crosswalk/panel/corpus/scope-records.json"
+    },
+    {
+      "premise": "Compiler success proves fidelity to intended mathematics",
+      "status": "Rejected; separate reviewer record required"
+    },
+    {
+      "premise": "An imported log establishes locally observed execution",
+      "status": "Rejected; label external-reported unless runner observation is recorded"
+    },
+    {
+      "premise": "Graph edges establish theorem equivalence",
+      "status": "Rejected; links resolve claim IDs only"
+    }
+  ],
+  "schema": {
+    "statement": [
+      "id",
+      "sourceCommit",
+      "manuscriptPath",
+      "manuscriptHashWhenRetrieved",
+      "declaration",
+      "objects",
+      "domain",
+      "boundaryData",
+      "quantifiers",
+      "observable",
+      "limits",
+      "conclusion",
+      "readingDepth",
+      "reviewerKind",
+      "sourceRefs"
+    ],
+    "evidence": [
+      "documentary:matched|mismatch|unknown",
+      "semanticReview:unreviewed|agent-reviewed|human-reviewed",
+      "proofExecution:not-run|external-reported|locally-passed|failed|incomplete",
+      "physicalEvidence:none|simulated|measured"
+    ],
+    "proofReceipt": [
+      "statementRecordHash",
+      "declaration",
+      "solutionSourceHash",
+      "toolchain",
+      "dependencyLockHash",
+      "commandArguments",
+      "workingDirectory",
+      "startedAt",
+      "finishedAt",
+      "exitStatus",
+      "stdoutHash",
+      "stderrHash",
+      "observedAxioms",
+      "axiomPolicy",
+      "runnerObservation",
+      "reviewerConclusion"
+    ],
+    "receiptSemantics": "A locally-passed label requires observed execution for this exact declaration/source/dependency tuple, successful checker result and recorded axiom-policy check. Timeout, unsupported axioms, missing output or a fixture receipt cannot pass. This says kernel/checker acceptance of an encoded statement, not semantic fidelity, external theorem reproduction or physical correctness.",
+    "provenance": "Agent and human reviewer kinds remain explicit; imported reports are not local execution. Never infer a missing content hash or review."
+  },
+  "migration": {
+    "sourceRecords": 5,
+    "sourcePath": "research/math-crosswalk/panel/corpus/scope-records.json",
+    "inventory": "research/math-crosswalk/panel/corpus/inventory-round2.json",
+    "claimMap": [
+      "YM-215 -> 215-finite-correlation as limited companion coverage, not headline coverage",
+      "energy-276 -> 276-repeated",
+      "acoustics-openai365 -> 365-conductivity as different-companion warning",
+      "acoustics-openai372 -> 372-full-map",
+      "342-legacy remains a version-control fixture; no new physics relevance edge"
+    ],
+    "otherClaims": "Retain all other existing claims and statuses; do not invent proof records for them.",
+    "history": "Preserve math-crosswalk files; new registry records carry hashes and explicit supersedes references."
+  },
+  "steps": [
+    {
+      "order": 1,
+      "action": "Freeze exact input hashes and schema with reviewer/evidence enums; list unresolved semantic questions."
+    },
+    {
+      "order": 2,
+      "action": "Migrate five records without changing scope; produce a claim-ID-to-registry-ID link map for the existing network."
+    },
+    {
+      "order": 3,
+      "action": "Implement validation and receipt consistency only; fixture receipts are visibly test-only and cannot establish local proof status."
+    },
+    {
+      "order": 4,
+      "action": "Run reused controls and frozen new adversarial fixtures; independently review status display and graph references."
+    }
+  ],
+  "artifactPaths": [
+    "research/claim-registry/schema.json",
+    "research/claim-registry/records.json",
+    "research/claim-registry/graph-bindings.json",
+    "research/claim-registry/validate.py",
+    "research/claim-registry/fixtures.json",
+    "research/claim-registry/verification.json"
+  ],
+  "proposedProofOrTest": "Finite schema validation and adversarial evidence-transition tests; no Lean build is included in this task.",
+  "positiveControl": "Exact pinned metadata match remains documentary matched with proofExecution not-run; source reading depth and provenance survive migration.",
+  "decisiveCountercontrol": "Reject a well-formed receipt that belongs to a different declaration/source hash even if its exit code is zero. Also reject family-wide badge transfer, test-only receipts and unsupported human-review provenance.",
+  "unseenWrongFixture": "Skeptic freezes a receipt/statement mutation before implementation and withholds its payload from the implementer until acceptance execution.",
+  "evidenceRequiredForAcceptance": [
+    "Five migrated records preserve all reviewed assumptions and limitations.",
+    "No dangling graph/claim references or implicit headline proof badges.",
+    "Unknown evidence abstains; every forbidden promotion fixture fails.",
+    "Actual validator execution log, fixture manifest hashes and independent reviewer receipt are saved.",
+    "ProofExecution remains not-run for all migrated records absent a separately authorized real checker run.",
+    "Frozen R1–R7 controls are run by the actual validator with expected failures/abstention; their synthetic status is preserved.",
+    "Graph adapter resolves the frozen exact IDs without changing any existing theorem-equivalence claim.",
+    "No migrated record gets locally-passed status in this task; no proof checker run is planned."
+  ],
+  "resourcesAndPrerequisites": {
+    "effortCapAgentHours": 4,
+    "computeCapMinutes": 15,
+    "memoryCapGiB": 2,
+    "gpu": false,
+    "runtime": "Existing project Python 3; JSON and standard library only unless schema dependency is explicitly pinned at implementation admission.",
+    "prerequisites": [
+      "Existing input files readable and frozen",
+      "Skeptic fixture frozen",
+      "Methods agrees proof-receipt semantics"
+    ],
+    "unchangedFromPlan1": true
+  },
+  "independentReview": {
+    "skeptic": "Withheld adversarial fixture and provenance/status check",
+    "methods": "Execution receipt/axiom semantics and semantic-fidelity separation",
+    "advisor": "No graph claim strengthened by migration"
+  },
+  "stopRule": "Unchanged cap: four agent-hours, fifteen CPU minutes, two GiB, no GPU. Stop early on disputed semantics or unavailable pins; at the first failed withheld acceptance case preserve failure for a separately admitted correction. Do not expand to corpus proof builds. This final planning stage ends after these files.",
+  "limits": [
+    "Planning only; no code or simulations executed now.",
+    "No automated semantic theorem equivalence.",
+    "No proof checker or all-719 audit promised.",
+    "No new physical measurements or solved grand challenge.",
+    "Synthetic receipt fixtures are not actual failed or successful OpenAI proof executions.",
+    "Prior REVIEW and Plan1 remain unchanged."
+  ],
+  "sourcesReused": [
+    "research/math-crosswalk/report.md",
+    "research/math-crosswalk/data/crosswalk.json",
+    "research/math-crosswalk/panel/corpus/round2.md",
+    "research/math-crosswalk/panel/corpus/round2-sources.json",
+    "research/math-crosswalk/panel/corpus/scope-records.json"
+  ],
+  "status": "Final bounded engineering plan; implementation not performed",
+  "objectionRevisionGates": [
+    {
+      "objection": "A schema-valid stale or transplanted zero-exit log might be associated with the wrong theorem.",
+      "revision": "Freeze exact declaration/source/dependency mismatch controls and require runner-observed association to the exact statement tuple.",
+      "remainingGate": "Actual future validator rejects all frozen cases and a skeptic-withheld case."
+    },
+    {
+      "objection": "Successful exit does not establish acceptable axioms.",
+      "revision": "Freeze observed sorryAx against the declared allowed-axiom set; absence of an observed axiom report abstains.",
+      "remainingGate": "Methods reviews axiom-policy semantics; no actual Lean execution is included."
+    },
+    {
+      "objection": "Imported receipt provenance could silently become local execution.",
+      "revision": "Keep origin immutable. Imported remains external-reported even if all fields match; only a new observed runner event can create a separate local receipt.",
+      "remainingGate": "Status renderer and graph adapter are tested against attempted provenance promotion."
+    },
+    {
+      "objection": "Generic graph links risk conflating companion and headline coverage.",
+      "revision": "Freeze exact existing node IDs and warning/selected-scope relation types; never change sameTheoremEstablished or project proof status.",
+      "remainingGate": "All mapped IDs resolve and advisor confirms no claim strengthened."
+    }
+  ],
+  "graphBindings": [
+    {
+      "recordId": "215-finite-correlation",
+      "claimId": "YM-215",
+      "externalNode": "YM-215-external",
+      "missingNode": "YM-215-missing",
+      "relation": "companion-scope-warning",
+      "noCoverageOf": "Canonical continuum headline"
+    },
+    {
+      "recordId": "276-repeated",
+      "claimId": "energy-276",
+      "externalNode": "energy-276-external",
+      "missingNode": "energy-276-missing",
+      "relation": "selected-declaration-scope-only",
+      "noCoverageOf": "Arbitrary different partner, separate decoding, project ergotropy or apparatus cycle"
+    },
+    {
+      "recordId": "365-conductivity",
+      "claimId": "acoustics-openai365",
+      "externalNode": "acoustics-openai365-external",
+      "missingNode": "acoustics-openai365-missing",
+      "relation": "different-companion-warning",
+      "noCoverageOf": "Headline smooth metric/connection uniqueness"
+    },
+    {
+      "recordId": "372-full-map",
+      "claimId": "acoustics-openai372",
+      "externalNode": "acoustics-openai372-external",
+      "missingNode": "acoustics-openai372-missing",
+      "relation": "selected-declaration-scope-only",
+      "noCoverageOf": "Finite measured peaks or reconstruction algorithm"
+    },
+    {
+      "recordId": "342-legacy",
+      "claimId": null,
+      "externalNode": null,
+      "missingNode": null,
+      "relation": "version-fixture-only",
+      "noCoverageOf": "Current October6 manuscript without documented bridge"
+    }
+  ],
+  "graphPolicy": {
+    "source": "research/math-crosswalk/data/network.json",
+    "updates": "Add a separate binding file consumed by the existing graph; preserve all old nodes/edges and sameTheoremEstablished:false.",
+    "forbidden": "No inheritance onto *-ours or test-* nodes; no family-wide badge; unresolved ID blocks integration."
+  },
+  "frozenReceiptControls": {
+    "status": "Fixture specifications frozen in planning; synthetic, unexecuted and permanently non-evidentiary",
+    "expectedTuple": {
+      "declaration": "OAI.GAD.main",
+      "solutionSourceHash": "b25731648cc19a59399066a0f94f14faceabdde114fb3d4542db2829ce0fa4a3",
+      "dependencyLockHash": "130d7e5b923ef9fc3a1735e2c3cfbc5c263bcfedd40b71f75e7d52e5ec7a6ef2",
+      "statementRecordHash": "470b30d5fc4f5205a37b4325c5361b1e4127de56792bca85e02f6614a45274f7"
+    },
+    "commonReceipt": {
+      "fixtureOnly": true,
+      "origin": "imported",
+      "exitStatus": 0,
+      "stdoutHash": "b31f0ea42a735f3da5f76b3cf5515e92a75eae2da03d4d7514d6862f3ea5906c",
+      "observedAxioms": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "axiomPolicy": [
+        "propext",
+        "Quot.sound",
+        "Classical.choice"
+      ],
+      "runnerObservation": null
+    },
+    "cases": [
+      {
+        "id": "R1-transplanted-declaration",
+        "replace": {
+          "declaration": "OAI.ClassicalON.main"
+        },
+        "expected": "Reject statement association; no local proof status"
+      },
+      {
+        "id": "R2-stale-source",
+        "replace": {
+          "solutionSourceHash": "e962fb00877b1d614a1041c7b0671289ec5f2eea06f1d92029f848c89eef014d"
+        },
+        "expected": "Reject source association despite zero exit"
+      },
+      {
+        "id": "R3-stale-dependency",
+        "replace": {
+          "dependencyLockHash": "f11a0541c9fd9813d5e460e44a429d65e57fd3d8ddeb25a01636d0aefd27950d"
+        },
+        "expected": "Reject dependency association despite zero exit"
+      },
+      {
+        "id": "R4-disallowed-axiom",
+        "replace": {
+          "observedAxioms": [
+            "propext",
+            "Quot.sound",
+            "Classical.choice",
+            "sorryAx"
+          ]
+        },
+        "expected": "Reject axiom-policy admission; do not infer theorem falsehood"
+      },
+      {
+        "id": "R5-imported-provenance-promotion",
+        "replace": {
+          "requestedProofExecution": "locally-passed"
+        },
+        "expected": "Refuse local status; imported receipt origin remains imported"
+      },
+      {
+        "id": "R6-missing-axiom-report",
+        "replace": {
+          "observedAxioms": null
+        },
+        "expected": "Abstain; no accepted axiom-policy result"
+      },
+      {
+        "id": "R7-fixture-used-as-proof",
+        "replace": {
+          "requestedProductionEvidence": true
+        },
+        "expected": "Reject fixture as production proof evidence"
+      }
+    ],
+    "positiveControl": "Exact metadata retains documentary match and proof not-run. An imported matching receipt can pass schema/association validation only as test data; it never supplies local execution.",
+    "withheldControl": "Skeptic freezes one additional payload independently before any implementation, with only its hash disclosed to the producer until acceptance testing."
+  },
+  "proofOriginPolicy": "Origin is an immutable event attribute. Relabeling, copying, rehashing or schema validation of an imported receipt cannot establish local observation. A separately executed checker event is required and remains independently scoped.",
+  "finalRemainingGates": [
+    "Advisor implementation admission",
+    "Readable frozen source/graph inputs",
+    "Methods receipt and axiom-policy review",
+    "Skeptic withheld fixture frozen",
+    "Actual implementation/test logs after admission; none exists from this planning stage"
+  ]
+}

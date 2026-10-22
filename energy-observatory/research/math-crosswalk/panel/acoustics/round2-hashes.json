@@ -1,0 +1,10 @@
+{
+  "scope": "Exact producer, independent checker, frozen contract, results and imported production source bytes; no unrelated repository files certified",
+  "files": {
+    "energy-observatory/research/math-crosswalk/panel/acoustics/round2-contract.json": "1dcd784898d0cff9a4585d1bcf60eba773ce61c0f5959f66c23e63a0f1d0276f",
+    "energy-observatory/research/math-crosswalk/panel/acoustics/production-probe.mjs": "06cad8a3fd84c74106de96308930044f1ce1612a310c83de328695fd672e2971",
+    "energy-observatory/research/math-crosswalk/panel/acoustics/verify_scaling.py": "3f54535b930785cde36693fb85a99edbde666a465396635fcf588c8d8a22d7bc",
+    "energy-observatory/research/math-crosswalk/panel/acoustics/round2-results.json": "6e42f875d651ac1c6bb2cfe6329d2b30eb43b5aba42409806b246e41d59c36ef",
+    "location-spectrum/src/models.mjs": "2371578a26dba7cdb580940c8cd64b7fa361a3ec2ee2d52581a6fa8fba2445fe"
+  }
+}

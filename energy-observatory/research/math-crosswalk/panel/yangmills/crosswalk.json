@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "round": 1,
+  "review_date": "2026-10-22",
+  "scope": "Selected theorem-level comparisons for families 215,265,270, plus exact prior continuum target. Other families not assessed at proof level.",
+  "counts": {
+    "exact_openai_matches_solved_evidenced": 0,
+    "exact_openai_matches_attempted_evidenced": 0,
+    "selected_families": 3
+  },
+  "repository_network": {
+    "nodes": 489,
+    "edges": 785,
+    "openai_node_text_matches": 0,
+    "path": "research/round33/network.json"
+  },
+  "comparisons": [
+    {
+      "id": "YM-215",
+      "openai_family": "215",
+      "classification": "related model",
+      "secondary_classification": "method transfer",
+      "exact_solved": false,
+      "exact_attempted_evidence": false,
+      "openai_statement": "Canonical continuum limit of 2D nearest-neighbor O(3) spins at beta\u2192infinity, with field normalization, Schwinger convergence, OS reconstruction, positive gap and non-Gaussianity; formalization scope only finite-domain O(n) correlation decay.",
+      "our_evidence": [
+        "ym-bb2",
+        "ym-az1",
+        "ym-network"
+      ],
+      "our_result": "Fixed-spacing Z^3 SU(2) patterned model: named-box whole-sequence state limit and inherited representation gap alpha/16. Uniform route-B fixed-a strong-coupling certificate has an explicit weak-coupling admission obstruction.",
+      "missing_bridge": [
+        "Different dimension, fields and action: S\u00b2 spins vs SU(2) gauge links",
+        "No cutoff-uniform estimates or admissible g(a)\u21920 trajectory for present certificate",
+        "Same-field continuum normalization, reconstruction and nontriviality must be supplied",
+        "Finite-domain formalization cannot be promoted to continuum proof"
+      ],
+      "sources": [
+        "oa215",
+        "oa215lean",
+        "ym-bb2",
+        "ym-az1"
+      ],
+      "transfer_proposal": "Use canonical length/field normalization and the separate field/gap/reconstruction obligations as a review template; no constants or theorem conclusions imported."
+    },
+    {
+      "id": "YM-265",
+      "openai_family": "265",
+      "classification": "method transfer",
+      "exact_solved": false,
+      "exact_attempted_evidence": false,
+      "openai_statement": "Entanglement entropy area law for finite induced Z\u00b2 graph with fixed finite local dimension q, bounded finite-range interactions, unique ground vector and assumed uniform global spectral gap.",
+      "our_evidence": [
+        "ym-bb2",
+        "ym-findings"
+      ],
+      "our_result": "Reduced-state trace-norm locality and Wilson-loop area parity in fixed-spacing SU(2) model.",
+      "missing_bridge": [
+        "2D finite-q bounded terms differ from Z\u00b3 infinite-dimensional SU(2) link Hilbert spaces and unbounded electric terms",
+        "Global spectral gap is a premise, not an output",
+        "Entanglement entropy area law is not Wilson-loop confinement area law",
+        "Any truncation requires q-dependent constants and cutoff removal"
+      ],
+      "sources": [
+        "oa265",
+        "ym-bb2",
+        "ym-findings"
+      ],
+      "transfer_proposal": "Consider conditional-information or tensor approximations only in a separately specified finite-q planar truncation; existence does not provide efficient tensor construction."
+    },
+    {
+      "id": "YM-270",
+      "openai_family": "270",
+      "classification": "related model",
+      "exact_solved": false,
+      "exact_attempted_evidence": false,
+      "openai_statement": "For undeformed supersymmetric SU(N) BFSS on gauge-invariant L\u00b2(R^(9(N\u00b2\u22121)))\u2297fermions, every fixed N\u22652 has a one-dimensional zero kernel at the threshold of continuous spectrum.",
+      "our_evidence": [
+        "ym-network"
+      ],
+      "our_result": "SU(2) lattice gauge-invariant spectral analysis and representation-specific vacuum simplicity.",
+      "missing_bridge": [
+        "0+1D supersymmetric matrix quantum mechanics differs from pure 3+1D Yang\u2013Mills",
+        "Threshold zero eigenstate coexists with continuum starting at zero; it does not yield a positive spectral gap",
+        "Finite-N constants are not uniform in rank or continuum cutoff"
+      ],
+      "sources": [
+        "oa270",
+        "ym-network"
+      ],
+      "transfer_proposal": "Retain full operator domain and norm-exhaustion checks when using deformations; no direct theorem transfer."
+    },
+    {
+      "id": "YM-CLAY",
+      "openai_family": null,
+      "classification": "exact attempted",
+      "exact_solved": false,
+      "exact_attempted_evidence": true,
+      "openai_statement": "Not located as an OpenAI catalogue problem; Clay 4D continuum Yang\u2013Mills existence and mass gap.",
+      "our_evidence": [
+        "ym-network",
+        "ym-az1"
+      ],
+      "our_result": "Explicit open parent goal; accepted finite and fixed-spacing subproblems.",
+      "missing_bridge": [
+        "Nontrivial continuum QFT on R4 with required axioms",
+        "Physical mass scale and gap on same continuum fields",
+        "Uniform control along a valid continuum trajectory"
+      ],
+      "sources": [
+        "clay",
+        "ym-network",
+        "ym-az1"
+      ],
+      "transfer_proposal": "Keep open-continuum node open and add proposed-transfer edges from 215 rather than solved-equivalence edges."
+    }
+  ],
+  "proposed_round2_tests": [
+    {
+      "id": "YM-T1",
+      "name": "Frozen theorem-premise transfer validator",
+      "acceptance": "Accept identity and unit-rescaling cases; reject dimension, action, local-dimension, field-normalization, boundary, cutoff-uniformity or logical-direction mismatch; reject family215 full-continuum formalization badge."
+    },
+    {
+      "id": "YM-T2",
+      "name": "Exact spectral and scale negative controls",
+      "acceptance": "Verify rational 2x2 family H_N=diag(0,1/N) has identical ground-state density but closing gap; independently rederive tau=96/g^4 admission thresholds and show unit rescaling does not repair a failing coupling inequality. No continuum inference."
+    }
+  ],
+  "round2_executed": false
+}

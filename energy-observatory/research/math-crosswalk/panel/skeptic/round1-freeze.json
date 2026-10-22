@@ -1,0 +1,28 @@
+{
+  "round": 1,
+  "status": "completed-source-and-contract-review",
+  "researchDate": "2026-10-21",
+  "recordedUTC": "2026-10-22T03:51:19.876254+00:00",
+  "newPeerReportsRead": false,
+  "round2Executed": false,
+  "LeanExecuted": false,
+  "sourcesAndClaimsScope": "Selected statements and prior project records; no exhaustive proof review",
+  "files": [
+    {
+      "path": "independent-gate.md",
+      "sha256": "5f4226309fd04f975f066c54eeed96ac605f8d0651acd948f3e65d576b346d55"
+    },
+    {
+      "path": "gate-freeze.json",
+      "sha256": "67673f838198f68d9b0836ec44da946e751613811cd84dcd7b7ee0c470fc7fca"
+    },
+    {
+      "path": "round1.md",
+      "sha256": "f2be32f31c2ecb7486b2821c42099d935029d3a5e262555ecdc1dd3067aa1e94"
+    },
+    {
+      "path": "round2-candidate-contract.json",
+      "sha256": "eaf8106c643b62620897f104ad320b9367bb2744d541afe3f9d62ba08b92806e"
+    }
+  ]
+}

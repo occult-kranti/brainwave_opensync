@@ -1,0 +1,205 @@
+{
+  "schema": 1,
+  "stage": "plan2",
+  "createdUtc": "2026-10-22T04:36:20.586006+00:00",
+  "gateSHA256": "65014255588cfb396f424e72fbb2bea442b50a5b0bd30f3671fb2cd2f806f033",
+  "status": "Final conditional planning review; no implementation or mathematical completion",
+  "producerPlan2AtCutoff": "Not yet available; no unobserved revision accepted",
+  "finalReplyConsistencyReceiptAllowed": true,
+  "decisions": [
+    {
+      "id": "corpus-P0",
+      "decision": "admissible-bounded-plan",
+      "class": "engineering",
+      "resolved": [
+        "Observed execution distinct from imported logs.",
+        "Documentary,semantic,execution and physical evidence remain independent."
+      ],
+      "remainingAcceptance": [
+        "Freeze stale/transplanted/dependency-hash/disallowed-axiom controls.",
+        "Independent withheld fixture before later implementation.",
+        "Five records and existing graph IDs only."
+      ],
+      "cap": "4 agent-hours;15 CPU-minutes;2GiB"
+    },
+    {
+      "id": "energy-E1",
+      "decision": "admissible-bounded-plan",
+      "class": "mathematical-proof-attempt",
+      "resolved": [
+        "Exact qubit domain and fixed-population step.",
+        "Degenerate endpoint and strict-loss target."
+      ],
+      "remainingAcceptance": [
+        "Reviewed all-parameter proof and equality cases.",
+        "Independent direct-unitary/eigenvalue controls."
+      ],
+      "cap": "3 producer agent-hours; shared energy review budget"
+    },
+    {
+      "id": "METHODS-1",
+      "decision": "conditional-bounded-plan",
+      "class": "engineering-verification",
+      "resolved": [
+        "Nonzero mutual inductance/transduction rational fixture.",
+        "Six-state storage/rank/loss and both input-port definitions."
+      ],
+      "conditionsForAttempt": [
+        "Enumerate every solver parameter in exact browser adapter; no hidden defaults.",
+        "Freeze F=0/RMS/SI/frequency mapping.",
+        "Signed simultaneous coordinate-and-port positive control.",
+        "Exclude time-varying Q or account for its additional storage/control term in separately admitted model."
+      ],
+      "countercontrols": [
+        "One-sided reciprocal sign",
+        "Missing mutual storage",
+        "Nonzero mechanical force power omitted",
+        "mA/A mismatch",
+        "Correct signed transform passes"
+      ],
+      "cap": "14 base agent-hours; optional Lean2h bootstrap plus4h attempt, separately parked if unavailable"
+    },
+    {
+      "id": "energy-E2",
+      "decision": "conditional-after-E1",
+      "class": "conditional-mathematics-and-ledger",
+      "resolved": [
+        "Operation identity derived before telescoping.",
+        "d=1 avoids omitted dephasing environment.",
+        "Signed reset lower bounds distinct from achieved work."
+      ],
+      "conditionsForAttempt": [
+        "Explicit reset operations and per-operation dimensions.",
+        "Track used-bath endpoint heat/entropy/correlations.",
+        "Joint-state closure beyond marginal/energy closure.",
+        "Declare ideal classical drives and unmeasured controller boundary."
+      ],
+      "countercontrols": [
+        "Correlated diag(1-nu,0,0,nu) versus product marginals",
+        "Omitted reset",
+        "Inversion/second temperature mislabeled single ordinary bath",
+        "Lower bound mislabeled actual cost"
+      ],
+      "cap": "10 producer plus shared3h review;5 CPU-minutes;512MiB;dimension8 only with explicit compatible construction"
+    },
+    {
+      "id": "acoustics-A1",
+      "decision": "conditional-bounded-plan",
+      "class": "synthetic-calibration-verification",
+      "resolved": [
+        "Single-frequency impossibility acknowledged.",
+        "Multiple/heldout frequencies and restricted gain family proposed."
+      ],
+      "conditionsForAttempt": [
+        "Freeze absolute frequency design or full adaptive covariance.",
+        "Freeze numeric uncertainty/covariance/whitening and conditioning threshold.",
+        "Specify sampled gain family with separating cases and undetectable alternatives.",
+        "Finite scenario/replicate allocation within2,000 total records."
+      ],
+      "countercontrols": [
+        "Single-point gain absorption",
+        "Duplicate channels",
+        "Gain functions identical on sampled points remain indistinguishable",
+        "Shared calibration error not independent per-bin noise"
+      ],
+      "cap": "8 calibration agent-hours;60 shared CPU-minutes;1GB;2,000 shared records"
+    },
+    {
+      "id": "acoustics-A2",
+      "decision": "park-pending-A1",
+      "class": "dependent-estimator-benchmark",
+      "conditionsForAttempt": [
+        "Accepted calibration task.",
+        "Fixed estimator, matched modes, finite nuisance/effect scenarios and scoring/abstention."
+      ],
+      "countercontrols": [
+        "Support-only shifts",
+        "Omitted mode",
+        "Gain-only or nodal suppression",
+        "Order-correlated drift"
+      ],
+      "cap": "6 additional agent-hours within acoustic compute/record caps"
+    },
+    {
+      "id": "YM-P1",
+      "decision": "conditional-bounded-proof-attempt",
+      "class": "fixed-spacing-mathematics",
+      "resolved": [
+        "Quarter-power radius, finite5..255/tail256 split and coefficient-construction rule frozen.",
+        "Failed-bound stop and no automatic fallback."
+      ],
+      "conditionsForAttempt": [
+        "Pinned-source constant/hypothesis gate before arithmetic.",
+        "Actual complete support of approximant product.",
+        "New-radius decomposition and required F2 comparison.",
+        "Certified finite interval plus analytic all-N tail."
+      ],
+      "countercontrols": [
+        "Old half-box unrestricted decay claim rejected",
+        "Support replaced by|R| rejected",
+        "Finite plot cannot certify all N"
+      ],
+      "cap": "5 producer plus3 reviewer agent-hours;10CPU-minutes;512MiB"
+    }
+  ],
+  "parked": [
+    "energy-E3",
+    "acoustics-finite-port-selection",
+    "METHODS-2",
+    "YM-P3",
+    "continuum-Yang-Mills-as-near-term-solve"
+  ],
+  "sourceBindings": [
+    {
+      "path": "advisor-plan2.md",
+      "sha256": "02173287b74e2760110f531cbced69d441131f13b62e55dd55953cb5eec86ba3"
+    },
+    {
+      "path": "planning2-admission.json",
+      "sha256": "2471d933ce52abac37334f7d9254c96496546552d75797d9113a3f7729a947a4"
+    },
+    {
+      "path": "panel/corpus/plan1.md",
+      "sha256": "62f0aefdbe0da1756a75b57682819b27691f5768fe8fd69ee23e71c27967c7e5"
+    },
+    {
+      "path": "panel/corpus/plan1.json",
+      "sha256": "4b6dd855290138be56a42745936f0d8264e7920ec19540a22351a5cabb2d55c3"
+    },
+    {
+      "path": "panel/methods/plan1.md",
+      "sha256": "4ac4d7c0d5a0fbd6d166803eabdf715cfc47fd2d28e3bd8e7d58ba066a6d37fe"
+    },
+    {
+      "path": "panel/methods/plan1.json",
+      "sha256": "ec1ab10ffb4140695fdfe431b74972d7b39d965f499877d13c66fb2be7709eac"
+    },
+    {
+      "path": "panel/energy/plan1.md",
+      "sha256": "4ca47b8ec996bef4b117a3036078d23a08685ac0cbeca98b590160a612cb3bfd"
+    },
+    {
+      "path": "panel/energy/plan1.json",
+      "sha256": "e8a8408f206b9011550ec55daf64cbb08a8e7ef2f9076d8a6fb5903dd380168b"
+    },
+    {
+      "path": "panel/acoustics/plan1.md",
+      "sha256": "d27b285ee4d6e34d4fc7e2bdc19368513f2de420699dd90b7efcad817b241f0b"
+    },
+    {
+      "path": "panel/acoustics/plan1.json",
+      "sha256": "05aeb0e234309d0d1d5f7a1cd00994ec3ea9931dfdd435de1611baec70b11cb2"
+    },
+    {
+      "path": "panel/yangmills/plan1.md",
+      "sha256": "6bac75fb9711dd2ec3e85e0cf3a10af73a3dab6538f7566630afdc55f5528258"
+    },
+    {
+      "path": "panel/yangmills/plan1.json",
+      "sha256": "822a4ca29b1ec2edfc8e2e7a0bd74caa0cc37ff5c2193666815312e39c69466a"
+    }
+  ],
+  "stop": "Review and two adaptive planning rounds completed; one later file-consistency receipt is administrative, not another round.",
+  "finalConsistencyReceipt": "final-consistency.json",
+  "finalConsistencyStatus": "All five final replies read; see receipt for resolved objections and remaining gates."
+}

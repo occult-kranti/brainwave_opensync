@@ -1,0 +1,38 @@
+{
+  "schema": "thermal-channel-frozen-inputs/1",
+  "frozenBeforeFirstExecution": true,
+  "date": "2026-10-22",
+  "baselineQuantumSha256": "ec9320c28560f80b11e65cb6eb1e08f43bed68ffdf3fd97efacd7109b2cc7b91",
+  "axes": {
+    "population": [0, 0.1, 0.25, 0.5, 0.75, 1],
+    "coherence": [0, 0.5, 1],
+    "damping": [0, 0.1, 0.5, 1],
+    "bathPopulation": [0, 0.1, 0.25, 0.5, 0.75, 1],
+    "dephasing": [0, 0.5, 1],
+    "phaseRadians": [0, 1.0471975511965976, 1.5707963267948966, 3.141592653589793]
+  },
+  "frequencyHz": 5000000000,
+  "expectedCases": 5184,
+  "tolerance": {
+    "dimensionlessAbsolute": 2e-12,
+    "entropyProductionNegativeSlack": 2e-12,
+    "wrongControlMinimumMargin": 0.1
+  },
+  "checks": [
+    "Scalar model against direct complex Kraus density-matrix action and Hermitian eigenvalues",
+    "Trace, positivity, energy, passive energy, ergotropy and phase invariance",
+    "Equal-gap qubit-bath energy-conserving unitary with explicit bath energy change",
+    "Optional dephasing is energy-neutral; entropy production against a full-rank stationary Gibbs state",
+    "For nu=0, match the unchanged accepted zero-temperature quantum.mjs calculator",
+    "gamma=0 and gamma=1 endpoint behavior",
+    "Ordinary thermal fixed points are passive; inversion is labeled a resource",
+    "Wrong-model controls must fail energy closure or passive-work interpretation"
+  ],
+  "entropyProductionDomain": "0 < bathPopulation < 1; betaGap=log((1-nu)/nu). nu>0.5 is formally negative-temperature population inversion, not an ordinary positive-temperature bath. nu=0 and 1 are excluded from this finite beta expression.",
+  "wrongModels": [
+    {"id":"omitted-bath","population":0,"coherence":0,"damping":0.5,"bathPopulation":0.25,"dephasing":1,"phaseRadians":0,"expectedGapNormalizedError":0.125},
+    {"id":"energy-equals-work","population":0.25,"coherence":0,"damping":1,"bathPopulation":0.25,"dephasing":1,"phaseRadians":0,"expectedGapNormalizedError":0.25},
+    {"id":"old-zero-temperature-ledger","population":0.75,"coherence":0,"damping":0.5,"bathPopulation":0.25,"dephasing":1,"phaseRadians":0,"expectedGapNormalizedError":0.125}
+  ],
+  "interpretation": "Finite numerical tests plus explicitly derived channel identities. Same-author alternate formulations; independent skeptic review is separate. No capacity theorem proof, apparatus-efficiency result or hardware measurement."
+}

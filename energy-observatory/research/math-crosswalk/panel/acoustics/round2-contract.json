@@ -1,0 +1,26 @@
+{
+  "id": "acoustics-scaling-static-data-v1",
+  "round": 2,
+  "status": "frozen before writing or executing producer/verification code",
+  "scope": "Homogeneous isotropic radial-sphere model, affine static elasticity and a separately labeled finite passive fixture model; no general inverse solver or physical experiment.",
+  "productionSource": "location-spectrum/src/models.mjs",
+  "base": {"youngPa": 123500000000, "densityKgM3": 8960},
+  "development": {"commonScales": [0.25, 0.5, 1, 2, 4], "poisson": [0.2, 0.34, 0.45], "radiusM": [0.01, 0.04445], "rootIndices": [0, 1, 2, 3]},
+  "heldOut": {"commonScales": [0.37, 1.73, 3.1], "poisson": [0.11, 0.417], "radiusM": [0.023, 0.061], "rootIndices": [4, 7], "logDirections": [[1, 1], [1, -1], [2, -3], [-1, 4]], "normalsBeforeNormalization": [[1, 2, 3], [-2, 1, 1]], "strainMatrix": [[0.000002, 0.000001, 0], [0.000001, -0.000001, 0.0000005], [0, 0.0000005, 0.00000025]]},
+  "staticBoundaryInput": "u(x)=Sx on a sphere, symmetric dimensionless S; t(n)=[lambda tr(S) I+2 mu S]n in Pa; prescribed nonzero strain and calibrated traction.",
+  "independentComputation": "SciPy spherical_jn plus independent dense root bracket and brentq; NumPy/SciPy generalized symmetric eigenproblem and complex linear solve; direct stress formula independent of production Lame values.",
+  "tolerances": {"frequencyRelative": 2e-10, "rootAbsolute": 2e-10, "matrixResponseRelative": 2e-9, "staticRelative": 2e-12, "sensitivityAbsolute": 2e-7, "rankSingularValueCutoff": 1e-7, "logDifferenceStep": 0.00001},
+  "predictions": [
+    "Common E/rho scaling preserves radial frequencies and scales mass and modal mass by the same positive factor.",
+    "Stiffness-only scaling at fixed density scales frequencies by sqrt(a); fixing rho removes this specific parameter degeneracy, not arbitrary inverse nonuniqueness.",
+    "Frequency log-parameter Jacobian has rank 1, nullity 1, kernel span{(1,1)}; held-out directional derivatives equal (dE-drho)/2.",
+    "Known-radius mass or calibrated static traction adds an independent sensitivity row and produces rank 2 for the two-parameter model.",
+    "Affine static traction scales by a under common scaling: frequency equality does not imply complete boundary-map equality.",
+    "Static traction alone is independent of rho and cannot identify density.",
+    "Common scaling of all M,C,K terms preserves the finite fixture eigenvalues and divides calibrated FRF by a.",
+    "An unknown sensor gain that is also multiplied by a hides this FRF amplitude change."
+  ],
+  "wrongInferenceControls": ["Frequency-only two-parameter uniqueness must fail through an explicit a=2 witness", "Equal frequencies imply equal static traction must fail", "Static traction alone identifies density must fail", "Uncalibrated measured amplitude always breaks common-scale ambiguity must fail"],
+  "holdoutMeaning": "Predeclared numerical cases excluded from development grid; no model fitting or hyperparameter tuning is performed.",
+  "stopRule": "Run bounded tests, inspect any failures, and complete round 2 without a third research round."
+}

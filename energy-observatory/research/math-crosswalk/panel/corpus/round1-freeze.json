@@ -1,0 +1,13 @@
+{
+  "round": 1,
+  "status": "metadata audit completed; not a proof audit",
+  "files": {
+    "parse_catalogue.py": "36e0d6094898b352a307f98ac30c80a238932b8e1ffe8b924ac504cd4bd9472b",
+    "candidates.json": "e928a1b5f50c611297eea1f78e43498e49221be2d734aa5cd2b5899fe1fd983f",
+    "git-expected.json": "c2265779091f6a0d40d90f131726ab0e142d5c7d60e7b244482cac9a20000985",
+    "sources.json": "62be44e8ee3bfde89290f853c1e0a552db0b236cb3081f64980afcfb770f7c1f",
+    "inventory.json": "d2e9f3b8799a7b1204af126e89573cef740450b3180c76db9bb4a21d0906304a",
+    "round1.md": "4d0957ddb6bd4399d3635d7521456e0ba758c403287c56276c65f97e1bce306e",
+    "snapshot-manifest.json": "1562785292a04313e6d95e5328e8f96dbfd90b1911c44d966be2e625fe9eb032"
+  }
+}

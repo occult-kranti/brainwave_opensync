@@ -1,0 +1,156 @@
+{
+  "schema": "energy-roadmap-plan1/1",
+  "stage": "plan1",
+  "date": "2026-10-22",
+  "status": "planned only; await skeptic/advisor planning2",
+  "sequence": [
+    "E1",
+    "E2"
+  ],
+  "deferred": [
+    "E3 thermal bosonic model"
+  ],
+  "plannedPathsExistence": "Proposed future deliverables; not created in this stage",
+  "plans": [
+    {
+      "id": "E1",
+      "exactQuestion": "For all valid fixed-gap qubit states and 0<=d<=1, prove 0<=W(1)-W(d)<=epsilon*abs(c)*(1-d), with strict positivity iff c!=0 and d<1; enumerate equality and degeneracy cases.",
+      "baselineAlreadyDone": "Finite thermal/dephasing grid and state-spectrum checks.",
+      "distinctNewObjective": "Continuum algebraic loss bound and endpoint-safe certificate.",
+      "premises": [
+        "epsilon>0",
+        "0<=p,d<=1",
+        "abs(c)^2<=p*(1-p)",
+        "Energy-basis dephasing at fixed p; arbitrary cyclic unitary ergotropy."
+      ],
+      "hypothesisLedger": [
+        {
+          "premise": "Fixed Hamiltonian and population",
+          "source": "Declared dephasing model",
+          "check": "Reject maps that change diagonal population."
+        },
+        {
+          "premise": "Valid qubit",
+          "source": "Density-matrix positivity",
+          "check": "Explicit state-domain inequality."
+        }
+      ],
+      "proposedProofOrTest": "Algebraic square-root norm bound with c=0 and zero-Bloch-length branches; independently frozen direct unitary/eigenvalue examples.",
+      "positiveControl": [
+        "Diagonal passive state",
+        "p=1/2 upper-bound equality"
+      ],
+      "decisiveCountercontrol": [
+        "W=E for passive state",
+        "Derivative division by zero at p=1/2,d=0"
+      ],
+      "evidenceRequiredForAcceptance": [
+        "All-parameter proof reviewed",
+        "Actual finite countercontrols rejected",
+        "No grid-as-proof language"
+      ],
+      "artifacts": [
+        "research/thermal-cycle-v1/contracts/E1.json",
+        "research/thermal-cycle-v1/derivations/dephasing.md"
+      ],
+      "hoursCap": 3,
+      "stopRule": "Unresolved equality/domain case or cap exhaustion stops promotion; do not add parameters.",
+      "class": "engineering-or-verification-task with bounded mathematical proof obligation",
+      "noveltyLabel": "Established theory newly proved/applied in a project artifact; no novelty claim",
+      "resourcesAndPrerequisites": {
+        "runtime": "Existing Node.js, Python and NumPy; accepted thermal source hash cc3a6011d89ab2ad2904d216064a32e4af26bec56c54fd1718244165012727be",
+        "totalAgentHoursCap": 16,
+        "cpuMinutesCap": 5,
+        "memoryMiBCap": 512,
+        "largestMatrixDimension": 8,
+        "hardwareRequiredForModel": false
+      },
+      "independentReview": "Methods freezes operator/entropy cases before seeing producer output; skeptic separately checks premises, reset and scope. Review remains agent-based.",
+      "limits": [
+        "No implementation during planning",
+        "No source-free power or apparatus-efficiency result",
+        "No OpenAI276 capacity or273 general EPnI proof",
+        "No assumption that free-energy lower bounds are attained"
+      ]
+    },
+    {
+      "id": "E2",
+      "dependsOn": [
+        "E1 proof review"
+      ],
+      "exactQuestion": "For the declared two-qubit single-temperature cycle with d=1, derive the admissible-operation work/free-energy inequality and prove sum(W_on)>=0 with full endpoint/resource closure.",
+      "baselineAlreadyDone": "One-use signed heat and explicit equal-gap exchange; no complete cycle.",
+      "distinctNewObjective": "Preparation/extraction/joint-reset ledger preserving correlation free energy and incomplete-resource abstention.",
+      "premises": [
+        "0<nu<1/2; fixed epsilon and beta",
+        "Initial exchange state rho_S tensor tau_B; initial cycle tau_S tensor tau_B",
+        "Each work-bound derivation starts with system and a Gibbs bath uncorrelated; global unitary and zero endpoint interactions",
+        "Joint reset restores states and correlations; all external references/controllers/records restored or explicitly charged",
+        "Average work convention W_on=total endpoint energy change under classical drive; no claim of finite-copy bound attainment"
+      ],
+      "hypothesisLedger": [
+        {
+          "premise": "Thermal work bound",
+          "source": "Derive beta*(W_on-DeltaF_X)=D(bath_final||bath_initial)+I_final >=0; use stated entropy properties",
+          "check": "Proof must precede ledger inequality."
+        },
+        {
+          "premise": "Correlation accounting",
+          "source": "F_joint=sum(F_marginals)+I/beta for additive endpoint H",
+          "check": "Compare joint and marginal values."
+        },
+        {
+          "premise": "One temperature and closed auxiliaries",
+          "source": "Endpoint/port contract",
+          "check": "Unknown resource yields abstention."
+        }
+      ],
+      "proposedProofOrTest": "Prove operation identity, telescope cycle, then direct complex-matrix fixtures of preparation endpoints, exchange, local extraction and signed reset bounds.",
+      "positiveControl": [
+        "Unchanged Gibbs cycle",
+        "Declared nontrivial exchange with joint reset bound"
+      ],
+      "decisiveCountercontrol": [
+        "Omitted bath reset",
+        "Marginal-only reset erasing mutual information",
+        "Inversion or second temperature mislabeled ordinary single bath",
+        "Preparation lower bound mislabeled achieved/measured cost"
+      ],
+      "evidenceRequiredForAcceptance": [
+        "Reviewed conditional proof",
+        "Endpoint and work/heat signs explicit",
+        "Actual wrong fixtures reject or abstain",
+        "Bounds, simulation and measurement evidence distinct"
+      ],
+      "artifacts": [
+        "research/thermal-cycle-v1/contracts/E2.json",
+        "research/thermal-cycle-v1/derivations/cycle.md",
+        "research/thermal-cycle-v1/src/cycle-ledger.mjs",
+        "research/thermal-cycle-v1/checks/operator_check.py",
+        "research/thermal-cycle-v1/results.json",
+        "research/thermal-cycle-v1/review.json"
+      ],
+      "hoursCap": 10,
+      "stopRule": "Any missing port, unreturned correlation, unmapped physical premise or cap exhaustion prevents a closed-cycle certificate; no hardware efficiency until calibrated measurements exist.",
+      "class": "engineering-or-verification-task with bounded mathematical proof obligation",
+      "noveltyLabel": "Established theory newly proved/applied in a project artifact; no novelty claim",
+      "resourcesAndPrerequisites": {
+        "runtime": "Existing Node.js, Python and NumPy; accepted thermal source hash cc3a6011d89ab2ad2904d216064a32e4af26bec56c54fd1718244165012727be",
+        "totalAgentHoursCap": 16,
+        "cpuMinutesCap": 5,
+        "memoryMiBCap": 512,
+        "largestMatrixDimension": 8,
+        "hardwareRequiredForModel": false
+      },
+      "independentReview": "Methods freezes operator/entropy cases before seeing producer output; skeptic separately checks premises, reset and scope. Review remains agent-based.",
+      "limits": [
+        "No implementation during planning",
+        "No source-free power or apparatus-efficiency result",
+        "No OpenAI276 capacity or273 general EPnI proof",
+        "No assumption that free-energy lower bounds are attained"
+      ]
+    }
+  ],
+  "independentReviewHoursCap": 3,
+  "sources": "Reuse exact source URLs and reading depths in review candidates.json; no new literature scan."
+}

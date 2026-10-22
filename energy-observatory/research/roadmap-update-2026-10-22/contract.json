@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-22",
+  "request": "One roadmap review followed by two adaptive planning rounds with six specialists",
+  "stages": [
+    "review",
+    "plan1",
+    "plan2"
+  ],
+  "roles": [
+    "corpus",
+    "yangmills",
+    "energy",
+    "acoustics",
+    "methods",
+    "skeptic"
+  ],
+  "scope": "Identify tractable, falsifiable project subproblems using consolidated sources; no blanket external theorem adoption",
+  "priorResearchRounds": 2,
+  "baselineReportSHA256": "47f73c2253f0a19a225c18bd11d15da69d8b9cf1d9b086390429414317d606c4",
+  "constraints": [
+    "No claim that all 719 proofs were read or verified",
+    "No solved Clay problem or energy creation claim without supporting evidence",
+    "Separate executable mathematical subproblem, engineering implementation and measured experiment",
+    "Final plans must name assumptions, code, controls, resource estimate, stop rule and independent review",
+    "Exactly these three follow-on stages; no recursive extra research rounds"
+  ]
+}

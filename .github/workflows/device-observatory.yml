@@ -35,7 +35,7 @@ jobs:
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git clone --quiet --depth 1 --branch gh-pages "$REMOTE" site
           mkdir -p site/devices
-          rsync -a --delete --exclude /location/ device-observatory/dist/ site/devices/
+          rsync -a --delete --exclude /location/ --exclude /position/ device-observatory/dist/ site/devices/
           cd site
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

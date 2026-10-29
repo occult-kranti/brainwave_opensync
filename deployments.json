@@ -20,7 +20,7 @@
   },
   "archive": {
     "branch": "archive/dark-landscapes",
-    "commit": "2a490254e07ea9cc78dfe1fc21be1fa0bc687972",
+    "commit": "42acf6faf24e6dfb5fefbb735cc3f91211ce1478",
     "path": "/brainwave_opensync/archive/",
     "themes": [
       "Night Country",
@@ -34,7 +34,11 @@
     ],
     "presetCount": 167,
     "filePreviewCount": 159,
-    "runtimePreviewCount": 8
+    "runtimePreviewCount": 8,
+    "practiceGuideCount": 167,
+    "obePresetCount": 23,
+    "obeSubgroupCount": 5,
+    "presetGuidanceUpdated": "2026-10-29"
   },
   "listeningRoom": {
     "branch": "archive/listening-room-2026-10-15",

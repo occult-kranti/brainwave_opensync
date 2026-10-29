@@ -20,25 +20,25 @@ export interface NavigationEntry {
 
 export const NAVIGATION_CATEGORIES: readonly NavigationCategory[] = [
   { id: 'primary', title: 'Start here', description: 'Choose a sound or work on a session.', icon: House },
-  { id: 'practice', title: 'Meditation & rest', description: 'Listening practices, sleep, dreaming and comfort.', icon: Music2 },
-  { id: 'create', title: 'Create & explore', description: 'Build chords, edit sound recipes, and explore patterns.', icon: Music2 },
-  { id: 'analyze', title: 'Analyze audio', description: 'Inspect a recording or monitor a live signal.', icon: Activity },
-  { id: 'experiments', title: 'Run experiments', description: 'Compare sounds, track observations, and inspect protocols.', icon: FlaskConical },
-  { id: 'research', title: 'Theory & research', description: 'Read source material, evidence, and unresolved claims.', icon: BookOpen },
-  { id: 'help', title: 'Help', description: 'Listening settings, instructions, and project information.', icon: CircleHelp },
+  { id: 'practice', title: 'Listening', description: 'Listening practices, sleep, dreaming and comfort.', icon: Music2 },
+  { id: 'create', title: 'Making', description: 'Build chords, edit sound recipes, and explore patterns.', icon: Music2 },
+  { id: 'analyze', title: 'Measuring audio', description: 'Inspect a recording or monitor a live signal.', icon: Activity },
+  { id: 'experiments', title: 'Models & experiments', description: 'Compare sounds, track observations, and inspect protocols.', icon: FlaskConical },
+  { id: 'research', title: 'Reading & sources', description: 'Read source material, evidence, and unresolved claims.', icon: BookOpen },
+  { id: 'help', title: 'Help & settings', description: 'Listening settings, instructions, and project information.', icon: CircleHelp },
 ];
 
 type EntrySpec = readonly [path: string, category: NavigationCategoryId, title: string, description: string, aliases: readonly string[]];
 
 const ENTRY_SPECS: readonly EntrySpec[] = [
-  ['/', 'primary', 'Today', 'Find a starting point for listening, creating, or inspecting audio.', ['start', 'tools', 'directory']],
-  ['/listen', 'primary', 'Listen', 'Play your current session in a quiet listening view.', ['player', 'pause', 'sand', 'meditate']],
+  ['/', 'primary', 'Home', 'Find a starting point for listening, creating, or inspecting audio.', ['start', 'tools', 'directory']],
+  ['/listen', 'practice', 'Player', 'Play your current session in a quiet listening view.', ['player', 'pause', 'sand', 'meditate']],
   ['/research-hub', 'primary', 'Research', 'Explore sources and find every tool in the reading room.', ['directory', 'tools', 'books', 'reading']],
   ['/meditate', 'practice', 'Find a session', 'Choose a meditation for your intention, time and listening setup.', ['meditation', 'suggestion', 'recommend', 'right now', 'healing', 'sleep']],
   ['/practice-plan', 'practice', 'Home practice plan', 'Build a flexible home timetable and learn when to repeat Gateway exercises.', ['schedule', 'timetable', 'how often', 'tapes', 'repeat', 'Gateway', 'Monroe', 'duration', 'home practice']],
   ['/overnight', 'practice', 'Overnight', 'Plan seven hours with speaker-compatible sound beds and optional quiet time.', ['sleep', '7 hours', 'lucid', 'astral projection', 'remote viewing', 'hypnosis']],
   ['/hypnosis', 'practice', 'Hypnosis & dreaming', 'Read the evidence, explore sound mathematics, and try a listening practice.', ['hypnagogia', 'hypnagogic', 'trance', 'theta', 'suggestion', 'mathematics']],
-  ['/presets', 'primary', 'Explore', 'Preview ready-made sounds, then load a session to play or edit.', ['listen', 'Bashar', 'bowls', 'noise', 'sound library', 'saved']],
+  ['/presets', 'primary', 'Sounds', 'Preview ready-made sounds, then load a session to play or edit.', ['listen', 'Bashar', 'bowls', 'noise', 'sound library', 'saved']],
   ['/studio', 'create', 'Studio', 'Mix tones, noise, and layers into a session.', ['create', 'play', 'duration', 'volume', 'export', 'WAV', 'binaural', 'isochronic']],
   ['/harmonics', 'create', 'Harmonic Lab', 'Build chords and compare tunings.', ['chord', 'music', 'harmony', 'overtones', 'just', 'equal', 'pitch']],
   ['/sound-methods', 'create', 'Sound Methods', 'Edit sound examples from published methods.', ['Monroe', 'Gateway', 'patent', 'noise', 'binaural', 'phase modulation', 'recipe']],
@@ -85,10 +85,16 @@ export const NAVIGATION_ENTRIES: readonly NavigationEntry[] = ENTRY_SPECS.map(([
   category, title, description, aliases,
 }));
 
+/** Topic laboratories share one curated related-tool strip inside their page. */
+export const RESEARCH_LAB_PATHS = [
+  '/bashar-research', '/frequency-hypotheses', '/levitation', '/newton-tesla',
+  '/sound-research', '/lucid', '/healing', '/nature',
+] as const;
+
 export const DISCLOSURE_CATEGORIES: readonly NavigationCategory[] = NAVIGATION_CATEGORIES.filter((category) => category.id !== 'primary');
 
 export function getPrimaryNavRoutes(): readonly AppRoute[] {
-  return ['/', '/presets', '/listen', '/research-hub'].map(path => NAVIGATION_ENTRIES.find(entry => entry.route.path === path)!.route);
+  return ['/', '/presets', '/studio', '/research-hub'].map(path => NAVIGATION_ENTRIES.find(entry => entry.route.path === path)!.route);
 }
 
 export function getSafetyRoute(): AppRoute {

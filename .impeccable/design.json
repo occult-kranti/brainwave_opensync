@@ -1,15 +1,7 @@
 {
-  "name": "Open Sync Nocturne",
-  "scope": "archive/dark-landscapes",
-  "updated": "2026-10-29",
-  "mode": "Operate and Read within a persistent 3D/4D experience",
-  "tokens": {
-    "background": "#0d111b", "surface": "#111824", "surfaceRaised": "#151e2d",
-    "text": "#f3f0ea", "textSecondary": "#c6c9d6", "textMuted": "#aeb5c7",
-    "action": "#d8c8a3", "focus": "#d2c9f5", "accent": "#b8ace8",
-    "border": "#303b50", "borderStrong": "#536078",
-    "bodyFont": "Inter", "displayFont": "Newsreader", "controlRadius": "8px", "panelRadius": "12px"
-  },
-  "sourceOfTruth": ["src/pages/nocturne.css", "src/pages/nocturne-home.css", "src/ui/layout/mobile-shell.css"],
-  "provenance": "Manual token record. Installed Impeccable launcher unavailable; no CLI detector execution claimed."
+ "name":"Open Sync Listening Atlas","scope":"archive/dark-landscapes","updated":"2026-10-29",
+ "mode":"Operate and Read",
+ "tokens":{"paper":"#f4f3ec","surface":"#ffffff","text":"#1d2926","secondary":"#4d5b55","muted":"#637069","action":"#3159d9","accent":"#bb3d20","border":"#d3d8ce","inputBorder":"#7e8d81","bodyFont":"Inter","displayFont":"Instrument Sans","controlRadius":"8px","panelRadius":"14px"},
+ "sourceOfTruth":["src/pages/listening-atlas.css","src/ui/layout/atlas-shell.css","src/pages/atlas-home.css","src/pages/atlas-library.css","src/pages/atlas-listen.css"],
+ "provenance":"Manual record of built tokens. Impeccable launcher unavailable; no CLI detector execution claimed."
 }

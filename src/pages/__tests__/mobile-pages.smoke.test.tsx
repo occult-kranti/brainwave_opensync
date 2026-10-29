@@ -52,7 +52,7 @@ const PAGES: { name: string; el: () => React.ReactElement; primary: string }[] =
   { name: 'Traditions', el: () => <Traditions />, primary: 'Set up for listening' },
   { name: 'Home', el: () => <Home />, primary: 'Find a sound' },
   { name: 'Listen', el: () => <Listen />, primary: 'Play session' },
-  { name: 'Research', el: () => <ResearchHub />, primary: 'Read &amp; explore' },
+  { name: 'Research', el: () => <ResearchHub />, primary: 'Find a tool or page' },
   { name: 'Guide', el: () => <Guide />, primary: 'DEEP TECHNICAL' },
   { name: 'Studio', el: () => <Studio />, primary: 'Play session' },
   { name: 'Library', el: () => <Library />, primary: 'LOAD ↗' },

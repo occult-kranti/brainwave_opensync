@@ -4,8 +4,7 @@
 
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { motion } from 'framer-motion';
-import { Check, Download, Headphones, Link2, MoonStar, Pause, Play, RotateCcw, Send, Square, Volume2, VolumeX } from 'lucide-react';
+import { Check, Download, Headphones, Link2, MoonStar, Pause, Play, RotateCcw, Send, Square, Volume2, VolumeX, X } from 'lucide-react';
 import { useSession } from '@/ui/session/useSession';
 import { fmtClock } from '@/ui/session/sessionMath';
 import { FADE_OUT_CHOICES, INFANT_MAX_VOLUME_DB } from '@/ui/session/sessionDefaults';
@@ -19,8 +18,6 @@ import { Fader } from '@/ui/components/Fader';
 import { GradeBadge } from '@/ui/components/GradeBadge';
 import { Visualizer } from '@/ui/components/Visualizer';
 import { CymaticsOverlay } from '@/ui/components/CymaticsOverlay';
-import { Field4D } from '@/ui/components/Field4D';
-import { useField4d } from '@/hooks/useField4d';
 import { StudioScope } from '@/ui/components/StudioScope';
 import { StudioCymatics } from '@/ui/components/StudioCymatics';
 import { PhaseTimeline } from '@/ui/components/PhaseTimeline';
@@ -51,7 +48,14 @@ export default function Studio() {
   const saveInputRef = useRef<HTMLInputElement>(null);
   const saveDialogRef = useRef<HTMLDivElement>(null);
   const [sandOn, setSandOn] = useState(false);
-  const [field4dOn, setField4dOn] = useField4d();
+  const editorSections = useRef<Record<string, HTMLDetailsElement | null>>({});
+  const openEditorSection = (id: string) => {
+    const section = editorSections.current[id];
+    if (!section) return;
+    section.open = true;
+    section.scrollIntoView?.({ block: 'start' });
+    section.querySelector('summary')?.focus({ preventScroll: true });
+  };
   // P0-4: Esc closes the modal, focus returns to the SAVE AS PRESET trigger.
   useModalA11y(saveOpen, () => setSaveOpen(false), saveInputRef, saveDialogRef);
   useSheetScrollLock(saveOpen);
@@ -142,28 +146,32 @@ export default function Studio() {
   ];
 
   return (
-    <div className="studio-page" style={{ padding: isMobile ? '20px 16px 40px' : '32px 40px 48px', maxWidth: 1440, margin: '0 auto' }}>
+    <div className="studio-page atlas-studio">
       <header className="studio-heading">
-        <div><span className="eyebrow">The sound workshop</span><h1 className="t-h1">Make it your own.</h1><p className="t-body-sm text-2">Fine-tune a sound, build a sequence, or explore a pattern. Your listening session stays with you.</p></div>
-        <div className="studio-heading-links"><Link to="/listen">Back to listening</Link><Link to="/meditate">Help me choose</Link><button type="button" className="chip" onClick={() => navigate('/presets')}>Choose another sound</button></div>
+        <div><h1 className="t-h1">Sound studio</h1><p className="t-body-sm text-2">Edit a tone. Build a mix. Keep the draft.</p></div>
+        <details className="studio-heading-links" open={!isMobile}><summary>Choose a starting point</summary><div className="studio-heading-actions"><Link to="/listen">Back to listening</Link><Link to="/meditate">Help me choose</Link><button type="button" className="chip" onClick={() => navigate('/presets')}>Choose another sound</button></div></details>
       </header>
+      <nav className="studio-editor-nav" aria-label="Studio editing sections">
+        {[
+          ['tone', 'Tone', 'Pitch, rhythm & waveform'],
+          ['textures', 'Textures', 'Noise, nature & bowls'],
+          ['sequence', 'Sequence', 'Arrange your phases'],
+          ['signals', 'Signal views', 'Inspect the sound'],
+          ['files', 'Save & export', 'Keep or share a draft'],
+        ].map(([id, title, note]) => <button key={id} type="button" onClick={() => openEditorSection(id)}><strong>{title}</strong><span>{note}</span></button>)}
+      </nav>
       <section className="panel studio-player" aria-label="Session player" style={{ position: 'relative', isolation: 'isolate', overflow: 'hidden' }}>
-        {field4dOn && <Field4D />}
-        {sandOn && <CymaticsOverlay onClose={() => setSandOn(false)} />}
+        <div className="studio-player-main">
         <div className="studio-sound-heading">
           <div>
             <span className="t-label text-3">Current sound</span>
             <h2 className="t-h2">{s.presetName ?? 'Studio draft'}</h2>
-            <p className="t-caption text-2">{s.dirty ? 'Edited settings' : s.presetName ? 'Preset loaded' : 'Default tone sequence'} · {s.phases.length} {s.phases.length === 1 ? 'phase' : 'phases'} · {fmtClock(s.phases.reduce((total, p) => total + p.durationSec, 0))} sequence</p>
+
           </div>
           <span className="chip" role="status" data-testid="studio-playback-state">
             {s.running ? s.paused ? 'Studio paused' : s.fading ? 'Studio fading' : s.muted ? 'Studio playing · muted' : 'Studio playing' : 'Studio stopped'}
           </span>
         </div>
-        <p className="t-body-sm text-2" data-testid="studio-mix-summary">
-          {s.waveform} tone · {s.carrierHz.toFixed(2)} Hz · {s.mode} · {s.beatHz.toFixed(2)} Hz {s.mode === 'binaural' ? 'difference' : 'rate'}.
-          {' '}{activeMix.length ? `Added: ${activeMix.join(', ')}.` : 'No added noise or layers.'}
-        </p>
         <div className="studio-transport">
           <button type="button" onClick={s.running ? s.stop : s.start} className="studio-play-button">
             {s.running ? <Square size={16} /> : <Play size={16} />}{s.running ? 'Stop session' : 'Play session'}
@@ -172,17 +180,18 @@ export default function Studio() {
             {s.paused ? <Play size={14} /> : <Pause size={14} />}{s.paused ? 'Resume session' : 'Pause session'}
           </button>}
           <span className="t-readout-md">{fmtClock(s.elapsedSec)} <span className="t-caption text-3">elapsed · {fmtClock(remainingSec)} remaining</span></span>
-          <span className="flex gap-2" style={{ marginLeft: 'auto', flexWrap: 'wrap' }}>
-            <button type="button" className={`chip ${sandOn ? 'chip-active' : ''}`} aria-pressed={sandOn}
-              aria-label="Toggle cymatics sand plate overlay" onClick={() => setSandOn((v) => !v)}>
-              Sand plate
-            </button>
-            <button type="button" className={`chip ${field4dOn ? 'chip-active' : ''}`} aria-pressed={field4dOn}
-              aria-label="Toggle 4D field backdrop" onClick={() => setField4dOn(!field4dOn)}>
-              4D field
-            </button>
-          </span>
         </div>
+        <details className="studio-sound-details"><summary>Sound details</summary>
+            <p className="t-caption text-2">{s.dirty ? 'Edited settings' : s.presetName ? 'Preset loaded' : 'Default tone sequence'} · {s.phases.length} {s.phases.length === 1 ? 'phase' : 'phases'} · {fmtClock(s.phases.reduce((total, p) => total + p.durationSec, 0))} sequence</p>
+        <p className="t-body-sm text-2" data-testid="studio-mix-summary">
+          {s.waveform} tone · {s.carrierHz.toFixed(2)} Hz · {s.mode} · {s.beatHz.toFixed(2)} Hz {s.mode === 'binaural' ? 'difference' : 'rate'}.
+          {' '}{activeMix.length ? `Added: ${activeMix.join(', ')}.` : 'No added noise or layers.'}
+        </p>
+        {s.limitMin * 60 > sequenceSec && <p className="t-caption text-2" data-testid="studio-duration-note">The sequence ends at {fmtClock(sequenceSec)}. Studio holds its final settings until {fmtClock(s.limitMin * 60)}; WAV export ends with the sequence.</p>}
+        </details>
+        <div className="studio-progress" aria-hidden="true"><div style={{ width: `${limitPct}%` }} /></div>
+        </div>
+        <div className="studio-player-settings"><h3>Session settings</h3>
         <div className="studio-basic-controls">
           <div>
             <label className="t-label" htmlFor="studio-duration">Duration in minutes</label>
@@ -209,8 +218,7 @@ export default function Studio() {
             <p className="t-caption text-3">Device volume also sets listening loudness. Begin low.</p>
           </div>
         </div>
-        {s.limitMin * 60 > sequenceSec && <p className="t-caption text-2" data-testid="studio-duration-note">The sequence ends at {fmtClock(sequenceSec)}. Studio holds its final settings until {fmtClock(s.limitMin * 60)}; WAV export ends with the sequence.</p>}
-        <div className="studio-progress" aria-hidden="true"><div style={{ width: `${limitPct}%` }} /></div>
+        </div>
       </section>
 
       <div className="studio-notices" aria-live="polite">
@@ -224,13 +232,328 @@ export default function Studio() {
         {s.exportError && !exportBusy && <div role="alert"><WarningChip tone="danger">Export failed{s.exportError ? `: ${s.exportError}` : ''}</WarningChip> <button type="button" className="chip" disabled={exportBusy} onClick={runExport}>Retry export</button></div>}
       </div>
 
-      <details className="studio-disclosure" data-testid="studio-file-options">
+      <details className="studio-disclosure" data-testid="studio-sound-controls" ref={node => { editorSections.current.tone = node; }}><summary>Sound controls <span className="t-caption text-3">Tone, rhythm and waveform</span></summary><div className="studio-edit-grid">        {/* ROW B — Engine panel */}
+        <div>
+          <Panel
+            title="ENGINE"
+            right={
+              <GradeBadge
+                grade="C"
+                compact
+                citation={{
+                  verdict: 'Percept: Grade A physics. Cortical entrainment claim: Grade C.',
+                  summary: 'Ingendoh 2023: 5 pro / 8 contra of 14 EEG studies on beat-driven entrainment.',
+                  source: 'Ingendoh et al., PLOS ONE (2023), PMC10198548',
+                }}
+              />
+            }
+          >
+            {/* mode tabs */}
+            <div className="flex hairline-b" style={{ marginBottom: 12 }}>
+              {(['binaural', 'monaural', 'isochronic'] as EntrainmentMode[]).map((m) => (
+                <button
+                  key={m}
+                  type="button"
+                  onClick={() => s.setMode(m)}
+                  aria-pressed={s.mode === m}
+                  className="t-label"
+                  style={{
+                    flex: 1,
+                    padding: '8px 0',
+                    background: 'none',
+                    border: 'none',
+                    borderBottom: s.mode === m ? '2px solid var(--amber)' : '2px solid transparent',
+                    color: s.mode === m ? 'var(--amber)' : 'var(--text-2)',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {m.toUpperCase()}
+                </button>
+              ))}
+            </div>
+            <p className="t-body-sm text-2" style={{ minHeight: 40, marginBottom: 12 }}>
+              {MODE_DESC[s.mode]}
+            </p>
+            {/* knobs */}
+            <div className="flex justify-around" style={{ marginBottom: 8 }}>
+              <div className="flex flex-col items-center gap-2">
+                <Knob label="CARRIER (L/R)" value={s.carrierHz} min={20} max={1000} defaultValue={200} onChange={s.setCarrierHz} color="var(--teal)" />
+                <Readout value={s.carrierHz.toFixed(2)} unit="Hz" size="lg" color="var(--teal)" editable onCommit={(raw) => {
+                  const v = parseFloat(raw);
+                  if (Number.isFinite(v)) s.setCarrierHz(v);
+                  return Number.isFinite(v);
+                }} />
+                <span className="t-readout-sm">
+                  <span className="text-teal">L {s.carrierHz.toFixed(2)}</span>
+                  <span className="text-3"> ▏</span>
+                  <span className="text-amber">R {(s.mode === 'binaural' ? s.carrierHz + s.beatHz : s.carrierHz).toFixed(2)}</span>
+                </span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <Knob label="BEAT" value={s.beatHz} min={0.1} max={40} log onChange={s.setBeatHz} color="var(--amber)" />
+                <Readout value={s.beatHz.toFixed(2)} unit="Hz" size="lg" color="var(--amber)" editable onCommit={(raw) => {
+                  const v = parseFloat(raw);
+                  if (Number.isFinite(v)) s.setBeatHz(v);
+                  return Number.isFinite(v);
+                }} />
+                {/* band strip */}
+                <BandStrip beat={s.beatHz} />
+              </div>
+            </div>
+            {/* warnings */}
+            {s.warnings.length > 0 && (
+              <div className="flex flex-col gap-2" style={{ margin: '8px 0' }}>
+                {s.warnings.map((w) => (
+                  <WarningChip key={w}>{w}</WarningChip>
+                ))}
+              </div>
+            )}
+            {/* synthesis options */}
+            <div className="flex flex-col gap-3" style={{ marginTop: 12 }}>
+              <div className="flex items-center gap-2">
+                <span className="t-label" style={{ width: 90 }}>WAVEFORM</span>
+                {(['sine', 'triangle', 'square'] as const).map((w) => (
+                  <button
+                    key={w}
+                    type="button"
+                    className={`chip ${s.waveform === w ? 'chip-active' : ''}`}
+                    onClick={() => s.setWaveform(w)}
+                    aria-pressed={s.waveform === w}
+                  >
+                    {w.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="t-label" style={{ width: 90 }}>PHASE LOCK</span>
+                <button type="button" className={`chip ${s.phaseLock ? 'chip-active' : ''}`} aria-pressed={s.phaseLock} onClick={() => s.setPhaseLock(!s.phaseLock)}>
+                  {s.phaseLock ? 'LOCKED' : 'FREE'}
+                </button>
+                <Led state={s.phaseLock ? 'teal' : 'off'} />
+                <span className="t-caption text-3">
+                  {s.phaseLock ? 'L/R phase locked at cycle boundaries' : 'independent oscillators (legacy style)'}
+                </span>
+              </div>
+              {s.mode === 'isochronic' && (
+                <div className="flex items-center gap-2">
+                  <span className="t-label" style={{ width: 90 }}>GATE</span>
+                  <input
+                    type="range"
+                    min={5}
+                    max={95}
+                    value={s.gateDuty * 100}
+                    onChange={(e) => s.setGateDuty(parseInt(e.target.value, 10) / 100)}
+                    aria-label="Gate duty"
+                    style={{ width: 90, accentColor: 'var(--atlas-accent, #3159D9)' }}
+                  />
+                  <span className="t-readout-sm text-2">{Math.round(s.gateDuty * 100)}%</span>
+                  {(['raised-cosine', 'hard'] as const).map((sh) => (
+                    <button key={sh} type="button" className={`chip ${s.gateShape === sh ? 'chip-active' : ''}`} aria-pressed={s.gateShape === sh} onClick={() => s.setGateShape(sh)}>
+                      {sh === 'raised-cosine' ? 'COS' : 'HARD'}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </Panel>
+        </div>
+
+        {/* ROW B — Master readout */}
+        <div>
+          <div className="scope-well flex flex-col" style={{ padding: 24, height: '100%', border: s.running ? '1px solid var(--line-2)' : undefined }}>
+            <span className="t-label">MASTER READOUT</span>
+            <div style={{ margin: '8px 0' }}>
+              <span className="t-readout-xl" style={{ color: 'var(--amber)' }}>
+                {s.beatHz.toFixed(2)}
+                <span className="text-3" style={{ fontSize: '0.5em' }}>
+                  {'\u2009'}Hz
+                </span>
+              </span>
+            </div>
+            <div className="t-readout-md" style={{ marginBottom: 12 }}>
+              <span className="text-teal">L {s.carrierHz.toFixed(2)} Hz</span>
+              <span className="text-3"> ▏</span>
+              <span className="text-amber">R {(s.mode === 'binaural' ? s.carrierHz + s.beatHz : s.carrierHz).toFixed(2)} Hz</span>
+            </div>
+            {/* phase coherence meter */}
+            <div style={{ marginBottom: 12 }}>
+              <div style={{ width: 180, height: 6, background: 'var(--ink-4)', position: 'relative' }}>
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: -2,
+                    left: s.phaseLock ? 'calc(50% - 3px)' : 'calc(50% - 3px)',
+                    width: 6,
+                    height: 10,
+                    background: 'var(--teal)',
+                  }}
+                />
+                <div style={{ position: 'absolute', left: '50%', top: -3, width: 1, height: 12, background: 'var(--line-2)' }} />
+              </div>
+              <span className="t-readout-sm text-3">
+                PHASE Δ {s.phaseLock ? '0.000' : '—'} rad
+              </span>
+            </div>
+            <div className="t-readout-sm text-2" style={{ marginBottom: 16 }}>
+              {s.running ? 'ENGINE RUNNING' : 'ENGINE STOPPED'} · {s.mode.slice(0, 3).toUpperCase()} · {s.waveform.toUpperCase()} ·
+              GATE {s.mode === 'isochronic' ? `${Math.round(s.gateDuty * 100)}%` : '—'} · OUT {s.volumeDb.toFixed(1)} dBFS
+            </div>
+            <div style={{ borderTop: '1px solid var(--line-1)', paddingTop: 12, marginTop: 'auto' }}>
+              <p className="t-caption text-3" style={{ marginBottom: 8 }}>
+                Beat percept: verified psychoacoustics (Dove 1839; Oster 1973). Cortical entrainment at this setting:
+                unproven — 8 of 14 EEG studies contradict (Ingendoh 2023). Behavioral effects, when found, are modest
+                (g≈0.4).
+              </p>
+              <GradeBadge
+                grade="C"
+                compact
+                citation={{
+                  verdict: 'Entrainment claim unproven at this setting.',
+                  summary: 'Percept itself is Grade A psychoacoustics; EEG entrainment is contradicted by 8/14 studies.',
+                  source: 'Ingendoh et al., PLOS ONE (2023); Oster, Scientific American 229(4) (1973)',
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+</div></details>
+      <details className="studio-disclosure" data-testid="studio-textures" ref={node => { editorSections.current.textures = node; }}><summary>Textures & bowls <span className="t-caption text-3">Noise, nature, singing bowls and interval bells</span></summary><div className="studio-edit-grid">        {/* ROW D — Noise mixer (master bypass: LED + label; bypassed = silent live, omitted from export) */}
+        <div>
+          <Panel
+            title="NOISE MIXER"
+            right={
+              <button
+                type="button"
+                data-testid="noise-mixer-toggle"
+                aria-pressed={s.noiseOn}
+                onClick={() => s.setNoiseOn(!s.noiseOn)}
+                className="chip flex items-center gap-2"
+                style={{ height: 22, fontSize: 10 }}
+                title={
+                  s.noiseOn
+                    ? 'Bypass the whole noise mixer — silent live and omitted from the WAV export (click-free ramp)'
+                    : 'Enable the noise mixer — fader positions were kept'
+                }
+              >
+                <Led state={s.noiseOn ? 'amber' : 'off'} />
+                {s.noiseOn ? 'MIX ON' : 'BYPASSED'}
+              </button>
+            }
+          >
+            <div
+              data-testid="noise-mixer-body"
+              data-dimmed={s.noiseOn ? undefined : 'true'}
+              style={{ opacity: s.noiseOn ? 1 : 0.45, transition: 'opacity 160ms' }}
+            >
+              <div className="flex justify-between" style={{ gap: 8 }}>
+                {(Object.keys(NOISE_COLOR) as NoiseColor[]).map((c) => (
+                  <div key={c} className="flex flex-col items-center gap-2" title={NOISE_SLOPE[c]}>
+                    <span style={{ width: 10, height: 10, borderRadius: 2, background: NOISE_COLOR[c] }} />
+                    <Fader db={s.noiseDb[c]} onChange={(db) => s.setNoiseDb(c, db)} color={NOISE_COLOR[c]} label={c.toUpperCase()} height={110} />
+                  </div>
+                ))}
+              </div>
+              <p className="t-caption text-3" style={{ marginTop: 12 }}>
+                Masking/relaxation aid — no entrainment claim. Double-click a fader to turn it off.
+                {s.noiseOn ? '' : ' Bypassed: faders kept, but the mixer is silent live and excluded from export.'}
+              </p>
+            </div>
+          </Panel>
+        </div>
+
+        {/* ROW D — Layers + phases */}
+        <div className="flex flex-col gap-4">
+          <Panel
+            title="LAYERS"
+            right={
+              <button
+                type="button"
+                data-testid="layers-toggle"
+                aria-pressed={s.layersOn}
+                onClick={() => s.setLayersOn(!s.layersOn)}
+                className="chip flex items-center gap-2"
+                style={{ height: 22, fontSize: 10 }}
+                title={
+                  s.layersOn
+                    ? 'Bypass both layers — silent live and omitted from the WAV export (click-free ramp)'
+                    : 'Enable the layers — per-layer settings were kept'
+                }
+              >
+                <Led state={s.layersOn ? 'teal' : 'off'} />
+                {s.layersOn ? 'LAYERS ON' : 'BYPASSED'}
+              </button>
+            }
+          >
+            <div
+              data-testid="layers-body"
+              data-dimmed={s.layersOn ? undefined : 'true'}
+              className="flex flex-col gap-3"
+              style={{ opacity: s.layersOn ? 1 : 0.45, transition: 'opacity 160ms' }}
+            >
+              <div className="flex items-center gap-3">
+                <button type="button" aria-label={s.nature.on ? 'Turn nature layer off' : 'Turn nature layer on'} aria-pressed={s.nature.on} onClick={() => s.setNature({ on: !s.nature.on })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+                  <Led state={s.nature.on ? 'teal' : 'off'} />
+                </button>
+                <span className="t-label" style={{ width: 110 }}>NATURE</span>
+                <select
+                  value={s.nature.kind}
+                  onChange={(e) => s.setNature({ kind: e.target.value as (typeof NATURE_KINDS)[number] })}
+                  className="font-mono2"
+                  style={{ background: 'var(--ink-3)', color: 'var(--text-1)', border: '1px solid var(--line-1)', borderRadius: 2, fontSize: 11, padding: '3px 6px' }}
+                >
+                  {NATURE_KINDS.map((k) => (
+                    <option key={k} value={k}>
+                      {k.toUpperCase()}
+                    </option>
+                  ))}
+                </select>
+                <input
+                  type="range"
+                  min={-60}
+                  max={0}
+                  value={s.nature.db}
+                  onChange={(e) => s.setNature({ db: parseFloat(e.target.value) })}
+                  aria-label="Nature level"
+                  style={{ flex: 1, accentColor: '#4F8C82' }}
+                />
+                <GradeBadge grade="B" compact citation={{ verdict: 'Relaxation evidence, not entrainment.', summary: 'Nature soundscapes have small human relaxation studies; no entrainment claim.', source: 'Evidence synthesis — see Knowledge Base' }} />
+              </div>
+              {/* Singing-bowl set (up to MAX_BOWLS rows) + the interval bell. */}
+              <BowlSet />
+              {s.layersOn ? null : (
+                <p className="t-caption text-3">
+                  Bypassed: per-layer settings kept, but nature and bowls are silent live and excluded from export.
+                </p>
+              )}
+            </div>
+          </Panel>
+        </div>
+</div></details>
+      <details className="studio-disclosure" data-testid="studio-sequence" ref={node => { editorSections.current.sequence = node; }}><summary>Session sequence <span className="t-caption text-3">Arrange the phases of your practice</span></summary>          <Panel title="SESSION PHASES" right={<InfoPopover featureId="phase-timeline" label="About the phase timeline" />}>
+            <PhaseTimeline phases={s.phases} onChange={s.setPhases} playheadSec={s.running ? s.elapsedSec : 0} height={100} />
+          </Panel>
+</details>
+      <details className="studio-disclosure" data-testid="studio-visuals" ref={node => { editorSections.current.signals = node; }}><summary>Visuals & signal views <span className="t-caption text-3">Waveform, spectrum, correlation and sand patterns</span></summary><div className="studio-visual-intro"><p>These views describe generated audio and mathematical patterns.</p><button type="button" className="chip" aria-pressed={sandOn} aria-label="Toggle cymatics sand plate overlay" onClick={() => setSandOn(v => !v)}>Open sand plate</button><Link to="/cymatics">Open the visual lab</Link></div><div className="studio-visual-grid">        {/* ROW B — Visualizer (tabbed scope/spectrum/correlation) */}
+        <div>
+          <Visualizer height={300} />
+        </div>
+
+        {/* ROW C — Visualization row: big live scope (left) + cymatics panel
+            (right). Stacked on mobile, scope first (DOM order = visual order). */}
+        <div>
+          <StudioScope height={isMobile ? 220 : 260} />
+        </div>
+        <div>
+          <StudioCymatics height={260} />
+        </div>
+
+</div></details>
+
+      <details className="studio-disclosure" data-testid="studio-file-options" ref={node => { editorSections.current.files = node; }}>
         <summary>Save, export & session options <span className="t-caption text-3">WAV, share link, end fade and reset</span></summary>
       {/* ROW A2 — Session tools (v2): sleep fade, share, export format, reset + notices */}
-      <motion.div
-        initial={{ y: -8, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.2, delay: 0.04 }}
+      <div
         className="panel"
         data-testid="session-tools"
         style={{ padding: isMobile ? '10px 12px' : '10px 16px', marginBottom: 16, display: 'flex', flexDirection: 'column', gap: 10 }}
@@ -350,328 +673,14 @@ export default function Studio() {
               style={{ flex: 1, minWidth: 0, height: 28, background: 'var(--ink-0)', color: 'var(--text-2)', border: '1px solid var(--line-1)', borderRadius: 2, fontSize: 11, padding: '0 8px' }}
             />
             <button type="button" className="chip" style={{ height: 24, padding: '0 8px', fontSize: 10 }} onClick={() => setShared('idle')} aria-label="Dismiss the share link">
-              ✕
+              <X size={16} aria-hidden="true" />
             </button>
           </div>
         )}
-      </motion.div>
+      </div>
       </details>
 
-      <details className="studio-disclosure" data-testid="studio-sound-controls"><summary>Sound controls <span className="t-caption text-3">Tone, rhythm and waveform</span></summary><div className="studio-edit-grid">        {/* ROW B — Engine panel */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.05 }}>
-          <Panel
-            title="ENGINE"
-            right={
-              <GradeBadge
-                grade="C"
-                compact
-                citation={{
-                  verdict: 'Percept: Grade A physics. Cortical entrainment claim: Grade C.',
-                  summary: 'Ingendoh 2023: 5 pro / 8 contra of 14 EEG studies on beat-driven entrainment.',
-                  source: 'Ingendoh et al., PLOS ONE (2023), PMC10198548',
-                }}
-              />
-            }
-          >
-            {/* mode tabs */}
-            <div className="flex hairline-b" style={{ marginBottom: 12 }}>
-              {(['binaural', 'monaural', 'isochronic'] as EntrainmentMode[]).map((m) => (
-                <button
-                  key={m}
-                  type="button"
-                  onClick={() => s.setMode(m)}
-                  className="t-label"
-                  style={{
-                    flex: 1,
-                    padding: '8px 0',
-                    background: 'none',
-                    border: 'none',
-                    borderBottom: s.mode === m ? '2px solid var(--amber)' : '2px solid transparent',
-                    color: s.mode === m ? 'var(--amber)' : 'var(--text-2)',
-                    cursor: 'pointer',
-                  }}
-                >
-                  {m.toUpperCase()}
-                </button>
-              ))}
-            </div>
-            <p className="t-body-sm text-2" style={{ minHeight: 40, marginBottom: 12 }}>
-              {MODE_DESC[s.mode]}
-            </p>
-            {/* knobs */}
-            <div className="flex justify-around" style={{ marginBottom: 8 }}>
-              <div className="flex flex-col items-center gap-2">
-                <Knob label="CARRIER (L/R)" value={s.carrierHz} min={20} max={1000} defaultValue={200} onChange={s.setCarrierHz} color="var(--teal)" />
-                <Readout value={s.carrierHz.toFixed(2)} unit="Hz" size="lg" color="var(--teal)" editable onCommit={(raw) => {
-                  const v = parseFloat(raw);
-                  if (Number.isFinite(v)) s.setCarrierHz(v);
-                  return Number.isFinite(v);
-                }} />
-                <span className="t-readout-sm">
-                  <span className="text-teal">L {s.carrierHz.toFixed(2)}</span>
-                  <span className="text-3"> ▏</span>
-                  <span className="text-amber">R {(s.mode === 'binaural' ? s.carrierHz + s.beatHz : s.carrierHz).toFixed(2)}</span>
-                </span>
-              </div>
-              <div className="flex flex-col items-center gap-2">
-                <Knob label="BEAT" value={s.beatHz} min={0.1} max={40} log onChange={s.setBeatHz} color="var(--amber)" />
-                <Readout value={s.beatHz.toFixed(2)} unit="Hz" size="lg" color="var(--amber)" editable onCommit={(raw) => {
-                  const v = parseFloat(raw);
-                  if (Number.isFinite(v)) s.setBeatHz(v);
-                  return Number.isFinite(v);
-                }} />
-                {/* band strip */}
-                <BandStrip beat={s.beatHz} />
-              </div>
-            </div>
-            {/* warnings */}
-            {s.warnings.length > 0 && (
-              <div className="flex flex-col gap-2" style={{ margin: '8px 0' }}>
-                {s.warnings.map((w) => (
-                  <WarningChip key={w}>{w}</WarningChip>
-                ))}
-              </div>
-            )}
-            {/* synthesis options */}
-            <div className="flex flex-col gap-3" style={{ marginTop: 12 }}>
-              <div className="flex items-center gap-2">
-                <span className="t-label" style={{ width: 90 }}>WAVEFORM</span>
-                {(['sine', 'triangle', 'square'] as const).map((w) => (
-                  <button
-                    key={w}
-                    type="button"
-                    className={`chip ${s.waveform === w ? 'chip-active' : ''}`}
-                    onClick={() => s.setWaveform(w)}
-                  >
-                    {w.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="t-label" style={{ width: 90 }}>PHASE LOCK</span>
-                <button type="button" className={`chip ${s.phaseLock ? 'chip-active' : ''}`} onClick={() => s.setPhaseLock(!s.phaseLock)}>
-                  {s.phaseLock ? 'LOCKED' : 'FREE'}
-                </button>
-                <Led state={s.phaseLock ? 'teal' : 'off'} />
-                <span className="t-caption text-3">
-                  {s.phaseLock ? 'L/R phase locked at cycle boundaries' : 'independent oscillators (legacy style)'}
-                </span>
-              </div>
-              {s.mode === 'isochronic' && (
-                <div className="flex items-center gap-2">
-                  <span className="t-label" style={{ width: 90 }}>GATE</span>
-                  <input
-                    type="range"
-                    min={5}
-                    max={95}
-                    value={s.gateDuty * 100}
-                    onChange={(e) => s.setGateDuty(parseInt(e.target.value, 10) / 100)}
-                    aria-label="Gate duty"
-                    style={{ width: 90, accentColor: '#D9A441' }}
-                  />
-                  <span className="t-readout-sm text-2">{Math.round(s.gateDuty * 100)}%</span>
-                  {(['raised-cosine', 'hard'] as const).map((sh) => (
-                    <button key={sh} type="button" className={`chip ${s.gateShape === sh ? 'chip-active' : ''}`} onClick={() => s.setGateShape(sh)}>
-                      {sh === 'raised-cosine' ? 'COS' : 'HARD'}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </Panel>
-        </motion.div>
-
-        {/* ROW B — Master readout */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.1 }}>
-          <div className="scope-well flex flex-col" style={{ padding: 24, height: '100%', border: s.running ? '1px solid var(--line-2)' : undefined }}>
-            <span className="t-label">MASTER READOUT</span>
-            <div style={{ margin: '8px 0' }}>
-              <span className="t-readout-xl" style={{ color: 'var(--amber)' }}>
-                {s.beatHz.toFixed(2)}
-                <span className="text-3" style={{ fontSize: '0.5em' }}>
-                  {'\u2009'}Hz
-                </span>
-              </span>
-            </div>
-            <div className="t-readout-md" style={{ marginBottom: 12 }}>
-              <span className="text-teal">L {s.carrierHz.toFixed(2)} Hz</span>
-              <span className="text-3"> ▏</span>
-              <span className="text-amber">R {(s.mode === 'binaural' ? s.carrierHz + s.beatHz : s.carrierHz).toFixed(2)} Hz</span>
-            </div>
-            {/* phase coherence meter */}
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ width: 180, height: 6, background: 'var(--ink-4)', position: 'relative' }}>
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: -2,
-                    left: s.phaseLock ? 'calc(50% - 3px)' : 'calc(50% - 3px)',
-                    width: 6,
-                    height: 10,
-                    background: 'var(--teal)',
-                  }}
-                />
-                <div style={{ position: 'absolute', left: '50%', top: -3, width: 1, height: 12, background: 'var(--line-2)' }} />
-              </div>
-              <span className="t-readout-sm text-3">
-                PHASE Δ {s.phaseLock ? '0.000' : '—'} rad
-              </span>
-            </div>
-            <div className="t-readout-sm text-2" style={{ marginBottom: 16 }}>
-              {s.running ? 'ENGINE RUNNING' : 'ENGINE STOPPED'} · {s.mode.slice(0, 3).toUpperCase()} · {s.waveform.toUpperCase()} ·
-              GATE {s.mode === 'isochronic' ? `${Math.round(s.gateDuty * 100)}%` : '—'} · OUT {s.volumeDb.toFixed(1)} dBFS
-            </div>
-            <div style={{ borderTop: '1px solid var(--line-1)', paddingTop: 12, marginTop: 'auto' }}>
-              <p className="t-caption text-3" style={{ marginBottom: 8 }}>
-                Beat percept: verified psychoacoustics (Dove 1839; Oster 1973). Cortical entrainment at this setting:
-                unproven — 8 of 14 EEG studies contradict (Ingendoh 2023). Behavioral effects, when found, are modest
-                (g≈0.4).
-              </p>
-              <GradeBadge
-                grade="C"
-                compact
-                citation={{
-                  verdict: 'Entrainment claim unproven at this setting.',
-                  summary: 'Percept itself is Grade A psychoacoustics; EEG entrainment is contradicted by 8/14 studies.',
-                  source: 'Ingendoh et al., PLOS ONE (2023); Oster, Scientific American 229(4) (1973)',
-                }}
-              />
-            </div>
-          </div>
-        </motion.div>
-
-</div></details>
-      <details className="studio-disclosure" data-testid="studio-textures"><summary>Textures & bowls <span className="t-caption text-3">Noise, nature, singing bowls and interval bells</span></summary><div className="studio-edit-grid">        {/* ROW D — Noise mixer (master bypass: LED + label; bypassed = silent live, omitted from export) */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.22 }}>
-          <Panel
-            title="NOISE MIXER"
-            right={
-              <button
-                type="button"
-                data-testid="noise-mixer-toggle"
-                aria-pressed={s.noiseOn}
-                onClick={() => s.setNoiseOn(!s.noiseOn)}
-                className="chip flex items-center gap-2"
-                style={{ height: 22, fontSize: 10 }}
-                title={
-                  s.noiseOn
-                    ? 'Bypass the whole noise mixer — silent live and omitted from the WAV export (click-free ramp)'
-                    : 'Enable the noise mixer — fader positions were kept'
-                }
-              >
-                <Led state={s.noiseOn ? 'amber' : 'off'} />
-                {s.noiseOn ? 'MIX ON' : 'BYPASSED'}
-              </button>
-            }
-          >
-            <div
-              data-testid="noise-mixer-body"
-              data-dimmed={s.noiseOn ? undefined : 'true'}
-              style={{ opacity: s.noiseOn ? 1 : 0.45, transition: 'opacity 160ms' }}
-            >
-              <div className="flex justify-between" style={{ gap: 8 }}>
-                {(Object.keys(NOISE_COLOR) as NoiseColor[]).map((c) => (
-                  <div key={c} className="flex flex-col items-center gap-2" title={NOISE_SLOPE[c]}>
-                    <span style={{ width: 10, height: 10, borderRadius: 2, background: NOISE_COLOR[c] }} />
-                    <Fader db={s.noiseDb[c]} onChange={(db) => s.setNoiseDb(c, db)} color={NOISE_COLOR[c]} label={c.toUpperCase()} height={110} />
-                  </div>
-                ))}
-              </div>
-              <p className="t-caption text-3" style={{ marginTop: 12 }}>
-                Masking/relaxation aid — no entrainment claim. Double-click a fader to turn it off.
-                {s.noiseOn ? '' : ' Bypassed: faders kept, but the mixer is silent live and excluded from export.'}
-              </p>
-            </div>
-          </Panel>
-        </motion.div>
-
-        {/* ROW D — Layers + phases */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.25 }} className="flex flex-col gap-4">
-          <Panel
-            title="LAYERS"
-            right={
-              <button
-                type="button"
-                data-testid="layers-toggle"
-                aria-pressed={s.layersOn}
-                onClick={() => s.setLayersOn(!s.layersOn)}
-                className="chip flex items-center gap-2"
-                style={{ height: 22, fontSize: 10 }}
-                title={
-                  s.layersOn
-                    ? 'Bypass both layers — silent live and omitted from the WAV export (click-free ramp)'
-                    : 'Enable the layers — per-layer settings were kept'
-                }
-              >
-                <Led state={s.layersOn ? 'teal' : 'off'} />
-                {s.layersOn ? 'LAYERS ON' : 'BYPASSED'}
-              </button>
-            }
-          >
-            <div
-              data-testid="layers-body"
-              data-dimmed={s.layersOn ? undefined : 'true'}
-              className="flex flex-col gap-3"
-              style={{ opacity: s.layersOn ? 1 : 0.45, transition: 'opacity 160ms' }}
-            >
-              <div className="flex items-center gap-3">
-                <button type="button" onClick={() => s.setNature({ on: !s.nature.on })} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-                  <Led state={s.nature.on ? 'teal' : 'off'} />
-                </button>
-                <span className="t-label" style={{ width: 110 }}>NATURE</span>
-                <select
-                  value={s.nature.kind}
-                  onChange={(e) => s.setNature({ kind: e.target.value as (typeof NATURE_KINDS)[number] })}
-                  className="font-mono2"
-                  style={{ background: 'var(--ink-3)', color: 'var(--text-1)', border: '1px solid var(--line-1)', borderRadius: 2, fontSize: 11, padding: '3px 6px' }}
-                >
-                  {NATURE_KINDS.map((k) => (
-                    <option key={k} value={k}>
-                      {k.toUpperCase()}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="range"
-                  min={-60}
-                  max={0}
-                  value={s.nature.db}
-                  onChange={(e) => s.setNature({ db: parseFloat(e.target.value) })}
-                  aria-label="Nature level"
-                  style={{ flex: 1, accentColor: '#4F8C82' }}
-                />
-                <GradeBadge grade="B" compact citation={{ verdict: 'Relaxation evidence, not entrainment.', summary: 'Nature soundscapes have small human relaxation studies; no entrainment claim.', source: 'Evidence synthesis — see Knowledge Base' }} />
-              </div>
-              {/* Singing-bowl set (up to MAX_BOWLS rows) + the interval bell. */}
-              <BowlSet />
-              {s.layersOn ? null : (
-                <p className="t-caption text-3">
-                  Bypassed: per-layer settings kept, but nature and bowls are silent live and excluded from export.
-                </p>
-              )}
-            </div>
-          </Panel>
-        </motion.div>
-</div></details>
-      <details className="studio-disclosure" data-testid="studio-sequence"><summary>Session sequence <span className="t-caption text-3">Arrange the phases of your practice</span></summary>          <Panel title="SESSION PHASES" right={<InfoPopover featureId="phase-timeline" label="About the phase timeline" />}>
-            <PhaseTimeline phases={s.phases} onChange={s.setPhases} playheadSec={s.running ? s.elapsedSec : 0} height={100} />
-          </Panel>
-</details>
-      <details className="studio-disclosure" data-testid="studio-visuals"><summary>Visuals & signal views <span className="t-caption text-3">Waveform, spectrum, correlation and sand patterns</span></summary><div className="studio-visual-grid">        {/* ROW B — Visualizer (tabbed scope/spectrum/correlation) */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.15 }}>
-          <Visualizer height={300} />
-        </motion.div>
-
-        {/* ROW C — Visualization row: big live scope (left) + cymatics panel
-            (right). Stacked on mobile, scope first (DOM order = visual order). */}
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.18 }}>
-          <StudioScope height={isMobile ? 220 : 260} />
-        </motion.div>
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24, delay: 0.2 }}>
-          <StudioCymatics height={260} />
-        </motion.div>
-
-</div></details>
+      {sandOn && <CymaticsOverlay onClose={() => setSandOn(false)} />}
 
       {/* Save-as-preset modal */}
       {saveOpen && (<OverlayPortal>
@@ -680,10 +689,7 @@ export default function Studio() {
           style={{ position: 'fixed', inset: 0, zIndex: 121, background: 'rgba(11,12,13,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px', overscrollBehavior: 'contain' }}
           onClick={() => setSaveOpen(false)}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.14 }}
+          <div
             className="panel"
             ref={saveDialogRef} role="dialog" aria-modal="true" aria-label="Save as preset"
             style={{ width: 'min(380px, calc(100vw - 32px))', maxHeight: 'calc(100dvh - 32px)', overflowY: 'auto' }}
@@ -719,7 +725,7 @@ export default function Studio() {
                 CANCEL
               </button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </OverlayPortal>)}
     </div>
@@ -759,7 +765,7 @@ function BandStrip({ beat }: { beat: number }) {
             top: -2,
             bottom: -2,
             width: 2,
-            background: '#fff',
+            background: '#1d2926',
             left: `${pos * 100}%`,
             transition: 'left 200ms',
           }}

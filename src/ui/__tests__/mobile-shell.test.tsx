@@ -148,7 +148,7 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(c.querySelector('[data-testid="status-bar-mobile"]')).toBeTruthy();
     expect(c.querySelector('[data-testid="status-bar"]')).toBeNull();
     // Primary tabs + MORE.
-    for (const tab of ['today', 'explore', 'listen', 'research', 'more']) {
+    for (const tab of ['today', 'explore', 'studio', 'more']) {
       expect(c.querySelector(`[data-testid="bottom-tab-${tab}"]`)).toBeTruthy();
     }
     // Persistent panic: ≥56px target; bar z-index ≥70 (clears grain z-60 and
@@ -158,7 +158,7 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(parseInt(panic!.style.minHeight, 10)).toBeGreaterThanOrEqual(56);
     expect(parseInt(bar!.style.zIndex, 10)).toBeGreaterThanOrEqual(70);
     // Content area keeps clear of the fixed bottom bar.
-    expect(c.querySelector('main')!.style.paddingBottom).toContain('calc(56px');
+    expect(c.querySelector('main')!.style.paddingBottom).toContain('calc(64px');
   });
 
   it('renders consistent horizontal navigation and transport on desktop', async () => {
@@ -185,8 +185,8 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(drawer).toBeTruthy();
     const tools = drawer!.querySelector('[data-nav-group="tools"]')!;
     expect(tools.querySelectorAll('a')).toHaveLength(0);
-    // Four starting destinations, the prominent practice link and Safety.
-    expect(drawer!.querySelectorAll('a')).toHaveLength(6);
+    // Four starting destinations, practice, Safety, and two footer shortcuts.
+    expect(drawer!.querySelectorAll('a')).toHaveLength(8);
     expect(drawer!.querySelector('a[href="/channeled"]')).toBeNull();
     const toggle = drawer!.querySelector<HTMLButtonElement>('[data-testid="drawer-research-toggle"]')!;
     expect(toggle.getAttribute('aria-expanded')).toBe('false');
@@ -283,7 +283,7 @@ describe('Observatory discovery navigation', () => {
     const nav = c.querySelector('[data-testid="observatory-navigation"]')!;
     expect(nav).not.toBeNull();
     expect(c.querySelector('[data-testid="module-rail"]')).toBeNull();
-    for (const path of ['/', '/presets', '/studio', '/cymatics', '/research-hub']) expect(nav.querySelector(`a[href="${path}"]`)).not.toBeNull();
+    for (const path of ['/', '/presets', '/studio', '/research-hub']) expect(nav.querySelector(`a[href="${path}"]`)).not.toBeNull();
     await act(async () => nav.querySelector<HTMLButtonElement>('button')!.click());
     const drawer = c.querySelector('[data-testid="more-drawer"]')!;
     expect(drawer.getAttribute('aria-modal')).toBe('true');

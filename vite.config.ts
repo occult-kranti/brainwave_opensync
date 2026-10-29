@@ -113,8 +113,8 @@ export default defineConfig({
         short_name: 'Open Sync',
         description:
           'Sounds for meditation, rest and exploration. Find a practice, listen, customize your sound and explore the research. Runs entirely in your browser.',
-        theme_color: '#0B0C0D',
-        background_color: '#0B0C0D',
+        theme_color: '#f4f3ec',
+        background_color: '#f4f3ec',
         display: 'standalone',
         orientation: 'any',
         start_url: base,

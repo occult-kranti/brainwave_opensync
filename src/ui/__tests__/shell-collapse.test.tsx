@@ -90,7 +90,7 @@ describe('Archive shared navigation', () => {
   it.each(['/', '/studio', '/cymatics', '/channeled', '/sample-lab'])('keeps the same primary destinations on %s', async path => {
     const c = await renderShell(1280, path);
     const nav = c.querySelector('[data-testid="observatory-navigation"]')!;
-    for(const dest of ['/', '/presets', '/studio', '/cymatics', '/research-hub']) expect(nav.querySelector(`a[href="${dest}"]`)).not.toBeNull();
+    for(const dest of ['/', '/presets', '/studio', '/research-hub']) expect(nav.querySelector(`a[href="${dest}"]`)).not.toBeNull();
     expect(c.querySelector('[data-testid="module-rail"]')).toBeNull();
     if(path !== '/') expect(c.querySelector(`.workspace-subnav a[href="${path}"]`)?.getAttribute('aria-current')).toBe('page');
     expect(c.querySelector('button[title^="Stop all sound"]')).not.toBeNull();
@@ -110,7 +110,8 @@ describe('Archive shared navigation', () => {
     await pressKey('[');
     expect(c.querySelector('[data-testid="more-drawer"]')).not.toBeNull();
     expect(c.querySelector('.archive-workspace')!.hasAttribute('inert')).toBe(true);
-    expect(c.querySelector('.listening-sidebar')!.hasAttribute('inert')).toBe(true);
+    expect(c.querySelector('.resonant-world')).toBeNull();
+    expect(c.querySelector('.world-toolbar')).toBeNull();
     expect(c.querySelector('[data-testid="more-drawer"]')!.getAttribute('aria-labelledby')).toBe('site-navigation-title');
     await pressKey('Escape');
     await act(async()=>{await new Promise(resolve=>setTimeout(resolve,400));});

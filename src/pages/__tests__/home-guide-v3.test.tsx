@@ -45,75 +45,35 @@ afterEach(async () => {
 });
 
 describe("Home task paths and discovery", () => {
-  it("offers a direct listening path, a small intention chooser and the sound workshop", async () => {
+  it("offers task paths and makes the selected listening time concrete", async () => {
     const page = await mount(<Home />);
-    expect(page.querySelector("a")!.getAttribute("href")).toBe(
-      "/presets?collection=all",
-    );
-    for (const path of [
-      "/studio",
-      "/cymatics",
-      "/meditate",
-      "/research-hub#tools",
-      "/previous/",
-    ]) {
-      expect(page.querySelector(`a[href="${path}"]`)).not.toBeNull();
+    expect(page.querySelector("a")!.getAttribute("href")).toBe("/presets?collection=all");
+    for (const path of ["/studio", "/cymatics", "/meditate", "/practice-plan", "/research-hub#tools", "/previous/"]) {
+      expect(page.querySelector(`a[href="${path}"]`), path).not.toBeNull();
     }
-    expect(page.querySelector("canvas")).toBeNull();
-    expect(page.querySelector(".world-scene-caption")?.textContent).toContain(
-      "Generative art",
-    );
+    const open = () => page.querySelector<HTMLAnchorElement>(".atlas-selection .atlas-primary")!;
+    expect(new URL(open().href).searchParams.get("minutes")).toBe("5");
     await act(async () => {
-      Array.from(page.querySelectorAll(".world-intentions button"))
-        .find((b) => b.textContent?.includes("Self-hypnosis"))!
-        .dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      Array.from(page.querySelectorAll<HTMLButtonElement>(".atlas-time button"))
+        .find(button => button.textContent === "5min")!.click();
     });
-    expect(
-      page
-        .querySelector(".world-intention-result .world-primary")
-        ?.getAttribute("href"),
-    ).toBe("/presets?collection=hypnosis");
+    expect(new URL(open().href).searchParams.get("minutes")).toBe("5");
+    await act(async () => {
+      Array.from(page.querySelectorAll<HTMLButtonElement>(".atlas-moods button"))
+        .find(button => button.textContent === "Focus")!.click();
+    });
+    expect(page.querySelector('.atlas-moods button[aria-pressed="true"]')?.textContent).toBe("Focus");
+    expect(open().getAttribute("href")).toMatch(/^\/listen\?preset=.+&minutes=5$/);
+    expect(page.textContent).toContain("Loads quietly");
   });
 
-  it("controls the shared sculpture without introducing another canvas", async () => {
-    localStorage.clear();
-    const page = await mount(
-      <SpatialProvider>
-        <Home />
-      </SpatialProvider>,
-    );
-    const dimension = Array.from(
-      page.querySelectorAll(".world-dimension-switch button"),
-    ).find((b) => b.textContent === "4D")!;
-    await act(async () =>
-      dimension.dispatchEvent(new MouseEvent("click", { bubbles: true })),
-    );
-    expect(dimension.getAttribute("aria-pressed")).toBe("true");
-    expect(page.querySelector(".world-scene-caption")?.textContent).toContain(
-      "a projection of four coordinates",
-    );
-    await act(async () =>
-      page
-        .querySelector<HTMLButtonElement>(
-          '[aria-label="Zoom in home sculpture"]',
-        )!
-        .click(),
-    );
-    expect(
-      page.querySelector('[aria-label="Home sculpture zoom"]')?.textContent,
-    ).toBe("110%");
-    await act(async () =>
-      page
-        .querySelector<HTMLButtonElement>(
-          '[aria-label="Pause home sculpture"]',
-        )!
-        .click(),
-    );
-    expect(
-      page.querySelector('[aria-label="Animate home sculpture"]'),
-    ).not.toBeNull();
+  it("keeps home free of geometry backgrounds and hides optional reading", async () => {
+    const page = await mount(<SpatialProvider><Home /></SpatialProvider>);
     expect(page.querySelector("canvas")).toBeNull();
-    localStorage.clear();
+    expect(page.querySelector(".resonant-world")).toBeNull();
+    expect(page.querySelector('[aria-label="Home sculpture controls"]')).toBeNull();
+    expect(page.querySelector<HTMLDetailsElement>(".atlas-home-reading")?.open).toBe(false);
+    expect(page.querySelector<HTMLImageElement>(".atlas-pick-result img")?.getAttribute("alt")).toBe("");
   });
 
   it("retains every page in a browsable directory with research initially collapsed", async () => {

@@ -88,8 +88,8 @@ describe('mobile sound discovery', () => {
 
   it('shows transport before optional scene controls and keeps the scene collapsed', async () => {
     await mount('/listen?preset=exp-bashar-scale-map', <Listen />);
-    const optional = container.querySelector<HTMLDetailsElement>('.listen-scene-options')!;
-    expect(optional.open).toBe(false);
+    expect(container.querySelector('.listen-scene-options')).toBeNull();
+    expect(container.querySelector('[aria-label="Listening setup"]')).not.toBeNull();
     expect(container.querySelector<HTMLDetailsElement>('.listen-purpose')!.open).toBe(false);
     expect(findButton('Play session')).toBeDefined();
     expect(session.running).toBe(false);

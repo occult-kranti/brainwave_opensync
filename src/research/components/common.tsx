@@ -14,16 +14,13 @@ export function ResearchPage({
   children: ReactNode;
 }) {
   return (
-    <div className="mx-auto w-full max-w-[1440px] px-6 py-8 md:px-10" style={{ color: 'var(--text-1)' }}>
+    <div className="atlas-research-page mx-auto w-full max-w-[1440px] px-6 py-8 md:px-10" style={{ color: 'var(--text-1)' }}>
       <header className="mb-8">
-        <div className="t-label mb-3 flex items-center gap-2" style={{ color: 'var(--text-3)' }}>
-          <Led tone="teal" />
-          {crumb}
-        </div>
         <h1 className="t-display-lg">{title}</h1>
         <p className="t-body mt-3 max-w-3xl" style={{ color: 'var(--text-2)' }}>
           {lede}
         </p>
+        <p className="atlas-research-location">{crumb}</p>
       </header>
       {children}
     </div>
@@ -41,7 +38,6 @@ export function HonestyBar({ context }: { context: string }) {
       style={{
         background: 'var(--ink-2)',
         border: '1px solid var(--line-1)',
-        borderLeft: '2px solid var(--amber)',
       }}
       role="note"
     >
@@ -64,13 +60,8 @@ export function HonestyBar({ context }: { context: string }) {
 /** Advisor-ratified claim discipline (registry rule 2 / S12.2). */
 export function ClaimDisciplineNote() {
   return (
-    <div
-      className="rounded-sm px-4 py-3"
-      style={{ background: 'var(--ink-1)', border: '1px solid var(--line-1)' }}
-    >
-      <span className="t-label" style={{ color: 'var(--teal)' }}>
-        CLAIM DISCIPLINE (ADVISOR S12.2)
-      </span>
+    <details className="atlas-evidence-disclosure">
+      <summary>How to read claims and evidence</summary>
       <p className="t-body-sm mt-2" style={{ color: 'var(--text-2)' }}>
         Claims on this screen are stated as "biases toward" / "is associated with" / "produces a
         measurable stimulus-locked response" — never "induces". Banned as product claims:{' '}
@@ -80,7 +71,7 @@ export function ClaimDisciplineNote() {
         </span>
         . Every claim carries an A–D evidence grade; grades apply to the claim, not to Open Sync.
       </p>
-    </div>
+    </details>
   );
 }
 

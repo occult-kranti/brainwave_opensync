@@ -36,7 +36,8 @@ function NavigationDisclosure({ category, idPrefix, collapsed, renderRoute, path
   renderRoute: (route: AppRoute) => ReactNode;
   pathname: string;
 }) {
-  const entries = entriesForCategory(category.id).filter((entry) => entry.route.path !== '/safety');
+  const primaryPaths = new Set(getPrimaryNavRoutes().map(route => route.path));
+  const entries = entriesForCategory(category.id).filter((entry) => entry.route.path !== '/safety' && !primaryPaths.has(entry.route.path));
   const activeEntry = entries.find(({ route }) => pathname === route.path || pathname.startsWith(`${route.path}/`));
   const [disclosure, setDisclosure] = useState<{ path: string; open: boolean } | null>(null);
   // A deep link reveals its location; an explicit collapse on that page wins.

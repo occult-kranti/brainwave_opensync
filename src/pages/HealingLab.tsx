@@ -26,8 +26,6 @@ import {
   NANO_PORTRAITS,
 } from '@/data/healingLab';
 import { fmtClock } from '@/ui/session/sessionMath';
-import { Field4D } from '@/ui/components/Field4D';
-import { useField4d } from '@/hooks/useField4d';
 import { LabRibbon } from '@/ui/components/LabRibbon';
 import { LabHero } from '@/ui/components/LabHero';
 
@@ -55,17 +53,11 @@ const JUMPS = [
 ] as const;
 
 export default function HealingLab() {
-  const [field4dOn, setField4dOn] = useField4d();
   return (
     <div className="flex flex-col gap-6" style={{ maxWidth: 1080, position: 'relative', isolation: 'isolate' }}>
-      {field4dOn && <Field4D />}
       <header>
         <div className="flex items-start justify-between" style={{ gap: 12, flexWrap: 'wrap' }}>
           <p className="t-label text-3">VIBRATION × CLINICAL DOSE × HONEST LABELS</p>
-          <button type="button" className={`chip ${field4dOn ? 'chip-active' : ''}`} aria-pressed={field4dOn}
-            aria-label="Toggle 4D field backdrop" onClick={() => setField4dOn(!field4dOn)}>
-            4D field {field4dOn ? 'on' : 'off'}
-          </button>
         </div>
         <h1 className="t-display-lg">Healing Sound Lab</h1>
         <p className="t-body text-2" style={{ maxWidth: 780 }}>

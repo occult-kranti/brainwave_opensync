@@ -1,5 +1,7 @@
 import { NavLink, useLocation } from "react-router";
-import { navigationForPath, entriesForCategory } from "@/app/navigation";
+import { ChevronDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { navigationForPath, entriesForCategory, RESEARCH_LAB_PATHS } from "@/app/navigation";
 
 const LISTENING = [
   "/presets",
@@ -19,7 +21,8 @@ const LABELS: Record<string, string> = {
 };
 export function WorkspaceNav() {
   const { pathname } = useLocation();
-  if (pathname === "/") return null;
+  const isMobile = useIsMobile();
+  if (pathname === "/" || pathname === "/research-hub" || RESEARCH_LAB_PATHS.some(path => path === pathname)) return null;
   const entry = navigationForPath(pathname);
   const links = LISTENING.includes(pathname)
     ? LISTENING.map((path) => ({ path, title: LABELS[path] }))
@@ -27,14 +30,14 @@ export function WorkspaceNav() {
         path: item.route.path,
         title: item.title,
       }));
-  return (
+  const navigation = (
     <nav className="workspace-subnav" aria-label="Related tools">
       <span>
         {LISTENING.includes(pathname)
-          ? "LISTEN"
+          ? "Listening"
           : entry?.category === "research" || pathname === "/research-hub"
-            ? "RESEARCH"
-            : "WORKSPACE"}
+            ? "Reading"
+            : "Related tools"}
       </span>
       {links.map((link) => (
         <NavLink key={link.path} to={link.path}>
@@ -43,4 +46,5 @@ export function WorkspaceNav() {
       ))}
     </nav>
   );
+  return isMobile ? <details key={pathname} className="atlas-related-disclosure"><summary>Related tools <ChevronDown size={17} aria-hidden="true" /></summary>{navigation}</details> : navigation;
 }

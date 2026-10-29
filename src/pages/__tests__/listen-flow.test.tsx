@@ -46,6 +46,19 @@ describe('Today → Listen → Customize', () => {
     await act(async () => button('Stop').click());
     expect(session.running).toBe(false);
   });
+  it('loads a shorter chosen listening window without autoplay', async () => {
+    await mount('/listen?preset=practice-soft-landing&minutes=3');
+    expect(session.limitMin).toBe(3);
+    expect(session.running).toBe(false);
+    expect(LiveEngine.prototype.start).not.toHaveBeenCalled();
+  });
+  it('ignores invalid durations and cannot extend a preset through the URL', async () => {
+    await mount('/listen?preset=practice-soft-landing&minutes=-10');
+    expect(session.limitMin).toBe(5);
+    await act(async () => navigate('/listen?preset=practice-soft-landing&minutes=1000'));
+    expect(session.limitMin).toBe(5);
+    expect(session.running).toBe(false);
+  });
   it('keeps edits when returning from the workshop instead of reloading the original', async () => {
     await mount('/listen?preset=practice-bowl-attention');
     await act(async () => host.querySelector<HTMLAnchorElement>('a[href="/studio"]')!.click());

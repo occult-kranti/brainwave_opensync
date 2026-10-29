@@ -1,11 +1,9 @@
-# Open Sync — Spatial Observatory
+# Open Sync: a new listening workspace
 
-Current request: a complete 3D/4D visual experience throughout the archive, camera zoom for toroidal and Clifford geometry, artist renders, panel review, and concrete screen/control/flow planning. Original master stays separate.
+Current instruction, 2026-10-29: replace both prior designs and the 3D/4D background. The user grants full design choice. Previous spatial/Nocturne review records remain historical evidence, not the current visual authority.
 
-The archive is a quiet spatial sound environment. Three.js / WebGL 2 / original GLSL provide shaded sculpture, threaded and particle materials, with real four-coordinate Clifford projection. Shared controls and preferences cross routes; every screen exposes a visual room. The regular DOM retains all sound, research and navigation controls.
+Direction: Listening Atlas. Bright paper, ink, action blue and original flat print art. Task-first Home chooser, row-based sound library, focused player, Studio editor sections, practice worksheet, and a complete searchable source/tool directory.
 
-Night Country and Quiet Horizon keep their original paintings as full-viewport backgrounds. Dark mineral/sage and charcoal/sand tokens extend through home, catalog, finder, player, research and specialist workshop. New original generated material studies serve as collection covers.
+All 41 route purposes and the grouping rationale are mapped in docs/design/listening-atlas-architecture.md. The built visual/interaction system is recorded in DESIGN.md. Verification and release evidence are in docs/design/listening-atlas-verification.md.
 
-Implementation, sources, complete screen mapping, control behavior, accessibility/performance constraints and the AI panel decision ledger: `docs/SPATIAL-EXPERIENCE.md`. Release evidence: `.design/spatial-verification.md`.
-
-Preserve all 139 presets and original feature routes. No DSP, session, safety or preview changes. Explicit audio start and shared panic remain. Reduced motion, still fallback, ordinary keyboard navigation and mobile reflow are requirements.
+Preserve source truth, existing URLs, saved data, explicit audio start and safety controls. Dedicated scientific/art visual tools remain; no ambient geometric background returns from persisted preferences. Only the archive source and published subtree change.

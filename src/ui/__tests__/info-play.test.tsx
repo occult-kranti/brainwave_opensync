@@ -216,7 +216,7 @@ describe('preset preview (engine preview path)', () => {
     expect(left.length).toBe(right.length);
     expect(left.length).toBeLessThanOrEqual(10 * 48000 + 4800);
     expect(left.length).toBeGreaterThan(48000);
-    expect(btn.textContent).toContain('■ Stop');
+    expect(btn.textContent).toContain('Stop preview');
     expect(btn.className).toContain('chip-active');
 
     // Second tap stops.

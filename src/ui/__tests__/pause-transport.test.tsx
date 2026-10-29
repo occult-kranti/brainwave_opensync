@@ -178,10 +178,10 @@ describe('global pause/resume — state machine', () => {
 
 // ------------------------------------------------------- shell surfaces + Space
 
-async function mountShell(width: number) {
+async function mountShell(width: number, path = '/studio') {
   mockViewport(width);
   return mount(
-    <MemoryRouter initialEntries={['/studio']}>
+    <MemoryRouter initialEntries={[path]}>
       <SessionProvider>
         <Probe />
         <AppShell>
@@ -202,11 +202,11 @@ async function pressKeyOn(target: EventTarget, key: string, init: KeyboardEventI
 }
 
 describe('global pause/resume — surfaces + Space hotkey', () => {
-  it('status bar pause chip: disabled while idle, toggles to RESUME when paused', async () => {
+  it('session dock appears while playing and toggles to RESUME when paused', async () => {
     const c = await mountShell(1280);
     const chip = () => c.querySelector<HTMLButtonElement>('[data-testid="pause-toggle"]')!;
-    expect(chip()).toBeTruthy();
-    expect(chip().disabled).toBe(true);
+    expect(chip()).toBeNull();
+    expect(c.querySelector('[data-testid="session-dock"]')).toBeNull();
 
     await act(async () => session.start());
     expect(chip().disabled).toBe(false);
@@ -219,6 +219,17 @@ describe('global pause/resume — surfaces + Space hotkey', () => {
     expect(chip().getAttribute('aria-pressed')).toBe('true');
     // Readout carries the PAUSED marker.
     expect(c.textContent).toContain('Studio paused ·');
+  });
+
+  it('keeps the full player free of duplicate dock controls while global Stop remains', async () => {
+    const c = await mountShell(390, '/listen');
+    await act(async () => session.start());
+    expect(c.querySelector('[data-testid="session-dock"]')).toBeNull();
+    expect(c.querySelector('.atlas-has-sound')).toBeNull();
+    const stop = c.querySelector<HTMLButtonElement>('[data-testid="mobile-panic"]')!;
+    expect(stop).toBeTruthy();
+    await act(async () => stop.click());
+    expect(session.running).toBe(false);
   });
 
   it('Space toggles pause while playing; resume works too', async () => {
@@ -304,25 +315,21 @@ describe('global pause/resume — surfaces + Space hotkey', () => {
   it.each([360, 800])('describes muted Studio playback and pause accurately at width %i', async (width) => {
     const c = await mountShell(width);
     await act(async () => { session.setMuted(true); session.start(); });
-    const header = c.querySelector(width < 768 ? '[data-testid="status-bar-mobile"]' : '[data-testid="status-bar"]')!;
+    const header = c.querySelector('[data-testid="session-dock"]')!;
     expect(header.textContent).toContain('Studio playing · muted');
     await act(async () => session.togglePause());
     expect(header.textContent).toContain('Studio paused · muted');
   });
 
-  it('mobile header carries Studio pause while the bottom bar keeps Stop all sound', async () => {
+  it('mobile session dock carries pause while navigation retains Stop all sound', async () => {
     const c = await mountShell(500);
     const bar = c.querySelector('[data-testid="mobile-bottom-bar"]')!;
-    const pauseChip = c.querySelector<HTMLButtonElement>('[data-testid="status-bar-mobile"] [data-testid="mobile-pause"]')!;
-    const panic = bar.querySelector<HTMLElement>('[data-testid="mobile-panic"]')!;
-    expect(pauseChip).toBeTruthy();
-    expect(panic).toBeTruthy();
-    // Separate segments: pause sits before panic, panic keeps its own slot.
-    expect(bar.contains(pauseChip)).toBe(false);
-    expect(bar.contains(panic)).toBe(true);
-    expect(pauseChip.disabled).toBe(true); // idle
+    expect(bar.querySelector('[data-testid="mobile-panic"]')).toBeTruthy();
+    expect(c.querySelector('[data-testid="mobile-pause"]')).toBeNull();
     await act(async () => session.start());
-    expect(pauseChip.disabled).toBe(false);
+    const pauseChip = c.querySelector<HTMLButtonElement>('[data-testid="session-dock"] [data-testid="mobile-pause"]')!;
+    expect(pauseChip).toBeTruthy();
+    expect(bar.contains(pauseChip)).toBe(false);
     await act(async () => pauseChip.click());
     expect(session.paused).toBe(true);
     expect(pauseChip.textContent).toContain('RESUME');
@@ -336,7 +343,7 @@ describe('rail section label — RESEARCH (the · SOON suffix is retired)', () =
     const c = await mountShell(1280);
     await act(async () => c.querySelector<HTMLButtonElement>('[data-testid="observatory-navigation"] button')!.click());
     const rail = c.querySelector('[data-testid="more-drawer"]')!;
-    expect(rail.textContent).toContain('Theory & research');
+    expect(rail.textContent).toContain('Reading & sources');
     expect(rail.textContent).not.toContain('RESEARCH · SOON');
     expect(rail.textContent).not.toContain('SOON');
     // Experiments remain available in their task group.
@@ -352,7 +359,7 @@ describe('rail section label — RESEARCH (the · SOON suffix is retired)', () =
       c.querySelector<HTMLElement>('[data-testid="bottom-tab-more"]')!.click();
     });
     const drawer = c.querySelector('[data-testid="more-drawer"]')!;
-    expect(drawer.textContent).toContain('Theory & research');
+    expect(drawer.textContent).toContain('Reading & sources');
     expect(drawer.textContent).not.toContain('RESEARCH · SOON');
   });
 });

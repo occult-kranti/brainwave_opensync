@@ -1,41 +1,18 @@
-/**
- * LabRibbon — cross-navigation between the three research labs
- * (Lucid Audio Lab / Healing Sound Lab / Nature Calls Lab). One row of chips
- * with the current lab marked active; keeps the lab cluster one tap apart.
- */
-
+/** Contextual navigation belongs behind one disclosure on narrow screens. */
 import { Link, useLocation } from 'react-router';
-
-const LABS = [
-  { path: '/bashar-research', label: 'BASHAR RESEARCH' },
-  { path: '/frequency-hypotheses', label: 'FREQUENCY HYPOTHESES' },
-  { path: '/levitation', label: 'LEVITATION' },
-  { path: '/newton-tesla', label: 'NEWTON–TESLA' },
-  { path: '/sound-research', label: 'SOUND RESEARCH' },
-  { path: '/lucid', label: 'LUCID AUDIO LAB' },
-  { path: '/healing', label: 'HEALING SOUND LAB' },
-  { path: '/nature', label: 'NATURE CALLS LAB' },
-] as const;
+import { ChevronDown } from 'lucide-react';
+import { navigationForPath, RESEARCH_LAB_PATHS } from '@/app/navigation';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export function LabRibbon() {
   const { pathname } = useLocation();
-  return (
-    <nav aria-label="Research labs" className="flex gap-2" style={{ flexWrap: 'wrap', marginTop: 4 }}>
-      <span className="t-caption font-mono2 text-3" style={{ alignSelf: 'center' }}>LABS ·</span>
-      {LABS.map((lab) => {
-        const active = pathname === lab.path;
-        return (
-          <Link
-            key={lab.path}
-            to={lab.path}
-            className={`chip ${active ? 'chip-active' : ''}`}
-            aria-current={active ? 'page' : undefined}
-            style={{ textDecoration: 'none' }}
-          >
-            {lab.label}
-          </Link>
-        );
-      })}
-    </nav>
-  );
+  const isMobile = useIsMobile();
+  const navigation = <nav aria-label="Research labs" className="atlas-lab-ribbon">
+    {RESEARCH_LAB_PATHS.map(path => <Link key={path} to={path}
+      className={`chip ${pathname === path ? 'chip-active' : ''}`}
+      aria-current={pathname === path ? 'page' : undefined}>
+      {navigationForPath(path)?.title ?? path}
+    </Link>)}
+  </nav>;
+  return isMobile ? <details key={pathname} className="atlas-related-disclosure atlas-lab-disclosure"><summary>Related tools <ChevronDown size={17} aria-hidden="true" /></summary>{navigation}</details> : navigation;
 }

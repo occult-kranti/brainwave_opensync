@@ -63,7 +63,10 @@ describe('Studio player', () => {
     await act(async () => { session.setNoiseDb('pink', -30); session.setNoiseOn(true); });
     const phases = session.phases;
     const details = container.querySelector<HTMLDetailsElement>('[data-testid="studio-sound-controls"]')!;
-    await act(async () => { details.open = true; details.dispatchEvent(new Event('toggle')); });
+    const tone = Array.from(container.querySelectorAll<HTMLButtonElement>('.studio-editor-nav button')).find(b => b.querySelector('strong')?.textContent === 'Tone')!;
+    await act(async () => tone.click());
+    expect(details.open).toBe(true);
+    expect(document.activeElement).toBe(details.querySelector('summary'));
     await act(async () => { details.open = false; details.dispatchEvent(new Event('toggle')); });
     expect(session.phases).toBe(phases); expect(session.noiseDb.pink).toBe(-30); expect(session.noiseOn).toBe(true);
     expect(container.querySelector('[data-testid="studio-mix-summary"]')!.textContent).toContain('pink noise');

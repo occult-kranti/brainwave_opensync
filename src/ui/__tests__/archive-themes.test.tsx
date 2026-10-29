@@ -37,11 +37,6 @@ async function mount() {
     ),
   );
 }
-function themeButton(name: string) {
-  return Array.from(host.querySelectorAll("button")).find(
-    (button) => button.textContent === name,
-  )!;
-}
 beforeEach(() => {
   window.localStorage.clear();
   seedAdvisoryAck();
@@ -56,44 +51,32 @@ afterEach(async () => {
   vi.restoreAllMocks();
 });
 
-describe("Archive world themes", () => {
-  it("switches scenes without restarting audio, retains the choice on navigation and reload", async () => {
+describe("Atlas shell and visual tool boundary", () => {
+  it("has no ambient renderer or scene controls while navigation preserves audio", async () => {
     await mount();
-    expect(themeButton("Night Country").getAttribute("aria-pressed")).toBe(
-      "true",
-    );
-    await act(async () => {
-      session.setCarrierHz(333);
-      session.start();
-    });
-    const world = host.querySelector(".resonant-world");
-    expect(world).not.toBeNull();
-    await act(async () => themeButton("Quiet Horizon").click());
-    expect(document.documentElement.dataset.archiveTheme).toBe("quiet-horizon");
-    expect(host.querySelector(".resonant-world")).toBe(world);
+    expect(document.documentElement.dataset.design).toBe("listening-atlas");
+    expect(document.documentElement.dataset.archiveTheme).toBeUndefined();
+    expect(host.querySelector(".resonant-world")).toBeNull();
+    expect(host.querySelector(".world-toolbar")).toBeNull();
+    expect(host.querySelector("canvas")).toBeNull();
+    await act(async () => { session.setCarrierHz(333); session.start(); });
+    await act(async () => navigate("/studio"));
     expect(session.running).toBe(true);
     expect(session.carrierHz).toBe(333);
     expect(LiveEngine.prototype.start).toHaveBeenCalledTimes(1);
-    await act(async () => navigate("/studio"));
-    expect(themeButton("Quiet Horizon").getAttribute("aria-pressed")).toBe(
-      "true",
-    );
+    expect(host.querySelector(".resonant-world")).toBeNull();
     await act(async () => root.unmount());
-    expect(document.documentElement.dataset.archiveTheme).toBeUndefined();
+    expect(document.documentElement.dataset.design).toBeUndefined();
     await mount();
-    expect(themeButton("Quiet Horizon").getAttribute("aria-pressed")).toBe(
-      "true",
-    );
     expect(session.running).toBe(false);
+    expect(document.documentElement.dataset.design).toBe("listening-atlas");
   });
-  it("recovers from an unsupported saved theme", async () => {
-    writeJson(STORAGE_KEYS.archiveTheme, 1, "unknown-theme");
+  it("does not restore a rejected background from saved theme preferences", async () => {
+    writeJson(STORAGE_KEYS.archiveTheme, 1, "quiet-horizon");
     await mount();
-    expect(themeButton("Night Country").getAttribute("aria-pressed")).toBe(
-      "true",
-    );
-    expect(document.documentElement.dataset.archiveTheme).toBe("night-country");
-    expect(host.querySelector(".resonant-world")).not.toBeNull();
+    expect(document.documentElement.dataset.archiveTheme).toBeUndefined();
+    expect(document.documentElement.dataset.design).toBe("listening-atlas");
+    expect(host.querySelector(".resonant-world")).toBeNull();
   });
   it("keeps independent projects outside the archive path", () => {
     expect(projectUrl("previous/", "/brainwave_opensync/archive/")).toBe(

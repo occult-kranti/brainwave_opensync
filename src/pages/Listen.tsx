@@ -11,21 +11,22 @@ import {
   VolumeX,
   Waves,
 } from "lucide-react";
-import { PRESETS } from "@/data/presets";
+import { PRESETS, presetDurationMin } from "@/data/presets";
 import { presetGuidance } from "@/data/presetGuidance";
 import { OVERNIGHT_PRESETS } from "@/data/overnightPractice";
 import { useSession } from "@/ui/session/useSession";
 import { fmtClock } from "@/ui/session/sessionMath";
 import { INFANT_MAX_VOLUME_DB } from "@/ui/session/sessionDefaults";
-import { FieldControls } from "@/ui/visuals/FieldControls";
 import { useIsMobile } from "@/hooks/use-mobile";
-import "./experience.css";
+import "./atlas-listen.css";
 
 export default function Listen() {
   const s = useSession();
   const isMobile = useIsMobile();
   const [params] = useSearchParams();
   const requested = params.get("preset");
+  const requestedMinutes = Number(params.get("minutes"));
+  const loadKey = `${requested}:${requestedMinutes}`;
   const handled = useRef<string | null>(null);
   const selected = PRESETS.find((p) => p.id === requested);
   const adultBlocked = Boolean(
@@ -36,14 +37,17 @@ export default function Listen() {
       adultBlocked ||
       !requested ||
       !selected ||
-      handled.current === requested
+      handled.current === loadKey
     )
       return;
-    handled.current = requested;
+    handled.current = loadKey;
     s.stopPreview();
     s.stop();
-    s.loadPreset(selected);
-  }, [requested, selected, s, adultBlocked]);
+    const capped = Number.isFinite(requestedMinutes) && requestedMinutes >= 1
+      ? Math.min(requestedMinutes, presetDurationMin(selected), s.governor.maxSessionMin)
+      : null;
+    s.loadPreset(capped === null ? selected : { ...selected, spec: { ...selected.spec, limitMin: capped } });
+  }, [requested, requestedMinutes, loadKey, selected, s, adultBlocked]);
   const preset =
     PRESETS.find((p) => p.title === s.presetName) ??
     (s.presetName?.includes(" min audio — experimental tier")
@@ -79,21 +83,9 @@ export default function Listen() {
           ? "Fading gently to quiet"
           : "Listening"
       : "Ready when you are";
-  const visualScene = (
-    <div className="listen-art listen-world-window">
-          <span className="listen-world-caption">YOUR LISTENING SPACE</span>
-          <div className="listen-world-controls">
-            <FieldControls allowExpand={false} />
-            <Link to="/cymatics" className="sand-launch">
-              <Waves size={17} />
-              Enter the sand universe
-            </Link>
-          </div>
-        </div>
-  );
   const purpose = preset?.purpose ?? "A little space to listen. Your current sound and session settings are ready.";
   return (
-    <div className="listen-page">
+    <div className="listen-page atlas-listen">
       <div className="listen-topline">
         <Link to="/presets">
           <ArrowLeft size={16} />
@@ -117,9 +109,8 @@ export default function Listen() {
         </p>
       )}
       <div className="listening-stage">
-        {isMobile ? <details className="listen-scene-options"><summary>Visual scene & geometry</summary>{visualScene}</details> : visualScene}
         <section className="listen-controls" aria-label="Session player">
-          <span className="overline" data-testid="listen-state">
+          <span className="atlas-player-state" data-testid="listen-state">
             {state}
           </span>
           <h1>{name}</h1>
@@ -218,6 +209,12 @@ export default function Listen() {
             </p>
           )}
         </section>
+        <aside className="atlas-player-notes" aria-label="Listening setup">
+          <h2>Before you press play.</h2>
+          <ol><li><strong>Keep it comfortable.</strong><p>Start with low device volume. Adjust the player until the sound sits comfortably in the background.</p></li><li><strong>{headphones ? "Use stereo headphones." : "Choose your setup."}</strong><p>{headphones ? "This sound uses separate left and right tones. Keep both channels audible." : "Speakers or headphones work with this sound. Choose a setup that lets you stay aware of your surroundings."}</p></li><li><strong>Take your time.</strong><p>You can pause, change the mix, or stop whenever you want. Listening creates no streak or score to keep.</p></li></ol>
+          <Link to="/practice-plan" className="atlas-player-next">Build a home practice <ArrowUpRight size={18} /></Link>
+          <Link to="/cymatics" className="atlas-player-next"><Waves size={18} />Explore the visual lab <ArrowUpRight size={18} /></Link>
+        </aside>
       </div>
       <div className="listen-below">
         {guidance && (

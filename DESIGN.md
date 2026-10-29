@@ -1,31 +1,37 @@
-# Open Sync Archive: Nocturne
+# Open Sync: Listening Atlas
 
-The archive is a quiet listening and exploration space inside one persistent 3D/4D environment. The visitor should find a sound, load it silently, and deliberately press Play. Specialist tools remain reachable through grouped navigation. The original applications and master release are protected.
+The current brief supersedes every previous spatial brief: the user rejected both the old design and the continuous 3D/4D background, and gave complete design control. This release replaces the visual system, application shell and principal task flows. Work remains on archive/dark-landscapes; master and other published versions are protected.
 
-## Visual world
+## Design contract
 
-Near-black indigo #0d111b grounds the live copper and silver geometry. Slate surfaces #111824 and #151e2d hold readable controls. Porcelain #f3f0ea carries primary text; #c6c9d6 and #aeb5c7 carry supporting text. Warm sand #d8c8a3 marks primary actions. Lavender #b8ace8 and #d2c9f5 distinguish selection and keyboard focus. Borders use #303b50 and #536078. Quiet Horizon retains a warmer ground through the same tokens.
+Open Sync is a personal sound library and workbench. The first useful view helps a visitor choose a sound, rather than demonstrating a renderer. The central object is a sound recipe: find it, load it quietly, deliberately press Play, optionally edit it, inspect its signal, or follow its source. All 41 existing routes remain available.
 
-Inter carries controls and reading. Self-hosted, Latin-subset Newsreader carries editorial headings with optical sizing; its SIL Open Font License is retained. Body text is generally 15–16px, supporting text 12–14px. Measurements retain tabular numerals. Controls use 6–8px radii and reading panels 12px. Consistent source tokens are in `src/pages/nocturne.css` and `.impeccable/design.json`.
+A bright editorial desk suits actual daytime phone use and legible tools. Warm paper #f4f3ec, white surfaces and ink #1d2926 replace dark scenery, glass and scrims. Electric blue #3159d9 identifies actions and selected controls. Persimmon #bb3d20 adds a small art/navigation accent. Secondary text #4d5b55 and muted #637069 remain readable. Borders #d3d8ce organize groups; strong borders #7e8d81 identify inputs.
 
-A reading scrim protects text from bright scene highlights. The world remains visible around controls and in its own visual areas. It is actual live Three.js geometry, with Canvas fallback, not a static screenshot. Ambient animation and mathematical four-dimensional projections are artworks, independent of audio and clinical claims.
+Self-hosted Instrument Sans carries headings and the wordmark; Inter carries controls and reading. Heading tracking stops at -.04em. Panels generally use 12–16px radii and controls 6–8px. Measurement digits remain tabular. A single original flat print-art cover supplies visual identity inside the Home chooser. It is not wallpaper, a simulated signal or a medical visualization. See public/art/listening-atlas-provenance.md for the exact prompt and optimization record.
 
-## Surface behavior
+## Information architecture and views
 
-Home begins with 'Make space to listen', direct sound and home-practice entry points, and live scene controls. A preference chooser uses intention, available time and equipment to propose a sound. The player receives the complete preset; a shorter time window does not silently truncate it. Research links are grouped behind a disclosure.
+Home, Sounds, Make and Research are the four main desktop destinations. Phones expose Home, Sounds, Make and Menu with persistent Stop. The full menu and searchable directory group Listening, Making, Measuring audio, Models & experiments, Reading & sources, and Help. Actual measurement, personal comparison and speculative physical models are clearly distinct. The complete route inventory is docs/design/listening-atlas-architecture.md.
 
-At 1200px and above, a grouped sidebar gives persistent navigation and a prominent Practice at home link. Tablets use a horizontal header. Phones use a short title/search header, active-session pause, primary bottom navigation, Menu and Stop all sound. The Menu is an explicitly opened dialog with its own Stop control, inert background, focus containment, Escape close and return to its invoker. Scene/settings and source explanations remain optional disclosures or user-opened dialogs.
+Home is an actual chooser: intention, available time and equipment lead to a concrete sound and capped listening window. Phone settings use a compact Adjust disclosure. Loading never starts audio. The player prioritizes state, remaining time, Play/Pause/Stop and volume; setup and source details follow. The active-session dock appears on other routes, not as a duplicate on the full player.
 
-The Home Practice planner offers two or four weeks, frequency, time budget, local start time, materials and editable repeat spacing. Official sequence/repetition advice, historical manuals, community experience and editorial schedules remain distinct. Calendar progression never determines readiness. No commercial tape or narration is reproduced.
+Sounds is a searchable row-based library. Preview, Choose sound and detailed practice/source guidance are separate actions. Familiar listening collections precede specialist studies. On phones, arrangement controls live in Filters, while collection context is optional. Tablets scroll the collection strip locally without expanding the document.
 
-## Engineering boundaries
+Studio places editing navigation before the playback/settings desk. Tone, textures, sequence, signal views and Save/export are distinct work areas. Phones disclose long sound metadata and starting-point links. A dedicated visual lab and user-opened signal views remain tools; they are not page backgrounds.
 
-One persistent world canvas survives route changes. Reduced motion starts still; hidden tabs stop drawing; foreground immersive scenes suspend background rendering. Mobile DPR, frame rate and geometry counts remain bounded. Existing orbit, dimension, zoom/reset and fallback behavior remain. Changing scene controls never reconfigures audio.
+Practice is a form-first planning worksheet. Weekly rows, readiness guidance, repetition advice and sources remain. Research is a searchable task directory with source-reading guidance. Shared research headers prioritize titles and useful introductions; evidence conventions can be opened when needed. Related lab navigation collapses on phones.
 
-The live audio engine requests playback-oriented latency with a legacy WebKit fallback. Actual pitch edits ramp for 50ms without replacing oscillators; unchanged clock updates do not schedule new pitch events. Existing periodic texture joins remain. Safety authorization, gain/session limits, pause, panic and exports remain contracts. These changes do not establish that a particular phone or Bluetooth glitch is fixed.
+## Boundaries and implementation
 
-## Review and release
+No ambient 3D/4D renderer mounts in the shell, Home, Player, Studio, Healing, Nature or Lucid pages. Old enabled preferences cannot restore rejected backgrounds. Dedicated Cymatics artwork and actual signal plots remain available. The existing React/TypeScript/Vite stack, Lucide icons and tested dialog primitives remain appropriate; adding a new framework would not improve these tasks.
 
-Three bounded rounds covered source/incumbent audit, implementation with targeted tests, and independent code/rendered review. See `docs/design/nocturne-reference-review.md` and `docs/design/nocturne-verification.md`. These are AI reviews, not a human usability study. The Impeccable launcher was unavailable; no generated CLI quality score is claimed. Figma file creation remains pending a choice between the two connected accounts.
+Preserve every sound definition, safety governor, explicit-start gate, gain/session limits, Stop/panic, previews, saved presets, exports and local privacy. The earlier audio buffering/smoothing improvements remain unchanged. A selected Home window cannot extend the original preset or governor maximum. Native disclosures, labels, readable fields, keyboard focus, scroll containment and reduced motion are core interaction contracts.
 
-Release only the archive branch and the `archive/` Pages subtree. Preserve redirect folders and verify every non-archive Pages blob and the master ref unchanged. An archive-local deployment record identifies the new source without modifying the root release manifest. Verify lint, TypeScript, full tests, production build, route reflow, Menu focus and transport behavior; do not promise universal hardware compatibility.
+The Impeccable launcher is unavailable in this runtime. Its published craft floor and available design guidance were read directly; no CLI quality score is claimed. The user explicitly delegated design choice, so this build did not stop for another aesthetic selection. No new Figma file or human usability study is claimed.
+
+## Verification and publication
+
+Use one combined desktop/phone inspection and one bounded correction/confirmation pass. Exercise the actual chooser→player→advisory→pause/resume/stop flow, filters/details, menu focus and sticky Stop, expanded Studio controls, planner and directory. Run lint, TypeScript, complete repository tests and the production-base build. Check all 41 routes at 320 and 1440px, including old enabled background state. Record observations and limitations in docs/design/listening-atlas-verification.md.
+
+Publish only archive/ while preserving its redirect folders. Compare all non-archive Pages blobs and master before/after. An archive-local deployment record identifies the application source; the protected root manifest remains untouched.

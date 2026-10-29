@@ -9,9 +9,11 @@ their sources. Presets carry A–D evidence grades. Audio is generated locally; 
 
 **Live site (GitHub Pages):** https://occult-kranti.github.io/brainwave_opensync/ — installable as a PWA.
 
-## Nocturne archive update
+## Listening Atlas archive
 
-[Open the redesigned archive](https://occult-kranti.github.io/brainwave_opensync/archive/) or [Practice at home](https://occult-kranti.github.io/brainwave_opensync/archive/practice-plan/). The archive adds a grouped desktop rail, clearer phone navigation, readable scene framing and a flexible two/four-week practice timetable. Audio stability improvements prefer sustained playback buffering and smooth live pitch edits; physical phone/Bluetooth behavior still needs device confirmation. See the [references and three review rounds](docs/design/nocturne-reference-review.md) and [verification record](docs/design/nocturne-verification.md).
+[Open the redesigned archive](https://occult-kranti.github.io/brainwave_opensync/archive/). Listening Atlas replaces the former designs and ambient 3D/4D background with a new light editorial system, original print artwork and task-first flows: Home chooser, Sounds, focused player, Studio, home-practice worksheet, and Tools & notes. All 41 routes remain available. Dedicated Cymatics and signal views remain tools rather than backgrounds.
+
+Read the [complete page/task inventory and source rationale](docs/design/listening-atlas-architecture.md), [design contract](DESIGN.md) and [verification record](docs/design/listening-atlas-verification.md). Original master and the separately preserved releases are unchanged.
 
 ## Connected projects
 

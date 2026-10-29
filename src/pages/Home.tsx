@@ -1,321 +1,58 @@
-import { useState } from "react";
-import { Link } from "react-router";
-import {
-  ArrowRight,
-  CalendarDays,
-  Headphones,
-  ArrowUpRight,
-  Minus,
-  Pause,
-  Play,
-  Plus,
-} from "lucide-react";
-import { PRESETS } from "@/data/presets";
-import { suggestSessions } from "@/data/sessionSuggestions";
-import type { PracticeGoal } from "@/data/listeningPractice";
-import { projectUrl } from "@/lib/assetUrl";
-import { useSpatial } from "@/ui/visuals/spatialContext";
-import { MAX_ZOOM, MIN_ZOOM } from "@/ui/visuals/spatialState";
-import "./experience.css";
-import "./nocturne-home.css";
+import { useState } from 'react';
+import { Link } from 'react-router';
+import { ArrowRight, ArrowUpRight, Headphones, Speaker, Check, Clock3, BookOpen, SlidersHorizontal } from 'lucide-react';
+import { suggestSessions, needsHeadphones } from '@/data/sessionSuggestions';
+import type { PracticeGoal } from '@/data/listeningPractice';
+import { presetDisplayName } from '@/ui/components/presetPresentation';
+import { assetUrl, projectUrl } from '@/lib/assetUrl';
+import { useIsMobile } from '@/hooks/use-mobile';
+import './atlas-home.css';
 
-const INTENTIONS = [
-  ["practice", "Meditation", "Make room for attention."],
-  ["hypnosis", "Self-hypnosis", "Imagery, rhythm and suggestion."],
-  ["sleep", "Sleep & dreaming", "A softer end to the day."],
-  ["focus", "Focus", "A steady background for your work."],
-  ["nature", "Nature", "Rain, calls and natural textures."],
-  ["bashar", "Bashar studies", "Authored sound experiments."],
-];
-const DESTINATIONS = [
-  [
-    "/presets?collection=all",
-    "01",
-    "Sounds",
-    `${PRESETS.length} original listening presets`,
-  ],
-  ["/studio", "02", "Studio", "Shape a sound of your own"],
-  ["/cymatics", "03", "Cymatics", "Sand, surfaces & dimensional art"],
-  ["/research-hub", "04", "Research", "Sources, experiments & open questions"],
+const MOODS: { goal: PracticeGoal; label: string; note: string }[] = [
+  { goal: 'unwind', label: 'Unwind', note: 'Turn the day down a little.' },
+  { goal: 'focus', label: 'Focus', note: 'Make room for one thing.' },
+  { goal: 'sleep', label: 'Wind down', note: 'Ease into your evening.' },
+  { goal: 'meditate', label: 'Meditate', note: 'Give your attention somewhere to rest.' },
 ];
 
-/** The sculpture belongs to the shared world, not a second embedded canvas. */
 export default function Home() {
-  const [intention, setIntention] = useState("practice");
-  const [minutes, setMinutes] = useState(20);
-  const [headphones, setHeadphones] = useState(true);
-  const goals: Record<string, PracticeGoal> = { practice: "meditate", hypnosis: "hypnosis", sleep: "sleep", focus: "focus", nature: "unwind", bashar: "meditate" };
-  const recommendation = suggestSessions({ goal: goals[intention], minutes, headphones, experimental: false })[0];
-  const spatial = useSpatial();
-  const selected = INTENTIONS.find(([id]) => id === intention)!;
-  return (
-    <div className="world-home nocturne-home">
-      <section className="world-arrival" aria-labelledby="home-title">
-        <div className="world-arrival-copy">
-          <h1 id="home-title">
-            Make space<br />to <em>listen.</em>
-          </h1>
-          <p>
-            A quieter moment, a sound of your own.<br />
-            Find your rhythm in a living world of sound and geometry.
-          </p>
-          <div className="world-arrival-actions">
-            <Link className="world-primary" to="/presets?collection=all">
-              Find a sound <ArrowUpRight size={18} />
-            </Link>
-            <Link className="world-text-link" to="/practice-plan">
-              Plan a home practice <CalendarDays size={17} />
-            </Link>
-          </div>
-          <span className="world-quiet-note">
-            Sound begins only when you press play.
-          </span>
+  const isMobile = useIsMobile();
+  const [goal, setGoal] = useState<PracticeGoal>('unwind');
+  const [minutes, setMinutes] = useState(10);
+  const [headphones, setHeadphones] = useState(false);
+  const choice = suggestSessions({ goal, minutes, headphones, experimental: false })[0];
+  const mood = MOODS.find(item => item.goal === goal)!;
+  return <div className="atlas-home">
+    <header className="atlas-home-heading">
+      <h1>Find your<br /> <span>next sound.</span></h1>
+      <div><p>A personal library for quiet time, focused work, and curious minds.</p><Link to="/presets?collection=all" className="atlas-inline-link">Browse the sound library <ArrowUpRight size={18} /></Link></div>
+    </header>
+    <section className="atlas-pick" aria-label="Find a sound">
+      <div className="atlas-picker">
+        <h2>What brings you here?</h2>
+        <div className="atlas-moods" role="group" aria-label="Listening intention">
+          {MOODS.map(item => <button key={item.goal} type="button" aria-pressed={goal === item.goal} onClick={() => setGoal(item.goal)}>{item.label}{goal === item.goal && <Check size={16} />}</button>)}
         </div>
-        <div className="world-scene-caption">
-          <div className="world-scene-name">
-
-            <strong>
-              {spatial?.settings.dimension === "4d"
-                ? "Beyond the third coordinate"
-                : "A field in motion"}
-            </strong>
-          </div>
-          {spatial && (
-            <div
-              className="world-home-controls"
-              role="group"
-              aria-label="Home sculpture controls"
-            >
-              <div
-                className="world-dimension-switch"
-                role="group"
-                aria-label="Sculpture dimension"
-              >
-                <button
-                  type="button"
-                  aria-pressed={spatial.settings.dimension === "3d"}
-                  onClick={() =>
-                    spatial.update({ dimension: "3d", ambient: true })
-                  }
-                >
-                  3D
-                </button>
-                <button
-                  type="button"
-                  aria-pressed={spatial.settings.dimension === "4d"}
-                  onClick={() =>
-                    spatial.update({ dimension: "4d", ambient: true })
-                  }
-                >
-                  4D
-                </button>
-              </div>
-              <button
-                type="button"
-                aria-label={
-                  spatial.settings.motion
-                    ? "Pause home sculpture"
-                    : "Animate home sculpture"
-                }
-                onClick={() =>
-                  spatial.update({ motion: !spatial.settings.motion })
-                }
-              >
-                {spatial.settings.motion ? (
-                  <Pause size={14} />
-                ) : (
-                  <Play size={14} />
-                )}
-              </button>
-              <button
-                type="button"
-                aria-label="Zoom out home sculpture"
-                disabled={spatial.settings.zoom <= MIN_ZOOM}
-                onClick={() => spatial.zoomBy(-0.1)}
-              >
-                <Minus size={15} />
-              </button>
-              <output aria-label="Home sculpture zoom">
-                {Math.round(spatial.settings.zoom * 100)}%
-              </output>
-              <button
-                type="button"
-                aria-label="Zoom in home sculpture"
-                disabled={spatial.settings.zoom >= MAX_ZOOM}
-                onClick={() => spatial.zoomBy(0.1)}
-              >
-                <Plus size={15} />
-              </button>
-              {!spatial.settings.ambient && (
-                <button
-                  type="button"
-                  onClick={() => spatial.update({ ambient: true })}
-                >
-                  Show scene
-                </button>
-              )}
-            </div>
-          )}
-          <p>
-            Generative art ·{" "}
-            {spatial?.settings.dimension === "4d"
-              ? "a projection of four coordinates"
-              : "mathematical form, rendered live"}
-          </p>
-        </div>
-        <nav className="world-portals" aria-label="Choose your workspace">
-          {DESTINATIONS.map(([to, , title, description]) => (
-            <Link to={to} key={to}>
-              <div>
-                <h2>{title}</h2>
-                <p>{description}</p>
-              </div>
-              <ArrowUpRight size={19} strokeWidth={1.5} />
-            </Link>
-          ))}
-        </nav>
-
-      </section>
-      <section
-        className="world-practice"
-        id="find-your-practice"
-        aria-labelledby="practice-title"
-      >
-        <div className="world-section-intro">
-          <h2 id="practice-title">
-            What do you need<br />right now?
-          </h2>
-          <p>Choose a direction and the time you have. Start with something simple.</p>
-          <div className="atlas-session-settings">
-            <label>Time available<select value={minutes} onChange={event => setMinutes(Number(event.target.value))}><option value={10}>10 minutes</option><option value={20}>20 minutes</option><option value={30}>30 minutes</option></select></label>
-            <label>Listening with<select value={headphones ? "headphones" : "speakers"} onChange={event => setHeadphones(event.target.value === "headphones")}><option value="headphones">Stereo headphones</option><option value="speakers">Speakers</option></select></label>
-          </div>
-        </div>
-        <div className="world-intention-workspace">
-          <div
-            className="world-intentions"
-            role="group"
-            aria-label="Listening intention"
-          >
-            {INTENTIONS.map(([id, title]) => (
-              <button
-                type="button"
-                key={id}
-                aria-pressed={intention === id}
-                onClick={() => setIntention(id)}
-              >
-                <span>{title}</span>
-                <ArrowUpRight size={16} />
-              </button>
-            ))}
-          </div>
-          <div className="world-intention-result">
-            <div>
-              <h3>{selected[1]}</h3>
-              <p>{selected[2]}</p>
-            </div>
-            <Link
-              className="world-primary"
-              to={`/presets?collection=${intention}`}
-            >
-              Explore {selected[1].toLowerCase()} <ArrowRight size={16} />
-            </Link>
-          </div>
-          {recommendation && !["bashar", "nature"].includes(intention) && <div className="atlas-recommendation">
-            <Headphones size={22} aria-hidden="true" />
-            <div><h3>{recommendation.preset.title}</h3><p>{recommendation.shortened ? `From the ${recommendation.preset.category.toLowerCase()} collection. Longer than your time window; stop when ready. ${headphones ? "Stereo headphones selected." : "Suitable for speakers or headphones."}` : recommendation.reason}</p><Link to={`/listen?preset=${recommendation.preset.id}`}>Load this sound <ArrowRight size={16} /></Link><small>Opens the player. Press Play when ready. The full session may be longer than your available time.</small></div>
-          </div>}
-          <Link className="world-text-link" to="/meditate">
-            Help me choose <ArrowRight size={15} />
-          </Link>
-        </div>
-      </section>
-      <section
-        className="world-dimension-section"
-        aria-labelledby="dimension-title"
-      >
-        <div className="atlas-art-note"><span>Sound has a shape.</span><small>A live mathematical artwork<br />you can turn, pause and explore.</small></div>
-        <div>
-          <h2 id="dimension-title">
-            From a grain of sand
-            <br />
-            to another <em>dimension.</em>
-          </h2>
-          <p>
-            Make nodal patterns emerge. Turn a surface into a cloud of
-            particles. Explore projected 4D forms, or let the sand become an
-            artwork.
-          </p>
-          <Link className="world-primary" to="/cymatics">
-            Enter the visual lab <ArrowUpRight size={18} />
-          </Link>
-          <small>
-            These are mathematical models and artworks, not measurements of your
-            brain or body.
-          </small>
-        </div>
-      </section>
-      <details className="world-notebook atlas-notebook"><summary id="notebook-title">Follow your curiosity <Plus size={20} /></summary>
-        <div className="world-section-intro">
-          <p>
-            Explore the ideas behind the sounds, with sources and limitations in
-            view.
-          </p>
-        </div>
-        <nav
-          className="world-note-links"
-          aria-label="Explore sound and research"
-        >
-          {[
-            [
-              "/lucid",
-              "Dreaming & the mind",
-              "Sleep-onset imagery, recall and cue research",
-              "home-lab-lucid",
-            ],
-            [
-              "/healing",
-              "Sound & healing traditions",
-              "Comfort, history and clinical limitations",
-              "home-lab-healing",
-            ],
-            [
-              "/nature",
-              "Patterns in nature",
-              "Acoustic portraits and natural textures",
-              "home-lab-nature",
-            ],
-            [
-              "/traditions",
-              "Programs & archives",
-              "Original sources and reconstruction limits",
-              "",
-            ],
-            [
-              "/overnight",
-              "Plan your night",
-              "Sound, transitions and quiet time",
-              "",
-            ],
-          ].map(([to, title, note, test]) => (
-            <Link key={to} to={to} data-testid={test || undefined}>
-              <div>
-                <h3>{title}</h3>
-                <p>{note}</p>
-              </div>
-              <ArrowUpRight size={19} />
-            </Link>
-          ))}
-        </nav>
-      </details>
-      <footer className="world-footer">
-        <strong>Open Sync</strong>
-        <span>Sound. Space. Possibility.</span>
-        <Link to="/research-hub#tools">All tools</Link>
-        <Link to="/safety">Listening safely</Link>
-        <a href={projectUrl("previous/")}>Previous version ↗</a>
-        <a href={projectUrl("")}>Original workspace ↗</a>
-      </footer>
-    </div>
-  );
+        <p className="atlas-mood-note">{mood.note}</p>
+        <details className="atlas-picker-options" open={!isMobile}><summary>{minutes} min · {headphones ? 'Headphones' : 'Speakers'}<span>Adjust <SlidersHorizontal size={15} /></span></summary>
+        <fieldset className="atlas-time"><legend>How much time do you have?</legend><div>{[5,10,20,30].map(value => <button key={value} type="button" aria-pressed={minutes === value} onClick={() => setMinutes(value)}>{value}<span>min</span></button>)}</div></fieldset>
+        <fieldset className="atlas-equipment"><legend>Listening with</legend><div><button type="button" aria-pressed={!headphones} onClick={() => setHeadphones(false)}><Speaker size={18} />Speakers</button><button type="button" aria-pressed={headphones} onClick={() => setHeadphones(true)}><Headphones size={18} />Headphones</button></div></fieldset>
+        </details>
+        <Link to="/meditate" className="atlas-inline-link">Help me choose <ArrowRight size={16} /></Link>
+      </div>
+      <div className="atlas-pick-result">
+        <figure><img src={assetUrl('art/listening-atlas-cover.webp')} alt="" width={1774} height={887} fetchPriority="high" /><figcaption>Original sound, at your own pace.</figcaption></figure>
+        {choice ? <article className="atlas-selection" aria-live="polite">
+          <div className="atlas-selection-meta"><span><Clock3 size={15} />{choice.minutes} minutes</span><span>{needsHeadphones(choice.preset) ? 'Stereo headphones' : 'Any setup'}</span></div>
+          <h2>{presetDisplayName(choice.preset)}</h2><p>{choice.preset.purpose ?? choice.preset.rationale}</p>
+          <Link className="atlas-primary" to={`/listen?preset=${choice.preset.id}&minutes=${choice.minutes}`}>Open this sound <ArrowRight size={19} /></Link>
+          <small>Loads quietly. Press Play when you’re ready.{choice.shortened ? ' This session will use your selected time limit.' : ''}</small>
+        </article> : <article className="atlas-selection"><h2>Find a sound your way.</h2><p>Try headphones or browse the full library for more options.</p><Link to="/presets?collection=all" className="atlas-primary">Find a sound <ArrowRight size={18} /></Link></article>}
+      </div>
+    </section>
+    <section className="atlas-home-routine" aria-labelledby="routine-heading"><div><h2 id="routine-heading">A practice that<br />fits your life.</h2><p>Decide when to listen, what to repeat, and when to leave room for quiet.</p></div><div className="atlas-routine-links"><Link to="/practice-plan"><span>Plan your next four weeks<small>A flexible home timetable, with sources and room to adjust.</small></span><ArrowUpRight size={23} /></Link><Link to="/overnight"><span>Settle in for the night<small>Build a night of sound, transitions, and quiet time.</small></span><ArrowUpRight size={23} /></Link><Link to="/presets?collection=hypnosis"><span>Explore hypnosis & dreaming<small>Find practices and read what their evidence can tell you.</small></span><ArrowUpRight size={23} /></Link></div></section>
+    <section className="atlas-home-workbench" aria-labelledby="workbench-heading"><div className="atlas-workbench-intro"><SlidersHorizontal size={28} /><h2 id="workbench-heading">Take the sound<br />into your own hands.</h2><p>Make a mix, look at a signal, or follow an interesting question.</p><Link to="/studio" className="atlas-primary">Open Studio <ArrowRight size={18} /></Link></div><nav aria-label="Tools and reading"><Link to="/cymatics"><span>See sound take shape<small>Cymatics and the visual lab</small></span><ArrowUpRight size={20} /></Link><Link to="/analyzer"><span>Measure a signal<small>Waveform, spectrum, and comparison tools</small></span><ArrowUpRight size={20} /></Link><Link to="/research-hub#tools"><span>Browse the whole workbench<small>Every tool, source collection, and research note</small></span><ArrowUpRight size={20} /></Link></nav></section>
+    <details className="atlas-home-reading"><summary><BookOpen size={20} />Follow your curiosity <span>Sources, questions & archives</span></summary><nav aria-label="Research collections"><Link to="/lucid" data-testid="home-lab-lucid">Dreaming & the mind <ArrowUpRight size={16} /></Link><Link to="/healing" data-testid="home-lab-healing">Sound & healing traditions <ArrowUpRight size={16} /></Link><Link to="/nature" data-testid="home-lab-nature">Patterns in nature <ArrowUpRight size={16} /></Link><Link to="/bashar-research">Bashar source studies <ArrowUpRight size={16} /></Link><Link to="/traditions">Programs & traditions <ArrowUpRight size={16} /></Link></nav></details>
+    <footer className="atlas-home-footer"><p>Made for listening. Open to questions.</p><Link to="/guide">How it works</Link><Link to="/safety">Listening safely</Link><a href={projectUrl('previous/')}>Previous version</a><a href={projectUrl('')}>Original workspace</a></footer>
+  </div>;
 }

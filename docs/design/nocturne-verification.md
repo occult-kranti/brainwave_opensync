@@ -36,3 +36,11 @@ The reported 15–30-second noise switch was not reproduced on a physical device
 Only the archive source branch and archive/ published subtree are eligible for changes. Preserve existing archive redirect folders. Keep master and every non-archive Pages blob unchanged. An archive-local deployment.json records the source; the protected root release manifest remains untouched. Remote deployment confirmation is recorded after publication.
 
 Production build confirmation used the real /brainwave_opensync/archive/ path: the subset Newsreader font loaded; all five Home scene buttons measured 44×44px on one row at 320px; Practice rendered four weeks and 28 days; no asset HTTP failures or uncaught errors occurred.
+
+## Published release confirmation
+
+Application source: 27e0800bc0a337b912dcf4033370fff4aaef32ca. Published Pages commit: 6754eec108d31a981ac81c337cb5962f22ed7344.
+
+GitHub CI [40939489947](https://github.com/occult-kranti/brainwave_opensync/actions/runs/40939489947) and Pages deployment [40939643502](https://github.com/occult-kranti/brainwave_opensync/actions/runs/40939643502) completed successfully. All 3,805 non-archive published blobs matched the prior Pages tree exactly. Master remained at 2d5e563748ed5b2db1bf8d2bbddb098f930d1a1e.
+
+The live archive deployment.json identifies the application source above. Public Home and /practice-plan/ HTML and all eight checked entry assets (JavaScript, CSS and Newsreader font) matched the verified production build byte for byte. This documentation-only confirmation does not change application source or deployed assets.

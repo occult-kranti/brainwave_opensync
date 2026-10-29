@@ -1,0 +1,10 @@
+{
+  "schema": "producer-round-freeze/1",
+  "round": 2,
+  "sourceHashes": {
+    "model.mjs": "bc31ad2d8d95ffc6152bdb80ac408c3b277b1669f07fc182f9bcac38760b359d",
+    "report.md": "6345437b0876ab89cac0f4703e3ec3a7d6dbe7486050756864cced690d139d14",
+    "results.json": "0beb9e603f0b5ba4756b925c1fc0244ebbb8de3c7f2201efa59a12156eab9819",
+    "run.mjs": "92d178a9968da283ad15442e3649d5c17b0efa735f2ba9746c483837ef133668"
+  }
+}

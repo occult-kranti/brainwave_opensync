@@ -1,0 +1,109 @@
+{
+  "schema": "mub-checker-execution/1",
+  "revision": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+  "command": [
+    "python3",
+    "execution/check_records.py"
+  ],
+  "workingDirectory": "/workspace/scratch/f431d34f6f71/oct29-external-mub",
+  "startedUTC": "2026-10-29T05:08:22.972955+00:00",
+  "endedUTC": "2026-10-29T05:08:27.342545+00:00",
+  "elapsedSeconds": 4.369600943999558,
+  "python": "3.12.14",
+  "implementation": "CPython",
+  "returnCode": 0,
+  "timedOut": false,
+  "checkerSha256": "565f4ee47ab7b7c4bf1c224981eb86ec94ef5f75a9487347a53af407eee45734",
+  "downloadReceiptSha256": "9a4417cda8545553933cb030dcf535a526733ba5c16fa92a7eaa1473c4b502ab",
+  "stdoutSha256": "42eb757544275930bb7b6962147fd6e07c2b997cbdf24cd785e613f074de09d6",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "output": {
+    "result": "PASS within numerical consistency scope",
+    "cover": {
+      "centers": 249878,
+      "checked_pairs": 151744086
+    },
+    "coarse_records": [
+      764,
+      774,
+      757,
+      788
+    ],
+    "mid_records": 600,
+    "fine_records": 22379,
+    "batches": 88,
+    "initial_C": {
+      "done": 22379,
+      "bad": 163,
+      "graph": 0,
+      "cap": 163,
+      "over": 0,
+      "cluster": 0
+    },
+    "fallback_inputs": [
+      "batches/bad10.bin",
+      "batches/bad3.bin",
+      "batches/bad4.bin",
+      "batches/bad5.bin",
+      "batches/bad52.bin",
+      "batches/bad53.bin",
+      "batches/bad55.bin",
+      "batches/bad56.bin",
+      "batches/bad6.bin",
+      "batches/bad7.bin",
+      "batches/bad78.bin",
+      "batches/bad79.bin",
+      "batches/bad8.bin",
+      "batches/bad80.bin",
+      "batches/bad84.bin"
+    ],
+    "fallback_records": 1127,
+    "final_C": [
+      {
+        "done": 282,
+        "bad": 0,
+        "graph": 0,
+        "cap": 0,
+        "over": 0,
+        "cluster": 0
+      },
+      {
+        "done": 282,
+        "bad": 0,
+        "graph": 0,
+        "cap": 0,
+        "over": 0,
+        "cluster": 0
+      },
+      {
+        "done": 282,
+        "bad": 0,
+        "graph": 0,
+        "cap": 0,
+        "over": 0,
+        "cluster": 0
+      },
+      {
+        "done": 281,
+        "bad": 0,
+        "graph": 0,
+        "cap": 0,
+        "over": 0,
+        "cluster": 0
+      }
+    ],
+    "children": 100,
+    "data_files": 196,
+    "result_files": 100,
+    "scope": "Derived numerical consistency check only; no source, binary, or original execution provenance verification."
+  },
+  "admission": "Saved numerical-record consistency only",
+  "notVerified": [
+    "MUB theorem",
+    "C++ source correctness",
+    "original execution provenance",
+    "compiler behavior",
+    "hardware arithmetic",
+    "Lean declarations"
+  ]
+}

@@ -1,0 +1,1175 @@
+{
+  "schema": "schumann-calibrated-discriminator-round3/1",
+  "status": "pass",
+  "evidence": "Synthetic restricted inverse, nuisance countermodels and metadata-only readiness. No Earth fit or statistical anomaly detection.",
+  "checks": 58,
+  "tolerances": {
+    "relative": 2e-10,
+    "absoluteMPerN": 1e-16,
+    "parameterRelative": 3e-12,
+    "receiverRelative": 3e-12
+  },
+  "sourceInputs": {
+    "round2ResultsSha256": "0beb9e603f0b5ba4756b925c1fc0244ebbb8de3c7f2201efa59a12156eab9819",
+    "observationSummarySha256": "95793c627f77c7d0128cdf01b5782fdf8a720cdc82c12aab741eb33157198d51",
+    "observationSourcesSha256": "6ef9c21d645feb59c85fcbedd14a65655807db5bbff2d77abee8fb041c40a7f6",
+    "downloadManifestSha256": "cc8902d627dbbf47497c98377feeb24309b3d79d02b04fddc5cdd152acda80fe"
+  },
+  "recoveries": [
+    {
+      "parameters": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "probeFrequencyHz": 5,
+      "estimate": {
+        "probeFrequencyHz": 5,
+        "massKg": 0.25,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600078,
+        "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+      },
+      "heldOut": {
+        "passed": true,
+        "maxRelativeError": 6.012340267682792e-17,
+        "checks": [
+          {
+            "frequencyHz": 2.5,
+            "absoluteErrorMPerN": 2.710505431213761e-20,
+            "relativeError": 1.4640927929594336e-17,
+            "thresholdMPerN": 3.703641586992448e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 10.7,
+            "absoluteErrorMPerN": 1.0842021724855044e-19,
+            "relativeError": 6.012340267682792e-17,
+            "thresholdMPerN": 3.6075895282515846e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 16.4,
+            "absoluteErrorMPerN": 1.3552527156068805e-20,
+            "relativeError": 2.8047279037094184e-17,
+            "thresholdMPerN": 9.674058419460073e-14,
+            "passed": true
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-16,
+        "modelValidityEstablished": false
+      }
+    },
+    {
+      "parameters": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "probeFrequencyHz": 5,
+      "estimate": {
+        "probeFrequencyHz": 5,
+        "massKg": 0.4,
+        "naturalFrequencyHz": 10.300000000000002,
+        "gammaPerS": 10.786134777324959,
+        "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+      },
+      "heldOut": {
+        "passed": true,
+        "maxRelativeError": 0,
+        "checks": [
+          {
+            "frequencyHz": 2.5,
+            "absoluteErrorMPerN": 0,
+            "relativeError": 0,
+            "thresholdMPerN": 1.2648823919690447e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 10.7,
+            "absoluteErrorMPerN": 0,
+            "relativeError": 0,
+            "thresholdMPerN": 3.36181245614424e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 16.4,
+            "absoluteErrorMPerN": 0,
+            "relativeError": 0,
+            "thresholdMPerN": 7.359425817336852e-14,
+            "passed": true
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-16,
+        "modelValidityEstablished": false
+      }
+    },
+    {
+      "parameters": {
+        "naturalFrequencyHz": 1.2,
+        "gammaPerS": 8,
+        "massKg": 0.7
+      },
+      "probeFrequencyHz": 5,
+      "estimate": {
+        "probeFrequencyHz": 5,
+        "massKg": 0.7,
+        "naturalFrequencyHz": 1.199999999999999,
+        "gammaPerS": 8.000000000000002,
+        "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+      },
+      "heldOut": {
+        "passed": true,
+        "maxRelativeError": 3.9427697763700214e-16,
+        "checks": [
+          {
+            "frequencyHz": 2.5,
+            "absoluteErrorMPerN": 1.788112030672749e-18,
+            "relativeError": 3.9427697763700214e-16,
+            "thresholdMPerN": 9.071334470905908e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 10.7,
+            "absoluteErrorMPerN": 1.0926396707304223e-19,
+            "relativeError": 3.511290468854596e-16,
+            "thresholdMPerN": 6.233578940120256e-14,
+            "passed": true
+          },
+          {
+            "frequencyHz": 16.4,
+            "absoluteErrorMPerN": 3.3881317890172014e-21,
+            "relativeError": 2.5351446920874576e-17,
+            "thresholdMPerN": 2.6829297144987713e-14,
+            "passed": true
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-16,
+        "modelValidityEstablished": false
+      }
+    },
+    {
+      "parameters": {
+        "naturalFrequencyHz": 50,
+        "gammaPerS": 60,
+        "massKg": 2
+      },
+      "probeFrequencyHz": 5,
+      "estimate": {
+        "probeFrequencyHz": 5,
+        "massKg": 2,
+        "naturalFrequencyHz": 50,
+        "gammaPerS": 59.99999999999999,
+        "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+      },
+      "heldOut": {
+        "passed": true,
+        "maxRelativeError": 1.0007809110851768e-17,
+        "checks": [
+          {
+            "frequencyHz": 2.5,
+            "absoluteErrorMPerN": 1.3234889800848443e-23,
+            "relativeError": 2.6064089825875843e-18,
+            "thresholdMPerN": 1.1155650850856985e-15,
+            "passed": true
+          },
+          {
+            "frequencyHz": 10.7,
+            "absoluteErrorMPerN": 5.293955920339377e-23,
+            "relativeError": 1.0007809110851768e-17,
+            "thresholdMPerN": 1.1579650074658162e-15,
+            "passed": true
+          },
+          {
+            "frequencyHz": 16.4,
+            "absoluteErrorMPerN": 0,
+            "relativeError": 0,
+            "thresholdMPerN": 1.2243322618103458e-15,
+            "passed": true
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-16,
+        "modelValidityEstablished": false
+      }
+    }
+  ],
+  "negativeControls": {
+    "wrongPhaseRejected": true,
+    "gain": {
+      "gain": 1.25,
+      "estimate": {
+        "probeFrequencyHz": 5,
+        "massKg": 0.25,
+        "naturalFrequencyHz": 7.326117662172783,
+        "gammaPerS": 3.9207076316800626,
+        "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+      },
+      "heldOut": {
+        "passed": false,
+        "maxRelativeError": 0.2874407435755097,
+        "checks": [
+          {
+            "frequencyHz": 2.5,
+            "absoluteErrorMPerN": 0.0001826018504142494,
+            "relativeError": 0.07890662755184868,
+            "thresholdMPerN": 4.62930198374056e-13,
+            "passed": false
+          },
+          {
+            "frequencyHz": 10.7,
+            "absoluteErrorMPerN": 0.0006479254848576763,
+            "relativeError": 0.2874407435755097,
+            "thresholdMPerN": 4.5092369103144807e-13,
+            "passed": false
+          },
+          {
+            "frequencyHz": 16.4,
+            "absoluteErrorMPerN": 0.000136274494035165,
+            "relativeError": 0.22561865935868974,
+            "thresholdMPerN": 1.2090073024325093e-13,
+            "passed": false
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-16,
+        "modelValidityEstablished": false
+      }
+    },
+    "twoMode": {
+      "secondWeight": 0.35,
+      "estimate": {
+        "probeFrequencyHz": 5,
+        "massKg": 0.25,
+        "naturalFrequencyHz": 7.594765426002932,
+        "gammaPerS": 4.4580708179517,
+        "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+      },
+      "heldOut": {
+        "passed": false,
+        "maxRelativeError": 0.3196786732617926,
+        "checks": [
+          {
+            "frequencyHz": 2.5,
+            "absoluteErrorMPerN": 0.00010739070101915095,
+            "relativeError": 0.05181749448070415,
+            "thresholdMPerN": 4.145959230290118e-13,
+            "passed": false
+          },
+          {
+            "frequencyHz": 10.7,
+            "absoluteErrorMPerN": 0.000690355175872359,
+            "relativeError": 0.3196786732617926,
+            "thresholdMPerN": 4.3200568130706075e-13,
+            "passed": false
+          },
+          {
+            "frequencyHz": 16.4,
+            "absoluteErrorMPerN": 0.0001363643949970044,
+            "relativeError": 0.2237055954472432,
+            "thresholdMPerN": 1.2201415661676055e-13,
+            "passed": false
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-16,
+        "modelValidityEstablished": false
+      }
+    },
+    "deterministicPerturbation": {
+      "delta": {
+        "real": 0.0001,
+        "imag": -0.0002
+      },
+      "estimate": {
+        "probeFrequencyHz": 5,
+        "massKg": 0.25,
+        "naturalFrequencyHz": 7.799670200541161,
+        "gammaPerS": 4.904897190599245,
+        "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+      },
+      "heldOut": {
+        "passed": false,
+        "maxRelativeError": 0.0002598605076675924,
+        "checks": [
+          {
+            "frequencyHz": 2.5,
+            "absoluteErrorMPerN": 2.048458833731418e-7,
+            "relativeError": 0.00011063859316304247,
+            "thresholdMPerN": 3.703973393222216e-13,
+            "passed": false
+          },
+          {
+            "frequencyHz": 10.7,
+            "absoluteErrorMPerN": 4.686050928800397e-7,
+            "relativeError": 0.0002598605076675924,
+            "thresholdMPerN": 3.6075895282515846e-13,
+            "passed": false
+          },
+          {
+            "frequencyHz": 16.4,
+            "absoluteErrorMPerN": 4.970354296096386e-8,
+            "relativeError": 0.00010286267074064474,
+            "thresholdMPerN": 9.674058419460073e-14,
+            "passed": false
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-16,
+        "modelValidityEstablished": false
+      },
+      "notAnUncertaintyBound": true
+    }
+  },
+  "receiverAmbiguity": {
+    "first": {
+      "naturalFrequencyHz": 7.8,
+      "gammaPerS": 4.900884539600077,
+      "massKg": 0.25
+    },
+    "second": {
+      "naturalFrequencyHz": 10.3,
+      "gammaPerS": 10.786134777324959,
+      "massKg": 0.4
+    },
+    "bandHz": [
+      1,
+      20
+    ],
+    "spacingHz": 0.1,
+    "points": 191,
+    "maxReceiverResidual": 2.828734229811605e-16,
+    "impostorEstimate": {
+      "probeFrequencyHz": 5,
+      "massKg": 0.4,
+      "naturalFrequencyHz": 10.300000000000002,
+      "gammaPerS": 10.786134777324959,
+      "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+    },
+    "impostorHeldOut": {
+      "passed": true,
+      "maxRelativeError": 3.6880506022930964e-17,
+      "checks": [
+        {
+          "frequencyHz": 2.5,
+          "absoluteErrorMPerN": 0,
+          "relativeError": 0,
+          "thresholdMPerN": 1.2648823919690447e-13,
+          "passed": true
+        },
+        {
+          "frequencyHz": 10.7,
+          "absoluteErrorMPerN": 5.421010862427522e-20,
+          "relativeError": 3.226012122465701e-17,
+          "thresholdMPerN": 3.36181245614424e-13,
+          "passed": true
+        },
+        {
+          "frequencyHz": 16.4,
+          "absoluteErrorMPerN": 1.3552527156068805e-20,
+          "relativeError": 3.6880506022930964e-17,
+          "thresholdMPerN": 7.359425817336852e-14,
+          "passed": true
+        }
+      ],
+      "relativeTolerance": 2e-10,
+      "absoluteTolerance": 1e-16,
+      "modelValidityEstablished": false
+    },
+    "unequalMassCaseQualification": "Actual R2 pair identity; impostor reconstruction assumes the second mass.",
+    "sameKnownMassControl": {
+      "target": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.25
+      },
+      "estimate": {
+        "probeFrequencyHz": 5,
+        "massKg": 0.25,
+        "naturalFrequencyHz": 10.300000000000002,
+        "gammaPerS": 10.786134777324959,
+        "scope": "Exact-data single-mode identification under known mass and calibrated complex gain/phase; no validation of model class or experimental uncertainty."
+      },
+      "heldOut": {
+        "passed": true,
+        "maxRelativeError": 1.3403667186702068e-17,
+        "checks": [
+          {
+            "frequencyHz": 2.5,
+            "absoluteErrorMPerN": 1.3552527156068805e-20,
+            "relativeError": 1.3403667186702068e-17,
+            "thresholdMPerN": 2.0232118271504717e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 10.7,
+            "absoluteErrorMPerN": 0,
+            "relativeError": 0,
+            "thresholdMPerN": 5.378299929830784e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 16.4,
+            "absoluteErrorMPerN": 0,
+            "relativeError": 0,
+            "thresholdMPerN": 1.1769081307738965e-13,
+            "passed": true
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-16,
+        "modelValidityEstablished": false
+      }
+    },
+    "samples": [
+      {
+        "frequencyHz": 1,
+        "gainReal": 0.3558087653176912,
+        "gainImag": -0.0023466561448035658,
+        "observedRealMPerN": 0.0006019432939074251,
+        "observedImagMPerN": -0.000019665733901882445,
+        "targetRealMPerN": 0.0006019432939074251,
+        "targetImagMPerN": -0.00001966573390188244,
+        "relativeResidual": 5.625654606774555e-18,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 2,
+        "gainReal": 0.3476890558772543,
+        "gainImag": -0.004285090120062167,
+        "observedRealMPerN": 0.0006174996810663287,
+        "observedImagMPerN": -0.00004153359267955192,
+        "targetRealMPerN": 0.0006174996810663286,
+        "targetImagMPerN": -0.00004153359267955192,
+        "relativeResidual": 1.7518356913985342e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 3,
+        "gainReal": 0.33315752882744015,
+        "gainImag": -0.005217041373186059,
+        "observedRealMPerN": 0.0006449786101903334,
+        "observedImagMPerN": -0.00006842393330889312,
+        "targetRealMPerN": 0.0006449786101903334,
+        "targetImagMPerN": -0.00006842393330889312,
+        "relativeResidual": 0,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 4,
+        "gainReal": 0.31046242599717566,
+        "gainImag": -0.004036896255905708,
+        "observedRealMPerN": 0.0006869530005560193,
+        "observedImagMPerN": -0.00010471922012397968,
+        "targetRealMPerN": 0.0006869530005560192,
+        "targetImagMPerN": -0.00010471922012397967,
+        "relativeResidual": 1.5723948385531516e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 5,
+        "gainReal": 0.27656846537359525,
+        "gainImag": 0.0015691373094086384,
+        "observedRealMPerN": 0.0007474342147144503,
+        "observedImagMPerN": -0.00015823102749124094,
+        "targetRealMPerN": 0.0007474342147144504,
+        "targetImagMPerN": -0.00015823102749124097,
+        "relativeResidual": 1.4627892821262381e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 6,
+        "gainReal": 0.226468891579097,
+        "gainImag": 0.016903136445578528,
+        "observedRealMPerN": 0.0008316521698775297,
+        "observedImagMPerN": -0.00024442908688082616,
+        "targetRealMPerN": 0.0008316521698775298,
+        "targetImagMPerN": -0.00024442908688082616,
+        "relativeResidual": 1.2507695641021118e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 7,
+        "gainReal": 0.15285730832356362,
+        "gainImag": 0.05519932311479565,
+        "observedRealMPerN": 0.0009422438673095206,
+        "observedImagMPerN": -0.00039665897607880175,
+        "targetRealMPerN": 0.0009422438673095206,
+        "targetImagMPerN": -0.0003966589760788019,
+        "relativeResidual": 1.5907786659947332e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 8,
+        "gainReal": 0.05190537728395579,
+        "gainImag": 0.15144529113646962,
+        "observedRealMPerN": 0.0010551841998167068,
+        "observedImagMPerN": -0.0006885814371180534,
+        "targetRealMPerN": 0.001055184199816707,
+        "targetImagMPerN": -0.0006885814371180535,
+        "relativeResidual": 1.9241125065362636e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 9,
+        "gainReal": -0.028394865904770215,
+        "gainImag": 0.384711094318748,
+        "observedRealMPerN": 0.0010028559359332,
+        "observedImagMPerN": -0.0012350836357248247,
+        "targetRealMPerN": 0.0010028559359332,
+        "targetImagMPerN": -0.0012350836357248244,
+        "relativeResidual": 1.3629539693751228e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 10,
+        "gainReal": 0.1527283998950571,
+        "gainImag": 0.7399548336512881,
+        "observedRealMPerN": 0.00031718445454156853,
+        "observedImagMPerN": -0.0017881772751932891,
+        "targetRealMPerN": 0.0003171844545415686,
+        "targetImagMPerN": -0.0017881772751932891,
+        "relativeResidual": 2.984989726971872e-17,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 11,
+        "gainReal": 0.5857372255033496,
+        "gainImag": 0.7643422233295254,
+        "observedRealMPerN": -0.0005727102090049025,
+        "observedImagMPerN": -0.0014506610033591717,
+        "targetRealMPerN": -0.0005727102090049026,
+        "targetImagMPerN": -0.0014506610033591715,
+        "relativeResidual": 1.5544490746416796e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 12,
+        "gainReal": 0.7823664623338398,
+        "gainImag": 0.541638044003013,
+        "observedRealMPerN": -0.000765862499661645,
+        "observedImagMPerN": -0.0008323274857836929,
+        "targetRealMPerN": -0.000765862499661645,
+        "targetImagMPerN": -0.0008323274857836931,
+        "relativeResidual": 1.9171302620994192e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 13,
+        "gainReal": 0.8098493124783045,
+        "gainImag": 0.3730928995964871,
+        "observedRealMPerN": -0.0006695721848882217,
+        "observedImagMPerN": -0.00047504750467086806,
+        "targetRealMPerN": -0.0006695721848882217,
+        "targetImagMPerN": -0.00047504750467086806,
+        "relativeResidual": 0,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 14,
+        "gainReal": 0.7938318766061966,
+        "gainImag": 0.2725709287310036,
+        "observedRealMPerN": -0.0005477680236916818,
+        "observedImagMPerN": -0.00029284154160212275,
+        "targetRealMPerN": -0.0005477680236916818,
+        "targetImagMPerN": -0.0002928415416021227,
+        "relativeResidual": 8.727619463457287e-17,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 15,
+        "gainReal": 0.7714077174195718,
+        "gainImag": 0.2111050159541499,
+        "observedRealMPerN": -0.0004484359408407464,
+        "observedImagMPerN": -0.00019421790390462075,
+        "targetRealMPerN": -0.00044843594084074647,
+        "targetImagMPerN": -0.00019421790390462078,
+        "relativeResidual": 1.2402354227451182e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 16,
+        "gainReal": 0.7509502627005763,
+        "gainImag": 0.17111734439120138,
+        "observedRealMPerN": -0.00037241697528998455,
+        "observedImagMPerN": -0.00013646925383627837,
+        "targetRealMPerN": -0.0003724169752899845,
+        "targetImagMPerN": -0.00013646925383627837,
+        "relativeResidual": 1.3667551196050262e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 17,
+        "gainReal": 0.7338140497679928,
+        "gainImag": 0.143542070078865,
+        "observedRealMPerN": -0.0003142173467785148,
+        "observedImagMPerN": -0.00010026690252203807,
+        "targetRealMPerN": -0.0003142173467785148,
+        "targetImagMPerN": -0.0001002669025220381,
+        "relativeResidual": 8.217955630845874e-17,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 18,
+        "gainReal": 0.7197359157207838,
+        "gainImag": 0.12358166027967714,
+        "observedRealMPerN": -0.0002689714208642627,
+        "observedImagMPerN": -0.00007628118860727567,
+        "targetRealMPerN": -0.0002689714208642627,
+        "targetImagMPerN": -0.00007628118860727567,
+        "relativeResidual": 0,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 19,
+        "gainReal": 0.7081666859617743,
+        "gainImag": 0.10855232623634396,
+        "observedRealMPerN": -0.00023315493413737597,
+        "observedImagMPerN": -0.000059666052869227714,
+        "targetRealMPerN": -0.000233154934137376,
+        "targetImagMPerN": -0.00005966605286922772,
+        "relativeResidual": 1.1609024998500487e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      },
+      {
+        "frequencyHz": 20,
+        "gainReal": 0.698593087471677,
+        "gainImag": 0.09686658729902069,
+        "observedRealMPerN": -0.00020430775074453501,
+        "observedImagMPerN": -0.00004773274886118679,
+        "targetRealMPerN": -0.00020430775074453504,
+        "targetImagMPerN": -0.000047732748861186796,
+        "relativeResidual": 1.3316477980876008e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    ]
+  },
+  "constantRealGainQualification": {
+    "gain": 1.25,
+    "knownMassKg": 0.25,
+    "probeFrequenciesHz": [
+      3,
+      12
+    ],
+    "recovery": {
+      "massOverGain": 0.19999999999999998,
+      "naturalFrequencyHz": 7.8,
+      "gammaPerS": 4.900884539600078,
+      "gainIfMassKnown": 1.25
+    }
+  },
+  "evidenceIntake": {
+    "asOfUtc": "2026-10-29T04:57:39Z",
+    "actualPackets": [
+      {
+        "id": "tomsk-quicklook",
+        "packet": {
+          "stationId": "tomsk",
+          "observable": "schumann-mode-frequency",
+          "channel": "station quick-look; no numeric extraction",
+          "units": "Hz",
+          "record": {
+            "kind": "quicklook-image",
+            "url": "https://sos70.ru/provider.php?file=shm.jpg",
+            "sha256": "8b594816fb581d20fb5d89ebfda19465cd017c5631b8f75e4e7912140dc9b8d6"
+          },
+          "interval": {
+            "startUtc": null,
+            "endUtc": null
+          },
+          "retrievedUtc": null,
+          "coverageComplete": false,
+          "scope": "station",
+          "synthetic": false,
+          "context": "2026-10-27 through2026-10-29, partialday; charttimezone notverified"
+        },
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "calibrated numeric record required",
+            "valid calendar UTC interval required",
+            "valid UTC retrieval time required",
+            "complete coverage of the stated interval required",
+            "identified valid calibration metadata required",
+            "identified passed quality-control metadata required",
+            "identified matched baseline metadata required",
+            "decision procedure and uncertainty metadata required"
+          ],
+          "synthetic": false,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "nagycenk-quicklook",
+        "packet": {
+          "stationId": "nck",
+          "observable": "schumann-mode-frequency",
+          "channel": "station quick-look; no numeric extraction",
+          "units": "Hz",
+          "record": {
+            "kind": "quicklook-image",
+            "url": "https://nckobs.hu/data/sr/SR_dynspec_codemo_latest.png",
+            "sha256": "c0a45f2fe7a8f084cca9d3a2a73f52bdeaea8935089ecfe90dca30ae88d5959d"
+          },
+          "interval": {
+            "startUtc": null,
+            "endUtc": null
+          },
+          "retrievedUtc": null,
+          "coverageComplete": false,
+          "scope": "station",
+          "synthetic": false,
+          "context": "2026-10-29, UTCaxis, partialdaythroughapproximately04:45UTC"
+        },
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "calibrated numeric record required",
+            "valid calendar UTC interval required",
+            "valid UTC retrieval time required",
+            "complete coverage of the stated interval required",
+            "identified valid calibration metadata required",
+            "identified passed quality-control metadata required",
+            "identified matched baseline metadata required",
+            "decision procedure and uncertainty metadata required"
+          ],
+          "synthetic": false,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "noaa-geomagnetic-context",
+        "packet": {
+          "stationId": "noaa-planetary-estimate",
+          "observable": "geomagnetic-Kp",
+          "channel": "planetary Kp context",
+          "units": "dimensionless",
+          "record": {
+            "kind": "numeric-context",
+            "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json",
+            "sha256": "3f438089a2c4327cf026503d22b371190c223fefca3818cf44a51f6a0e83bf3c"
+          },
+          "interval": {
+            "startUtc": "2026-10-23T00:00:00Z",
+            "endUtc": "2026-10-29T03:00:00Z"
+          },
+          "retrievedUtc": "2026-10-29T04:56:14.803Z",
+          "retrievalSourceUtc": "2026-10-29T04:56:14.803554+00:00",
+          "retrievalNormalization": "Documented microseconds truncated to milliseconds for the strict UTC parser.",
+          "coverageComplete": true,
+          "scope": "station",
+          "synthetic": false,
+          "context": "Geomagnetic Kp context, not a Schumann resonance measurement"
+        },
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "observable must be schumann-mode-frequency; geomagnetic proxies are different observables",
+            "frequency units must be Hz",
+            "calibrated numeric record required",
+            "identified valid calibration metadata required",
+            "identified passed quality-control metadata required",
+            "identified matched baseline metadata required",
+            "decision procedure and uncertainty metadata required"
+          ],
+          "synthetic": false,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      }
+    ],
+    "syntheticCompletePacket": {
+      "stationId": "synthetic-A",
+      "observable": "schumann-mode-frequency",
+      "channel": "synthetic fitted magnetic-channel frequency",
+      "units": "Hz",
+      "record": {
+        "kind": "calibrated-numeric",
+        "url": "https://example.invalid/synthetic-A.csv",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "interval": {
+        "startUtc": "2026-10-23T00:00:00Z",
+        "endUtc": "2026-10-29T03:00:00Z"
+      },
+      "retrievedUtc": "2026-10-29T04:57:39Z",
+      "coverageComplete": true,
+      "calibration": {
+        "id": "fixture-cal-A",
+        "valid": true
+      },
+      "qc": {
+        "method": "synthetic fixture only",
+        "status": "passed"
+      },
+      "baseline": {
+        "id": "fixture-baseline-A",
+        "matched": true
+      },
+      "decision": {
+        "method": "hypothetical predeclared matched comparison",
+        "uncertainty": "hypothetical full estimator and calibration uncertainty model"
+      },
+      "scope": "station",
+      "synthetic": true
+    },
+    "syntheticReady": {
+      "status": "ready-for-analysis",
+      "missing": [],
+      "synthetic": true,
+      "metadataOnly": true,
+      "anomalyEstablished": false,
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+    },
+    "syntheticGlobalReady": {
+      "status": "ready-for-analysis",
+      "missing": [],
+      "synthetic": true,
+      "metadataOnly": true,
+      "anomalyEstablished": false,
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+    },
+    "malformedResults": [
+      {
+        "id": "missing-stationId",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "stationId required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-channel",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "channel required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-record",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "calibrated numeric record required",
+            "HTTPS numeric-record URL required",
+            "numeric-record SHA-256 required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-interval",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "valid calendar UTC interval required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-retrievedUtc",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "valid UTC retrieval time required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-coverageComplete",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "complete coverage of the stated interval required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-calibration",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "identified valid calibration metadata required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-qc",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "identified passed quality-control metadata required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-baseline",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "identified matched baseline metadata required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-decision",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "decision procedure and uncertainty metadata required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-scope",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "scope must be station or global"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "missing-synthetic",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "explicit synthetic boolean required"
+          ],
+          "synthetic": false,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "invalid-calendar",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "valid calendar UTC interval required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "local-time-no-zone",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "valid UTC retrieval time required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "future-observation",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "observation interval extends past retrieval"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "future-retrieval",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "retrieval lies after assessment cutoff"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "incomplete-coverage",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "complete coverage of the stated interval required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "truthy-string-calibration",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "identified valid calibration metadata required"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "reversed-interval",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "interval must have positive duration"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "duplicate-global-stations",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "global scope needs at least two distinct identified stations including the primary",
+            "global scope requires one complete metadata record per independent station"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "global-missing-calibration",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "global station synthetic-B requires complete station metadata"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "global-id-list-only",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "global scope requires one complete metadata record per independent station"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      },
+      {
+        "id": "global-incomplete-common-interval",
+        "result": {
+          "status": "insufficient-evidence",
+          "missing": [
+            "global station synthetic-B must cover the stated common interval"
+          ],
+          "synthetic": true,
+          "metadataOnly": true,
+          "anomalyEstablished": false,
+          "asOfUtc": "2026-10-29T04:57:39Z",
+          "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+        }
+      }
+    ]
+  },
+  "sourceSha256": "c59e7b5d2489294c897a641a767fce25d5c743ea49e4236dcfebdc35ea1bec30",
+  "runnerSha256": "f4e298713d797a706a3f5bd2fb10c1c08306e171a006d45b31cd6706c767cfd0"
+}

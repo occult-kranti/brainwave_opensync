@@ -1,0 +1,171 @@
+{
+  "schema": "oct29-release-manifest/1",
+  "date": "2026-10-29",
+  "reviewer": "/root/oct_sources",
+  "repository": "openai/math",
+  "revision": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+  "revisionDate": "2026-10-26T21:18:03Z",
+  "priorRevision": "1581d4cbdd69a0faf34b2089614fe2a814316a6a",
+  "window": {
+    "rolling": [
+      "2026-10-23",
+      "2026-10-29"
+    ],
+    "calendarWeek": [
+      "2026-10-26",
+      "2026-10-29"
+    ],
+    "partialLatestDay": true
+  },
+  "license": {
+    "path": "LICENSE",
+    "identifier": "Apache-2.0",
+    "scope": "Repository root license; imported dependencies retain their own notices."
+  },
+  "counts": {
+    "priorFamilies": 372,
+    "priorManuscripts": 719,
+    "currentFamilies": 373,
+    "currentManuscripts": 721,
+    "maxFamilyId": 378,
+    "method": "Unique family headings and balanced-parenthesis Markdown PDF links; CAT(0) path retained.",
+    "notProofCount": true
+  },
+  "localLeanExecutions": 0,
+  "artifacts": [
+    {
+      "id": "OAI-079",
+      "family": "079",
+      "title": "Local smoothing for the Euclidean wave equation",
+      "change": "New all-dimension manuscript in existing family",
+      "paperDate": "2026-10-25",
+      "releaseDate": "2026-10-26",
+      "paper": "preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/paper.pdf",
+      "paperBytes": 810093,
+      "paperGitBlob": "0472605895a485dd0441ada1257485d325f16f55",
+      "tex": "preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/build/paper.tex",
+      "texBytes": 3986,
+      "texNote": "Driver with sections and bibliography; not the entire paper.",
+      "scope": "lean/docs/079.md",
+      "comparator": "lean/ComparatorChallenges/LocalSmoothing.json",
+      "reference": "lean/ComparatorChallenges/LocalSmoothing.lean",
+      "solution": "lean/OAI/Analysis/Fourier/LocalSmoothing/Comparator.lean",
+      "targets": [
+        "OAI.Analysis.Fourier.LocalSmoothing.Comparator.euclidean_local_smoothing",
+        "OAI.Analysis.Fourier.LocalSmoothing.Comparator.bochner_riesz",
+        "OAI.Analysis.Fourier.LocalSmoothing.Comparator.spherical_restriction",
+        "OAI.Analysis.Fourier.LocalSmoothing.Comparator.kakeya_maximal",
+        "OAI.Analysis.Fourier.LocalSmoothing.Comparator.kakeya",
+        "OAI.Analysis.Fourier.LocalSmoothing.Comparator.stein_square"
+      ],
+      "readDepth": "Scope, challenge declarations, configuration and solution wrapper inspected; full dependency closure not audited.",
+      "status": "Public artifacts inspected; publisher claims proof; not locally compiled",
+      "transfer": "Euclidean half-wave local smoothing with declared Sobolev loss; curved lossy driven cavity requires new hypotheses."
+    },
+    {
+      "id": "OAI-378",
+      "family": "378",
+      "title": "The Exponential Time Hypothesis is False",
+      "change": "New family and manuscript",
+      "paperDate": "2026-10-25",
+      "releaseDate": "2026-10-26",
+      "paper": "preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf",
+      "paperBytes": 887884,
+      "paperGitBlob": "0503566e95bc587a4076573a45132d97531b8ba6",
+      "tex": "preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/main_full_version.tex",
+      "texBytes": 214857,
+      "scope": "lean/docs/378.md",
+      "comparator": "lean/ComparatorChallenges/SubexponentialSAT.json",
+      "reference": "lean/ComparatorChallenges/SubexponentialSAT.lean",
+      "solution": "lean/OAI/Algorithms/SubexponentialSAT/Main.lean",
+      "targets": [
+        "OAI.Algorithms.SubexponentialSAT.SqrtLogSpace.exact_count_and_sat"
+      ],
+      "readDepth": "Scope, challenge declarations, configuration and Main imports inspected; full proof not audited.",
+      "status": "Public artifacts inspected; not locally compiled",
+      "formalBound": "(L+1)^{O_k(1)} 2^{O_k(n(log log n)^2/sqrt(log n))}; polynomial visited-tape space",
+      "manuscriptBound": "(n+m)^{O_k(1)} 2^{O_k(n log log n/sqrt(log n))}; improved n/sqrt(log n) for m<=Dn",
+      "transfer": "Potential future exact combinatorial tools; no immediate practical solver or P=NP conclusion."
+    },
+    {
+      "id": "OAI-032",
+      "family": "032",
+      "title": "Rational Hodge conjecture for CM abelian varieties",
+      "change": "Formalization added; existing October6 manuscript",
+      "scope": "lean/docs/032.md",
+      "reference": "lean/ComparatorChallenges/HodgeConjectureCMAbelianVarieties/Challenge.lean",
+      "status": "Selected scope documentation inspected; not locally compiled",
+      "transfer": "No identified Schumann or gauge-continuum application; selected statement excludes Tate/Hodge-standard consequences."
+    },
+    {
+      "id": "OAI-266",
+      "family": "266",
+      "title": "Exactly three mutually unbiased bases in dimension six",
+      "change": "Numerical source/records/checker restored",
+      "scope": "lean/docs/266.md",
+      "paper": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026.pdf",
+      "verificationInstructions": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/VERIFY.md",
+      "checker": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/check_records.py",
+      "checkerBytes": 18229,
+      "cppDirectory": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/compiled-build/source/",
+      "commandRecords": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/commands.json",
+      "dataDirectory": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/",
+      "resultDirectory": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/",
+      "listedDataBytes": 48333758,
+      "listedBatchBytes": 33993601,
+      "listedResultBytes": 30768,
+      "listedCommandBytes": 46908,
+      "listedBatchFiles": 177,
+      "listedResultFiles": 100,
+      "status": "Metadata/instructions inspected; checker not executed by this reviewer",
+      "formalBoundary": "Linked Lean family bound <=5 and supporting cancellation; not full computer-assisted <=3 statement.",
+      "transfer": "Useful record/coverage versus execution/compiler/hardware distinction for our evidence gates."
+    },
+    {
+      "id": "OAI-YM-QCD",
+      "family": null,
+      "title": "Four-dimensional QCD and pure Yang–Mills existence",
+      "change": "Official October26 announcement; artifacts deferred to physics group",
+      "releaseDate": "2026-10-26",
+      "announcement": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "publisherDates": {
+        "ymNaturalLanguage": "2026-09-09",
+        "qcdNaturalLanguage": "2026-09-18",
+        "ymFormalization": "2026-10-16"
+      },
+      "publicManuscript": null,
+      "publicLean": null,
+      "status": "Publisher announcement; public physics proof artifacts not furnished by announcement",
+      "massGapClaim": false,
+      "transfer": "Wait for precise public statements and matched hypotheses; does not certify or disprove local workbench."
+    }
+  ],
+  "verificationPrerequisites": {
+    "leanToolchain": "leanprover/lean4:v4.34.1",
+    "source": "lean/lean-toolchain",
+    "tools": [
+      "comparator",
+      "landrun",
+      "lean4export"
+    ],
+    "instructions": "lean/ComparatorChallenges/README.md",
+    "documentedCommands": [
+      "lake update",
+      "lake exe cache get",
+      "lake env comparator ComparatorChallenges/LocalSmoothing.json",
+      "lake env comparator ComparatorChallenges/SubexponentialSAT.json"
+    ],
+    "executionStatus": "Commands recorded, not executed",
+    "mub": {
+      "python": ">=3.9",
+      "command": "python3 execution/check_records.py",
+      "workingDirectory": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run",
+      "scope": "Saved record consistency/coverage only; no C++ rerun, compiler/hardware verification or full mathematical proof."
+    }
+  },
+  "limits": [
+    "Not an exhaustive audit of 721 manuscripts.",
+    "GitHub latest-commit changed-files response inspected only as a discovery aid; endpoint can cap at300 files, not treated as full delta census.",
+    "No source transfer to Schumann or Yang–Mills admitted without matching model hypotheses."
+  ]
+}

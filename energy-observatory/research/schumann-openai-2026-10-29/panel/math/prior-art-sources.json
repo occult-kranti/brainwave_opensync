@@ -1,0 +1,133 @@
+{
+  "cutoff": "2026-10-29",
+  "scope": "Targeted primary-source identifiability review before any next research cycle; not an exhaustive world-priority or patent search",
+  "external_proofs_reproduced": false,
+  "sources": [
+    {
+      "id": "I1",
+      "title": "Employing Observability Rank Conditions for Taking into Account Experimental Information a priori",
+      "author": "Alejandro F. Villaverde",
+      "date": "2025-02-06",
+      "url": "https://link.springer.com/article/10.1007/s11538-025-01415-3",
+      "doi": "10.1007/s11538-025-01415-3",
+      "read": "Article body sections 1, 2.1\u20132.4, 3.1\u20133.7 selected equations/examples and section 4 conclusions; not numerical code reproduction",
+      "scope": "Analytic ODEs; known inputs and outputs in base definition; local versus global identifiability; rank tests, input restrictions, unknown-input extensions and practical limitations",
+      "ref": "turn187view2"
+    },
+    {
+      "id": "I2",
+      "title": "Fundamental Limits of Blind Deconvolution Part I: Ambiguity Kernel",
+      "authors": [
+        "Sunav Choudhary",
+        "Urbashi Mitra"
+      ],
+      "date": "2014-11-14",
+      "version": "arXiv:1411.3810v1",
+      "url": "https://arxiv.org/pdf/1411.3810",
+      "read": "PDF pp1\u20136 formulation/examples and pp10\u201312, especially Theorem 2; not Appendices D/E proof in full",
+      "scope": "Finite-dimensional noiseless real linear convolution; scaling equivalence; theorem requires even m,n\u22654 and stated nonzero endpoint/measure assumptions",
+      "ref": "turn196view0"
+    },
+    {
+      "id": "I3",
+      "title": "Identifiability and Stability in Blind Deconvolution under Minimal Assumptions",
+      "authors": [
+        "Yanjun Li",
+        "Kiryung Lee",
+        "Yoram Bresler"
+      ],
+      "date": "2015-12-23",
+      "version": "arXiv:1507.01308v2",
+      "url": "https://arxiv.org/pdf/1507.01308",
+      "read": "Abstract, section2 formulation and sections3.1\u20133.2 theorem statements/interpretation; not full proof in sections4\u20135",
+      "scope": "Circular convolution with known generic bases/frames and subspace/sparsity constraints; uniqueness up to scaling; stability under specified random basis distribution",
+      "ref": "turn199view0"
+    },
+    {
+      "id": "I4",
+      "title": "A Multirate Extended Kalman Filter for the Joint Identification of Structural State-Damage-Unknown Inputs",
+      "authors": [
+        "Lijun Liu",
+        "Wei Luo",
+        "Jiale Zhang",
+        "Shiyu Wang",
+        "Ying Lei",
+        "Nan Gong"
+      ],
+      "date": "2026-09-08",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1155/stc/6594136",
+      "doi": "10.1155/stc/6594136",
+      "read": "Publication metadata, abstract/introduction, sections2.1\u20132.3 including rank/feedthrough conditions and numerical validation section3 through synchronous case; some displayed equations absent in HTML text, no implementation rerun",
+      "scope": "Augmented structural state/damage unknown-input filtering using acceleration and strain; finite-window linearized observability and necessary input-dimension conditions; numerical beam/truss evidence, not unrestricted inverse uniqueness",
+      "ref": "turn184view1"
+    },
+    {
+      "id": "I5",
+      "title": "A generalized coherence framework for quantifying input contributions in multi-input systems with correlated or uncorrelated inputs",
+      "authors": [
+        "Nolan H Howes",
+        "Matthew S Allen",
+        "Dario Farina",
+        "Steven K Charles"
+      ],
+      "date": "2025-02-07",
+      "repository_available": "2026-06-01",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11870678/",
+      "doi": "10.1016/j.bspc.2025.107522",
+      "read": "Author manuscript metadata, introduction, sections2.1.1\u20132.1.4, equations1\u20136 and surrounding assumptions; not later new-measure proofs/experiments",
+      "scope": "LTI frequency responses, measured input/output cross spectra, correlation assumptions and interference decomposition; not blind recovery from one output PSD",
+      "ref": "turn199view2"
+    },
+    {
+      "id": "I6",
+      "title": "Vibration Characteristics of 3D Printed Rigid Photopolymer Metamaterials Infiltrated with Biodegradable Shear Thickening Fluid",
+      "authors": [
+        "F. Scalzo",
+        "E. Vaglio"
+      ],
+      "date": "2025-06-12",
+      "url": "https://link.springer.com/article/10.1007/s11340-025-01201-1",
+      "doi": "10.1007/s11340-025-01201-1",
+      "read": "Dynamic Identification section, equations3\u20135 and experimental setup; no raw experiment replication",
+      "scope": "Explicit dynamic compliance W=U/F=1/[m(j\u03c9)^2+c(j\u03c9)+k]; exact parameter dictionary to our one-mode formula",
+      "ref": "turn223view0"
+    }
+  ],
+  "leads_not_admitted_as_theorem_evidence": [
+    {
+      "title": "On structural identifiability",
+      "authors": [
+        "R. Bellman",
+        "K.J. \u00c5str\u00f6m"
+      ],
+      "date": "1970",
+      "url": "https://lup.lub.lu.se/search/publication/e5be7c83-a0d2-4500-826f-6e1b414d1733",
+      "scope": "Primary institutional metadata discovered; full PDF inaccessible through retrieval, historical lineage only"
+    },
+    {
+      "title": "Structural and practical identifiability analysis of partially observed dynamical models by exploiting the profile likelihood",
+      "date": "2009",
+      "url": "https://opus.bibliothek.uni-augsburg.de/opus4/frontdoor/index/index/docId/113236",
+      "doi": "10.1093/bioinformatics/btp358",
+      "scope": "Primary author repository abstract/metadata read; repository and author PDF timed out; no detailed theorem/procedure imported"
+    },
+    {
+      "title": "Structural Foundations of Nonlinear Systems with Unknown Inputs: The UID-Induced Normal Form and Minimal-Sensing Structure-from-Motion",
+      "date": "2026-10-05",
+      "url": "https://arxiv.org/abs/2610.05939",
+      "scope": "Search discovery only; direct abstract/HTML/PDF retrieval unavailable; not used for theorem transfer"
+    },
+    {
+      "title": "Finite-Window Practical Identifiability Under Hidden Forcing in Mixed Integer- and Fractional-Order Systems",
+      "date": "2026-10",
+      "url": "https://www.mdpi.com/2227-7390/14/20/3784",
+      "scope": "Search discovery only; direct full body returned429; not admitted as checked statement"
+    },
+    {
+      "title": "Structural identifiability of constitutive relations from indirect field observations",
+      "date": "2026-09",
+      "url": "https://academic.oup.com/pnasnexus/article/5/9/pgag281/8767651",
+      "scope": "Search discovery only; full body redirect unavailable and PubMed challenge; not admitted"
+    }
+  ]
+}

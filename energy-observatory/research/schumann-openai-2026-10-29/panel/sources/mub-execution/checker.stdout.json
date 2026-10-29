@@ -1,0 +1,80 @@
+{
+  "result": "PASS within numerical consistency scope",
+  "cover": {
+    "centers": 249878,
+    "checked_pairs": 151744086
+  },
+  "coarse_records": [
+    764,
+    774,
+    757,
+    788
+  ],
+  "mid_records": 600,
+  "fine_records": 22379,
+  "batches": 88,
+  "initial_C": {
+    "done": 22379,
+    "bad": 163,
+    "graph": 0,
+    "cap": 163,
+    "over": 0,
+    "cluster": 0
+  },
+  "fallback_inputs": [
+    "batches/bad10.bin",
+    "batches/bad3.bin",
+    "batches/bad4.bin",
+    "batches/bad5.bin",
+    "batches/bad52.bin",
+    "batches/bad53.bin",
+    "batches/bad55.bin",
+    "batches/bad56.bin",
+    "batches/bad6.bin",
+    "batches/bad7.bin",
+    "batches/bad78.bin",
+    "batches/bad79.bin",
+    "batches/bad8.bin",
+    "batches/bad80.bin",
+    "batches/bad84.bin"
+  ],
+  "fallback_records": 1127,
+  "final_C": [
+    {
+      "done": 282,
+      "bad": 0,
+      "graph": 0,
+      "cap": 0,
+      "over": 0,
+      "cluster": 0
+    },
+    {
+      "done": 282,
+      "bad": 0,
+      "graph": 0,
+      "cap": 0,
+      "over": 0,
+      "cluster": 0
+    },
+    {
+      "done": 282,
+      "bad": 0,
+      "graph": 0,
+      "cap": 0,
+      "over": 0,
+      "cluster": 0
+    },
+    {
+      "done": 281,
+      "bad": 0,
+      "graph": 0,
+      "cap": 0,
+      "over": 0,
+      "cluster": 0
+    }
+  ],
+  "children": 100,
+  "data_files": 196,
+  "result_files": 100,
+  "scope": "Derived numerical consistency check only; no source, binary, or original execution provenance verification."
+}

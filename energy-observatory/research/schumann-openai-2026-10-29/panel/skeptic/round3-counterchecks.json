@@ -1,0 +1,86 @@
+{
+  "scope": "Final-round synthetic mechanical controls; no experimental uncertainty certification.",
+  "probe_hz": 6.4,
+  "heldout_hz": [
+    3.2,
+    12.6
+  ],
+  "tolerance_relative": 1e-13,
+  "recoveries": [
+    {
+      "true": {
+        "f0": 7.8,
+        "gamma": 4.900884539600077,
+        "mass": 0.25
+      },
+      "recovered": [
+        7.8,
+        4.900884539600076
+      ],
+      "heldout_relative_errors": [
+        1.3602033052426423e-17,
+        2.671773366428282e-17
+      ],
+      "conjugated_phase_rejected": true,
+      "constant_gain": 1.25,
+      "wrong_known_mass_fit": [
+        7.540822236334709,
+        3.9207076316800613
+      ],
+      "wrong_known_mass_heldout_errors": [
+        0.13129685235713096,
+        0.22851112235277654
+      ],
+      "two_frequency_effective_mass": 0.2,
+      "two_frequency_recovered_f0": 7.8,
+      "two_frequency_recovered_gamma": 4.900884539600077,
+      "perturbation_reciprocal_error": 0.004909494599722808,
+      "perturbation_reciprocal_bound": 0.004909653478816431
+    },
+    {
+      "true": {
+        "f0": 10.3,
+        "gamma": 10.786134777324959,
+        "mass": 0.4
+      },
+      "recovered": [
+        10.300000000000002,
+        10.786134777324959
+      ],
+      "heldout_relative_errors": [
+        0.0,
+        0.0
+      ],
+      "conjugated_phase_rejected": true,
+      "constant_gain": 1.25,
+      "wrong_known_mass_fit": [
+        9.646968435731509,
+        8.628907821859967
+      ],
+      "wrong_known_mass_heldout_errors": [
+        0.07376719187990852,
+        0.31728868381991837
+      ],
+      "two_frequency_effective_mass": 0.32,
+      "two_frequency_recovered_f0": 10.300000000000002,
+      "two_frequency_recovered_gamma": 10.78613477732496,
+      "perturbation_reciprocal_error": 0.02427110455195509,
+      "perturbation_reciprocal_bound": 0.024271890003819616
+    }
+  ],
+  "arbitrary_receiver_max_relative_error": 2.5596257579085544e-16,
+  "multimode_fit": [
+    7.732217322181836,
+    4.549247636459548
+  ],
+  "multimode_heldout_errors": [
+    0.07040815281474067,
+    0.23146030632560757
+  ],
+  "notes": [
+    "Conjugation is a wrong-convention control only when inversion keeps exp(+i omega t).",
+    "Frequency-dependent receiver construction is a bandwise nuisance, not a realized causal calibrated sensor.",
+    "Finite held-out passes cannot establish universal model validity."
+  ],
+  "producer_imported": false
+}

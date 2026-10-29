@@ -1,0 +1,13 @@
+{
+  "phase": "R2 accepted, R3 selected",
+  "sha256": {
+    "panel/sources/round2.md": "b34ee6209457a3e4972409be17e0a6749022f355441db030c1109e0f0f9eaa94",
+    "panel/math/round2.md": "b16b18d5bd7181568bea2cd2dccda6a63d667483afcb7036760d9990faa739a8",
+    "panel/observations/round2.md": "790cac514db3f916a5a741d403878e983267aa4e5b367fda7233eb55cb0b3753",
+    "panel/skeptic/round2.md": "75c815524a074ac09ed0c6ea7af6118335fbb61109f4d3b0abf86aeb4ed9727c",
+    "rounds/round2-decision.md": "eef83d438dca75ab510852c5282ca73a9d9249211064ceab1bf4dd33d25b9075",
+    "rounds/round3-contract.md": "a232c67ed4fb8155ba4eb696f081dc21065f5c4984a3d78c356b5b2247f265fc",
+    "analysis/round2/freeze.json": "735b0c4f463090e150994b209347d459ba2cd45d77cc381c53cc60c05fb130fb",
+    "verification/round2/freeze.json": "53719287f312cee3f6506bc0b9fe374f69dfb31f9706fa94de274a3f6ca8c837"
+  }
+}

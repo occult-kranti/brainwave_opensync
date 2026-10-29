@@ -1,0 +1,17 @@
+{
+  "frozen_utc": "2026-10-29T05:00:59.490153+00:00",
+  "status": "independent initial panels complete",
+  "source_hashes": {
+    "papers.md": "0aadf63e54bd7f4feef796a157c9a013e2b3d0b59b734d602206a868ca1de9fd",
+    "schumann.md": "a2e029c4525b232e50aa0abb28c30c60254ab16b38bfbd5460537fcb867d9d1d",
+    "sources.json": "6ef9c21d645feb59c85fcbedd14a65655807db5bbff2d77abee8fb041c40a7f6",
+    "noaa-kp.json": "3f438089a2c4327cf026503d22b371190c223fefca3818cf44a51f6a0e83bf3c",
+    "noaa-weekly.txt": "e34eb64ea3165e465ad39b37ab935de6b78a2b905e428f1ce6493baea06ffeb0",
+    "noaa-3day.txt": "88028a1c2f234c415e892fdccd0d5cf90baf2ced5d2829ad54c97b82d0c32dc7",
+    "gfz-kp.json": "deb5dfafded3db6ed79c1106579dc90ecd2fbaa5dd71847b0f03d4c924a262ba",
+    "download-manifest.json": "cc8902d627dbbf47497c98377feeb24309b3d79d02b04fddc5cdd152acda80fe",
+    "gfz-download.json": "e0b5083faef23d91febfd4684d3c674a711df60163c1dc7d8f6f97706503f5dc",
+    "observation-summary.json": "95793c627f77c7d0128cdf01b5782fdf8a720cdc82c12aab741eb33157198d51",
+    "summarize-observations.py": "e73b6ef616f3ce26df1c34e0d58491435bf13df7c2d0712a7c43394cf74532ad"
+  }
+}

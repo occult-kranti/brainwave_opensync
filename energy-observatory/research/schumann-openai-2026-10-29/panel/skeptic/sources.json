@@ -1,0 +1,83 @@
+{
+  "reviewer": "oct_skeptic",
+  "date": "2026-10-29",
+  "openai_math_commit": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+  "lean_executions": 0,
+  "independent_station_fits": 0,
+  "sources": [
+    {
+      "id": "openai-oct26",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "date": "2026-10-26",
+      "read": "Release-policy paragraphs and three result sections; especially lines39,49 and68–80 in retrieved page.",
+      "status": "official announcement; physics proof artifacts withheld by collaboration",
+      "web_refs": ["turn156view0", "turn160view0"]
+    },
+    {
+      "id": "clay-target",
+      "url": "https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf",
+      "read": "Section4 definition of existence and positive mass gap, printedpage6; neighboring discussion of uniform-gap obligations.",
+      "status": "primary problem specification, not current solution-status evidence",
+      "web_refs": ["turn161view4", "turn164view0"]
+    },
+    {
+      "id": "local-smoothing-artifacts",
+      "url": "https://github.com/openai/math/tree/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean",
+      "paths": ["docs/079.md", "ComparatorChallenges/LocalSmoothing.lean", "ComparatorChallenges/LocalSmoothing.json", "OAI/Analysis/Fourier/LocalSmoothing/Comparator.lean"],
+      "read": "Full scope document, challenge, config and solution wrapper; transitive proof imports not audited.",
+      "status": "public statements and wrapper inspected; no local formal verification",
+      "web_refs": ["turn161view1"]
+    },
+    {
+      "id": "sat-artifacts",
+      "url": "https://github.com/openai/math/tree/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean",
+      "paths": ["docs/378.md", "ComparatorChallenges/SubexponentialSAT.lean", "ComparatorChallenges/SubexponentialSAT.json", "OAI/Algorithms/SubexponentialSAT/Main.lean", "ComparatorChallenges/README.md", "README.md"],
+      "read": "Full scope document, primitive-machine target, config, main imports and build instructions; proof dependencies not audited.",
+      "status": "public artifacts; manuscript and formalized runtime bounds distinguished",
+      "web_refs": ["turn161view3"]
+    },
+    {
+      "id": "sos70-operator",
+      "url": "https://sos70.ru/",
+      "read": "Interpretation notes lines54–68; image link fetched but binary not visually decoded by web renderer.",
+      "status": "primary measurement interpretation; no current numeric anomaly admitted",
+      "web_refs": ["turn166view0", "turn171view0"]
+    },
+    {
+      "id": "sos70-method",
+      "url": "https://sos70.ru/?page_id=43",
+      "read": "Instrumentation, sampling, FFT windows, PSD peak estimator and uncertainty-summary description, lines53–85.",
+      "status": "primary station methods",
+      "web_refs": ["turn168view2"]
+    },
+    {
+      "id": "sos70-parameters",
+      "url": "https://sos70.ru/?page_id=48",
+      "read": "Three-day image products, copyright notice and subscription weekly-data link.",
+      "status": "availability observation; no permission to republish images inferred",
+      "web_refs": ["turn168view3"]
+    },
+    {
+      "id": "koloskov2026",
+      "url": "https://angeo.copernicus.org/articles/44/949/2026/",
+      "date": "2026-09-18",
+      "read": "Introduction and section2, especially definition of forced peak and source-distance/nodal-zone behavior; not complete paper reproduction.",
+      "status": "primary peer-reviewed source for peak-versus-eigenfrequency distinction",
+      "web_refs": ["turn156view2", "turn164view1"]
+    },
+    {
+      "id": "noaa-date-conflict",
+      "url": "https://forecast.weather.gov/product.php?format=TXT&glossary=1&issuedby=TDF&product=DAY&site=GJT&version=1",
+      "read": "Search advertised Oct27 but direct opening returned Oct8 bulletin.",
+      "status": "rejected for requested recent window; retrieval freshness negative control",
+      "web_refs": ["turn166search2", "turn168view0"]
+    },
+    {
+      "id": "canada-date-conflict",
+      "url": "https://spaceweather.gc.ca/data-donnee/geomag/ssp-hr-en.php?station=BLC",
+      "read": "Search advertised Oct27–28 but direct opening returned Oct7–8 hourly table.",
+      "status": "rejected for requested recent window; retrieval freshness negative control",
+      "web_refs": ["turn166search7", "turn168view1"]
+    }
+  ]
+}

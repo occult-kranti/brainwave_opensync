@@ -1,0 +1,21 @@
+{
+  "schema": "schumann-independent-round3-freeze/1",
+  "status": "passed",
+  "files": {
+    "compare_producer.py": "6fa830831859bff6580305b954e72e967167828c213494638a9788f73e03d10d",
+    "comparison-results.json": "e1d165e3e91109c320a27d9e29d45b785354df57b4bdb0ac592a50d7cbe6f182",
+    "independent-fixtures.json": "07cc3ffc86db87d724ee995846ad80db028350dad157c1042fc08f87d89a4f1a",
+    "independent-oracle.py": "3fdb96527bc087c98bba54f0858d795e61f40f6fc7594da2b532350f71672533",
+    "initial-comparison-results.json": "ec3d5c4380dc6b604980205df4a234271aa88caf8b0176ec5342e1d49a86401b",
+    "initial-comparison-script.py": "b3cc14b66182e8d768ad78550546e9e34feca94247591e3e340ddf3b448acdd0",
+    "initial-producer-model.mjs": "06d1ecae6eddd1752b3f7e9ae5f0c4d173ed0d0578dad83824f7351d8311a8fa",
+    "preregistered.md": "6ca523c59679c8a98991dd92d8a9876ee9b1a3bad9013547ea7d3742332c7d4a",
+    "producer-bridge.mjs": "57480682cb5ecf077ea2ceb3d0d7381b31ce1887e734a7d4f572568e1e79b4f8",
+    "receiver-supplement.json": "50ccb75c4474e56f7671f5976357db251aa163a47eb035a2243de8ac8cc97901",
+    "receiver-supplement.py": "2f0b0e31a1b2a79de775022e29c969eb694f879fa0fe019aaa43156946cbc785",
+    "report.md": "4c99ca1de6d080cdccbdb03df25a5d026a8fd687000c4258fdb64a0837ef46e5",
+    "revision-record.md": "698ec6ba24c508130262bfb3625178744f32dc0eb23febc3eddafb686640f011",
+    "schema-supplement.json": "fee29af7dc52a51e9e1a5d2bce3f9ad5190a4318beb821cc8f306b0b5af18a89",
+    "schema-supplement.py": "1a8c9602ad933c750d806889d6b657d8968fa46bcdd9d93b8f5f03ae6928f9ff"
+  }
+}

@@ -1,0 +1,478 @@
+{
+  "date": "2026-10-29",
+  "status": "accepted",
+  "openaiRevision": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+  "yangMillsRevision": "f9364d617015e803fda9465aefddd9cbe41854a4",
+  "coverage": {
+    "startUTC": "2026-10-23T00:00:00Z",
+    "endExclusiveUTC": "2026-10-29T03:00:00Z",
+    "completedThreeHourBinsPerProvider": 49,
+    "latestDatePartial": true,
+    "sources": [
+      "NOAA estimated Kp",
+      "GFZ preliminary Kp"
+    ],
+    "schumannCalibratedSeriesObtained": false
+  },
+  "releases": [
+    {
+      "id": "079 · new October 26 artifact",
+      "title": "All-dimensional local smoothing",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/079.md",
+      "status": "Public manuscript, scope dictionary and Lean solution target. No local Lean execution.",
+      "boundary": "The Lean target has epsilon Sobolev loss (p=2 exception); the critical frequency-localized manuscript estimate has a logarithmic loss. The Euclidean half-wave theorem needs a separate operator/hypothesis bridge to a curved, dispersive, lossy, driven cavity."
+    },
+    {
+      "id": "378 · new family",
+      "title": "Refutation of the Exponential Time Hypothesis",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/378.md",
+      "status": "Public manuscript and formalization; their displayed runtime bounds differ.",
+      "boundary": "Fixed-k exact SAT/counting with encoded-input and polynomial-prefactor assumptions. Lean uses exponent n(log log n)²/√log n, weaker than the manuscript’s n log log n/√log n. Not P=NP; no practical solver speedup demonstrated here."
+    },
+    {
+      "id": "YM / QCD · October 26 announcement",
+      "title": "Four-dimensional gauge-theory existence",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "status": "OpenAI announcement; physics collaborators deferred AI proof artifacts.",
+      "boundary": "Existence is distinct from a positive mass gap. No publicly auditable proof bridge to our lattice construction is available in this release."
+    },
+    {
+      "id": "032 · new formalization of an existing manuscript",
+      "title": "Rational Hodge conjecture for CM abelian varieties",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/032.md",
+      "status": "Public scope material inspected; not locally compiled.",
+      "boundary": "Formalization excludes the additional Tate and Hodge-standard consequences. No exact application to our oscillator, energy or lattice model is established."
+    },
+    {
+      "id": "266 · numerical artifacts revisited",
+      "title": "Mutually unbiased bases in dimension six",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/266.md",
+      "status": "Restored saved-record checker executed successfully. Selected Lean target is a ≤5 bound.",
+      "boundary": "The claimed ≤3 result includes separate numerical work. Saved-record consistency is not a rerun of the C++ computation or a proof of the full theorem."
+    }
+  ],
+  "externalVerification": {
+    "summary": "Executed OpenAI’s pinned MUB saved-record checker: exit 0 in 4.37 seconds. It checked record consistency and coverage, including 22,379 fine records and 1,127 fallback records. Original C++ computations and their large pair counters were not recomputed; provenance and the full theorem were not independently certified. The complete receipt and bounded reproduction recipe are linked below.",
+    "receipt": "research/schumann-openai-2026-10-29/panel/sources/mub-execution/execution-receipt.json"
+  },
+  "comparisons": [
+    {
+      "claim": "Named fixed-lattice SU(2) constructions",
+      "effect": "No contradiction identified in this bounded review; prior scoped claims retained.",
+      "bridge": "A specific accessible continuum existence statement and a verified mapping to the project regulator, state and dynamics."
+    },
+    {
+      "claim": "Continuum Yang–Mills mass gap",
+      "effect": "Still open in our work; OpenAI’s announcement is not imported as a proof.",
+      "bridge": "Lattice-spacing-uniform estimates, continuum construction and positive physical gap with correct normalization."
+    },
+    {
+      "claim": "Route B and boundary uniqueness",
+      "effect": "The Round 33 roadmap remains pending.",
+      "bridge": "Route-B dynamics; O1b broader uniqueness; finite-box certificates; rate control beyond N=14,000; separate Z₂ chain goal."
+    },
+    {
+      "claim": "Energy bound and Schumann inverse model",
+      "effect": "No exact theorem transfer from the new mathematical results established.",
+      "bridge": "Match hypotheses and demonstrate a measurable improvement over the existing analytic or numerical baseline."
+    }
+  ],
+  "novelty": [
+    {
+      "item": "E1 qubit partial-dephasing ergotropy bound",
+      "status": "Core upper bound already follows from prior art; earlier audit preserved.",
+      "limit": "Do not relabel the bound as a new fundamental theorem."
+    },
+    {
+      "item": "Schumann wavelength and oscillator identities",
+      "status": "Established geometry and linear-response physics.",
+      "limit": "No new mode, force, energy source or Earth-field calibration demonstrated."
+    },
+    {
+      "item": "Unknown-source PSD ambiguity",
+      "status": "Elementary construction in established spectral-identification theory.",
+      "limit": "Does not forbid identification under stronger source, covariance or calibration assumptions."
+    },
+    {
+      "item": "This project update",
+      "status": "Reproducible synthesis, data provenance, scoped counterexamples and independent implementation checks.",
+      "limit": "No global priority claim; not external peer review or a new experimental discovery."
+    }
+  ],
+  "rounds": [
+    {
+      "number": 1,
+      "title": "Separate geometry, peaks and energy units",
+      "status": "accepted in reference-model scope",
+      "objection": "A measured maximum was being conflated with a natural frequency or ringdown.",
+      "result": "91 producer checks and 169 independent scalar comparisons passed. Fixed poles give different readout maxima; low-Q boundaries and mechanical power accounting agree."
+    },
+    {
+      "number": 2,
+      "title": "Test unknown source and receiver spectra",
+      "status": "accepted in finite-band scope",
+      "objection": "A fixed-pole readout example did not address unknown forcing or sensor response.",
+      "result": "36 producer assertions and 211 independent scalar comparisons passed. Distinct 7.8/10.3 Hz models have equal output PSD; coherent interference and constant-gain controls distinguish assumptions."
+    },
+    {
+      "number": 3,
+      "title": "Identify only with calibrated information",
+      "status": "accepted in calibrated-model scope",
+      "objection": "Output spectra cannot supply the known input, mass and calibration needed by an inverse.",
+      "result": "58 producer assertions and 340 independent assertions passed. Held-out controls expose wrong gain and model assumptions; an unconstrained receiver still mimics another mode. Actual station metadata remain insufficient."
+    }
+  ],
+  "observations": [
+    {
+      "source": "NOAA / GFZ Kp snapshots",
+      "evidence": "49 completed bins each; maximum 4.33 / 4.333. Recent October 27–29 subset: 17 completed bins, maximum 2.67 / 2.667.",
+      "status": "Geomagnetic context only. No retained completed bin reaches Kp 5; preliminary provider differences remain separate."
+    },
+    {
+      "source": "NOAA weekly summary issued October 26",
+      "evidence": "Active geomagnetic conditions October 23; quiet October 24–25; elevated >2 MeV electrons October 23–25. October 21 G1 episode is outside the window.",
+      "status": "Dated bulletin context; no direct solar-particle time-series reanalysis."
+    },
+    {
+      "source": "Tomsk ELF quick-look images and operator methods",
+      "evidence": "October 27–29 image inspected; UTC mapping not independently confirmed and no calibrated numeric archive obtained. Operator documents missing recordings and local lightning/interference.",
+      "status": "Qualitative provenance only. No numeric frequency shift, global anomaly or causal explanation inferred."
+    },
+    {
+      "source": "Nagycenk quick-look electric channel",
+      "evidence": "October 29 UTC partial image inspected; an arbitrary-unit channel and no matched multi-day baseline.",
+      "status": "No quantified anomaly. Other station data requiring requests were not obtained."
+    },
+    {
+      "source": "Mutable web displays and future forecast",
+      "evidence": "Some freshly indexed snippets opened to stale pages; the October 29 forecast has conflicting October 31 table/rationale.",
+      "status": "Saved dated bytes govern the admitted context. Future forecasts and stale renders are excluded from observed events."
+    }
+  ],
+  "inverseSummary": "With known mass and calibrated complex input–output response, the two synthetic natural frequencies are recovered and pass held-out numerical checks. Incorrect gain and multimode controls fail. An unconstrained frequency-dependent receiver still passes as a different oscillator, including at the same known mass. Stability and causality alone do not remove this ambiguity. No Earth parameters were inferred.",
+  "inverseResults": [
+    {
+      "case": "Unknown forcing; distinct natural frequencies",
+      "result": "7.8 and 10.3 Hz yield the same output PSD; maximum sampled relative mismatch ≈5.56×10⁻¹⁶.",
+      "scope": "Exact compact-band algebra; numeric residual checks code."
+    },
+    {
+      "case": "Known mass and calibrated complex response",
+      "result": "Both original parameter sets recovered; three held-out frequencies pass.",
+      "scope": "Single-mode, exact-data mechanical inverse; passing does not certify model validity."
+    },
+    {
+      "case": "Incorrect gain / two-mode response",
+      "result": "Selected one-probe fits fail held-out checks, with producer maximum relative residuals 0.2874 / 0.3197.",
+      "scope": "Specific countercases, not all possible model errors; arithmetic tolerance is not measurement uncertainty."
+    },
+    {
+      "case": "Unknown frequency-dependent receiver, same known mass",
+      "result": "Mimics the 10.3 Hz target and passes held-outs; residual ≈1.34×10⁻¹⁷.",
+      "scope": "Proper stable causal mathematical transfer; passive sensor hardware is not established."
+    },
+    {
+      "case": "Actual recent Schumann packet",
+      "result": "Insufficient evidence. Independent intake tests: 46 cases, 2 synthetic ready, 44 insufficient.",
+      "scope": "Metadata only; no authenticated calibration or statistical anomaly test."
+    }
+  ],
+  "protocol": [
+    "Define the claim first: local fitted peak, common cavity pole, amplitude change or global event. Preselect station, channel, band, UTC interval, baseline and statistical decision rule.",
+    "Obtain raw or calibrated spectral records with sensor orientation, gain and phase response, clock accuracy, sampling, windowing, missing-data and clipping flags. Preserve immutable source bytes and permission to reuse them.",
+    "Use a matched seasonal/local-time baseline, a documented noise/source model, uncertainty propagation, dependence-aware statistics and correction for selected windows or multiple modes.",
+    "Compare independent calibrated stations for a global claim. Model lightning geography, receiver response and interference before attributing a shift to a changed cavity.",
+    "Validate the inverse method on a controlled low-energy mechanical or electrical analogue with a measured input and at least two distinct held-out frequencies. Distinguish bench validation from observational Earth identification.",
+    "For any energy-collection proposal, measure source work, storage changes, dissipation and load power over a complete cycle; report uncertainty and a no-load control. Static magnetic density does not supply a power estimate."
+  ],
+  "roadmap": [
+    {
+      "title": "Pass the prior-art gate before another cycle",
+      "status": "required before execution",
+      "next": "Choose a distinct question and complete the proposition-to-prior-art comparison. Do not repeat the known oscillator identities as new discoveries.",
+      "acceptance": "Explicit remaining gap, feasible evidence, matched baseline, falsification criteria and advisor decision; no new cycle started."
+    },
+    {
+      "title": "Freeze a Nagycenk replication target",
+      "status": "conditional replication; not started",
+      "next": "Reconcile the licensed processed-data/model-curve schema, source-radius column, field component, estimator and exact published model.",
+      "acceptance": "Pinned inputs and model version, published target, numerical tolerance and at least two distinct held-out checks. No novelty or recent-event claim."
+    },
+    {
+      "title": "Acquire an admissible Schumann observation packet",
+      "status": "highest observational priority",
+      "next": "Seek a public calibrated UTC station series and matched baseline, then independent-station evidence for a global claim.",
+      "acceptance": "Raw hashes, calibration, QC, uncertainty and a preregistered comparison; absence of required inputs remains explicit."
+    },
+    {
+      "title": "Controlled identification experiment",
+      "status": "synthetic baseline complete; hardware/data pending",
+      "next": "Use measured input and independently calibrated complex readout on a bench analogue, with uncertainty and at least two distinct held-out frequencies.",
+      "acceptance": "Independent recovery and wrong-model controls; no Earth inference from synthetic fit."
+    },
+    {
+      "title": "OpenAI local-smoothing bridge",
+      "status": "conditional research",
+      "next": "Execute the pinned Lean comparator in the required environment, then formulate a precise lossy-cavity question.",
+      "acceptance": "Full dependency/target log plus a proved operator/hypothesis dictionary. A shared word such as wave is insufficient."
+    },
+    {
+      "title": "Await the gauge-theory proof artifacts",
+      "status": "external evidence pending",
+      "next": "When released, compare assumptions, continuum limit and physical normalization with Round 33.",
+      "acceptance": "Accessible theorem and proof, explicit mass-gap status and checked regulator/state mapping."
+    },
+    {
+      "title": "Preserve Yang–Mills Round 33 obligations",
+      "status": "unchanged pending work",
+      "next": "Route-B dynamics, broader boundary uniqueness, finite-box certificates and rates beyond the current range.",
+      "acceptance": "The original workbench gates apply. None is closed by this dashboard update."
+    },
+    {
+      "title": "Practical use of the new ETH result",
+      "status": "not yet established",
+      "next": "Inspect an executable solver and an exact reduction only if a bounded project task needs it.",
+      "acceptance": "Measured wall-time/memory improvement against an existing solver, without replacing identifiability by brute force."
+    }
+  ],
+  "network": {
+    "nodes": [
+      {
+        "id": "ls",
+        "label": "Local smoothing",
+        "detail": "079 · Euclidean waves",
+        "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/079.md",
+        "x": 25,
+        "y": 25
+      },
+      {
+        "id": "eth",
+        "label": "ETH refutation",
+        "detail": "378 · asymptotic SAT",
+        "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/378.md",
+        "x": 25,
+        "y": 145
+      },
+      {
+        "id": "ym",
+        "label": "Gauge existence",
+        "detail": "Physics artifacts deferred",
+        "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+        "x": 25,
+        "y": 265
+      },
+      {
+        "id": "srpaper",
+        "label": "SR source geometry",
+        "detail": "Koloskov et al. · 2026",
+        "url": "https://angeo.copernicus.org/articles/44/949/2026/",
+        "x": 25,
+        "y": 385
+      },
+      {
+        "id": "math",
+        "label": "Project math bridge",
+        "detail": "Hypotheses still unmatched",
+        "url": "research/schumann-openai-2026-10-29/panel/math/comparison.md",
+        "x": 390,
+        "y": 25
+      },
+      {
+        "id": "bench",
+        "label": "Spectral identification",
+        "detail": "Three synthetic rounds",
+        "url": "schumann.html#inverse",
+        "x": 390,
+        "y": 145
+      },
+      {
+        "id": "lattice",
+        "label": "Round 33 lattice",
+        "detail": "Fixed-spacing construction",
+        "url": "https://github.com/occult-kranti/yang_mills_workbench/tree/f9364d617015e803fda9465aefddd9cbe41854a4",
+        "x": 390,
+        "y": 265
+      },
+      {
+        "id": "kp",
+        "label": "NOAA + GFZ Kp",
+        "detail": "Geomagnetic context only",
+        "url": "schumann.html#activity",
+        "x": 390,
+        "y": 385
+      },
+      {
+        "id": "test",
+        "label": "Calibrated test",
+        "detail": "Measurement protocol",
+        "url": "schumann.html#protocol",
+        "x": 755,
+        "y": 70
+      },
+      {
+        "id": "gap",
+        "label": "Continuum + gap",
+        "detail": "Open project obligations",
+        "url": "updates.html#comparison",
+        "x": 755,
+        "y": 250
+      },
+      {
+        "id": "anomaly",
+        "label": "Recent SR anomaly",
+        "detail": "Evidence insufficient",
+        "url": "schumann.html#activity",
+        "x": 755,
+        "y": 410
+      },
+      {
+        "id": "tacza",
+        "label": "Three-station SR study",
+        "detail": "Tacza et al. · October 2026",
+        "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2026EA005271",
+        "x": 25,
+        "y": 505
+      },
+      {
+        "id": "novelty",
+        "label": "Prior-art gate",
+        "detail": "No new cycle started",
+        "url": "updates.html#novelty",
+        "x": 390,
+        "y": 505
+      }
+    ],
+    "edges": [
+      {
+        "from": "ls",
+        "to": "math",
+        "type": "missing-bridge",
+        "reason": "A Euclidean free-wave estimate does not directly control a curved, lossy, driven inverse cavity problem."
+      },
+      {
+        "from": "eth",
+        "to": "math",
+        "type": "context-only",
+        "reason": "An asymptotic SAT theorem needs a concrete reduction and benchmark before claiming computational benefit."
+      },
+      {
+        "from": "ym",
+        "to": "lattice",
+        "type": "context-only",
+        "reason": "Announced continuum existence has a different scope; physics proof artifacts are not publicly auditable here."
+      },
+      {
+        "from": "srpaper",
+        "to": "bench",
+        "type": "supports",
+        "reason": "The primary SR paper distinguishes forced peak frequencies from cavity eigenfrequencies; our model tests the general nuisance mechanism."
+      },
+      {
+        "from": "bench",
+        "to": "test",
+        "type": "tests",
+        "reason": "Synthetic ambiguity controls identify which calibrated input–output assumptions a bench test must expose."
+      },
+      {
+        "from": "math",
+        "to": "test",
+        "type": "missing-bridge",
+        "reason": "No imported theorem presently closes the experimental calibration or statistical inference requirements."
+      },
+      {
+        "from": "lattice",
+        "to": "gap",
+        "type": "missing-bridge",
+        "reason": "The current strong-coupling certificate is not uniform along g(a)→0; continuum and physical-gap obligations remain."
+      },
+      {
+        "from": "kp",
+        "to": "anomaly",
+        "type": "context-only",
+        "reason": "Kp measures geomagnetic activity and cannot confirm or exclude a Schumann-frequency anomaly."
+      },
+      {
+        "from": "bench",
+        "to": "anomaly",
+        "type": "missing-bridge",
+        "reason": "A synthetic response is not a calibrated station record or a matched anomaly baseline."
+      },
+      {
+        "from": "tacza",
+        "to": "novelty",
+        "type": "supports",
+        "reason": "Solar-wind-associated apparent-frequency changes and three-station uncertainty controls already have a published precedent."
+      },
+      {
+        "from": "novelty",
+        "to": "test",
+        "type": "missing-bridge",
+        "reason": "A next cycle needs a distinct question, usable data/calibration and an assumptions-matched benchmark before execution."
+      }
+    ]
+  },
+  "priorArtGate": {
+    "verdict": "No-go for another discovery cycle on these same identities.",
+    "reason": "Close prior work already contains the spectral relation, oscillator inverse and source-confounding mechanisms. A recent three-station Schumann study also covers solar-wind-associated frequency changes. No new fundamental novelty is established; no next three-round cycle has started.",
+    "nextThreeRoundCycleStarted": false,
+    "newFundamentalNoveltyEstablished": false,
+    "mapping": [
+      {
+        "claim": "PSD compensation and colored-input ambiguity",
+        "prior": "Brincker (2014), spectral-matrix relation and source-filter discussion",
+        "url": "https://onlinelibrary.wiley.com/doi/10.1155/2014/325839",
+        "decision": "Established framework; our scalar counterexample is an algebraic application."
+      },
+      {
+        "claim": "Known-mass complex oscillator inverse",
+        "prior": "Kim & Eun (2013), Eqs. 2a / 3a",
+        "url": "https://www.extrica.com/article/14434",
+        "decision": "Exact scalar specialization of inverse dynamic stiffness; no new theorem."
+      },
+      {
+        "claim": "Output-only identification under restrictions",
+        "prior": "Brincker, Zhang & Andersen (2000/2001), frequency-domain decomposition",
+        "url": "https://vbn.aau.dk/ws/files/203990023/Modal_Identification_of_Output_Only_Systems_using_Frequency_Domain_Decomposition.pdf",
+        "decision": "Already possible under specified excitation/modal assumptions; avoid universal impossibility claims."
+      },
+      {
+        "claim": "Constrained blind identification",
+        "prior": "Li, Lee & Bresler (2015/2017), identifiability conditions",
+        "url": "https://arxiv.org/abs/1507.01308",
+        "decision": "Restrictions can restore identifiability. Its finite blind-deconvolution theorem is not automatically an Earth-cavity result."
+      },
+      {
+        "claim": "Schumann peaks reflect source geometry",
+        "prior": "Koloskov, Hayakawa & Nickolaenko (September 2026)",
+        "url": "https://angeo.copernicus.org/articles/44/949/2026/",
+        "decision": "Already studied with a realistic cavity model; a simplified oscillator does not supersede its inverse calibration."
+      },
+      {
+        "claim": "Solar-wind association and multiple-station testing",
+        "prior": "Tacza et al. (October 10, 2026), 173 onset events",
+        "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2026EA005271",
+        "decision": "Already studied with three stations, bootstrap and matched random epochs. Apparent-frequency association is not a unique cavity-height inversion."
+      },
+      {
+        "claim": "Reuse of the historical event archive",
+        "prior": "Raita, Tacza & Bozoki (2026), Fairdata event products",
+        "url": "https://etsin.fairdata.fi/dataset/5d78867e-475b-40e9-8800-f7e2ef4487ed/data",
+        "decision": "Conditional replication lead. Processed event windows do not alone reproduce the full non-event random-epoch null; CC BY-NC 4.0 applies."
+      },
+      {
+        "claim": "New Yang–Mills continuum/mass-gap bridge",
+        "prior": "October working-group statement and independent Claude manuscripts",
+        "url": "research/schumann-openai-2026-10-29/prior-art-yang-mills.md",
+        "decision": "No inspected proof bridge. Exact statement and hypotheses must be audited before importing a result."
+      }
+    ],
+    "criteria": [
+      "State the exact proposition or measurable improvement, with domains, units, observables and nuisance assumptions.",
+      "Map it against the nearest primary theorem or experiment, including sections, assumptions, dates and actual reading depth. Search failure is not novelty evidence.",
+      "Identify a residual gap that the cited work does not already solve. Separate theoretical novelty, empirical extension and useful replication.",
+      "Secure the needed dataset or apparatus calibration; document licenses, raw bytes, uncertainty and what cannot be reproduced.",
+      "Predeclare an assumptions-matched baseline, untouched evaluation cases, meaningful success metric and rejection/stop criteria.",
+      "Freeze an advisor go/no-go decision before any next three-round cycle. Keep the existing cycle closed and preserve its superseded failures."
+    ]
+  }
+}

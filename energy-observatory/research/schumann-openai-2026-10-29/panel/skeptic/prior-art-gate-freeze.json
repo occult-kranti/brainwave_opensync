@@ -1,0 +1,43 @@
+{
+  "cutoff": "2026-10-29",
+  "independent_report": "prior-art-gate.md",
+  "sha256": "d6db3a679b03189a9eb6656a513504351c08b3293d19ab4c6af19e1907a7d088",
+  "decision": "no-go-core-theorem-novelty; go-established-benchmark; conditional-new-question",
+  "next_cycle_executed": false,
+  "web_refs": {
+    "P1": [
+      "turn197view0",
+      "turn209view4"
+    ],
+    "P2": [
+      "turn213view0"
+    ],
+    "P3": [
+      "turn202view0",
+      "turn197view3"
+    ],
+    "P4": [
+      "turn206view0",
+      "turn209view3"
+    ],
+    "P5": [
+      "turn224search5",
+      "turn224search7"
+    ],
+    "P6": [
+      "turn224search3",
+      "turn224search4",
+      "turn224search9",
+      "turn225view0"
+    ],
+    "P7": [
+      "turn224search0",
+      "turn206search1",
+      "turn209view0"
+    ],
+    "P8": [
+      "turn195search0",
+      "turn197view2"
+    ]
+  }
+}

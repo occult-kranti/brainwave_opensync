@@ -1,0 +1,307 @@
+{
+  "schema": "schumann-reference-round1/1",
+  "status": "pass",
+  "evidence": "Synthetic reference models and numerical checks; no current Earth data fit.",
+  "checks": 91,
+  "tolerances": {
+    "relative": 2e-12,
+    "absolute": 1e-24,
+    "sampledPeakHz": 0.0011,
+    "instantaneousEnergyRelative": 2e-12
+  },
+  "sourceSha256": "86f92e1d90ee7b7b4ac5d8286c830d915a360f0c634fdeae4c2f3798c1443cc8",
+  "runnerSha256": "ba3c79925cd1ebb116ea285cd44738c0aa8d10926f1b2b01ea4c4a21ac669245",
+  "modes": [
+    {
+      "degree": 1,
+      "frequencyHz": 10.591274580059801,
+      "omegaPerS": 66.54694082573639,
+      "horizontalWavelengthM": 28305607.19900695
+    },
+    {
+      "degree": 2,
+      "frequencyHz": 18.344625689576297,
+      "omegaPerS": 115.26268259845497,
+      "horizontalWavelengthM": 16342249.935922472
+    },
+    {
+      "degree": 3,
+      "frequencyHz": 25.943218446856694,
+      "omegaPerS": 163.00604896624037,
+      "horizontalWavelengthM": 11555715.749536201
+    },
+    {
+      "degree": 4,
+      "frequencyHz": 33.49255099723234,
+      "omegaPerS": 210.43990432577326,
+      "horizontalWavelengthM": 8951018.930292092
+    },
+    {
+      "degree": 5,
+      "frequencyHz": 41.01983006368156,
+      "omegaPerS": 257.7351935591274,
+      "horizontalWavelengthM": 7308476.352402845
+    }
+  ],
+  "vacuumReferenceAt7_8Hz": {
+    "wavelengthM": 38434930.51282051,
+    "frequencyHz": 7.8,
+    "speedMps": 299792458,
+    "scope": "Speed-dependent wavelength reference; an observed cavity peak alone does not determine propagation speed."
+  },
+  "historicalReference": {
+    "status": "Approximate historical illustrations; no uncertainty model or current anomaly inference.",
+    "fittedSpeedMps": 220783736.1522542,
+    "rows": [
+      {
+        "degree": 1,
+        "frequencyHz": 7.8,
+        "omegaPerS": 49.00884539600077,
+        "horizontalWavelengthM": 28305607.19900695,
+        "historicalApproxHz": 7.8,
+        "differenceHz": 0
+      },
+      {
+        "degree": 2,
+        "frequencyHz": 13.509996299037242,
+        "omegaPerS": 84.88581024616138,
+        "horizontalWavelengthM": 16342249.935922472,
+        "historicalApproxHz": 14.3,
+        "differenceHz": -0.7900037009627585
+      },
+      {
+        "degree": 3,
+        "frequencyHz": 19.106019993708788,
+        "omegaPerS": 120.04666410315046,
+        "horizontalWavelengthM": 11555715.749536201,
+        "historicalApproxHz": 20.8,
+        "differenceHz": -1.6939800062912127
+      },
+      {
+        "degree": 4,
+        "frequencyHz": 24.66576574931336,
+        "omegaPerS": 154.97957694641917,
+        "horizontalWavelengthM": 8951018.930292092,
+        "historicalApproxHz": 27.3,
+        "differenceHz": -2.6342342506866423
+      },
+      {
+        "degree": 5,
+        "frequencyHz": 30.20927010041785,
+        "omegaPerS": 189.81044203556502,
+        "horizontalWavelengthM": 7308476.352402845,
+        "historicalApproxHz": 33.8,
+        "differenceHz": -3.590729899582147
+      }
+    ]
+  },
+  "modeCases": [
+    {
+      "naturalFrequencyHz": 7.8,
+      "omega0PerS": 49.00884539600077,
+      "gammaPerS": 4.900884539600077,
+      "dampingRatio": 0.09999999999999999,
+      "qualityFactor": 5,
+      "displacementPeakHz": 7.721606050557099,
+      "displacementPeakKind": "positive-frequency maximum",
+      "velocityPeakHz": 7.8,
+      "ringdownFrequencyHz": 7.760902009431636,
+      "oscillatoryRingdown": true,
+      "scope": "White force spectrum and constant displacement/velocity gain. This mechanical mode is not an Earth electromagnetic normalization."
+    },
+    {
+      "naturalFrequencyHz": 7.8,
+      "omega0PerS": 49.00884539600077,
+      "gammaPerS": 40.840704496667314,
+      "dampingRatio": 0.8333333333333334,
+      "qualityFactor": 0.6,
+      "displacementPeakHz": 0,
+      "displacementPeakKind": "DC maximum",
+      "velocityPeakHz": 7.8,
+      "ringdownFrequencyHz": 4.311612227462019,
+      "oscillatoryRingdown": true,
+      "scope": "White force spectrum and constant displacement/velocity gain. This mechanical mode is not an Earth electromagnetic normalization."
+    },
+    {
+      "naturalFrequencyHz": 7.8,
+      "omega0PerS": 49.00884539600077,
+      "gammaPerS": 61.261056745000964,
+      "dampingRatio": 1.25,
+      "qualityFactor": 0.4,
+      "displacementPeakHz": 0,
+      "displacementPeakKind": "DC maximum",
+      "velocityPeakHz": 7.8,
+      "ringdownFrequencyHz": null,
+      "oscillatoryRingdown": false,
+      "scope": "White force spectrum and constant displacement/velocity gain. This mechanical mode is not an Earth electromagnetic normalization."
+    }
+  ],
+  "readoutControl": {
+    "fixedPoles": {
+      "naturalFrequencyHz": 7.8,
+      "gammaPerS": 4.900884539600077,
+      "massKg": 0.25
+    },
+    "frequencyBandHz": [
+      0,
+      20
+    ],
+    "spacingHz": 0.001,
+    "displacementSampledPeakHz": 7.722,
+    "velocitySampledPeakHz": 7.8,
+    "constantPsdScale": 49,
+    "scaledDisplacementPeakHz": 7.722
+  },
+  "magneticEnergyReferences": [
+    {
+      "fieldRmsT": 0.00005,
+      "permeabilityHpm": 0.0000012566370614359173,
+      "energyDensityJPerM3": 0.0009947183943243459,
+      "scope": "Magnetic energy-density reference, not power, extractable cycle energy or total Earth-field energy. Default permeability is an approximation."
+    },
+    {
+      "fieldRmsT": 1e-12,
+      "permeabilityHpm": 0.0000012566370614359173,
+      "energyDensityJPerM3": 3.9788735772973833e-19,
+      "scope": "Magnetic energy-density reference, not power, extractable cycle energy or total Earth-field energy. Default permeability is an approximation."
+    }
+  ],
+  "harmonicBudgets": [
+    {
+      "parameters": {
+        "frequencyHz": 1.2,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 2.0245718707733582e-8,
+      "analyticLossW": 2.024571870773358e-8,
+      "quadratureInputW": 2.0245718707733586e-8,
+      "quadratureLossW": 2.0245718707733596e-8,
+      "maxIdentityResidualW": 3.1763735522036263e-22,
+      "phases": 2048
+    },
+    {
+      "parameters": {
+        "frequencyHz": 7.8,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 0.000020404479883576327,
+      "analyticLossW": 0.000020404479883576327,
+      "quadratureInputW": 0.000020404479883576314,
+      "quadratureLossW": 0.000020404479883576314,
+      "maxIdentityResidualW": 1.3552527156068805e-20,
+      "phases": 2048
+    },
+    {
+      "parameters": {
+        "frequencyHz": 14.3,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 4.804921282340264e-7,
+      "analyticLossW": 4.804921282340264e-7,
+      "quadratureInputW": 4.804921282340255e-7,
+      "quadratureLossW": 4.804921282340274e-7,
+      "maxIdentityResidualW": 1.6940658945086007e-21,
+      "phases": 2048
+    },
+    {
+      "parameters": {
+        "frequencyHz": 1.2,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 40.840704496667314,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 1.5798524464595893e-7,
+      "analyticLossW": 1.5798524464595895e-7,
+      "quadratureInputW": 1.5798524464595893e-7,
+      "quadratureLossW": 1.5798524464595914e-7,
+      "maxIdentityResidualW": 3.1763735522036263e-22,
+      "phases": 2048
+    },
+    {
+      "parameters": {
+        "frequencyHz": 7.8,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 40.840704496667314,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 0.0000024485375860291592,
+      "analyticLossW": 0.0000024485375860291592,
+      "quadratureInputW": 0.0000024485375860291673,
+      "quadratureLossW": 0.0000024485375860291673,
+      "maxIdentityResidualW": 8.470329472543003e-22,
+      "phases": 2048
+    },
+    {
+      "parameters": {
+        "frequencyHz": 14.3,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 40.840704496667314,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 0.000001533107621782811,
+      "analyticLossW": 0.000001533107621782811,
+      "quadratureInputW": 0.0000015331076217828113,
+      "quadratureLossW": 0.0000015331076217828107,
+      "maxIdentityResidualW": 1.1117307432712692e-21,
+      "phases": 2048
+    },
+    {
+      "parameters": {
+        "frequencyHz": 1.2,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 61.261056745000964,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 2.192913895277837e-7,
+      "analyticLossW": 2.1929138952778372e-7,
+      "quadratureInputW": 2.192913895277834e-7,
+      "quadratureLossW": 2.1929138952778357e-7,
+      "maxIdentityResidualW": 3.1763735522036263e-22,
+      "phases": 2048
+    },
+    {
+      "parameters": {
+        "frequencyHz": 7.8,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 61.261056745000964,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 0.0000016323583906861063,
+      "analyticLossW": 0.0000016323583906861063,
+      "quadratureInputW": 0.0000016323583906861038,
+      "quadratureLossW": 0.0000016323583906861038,
+      "maxIdentityResidualW": 8.470329472543003e-22,
+      "phases": 2048
+    },
+    {
+      "parameters": {
+        "frequencyHz": 14.3,
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 61.261056745000964,
+        "massKg": 0.25,
+        "forcePeakN": 0.01
+      },
+      "analyticInputW": 0.000001290013271013911,
+      "analyticLossW": 0.0000012900132710139105,
+      "quadratureInputW": 0.0000012900132710139116,
+      "quadratureLossW": 0.0000012900132710139122,
+      "maxIdentityResidualW": 9.529120656610879e-22,
+      "phases": 2048
+    }
+  ],
+  "invalidInputsRejected": 16
+}

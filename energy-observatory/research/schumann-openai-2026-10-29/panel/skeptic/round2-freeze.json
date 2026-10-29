@@ -1,0 +1,9 @@
+{
+  "round": 2,
+  "status": "accepted_within_compact_band_scope",
+  "hashes": {
+    "round2.md": "75c815524a074ac09ed0c6ea7af6118335fbb61109f4d3b0abf86aeb4ed9727c",
+    "round2-counterchecks.py": "1410452b9a34722c0b6e1821f580dca17bea76496140a1319aa7465910ed33f6",
+    "round2-counterchecks.json": "9cc46a912437cc5d501c526bc2ed199f39ba46432685ba3f0234012907273826"
+  }
+}

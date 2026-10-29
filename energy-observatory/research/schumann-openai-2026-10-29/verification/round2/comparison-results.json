@@ -1,0 +1,110 @@
+{
+  "schema": "schumann-round2-independent-comparison/1",
+  "status": "pass",
+  "API_requests": 96,
+  "scalar_comparisons": 211,
+  "invalid_inputs_rejected": 9,
+  "maximum_nonzero_relative_error": 3.7648462045635346e-14,
+  "grid_points_per_case": 19001,
+  "grid_cases": 9,
+  "grid_maxima": [
+    {
+      "tilt": -3,
+      "kind": "source",
+      "constant": 1,
+      "frequencyHz": 7.792,
+      "psd": 1.48380970437033e-07,
+      "index": 6792,
+      "endpoint": false
+    },
+    {
+      "tilt": -3,
+      "kind": "source",
+      "constant": 17,
+      "frequencyHz": 7.792,
+      "psd": 2.522476497429561e-06,
+      "index": 6792,
+      "endpoint": false
+    },
+    {
+      "tilt": -3,
+      "kind": "receiver",
+      "constant": 1,
+      "frequencyHz": 7.792,
+      "psd": 1.48380970437033e-07,
+      "index": 6792,
+      "endpoint": false
+    },
+    {
+      "tilt": 0,
+      "kind": "source",
+      "constant": 1,
+      "frequencyHz": 7.92,
+      "psd": 1.406477379900517e-07,
+      "index": 6920,
+      "endpoint": false
+    },
+    {
+      "tilt": 0,
+      "kind": "source",
+      "constant": 17,
+      "frequencyHz": 7.92,
+      "psd": 2.391011545830879e-06,
+      "index": 6920,
+      "endpoint": false
+    },
+    {
+      "tilt": 0,
+      "kind": "receiver",
+      "constant": 1,
+      "frequencyHz": 7.92,
+      "psd": 1.406477379900517e-07,
+      "index": 6920,
+      "endpoint": false
+    },
+    {
+      "tilt": 3,
+      "kind": "source",
+      "constant": 1,
+      "frequencyHz": 8.041,
+      "psd": 1.395956133056087e-07,
+      "index": 7041,
+      "endpoint": false
+    },
+    {
+      "tilt": 3,
+      "kind": "source",
+      "constant": 17,
+      "frequencyHz": 8.041,
+      "psd": 2.3731254261953477e-06,
+      "index": 7041,
+      "endpoint": false
+    },
+    {
+      "tilt": 3,
+      "kind": "receiver",
+      "constant": 1,
+      "frequencyHz": 8.041,
+      "psd": 1.3959561330560867e-07,
+      "index": 7041,
+      "endpoint": false
+    }
+  ],
+  "equal_mode_phase_pi_coherent_to_uncorrelated_ratio": 7.498798913309287e-33,
+  "interference_term_has_both_signs": true,
+  "wrong_ratio_max_relative_mismatch": 0.9995851913873202,
+  "source_bindings": {
+    "producer": "bc31ad2d8d95ffc6152bdb80ac408c3b277b1669f07fc182f9bcac38760b359d",
+    "oracle": "d3abe98e9bd8b30fcde936729f1b63d6a4ba6faf46b4aa543b5501172d6c0bfa",
+    "fixtures": "725075026c5a46c9bb3e04e1e3e6e596027d460c5e30dae5826cfbd6ab0beea8",
+    "bridge": "f52f714e5cc86c6c1ebb65419267b44f5b44050656ae6d38e6e91a4117e5028f",
+    "comparison": "b02b715e58a1ab779dddebe497d37242b20d646e0783fac07ae219e80a3a246f"
+  },
+  "tolerances": {
+    "normal_relative": 2e-12,
+    "PSD_absolute": 1e-22,
+    "grid_frequency_Hz": 0.001,
+    "equal_mode_cancellation_relative_to_uncorrelated": 1e-28
+  },
+  "scope": "Finite-band synthetic countermodels; no Earth calibration, source identification or anomaly claim."
+}

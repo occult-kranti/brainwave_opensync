@@ -1,0 +1,12 @@
+{
+  "phase": "R3 accepted in stated scope; cycle closed",
+  "sha256": {
+    "panel/sources/round3.md": "b1ef12ba76f81507a4c14a6182d7bbd12754098b22d58cac0602a6183c5c25f9",
+    "panel/math/round3.md": "a0a31f557655b837b0ade709c340638f68c779c76a09b33dcb5190dbd5e54a37",
+    "panel/observations/round3.md": "ceab5c1ba502f6e9ba94a554f817f9b17d20d1a9dafc78ab21101642428294f7",
+    "panel/skeptic/round3.md": "a36d973e17f9b2f609ae45efb6bc48ff0eae6dccdc3b64b7f777e9f39b78f52c",
+    "rounds/round3-decision.md": "997e5c8f1660344f4879016e85fedd8c980eb51c51abd7fa0e25b02273e96a6f",
+    "analysis/round3/freeze.json": "d022604d2a880b067f720383104dc4fc5b9132f2289fcd9149e1a5bb7366c62d",
+    "verification/round3/freeze.json": "bae36a9425252f536f429737fc34dd4762125d62a282946da183622cf1886ab5"
+  }
+}

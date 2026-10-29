@@ -1,0 +1,11 @@
+{
+  "status": "four-reviews-before-round1",
+  "sourceHashes": {
+    "panel/sources/comparison.md": "dfb188dbc5b54f2b6f63f142c33a61acb0eeea405eb898d658b3b08da89a8bce",
+    "panel/math/comparison.md": "97c9b96677c5a274d9295a96bd7c68aae6ec3b10883bfb80083d06cf1746b334",
+    "panel/observations/comparison.md": "780dd4a650c2fdeae0ec22ac62174020ca6f6927f121caf474e0d9f704018e75",
+    "panel/skeptic/comparison.md": "0cfd55d97c3dc238290d08eca47dc4b3e9ba35d0696463e9d8d73b93d2915fcb",
+    "comparison-decision.md": "e9110758f2e692d201e39d0c13f4e1db04930ca4aef79a0b70ea1fbbfd94f46d",
+    "rounds/round1-contract.md": "86a4ad5ee87808b27b5ed60d6da3edf5db88ea256b82001889b2624e9b3b124a"
+  }
+}

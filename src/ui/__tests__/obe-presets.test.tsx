@@ -67,7 +67,7 @@ describe('OBE library browsing', () => {
     expect(card.textContent).toContain('What you may notice');
     expect(card.textContent).toContain('How often');
     await act(async () => card.querySelector<HTMLButtonElement>('.preset-details-button')!.click());
-    const dialog = container.querySelector('[role="dialog"]')!;
+    const dialog = document.querySelector('[role="dialog"]')!;
     expect(dialog).not.toBeNull();
     for (const text of ['Why this sound', 'What you may notice', 'How to use', 'How often', 'Evidence & limits']) expect(dialog.textContent).toContain(text);
     expect(dialog.querySelector('.preset-guide-sources a')).not.toBeNull();

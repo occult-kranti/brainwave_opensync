@@ -32,6 +32,7 @@ const ALL_ROUTE_PATHS = [
   '/listen', '/research-hub',
   '/',
   '/meditate',
+  '/practice-plan',
   '/hypnosis',
   '/overnight',
   '/traditions',
@@ -200,7 +201,9 @@ describe('W10 mobile shell — layout tiers', () => {
       expect(hrefs.has(path), `drawer links to ${path}`).toBe(true);
     }
     expect(hrefs.size).toBe(ALL_ROUTE_PATHS.length);
-    // Panic remains outside the drawer, still reachable while it is open.
+    // The modal covers ordinary navigation and supplies its own Stop control.
+    expect(Number((drawer as HTMLElement).style.zIndex)).toBeGreaterThan(Number(c.querySelector<HTMLElement>('[data-testid="mobile-bottom-bar"]')!.style.zIndex));
+    expect(drawer!.querySelector('button[title^="Stop all sound"]')).toBeTruthy();
     expect(c.querySelector('[data-testid="mobile-panic"]')).toBeTruthy();
   });
   it('MORE reveals a theory deep link and closes after choosing a practical tool', async () => {

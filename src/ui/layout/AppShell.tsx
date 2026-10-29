@@ -15,7 +15,8 @@ import { GroupedNavigation } from "./GroupedNavigation";
 import { fmtClock } from "../session/sessionMath";
 import { useSession } from "../session/useSession";
 import { DensityToggle, Led } from "../components/primitives";
-import { useModalA11y } from "../hooks";
+import { hasOpenModal, useModalA11y } from "../hooks";
+import { useSheetScrollLock } from "../useSheetScrollLock";
 import {
   MobilePanicButton,
   PanicButton,
@@ -37,6 +38,7 @@ import "../../pages/archive-theme.css";
 import "../../pages/spatial.css";
 import "../../pages/resonance.css";
 import "../../pages/immersive-world.css";
+import "../../pages/mobile-refinements.css";
 import { WorkspaceNav } from "./WorkspaceNav";
 import { SpatialProvider } from "../visuals/SpatialProvider";
 import { ResonantWorld } from "../visuals/ResonantWorld";
@@ -50,7 +52,7 @@ const BOTTOM_TABS = BOTTOM_TAB_ROUTES;
 
 /** Bottom bar height (excluding safe-area inset) — also the content padding. */
 const BOTTOM_BAR_H = 56;
-/** Bottom bar must clear .grain (z-60) and PanicOverlay (z-90): panic stays reachable. */
+/** Ordinary navigation stays below modal sheets, which include their own Stop control. */
 const BOTTOM_BAR_Z = 100;
 
 /**
@@ -403,8 +405,10 @@ function DrawerLink({
  */
 function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
   // P0-4: Esc closes, focus moves to the close button, returns to MORE tab.
-  useModalA11y(open, onClose, closeRef);
+  useModalA11y(open, onClose, closeRef, dialogRef);
+  useSheetScrollLock(open);
   return (
     <AnimatePresence>
       {open && (
@@ -420,16 +424,18 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
             style={{
               position: "fixed",
               inset: 0,
-              zIndex: 80,
+              zIndex: 120,
               background: "rgba(11,12,13,0.6)",
             }}
           />
           <motion.div
+            ref={dialogRef}
             key="more-sheet"
             data-testid="more-drawer"
             role="dialog"
             aria-modal="true"
             aria-label="More tools and research"
+            tabIndex={-1}
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
@@ -438,9 +444,11 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
               position: "fixed",
               left: 0,
               right: 0,
-              bottom: `calc(${BOTTOM_BAR_H}px + env(safe-area-inset-bottom, 0px))`,
-              zIndex: 81,
-              maxHeight: "min(70vh, 560px)",
+              bottom: 0,
+              zIndex: 121,
+              maxHeight: "min(88dvh, 720px)",
+              paddingBottom: "max(16px, env(safe-area-inset-bottom, 0px))",
+              overscrollBehavior: "contain",
               overflowY: "auto",
               background: "var(--ink-0)",
               borderTop: "1px solid var(--line-1)",
@@ -541,11 +549,16 @@ function SpatialShell({ children }: { children: ReactNode }) {
     muted,
     setMuted,
     startSleepFade,
+    panicked,
+    advisoryOpen,
   } = useSession();
   const [shortcutsOpen, setShortcutsOpen] = useState(false);
   const isMobile = useIsMobile();
   const [moreOpen, setMoreOpen] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  if ((panicked || advisoryOpen) && (moreOpen || paletteOpen || shortcutsOpen)) {
+    setMoreOpen(false); setPaletteOpen(false); setShortcutsOpen(false);
+  }
   // Close the MORE drawer whenever the route changes (state-adjust-during-
   // render pattern; drawer links also close it on tap directly).
   const [lastPath, setLastPath] = useState(location.pathname);
@@ -562,6 +575,12 @@ function SpatialShell({ children }: { children: ReactNode }) {
     const onKey = (e: KeyboardEvent) => {
       const hit = matchShortcut(e);
       if (!hit) return;
+      // A sheet owns keyboard navigation until dismissed. Safety/transport
+      // shortcuts remain available; only another navigation overlay is gated.
+      if (hasOpenModal() && (hit.id === "sidebar" || hit.id === "help" || (hit.id === "palette" && !paletteOpen))) {
+        e.preventDefault();
+        return;
+      }
       switch (hit.id) {
         case "palette":
           e.preventDefault();
@@ -606,6 +625,7 @@ function SpatialShell({ children }: { children: ReactNode }) {
     startSleepFade,
     panic,
     rehearsePanic,
+    paletteOpen,
   ]);
 
   return (
@@ -684,7 +704,7 @@ function SpatialShell({ children }: { children: ReactNode }) {
             </div>
           </header>
         )}
-        <WorkspaceNav />
+        {!isMobile && <WorkspaceNav />}
         {(location.pathname !== "/cymatics" || !isMobile) && (
           <div className="world-context">
             {location.pathname !== "/cymatics" && (
@@ -737,6 +757,7 @@ function SpatialShell({ children }: { children: ReactNode }) {
         </>
       )}
       <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />
+      <div id="archive-overlay-root" data-testid="archive-overlay-root" className="archive-modal-portal" />
       <PanicOverlay />
       <AdvisoryDialog />
       <ShortcutsOverlay

@@ -5,6 +5,7 @@ const LISTENING = [
   "/presets",
   "/listen",
   "/meditate",
+  "/practice-plan",
   "/overnight",
   "/hypnosis",
 ];
@@ -12,6 +13,7 @@ const LABELS: Record<string, string> = {
   "/presets": "Sound library",
   "/listen": "Player",
   "/meditate": "Session finder",
+  "/practice-plan": "Home practice plan",
   "/overnight": "Overnight",
   "/hypnosis": "Hypnosis & dreaming",
 };

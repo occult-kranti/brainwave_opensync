@@ -17,6 +17,9 @@ import { STORAGE_KEYS } from '@/lib/storage';
 /** Open modals, bottom = oldest. Only the top-most one answers Escape and traps Tab. */
 const modalStack: symbol[] = [];
 
+/** Global navigation shortcuts must not open a second, obscured modal. */
+export function hasOpenModal(): boolean { return modalStack.length > 0; }
+
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 

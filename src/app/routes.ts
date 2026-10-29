@@ -74,6 +74,7 @@ export const ROUTES: readonly AppRoute[] = [
   r('/listen', 'Listen', 'Listen', Headphones, 'tools', () => import('@/pages/Listen'), { bottomTab: true }),
   // Practical tools — listening, creating, measuring and testing.
   r('/meditate', 'FIND A SESSION', 'Find a Session', Compass, 'tools', () => import('@/pages/Meditate')),
+  r('/practice-plan', 'HOME PRACTICE', 'Home Practice', ListChecks, 'tools', () => import('@/pages/PracticePlan')),
   r('/overnight', 'OVERNIGHT', 'Overnight', Moon, 'tools', () => import('@/pages/Overnight')),
   r('/hypnosis', 'HYPNOSIS & DREAMING', 'Hypnosis & Dreaming', MoonStar, 'tools', () => import('@/pages/Hypnosis')),
   r('/presets', 'Explore', 'Presets', Layers, 'tools', () => import('@/pages/Presets'), { bottomTab: true }),

@@ -39,6 +39,7 @@ import {
   type NoiseColor,
 } from '@/engine';
 import { INFANT_MAX_LOWPASS_HZ } from '@/safety/governor';
+import { seamlessTextureLoop } from './loopBuffer';
 
 export type Waveform = 'sine' | 'triangle' | 'square';
 export type GateShape = 'raised-cosine' | 'hard';
@@ -76,6 +77,8 @@ const FADE_SEGMENTS = 12;
 /** Layer sources ramp to 0 with this time constant before they are stopped (no pop). */
 const LAYER_RELEASE_TC = 0.02;
 const LAYER_RELEASE_MS = 120;
+/** Live-only overlap margin; the playable loop remains exactly 8 or 12 s. */
+const TEXTURE_OVERLAP_SEC = 0.1;
 
 interface LayerNode {
   src: AudioBufferSourceNode;
@@ -156,7 +159,7 @@ export class LiveEngine {
   private bowlsState: LiveBowl[] = [];
   private noiseNodes = new Map<NoiseColor, LayerNode>();
   private noiseBuffers = new Map<NoiseColor, AudioBuffer>();
-  private layerNodes: { nature?: LayerNode } = {};
+  private layerNodes: { nature?: LayerNode & { kind: NatureKind } } = {};
   private bowlNodes = new Map<string, BowlNode>();
   /** Rendered one-shot bell buffers, keyed by voice (a bell every N minutes must not re-render). */
   private bellBuffers = new Map<string, AudioBuffer>();
@@ -901,7 +904,8 @@ export class LiveEngine {
     if (!existing) {
       let buffer = this.noiseBuffers.get(color);
       if (!buffer) {
-        const data = renderNoise(color, 8, ctx.sampleRate);
+        const overlap = Math.round(TEXTURE_OVERLAP_SEC * ctx.sampleRate);
+        const data = seamlessTextureLoop(renderNoise(color, 8 + overlap / ctx.sampleRate, ctx.sampleRate), overlap);
         buffer = ctx.createBuffer(1, data.length, ctx.sampleRate);
         buffer.getChannelData(0).set(data);
         this.noiseBuffers.set(color, buffer);
@@ -991,12 +995,20 @@ export class LiveEngine {
   private applyNature(kind: NatureKind | null, db: number): void {
     const ctx = this.ctx;
     if (!ctx || !this.bus) return;
+    if (kind && Number.isFinite(db) && this.layerNodes.nature?.kind === kind) {
+      // A level edit must not restart the 12-second texture or reset its
+      // slow envelope. Keep the source/phase and ramp only the layer gain.
+      this.layerNodes.nature.gain.gain.setTargetAtTime(dbToLin(db) * 0.5, ctx.currentTime, 0.05);
+      return;
+    }
     if (this.layerNodes.nature) {
       this.releaseLayer(this.layerNodes.nature);
       this.layerNodes.nature = undefined;
     }
     if (!kind || !Number.isFinite(db)) return;
-    this.layerNodes.nature = this.makeLoop(renderNature(kind, 12, ctx.sampleRate), dbToLin(db) * 0.5, this.layerBus ?? this.bus);
+    const overlap = Math.round(TEXTURE_OVERLAP_SEC * ctx.sampleRate);
+    const data = seamlessTextureLoop(renderNature(kind, 12 + overlap / ctx.sampleRate, ctx.sampleRate), overlap);
+    this.layerNodes.nature = { ...this.makeLoop(data, dbToLin(db) * 0.5, this.layerBus ?? this.bus), kind };
   }
 
   /**

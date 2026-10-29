@@ -35,6 +35,7 @@ const ENTRY_SPECS: readonly EntrySpec[] = [
   ['/listen', 'primary', 'Listen', 'Play your current session in a quiet listening view.', ['player', 'pause', 'sand', 'meditate']],
   ['/research-hub', 'primary', 'Research', 'Explore sources and find every tool in the reading room.', ['directory', 'tools', 'books', 'reading']],
   ['/meditate', 'practice', 'Find a session', 'Choose a meditation for your intention, time and listening setup.', ['meditation', 'suggestion', 'recommend', 'right now', 'healing', 'sleep']],
+  ['/practice-plan', 'practice', 'Home practice plan', 'Build a flexible home timetable and learn when to repeat Gateway exercises.', ['schedule', 'timetable', 'how often', 'tapes', 'repeat', 'Gateway', 'Monroe', 'duration', 'home practice']],
   ['/overnight', 'practice', 'Overnight', 'Plan seven hours with speaker-compatible sound beds and optional quiet time.', ['sleep', '7 hours', 'lucid', 'astral projection', 'remote viewing', 'hypnosis']],
   ['/hypnosis', 'practice', 'Hypnosis & dreaming', 'Read the evidence, explore sound mathematics, and try a listening practice.', ['hypnagogia', 'hypnagogic', 'trance', 'theta', 'suggestion', 'mathematics']],
   ['/presets', 'primary', 'Explore', 'Preview ready-made sounds, then load a session to play or edit.', ['listen', 'Bashar', 'bowls', 'noise', 'sound library', 'saved']],

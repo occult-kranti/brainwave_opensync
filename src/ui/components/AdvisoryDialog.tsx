@@ -14,13 +14,13 @@ import { SafetyGovernor } from '@/safety/governor';
 import { useSession } from '../session/useSession';
 import { useModalA11y } from '../hooks';
 import { PanicButton } from './Panic';
+import { useSheetScrollLock } from '../useSheetScrollLock';
 
 /**
- * Above the panic overlay (z-90) but BELOW the phone bottom bar (z-100) so the
- * bar's PANIC segment stays tappable; the desktop rail/status-bar PANIC is
- * covered by the backdrop, so the sheet carries its own PANIC button.
+ * Above ordinary navigation and sheets. Its Stop control remains reachable;
+ * the panic confirmation is the highest-priority overlay.
  */
-const ADVISORY_Z = 95;
+const ADVISORY_Z = 140;
 
 export function AdvisoryDialog() {
   const s = useSession();
@@ -29,6 +29,7 @@ export function AdvisoryDialog() {
   // Initial focus lands on the sheet itself, never on the affirmative button:
   // a held Enter on START must not acknowledge the advisory by key repeat.
   useModalA11y(open, s.closeAdvisory, sheetRef, sheetRef);
+  useSheetScrollLock(open);
   const texts = useMemo(() => new SafetyGovernor().advisoryTexts(), []);
   const pendingStart = s.advisoryPendingStart;
 

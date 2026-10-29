@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { useSession } from '../session/useSession';
 import { useModalA11y } from '../hooks';
+import { useSheetScrollLock } from '../useSheetScrollLock';
 import { NAVIGATION_CATEGORIES, NAVIGATION_ENTRIES, navigationMatches } from '../../app/navigation';
 
 
@@ -63,7 +64,9 @@ export function CommandPalette({
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
   // P0-4 contract: Esc closes; input focused on open; focus returns to trigger.
-  useModalA11y(open, onClose, inputRef);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  useModalA11y(open, onClose, inputRef, dialogRef);
+  useSheetScrollLock(open);
 
   const actions = useMemo(
     () =>
@@ -169,6 +172,7 @@ export function CommandPalette({
     <AnimatePresence>
       {open && (
         <motion.div
+          ref={dialogRef}
           key="palette-backdrop"
           role="dialog"
           aria-modal="true"
@@ -182,7 +186,7 @@ export function CommandPalette({
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 110,
+            zIndex: 130,
             background: 'rgba(11,12,13,0.7)',
             display: 'flex',
             alignItems: 'flex-start',

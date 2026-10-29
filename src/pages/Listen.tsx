@@ -18,10 +18,12 @@ import { useSession } from "@/ui/session/useSession";
 import { fmtClock } from "@/ui/session/sessionMath";
 import { INFANT_MAX_VOLUME_DB } from "@/ui/session/sessionDefaults";
 import { FieldControls } from "@/ui/visuals/FieldControls";
+import { useIsMobile } from "@/hooks/use-mobile";
 import "./experience.css";
 
 export default function Listen() {
   const s = useSession();
+  const isMobile = useIsMobile();
   const [params] = useSearchParams();
   const requested = params.get("preset");
   const handled = useRef<string | null>(null);
@@ -77,6 +79,19 @@ export default function Listen() {
           ? "Fading gently to quiet"
           : "Listening"
       : "Ready when you are";
+  const visualScene = (
+    <div className="listen-art listen-world-window">
+          <span className="listen-world-caption">YOUR LISTENING SPACE</span>
+          <div className="listen-world-controls">
+            <FieldControls allowExpand={false} />
+            <Link to="/cymatics" className="sand-launch">
+              <Waves size={17} />
+              Enter the sand universe
+            </Link>
+          </div>
+        </div>
+  );
+  const purpose = preset?.purpose ?? "A little space to listen. Your current sound and session settings are ready.";
   return (
     <div className="listen-page">
       <div className="listen-topline">
@@ -102,25 +117,13 @@ export default function Listen() {
         </p>
       )}
       <div className="listening-stage">
-        <div className="listen-art listen-world-window">
-          <span className="listen-world-caption">YOUR LISTENING SPACE</span>
-          <div className="listen-world-controls">
-            <FieldControls allowExpand={false} />
-            <Link to="/cymatics" className="sand-launch">
-              <Waves size={17} />
-              Enter the sand universe
-            </Link>
-          </div>
-        </div>
+        {isMobile ? <details className="listen-scene-options"><summary>Visual scene & geometry</summary>{visualScene}</details> : visualScene}
         <section className="listen-controls" aria-label="Session player">
           <span className="overline" data-testid="listen-state">
             {state}
           </span>
           <h1>{name}</h1>
-          <p className="listen-description">
-            {preset?.purpose ??
-              "A little space to listen. Your current sound and session settings are ready."}
-          </p>
+          {isMobile ? <details className="listen-purpose"><summary>About this listening practice</summary><p className="listen-description">{purpose}</p></details> : <p className="listen-description">{purpose}</p>}
           <div className="listen-meta">
             <span>{s.limitMin} min</span>
             <span>

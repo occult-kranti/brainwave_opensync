@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { OctagonX } from 'lucide-react';
 import { useSession } from '../session/useSession';
 import { useModalA11y } from '../hooks';
+import { useSheetScrollLock } from '../useSheetScrollLock';
 
 /** Compact status-bar panic button (danger outline). */
 export function PanicButton() {
@@ -44,9 +45,8 @@ export function PanicButton() {
 /**
  * Bottom-bar panic button (mobile shell): ≥56px tall persistent segment pinned
  * at the trailing end of the bottom nav. Single tap, no confirm — the touch
- * replacement for the `P` hotkey. Rendered inside a bar whose z-index (100)
- * clears the grain overlay (z-60) AND the PanicOverlay (z-90), so panic is
- * never behind an overlay.
+ * replacement for the `P` hotkey. Ordinary navigation uses z-index100;
+ * modal sheets cover it and supply their own immediate Stop control.
  */
 export function MobilePanicButton() {
   const { panic } = useSession();
@@ -133,6 +133,7 @@ export function PanicOverlay() {
   const dialogRef = useRef<HTMLDivElement>(null);
   // Closing or accepting the default action never starts audio.
   useModalA11y(open, dismissPanic, keepOffRef, dialogRef);
+  useSheetScrollLock(open);
   return (
     <AnimatePresence>
       {open && (
@@ -146,7 +147,7 @@ export function PanicOverlay() {
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 90,
+            zIndex: 150,
             background: 'rgba(11,12,13,0.88)',
             display: 'flex',
             alignItems: 'center',

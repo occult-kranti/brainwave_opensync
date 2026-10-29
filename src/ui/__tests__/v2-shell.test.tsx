@@ -436,16 +436,22 @@ describe('advisory review vs. START gate (v2.0.1)', () => {
     expect(session.elapsedSec).toBe(4);
   });
 
-  it('only the top-most overlay answers Escape', async () => {
+  it('keeps advisory navigation exclusive and only the highest-priority safety overlay answers Escape', async () => {
     await mountShell();
     act(() => session.openAdvisory());
     press('?');
-    expect(document.querySelector('[data-testid="shortcuts-overlay"]')).not.toBeNull();
+    expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull();
+    expect(session.advisoryOpen).toBe(true);
+    // Stop remains available even while ordinary navigation shortcuts are gated.
+    press('p');
+    expect(session.panicked).toBe(true);
+    expect(document.querySelector('[data-testid="sound-stopped-backdrop"]')).not.toBeNull();
     press('Escape');
-    await vi.waitFor(() => expect(document.querySelector('[data-testid="shortcuts-overlay"]')).toBeNull(), { timeout: 2000 });
+    expect(session.panicked).toBe(false);
     expect(session.advisoryOpen).toBe(true); // the advisory underneath stayed open
     press('Escape');
     expect(session.advisoryOpen).toBe(false);
+    expect(session.running).toBe(false);
   });
 });
 

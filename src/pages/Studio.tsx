@@ -12,6 +12,8 @@ import { FADE_OUT_CHOICES, INFANT_MAX_VOLUME_DB } from '@/ui/session/sessionDefa
 import { EXPORT_FORMATS, type ExportFormat } from '@/ui/audio/renderExport';
 import { Panel, Led, WarningChip, Readout } from '@/ui/components/primitives';
 import { useModalA11y } from '@/ui/hooks';
+import { useSheetScrollLock } from '@/ui/useSheetScrollLock';
+import { OverlayPortal } from '@/ui/components/OverlayPortal';
 import { Knob } from '@/ui/components/Knob';
 import { Fader } from '@/ui/components/Fader';
 import { GradeBadge } from '@/ui/components/GradeBadge';
@@ -52,6 +54,8 @@ export default function Studio() {
   const [field4dOn, setField4dOn] = useField4d();
   // P0-4: Esc closes the modal, focus returns to the SAVE AS PRESET trigger.
   useModalA11y(saveOpen, () => setSaveOpen(false), saveInputRef, saveDialogRef);
+  useSheetScrollLock(saveOpen);
+  if (saveOpen && (s.panicked || s.advisoryOpen)) setSaveOpen(false);
   const isMobile = useIsMobile();
 
   // Persists via the SessionContext user-preset store; refused on an empty name.
@@ -670,9 +674,10 @@ export default function Studio() {
 </div></details>
 
       {/* Save-as-preset modal */}
-      {saveOpen && (
+      {saveOpen && (<OverlayPortal>
         <div
-          style={{ position: 'fixed', inset: 0, zIndex: 80, background: 'rgba(11,12,13,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+          data-testid="save-preset-backdrop"
+          style={{ position: 'fixed', inset: 0, zIndex: 121, background: 'rgba(11,12,13,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px', overscrollBehavior: 'contain' }}
           onClick={() => setSaveOpen(false)}
         >
           <motion.div
@@ -681,7 +686,7 @@ export default function Studio() {
             transition={{ duration: 0.14 }}
             className="panel"
             ref={saveDialogRef} role="dialog" aria-modal="true" aria-label="Save as preset"
-            style={{ width: 'min(380px, calc(100vw - 32px))' }}
+            style={{ width: 'min(380px, calc(100vw - 32px))', maxHeight: 'calc(100dvh - 32px)', overflowY: 'auto' }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="studio-sound-heading" style={{ marginBottom: 12 }}><h3 className="t-h3">Save as preset</h3><PanicButton /></div>
@@ -716,7 +721,7 @@ export default function Studio() {
             </div>
           </motion.div>
         </div>
-      )}
+      </OverlayPortal>)}
     </div>
   );
 }

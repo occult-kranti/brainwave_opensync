@@ -52,6 +52,7 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/listen', label: 'Listen' },
   { route: '/research-hub', label: 'Research' },
   { route: '/meditate', label: 'Find a Session' },
+  { route: '/practice-plan', label: 'Home Practice' },
   { route: '/overnight', label: 'Overnight' },
   { route: '/hypnosis', label: 'Hypnosis & Dreaming' },
   { route: '/traditions', label: 'Programs & Traditions' },
@@ -91,6 +92,13 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'home-practice-plan', module: 'Home Practice', route: '/practice-plan', name: 'Home practice timetable',
+    grade: 'D', gradeScope: 'The timetable is an editorial planning aid; no audio dose or OBE result is established.',
+    simple: 'Plan a flexible home practice and decide which Gateway exercise to repeat. Adjust your available time, include quiet days and read the source guidance before advancing.',
+    deep: 'The planner separates official tape names from original OpenSync listening companions. Public source guidance, mirrored manual material and community experiences have distinct provenance labels. Suggested repeats and durations are planning choices rather than validated doses. Readiness and comfort take priority over a calendar deadline; the page never starts audio automatically.',
+    howTo: ['Choose a comfortable practice window and available time.', 'Repeat a foundation exercise before adding another, or take a quiet day.', 'Read the sources and open an optional sound companion when ready.'],
+  },
   {
     id: 'bashar-source-investigation', module: 'Bashar Research', route: '/bashar-research', name: 'Bashar source investigation',
     grade: 'D', gradeScope: 'Unvalidated physical interpretations and original listening recipes. Attribution status is recorded separately from scientific support.',

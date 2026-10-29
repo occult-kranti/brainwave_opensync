@@ -62,11 +62,11 @@ describe('Bashar preset collection', () => {
     for (const p of BASHAR_PRESETS) expect(card(p.id)).toBeTruthy();
     expect(container.textContent).toContain('chosen k = 5,000, anchored on 200,000 ↔ 40 Hz');
     await details('exp-phi-ladder');
-    expect(container.textContent).toContain('110 → 177.98 → 287.98 → 465.97 → 753.95 Hz');
-    await act(async () => container.querySelector<HTMLButtonElement>('[aria-label="Close spec sheet"]')!.click());
+    expect(document.querySelector('.preset-sheet')!.textContent).toContain('110 → 177.98 → 287.98 → 465.97 → 753.95 Hz');
+    await act(async () => document.querySelector<HTMLButtonElement>('[aria-label="Close spec sheet"]')!.click());
     await details('exp-bashar-scale-map');
-    expect(container.textContent).toContain('binaural / monaural');
-    await act(async () => container.querySelector<HTMLButtonElement>('[aria-label="Close spec sheet"]')!.click());
+    expect(document.querySelector('.preset-sheet')!.textContent).toContain('binaural / monaural');
+    await act(async () => document.querySelector<HTMLButtonElement>('[aria-label="Close spec sheet"]')!.click());
     expect(card('exp-phi-bowl-chord').textContent).toContain('steady 110 Hz root');
     expect(container.querySelector('article[role="button"]')).toBeNull();
     expect(session.running).toBe(false);
@@ -166,7 +166,7 @@ describe('Bashar preset collection', () => {
 
   it('hears the later monaural stage immediately, then stops on a second tap', async () => {
     await mount(); await details('exp-bashar-scale-map');
-    const step = container.querySelector<HTMLButtonElement>('[aria-label="Hear step 6 for 8 seconds"]')!;
+    const step = document.querySelector<HTMLButtonElement>('[aria-label="Hear step 6 for 8 seconds"]')!;
     await act(async () => step.click());
     expect(session.previewId).toBe('preset:exp-bashar-scale-map:step:6');
     const [left, right, sampleRate] = vi.mocked(LiveEngine.prototype.playBuffer).mock.calls[0];
@@ -179,10 +179,10 @@ describe('Bashar preset collection', () => {
 
   it('shows the fade limitation and keeps Stop all sound accessible inside the details dialog', async () => {
     await mount(); await details('exp-phi-ladder');
-    const dialog = container.querySelector<HTMLElement>('[role="dialog"]')!;
+    const dialog = document.querySelector<HTMLElement>('[role="dialog"]')!;
     expect(dialog.getAttribute('aria-modal')).toBe('true');
     expect(dialog.textContent).toContain('Authored phase fades (20 s) are saved as metadata');
-    await act(async () => container.querySelector<HTMLButtonElement>('[aria-label="Hear step 5 for 8 seconds"]')!.click());
+    await act(async () => document.querySelector<HTMLButtonElement>('[aria-label="Hear step 5 for 8 seconds"]')!.click());
     expect(session.previewId).toBe('preset:exp-phi-ladder:step:5');
     await act(async () => button('Stop all sound', dialog).click());
     expect(session.panicked).toBe(true);
@@ -220,7 +220,13 @@ describe('Bashar preset collection', () => {
       else if (reason === 'running') session.start();
       else session.panic();
     });
-    const step = container.querySelector<HTMLButtonElement>('[aria-label="Hear step 1 for 8 seconds"]')!;
+    if (reason === 'panic') {
+      expect(document.querySelector('.preset-sheet')).toBeNull();
+      expect(card('exp-phi-ladder').querySelector<HTMLButtonElement>('[data-testid^="preset-preview-"]')!.disabled).toBe(true);
+      expect(LiveEngine.prototype.playBuffer).not.toHaveBeenCalled();
+      return;
+    }
+    const step = document.querySelector<HTMLButtonElement>('[aria-label="Hear step 1 for 8 seconds"]')!;
     expect(step.disabled).toBe(true);
     expect(card('exp-phi-ladder').querySelector<HTMLButtonElement>('[data-testid^="preset-preview-"]')!.disabled).toBe(true);
     await act(async () => step.click());
@@ -228,7 +234,7 @@ describe('Bashar preset collection', () => {
     if (reason === 'muted') {
       expect(container.textContent).toContain('Unmute before previewing.');
       expect(container.textContent).not.toContain('Stop the active session');
-      const dialog = container.querySelector('[role="dialog"]')!;
+      const dialog = document.querySelector('[role="dialog"]')!;
       expect(dialog.textContent).toContain('and select Unmute, then return here to preview.');
       const studioLink = dialog.querySelector<HTMLAnchorElement>('a[href="/studio"]')!;
       expect(studioLink.textContent).toBe('Open Studio');
@@ -251,9 +257,9 @@ describe('Bashar preset collection', () => {
     await act(async () => button('Preview · 10 s', card('exp-phi-ladder')).click());
     await input('phi'); expect(session.previewId).toBeNull();
     await details('exp-phi-ladder');
-    await act(async () => container.querySelector<HTMLButtonElement>('[aria-label="Hear step 1 for 8 seconds"]')!.click());
+    await act(async () => document.querySelector<HTMLButtonElement>('[aria-label="Hear step 1 for 8 seconds"]')!.click());
     await act(async () => window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' })));
-    expect(session.previewId).toBeNull(); expect(container.querySelector('[role="dialog"]')).toBeNull();
+    expect(session.previewId).toBeNull(); expect(document.querySelector('[role="dialog"]')).toBeNull();
     await act(async () => button('Preview · 10 s', card('exp-phi-ladder')).click());
     await act(async () => container.querySelector<HTMLAnchorElement>('a[href="/channeled"]')!.click());
     expect(path).toBe('/channeled'); expect(session.previewId).toBeNull();

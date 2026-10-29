@@ -1,0 +1,186 @@
+{
+  "date": "2026-10-29",
+  "baseline": "42acf6faf24e6dfb5fefbb735cc3f91211ce1478",
+  "browser": "Chromium153.0.8010.0 via official @sparticuz/chromium; Playwright",
+  "mode": "mobile viewport emulation; reduced motion enabled",
+  "mobileRouteSweep": {
+    "viewport": [
+      390,
+      844
+    ],
+    "routeCount": 41,
+    "horizontalPageOverflow": [],
+    "pageExceptions": []
+  },
+  "responsiveBatch": {
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "routes": [
+      "/",
+      "/presets?collection=obe",
+      "/listen?preset=practice-evening-rain",
+      "/studio",
+      "/practice-plan",
+      "/cymatics",
+      "/research-hub"
+    ],
+    "pageOverflow": 0,
+    "pageExceptions": 0
+  },
+  "interactions": {
+    "routes": 41,
+    "checks": [
+      {
+        "message": "OBE subgroup updates URL",
+        "ok": true
+      },
+      {
+        "message": "Ctrl+K does not open an obscured palette from a filter sheet",
+        "ok": true
+      },
+      {
+        "message": "Tab wraps inside filter sheet",
+        "ok": true
+      },
+      {
+        "message": "Escape restores filter trigger focus",
+        "ok": true
+      },
+      {
+        "message": "Filter values survive dismissal",
+        "ok": true
+      },
+      {
+        "message": "Filter footer Reset filters receives taps above navigation",
+        "ok": true
+      },
+      {
+        "message": "Filter footer Show 5 presets receives taps above navigation",
+        "ok": true
+      },
+      {
+        "message": "Filter primary text has at least 4.5:1 contrast",
+        "ok": true
+      },
+      {
+        "message": "Filter primary hover text has at least 4.5:1 contrast",
+        "ok": true
+      },
+      {
+        "message": "Filter dialog blocks taps on background navigation",
+        "ok": true
+      },
+      {
+        "message": "Stop closes the filter sheet",
+        "ok": true
+      },
+      {
+        "message": "Sound-off overlay covers ordinary navigation",
+        "ok": true
+      },
+      {
+        "message": "Home practice is reachable from the mobile sidebar",
+        "ok": true
+      },
+      {
+        "message": "Preset detail Choose sound receives taps above navigation",
+        "ok": true
+      },
+      {
+        "message": "Preset detail Open in Studio receives taps above navigation",
+        "ok": true
+      },
+      {
+        "message": "Preset primary text has at least 4.5:1 contrast",
+        "ok": true
+      },
+      {
+        "message": "Preset dialog blocks taps on background navigation",
+        "ok": true
+      },
+      {
+        "message": "Studio Save button receives taps",
+        "ok": true
+      },
+      {
+        "message": "Studio Save primary text has at least 4.5:1 contrast",
+        "ok": true
+      },
+      {
+        "message": "Studio Save primary hover text has at least 4.5:1 contrast",
+        "ok": true
+      },
+      {
+        "message": "Studio Save dialog blocks taps on background navigation",
+        "ok": true
+      },
+      {
+        "message": "Sleep tapes receive an explicit bedtime slot",
+        "ok": true
+      },
+      {
+        "message": "Player Play is visible on a phone",
+        "ok": true
+      },
+      {
+        "message": "First-listen advisory dismiss receives taps",
+        "ok": true
+      },
+      {
+        "message": "First-listen advisory blocks background navigation",
+        "ok": true
+      },
+      {
+        "message": "First-listen advisory covers ordinary navigation",
+        "ok": true
+      },
+      {
+        "message": "Dismissing advisory leaves explicit Play available",
+        "ok": true
+      },
+      {
+        "message": "Interactive flows produce no application exception",
+        "ok": true
+      }
+    ],
+    "failures": []
+  },
+  "limits": [
+    "No physical phone, Bluetooth device or analog output tested.",
+    "Responsive captures used reduced motion; no physical-device frame-rate claim."
+  ],
+  "repositoryChecks": {
+    "lint": "passed: eslint .",
+    "typecheck": "passed: tsc -b",
+    "vitest": {
+      "files": 126,
+      "tests": 1604,
+      "failed": 0
+    },
+    "archiveBuild": "VITE_BASE=/brainwave_opensync/archive/ npm run build; emit-route-shells.mjs",
+    "unchangedScopes": [
+      "src/engine",
+      "src/safety",
+      "src/ui/session",
+      "src/data/presets.ts"
+    ]
+  },
+  "audioChecks": {
+    "offlineAudioContext": "six 90-second Chromium renders: brown noise, fire, thunder at 44100 and 48000 Hz",
+    "sampleRates": [
+      11025,
+      44100,
+      48000,
+      96000
+    ],
+    "see": "docs/research/mobile-audio-stability.md"
+  },
+  "finalVisualCorrections": [
+    "Portaled sheets outside the clipped workspace after a screenshot caught footer occlusion.",
+    "Active chip specificity corrected for filter and Studio Save buttons; default and hover contrast measured at >=4.5:1."
+  ]
+}

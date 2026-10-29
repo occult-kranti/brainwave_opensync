@@ -8,15 +8,18 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Keyboard, X } from 'lucide-react';
 import { SHORTCUTS } from '@/app/shortcuts';
 import { useModalA11y } from '../hooks';
+import { useSheetScrollLock } from '../useSheetScrollLock';
+import { PanicButton } from './Panic';
 
-/** Below the phone bottom bar (z-100) so PANIC stays tappable; above the panic overlay (z-90). */
-const OVERLAY_Z = 96;
+/** Navigation overlays cover the bottom bar and carry their own Stop control. */
+const OVERLAY_Z = 130;
 const GROUPS = ['Navigation', 'Transport', 'Safety', 'Help'] as const;
 
 export function ShortcutsOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
   useModalA11y(open, onClose, closeRef, sheetRef);
+  useSheetScrollLock(open);
   return (
     <AnimatePresence>
       {open && (
@@ -52,11 +55,12 @@ export function ShortcutsOverlay({ open, onClose }: { open: boolean; onClose: ()
             transition={{ duration: 0.18 }}
             style={{ width: 'min(560px, 100%)', maxHeight: 'calc(100vh - 32px)', overflow: 'auto' }}
           >
-            <div className="flex items-center gap-3" style={{ marginBottom: 12 }}>
+            <div className="flex items-center gap-3" style={{ marginBottom: 12, flexWrap: 'wrap' }}>
               <Keyboard size={16} style={{ color: 'var(--amber)' }} />
-              <span className="t-label" style={{ color: 'var(--text-1)', flex: 1 }}>
+              <span className="t-label" style={{ color: 'var(--text-1)', flex: '1 1 150px' }}>
                 KEYBOARD SHORTCUTS
               </span>
+              <PanicButton />
               <button ref={closeRef} type="button" className="chip" onClick={onClose} aria-label="Close shortcuts" style={{ padding: '0 8px' }}>
                 <X size={12} />
               </button>

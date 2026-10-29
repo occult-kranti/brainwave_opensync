@@ -1,12 +1,13 @@
 {
-  "name": "Open Sync Nocturne",
+  "name": "Open Sync Listening Atlas",
   "sourceBranch": "archive/dark-landscapes",
-  "sourceCommit": "27e0800bc0a337b912dcf4033370fff4aaef32ca",
+  "sourceCommit": "316b889153fcb1c979ddf6f32fb685b99396edb8",
   "updated": "2026-10-29",
-  "practicePath": "/brainwave_opensync/archive/practice-plan/",
-  "reviewRounds": 3,
-  "tests": 1610,
+  "ambientBackground": false,
+  "dedicatedVisualTools": true,
+  "routeCount": 41,
+  "tests": 1613,
   "routeChecks": 82,
-  "audioBrowserSeconds": 35,
-  "hardwareAudioVerified": false
+  "reviewRounds": 3,
+  "practicePath": "/brainwave_opensync/archive/practice-plan/"
 }

@@ -1,0 +1,1 @@
+import{j as r}from"./motion-DO5todkn.js";import{r as o}from"./main-A-7gm44M.js";function l({children:e}){if(typeof document>"u")return null;const t=document.getElementById("archive-overlay-root")??document.body;return o.createPortal(r.jsx("div",{className:"experience-shell archive-modal-content","data-spatial-world":"true",children:e}),t)}export{l as O};

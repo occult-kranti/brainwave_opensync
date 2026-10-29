@@ -1,0 +1,12 @@
+{
+  "name": "Open Sync Nocturne",
+  "sourceBranch": "archive/dark-landscapes",
+  "sourceCommit": "27e0800bc0a337b912dcf4033370fff4aaef32ca",
+  "updated": "2026-10-29",
+  "practicePath": "/brainwave_opensync/archive/practice-plan/",
+  "reviewRounds": 3,
+  "tests": 1610,
+  "routeChecks": 82,
+  "audioBrowserSeconds": 35,
+  "hardwareAudioVerified": false
+}

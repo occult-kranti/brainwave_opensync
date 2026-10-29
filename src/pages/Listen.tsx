@@ -12,6 +12,7 @@ import {
   Waves,
 } from "lucide-react";
 import { PRESETS } from "@/data/presets";
+import { presetGuidance } from "@/data/presetGuidance";
 import { OVERNIGHT_PRESETS } from "@/data/overnightPractice";
 import { useSession } from "@/ui/session/useSession";
 import { fmtClock } from "@/ui/session/sessionMath";
@@ -53,6 +54,7 @@ export default function Listen() {
     s.phases.some(
       (phase) => (phase.mode ?? s.mode) === "binaural" && phase.beatHz > 0,
     );
+  const guidance = preset ? presetGuidance(preset) : null;
   const name = (s.presetName ?? "Your sound space").replace(
     / — experimental tier$/,
     "",
@@ -215,6 +217,23 @@ export default function Listen() {
         </section>
       </div>
       <div className="listen-below">
+        {guidance && (
+          <details>
+            <summary>Practice guide: logic, experience & how to use</summary>
+            {s.dirty && <p>You have edited this sound. This guide describes the original preset; check your current settings in Studio.</p>}
+            <h3>Why this sound</h3>
+            <p>{guidance.logic}</p>
+            <h3>What you may notice</h3>
+            <p>{guidance.experience}</p>
+            <h3>How to use</h3>
+            <p>{guidance.howToUse}</p>
+            <h3>How often</h3>
+            <p>{guidance.howOften}</p>
+            <h3>Evidence & limits</h3>
+            <p>{guidance.limits}</p>
+            {guidance.sources.length > 0 && <ul>{guidance.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label}</a></li>)}</ul>}
+          </details>
+        )}
         <details>
           <summary>About this sound</summary>
           <p>

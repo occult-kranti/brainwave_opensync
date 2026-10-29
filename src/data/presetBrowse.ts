@@ -3,6 +3,7 @@ import { needsHeadphones } from './sessionSuggestions';
 import { isBasharPreset } from '@/ui/components/presetPresentation';
 
 export const PRESET_COLLECTIONS = [
+  ['obe', 'OBE & out-of-body exploration'], ['math', 'Math & frequency patterns'],
   ['bashar-studies', 'Bashar research sounds'], ['frequency-studies', 'Frequency studies'],
   ['levitation', 'Levitation studies'],
   ['research', 'Sound research'], ['newton-tesla', 'Newton–Tesla studies'], ['all', 'Browse all presets'], ['start', 'Start here'], ['hypnosis', 'Hypnosis & suggestion'],
@@ -12,8 +13,48 @@ export const PRESET_COLLECTIONS = [
   ['bashar', 'Bashar sounds'], ['saved', 'My presets'],
 ] as const;
 export type PresetCollection = typeof PRESET_COLLECTIONS[number][0];
+/** Related practices share a shelf, not a claim that they produce literal OBE. */
+export const OBE_SUBGROUPS = [
+ ['preparation', 'Preparation & body relaxation', 'Begin with ordinary relaxation and a comfortable sense of bodily support.'],
+ ['gateway', 'Gateway-inspired listening', 'Original listening reconstructions and comparisons; not verified Focus levels or proprietary recordings.'],
+ ['dream-awareness', 'Hypnagogic & dream awareness', 'Notice sleep-onset imagery or rehearse dream recall. Lucid dreaming and OBE are distinct experiences.'],
+ ['astral-imagery', 'Astral imagery', 'A contemplative imagery tradition. Floating impressions remain subjective experiences.'],
+ ['remote-viewing', 'Remote-viewing journal', 'A separate impressions-and-scoring practice, not an OBE method or a demonstrated source of distant information.'],
+] as const;
+export type ObeSubgroup = typeof OBE_SUBGROUPS[number][0];
+export const OBE_PRESET_GROUPS: Readonly<Record<string, ObeSubgroup>> = {
+ 'practice-soft-landing': 'preparation', 'practice-bowl-attention': 'preparation',
+ 'hypnosis-arrive': 'preparation', 'hypnosis-body-rest': 'preparation',
+ 'hypnosis-imagery': 'preparation', 'hypnosis-return': 'preparation',
+ 'archive-gateway-inspired': 'gateway', 'gateway-focus-10-reconstruction': 'gateway',
+ 'gateway-focus-12-reconstruction': 'gateway', 'gateway-focus-15-reconstruction': 'gateway',
+ 'gateway-focus-21-reconstruction': 'gateway',
+ 'practice-dream-edge': 'dream-awareness', 'hypnosis-dream-notebook': 'dream-awareness',
+ 'lucid-tlr-training-bed': 'dream-awareness', 'lucid-wbtb-return-descent': 'dream-awareness',
+ 'lucid-rem-window-theta': 'dream-awareness', 'lucid-n1-incubation': 'dream-awareness',
+ 'lucid-ssild-pacer': 'dream-awareness', 'lucid-morning-nap-window': 'dream-awareness',
+ 'lucid-first-half-guard': 'dream-awareness', 'night-lucid': 'dream-awareness',
+ 'night-astral': 'astral-imagery', 'night-viewing': 'remote-viewing',
+};
+export function obeSubgroupFor(p: Preset): ObeSubgroup | undefined {
+ return Object.hasOwn(OBE_PRESET_GROUPS, p.id) ? OBE_PRESET_GROUPS[p.id] : undefined;
+}
+export function matchesObeSubgroup(p: Preset, subgroup: ObeSubgroup | ''): boolean {
+ return subgroup === '' || obeSubgroupFor(p) === subgroup;
+}
+export const MATH_PRESET_IDS = [
+ 'exp-bashar-scale-map', 'exp-bashar-gamma-contradiction', 'exp-phi-ladder', 'exp-phi-bowl-chord',
+ 'relax-schumann-sim', 'exp-schumann-modes', 'relax-schumann-m2', 'relax-schumann-m3',
+ 'relax-schumann-m4', 'relax-schumann-m5', 'meditate-om-cousto',
+ 'exp-newton-spectrum-dorian', 'exp-planetary-octave-ascent', 'exp-hydrogen-21cm-portrait',
+ 'exp-solar-pmode-portrait', 'exp-cmb-peak-portrait', 'exp-kepler-motet', 'exp-tesla-369',
+ 'archive-harmonic-contemplation', 'archive-seven-intervals',
+ 'research-ratio-sequence', 'research-equal-temperament', 'research-fifth-drone',
+] as const;
 export const STARTER_IDS = ['practice-soft-landing', 'practice-bowl-attention', 'practice-evening-rain', 'practice-steady-focus'];
 export const COLLECTION_NOTES: Record<PresetCollection, string> = {
+ obe: 'A place for preparation, Gateway-inspired listening, dream awareness and clearly separated imagery traditions. These presets have not been shown to cause literal out-of-body travel; no experience is required or guaranteed.',
+ math: 'Hear ratios, octave mappings, detuning, modulation and chosen numerical illustrations. The arithmetic describes the sound; it does not measure your consciousness or establish a biological effect.',
  'bashar-studies': 'Four original listening comparisons inspired by source questions. Pitches and timings are app choices, with no levitation or physiological claim.',
  'frequency-studies': 'Four quiet references for detuning and sampling arithmetic. These sounds do not run the particle models or drive hardware.',
  levitation: 'Four quiet listening illustrations of frequency, phase drift and order. These sounds do not drive a levitator or establish a healing effect.',
@@ -53,6 +94,8 @@ export function presetFamily(p: Preset): string {
 export function matchesCollection(p: Preset, collection: PresetCollection): boolean {
  const family = presetFamily(p);
  switch (collection) {
+  case 'obe': return obeSubgroupFor(p) !== undefined;
+  case 'math': return (MATH_PRESET_IDS as readonly string[]).includes(p.id) || /^(bashar-study-|frequency-study-|nt-|levitation-|nano-)/.test(p.id);
   case 'bashar-studies': return p.id.startsWith('bashar-study-');
   case 'frequency-studies': return p.id.startsWith('frequency-study-');
   case 'levitation': return p.id.startsWith('levitation-');

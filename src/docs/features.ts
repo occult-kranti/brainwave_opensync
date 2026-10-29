@@ -136,7 +136,7 @@ const FEATURES_CORE: readonly FeatureEntry[] = [
   {
     id: 'focused-listening', module: 'Listen', route: '/listen', name: 'Focused listening player',
     simple: 'Choose a sound, then press Play when you are ready. Pause, stop, change the volume or watch the sand without opening the full sound editor.',
-    deep: 'The listening view shares the existing session provider and audio engine with Studio. Selecting a catalog sound stops the previous session and loads its complete recipe without autoplay. The same listening limits, advisory and stop controls remain in force. The remaining-time display follows the active duration and fade endpoint.',
+    deep: 'The listening view shares the existing session provider and audio engine with Studio. Selecting a catalog sound stops the previous session and loads its complete recipe without autoplay. Its practice guide explains the original sound, possible experiences, listening steps and an optional trial schedule. An edited-session notice keeps that guide separate from current Studio settings. The remaining-time display follows the active duration and fade endpoint.',
     howTo: ['Choose a practice from Today or Explore.', 'Press Play at a comfortable device volume.', 'Open Customize sound to edit the same session in Studio.'],
   },
   {
@@ -634,13 +634,13 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     route: '/presets',
     name: 'Sound presets',
     simple:
-      'Start with three sounds, browse all presets, or open the Bashar collection. Hear a short preview before loading a session into Studio. Cards state preview and full-session durations; source details are optional.',
+      'Browse sounds by intention, including OBE exploration, Bashar and mathematical patterns. Open a practice guide for the sound logic, possible experience, listening steps and a suggested trial schedule. Preview quietly before loading a session.',
     deep:
-      'Catalog entries specify phase duration, carrier, rhythm, modality, authored gain, and an editorial evidence grade. An optional mixer profile restores waveform, noise, nature, bowl settings, and interval bells; the starting sounds and Bashar presets include complete profiles. Saved Studio presets retain that mix, their fader ceiling, and playback duration while keeping the full phase plan. Step previews isolate eight seconds; full playback and WAV export use their existing synthesis and transition paths, which can differ. Authored phase fades remain metadata and are labeled as unrendered.',
+      'Every catalog preset has a practice guide derived from its signal recipe and purpose. Bashar mappings identify their chosen constants; ratios and audible rhythms remain distinct from measured EEG. OBE subgroups separate preparation, Gateway-inspired listening, dream awareness, astral imagery and remote-viewing journaling. URL filters combine subgroup, setup, length, sound and evidence grade. Trial schedules are editorial suggestions rather than validated doses; phase fades remain metadata labeled as unrendered.',
     howTo: [
-      'Search by name, pitch, rhythm, or mode, or open Bashar sounds.',
-      'Use Preview or open Details and steps to hear a segment and read its sources.',
-      'Load into Studio, choose duration and volume, then press Play session.',
+      'Choose a collection, then an OBE subgroup or a listening filter.',
+      'Open the practice guide or Sound details for logic, expectations, instructions and sources.',
+      'Preview quietly, then open Listen or Studio and press Play when ready.',
     ],
   },
   // ------------------------------------------------------------------- Levels

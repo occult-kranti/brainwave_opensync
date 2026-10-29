@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import {
-  ArrowDown,
   ArrowRight,
+  CalendarDays,
+  Headphones,
   ArrowUpRight,
   Minus,
   Pause,
@@ -10,10 +11,13 @@ import {
   Plus,
 } from "lucide-react";
 import { PRESETS } from "@/data/presets";
+import { suggestSessions } from "@/data/sessionSuggestions";
+import type { PracticeGoal } from "@/data/listeningPractice";
 import { projectUrl } from "@/lib/assetUrl";
 import { useSpatial } from "@/ui/visuals/spatialContext";
 import { MAX_ZOOM, MIN_ZOOM } from "@/ui/visuals/spatialState";
 import "./experience.css";
+import "./nocturne-home.css";
 
 const INTENTIONS = [
   ["practice", "Meditation", "Make room for attention."],
@@ -38,31 +42,29 @@ const DESTINATIONS = [
 /** The sculpture belongs to the shared world, not a second embedded canvas. */
 export default function Home() {
   const [intention, setIntention] = useState("practice");
+  const [minutes, setMinutes] = useState(20);
+  const [headphones, setHeadphones] = useState(true);
+  const goals: Record<string, PracticeGoal> = { practice: "meditate", hypnosis: "hypnosis", sleep: "sleep", focus: "focus", nature: "unwind", bashar: "meditate" };
+  const recommendation = suggestSessions({ goal: goals[intention], minutes, headphones, experimental: false })[0];
   const spatial = useSpatial();
   const selected = INTENTIONS.find(([id]) => id === intention)!;
   return (
-    <div className="world-home">
+    <div className="world-home nocturne-home">
       <section className="world-arrival" aria-labelledby="home-title">
         <div className="world-arrival-copy">
-          <span className="world-eyebrow">
-            <i /> A SPACE FOR SOUND & GEOMETRY
-          </span>
           <h1 id="home-title">
-            Enter
-            <br />
-            the <em>field.</em>
+            Make space<br />to <em>listen.</em>
           </h1>
           <p>
-            Sound you can shape.
-            <br />
-            Space you can explore.
+            A quieter moment, a sound of your own.<br />
+            Find your rhythm in a living world of sound and geometry.
           </p>
           <div className="world-arrival-actions">
             <Link className="world-primary" to="/presets?collection=all">
               Find a sound <ArrowUpRight size={18} />
             </Link>
-            <Link className="world-text-link" to="/cymatics">
-              Enter the visual lab <ArrowRight size={17} />
+            <Link className="world-text-link" to="/practice-plan">
+              Plan a home practice <CalendarDays size={17} />
             </Link>
           </div>
           <span className="world-quiet-note">
@@ -71,7 +73,7 @@ export default function Home() {
         </div>
         <div className="world-scene-caption">
           <div className="world-scene-name">
-            <span>LIVE STUDY / 01</span>
+
             <strong>
               {spatial?.settings.dimension === "4d"
                 ? "Beyond the third coordinate"
@@ -162,9 +164,8 @@ export default function Home() {
           </p>
         </div>
         <nav className="world-portals" aria-label="Choose your workspace">
-          {DESTINATIONS.map(([to, number, title, description]) => (
+          {DESTINATIONS.map(([to, , title, description]) => (
             <Link to={to} key={to}>
-              <span className="world-portal-number">{number}</span>
               <div>
                 <h2>{title}</h2>
                 <p>{description}</p>
@@ -173,9 +174,7 @@ export default function Home() {
             </Link>
           ))}
         </nav>
-        <a className="world-scroll-cue" href="#find-your-practice">
-          Find your practice <ArrowDown size={13} />
-        </a>
+
       </section>
       <section
         className="world-practice"
@@ -183,13 +182,14 @@ export default function Home() {
         aria-labelledby="practice-title"
       >
         <div className="world-section-intro">
-          <span className="world-eyebrow">01 / A SOUND FOR THIS MOMENT</span>
           <h2 id="practice-title">
-            Where would you
-            <br />
-            like to begin?
+            What do you need<br />right now?
           </h2>
-          <p>Choose an intention. Hear a preview. Make it your own.</p>
+          <p>Choose a direction and the time you have. Start with something simple.</p>
+          <div className="atlas-session-settings">
+            <label>Time available<select value={minutes} onChange={event => setMinutes(Number(event.target.value))}><option value={10}>10 minutes</option><option value={20}>20 minutes</option><option value={30}>30 minutes</option></select></label>
+            <label>Listening with<select value={headphones ? "headphones" : "speakers"} onChange={event => setHeadphones(event.target.value === "headphones")}><option value="headphones">Stereo headphones</option><option value="speakers">Speakers</option></select></label>
+          </div>
         </div>
         <div className="world-intention-workspace">
           <div
@@ -197,14 +197,13 @@ export default function Home() {
             role="group"
             aria-label="Listening intention"
           >
-            {INTENTIONS.map(([id, title], i) => (
+            {INTENTIONS.map(([id, title]) => (
               <button
                 type="button"
                 key={id}
                 aria-pressed={intention === id}
                 onClick={() => setIntention(id)}
               >
-                <small>0{i + 1}</small>
                 <span>{title}</span>
                 <ArrowUpRight size={16} />
               </button>
@@ -212,7 +211,6 @@ export default function Home() {
           </div>
           <div className="world-intention-result">
             <div>
-              <span className="world-eyebrow">YOUR STARTING POINT</span>
               <h3>{selected[1]}</h3>
               <p>{selected[2]}</p>
             </div>
@@ -223,6 +221,10 @@ export default function Home() {
               Explore {selected[1].toLowerCase()} <ArrowRight size={16} />
             </Link>
           </div>
+          {recommendation && !["bashar", "nature"].includes(intention) && <div className="atlas-recommendation">
+            <Headphones size={22} aria-hidden="true" />
+            <div><h3>{recommendation.preset.title}</h3><p>{recommendation.shortened ? `From the ${recommendation.preset.category.toLowerCase()} collection. Longer than your time window; stop when ready. ${headphones ? "Stereo headphones selected." : "Suitable for speakers or headphones."}` : recommendation.reason}</p><Link to={`/listen?preset=${recommendation.preset.id}`}>Load this sound <ArrowRight size={16} /></Link><small>Opens the player. Press Play when ready. The full session may be longer than your available time.</small></div>
+          </div>}
           <Link className="world-text-link" to="/meditate">
             Help me choose <ArrowRight size={15} />
           </Link>
@@ -232,7 +234,7 @@ export default function Home() {
         className="world-dimension-section"
         aria-labelledby="dimension-title"
       >
-        <span className="world-eyebrow">02 / THE VISUAL LAB</span>
+        <div className="atlas-art-note"><span>Sound has a shape.</span><small>A live mathematical artwork<br />you can turn, pause and explore.</small></div>
         <div>
           <h2 id="dimension-title">
             From a grain of sand
@@ -245,7 +247,7 @@ export default function Home() {
             artwork.
           </p>
           <Link className="world-primary" to="/cymatics">
-            Open Cymatics <ArrowUpRight size={18} />
+            Enter the visual lab <ArrowUpRight size={18} />
           </Link>
           <small>
             These are mathematical models and artworks, not measurements of your
@@ -253,10 +255,8 @@ export default function Home() {
           </small>
         </div>
       </section>
-      <section className="world-notebook" aria-labelledby="notebook-title">
+      <details className="world-notebook atlas-notebook"><summary id="notebook-title">Follow your curiosity <Plus size={20} /></summary>
         <div className="world-section-intro">
-          <span className="world-eyebrow">03 / FOLLOW YOUR CURIOSITY</span>
-          <h2 id="notebook-title">A little deeper.</h2>
           <p>
             Explore the ideas behind the sounds, with sources and limitations in
             view.
@@ -307,7 +307,7 @@ export default function Home() {
             </Link>
           ))}
         </nav>
-      </section>
+      </details>
       <footer className="world-footer">
         <strong>Open Sync</strong>
         <span>Sound. Space. Possibility.</span>

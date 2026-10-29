@@ -185,7 +185,8 @@ describe('W10 mobile shell — layout tiers', () => {
     expect(drawer).toBeTruthy();
     const tools = drawer!.querySelector('[data-nav-group="tools"]')!;
     expect(tools.querySelectorAll('a')).toHaveLength(0);
-    expect(drawer!.querySelectorAll('a')).toHaveLength(5);
+    // Four starting destinations, the prominent practice link and Safety.
+    expect(drawer!.querySelectorAll('a')).toHaveLength(6);
     expect(drawer!.querySelector('a[href="/channeled"]')).toBeNull();
     const toggle = drawer!.querySelector<HTMLButtonElement>('[data-testid="drawer-research-toggle"]')!;
     expect(toggle.getAttribute('aria-expanded')).toBe('false');

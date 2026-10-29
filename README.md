@@ -9,6 +9,10 @@ their sources. Presets carry A–D evidence grades. Audio is generated locally; 
 
 **Live site (GitHub Pages):** https://occult-kranti.github.io/brainwave_opensync/ — installable as a PWA.
 
+## Nocturne archive update
+
+[Open the redesigned archive](https://occult-kranti.github.io/brainwave_opensync/archive/) or [Practice at home](https://occult-kranti.github.io/brainwave_opensync/archive/practice-plan/). The archive adds a grouped desktop rail, clearer phone navigation, readable scene framing and a flexible two/four-week practice timetable. Audio stability improvements prefer sustained playback buffering and smooth live pitch edits; physical phone/Bluetooth behavior still needs device confirmation. See the [references and three review rounds](docs/design/nocturne-reference-review.md) and [verification record](docs/design/nocturne-verification.md).
+
 ## Connected projects
 
 [Connected projects](https://occult-kranti.github.io/brainwave_opensync/projects/) opens the preserved [original Open Sync suite](https://occult-kranti.github.io/brainwave_opensync/open-sync/) and the [Resonance Research Atlas](https://occult-kranti.github.io/brainwave_opensync/research/). The current laboratory, Everyday player and [previous release](https://occult-kranti.github.io/brainwave_opensync/v2/) keep their own entry points.

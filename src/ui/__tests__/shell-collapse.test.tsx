@@ -109,9 +109,13 @@ describe('Archive shared navigation', () => {
     const c = await renderShell(1280);
     await pressKey('[');
     expect(c.querySelector('[data-testid="more-drawer"]')).not.toBeNull();
+    expect(c.querySelector('.archive-workspace')!.hasAttribute('inert')).toBe(true);
+    expect(c.querySelector('.listening-sidebar')!.hasAttribute('inert')).toBe(true);
+    expect(c.querySelector('[data-testid="more-drawer"]')!.getAttribute('aria-labelledby')).toBe('site-navigation-title');
     await pressKey('Escape');
     await act(async()=>{await new Promise(resolve=>setTimeout(resolve,400));});
     expect(c.querySelector('[data-testid="more-drawer"]')).toBeNull();
+    expect(c.querySelector('.archive-workspace')!.hasAttribute('inert')).toBe(false);
   });
   it('legacy saved rail state cannot hide archive navigation', async () => {
     window.localStorage.setItem('open-sync:sidebar','hidden');

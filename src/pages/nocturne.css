@@ -1,0 +1,49 @@
+/* Nocturne: one shared palette and readable material across the archive. */
+@font-face { font-family: Newsreader; src: url('../assets/fonts/newsreader-latin.woff') format('woff'); font-style: normal; font-weight: 200 800; font-display: swap; }
+html[data-archive-theme] {
+  --font-display: Newsreader, Georgia, serif;
+  --ink-0: #0d111b; --ink-1: #111824; --ink-2: #151e2d; --ink-3: #202c3e; --ink-4: #2c3850;
+  --text-1: #f3f0ea; --text-2: #c6c9d6; --text-3: #aeb5c7; --text-inv: #111824;
+  --amber: #d8c8a3; --amber-hi: #eddfbd; --amber-dim: #b7a784; --amber-glow: #d8c8a31a;
+  --teal: #b8ace8; --teal-hi: #d2c9f5; --teal-dim: #82779e;
+  --line-1: #303b50; --line-2: #536078; --scene-rgb: 13 17 27;
+  --world-glass: rgb(17 24 36 / .94); --world-glass-strong: #111824;
+  --focus-ring: 0 0 0 2px var(--ink-0), 0 0 0 4px var(--teal-hi);
+  scrollbar-color: #536078 #111824;
+}
+html[data-archive-theme="quiet-horizon"] { --ink-0: #181619; --ink-1: #211d23; --ink-2: #2b2630; --ink-3: #39313f; --scene-rgb: 24 22 25; --world-glass: rgb(33 29 35 / .95); --world-glass-strong: #211d23; }
+html[data-archive-theme] body { background: var(--ink-0); }
+html[data-archive-theme] ::selection { background: #b8ace84d; color: #fff; }
+html[data-archive-theme] :is(input, textarea) { caret-color: var(--teal-hi); }
+html[data-archive-theme] :is(a, button, summary, input, select, textarea):focus-visible { outline: 2px solid var(--teal-hi); outline-offset: 3px; }
+html[data-archive-theme] :is(a, button, summary) { -webkit-tap-highlight-color: #b8ace833; }
+html[data-archive-theme] :is(input, select, textarea) { color-scheme: dark; }
+html[data-archive-theme] :is(h1,h2,h3) { text-wrap: balance; letter-spacing: -.025em; }
+html[data-archive-theme] :is(p,li) { overflow-wrap: break-word; }
+html[data-archive-theme] .archive-route :is(.editorial-heading h1,.practice-hero h1,.preset-heading h1,.home-practice-heading h1,.listen-controls h1) { font-family: var(--font-display); font-weight: 400; }
+html[data-archive-theme] :is(.preset-card,.listen-controls,.home-practice-builder,.home-practice-week,.home-practice-detail,.guide-module,.studio-panel) { background: var(--world-glass); box-shadow: none; }
+html[data-archive-theme] :is(.preset-card,.home-practice-builder,.home-practice-week,.home-practice-detail) { border-radius: 12px; }
+html[data-archive-theme] :is(.t-label,.overline,.font-mono2) { letter-spacing: .04em; }
+html[data-archive-theme] :is(.world-primary,.practice-primary,.listen-primary) { border-radius: 8px; }
+html[data-archive-theme] .archive-route { font-variant-numeric: tabular-nums; }
+@media (max-width: 767px) {
+  html[data-archive-theme] :is(input:not([type=range]):not([type=checkbox]):not([type=radio]),select,textarea) { font-size: 16px; }
+  html[data-archive-theme] .archive-route :is(.chip,summary,.preset-filter-trigger) { min-height: 44px; }
+  html[data-archive-theme] .archive-route { width: 100%; min-width: 0; }
+  html[data-archive-theme] .archive-route :is(.editorial-page,.practice-page,.studio-page,.preset-page,.listen-page) { min-width: 0; }
+}
+@media (prefers-reduced-motion: reduce) { html[data-archive-theme] { scroll-behavior: auto; } }
+/* The live field remains continuous; a reading scrim holds contrast above it. */
+.archive-shell > .resonant-world:not(.resonant-world-immersive)::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgb(13 17 27 / .88), rgb(13 17 27 / .68) 47%, rgb(13 17 27 / .16));
+}
+.archive-home > .resonant-world:not(.resonant-world-immersive)::after {
+  background: linear-gradient(90deg, rgb(13 17 27 / .93), rgb(13 17 27 / .72) 40%, rgb(13 17 27 / .06) 75%);
+}
+html[data-archive-theme] .home-practice-kicker { letter-spacing: .03em; text-transform: none; font-size: 13px; }
+html[data-archive-theme] .home-practice-heading h1 { letter-spacing: -.03em; }
+@media(max-width:767px) {
+ .archive-shell > .resonant-world:not(.resonant-world-immersive)::after { background: linear-gradient(180deg, rgb(13 17 27 / .9), rgb(13 17 27 / .78) 46%, rgb(13 17 27 / .6)); }
+ .archive-home > .resonant-world:not(.resonant-world-immersive)::after { background: linear-gradient(180deg, rgb(13 17 27 / .98), rgb(13 17 27 / .83) 45%, rgb(13 17 27 / .15) 72%); }
+}

@@ -1,0 +1,98 @@
+/* One map across the site: a calm rail on desktop, a thumb-reachable Menu on phones. */
+.listening-sidebar { display: none; }
+.archive-shell .desktop-page-label { display: none; }
+.archive-shell .observatory-header { backdrop-filter: none; background: #0d111bf5; }
+.archive-shell .observatory-brand { letter-spacing: -.025em; }
+.archive-shell .observatory-header nav :is(a,button) { font-family: Inter,sans-serif; font-size: 12px; letter-spacing: 0; }
+.archive-shell .observatory-utilities button[title^="Stop all sound"] { min-height: 44px; height: auto !important; border-radius: 8px !important; font: 500 11px/1.3 Inter,sans-serif !important; letter-spacing: 0 !important; }
+.archive-shell .world-context { border-bottom-color: #b8ace819; }
+.archive-shell .observatory-active { gap: 12px; }
+.archive-shell [data-testid="pause-toggle"] { min-height: 34px; border-radius: 7px; font: 500 10px/1.2 Inter,sans-serif !important; letter-spacing: .02em; }
+.archive-shell [data-testid="more-drawer"] { background: #111827 !important; color: #f3f0ea; }
+.archive-shell [data-testid="more-drawer"] > div:first-child { background: #111827 !important; padding: 20px !important; gap: 14px; z-index: 2; }
+.menu-heading h2 { font: 400 28px/1.12 var(--font-display,Georgia,serif); letter-spacing: -.025em; margin: 0 0 7px; }
+.menu-heading p { font: 400 12px/1.5 Inter,sans-serif; color: #b7bdcf; margin: 0; }
+.archive-shell [data-testid="more-drawer"] button[aria-label="Close"] { border-radius: 50% !important; width: 44px !important; height: 44px !important; color: #f3f0ea !important; background: #1d273a !important; border: 0 !important; }
+.menu-session-status { padding: 12px 20px; background: #0d111b; border-bottom: 1px solid #b8ace819; }
+.menu-session-status .t-readout-sm { font: 400 11px/1.5 Inter,sans-serif; }
+.menu-practice-link { display: flex; align-items: center; gap: 14px; color: #ece6ff; background: #24283f; margin: 16px 16px 10px; padding: 16px; border-radius: 12px; text-decoration: none; }
+.menu-practice-link > span { flex: 1; font: 500 14px/1.5 Inter,sans-serif; }
+.menu-practice-link small { display: block; color: #c4bfd5; font: 400 11px/1.6 Inter,sans-serif; }
+.menu-directory { padding: 4px 12px 16px; }
+.menu-directory section[data-nav-group] { border-color: #b8ace81a !important; }
+.menu-directory [data-nav-group="primary"] { padding-bottom: 8px; }
+.menu-directory a { margin: 3px 0; }
+.menu-directory a > div { min-height: 48px !important; padding: 10px 12px !important; gap: 12px; }
+.menu-directory .t-label { font: 450 13px/1.5 Inter,sans-serif; letter-spacing: 0; text-transform: none; }
+.menu-directory button[aria-expanded] { padding: 12px !important; min-height: 50px !important; border-radius: 8px; }
+.menu-directory button[aria-expanded] > span { font-weight: 550; }
+.menu-directory a:hover > div,.menu-directory button[aria-expanded]:hover { background: #253047 !important; }
+.menu-directory .t-caption { font: 400 11px/1.5 Inter,sans-serif; }
+.archive-shell [data-testid="more-drawer"] :is(a,button):focus-visible { outline: 2px solid #cbbefa; outline-offset: 2px; }
+.mobile-listening-brand { display: block; color: #f3f0ea; text-decoration: none; font: 400 21px/1.15 var(--font-display,Georgia,serif); letter-spacing: -.025em; }
+.mobile-page-label { font: 400 11px/1.5 Inter,sans-serif; color: #b9bed1; margin-top: 3px; }
+
+@media(min-width:768px) and (max-width:1199px) {
+  .archive-shell .observatory-header { flex-wrap: wrap; gap: 8px 20px; padding: 14px 24px 6px; }
+  .archive-shell .observatory-header nav { order: 3; width: 100%; margin: 0; justify-content: space-between; }
+  .archive-shell .observatory-header nav :is(a,button) { padding-inline: 12px; min-height: 44px; }
+  .archive-shell .observatory-utilities { margin-left: auto; }
+}
+@media(min-width:1200px) {
+  .listening-sidebar { display: flex; flex-direction: column; position: sticky; top: 0; flex: 0 0 228px; width: 228px; height: 100dvh; z-index: 22; overflow-y: auto; overscroll-behavior: contain; background: #0d111bf5; border-right: 1px solid #b8ace81b; padding: 26px 14px 16px; scrollbar-width: thin; scrollbar-color: #6e6b89 transparent; }
+  .sidebar-brand { display: flex; align-items: center; gap: 11px; color: #f3f0ea; text-decoration: none; padding: 0 8px 27px; font: 400 24px/1.15 var(--font-display,Georgia,serif); letter-spacing: -.025em; }
+  .sidebar-brand small { display: block; font: 400 10px/1.5 Inter,sans-serif; letter-spacing: .01em; color: #aeb6cb; margin-top: 5px; }
+  .sidebar-practice-link { display: flex; align-items: center; gap: 11px; padding: 14px 11px; margin-bottom: 20px; border-radius: 10px; background: #23283e; text-decoration: none; color: #e6dfff; font: 500 12px/1.5 Inter,sans-serif; }
+  .sidebar-practice-link small { display: block; color: #bebbd0; font: 400 10px/1.5 Inter,sans-serif; }
+  .sidebar-route { display: flex; align-items: center; gap: 11px; min-height: 44px; padding: 10px 11px; margin-block: 2px; border-radius: 8px; color: #b7bfd3; text-decoration: none; font: 450 12px/1.5 Inter,sans-serif; }
+  .sidebar-route > svg { flex-shrink: 0; }
+  .sidebar-route[aria-current="page"] { background: #252d43; color: #e3daff; }
+  .sidebar-route:hover,.listening-sidebar button[aria-expanded]:hover { background: #1c2537 !important; color: #f3f0ea !important; }
+  .listening-sidebar :is(a,button):focus-visible { outline: 2px solid #cbbefa; outline-offset: 2px; }
+  .listening-sidebar section[data-nav-group] { border-color: #b8ace81a !important; margin-top: 8px !important; }
+  .listening-sidebar [data-nav-group="primary"] { padding-bottom: 12px; margin-top: 0 !important; }
+  .listening-sidebar button[aria-expanded] { padding: 13px 11px !important; min-height: 46px !important; border-radius: 7px; font: 500 11px/1.45 Inter,sans-serif; letter-spacing: 0; text-transform: none; }
+  .listening-sidebar button[aria-expanded] > span { max-width: 155px; }
+  .listening-sidebar [id$="-links"] { padding-left: 7px; }
+  .listening-sidebar .t-caption { padding: 0 11px 10px !important; font: 400 10px/1.5 Inter,sans-serif; }
+  .sidebar-footnote { margin: auto 0 0; padding: 24px 11px 4px; color: #9ca8c0; font: 400 10px/1.6 Inter,sans-serif; }
+  .archive-shell .observatory-header { padding: 10px 32px; min-height: 70px; gap: 16px; }
+  .archive-shell .observatory-header > .observatory-brand { display: none; }
+  .archive-shell .observatory-header nav { margin: 0 auto 0 0; gap: 2px; }
+  .archive-shell .observatory-header nav a { padding-inline: 11px; }
+  .archive-shell .observatory-header nav button { display: none; }
+  .archive-shell .observatory-utilities { gap: 12px; }
+  .archive-shell .observatory-search { display: block; color: #c0c6d7; font-size: 12px; }
+  .archive-shell .workspace-subnav { display: none; }
+  .archive-shell .world-context { padding-inline: 32px; }
+}
+@media(max-width:767px) {
+  .archive-shell .archive-workspace { overflow: clip; }
+  .archive-shell [data-testid="status-bar-mobile"] { min-height: 68px; padding: max(10px,env(safe-area-inset-top,0px)) 16px 10px !important; gap: 12px !important; background: #0d111bfa !important; backdrop-filter: none !important; border-color: #b8ace81b !important; }
+  .mobile-listening-header > div:first-child { flex: 1 1 0; }
+  .mobile-listening-header .t-caption { display: block; margin-top: 3px; font: 400 10px/1.5 Inter,sans-serif; color: #d8c8a3; }
+  .archive-shell [data-testid="status-bar-mobile"] [data-testid="palette-hint"] { color: #e4dcfb; background: #242b40; border: 0; border-radius: 50%; width: 44px; padding: 0 !important; font: 500 10px/1 Inter,sans-serif !important; }
+  .archive-shell [data-testid="status-bar-mobile"] [data-testid="mobile-pause"] { font: 500 8px/1.2 Inter,sans-serif !important; letter-spacing: 0 !important; width: 44px !important; border-radius: 8px; }
+  .archive-shell [data-testid="mobile-pause"][disabled] { display: none; }
+  .archive-shell [data-testid="status-bar-mobile"] > div:last-child > span:last-child { display: none; }
+  .archive-shell .world-context { min-height: 42px; padding: 0 16px; border-bottom: 0; }
+  .archive-shell .world-coordinate { letter-spacing: .04em; color: #aeb8cf; font-size: 10px; }
+  .archive-shell .world-toolbar { width: 100%; }
+  .archive-shell .world-toolbar summary { border: 0; padding: 8px 0 8px 12px; min-width: 70px; font: 450 11px/1.4 Inter,sans-serif; color: #c7bfdc; }
+  .archive-shell .world-settings-panel { top: 110px; max-height: calc(100dvh - 194px); }
+  .archive-shell [data-testid="mobile-bottom-bar"] { background: #111827fa !important; backdrop-filter: none; border-top-color: #b8ace829 !important; }
+  .archive-shell [data-testid="mobile-bottom-bar"] :is(a,button) { touch-action: manipulation; }
+  .archive-shell [data-testid="mobile-bottom-bar"] a > span { border-radius: 0; }
+  .archive-shell [data-testid="mobile-bottom-bar"] a > span > span { font: 450 10px/1.3 Inter,sans-serif !important; letter-spacing: 0 !important; }
+  .archive-shell [data-testid="bottom-tab-more"] { font: 450 10px/1.3 Inter,sans-serif !important; letter-spacing: 0 !important; }
+  .archive-shell [data-testid="mobile-panic"] { font-family: Inter,sans-serif !important; font-size: 9px !important; letter-spacing: 0 !important; border-left-color: #e7a09545 !important; color: #f2afa3 !important; background: #3c22294f !important; }
+  .archive-shell [data-testid="more-drawer"] { max-height: calc(100dvh - max(16px,env(safe-area-inset-top,0px))) !important; border-radius: 16px 16px 0 0; }
+  .archive-shell [data-testid="more-drawer"] > div:first-child { padding: 20px 16px 16px !important; }
+  .archive-shell [data-testid="more-drawer"] > div:first-child > div:last-child { flex-wrap: wrap; gap: 8px; }
+  .archive-shell [data-testid="more-drawer"] > div:first-child > div:last-child > button[title^="Stop all sound"] { min-height: 44px; padding-inline: 10px !important; font: 500 10px/1.4 Inter,sans-serif !important; letter-spacing: 0 !important; border-radius: 8px !important; }
+  .archive-shell [data-testid="more-drawer"] .menu-heading { flex-basis: calc(100% - 60px) !important; }
+  .menu-heading h2 { font-size: 27px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .archive-shell .archive-route { animation: none; }
+}

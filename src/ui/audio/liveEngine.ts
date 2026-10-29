@@ -79,6 +79,8 @@ const LAYER_RELEASE_TC = 0.02;
 const LAYER_RELEASE_MS = 120;
 /** Live-only overlap margin; the playable loop remains exactly 8 or 12 s. */
 const TEXTURE_OVERLAP_SEC = 0.1;
+/** Smooth the clock's pitch steps without restarting either oscillator. */
+const PITCH_RAMP_SEC = 0.05;
 
 interface LayerNode {
   src: AudioBufferSourceNode;
@@ -118,7 +120,16 @@ interface FadeState {
 function resolveCtx(): AudioContext | null {
   const g = globalThis as { AudioContext?: typeof AudioContext; webkitAudioContext?: typeof AudioContext };
   const Ctor = g.AudioContext ?? g.webkitAudioContext;
-  return Ctor ? new Ctor() : null;
+  if (!Ctor) return null;
+  // A listening session values uninterrupted output over instrument-style
+  // response latency. Let the browser choose a suitable playback buffer,
+  // without forcing a sample rate that could fight a Bluetooth output route.
+  try {
+    return new Ctor({ latencyHint: 'playback' });
+  } catch {
+    // Older prefixed implementations can reject constructor options.
+    return new Ctor();
+  }
 }
 
 export class LiveEngine {
@@ -797,14 +808,16 @@ export class LiveEngine {
       return;
     }
     const { mode, carrierHz, beatHz } = this.config;
+    const carrierChanged = prev.carrierHz !== carrierHz;
+    const rightPitchChanged = prev.carrierHz + prev.beatHz !== carrierHz + beatHz;
     if (mode === 'binaural' && this.oscL && this.oscR) {
-      this.oscL.frequency.value = carrierHz;
-      this.oscR.frequency.value = carrierHz + beatHz;
+      if (carrierChanged) this.rampPitch(this.oscL.frequency, carrierHz);
+      if (rightPitchChanged) this.rampPitch(this.oscR.frequency, carrierHz + beatHz);
     } else if (mode === 'monaural' && this.oscL && this.oscR) {
-      this.oscL.frequency.value = carrierHz;
-      this.oscR.frequency.value = carrierHz + beatHz;
+      if (carrierChanged) this.rampPitch(this.oscL.frequency, carrierHz);
+      if (rightPitchChanged) this.rampPitch(this.oscR.frequency, carrierHz + beatHz);
     } else if (mode === 'isochronic' && this.oscL) {
-      this.oscL.frequency.value = carrierHz;
+      if (carrierChanged) this.rampPitch(this.oscL.frequency, carrierHz);
       if (prev.beatHz !== beatHz || prev.gateDuty !== this.config.gateDuty || prev.gateShape !== this.config.gateShape) {
         // Swap the gate loop for the new rate/shape.
         if (this.gateSrc) {
@@ -824,6 +837,15 @@ export class LiveEngine {
         }
       }
     }
+  }
+
+  /** Preserve the instantaneous pitch when a new edit lands during a ramp. */
+  private rampPitch(param: AudioParam, hz: number): void {
+    const t = this.ctx!.currentTime;
+    const current = param.value;
+    param.cancelScheduledValues(t);
+    param.setValueAtTime(current, t);
+    param.linearRampToValueAtTime(hz, t + PITCH_RAMP_SEC);
   }
 
   /**

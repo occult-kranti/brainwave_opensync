@@ -399,7 +399,7 @@ describe('LiveEngine v2.0.1 — interruption, timers, mute vs fade, previews, re
     expect(firstChain.every((o) => o.stopped)).toBe(true); // old chain torn down …
     expect(secondChain.some((o) => o.stopped)).toBe(false); // … the live chain untouched
     eng.updateConfig({ beatHz: 7 });
-    expect((secondChain[1] as unknown as { frequency: FakeParam }).frequency.value).toBe(207);
+    expect((secondChain[1] as unknown as { frequency: FakeParam }).frequency.log).toContainEqual(['linearRampToValueAtTime', 207, 0.05]);
   });
 
   it('routes previews through the preview bus (infant low-pass path), not straight to destination', () => {

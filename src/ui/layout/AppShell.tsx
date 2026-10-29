@@ -8,7 +8,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { NavLink, useLocation } from "react-router";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Info, Pause, Play, MoreHorizontal, X } from "lucide-react";
+import { Info, Pause, Play, MoreHorizontal, X, ListChecks, ArrowUpRight } from "lucide-react";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { BOTTOM_TAB_ROUTES, ROUTES } from "../../app/routes";
 import { GroupedNavigation } from "./GroupedNavigation";
@@ -39,6 +39,8 @@ import "../../pages/spatial.css";
 import "../../pages/resonance.css";
 import "../../pages/immersive-world.css";
 import "../../pages/mobile-refinements.css";
+import "../../pages/nocturne.css";
+import "./mobile-shell.css";
 import { WorkspaceNav } from "./WorkspaceNav";
 import { SpatialProvider } from "../visuals/SpatialProvider";
 import { ResonantWorld } from "../visuals/ResonantWorld";
@@ -138,7 +140,7 @@ function useModuleLabel() {
       ? location.pathname === "/"
       : location.pathname.startsWith(m.path),
   );
-  return mod ? `OPEN SYNC / ${mod.label}` : "OPEN SYNC";
+  return mod ? navigationForPath(mod.path)?.title ?? mod.label : "Open Sync";
 }
 
 /** Phone status bar (§3.2): session label + compact engine LED only. */
@@ -148,7 +150,7 @@ function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
   return (
     <header
       data-testid="status-bar-mobile"
-      className="flex items-center gap-3"
+      className="mobile-listening-header flex items-center gap-3"
       style={{
         height: 48,
         padding: "0 16px",
@@ -160,8 +162,9 @@ function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
       }}
     >
       <div style={{ overflow: "hidden", minWidth: 0 }}>
+        <NavLink to="/" className="mobile-listening-brand">Open Sync</NavLink>
         <span
-          className="t-label"
+          className="mobile-page-label"
           style={{
             display: "block",
             overflow: "hidden",
@@ -169,7 +172,7 @@ function MobileStatusBar({ onPalette }: { onPalette: () => void }) {
             whiteSpace: "nowrap",
           }}
         >
-          {label}
+          {label === "Today" ? "A little space to listen" : label}
         </span>
         {(previewId || running) && (
           <span className="t-caption text-2">
@@ -325,6 +328,7 @@ function BottomBar({
         type="button"
         data-testid="bottom-tab-more"
         aria-label="More tools and research"
+        aria-controls="site-navigation-dialog"
         aria-expanded={moreOpen}
         onClick={onMore}
         className="flex flex-col items-center justify-center"
@@ -345,7 +349,7 @@ function BottomBar({
         }}
       >
         <MoreHorizontal size={20} strokeWidth={1.5} />
-        MORE
+        Menu
       </button>
       {/* Panic: fixed-width trailing segment, ≥56px target, always on top. */}
       <div style={{ width: 72, flexShrink: 0, display: "flex" }}>
@@ -381,7 +385,7 @@ function DrawerLink({
             padding: "0 16px",
             background: isActive ? "var(--ink-2)" : "transparent",
             color: isActive ? "var(--amber)" : "var(--text-2)",
-            borderLeft: `2px solid ${isActive ? "var(--amber)" : "transparent"}`,
+            borderRadius: 8,
           }}
         >
           <Icon size={20} strokeWidth={1.5} style={{ flexShrink: 0 }} />
@@ -389,7 +393,7 @@ function DrawerLink({
             className="t-label"
             style={{ color: isActive ? "var(--amber)" : "var(--text-2)" }}
           >
-            {label}
+            {navigationForPath(path)?.title ?? label}
           </span>
         </div>
       )}
@@ -406,6 +410,7 @@ function DrawerLink({
 function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
   // P0-4: Esc closes, focus moves to the close button, returns to MORE tab.
   useModalA11y(open, onClose, closeRef, dialogRef);
   useSheetScrollLock(open);
@@ -419,7 +424,7 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
+            transition={{ duration: reducedMotion ? 0 : 0.18 }}
             onClick={onClose}
             style={{
               position: "fixed",
@@ -430,16 +435,19 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
           />
           <motion.div
             ref={dialogRef}
+            id="site-navigation-dialog"
             key="more-sheet"
             data-testid="more-drawer"
             role="dialog"
             aria-modal="true"
             aria-label="More tools and research"
+            aria-labelledby="site-navigation-title"
+            aria-describedby="site-navigation-description"
             tabIndex={-1}
-            initial={{ y: "100%" }}
+            initial={reducedMotion ? false : { y: "100%" }}
             animate={{ y: 0 }}
-            exit={{ y: "100%" }}
-            transition={{ duration: 0.22, ease: "easeOut" }}
+            exit={reducedMotion ? { y: 0 } : { y: "100%" }}
+            transition={{ duration: reducedMotion ? 0 : 0.22, ease: "easeOut" }}
             style={{
               position: "fixed",
               left: 0,
@@ -465,8 +473,9 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
                 background: "var(--ink-0)",
               }}
             >
-              <div style={{ flex: "1 1 180px", minWidth: 0 }}>
-                <SessionReadout />
+              <div className="menu-heading" style={{ flex: "1 1 150px", minWidth: 0 }}>
+                <h2 id="site-navigation-title">Your listening space</h2>
+                <p id="site-navigation-description">Sounds, practice, and places to explore.</p>
               </div>
               <div
                 style={{ marginLeft: "auto", flexShrink: 0 }}
@@ -495,7 +504,13 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
                 </button>
               </div>
             </div>
-            <nav aria-label="All pages">
+            <div className="menu-session-status"><SessionReadout /></div>
+            <NavLink to="/practice-plan" onClick={onClose} className="menu-practice-link">
+              <ListChecks size={20} strokeWidth={1.5} />
+              <span>Practice at home<small>When to listen. What to repeat.</small></span>
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </NavLink>
+            <nav aria-label="All pages" className="menu-directory">
               <GroupedNavigation
                 idPrefix="drawer"
                 renderRoute={(m) => (
@@ -508,6 +523,30 @@ function MoreDrawer({ open, onClose }: { open: boolean; onClose: () => void }) {
       )}
     </AnimatePresence>
   );
+}
+
+/** A quiet, persistent map on large displays; phones use the same groups in Menu. */
+function ListeningSidebar({ inert }: { inert: boolean }) {
+  return <aside className="listening-sidebar" aria-label="Listening workspace" inert={inert}>
+    <NavLink to="/" className="sidebar-brand">
+      <img src={assetUrl("favicon.svg")} alt="" width="30" height="30" />
+      <span>Open Sync<small>A space for sound</small></span>
+    </NavLink>
+    <NavLink to="/practice-plan" className="sidebar-practice-link">
+      <ListChecks size={19} strokeWidth={1.5} />
+      <span>Practice at home<small>Find your own rhythm</small></span>
+    </NavLink>
+    <nav aria-label="Workspace pages">
+      <GroupedNavigation idPrefix="sidebar" renderRoute={(route) => {
+        const Icon = route.icon;
+        return <NavLink key={route.path} to={route.path} end={route.path === "/"} className="sidebar-route">
+          <Icon size={17} strokeWidth={1.5} aria-hidden="true" />
+          <span>{navigationForPath(route.path)?.title ?? route.label}</span>
+        </NavLink>;
+      }} />
+    </nav>
+    <p className="sidebar-footnote">Choose a sound. Take your time.</p>
+  </aside>;
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -649,8 +688,10 @@ function SpatialShell({ children }: { children: ReactNode }) {
       <a href="#main" className="skip-link">
         Skip to content
       </a>
+      {!isMobile && <ListeningSidebar inert={moreOpen} />}
       <div
         className="flex flex-col archive-workspace"
+        inert={moreOpen}
         style={{ flex: 1, minWidth: 0 }}
       >
         {isMobile ? (
@@ -665,7 +706,7 @@ function SpatialShell({ children }: { children: ReactNode }) {
                 height="30"
               />
               <span>
-                Open Sync<small>SOUND & GEOMETRY</small>
+                Open Sync<small>A SPACE FOR SOUND</small>
               </span>
             </NavLink>
             <nav
@@ -677,6 +718,7 @@ function SpatialShell({ children }: { children: ReactNode }) {
                 ["/presets", "Sounds"],
                 ["/studio", "Studio"],
                 ["/cymatics", "Cymatics"],
+                ["/practice-plan", "Practice"],
                 ["/research-hub", "Research"],
               ].map(([path, label]) => (
                 <NavLink key={path} to={path} end={path === "/"}>
@@ -685,6 +727,7 @@ function SpatialShell({ children }: { children: ReactNode }) {
               ))}
               <button
                 aria-expanded={moreOpen}
+                aria-controls="site-navigation-dialog"
                 onClick={() => setMoreOpen(!moreOpen)}
               >
                 All tools <MoreHorizontal size={16} />
@@ -749,12 +792,12 @@ function SpatialShell({ children }: { children: ReactNode }) {
         </main>
       </div>
       {isMobile && (
-        <>
+        <div inert={moreOpen}>
           <BottomBar
             onMore={() => setMoreOpen((v) => !v)}
             moreOpen={moreOpen}
           />
-        </>
+        </div>
       )}
       <MoreDrawer open={moreOpen} onClose={() => setMoreOpen(false)} />
       <div id="archive-overlay-root" data-testid="archive-overlay-root" className="archive-modal-portal" />

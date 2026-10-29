@@ -21,7 +21,7 @@ describe("W8 home & docs screens", () => {
     expect(html).toContain("Enter the visual lab");
     expect(html).toContain("All tools");
     expect(html).toContain("Sources, experiments");
-    expect(html).toContain("FOLLOW YOUR CURIOSITY");
+    expect(html).toContain("Follow your curiosity");
     expect(html).toContain('data-testid="home-lab-lucid"');
     expect(html).toContain('data-testid="home-lab-healing"');
     expect(html).toContain('data-testid="home-lab-nature"');

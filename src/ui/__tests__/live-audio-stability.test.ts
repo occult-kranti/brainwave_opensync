@@ -5,10 +5,12 @@ import { LiveEngine } from '../audio/liveEngine';
 class FakeParam {
   value = 1;
   targets: number[] = [];
+  ramps: { value: number; time: number }[] = [];
+  cancelledAt: number[] = [];
   setTargetAtTime(value: number) { this.targets.push(value); this.value = value; }
-  cancelScheduledValues() {}
+  cancelScheduledValues(time: number) { this.cancelledAt.push(time); }
   setValueAtTime(value: number) { this.value = value; }
-  linearRampToValueAtTime(value: number) { this.value = value; }
+  linearRampToValueAtTime(value: number, time: number) { this.ramps.push({ value, time }); this.value = value; }
 }
 class FakeNode {
   connect() {}
@@ -36,11 +38,14 @@ class FakeContext {
   onstatechange: (() => void) | null = null;
   sources: FakeSource[] = [];
   gains: (FakeNode & { gain: FakeParam })[] = [];
+  oscillators: (FakeNode & { frequency: FakeParam })[] = [];
+  options: AudioContextOptions | undefined;
+  constructor(options?: AudioContextOptions) { this.options = options; }
   createGain() { const node = Object.assign(new FakeNode(), { gain: new FakeParam() }); this.gains.push(node); return node; }
   createAnalyser() { return Object.assign(new FakeNode(), { fftSize: 2048, frequencyBinCount: 1024, smoothingTimeConstant: 0 }); }
   createChannelSplitter() { return new FakeNode(); }
   createChannelMerger() { return new FakeNode(); }
-  createOscillator() { return Object.assign(new FakeNode(), { type: 'sine', frequency: new FakeParam(), start() {}, stop() {} }); }
+  createOscillator() { const node = Object.assign(new FakeNode(), { type: 'sine', frequency: new FakeParam(), start() {}, stop() {} }); this.oscillators.push(node); return node; }
   createBiquadFilter() { return Object.assign(new FakeNode(), { type: 'lowpass', frequency: new FakeParam(), Q: new FakeParam() }); }
   createBuffer(_channels: number, length: number) { return new FakeBuffer(length); }
   createBufferSource() { const source = new FakeSource(); this.sources.push(source); return source; }
@@ -51,6 +56,55 @@ class FakeContext {
 describe('live texture stability across mobile-length listening', () => {
   beforeEach(() => { vi.useFakeTimers(); vi.stubGlobal('AudioContext', FakeContext); });
   afterEach(() => { vi.useRealTimers(); vi.unstubAllGlobals(); });
+
+  it('requests sustained playback latency without forcing the output sample rate', () => {
+    const engine = new LiveEngine();
+    expect(engine.prepare()).toBe(true);
+    const context = engine.context as unknown as FakeContext;
+    expect(context.options).toEqual({ latencyHint: 'playback' });
+  });
+
+  it('retains support for legacy WebKit constructors that reject options', () => {
+    class LegacyContext extends FakeContext {
+      constructor(options?: AudioContextOptions) {
+        if (options) throw new TypeError('Options unavailable');
+        super();
+      }
+    }
+    vi.stubGlobal('AudioContext', undefined);
+    vi.stubGlobal('webkitAudioContext', LegacyContext);
+    const engine = new LiveEngine();
+    expect(engine.start()).toBe(true);
+    expect(engine.context).toBeInstanceOf(LegacyContext);
+    engine.panic();
+  });
+
+  for (const mode of ['binaural', 'monaural', 'isochronic'] as const) {
+    it(`smooths ${mode} pitch edits without rebuilding sources or adding unchanged clock events`, () => {
+      const engine = new LiveEngine();
+      engine.updateConfig({ mode, carrierHz: 180, beatHz: 6 });
+      engine.start();
+      const context = engine.context as unknown as FakeContext;
+      const originalOscillators = context.oscillators.slice();
+      const originalSources = context.sources.slice();
+      const left = context.oscillators[0].frequency;
+      const right = context.oscillators[1]?.frequency;
+      for (let second = 1; second <= 40; second++) {
+        context.currentTime = second;
+        engine.updateConfig({ carrierHz: 180, beatHz: 6 });
+      }
+      expect(left.ramps).toEqual([]);
+      expect(right?.ramps ?? []).toEqual([]);
+      context.currentTime = 41;
+      engine.updateConfig({ carrierHz: 200 });
+      expect(left.ramps).toEqual([{ value: 200, time: 41.05 }]);
+      expect(left.cancelledAt).toEqual([41]);
+      if (right) expect(right.ramps).toEqual([{ value: 206, time: 41.05 }]);
+      expect(context.oscillators).toEqual(originalOscillators);
+      expect(context.sources).toEqual(originalSources);
+      engine.panic();
+    });
+  }
 
   it('keeps the same noise and nature sources through 90 clock updates and pause/resume', () => {
     const engine = new LiveEngine();

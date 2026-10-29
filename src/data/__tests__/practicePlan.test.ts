@@ -54,6 +54,16 @@ describe('home practice timetable', () => {
     expect(sleep.every(d => d.time.startsWith('At bedtime'))).toBe(true);
     expect(days.find(d => d.foundation === 'intro-10')!.time).toBe('07:30–08:15');
   });
+  it('supports a full month without forcing a new tape after two sessions', () => {
+    const month = buildPracticePlan({ ...defaults, weeks: 4, cadence: 5, approach: 'sequence', repeats: 7, material: 'gateway', budget: 45 });
+    expect(month).toHaveLength(28);
+    const active = month.filter(d => d.active);
+    expect(active).toHaveLength(20);
+    expect(active.slice(0, 7).every(d => d.foundation === 'orientation')).toBe(true);
+    expect(active[7].foundation).toBe('intro-10');
+    expect(active[14].foundation).toBe('advanced-10');
+    expect(active.every(d => d.presetId === null)).toBe(true);
+  });
   it('shows midnight rollover and rejects incomplete clocks', () => {
     expect(practiceTimeWindow('23:45', 45)).toBe('23:45–00:30 (+1 day)');
     for (const invalid of ['', '25:00', '09:99', '7:30', '<script>']) expect(practiceTimeWindow(invalid, 20)).toBe('Choose a local start time');

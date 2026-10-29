@@ -2,14 +2,25 @@ export type PracticeCadence = 3 | 5 | 7;
 export type PracticeBudget = 10 | 20 | 45;
 export type PracticeMaterial = 'opensync' | 'gateway';
 export type PracticeApproach = 'repeat' | 'sequence';
+export type PracticeWeeks = 2 | 4;
+export type PracticeRepeats = 2 | 4 | 7;
 
 export const PRACTICE_PLAN_SOURCES = [
   { id: 'official-tips', label: 'Hemi-Sync · Listening Tips', kind: 'Official guidance', url: 'https://hemi-sync.com/help-center/category/listening-tips/', section: 'Repetition, equipment, verbal recordings and listening cautions', note: 'Read in full. The publisher recommends repeating training exercises, including Gateway; it gives no universal repeat count.' },
   { id: 'official-discovery', label: 'Hemi-Sync · Wave I: Discovery', kind: 'Official sequence', url: 'https://hemi-sync.com/product/gateway-experience-wave-i-discovery-dr-album/', section: 'Six exercises and progressive album order', note: 'The current product listing supplies the six names and sequence below. Its outcome descriptions are publisher claims.' },
+  { id: 'official-equipment', label: 'Monroe Institute · Current equipment FAQ', kind: 'Official guidance', url: 'https://www.monroeinstitute.org/pages/faqs', section: 'Best approach to listening to Monroe Sound Science exercises', note: 'Recommends stereo headphones and explicitly permits Bluetooth and noise cancellation. The older cassette instruction about Dolby is not a ban on modern headphone noise cancellation.' },
   { id: 'official-gift', label: 'Hemi-Sync · 2025 gift guide', kind: 'Publisher suggestion', url: 'https://hemi-sync.com/hemi-sync-articles/hemi-sync-holiday-gift-guide/', section: 'Gateway Experience Waves I–VIII', note: 'Suggests one or two tracks per day. This is practical publisher advice, not a tested optimal dose or a requirement.' },
   { id: 'manual-mirror', label: 'Gateway Experience manual · 25-page historical mirror', kind: 'Historical manual · mirror', url: 'https://archive.org/download/the-gateway-experience-manual/The%20Gateway%20Experience%20Manual.pdf', section: 'PDF p. 1; pp. 4–6, especially FAQ 14', note: 'All 25 pages were read. It describes an approximately 45-minute undisturbed window and flexible repetition. This mirror has not been authenticated as the current official edition.' },
+  { id: 'manual-crosscheck', label: 'Gateway guidance manual · 24-page historical mirror', kind: 'Historical manual · mirror', url: 'https://curiousrealm.s3.us-east-2.amazonaws.com/vault/gateway-manual.pdf', section: 'Complete extracted text; especially Wave I and “On using the tapes” FAQ', note: 'Read in full for this update. Recommends familiarity before advancing, without demanding perfect mastery. Six-Wave names reveal an older edition; it is not the current purchased manual.' },
   { id: 'community-pace', label: 'Community discussion · pacing and repetition', kind: 'Anecdotes · January 2026', url: 'https://www.reddit.com/r/gatewaytapes/comments/1qfzcia/starting_the_tapes_do_you_listen_to_one_a_day_is/', section: 'Discussion, 18 January 2026', note: 'Participants describe very different repeat counts and often returning to introductory material. Self-selected reports cannot establish an effective schedule.' },
-  { id: 'community-fatigue', label: 'Community discussion · rest and difficulty progressing', kind: 'Anecdotes · May 2026', url: 'https://www.reddit.com/r/gatewaytapes/comments/1t5pyr7/gateway_and_self_hypnosis_tapespossible_issues/', section: 'Discussion, 6 May 2026', note: 'A participant reports persistent sleepiness and frustration despite frequent practice. More repetition is not proof of benefit; comfort and normal sleep remain useful checks.' },
+] as const;
+
+/** An optional first-month outline, not a timetable prescribed by the publisher. */
+export const FIRST_MONTH_OUTLINE = [
+  { week: 1, title: 'Learn the opening', detail: 'Begin with Orientation. Revisit it until the instructions feel familiar; then try Intro Focus 10. Staying here longer is fine.' },
+  { week: 2, title: 'Make the foundation familiar', detail: 'Repeat Intro Focus 10. Add Advanced Focus 10 only when you are comfortable following the earlier preparation.' },
+  { week: 3, title: 'Choose the next useful practice', detail: 'After the first three exercises feel familiar, try Release and Recharge. Exploration, Sleep follows the earlier exercises and belongs at bedtime.' },
+  { week: 4, title: 'Review before moving on', detail: 'Try Focus 10 Free Flow after the preceding exercises, or revisit guided foundations. Completing Wave I this month is optional.' },
 ] as const;
 
 /** Titles and order follow the current publisher listing; no commercial audio is hosted. */
@@ -30,6 +41,8 @@ export interface PracticePlanOptions {
   material: PracticeMaterial;
   approach: PracticeApproach;
   foundation: FoundationId;
+  weeks?: PracticeWeeks;
+  repeats?: PracticeRepeats;
 }
 export interface PracticeDay {
   day: number;
@@ -58,10 +71,10 @@ export function practiceTimeWindow(time: string, minutes: number): string {
 /** An editable planning aid, not a prescription or a claim of tested OBE induction. */
 export function buildPracticePlan(options: PracticePlanOptions): PracticeDay[] {
   let practiceIndex = 0;
-  return Array.from({ length: 14 }, (_, i) => {
+  return Array.from({ length: (options.weeks ?? 2) * 7 }, (_, i) => {
     const active = ACTIVE_DAYS[options.cadence].includes(i % 7);
     if (!active) return { day: i + 1, week: Math.floor(i / 7) + 1, active, time: 'No audio planned', title: 'Quiet day', detail: 'Keep your usual sleep. Review a note or rest without a recording; nothing needs to be made up.', foundation: null, presetId: null, listenMin: 0, preparationMin: 0, reflectionMin: 0 };
-    const index = options.approach === 'repeat' ? FOUNDATION_TAPES.findIndex(t => t.id === options.foundation) : Math.min(Math.floor(practiceIndex / 2), FOUNDATION_TAPES.length - 1);
+    const index = options.approach === 'repeat' ? FOUNDATION_TAPES.findIndex(t => t.id === options.foundation) : Math.min(Math.floor(practiceIndex / (options.repeats ?? 2)), FOUNDATION_TAPES.length - 1);
     const tape = FOUNDATION_TAPES[Math.max(0, index)];
     practiceIndex += 1;
     const short = options.budget < 45;

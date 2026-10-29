@@ -1,0 +1,18 @@
+{
+  "schema": "oct29-initial-panels-freeze/1",
+  "panels": {
+    "papers": 4,
+    "schumann": 4
+  },
+  "status": "reports-complete-before-comparison",
+  "sourceHashes": {
+    "panel/sources/papers.md": "b6e920db7e66a35597c558572932aab317867d802be4f95e16385310797e44a5",
+    "panel/sources/schumann.md": "1a359c94c7e7f4c0ffc9914a091744f1cfd9585b59ba13c41e4bbaefd5ee9e1f",
+    "panel/math/papers.md": "4100c3fc74c4f3f6d036e040fa149f2b5102a4ef4bedb2121a74f48a1ec31b23",
+    "panel/math/schumann.md": "d4de78599b513c79ad4f30dc89b4547cef4c02f0eae97faddc072f2079d15714",
+    "panel/observations/papers.md": "0aadf63e54bd7f4feef796a157c9a013e2b3d0b59b734d602206a868ca1de9fd",
+    "panel/observations/schumann.md": "a2e029c4525b232e50aa0abb28c30c60254ab16b38bfbd5460537fcb867d9d1d",
+    "panel/skeptic/papers.md": "fef8573da8f9a875e6c8a28cac02b721a6af85f3a9bb548499c8ec779148942b",
+    "panel/skeptic/schumann.md": "ddf84e393b093783859509ca7ea093879bea6db8d09aee09bcda85eb6629f8fb"
+  }
+}

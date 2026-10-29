@@ -1,0 +1,208 @@
+{
+  "reviewer": "math",
+  "cutoff": "2026-10-29",
+  "independent_initial_round": true,
+  "skills": [
+    "newton-analysis-synthesis",
+    "paired-physics-research"
+  ],
+  "external_theorem_verified": false,
+  "lean_executed": false,
+  "openai_math_commit": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+  "sources": [
+    {
+      "id": "P1",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "title": "Building scientific understanding with academic communities",
+      "publication_date": "2026-10-26",
+      "primary": true,
+      "read": "Relevant body and all three scientific-result sections; release-withholding paragraph",
+      "supports": [
+        "announcement scope",
+        "physics artifacts withheld",
+        "existence versus mass-gap wording"
+      ],
+      "verification": "Source statement only"
+    },
+    {
+      "id": "P2",
+      "url": "https://api.github.com/repos/openai/math/commits/main",
+      "pinned_commit": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+      "title": "openai/math current commit",
+      "publication_date": "2026-10-26",
+      "primary": true,
+      "read": "Commit API response; latest SHA and timestamp",
+      "verification": "Commit identity retrieved; no full repository build"
+    },
+    {
+      "id": "P3",
+      "url": "https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf",
+      "title": "Quantum Yang–Mills Theory",
+      "primary": true,
+      "read": "Printed pages 5–7, especially section 4",
+      "supports": [
+        "separate continuum existence and mass-gap requirements",
+        "axiomatic and uniform-limit scope"
+      ],
+      "verification": "Problem formulation, not proof"
+    },
+    {
+      "id": "P4",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/079.md",
+      "title": "Local smoothing formalization documentation",
+      "primary": true,
+      "read": "Entire 25-line document",
+      "supports": [
+        "epsilon-loss theorem statement",
+        "strict consequence ranges"
+      ],
+      "verification": "Documentation statement"
+    },
+    {
+      "id": "P5",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/build/sections/introduction.tex",
+      "title": "Local smoothing manuscript and proof architecture",
+      "primary": true,
+      "read": "Full main paper.tex and introduction.tex; first approximately 6000 characters each of current.tex, energy.tex and transfer.tex, not entire proof",
+      "additional_paths": [
+        "preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/build/paper.tex",
+        "preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/build/sections/current.tex",
+        "preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/build/sections/energy.tex",
+        "preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/build/sections/transfer.tex"
+      ],
+      "supports": [
+        "critical logarithmic bound",
+        "auxiliary potential and boundary-energy architecture"
+      ],
+      "verification": "Partial mathematical reading; not independent proof verification"
+    },
+    {
+      "id": "P6",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/OAI/Analysis/Fourier/LocalSmoothing/Comparator.lean",
+      "title": "Local smoothing actual comparator solution",
+      "primary": true,
+      "read": "Entire solution wrapper, reference target file and comparator JSON; formalization mapping",
+      "additional_paths": [
+        "lean/ComparatorChallenges/LocalSmoothing.lean",
+        "lean/ComparatorChallenges/LocalSmoothing.json",
+        "lean/formalization.yaml"
+      ],
+      "supports": [
+        "reference targets differ from solution",
+        "six mapped results",
+        "permitted axiom configuration"
+      ],
+      "verification": "No Lean invocation; dependency graph not completely audited"
+    },
+    {
+      "id": "P7",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/378.md",
+      "title": "Subexponential SAT/counting formalization documentation",
+      "primary": true,
+      "read": "Entire 17-line document",
+      "supports": [
+        "formalized loglog-squared exponent",
+        "comparison with sharper manuscript"
+      ],
+      "verification": "Documentation statement"
+    },
+    {
+      "id": "P8",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/main_full_version.tex",
+      "title": "The Exponential Time Hypothesis is False",
+      "primary": true,
+      "read": "First approximately 19000 characters of 214857-character source: abstract, introduction, main theorem, corollaries and related work; not entire proof",
+      "supports": [
+        "fixed-k general bound",
+        "sparse bound",
+        "polynomial space",
+        "reduction caveats"
+      ],
+      "verification": "Theorem statement inspected; not independently proved"
+    },
+    {
+      "id": "P9",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/OAI/Algorithms/SubexponentialSAT/SqrtLogSpace/Final.lean",
+      "title": "Exact counting/SAT formalization target and solution",
+      "primary": true,
+      "read": "First approximately 9000 of 11255 characters of Final.lean including main theorem and proof; first approximately 7000 characters of reference file; complete comparator JSON; mapping",
+      "additional_paths": [
+        "lean/ComparatorChallenges/SubexponentialSAT.lean",
+        "lean/ComparatorChallenges/SubexponentialSAT.json",
+        "lean/formalization.yaml"
+      ],
+      "supports": [
+        "actual machine/space/time target",
+        "delegation to supporting lemmas"
+      ],
+      "verification": "No Lean invocation; not whole dependency graph"
+    },
+    {
+      "id": "S1",
+      "url": "https://ntrs.nasa.gov/api/citations/20120000051/downloads/20120000051.pdf",
+      "title": "Observation of Schumann Resonances in the Earth's Ionosphere",
+      "authors": [
+        "Fernando Simões",
+        "Robert Pfaff",
+        "Henry Freudenreich"
+      ],
+      "primary": true,
+      "read": "PDF pages 2–4, ideal formula, observational frequencies and losses",
+      "supports": [
+        "ideal thin-shell mode equation",
+        "approximate historical frequencies",
+        "lossy cavity"
+      ],
+      "verification": "Historical source; no October 2026 observation"
+    },
+    {
+      "id": "S2",
+      "url": "https://angeo.copernicus.org/articles/44/949/2026/",
+      "pdf_url": "https://angeo.copernicus.org/articles/44/949/2026/angeo-44-949-2026.pdf",
+      "title": "Deducing spatial characteristics of global thunderstorm activity using the observed Schumann resonance frequencies",
+      "authors": [
+        "Oleksandr Koloskov",
+        "Masashi Hayakawa",
+        "Alexander P. Nickolaenko"
+      ],
+      "publication_date": "2026-09-18",
+      "primary": true,
+      "read": "HTML introduction and sections 1–4 plus Appendix A beginning; PDF opening pages, not independently resolved corresponding equation typography",
+      "supports": [
+        "forced maxima versus eigenvalues",
+        "source geometry and conditional inference"
+      ],
+      "issues": [
+        {
+          "location": "HTML near Equation (1)",
+          "finding": "Preceding text defines Y=ln W; following definitions duplicate X=ln(df2H) as Y=ln(df2H)",
+          "scope": "Inspected HTML transcription inconsistency; not a disproof of paper"
+        },
+        {
+          "location": "HTML Equation (2)",
+          "finding": "Distance-unit/log expression needs reconciliation before reuse",
+          "scope": "Unresolved interpretation; no empirical inversion implemented"
+        }
+      ],
+      "verification": "Source body and equations inspected; no raw data reanalysis"
+    }
+  ],
+  "own_checks": {
+    "type": "Python arithmetic and analytic derivations",
+    "measurements": false,
+    "inputs": {
+      "c_m_per_s": 299792458,
+      "R_m": 6371000,
+      "Q_example": 5
+    },
+    "ideal_frequency_Hz": [
+      10.591274580059801,
+      18.344625689576297,
+      25.943218446856694,
+      33.49255099723234,
+      41.01983006368156
+    ],
+    "vacuum_lambda_7p83_Hz_km": 38287.670242656444,
+    "scope": "Initial model baselines only; proposed later simulation rounds not executed"
+  }
+}

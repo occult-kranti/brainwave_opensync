@@ -1,0 +1,2124 @@
+{
+  "schema": "mub-download-recipe/1",
+  "repository": "openai/math",
+  "revision": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+  "license": "Apache-2.0",
+  "base": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run",
+  "files": [
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/check_records.py",
+      "path": "execution/check_records.py",
+      "expectedBytes": 18229,
+      "expectedGitBlob": "174fcaa52b39eababe7121aacdd19c68b716ad8e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/check_records.py"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/commands.json",
+      "path": "execution/commands.json",
+      "expectedBytes": 46908,
+      "expectedGitBlob": "d0ab6f49d4ae10a95b46edffec18a6f98b49adcc",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/commands.json"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/bad0.txt",
+      "path": "execution/data/bad0.txt",
+      "expectedBytes": 0,
+      "expectedGitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/bad0.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/bad1.txt",
+      "path": "execution/data/bad1.txt",
+      "expectedBytes": 0,
+      "expectedGitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/bad1.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/bad2.txt",
+      "path": "execution/data/bad2.txt",
+      "expectedBytes": 0,
+      "expectedGitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/bad2.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/bad3.txt",
+      "path": "execution/data/bad3.txt",
+      "expectedBytes": 0,
+      "expectedGitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/bad3.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/centers.txt",
+      "path": "execution/data/centers.txt",
+      "expectedBytes": 7339546,
+      "expectedGitBlob": "f6861988d31c9a39962ca594717755341f5dfa1a",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/centers.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/coarse0.bin",
+      "path": "execution/data/coarse0.bin",
+      "expectedBytes": 1150968,
+      "expectedGitBlob": "f71881e5d4914af5c2c297c7f473403dbf39a2e2",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/coarse0.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/coarse1.bin",
+      "path": "execution/data/coarse1.bin",
+      "expectedBytes": 1166048,
+      "expectedGitBlob": "24dde80c855caf880a07906c5a43b3c2ea31ae14",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/coarse1.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/coarse2.bin",
+      "path": "execution/data/coarse2.bin",
+      "expectedBytes": 1140412,
+      "expectedGitBlob": "6a643c2bd057750f202e067b04e9b836e14bfb63",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/coarse2.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/coarse3.bin",
+      "path": "execution/data/coarse3.bin",
+      "expectedBytes": 1187160,
+      "expectedGitBlob": "44904b9b5976f9cbae23d477c9839a69002acf51",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/coarse3.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1.bin",
+      "path": "execution/data/fb1.bin",
+      "expectedBytes": 1699524,
+      "expectedGitBlob": "a75464dc617cdba3d62b802491c5e2fcba218ab5",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1bad.bin",
+      "path": "execution/data/fb1bad.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1bad.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1cbad0.bin",
+      "path": "execution/data/fb1cbad0.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1cbad0.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1cbad1.bin",
+      "path": "execution/data/fb1cbad1.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1cbad1.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1cbad2.bin",
+      "path": "execution/data/fb1cbad2.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1cbad2.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1cbad3.bin",
+      "path": "execution/data/fb1cbad3.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fb1cbad3.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fine.bin",
+      "path": "execution/data/fine.bin",
+      "expectedBytes": 33746388,
+      "expectedGitBlob": "6f603e17d0b726a63974b9aa4519a9636711710a",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/fine.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/finebad.bin",
+      "path": "execution/data/finebad.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/finebad.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/mid.bin",
+      "path": "execution/data/mid.bin",
+      "expectedBytes": 903656,
+      "expectedGitBlob": "b27478a0a0366d89959f019d70d5bcf8a40cdf17",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/mid.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/midbad.bin",
+      "path": "execution/data/midbad.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/midbad.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/A0.txt",
+      "path": "execution/results/A0.txt",
+      "expectedBytes": 1828,
+      "expectedGitBlob": "e64e4aac9aae6f544cd39b2adbc5583156dcc72e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/A0.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/A1.txt",
+      "path": "execution/results/A1.txt",
+      "expectedBytes": 1828,
+      "expectedGitBlob": "e06c089ba4f2c8011f6daf9854bb4074fd5a87b5",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/A1.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/A2.txt",
+      "path": "execution/results/A2.txt",
+      "expectedBytes": 1828,
+      "expectedGitBlob": "c9724b25a1ed7b19e6291c2df8f677c2c7ec80a7",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/A2.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/A3.txt",
+      "path": "execution/results/A3.txt",
+      "expectedBytes": 1828,
+      "expectedGitBlob": "179ea161456ae7c808c4f99e1c5f43218941b086",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/A3.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/Bfine.txt",
+      "path": "execution/results/Bfine.txt",
+      "expectedBytes": 1825,
+      "expectedGitBlob": "687fa9a86779c0a76c4de3fa9dd8dc9e127fa910",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/Bfine.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/Bmid.txt",
+      "path": "execution/results/Bmid.txt",
+      "expectedBytes": 8836,
+      "expectedGitBlob": "eb60ddcc4bf456e43eb18b5bccba9b0f4dc7c733",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/Bmid.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.Bfallback.txt",
+      "path": "execution/results/C.Bfallback.txt",
+      "expectedBytes": 498,
+      "expectedGitBlob": "09c56240d46e35c5dddcbddb5df770b65abda469",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.Bfallback.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch0.txt",
+      "path": "execution/results/C.batch0.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch0.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch1.txt",
+      "path": "execution/results/C.batch1.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch1.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch10.txt",
+      "path": "execution/results/C.batch10.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "9938a795eb3d887af34e8e18432163a8d36c9b94",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch10.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch11.txt",
+      "path": "execution/results/C.batch11.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch11.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch12.txt",
+      "path": "execution/results/C.batch12.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch12.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch13.txt",
+      "path": "execution/results/C.batch13.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch13.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch14.txt",
+      "path": "execution/results/C.batch14.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch14.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch15.txt",
+      "path": "execution/results/C.batch15.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch15.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch16.txt",
+      "path": "execution/results/C.batch16.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch16.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch17.txt",
+      "path": "execution/results/C.batch17.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch17.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch18.txt",
+      "path": "execution/results/C.batch18.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch18.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch19.txt",
+      "path": "execution/results/C.batch19.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch19.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch2.txt",
+      "path": "execution/results/C.batch2.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch2.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch20.txt",
+      "path": "execution/results/C.batch20.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch20.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch21.txt",
+      "path": "execution/results/C.batch21.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch21.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch22.txt",
+      "path": "execution/results/C.batch22.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch22.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch23.txt",
+      "path": "execution/results/C.batch23.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch23.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch24.txt",
+      "path": "execution/results/C.batch24.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch24.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch25.txt",
+      "path": "execution/results/C.batch25.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch25.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch26.txt",
+      "path": "execution/results/C.batch26.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch26.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch27.txt",
+      "path": "execution/results/C.batch27.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch27.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch28.txt",
+      "path": "execution/results/C.batch28.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch28.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch29.txt",
+      "path": "execution/results/C.batch29.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch29.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch3.txt",
+      "path": "execution/results/C.batch3.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "ca4190cc7e3c414dc241909b86d975f9bb23c6da",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch3.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch30.txt",
+      "path": "execution/results/C.batch30.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch30.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch31.txt",
+      "path": "execution/results/C.batch31.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch31.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch32.txt",
+      "path": "execution/results/C.batch32.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch32.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch33.txt",
+      "path": "execution/results/C.batch33.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch33.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch34.txt",
+      "path": "execution/results/C.batch34.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch34.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch35.txt",
+      "path": "execution/results/C.batch35.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch35.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch36.txt",
+      "path": "execution/results/C.batch36.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch36.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch37.txt",
+      "path": "execution/results/C.batch37.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch37.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch38.txt",
+      "path": "execution/results/C.batch38.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch38.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch39.txt",
+      "path": "execution/results/C.batch39.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch39.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch4.txt",
+      "path": "execution/results/C.batch4.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "1567e0cc718e39dfa43173936d6dd9a8c63a279a",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch4.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch40.txt",
+      "path": "execution/results/C.batch40.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch40.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch41.txt",
+      "path": "execution/results/C.batch41.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch41.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch42.txt",
+      "path": "execution/results/C.batch42.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch42.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch43.txt",
+      "path": "execution/results/C.batch43.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch43.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch44.txt",
+      "path": "execution/results/C.batch44.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch44.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch45.txt",
+      "path": "execution/results/C.batch45.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch45.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch46.txt",
+      "path": "execution/results/C.batch46.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch46.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch47.txt",
+      "path": "execution/results/C.batch47.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch47.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch48.txt",
+      "path": "execution/results/C.batch48.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch48.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch49.txt",
+      "path": "execution/results/C.batch49.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch49.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch5.txt",
+      "path": "execution/results/C.batch5.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "83a261337be4b4ce5250955c90f43964c2e0e225",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch5.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch50.txt",
+      "path": "execution/results/C.batch50.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch50.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch51.txt",
+      "path": "execution/results/C.batch51.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch51.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch52.txt",
+      "path": "execution/results/C.batch52.txt",
+      "expectedBytes": 137,
+      "expectedGitBlob": "3e29c4af5744893c7aea2f5b53b8bebd2506fab0",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch52.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch53.txt",
+      "path": "execution/results/C.batch53.txt",
+      "expectedBytes": 139,
+      "expectedGitBlob": "5a607bd886ac27b715edffb333c05d3c946f9147",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch53.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch54.txt",
+      "path": "execution/results/C.batch54.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch54.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch55.txt",
+      "path": "execution/results/C.batch55.txt",
+      "expectedBytes": 135,
+      "expectedGitBlob": "b75de21627d7969791795fe068aeae50cf6619aa",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch55.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch56.txt",
+      "path": "execution/results/C.batch56.txt",
+      "expectedBytes": 139,
+      "expectedGitBlob": "e10cbc0f197d89a7d0af953821e748205a25d397",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch56.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch57.txt",
+      "path": "execution/results/C.batch57.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch57.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch58.txt",
+      "path": "execution/results/C.batch58.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch58.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch59.txt",
+      "path": "execution/results/C.batch59.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch59.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch6.txt",
+      "path": "execution/results/C.batch6.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "c2506e3ecc11ba570936aa62545e27c8b1f5f7a6",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch6.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch60.txt",
+      "path": "execution/results/C.batch60.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch60.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch61.txt",
+      "path": "execution/results/C.batch61.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch61.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch62.txt",
+      "path": "execution/results/C.batch62.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch62.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch63.txt",
+      "path": "execution/results/C.batch63.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch63.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch64.txt",
+      "path": "execution/results/C.batch64.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch64.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch65.txt",
+      "path": "execution/results/C.batch65.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch65.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch66.txt",
+      "path": "execution/results/C.batch66.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch66.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch67.txt",
+      "path": "execution/results/C.batch67.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch67.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch68.txt",
+      "path": "execution/results/C.batch68.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch68.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch69.txt",
+      "path": "execution/results/C.batch69.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch69.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch7.txt",
+      "path": "execution/results/C.batch7.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "5648476437760477e5987802249961a949cbd05d",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch7.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch70.txt",
+      "path": "execution/results/C.batch70.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch70.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch71.txt",
+      "path": "execution/results/C.batch71.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch71.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch72.txt",
+      "path": "execution/results/C.batch72.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch72.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch73.txt",
+      "path": "execution/results/C.batch73.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch73.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch74.txt",
+      "path": "execution/results/C.batch74.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch74.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch75.txt",
+      "path": "execution/results/C.batch75.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch75.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch76.txt",
+      "path": "execution/results/C.batch76.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch76.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch77.txt",
+      "path": "execution/results/C.batch77.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch77.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch78.txt",
+      "path": "execution/results/C.batch78.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "ca4190cc7e3c414dc241909b86d975f9bb23c6da",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch78.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch79.txt",
+      "path": "execution/results/C.batch79.txt",
+      "expectedBytes": 137,
+      "expectedGitBlob": "c9ecf2e6209a85f0d9458a80bceb28fa903535af",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch79.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch8.txt",
+      "path": "execution/results/C.batch8.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "6150f75c45c6799b11f479673c5b985eafa8bbff",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch8.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch80.txt",
+      "path": "execution/results/C.batch80.txt",
+      "expectedBytes": 139,
+      "expectedGitBlob": "5f610ac52c013a1793fbb4c503995f2d53f771bf",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch80.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch81.txt",
+      "path": "execution/results/C.batch81.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch81.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch82.txt",
+      "path": "execution/results/C.batch82.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch82.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch83.txt",
+      "path": "execution/results/C.batch83.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch83.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch84.txt",
+      "path": "execution/results/C.batch84.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "6150f75c45c6799b11f479673c5b985eafa8bbff",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch84.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch85.txt",
+      "path": "execution/results/C.batch85.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch85.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch86.txt",
+      "path": "execution/results/C.batch86.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch86.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch87.txt",
+      "path": "execution/results/C.batch87.txt",
+      "expectedBytes": 91,
+      "expectedGitBlob": "ce0fdcb84ab450fe11729aa9516d6d6ce0322cc7",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch87.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch9.txt",
+      "path": "execution/results/C.batch9.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "4c500187de7bff1999caf16babcc2f25c4bc9603",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.batch9.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.final0.txt",
+      "path": "execution/results/C.final0.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "ec990c118e91cd6dc40e8e185b449b4ae6100a38",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.final0.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.final1.txt",
+      "path": "execution/results/C.final1.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "ec990c118e91cd6dc40e8e185b449b4ae6100a38",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.final1.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.final2.txt",
+      "path": "execution/results/C.final2.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "ec990c118e91cd6dc40e8e185b449b4ae6100a38",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.final2.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.final3.txt",
+      "path": "execution/results/C.final3.txt",
+      "expectedBytes": 133,
+      "expectedGitBlob": "14f9f2aef2e3d3d3c0a98507ced3d7af4d4786a2",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/C.final3.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/covrun.txt",
+      "path": "execution/results/covrun.txt",
+      "expectedBytes": 75,
+      "expectedGitBlob": "636dd2ce4e479f54d5f1253f28d0ad91a520bff6",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/results/covrun.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad0.bin",
+      "path": "execution/data/batches/bad0.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad0.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad1.bin",
+      "path": "execution/data/batches/bad1.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad1.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad10.bin",
+      "path": "execution/data/batches/bad10.bin",
+      "expectedBytes": 1516,
+      "expectedGitBlob": "5939ba10e6605bf3b259a2437772c101e1e8ba6b",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad10.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad11.bin",
+      "path": "execution/data/batches/bad11.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad11.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad12.bin",
+      "path": "execution/data/batches/bad12.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad12.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad13.bin",
+      "path": "execution/data/batches/bad13.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad13.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad14.bin",
+      "path": "execution/data/batches/bad14.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad14.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad15.bin",
+      "path": "execution/data/batches/bad15.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad15.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad16.bin",
+      "path": "execution/data/batches/bad16.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad16.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad17.bin",
+      "path": "execution/data/batches/bad17.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad17.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad18.bin",
+      "path": "execution/data/batches/bad18.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad18.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad19.bin",
+      "path": "execution/data/batches/bad19.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad19.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad2.bin",
+      "path": "execution/data/batches/bad2.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad2.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad20.bin",
+      "path": "execution/data/batches/bad20.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad20.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad21.bin",
+      "path": "execution/data/batches/bad21.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad21.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad22.bin",
+      "path": "execution/data/batches/bad22.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad22.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad23.bin",
+      "path": "execution/data/batches/bad23.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad23.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad24.bin",
+      "path": "execution/data/batches/bad24.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad24.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad25.bin",
+      "path": "execution/data/batches/bad25.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad25.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad26.bin",
+      "path": "execution/data/batches/bad26.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad26.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad27.bin",
+      "path": "execution/data/batches/bad27.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad27.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad28.bin",
+      "path": "execution/data/batches/bad28.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad28.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad29.bin",
+      "path": "execution/data/batches/bad29.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad29.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad3.bin",
+      "path": "execution/data/batches/bad3.bin",
+      "expectedBytes": 3024,
+      "expectedGitBlob": "c156e22e2f3a07d5d282acbf46768ac10bbafce1",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad3.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad30.bin",
+      "path": "execution/data/batches/bad30.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad30.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad31.bin",
+      "path": "execution/data/batches/bad31.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad31.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad32.bin",
+      "path": "execution/data/batches/bad32.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad32.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad33.bin",
+      "path": "execution/data/batches/bad33.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad33.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad34.bin",
+      "path": "execution/data/batches/bad34.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad34.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad35.bin",
+      "path": "execution/data/batches/bad35.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad35.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad36.bin",
+      "path": "execution/data/batches/bad36.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad36.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad37.bin",
+      "path": "execution/data/batches/bad37.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad37.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad38.bin",
+      "path": "execution/data/batches/bad38.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad38.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad39.bin",
+      "path": "execution/data/batches/bad39.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad39.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad4.bin",
+      "path": "execution/data/batches/bad4.bin",
+      "expectedBytes": 6040,
+      "expectedGitBlob": "9834645edc41d35ea3cb74f9cbb33e28eb45ca49",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad4.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad40.bin",
+      "path": "execution/data/batches/bad40.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad40.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad41.bin",
+      "path": "execution/data/batches/bad41.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad41.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad42.bin",
+      "path": "execution/data/batches/bad42.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad42.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad43.bin",
+      "path": "execution/data/batches/bad43.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad43.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad44.bin",
+      "path": "execution/data/batches/bad44.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad44.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad45.bin",
+      "path": "execution/data/batches/bad45.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad45.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad46.bin",
+      "path": "execution/data/batches/bad46.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad46.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad47.bin",
+      "path": "execution/data/batches/bad47.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad47.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad48.bin",
+      "path": "execution/data/batches/bad48.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad48.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad49.bin",
+      "path": "execution/data/batches/bad49.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad49.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad5.bin",
+      "path": "execution/data/batches/bad5.bin",
+      "expectedBytes": 7548,
+      "expectedGitBlob": "e78f31650478d26b8ab873a4eed3fb15fc12ffa1",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad5.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad50.bin",
+      "path": "execution/data/batches/bad50.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad50.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad51.bin",
+      "path": "execution/data/batches/bad51.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad51.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad52.bin",
+      "path": "execution/data/batches/bad52.bin",
+      "expectedBytes": 43740,
+      "expectedGitBlob": "44a50a17ff8c2e7c584cc3697c4d4c0c55d7cfc5",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad52.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad53.bin",
+      "path": "execution/data/batches/bad53.bin",
+      "expectedBytes": 48264,
+      "expectedGitBlob": "2767be0503090e6ad02eca96a23a6989ce62d914",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad53.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad54.bin",
+      "path": "execution/data/batches/bad54.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad54.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad55.bin",
+      "path": "execution/data/batches/bad55.bin",
+      "expectedBytes": 34692,
+      "expectedGitBlob": "aca78cdbb07b4a17a207b8f353445196ccfd3eb6",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad55.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad56.bin",
+      "path": "execution/data/batches/bad56.bin",
+      "expectedBytes": 24136,
+      "expectedGitBlob": "1cedb5b2be8a97b23ba23eee357e887d835907ce",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad56.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad57.bin",
+      "path": "execution/data/batches/bad57.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad57.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad58.bin",
+      "path": "execution/data/batches/bad58.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad58.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad59.bin",
+      "path": "execution/data/batches/bad59.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad59.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad6.bin",
+      "path": "execution/data/batches/bad6.bin",
+      "expectedBytes": 12072,
+      "expectedGitBlob": "47436c92d0166dfcac19ef586047ee5197c7f5a8",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad6.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad60.bin",
+      "path": "execution/data/batches/bad60.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad60.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad61.bin",
+      "path": "execution/data/batches/bad61.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad61.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad62.bin",
+      "path": "execution/data/batches/bad62.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad62.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad63.bin",
+      "path": "execution/data/batches/bad63.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad63.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad64.bin",
+      "path": "execution/data/batches/bad64.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad64.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad65.bin",
+      "path": "execution/data/batches/bad65.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad65.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad66.bin",
+      "path": "execution/data/batches/bad66.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad66.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad67.bin",
+      "path": "execution/data/batches/bad67.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad67.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad68.bin",
+      "path": "execution/data/batches/bad68.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad68.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad69.bin",
+      "path": "execution/data/batches/bad69.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad69.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad7.bin",
+      "path": "execution/data/batches/bad7.bin",
+      "expectedBytes": 9056,
+      "expectedGitBlob": "7757d5e01cd8274d0224889335a54d5ec830ee5d",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad7.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad70.bin",
+      "path": "execution/data/batches/bad70.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad70.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad71.bin",
+      "path": "execution/data/batches/bad71.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad71.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad72.bin",
+      "path": "execution/data/batches/bad72.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad72.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad73.bin",
+      "path": "execution/data/batches/bad73.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad73.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad74.bin",
+      "path": "execution/data/batches/bad74.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad74.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad75.bin",
+      "path": "execution/data/batches/bad75.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad75.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad76.bin",
+      "path": "execution/data/batches/bad76.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad76.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad77.bin",
+      "path": "execution/data/batches/bad77.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad77.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad78.bin",
+      "path": "execution/data/batches/bad78.bin",
+      "expectedBytes": 3024,
+      "expectedGitBlob": "c07734c1d26003edf6e2e739cad53a126f1b9cb5",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad78.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad79.bin",
+      "path": "execution/data/batches/bad79.bin",
+      "expectedBytes": 21120,
+      "expectedGitBlob": "48b3a243722d2e4ee1700bb278caee0c7ea3c10a",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad79.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad8.bin",
+      "path": "execution/data/batches/bad8.bin",
+      "expectedBytes": 6040,
+      "expectedGitBlob": "398c63f7378e4dcbb85dc29bea8c73cd11a00b5c",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad8.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad80.bin",
+      "path": "execution/data/batches/bad80.bin",
+      "expectedBytes": 19612,
+      "expectedGitBlob": "2af008deb88be7f4de71e3c440cbb68b5a329f49",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad80.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad81.bin",
+      "path": "execution/data/batches/bad81.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad81.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad82.bin",
+      "path": "execution/data/batches/bad82.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad82.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad83.bin",
+      "path": "execution/data/batches/bad83.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad83.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad84.bin",
+      "path": "execution/data/batches/bad84.bin",
+      "expectedBytes": 6040,
+      "expectedGitBlob": "912a9c4242e423f4dbd9c6ceb3a51928a185842d",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad84.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad85.bin",
+      "path": "execution/data/batches/bad85.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad85.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad86.bin",
+      "path": "execution/data/batches/bad86.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad86.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad87.bin",
+      "path": "execution/data/batches/bad87.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad87.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad9.bin",
+      "path": "execution/data/batches/bad9.bin",
+      "expectedBytes": 8,
+      "expectedGitBlob": "1b1cb4d44c57c2d7a5122870fa6ac3e62ff7e94e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/bad9.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f0.bin",
+      "path": "execution/data/batches/f0.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "221f5490c29e7adc773405e7ada997c1e6a9d466",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f0.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f1.bin",
+      "path": "execution/data/batches/f1.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "a2cb9b8acba4e9bc3bbd65d9350380be838c8978",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f1.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f10.bin",
+      "path": "execution/data/batches/f10.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "98b5428d668abe122454aa00351b88c1da405404",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f10.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f11.bin",
+      "path": "execution/data/batches/f11.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "691006502a4df10ffd60fd9b317468afa4390b20",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f11.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f12.bin",
+      "path": "execution/data/batches/f12.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "82c0dd219dca5b712b94b1ce35c07605afaab26e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f12.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f13.bin",
+      "path": "execution/data/batches/f13.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "3e9c127cd40a097b53e7f150d2d4e0776281c20c",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f13.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f14.bin",
+      "path": "execution/data/batches/f14.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "fee205bcd0ab7e0318cff928d1e7c67cc4c81182",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f14.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f15.bin",
+      "path": "execution/data/batches/f15.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "1502359f7697f5d55db8066ea3ad8c5c24eef254",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f15.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f16.bin",
+      "path": "execution/data/batches/f16.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "91fabd5fa0e684676696522a35301d60589a11d4",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f16.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f17.bin",
+      "path": "execution/data/batches/f17.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "92a0a1a92c49f9bcea43b16a65809536f6df41ac",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f17.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f18.bin",
+      "path": "execution/data/batches/f18.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "9d921286950db98e3eaea2624ae11d2559028962",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f18.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f19.bin",
+      "path": "execution/data/batches/f19.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "2bb4c5151ca073b4fba23cb7c67608477818510c",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f19.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f2.bin",
+      "path": "execution/data/batches/f2.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "469b8fa06d8158f890ca40c20332b82fa22fe417",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f2.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f20.bin",
+      "path": "execution/data/batches/f20.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "a7d5e083978ae4d9397dbed0b229b28b18489c58",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f20.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f21.bin",
+      "path": "execution/data/batches/f21.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "59b0b8f9238ab71a7f0fb45fd20f39a73d1f112b",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f21.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f22.bin",
+      "path": "execution/data/batches/f22.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "e524129421380b5f1fa2d241c0b99dfbc1caefd8",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f22.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f23.bin",
+      "path": "execution/data/batches/f23.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "5b5c47a5545d9fec23079b13d68504cd3d2b27e5",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f23.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f24.bin",
+      "path": "execution/data/batches/f24.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "9a0a390dd55f63d648c4957b757537493edb90d4",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f24.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f25.bin",
+      "path": "execution/data/batches/f25.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "ea4ab5603624198f0d50c399d249a6b03ceb4ec9",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f25.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f26.bin",
+      "path": "execution/data/batches/f26.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "164727b18c53ab6b3028b8d37b66b704749a8e7e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f26.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f27.bin",
+      "path": "execution/data/batches/f27.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "6d2f542005a5704952c156180faa5b06b7f51696",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f27.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f28.bin",
+      "path": "execution/data/batches/f28.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "dd2b06a3dd45a9a6a9211058588e81421a30d62a",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f28.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f29.bin",
+      "path": "execution/data/batches/f29.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "17998f492fa30ed6e305eb9eb425eff4821ecb1e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f29.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f3.bin",
+      "path": "execution/data/batches/f3.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "9065c5d1d5b174cea30c27c15768e9a91861499b",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f3.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f30.bin",
+      "path": "execution/data/batches/f30.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "16cee8bd647142d0fd30c88129c051961bf41a31",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f30.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f31.bin",
+      "path": "execution/data/batches/f31.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "13573a9ffb8a2ce10d130e4898c65f8d3af0caa6",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f31.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f32.bin",
+      "path": "execution/data/batches/f32.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "03e8d207647009f96adea3d4677f3af71226cff3",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f32.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f33.bin",
+      "path": "execution/data/batches/f33.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "1929fb81b65cd043760a8defe517e3e764030bfe",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f33.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f34.bin",
+      "path": "execution/data/batches/f34.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "57f6c7c5f159ba8c315773a6e8c7e1dcdcfe7308",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f34.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f35.bin",
+      "path": "execution/data/batches/f35.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "e725212378b1f4392b73fbd2ffa76be5e68badb7",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f35.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f36.bin",
+      "path": "execution/data/batches/f36.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "de90dd0cb70e8a78525e88ac50d2c3851b2ee52a",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f36.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f37.bin",
+      "path": "execution/data/batches/f37.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "c938146d2476c4856d883210be835ab606350ac5",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f37.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f38.bin",
+      "path": "execution/data/batches/f38.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "954ee862812f34d17e7203af459a3cc0cf59b61a",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f38.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f39.bin",
+      "path": "execution/data/batches/f39.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "d6b806f2efef3785ae3723de7260c6bc453cca72",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f39.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f4.bin",
+      "path": "execution/data/batches/f4.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "aa174dbfacb1ae7823915c4e4bc92c1322559398",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f4.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f40.bin",
+      "path": "execution/data/batches/f40.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "cb49e09231b0dd8c9d0aaf561599cdbe707c8ecf",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f40.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f41.bin",
+      "path": "execution/data/batches/f41.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "4b24ad3c064c1d0e9f6cfe60ff527af22634b9ae",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f41.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f42.bin",
+      "path": "execution/data/batches/f42.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "a21f0a891379da0f5a8fcd390403bf6f3919be3c",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f42.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f43.bin",
+      "path": "execution/data/batches/f43.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "ba97fab8157c389e63dbbb4035f984ca2087b04d",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f43.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f44.bin",
+      "path": "execution/data/batches/f44.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "20bd95bf61aeb49fbe8e1f8ee19a1dc4a6a24620",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f44.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f45.bin",
+      "path": "execution/data/batches/f45.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "73b3453e0e3980f0a0a2f7e3d2a79a2a261e5e35",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f45.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f46.bin",
+      "path": "execution/data/batches/f46.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "bb1fedd92ca71efee7bb2d751bef85cf27fd3c1d",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f46.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f47.bin",
+      "path": "execution/data/batches/f47.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "615966971496c09da577308d433efb423b7be0bd",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f47.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f48.bin",
+      "path": "execution/data/batches/f48.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "d52e26538a93b9f8d4943eb97c3a718b08bfa05f",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f48.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f49.bin",
+      "path": "execution/data/batches/f49.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "9894834bb633843293c19a2b77edeeefb5bc8682",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f49.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f5.bin",
+      "path": "execution/data/batches/f5.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "7ed09f599c4482c6f38ea8b8988f98ddb1742588",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f5.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f50.bin",
+      "path": "execution/data/batches/f50.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "e98e85041d37213e52d1b5ee16e8e227abf82cbb",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f50.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f51.bin",
+      "path": "execution/data/batches/f51.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "5a5a81f4ecf7d751f2e3ce42fb9039bde58153ef",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f51.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f52.bin",
+      "path": "execution/data/batches/f52.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "6b4ca958fb78db1c88e34ca2f66613b2b14012e9",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f52.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f53.bin",
+      "path": "execution/data/batches/f53.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "99627daaacd3dfea44ebb55ab453ede75f9f1343",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f53.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f54.bin",
+      "path": "execution/data/batches/f54.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "fa05c9dd8194b87ae5d104a0018728ad416ee4ac",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f54.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f55.bin",
+      "path": "execution/data/batches/f55.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "8916ff6bf1f13dcbdd7726a770e2857704973ed8",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f55.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f56.bin",
+      "path": "execution/data/batches/f56.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "618f1b608272f5384aedcb58ca7278d21304b08d",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f56.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f57.bin",
+      "path": "execution/data/batches/f57.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "7faa83959aedd4ac4cee596d94f1dea83fe25fa9",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f57.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f58.bin",
+      "path": "execution/data/batches/f58.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "e4da22f332c69331f33ec25642329de580b9b387",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f58.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f59.bin",
+      "path": "execution/data/batches/f59.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "089e6c8040926f93ef69e2dd230397215a22bdbc",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f59.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f6.bin",
+      "path": "execution/data/batches/f6.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "2703093d009e2da22b7e03dd2c11593c508499ed",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f6.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f60.bin",
+      "path": "execution/data/batches/f60.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "d0eecf668ce02b5a3dc3a2319e74c7199cbab140",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f60.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f61.bin",
+      "path": "execution/data/batches/f61.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "b2b5c4b0ef3d45e269448623aa5452305cecfb36",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f61.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f62.bin",
+      "path": "execution/data/batches/f62.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "13e59127d080f1eed492747d34113846a02ff08d",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f62.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f63.bin",
+      "path": "execution/data/batches/f63.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "e70c374416446b8fcdb1e0cfc0f2aa4e7495d325",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f63.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f64.bin",
+      "path": "execution/data/batches/f64.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "c34b59cbaf432815e218fbf2d0ae7dfd516a5970",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f64.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f65.bin",
+      "path": "execution/data/batches/f65.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "bf33d9cc8a543dd811efe9b7fb48e8d5410018f8",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f65.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f66.bin",
+      "path": "execution/data/batches/f66.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "f0822884b4e10ce4d132129f40403a0269b5e418",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f66.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f67.bin",
+      "path": "execution/data/batches/f67.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "f665bd587f85c65641aaa0d062ebab720841ed3f",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f67.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f68.bin",
+      "path": "execution/data/batches/f68.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "f2f69fdb6791405717ec5f6f8f1d7254411b0e8c",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f68.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f69.bin",
+      "path": "execution/data/batches/f69.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "a17ae82c77876444d8a65725f08debfd7d9c3299",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f69.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f7.bin",
+      "path": "execution/data/batches/f7.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "202e1347137db959c1e24ecbf421dc629a1199f2",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f7.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f70.bin",
+      "path": "execution/data/batches/f70.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "ac812d4b082c0d9bb8bae838bc3bf866e29b68f7",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f70.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f71.bin",
+      "path": "execution/data/batches/f71.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "614cceef936f8a03743dc6ed531a564746655333",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f71.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f72.bin",
+      "path": "execution/data/batches/f72.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "c220b6b2c65c18d6364f01ae7edeecdf827d5216",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f72.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f73.bin",
+      "path": "execution/data/batches/f73.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "abb2275e8d3ae91d4648a4e0b4b854965f7b673e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f73.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f74.bin",
+      "path": "execution/data/batches/f74.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "d8d75ad29c87575a3596ee3f2ada60a2e67a0b63",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f74.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f75.bin",
+      "path": "execution/data/batches/f75.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "a99b727db4f77d7cf9bb41f2210d252455e35755",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f75.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f76.bin",
+      "path": "execution/data/batches/f76.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "b2d3b134d1a10ef43a8b84d5de643e6d9b4c184e",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f76.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f77.bin",
+      "path": "execution/data/batches/f77.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "df68b660105f487d97ea750d7a404211944336c1",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f77.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f78.bin",
+      "path": "execution/data/batches/f78.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "353f9619912c3a2a7d8a30d1c9134f8fb896ef62",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f78.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f79.bin",
+      "path": "execution/data/batches/f79.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "71bfc80140a9d02b14bfc545c1246a52c853308f",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f79.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f8.bin",
+      "path": "execution/data/batches/f8.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "cee6d83e15c2eba0f0d1adf315bdd4f38e8028f9",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f8.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f80.bin",
+      "path": "execution/data/batches/f80.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "f818821255d570604d1a17abe7abf39c6401aba5",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f80.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f81.bin",
+      "path": "execution/data/batches/f81.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "fdcaaebfb9703c0fa98824390f54d676f0f8deab",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f81.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f82.bin",
+      "path": "execution/data/batches/f82.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "12d8b00433550d7c873c99462470809ee9544a13",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f82.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f83.bin",
+      "path": "execution/data/batches/f83.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "f8b73894c4b36b54c49028231f49c77a45b5eaa6",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f83.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f84.bin",
+      "path": "execution/data/batches/f84.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "1c105be83bb449346a014a3b6336c381d88661c5",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f84.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f85.bin",
+      "path": "execution/data/batches/f85.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "90c58d4b825b861d1b20dc86aef86b8336ea9cb3",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f85.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f86.bin",
+      "path": "execution/data/batches/f86.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "898691e046b1a2d2dd2e4cbc6dbe5b73886dc499",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f86.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f87.bin",
+      "path": "execution/data/batches/f87.bin",
+      "expectedBytes": 160212,
+      "expectedGitBlob": "84507395c25dd80664f76e1dd610d43c1e51548c",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f87.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f9.bin",
+      "path": "execution/data/batches/f9.bin",
+      "expectedBytes": 386056,
+      "expectedGitBlob": "7fe717461f9bfd415a3ba2ba8cf3778f3fe8120c",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/f9.bin"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/fdone.txt",
+      "path": "execution/data/batches/fdone.txt",
+      "expectedBytes": 9,
+      "expectedGitBlob": "0efc9f3f66220ad9bf09bb659bfb1cc17545c4e4",
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/execution/data/batches/fdone.txt"
+    },
+    {
+      "repositoryPath": "preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/VERIFY.md",
+      "path": "VERIFY.md",
+      "expectedBytes": 3880,
+      "expectedGitBlob": null,
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/VERIFY.md"
+    },
+    {
+      "repositoryPath": "LICENSE",
+      "path": "LICENSE",
+      "expectedBytes": null,
+      "expectedGitBlob": null,
+      "url": "https://raw.githubusercontent.com/openai/math/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/LICENSE"
+    }
+  ],
+  "scope": "Saved-record consistency only; no C++ rerun or Lean execution.",
+  "inspection": {
+    "sourceReadInFull": true,
+    "checkerGitBlob": "174fcaa52b39eababe7121aacdd19c68b716ad8e",
+    "imports": [
+      "argparse",
+      "json",
+      "math",
+      "pathlib",
+      "re",
+      "struct",
+      "sys"
+    ],
+    "sideEffects": "Reads supplied files and writes stdout/stderr only; no shell/network/subprocess."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "schumann-producer-freeze/1",
+  "round": 3,
+  "status": "frozen",
+  "replay": "node research/schumann-openai-2026-10-29/analysis/round3/run.mjs",
+  "producerAssertions": 57,
+  "files": {
+    "model.mjs": "06d1ecae6eddd1752b3f7e9ae5f0c4d173ed0d0578dad83824f7351d8311a8fa",
+    "run.mjs": "75976a9da35dd51f37754a70283a32baef5334a1c1987bd9f489e2ad95f3ea6e",
+    "results.json": "62924ebb601029f775182e2ada453377713ea0cf4810c9fbb8ae34ecf505ed34",
+    "report.md": "58c4586a7b14054c165769ee332fd3b34975e73a9ff6b5d9b4f63ba06f4e908f"
+  },
+  "preservedEarlierRounds": [
+    1,
+    2
+  ],
+  "scope": "Final contracted round. Independent verifier and panel receipts are separate."
+}

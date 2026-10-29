@@ -1,0 +1,90 @@
+{
+  "schema": "round3-receiver-isolation/1",
+  "timing": "Observation reviewer requested same-known-mass isolation after initial fixtures; this supplement was computed before verifier read any producer R3 source.",
+  "reason": "Keep the known mass fixed so only unconstrained receiver calibration causes the wrong-pole yet held-out-passing inference.",
+  "points": [
+    {
+      "frequencyHz": 2.3,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.25
+      },
+      "gainReal": 0.5505012913906643,
+      "gainImag": -0.00753100394525409,
+      "transformedReal": 0.0009990392217697154,
+      "transformedImag": -7.82646797742214e-05,
+      "secondReal": 0.0009990392217697154,
+      "secondImag": -7.82646797742214e-05
+    },
+    {
+      "frequencyHz": 6.4,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.25
+      },
+      "gainReal": 0.3204757910648589,
+      "gainImag": 0.04517240315780996,
+      "transformedReal": 0.0013966996524369005,
+      "transformedImag": -0.0004712136807853035,
+      "secondReal": 0.0013966996524369005,
+      "secondImag": -0.00047121368078530346
+    },
+    {
+      "frequencyHz": 11.7,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.25
+      },
+      "gainReal": 1.2003122857245772,
+      "gainImag": 0.9728748219985827,
+      "transformedReal": -0.001217941042871808,
+      "transformedImag": -0.001588464015979242,
+      "secondReal": -0.0012179410428718083,
+      "secondImag": -0.0015884640159792422
+    },
+    {
+      "frequencyHz": 17.1,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.25
+      },
+      "gainReal": 1.1716435916439563,
+      "gainImag": 0.22601543186677048,
+      "transformedReal": -0.0004946847576329711,
+      "transformedImag": -0.00015587667518587238,
+      "secondReal": -0.0004946847576329712,
+      "secondImag": -0.00015587667518587238
+    }
+  ],
+  "estimate": {
+    "naturalFrequencyHz": 10.300000000000002,
+    "gammaPerS": 10.786134777324959,
+    "massKg": 0.25,
+    "probeFrequencyHz": 6.4
+  },
+  "oracleSha256": "2f0b0e31a1b2a79de775022e29c969eb694f879fa0fe019aaa43156946cbc785"
+}

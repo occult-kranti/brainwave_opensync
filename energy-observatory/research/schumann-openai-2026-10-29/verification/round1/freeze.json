@@ -1,0 +1,12 @@
+{
+  "schema": "schumann-independent-round1-freeze/1",
+  "status": "passed",
+  "files": {
+    "compare_producer.py": "61de7327e06b226052b4335b2f93699812548f22bc0099aa8a6bc66743986372",
+    "comparison-results.json": "e7a89b9aa9aa5173c2dbbd6b036a6b7d6a2b6eb905ba62e3f5895b6130ccf5d5",
+    "independent-fixtures.json": "ebd2ff8e1b4149e610b974f2bc327250967073ce9801ba149fd9759f7d91b6f0",
+    "independent-oracle.py": "4567675f673a1049e23cfc06e9045db811b5c740110725d51312c7c0b26b3549",
+    "producer-bridge.mjs": "b49d2def1e5f067e1a808526fd5698fd52cf6ceb0dbf23b70ab782d075b5a8fb",
+    "report.md": "2fee0edd5e332025a4918e0d7dd98b2d7148144f681a04f5229391f2abf64857"
+  }
+}

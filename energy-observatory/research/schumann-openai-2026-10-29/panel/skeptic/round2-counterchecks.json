@@ -1,0 +1,49 @@
+{
+  "scope": "Synthetic band-limited arithmetic; no global-maximum proof or station fit.",
+  "band_hz": [
+    1,
+    20
+  ],
+  "inclusive_grid_step_hz": 0.002,
+  "grid_count": 9501,
+  "units": {
+    "force_psd": "N^2/Hz",
+    "displacement_psd": "m^2/Hz",
+    "receiver_squared_gain": "dimensionless"
+  },
+  "responses": [
+    {
+      "f0_hz": 7.8,
+      "Q": 5,
+      "mass_kg": 0.25
+    },
+    {
+      "f0_hz": 9.1,
+      "Q": 4,
+      "mass_kg": 0.25
+    }
+  ],
+  "equality_max_relative_residual": 1.9499879377372374e-16,
+  "source_ratio_sample_range": [
+    0.4556060914553754,
+    6.317465805783323
+  ],
+  "peaks_hz": {
+    "white": 7.722,
+    "colored": 7.844,
+    "constant_scale": 7.722
+  },
+  "coherent_control": {
+    "frequency_hz": 8.3,
+    "complex_weight": [
+      -0.5697258963141664,
+      1.4292781483880934
+    ],
+    "coherent_cancellation": 9.403954806578302e-37,
+    "uncorrelated_power": 8.832730268311831e-05,
+    "cross_term": -8.832730268311831e-05,
+    "aligned_power": 0.00017665460536623668
+  },
+  "producer_imported": false,
+  "limits": "Source color and receiver squared gain have identical scalar-PSD algebra. Velocity/displacement PSD ratio omega^2 supplies no independent response parameter."
+}

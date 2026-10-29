@@ -1,0 +1,63 @@
+{
+  "schema": "schumann-round1-independent-comparison/1",
+  "status": "pass",
+  "public_api_requests": 79,
+  "scalar_field_comparisons": 169,
+  "invalid_inputs_rejected": 15,
+  "maximum_nonzero_relative_error": 8.992431468513376e-16,
+  "real_quadratures": 9,
+  "quadrature_points_per_period": 32768,
+  "grid_extrema": [
+    {
+      "Q": 5.0,
+      "displacementGridHz": 7.9196,
+      "velocityGridHz": 8.0,
+      "gridStepHz": 0.0002
+    },
+    {
+      "Q": 0.6,
+      "displacementGridHz": 0.0,
+      "velocityGridHz": 8.0,
+      "gridStepHz": 0.0002
+    },
+    {
+      "Q": 0.4,
+      "displacementGridHz": 0.0,
+      "velocityGridHz": 8.0,
+      "gridStepHz": 0.0002
+    }
+  ],
+  "wrong_model_controls": {
+    "integer_harmonics": {
+      "mode2Hz": 18.344625689576297,
+      "twiceMode1Hz": 21.182549160119603,
+      "rejected": true
+    },
+    "ringdown_equals_displacement_peak": {
+      "Q": 0.6,
+      "ringdownHz": 4.422166387140533,
+      "displacementPeakHz": 0.0,
+      "rejected": true
+    },
+    "field_density_scales_linearly": {
+      "fieldRatio": 2,
+      "actualDensityRatio": 4.0,
+      "incorrectDensityRatio": 2,
+      "rejected": true
+    }
+  },
+  "source_bindings": {
+    "producer": "86f92e1d90ee7b7b4ac5d8286c830d915a360f0c634fdeae4c2f3798c1443cc8",
+    "oracle": "4567675f673a1049e23cfc06e9045db811b5c740110725d51312c7c0b26b3549",
+    "fixtures": "ebd2ff8e1b4149e610b974f2bc327250967073ce9801ba149fd9759f7d91b6f0",
+    "bridge": "b49d2def1e5f067e1a808526fd5698fd52cf6ceb0dbf23b70ab782d075b5a8fb",
+    "comparison": "61de7327e06b226052b4335b2f93699812548f22bc0099aa8a6bc66743986372"
+  },
+  "tolerances": {
+    "normal_relative": 5e-13,
+    "response_absolute": 1e-20,
+    "power_absolute_W": 1e-15,
+    "grid_peak_Hz": 0.0002
+  },
+  "scope": "Finite normal-range implementation comparison and model controls; no experimental validation or universal numerical bound."
+}

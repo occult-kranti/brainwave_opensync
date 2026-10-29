@@ -1,0 +1,129 @@
+{
+  "date": "2026-10-29",
+  "reviewer": "/root/oct_sources",
+  "sources": [
+    {
+      "id": "openai-announcement",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "published": "2026-10-26",
+      "read": "Date, release strategies, three science sections and outgoing links",
+      "locators": "Physics withholding paragraphs; local smoothing and ETH artifact links; existence section",
+      "evidence": "publisher announcement",
+      "webRef": "turn148view0"
+    },
+    {
+      "id": "openai-head",
+      "url": "https://api.github.com/repos/openai/math/commits/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+      "published": "2026-10-26",
+      "read": "Commit metadata; limited changed-file listing",
+      "evidence": "revision metadata"
+    },
+    {
+      "id": "openai-catalogue",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/CONTENTS.md",
+      "published": "2026-10-26",
+      "read": "Full heading/link parse; selected descriptions; balanced parentheses",
+      "evidence": "catalogue inventory"
+    },
+    {
+      "id": "openai-history",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/history.md",
+      "published": "2026-10-26",
+      "read": "Full history file",
+      "evidence": "publisher change log"
+    },
+    {
+      "id": "openai-scope-079",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/079.md",
+      "read": "Full selected scope file",
+      "evidence": "formalization-scope documentation; not local proof execution"
+    },
+    {
+      "id": "openai-scope-378",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/378.md",
+      "read": "Full selected scope file",
+      "evidence": "formalization-scope documentation; not local proof execution"
+    },
+    {
+      "id": "openai-scope-032",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/032.md",
+      "read": "Full selected scope file",
+      "evidence": "formalization-scope documentation; not local proof execution"
+    },
+    {
+      "id": "openai-scope-266",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/docs/266.md",
+      "read": "Full selected scope file",
+      "evidence": "formalization-scope documentation; not local proof execution"
+    },
+    {
+      "id": "openai-comparator",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/lean/ComparatorChallenges/README.md",
+      "read": "Full instructions; LocalSmoothing and SubexponentialSAT configurations and wrappers",
+      "evidence": "verification procedure metadata"
+    },
+    {
+      "id": "mub-verify",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/VERIFY.md",
+      "read": "Full saved-run instructions; directory size inventories",
+      "evidence": "documented checker scope, not execution"
+    },
+    {
+      "id": "sos-main",
+      "url": "https://sos70.ru/",
+      "read": "Page text, three-day/subscription distinctions, chart interpretation and copyright notice; image not numerically analyzed",
+      "evidence": "station publishing/interpretation description",
+      "webRef": "turn158view0"
+    },
+    {
+      "id": "sos-method",
+      "url": "https://sos70.ru/?page_id=43",
+      "read": "Acquisition/filter/DFT/parameter method text",
+      "locators": "80Hz acquisition;50s windows;5s shifts;0.02Hz nominal bin spacing; spectral-max definition",
+      "evidence": "station-stated method, not uncertainty certificate",
+      "webRef": "turn165view2"
+    },
+    {
+      "id": "sos-parameters",
+      "url": "https://sos70.ru/?page_id=48",
+      "read": "Parameter panel descriptions and access notice",
+      "evidence": "source metadata",
+      "webRef": "turn165view3"
+    },
+    {
+      "id": "nagycenk",
+      "url": "https://nckobs.hu/data/sr/",
+      "read": "Page text and chart-link presence only; actual image dates not established",
+      "evidence": "institutional source location",
+      "webRef": "turn165view1"
+    },
+    {
+      "id": "noaa-discussion",
+      "url": "https://services.swpc.noaa.gov/text/discussion.txt",
+      "issuedUTC": "2026-10-29T00:30:00Z",
+      "read": "Full 24-hour summary/forecast; observed vs predicted dates kept separate",
+      "evidence": "official solar/geomagnetic context, not Schumann measurements",
+      "webRef": "turn165view0"
+    },
+    {
+      "id": "nasa-sr",
+      "url": "https://ntrs.nasa.gov/citations/20120000051",
+      "publicationYear": 2011,
+      "read": "NASA repository metadata and abstract only",
+      "evidence": "primary research record, not recent event dataset",
+      "webRef": "turn158view2"
+    },
+    {
+      "id": "secondary-claim-leads",
+      "urls": [
+        "https://mind.university/today/schumann-resonance/2026-10-27",
+        "https://sungeo.net/archive",
+        "https://schumannresonance.app/",
+        "https://www.ressonanciaschumannhoje.com/en/"
+      ],
+      "read": "Search-result excerpts only",
+      "evidence": "unadmitted discovery leads",
+      "admittedAsObservation": false
+    }
+  ]
+}

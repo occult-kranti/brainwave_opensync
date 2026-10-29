@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-29",
+  "closedResearchRounds": 3,
+  "nextThreeRoundCycleStarted": false,
+  "noveltyGate": "prior-art-gate.md",
+  "tasks": [
+    {
+      "title": "Pass the prior-art gate before another cycle",
+      "status": "required before execution",
+      "next": "Choose a distinct question and complete the proposition-to-prior-art comparison. Do not repeat the known oscillator identities as new discoveries.",
+      "acceptance": "Explicit remaining gap, feasible evidence, matched baseline, falsification criteria and advisor decision; no new cycle started."
+    },
+    {
+      "title": "Freeze a Nagycenk replication target",
+      "status": "conditional replication; not started",
+      "next": "Reconcile the licensed processed-data/model-curve schema, source-radius column, field component, estimator and exact published model.",
+      "acceptance": "Pinned inputs and model version, published target, numerical tolerance and at least two distinct held-out checks. No novelty or recent-event claim."
+    },
+    {
+      "title": "Acquire an admissible Schumann observation packet",
+      "status": "highest observational priority",
+      "next": "Seek a public calibrated UTC station series and matched baseline, then independent-station evidence for a global claim.",
+      "acceptance": "Raw hashes, calibration, QC, uncertainty and a preregistered comparison; absence of required inputs remains explicit."
+    },
+    {
+      "title": "Controlled identification experiment",
+      "status": "synthetic baseline complete; hardware/data pending",
+      "next": "Use measured input and independently calibrated complex readout on a bench analogue, with uncertainty and at least two distinct held-out frequencies.",
+      "acceptance": "Independent recovery and wrong-model controls; no Earth inference from synthetic fit."
+    },
+    {
+      "title": "OpenAI local-smoothing bridge",
+      "status": "conditional research",
+      "next": "Execute the pinned Lean comparator in the required environment, then formulate a precise lossy-cavity question.",
+      "acceptance": "Full dependency/target log plus a proved operator/hypothesis dictionary. A shared word such as wave is insufficient."
+    },
+    {
+      "title": "Await the gauge-theory proof artifacts",
+      "status": "external evidence pending",
+      "next": "When released, compare assumptions, continuum limit and physical normalization with Round 33.",
+      "acceptance": "Accessible theorem and proof, explicit mass-gap status and checked regulator/state mapping."
+    },
+    {
+      "title": "Preserve Yang–Mills Round 33 obligations",
+      "status": "unchanged pending work",
+      "next": "Route-B dynamics, broader boundary uniqueness, finite-box certificates and rates beyond the current range.",
+      "acceptance": "The original workbench gates apply. None is closed by this dashboard update."
+    },
+    {
+      "title": "Practical use of the new ETH result",
+      "status": "not yet established",
+      "next": "Inspect an executable solver and an exact reduction only if a bounded project task needs it.",
+      "acceptance": "Measured wall-time/memory improvement against an existing solver, without replacing identifiability by brute force."
+    }
+  ]
+}

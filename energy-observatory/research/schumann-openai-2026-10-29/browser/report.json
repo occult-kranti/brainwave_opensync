@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-29T05:40:28.470Z",
+  "browser": "153.0.8010.0",
+  "checks": [
+    "Both pages load without document overflow at 1440",
+    "Both pages load without document overflow at 390",
+    "Color changes sampled peak; overdamped displacement endpoint and velocity peak remain distinct",
+    "Zero amplitude gives zero energy density",
+    "Distinct wavelength definitions render expected values",
+    "Export preserves model and evidence scope",
+    "All 71 local artifact/navigation links resolve"
+  ],
+  "pageErrors": [],
+  "badResponses": [],
+  "screenshots": [
+    "updates-1440.png",
+    "updates-390.png",
+    "schumann-1440.png",
+    "schumann-390.png",
+    "response-1440.png",
+    "response-390.png"
+  ],
+  "scope": "Synthetic browser behavior and saved-data presentation, not station validation or proof verification."
+}

@@ -1,0 +1,11 @@
+{
+  "round": 3,
+  "status": "accepted_repaired_restricted_model_and_metadata_scope",
+  "hashes": {
+    "round3.md": "a36d973e17f9b2f609ae45efb6bc48ff0eae6dccdc3b64b7f777e9f39b78f52c",
+    "round3-counterchecks.py": "337a7b4b7d2a7c6e159848377776bf0faf881de21d6d9d9994a463f56e293a40",
+    "round3-counterchecks.json": "e931d7c7a4479c20c49cbbbf5176ff60cceb15d6ff8a4c49ce0a3934f6a9438c"
+  },
+  "producer_model": "c59e7b5d2489294c897a641a767fce25d5c743ea49e4236dcfebdc35ea1bec30",
+  "fourth_round_executed": false
+}

@@ -1,0 +1,7 @@
+{
+  "url": "https://kp.gfz.de/app/json/?start=2026-10-23T00:00:00Z&end=2026-10-29T04:00:00Z&index=Kp",
+  "file": "gfz-kp.json",
+  "sha256": "deb5dfafded3db6ed79c1106579dc90ecd2fbaa5dd71847b0f03d4c924a262ba",
+  "bytes": 1809,
+  "retrieved_utc": "2026-10-29T04:57:39.490784+00:00"
+}

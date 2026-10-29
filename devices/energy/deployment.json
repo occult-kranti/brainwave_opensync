@@ -1,7 +1,7 @@
 {
   "site": "Fieldwork / Energy Observatory",
   "branch": "research/energy-observatory",
-  "commit": "5cccca5ee835cc778ad21921dc956800a13802dd",
+  "commit": "cea53921189656c1fe4a96a2c35af1e54613e916",
   "path": "/brainwave_opensync/devices/energy/",
   "researchDate": "2026-10-21",
   "specialistAgents": 6,
@@ -42,5 +42,30 @@
       "sourceCommit": "a8913c825d24299283c9379282ae3876e2a0c0cd"
     }
   ],
-  "status": "Reviewed mathematical models and proposed experiments; no new energy source established"
+  "status": "Reviewed mathematical models and proposed experiments; no new energy source established",
+  "octoberUpdate": {
+    "date": "2026-10-29",
+    "openaiRevision": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a",
+    "yangMillsRevision": "f9364d617015e803fda9465aefddd9cbe41854a4",
+    "reviewers": 4,
+    "initialPanels": 3,
+    "researchRounds": 3,
+    "dedicatedWorkers": 2,
+    "localLeanExecutions": 0,
+    "status": "accepted",
+    "schumannAnomaly": "unresolved",
+    "newHardwareMeasurements": 0,
+    "externalObservationCoverage": {
+      "startUTC": "2026-10-23T00:00:00Z",
+      "endExclusiveUTC": "2026-10-29T03:00:00Z",
+      "completedThreeHourBinsPerProvider": 49,
+      "latestDatePartial": true,
+      "sources": [
+        "NOAA estimated Kp",
+        "GFZ preliminary Kp"
+      ],
+      "schumannCalibratedSeriesObtained": false
+    },
+    "overlay": "build-schumann.mjs; historical scientific sources preserved"
+  }
 }

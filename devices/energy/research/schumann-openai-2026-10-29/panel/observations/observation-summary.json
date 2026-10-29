@@ -1,0 +1,190 @@
+{
+  "cutoff_utc": "2026-10-29T04:57:39+00:00",
+  "observable": "Geomagnetic Kp context, not a Schumann resonance measurement",
+  "sources": {
+    "NOAA": {
+      "status": "estimated",
+      "seven_day_window": {
+        "available_points": 49,
+        "complete_interval_points": 49,
+        "first_interval_start_utc": "2026-10-23T00:00:00+00:00",
+        "last_complete_interval_end_utc": "2026-10-29T03:00:00+00:00",
+        "maximum_complete_interval_kp": 4.33,
+        "complete_intervals_kp_ge_5": 0,
+        "ongoing_interval_starts_utc": [],
+        "days": [
+          {
+            "date": "2026-10-23",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 4.33
+          },
+          {
+            "date": "2026-10-24",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.0
+          },
+          {
+            "date": "2026-10-25",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.0
+          },
+          {
+            "date": "2026-10-26",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.0
+          },
+          {
+            "date": "2026-10-27",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.67
+          },
+          {
+            "date": "2026-10-28",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.33
+          },
+          {
+            "date": "2026-10-29",
+            "complete_bins": 1,
+            "full_day": false,
+            "maximum": 1.67
+          }
+        ]
+      },
+      "three_day_window": {
+        "available_points": 17,
+        "complete_interval_points": 17,
+        "first_interval_start_utc": "2026-10-27T00:00:00+00:00",
+        "last_complete_interval_end_utc": "2026-10-29T03:00:00+00:00",
+        "maximum_complete_interval_kp": 2.67,
+        "complete_intervals_kp_ge_5": 0,
+        "ongoing_interval_starts_utc": [],
+        "days": [
+          {
+            "date": "2026-10-27",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.67
+          },
+          {
+            "date": "2026-10-28",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.33
+          },
+          {
+            "date": "2026-10-29",
+            "complete_bins": 1,
+            "full_day": false,
+            "maximum": 1.67
+          }
+        ]
+      }
+    },
+    "GFZ": {
+      "status": "preliminary",
+      "seven_day_window": {
+        "available_points": 50,
+        "complete_interval_points": 49,
+        "first_interval_start_utc": "2026-10-23T00:00:00+00:00",
+        "last_complete_interval_end_utc": "2026-10-29T03:00:00+00:00",
+        "maximum_complete_interval_kp": 4.333,
+        "complete_intervals_kp_ge_5": 0,
+        "ongoing_interval_starts_utc": [
+          "2026-10-29T03:00:00+00:00"
+        ],
+        "days": [
+          {
+            "date": "2026-10-23",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 4.333
+          },
+          {
+            "date": "2026-10-24",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.0
+          },
+          {
+            "date": "2026-10-25",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 1.0
+          },
+          {
+            "date": "2026-10-26",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 1.667
+          },
+          {
+            "date": "2026-10-27",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.333
+          },
+          {
+            "date": "2026-10-28",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.667
+          },
+          {
+            "date": "2026-10-29",
+            "complete_bins": 1,
+            "full_day": false,
+            "maximum": 1.333
+          }
+        ]
+      },
+      "three_day_window": {
+        "available_points": 18,
+        "complete_interval_points": 17,
+        "first_interval_start_utc": "2026-10-27T00:00:00+00:00",
+        "last_complete_interval_end_utc": "2026-10-29T03:00:00+00:00",
+        "maximum_complete_interval_kp": 2.667,
+        "complete_intervals_kp_ge_5": 0,
+        "ongoing_interval_starts_utc": [
+          "2026-10-29T03:00:00+00:00"
+        ],
+        "days": [
+          {
+            "date": "2026-10-27",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.333
+          },
+          {
+            "date": "2026-10-28",
+            "complete_bins": 8,
+            "full_day": true,
+            "maximum": 2.667
+          },
+          {
+            "date": "2026-10-29",
+            "complete_bins": 1,
+            "full_day": false,
+            "maximum": 1.333
+          }
+        ]
+      }
+    }
+  },
+  "source_hashes": {
+    "noaa-kp.json": "3f438089a2c4327cf026503d22b371190c223fefca3818cf44a51f6a0e83bf3c",
+    "gfz-kp.json": "deb5dfafded3db6ed79c1106579dc90ecd2fbaa5dd71847b0f03d4c924a262ba"
+  },
+  "cross_source": {
+    "matched_interval_starts": 49,
+    "largest_absolute_difference": 1.667,
+    "different_beyond_0_01": 28,
+    "interpretation": "Different provider estimates remain separate; no averaging or silent substitution."
+  }
+}

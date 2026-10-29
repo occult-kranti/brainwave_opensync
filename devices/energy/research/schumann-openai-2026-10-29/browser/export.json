@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-29",
+  "kind": "synthetic-model-state",
+  "units": {
+    "radius": "km",
+    "frequency": "Hz",
+    "background": "microtesla",
+    "perturbation": "picotesla RMS"
+  },
+  "values": {
+    "sr-radius": "6371",
+    "sr-reference-frequency": "7.83",
+    "sr-f0": "8",
+    "sr-q": "0.4",
+    "sr-readout": "velocity",
+    "sr-color": "white",
+    "sr-static-b": "0",
+    "sr-elf-b": "0"
+  },
+  "scope": "No new station measurements, no verified recent Schumann anomaly, no power extraction claim.",
+  "evidenceCoverage": {
+    "startUTC": "2026-10-23T00:00:00Z",
+    "endExclusiveUTC": "2026-10-29T03:00:00Z",
+    "completedThreeHourBinsPerProvider": 49,
+    "latestDatePartial": true,
+    "sources": [
+      "NOAA estimated Kp",
+      "GFZ preliminary Kp"
+    ],
+    "schumannCalibratedSeriesObtained": false
+  },
+  "source": "Fieldwork Schumann dashboard"
+}

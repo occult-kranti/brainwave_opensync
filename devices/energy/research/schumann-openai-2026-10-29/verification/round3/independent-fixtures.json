@@ -1,0 +1,2092 @@
+{
+  "schema": "independent-schumann-round3/1",
+  "status": "pass",
+  "provenance": "Frozen before reading R3 producer code; Python native complex arithmetic",
+  "tolerances": {
+    "relative": 2e-11,
+    "responseAbsolute": 1e-15,
+    "parameterAbsolute": 1e-12,
+    "heldoutRelative": 2e-10,
+    "heldoutAbsolute": 1e-15
+  },
+  "positiveCases": [
+    {
+      "id": "known-mass-1",
+      "truth": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "input": {
+        "frequencyHz": 6.4,
+        "realMPerN": 0.0040700886671317694,
+        "imagMPerN": -0.0020440525781007845,
+        "massKg": 0.25
+      },
+      "estimate": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600076,
+        "massKg": 0.25,
+        "probeFrequencyHz": 6.4
+      },
+      "measurements": [
+        {
+          "frequencyHz": 2.3,
+          "realMPerN": 0.0018163858719445697,
+          "imagMPerN": -0.00011732119727339542
+        },
+        {
+          "frequencyHz": 11.7,
+          "realMPerN": -0.0012597361552776735,
+          "imagMPerN": -0.00030233667726664175
+        },
+        {
+          "frequencyHz": 17.1,
+          "realMPerN": -0.00043181000135564306,
+          "imagMPerN": -4.974290105006318e-05
+        }
+      ],
+      "expected": {
+        "passed": true,
+        "relativeErrors": [
+          1.489148912068359e-17,
+          0.0,
+          1.55895996546008e-17
+        ],
+        "maxRelativeError": 1.55895996546008e-17
+      }
+    },
+    {
+      "id": "known-mass-2",
+      "truth": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "input": {
+        "frequencyHz": 8.8,
+        "realMPerN": 0.0010464993487610313,
+        "imagMPerN": -0.0011036032690133783,
+        "massKg": 0.4
+      },
+      "estimate": {
+        "naturalFrequencyHz": 10.300000000000002,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4,
+        "probeFrequencyHz": 8.8
+      },
+      "measurements": [
+        {
+          "frequencyHz": 2.3,
+          "realMPerN": 0.0006243995136060722,
+          "imagMPerN": -4.891542485888838e-05
+        },
+        {
+          "frequencyHz": 11.7,
+          "realMPerN": -0.0007612131517948801,
+          "imagMPerN": -0.0009927900099870263
+        },
+        {
+          "frequencyHz": 17.1,
+          "realMPerN": -0.000309177973520607,
+          "imagMPerN": -9.742292199117022e-05
+        }
+      ],
+      "expected": {
+        "passed": true,
+        "relativeErrors": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "maxRelativeError": 0.0
+      }
+    },
+    {
+      "id": "known-mass-3",
+      "truth": {
+        "naturalFrequencyHz": 8,
+        "gammaPerS": 41.88790204786391,
+        "massKg": 0.75
+      },
+      "input": {
+        "frequencyHz": 3.7,
+        "realMPerN": 0.0003422355313570479,
+        "imagMPerN": -0.0003355917222609361,
+        "massKg": 0.75
+      },
+      "estimate": {
+        "naturalFrequencyHz": 8.0,
+        "gammaPerS": 41.8879020478639,
+        "massKg": 0.75,
+        "probeFrequencyHz": 3.7
+      },
+      "measurements": [
+        {
+          "frequencyHz": 2.3,
+          "realMPerN": 0.00045195261372519565,
+          "imagMPerN": -0.00023607358464042462
+        },
+        {
+          "frequencyHz": 11.7,
+          "realMPerN": -8.303049014774455e-05,
+          "imagMPerN": -0.00017770279137121903
+        },
+        {
+          "frequencyHz": 17.1,
+          "realMPerN": -7.406507318432063e-05,
+          "imagMPerN": -7.393212506468674e-05
+        }
+      ],
+      "expected": {
+        "passed": true,
+        "relativeErrors": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "maxRelativeError": 0.0
+      }
+    },
+    {
+      "id": "known-mass-4",
+      "truth": {
+        "naturalFrequencyHz": 2.5,
+        "gammaPerS": 19.634954084936204,
+        "massKg": 2
+      },
+      "input": {
+        "frequencyHz": 1.3,
+        "realMPerN": 0.0006652872972444179,
+        "imagMPerN": -0.0011854077390594066,
+        "massKg": 2
+      },
+      "estimate": {
+        "naturalFrequencyHz": 2.5,
+        "gammaPerS": 19.6349540849362,
+        "massKg": 2,
+        "probeFrequencyHz": 1.3
+      },
+      "measurements": [
+        {
+          "frequencyHz": 2.3,
+          "realMPerN": 5.85778170236928e-05,
+          "imagMPerN": -0.0008771417913703986
+        },
+        {
+          "frequencyHz": 11.7,
+          "realMPerN": -7.381856767545386e-05,
+          "imagMPerN": -4.131952511686745e-05
+        },
+        {
+          "frequencyHz": 17.1,
+          "realMPerN": -3.884113247370276e-05,
+          "imagMPerN": -1.4506381161332756e-05
+        }
+      ],
+      "expected": {
+        "passed": true,
+        "relativeErrors": [
+          2.485826716583434e-16,
+          1.6020292128399072e-16,
+          1.6343447726141908e-16
+        ],
+        "maxRelativeError": 2.485826716583434e-16
+      }
+    }
+  ],
+  "negativeControls": [
+    {
+      "id": "conjugated-phase",
+      "input": {
+        "frequencyHz": 6.4,
+        "realMPerN": 0.0040700886671317694,
+        "imagMPerN": 0.0020440525781007845,
+        "massKg": 0.25
+      },
+      "measurements": [
+        {
+          "frequencyHz": 2.3,
+          "realMPerN": 0.0018163858719445697,
+          "imagMPerN": 0.00011732119727339542
+        },
+        {
+          "frequencyHz": 11.7,
+          "realMPerN": -0.0012597361552776735,
+          "imagMPerN": 0.00030233667726664175
+        },
+        {
+          "frequencyHz": 17.1,
+          "realMPerN": -0.00043181000135564306,
+          "imagMPerN": 4.974290105006318e-05
+        }
+      ],
+      "rejected": true
+    },
+    {
+      "id": "uncalibrated-gain-1.35",
+      "input": {
+        "frequencyHz": 6.4,
+        "realMPerN": 0.005494619700627889,
+        "imagMPerN": -0.002759470980436059,
+        "massKg": 0.25
+      },
+      "measurements": [
+        {
+          "frequencyHz": 2.3,
+          "realMPerN": 0.002452120927125169,
+          "imagMPerN": -0.00015838361631908383
+        },
+        {
+          "frequencyHz": 11.7,
+          "realMPerN": -0.0017006438096248595,
+          "imagMPerN": -0.0004081545143099664
+        },
+        {
+          "frequencyHz": 17.1,
+          "realMPerN": -0.0005829435018301182,
+          "imagMPerN": -6.71529164175853e-05
+        }
+      ],
+      "rejected": false,
+      "estimate": {
+        "naturalFrequencyHz": 7.46230031062312,
+        "gammaPerS": 3.6302848441482047,
+        "massKg": 0.25,
+        "probeFrequencyHz": 6.4
+      },
+      "expected": {
+        "passed": false,
+        "relativeErrors": [
+          0.18324783185526555,
+          0.3021157986366993,
+          0.2744326129443278
+        ],
+        "maxRelativeError": 0.3021157986366993
+      },
+      "relativeNaturalFrequencyShift": -0.04329483197139483,
+      "relativeGammaShift": -0.2592592592592594
+    },
+    {
+      "id": "two-mode-fit-by-one",
+      "input": {
+        "frequencyHz": 6.4,
+        "realMPerN": 0.00476843849335022,
+        "imagMPerN": -0.0022796594184934364,
+        "massKg": 0.25
+      },
+      "measurements": [
+        {
+          "frequencyHz": 2.3,
+          "realMPerN": 0.0023159054828294275,
+          "imagMPerN": -0.00015645353716050613
+        },
+        {
+          "frequencyHz": 11.7,
+          "realMPerN": -0.0018687066767135777,
+          "imagMPerN": -0.0010965686852562628
+        },
+        {
+          "frequencyHz": 17.1,
+          "realMPerN": -0.0006791523801721287,
+          "imagMPerN": -0.00012768123864299936
+        }
+      ],
+      "rejected": false,
+      "estimate": {
+        "naturalFrequencyHz": 7.632521065748087,
+        "gammaPerS": 4.0587633991724275,
+        "massKg": 0.25,
+        "probeFrequencyHz": 6.4
+      },
+      "expected": {
+        "passed": false,
+        "relativeErrors": [
+          0.1774605763466816,
+          0.49011500789773343,
+          0.38350561840666886
+        ],
+        "maxRelativeError": 0.49011500789773343
+      },
+      "relativeNaturalFrequencyShift": -0.021471658237424807,
+      "relativeGammaShift": -0.17183043869390335
+    },
+    {
+      "id": "small-complex-perturbation",
+      "input": {
+        "frequencyHz": 6.4,
+        "realMPerN": 0.004070904486514103,
+        "imagMPerN": -0.0020434429656251683,
+        "massKg": 0.25
+      },
+      "measurements": [
+        {
+          "frequencyHz": 2.3,
+          "realMPerN": 0.0018163858719445697,
+          "imagMPerN": -0.00011732119727339542
+        },
+        {
+          "frequencyHz": 11.7,
+          "realMPerN": -0.0012597361552776735,
+          "imagMPerN": -0.00030233667726664175
+        },
+        {
+          "frequencyHz": 17.1,
+          "realMPerN": -0.00043181000135564306,
+          "imagMPerN": -4.974290105006318e-05
+        }
+      ],
+      "rejected": false,
+      "estimate": {
+        "naturalFrequencyHz": 7.800000500284517,
+        "gammaPerS": 4.8984429800998255,
+        "massKg": 0.25,
+        "probeFrequencyHz": 6.4
+      },
+      "expected": {
+        "passed": false,
+        "relativeErrors": [
+          3.211161526157901e-05,
+          0.00011626669974511636,
+          5.701269171786564e-05
+        ],
+        "maxRelativeError": 0.00011626669974511636
+      },
+      "relativeNaturalFrequencyShift": 6.4139040523159e-08,
+      "relativeGammaShift": -0.0004981875170744221
+    }
+  ],
+  "receiverCases": [
+    {
+      "frequencyHz": 1,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "gainReal": 0.35580876531769123,
+      "gainImag": -0.002346656144803566,
+      "firstReal": 0.0016920516464891773,
+      "firstImag": -4.411097206756544e-05,
+      "secondReal": 0.0006019432939074251,
+      "secondImag": -1.966573390188244e-05,
+      "transformedReal": 0.0006019432939074252,
+      "transformedImag": -1.9665733901882445e-05,
+      "relativeResidual": 1.8010882682031956e-16,
+      "reciprocalRatioWrongResidual": 6.898657831621401
+    },
+    {
+      "frequencyHz": 2.3,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "gainReal": 0.34406330711916516,
+      "gainImag": -0.004706877465783808,
+      "firstReal": 0.0018163858719445697,
+      "firstImag": -0.00011732119727339542,
+      "secondReal": 0.0006243995136060722,
+      "secondImag": -4.891542485888838e-05,
+      "transformedReal": 0.0006243995136060722,
+      "transformedImag": -4.891542485888838e-05,
+      "relativeResidual": 0.0,
+      "reciprocalRatioWrongResidual": 7.446248158645497
+    },
+    {
+      "frequencyHz": 6.4,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "gainReal": 0.20029736941553677,
+      "gainImag": 0.028232751973631218,
+      "firstReal": 0.0040700886671317694,
+      "firstImag": -0.0020440525781007845,
+      "secondReal": 0.0008729372827730627,
+      "secondImag": -0.0002945085504908147,
+      "transformedReal": 0.0008729372827730626,
+      "transformedImag": -0.00029450855049081463,
+      "relativeResidual": 1.3157523718481803e-16,
+      "reciprocalRatioWrongResidual": 23.48083149844526
+    },
+    {
+      "frequencyHz": 7.8,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "gainReal": 0.07366427596986015,
+      "gainImag": 0.12447007048678764,
+      "firstReal": 0.0,
+      "firstImag": -0.008326855986385419,
+      "secondReal": 0.0010364443515587228,
+      "secondImag": -0.0006133918173423775,
+      "transformedReal": 0.0010364443515587228,
+      "transformedImag": -0.0006133918173423776,
+      "relativeResidual": 9.002361207650102e-17,
+      "reciprocalRatioWrongResidual": 48.29207930729071
+    },
+    {
+      "frequencyHz": 10.3,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "gainReal": 0.2839805825242718,
+      "gainImag": 0.7997337166556701,
+      "firstReal": -0.0019884190533167915,
+      "firstImag": -0.0007060755215181036,
+      "secondReal": 0.0,
+      "secondImag": -0.0017907174976848268,
+      "transformedReal": 1.0842021724855044e-19,
+      "transformedImag": -0.0017907174976848266,
+      "relativeResidual": 1.3538426704183773e-16,
+      "reciprocalRatioWrongResidual": 2.2545266460973963
+    },
+    {
+      "frequencyHz": 11.7,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "gainReal": 0.7501951785778607,
+      "gainImag": 0.608046763749114,
+      "firstReal": -0.0012597361552776735,
+      "firstImag": -0.00030233667726664175,
+      "secondReal": -0.0007612131517948801,
+      "secondImag": -0.0009927900099870263,
+      "transformedReal": -0.00076121315179488,
+      "transformedImag": -0.0009927900099870263,
+      "relativeResidual": 8.666472312088704e-17,
+      "reciprocalRatioWrongResidual": 1.3061091527043789
+    },
+    {
+      "frequencyHz": 20,
+      "first": {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      "second": {
+        "naturalFrequencyHz": 10.3,
+        "gammaPerS": 10.786134777324959,
+        "massKg": 0.4
+      },
+      "gainReal": 0.6985930874716769,
+      "gainImag": 0.09686658729902069,
+      "firstReal": -0.0002962346556494276,
+      "firstImag": -2.72512125730102e-05,
+      "secondReal": -0.00020430775074453501,
+      "secondImag": -4.773274886118679e-05,
+      "transformedReal": -0.000204307750744535,
+      "transformedImag": -4.773274886118679e-05,
+      "relativeResidual": 1.2918881241497315e-16,
+      "reciprocalRatioWrongResidual": 1.0828602401691754
+    }
+  ],
+  "constantGain": {
+    "gain": 3.7,
+    "frequenciesHz": [
+      2.3,
+      11.7
+    ],
+    "truth": {
+      "naturalFrequencyHz": 7.8,
+      "gammaPerS": 4.900884539600077,
+      "massKg": 0.25
+    },
+    "recovered": {
+      "naturalFrequencyHz": 7.799999999999999,
+      "gammaPerS": 4.900884539600076,
+      "massGainRatioKg": 0.06756756756756757
+    },
+    "qualification": "Poles recovered; mass/gain confounded under constant positive real gain"
+  },
+  "metadataCases": [
+    {
+      "id": "synthetic-complete-station",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "ready-for-analysis"
+    },
+    {
+      "id": "synthetic-complete-global",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only"
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "ready-for-analysis"
+    },
+    {
+      "id": "missing-stationId",
+      "packet": {
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-channel",
+      "packet": {
+        "stationId": "synthetic-A",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-observable",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-units",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-record",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-interval",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-retrievedUtc",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-coverageComplete",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-calibration",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-qc",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-baseline",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-decision",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-scope",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-synthetic",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station"
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "kp-proxy",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "planetary-kp",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "wrong-units",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "nT",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "quicklook-record",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "quicklook",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "bad-hash",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "not-a-hash"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "non-https",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "http://example.org/raw",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "incomplete",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": false,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "invalid-calendar-day",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-02-30T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-UTC",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "non-UTC-offset",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00+01:00",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "future-end",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T06:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "future-retrieval",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-30T00:00:00Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "zero-duration",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-29T03:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "reversed-duration",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-29T04:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "unvalidated-calibration",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": false
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "failed-QC",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "failed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "unmatched-baseline",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": false
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "blank-uncertainty",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": ""
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "duplicate-stations",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-A"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only"
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "focal-station-absent",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-B",
+          "synthetic-C"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only"
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "unjustified-independence",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only"
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "no-shared-model",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": ""
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "missing-assessment-time",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "station",
+        "synthetic": true
+      },
+      "asOfUtc": null,
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "actual-october-inventory",
+      "packet": {
+        "stationId": "",
+        "channel": "",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "quicklook-inventory"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": false,
+        "scope": "station",
+        "synthetic": false,
+        "context": "Saved NOAA/GFZ Kp is geomagnetic context; Schumann quicklooks lack calibrated numeric series and matched baseline"
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    }
+  ],
+  "sourceBindings": {
+    "analysis/round2/results.json": "0beb9e603f0b5ba4756b925c1fc0244ebbb8de3c7f2201efa59a12156eab9819",
+    "rounds/round3-contract.md": "a232c67ed4fb8155ba4eb696f081dc21065f5c4984a3d78c356b5b2247f265fc",
+    "panel/observations/schumann.md": "a2e029c4525b232e50aa0abb28c30c60254ab16b38bfbd5460537fcb867d9d1d",
+    "panel/observations/noaa-kp.json": "3f438089a2c4327cf026503d22b371190c223fefca3818cf44a51f6a0e83bf3c",
+    "panel/observations/gfz-kp.json": "deb5dfafded3db6ed79c1106579dc90ecd2fbaa5dd71847b0f03d4c924a262ba",
+    "panel/observations/download-manifest.json": "cc8902d627dbbf47497c98377feeb24309b3d79d02b04fddc5cdd152acda80fe",
+    "panel/observations/gfz-download.json": "e0b5083faef23d91febfd4684d3c674a711df60163c1dc7d8f6f97706503f5dc"
+  },
+  "oracleSha256": "3fdb96527bc087c98bba54f0858d795e61f40f6fc7594da2b532350f71672533"
+}

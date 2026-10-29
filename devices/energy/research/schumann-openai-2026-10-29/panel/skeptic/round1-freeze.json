@@ -1,0 +1,9 @@
+{
+  "round": 1,
+  "status": "accepted_within_reference_model_scope",
+  "hashes": {
+    "round1.md": "e3a82aa286c54762c550e8e43199db12bb4782e8f851500c6b422a6331ead0e6",
+    "round1-counterchecks.py": "cb1b2f6e84d2d0ce116d2620f15f65c7ea85c4489d99d689d50a540fd2af0fe8",
+    "round1-counterchecks.json": "8925e2c90722176839b254dc4cc255ba95f1a1f04a190d52416f8bbdc8af4907"
+  }
+}

@@ -1,0 +1,6360 @@
+{
+  "schema": "schumann-source-ambiguity-round2/1",
+  "status": "pass",
+  "evidence": "Synthetic, compact-band mechanical spectra. No observed lightning source law, receiver calibration or Earth fit.",
+  "checks": 36,
+  "tolerances": {
+    "relative": 3e-12,
+    "psdAbsolute": 1e-25,
+    "peakGridHz": 0.001,
+    "cancellationRelative": 1e-27
+  },
+  "band": {
+    "minHz": 1,
+    "maxHz": 20,
+    "spacingHz": 0.001,
+    "points": 19001
+  },
+  "transfer": {
+    "naturalFrequencyHz": 7.8,
+    "gammaPerS": 4.900884539600077,
+    "massKg": 0.25
+  },
+  "sourceBaseN2PerHz": 0.000001,
+  "scenarios": [
+    {
+      "id": "white",
+      "sourceTilt": 0,
+      "receiverTilt": 0,
+      "constantScale": 1,
+      "maximumPsdM2PerHz": 7.003688192806284e-11,
+      "maximumHz": 7.722,
+      "samples": [
+        {
+          "frequencyHz": 1,
+          "outputPsdM2PerHz": 2.864984552243482e-12
+        },
+        {
+          "frequencyHz": 1.1,
+          "outputPsdM2PerHz": 2.8847712539425483e-12
+        },
+        {
+          "frequencyHz": 1.2,
+          "outputPsdM2PerHz": 2.906675098056181e-12
+        },
+        {
+          "frequencyHz": 1.3,
+          "outputPsdM2PerHz": 2.9307636307012652e-12
+        },
+        {
+          "frequencyHz": 1.4,
+          "outputPsdM2PerHz": 2.9571121462645797e-12
+        },
+        {
+          "frequencyHz": 1.5,
+          "outputPsdM2PerHz": 2.985804217019288e-12
+        },
+        {
+          "frequencyHz": 1.6,
+          "outputPsdM2PerHz": 3.016932291885508e-12
+        },
+        {
+          "frequencyHz": 1.7000000000000002,
+          "outputPsdM2PerHz": 3.050598371918431e-12
+        },
+        {
+          "frequencyHz": 1.8,
+          "outputPsdM2PerHz": 3.0869147712713616e-12
+        },
+        {
+          "frequencyHz": 1.9,
+          "outputPsdM2PerHz": 3.126004973720733e-12
+        },
+        {
+          "frequencyHz": 2,
+          "outputPsdM2PerHz": 3.1680045963871033e-12
+        },
+        {
+          "frequencyHz": 2.1,
+          "outputPsdM2PerHz": 3.2130624740785857e-12
+        },
+        {
+          "frequencyHz": 2.2,
+          "outputPsdM2PerHz": 3.2613418797663013e-12
+        },
+        {
+          "frequencyHz": 2.3,
+          "outputPsdM2PerHz": 3.3130218991294973e-12
+        },
+        {
+          "frequencyHz": 2.4000000000000004,
+          "outputPsdM2PerHz": 3.3682989799461744e-12
+        },
+        {
+          "frequencyHz": 2.5,
+          "outputPsdM2PerHz": 3.4273886804314877e-12
+        },
+        {
+          "frequencyHz": 2.6,
+          "outputPsdM2PerHz": 3.490527644535872e-12
+        },
+        {
+          "frequencyHz": 2.7,
+          "outputPsdM2PerHz": 3.5579758368218494e-12
+        },
+        {
+          "frequencyHz": 2.8,
+          "outputPsdM2PerHz": 3.6300190749820797e-12
+        },
+        {
+          "frequencyHz": 2.9000000000000004,
+          "outputPsdM2PerHz": 3.7069719045103414e-12
+        },
+        {
+          "frequencyHz": 3,
+          "outputPsdM2PerHz": 3.789180867698206e-12
+        },
+        {
+          "frequencyHz": 3.1,
+          "outputPsdM2PerHz": 3.877028228255635e-12
+        },
+        {
+          "frequencyHz": 3.2,
+          "outputPsdM2PerHz": 3.970936223753103e-12
+        },
+        {
+          "frequencyHz": 3.3000000000000003,
+          "outputPsdM2PerHz": 4.071371931137161e-12
+        },
+        {
+          "frequencyHz": 3.4,
+          "outputPsdM2PerHz": 4.178852846250142e-12
+        },
+        {
+          "frequencyHz": 3.5,
+          "outputPsdM2PerHz": 4.293953297168448e-12
+        },
+        {
+          "frequencyHz": 3.6,
+          "outputPsdM2PerHz": 4.417311833982308e-12
+        },
+        {
+          "frequencyHz": 3.7,
+          "outputPsdM2PerHz": 4.549639765266626e-12
+        },
+        {
+          "frequencyHz": 3.8000000000000003,
+          "outputPsdM2PerHz": 4.691731045050398e-12
+        },
+        {
+          "frequencyHz": 3.9,
+          "outputPsdM2PerHz": 4.844473754969619e-12
+        },
+        {
+          "frequencyHz": 4,
+          "outputPsdM2PerHz": 5.008863476219877e-12
+        },
+        {
+          "frequencyHz": 4.1,
+          "outputPsdM2PerHz": 5.186018907081765e-12
+        },
+        {
+          "frequencyHz": 4.2,
+          "outputPsdM2PerHz": 5.377200156893174e-12
+        },
+        {
+          "frequencyHz": 4.300000000000001,
+          "outputPsdM2PerHz": 5.583830239795204e-12
+        },
+        {
+          "frequencyHz": 4.4,
+          "outputPsdM2PerHz": 5.807520405648262e-12
+        },
+        {
+          "frequencyHz": 4.5,
+          "outputPsdM2PerHz": 6.0501000865345795e-12
+        },
+        {
+          "frequencyHz": 4.6,
+          "outputPsdM2PerHz": 6.3136524118747e-12
+        },
+        {
+          "frequencyHz": 4.7,
+          "outputPsdM2PerHz": 6.600556461616553e-12
+        },
+        {
+          "frequencyHz": 4.800000000000001,
+          "outputPsdM2PerHz": 6.913537695304702e-12
+        },
+        {
+          "frequencyHz": 4.9,
+          "outputPsdM2PerHz": 7.255728327327726e-12
+        },
+        {
+          "frequencyHz": 5,
+          "outputPsdM2PerHz": 7.630739829739163e-12
+        },
+        {
+          "frequencyHz": 5.1,
+          "outputPsdM2PerHz": 8.042750250265287e-12
+        },
+        {
+          "frequencyHz": 5.2,
+          "outputPsdM2PerHz": 8.496609652130433e-12
+        },
+        {
+          "frequencyHz": 5.3,
+          "outputPsdM2PerHz": 8.99796773078509e-12
+        },
+        {
+          "frequencyHz": 5.4,
+          "outputPsdM2PerHz": 9.55342855134992e-12
+        },
+        {
+          "frequencyHz": 5.5,
+          "outputPsdM2PerHz": 1.0170738375170048e-11
+        },
+        {
+          "frequencyHz": 5.6000000000000005,
+          "outputPsdM2PerHz": 1.085901366657819e-11
+        },
+        {
+          "frequencyHz": 5.7,
+          "outputPsdM2PerHz": 1.1629017487200213e-11
+        },
+        {
+          "frequencyHz": 5.8,
+          "outputPsdM2PerHz": 1.2493493362178632e-11
+        },
+        {
+          "frequencyHz": 5.9,
+          "outputPsdM2PerHz": 1.3467565869254825e-11
+        },
+        {
+          "frequencyHz": 6,
+          "outputPsdM2PerHz": 1.4569215751192018e-11
+        },
+        {
+          "frequencyHz": 6.1000000000000005,
+          "outputPsdM2PerHz": 1.581983259667123e-11
+        },
+        {
+          "frequencyHz": 6.2,
+          "outputPsdM2PerHz": 1.724483700628335e-11
+        },
+        {
+          "frequencyHz": 6.3,
+          "outputPsdM2PerHz": 1.8874341197178352e-11
+        },
+        {
+          "frequencyHz": 6.4,
+          "outputPsdM2PerHz": 2.0743772700354913e-11
+        },
+        {
+          "frequencyHz": 6.5,
+          "outputPsdM2PerHz": 2.2894304122530323e-11
+        },
+        {
+          "frequencyHz": 6.6000000000000005,
+          "outputPsdM2PerHz": 2.5372786979727792e-11
+        },
+        {
+          "frequencyHz": 6.7,
+          "outputPsdM2PerHz": 2.8230640670457655e-11
+        },
+        {
+          "frequencyHz": 6.8,
+          "outputPsdM2PerHz": 3.152074931884954e-11
+        },
+        {
+          "frequencyHz": 6.9,
+          "outputPsdM2PerHz": 3.529082978573027e-11
+        },
+        {
+          "frequencyHz": 7,
+          "outputPsdM2PerHz": 3.957099453685103e-11
+        },
+        {
+          "frequencyHz": 7.1000000000000005,
+          "outputPsdM2PerHz": 4.435264653504804e-11
+        },
+        {
+          "frequencyHz": 7.2,
+          "outputPsdM2PerHz": 4.955633369987675e-11
+        },
+        {
+          "frequencyHz": 7.3,
+          "outputPsdM2PerHz": 5.4989741415593364e-11
+        },
+        {
+          "frequencyHz": 7.4,
+          "outputPsdM2PerHz": 6.030642067630257e-11
+        },
+        {
+          "frequencyHz": 7.5,
+          "outputPsdM2PerHz": 6.499180640109202e-11
+        },
+        {
+          "frequencyHz": 7.6000000000000005,
+          "outputPsdM2PerHz": 6.841655803715032e-11
+        },
+        {
+          "frequencyHz": 7.7,
+          "outputPsdM2PerHz": 6.998389246068304e-11
+        },
+        {
+          "frequencyHz": 7.8,
+          "outputPsdM2PerHz": 6.933653061800269e-11
+        },
+        {
+          "frequencyHz": 7.9,
+          "outputPsdM2PerHz": 6.651283805395832e-11
+        },
+        {
+          "frequencyHz": 8,
+          "outputPsdM2PerHz": 6.194177640756587e-11
+        },
+        {
+          "frequencyHz": 8.100000000000001,
+          "outputPsdM2PerHz": 5.627619610302902e-11
+        },
+        {
+          "frequencyHz": 8.2,
+          "outputPsdM2PerHz": 5.017702782545518e-11
+        },
+        {
+          "frequencyHz": 8.3,
+          "outputPsdM2PerHz": 4.416365134155917e-11
+        },
+        {
+          "frequencyHz": 8.4,
+          "outputPsdM2PerHz": 3.8565904905271273e-11
+        },
+        {
+          "frequencyHz": 8.5,
+          "outputPsdM2PerHz": 3.3547240401993524e-11
+        },
+        {
+          "frequencyHz": 8.600000000000001,
+          "outputPsdM2PerHz": 2.9154497037210496e-11
+        },
+        {
+          "frequencyHz": 8.7,
+          "outputPsdM2PerHz": 2.5365535528569177e-11
+        },
+        {
+          "frequencyHz": 8.8,
+          "outputPsdM2PerHz": 2.2124104256020213e-11
+        },
+        {
+          "frequencyHz": 8.9,
+          "outputPsdM2PerHz": 1.9361654857654347e-11
+        },
+        {
+          "frequencyHz": 9,
+          "outputPsdM2PerHz": 1.7009410787895847e-11
+        },
+        {
+          "frequencyHz": 9.1,
+          "outputPsdM2PerHz": 1.5004198310390975e-11
+        },
+        {
+          "frequencyHz": 9.2,
+          "outputPsdM2PerHz": 1.3290675449352935e-11
+        },
+        {
+          "frequencyHz": 9.3,
+          "outputPsdM2PerHz": 1.1821658568211223e-11
+        },
+        {
+          "frequencyHz": 9.4,
+          "outputPsdM2PerHz": 1.0557546902455567e-11
+        },
+        {
+          "frequencyHz": 9.5,
+          "outputPsdM2PerHz": 9.46539445867259e-12
+        },
+        {
+          "frequencyHz": 9.6,
+          "outputPsdM2PerHz": 8.517911174209422e-12
+        },
+        {
+          "frequencyHz": 9.700000000000001,
+          "outputPsdM2PerHz": 7.69252539400562e-12
+        },
+        {
+          "frequencyHz": 9.8,
+          "outputPsdM2PerHz": 6.970559855886982e-12
+        },
+        {
+          "frequencyHz": 9.9,
+          "outputPsdM2PerHz": 6.336533100863228e-12
+        },
+        {
+          "frequencyHz": 10,
+          "outputPsdM2PerHz": 5.7775794942984656e-12
+        },
+        {
+          "frequencyHz": 10.1,
+          "outputPsdM2PerHz": 5.282973596045664e-12
+        },
+        {
+          "frequencyHz": 10.200000000000001,
+          "outputPsdM2PerHz": 4.843742802167034e-12
+        },
+        {
+          "frequencyHz": 10.3,
+          "outputPsdM2PerHz": 4.452352973680308e-12
+        },
+        {
+          "frequencyHz": 10.4,
+          "outputPsdM2PerHz": 4.102453601211262e-12
+        },
+        {
+          "frequencyHz": 10.5,
+          "outputPsdM2PerHz": 3.788671150519978e-12
+        },
+        {
+          "frequencyHz": 10.6,
+          "outputPsdM2PerHz": 3.506441233248221e-12
+        },
+        {
+          "frequencyHz": 10.700000000000001,
+          "outputPsdM2PerHz": 3.25187200632349e-12
+        },
+        {
+          "frequencyHz": 10.8,
+          "outputPsdM2PerHz": 3.021632685385715e-12
+        },
+        {
+          "frequencyHz": 10.9,
+          "outputPsdM2PerHz": 2.8128622747191753e-12
+        },
+        {
+          "frequencyHz": 11,
+          "outputPsdM2PerHz": 2.6230946004846637e-12
+        },
+        {
+          "frequencyHz": 11.1,
+          "outputPsdM2PerHz": 2.4501965226369783e-12
+        },
+        {
+          "frequencyHz": 11.200000000000001,
+          "outputPsdM2PerHz": 2.292316829225408e-12
+        },
+        {
+          "frequencyHz": 11.3,
+          "outputPsdM2PerHz": 2.147843815928303e-12
+        },
+        {
+          "frequencyHz": 11.4,
+          "outputPsdM2PerHz": 2.0153699497773524e-12
+        },
+        {
+          "frequencyHz": 11.5,
+          "outputPsdM2PerHz": 1.893662330404425e-12
+        },
+        {
+          "frequencyHz": 11.6,
+          "outputPsdM2PerHz": 1.7816379119212863e-12
+        },
+        {
+          "frequencyHz": 11.700000000000001,
+          "outputPsdM2PerHz": 1.6783426473344066e-12
+        },
+        {
+          "frequencyHz": 11.8,
+          "outputPsdM2PerHz": 1.5829338759565712e-12
+        },
+        {
+          "frequencyHz": 11.9,
+          "outputPsdM2PerHz": 1.4946654010660392e-12
+        },
+        {
+          "frequencyHz": 12,
+          "outputPsdM2PerHz": 1.4128748067284583e-12
+        },
+        {
+          "frequencyHz": 12.1,
+          "outputPsdM2PerHz": 1.3369726444547555e-12
+        },
+        {
+          "frequencyHz": 12.200000000000001,
+          "outputPsdM2PerHz": 1.2664331863173584e-12
+        },
+        {
+          "frequencyHz": 12.3,
+          "outputPsdM2PerHz": 1.2007864945100148e-12
+        },
+        {
+          "frequencyHz": 12.4,
+          "outputPsdM2PerHz": 1.1396116006510204e-12
+        },
+        {
+          "frequencyHz": 12.5,
+          "outputPsdM2PerHz": 1.082530623399033e-12
+        },
+        {
+          "frequencyHz": 12.6,
+          "outputPsdM2PerHz": 1.0292036817597864e-12
+        },
+        {
+          "frequencyHz": 12.700000000000001,
+          "outputPsdM2PerHz": 9.793244850676082e-13
+        },
+        {
+          "frequencyHz": 12.8,
+          "outputPsdM2PerHz": 9.326165000277117e-13
+        },
+        {
+          "frequencyHz": 12.9,
+          "outputPsdM2PerHz": 8.888296112006376e-13
+        },
+        {
+          "frequencyHz": 13,
+          "outputPsdM2PerHz": 8.477372045370892e-13
+        },
+        {
+          "frequencyHz": 13.1,
+          "outputPsdM2PerHz": 8.091336145407909e-13
+        },
+        {
+          "frequencyHz": 13.200000000000001,
+          "outputPsdM2PerHz": 7.728318847608471e-13
+        },
+        {
+          "frequencyHz": 13.3,
+          "outputPsdM2PerHz": 7.386617989251817e-13
+        },
+        {
+          "frequencyHz": 13.4,
+          "outputPsdM2PerHz": 7.064681463917969e-13
+        },
+        {
+          "frequencyHz": 13.5,
+          "outputPsdM2PerHz": 6.76109190932949e-13
+        },
+        {
+          "frequencyHz": 13.6,
+          "outputPsdM2PerHz": 6.474553163563124e-13
+        },
+        {
+          "frequencyHz": 13.700000000000001,
+          "outputPsdM2PerHz": 6.203878262517885e-13
+        },
+        {
+          "frequencyHz": 13.8,
+          "outputPsdM2PerHz": 5.947978783513232e-13
+        },
+        {
+          "frequencyHz": 13.9,
+          "outputPsdM2PerHz": 5.705855366993793e-13
+        },
+        {
+          "frequencyHz": 14,
+          "outputPsdM2PerHz": 5.476589271335783e-13
+        },
+        {
+          "frequencyHz": 14.1,
+          "outputPsdM2PerHz": 5.259334835347211e-13
+        },
+        {
+          "frequencyHz": 14.200000000000001,
+          "outputPsdM2PerHz": 5.053312739774903e-13
+        },
+        {
+          "frequencyHz": 14.3,
+          "outputPsdM2PerHz": 4.857803973431403e-13
+        },
+        {
+          "frequencyHz": 14.4,
+          "outputPsdM2PerHz": 4.672144421810226e-13
+        },
+        {
+          "frequencyHz": 14.5,
+          "outputPsdM2PerHz": 4.4957200065838974e-13
+        },
+        {
+          "frequencyHz": 14.6,
+          "outputPsdM2PerHz": 4.327962313438489e-13
+        },
+        {
+          "frequencyHz": 14.700000000000001,
+          "outputPsdM2PerHz": 4.168344653510869e-13
+        },
+        {
+          "frequencyHz": 14.8,
+          "outputPsdM2PerHz": 4.0163785104458983e-13
+        },
+        {
+          "frequencyHz": 14.9,
+          "outputPsdM2PerHz": 3.8716103309354363e-13
+        },
+        {
+          "frequencyHz": 15,
+          "outputPsdM2PerHz": 3.733618621670855e-13
+        },
+        {
+          "frequencyHz": 15.1,
+          "outputPsdM2PerHz": 3.602011320046136e-13
+        },
+        {
+          "frequencyHz": 15.200000000000001,
+          "outputPsdM2PerHz": 3.4764234097840697e-13
+        },
+        {
+          "frequencyHz": 15.3,
+          "outputPsdM2PerHz": 3.35651475600255e-13
+        },
+        {
+          "frequencyHz": 15.4,
+          "outputPsdM2PerHz": 3.241968137159887e-13
+        },
+        {
+          "frequencyHz": 15.5,
+          "outputPsdM2PerHz": 3.1324874538745964e-13
+        },
+        {
+          "frequencyHz": 15.6,
+          "outputPsdM2PerHz": 3.027796096856012e-13
+        },
+        {
+          "frequencyHz": 15.700000000000001,
+          "outputPsdM2PerHz": 2.9276354581491406e-13
+        },
+        {
+          "frequencyHz": 15.8,
+          "outputPsdM2PerHz": 2.8317635716266585e-13
+        },
+        {
+          "frequencyHz": 15.9,
+          "outputPsdM2PerHz": 2.739953870184037e-13
+        },
+        {
+          "frequencyHz": 16,
+          "outputPsdM2PerHz": 2.651994048436732e-13
+        },
+        {
+          "frequencyHz": 16.1,
+          "outputPsdM2PerHz": 2.5676850209046213e-13
+        },
+        {
+          "frequencyHz": 16.200000000000003,
+          "outputPsdM2PerHz": 2.4868399667178715e-13
+        },
+        {
+          "frequencyHz": 16.3,
+          "outputPsdM2PerHz": 2.4092834528075777e-13
+        },
+        {
+          "frequencyHz": 16.4,
+          "outputPsdM2PerHz": 2.3348506283684287e-13
+        },
+        {
+          "frequencyHz": 16.5,
+          "outputPsdM2PerHz": 2.2633864841125087e-13
+        },
+        {
+          "frequencyHz": 16.6,
+          "outputPsdM2PerHz": 2.1947451704839225e-13
+        },
+        {
+          "frequencyHz": 16.700000000000003,
+          "outputPsdM2PerHz": 2.1287893695832182e-13
+        },
+        {
+          "frequencyHz": 16.8,
+          "outputPsdM2PerHz": 2.0653897160671783e-13
+        },
+        {
+          "frequencyHz": 16.9,
+          "outputPsdM2PerHz": 2.0044242627502804e-13
+        },
+        {
+          "frequencyHz": 17,
+          "outputPsdM2PerHz": 1.9457779870462313e-13
+        },
+        {
+          "frequencyHz": 17.1,
+          "outputPsdM2PerHz": 1.8893423347563685e-13
+        },
+        {
+          "frequencyHz": 17.2,
+          "outputPsdM2PerHz": 1.835014798041848e-13
+        },
+        {
+          "frequencyHz": 17.3,
+          "outputPsdM2PerHz": 1.782698524712566e-13
+        },
+        {
+          "frequencyHz": 17.4,
+          "outputPsdM2PerHz": 1.7323019562314464e-13
+        },
+        {
+          "frequencyHz": 17.5,
+          "outputPsdM2PerHz": 1.6837384920714665e-13
+        },
+        {
+          "frequencyHz": 17.6,
+          "outputPsdM2PerHz": 1.6369261782777402e-13
+        },
+        {
+          "frequencyHz": 17.7,
+          "outputPsdM2PerHz": 1.5917874182803092e-13
+        },
+        {
+          "frequencyHz": 17.8,
+          "outputPsdM2PerHz": 1.5482487041777706e-13
+        },
+        {
+          "frequencyHz": 17.9,
+          "outputPsdM2PerHz": 1.5062403668692758e-13
+        },
+        {
+          "frequencyHz": 18,
+          "outputPsdM2PerHz": 1.465696343554497e-13
+        },
+        {
+          "frequencyHz": 18.1,
+          "outputPsdM2PerHz": 1.4265539612498194e-13
+        },
+        {
+          "frequencyHz": 18.2,
+          "outputPsdM2PerHz": 1.38875373508524e-13
+        },
+        {
+          "frequencyHz": 18.3,
+          "outputPsdM2PerHz": 1.3522391802518869e-13
+        },
+        {
+          "frequencyHz": 18.400000000000002,
+          "outputPsdM2PerHz": 1.3169566365655988e-13
+        },
+        {
+          "frequencyHz": 18.5,
+          "outputPsdM2PerHz": 1.2828551046987003e-13
+        },
+        {
+          "frequencyHz": 18.6,
+          "outputPsdM2PerHz": 1.2498860932108623e-13
+        },
+        {
+          "frequencyHz": 18.7,
+          "outputPsdM2PerHz": 1.2180034755815523e-13
+        },
+        {
+          "frequencyHz": 18.8,
+          "outputPsdM2PerHz": 1.1871633565116604e-13
+        },
+        {
+          "frequencyHz": 18.900000000000002,
+          "outputPsdM2PerHz": 1.1573239468212756e-13
+        },
+        {
+          "frequencyHz": 19,
+          "outputPsdM2PerHz": 1.1284454463245713e-13
+        },
+        {
+          "frequencyHz": 19.1,
+          "outputPsdM2PerHz": 1.1004899341121034e-13
+        },
+        {
+          "frequencyHz": 19.2,
+          "outputPsdM2PerHz": 1.0734212657158384e-13
+        },
+        {
+          "frequencyHz": 19.3,
+          "outputPsdM2PerHz": 1.0472049766732978e-13
+        },
+        {
+          "frequencyHz": 19.400000000000002,
+          "outputPsdM2PerHz": 1.0218081920448293e-13
+        },
+        {
+          "frequencyHz": 19.5,
+          "outputPsdM2PerHz": 9.971995414723985e-14
+        },
+        {
+          "frequencyHz": 19.6,
+          "outputPsdM2PerHz": 9.733490793997453e-14
+        },
+        {
+          "frequencyHz": 19.7,
+          "outputPsdM2PerHz": 9.502282101026659e-14
+        },
+        {
+          "frequencyHz": 19.8,
+          "outputPsdM2PerHz": 9.278096172045281e-14
+        },
+        {
+          "frequencyHz": 19.900000000000002,
+          "outputPsdM2PerHz": 9.060671973765272e-14
+        },
+        {
+          "frequencyHz": 20,
+          "outputPsdM2PerHz": 8.84975997944343e-14
+        }
+      ],
+      "atBandBoundary": false
+    },
+    {
+      "id": "source-red",
+      "sourceTilt": -3,
+      "receiverTilt": 0,
+      "constantScale": 1,
+      "maximumPsdM2PerHz": 7.388770578899988e-11,
+      "maximumHz": 7.598,
+      "samples": [
+        {
+          "frequencyHz": 1,
+          "outputPsdM2PerHz": 3.917142683130799e-11
+        },
+        {
+          "frequencyHz": 1.1,
+          "outputPsdM2PerHz": 3.795376413736017e-11
+        },
+        {
+          "frequencyHz": 1.2,
+          "outputPsdM2PerHz": 3.6799026404207795e-11
+        },
+        {
+          "frequencyHz": 1.3,
+          "outputPsdM2PerHz": 3.570401023126755e-11
+        },
+        {
+          "frequencyHz": 1.4,
+          "outputPsdM2PerHz": 3.466573126536571e-11
+        },
+        {
+          "frequencyHz": 1.5,
+          "outputPsdM2PerHz": 3.368140999884248e-11
+        },
+        {
+          "frequencyHz": 1.6,
+          "outputPsdM2PerHz": 3.274845882978476e-11
+        },
+        {
+          "frequencyHz": 1.7000000000000002,
+          "outputPsdM2PerHz": 3.186447028952988e-11
+        },
+        {
+          "frequencyHz": 1.8,
+          "outputPsdM2PerHz": 3.1027206353780306e-11
+        },
+        {
+          "frequencyHz": 1.9,
+          "outputPsdM2PerHz": 3.023458876401723e-11
+        },
+        {
+          "frequencyHz": 2,
+          "outputPsdM2PerHz": 2.948469029554024e-11
+        },
+        {
+          "frequencyHz": 2.1,
+          "outputPsdM2PerHz": 2.8775726917537e-11
+        },
+        {
+          "frequencyHz": 2.2,
+          "outputPsdM2PerHz": 2.810605079923336e-11
+        },
+        {
+          "frequencyHz": 2.3,
+          "outputPsdM2PerHz": 2.7474144124523848e-11
+        },
+        {
+          "frequencyHz": 2.4000000000000004,
+          "outputPsdM2PerHz": 2.687861368567006e-11
+        },
+        {
+          "frequencyHz": 2.5,
+          "outputPsdM2PerHz": 2.6318186234814945e-11
+        },
+        {
+          "frequencyHz": 2.6,
+          "outputPsdM2PerHz": 2.5791704580343824e-11
+        },
+        {
+          "frequencyHz": 2.7,
+          "outputPsdM2PerHz": 2.5298124423682167e-11
+        },
+        {
+          "frequencyHz": 2.8,
+          "outputPsdM2PerHz": 2.4836511941131832e-11
+        },
+        {
+          "frequencyHz": 2.9000000000000004,
+          "outputPsdM2PerHz": 2.440604212500581e-11
+        },
+        {
+          "frequencyHz": 3,
+          "outputPsdM2PerHz": 2.4005997908853375e-11
+        },
+        {
+          "frequencyHz": 3.1,
+          "outputPsdM2PerHz": 2.363577011323114e-11
+        },
+        {
+          "frequencyHz": 3.2,
+          "outputPsdM2PerHz": 2.329485826157975e-11
+        },
+        {
+          "frequencyHz": 3.3000000000000003,
+          "outputPsdM2PerHz": 2.2982872330673044e-11
+        },
+        {
+          "frequencyHz": 3.4,
+          "outputPsdM2PerHz": 2.2699535517253892e-11
+        },
+        {
+          "frequencyHz": 3.5,
+          "outputPsdM2PerHz": 2.2444688122379437e-11
+        },
+        {
+          "frequencyHz": 3.6,
+          "outputPsdM2PerHz": 2.221829267830503e-11
+        },
+        {
+          "frequencyHz": 3.7,
+          "outputPsdM2PerHz": 2.2020440470206025e-11
+        },
+        {
+          "frequencyHz": 3.8000000000000003,
+          "outputPsdM2PerHz": 2.1851359637605854e-11
+        },
+        {
+          "frequencyHz": 3.9,
+          "outputPsdM2PerHz": 2.1711425079186944e-11
+        },
+        {
+          "frequencyHz": 4,
+          "outputPsdM2PerHz": 2.160117043109241e-11
+        },
+        {
+          "frequencyHz": 4.1,
+          "outputPsdM2PerHz": 2.1521302444575276e-11
+        },
+        {
+          "frequencyHz": 4.2,
+          "outputPsdM2PerHz": 2.1472718155966184e-11
+        },
+        {
+          "frequencyHz": 4.300000000000001,
+          "outputPsdM2PerHz": 2.145652532289765e-11
+        },
+        {
+          "frequencyHz": 4.4,
+          "outputPsdM2PerHz": 2.1474066698525702e-11
+        },
+        {
+          "frequencyHz": 4.5,
+          "outputPsdM2PerHz": 2.1526948833680344e-11
+        },
+        {
+          "frequencyHz": 4.6,
+          "outputPsdM2PerHz": 2.1617076239611467e-11
+        },
+        {
+          "frequencyHz": 4.7,
+          "outputPsdM2PerHz": 2.17466919160276e-11
+        },
+        {
+          "frequencyHz": 4.800000000000001,
+          "outputPsdM2PerHz": 2.191842545566528e-11
+        },
+        {
+          "frequencyHz": 4.9,
+          "outputPsdM2PerHz": 2.21353501830171e-11
+        },
+        {
+          "frequencyHz": 5,
+          "outputPsdM2PerHz": 2.2401051075809992e-11
+        },
+        {
+          "frequencyHz": 5.1,
+          "outputPsdM2PerHz": 2.271970555604853e-11
+        },
+        {
+          "frequencyHz": 5.2,
+          "outputPsdM2PerHz": 2.3096179620895886e-11
+        },
+        {
+          "frequencyHz": 5.3,
+          "outputPsdM2PerHz": 2.3536142200861815e-11
+        },
+        {
+          "frequencyHz": 5.4,
+          "outputPsdM2PerHz": 2.4046201054268025e-11
+        },
+        {
+          "frequencyHz": 5.5,
+          "outputPsdM2PerHz": 2.4634063870690105e-11
+        },
+        {
+          "frequencyHz": 5.6000000000000005,
+          "outputPsdM2PerHz": 2.5308728441831968e-11
+        },
+        {
+          "frequencyHz": 5.7,
+          "outputPsdM2PerHz": 2.608070554399841e-11
+        },
+        {
+          "frequencyHz": 5.8,
+          "outputPsdM2PerHz": 2.696227716326588e-11
+        },
+        {
+          "frequencyHz": 5.9,
+          "outputPsdM2PerHz": 2.7967790180245724e-11
+        },
+        {
+          "frequencyHz": 6,
+          "outputPsdM2PerHz": 2.911398039609292e-11
+        },
+        {
+          "frequencyHz": 6.1000000000000005,
+          "outputPsdM2PerHz": 3.042031173193928e-11
+        },
+        {
+          "frequencyHz": 6.2,
+          "outputPsdM2PerHz": 3.1909297023674676e-11
+        },
+        {
+          "frequencyHz": 6.3,
+          "outputPsdM2PerHz": 3.3606734148984957e-11
+        },
+        {
+          "frequencyHz": 6.4,
+          "outputPsdM2PerHz": 3.554173462687574e-11
+        },
+        {
+          "frequencyHz": 6.5,
+          "outputPsdM2PerHz": 3.7746326184693376e-11
+        },
+        {
+          "frequencyHz": 6.6000000000000005,
+          "outputPsdM2PerHz": 4.02542537888574e-11
+        },
+        {
+          "frequencyHz": 6.7,
+          "outputPsdM2PerHz": 4.309835631123022e-11
+        },
+        {
+          "frequencyHz": 6.8,
+          "outputPsdM2PerHz": 4.630553137637285e-11
+        },
+        {
+          "frequencyHz": 6.9,
+          "outputPsdM2PerHz": 4.988782559326062e-11
+        },
+        {
+          "frequencyHz": 7,
+          "outputPsdM2PerHz": 5.3827726473823785e-11
+        },
+        {
+          "frequencyHz": 7.1000000000000005,
+          "outputPsdM2PerHz": 5.8055714834018034e-11
+        },
+        {
+          "frequencyHz": 7.2,
+          "outputPsdM2PerHz": 6.241959870005392e-11
+        },
+        {
+          "frequencyHz": 7.3,
+          "outputPsdM2PerHz": 6.664995293191963e-11
+        },
+        {
+          "frequencyHz": 7.4,
+          "outputPsdM2PerHz": 7.033606836711667e-11
+        },
+        {
+          "frequencyHz": 7.5,
+          "outputPsdM2PerHz": 7.294062995532196e-11
+        },
+        {
+          "frequencyHz": 7.6000000000000005,
+          "outputPsdM2PerHz": 7.38870775621213e-11
+        },
+        {
+          "frequencyHz": 7.7,
+          "outputPsdM2PerHz": 7.272801392799315e-11
+        },
+        {
+          "frequencyHz": 7.8,
+          "outputPsdM2PerHz": 6.933653061800269e-11
+        },
+        {
+          "frequencyHz": 7.9,
+          "outputPsdM2PerHz": 6.400322316283398e-11
+        },
+        {
+          "frequencyHz": 8,
+          "outputPsdM2PerHz": 5.7355674095370855e-11
+        },
+        {
+          "frequencyHz": 8.100000000000001,
+          "outputPsdM2PerHz": 5.0143406279302196e-11
+        },
+        {
+          "frequencyHz": 8.2,
+          "outputPsdM2PerHz": 4.30219803093678e-11
+        },
+        {
+          "frequencyHz": 8.3,
+          "outputPsdM2PerHz": 3.6437351572047314e-11
+        },
+        {
+          "frequencyHz": 8.4,
+          "outputPsdM2PerHz": 3.061834572354733e-11
+        },
+        {
+          "frequencyHz": 8.5,
+          "outputPsdM2PerHz": 2.5628982435749008e-11
+        },
+        {
+          "frequencyHz": 8.600000000000001,
+          "outputPsdM2PerHz": 2.143268011784079e-11
+        },
+        {
+          "frequencyHz": 8.7,
+          "outputPsdM2PerHz": 1.7943672351267154e-11
+        },
+        {
+          "frequencyHz": 8.8,
+          "outputPsdM2PerHz": 1.5060152068872132e-11
+        },
+        {
+          "frequencyHz": 8.9,
+          "outputPsdM2PerHz": 1.2682430789812604e-11
+        },
+        {
+          "frequencyHz": 9,
+          "outputPsdM2PerHz": 1.0721255915851253e-11
+        },
+        {
+          "frequencyHz": 9.1,
+          "outputPsdM2PerHz": 9.100506299660616e-12
+        },
+        {
+          "frequencyHz": 9.2,
+          "outputPsdM2PerHz": 7.757042627488656e-12
+        },
+        {
+          "frequencyHz": 9.3,
+          "outputPsdM2PerHz": 6.639324617018896e-12
+        },
+        {
+          "frequencyHz": 9.4,
+          "outputPsdM2PerHz": 5.7056467080411865e-12
+        },
+        {
+          "frequencyHz": 9.5,
+          "outputPsdM2PerHz": 4.922400438140213e-12
+        },
+        {
+          "frequencyHz": 9.6,
+          "outputPsdM2PerHz": 4.262532431436289e-12
+        },
+        {
+          "frequencyHz": 9.700000000000001,
+          "outputPsdM2PerHz": 3.704246627174024e-12
+        },
+        {
+          "frequencyHz": 9.8,
+          "outputPsdM2PerHz": 3.2299439236105015e-12
+        },
+        {
+          "frequencyHz": 9.9,
+          "outputPsdM2PerHz": 2.8253704300234383e-12
+        },
+        {
+          "frequencyHz": 10,
+          "outputPsdM2PerHz": 2.478939818431573e-12
+        },
+        {
+          "frequencyHz": 10.1,
+          "outputPsdM2PerHz": 2.1811968406983954e-12
+        },
+        {
+          "frequencyHz": 10.200000000000001,
+          "outputPsdM2PerHz": 1.924393407390429e-12
+        },
+        {
+          "frequencyHz": 10.3,
+          "outputPsdM2PerHz": 1.7021535662617428e-12
+        },
+        {
+          "frequencyHz": 10.4,
+          "outputPsdM2PerHz": 1.5092083382453695e-12
+        },
+        {
+          "frequencyHz": 10.5,
+          "outputPsdM2PerHz": 1.341185332215066e-12
+        },
+        {
+          "frequencyHz": 10.6,
+          "outputPsdM2PerHz": 1.194441309411613e-12
+        },
+        {
+          "frequencyHz": 10.700000000000001,
+          "outputPsdM2PerHz": 1.0659284645619898e-12
+        },
+        {
+          "frequencyHz": 10.8,
+          "outputPsdM2PerHz": 9.53087233115068e-13
+        },
+        {
+          "frequencyHz": 10.9,
+          "outputPsdM2PerHz": 8.537600263399768e-13
+        },
+        {
+          "frequencyHz": 11,
+          "outputPsdM2PerHz": 7.661215313002552e-13
+        },
+        {
+          "frequencyHz": 11.1,
+          "outputPsdM2PerHz": 6.886221688063695e-13
+        },
+        {
+          "frequencyHz": 11.200000000000001,
+          "outputPsdM2PerHz": 6.199420421308207e-13
+        },
+        {
+          "frequencyHz": 11.3,
+          "outputPsdM2PerHz": 5.589532820087535e-13
+        },
+        {
+          "frequencyHz": 11.4,
+          "outputPsdM2PerHz": 5.0468913769678e-13
+        },
+        {
+          "frequencyHz": 11.5,
+          "outputPsdM2PerHz": 4.56318509272252e-13
+        },
+        {
+          "frequencyHz": 11.6,
+          "outputPsdM2PerHz": 4.131248856787005e-13
+        },
+        {
+          "frequencyHz": 11.700000000000001,
+          "outputPsdM2PerHz": 3.744888636836656e-13
+        },
+        {
+          "frequencyHz": 11.8,
+          "outputPsdM2PerHz": 3.3987358824602204e-13
+        },
+        {
+          "frequencyHz": 11.9,
+          "outputPsdM2PerHz": 3.088125850006949e-13
+        },
+        {
+          "frequencyHz": 12,
+          "outputPsdM2PerHz": 2.8089955848818175e-13
+        },
+        {
+          "frequencyHz": 12.1,
+          "outputPsdM2PerHz": 2.5577981140028896e-13
+        },
+        {
+          "frequencyHz": 12.200000000000001,
+          "outputPsdM2PerHz": 2.3314300511591097e-13
+        },
+        {
+          "frequencyHz": 12.3,
+          "outputPsdM2PerHz": 2.1271703374133876e-13
+        },
+        {
+          "frequencyHz": 12.4,
+          "outputPsdM2PerHz": 1.9426282552223194e-13
+        },
+        {
+          "frequencyHz": 12.5,
+          "outputPsdM2PerHz": 1.7756991901523727e-13
+        },
+        {
+          "frequencyHz": 12.6,
+          "outputPsdM2PerHz": 1.6245268847792743e-13
+        },
+        {
+          "frequencyHz": 12.700000000000001,
+          "outputPsdM2PerHz": 1.4874711487222818e-13
+        },
+        {
+          "frequencyHz": 12.8,
+          "outputPsdM2PerHz": 1.3630801671216238e-13
+        },
+        {
+          "frequencyHz": 12.9,
+          "outputPsdM2PerHz": 1.2500666953567503e-13
+        },
+        {
+          "frequencyHz": 13,
+          "outputPsdM2PerHz": 1.1472875468624125e-13
+        },
+        {
+          "frequencyHz": 13.1,
+          "outputPsdM2PerHz": 1.0537258786341363e-13
+        },
+        {
+          "frequencyHz": 13.200000000000001,
+          "outputPsdM2PerHz": 9.684758594888616e-14
+        },
+        {
+          "frequencyHz": 13.3,
+          "outputPsdM2PerHz": 8.907293726049519e-14
+        },
+        {
+          "frequencyHz": 13.4,
+          "outputPsdM2PerHz": 8.197644589083582e-14
+        },
+        {
+          "frequencyHz": 13.5,
+          "outputPsdM2PerHz": 7.549352535877594e-14
+        },
+        {
+          "frequencyHz": 13.6,
+          "outputPsdM2PerHz": 6.956632060952368e-14
+        },
+        {
+          "frequencyHz": 13.700000000000001,
+          "outputPsdM2PerHz": 6.41429405782732e-14
+        },
+        {
+          "frequencyHz": 13.8,
+          "outputPsdM2PerHz": 5.91767861942833e-14
+        },
+        {
+          "frequencyHz": 13.9,
+          "outputPsdM2PerHz": 5.4625960936412306e-14
+        },
+        {
+          "frequencyHz": 14,
+          "outputPsdM2PerHz": 5.0452752930954437e-14
+        },
+        {
+          "frequencyHz": 14.1,
+          "outputPsdM2PerHz": 4.6623179168080595e-14
+        },
+        {
+          "frequencyHz": 14.200000000000001,
+          "outputPsdM2PerHz": 4.3106583753482105e-14
+        },
+        {
+          "frequencyHz": 14.3,
+          "outputPsdM2PerHz": 3.9875283247428665e-14
+        },
+        {
+          "frequencyHz": 14.4,
+          "outputPsdM2PerHz": 3.690425310775345e-14
+        },
+        {
+          "frequencyHz": 14.5,
+          "outputPsdM2PerHz": 3.4170850073870115e-14
+        },
+        {
+          "frequencyHz": 14.6,
+          "outputPsdM2PerHz": 3.165456602868197e-14
+        },
+        {
+          "frequencyHz": 14.700000000000001,
+          "outputPsdM2PerHz": 2.933680947316729e-14
+        },
+        {
+          "frequencyHz": 14.8,
+          "outputPsdM2PerHz": 2.7200711260347747e-14
+        },
+        {
+          "frequencyHz": 14.9,
+          "outputPsdM2PerHz": 2.5230951674481324e-14
+        },
+        {
+          "frequencyHz": 15,
+          "outputPsdM2PerHz": 2.341360631872544e-14
+        },
+        {
+          "frequencyHz": 15.1,
+          "outputPsdM2PerHz": 2.1736008599456083e-14
+        },
+        {
+          "frequencyHz": 15.200000000000001,
+          "outputPsdM2PerHz": 2.018662687570179e-14
+        },
+        {
+          "frequencyHz": 15.3,
+          "outputPsdM2PerHz": 1.875495458431068e-14
+        },
+        {
+          "frequencyHz": 15.4,
+          "outputPsdM2PerHz": 1.7431411861055678e-14
+        },
+        {
+          "frequencyHz": 15.5,
+          "outputPsdM2PerHz": 1.6207257359575397e-14
+        },
+        {
+          "frequencyHz": 15.6,
+          "outputPsdM2PerHz": 1.5074509127812186e-14
+        },
+        {
+          "frequencyHz": 15.700000000000001,
+          "outputPsdM2PerHz": 1.4025873538810825e-14
+        },
+        {
+          "frequencyHz": 15.8,
+          "outputPsdM2PerHz": 1.3054681392242793e-14
+        },
+        {
+          "frequencyHz": 15.9,
+          "outputPsdM2PerHz": 1.2154830407261927e-14
+        },
+        {
+          "frequencyHz": 16,
+          "outputPsdM2PerHz": 1.1320733418357386e-14
+        },
+        {
+          "frequencyHz": 16.1,
+          "outputPsdM2PerHz": 1.0547271665529485e-14
+        },
+        {
+          "frequencyHz": 16.200000000000003,
+          "outputPsdM2PerHz": 9.829752639897148e-15
+        },
+        {
+          "frequencyHz": 16.3,
+          "outputPsdM2PerHz": 9.163872007058968e-15
+        },
+        {
+          "frequencyHz": 16.4,
+          "outputPsdM2PerHz": 8.545679184297276e-15
+        },
+        {
+          "frequencyHz": 16.5,
+          "outputPsdM2PerHz": 7.971546195002773e-15
+        },
+        {
+          "frequencyHz": 16.6,
+          "outputPsdM2PerHz": 7.438139465338597e-15
+        },
+        {
+          "frequencyHz": 16.700000000000003,
+          "outputPsdM2PerHz": 6.942394264877293e-15
+        },
+        {
+          "frequencyHz": 16.8,
+          "outputPsdM2PerHz": 6.481491525354696e-15
+        },
+        {
+          "frequencyHz": 16.9,
+          "outputPsdM2PerHz": 6.052836800326833e-15
+        },
+        {
+          "frequencyHz": 17,
+          "outputPsdM2PerHz": 5.654041153860311e-15
+        },
+        {
+          "frequencyHz": 17.1,
+          "outputPsdM2PerHz": 5.282903788835021e-15
+        },
+        {
+          "frequencyHz": 17.2,
+          "outputPsdM2PerHz": 4.9373962453451835e-15
+        },
+        {
+          "frequencyHz": 17.3,
+          "outputPsdM2PerHz": 4.615648017356695e-15
+        },
+        {
+          "frequencyHz": 17.4,
+          "outputPsdM2PerHz": 4.315933451482874e-15
+        },
+        {
+          "frequencyHz": 17.5,
+          "outputPsdM2PerHz": 4.036659805710092e-15
+        },
+        {
+          "frequencyHz": 17.6,
+          "outputPsdM2PerHz": 3.77635635834512e-15
+        },
+        {
+          "frequencyHz": 17.7,
+          "outputPsdM2PerHz": 3.5336644685431943e-15
+        },
+        {
+          "frequencyHz": 17.8,
+          "outputPsdM2PerHz": 3.307328499668817e-15
+        },
+        {
+          "frequencyHz": 17.9,
+          "outputPsdM2PerHz": 3.096187525575808e-15
+        },
+        {
+          "frequencyHz": 18,
+          "outputPsdM2PerHz": 2.899167747789547e-15
+        },
+        {
+          "frequencyHz": 18.1,
+          "outputPsdM2PerHz": 2.7152755586400095e-15
+        },
+        {
+          "frequencyHz": 18.2,
+          "outputPsdM2PerHz": 2.5435911917202064e-15
+        },
+        {
+          "frequencyHz": 18.3,
+          "outputPsdM2PerHz": 2.383262906715143e-15
+        },
+        {
+          "frequencyHz": 18.400000000000002,
+          "outputPsdM2PerHz": 2.2335016607323885e-15
+        },
+        {
+          "frequencyHz": 18.5,
+          "outputPsdM2PerHz": 2.0935762228314844e-15
+        },
+        {
+          "frequencyHz": 18.6,
+          "outputPsdM2PerHz": 1.9628086925519775e-15
+        },
+        {
+          "frequencyHz": 18.7,
+          "outputPsdM2PerHz": 1.840570386929085e-15
+        },
+        {
+          "frequencyHz": 18.8,
+          "outputPsdM2PerHz": 1.7262780638055607e-15
+        },
+        {
+          "frequencyHz": 18.900000000000002,
+          "outputPsdM2PerHz": 1.6193904522385533e-15
+        },
+        {
+          "frequencyHz": 19,
+          "outputPsdM2PerHz": 1.5194050634946322e-15
+        },
+        {
+          "frequencyHz": 19.1,
+          "outputPsdM2PerHz": 1.4258552585568708e-15
+        },
+        {
+          "frequencyHz": 19.2,
+          "outputPsdM2PerHz": 1.3383075502616495e-15
+        },
+        {
+          "frequencyHz": 19.3,
+          "outputPsdM2PerHz": 1.256359120164226e-15
+        },
+        {
+          "frequencyHz": 19.400000000000002,
+          "outputPsdM2PerHz": 1.1796355320233882e-15
+        },
+        {
+          "frequencyHz": 19.5,
+          "outputPsdM2PerHz": 1.107788625415369e-15
+        },
+        {
+          "frequencyHz": 19.6,
+          "outputPsdM2PerHz": 1.0404945744535439e-15
+        },
+        {
+          "frequencyHz": 19.7,
+          "outputPsdM2PerHz": 9.77452097918523e-16
+        },
+        {
+          "frequencyHz": 19.8,
+          "outputPsdM2PerHz": 9.18380808306649e-16
+        },
+        {
+          "frequencyHz": 19.900000000000002,
+          "outputPsdM2PerHz": 8.630196883966321e-16
+        },
+        {
+          "frequencyHz": 20,
+          "outputPsdM2PerHz": 8.111256849242743e-16
+        }
+      ],
+      "atBandBoundary": false
+    },
+    {
+      "id": "source-blue",
+      "sourceTilt": 3,
+      "receiverTilt": 0,
+      "constantScale": 1,
+      "maximumPsdM2PerHz": 6.951296537592334e-11,
+      "maximumHz": 7.84,
+      "samples": [
+        {
+          "frequencyHz": 1,
+          "outputPsdM2PerHz": 2.0954397499846452e-13
+        },
+        {
+          "frequencyHz": 1.1,
+          "outputPsdM2PerHz": 2.192642910846756e-13
+        },
+        {
+          "frequencyHz": 1.2,
+          "outputPsdM2PerHz": 2.2959194715797786e-13
+        },
+        {
+          "frequencyHz": 1.3,
+          "outputPsdM2PerHz": 2.40571728593086e-13
+        },
+        {
+          "frequencyHz": 1.4,
+          "outputPsdM2PerHz": 2.522523520028002e-13
+        },
+        {
+          "frequencyHz": 1.5,
+          "outputPsdM2PerHz": 2.646868650295977e-13
+        },
+        {
+          "frequencyHz": 1.6,
+          "outputPsdM2PerHz": 2.779330930084371e-13
+        },
+        {
+          "frequencyHz": 1.7000000000000002,
+          "outputPsdM2PerHz": 2.920541387380045e-13
+        },
+        {
+          "frequencyHz": 1.8,
+          "outputPsdM2PerHz": 3.0711894253194086e-13
+        },
+        {
+          "frequencyHz": 1.9,
+          "outputPsdM2PerHz": 3.2320291081175536e-13
+        },
+        {
+          "frequencyHz": 2,
+          "outputPsdM2PerHz": 3.403886227778308e-13
+        },
+        {
+          "frequencyHz": 2.1,
+          "outputPsdM2PerHz": 3.5876662618869627e-13
+        },
+        {
+          "frequencyHz": 2.2,
+          "outputPsdM2PerHz": 3.784363350331565e-13
+        },
+        {
+          "frequencyHz": 2.3,
+          "outputPsdM2PerHz": 3.9950704394515317e-13
+        },
+        {
+          "frequencyHz": 2.4000000000000004,
+          "outputPsdM2PerHz": 4.2209907664825346e-13
+        },
+        {
+          "frequencyHz": 2.5,
+          "outputPsdM2PerHz": 4.463450885992445e-13
+        },
+        {
+          "frequencyHz": 2.6,
+          "outputPsdM2PerHz": 4.723915474184888e-13
+        },
+        {
+          "frequencyHz": 2.7,
+          "outputPsdM2PerHz": 5.004004187582211e-13
+        },
+        {
+          "frequencyHz": 2.8,
+          "outputPsdM2PerHz": 5.30551090103406e-13
+        },
+        {
+          "frequencyHz": 2.9000000000000004,
+          "outputPsdM2PerHz": 5.630425707882269e-13
+        },
+        {
+          "frequencyHz": 3,
+          "outputPsdM2PerHz": 5.980960134481624e-13
+        },
+        {
+          "frequencyHz": 3.1,
+          "outputPsdM2PerHz": 6.359576104641745e-13
+        },
+        {
+          "frequencyHz": 3.2,
+          "outputPsdM2PerHz": 6.769019290029893e-13
+        },
+        {
+          "frequencyHz": 3.3000000000000003,
+          "outputPsdM2PerHz": 7.212357604027169e-13
+        },
+        {
+          "frequencyHz": 3.4,
+          "outputPsdM2PerHz": 7.693025743782049e-13
+        },
+        {
+          "frequencyHz": 3.5,
+          "outputPsdM2PerHz": 8.214876864285478e-13
+        },
+        {
+          "frequencyHz": 3.6,
+          "outputPsdM2PerHz": 8.782242686762874e-13
+        },
+        {
+          "frequencyHz": 3.7,
+          "outputPsdM2PerHz": 9.400003611054785e-13
+        },
+        {
+          "frequencyHz": 3.8000000000000003,
+          "outputPsdM2PerHz": 1.0073670729947077e-12
+        },
+        {
+          "frequencyHz": 3.9,
+          "outputPsdM2PerHz": 1.0809482047812361e-12
+        },
+        {
+          "frequencyHz": 4,
+          "outputPsdM2PerHz": 1.1614515705730994e-12
+        },
+        {
+          "frequencyHz": 4.1,
+          "outputPsdM2PerHz": 1.2496823635034562e-12
+        },
+        {
+          "frequencyHz": 4.2,
+          "outputPsdM2PerHz": 1.3465589832304559e-12
+        },
+        {
+          "frequencyHz": 4.300000000000001,
+          "outputPsdM2PerHz": 1.4531318411363681e-12
+        },
+        {
+          "frequencyHz": 4.4,
+          "outputPsdM2PerHz": 1.5706057793113077e-12
+        },
+        {
+          "frequencyHz": 4.5,
+          "outputPsdM2PerHz": 1.7003668908162581e-12
+        },
+        {
+          "frequencyHz": 4.6,
+          "outputPsdM2PerHz": 1.8440147194802915e-12
+        },
+        {
+          "frequencyHz": 4.7,
+          "outputPsdM2PerHz": 2.0034010584790746e-12
+        },
+        {
+          "frequencyHz": 4.800000000000001,
+          "outputPsdM2PerHz": 2.1806768721174223e-12
+        },
+        {
+          "frequencyHz": 4.9,
+          "outputPsdM2PerHz": 2.378349252426884e-12
+        },
+        {
+          "frequencyHz": 5,
+          "outputPsdM2PerHz": 2.599350814035953e-12
+        },
+        {
+          "frequencyHz": 5.1,
+          "outputPsdM2PerHz": 2.847124555754704e-12
+        },
+        {
+          "frequencyHz": 5.2,
+          "outputPsdM2PerHz": 3.125728010677627e-12
+        },
+        {
+          "frequencyHz": 5.3,
+          "outputPsdM2PerHz": 3.439961510824198e-12
+        },
+        {
+          "frequencyHz": 5.4,
+          "outputPsdM2PerHz": 3.795526656363394e-12
+        },
+        {
+          "frequencyHz": 5.5,
+          "outputPsdM2PerHz": 4.1992226552288626e-12
+        },
+        {
+          "frequencyHz": 5.6000000000000005,
+          "outputPsdM2PerHz": 4.659190132050602e-12
+        },
+        {
+          "frequencyHz": 5.7,
+          "outputPsdM2PerHz": 5.185214314446638e-12
+        },
+        {
+          "frequencyHz": 5.8,
+          "outputPsdM2PerHz": 5.789102138726587e-12
+        },
+        {
+          "frequencyHz": 5.9,
+          "outputPsdM2PerHz": 6.485150570488293e-12
+        },
+        {
+          "frequencyHz": 6,
+          "outputPsdM2PerHz": 7.290725785927472e-12
+        },
+        {
+          "frequencyHz": 6.1000000000000005,
+          "outputPsdM2PerHz": 8.226973661283619e-12
+        },
+        {
+          "frequencyHz": 6.2,
+          "outputPsdM2PerHz": 9.319678937227582e-12
+        },
+        {
+          "frequencyHz": 6.3,
+          "outputPsdM2PerHz": 1.0600278921725085e-11
+        },
+        {
+          "frequencyHz": 6.4,
+          "outputPsdM2PerHz": 1.2107009136200263e-11
+        },
+        {
+          "frequencyHz": 6.5,
+          "outputPsdM2PerHz": 1.388609738309998e-11
+        },
+        {
+          "frequencyHz": 6.6000000000000005,
+          "outputPsdM2PerHz": 1.599280221403199e-11
+        },
+        {
+          "frequencyHz": 6.7,
+          "outputPsdM2PerHz": 1.8491866996255496e-11
+        },
+        {
+          "frequencyHz": 6.8,
+          "outputPsdM2PerHz": 2.1456564865784282e-11
+        },
+        {
+          "frequencyHz": 6.9,
+          "outputPsdM2PerHz": 2.4964861710341498e-11
+        },
+        {
+          "frequencyHz": 7,
+          "outputPsdM2PerHz": 2.9090279512306127e-11
+        },
+        {
+          "frequencyHz": 7.1000000000000005,
+          "outputPsdM2PerHz": 3.388395544326746e-11
+        },
+        {
+          "frequencyHz": 7.2,
+          "outputPsdM2PerHz": 3.9343896162719464e-11
+        },
+        {
+          "frequencyHz": 7.3,
+          "outputPsdM2PerHz": 4.5369449308427765e-11
+        },
+        {
+          "frequencyHz": 7.4,
+          "outputPsdM2PerHz": 5.170696143840011e-11
+        },
+        {
+          "frequencyHz": 7.5,
+          "outputPsdM2PerHz": 5.790921879704489e-11
+        },
+        {
+          "frequencyHz": 7.6000000000000005,
+          "outputPsdM2PerHz": 6.335106987707433e-11
+        },
+        {
+          "frequencyHz": 7.7,
+          "outputPsdM2PerHz": 6.734331022427793e-11
+        },
+        {
+          "frequencyHz": 7.8,
+          "outputPsdM2PerHz": 6.933653061800269e-11
+        },
+        {
+          "frequencyHz": 7.9,
+          "outputPsdM2PerHz": 6.912085684711316e-11
+        },
+        {
+          "frequencyHz": 8,
+          "outputPsdM2PerHz": 6.68945788719193e-11
+        },
+        {
+          "frequencyHz": 8.100000000000001,
+          "outputPsdM2PerHz": 6.315905684959086e-11
+        },
+        {
+          "frequencyHz": 8.2,
+          "outputPsdM2PerHz": 5.852204160040214e-11
+        },
+        {
+          "frequencyHz": 8.3,
+          "outputPsdM2PerHz": 5.3528261952909344e-11
+        },
+        {
+          "frequencyHz": 8.4,
+          "outputPsdM2PerHz": 4.8576400390520845e-11
+        },
+        {
+          "frequencyHz": 8.5,
+          "outputPsdM2PerHz": 4.3911900966436344e-11
+        },
+        {
+          "frequencyHz": 8.600000000000001,
+          "outputPsdM2PerHz": 3.9658348504216206e-11
+        },
+        {
+          "frequencyHz": 8.7,
+          "outputPsdM2PerHz": 3.585723034034716e-11
+        },
+        {
+          "frequencyHz": 8.8,
+          "outputPsdM2PerHz": 3.250139752193811e-11
+        },
+        {
+          "frequencyHz": 8.9,
+          "outputPsdM2PerHz": 2.955850381048831e-11
+        },
+        {
+          "frequencyHz": 9,
+          "outputPsdM2PerHz": 2.6985649593871866e-11
+        },
+        {
+          "frequencyHz": 9.1,
+          "outputPsdM2PerHz": 2.4737740904144525e-11
+        },
+        {
+          "frequencyHz": 9.2,
+          "outputPsdM2PerHz": 2.2771829727229534e-11
+        },
+        {
+          "frequencyHz": 9.3,
+          "outputPsdM2PerHz": 2.1049070404711024e-11
+        },
+        {
+          "frequencyHz": 9.4,
+          "outputPsdM2PerHz": 1.953534845409579e-11
+        },
+        {
+          "frequencyHz": 9.5,
+          "outputPsdM2PerHz": 1.820121978782371e-11
+        },
+        {
+          "frequencyHz": 9.6,
+          "outputPsdM2PerHz": 1.7021526976927634e-11
+        },
+        {
+          "frequencyHz": 9.700000000000001,
+          "outputPsdM2PerHz": 1.5974893923995002e-11
+        },
+        {
+          "frequencyHz": 9.8,
+          "outputPsdM2PerHz": 1.504320379970858e-11
+        },
+        {
+          "frequencyHz": 9.9,
+          "outputPsdM2PerHz": 1.421111062523659e-11
+        },
+        {
+          "frequencyHz": 10,
+          "outputPsdM2PerHz": 1.3465605161023204e-11
+        },
+        {
+          "frequencyHz": 10.1,
+          "outputPsdM2PerHz": 1.2795640217220943e-11
+        },
+        {
+          "frequencyHz": 10.200000000000001,
+          "outputPsdM2PerHz": 1.2191812881629204e-11
+        },
+        {
+          "frequencyHz": 10.3,
+          "outputPsdM2PerHz": 1.1646097858124512e-11
+        },
+        {
+          "frequencyHz": 10.4,
+          "outputPsdM2PerHz": 1.1151625076268945e-11
+        },
+        {
+          "frequencyHz": 10.5,
+          "outputPsdM2PerHz": 1.0702494831997335e-11
+        },
+        {
+          "frequencyHz": 10.6,
+          "outputPsdM2PerHz": 1.0293624329084817e-11
+        },
+        {
+          "frequencyHz": 10.700000000000001,
+          "outputPsdM2PerHz": 9.920620282765122e-12
+        },
+        {
+          "frequencyHz": 10.8,
+          "outputPsdM2PerHz": 9.579673054217663e-12
+        },
+        {
+          "frequencyHz": 10.9,
+          "outputPsdM2PerHz": 9.26746853030527e-12
+        },
+        {
+          "frequencyHz": 11,
+          "outputPsdM2PerHz": 8.981114616912093e-12
+        },
+        {
+          "frequencyHz": 11.1,
+          "outputPsdM2PerHz": 8.71807977072319e-12
+        },
+        {
+          "frequencyHz": 11.200000000000001,
+          "outputPsdM2PerHz": 8.476141459109456e-12
+        },
+        {
+          "frequencyHz": 11.3,
+          "outputPsdM2PerHz": 8.25334282150115e-12
+        },
+        {
+          "frequencyHz": 11.4,
+          "outputPsdM2PerHz": 8.047956120081722e-12
+        },
+        {
+          "frequencyHz": 11.5,
+          "outputPsdM2PerHz": 7.858451824169239e-12
+        },
+        {
+          "frequencyHz": 11.6,
+          "outputPsdM2PerHz": 7.683472381433678e-12
+        },
+        {
+          "frequencyHz": 11.700000000000001,
+          "outputPsdM2PerHz": 7.52180989884087e-12
+        },
+        {
+          "frequencyHz": 11.8,
+          "outputPsdM2PerHz": 7.372387094219054e-12
+        },
+        {
+          "frequencyHz": 11.9,
+          "outputPsdM2PerHz": 7.234240991632115e-12
+        },
+        {
+          "frequencyHz": 12,
+          "outputPsdM2PerHz": 7.106508925224832e-12
+        },
+        {
+          "frequencyHz": 12.1,
+          "outputPsdM2PerHz": 6.988416490865874e-12
+        },
+        {
+          "frequencyHz": 12.200000000000001,
+          "outputPsdM2PerHz": 6.879267145967147e-12
+        },
+        {
+          "frequencyHz": 12.3,
+          "outputPsdM2PerHz": 6.778433207897059e-12
+        },
+        {
+          "frequencyHz": 12.4,
+          "outputPsdM2PerHz": 6.685348042514455e-12
+        },
+        {
+          "frequencyHz": 12.5,
+          "outputPsdM2PerHz": 6.599499268207362e-12
+        },
+        {
+          "frequencyHz": 12.6,
+          "outputPsdM2PerHz": 6.5204228287783734e-12
+        },
+        {
+          "frequencyHz": 12.700000000000001,
+          "outputPsdM2PerHz": 6.4476978116635754e-12
+        },
+        {
+          "frequencyHz": 12.8,
+          "outputPsdM2PerHz": 6.38094190718521e-12
+        },
+        {
+          "frequencyHz": 12.9,
+          "outputPsdM2PerHz": 6.3198074205282075e-12
+        },
+        {
+          "frequencyHz": 13,
+          "outputPsdM2PerHz": 6.263977761475199e-12
+        },
+        {
+          "frequencyHz": 13.1,
+          "outputPsdM2PerHz": 6.213164348098565e-12
+        },
+        {
+          "frequencyHz": 13.200000000000001,
+          "outputPsdM2PerHz": 6.1671038699738746e-12
+        },
+        {
+          "frequencyHz": 13.3,
+          "outputPsdM2PerHz": 6.125555864355384e-12
+        },
+        {
+          "frequencyHz": 13.4,
+          "outputPsdM2PerHz": 6.08830056539516e-12
+        },
+        {
+          "frequencyHz": 13.5,
+          "outputPsdM2PerHz": 6.055136992100572e-12
+        },
+        {
+          "frequencyHz": 13.6,
+          "outputPsdM2PerHz": 6.025881245481078e-12
+        },
+        {
+          "frequencyHz": 13.700000000000001,
+          "outputPsdM2PerHz": 6.000364989374808e-12
+        },
+        {
+          "frequencyHz": 13.8,
+          "outputPsdM2PerHz": 5.9784340928844235e-12
+        },
+        {
+          "frequencyHz": 13.9,
+          "outputPsdM2PerHz": 5.959947415286626e-12
+        },
+        {
+          "frequencyHz": 14,
+          "outputPsdM2PerHz": 5.944775716789179e-12
+        },
+        {
+          "frequencyHz": 14.1,
+          "outputPsdM2PerHz": 5.932800680660966e-12
+        },
+        {
+          "frequencyHz": 14.200000000000001,
+          "outputPsdM2PerHz": 5.923914034108205e-12
+        },
+        {
+          "frequencyHz": 14.3,
+          "outputPsdM2PerHz": 5.918016756860943e-12
+        },
+        {
+          "frequencyHz": 14.4,
+          "outputPsdM2PerHz": 5.91501836780602e-12
+        },
+        {
+          "frequencyHz": 14.5,
+          "outputPsdM2PerHz": 5.9148362811887195e-12
+        },
+        {
+          "frequencyHz": 14.6,
+          "outputPsdM2PerHz": 5.917395224932663e-12
+        },
+        {
+          "frequencyHz": 14.700000000000001,
+          "outputPsdM2PerHz": 5.92262671451872e-12
+        },
+        {
+          "frequencyHz": 14.8,
+          "outputPsdM2PerHz": 5.930468576638751e-12
+        },
+        {
+          "frequencyHz": 14.9,
+          "outputPsdM2PerHz": 5.940864517514929e-12
+        },
+        {
+          "frequencyHz": 15,
+          "outputPsdM2PerHz": 5.9537637313644795e-12
+        },
+        {
+          "frequencyHz": 15.1,
+          "outputPsdM2PerHz": 5.9691205450043746e-12
+        },
+        {
+          "frequencyHz": 15.200000000000001,
+          "outputPsdM2PerHz": 5.986894095041594e-12
+        },
+        {
+          "frequencyHz": 15.3,
+          "outputPsdM2PerHz": 6.007048034489783e-12
+        },
+        {
+          "frequencyHz": 15.4,
+          "outputPsdM2PerHz": 6.029550266000898e-12
+        },
+        {
+          "frequencyHz": 15.5,
+          "outputPsdM2PerHz": 6.054372699205921e-12
+        },
+        {
+          "frequencyHz": 15.6,
+          "outputPsdM2PerHz": 6.0814910299284935e-12
+        },
+        {
+          "frequencyHz": 15.700000000000001,
+          "outputPsdM2PerHz": 6.110884539273281e-12
+        },
+        {
+          "frequencyHz": 15.8,
+          "outputPsdM2PerHz": 6.142535910801056e-12
+        },
+        {
+          "frequencyHz": 15.9,
+          "outputPsdM2PerHz": 6.176431064189264e-12
+        },
+        {
+          "frequencyHz": 16,
+          "outputPsdM2PerHz": 6.2125590039415756e-12
+        },
+        {
+          "frequencyHz": 16.1,
+          "outputPsdM2PerHz": 6.250911681857193e-12
+        },
+        {
+          "frequencyHz": 16.200000000000003,
+          "outputPsdM2PerHz": 6.291483872100827e-12
+        },
+        {
+          "frequencyHz": 16.3,
+          "outputPsdM2PerHz": 6.3342730578308595e-12
+        },
+        {
+          "frequencyHz": 16.4,
+          "outputPsdM2PerHz": 6.379279328446652e-12
+        },
+        {
+          "frequencyHz": 16.5,
+          "outputPsdM2PerHz": 6.42650528660883e-12
+        },
+        {
+          "frequencyHz": 16.6,
+          "outputPsdM2PerHz": 6.4759559642691215e-12
+        },
+        {
+          "frequencyHz": 16.700000000000003,
+          "outputPsdM2PerHz": 6.527638747020393e-12
+        },
+        {
+          "frequencyHz": 16.8,
+          "outputPsdM2PerHz": 6.581563306144435e-12
+        },
+        {
+          "frequencyHz": 16.9,
+          "outputPsdM2PerHz": 6.637741537794414e-12
+        },
+        {
+          "frequencyHz": 17,
+          "outputPsdM2PerHz": 6.696187508802881e-12
+        },
+        {
+          "frequencyHz": 17.1,
+          "outputPsdM2PerHz": 6.7569174086545544e-12
+        },
+        {
+          "frequencyHz": 17.2,
+          "outputPsdM2PerHz": 6.819949507206607e-12
+        },
+        {
+          "frequencyHz": 17.3,
+          "outputPsdM2PerHz": 6.885304117778798e-12
+        },
+        {
+          "frequencyHz": 17.4,
+          "outputPsdM2PerHz": 6.953003565271036e-12
+        },
+        {
+          "frequencyHz": 17.5,
+          "outputPsdM2PerHz": 7.023072158998529e-12
+        },
+        {
+          "frequencyHz": 17.6,
+          "outputPsdM2PerHz": 7.095536169963563e-12
+        },
+        {
+          "frequencyHz": 17.7,
+          "outputPsdM2PerHz": 7.1704238123097265e-12
+        },
+        {
+          "frequencyHz": 17.8,
+          "outputPsdM2PerHz": 7.247765228728199e-12
+        },
+        {
+          "frequencyHz": 17.9,
+          "outputPsdM2PerHz": 7.327592479607841e-12
+        },
+        {
+          "frequencyHz": 18,
+          "outputPsdM2PerHz": 7.409939535740745e-12
+        },
+        {
+          "frequencyHz": 18.1,
+          "outputPsdM2PerHz": 7.494842274412998e-12
+        },
+        {
+          "frequencyHz": 18.2,
+          "outputPsdM2PerHz": 7.582338478727339e-12
+        },
+        {
+          "frequencyHz": 18.3,
+          "outputPsdM2PerHz": 7.67246784001934e-12
+        },
+        {
+          "frequencyHz": 18.400000000000002,
+          "outputPsdM2PerHz": 7.765271963242934e-12
+        },
+        {
+          "frequencyHz": 18.5,
+          "outputPsdM2PerHz": 7.860794375213824e-12
+        },
+        {
+          "frequencyHz": 18.6,
+          "outputPsdM2PerHz": 7.959080535611308e-12
+        },
+        {
+          "frequencyHz": 18.7,
+          "outputPsdM2PerHz": 8.06017785064962e-12
+        },
+        {
+          "frequencyHz": 18.8,
+          "outputPsdM2PerHz": 8.164135689340339e-12
+        },
+        {
+          "frequencyHz": 18.900000000000002,
+          "outputPsdM2PerHz": 8.271005402276307e-12
+        },
+        {
+          "frequencyHz": 19,
+          "outputPsdM2PerHz": 8.380840342876477e-12
+        },
+        {
+          "frequencyHz": 19.1,
+          "outputPsdM2PerHz": 8.49369589103884e-12
+        },
+        {
+          "frequencyHz": 19.2,
+          "outputPsdM2PerHz": 8.609629479156132e-12
+        },
+        {
+          "frequencyHz": 19.3,
+          "outputPsdM2PerHz": 8.728700620456149e-12
+        },
+        {
+          "frequencyHz": 19.400000000000002,
+          "outputPsdM2PerHz": 8.850970939634447e-12
+        },
+        {
+          "frequencyHz": 19.5,
+          "outputPsdM2PerHz": 8.976504205754105e-12
+        },
+        {
+          "frequencyHz": 19.6,
+          "outputPsdM2PerHz": 9.105366367392161e-12
+        },
+        {
+          "frequencyHz": 19.7,
+          "outputPsdM2PerHz": 9.237625590018238e-12
+        },
+        {
+          "frequencyHz": 19.8,
+          "outputPsdM2PerHz": 9.373352295595664e-12
+        },
+        {
+          "frequencyHz": 19.900000000000002,
+          "outputPsdM2PerHz": 9.51261920440051e-12
+        },
+        {
+          "frequencyHz": 20,
+          "outputPsdM2PerHz": 9.655501379058202e-12
+        }
+      ],
+      "atBandBoundary": false
+    },
+    {
+      "id": "receiver-blue",
+      "sourceTilt": 0,
+      "receiverTilt": 3,
+      "constantScale": 1,
+      "maximumPsdM2PerHz": 6.951296537592334e-11,
+      "maximumHz": 7.84,
+      "samples": [
+        {
+          "frequencyHz": 1,
+          "outputPsdM2PerHz": 2.0954397499846452e-13
+        },
+        {
+          "frequencyHz": 1.1,
+          "outputPsdM2PerHz": 2.192642910846756e-13
+        },
+        {
+          "frequencyHz": 1.2,
+          "outputPsdM2PerHz": 2.295919471579779e-13
+        },
+        {
+          "frequencyHz": 1.3,
+          "outputPsdM2PerHz": 2.40571728593086e-13
+        },
+        {
+          "frequencyHz": 1.4,
+          "outputPsdM2PerHz": 2.522523520028002e-13
+        },
+        {
+          "frequencyHz": 1.5,
+          "outputPsdM2PerHz": 2.646868650295977e-13
+        },
+        {
+          "frequencyHz": 1.6,
+          "outputPsdM2PerHz": 2.779330930084371e-13
+        },
+        {
+          "frequencyHz": 1.7000000000000002,
+          "outputPsdM2PerHz": 2.920541387380045e-13
+        },
+        {
+          "frequencyHz": 1.8,
+          "outputPsdM2PerHz": 3.0711894253194086e-13
+        },
+        {
+          "frequencyHz": 1.9,
+          "outputPsdM2PerHz": 3.2320291081175536e-13
+        },
+        {
+          "frequencyHz": 2,
+          "outputPsdM2PerHz": 3.4038862277783077e-13
+        },
+        {
+          "frequencyHz": 2.1,
+          "outputPsdM2PerHz": 3.587666261886963e-13
+        },
+        {
+          "frequencyHz": 2.2,
+          "outputPsdM2PerHz": 3.784363350331565e-13
+        },
+        {
+          "frequencyHz": 2.3,
+          "outputPsdM2PerHz": 3.9950704394515317e-13
+        },
+        {
+          "frequencyHz": 2.4000000000000004,
+          "outputPsdM2PerHz": 4.2209907664825346e-13
+        },
+        {
+          "frequencyHz": 2.5,
+          "outputPsdM2PerHz": 4.463450885992445e-13
+        },
+        {
+          "frequencyHz": 2.6,
+          "outputPsdM2PerHz": 4.723915474184888e-13
+        },
+        {
+          "frequencyHz": 2.7,
+          "outputPsdM2PerHz": 5.004004187582211e-13
+        },
+        {
+          "frequencyHz": 2.8,
+          "outputPsdM2PerHz": 5.30551090103406e-13
+        },
+        {
+          "frequencyHz": 2.9000000000000004,
+          "outputPsdM2PerHz": 5.630425707882268e-13
+        },
+        {
+          "frequencyHz": 3,
+          "outputPsdM2PerHz": 5.980960134481624e-13
+        },
+        {
+          "frequencyHz": 3.1,
+          "outputPsdM2PerHz": 6.359576104641745e-13
+        },
+        {
+          "frequencyHz": 3.2,
+          "outputPsdM2PerHz": 6.769019290029894e-13
+        },
+        {
+          "frequencyHz": 3.3000000000000003,
+          "outputPsdM2PerHz": 7.212357604027169e-13
+        },
+        {
+          "frequencyHz": 3.4,
+          "outputPsdM2PerHz": 7.693025743782048e-13
+        },
+        {
+          "frequencyHz": 3.5,
+          "outputPsdM2PerHz": 8.214876864285478e-13
+        },
+        {
+          "frequencyHz": 3.6,
+          "outputPsdM2PerHz": 8.782242686762874e-13
+        },
+        {
+          "frequencyHz": 3.7,
+          "outputPsdM2PerHz": 9.400003611054785e-13
+        },
+        {
+          "frequencyHz": 3.8000000000000003,
+          "outputPsdM2PerHz": 1.0073670729947075e-12
+        },
+        {
+          "frequencyHz": 3.9,
+          "outputPsdM2PerHz": 1.0809482047812363e-12
+        },
+        {
+          "frequencyHz": 4,
+          "outputPsdM2PerHz": 1.1614515705730994e-12
+        },
+        {
+          "frequencyHz": 4.1,
+          "outputPsdM2PerHz": 1.2496823635034562e-12
+        },
+        {
+          "frequencyHz": 4.2,
+          "outputPsdM2PerHz": 1.346558983230456e-12
+        },
+        {
+          "frequencyHz": 4.300000000000001,
+          "outputPsdM2PerHz": 1.4531318411363681e-12
+        },
+        {
+          "frequencyHz": 4.4,
+          "outputPsdM2PerHz": 1.5706057793113075e-12
+        },
+        {
+          "frequencyHz": 4.5,
+          "outputPsdM2PerHz": 1.7003668908162583e-12
+        },
+        {
+          "frequencyHz": 4.6,
+          "outputPsdM2PerHz": 1.8440147194802915e-12
+        },
+        {
+          "frequencyHz": 4.7,
+          "outputPsdM2PerHz": 2.0034010584790746e-12
+        },
+        {
+          "frequencyHz": 4.800000000000001,
+          "outputPsdM2PerHz": 2.1806768721174223e-12
+        },
+        {
+          "frequencyHz": 4.9,
+          "outputPsdM2PerHz": 2.378349252426884e-12
+        },
+        {
+          "frequencyHz": 5,
+          "outputPsdM2PerHz": 2.599350814035953e-12
+        },
+        {
+          "frequencyHz": 5.1,
+          "outputPsdM2PerHz": 2.8471245557547035e-12
+        },
+        {
+          "frequencyHz": 5.2,
+          "outputPsdM2PerHz": 3.125728010677627e-12
+        },
+        {
+          "frequencyHz": 5.3,
+          "outputPsdM2PerHz": 3.4399615108241978e-12
+        },
+        {
+          "frequencyHz": 5.4,
+          "outputPsdM2PerHz": 3.795526656363394e-12
+        },
+        {
+          "frequencyHz": 5.5,
+          "outputPsdM2PerHz": 4.199222655228862e-12
+        },
+        {
+          "frequencyHz": 5.6000000000000005,
+          "outputPsdM2PerHz": 4.659190132050602e-12
+        },
+        {
+          "frequencyHz": 5.7,
+          "outputPsdM2PerHz": 5.185214314446638e-12
+        },
+        {
+          "frequencyHz": 5.8,
+          "outputPsdM2PerHz": 5.789102138726588e-12
+        },
+        {
+          "frequencyHz": 5.9,
+          "outputPsdM2PerHz": 6.485150570488292e-12
+        },
+        {
+          "frequencyHz": 6,
+          "outputPsdM2PerHz": 7.290725785927472e-12
+        },
+        {
+          "frequencyHz": 6.1000000000000005,
+          "outputPsdM2PerHz": 8.226973661283619e-12
+        },
+        {
+          "frequencyHz": 6.2,
+          "outputPsdM2PerHz": 9.319678937227582e-12
+        },
+        {
+          "frequencyHz": 6.3,
+          "outputPsdM2PerHz": 1.0600278921725085e-11
+        },
+        {
+          "frequencyHz": 6.4,
+          "outputPsdM2PerHz": 1.2107009136200263e-11
+        },
+        {
+          "frequencyHz": 6.5,
+          "outputPsdM2PerHz": 1.388609738309998e-11
+        },
+        {
+          "frequencyHz": 6.6000000000000005,
+          "outputPsdM2PerHz": 1.599280221403199e-11
+        },
+        {
+          "frequencyHz": 6.7,
+          "outputPsdM2PerHz": 1.8491866996255496e-11
+        },
+        {
+          "frequencyHz": 6.8,
+          "outputPsdM2PerHz": 2.1456564865784285e-11
+        },
+        {
+          "frequencyHz": 6.9,
+          "outputPsdM2PerHz": 2.4964861710341498e-11
+        },
+        {
+          "frequencyHz": 7,
+          "outputPsdM2PerHz": 2.9090279512306127e-11
+        },
+        {
+          "frequencyHz": 7.1000000000000005,
+          "outputPsdM2PerHz": 3.388395544326746e-11
+        },
+        {
+          "frequencyHz": 7.2,
+          "outputPsdM2PerHz": 3.934389616271946e-11
+        },
+        {
+          "frequencyHz": 7.3,
+          "outputPsdM2PerHz": 4.5369449308427765e-11
+        },
+        {
+          "frequencyHz": 7.4,
+          "outputPsdM2PerHz": 5.17069614384001e-11
+        },
+        {
+          "frequencyHz": 7.5,
+          "outputPsdM2PerHz": 5.790921879704489e-11
+        },
+        {
+          "frequencyHz": 7.6000000000000005,
+          "outputPsdM2PerHz": 6.335106987707435e-11
+        },
+        {
+          "frequencyHz": 7.7,
+          "outputPsdM2PerHz": 6.734331022427793e-11
+        },
+        {
+          "frequencyHz": 7.8,
+          "outputPsdM2PerHz": 6.933653061800269e-11
+        },
+        {
+          "frequencyHz": 7.9,
+          "outputPsdM2PerHz": 6.912085684711316e-11
+        },
+        {
+          "frequencyHz": 8,
+          "outputPsdM2PerHz": 6.689457887191929e-11
+        },
+        {
+          "frequencyHz": 8.100000000000001,
+          "outputPsdM2PerHz": 6.315905684959086e-11
+        },
+        {
+          "frequencyHz": 8.2,
+          "outputPsdM2PerHz": 5.852204160040214e-11
+        },
+        {
+          "frequencyHz": 8.3,
+          "outputPsdM2PerHz": 5.352826195290934e-11
+        },
+        {
+          "frequencyHz": 8.4,
+          "outputPsdM2PerHz": 4.857640039052085e-11
+        },
+        {
+          "frequencyHz": 8.5,
+          "outputPsdM2PerHz": 4.3911900966436344e-11
+        },
+        {
+          "frequencyHz": 8.600000000000001,
+          "outputPsdM2PerHz": 3.96583485042162e-11
+        },
+        {
+          "frequencyHz": 8.7,
+          "outputPsdM2PerHz": 3.585723034034717e-11
+        },
+        {
+          "frequencyHz": 8.8,
+          "outputPsdM2PerHz": 3.250139752193811e-11
+        },
+        {
+          "frequencyHz": 8.9,
+          "outputPsdM2PerHz": 2.955850381048831e-11
+        },
+        {
+          "frequencyHz": 9,
+          "outputPsdM2PerHz": 2.6985649593871863e-11
+        },
+        {
+          "frequencyHz": 9.1,
+          "outputPsdM2PerHz": 2.4737740904144525e-11
+        },
+        {
+          "frequencyHz": 9.2,
+          "outputPsdM2PerHz": 2.2771829727229534e-11
+        },
+        {
+          "frequencyHz": 9.3,
+          "outputPsdM2PerHz": 2.1049070404711027e-11
+        },
+        {
+          "frequencyHz": 9.4,
+          "outputPsdM2PerHz": 1.953534845409579e-11
+        },
+        {
+          "frequencyHz": 9.5,
+          "outputPsdM2PerHz": 1.820121978782371e-11
+        },
+        {
+          "frequencyHz": 9.6,
+          "outputPsdM2PerHz": 1.7021526976927634e-11
+        },
+        {
+          "frequencyHz": 9.700000000000001,
+          "outputPsdM2PerHz": 1.5974893923995006e-11
+        },
+        {
+          "frequencyHz": 9.8,
+          "outputPsdM2PerHz": 1.504320379970858e-11
+        },
+        {
+          "frequencyHz": 9.9,
+          "outputPsdM2PerHz": 1.421111062523659e-11
+        },
+        {
+          "frequencyHz": 10,
+          "outputPsdM2PerHz": 1.3465605161023204e-11
+        },
+        {
+          "frequencyHz": 10.1,
+          "outputPsdM2PerHz": 1.2795640217220945e-11
+        },
+        {
+          "frequencyHz": 10.200000000000001,
+          "outputPsdM2PerHz": 1.2191812881629202e-11
+        },
+        {
+          "frequencyHz": 10.3,
+          "outputPsdM2PerHz": 1.1646097858124511e-11
+        },
+        {
+          "frequencyHz": 10.4,
+          "outputPsdM2PerHz": 1.1151625076268945e-11
+        },
+        {
+          "frequencyHz": 10.5,
+          "outputPsdM2PerHz": 1.0702494831997333e-11
+        },
+        {
+          "frequencyHz": 10.6,
+          "outputPsdM2PerHz": 1.0293624329084817e-11
+        },
+        {
+          "frequencyHz": 10.700000000000001,
+          "outputPsdM2PerHz": 9.920620282765122e-12
+        },
+        {
+          "frequencyHz": 10.8,
+          "outputPsdM2PerHz": 9.579673054217663e-12
+        },
+        {
+          "frequencyHz": 10.9,
+          "outputPsdM2PerHz": 9.26746853030527e-12
+        },
+        {
+          "frequencyHz": 11,
+          "outputPsdM2PerHz": 8.981114616912093e-12
+        },
+        {
+          "frequencyHz": 11.1,
+          "outputPsdM2PerHz": 8.71807977072319e-12
+        },
+        {
+          "frequencyHz": 11.200000000000001,
+          "outputPsdM2PerHz": 8.476141459109456e-12
+        },
+        {
+          "frequencyHz": 11.3,
+          "outputPsdM2PerHz": 8.253342821501148e-12
+        },
+        {
+          "frequencyHz": 11.4,
+          "outputPsdM2PerHz": 8.047956120081722e-12
+        },
+        {
+          "frequencyHz": 11.5,
+          "outputPsdM2PerHz": 7.85845182416924e-12
+        },
+        {
+          "frequencyHz": 11.6,
+          "outputPsdM2PerHz": 7.683472381433678e-12
+        },
+        {
+          "frequencyHz": 11.700000000000001,
+          "outputPsdM2PerHz": 7.52180989884087e-12
+        },
+        {
+          "frequencyHz": 11.8,
+          "outputPsdM2PerHz": 7.372387094219054e-12
+        },
+        {
+          "frequencyHz": 11.9,
+          "outputPsdM2PerHz": 7.234240991632115e-12
+        },
+        {
+          "frequencyHz": 12,
+          "outputPsdM2PerHz": 7.106508925224832e-12
+        },
+        {
+          "frequencyHz": 12.1,
+          "outputPsdM2PerHz": 6.988416490865874e-12
+        },
+        {
+          "frequencyHz": 12.200000000000001,
+          "outputPsdM2PerHz": 6.879267145967148e-12
+        },
+        {
+          "frequencyHz": 12.3,
+          "outputPsdM2PerHz": 6.778433207897059e-12
+        },
+        {
+          "frequencyHz": 12.4,
+          "outputPsdM2PerHz": 6.685348042514455e-12
+        },
+        {
+          "frequencyHz": 12.5,
+          "outputPsdM2PerHz": 6.599499268207362e-12
+        },
+        {
+          "frequencyHz": 12.6,
+          "outputPsdM2PerHz": 6.5204228287783734e-12
+        },
+        {
+          "frequencyHz": 12.700000000000001,
+          "outputPsdM2PerHz": 6.447697811663575e-12
+        },
+        {
+          "frequencyHz": 12.8,
+          "outputPsdM2PerHz": 6.380941907185209e-12
+        },
+        {
+          "frequencyHz": 12.9,
+          "outputPsdM2PerHz": 6.3198074205282075e-12
+        },
+        {
+          "frequencyHz": 13,
+          "outputPsdM2PerHz": 6.263977761475199e-12
+        },
+        {
+          "frequencyHz": 13.1,
+          "outputPsdM2PerHz": 6.213164348098565e-12
+        },
+        {
+          "frequencyHz": 13.200000000000001,
+          "outputPsdM2PerHz": 6.1671038699738746e-12
+        },
+        {
+          "frequencyHz": 13.3,
+          "outputPsdM2PerHz": 6.125555864355384e-12
+        },
+        {
+          "frequencyHz": 13.4,
+          "outputPsdM2PerHz": 6.08830056539516e-12
+        },
+        {
+          "frequencyHz": 13.5,
+          "outputPsdM2PerHz": 6.055136992100572e-12
+        },
+        {
+          "frequencyHz": 13.6,
+          "outputPsdM2PerHz": 6.025881245481078e-12
+        },
+        {
+          "frequencyHz": 13.700000000000001,
+          "outputPsdM2PerHz": 6.000364989374809e-12
+        },
+        {
+          "frequencyHz": 13.8,
+          "outputPsdM2PerHz": 5.978434092884423e-12
+        },
+        {
+          "frequencyHz": 13.9,
+          "outputPsdM2PerHz": 5.959947415286626e-12
+        },
+        {
+          "frequencyHz": 14,
+          "outputPsdM2PerHz": 5.944775716789179e-12
+        },
+        {
+          "frequencyHz": 14.1,
+          "outputPsdM2PerHz": 5.932800680660965e-12
+        },
+        {
+          "frequencyHz": 14.200000000000001,
+          "outputPsdM2PerHz": 5.923914034108205e-12
+        },
+        {
+          "frequencyHz": 14.3,
+          "outputPsdM2PerHz": 5.9180167568609426e-12
+        },
+        {
+          "frequencyHz": 14.4,
+          "outputPsdM2PerHz": 5.91501836780602e-12
+        },
+        {
+          "frequencyHz": 14.5,
+          "outputPsdM2PerHz": 5.9148362811887195e-12
+        },
+        {
+          "frequencyHz": 14.6,
+          "outputPsdM2PerHz": 5.9173952249326634e-12
+        },
+        {
+          "frequencyHz": 14.700000000000001,
+          "outputPsdM2PerHz": 5.92262671451872e-12
+        },
+        {
+          "frequencyHz": 14.8,
+          "outputPsdM2PerHz": 5.930468576638751e-12
+        },
+        {
+          "frequencyHz": 14.9,
+          "outputPsdM2PerHz": 5.940864517514929e-12
+        },
+        {
+          "frequencyHz": 15,
+          "outputPsdM2PerHz": 5.95376373136448e-12
+        },
+        {
+          "frequencyHz": 15.1,
+          "outputPsdM2PerHz": 5.9691205450043746e-12
+        },
+        {
+          "frequencyHz": 15.200000000000001,
+          "outputPsdM2PerHz": 5.986894095041595e-12
+        },
+        {
+          "frequencyHz": 15.3,
+          "outputPsdM2PerHz": 6.007048034489782e-12
+        },
+        {
+          "frequencyHz": 15.4,
+          "outputPsdM2PerHz": 6.029550266000899e-12
+        },
+        {
+          "frequencyHz": 15.5,
+          "outputPsdM2PerHz": 6.054372699205921e-12
+        },
+        {
+          "frequencyHz": 15.6,
+          "outputPsdM2PerHz": 6.0814910299284935e-12
+        },
+        {
+          "frequencyHz": 15.700000000000001,
+          "outputPsdM2PerHz": 6.110884539273281e-12
+        },
+        {
+          "frequencyHz": 15.8,
+          "outputPsdM2PerHz": 6.1425359108010565e-12
+        },
+        {
+          "frequencyHz": 15.9,
+          "outputPsdM2PerHz": 6.176431064189264e-12
+        },
+        {
+          "frequencyHz": 16,
+          "outputPsdM2PerHz": 6.2125590039415756e-12
+        },
+        {
+          "frequencyHz": 16.1,
+          "outputPsdM2PerHz": 6.250911681857194e-12
+        },
+        {
+          "frequencyHz": 16.200000000000003,
+          "outputPsdM2PerHz": 6.291483872100828e-12
+        },
+        {
+          "frequencyHz": 16.3,
+          "outputPsdM2PerHz": 6.33427305783086e-12
+        },
+        {
+          "frequencyHz": 16.4,
+          "outputPsdM2PerHz": 6.379279328446653e-12
+        },
+        {
+          "frequencyHz": 16.5,
+          "outputPsdM2PerHz": 6.42650528660883e-12
+        },
+        {
+          "frequencyHz": 16.6,
+          "outputPsdM2PerHz": 6.4759559642691215e-12
+        },
+        {
+          "frequencyHz": 16.700000000000003,
+          "outputPsdM2PerHz": 6.5276387470203916e-12
+        },
+        {
+          "frequencyHz": 16.8,
+          "outputPsdM2PerHz": 6.581563306144435e-12
+        },
+        {
+          "frequencyHz": 16.9,
+          "outputPsdM2PerHz": 6.637741537794414e-12
+        },
+        {
+          "frequencyHz": 17,
+          "outputPsdM2PerHz": 6.69618750880288e-12
+        },
+        {
+          "frequencyHz": 17.1,
+          "outputPsdM2PerHz": 6.756917408654554e-12
+        },
+        {
+          "frequencyHz": 17.2,
+          "outputPsdM2PerHz": 6.819949507206608e-12
+        },
+        {
+          "frequencyHz": 17.3,
+          "outputPsdM2PerHz": 6.885304117778798e-12
+        },
+        {
+          "frequencyHz": 17.4,
+          "outputPsdM2PerHz": 6.9530035652710365e-12
+        },
+        {
+          "frequencyHz": 17.5,
+          "outputPsdM2PerHz": 7.023072158998529e-12
+        },
+        {
+          "frequencyHz": 17.6,
+          "outputPsdM2PerHz": 7.095536169963563e-12
+        },
+        {
+          "frequencyHz": 17.7,
+          "outputPsdM2PerHz": 7.1704238123097265e-12
+        },
+        {
+          "frequencyHz": 17.8,
+          "outputPsdM2PerHz": 7.247765228728199e-12
+        },
+        {
+          "frequencyHz": 17.9,
+          "outputPsdM2PerHz": 7.327592479607841e-12
+        },
+        {
+          "frequencyHz": 18,
+          "outputPsdM2PerHz": 7.409939535740745e-12
+        },
+        {
+          "frequencyHz": 18.1,
+          "outputPsdM2PerHz": 7.494842274412998e-12
+        },
+        {
+          "frequencyHz": 18.2,
+          "outputPsdM2PerHz": 7.582338478727339e-12
+        },
+        {
+          "frequencyHz": 18.3,
+          "outputPsdM2PerHz": 7.672467840019341e-12
+        },
+        {
+          "frequencyHz": 18.400000000000002,
+          "outputPsdM2PerHz": 7.765271963242934e-12
+        },
+        {
+          "frequencyHz": 18.5,
+          "outputPsdM2PerHz": 7.860794375213824e-12
+        },
+        {
+          "frequencyHz": 18.6,
+          "outputPsdM2PerHz": 7.959080535611308e-12
+        },
+        {
+          "frequencyHz": 18.7,
+          "outputPsdM2PerHz": 8.06017785064962e-12
+        },
+        {
+          "frequencyHz": 18.8,
+          "outputPsdM2PerHz": 8.164135689340339e-12
+        },
+        {
+          "frequencyHz": 18.900000000000002,
+          "outputPsdM2PerHz": 8.271005402276309e-12
+        },
+        {
+          "frequencyHz": 19,
+          "outputPsdM2PerHz": 8.380840342876479e-12
+        },
+        {
+          "frequencyHz": 19.1,
+          "outputPsdM2PerHz": 8.493695891038841e-12
+        },
+        {
+          "frequencyHz": 19.2,
+          "outputPsdM2PerHz": 8.609629479156133e-12
+        },
+        {
+          "frequencyHz": 19.3,
+          "outputPsdM2PerHz": 8.728700620456149e-12
+        },
+        {
+          "frequencyHz": 19.400000000000002,
+          "outputPsdM2PerHz": 8.850970939634447e-12
+        },
+        {
+          "frequencyHz": 19.5,
+          "outputPsdM2PerHz": 8.976504205754105e-12
+        },
+        {
+          "frequencyHz": 19.6,
+          "outputPsdM2PerHz": 9.105366367392161e-12
+        },
+        {
+          "frequencyHz": 19.7,
+          "outputPsdM2PerHz": 9.237625590018238e-12
+        },
+        {
+          "frequencyHz": 19.8,
+          "outputPsdM2PerHz": 9.373352295595664e-12
+        },
+        {
+          "frequencyHz": 19.900000000000002,
+          "outputPsdM2PerHz": 9.51261920440051e-12
+        },
+        {
+          "frequencyHz": 20,
+          "outputPsdM2PerHz": 9.6555013790582e-12
+        }
+      ],
+      "atBandBoundary": false
+    },
+    {
+      "id": "constant-scale",
+      "sourceTilt": 0,
+      "receiverTilt": 0,
+      "constantScale": 49,
+      "maximumPsdM2PerHz": 3.431807214475079e-9,
+      "maximumHz": 7.722,
+      "samples": [
+        {
+          "frequencyHz": 1,
+          "outputPsdM2PerHz": 1.4038424305993062e-10
+        },
+        {
+          "frequencyHz": 1.1,
+          "outputPsdM2PerHz": 1.4135379144318487e-10
+        },
+        {
+          "frequencyHz": 1.2,
+          "outputPsdM2PerHz": 1.4242707980475287e-10
+        },
+        {
+          "frequencyHz": 1.3,
+          "outputPsdM2PerHz": 1.43607417904362e-10
+        },
+        {
+          "frequencyHz": 1.4,
+          "outputPsdM2PerHz": 1.4489849516696442e-10
+        },
+        {
+          "frequencyHz": 1.5,
+          "outputPsdM2PerHz": 1.4630440663394512e-10
+        },
+        {
+          "frequencyHz": 1.6,
+          "outputPsdM2PerHz": 1.478296823023899e-10
+        },
+        {
+          "frequencyHz": 1.7000000000000002,
+          "outputPsdM2PerHz": 1.4947932022400313e-10
+        },
+        {
+          "frequencyHz": 1.8,
+          "outputPsdM2PerHz": 1.5125882379229673e-10
+        },
+        {
+          "frequencyHz": 1.9,
+          "outputPsdM2PerHz": 1.531742437123159e-10
+        },
+        {
+          "frequencyHz": 2,
+          "outputPsdM2PerHz": 1.5523222522296806e-10
+        },
+        {
+          "frequencyHz": 2.1,
+          "outputPsdM2PerHz": 1.574400612298507e-10
+        },
+        {
+          "frequencyHz": 2.2,
+          "outputPsdM2PerHz": 1.5980575210854876e-10
+        },
+        {
+          "frequencyHz": 2.3,
+          "outputPsdM2PerHz": 1.6233807305734538e-10
+        },
+        {
+          "frequencyHz": 2.4000000000000004,
+          "outputPsdM2PerHz": 1.6504665001736255e-10
+        },
+        {
+          "frequencyHz": 2.5,
+          "outputPsdM2PerHz": 1.679420453411429e-10
+        },
+        {
+          "frequencyHz": 2.6,
+          "outputPsdM2PerHz": 1.7103585458225774e-10
+        },
+        {
+          "frequencyHz": 2.7,
+          "outputPsdM2PerHz": 1.7434081600427063e-10
+        },
+        {
+          "frequencyHz": 2.8,
+          "outputPsdM2PerHz": 1.7787093467412192e-10
+        },
+        {
+          "frequencyHz": 2.9000000000000004,
+          "outputPsdM2PerHz": 1.8164162332100674e-10
+        },
+        {
+          "frequencyHz": 3,
+          "outputPsdM2PerHz": 1.8566986251721208e-10
+        },
+        {
+          "frequencyHz": 3.1,
+          "outputPsdM2PerHz": 1.8997438318452613e-10
+        },
+        {
+          "frequencyHz": 3.2,
+          "outputPsdM2PerHz": 1.9457587496390204e-10
+        },
+        {
+          "frequencyHz": 3.3000000000000003,
+          "outputPsdM2PerHz": 1.9949722462572089e-10
+        },
+        {
+          "frequencyHz": 3.4,
+          "outputPsdM2PerHz": 2.0476378946625698e-10
+        },
+        {
+          "frequencyHz": 3.5,
+          "outputPsdM2PerHz": 2.1040371156125398e-10
+        },
+        {
+          "frequencyHz": 3.6,
+          "outputPsdM2PerHz": 2.1644827986513311e-10
+        },
+        {
+          "frequencyHz": 3.7,
+          "outputPsdM2PerHz": 2.229323484980647e-10
+        },
+        {
+          "frequencyHz": 3.8000000000000003,
+          "outputPsdM2PerHz": 2.2989482120746952e-10
+        },
+        {
+          "frequencyHz": 3.9,
+          "outputPsdM2PerHz": 2.373792139935113e-10
+        },
+        {
+          "frequencyHz": 4,
+          "outputPsdM2PerHz": 2.4543431033477397e-10
+        },
+        {
+          "frequencyHz": 4.1,
+          "outputPsdM2PerHz": 2.5411492644700647e-10
+        },
+        {
+          "frequencyHz": 4.2,
+          "outputPsdM2PerHz": 2.6348280768776555e-10
+        },
+        {
+          "frequencyHz": 4.300000000000001,
+          "outputPsdM2PerHz": 2.7360768174996495e-10
+        },
+        {
+          "frequencyHz": 4.4,
+          "outputPsdM2PerHz": 2.8456849987676484e-10
+        },
+        {
+          "frequencyHz": 4.5,
+          "outputPsdM2PerHz": 2.964549042401944e-10
+        },
+        {
+          "frequencyHz": 4.6,
+          "outputPsdM2PerHz": 3.0936896818186027e-10
+        },
+        {
+          "frequencyHz": 4.7,
+          "outputPsdM2PerHz": 3.2342726661921107e-10
+        },
+        {
+          "frequencyHz": 4.800000000000001,
+          "outputPsdM2PerHz": 3.387633470699304e-10
+        },
+        {
+          "frequencyHz": 4.9,
+          "outputPsdM2PerHz": 3.5553068803905864e-10
+        },
+        {
+          "frequencyHz": 5,
+          "outputPsdM2PerHz": 3.73906251657219e-10
+        },
+        {
+          "frequencyHz": 5.1,
+          "outputPsdM2PerHz": 3.940947622629991e-10
+        },
+        {
+          "frequencyHz": 5.2,
+          "outputPsdM2PerHz": 4.163338729543913e-10
+        },
+        {
+          "frequencyHz": 5.3,
+          "outputPsdM2PerHz": 4.4090041880846944e-10
+        },
+        {
+          "frequencyHz": 5.4,
+          "outputPsdM2PerHz": 4.681179990161461e-10
+        },
+        {
+          "frequencyHz": 5.5,
+          "outputPsdM2PerHz": 4.983661803833324e-10
+        },
+        {
+          "frequencyHz": 5.6000000000000005,
+          "outputPsdM2PerHz": 5.320916696623314e-10
+        },
+        {
+          "frequencyHz": 5.7,
+          "outputPsdM2PerHz": 5.698218568728104e-10
+        },
+        {
+          "frequencyHz": 5.8,
+          "outputPsdM2PerHz": 6.12181174746753e-10
+        },
+        {
+          "frequencyHz": 5.9,
+          "outputPsdM2PerHz": 6.599107275934864e-10
+        },
+        {
+          "frequencyHz": 6,
+          "outputPsdM2PerHz": 7.138915718084089e-10
+        },
+        {
+          "frequencyHz": 6.1000000000000005,
+          "outputPsdM2PerHz": 7.751717972368902e-10
+        },
+        {
+          "frequencyHz": 6.2,
+          "outputPsdM2PerHz": 8.449970133078841e-10
+        },
+        {
+          "frequencyHz": 6.3,
+          "outputPsdM2PerHz": 9.248427186617392e-10
+        },
+        {
+          "frequencyHz": 6.4,
+          "outputPsdM2PerHz": 1.0164448623173907e-9
+        },
+        {
+          "frequencyHz": 6.5,
+          "outputPsdM2PerHz": 1.121820902003986e-9
+        },
+        {
+          "frequencyHz": 6.6000000000000005,
+          "outputPsdM2PerHz": 1.243266562006662e-9
+        },
+        {
+          "frequencyHz": 6.7,
+          "outputPsdM2PerHz": 1.3833013928524252e-9
+        },
+        {
+          "frequencyHz": 6.8,
+          "outputPsdM2PerHz": 1.5445167166236274e-9
+        },
+        {
+          "frequencyHz": 6.9,
+          "outputPsdM2PerHz": 1.729250659500783e-9
+        },
+        {
+          "frequencyHz": 7,
+          "outputPsdM2PerHz": 1.938978732305701e-9
+        },
+        {
+          "frequencyHz": 7.1000000000000005,
+          "outputPsdM2PerHz": 2.1732796802173537e-9
+        },
+        {
+          "frequencyHz": 7.2,
+          "outputPsdM2PerHz": 2.428260351293961e-9
+        },
+        {
+          "frequencyHz": 7.3,
+          "outputPsdM2PerHz": 2.6944973293640748e-9
+        },
+        {
+          "frequencyHz": 7.4,
+          "outputPsdM2PerHz": 2.9550146131388264e-9
+        },
+        {
+          "frequencyHz": 7.5,
+          "outputPsdM2PerHz": 3.184598513653509e-9
+        },
+        {
+          "frequencyHz": 7.6000000000000005,
+          "outputPsdM2PerHz": 3.3524113438203657e-9
+        },
+        {
+          "frequencyHz": 7.7,
+          "outputPsdM2PerHz": 3.429210730573469e-9
+        },
+        {
+          "frequencyHz": 7.8,
+          "outputPsdM2PerHz": 3.397490000282132e-9
+        },
+        {
+          "frequencyHz": 7.9,
+          "outputPsdM2PerHz": 3.2591290646439574e-9
+        },
+        {
+          "frequencyHz": 8,
+          "outputPsdM2PerHz": 3.035147043970728e-9
+        },
+        {
+          "frequencyHz": 8.100000000000001,
+          "outputPsdM2PerHz": 2.757533609048422e-9
+        },
+        {
+          "frequencyHz": 8.2,
+          "outputPsdM2PerHz": 2.4586743634473043e-9
+        },
+        {
+          "frequencyHz": 8.3,
+          "outputPsdM2PerHz": 2.1640189157363996e-9
+        },
+        {
+          "frequencyHz": 8.4,
+          "outputPsdM2PerHz": 1.8897293403582923e-9
+        },
+        {
+          "frequencyHz": 8.5,
+          "outputPsdM2PerHz": 1.6438147796976828e-9
+        },
+        {
+          "frequencyHz": 8.600000000000001,
+          "outputPsdM2PerHz": 1.4285703548233144e-9
+        },
+        {
+          "frequencyHz": 8.7,
+          "outputPsdM2PerHz": 1.2429112408998897e-9
+        },
+        {
+          "frequencyHz": 8.8,
+          "outputPsdM2PerHz": 1.0840811085449906e-9
+        },
+        {
+          "frequencyHz": 8.9,
+          "outputPsdM2PerHz": 9.48721088025063e-10
+        },
+        {
+          "frequencyHz": 9,
+          "outputPsdM2PerHz": 8.334611286068965e-10
+        },
+        {
+          "frequencyHz": 9.1,
+          "outputPsdM2PerHz": 7.352057172091578e-10
+        },
+        {
+          "frequencyHz": 9.2,
+          "outputPsdM2PerHz": 6.512430970182939e-10
+        },
+        {
+          "frequencyHz": 9.3,
+          "outputPsdM2PerHz": 5.792612698423499e-10
+        },
+        {
+          "frequencyHz": 9.4,
+          "outputPsdM2PerHz": 5.173197982203228e-10
+        },
+        {
+          "frequencyHz": 9.5,
+          "outputPsdM2PerHz": 4.6380432847495683e-10
+        },
+        {
+          "frequencyHz": 9.6,
+          "outputPsdM2PerHz": 4.173776475362617e-10
+        },
+        {
+          "frequencyHz": 9.700000000000001,
+          "outputPsdM2PerHz": 3.7693374430627536e-10
+        },
+        {
+          "frequencyHz": 9.8,
+          "outputPsdM2PerHz": 3.415574329384621e-10
+        },
+        {
+          "frequencyHz": 9.9,
+          "outputPsdM2PerHz": 3.104901219422982e-10
+        },
+        {
+          "frequencyHz": 10,
+          "outputPsdM2PerHz": 2.831013952206248e-10
+        },
+        {
+          "frequencyHz": 10.1,
+          "outputPsdM2PerHz": 2.5886570620623753e-10
+        },
+        {
+          "frequencyHz": 10.200000000000001,
+          "outputPsdM2PerHz": 2.3734339730618467e-10
+        },
+        {
+          "frequencyHz": 10.3,
+          "outputPsdM2PerHz": 2.181652957103351e-10
+        },
+        {
+          "frequencyHz": 10.4,
+          "outputPsdM2PerHz": 2.010202264593518e-10
+        },
+        {
+          "frequencyHz": 10.5,
+          "outputPsdM2PerHz": 1.856448863754789e-10
+        },
+        {
+          "frequencyHz": 10.6,
+          "outputPsdM2PerHz": 1.7181562042916285e-10
+        },
+        {
+          "frequencyHz": 10.700000000000001,
+          "outputPsdM2PerHz": 1.59341728309851e-10
+        },
+        {
+          "frequencyHz": 10.8,
+          "outputPsdM2PerHz": 1.4806000158390002e-10
+        },
+        {
+          "frequencyHz": 10.9,
+          "outputPsdM2PerHz": 1.3783025146123958e-10
+        },
+        {
+          "frequencyHz": 11,
+          "outputPsdM2PerHz": 1.2853163542374854e-10
+        },
+        {
+          "frequencyHz": 11.1,
+          "outputPsdM2PerHz": 1.2005962960921194e-10
+        },
+        {
+          "frequencyHz": 11.200000000000001,
+          "outputPsdM2PerHz": 1.12323524632045e-10
+        },
+        {
+          "frequencyHz": 11.3,
+          "outputPsdM2PerHz": 1.0524434698048685e-10
+        },
+        {
+          "frequencyHz": 11.4,
+          "outputPsdM2PerHz": 9.875312753909028e-11
+        },
+        {
+          "frequencyHz": 11.5,
+          "outputPsdM2PerHz": 9.278945418981681e-11
+        },
+        {
+          "frequencyHz": 11.6,
+          "outputPsdM2PerHz": 8.730025768414303e-11
+        },
+        {
+          "frequencyHz": 11.700000000000001,
+          "outputPsdM2PerHz": 8.223878971938594e-11
+        },
+        {
+          "frequencyHz": 11.8,
+          "outputPsdM2PerHz": 7.756375992187199e-11
+        },
+        {
+          "frequencyHz": 11.9,
+          "outputPsdM2PerHz": 7.323860465223593e-11
+        },
+        {
+          "frequencyHz": 12,
+          "outputPsdM2PerHz": 6.923086552969447e-11
+        },
+        {
+          "frequencyHz": 12.1,
+          "outputPsdM2PerHz": 6.551165957828302e-11
+        },
+        {
+          "frequencyHz": 12.200000000000001,
+          "outputPsdM2PerHz": 6.205522612955056e-11
+        },
+        {
+          "frequencyHz": 12.3,
+          "outputPsdM2PerHz": 5.883853823099073e-11
+        },
+        {
+          "frequencyHz": 12.4,
+          "outputPsdM2PerHz": 5.58409684319e-11
+        },
+        {
+          "frequencyHz": 12.5,
+          "outputPsdM2PerHz": 5.304400054655262e-11
+        },
+        {
+          "frequencyHz": 12.6,
+          "outputPsdM2PerHz": 5.0430980406229534e-11
+        },
+        {
+          "frequencyHz": 12.700000000000001,
+          "outputPsdM2PerHz": 4.7986899768312805e-11
+        },
+        {
+          "frequencyHz": 12.8,
+          "outputPsdM2PerHz": 4.569820850135787e-11
+        },
+        {
+          "frequencyHz": 12.9,
+          "outputPsdM2PerHz": 4.3552650948831247e-11
+        },
+        {
+          "frequencyHz": 13,
+          "outputPsdM2PerHz": 4.153912302231737e-11
+        },
+        {
+          "frequencyHz": 13.1,
+          "outputPsdM2PerHz": 3.9647547112498753e-11
+        },
+        {
+          "frequencyHz": 13.200000000000001,
+          "outputPsdM2PerHz": 3.786876235328151e-11
+        },
+        {
+          "frequencyHz": 13.3,
+          "outputPsdM2PerHz": 3.6194428147333905e-11
+        },
+        {
+          "frequencyHz": 13.4,
+          "outputPsdM2PerHz": 3.461693917319805e-11
+        },
+        {
+          "frequencyHz": 13.5,
+          "outputPsdM2PerHz": 3.3129350355714494e-11
+        },
+        {
+          "frequencyHz": 13.6,
+          "outputPsdM2PerHz": 3.172531050145931e-11
+        },
+        {
+          "frequencyHz": 13.700000000000001,
+          "outputPsdM2PerHz": 3.0399003486337635e-11
+        },
+        {
+          "frequencyHz": 13.8,
+          "outputPsdM2PerHz": 2.914509603921484e-11
+        },
+        {
+          "frequencyHz": 13.9,
+          "outputPsdM2PerHz": 2.7958691298269584e-11
+        },
+        {
+          "frequencyHz": 14,
+          "outputPsdM2PerHz": 2.6835287429545335e-11
+        },
+        {
+          "frequencyHz": 14.1,
+          "outputPsdM2PerHz": 2.5770740693201334e-11
+        },
+        {
+          "frequencyHz": 14.200000000000001,
+          "outputPsdM2PerHz": 2.4761232424897026e-11
+        },
+        {
+          "frequencyHz": 14.3,
+          "outputPsdM2PerHz": 2.3803239469813876e-11
+        },
+        {
+          "frequencyHz": 14.4,
+          "outputPsdM2PerHz": 2.2893507666870105e-11
+        },
+        {
+          "frequencyHz": 14.5,
+          "outputPsdM2PerHz": 2.2029028032261096e-11
+        },
+        {
+          "frequencyHz": 14.6,
+          "outputPsdM2PerHz": 2.1207015335848595e-11
+        },
+        {
+          "frequencyHz": 14.700000000000001,
+          "outputPsdM2PerHz": 2.0424888802203257e-11
+        },
+        {
+          "frequencyHz": 14.8,
+          "outputPsdM2PerHz": 1.9680254701184902e-11
+        },
+        {
+          "frequencyHz": 14.9,
+          "outputPsdM2PerHz": 1.8970890621583637e-11
+        },
+        {
+          "frequencyHz": 15,
+          "outputPsdM2PerHz": 1.829473124618719e-11
+        },
+        {
+          "frequencyHz": 15.1,
+          "outputPsdM2PerHz": 1.7649855468226066e-11
+        },
+        {
+          "frequencyHz": 15.200000000000001,
+          "outputPsdM2PerHz": 1.7034474707941942e-11
+        },
+        {
+          "frequencyHz": 15.3,
+          "outputPsdM2PerHz": 1.6446922304412497e-11
+        },
+        {
+          "frequencyHz": 15.4,
+          "outputPsdM2PerHz": 1.5885643872083448e-11
+        },
+        {
+          "frequencyHz": 15.5,
+          "outputPsdM2PerHz": 1.534918852398552e-11
+        },
+        {
+          "frequencyHz": 15.6,
+          "outputPsdM2PerHz": 1.4836200874594458e-11
+        },
+        {
+          "frequencyHz": 15.700000000000001,
+          "outputPsdM2PerHz": 1.434541374493079e-11
+        },
+        {
+          "frequencyHz": 15.8,
+          "outputPsdM2PerHz": 1.3875641500970626e-11
+        },
+        {
+          "frequencyHz": 15.9,
+          "outputPsdM2PerHz": 1.342577396390178e-11
+        },
+        {
+          "frequencyHz": 16,
+          "outputPsdM2PerHz": 1.2994770837339987e-11
+        },
+        {
+          "frequencyHz": 16.1,
+          "outputPsdM2PerHz": 1.2581656602432643e-11
+        },
+        {
+          "frequencyHz": 16.200000000000003,
+          "outputPsdM2PerHz": 1.218551583691757e-11
+        },
+        {
+          "frequencyHz": 16.3,
+          "outputPsdM2PerHz": 1.1805488918757129e-11
+        },
+        {
+          "frequencyHz": 16.4,
+          "outputPsdM2PerHz": 1.14407680790053e-11
+        },
+        {
+          "frequencyHz": 16.5,
+          "outputPsdM2PerHz": 1.1090593772151292e-11
+        },
+        {
+          "frequencyHz": 16.6,
+          "outputPsdM2PerHz": 1.075425133537122e-11
+        },
+        {
+          "frequencyHz": 16.700000000000003,
+          "outputPsdM2PerHz": 1.043106791095777e-11
+        },
+        {
+          "frequencyHz": 16.8,
+          "outputPsdM2PerHz": 1.0120409608729174e-11
+        },
+        {
+          "frequencyHz": 16.9,
+          "outputPsdM2PerHz": 9.821678887476374e-12
+        },
+        {
+          "frequencyHz": 17,
+          "outputPsdM2PerHz": 9.534312136526534e-12
+        },
+        {
+          "frequencyHz": 17.1,
+          "outputPsdM2PerHz": 9.257777440306206e-12
+        },
+        {
+          "frequencyHz": 17.2,
+          "outputPsdM2PerHz": 8.991572510405054e-12
+        },
+        {
+          "frequencyHz": 17.3,
+          "outputPsdM2PerHz": 8.735222771091574e-12
+        },
+        {
+          "frequencyHz": 17.4,
+          "outputPsdM2PerHz": 8.488279585534086e-12
+        },
+        {
+          "frequencyHz": 17.5,
+          "outputPsdM2PerHz": 8.250318611150185e-12
+        },
+        {
+          "frequencyHz": 17.6,
+          "outputPsdM2PerHz": 8.020938273560927e-12
+        },
+        {
+          "frequencyHz": 17.7,
+          "outputPsdM2PerHz": 7.799758349573515e-12
+        },
+        {
+          "frequencyHz": 17.8,
+          "outputPsdM2PerHz": 7.586418650471076e-12
+        },
+        {
+          "frequencyHz": 17.9,
+          "outputPsdM2PerHz": 7.380577797659451e-12
+        },
+        {
+          "frequencyHz": 18,
+          "outputPsdM2PerHz": 7.1819120834170345e-12
+        },
+        {
+          "frequencyHz": 18.1,
+          "outputPsdM2PerHz": 6.990114410124115e-12
+        },
+        {
+          "frequencyHz": 18.2,
+          "outputPsdM2PerHz": 6.804893301917677e-12
+        },
+        {
+          "frequencyHz": 18.3,
+          "outputPsdM2PerHz": 6.6259719832342456e-12
+        },
+        {
+          "frequencyHz": 18.400000000000002,
+          "outputPsdM2PerHz": 6.453087519171435e-12
+        },
+        {
+          "frequencyHz": 18.5,
+          "outputPsdM2PerHz": 6.285990013023632e-12
+        },
+        {
+          "frequencyHz": 18.6,
+          "outputPsdM2PerHz": 6.124441856733225e-12
+        },
+        {
+          "frequencyHz": 18.7,
+          "outputPsdM2PerHz": 5.968217030349606e-12
+        },
+        {
+          "frequencyHz": 18.8,
+          "outputPsdM2PerHz": 5.817100446907137e-12
+        },
+        {
+          "frequencyHz": 18.900000000000002,
+          "outputPsdM2PerHz": 5.67088733942425e-12
+        },
+        {
+          "frequencyHz": 19,
+          "outputPsdM2PerHz": 5.5293826869904e-12
+        },
+        {
+          "frequencyHz": 19.1,
+          "outputPsdM2PerHz": 5.392400677149307e-12
+        },
+        {
+          "frequencyHz": 19.2,
+          "outputPsdM2PerHz": 5.259764202007608e-12
+        },
+        {
+          "frequencyHz": 19.3,
+          "outputPsdM2PerHz": 5.131304385699159e-12
+        },
+        {
+          "frequencyHz": 19.400000000000002,
+          "outputPsdM2PerHz": 5.006860141019664e-12
+        },
+        {
+          "frequencyHz": 19.5,
+          "outputPsdM2PerHz": 4.886277753214753e-12
+        },
+        {
+          "frequencyHz": 19.6,
+          "outputPsdM2PerHz": 4.769410489058752e-12
+        },
+        {
+          "frequencyHz": 19.7,
+          "outputPsdM2PerHz": 4.656118229503063e-12
+        },
+        {
+          "frequencyHz": 19.8,
+          "outputPsdM2PerHz": 4.546267124302188e-12
+        },
+        {
+          "frequencyHz": 19.900000000000002,
+          "outputPsdM2PerHz": 4.439729267144983e-12
+        },
+        {
+          "frequencyHz": 20,
+          "outputPsdM2PerHz": 4.336382389927281e-12
+        }
+      ],
+      "atBandBoundary": false
+    },
+    {
+      "id": "source-band-end",
+      "sourceTilt": 12,
+      "receiverTilt": 0,
+      "constantScale": 1,
+      "maximumPsdM2PerHz": 0.000012540211021871413,
+      "maximumHz": 20,
+      "samples": [
+        {
+          "frequencyHz": 1,
+          "outputPsdM2PerHz": 8.198489759990166e-17
+        },
+        {
+          "frequencyHz": 1.1,
+          "outputPsdM2PerHz": 9.628031253618855e-17
+        },
+        {
+          "frequencyHz": 1.2,
+          "outputPsdM2PerHz": 1.1314546073873674e-16
+        },
+        {
+          "frequencyHz": 1.3,
+          "outputPsdM2PerHz": 1.330564629842825e-16
+        },
+        {
+          "frequencyHz": 1.4,
+          "outputPsdM2PerHz": 1.5658044095676767e-16
+        },
+        {
+          "frequencyHz": 1.5,
+          "outputPsdM2PerHz": 1.8439348794208134e-16
+        },
+        {
+          "frequencyHz": 1.6,
+          "outputPsdM2PerHz": 2.1730231425002415e-16
+        },
+        {
+          "frequencyHz": 1.7000000000000002,
+          "outputPsdM2PerHz": 2.562703475158706e-16
+        },
+        {
+          "frequencyHz": 1.8,
+          "outputPsdM2PerHz": 3.024492405076907e-16
+        },
+        {
+          "frequencyHz": 1.9,
+          "outputPsdM2PerHz": 3.572169513704894e-16
+        },
+        {
+          "frequencyHz": 2,
+          "outputPsdM2PerHz": 4.222238230132514e-16
+        },
+        {
+          "frequencyHz": 2.1,
+          "outputPsdM2PerHz": 4.994484116804542e-16
+        },
+        {
+          "frequencyHz": 2.2,
+          "outputPsdM2PerHz": 5.912652148439877e-16
+        },
+        {
+          "frequencyHz": 2.3,
+          "outputPsdM2PerHz": 7.005269445536127e-16
+        },
+        {
+          "frequencyHz": 2.4000000000000004,
+          "outputPsdM2PerHz": 8.3066460847723175e-16
+        },
+        {
+          "frequencyHz": 2.5,
+          "outputPsdM2PerHz": 9.858094276613353e-16
+        },
+        {
+          "frequencyHz": 2.6,
+          "outputPsdM2PerHz": 1.1709415764023684e-15
+        },
+        {
+          "frequencyHz": 2.7,
+          "outputPsdM2PerHz": 1.3920719249832933e-15
+        },
+        {
+          "frequencyHz": 2.8,
+          "outputPsdM2PerHz": 1.656464463479367e-15
+        },
+        {
+          "frequencyHz": 2.9000000000000004,
+          "outputPsdM2PerHz": 1.972908965084771e-15
+        },
+        {
+          "frequencyHz": 3,
+          "outputPsdM2PerHz": 2.3520558140228808e-15
+        },
+        {
+          "frequencyHz": 3.1,
+          "outputPsdM2PerHz": 2.8068279093648647e-15
+        },
+        {
+          "frequencyHz": 3.2,
+          "outputPsdM2PerHz": 3.352928334061625e-15
+        },
+        {
+          "frequencyHz": 3.3000000000000003,
+          "outputPsdM2PerHz": 4.009467271035225e-15
+        },
+        {
+          "frequencyHz": 3.4,
+          "outputPsdM2PerHz": 4.799737744826332e-15
+        },
+        {
+          "frequencyHz": 3.5,
+          "outputPsdM2PerHz": 5.752177545561743e-15
+        },
+        {
+          "frequencyHz": 3.6,
+          "outputPsdM2PerHz": 6.901564645803914e-15
+        },
+        {
+          "frequencyHz": 3.7,
+          "outputPsdM2PerHz": 8.290506198728076e-15
+        },
+        {
+          "frequencyHz": 3.8000000000000003,
+          "outputPsdM2PerHz": 9.971297662831214e-15
+        },
+        {
+          "frequencyHz": 3.9,
+          "outputPsdM2PerHz": 1.200824986493399e-14
+        },
+        {
+          "frequencyHz": 4,
+          "outputPsdM2PerHz": 1.4480609391734495e-14
+        },
+        {
+          "frequencyHz": 4.1,
+          "outputPsdM2PerHz": 1.7486233593859345e-14
+        },
+        {
+          "frequencyHz": 4.2,
+          "outputPsdM2PerHz": 2.1146228377731044e-14
+        },
+        {
+          "frequencyHz": 4.300000000000001,
+          "outputPsdM2PerHz": 2.561081845670148e-14
+        },
+        {
+          "frequencyHz": 4.4,
+          "outputPsdM2PerHz": 3.106680070462978e-14
+        },
+        {
+          "frequencyHz": 4.5,
+          "outputPsdM2PerHz": 3.774703830776601e-14
+        },
+        {
+          "frequencyHz": 4.6,
+          "outputPsdM2PerHz": 4.5942595540014894e-14
+        },
+        {
+          "frequencyHz": 4.7,
+          "outputPsdM2PerHz": 5.6018302494449654e-14
+        },
+        {
+          "frequencyHz": 4.800000000000001,
+          "outputPsdM2PerHz": 6.843279288268886e-14
+        },
+        {
+          "frequencyHz": 4.9,
+          "outputPsdM2PerHz": 8.376439934872743e-14
+        },
+        {
+          "frequencyHz": 5,
+          "outputPsdM2PerHz": 1.0274475184670161e-13
+        },
+        {
+          "frequencyHz": 5.1,
+          "outputPsdM2PerHz": 1.2630255020032496e-13
+        },
+        {
+          "frequencyHz": 5.2,
+          "outputPsdM2PerHz": 1.5562083416695436e-13
+        },
+        {
+          "frequencyHz": 5.3,
+          "outputPsdM2PerHz": 1.922122397701611e-13
+        },
+        {
+          "frequencyHz": 5.4,
+          "outputPsdM2PerHz": 2.380183299614877e-13
+        },
+        {
+          "frequencyHz": 5.5,
+          "outputPsdM2PerHz": 2.955412884779001e-13
+        },
+        {
+          "frequencyHz": 5.6000000000000005,
+          "outputPsdM2PerHz": 3.6801929989082607e-13
+        },
+        {
+          "frequencyHz": 5.7,
+          "outputPsdM2PerHz": 4.596611236511659e-13
+        },
+        {
+          "frequencyHz": 5.8,
+          "outputPsdM2PerHz": 5.759611323259344e-13
+        },
+        {
+          "frequencyHz": 5.9,
+          "outputPsdM2PerHz": 7.241239811768686e-13
+        },
+        {
+          "frequencyHz": 6,
+          "outputPsdM2PerHz": 9.136387953259346e-13
+        },
+        {
+          "frequencyHz": 6.1000000000000005,
+          "outputPsdM2PerHz": 1.1570570611003598e-12
+        },
+        {
+          "frequencyHz": 6.2,
+          "outputPsdM2PerHz": 1.4710469131970135e-12
+        },
+        {
+          "frequencyHz": 6.3,
+          "outputPsdM2PerHz": 1.877819162165295e-12
+        },
+        {
+          "frequencyHz": 6.4,
+          "outputPsdM2PerHz": 2.407045199458109e-12
+        },
+        {
+          "frequencyHz": 6.5,
+          "outputPsdM2PerHz": 3.0984071329277914e-12
+        },
+        {
+          "frequencyHz": 6.6000000000000005,
+          "outputPsdM2PerHz": 4.004919076840781e-12
+        },
+        {
+          "frequencyHz": 6.7,
+          "outputPsdM2PerHz": 5.197097228158563e-12
+        },
+        {
+          "frequencyHz": 6.8,
+          "outputPsdM2PerHz": 6.7678570393389385e-12
+        },
+        {
+          "frequencyHz": 6.9,
+          "outputPsdM2PerHz": 8.837533007342756e-12
+        },
+        {
+          "frequencyHz": 7,
+          "outputPsdM2PerHz": 1.1557414255682922e-11
+        },
+        {
+          "frequencyHz": 7.1000000000000005,
+          "outputPsdM2PerHz": 1.5108376179491226e-11
+        },
+        {
+          "frequencyHz": 7.2,
+          "outputPsdM2PerHz": 1.968846938442262e-11
+        },
+        {
+          "frequencyHz": 7.3,
+          "outputPsdM2PerHz": 2.5480561793928927e-11
+        },
+        {
+          "frequencyHz": 7.4,
+          "outputPsdM2PerHz": 3.25915796334717e-11
+        },
+        {
+          "frequencyHz": 7.5,
+          "outputPsdM2PerHz": 4.0965192595349415e-11
+        },
+        {
+          "frequencyHz": 7.6000000000000005,
+          "outputPsdM2PerHz": 5.0295849772417655e-11
+        },
+        {
+          "frequencyHz": 7.7,
+          "outputPsdM2PerHz": 6.000446367389254e-11
+        },
+        {
+          "frequencyHz": 7.8,
+          "outputPsdM2PerHz": 6.933653061800269e-11
+        },
+        {
+          "frequencyHz": 7.9,
+          "outputPsdM2PerHz": 7.757468395885905e-11
+        },
+        {
+          "frequencyHz": 8,
+          "outputPsdM2PerHz": 8.425830679247153e-11
+        },
+        {
+          "frequencyHz": 8.100000000000001,
+          "outputPsdM2PerHz": 8.928291093969322e-11
+        },
+        {
+          "frequencyHz": 8.2,
+          "outputPsdM2PerHz": 9.284597378706762e-11
+        },
+        {
+          "frequencyHz": 8.3,
+          "outputPsdM2PerHz": 9.530982035958869e-11
+        },
+        {
+          "frequencyHz": 8.4,
+          "outputPsdM2PerHz": 9.707127637029297e-11
+        },
+        {
+          "frequencyHz": 8.5,
+          "outputPsdM2PerHz": 9.848238342090374e-11
+        },
+        {
+          "frequencyHz": 8.600000000000001,
+          "outputPsdM2PerHz": 9.982098222505302e-11
+        },
+        {
+          "frequencyHz": 8.7,
+          "outputPsdM2PerHz": 1.01291932490534e-10
+        },
+        {
+          "frequencyHz": 8.8,
+          "outputPsdM2PerHz": 1.0304123448597887e-10
+        },
+        {
+          "frequencyHz": 8.9,
+          "outputPsdM2PerHz": 1.0517254095427615e-10
+        },
+        {
+          "frequencyHz": 9,
+          "outputPsdM2PerHz": 1.0776151734691429e-10
+        },
+        {
+          "frequencyHz": 9.1,
+          "outputPsdM2PerHz": 1.108668630349594e-10
+        },
+        {
+          "frequencyHz": 9.2,
+          "outputPsdM2PerHz": 1.1453825238413969e-10
+        },
+        {
+          "frequencyHz": 9.3,
+          "outputPsdM2PerHz": 1.1882188755368828e-10
+        },
+        {
+          "frequencyHz": 9.4,
+          "outputPsdM2PerHz": 1.237643571294146e-10
+        },
+        {
+          "frequencyHz": 9.5,
+          "outputPsdM2PerHz": 1.2941535973624032e-10
+        },
+        {
+          "frequencyHz": 9.6,
+          "outputPsdM2PerHz": 1.358297023740928e-10
+        },
+        {
+          "frequencyHz": 9.700000000000001,
+          "outputPsdM2PerHz": 1.4306885994344938e-10
+        },
+        {
+          "frequencyHz": 9.8,
+          "outputPsdM2PerHz": 1.512022919645746e-10
+        },
+        {
+          "frequencyHz": 9.9,
+          "outputPsdM2PerHz": 1.6030865010477294e-10
+        },
+        {
+          "frequencyHz": 10,
+          "outputPsdM2PerHz": 1.7047696875392306e-10
+        },
+        {
+          "frequencyHz": 10.1,
+          "outputPsdM2PerHz": 1.818079042865433e-10
+        },
+        {
+          "frequencyHz": 10.200000000000001,
+          "outputPsdM2PerHz": 1.9441507210434468e-10
+        },
+        {
+          "frequencyHz": 10.3,
+          "outputPsdM2PerHz": 2.0842652076238753e-10
+        },
+        {
+          "frequencyHz": 10.4,
+          "outputPsdM2PerHz": 2.2398637722294553e-10
+        },
+        {
+          "frequencyHz": 10.5,
+          "outputPsdM2PerHz": 2.412566950998827e-10
+        },
+        {
+          "frequencyHz": 10.6,
+          "outputPsdM2PerHz": 2.604195377210975e-10
+        },
+        {
+          "frequencyHz": 10.700000000000001,
+          "outputPsdM2PerHz": 2.8167932936397175e-10
+        },
+        {
+          "frequencyHz": 10.8,
+          "outputPsdM2PerHz": 3.0526551075578653e-10
+        },
+        {
+          "frequencyHz": 10.9,
+          "outputPsdM2PerHz": 3.3143553867728653e-10
+        },
+        {
+          "frequencyHz": 11,
+          "outputPsdM2PerHz": 3.604782741650067e-10
+        },
+        {
+          "frequencyHz": 11.1,
+          "outputPsdM2PerHz": 3.9271780934884257e-10
+        },
+        {
+          "frequencyHz": 11.200000000000001,
+          "outputPsdM2PerHz": 4.285177894083433e-10
+        },
+        {
+          "frequencyHz": 11.3,
+          "outputPsdM2PerHz": 4.682862935448047e-10
+        },
+        {
+          "frequencyHz": 11.4,
+          "outputPsdM2PerHz": 5.124813473381853e-10
+        },
+        {
+          "frequencyHz": 11.5,
+          "outputPsdM2PerHz": 5.616171485067293e-10
+        },
+        {
+          "frequencyHz": 11.6,
+          "outputPsdM2PerHz": 6.16271099057818e-10
+        },
+        {
+          "frequencyHz": 11.700000000000001,
+          "outputPsdM2PerHz": 6.770917492815246e-10
+        },
+        {
+          "frequencyHz": 11.8,
+          "outputPsdM2PerHz": 7.448077731919509e-10
+        },
+        {
+          "frequencyHz": 11.9,
+          "outputPsdM2PerHz": 8.202381110940524e-10
+        },
+        {
+          "frequencyHz": 12,
+          "outputPsdM2PerHz": 9.043034332065014e-10
+        },
+        {
+          "frequencyHz": 12.1,
+          "outputPsdM2PerHz": 9.980390990034845e-10
+        },
+        {
+          "frequencyHz": 12.200000000000001,
+          "outputPsdM2PerHz": 1.1026098104906829e-9
+        },
+        {
+          "frequencyHz": 12.3,
+          "outputPsdM2PerHz": 1.2193261843921706e-9
+        },
+        {
+          "frequencyHz": 12.4,
+          "outputPsdM2PerHz": 1.3496634986386881e-9
+        },
+        {
+          "frequencyHz": 12.5,
+          "outputPsdM2PerHz": 1.495282903118537e-9
+        },
+        {
+          "frequencyHz": 12.6,
+          "outputPsdM2PerHz": 1.6580554239563625e-9
+        },
+        {
+          "frequencyHz": 12.700000000000001,
+          "outputPsdM2PerHz": 1.840089135277818e-9
+        },
+        {
+          "frequencyHz": 12.8,
+          "outputPsdM2PerHz": 2.0437599232479946e-9
+        },
+        {
+          "frequencyHz": 12.9,
+          "outputPsdM2PerHz": 2.271746324990775e-9
+        },
+        {
+          "frequencyHz": 13,
+          "outputPsdM2PerHz": 2.527068990777263e-9
+        },
+        {
+          "frequencyHz": 13.1,
+          "outputPsdM2PerHz": 2.8131353927226096e-9
+        },
+        {
+          "frequencyHz": 13.200000000000001,
+          "outputPsdM2PerHz": 3.133790488416121e-9
+        },
+        {
+          "frequencyHz": 13.3,
+          "outputPsdM2PerHz": 3.4933741448716415e-9
+        },
+        {
+          "frequencyHz": 13.4,
+          "outputPsdM2PerHz": 3.896786238568742e-9
+        },
+        {
+          "frequencyHz": 13.5,
+          "outputPsdM2PerHz": 4.3495604730367614e-9
+        },
+        {
+          "frequencyHz": 13.6,
+          "outputPsdM2PerHz": 4.8579480985555114e-9
+        },
+        {
+          "frequencyHz": 13.700000000000001,
+          "outputPsdM2PerHz": 5.429012881551347e-9
+        },
+        {
+          "frequencyHz": 13.8,
+          "outputPsdM2PerHz": 6.070738856945091e-9
+        },
+        {
+          "frequencyHz": 13.9,
+          "outputPsdM2PerHz": 6.7921526082432845e-9
+        },
+        {
+          "frequencyHz": 14,
+          "outputPsdM2PerHz": 7.60346206118918e-9
+        },
+        {
+          "frequencyHz": 14.1,
+          "outputPsdM2PerHz": 8.516214051457513e-9
+        },
+        {
+          "frequencyHz": 14.200000000000001,
+          "outputPsdM2PerHz": 9.543473239922602e-9
+        },
+        {
+          "frequencyHz": 14.3,
+          "outputPsdM2PerHz": 1.0700025305866315e-8
+        },
+        {
+          "frequencyHz": 14.4,
+          "outputPsdM2PerHz": 1.2002607755300327e-8
+        },
+        {
+          "frequencyHz": 14.5,
+          "outputPsdM2PerHz": 1.3470172145414455e-8
+        },
+        {
+          "frequencyHz": 14.6,
+          "outputPsdM2PerHz": 1.512418205509609e-8
+        },
+        {
+          "frequencyHz": 14.700000000000001,
+          "outputPsdM2PerHz": 1.6988951734706017e-8
+        },
+        {
+          "frequencyHz": 14.8,
+          "outputPsdM2PerHz": 1.909203105637251e-8
+        },
+        {
+          "frequencyHz": 14.9,
+          "outputPsdM2PerHz": 2.146464317100834e-8
+        },
+        {
+          "frequencyHz": 15,
+          "outputPsdM2PerHz": 2.4142182173811972e-8
+        },
+        {
+          "frequencyHz": 15.1,
+          "outputPsdM2PerHz": 2.716477910190114e-8
+        },
+        {
+          "frequencyHz": 15.200000000000001,
+          "outputPsdM2PerHz": 3.0577945753906846e-8
+        },
+        {
+          "frequencyHz": 15.3,
+          "outputPsdM2PerHz": 3.443330715236217e-8
+        },
+        {
+          "frequencyHz": 15.4,
+          "outputPsdM2PerHz": 3.878943498903962e-8
+        },
+        {
+          "frequencyHz": 15.5,
+          "outputPsdM2PerHz": 4.371279612785744e-8
+        },
+        {
+          "frequencyHz": 15.6,
+          "outputPsdM2PerHz": 4.927883222030743e-8
+        },
+        {
+          "frequencyHz": 15.700000000000001,
+          "outputPsdM2PerHz": 5.5573188749651896e-8
+        },
+        {
+          "frequencyHz": 15.8,
+          "outputPsdM2PerHz": 6.26931144025618e-8
+        },
+        {
+          "frequencyHz": 15.9,
+          "outputPsdM2PerHz": 7.074905461637026e-8
+        },
+        {
+          "frequencyHz": 16,
+          "outputPsdM2PerHz": 7.986646651922473e-8
+        },
+        {
+          "frequencyHz": 16.1,
+          "outputPsdM2PerHz": 9.018788632930575e-8
+        },
+        {
+          "frequencyHz": 16.200000000000003,
+          "outputPsdM2PerHz": 1.0187528467669097e-7
+        },
+        {
+          "frequencyHz": 16.3,
+          "outputPsdM2PerHz": 1.1511275033616243e-7
+        },
+        {
+          "frequencyHz": 16.4,
+          "outputPsdM2PerHz": 1.3010954860133213e-7
+        },
+        {
+          "frequencyHz": 16.5,
+          "outputPsdM2PerHz": 1.471036070930573e-7
+        },
+        {
+          "frequencyHz": 16.6,
+          "outputPsdM2PerHz": 1.663654892962492e-7
+        },
+        {
+          "frequencyHz": 16.700000000000003,
+          "outputPsdM2PerHz": 1.8820292469397385e-7
+        },
+        {
+          "frequencyHz": 16.8,
+          "outputPsdM2PerHz": 2.1296597417089407e-7
+        },
+        {
+          "frequencyHz": 16.9,
+          "outputPsdM2PerHz": 2.410529205667307e-7
+        },
+        {
+          "frequencyHz": 17,
+          "outputPsdM2PerHz": 2.7291698707729383e-7
+        },
+        {
+          "frequencyHz": 17.1,
+          "outputPsdM2PerHz": 3.090740008580598e-7
+        },
+        {
+          "frequencyHz": 17.2,
+          "outputPsdM2PerHz": 3.5011113594912206e-7
+        },
+        {
+          "frequencyHz": 17.3,
+          "outputPsdM2PerHz": 3.966968888153336e-7
+        },
+        {
+          "frequencyHz": 17.4,
+          "outputPsdM2PerHz": 4.495924617303757e-7
+        },
+        {
+          "frequencyHz": 17.5,
+          "outputPsdM2PerHz": 5.096647543282617e-7
+        },
+        {
+          "frequencyHz": 17.6,
+          "outputPsdM2PerHz": 5.779011923579339e-7
+        },
+        {
+          "frequencyHz": 17.7,
+          "outputPsdM2PerHz": 6.554266555312308e-7
+        },
+        {
+          "frequencyHz": 17.8,
+          "outputPsdM2PerHz": 7.435228039522401e-7
+        },
+        {
+          "frequencyHz": 17.9,
+          "outputPsdM2PerHz": 8.436501456459764e-7
+        },
+        {
+          "frequencyHz": 18,
+          "outputPsdM2PerHz": 9.57473236955904e-7
+        },
+        {
+          "frequencyHz": 18.1,
+          "outputPsdM2PerHz": 0.000001086889463957197
+        },
+        {
+          "frequencyHz": 18.2,
+          "outputPsdM2PerHz": 0.0000012340619175735554
+        },
+        {
+          "frequencyHz": 18.3,
+          "outputPsdM2PerHz": 0.0000014014569489774762
+        },
+        {
+          "frequencyHz": 18.400000000000002,
+          "outputPsdM2PerHz": 0.0000015918870764603447
+        },
+        {
+          "frequencyHz": 18.5,
+          "outputPsdM2PerHz": 0.0000018085600118412081
+        },
+        {
+          "frequencyHz": 18.6,
+          "outputPsdM2PerHz": 0.0000020551346854326064
+        },
+        {
+          "frequencyHz": 18.7,
+          "outputPsdM2PerHz": 0.0000023357852756513554
+        },
+        {
+          "frequencyHz": 18.8,
+          "outputPsdM2PerHz": 0.0000026552743949074225
+        },
+        {
+          "frequencyHz": 18.900000000000002,
+          "outputPsdM2PerHz": 0.0000030190367501232635
+        },
+        {
+          "frequencyHz": 19,
+          "outputPsdM2PerHz": 0.0000034332747872283825
+        },
+        {
+          "frequencyHz": 19.1,
+          "outputPsdM2PerHz": 0.000003905068047788765
+        },
+        {
+          "frequencyHz": 19.2,
+          "outputPsdM2PerHz": 0.000004442498216643554
+        },
+        {
+          "frequencyHz": 19.3,
+          "outputPsdM2PerHz": 0.000005054792126705585
+        },
+        {
+          "frequencyHz": 19.400000000000002,
+          "outputPsdM2PerHz": 0.000005752485316296237
+        },
+        {
+          "frequencyHz": 19.5,
+          "outputPsdM2PerHz": 0.000006547609111683782
+        },
+        {
+          "frequencyHz": 19.6,
+          "outputPsdM2PerHz": 0.000007453904639929386
+        },
+        {
+          "frequencyHz": 19.7,
+          "outputPsdM2PerHz": 0.000008487067672816547
+        },
+        {
+          "frequencyHz": 19.8,
+          "outputPsdM2PerHz": 0.000009665028770839442
+        },
+        {
+          "frequencyHz": 19.900000000000002,
+          "outputPsdM2PerHz": 0.000011008273847611558
+        },
+        {
+          "frequencyHz": 20,
+          "outputPsdM2PerHz": 0.000012540211021871413
+        }
+      ],
+      "atBandBoundary": true
+    }
+  ],
+  "sameOutput": {
+    "first": {
+      "naturalFrequencyHz": 7.8,
+      "gammaPerS": 4.900884539600077,
+      "massKg": 0.25
+    },
+    "second": {
+      "naturalFrequencyHz": 10.3,
+      "gammaPerS": 10.786134777324959,
+      "massKg": 0.4
+    },
+    "maxPairRelativeResidual": 5.556658963483554e-16,
+    "minSecondForcePsdN2PerHz": 0.000001055764643859708,
+    "maxSecondForcePsdN2PerHz": 0.00005148860873064315,
+    "firstPeak": {
+      "f": 7.722,
+      "power": 7.003688192806284e-11
+    },
+    "secondPeak": {
+      "f": 7.722,
+      "power": 7.003688192806284e-11
+    },
+    "maxVelocityRatioRelativeResidual": 6.469291048241459e-16,
+    "samples": [
+      {
+        "frequencyHz": 1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000007898558230761295,
+        "firstOutputPsdM2PerHz": 2.864984552243482e-12,
+        "secondOutputPsdM2PerHz": 2.864984552243482e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 1.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000007923169927049374,
+        "firstOutputPsdM2PerHz": 2.8847712539425483e-12,
+        "secondOutputPsdM2PerHz": 2.884771253942548e-12,
+        "relativeResidual": 1.4000998620641478e-16
+      },
+      {
+        "frequencyHz": 1.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000007950364173439346,
+        "firstOutputPsdM2PerHz": 2.906675098056181e-12,
+        "secondOutputPsdM2PerHz": 2.9066750980561816e-12,
+        "relativeResidual": 1.3895491234753453e-16
+      },
+      {
+        "frequencyHz": 1.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000798020973736937,
+        "firstOutputPsdM2PerHz": 2.9307636307012652e-12,
+        "secondOutputPsdM2PerHz": 2.9307636307012652e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 1.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008012783056720808,
+        "firstOutputPsdM2PerHz": 2.9571121462645797e-12,
+        "secondOutputPsdM2PerHz": 2.9571121462645793e-12,
+        "relativeResidual": 1.3658487182616998e-16
+      },
+      {
+        "frequencyHz": 1.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008048168712597591,
+        "firstOutputPsdM2PerHz": 2.985804217019288e-12,
+        "secondOutputPsdM2PerHz": 2.985804217019288e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 1.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008086459961795187,
+        "firstOutputPsdM2PerHz": 3.016932291885508e-12,
+        "secondOutputPsdM2PerHz": 3.0169322918855075e-12,
+        "relativeResidual": 1.338766483289993e-16
+      },
+      {
+        "frequencyHz": 1.7000000000000002,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000812775933506709,
+        "firstOutputPsdM2PerHz": 3.050598371918431e-12,
+        "secondOutputPsdM2PerHz": 3.0505983719184313e-12,
+        "relativeResidual": 1.3239919983932832e-16
+      },
+      {
+        "frequencyHz": 1.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008172179308199282,
+        "firstOutputPsdM2PerHz": 3.0869147712713616e-12,
+        "secondOutputPsdM2PerHz": 3.086914771271362e-12,
+        "relativeResidual": 1.3084157270296485e-16
+      },
+      {
+        "frequencyHz": 1.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008219843053935676,
+        "firstOutputPsdM2PerHz": 3.126004973720733e-12,
+        "secondOutputPsdM2PerHz": 3.1260049737207327e-12,
+        "relativeResidual": 1.29205419335088e-16
+      },
+      {
+        "frequencyHz": 2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008270885283980492,
+        "firstOutputPsdM2PerHz": 3.1680045963871033e-12,
+        "secondOutputPsdM2PerHz": 3.168004596387103e-12,
+        "relativeResidual": 1.2749248657460132e-16
+      },
+      {
+        "frequencyHz": 2.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000832545319166504,
+        "firstOutputPsdM2PerHz": 3.2130624740785857e-12,
+        "secondOutputPsdM2PerHz": 3.213062474078586e-12,
+        "relativeResidual": 1.2570461568413295e-16
+      },
+      {
+        "frequencyHz": 2.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008383707507436776,
+        "firstOutputPsdM2PerHz": 3.2613418797663013e-12,
+        "secondOutputPsdM2PerHz": 3.261341879766301e-12,
+        "relativeResidual": 1.2384374235003542e-16
+      },
+      {
+        "frequencyHz": 2.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000844582368114537,
+        "firstOutputPsdM2PerHz": 3.3130218991294973e-12,
+        "secondOutputPsdM2PerHz": 3.3130218991294977e-12,
+        "relativeResidual": 1.2191189668238615e-16
+      },
+      {
+        "frequencyHz": 2.4000000000000004,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008511993207208679,
+        "firstOutputPsdM2PerHz": 3.3682989799461744e-12,
+        "secondOutputPsdM2PerHz": 3.3682989799461744e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 2.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000858242511119233,
+        "firstOutputPsdM2PerHz": 3.4273886804314877e-12,
+        "secondOutputPsdM2PerHz": 3.427388680431488e-12,
+        "relativeResidual": 1.1784388090536316e-16
+      },
+      {
+        "frequencyHz": 2.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000865734761919542,
+        "firstOutputPsdM2PerHz": 3.490527644535872e-12,
+        "secondOutputPsdM2PerHz": 3.4905276445358726e-12,
+        "relativeResidual": 1.1571224313476632e-16
+      },
+      {
+        "frequencyHz": 2.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000873701003477492,
+        "firstOutputPsdM2PerHz": 3.5579758368218494e-12,
+        "secondOutputPsdM2PerHz": 3.55797583682185e-12,
+        "relativeResidual": 1.1351869770817148e-16
+      },
+      {
+        "frequencyHz": 2.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000882168485205567,
+        "firstOutputPsdM2PerHz": 3.6300190749820797e-12,
+        "secondOutputPsdM2PerHz": 3.6300190749820805e-12,
+        "relativeResidual": 2.225314937085568e-16
+      },
+      {
+        "frequencyHz": 2.9000000000000004,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000008911670138269475,
+        "firstOutputPsdM2PerHz": 3.7069719045103414e-12,
+        "secondOutputPsdM2PerHz": 3.7069719045103414e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000009007292224377778,
+        "firstOutputPsdM2PerHz": 3.789180867698206e-12,
+        "secondOutputPsdM2PerHz": 3.789180867698205e-12,
+        "relativeResidual": 2.1318421979603797e-16
+      },
+      {
+        "frequencyHz": 3.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000009108908748817998,
+        "firstOutputPsdM2PerHz": 3.877028228255635e-12,
+        "secondOutputPsdM2PerHz": 3.877028228255636e-12,
+        "relativeResidual": 2.083538007433495e-16
+      },
+      {
+        "frequencyHz": 3.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000009216912106965371,
+        "firstOutputPsdM2PerHz": 3.970936223753103e-12,
+        "secondOutputPsdM2PerHz": 3.970936223753104e-12,
+        "relativeResidual": 2.0342647714015297e-16
+      },
+      {
+        "frequencyHz": 3.3000000000000003,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000933173336785496,
+        "firstOutputPsdM2PerHz": 4.071371931137161e-12,
+        "secondOutputPsdM2PerHz": 4.071371931137162e-12,
+        "relativeResidual": 1.9840819768109316e-16
+      },
+      {
+        "frequencyHz": 3.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000009453846730346415,
+        "firstOutputPsdM2PerHz": 4.178852846250142e-12,
+        "secondOutputPsdM2PerHz": 4.178852846250142e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 3.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000958377460358186,
+        "firstOutputPsdM2PerHz": 4.293953297168448e-12,
+        "secondOutputPsdM2PerHz": 4.293953297168448e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 3.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000009722093411706312,
+        "firstOutputPsdM2PerHz": 4.417311833982308e-12,
+        "secondOutputPsdM2PerHz": 4.417311833982309e-12,
+        "relativeResidual": 1.8286994382691597e-16
+      },
+      {
+        "frequencyHz": 3.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000009869440240902726,
+        "firstOutputPsdM2PerHz": 4.549639765266626e-12,
+        "secondOutputPsdM2PerHz": 4.549639765266625e-12,
+        "relativeResidual": 1.7755110483983042e-16
+      },
+      {
+        "frequencyHz": 3.8000000000000003,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000010026520468463153,
+        "firstOutputPsdM2PerHz": 4.691731045050398e-12,
+        "secondOutputPsdM2PerHz": 4.691731045050398e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 3.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000010194116539636009,
+        "firstOutputPsdM2PerHz": 4.844473754969619e-12,
+        "secondOutputPsdM2PerHz": 4.84447375496962e-12,
+        "relativeResidual": 1.6674536963228565e-16
+      },
+      {
+        "frequencyHz": 4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000010373098089279606,
+        "firstOutputPsdM2PerHz": 5.008863476219877e-12,
+        "secondOutputPsdM2PerHz": 5.008863476219877e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 4.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000010564433643038547,
+        "firstOutputPsdM2PerHz": 5.186018907081765e-12,
+        "secondOutputPsdM2PerHz": 5.186018907081764e-12,
+        "relativeResidual": 1.557637142130805e-16
+      },
+      {
+        "frequencyHz": 4.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000010769204178197143,
+        "firstOutputPsdM2PerHz": 5.377200156893174e-12,
+        "secondOutputPsdM2PerHz": 5.377200156893175e-12,
+        "relativeResidual": 1.502256831393535e-16
+      },
+      {
+        "frequencyHz": 4.300000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000010988618879184623,
+        "firstOutputPsdM2PerHz": 5.583830239795204e-12,
+        "secondOutputPsdM2PerHz": 5.583830239795204e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 4.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000011224033488851704,
+        "firstOutputPsdM2PerHz": 5.807520405648262e-12,
+        "secondOutputPsdM2PerHz": 5.807520405648262e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 4.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000114769717363894,
+        "firstOutputPsdM2PerHz": 6.0501000865345795e-12,
+        "secondOutputPsdM2PerHz": 6.05010008653458e-12,
+        "relativeResidual": 1.3351738903364322e-16
+      },
+      {
+        "frequencyHz": 4.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000011749150418746508,
+        "firstOutputPsdM2PerHz": 6.3136524118747e-12,
+        "secondOutputPsdM2PerHz": 6.3136524118747e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 4.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000012042508827551927,
+        "firstOutputPsdM2PerHz": 6.600556461616553e-12,
+        "secondOutputPsdM2PerHz": 6.600556461616553e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 4.800000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000012359243350956604,
+        "firstOutputPsdM2PerHz": 6.913537695304702e-12,
+        "secondOutputPsdM2PerHz": 6.9135376953047035e-12,
+        "relativeResidual": 2.3368457728810106e-16
+      },
+      {
+        "frequencyHz": 4.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00001270184824243085,
+        "firstOutputPsdM2PerHz": 7.255728327327726e-12,
+        "secondOutputPsdM2PerHz": 7.255728327327727e-12,
+        "relativeResidual": 1.1133183748127256e-16
+      },
+      {
+        "frequencyHz": 5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000013073163738579722,
+        "firstOutputPsdM2PerHz": 7.630739829739163e-12,
+        "secondOutputPsdM2PerHz": 7.630739829739162e-12,
+        "relativeResidual": 2.1172090386258874e-16
+      },
+      {
+        "frequencyHz": 5.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000013476432925764656,
+        "firstOutputPsdM2PerHz": 8.042750250265287e-12,
+        "secondOutputPsdM2PerHz": 8.042750250265287e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 5.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00001391536899705997,
+        "firstOutputPsdM2PerHz": 8.496609652130433e-12,
+        "secondOutputPsdM2PerHz": 8.496609652130433e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 5.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000014394234795524198,
+        "firstOutputPsdM2PerHz": 8.99796773078509e-12,
+        "secondOutputPsdM2PerHz": 8.99796773078509e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 5.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000014917936781647193,
+        "firstOutputPsdM2PerHz": 9.55342855134992e-12,
+        "secondOutputPsdM2PerHz": 9.55342855134992e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 5.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000015492135741955572,
+        "firstOutputPsdM2PerHz": 1.0170738375170048e-11,
+        "secondOutputPsdM2PerHz": 1.0170738375170048e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 5.6000000000000005,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000161233765782941,
+        "firstOutputPsdM2PerHz": 1.085901366657819e-11,
+        "secondOutputPsdM2PerHz": 1.085901366657819e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 5.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00001681923921390681,
+        "firstOutputPsdM2PerHz": 1.1629017487200213e-11,
+        "secondOutputPsdM2PerHz": 1.1629017487200215e-11,
+        "relativeResidual": 1.3892722542303085e-16
+      },
+      {
+        "frequencyHz": 5.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00001758851172423011,
+        "firstOutputPsdM2PerHz": 1.2493493362178632e-11,
+        "secondOutputPsdM2PerHz": 1.2493493362178631e-11,
+        "relativeResidual": 1.2931428280767934e-16
+      },
+      {
+        "frequencyHz": 5.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000018441384727831815,
+        "firstOutputPsdM2PerHz": 1.3467565869254825e-11,
+        "secondOutputPsdM2PerHz": 1.3467565869254825e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000019389661964091513,
+        "firstOutputPsdM2PerHz": 1.4569215751192018e-11,
+        "secondOutputPsdM2PerHz": 1.456921575119202e-11,
+        "relativeResidual": 2.217809333711663e-16
+      },
+      {
+        "frequencyHz": 6.1000000000000005,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000020446974323489656,
+        "firstOutputPsdM2PerHz": 1.581983259667123e-11,
+        "secondOutputPsdM2PerHz": 1.5819832596671232e-11,
+        "relativeResidual": 2.0424832235362338e-16
+      },
+      {
+        "frequencyHz": 6.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000021628970839906392,
+        "firstOutputPsdM2PerHz": 1.724483700628335e-11,
+        "secondOutputPsdM2PerHz": 1.724483700628335e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 6.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000022953436099794415,
+        "firstOutputPsdM2PerHz": 1.8874341197178352e-11,
+        "secondOutputPsdM2PerHz": 1.8874341197178352e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 6.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000024440242391930627,
+        "firstOutputPsdM2PerHz": 2.0743772700354913e-11,
+        "secondOutputPsdM2PerHz": 2.0743772700354913e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 6.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00002611097619520016,
+        "firstOutputPsdM2PerHz": 2.2894304122530323e-11,
+        "secondOutputPsdM2PerHz": 2.2894304122530323e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 6.6000000000000005,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000027987967040015558,
+        "firstOutputPsdM2PerHz": 2.5372786979727792e-11,
+        "secondOutputPsdM2PerHz": 2.537278697972779e-11,
+        "relativeResidual": 1.273480233120189e-16
+      },
+      {
+        "frequencyHz": 6.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000030092273165634063,
+        "firstOutputPsdM2PerHz": 2.8230640670457655e-11,
+        "secondOutputPsdM2PerHz": 2.823064067045765e-11,
+        "relativeResidual": 2.2891257095462034e-16
+      },
+      {
+        "frequencyHz": 6.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00003243992637659446,
+        "firstOutputPsdM2PerHz": 3.152074931884954e-11,
+        "secondOutputPsdM2PerHz": 3.152074931884954e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 6.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00003503541801499807,
+        "firstOutputPsdM2PerHz": 3.529082978573027e-11,
+        "secondOutputPsdM2PerHz": 3.529082978573026e-11,
+        "relativeResidual": 3.6623386725712854e-16
+      },
+      {
+        "frequencyHz": 7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000037861116517794466,
+        "firstOutputPsdM2PerHz": 3.957099453685103e-11,
+        "secondOutputPsdM2PerHz": 3.9570994536851027e-11,
+        "relativeResidual": 1.6331023799647941e-16
+      },
+      {
+        "frequencyHz": 7.1000000000000005,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00004086136008861805,
+        "firstOutputPsdM2PerHz": 4.435264653504804e-11,
+        "secondOutputPsdM2PerHz": 4.435264653504803e-11,
+        "relativeResidual": 1.4570378636737939e-16
+      },
+      {
+        "frequencyHz": 7.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000043921105794198775,
+        "firstOutputPsdM2PerHz": 4.955633369987675e-11,
+        "secondOutputPsdM2PerHz": 4.955633369987675e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 7.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00004684253102239422,
+        "firstOutputPsdM2PerHz": 5.4989741415593364e-11,
+        "secondOutputPsdM2PerHz": 5.4989741415593364e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 7.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00004933013281748121,
+        "firstOutputPsdM2PerHz": 6.030642067630257e-11,
+        "secondOutputPsdM2PerHz": 6.030642067630257e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 7.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00005100432036090588,
+        "firstOutputPsdM2PerHz": 6.499180640109202e-11,
+        "secondOutputPsdM2PerHz": 6.4991806401092e-11,
+        "relativeResidual": 1.988665615997387e-16
+      },
+      {
+        "frequencyHz": 7.6000000000000005,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00005146663080096767,
+        "firstOutputPsdM2PerHz": 6.841655803715032e-11,
+        "secondOutputPsdM2PerHz": 6.841655803715032e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 7.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00005042033629477953,
+        "firstOutputPsdM2PerHz": 6.998389246068304e-11,
+        "secondOutputPsdM2PerHz": 6.998389246068303e-11,
+        "relativeResidual": 1.8468102611471853e-16
+      },
+      {
+        "frequencyHz": 7.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00004780292041162931,
+        "firstOutputPsdM2PerHz": 6.933653061800269e-11,
+        "secondOutputPsdM2PerHz": 6.933653061800269e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 7.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000043847372277341883,
+        "firstOutputPsdM2PerHz": 6.651283805395832e-11,
+        "secondOutputPsdM2PerHz": 6.651283805395832e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00003901701408934161,
+        "firstOutputPsdM2PerHz": 6.194177640756587e-11,
+        "secondOutputPsdM2PerHz": 6.194177640756587e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 8.100000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00003384903292813302,
+        "firstOutputPsdM2PerHz": 5.627619610302902e-11,
+        "secondOutputPsdM2PerHz": 5.627619610302903e-11,
+        "relativeResidual": 1.1483271761544483e-16
+      },
+      {
+        "frequencyHz": 8.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000028802952423723384,
+        "firstOutputPsdM2PerHz": 5.017702782545518e-11,
+        "secondOutputPsdM2PerHz": 5.0177027825455176e-11,
+        "relativeResidual": 1.2879097897249567e-16
+      },
+      {
+        "frequencyHz": 8.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000024183379414483984,
+        "firstOutputPsdM2PerHz": 4.416365134155917e-11,
+        "secondOutputPsdM2PerHz": 4.416365134155917e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 8.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000020139370644216597,
+        "firstOutputPsdM2PerHz": 3.8565904905271273e-11,
+        "secondOutputPsdM2PerHz": 3.856590490527128e-11,
+        "relativeResidual": 1.6756636597647263e-16
+      },
+      {
+        "frequencyHz": 8.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000016704502787856235,
+        "firstOutputPsdM2PerHz": 3.3547240401993524e-11,
+        "secondOutputPsdM2PerHz": 3.354724040199352e-11,
+        "relativeResidual": 1.9263428103572142e-16
+      },
+      {
+        "frequencyHz": 8.600000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00001384358790849132,
+        "firstOutputPsdM2PerHz": 2.9154497037210496e-11,
+        "secondOutputPsdM2PerHz": 2.915449703721049e-11,
+        "relativeResidual": 2.21658721374013e-16
+      },
+      {
+        "frequencyHz": 8.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000011489191332777744,
+        "firstOutputPsdM2PerHz": 2.5365535528569177e-11,
+        "secondOutputPsdM2PerHz": 2.5365535528569177e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 8.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000009564694174535357,
+        "firstOutputPsdM2PerHz": 2.2124104256020213e-11,
+        "secondOutputPsdM2PerHz": 2.212410425602021e-11,
+        "relativeResidual": 1.4604768764394273e-16
+      },
+      {
+        "frequencyHz": 8.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000799661746271429,
+        "firstOutputPsdM2PerHz": 1.9361654857654347e-11,
+        "secondOutputPsdM2PerHz": 1.9361654857654347e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000006720028418655583,
+        "firstOutputPsdM2PerHz": 1.7009410787895847e-11,
+        "secondOutputPsdM2PerHz": 1.7009410787895847e-11,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 9.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000005680072194830377,
+        "firstOutputPsdM2PerHz": 1.5004198310390975e-11,
+        "secondOutputPsdM2PerHz": 1.5004198310390972e-11,
+        "relativeResidual": 2.1535134373341052e-16
+      },
+      {
+        "frequencyHz": 9.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000004831593812016081,
+        "firstOutputPsdM2PerHz": 1.3290675449352935e-11,
+        "secondOutputPsdM2PerHz": 1.3290675449352932e-11,
+        "relativeResidual": 2.431158807615437e-16
+      },
+      {
+        "frequencyHz": 9.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000041379715088646195,
+        "firstOutputPsdM2PerHz": 1.1821658568211223e-11,
+        "secondOutputPsdM2PerHz": 1.1821658568211225e-11,
+        "relativeResidual": 1.3666332220395806e-16
+      },
+      {
+        "frequencyHz": 9.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000035697421295252105,
+        "firstOutputPsdM2PerHz": 1.0557546902455567e-11,
+        "secondOutputPsdM2PerHz": 1.0557546902455566e-11,
+        "relativeResidual": 1.5302675411433547e-16
+      },
+      {
+        "frequencyHz": 9.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000031032887957858227,
+        "firstOutputPsdM2PerHz": 9.46539445867259e-12,
+        "secondOutputPsdM2PerHz": 9.46539445867259e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 9.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000002719696442295507,
+        "firstOutputPsdM2PerHz": 8.517911174209422e-12,
+        "secondOutputPsdM2PerHz": 8.517911174209422e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 9.700000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000024037997595675123,
+        "firstOutputPsdM2PerHz": 7.69252539400562e-12,
+        "secondOutputPsdM2PerHz": 7.69252539400562e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 9.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000021434119781269496,
+        "firstOutputPsdM2PerHz": 6.970559855886982e-12,
+        "secondOutputPsdM2PerHz": 6.970559855886981e-12,
+        "relativeResidual": 1.1588646875531733e-16
+      },
+      {
+        "frequencyHz": 9.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019287096007140525,
+        "firstOutputPsdM2PerHz": 6.336533100863228e-12,
+        "secondOutputPsdM2PerHz": 6.336533100863229e-12,
+        "relativeResidual": 1.2748194542474181e-16
+      },
+      {
+        "frequencyHz": 10,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017517456847108269,
+        "firstOutputPsdM2PerHz": 5.7775794942984656e-12,
+        "secondOutputPsdM2PerHz": 5.777579494298464e-12,
+        "relativeResidual": 2.796304465368161e-16
+      },
+      {
+        "frequencyHz": 10.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001606066417698197,
+        "firstOutputPsdM2PerHz": 5.282973596045664e-12,
+        "secondOutputPsdM2PerHz": 5.282973596045663e-12,
+        "relativeResidual": 1.5290509260749556e-16
+      },
+      {
+        "frequencyHz": 10.200000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000014864094741047711,
+        "firstOutputPsdM2PerHz": 4.843742802167034e-12,
+        "secondOutputPsdM2PerHz": 4.843742802167033e-12,
+        "relativeResidual": 1.6677053261063298e-16
+      },
+      {
+        "frequencyHz": 10.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000013884665852213015,
+        "firstOutputPsdM2PerHz": 4.452352973680308e-12,
+        "secondOutputPsdM2PerHz": 4.452352973680309e-12,
+        "relativeResidual": 1.8143071129389704e-16
+      },
+      {
+        "frequencyHz": 10.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000013086963171230416,
+        "firstOutputPsdM2PerHz": 4.102453601211262e-12,
+        "secondOutputPsdM2PerHz": 4.102453601211262e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 10.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000012441760469285273,
+        "firstOutputPsdM2PerHz": 3.788671150519978e-12,
+        "secondOutputPsdM2PerHz": 3.7886711505199784e-12,
+        "relativeResidual": 2.1321290100236067e-16
+      },
+      {
+        "frequencyHz": 10.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000011924845519459486,
+        "firstOutputPsdM2PerHz": 3.506441233248221e-12,
+        "secondOutputPsdM2PerHz": 3.506441233248222e-12,
+        "relativeResidual": 2.303741922969602e-16
+      },
+      {
+        "frequencyHz": 10.700000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000011516085443128084,
+        "firstOutputPsdM2PerHz": 3.25187200632349e-12,
+        "secondOutputPsdM2PerHz": 3.2518720063234903e-12,
+        "relativeResidual": 1.2420439140524373e-16
+      },
+      {
+        "frequencyHz": 10.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000011198679814197608,
+        "firstOutputPsdM2PerHz": 3.021632685385715e-12,
+        "secondOutputPsdM2PerHz": 3.0216326853857145e-12,
+        "relativeResidual": 1.3366839239813166e-16
+      },
+      {
+        "frequencyHz": 10.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010958561429644005,
+        "firstOutputPsdM2PerHz": 2.8128622747191753e-12,
+        "secondOutputPsdM2PerHz": 2.812862274719175e-12,
+        "relativeResidual": 1.435892496775305e-16
+      },
+      {
+        "frequencyHz": 11,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010783913611897752,
+        "firstOutputPsdM2PerHz": 2.6230946004846637e-12,
+        "secondOutputPsdM2PerHz": 2.623094600484664e-12,
+        "relativeResidual": 1.5397720821754992e-16
+      },
+      {
+        "frequencyHz": 11.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010664779810644375,
+        "firstOutputPsdM2PerHz": 2.4501965226369783e-12,
+        "secondOutputPsdM2PerHz": 2.450196522636978e-12,
+        "relativeResidual": 1.6484260741602542e-16
+      },
+      {
+        "frequencyHz": 11.200000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010592746590448983,
+        "firstOutputPsdM2PerHz": 2.292316829225408e-12,
+        "secondOutputPsdM2PerHz": 2.292316829225408e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 11.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010560685194480459,
+        "firstOutputPsdM2PerHz": 2.147843815928303e-12,
+        "secondOutputPsdM2PerHz": 2.1478438159283026e-12,
+        "relativeResidual": 1.8804755749830576e-16
+      },
+      {
+        "frequencyHz": 11.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010562540047547146,
+        "firstOutputPsdM2PerHz": 2.0153699497773524e-12,
+        "secondOutputPsdM2PerHz": 2.015369949777353e-12,
+        "relativeResidual": 2.004082592964028e-16
+      },
+      {
+        "frequencyHz": 11.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010593155021292376,
+        "firstOutputPsdM2PerHz": 1.893662330404425e-12,
+        "secondOutputPsdM2PerHz": 1.8936623304044245e-12,
+        "relativeResidual": 2.132887035815402e-16
+      },
+      {
+        "frequencyHz": 11.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010648130196885207,
+        "firstOutputPsdM2PerHz": 1.7816379119212863e-12,
+        "secondOutputPsdM2PerHz": 1.7816379119212859e-12,
+        "relativeResidual": 2.2669970187017574e-16
+      },
+      {
+        "frequencyHz": 11.700000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010723703352523057,
+        "firstOutputPsdM2PerHz": 1.6783426473344066e-12,
+        "secondOutputPsdM2PerHz": 1.6783426473344069e-12,
+        "relativeResidual": 1.2032608005124543e-16
+      },
+      {
+        "frequencyHz": 11.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010816651571076993,
+        "firstOutputPsdM2PerHz": 1.5829338759565712e-12,
+        "secondOutputPsdM2PerHz": 1.5829338759565712e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 11.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000010924209280909963,
+        "firstOutputPsdM2PerHz": 1.4946654010660392e-12,
+        "secondOutputPsdM2PerHz": 1.4946654010660394e-12,
+        "relativeResidual": 1.3511277613875553e-16
+      },
+      {
+        "frequencyHz": 12,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001104399976658486,
+        "firstOutputPsdM2PerHz": 1.4128748067284583e-12,
+        "secondOutputPsdM2PerHz": 1.4128748067284583e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 12.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000011173977758987119,
+        "firstOutputPsdM2PerHz": 1.3369726444547555e-12,
+        "secondOutputPsdM2PerHz": 1.3369726444547553e-12,
+        "relativeResidual": 1.510490080512737e-16
+      },
+      {
+        "frequencyHz": 12.200000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001131238116945064,
+        "firstOutputPsdM2PerHz": 1.2664331863173584e-12,
+        "secondOutputPsdM2PerHz": 1.2664331863173586e-12,
+        "relativeResidual": 1.5946233399317466e-16
+      },
+      {
+        "frequencyHz": 12.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000011457690395329115,
+        "firstOutputPsdM2PerHz": 1.2007864945100148e-12,
+        "secondOutputPsdM2PerHz": 1.2007864945100146e-12,
+        "relativeResidual": 1.681800991765691e-16
+      },
+      {
+        "frequencyHz": 12.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000011608593914835941,
+        "firstOutputPsdM2PerHz": 1.1396116006510204e-12,
+        "secondOutputPsdM2PerHz": 1.1396116006510204e-12,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 12.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000011763959122188573,
+        "firstOutputPsdM2PerHz": 1.082530623399033e-12,
+        "secondOutputPsdM2PerHz": 1.0825306233990327e-12,
+        "relativeResidual": 1.8655212829220684e-16
+      },
+      {
+        "frequencyHz": 12.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001192280754205482,
+        "firstOutputPsdM2PerHz": 1.0292036817597864e-12,
+        "secondOutputPsdM2PerHz": 1.0292036817597862e-12,
+        "relativeResidual": 1.9621810076629057e-16
+      },
+      {
+        "frequencyHz": 12.700000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000012084293714307765,
+        "firstOutputPsdM2PerHz": 9.793244850676082e-13,
+        "secondOutputPsdM2PerHz": 9.79324485067608e-13,
+        "relativeResidual": 2.0621192956554883e-16
+      },
+      {
+        "frequencyHz": 12.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000012247687163446447,
+        "firstOutputPsdM2PerHz": 9.326165000277117e-13,
+        "secondOutputPsdM2PerHz": 9.326165000277117e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 12.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000012412356967462294,
+        "firstOutputPsdM2PerHz": 8.888296112006376e-13,
+        "secondOutputPsdM2PerHz": 8.888296112006376e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 13,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000012577758522951026,
+        "firstOutputPsdM2PerHz": 8.477372045370892e-13,
+        "secondOutputPsdM2PerHz": 8.477372045370893e-13,
+        "relativeResidual": 1.1911025648971832e-16
+      },
+      {
+        "frequencyHz": 13.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000012743422170468915,
+        "firstOutputPsdM2PerHz": 8.091336145407909e-13,
+        "secondOutputPsdM2PerHz": 8.091336145407907e-13,
+        "relativeResidual": 2.495859622037717e-16
+      },
+      {
+        "frequencyHz": 13.200000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000012908943399355908,
+        "firstOutputPsdM2PerHz": 7.728318847608471e-13,
+        "secondOutputPsdM2PerHz": 7.728318847608471e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 13.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000013073974396765573,
+        "firstOutputPsdM2PerHz": 7.386617989251817e-13,
+        "secondOutputPsdM2PerHz": 7.386617989251817e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 13.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000013238216743267573,
+        "firstOutputPsdM2PerHz": 7.064681463917969e-13,
+        "secondOutputPsdM2PerHz": 7.064681463917969e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 13.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000013401415088576934,
+        "firstOutputPsdM2PerHz": 6.76109190932949e-13,
+        "secondOutputPsdM2PerHz": 6.761091909329491e-13,
+        "relativeResidual": 1.4934598911302672e-16
+      },
+      {
+        "frequencyHz": 13.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001356335166688898,
+        "firstOutputPsdM2PerHz": 6.474553163563124e-13,
+        "secondOutputPsdM2PerHz": 6.474553163563124e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 13.700000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001372384153290385,
+        "firstOutputPsdM2PerHz": 6.203878262517885e-13,
+        "secondOutputPsdM2PerHz": 6.203878262517884e-13,
+        "relativeResidual": 1.6275979572060215e-16
+      },
+      {
+        "frequencyHz": 13.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000013882728417677292,
+        "firstOutputPsdM2PerHz": 5.947978783513232e-13,
+        "secondOutputPsdM2PerHz": 5.947978783513234e-13,
+        "relativeResidual": 3.395243982650795e-16
+      },
+      {
+        "frequencyHz": 13.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000014039881118555691,
+        "firstOutputPsdM2PerHz": 5.705855366993793e-13,
+        "secondOutputPsdM2PerHz": 5.705855366993792e-13,
+        "relativeResidual": 1.7696592250197384e-16
+      },
+      {
+        "frequencyHz": 14,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000014195190350150736,
+        "firstOutputPsdM2PerHz": 5.476589271335783e-13,
+        "secondOutputPsdM2PerHz": 5.476589271335783e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 14.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000014348565993996244,
+        "firstOutputPsdM2PerHz": 5.259334835347211e-13,
+        "secondOutputPsdM2PerHz": 5.259334835347211e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 14.200000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000014499934693545352,
+        "firstOutputPsdM2PerHz": 5.053312739774903e-13,
+        "secondOutputPsdM2PerHz": 5.053312739774903e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 14.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001464923774878904,
+        "firstOutputPsdM2PerHz": 4.857803973431403e-13,
+        "secondOutputPsdM2PerHz": 4.857803973431404e-13,
+        "relativeResidual": 2.0785975807287346e-16
+      },
+      {
+        "frequencyHz": 14.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000014796429271235893,
+        "firstOutputPsdM2PerHz": 4.672144421810226e-13,
+        "secondOutputPsdM2PerHz": 4.672144421810225e-13,
+        "relativeResidual": 2.1611959467033552e-16
+      },
+      {
+        "frequencyHz": 14.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000014941474565477514,
+        "firstOutputPsdM2PerHz": 4.4957200065838974e-13,
+        "secondOutputPsdM2PerHz": 4.495720006583898e-13,
+        "relativeResidual": 1.12300360921515e-16
+      },
+      {
+        "frequencyHz": 14.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001508434870823038,
+        "firstOutputPsdM2PerHz": 4.327962313438489e-13,
+        "secondOutputPsdM2PerHz": 4.3279623134384883e-13,
+        "relativeResidual": 1.1665327532400266e-16
+      },
+      {
+        "frequencyHz": 14.700000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001522503529972385,
+        "firstOutputPsdM2PerHz": 4.168344653510869e-13,
+        "secondOutputPsdM2PerHz": 4.1683446535108685e-13,
+        "relativeResidual": 1.211202578741204e-16
+      },
+      {
+        "frequencyHz": 14.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000015363525365701563,
+        "firstOutputPsdM2PerHz": 4.0163785104458983e-13,
+        "secondOutputPsdM2PerHz": 4.0163785104458983e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 14.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000015499816391213046,
+        "firstOutputPsdM2PerHz": 3.8716103309354363e-13,
+        "secondOutputPsdM2PerHz": 3.871610330935436e-13,
+        "relativeResidual": 1.304033557580325e-16
+      },
+      {
+        "frequencyHz": 15,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000015633911469864976,
+        "firstOutputPsdM2PerHz": 3.733618621670855e-13,
+        "secondOutputPsdM2PerHz": 3.733618621670855e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 15.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000015765818554343786,
+        "firstOutputPsdM2PerHz": 3.602011320046136e-13,
+        "secondOutputPsdM2PerHz": 3.602011320046136e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 15.200000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000015895549795864302,
+        "firstOutputPsdM2PerHz": 3.4764234097840697e-13,
+        "secondOutputPsdM2PerHz": 3.4764234097840697e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 15.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016023120961786563,
+        "firstOutputPsdM2PerHz": 3.35651475600255e-13,
+        "secondOutputPsdM2PerHz": 3.3565147560025497e-13,
+        "relativeResidual": 1.5041524201214148e-16
+      },
+      {
+        "frequencyHz": 15.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016148550922014879,
+        "firstOutputPsdM2PerHz": 3.241968137159887e-13,
+        "secondOutputPsdM2PerHz": 3.241968137159887e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 15.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016271861195977423,
+        "firstOutputPsdM2PerHz": 3.1324874538745964e-13,
+        "secondOutputPsdM2PerHz": 3.1324874538745964e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 15.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016393075553012442,
+        "firstOutputPsdM2PerHz": 3.027796096856012e-13,
+        "secondOutputPsdM2PerHz": 3.0277960968560115e-13,
+        "relativeResidual": 1.6674536963228567e-16
+      },
+      {
+        "frequencyHz": 15.700000000000001,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016512219659875978,
+        "firstOutputPsdM2PerHz": 2.9276354581491406e-13,
+        "secondOutputPsdM2PerHz": 2.927635458149141e-13,
+        "relativeResidual": 1.7245008354306118e-16
+      },
+      {
+        "frequencyHz": 15.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016629320769860157,
+        "firstOutputPsdM2PerHz": 2.8317635716266585e-13,
+        "secondOutputPsdM2PerHz": 2.8317635716266585e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 15.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016744407448683157,
+        "firstOutputPsdM2PerHz": 2.739953870184037e-13,
+        "secondOutputPsdM2PerHz": 2.7399538701840373e-13,
+        "relativeResidual": 1.8426258370092061e-16
+      },
+      {
+        "frequencyHz": 16,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016857509332897367,
+        "firstOutputPsdM2PerHz": 2.651994048436732e-13,
+        "secondOutputPsdM2PerHz": 2.6519940484367324e-13,
+        "relativeResidual": 1.9037409968512306e-16
+      },
+      {
+        "frequencyHz": 16.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000016968656917073561,
+        "firstOutputPsdM2PerHz": 2.5676850209046213e-13,
+        "secondOutputPsdM2PerHz": 2.5676850209046213e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 16.200000000000003,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017077881366464131,
+        "firstOutputPsdM2PerHz": 2.4868399667178715e-13,
+        "secondOutputPsdM2PerHz": 2.486839966717871e-13,
+        "relativeResidual": 2.0301707632911163e-16
+      },
+      {
+        "frequencyHz": 16.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017185214352239319,
+        "firstOutputPsdM2PerHz": 2.4092834528075777e-13,
+        "secondOutputPsdM2PerHz": 2.409283452807577e-13,
+        "relativeResidual": 2.0955233754380916e-16
+      },
+      {
+        "frequencyHz": 16.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017290687906730689,
+        "firstOutputPsdM2PerHz": 2.3348506283684287e-13,
+        "secondOutputPsdM2PerHz": 2.3348506283684287e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 16.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017394334296416298,
+        "firstOutputPsdM2PerHz": 2.2633864841125087e-13,
+        "secondOutputPsdM2PerHz": 2.2633864841125085e-13,
+        "relativeResidual": 1.1152999783406663e-16
+      },
+      {
+        "frequencyHz": 16.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017496185910643732,
+        "firstOutputPsdM2PerHz": 2.1947451704839225e-13,
+        "secondOutputPsdM2PerHz": 2.1947451704839222e-13,
+        "relativeResidual": 1.1501813197523243e-16
+      },
+      {
+        "frequencyHz": 16.700000000000003,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017596275164318165,
+        "firstOutputPsdM2PerHz": 2.1287893695832182e-13,
+        "secondOutputPsdM2PerHz": 2.1287893695832185e-13,
+        "relativeResidual": 1.185817128164946e-16
+      },
+      {
+        "frequencyHz": 16.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017694634412985514,
+        "firstOutputPsdM2PerHz": 2.0653897160671783e-13,
+        "secondOutputPsdM2PerHz": 2.065389716067178e-13,
+        "relativeResidual": 1.2222172295473613e-16
+      },
+      {
+        "frequencyHz": 16.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017791295878919036,
+        "firstOutputPsdM2PerHz": 2.0044242627502804e-13,
+        "secondOutputPsdM2PerHz": 2.0044242627502802e-13,
+        "relativeResidual": 1.259391508883233e-16
+      },
+      {
+        "frequencyHz": 17,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017886291586975005,
+        "firstOutputPsdM2PerHz": 1.9457779870462313e-13,
+        "secondOutputPsdM2PerHz": 1.945777987046231e-13,
+        "relativeResidual": 1.2973499101710517e-16
+      },
+      {
+        "frequencyHz": 17.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000017979653309122303,
+        "firstOutputPsdM2PerHz": 1.8893423347563685e-13,
+        "secondOutputPsdM2PerHz": 1.889342334756368e-13,
+        "relativeResidual": 2.6722048728482595e-16
+      },
+      {
+        "frequencyHz": 17.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000018071412516672897,
+        "firstOutputPsdM2PerHz": 1.835014798041848e-13,
+        "secondOutputPsdM2PerHz": 1.8350147980418474e-13,
+        "relativeResidual": 2.7513182993412234e-16
+      },
+      {
+        "frequencyHz": 17.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.00000181616003393484,
+        "firstOutputPsdM2PerHz": 1.782698524712566e-13,
+        "secondOutputPsdM2PerHz": 1.782698524712566e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 17.4,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001825024753041445,
+        "firstOutputPsdM2PerHz": 1.7323019562314464e-13,
+        "secondOutputPsdM2PerHz": 1.7323019562314464e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 17.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001833738443719818,
+        "firstOutputPsdM2PerHz": 1.6837384920714665e-13,
+        "secondOutputPsdM2PerHz": 1.6837384920714662e-13,
+        "relativeResidual": 1.4992559168743474e-16
+      },
+      {
+        "frequencyHz": 17.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001842304097638073,
+        "firstOutputPsdM2PerHz": 1.6369261782777402e-13,
+        "secondOutputPsdM2PerHz": 1.6369261782777402e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 17.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000018507246613521932,
+        "firstOutputPsdM2PerHz": 1.5917874182803092e-13,
+        "secondOutputPsdM2PerHz": 1.591787418280309e-13,
+        "relativeResidual": 1.5858618228270893e-16
+      },
+      {
+        "frequencyHz": 17.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000018590030346334592,
+        "firstOutputPsdM2PerHz": 1.5482487041777706e-13,
+        "secondOutputPsdM2PerHz": 1.5482487041777709e-13,
+        "relativeResidual": 1.6304582654553862e-16
+      },
+      {
+        "frequencyHz": 17.9,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000018671420691277647,
+        "firstOutputPsdM2PerHz": 1.5062403668692758e-13,
+        "secondOutputPsdM2PerHz": 1.5062403668692758e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 18,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000018751445673084443,
+        "firstOutputPsdM2PerHz": 1.465696343554497e-13,
+        "secondOutputPsdM2PerHz": 1.4656963435544967e-13,
+        "relativeResidual": 1.7222905056755218e-16
+      },
+      {
+        "frequencyHz": 18.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000018830132816883845,
+        "firstOutputPsdM2PerHz": 1.4265539612498194e-13,
+        "secondOutputPsdM2PerHz": 1.4265539612498194e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 18.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000018907509142608902,
+        "firstOutputPsdM2PerHz": 1.38875373508524e-13,
+        "secondOutputPsdM2PerHz": 1.3887537350852398e-13,
+        "relativeResidual": 1.8177124085663006e-16
+      },
+      {
+        "frequencyHz": 18.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000018983601161420634,
+        "firstOutputPsdM2PerHz": 1.3522391802518869e-13,
+        "secondOutputPsdM2PerHz": 1.3522391802518869e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 18.400000000000002,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019058434873903851,
+        "firstOutputPsdM2PerHz": 1.3169566365655988e-13,
+        "secondOutputPsdM2PerHz": 1.316956636565599e-13,
+        "relativeResidual": 1.9168094275984133e-16
+      },
+      {
+        "frequencyHz": 18.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001913203576981821,
+        "firstOutputPsdM2PerHz": 1.2828551046987003e-13,
+        "secondOutputPsdM2PerHz": 1.2828551046987003e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 18.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001920442882921086,
+        "firstOutputPsdM2PerHz": 1.2498860932108623e-13,
+        "secondOutputPsdM2PerHz": 1.2498860932108623e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 18.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001927563852471798,
+        "firstOutputPsdM2PerHz": 1.2180034755815523e-13,
+        "secondOutputPsdM2PerHz": 1.2180034755815523e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 18.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019345688824900963,
+        "firstOutputPsdM2PerHz": 1.1871633565116604e-13,
+        "secondOutputPsdM2PerHz": 1.1871633565116604e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 18.900000000000002,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019414603198480063,
+        "firstOutputPsdM2PerHz": 1.1573239468212756e-13,
+        "secondOutputPsdM2PerHz": 1.1573239468212753e-13,
+        "relativeResidual": 2.1811999169641925e-16
+      },
+      {
+        "frequencyHz": 19,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019482404619342498,
+        "firstOutputPsdM2PerHz": 1.1284454463245713e-13,
+        "secondOutputPsdM2PerHz": 1.128445446324571e-13,
+        "relativeResidual": 2.2370198798083193e-16
+      },
+      {
+        "frequencyHz": 19.1,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019549115572215783,
+        "firstOutputPsdM2PerHz": 1.1004899341121034e-13,
+        "secondOutputPsdM2PerHz": 1.1004899341121035e-13,
+        "relativeResidual": 1.1469232104989384e-16
+      },
+      {
+        "frequencyHz": 19.2,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019614758058908787,
+        "firstOutputPsdM2PerHz": 1.0734212657158384e-13,
+        "secondOutputPsdM2PerHz": 1.0734212657158384e-13,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 19.3,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019679353605033987,
+        "firstOutputPsdM2PerHz": 1.0472049766732978e-13,
+        "secondOutputPsdM2PerHz": 1.047204976673298e-13,
+        "relativeResidual": 2.410564266726908e-16
+      },
+      {
+        "frequencyHz": 19.400000000000002,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019742923267132896,
+        "firstOutputPsdM2PerHz": 1.0218081920448293e-13,
+        "secondOutputPsdM2PerHz": 1.0218081920448294e-13,
+        "relativeResidual": 1.2352391164801348e-16
+      },
+      {
+        "frequencyHz": 19.5,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001980548764013665,
+        "firstOutputPsdM2PerHz": 9.971995414723985e-14,
+        "secondOutputPsdM2PerHz": 9.971995414723985e-14,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 19.6,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019867066865099993,
+        "firstOutputPsdM2PerHz": 9.733490793997453e-14,
+        "secondOutputPsdM2PerHz": 9.733490793997451e-14,
+        "relativeResidual": 1.296736674505298e-16
+      },
+      {
+        "frequencyHz": 19.7,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.000001992768063715478,
+        "firstOutputPsdM2PerHz": 9.502282101026659e-14,
+        "secondOutputPsdM2PerHz": 9.502282101026659e-14,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 19.8,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000019987348213634254,
+        "firstOutputPsdM2PerHz": 9.278096172045281e-14,
+        "secondOutputPsdM2PerHz": 9.278096172045281e-14,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 19.900000000000002,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000020046088422326168,
+        "firstOutputPsdM2PerHz": 9.060671973765272e-14,
+        "secondOutputPsdM2PerHz": 9.060671973765272e-14,
+        "relativeResidual": 0
+      },
+      {
+        "frequencyHz": 20,
+        "firstForcePsdN2PerHz": 0.000001,
+        "secondForcePsdN2PerHz": 0.0000020103919669816063,
+        "firstOutputPsdM2PerHz": 8.84975997944343e-14,
+        "secondOutputPsdM2PerHz": 8.84975997944343e-14,
+        "relativeResidual": 0
+      }
+    ]
+  },
+  "coherentModes": {
+    "parameters": [
+      {
+        "naturalFrequencyHz": 7.8,
+        "gammaPerS": 4.900884539600077,
+        "massKg": 0.25
+      },
+      {
+        "naturalFrequencyHz": 14.3,
+        "gammaPerS": 7.487462491055674,
+        "massKg": 0.4,
+        "amplitude": 0.8
+      }
+    ],
+    "frequencyHz": 10,
+    "phaseCases": [
+      {
+        "phaseRad": 0,
+        "frequencyHz": 10,
+        "forcePsdN2PerHz": 0.000001,
+        "components": [
+          {
+            "componentRealMPerN": -0.0022329981240190298,
+            "componentImagMPerN": -0.0008895498144713193
+          },
+          {
+            "componentRealMPerN": 0.0004608600604239872,
+            "componentImagMPerN": -0.00010511849401957147
+          }
+        ],
+        "coherentRealMPerN": -0.0017721380635950426,
+        "coherentImagMPerN": -0.0009946683084908908,
+        "coherentPsdM2PerHz": 4.129838360358517e-12,
+        "uncorrelatedPsdM2PerHz": 6.001021387377409e-12,
+        "crossTermM2PerHz": -1.871183027018892e-12,
+        "scope": "Coherent common-source and uncorrelated equal-source-PSD assumptions are different models; neither implies extra energy."
+      },
+      {
+        "phaseRad": 1.5707963267948966,
+        "frequencyHz": 10,
+        "forcePsdN2PerHz": 0.000001,
+        "components": [
+          {
+            "componentRealMPerN": -0.0022329981240190298,
+            "componentImagMPerN": -0.0008895498144713193
+          },
+          {
+            "componentRealMPerN": 0.00010511849401957149,
+            "componentImagMPerN": 0.0004608600604239872
+          }
+        ],
+        "coherentRealMPerN": -0.0021278796299994585,
+        "coherentImagMPerN": -0.00042868975404733206,
+        "coherentPsdM2PerHz": 4.711646624991793e-12,
+        "uncorrelatedPsdM2PerHz": 6.001021387377409e-12,
+        "crossTermM2PerHz": -1.2893747623856157e-12,
+        "scope": "Coherent common-source and uncorrelated equal-source-PSD assumptions are different models; neither implies extra energy."
+      },
+      {
+        "phaseRad": 3.141592653589793,
+        "frequencyHz": 10,
+        "forcePsdN2PerHz": 0.000001,
+        "components": [
+          {
+            "componentRealMPerN": -0.0022329981240190298,
+            "componentImagMPerN": -0.0008895498144713193
+          },
+          {
+            "componentRealMPerN": -0.0004608600604239872,
+            "componentImagMPerN": 0.00010511849401957153
+          }
+        ],
+        "coherentRealMPerN": -0.0026938581844430168,
+        "coherentImagMPerN": -0.0007844313204517477,
+        "coherentPsdM2PerHz": 7.8722044143963e-12,
+        "uncorrelatedPsdM2PerHz": 6.001021387377409e-12,
+        "crossTermM2PerHz": 1.8711830270188912e-12,
+        "scope": "Coherent common-source and uncorrelated equal-source-PSD assumptions are different models; neither implies extra energy."
+      }
+    ],
+    "exactIdenticalCancellation": {
+      "frequencyHz": 9,
+      "forcePsdN2PerHz": 0.000001,
+      "components": [
+        {
+          "componentRealMPerN": -0.003384383296334619,
+          "componentImagMPerN": -0.002356981224233038
+        },
+        {
+          "componentRealMPerN": 0.003384383296334619,
+          "componentImagMPerN": 0.002356981224233038
+        }
+      ],
+      "coherentRealMPerN": 0,
+      "coherentImagMPerN": 0,
+      "coherentPsdM2PerHz": 0,
+      "uncorrelatedPsdM2PerHz": 3.4018821575791694e-11,
+      "crossTermM2PerHz": -3.4018821575791694e-11,
+      "scope": "Coherent common-source and uncorrelated equal-source-PSD assumptions are different models; neither implies extra energy."
+    },
+    "distinctModeCancellation": {
+      "frequencyHz": 9,
+      "matchedAmplitude": 2.5923017607245464,
+      "matchedPhaseRad": 1.4971216334474295,
+      "relativePsd": 1.1057355159263126e-32,
+      "result": {
+        "frequencyHz": 9,
+        "forcePsdN2PerHz": 0.000001,
+        "components": [
+          {
+            "componentRealMPerN": -0.003384383296334619,
+            "componentImagMPerN": -0.002356981224233038
+          },
+          {
+            "componentRealMPerN": 0.0033843832963346187,
+            "componentImagMPerN": 0.0023569812242330377
+          }
+        ],
+        "coherentRealMPerN": -4.336808689942018e-19,
+        "coherentImagMPerN": -4.336808689942018e-19,
+        "coherentPsdM2PerHz": 3.761581922631321e-43,
+        "uncorrelatedPsdM2PerHz": 3.4018821575791694e-11,
+        "crossTermM2PerHz": -3.4018821575791694e-11,
+        "scope": "Coherent common-source and uncorrelated equal-source-PSD assumptions are different models; neither implies extra energy."
+      }
+    }
+  },
+  "invalidInputsRejected": 8,
+  "sourceSha256": "bc31ad2d8d95ffc6152bdb80ac408c3b277b1669f07fc182f9bcac38760b359d",
+  "runnerSha256": "92d178a9968da283ad15442e3649d5c17b0efa735f2ba9746c483837ef133668"
+}

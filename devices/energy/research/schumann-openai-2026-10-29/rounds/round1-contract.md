@@ -1,0 +1,13 @@
+# Research round 1 — geometry, peaks and energy units
+
+Selected after all four comparison reports. Root is advisor; four specialists review; oct_producer and oct_verifier implement/check independently. No current station data are fitted.
+
+1. Implement ideal thin-shell f_l=v sqrt(l(l+1))/(2 pi R), horizontal scale 2 pi R/sqrt(l(l+1)), and the separately labeled vacuum reference c/f. Use R=6371000 m and c=299792458 m/s in reference cases. Positive finite inputs; integer l>=1. Verify l=1..5, 1/R scaling, and v=f*lambda_h. A common effective speed fitted at 7.8 Hz must face the historical approximate 14.3,20.8,27.3,33.8 Hz sequence; report mismatch as limitation of this model, not a statistical rejection or current anomaly.
+2. Implement H(omega)=1/[m(omega0^2-omega^2+2i gamma omega)] for positive finite m,omega0,gamma. q is mechanical displacement, physical F is force; this transparent oscillator is not a normalization of Earth's electromagnetic field. Compute the white-force displacement PSD maximum sqrt(max(0,omega0^2-2 gamma^2)), white-force velocity maximum omega0, and ringdown sqrt(omega0^2-gamma^2) only when underdamped. Check units and finite-domain invalid inputs. Include Q=5, Q=0.6 and Q=0.4: no positive displacement maximum when appropriate; no oscillatory ringdown in the overdamped case.
+3. Hold omega0 and gamma fixed while changing displacement to velocity readout: different maxima with identical poles is the discriminating control. A constant positive source/gain scaling leaves the maximum unchanged. Mark changing gamma as a changed-pole case.
+4. Provide magnetic-energy reference u=B^2/(2 mu0), mu0 approximately4*pi*1e-7 H/m, static field and zero-mean RMS perturbation separately. No frequency-to-energy, density-to-watts or plane-wave-flux inference is permitted. Verify 50microT and1pT examples and quadratic scaling.
+5. Independently derive E'=F*qdot-2m gamma*qdot^2 for the oscillator. Check steady harmonic average input versus damping dissipation from independent complex response/real quadrature. No net-power device inference.
+
+Acceptance: a written all-domain derivation for analytic formulas; independent Python oracle versus JS implementation, explicit absolute/relative tolerances before comparison, boundary and wrong-model controls. Freeze producer round1 source and results plus verifier source/results with hashes before later edits. Numerical cases verify implementation, not all-real-parameter proof or physical relevance.
+
+Later rounds are not pre-approved conclusions. Reassess which nuisance or model bridge remains after these checks; choose round2 from the four reviewers' actual objections and worker evidence.

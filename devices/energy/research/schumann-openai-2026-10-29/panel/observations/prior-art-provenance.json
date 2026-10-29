@@ -1,0 +1,683 @@
+{
+  "fairdata": {
+    "url": "https://metax.fairdata.fi/v3/datasets/5d78867e-475b-40e9-8800-f7e2ef4487ed",
+    "retrieved_utc": "2026-10-29T05:27:18.753738+00:00",
+    "status": 200,
+    "bytes": 12801,
+    "sha256": "cf29e8679a7a23f52d2dd584f0fe535518b1e5aaeb8256389c0a89a76f28e014",
+    "metadata": {
+      "id": "5d78867e-475b-40e9-8800-f7e2ef4487ed",
+      "access_rights": {
+        "id": "3f74cb89-9a1d-4b87-881f-66345ff3414f",
+        "license": [
+          {
+            "id": "7b932506-065d-4d3d-bba4-23f225fce013",
+            "url": "http://uri.suomi.fi/codelist/fairdata/license/code/CC-BY-NC-4.0",
+            "in_scheme": "http://uri.suomi.fi/codelist/fairdata/license",
+            "pref_label": {
+              "en": "Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)",
+              "fi": "Creative Commons Nime\u00e4-EiKaupallinen 4.0 Kansainv\u00e4linen (CC BY-NC 4.0)"
+            }
+          }
+        ],
+        "access_type": {
+          "id": "d01ac02c-fc70-4c68-9434-8383cb693ff0",
+          "url": "http://uri.suomi.fi/codelist/fairdata/access_type/code/open",
+          "in_scheme": "http://uri.suomi.fi/codelist/fairdata/access_type",
+          "pref_label": {
+            "en": "Open",
+            "fi": "Avoin"
+          }
+        },
+        "restriction_grounds": [],
+        "available": "2026-05-01",
+        "show_file_metadata": true
+      },
+      "bibliographic_citation": "Tacza, J., & Bozoki, T., Raita, T. (2026). The first-mode Schumann resonance frequency response to threshold-defined HSS/CIR proxy onsets (Version 1). University of Oulu, Sodankyl\u00e4 Geophysical Observatory",
+      "cumulative_state": 0,
+      "data_catalog": "urn:nbn:fi:att:data-catalog-ida",
+      "description": {
+        "en": "This data set is processed from the time series of the first-mode Schumann resonance frequency observed by the Finnish Pulsation Magnetometer Network (FinPuMa) based on the analysis by Bozoki et al. (https://doi.org/10.3389/feart.2021.689127). The data set intentionally contains event-window processed data, not the full continuous Schumann resonance archive.\n\nProcessed event-window data is collected for  a manuscript \"Schumann Resonance Frequency Increase Following Recurrent Solar Wind Stream Onsets\" by Jos\u00e9 C. Tacza, Gabriella S\u00e1tori, Anne Neska, Tero Raita, Tamas Bozoki\"  on the first-mode Schumann resonance frequency response to threshold-defined HSS/CIR proxy onsets accepted to Earth and Space Science (ESS) journal.\n\n Data set contains processed daily data around the 173 threshold-defined proxy onsets used in the manuscript. It is designed to let readers inspect the event list, station-specific valid-event support, event-window Schumann resonance measurements, ICME-overlap flags used for the main figures and Table S1 in the manuscript.\n\nEvent definition:\nCandidate onsets were identified from a 3-day moving median of solar-wind speed, where `Vsw >= 500 km/s` and the increase relative to two days earlier was at least `80 km/s`, with a minimum 20-day separation between accepted onsets.\n\nThese events are described as threshold-defined HSS/CIR proxy onsets, not as a formal external HSS/CIR catalog.\n\nTime windows:\nAll event-window tables use:\n- event window: days -15 to +20 relative to onset\n- baseline window: days  -15 to -5 relative to onset\n- response window: days  0 to +1 relative to onset\n\nThe daily time stamp is represented as a UTC date. The response values used in the manuscript are baseline-subtracted values, stored as `delta_from_baseline`.\n\nValidity flags:\n\nThe event-window SR tables preserve all 173 onsets and provide inclusion flags:\n- `included_in_final_station_composite`: event/station/component satisfies the manuscript baseline and response validity rules.\n- `included_in_matched_support_106`: event is valid for weighted-average AVG F1 at HRN, IVA, and ROV.\n- `included_in_final_hrn_lorentz_composite`: HRN Lorentz-fit event/component/variable satisfies the Figure 1 validity rules.\n\nThe validity rule is at least 6 finite baseline days in days `-15` to `-5` and at least one finite response value in days `0` to `+1`.\n\nJos\u00e9 Tacza acknowledges funding from the National Science Centre, Poland (Grant 2023/51/D/ST10/01757)."
+      },
+      "field_of_science": [
+        {
+          "id": "cacc7fcf-c79b-4033-9a2e-196c023fe379",
+          "url": "http://www.yso.fi/onto/okm-tieteenala/ta115",
+          "in_scheme": "http://www.yso.fi/onto/okm-tieteenala/conceptscheme",
+          "pref_label": {
+            "en": "Astronomy, Space science",
+            "fi": "Avaruustieteet ja t\u00e4htitiede",
+            "sv": "Rymdvetenskap och astronomi"
+          }
+        },
+        {
+          "id": "7334f2e9-1aae-4b87-9088-8226211b06c9",
+          "url": "http://www.yso.fi/onto/okm-tieteenala/ta1171",
+          "in_scheme": "http://www.yso.fi/onto/okm-tieteenala/conceptscheme",
+          "pref_label": {
+            "en": "Geosciences",
+            "fi": "Geotieteet",
+            "sv": "Geovetenskaper"
+          }
+        }
+      ],
+      "fileset": {
+        "storage_service": "ida",
+        "csc_project": "oy5616",
+        "total_files_count": 6,
+        "total_files_size": 17499814
+      },
+      "infrastructure": [],
+      "issued": "2026-05-08",
+      "keyword": [
+        "SGO",
+        "FinPuMa",
+        "induction coils",
+        "Schumann Resonance",
+        "solar wind"
+      ],
+      "language": [
+        {
+          "id": "ec748146-3403-4a7f-adfe-bdbb1b889372",
+          "url": "http://lexvo.org/id/iso639-3/eng",
+          "in_scheme": "http://lexvo.org/id/",
+          "pref_label": {
+            "en": "English",
+            "fi": "englanti",
+            "sv": "engelska"
+          }
+        }
+      ],
+      "metadata_owner": {
+        "id": "c1ac224a-0dee-4261-a52c-1b59b670cbbc",
+        "organization": "oulu.fi",
+        "admin_organization": "oulu.fi"
+      },
+      "other_identifiers": [],
+      "persistent_identifier": "doi:10.23729/fd-9c327c6f-8c2c-3b5d-9ec5-a9542c149f9d",
+      "pid_generated_by_fairdata": true,
+      "projects": [],
+      "provenance": [],
+      "relation": [
+        {
+          "entity": {
+            "title": {
+              "en": "Long-term analysis of the first Schumann Resonance mode from the Finnish Pulsation Magnetometers 2005-2024"
+            },
+            "description": {
+              "en": "First Schumann Resonance mode analysed from the 40Hz data of the Finnish Pulsation Magnetometer stations"
+            },
+            "type": {
+              "id": "fb3d4a47-7445-423e-a4be-0693bcb8047b",
+              "url": "http://uri.suomi.fi/codelist/fairdata/resource_type/code/publication",
+              "in_scheme": "http://uri.suomi.fi/codelist/fairdata/resource_type",
+              "pref_label": {
+                "en": "Publication",
+                "fi": "Julkaisu"
+              }
+            }
+          },
+          "relation_type": {
+            "id": "9b7cb05f-e503-4653-8720-94a864cf516b",
+            "url": "http://www.w3.org/ns/prov#wasDerivedFrom",
+            "in_scheme": "http://uri.suomi.fi/codelist/fairdata/relation_type",
+            "pref_label": {
+              "en": "Was derived from",
+              "fi": "Johdettu aineistosta"
+            }
+          }
+        },
+        {
+          "entity": {
+            "title": {
+              "en": "Interplanetary solar events catalogs dataset"
+            },
+            "description": {
+              "en": "Interplanetary solar events catalogs dataset  by the Nguyen et al."
+            },
+            "entity_identifier": "doi:10.57745/BYC2WC",
+            "type": {
+              "id": "fb3d4a47-7445-423e-a4be-0693bcb8047b",
+              "url": "http://uri.suomi.fi/codelist/fairdata/resource_type/code/publication",
+              "in_scheme": "http://uri.suomi.fi/codelist/fairdata/resource_type",
+              "pref_label": {
+                "en": "Publication",
+                "fi": "Julkaisu"
+              }
+            }
+          },
+          "relation_type": {
+            "id": "9b7cb05f-e503-4653-8720-94a864cf516b",
+            "url": "http://www.w3.org/ns/prov#wasDerivedFrom",
+            "in_scheme": "http://uri.suomi.fi/codelist/fairdata/relation_type",
+            "pref_label": {
+              "en": "Was derived from",
+              "fi": "Johdettu aineistosta"
+            }
+          },
+          "metax_ids": []
+        },
+        {
+          "entity": {
+            "title": {
+              "en": "Day\u2010to\u2010day quantification of changes in global lightning activity based on Schumann resonances"
+            },
+            "description": {
+              "en": "Description of the method of the Schumann resonance analysis"
+            },
+            "entity_identifier": "https://doi.org/10.1029/2023JD038557",
+            "type": {
+              "id": "fb3d4a47-7445-423e-a4be-0693bcb8047b",
+              "url": "http://uri.suomi.fi/codelist/fairdata/resource_type/code/publication",
+              "in_scheme": "http://uri.suomi.fi/codelist/fairdata/resource_type",
+              "pref_label": {
+                "en": "Publication",
+                "fi": "Julkaisu"
+              }
+            }
+          },
+          "relation_type": {
+            "id": "02817677-485b-401f-a552-7579c712c203",
+            "url": "http://purl.org/spar/cito/citesForInformation",
+            "in_scheme": "http://uri.suomi.fi/codelist/fairdata/relation_type",
+            "pref_label": {
+              "en": "References",
+              "fi": "Viittaa aineistoon"
+            }
+          },
+          "metax_ids": []
+        },
+        {
+          "entity": {
+            "title": {
+              "en": "Solar Cycle-Modulated Deformation of the Earth\u2013Ionosphere Cavity"
+            },
+            "description": {
+              "en": "Publication about analysis method used to generate the data set."
+            },
+            "entity_identifier": "https://doi.org/10.3389/feart.2021.689127",
+            "type": {
+              "id": "fb3d4a47-7445-423e-a4be-0693bcb8047b",
+              "url": "http://uri.suomi.fi/codelist/fairdata/resource_type/code/publication",
+              "in_scheme": "http://uri.suomi.fi/codelist/fairdata/resource_type",
+              "pref_label": {
+                "en": "Publication",
+                "fi": "Julkaisu"
+              }
+            }
+          },
+          "relation_type": {
+            "id": "02817677-485b-401f-a552-7579c712c203",
+            "url": "http://purl.org/spar/cito/citesForInformation",
+            "in_scheme": "http://uri.suomi.fi/codelist/fairdata/relation_type",
+            "pref_label": {
+              "en": "References",
+              "fi": "Viittaa aineistoon"
+            }
+          },
+          "metax_ids": []
+        }
+      ],
+      "remote_resources": [],
+      "spatial": [
+        {
+          "geographic_name": "Location of Rovaniemi, Ivalo and Hornsund stations",
+          "custom_wkt": [
+            "POINT (27.28 68.55)",
+            "POINT (25.94 66.78)",
+            "POINT (15.56 77)"
+          ],
+          "geolocations": {
+            "type": "FeatureCollection",
+            "features": [
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    27.28,
+                    68.55
+                  ]
+                },
+                "bbox": [
+                  27.28,
+                  68.55,
+                  27.28,
+                  68.55
+                ]
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    25.94,
+                    66.78
+                  ]
+                },
+                "bbox": [
+                  25.94,
+                  66.78,
+                  25.94,
+                  66.78
+                ]
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                    15.56,
+                    77.0
+                  ]
+                },
+                "bbox": [
+                  15.56,
+                  77.0,
+                  15.56,
+                  77.0
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "state": "published",
+      "temporal": [
+        {
+          "start_date": "2005-11-03",
+          "end_date": "2024-06-18"
+        }
+      ],
+      "theme": [
+        {
+          "id": "6c159217-9f2f-4cdc-a029-c6fef126dabc",
+          "url": "http://www.yso.fi/onto/koko/p4449",
+          "in_scheme": "http://www.yso.fi/onto/koko/",
+          "pref_label": {
+            "en": "solar wind",
+            "fi": "aurinkotuuli",
+            "sv": "solvind"
+          }
+        },
+        {
+          "id": "995555b1-aa36-44be-959a-51e3e93d6571",
+          "url": "http://www.yso.fi/onto/koko/p11549",
+          "in_scheme": "http://www.yso.fi/onto/koko/",
+          "pref_label": {
+            "en": "lightnings",
+            "fi": "salamat",
+            "sv": "blixtar"
+          }
+        },
+        {
+          "id": "c27596c8-5c00-49b7-9bc4-5753eecbace9",
+          "url": "http://www.yso.fi/onto/koko/p31304",
+          "in_scheme": "http://www.yso.fi/onto/koko/",
+          "pref_label": {
+            "en": "resonance",
+            "fi": "resonanssi",
+            "sv": "resonans"
+          }
+        },
+        {
+          "id": "b2595794-131c-4802-8d70-0da005e05db8",
+          "url": "http://www.yso.fi/onto/koko/p31387",
+          "in_scheme": "http://www.yso.fi/onto/koko/",
+          "pref_label": {
+            "en": "geophysics",
+            "fi": "geofysiikka",
+            "sv": "geofysik"
+          }
+        }
+      ],
+      "title": {
+        "en": "The first-mode Schumann resonance frequency response to threshold-defined HSS/CIR proxy onsets"
+      },
+      "created": "2026-05-08T08:02:32Z",
+      "modified": "2026-09-02T10:58:47Z",
+      "dataset_versions": [
+        {
+          "id": "5d78867e-475b-40e9-8800-f7e2ef4487ed",
+          "title": {
+            "en": "The first-mode Schumann resonance frequency response to threshold-defined HSS/CIR proxy onsets"
+          },
+          "persistent_identifier": "doi:10.23729/fd-9c327c6f-8c2c-3b5d-9ec5-a9542c149f9d",
+          "state": "published",
+          "created": "2026-05-08T08:02:32Z",
+          "version": 1
+        }
+      ],
+      "published_revision": 1,
+      "version": 1,
+      "api_version": 3,
+      "metadata_repository": "Fairdata",
+      "record_created": "2026-05-08T08:02:32Z",
+      "record_modified": "2026-09-02T10:58:51Z"
+    }
+  },
+  "nck": {
+    "url": "https://zenodo.org/api/records/13220677",
+    "retrieved_utc": "2026-10-29T05:27:18.754803+00:00",
+    "status": 200,
+    "bytes": 12844,
+    "sha256": "2489127ea4cb5331a1c247d7ad947eb058a64e44ac94a91e7044ebf605e42521",
+    "metadata": {
+      "title": "Modeled and measured SR frequency data (Ez, NCK, Hungary)",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "access_right": "open",
+      "files": [
+        {
+          "key": "NCK_f1_1996_03_05-10.txt",
+          "size": 75982,
+          "checksum": "md5:ad4c0cfc2ce929006b2a0448e41736a2",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_f1_1996_03_05-10.txt/content"
+          }
+        },
+        {
+          "key": "model_f1.txt",
+          "size": 7579,
+          "checksum": "md5:3e0a50cdacb21e87e919f8efc0bd2faf",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/model_f1.txt/content"
+          }
+        },
+        {
+          "key": "model_f2.txt",
+          "size": 8764,
+          "checksum": "md5:91a9d61a47387207e0ec6d183d7984a0",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/model_f2.txt/content"
+          }
+        },
+        {
+          "key": "NCK_f1_1994-2014.txt",
+          "size": 62894,
+          "checksum": "md5:32a11369a58ad42a5848176b6d11211d",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_f1_1994-2014.txt/content"
+          }
+        },
+        {
+          "key": "NCK_f2_1994-2009.txt",
+          "size": 47954,
+          "checksum": "md5:dedd64e5d21577d0cd6824c46b36cdb4",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_f2_1994-2009.txt/content"
+          }
+        },
+        {
+          "key": "NCK_f3_2000-2009.txt",
+          "size": 30026,
+          "checksum": "md5:4b579936e29a85894280f62f416397b8",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_f3_2000-2009.txt/content"
+          }
+        },
+        {
+          "key": "model_f3.txt",
+          "size": 8786,
+          "checksum": "md5:c0c630acd69bd95481bc827964812ac3",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/model_f3.txt/content"
+          }
+        },
+        {
+          "key": "NCK_f3_2023_02_10-20.txt",
+          "size": 5662,
+          "checksum": "md5:4dd4bf3f42fdfb1964ff869a177f65d9",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_f3_2023_02_10-20.txt/content"
+          }
+        },
+        {
+          "key": "NCK_f2_2023_02_10-20.txt",
+          "size": 5662,
+          "checksum": "md5:a440d20d0155a8a84637d5180972d7de",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_f2_2023_02_10-20.txt/content"
+          }
+        },
+        {
+          "key": "NCK_a3_2023_02_10-20.txt",
+          "size": 5662,
+          "checksum": "md5:978abb3c9181b654aa001ca0e29f210c",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_a3_2023_02_10-20.txt/content"
+          }
+        },
+        {
+          "key": "NCK_f1_ENSO.txt",
+          "size": 2204,
+          "checksum": "md5:a276c46dd6e499f8086efafb144e710a",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_f1_ENSO.txt/content"
+          }
+        },
+        {
+          "key": "NCK_f1_2023_02_10-20.txt",
+          "size": 5662,
+          "checksum": "md5:1d2417b6146266aa4168aa4c71a11818",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_f1_2023_02_10-20.txt/content"
+          }
+        },
+        {
+          "key": "NCK_a1_2023_02_10-20.txt",
+          "size": 5662,
+          "checksum": "md5:bca33ac10b17a142fd6beeb4f3a25df5",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_a1_2023_02_10-20.txt/content"
+          }
+        },
+        {
+          "key": "NCK_a2_2023_02_10-20.txt",
+          "size": 5662,
+          "checksum": "md5:55d680eaafeb508d1c3792f9635dea84",
+          "links": {
+            "self": "https://zenodo.org/api/records/13220677/files/NCK_a2_2023_02_10-20.txt/content"
+          }
+        }
+      ]
+    }
+  },
+  "sierra2014": {
+    "url": "https://zenodo.org/api/records/6348691",
+    "retrieved_utc": "2026-10-29T05:27:18.755452+00:00",
+    "status": 200,
+    "bytes": 5926,
+    "sha256": "2d9dd153c47d01b7b1676bf7408313b86945134687f056730d1ea75e26b7cd59",
+    "metadata": {
+      "title": "Four-year measurements from Sierra Nevada ELF station. Year 2014",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "access_right": "open",
+      "files": [
+        {
+          "key": "2014.zip",
+          "size": 26697876825,
+          "checksum": "md5:916efee568bbbb385bb508541bdff547",
+          "links": {
+            "self": "https://zenodo.org/api/records/6348691/files/2014.zip/content"
+          }
+        }
+      ]
+    }
+  },
+  "drozdovo": {
+    "url": "https://zenodo.org/api/records/15225820",
+    "retrieved_utc": "2026-10-29T05:27:18.756036+00:00",
+    "status": 200,
+    "bytes": 5325,
+    "sha256": "3b7c1bdc7cd752f603d44c98ca213970d66231097b3ad73feb4a7eee6df27d6c",
+    "metadata": {
+      "title": "Data for the article on variations of the Schumann resonances",
+      "license": {
+        "id": "cc-by-4.0"
+      },
+      "access_right": "open",
+      "files": [
+        {
+          "key": "NiNo_SR_params_2024.csv",
+          "size": 454417,
+          "checksum": "md5:83f415357766a09c73e34a8736c71310",
+          "links": {
+            "self": "https://zenodo.org/api/records/15225820/files/NiNo_SR_params_2024.csv/content"
+          }
+        }
+      ]
+    }
+  },
+  "nck_f1_sample": {
+    "url": "https://zenodo.org/api/records/13220677/files/NCK_f1_2023_02_10-20.txt/content",
+    "retrieved_utc": "2026-10-29T05:28:14.032772+00:00",
+    "status": 200,
+    "bytes": 5662,
+    "sha256": "62b793fc25918a7f532e93c037cacc74446fac556cabecfb139f5bac1b5a6db6",
+    "file": "prior-art-samples/nck_f1_sample.txt",
+    "license": "CC BY 4.0",
+    "attribution": "S\u00e1tori, Boz\u00f3ki and Pr\u00e1cser (2024), Zenodo 13220677 v2.0",
+    "inspection": "Header and schema only; no fitted analysis or physical inference",
+    "head": [
+      "Time [UT]\t2023/02/10\t2023/02/11\t2023/02/12\t2023/02/13\t2023/02/14\t2023/02/15\t2023/02/16\t2023/02/17\t2023/02/18\t2023/02/19\t2023/02/20\t",
+      "0.0\t7.967e+00\t7.991e+00\t7.974e+00\t7.922e+00\t7.914e+00\t7.940e+00\t7.927e+00\t7.925e+00\t7.921e+00\t7.928e+00\t7.799e+00\t",
+      "0.5\t7.966e+00\t7.982e+00\t7.938e+00\t7.930e+00\t7.921e+00\t7.952e+00\t7.935e+00\t7.901e+00\t7.934e+00\t7.932e+00\t7.856e+00\t",
+      "1.0\t7.942e+00\t7.978e+00\t7.949e+00\t7.915e+00\t7.926e+00\t7.930e+00\t7.922e+00\t7.910e+00\t7.945e+00\t7.932e+00\t7.798e+00\t",
+      "1.5\t7.927e+00\t7.971e+00\t7.932e+00\t7.932e+00\t7.918e+00\t7.937e+00\t7.915e+00\t7.905e+00\t7.933e+00\t7.935e+00\t7.874e+00\t",
+      "2.0\t7.911e+00\t7.962e+00\t7.913e+00\t7.937e+00\t7.923e+00\t7.934e+00\t7.891e+00\t7.890e+00\t7.924e+00\t7.910e+00\t7.879e+00\t",
+      "2.5\t7.919e+00\t7.960e+00\t7.904e+00\t7.924e+00\t7.887e+00\t7.918e+00\t7.885e+00\t7.903e+00\t7.920e+00\t7.918e+00\t7.782e+00\t",
+      "3.0\t7.909e+00\t7.954e+00\t7.878e+00\t7.909e+00\t7.896e+00\t7.907e+00\t7.880e+00\t7.879e+00\t7.919e+00\t7.886e+00\t7.777e+00\t",
+      "3.5\t7.909e+00\t7.924e+00\t7.885e+00\t7.897e+00\t7.868e+00\t7.910e+00\t7.877e+00\t7.876e+00\t7.905e+00\t7.839e+00\t7.757e+00\t"
+    ]
+  },
+  "nck_model_sample": {
+    "url": "https://zenodo.org/api/records/13220677/files/model_f1.txt/content",
+    "retrieved_utc": "2026-10-29T05:28:14.033375+00:00",
+    "status": 200,
+    "bytes": 7579,
+    "sha256": "3aed47c6bc2bf1f728a5d51d3acf9bce8af2d2dbc33a3bd9915bd052e5c70132",
+    "file": "prior-art-samples/nck_model_sample.txt",
+    "license": "CC BY 4.0",
+    "attribution": "S\u00e1tori, Boz\u00f3ki and Pr\u00e1cser (2024), Zenodo 13220677 v2.0",
+    "inspection": "Header and schema only; no fitted analysis or physical inference",
+    "head": [
+      "Distance [deg]\t1.5 Mm\t1.8 Mm\t2.0 Mm\t3.0 Mm\t4.0 Mm\t",
+      "20.0\t7.70\t7.67\t7.66\t7.64\t7.66\t",
+      "20.5\t7.70\t7.68\t7.67\t7.64\t7.65\t",
+      "21.0\t7.71\t7.68\t7.68\t7.65\t7.65\t",
+      "21.5\t7.71\t7.69\t7.68\t7.66\t7.65\t",
+      "22.0\t7.72\t7.69\t7.69\t7.66\t7.65\t",
+      "22.5\t7.73\t7.70\t7.70\t7.67\t7.65\t",
+      "23.0\t7.73\t7.71\t7.70\t7.67\t7.64\t",
+      "23.5\t7.74\t7.71\t7.71\t7.68\t7.64\t"
+    ]
+  },
+  "fairdata_files": {
+    "url": "https://metax.fairdata.fi/v3/datasets/5d78867e-475b-40e9-8800-f7e2ef4487ed/files",
+    "retrieved_utc": "2026-10-29T05:28:14.034114+00:00",
+    "status": 200,
+    "bytes": 3453,
+    "sha256": "f7aec1d869a181a49391b12d07df661ba5cf5577eb18610596895af29be5a219",
+    "metadata": {
+      "count": 6,
+      "next": null,
+      "previous": null,
+      "results": [
+        {
+          "id": "019e06c0-80f0-7730-950d-3cbc617f7413",
+          "storage_identifier": "69fda1e1e2cb9146763427f93203200",
+          "pathname": "/geomagnetic/pulsation/publication_datasets/20260429_GRL_Tacza_1stSR_HSS_CIR_events/data_dictionary.csv",
+          "filename": "data_dictionary.csv",
+          "size": 1994,
+          "storage_service": "ida",
+          "csc_project": "oy5616",
+          "checksum": "sha256:786d2225da9151ad31f1153dabfc307801647762e009b3ce6c27af21de00964d",
+          "frozen": "2026-05-08T08:42:09Z",
+          "modified": "2026-04-29T06:26:24Z",
+          "published": "2026-09-02T10:58:51Z",
+          "user": "traita",
+          "pas_process_running": false
+        },
+        {
+          "id": "019e06c0-80f1-7eb1-ba1d-87c0901fe3b0",
+          "storage_identifier": "69fda1e1e339a153125707f93203192",
+          "pathname": "/geomagnetic/pulsation/publication_datasets/20260429_GRL_Tacza_1stSR_HSS_CIR_events/hss_cir_proxy_onsets_173.csv",
+          "filename": "hss_cir_proxy_onsets_173.csv",
+          "size": 36444,
+          "storage_service": "ida",
+          "csc_project": "oy5616",
+          "checksum": "sha256:2394ef16ba024393c5ba0d01848daf8b3ce5ef0c569817ac3484cb89ee48089d",
+          "frozen": "2026-05-08T08:42:09Z",
+          "modified": "2026-04-29T04:31:18Z",
+          "published": "2026-09-02T10:58:51Z",
+          "user": "traita",
+          "pas_process_running": false
+        },
+        {
+          "id": "019e06c0-80f1-7eb1-ba1d-87d3f88b9999",
+          "storage_identifier": "69fda1e1e38ce800667615f93203190",
+          "pathname": "/geomagnetic/pulsation/publication_datasets/20260429_GRL_Tacza_1stSR_HSS_CIR_events/hss_cir_proxy_onsets_173_with_icme_flags.csv",
+          "filename": "hss_cir_proxy_onsets_173_with_icme_flags.csv",
+          "size": 16859,
+          "storage_service": "ida",
+          "csc_project": "oy5616",
+          "checksum": "sha256:d19b8c2be5261d89723cb3dbc35820e29b285e7a4225cdf0aaa14e789d92d257",
+          "frozen": "2026-05-08T08:42:09Z",
+          "modified": "2026-04-29T04:31:18Z",
+          "published": "2026-09-02T10:58:51Z",
+          "user": "traita",
+          "pas_process_running": false
+        },
+        {
+          "id": "01a061b0-f1d0-7591-ad7a-7b417e0ed2b0",
+          "storage_identifier": "6a97fc1f40739907812010f95689444",
+          "pathname": "/geomagnetic/pulsation/publication_datasets/20260429_GRL_Tacza_1stSR_HSS_CIR_events/README_20260902.txt",
+          "filename": "README_20260902.txt",
+          "size": 2364,
+          "storage_service": "ida",
+          "csc_project": "oy5616",
+          "checksum": "sha256:5e5d2c093107c9345361f7bf714cfb09ae18b9b9c346e77c2d0ae453760f0a73",
+          "frozen": "2026-09-02T10:36:15Z",
+          "modified": "2026-09-02T10:14:28Z",
+          "published": "2026-09-02T10:58:51Z",
+          "user": "traita",
+          "pas_process_running": false
+        },
+        {
+          "id": "019e06c0-80f1-7eb1-ba1d-87f3ff0a65f7",
+          "storage_identifier": "69fda1e1e42dc815931073f93203202",
+          "pathname": "/geomagnetic/pulsation/publication_datasets/20260429_GRL_Tacza_1stSR_HSS_CIR_events/sr_event_windows_f1_weighted_average.csv",
+          "filename": "sr_event_windows_f1_weighted_average.csv",
+          "size": 8636343,
+          "storage_service": "ida",
+          "csc_project": "oy5616",
+          "checksum": "sha256:3eaaf8b8d7b55f092270fa2b680293adb1d39c82cba9802e199a6a89d2248999",
+          "frozen": "2026-05-08T08:42:09Z",
+          "modified": "2026-04-29T04:31:34Z",
+          "published": "2026-09-02T10:58:51Z",
+          "user": "traita",
+          "pas_process_running": false
+        },
+        {
+          "id": "019e06c0-80f1-7eb1-ba1d-880fea72c628",
+          "storage_identifier": "69fda1e1e483e183446229f93203203",
+          "pathname": "/geomagnetic/pulsation/publication_datasets/20260429_GRL_Tacza_1stSR_HSS_CIR_events/sr_event_windows_hrn_lorentz_f1_q1_i1.csv",
+          "filename": "sr_event_windows_hrn_lorentz_f1_q1_i1.csv",
+          "size": 8805810,
+          "storage_service": "ida",
+          "csc_project": "oy5616",
+          "checksum": "sha256:12d48300cd8a51ec3cfec6d828919c05f3120d3ca7d39cb0cced3b135b7b0f9b",
+          "frozen": "2026-05-08T08:42:09Z",
+          "modified": "2026-04-29T04:31:48Z",
+          "published": "2026-09-02T10:58:51Z",
+          "user": "traita",
+          "pas_process_running": false
+        }
+      ]
+    }
+  }
+}

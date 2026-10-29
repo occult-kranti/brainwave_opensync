@@ -1,0 +1,26 @@
+[
+  {
+    "file": "noaa-kp.json",
+    "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json",
+    "sha256": "3f438089a2c4327cf026503d22b371190c223fefca3818cf44a51f6a0e83bf3c",
+    "bytes": 4401,
+    "retrieved_utc": "2026-10-29T04:56:14.803554+00:00",
+    "last_modified": null
+  },
+  {
+    "file": "noaa-weekly.txt",
+    "url": "https://services.swpc.noaa.gov/text/weekly.txt",
+    "sha256": "e34eb64ea3165e465ad39b37ab935de6b78a2b905e428f1ce6493baea06ffeb0",
+    "bytes": 2153,
+    "retrieved_utc": "2026-10-29T04:56:17.549215+00:00",
+    "last_modified": null
+  },
+  {
+    "file": "noaa-3day.txt",
+    "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt",
+    "sha256": "88028a1c2f234c415e892fdccd0d5cf90baf2ced5d2829ad54c97b82d0c32dc7",
+    "bytes": 1909,
+    "retrieved_utc": "2026-10-29T04:56:20.950210+00:00",
+    "last_modified": null
+  }
+]

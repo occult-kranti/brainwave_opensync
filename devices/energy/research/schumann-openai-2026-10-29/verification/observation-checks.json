@@ -1,0 +1,269 @@
+{
+  "schema": "schumann-observation-verifier/1",
+  "status": "pass",
+  "script_sha256": "e29a8b55b68d7521e332bb23ddf1117bc17766d0f02d801eb17c016d18243954",
+  "source_bindings": [
+    {
+      "file": "noaa-kp.json",
+      "sha256": "3f438089a2c4327cf026503d22b371190c223fefca3818cf44a51f6a0e83bf3c",
+      "bytes": 4401,
+      "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json",
+      "retrieved_utc": "2026-10-29T04:56:14.803554+00:00"
+    },
+    {
+      "file": "noaa-weekly.txt",
+      "sha256": "e34eb64ea3165e465ad39b37ab935de6b78a2b905e428f1ce6493baea06ffeb0",
+      "bytes": 2153,
+      "url": "https://services.swpc.noaa.gov/text/weekly.txt",
+      "retrieved_utc": "2026-10-29T04:56:17.549215+00:00"
+    },
+    {
+      "file": "noaa-3day.txt",
+      "sha256": "88028a1c2f234c415e892fdccd0d5cf90baf2ced5d2829ad54c97b82d0c32dc7",
+      "bytes": 1909,
+      "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt",
+      "retrieved_utc": "2026-10-29T04:56:20.950210+00:00"
+    },
+    {
+      "file": "gfz-kp.json",
+      "sha256": "deb5dfafded3db6ed79c1106579dc90ecd2fbaa5dd71847b0f03d4c924a262ba",
+      "bytes": 1809,
+      "url": "https://kp.gfz.de/app/json/?start=2026-10-23T00:00:00Z&end=2026-10-29T04:00:00Z&index=Kp",
+      "retrieved_utc": "2026-10-29T04:57:39.490784+00:00"
+    }
+  ],
+  "summaries": {
+    "NOAA_estimated": {
+      "seven_calendar_dates": {
+        "requested_start_utc": "2026-10-23T00:00:00Z",
+        "requested_stop_exclusive_utc": "2026-10-30T00:00:00Z",
+        "raw_count": 57,
+        "in_window_count": 49,
+        "completed_count": 49,
+        "excluded_open_or_future_count": 0,
+        "excluded_open_or_future_start_utc": [],
+        "coverage_start_utc": "2026-10-23T00:00:00Z",
+        "coverage_end_exclusive_utc": "2026-10-29T03:00:00Z",
+        "maximum_completed_kp": 4.33,
+        "completed_bins_at_or_above_5": 0,
+        "daily": [
+          {
+            "date_utc": "2026-10-23",
+            "completed_bins": 8,
+            "maximum_kp": 4.33,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-24",
+            "completed_bins": 8,
+            "maximum_kp": 2.0,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-25",
+            "completed_bins": 8,
+            "maximum_kp": 2.0,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-26",
+            "completed_bins": 8,
+            "maximum_kp": 2.0,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-27",
+            "completed_bins": 8,
+            "maximum_kp": 2.67,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-28",
+            "completed_bins": 8,
+            "maximum_kp": 2.33,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-29",
+            "completed_bins": 1,
+            "maximum_kp": 1.67,
+            "full_utc_day": false
+          }
+        ],
+        "gaps_between_completed_bins": [],
+        "schumann_anomaly_inference": false
+      },
+      "three_calendar_dates": {
+        "requested_start_utc": "2026-10-27T00:00:00Z",
+        "requested_stop_exclusive_utc": "2026-10-30T00:00:00Z",
+        "raw_count": 57,
+        "in_window_count": 17,
+        "completed_count": 17,
+        "excluded_open_or_future_count": 0,
+        "excluded_open_or_future_start_utc": [],
+        "coverage_start_utc": "2026-10-27T00:00:00Z",
+        "coverage_end_exclusive_utc": "2026-10-29T03:00:00Z",
+        "maximum_completed_kp": 2.67,
+        "completed_bins_at_or_above_5": 0,
+        "daily": [
+          {
+            "date_utc": "2026-10-27",
+            "completed_bins": 8,
+            "maximum_kp": 2.67,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-28",
+            "completed_bins": 8,
+            "maximum_kp": 2.33,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-29",
+            "completed_bins": 1,
+            "maximum_kp": 1.67,
+            "full_utc_day": false
+          }
+        ],
+        "gaps_between_completed_bins": [],
+        "schumann_anomaly_inference": false
+      },
+      "retrieved_utc": "2026-10-29T04:56:14.803554Z"
+    },
+    "GFZ_preliminary": {
+      "seven_calendar_dates": {
+        "requested_start_utc": "2026-10-23T00:00:00Z",
+        "requested_stop_exclusive_utc": "2026-10-30T00:00:00Z",
+        "raw_count": 50,
+        "in_window_count": 50,
+        "completed_count": 49,
+        "excluded_open_or_future_count": 1,
+        "excluded_open_or_future_start_utc": [
+          "2026-10-29T03:00:00Z"
+        ],
+        "coverage_start_utc": "2026-10-23T00:00:00Z",
+        "coverage_end_exclusive_utc": "2026-10-29T03:00:00Z",
+        "maximum_completed_kp": 4.333,
+        "completed_bins_at_or_above_5": 0,
+        "daily": [
+          {
+            "date_utc": "2026-10-23",
+            "completed_bins": 8,
+            "maximum_kp": 4.333,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-24",
+            "completed_bins": 8,
+            "maximum_kp": 2.0,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-25",
+            "completed_bins": 8,
+            "maximum_kp": 1.0,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-26",
+            "completed_bins": 8,
+            "maximum_kp": 1.667,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-27",
+            "completed_bins": 8,
+            "maximum_kp": 2.333,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-28",
+            "completed_bins": 8,
+            "maximum_kp": 2.667,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-29",
+            "completed_bins": 1,
+            "maximum_kp": 1.333,
+            "full_utc_day": false
+          }
+        ],
+        "gaps_between_completed_bins": [],
+        "schumann_anomaly_inference": false
+      },
+      "three_calendar_dates": {
+        "requested_start_utc": "2026-10-27T00:00:00Z",
+        "requested_stop_exclusive_utc": "2026-10-30T00:00:00Z",
+        "raw_count": 50,
+        "in_window_count": 18,
+        "completed_count": 17,
+        "excluded_open_or_future_count": 1,
+        "excluded_open_or_future_start_utc": [
+          "2026-10-29T03:00:00Z"
+        ],
+        "coverage_start_utc": "2026-10-27T00:00:00Z",
+        "coverage_end_exclusive_utc": "2026-10-29T03:00:00Z",
+        "maximum_completed_kp": 2.667,
+        "completed_bins_at_or_above_5": 0,
+        "daily": [
+          {
+            "date_utc": "2026-10-27",
+            "completed_bins": 8,
+            "maximum_kp": 2.333,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-28",
+            "completed_bins": 8,
+            "maximum_kp": 2.667,
+            "full_utc_day": true
+          },
+          {
+            "date_utc": "2026-10-29",
+            "completed_bins": 1,
+            "maximum_kp": 1.333,
+            "full_utc_day": false
+          }
+        ],
+        "gaps_between_completed_bins": [],
+        "schumann_anomaly_inference": false
+      },
+      "retrieved_utc": "2026-10-29T04:57:39.490784Z"
+    }
+  },
+  "cross_provider": {
+    "shared_completed_bins": 49,
+    "maximum_absolute_kp_difference": 1.667,
+    "equality_required": false,
+    "scope": "Different estimated/preliminary products; not independent Schumann evidence."
+  },
+  "negative_controls": [
+    {
+      "name": "duplicate",
+      "rejected": true
+    },
+    {
+      "name": "negative_kp",
+      "rejected": true
+    },
+    {
+      "name": "large_kp",
+      "rejected": true
+    },
+    {
+      "name": "stale_no_window",
+      "rejected": true
+    },
+    {
+      "name": "open_bin_excluded_and_end_equal_retained",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Timestamped saved responses, not independent upstream instrument calibration.",
+    "All reported GFZ records are preliminary; NOAA records are estimates.",
+    "October 29 is incomplete; absence of Kp>=5 does not rule out local or Schumann events.",
+    "No calibrated multi-day Schumann spectrum is supplied or analyzed."
+  ]
+}

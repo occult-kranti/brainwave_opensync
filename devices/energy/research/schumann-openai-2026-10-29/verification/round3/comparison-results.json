@@ -1,0 +1,3170 @@
+{
+  "schema": "independent-schumann-round3-comparison/1",
+  "status": "pass",
+  "apiRequests": 82,
+  "checks": 340,
+  "maxNonzeroRelativeDifference": 3.206766622410441e-13,
+  "invalidRejections": 8,
+  "checksDetail": [
+    {
+      "label": "inverse-known-mass-1-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "inverse-known-mass-1-naturalFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 7.799999999999999,
+        "expected": 7.8,
+        "absoluteError": 8.881784197001252e-16,
+        "relativeError": 1.1386902816668274e-16
+      }
+    },
+    {
+      "label": "inverse-known-mass-1-gammaPerS",
+      "passed": true,
+      "detail": {
+        "actual": 4.900884539600076,
+        "expected": 4.900884539600076,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-1-massKg",
+      "passed": true,
+      "detail": {
+        "actual": 0.25,
+        "expected": 0.25,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-1-probeFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 6.4,
+        "expected": 6.4,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "heldout-known-mass-1-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-known-mass-1-decision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-known-mass-1-maximum",
+      "passed": true,
+      "detail": {
+        "actual": 1.7252992083504206e-16,
+        "expected": 1.55895996546008e-17,
+        "absoluteError": 1.5694032118044126e-16,
+        "relativeError": 10.066988547337395
+      }
+    },
+    {
+      "label": "inverse-known-mass-2-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "inverse-known-mass-2-naturalFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 10.300000000000002,
+        "expected": 10.300000000000002,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-2-gammaPerS",
+      "passed": true,
+      "detail": {
+        "actual": 10.786134777324959,
+        "expected": 10.786134777324959,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-2-massKg",
+      "passed": true,
+      "detail": {
+        "actual": 0.4,
+        "expected": 0.4,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-2-probeFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 8.8,
+        "expected": 8.8,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "heldout-known-mass-2-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-known-mass-2-decision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-known-mass-2-maximum",
+      "passed": true,
+      "detail": {
+        "actual": 2.0903818173849987e-16,
+        "expected": 0.0,
+        "absoluteError": 2.0903818173849987e-16,
+        "relativeError": null
+      }
+    },
+    {
+      "label": "inverse-known-mass-3-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "inverse-known-mass-3-naturalFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 8,
+        "expected": 8.0,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-3-gammaPerS",
+      "passed": true,
+      "detail": {
+        "actual": 41.8879020478639,
+        "expected": 41.8879020478639,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-3-massKg",
+      "passed": true,
+      "detail": {
+        "actual": 0.75,
+        "expected": 0.75,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-3-probeFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 3.7,
+        "expected": 3.7,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "heldout-known-mass-3-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-known-mass-3-decision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-known-mass-3-maximum",
+      "passed": true,
+      "detail": {
+        "actual": 1.5035413083019168e-16,
+        "expected": 0.0,
+        "absoluteError": 1.5035413083019168e-16,
+        "relativeError": null
+      }
+    },
+    {
+      "label": "inverse-known-mass-4-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "inverse-known-mass-4-naturalFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 2.5,
+        "expected": 2.5,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-4-gammaPerS",
+      "passed": true,
+      "detail": {
+        "actual": 19.6349540849362,
+        "expected": 19.6349540849362,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-4-massKg",
+      "passed": true,
+      "detail": {
+        "actual": 2,
+        "expected": 2,
+        "absoluteError": 0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-known-mass-4-probeFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 1.3,
+        "expected": 1.3,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "heldout-known-mass-4-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-known-mass-4-decision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-known-mass-4-maximum",
+      "passed": true,
+      "detail": {
+        "actual": 3.7199656182118564e-16,
+        "expected": 2.4858267165834335e-16,
+        "absoluteError": 1.234138901628423e-16,
+        "relativeError": 0.4964702058253869
+      }
+    },
+    {
+      "label": "inverse-conjugated-phase-positivity-rejection",
+      "passed": true,
+      "detail": {
+        "id": "inverse-conjugated-phase",
+        "ok": false,
+        "error": "reconstructed damping is outside the supported finite numerical range."
+      }
+    },
+    {
+      "label": "inverse-uncalibrated-gain-1.35-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "inverse-uncalibrated-gain-1.35-naturalFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 7.46230031062312,
+        "expected": 7.46230031062312,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-uncalibrated-gain-1.35-gammaPerS",
+      "passed": true,
+      "detail": {
+        "actual": 3.6302848441482047,
+        "expected": 3.6302848441482047,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-uncalibrated-gain-1.35-massKg",
+      "passed": true,
+      "detail": {
+        "actual": 0.25,
+        "expected": 0.25,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-uncalibrated-gain-1.35-probeFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 6.4,
+        "expected": 6.4,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "heldout-uncalibrated-gain-1.35-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-uncalibrated-gain-1.35-decision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-uncalibrated-gain-1.35-maximum",
+      "passed": true,
+      "detail": {
+        "actual": 0.3021157986366992,
+        "expected": 0.3021157986366993,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 3.674826108515508e-16
+      }
+    },
+    {
+      "label": "inverse-two-mode-fit-by-one-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "inverse-two-mode-fit-by-one-naturalFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 7.632521065748087,
+        "expected": 7.632521065748087,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-two-mode-fit-by-one-gammaPerS",
+      "passed": true,
+      "detail": {
+        "actual": 4.0587633991724275,
+        "expected": 4.0587633991724275,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-two-mode-fit-by-one-massKg",
+      "passed": true,
+      "detail": {
+        "actual": 0.25,
+        "expected": 0.25,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-two-mode-fit-by-one-probeFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 6.4,
+        "expected": 6.4,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "heldout-two-mode-fit-by-one-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-two-mode-fit-by-one-decision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-two-mode-fit-by-one-maximum",
+      "passed": true,
+      "detail": {
+        "actual": 0.49011500789773343,
+        "expected": 0.49011500789773343,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-small-complex-perturbation-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "inverse-small-complex-perturbation-naturalFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 7.800000500284517,
+        "expected": 7.800000500284517,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-small-complex-perturbation-gammaPerS",
+      "passed": true,
+      "detail": {
+        "actual": 4.8984429800998255,
+        "expected": 4.8984429800998255,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-small-complex-perturbation-massKg",
+      "passed": true,
+      "detail": {
+        "actual": 0.25,
+        "expected": 0.25,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "inverse-small-complex-perturbation-probeFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 6.4,
+        "expected": 6.4,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "heldout-small-complex-perturbation-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-small-complex-perturbation-decision",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "heldout-small-complex-perturbation-maximum",
+      "passed": true,
+      "detail": {
+        "actual": 0.00011626353457032242,
+        "expected": 0.00011626353457028514,
+        "absoluteError": 3.7283002206345284e-17,
+        "relativeError": 3.206766622410441e-13
+      }
+    },
+    {
+      "label": "intake-synthetic-complete-station-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-synthetic-complete-station-status",
+      "passed": true,
+      "detail": {
+        "status": "ready-for-analysis",
+        "missing": [],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-synthetic-complete-station-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-synthetic-complete-station-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-synthetic-complete-global-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-synthetic-complete-global-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "global scope requires one complete metadata record per independent station"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-synthetic-complete-global-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-synthetic-complete-global-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-stationId-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-stationId-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "stationId required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-stationId-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-stationId-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-channel-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-channel-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "channel required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-channel-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-channel-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-observable-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-observable-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "observable must be schumann-mode-frequency; geomagnetic proxies are different observables"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-observable-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-observable-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-units-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-units-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "frequency units must be Hz"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-units-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-units-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-record-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-record-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "calibrated numeric record required",
+          "HTTPS numeric-record URL required",
+          "numeric-record SHA-256 required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-record-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-record-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-interval-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-interval-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "valid calendar UTC interval required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-interval-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-interval-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-retrievedUtc-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-retrievedUtc-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "valid UTC retrieval time required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-retrievedUtc-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-retrievedUtc-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-coverageComplete-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-coverageComplete-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "complete coverage of the stated interval required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-coverageComplete-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-coverageComplete-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-calibration-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-calibration-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "identified valid calibration metadata required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-calibration-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-calibration-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-qc-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-qc-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "identified passed quality-control metadata required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-qc-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-qc-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-baseline-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-baseline-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "identified matched baseline metadata required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-baseline-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-baseline-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-decision-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-decision-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "decision procedure and uncertainty metadata required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-decision-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-decision-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-scope-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-scope-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "scope must be station or global"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-scope-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-scope-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-synthetic-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-synthetic-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "explicit synthetic boolean required"
+        ],
+        "synthetic": false,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-synthetic-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-synthetic-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-kp-proxy-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-kp-proxy-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "observable must be schumann-mode-frequency; geomagnetic proxies are different observables"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-kp-proxy-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-kp-proxy-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-wrong-units-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-wrong-units-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "frequency units must be Hz"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-wrong-units-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-wrong-units-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-quicklook-record-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-quicklook-record-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "calibrated numeric record required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-quicklook-record-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-quicklook-record-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-bad-hash-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-bad-hash-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "numeric-record SHA-256 required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-bad-hash-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-bad-hash-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-non-https-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-non-https-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "HTTPS numeric-record URL required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-non-https-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-non-https-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-incomplete-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-incomplete-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "complete coverage of the stated interval required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-incomplete-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-incomplete-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-invalid-calendar-day-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-invalid-calendar-day-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "valid calendar UTC interval required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-invalid-calendar-day-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-invalid-calendar-day-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-UTC-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-UTC-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "valid calendar UTC interval required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-UTC-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-UTC-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-non-UTC-offset-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-non-UTC-offset-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "valid calendar UTC interval required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-non-UTC-offset-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-non-UTC-offset-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-future-end-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-future-end-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "observation interval extends past retrieval"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-future-end-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-future-end-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-future-retrieval-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-future-retrieval-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "retrieval lies after assessment cutoff"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-future-retrieval-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-future-retrieval-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-zero-duration-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-zero-duration-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "interval must have positive duration"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-zero-duration-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-zero-duration-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-reversed-duration-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-reversed-duration-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "interval must have positive duration"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-reversed-duration-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-reversed-duration-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unvalidated-calibration-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unvalidated-calibration-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "identified valid calibration metadata required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-unvalidated-calibration-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unvalidated-calibration-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-failed-QC-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-failed-QC-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "identified passed quality-control metadata required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-failed-QC-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-failed-QC-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unmatched-baseline-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unmatched-baseline-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "identified matched baseline metadata required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-unmatched-baseline-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unmatched-baseline-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-blank-uncertainty-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-blank-uncertainty-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "decision procedure and uncertainty metadata required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-blank-uncertainty-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-blank-uncertainty-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-duplicate-stations-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-duplicate-stations-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "global scope needs at least two distinct identified stations including the primary",
+          "global scope requires one complete metadata record per independent station"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-duplicate-stations-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-duplicate-stations-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-focal-station-absent-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-focal-station-absent-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "global scope needs at least two distinct identified stations including the primary",
+          "global scope requires one complete metadata record per independent station"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-focal-station-absent-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-focal-station-absent-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unjustified-independence-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unjustified-independence-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "station independence justification required",
+          "global scope requires one complete metadata record per independent station"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-unjustified-independence-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-unjustified-independence-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-no-shared-model-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-no-shared-model-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "shared observable and calibration model required",
+          "global scope requires one complete metadata record per independent station"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-no-shared-model-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-no-shared-model-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-assessment-time-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-assessment-time-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "valid explicit UTC assessment cutoff required"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": null,
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-missing-assessment-time-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-missing-assessment-time-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-actual-october-inventory-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-actual-october-inventory-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "stationId required",
+          "channel required",
+          "calibrated numeric record required",
+          "HTTPS numeric-record URL required",
+          "numeric-record SHA-256 required",
+          "complete coverage of the stated interval required",
+          "identified valid calibration metadata required",
+          "identified passed quality-control metadata required",
+          "identified matched baseline metadata required",
+          "decision procedure and uncertainty metadata required"
+        ],
+        "synthetic": false,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-actual-october-inventory-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-actual-october-inventory-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-synthetic-full-global-records-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-synthetic-full-global-records-status",
+      "passed": true,
+      "detail": {
+        "status": "ready-for-analysis",
+        "missing": [],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-synthetic-full-global-records-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-synthetic-full-global-records-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-calibration-missing-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-calibration-missing-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "global station synthetic-B requires complete station metadata"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-child-calibration-missing-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-calibration-missing-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-interval-mismatched-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-interval-mismatched-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "global station synthetic-B must cover the stated common interval"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-child-interval-mismatched-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-interval-mismatched-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-incomplete-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-incomplete-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "global station synthetic-B requires complete station metadata"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-child-incomplete-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-incomplete-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-missing-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-missing-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "global scope requires one complete metadata record per independent station"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-child-missing-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-missing-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-aliased-station-identifiers-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-aliased-station-identifiers-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "global scope needs at least two distinct identified stations including the primary",
+          "global scope requires one complete metadata record per independent station"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-aliased-station-identifiers-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-aliased-station-identifiers-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-duplicate-id-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-duplicate-id-status",
+      "passed": true,
+      "detail": {
+        "status": "insufficient-evidence",
+        "missing": [
+          "independent station records must have distinct identifiers",
+          "global station synthetic-B requires complete station metadata",
+          "global station synthetic-B must cover the stated common interval",
+          "global station synthetic-B must share the declared synthetic status"
+        ],
+        "synthetic": true,
+        "metadataOnly": true,
+        "anomalyEstablished": false,
+        "asOfUtc": "2026-10-29T04:57:39Z",
+        "scope": "Readiness of asserted metadata only. No record, calibration, independence, baseline or statistical result has been authenticated or computed."
+      }
+    },
+    {
+      "label": "intake-child-duplicate-id-no-anomaly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "intake-child-duplicate-id-metadata-only",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "invalid-zero-frequency-rejected",
+      "passed": true,
+      "detail": {
+        "id": "invalid-zero-frequency",
+        "ok": false,
+        "error": "frequencyHz must be positive finite."
+      }
+    },
+    {
+      "label": "invalid-zero-mass-rejected",
+      "passed": true,
+      "detail": {
+        "id": "invalid-zero-mass",
+        "ok": false,
+        "error": "massKg must be positive finite."
+      }
+    },
+    {
+      "label": "invalid-zero-transfer-rejected",
+      "passed": true,
+      "detail": {
+        "id": "invalid-zero-transfer",
+        "ok": false,
+        "error": "complex denominator scale is outside the supported finite numerical range."
+      }
+    },
+    {
+      "label": "invalid-extreme-large-transfer-rejected",
+      "passed": true,
+      "detail": {
+        "id": "invalid-extreme-large-transfer",
+        "ok": false,
+        "error": "qualityFactor is outside the supported finite numerical range."
+      }
+    },
+    {
+      "label": "invalid-extreme-tiny-transfer-rejected",
+      "passed": true,
+      "detail": {
+        "id": "invalid-extreme-tiny-transfer",
+        "ok": false,
+        "error": "complex quotient real is outside the supported finite numerical range."
+      }
+    },
+    {
+      "label": "invalid-one-point-rejected",
+      "passed": true,
+      "detail": {
+        "id": "invalid-one-point",
+        "ok": false,
+        "error": "At least two, at most 1000 held-out measurements are required."
+      }
+    },
+    {
+      "label": "invalid-duplicated-point-rejected",
+      "passed": true,
+      "detail": {
+        "id": "invalid-duplicated-point",
+        "ok": false,
+        "error": "Held-out frequencies must be distinct and must exclude the reconstruction probe."
+      }
+    },
+    {
+      "label": "invalid-includes-probe-rejected",
+      "passed": true,
+      "detail": {
+        "id": "invalid-includes-probe",
+        "ok": false,
+        "error": "Held-out frequencies must be distinct and must exclude the reconstruction probe."
+      }
+    },
+    {
+      "label": "receiver-0-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-0-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.3558087653176912,
+        "expected": 0.35580876531769123,
+        "absoluteError": 5.551115123125783e-17,
+        "relativeError": 1.5601400707959947e-16
+      }
+    },
+    {
+      "label": "receiver-0-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": -0.0023466561448035658,
+        "expected": -0.002346656144803566,
+        "absoluteError": 4.336808689942018e-19,
+        "relativeError": 1.8480801712451328e-16
+      }
+    },
+    {
+      "label": "receiver-0-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0006019432939074251,
+        "expected": 0.0006019432939074252,
+        "absoluteError": 1.0842021724855044e-19,
+        "relativeError": 1.8011699498262828e-16
+      }
+    },
+    {
+      "label": "receiver-0-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -1.9665733901882445e-05,
+        "expected": -1.9665733901882445e-05,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-0-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0006019432939074251,
+        "expected": 0.0006019432939074251,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-0-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -1.966573390188244e-05,
+        "expected": -1.966573390188244e-05,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-1-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-1-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.34406330711916516,
+        "expected": 0.34406330711916516,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-1-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": -0.004706877465783805,
+        "expected": -0.004706877465783808,
+        "absoluteError": 3.469446951953614e-18,
+        "relativeError": 7.371016086937516e-16
+      }
+    },
+    {
+      "label": "receiver-1-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0006243995136060722,
+        "expected": 0.0006243995136060722,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-1-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -4.8915424858888374e-05,
+        "expected": -4.891542485888838e-05,
+        "absoluteError": 6.776263578034403e-21,
+        "relativeError": 1.3853019978018435e-16
+      }
+    },
+    {
+      "label": "receiver-1-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0006243995136060722,
+        "expected": 0.0006243995136060722,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-1-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -4.8915424858888374e-05,
+        "expected": -4.891542485888838e-05,
+        "absoluteError": 6.776263578034403e-21,
+        "relativeError": 1.3853019978018435e-16
+      }
+    },
+    {
+      "label": "receiver-2-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-2-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.20029736941553689,
+        "expected": 0.20029736941553677,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 5.542873717536892e-16
+      }
+    },
+    {
+      "label": "receiver-2-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": 0.02823275197363122,
+        "expected": 0.028232751973631218,
+        "absoluteError": 3.469446951953614e-18,
+        "relativeError": 1.2288731028395685e-16
+      }
+    },
+    {
+      "label": "receiver-2-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.000872937282773063,
+        "expected": 0.0008729372827730626,
+        "absoluteError": 3.2526065174565133e-19,
+        "relativeError": 3.7260483446461903e-16
+      }
+    },
+    {
+      "label": "receiver-2-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0002945085504908147,
+        "expected": -0.00029450855049081463,
+        "absoluteError": 5.421010862427522e-20,
+        "relativeError": 1.8406972746268693e-16
+      }
+    },
+    {
+      "label": "receiver-2-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0008729372827730628,
+        "expected": 0.0008729372827730627,
+        "absoluteError": 1.0842021724855044e-19,
+        "relativeError": 1.2420161148820632e-16
+      }
+    },
+    {
+      "label": "receiver-2-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0002945085504908147,
+        "expected": -0.0002945085504908147,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-3-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-3-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.07366427596986014,
+        "expected": 0.07366427596986015,
+        "absoluteError": 1.3877787807814457e-17,
+        "relativeError": 1.883923737130407e-16
+      }
+    },
+    {
+      "label": "receiver-3-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": 0.12447007048678764,
+        "expected": 0.12447007048678764,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-3-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0010364443515587228,
+        "expected": 0.0010364443515587228,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-3-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0006133918173423774,
+        "expected": -0.0006133918173423776,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 3.5351047791377176e-16
+      }
+    },
+    {
+      "label": "receiver-3-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0010364443515587228,
+        "expected": 0.0010364443515587228,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-3-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0006133918173423774,
+        "expected": -0.0006133918173423775,
+        "absoluteError": 1.0842021724855044e-19,
+        "relativeError": 1.767552389568859e-16
+      }
+    },
+    {
+      "label": "receiver-4-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-4-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.28398058252427166,
+        "expected": 0.2839805825242718,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 3.909503300389441e-16
+      }
+    },
+    {
+      "label": "receiver-4-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": 0.79973371665567,
+        "expected": 0.7997337166556701,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 1.3882408625559668e-16
+      }
+    },
+    {
+      "label": "receiver-4-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 1.0842021724855044e-19,
+        "expected": 1.0842021724855044e-19,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-4-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0017907174976848268,
+        "expected": -0.0017907174976848266,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 1.210913696758134e-16
+      }
+    },
+    {
+      "label": "receiver-4-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0,
+        "expected": 0.0,
+        "absoluteError": 0.0,
+        "relativeError": null
+      }
+    },
+    {
+      "label": "receiver-4-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0017907174976848268,
+        "expected": -0.0017907174976848268,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-5-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-5-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.7501951785778607,
+        "expected": 0.7501951785778607,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-5-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": 0.6080467637491141,
+        "expected": 0.608046763749114,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 1.82588427537992e-16
+      }
+    },
+    {
+      "label": "receiver-5-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0007612131517948802,
+        "expected": -0.00076121315179488,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 2.8486165009867265e-16
+      }
+    },
+    {
+      "label": "receiver-5-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0009927900099870265,
+        "expected": -0.0009927900099870263,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 2.1841520595068693e-16
+      }
+    },
+    {
+      "label": "receiver-5-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0007612131517948802,
+        "expected": -0.0007612131517948801,
+        "absoluteError": 1.0842021724855044e-19,
+        "relativeError": 1.424308250493363e-16
+      }
+    },
+    {
+      "label": "receiver-5-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0009927900099870265,
+        "expected": -0.0009927900099870263,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 2.1841520595068693e-16
+      }
+    },
+    {
+      "label": "receiver-6-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-6-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.698593087471677,
+        "expected": 0.6985930874716769,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 1.589227040083142e-16
+      }
+    },
+    {
+      "label": "receiver-6-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": 0.09686658729902069,
+        "expected": 0.09686658729902069,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-6-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.00020430775074453501,
+        "expected": -0.000204307750744535,
+        "absoluteError": 2.710505431213761e-20,
+        "relativeError": 1.326677730696061e-16
+      }
+    },
+    {
+      "label": "receiver-6-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -4.773274886118679e-05,
+        "expected": -4.773274886118679e-05,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-6-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.00020430775074453504,
+        "expected": -0.00020430775074453501,
+        "absoluteError": 2.710505431213761e-20,
+        "relativeError": 1.3266777306960606e-16
+      }
+    },
+    {
+      "label": "receiver-6-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -4.7732748861186796e-05,
+        "expected": -4.773274886118679e-05,
+        "absoluteError": 6.776263578034403e-21,
+        "relativeError": 1.4196256741342683e-16
+      }
+    },
+    {
+      "label": "receiver-7-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-7-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.5505012913906642,
+        "expected": 0.5505012913906643,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 2.0167491738675772e-16
+      }
+    },
+    {
+      "label": "receiver-7-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": -0.00753100394525409,
+        "expected": -0.00753100394525409,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-7-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0009990392217697152,
+        "expected": 0.0009990392217697154,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 2.1704897042278878e-16
+      }
+    },
+    {
+      "label": "receiver-7-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -7.826467977422139e-05,
+        "expected": -7.82646797742214e-05,
+        "absoluteError": 1.3552527156068805e-20,
+        "relativeError": 1.7316274972523044e-16
+      }
+    },
+    {
+      "label": "receiver-7-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0009990392217697152,
+        "expected": 0.0009990392217697154,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 2.1704897042278878e-16
+      }
+    },
+    {
+      "label": "receiver-7-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -7.826467977422139e-05,
+        "expected": -7.82646797742214e-05,
+        "absoluteError": 1.3552527156068805e-20,
+        "relativeError": 1.7316274972523044e-16
+      }
+    },
+    {
+      "label": "receiver-8-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-8-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 0.320475791064859,
+        "expected": 0.3204757910648589,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 3.464296073460557e-16
+      }
+    },
+    {
+      "label": "receiver-8-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": 0.04517240315780995,
+        "expected": 0.04517240315780996,
+        "absoluteError": 6.938893903907228e-18,
+        "relativeError": 1.53609137854946e-16
+      }
+    },
+    {
+      "label": "receiver-8-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0013966996524369007,
+        "expected": 0.0013966996524369005,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 1.552520143602579e-16
+      }
+    },
+    {
+      "label": "receiver-8-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0004712136807853035,
+        "expected": -0.0004712136807853035,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-8-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": 0.0013966996524369007,
+        "expected": 0.0013966996524369005,
+        "absoluteError": 2.168404344971009e-19,
+        "relativeError": 1.552520143602579e-16
+      }
+    },
+    {
+      "label": "receiver-8-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.00047121368078530357,
+        "expected": -0.00047121368078530346,
+        "absoluteError": 1.0842021724855044e-19,
+        "relativeError": 2.3008715932835862e-16
+      }
+    },
+    {
+      "label": "receiver-9-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-9-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 1.200312285724577,
+        "expected": 1.2003122857245772,
+        "absoluteError": 2.220446049250313e-16,
+        "relativeError": 1.8498902957657598e-16
+      }
+    },
+    {
+      "label": "receiver-9-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": 0.9728748219985828,
+        "expected": 0.9728748219985827,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 1.1411776721124499e-16
+      }
+    },
+    {
+      "label": "receiver-9-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.001217941042871808,
+        "expected": -0.001217941042871808,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-9-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0015884640159792424,
+        "expected": -0.001588464015979242,
+        "absoluteError": 4.336808689942018e-19,
+        "relativeError": 2.730190074383587e-16
+      }
+    },
+    {
+      "label": "receiver-9-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0012179410428718083,
+        "expected": -0.0012179410428718083,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-9-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0015884640159792426,
+        "expected": -0.0015884640159792422,
+        "absoluteError": 4.336808689942018e-19,
+        "relativeError": 2.7301900743835863e-16
+      }
+    },
+    {
+      "label": "receiver-10-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "receiver-10-gainReal",
+      "passed": true,
+      "detail": {
+        "actual": 1.1716435916439563,
+        "expected": 1.1716435916439563,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "receiver-10-gainImag",
+      "passed": true,
+      "detail": {
+        "actual": 0.2260154318667706,
+        "expected": 0.22601543186677048,
+        "absoluteError": 1.1102230246251565e-16,
+        "relativeError": 4.912155844648699e-16
+      }
+    },
+    {
+      "label": "receiver-10-observedRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0004946847576329712,
+        "expected": -0.0004946847576329711,
+        "absoluteError": 1.0842021724855044e-19,
+        "relativeError": 2.191703212513216e-16
+      }
+    },
+    {
+      "label": "receiver-10-observedImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.00015587667518587243,
+        "expected": -0.00015587667518587238,
+        "absoluteError": 5.421010862427522e-20,
+        "relativeError": 3.477756281344424e-16
+      }
+    },
+    {
+      "label": "receiver-10-targetRealMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.0004946847576329713,
+        "expected": -0.0004946847576329712,
+        "absoluteError": 1.0842021724855044e-19,
+        "relativeError": 2.1917032125132155e-16
+      }
+    },
+    {
+      "label": "receiver-10-targetImagMPerN",
+      "passed": true,
+      "detail": {
+        "actual": -0.00015587667518587243,
+        "expected": -0.00015587667518587238,
+        "absoluteError": 5.421010862427522e-20,
+        "relativeError": 3.477756281344424e-16
+      }
+    },
+    {
+      "label": "same-mass-impostor-inverse-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "same-mass-impostor-naturalFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 10.300000000000002,
+        "expected": 10.300000000000002,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "same-mass-impostor-gammaPerS",
+      "passed": true,
+      "detail": {
+        "actual": 10.786134777324959,
+        "expected": 10.786134777324959,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "same-mass-impostor-massKg",
+      "passed": true,
+      "detail": {
+        "actual": 0.25,
+        "expected": 0.25,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "same-mass-impostor-probeFrequencyHz",
+      "passed": true,
+      "detail": {
+        "actual": 6.4,
+        "expected": 6.4,
+        "absoluteError": 0.0,
+        "relativeError": 0.0
+      }
+    },
+    {
+      "label": "same-mass-impostor-heldout-executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "same-mass-impostor-heldout-passes",
+      "passed": true,
+      "detail": {
+        "passed": true,
+        "maxRelativeError": 4.3094325154744776e-16,
+        "checks": [
+          {
+            "frequencyHz": 2.3,
+            "absoluteErrorMPerN": 2.1726353818624857e-19,
+            "relativeError": 2.1680820668884908e-16,
+            "thresholdMPerN": 2.0142003160706269e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 11.7,
+            "absoluteErrorMPerN": 6.85709661831387e-19,
+            "relativeError": 3.425723973123238e-16,
+            "thresholdMPerN": 4.013297797552699e-13,
+            "passed": true
+          },
+          {
+            "frequencyHz": 17.1,
+            "absoluteErrorMPerN": 2.2351400383409363e-19,
+            "relativeError": 4.3094325154744776e-16,
+            "thresholdMPerN": 1.0473245341770215e-13,
+            "passed": true
+          }
+        ],
+        "relativeTolerance": 2e-10,
+        "absoluteTolerance": 1e-15,
+        "modelValidityEstablished": false
+      }
+    },
+    {
+      "label": "source-binding-analysis/round2/results.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "source-binding-rounds/round3-contract.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "source-binding-panel/observations/schumann.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "source-binding-panel/observations/noaa-kp.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "source-binding-panel/observations/gfz-kp.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "source-binding-panel/observations/download-manifest.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "label": "source-binding-panel/observations/gfz-download.json",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "receiverResults": [
+    {
+      "expected": {
+        "frequencyHz": 1,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.4
+        },
+        "gainReal": 0.35580876531769123,
+        "gainImag": -0.002346656144803566,
+        "firstReal": 0.0016920516464891773,
+        "firstImag": -4.411097206756544e-05,
+        "secondReal": 0.0006019432939074251,
+        "secondImag": -1.966573390188244e-05,
+        "transformedReal": 0.0006019432939074252,
+        "transformedImag": -1.9665733901882445e-05,
+        "relativeResidual": 1.8010882682031956e-16,
+        "reciprocalRatioWrongResidual": 6.898657831621401
+      },
+      "actual": {
+        "frequencyHz": 1,
+        "gainReal": 0.3558087653176912,
+        "gainImag": -0.0023466561448035658,
+        "observedRealMPerN": 0.0006019432939074251,
+        "observedImagMPerN": -1.9665733901882445e-05,
+        "targetRealMPerN": 0.0006019432939074251,
+        "targetImagMPerN": -1.966573390188244e-05,
+        "relativeResidual": 5.625654606774555e-18,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 2.3,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.4
+        },
+        "gainReal": 0.34406330711916516,
+        "gainImag": -0.004706877465783808,
+        "firstReal": 0.0018163858719445697,
+        "firstImag": -0.00011732119727339542,
+        "secondReal": 0.0006243995136060722,
+        "secondImag": -4.891542485888838e-05,
+        "transformedReal": 0.0006243995136060722,
+        "transformedImag": -4.891542485888838e-05,
+        "relativeResidual": 0.0,
+        "reciprocalRatioWrongResidual": 7.446248158645497
+      },
+      "actual": {
+        "frequencyHz": 2.3,
+        "gainReal": 0.34406330711916516,
+        "gainImag": -0.004706877465783805,
+        "observedRealMPerN": 0.0006243995136060722,
+        "observedImagMPerN": -4.8915424858888374e-05,
+        "targetRealMPerN": 0.0006243995136060722,
+        "targetImagMPerN": -4.8915424858888374e-05,
+        "relativeResidual": 0,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 6.4,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.4
+        },
+        "gainReal": 0.20029736941553677,
+        "gainImag": 0.028232751973631218,
+        "firstReal": 0.0040700886671317694,
+        "firstImag": -0.0020440525781007845,
+        "secondReal": 0.0008729372827730627,
+        "secondImag": -0.0002945085504908147,
+        "transformedReal": 0.0008729372827730626,
+        "transformedImag": -0.00029450855049081463,
+        "relativeResidual": 1.3157523718481803e-16,
+        "reciprocalRatioWrongResidual": 23.48083149844526
+      },
+      "actual": {
+        "frequencyHz": 6.4,
+        "gainReal": 0.20029736941553689,
+        "gainImag": 0.02823275197363122,
+        "observedRealMPerN": 0.000872937282773063,
+        "observedImagMPerN": -0.0002945085504908147,
+        "targetRealMPerN": 0.0008729372827730628,
+        "targetImagMPerN": -0.0002945085504908147,
+        "relativeResidual": 1.1768446980036448e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 7.8,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.4
+        },
+        "gainReal": 0.07366427596986015,
+        "gainImag": 0.12447007048678764,
+        "firstReal": 0.0,
+        "firstImag": -0.008326855986385419,
+        "secondReal": 0.0010364443515587228,
+        "secondImag": -0.0006133918173423775,
+        "transformedReal": 0.0010364443515587228,
+        "transformedImag": -0.0006133918173423776,
+        "relativeResidual": 9.002361207650102e-17,
+        "reciprocalRatioWrongResidual": 48.29207930729071
+      },
+      "actual": {
+        "frequencyHz": 7.8,
+        "gainReal": 0.07366427596986014,
+        "gainImag": 0.12447007048678764,
+        "observedRealMPerN": 0.0010364443515587228,
+        "observedImagMPerN": -0.0006133918173423774,
+        "targetRealMPerN": 0.0010364443515587228,
+        "targetImagMPerN": -0.0006133918173423774,
+        "relativeResidual": 0,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 10.3,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.4
+        },
+        "gainReal": 0.2839805825242718,
+        "gainImag": 0.7997337166556701,
+        "firstReal": -0.0019884190533167915,
+        "firstImag": -0.0007060755215181036,
+        "secondReal": 0.0,
+        "secondImag": -0.0017907174976848268,
+        "transformedReal": 1.0842021724855044e-19,
+        "transformedImag": -0.0017907174976848266,
+        "relativeResidual": 1.3538426704183773e-16,
+        "reciprocalRatioWrongResidual": 2.2545266460973963
+      },
+      "actual": {
+        "frequencyHz": 10.3,
+        "gainReal": 0.28398058252427166,
+        "gainImag": 0.79973371665567,
+        "observedRealMPerN": 1.0842021724855044e-19,
+        "observedImagMPerN": -0.0017907174976848268,
+        "targetRealMPerN": 0,
+        "targetImagMPerN": -0.0017907174976848268,
+        "relativeResidual": 6.05456848379067e-17,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 11.7,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.4
+        },
+        "gainReal": 0.7501951785778607,
+        "gainImag": 0.608046763749114,
+        "firstReal": -0.0012597361552776735,
+        "firstImag": -0.00030233667726664175,
+        "secondReal": -0.0007612131517948801,
+        "secondImag": -0.0009927900099870263,
+        "transformedReal": -0.00076121315179488,
+        "transformedImag": -0.0009927900099870263,
+        "relativeResidual": 8.666472312088704e-17,
+        "reciprocalRatioWrongResidual": 1.3061091527043789
+      },
+      "actual": {
+        "frequencyHz": 11.7,
+        "gainReal": 0.7501951785778607,
+        "gainImag": 0.6080467637491141,
+        "observedRealMPerN": -0.0007612131517948802,
+        "observedImagMPerN": -0.0009927900099870265,
+        "targetRealMPerN": -0.0007612131517948802,
+        "targetImagMPerN": -0.0009927900099870265,
+        "relativeResidual": 0,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 20,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.4
+        },
+        "gainReal": 0.6985930874716769,
+        "gainImag": 0.09686658729902069,
+        "firstReal": -0.0002962346556494276,
+        "firstImag": -2.72512125730102e-05,
+        "secondReal": -0.00020430775074453501,
+        "secondImag": -4.773274886118679e-05,
+        "transformedReal": -0.000204307750744535,
+        "transformedImag": -4.773274886118679e-05,
+        "relativeResidual": 1.2918881241497315e-16,
+        "reciprocalRatioWrongResidual": 1.0828602401691754
+      },
+      "actual": {
+        "frequencyHz": 20,
+        "gainReal": 0.698593087471677,
+        "gainImag": 0.09686658729902069,
+        "observedRealMPerN": -0.00020430775074453501,
+        "observedImagMPerN": -4.773274886118679e-05,
+        "targetRealMPerN": -0.00020430775074453504,
+        "targetImagMPerN": -4.7732748861186796e-05,
+        "relativeResidual": 1.3316477980876008e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 2.3,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.25
+        },
+        "gainReal": 0.5505012913906643,
+        "gainImag": -0.00753100394525409,
+        "transformedReal": 0.0009990392217697154,
+        "transformedImag": -7.82646797742214e-05,
+        "secondReal": 0.0009990392217697154,
+        "secondImag": -7.82646797742214e-05
+      },
+      "actual": {
+        "frequencyHz": 2.3,
+        "gainReal": 0.5505012913906642,
+        "gainImag": -0.00753100394525409,
+        "observedRealMPerN": 0.0009990392217697152,
+        "observedImagMPerN": -7.826467977422139e-05,
+        "targetRealMPerN": 0.0009990392217697152,
+        "targetImagMPerN": -7.826467977422139e-05,
+        "relativeResidual": 0,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 6.4,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.25
+        },
+        "gainReal": 0.3204757910648589,
+        "gainImag": 0.04517240315780996,
+        "transformedReal": 0.0013966996524369005,
+        "transformedImag": -0.0004712136807853035,
+        "secondReal": 0.0013966996524369005,
+        "secondImag": -0.00047121368078530346
+      },
+      "actual": {
+        "frequencyHz": 6.4,
+        "gainReal": 0.320475791064859,
+        "gainImag": 0.04517240315780995,
+        "observedRealMPerN": 0.0013966996524369007,
+        "observedImagMPerN": -0.0004712136807853035,
+        "targetRealMPerN": 0.0013966996524369007,
+        "targetImagMPerN": -0.00047121368078530357,
+        "relativeResidual": 3.677639681261389e-17,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 11.7,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.25
+        },
+        "gainReal": 1.2003122857245772,
+        "gainImag": 0.9728748219985827,
+        "transformedReal": -0.001217941042871808,
+        "transformedImag": -0.001588464015979242,
+        "secondReal": -0.0012179410428718083,
+        "secondImag": -0.0015884640159792422
+      },
+      "actual": {
+        "frequencyHz": 11.7,
+        "gainReal": 1.200312285724577,
+        "gainImag": 0.9728748219985828,
+        "observedRealMPerN": -0.001217941042871808,
+        "observedImagMPerN": -0.0015884640159792424,
+        "targetRealMPerN": -0.0012179410428718083,
+        "targetImagMPerN": -0.0015884640159792426,
+        "relativeResidual": 1.5320303352108445e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    },
+    {
+      "expected": {
+        "frequencyHz": 17.1,
+        "first": {
+          "naturalFrequencyHz": 7.8,
+          "gammaPerS": 4.900884539600077,
+          "massKg": 0.25
+        },
+        "second": {
+          "naturalFrequencyHz": 10.3,
+          "gammaPerS": 10.786134777324959,
+          "massKg": 0.25
+        },
+        "gainReal": 1.1716435916439563,
+        "gainImag": 0.22601543186677048,
+        "transformedReal": -0.0004946847576329711,
+        "transformedImag": -0.00015587667518587238,
+        "secondReal": -0.0004946847576329712,
+        "secondImag": -0.00015587667518587238
+      },
+      "actual": {
+        "frequencyHz": 17.1,
+        "gainReal": 1.1716435916439563,
+        "gainImag": 0.2260154318667706,
+        "observedRealMPerN": -0.0004946847576329712,
+        "observedImagMPerN": -0.00015587667518587243,
+        "targetRealMPerN": -0.0004946847576329713,
+        "targetImagMPerN": -0.00015587667518587243,
+        "relativeResidual": 2.0903818173849982e-16,
+        "scope": "Complex frequency-dependent receiver countermodel on a nonzero-response band. This oscillator ratio has a proper stable causal system-theory realization with direct feedthrough; no sensor hardware realization or passivity is asserted."
+      }
+    }
+  ],
+  "sourceBindings": {
+    "analysis/round3/model.mjs": "c59e7b5d2489294c897a641a767fce25d5c743ea49e4236dcfebdc35ea1bec30",
+    "verification/round3/independent-oracle.py": "3fdb96527bc087c98bba54f0858d795e61f40f6fc7594da2b532350f71672533",
+    "verification/round3/independent-fixtures.json": "07cc3ffc86db87d724ee995846ad80db028350dad157c1042fc08f87d89a4f1a",
+    "verification/round3/preregistered.md": "6ca523c59679c8a98991dd92d8a9876ee9b1a3bad9013547ea7d3742332c7d4a",
+    "verification/round3/schema-supplement.py": "1a8c9602ad933c750d806889d6b657d8968fa46bcdd9d93b8f5f03ae6928f9ff",
+    "verification/round3/schema-supplement.json": "fee29af7dc52a51e9e1a5d2bce3f9ad5190a4318beb821cc8f306b0b5af18a89",
+    "verification/round3/receiver-supplement.py": "2f0b0e31a1b2a79de775022e29c969eb694f879fa0fe019aaa43156946cbc785",
+    "verification/round3/receiver-supplement.json": "50ccb75c4474e56f7671f5976357db251aa163a47eb035a2243de8ac8cc97901",
+    "verification/round3/producer-bridge.mjs": "57480682cb5ecf077ea2ceb3d0d7381b31ce1887e734a7d4f572568e1e79b4f8",
+    "verification/round3/compare_producer.py": "6fa830831859bff6580305b954e72e967167828c213494638a9788f73e03d10d"
+  },
+  "scope": "Synthetic numerical and metadata-schema checks, not experimental validation or an anomaly detector"
+}

@@ -1,0 +1,799 @@
+{
+  "schema": "round3-intake-refinement/1",
+  "timing": "Producer communicated strengthened API after first fixture freeze but before any R3 producer source read. Original fixture preserved.",
+  "originalFixtureSha256": "07cc3ffc86db87d724ee995846ad80db028350dad157c1042fc08f87d89a4f1a",
+  "originalExpectedStatusOverrides": {
+    "synthetic-complete-global": "insufficient-evidence"
+  },
+  "rationale": "A global ID list alone lacks independently calibrated station metadata. Full child records must satisfy local admission and exact common interval; names alone still do not prove independence.",
+  "cases": [
+    {
+      "id": "synthetic-full-global-records",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only",
+        "independentStations": [
+          {
+            "stationId": "synthetic-A",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          },
+          {
+            "stationId": "synthetic-B",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-B-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          }
+        ]
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "ready-for-analysis"
+    },
+    {
+      "id": "child-calibration-missing",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only",
+        "independentStations": [
+          {
+            "stationId": "synthetic-A",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          },
+          {
+            "stationId": "synthetic-B",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          }
+        ]
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "child-interval-mismatched",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only",
+        "independentStations": [
+          {
+            "stationId": "synthetic-A",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          },
+          {
+            "stationId": "synthetic-B",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-24T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-B-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          }
+        ]
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "child-incomplete",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only",
+        "independentStations": [
+          {
+            "stationId": "synthetic-A",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          },
+          {
+            "stationId": "synthetic-B",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": false,
+            "calibration": {
+              "id": "synthetic-B-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          }
+        ]
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "child-missing",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only",
+        "independentStations": [
+          {
+            "stationId": "synthetic-A",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          }
+        ]
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "aliased-station-identifiers",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          " SYNTHETIC-a "
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only",
+        "independentStations": [
+          {
+            "stationId": "synthetic-A",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          },
+          {
+            "stationId": "synthetic-B",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-B-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          }
+        ]
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    },
+    {
+      "id": "child-duplicate-id",
+      "packet": {
+        "stationId": "synthetic-A",
+        "channel": "BNS-mode1",
+        "observable": "schumann-mode-frequency",
+        "units": "Hz",
+        "record": {
+          "kind": "calibrated-numeric",
+          "url": "https://example.org/synthetic.json",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "interval": {
+          "startUtc": "2026-10-23T00:00:00Z",
+          "endUtc": "2026-10-29T03:00:00Z"
+        },
+        "retrievedUtc": "2026-10-29T04:57:39Z",
+        "coverageComplete": true,
+        "calibration": {
+          "id": "synthetic-calibration",
+          "valid": true
+        },
+        "qc": {
+          "method": "synthetic QC",
+          "status": "passed"
+        },
+        "baseline": {
+          "id": "synthetic-matched-baseline",
+          "matched": true
+        },
+        "decision": {
+          "method": "synthetic predeclared procedure",
+          "uncertainty": "synthetic numeric error model and coverage"
+        },
+        "scope": "global",
+        "synthetic": true,
+        "independentStationIds": [
+          "synthetic-A",
+          "synthetic-B"
+        ],
+        "independenceJustification": "Synthetic different calibrated station chains; assertion only",
+        "sharedObservableModel": "Synthetic matched mode and common comparison model; assertion only",
+        "independentStations": [
+          {
+            "stationId": "synthetic-A",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          },
+          {
+            "stationId": "synthetic-A",
+            "channel": "BNS-mode1",
+            "observable": "schumann-mode-frequency",
+            "units": "Hz",
+            "record": {
+              "kind": "calibrated-numeric",
+              "url": "https://example.org/synthetic.json",
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "interval": {
+              "startUtc": "2026-10-23T00:00:00Z",
+              "endUtc": "2026-10-29T03:00:00Z"
+            },
+            "retrievedUtc": "2026-10-29T04:57:39Z",
+            "coverageComplete": true,
+            "calibration": {
+              "id": "synthetic-B-calibration",
+              "valid": true
+            },
+            "qc": {
+              "method": "synthetic QC",
+              "status": "passed"
+            },
+            "baseline": {
+              "id": "synthetic-matched-baseline",
+              "matched": true
+            },
+            "decision": {
+              "method": "synthetic predeclared procedure",
+              "uncertainty": "synthetic numeric error model and coverage"
+            },
+            "scope": "station",
+            "synthetic": true
+          }
+        ]
+      },
+      "asOfUtc": "2026-10-29T04:57:39Z",
+      "expectedStatus": "insufficient-evidence"
+    }
+  ],
+  "scriptSha256": "1a8c9602ad933c750d806889d6b657d8968fa46bcdd9d93b8f5f03ae6928f9ff"
+}

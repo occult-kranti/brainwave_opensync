@@ -1,0 +1,12 @@
+# Round 3 independent comparison revision record
+
+The initial producer snapshot SHA256 `06d1ecae6eddd1752b3f7e9ae5f0c4d173ed0d0578dad83824f7351d8311a8fa` was actually executed against the already frozen Python fixtures. `initial-comparison-results.json` preserves the failure receipt; `initial-producer-model.mjs` preserves those producer bytes and `initial-comparison-script.py` preserves the initial harness. No oracle or fixture was altered in response.
+
+Two differences occurred:
+
+1. A genuine numerical-range problem: H=(1−i)1e308 m/N, probe 6.4 Hz and mass .25 kg was accepted by the inverse. Its tiny real inverse correction is lost when added to omega², returning f0 exactly equal to the probe. The returned parameters cannot forward-reproduce the supplied complex H, and the forward API's PSD range is exceeded. The declared extreme-input rejection therefore failed. The producer was asked to reject unsupported reconstructions; this is an in-round implementation repair.
+2. A reporting-convention mismatch: the independent oracle normalized complex residuals by the measured response, whereas the producer API reports residuals divided by the maximum of predicted and measured norms. The small-perturbation residuals were 0.00011626669974511636 and 0.00011626353457032242 respectively. Both correctly reject the same held-out model. The final harness retains the original measured-norm oracle decision and all tolerances, while independently computing the producer's explicitly inspected symmetric residual definition for its output field. This changes neither the physics nor the independent admission threshold.
+
+The station/global metadata API was strengthened before any producer read to require full child-station records. `schema-supplement.json` documents that prospective refinement and preserves the original ID-only global fixture as insufficient evidence. A separate observation-reviewer request isolated the arbitrary-receiver countermodel at equal known mass; `receiver-supplement.json` was also computed before producer read. These changes have their own pre-read fixture hashes and do not overwrite the initial evidence.
+
+Final producer snapshot `c59e7b5d2489294c897a641a767fce25d5c743ea49e4236dcfebdc35ea1bec30` forward-replays the inverse through the supported response/PSD range and rejects relative complex replay error above 1e-10. Actual final comparison passed all 340 recorded assertions over 82 API requests, including rejection of the preserved extreme counterexample. All numerical fixtures and acceptance tolerances remain unchanged.

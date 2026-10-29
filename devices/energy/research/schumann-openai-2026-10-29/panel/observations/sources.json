@@ -1,0 +1,131 @@
+{
+  "audit_date": "2026-10-29",
+  "agent": "oct_observations",
+  "sources": [
+    {
+      "id": "openai-oct26",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "kind": "publisher-announcement",
+      "date": "2026-10-26",
+      "reading": "scientific sections including release strategy; no physics proof inspected",
+      "ref": "turn163view0"
+    },
+    {
+      "id": "local-smoothing",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/Local-smoothing-for-the-Euclidean-wave-equation-October-25-2026/build/sections/introduction.tex",
+      "kind": "source-manuscript",
+      "reading": "introduction and theorem labels thm:local-smoothing, thm:main; not complete proof",
+      "commit": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a"
+    },
+    {
+      "id": "eth",
+      "url": "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/build/main_full_version.tex",
+      "kind": "source-manuscript",
+      "reading": "abstract, introduction, main theorem, reduction caution; not complete proof",
+      "commit": "7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a"
+    },
+    {
+      "id": "noaa-kp",
+      "url": "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json",
+      "kind": "estimated geomagnetic Kp",
+      "file": "noaa-kp.json",
+      "reading": "all57 snapshot records;49 complete intervals within requested window",
+      "ref": "turn159view2",
+      "sha256": "3f438089a2c4327cf026503d22b371190c223fefca3818cf44a51f6a0e83bf3c"
+    },
+    {
+      "id": "noaa-weekly",
+      "url": "https://services.swpc.noaa.gov/text/weekly.txt",
+      "kind": "official bulletin",
+      "file": "noaa-weekly.txt",
+      "reading": "full retained text; observation and forecast separated",
+      "ref": "turn159view1",
+      "sha256": "e34eb64ea3165e465ad39b37ab935de6b78a2b905e428f1ce6493baea06ffeb0"
+    },
+    {
+      "id": "noaa-forecast",
+      "url": "https://services.swpc.noaa.gov/text/3-day-forecast.txt",
+      "kind": "official observation and forecast bulletin",
+      "file": "noaa-3day.txt",
+      "reading": "full retained text; internally conflicting future forecast flagged",
+      "ref": "turn159view0",
+      "sha256": "88028a1c2f234c415e892fdccd0d5cf90baf2ced5d2829ad54c97b82d0c32dc7"
+    },
+    {
+      "id": "noaa-product-method",
+      "url": "https://www.spaceweather.gov/products/planetary-k-index",
+      "kind": "official product definition",
+      "reading": "search result product description only; NOAA estimated index is distinct from GFZ definitive index",
+      "ref": "turn169search12"
+    },
+    {
+      "id": "gfz-method",
+      "url": "https://kp.gfz.de/en/data",
+      "kind": "provider API documentation",
+      "reading": "API format, timestamp convention and preliminary/definitive choices",
+      "ref": "turn170view0"
+    },
+    {
+      "id": "gfz-kp",
+      "url": "https://kp.gfz.de/app/json/?start=2026-10-23T00:00:00Z&end=2026-10-29T04:00:00Z&index=Kp",
+      "kind": "preliminary geomagnetic Kp",
+      "file": "gfz-kp.json",
+      "reading": "all50 points;ongoing03UTCintervalexcludedfromcomplete summary",
+      "license": "CC BY 4.0; source GFZ Potsdam, as supplied in response metadata",
+      "sha256": "deb5dfafded3db6ed79c1106579dc90ecd2fbaa5dd71847b0f03d4c924a262ba"
+    },
+    {
+      "id": "tomsk",
+      "url": "https://sos70.ru/",
+      "kind": "primary station explanation",
+      "reading": "interpretation, access and rights text; no weekly subscription access",
+      "ref": "turn159view3"
+    },
+    {
+      "id": "tomsk-method",
+      "url": "https://sos70.ru/?page_id=43",
+      "kind": "primary measurement methods",
+      "reading": "apparatus and signal processing paragraphs; reported peaks vs modes",
+      "ref": "turn163view1"
+    },
+    {
+      "id": "tomsk-image",
+      "url": "https://sos70.ru/provider.php?file=shm.jpg",
+      "kind": "primary station mutable quick-look",
+      "reading": "local image visually inspected only; no numeric digitization; not republished",
+      "image_sha256": "8b594816fb581d20fb5d89ebfda19465cd017c5631b8f75e4e7912140dc9b8d6",
+      "visible_dates": "2026-10-27 through2026-10-29, partialday; charttimezone notverified",
+      "ref": "turn163view3"
+    },
+    {
+      "id": "nck",
+      "url": "https://nckobs.hu/data/sr/",
+      "kind": "primary station current display",
+      "reading": "page and current source image",
+      "ref": "turn159view4"
+    },
+    {
+      "id": "nck-image",
+      "url": "https://nckobs.hu/data/sr/SR_dynspec_codemo_latest.png",
+      "kind": "primary mutable quick-look",
+      "reading": "local pixels inspected, no numeric digitization; not republished",
+      "image_sha256": "c0a45f2fe7a8f084cca9d3a2a73f52bdeaea8935089ecfe90dca30ae88d5959d",
+      "visible_dates": "2026-10-29, UTCaxis, partialdaythroughapproximately04:45UTC",
+      "ref": "turn163view5"
+    },
+    {
+      "id": "nck-method",
+      "url": "https://epss.hu/~bozokit/documents/szab%C3%B3n%C3%A92021_GOR.pdf",
+      "kind": "primary technical paper",
+      "reading": "pages1\u20134: processing, transfer differences, quick-look QC limits and archive access",
+      "ref": "turn167view0"
+    },
+    {
+      "id": "hylaty",
+      "url": "https://oa.uj.edu.pl/elf/index/data4.htm",
+      "kind": "institutional access listing",
+      "reading": "search result only; directwebopenfailed; no currentnumericaldata obtained",
+      "ref": "turn169search10"
+    }
+  ]
+}

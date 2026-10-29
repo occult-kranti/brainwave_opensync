@@ -1,0 +1,77 @@
+{
+  "scope": "Synthetic physical-force oscillator only; algebra proves the domain formulas, samples check arithmetic.",
+  "tolerance": {
+    "peak_relative_slack": 1e-14,
+    "power_relative": 1e-12
+  },
+  "producer_imported": false,
+  "station_fits": 0,
+  "rows": [
+    {
+      "Q": 5.0,
+      "displacement_peak_over_w0": 0.9899494936611665,
+      "velocity_peak_over_w0": 1.0,
+      "ringdown_over_w0": 0.99498743710662,
+      "poles_over_w0": [
+        [
+          -0.09999999999999999,
+          0.99498743710662
+        ],
+        [
+          -0.09999999999999999,
+          -0.99498743710662
+        ]
+      ],
+      "displacement_sample_checks": true,
+      "velocity_sample_checks": true,
+      "positive_constant_gain_checks": true,
+      "average_input_w": 0.0040038022380553965,
+      "average_damping_w": 0.004003802238055405,
+      "power_relative_residual": 2.1663451050211457e-15
+    },
+    {
+      "Q": 0.6,
+      "displacement_peak_over_w0": 0.0,
+      "velocity_peak_over_w0": 1.0,
+      "ringdown_over_w0": 0.5527707983925665,
+      "poles_over_w0": [
+        [
+          -0.8333333333333334,
+          0.5527707983925665
+        ],
+        [
+          -0.8333333333333334,
+          -0.5527707983925665
+        ]
+      ],
+      "displacement_sample_checks": true,
+      "velocity_sample_checks": true,
+      "positive_constant_gain_checks": true,
+      "average_input_w": 0.0013795130743640505,
+      "average_damping_w": 0.001379513074364053,
+      "power_relative_residual": 1.8862345434201525e-15
+    },
+    {
+      "Q": 0.4,
+      "displacement_peak_over_w0": 0.0,
+      "velocity_peak_over_w0": 1.0,
+      "ringdown_over_w0": null,
+      "poles_over_w0": [
+        [
+          -0.5000000000000001,
+          0.0
+        ],
+        [
+          -1.9999999999999998,
+          0.0
+        ]
+      ],
+      "displacement_sample_checks": true,
+      "velocity_sample_checks": true,
+      "positive_constant_gain_checks": true,
+      "average_input_w": 0.0009338595595129119,
+      "average_damping_w": 0.0009338595595129106,
+      "power_relative_residual": 1.3931887227895497e-15
+    }
+  ]
+}

@@ -1,0 +1,475 @@
+{
+  "schema": "schumann-round2-independent-oracle/1",
+  "read_producer_before_freeze": false,
+  "source_sha256": "d3abe98e9bd8b30fcde936729f1b63d6a4ba6faf46b4aa543b5501172d6c0bfa",
+  "bandHz": [
+    1,
+    20
+  ],
+  "gridStepHz": 0.001,
+  "first": {
+    "naturalFrequencyHz": 8.0,
+    "gammaPerS": 5.026548245743669,
+    "massKg": 0.75
+  },
+  "second": {
+    "naturalFrequencyHz": 10.0,
+    "gammaPerS": 15.707963267948966,
+    "massKg": 1.25
+  },
+  "responseCases": [
+    {
+      "frequencyHz": 1.0,
+      "tilt": -3.0,
+      "weight": 13.804574186067095,
+      "firstForcePsdN2PerHz": 0.2760914837213419,
+      "secondForcePsdN2PerHz": 1.8974316550716603,
+      "firstOutputPsd": 7.929574476060245e-08,
+      "secondOutputPsd": 7.929574476060245e-08,
+      "velocityPsd": 3.1304705259076018e-06,
+      "receiverGainSquared": 0.07243975703425146,
+      "receiverOutputPsd": 5.74416448430806e-09,
+      "wrongInvertedRatioOutputPsd": 1.6788953272989002e-09
+    },
+    {
+      "frequencyHz": 1.0,
+      "tilt": 0.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.1374494880824887,
+      "firstOutputPsd": 5.744164484308061e-09,
+      "secondOutputPsd": 5.74416448430806e-09,
+      "velocityPsd": 2.2677052429963206e-07,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 5.744164484308061e-09,
+      "wrongInvertedRatioOutputPsd": 1.2161876959547243e-10
+    },
+    {
+      "frequencyHz": 1.0,
+      "tilt": 3.0,
+      "weight": 0.07243975703425146,
+      "firstForcePsdN2PerHz": 0.001448795140685029,
+      "secondForcePsdN2PerHz": 0.009956807521177722,
+      "firstOutputPsd": 4.161058796080522e-10,
+      "secondOutputPsd": 4.1610587960805223e-10,
+      "velocityPsd": 1.642720168279516e-08,
+      "receiverGainSquared": 13.804574186067095,
+      "receiverOutputPsd": 5.744164484308059e-09,
+      "wrongInvertedRatioOutputPsd": 8.81003412030063e-12
+    },
+    {
+      "frequencyHz": 4.0,
+      "tilt": -3.0,
+      "weight": 4.4816890703380645,
+      "firstForcePsdN2PerHz": 0.08963378140676129,
+      "secondForcePsdN2PerHz": 0.7916617793158425,
+      "firstOutputPsd": 4.3600782071718165e-08,
+      "secondOutputPsd": 4.360078207171817e-08,
+      "velocityPsd": 2.754063812006193e-05,
+      "receiverGainSquared": 0.22313016014842982,
+      "receiverOutputPsd": 9.728649486259263e-09,
+      "wrongInvertedRatioOutputPsd": 5.589312092111474e-10
+    },
+    {
+      "frequencyHz": 4.0,
+      "tilt": 0.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.17664361960213487,
+      "firstOutputPsd": 9.728649486259264e-09,
+      "secondOutputPsd": 9.728649486259264e-09,
+      "velocityPsd": 6.14514699431937e-06,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 9.728649486259264e-09,
+      "wrongInvertedRatioOutputPsd": 1.2471441022323888e-10
+    },
+    {
+      "frequencyHz": 4.0,
+      "tilt": 3.0,
+      "weight": 0.22313016014842982,
+      "firstForcePsdN2PerHz": 0.004462603202968597,
+      "secondForcePsdN2PerHz": 0.039414519131022674,
+      "firstOutputPsd": 2.1707551178969692e-09,
+      "secondOutputPsd": 2.1707551178969692e-09,
+      "velocityPsd": 1.3711676329781232e-06,
+      "receiverGainSquared": 4.4816890703380645,
+      "receiverOutputPsd": 9.728649486259264e-09,
+      "wrongInvertedRatioOutputPsd": 2.7827546325928268e-11
+    },
+    {
+      "frequencyHz": 7.5,
+      "tilt": -3.0,
+      "weight": 1.2062302494209807,
+      "firstForcePsdN2PerHz": 0.024124604988419614,
+      "secondForcePsdN2PerHz": 1.0903689297343808,
+      "firstOutputPsd": 1.348512597378988e-07,
+      "secondOutputPsd": 1.348512597378988e-07,
+      "velocityPsd": 0.0002994589319853622,
+      "receiverGainSquared": 0.8290291181804004,
+      "receiverOutputPsd": 1.1179562094602636e-07,
+      "wrongInvertedRatioOutputPsd": 6.601285172652447e-11
+    },
+    {
+      "frequencyHz": 7.5,
+      "tilt": 0.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.9039475923090007,
+      "firstOutputPsd": 1.1179562094602636e-07,
+      "secondOutputPsd": 1.1179562094602636e-07,
+      "velocityPsd": 0.0002482601743150693,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 1.1179562094602636e-07,
+      "wrongInvertedRatioOutputPsd": 5.47265762554141e-11
+    },
+    {
+      "frequencyHz": 7.5,
+      "tilt": 3.0,
+      "weight": 0.8290291181804004,
+      "firstForcePsdN2PerHz": 0.016580582363608008,
+      "secondForcePsdN2PerHz": 0.7493988753332269,
+      "firstOutputPsd": 9.268182504931453e-08,
+      "secondOutputPsd": 9.268182504931453e-08,
+      "velocityPsd": 0.0002058149133917344,
+      "receiverGainSquared": 1.2062302494209807,
+      "receiverOutputPsd": 1.1179562094602636e-07,
+      "wrongInvertedRatioOutputPsd": 4.536992525405839e-11
+    },
+    {
+      "frequencyHz": 8.0,
+      "tilt": -3.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.9819878472222219,
+      "firstOutputPsd": 1.3924129577208573e-07,
+      "secondOutputPsd": 1.3924129577208573e-07,
+      "velocityPsd": 0.000351809665424784,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 1.3924129577208573e-07,
+      "wrongInvertedRatioOutputPsd": 5.775848872694417e-11
+    },
+    {
+      "frequencyHz": 8.0,
+      "tilt": 0.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.9819878472222219,
+      "firstOutputPsd": 1.3924129577208573e-07,
+      "secondOutputPsd": 1.3924129577208573e-07,
+      "velocityPsd": 0.000351809665424784,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 1.3924129577208573e-07,
+      "wrongInvertedRatioOutputPsd": 5.775848872694417e-11
+    },
+    {
+      "frequencyHz": 8.0,
+      "tilt": 3.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.9819878472222219,
+      "firstOutputPsd": 1.3924129577208573e-07,
+      "secondOutputPsd": 1.3924129577208573e-07,
+      "velocityPsd": 0.000351809665424784,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 1.3924129577208573e-07,
+      "wrongInvertedRatioOutputPsd": 5.775848872694417e-11
+    },
+    {
+      "frequencyHz": 10.0,
+      "tilt": -3.0,
+      "weight": 0.4723665527410147,
+      "firstForcePsdN2PerHz": 0.009447331054820294,
+      "secondForcePsdN2PerHz": 0.042272207254171565,
+      "firstOutputPsd": 6.94345167260262e-09,
+      "secondOutputPsd": 6.94345167260262e-09,
+      "velocityPsd": 2.7411648474668033e-05,
+      "receiverGainSquared": 2.117000016612675,
+      "receiverOutputPsd": 1.469928730624905e-08,
+      "wrongInvertedRatioOutputPsd": 3.468037901378494e-10
+    },
+    {
+      "frequencyHz": 10.0,
+      "tilt": 0.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.08949026345933563,
+      "firstOutputPsd": 1.469928730624905e-08,
+      "secondOutputPsd": 1.469928730624905e-08,
+      "velocityPsd": 5.803046027625302e-05,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 1.469928730624905e-08,
+      "wrongInvertedRatioOutputPsd": 7.341836294831657e-10
+    },
+    {
+      "frequencyHz": 10.0,
+      "tilt": 3.0,
+      "weight": 2.117000016612675,
+      "firstForcePsdN2PerHz": 0.0423400003322535,
+      "secondForcePsdN2PerHz": 0.18945088923008618,
+      "firstOutputPsd": 3.1118391471523724e-08,
+      "secondOutputPsd": 3.1118391471523724e-08,
+      "velocityPsd": 0.00012285048536886883,
+      "receiverGainSquared": 0.4723665527410147,
+      "receiverOutputPsd": 1.4699287306249052e-08,
+      "wrongInvertedRatioOutputPsd": 1.5542667558126158e-09
+    },
+    {
+      "frequencyHz": 12.0,
+      "tilt": -3.0,
+      "weight": 0.22313016014842982,
+      "firstForcePsdN2PerHz": 0.004462603202968597,
+      "secondForcePsdN2PerHz": 0.01013865715500461,
+      "firstOutputPsd": 7.520467806329891e-10,
+      "secondOutputPsd": 7.520467806329891e-10,
+      "velocityPsd": 4.275304828393209e-06,
+      "receiverGainSquared": 4.4816890703380645,
+      "receiverOutputPsd": 3.3704398371457954e-09,
+      "wrongInvertedRatioOutputPsd": 1.457003272964034e-10
+    },
+    {
+      "frequencyHz": 12.0,
+      "tilt": 0.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.04543830895948898,
+      "firstOutputPsd": 3.3704398371457954e-09,
+      "secondOutputPsd": 3.3704398371457954e-09,
+      "velocityPsd": 1.9160586921773402e-05,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 3.3704398371457954e-09,
+      "wrongInvertedRatioOutputPsd": 6.5298356438897e-10
+    },
+    {
+      "frequencyHz": 12.0,
+      "tilt": 3.0,
+      "weight": 4.4816890703380645,
+      "firstForcePsdN2PerHz": 0.08963378140676129,
+      "secondForcePsdN2PerHz": 0.2036403726383859,
+      "firstOutputPsd": 1.5105263380368317e-08,
+      "secondOutputPsd": 1.5105263380368317e-08,
+      "velocityPsd": 8.58717929885743e-05,
+      "receiverGainSquared": 0.22313016014842982,
+      "receiverOutputPsd": 3.370439837145795e-09,
+      "wrongInvertedRatioOutputPsd": 2.9264693036324383e-09
+    },
+    {
+      "frequencyHz": 20.0,
+      "tilt": -3.0,
+      "weight": 0.011108996538242306,
+      "firstForcePsdN2PerHz": 0.00022217993076484614,
+      "secondForcePsdN2PerHz": 0.0005417542787454305,
+      "firstOutputPsd": 2.2246559247999612e-12,
+      "secondOutputPsd": 2.2246559247999612e-12,
+      "velocityPsd": 3.513035825010434e-08,
+      "receiverGainSquared": 90.01713130052181,
+      "receiverOutputPsd": 2.002571444812019e-10,
+      "wrongInvertedRatioOutputPsd": 3.7416900126509145e-13
+    },
+    {
+      "frequencyHz": 20.0,
+      "tilt": 0.0,
+      "weight": 1.0,
+      "firstForcePsdN2PerHz": 0.02,
+      "secondForcePsdN2PerHz": 0.04876716604244691,
+      "firstOutputPsd": 2.002571444812019e-10,
+      "secondOutputPsd": 2.0025714448120187e-10,
+      "velocityPsd": 3.162334071234012e-06,
+      "receiverGainSquared": 1.0,
+      "receiverOutputPsd": 2.002571444812019e-10,
+      "wrongInvertedRatioOutputPsd": 3.3681620115464854e-11
+    },
+    {
+      "frequencyHz": 20.0,
+      "tilt": 3.0,
+      "weight": 90.01713130052181,
+      "firstForcePsdN2PerHz": 1.8003426260104363,
+      "secondForcePsdN2PerHz": 4.389880388797292,
+      "firstOutputPsd": 1.8026573668631916e-08,
+      "secondOutputPsd": 1.8026573668631916e-08,
+      "velocityPsd": 0.00028466424130638575,
+      "receiverGainSquared": 0.011108996538242306,
+      "receiverOutputPsd": 2.0025714448120187e-10,
+      "wrongInvertedRatioOutputPsd": 3.031922820348096e-09
+    }
+  ],
+  "modeCases": [
+    {
+      "frequencyHz": 1.0,
+      "phaseRad": 0.0,
+      "coherentPsd": 9.783814171945153e-09,
+      "uncorrelatedPsd": 6.279090488215895e-09,
+      "crossTerm": 3.5047236837292575e-09
+    },
+    {
+      "frequencyHz": 1.0,
+      "phaseRad": 1.5707963267948966,
+      "coherentPsd": 6.366975152566897e-09,
+      "uncorrelatedPsd": 6.279090488215895e-09,
+      "crossTerm": 8.788466435100227e-11
+    },
+    {
+      "frequencyHz": 1.0,
+      "phaseRad": 3.141592653589793,
+      "coherentPsd": 2.774366804486637e-09,
+      "uncorrelatedPsd": 6.279090488215895e-09,
+      "crossTerm": -3.504723683729258e-09
+    },
+    {
+      "frequencyHz": 4.0,
+      "phaseRad": 0.0,
+      "coherentPsd": 1.5644491426002203e-08,
+      "uncorrelatedPsd": 1.0433609641087374e-08,
+      "crossTerm": 5.2108817849148294e-09
+    },
+    {
+      "frequencyHz": 4.0,
+      "phaseRad": 1.5707963267948966,
+      "coherentPsd": 1.0962714560786418e-08,
+      "uncorrelatedPsd": 1.0433609641087374e-08,
+      "crossTerm": 5.291049196990446e-10
+    },
+    {
+      "frequencyHz": 4.0,
+      "phaseRad": 3.141592653589793,
+      "coherentPsd": 5.222727856172539e-09,
+      "uncorrelatedPsd": 1.0433609641087374e-08,
+      "crossTerm": -5.210881784914834e-09
+    },
+    {
+      "frequencyHz": 7.5,
+      "phaseRad": 0.0,
+      "coherentPsd": 1.3888384405183747e-07,
+      "uncorrelatedPsd": 1.1337865956495106e-07,
+      "crossTerm": 2.5505184486886405e-08
+    },
+    {
+      "frequencyHz": 7.5,
+      "phaseRad": 1.5707963267948966,
+      "coherentPsd": 1.0580286219260858e-07,
+      "uncorrelatedPsd": 1.1337865956495106e-07,
+      "crossTerm": -7.575797372342481e-09
+    },
+    {
+      "frequencyHz": 7.5,
+      "phaseRad": 3.141592653589793,
+      "coherentPsd": 8.787347507806462e-08,
+      "uncorrelatedPsd": 1.1337865956495106e-07,
+      "crossTerm": -2.5505184486886444e-08
+    },
+    {
+      "frequencyHz": 8.0,
+      "phaseRad": 0.0,
+      "coherentPsd": 1.646888318951154e-07,
+      "uncorrelatedPsd": 1.4105627606020672e-07,
+      "crossTerm": 2.3632555834908687e-08
+    },
+    {
+      "frequencyHz": 8.0,
+      "phaseRad": 1.5707963267948966,
+      "coherentPsd": 1.1978697580878893e-07,
+      "uncorrelatedPsd": 1.4105627606020672e-07,
+      "crossTerm": -2.126930025141778e-08
+    },
+    {
+      "frequencyHz": 8.0,
+      "phaseRad": 3.141592653589793,
+      "coherentPsd": 1.17423720225298e-07,
+      "uncorrelatedPsd": 1.4105627606020672e-07,
+      "crossTerm": -2.3632555834908714e-08
+    },
+    {
+      "frequencyHz": 10.0,
+      "phaseRad": 0.0,
+      "coherentPsd": 2.1317381532488107e-08,
+      "uncorrelatedPsd": 1.6801760472008402e-08,
+      "crossTerm": 4.515621060479705e-09
+    },
+    {
+      "frequencyHz": 10.0,
+      "phaseRad": 1.5707963267948966,
+      "coherentPsd": 6.641613085929059e-09,
+      "uncorrelatedPsd": 1.6801760472008402e-08,
+      "crossTerm": -1.0160147386079343e-08
+    },
+    {
+      "frequencyHz": 10.0,
+      "phaseRad": 3.141592653589793,
+      "coherentPsd": 1.2286139411528692e-08,
+      "uncorrelatedPsd": 1.6801760472008402e-08,
+      "crossTerm": -4.51562106047971e-09
+    },
+    {
+      "frequencyHz": 12.0,
+      "phaseRad": 0.0,
+      "coherentPsd": 7.050535580783394e-09,
+      "uncorrelatedPsd": 4.319894843359376e-09,
+      "crossTerm": 2.7306407374240177e-09
+    },
+    {
+      "frequencyHz": 12.0,
+      "phaseRad": 1.5707963267948966,
+      "coherentPsd": 2.008201725923702e-09,
+      "uncorrelatedPsd": 4.319894843359376e-09,
+      "crossTerm": -2.311693117435674e-09
+    },
+    {
+      "frequencyHz": 12.0,
+      "phaseRad": 3.141592653589793,
+      "coherentPsd": 1.5892541059353598e-09,
+      "uncorrelatedPsd": 4.319894843359376e-09,
+      "crossTerm": -2.7306407374240165e-09
+    },
+    {
+      "frequencyHz": 20.0,
+      "phaseRad": 0.0,
+      "coherentPsd": 4.527557066752177e-10,
+      "uncorrelatedPsd": 2.528189736251857e-10,
+      "crossTerm": 1.99936733050032e-10
+    },
+    {
+      "frequencyHz": 20.0,
+      "phaseRad": 1.5707963267948966,
+      "coherentPsd": 2.066797275367168e-10,
+      "uncorrelatedPsd": 2.528189736251857e-10,
+      "crossTerm": -4.6139246088468905e-11
+    },
+    {
+      "frequencyHz": 20.0,
+      "phaseRad": 3.141592653589793,
+      "coherentPsd": 5.288224057515368e-11,
+      "uncorrelatedPsd": 2.528189736251857e-10,
+      "crossTerm": -1.9993673305003202e-10
+    }
+  ],
+  "maxima": [
+    {
+      "tilt": -3.0,
+      "gridMaximumHz": 7.792,
+      "constantScaledMaximumHz": 7.792,
+      "endpointMaximum": false,
+      "sameSourceAndReceiverWeightMaximumHz": 7.792
+    },
+    {
+      "tilt": 0.0,
+      "gridMaximumHz": 7.92,
+      "constantScaledMaximumHz": 7.92,
+      "endpointMaximum": false,
+      "sameSourceAndReceiverWeightMaximumHz": 7.92
+    },
+    {
+      "tilt": 3.0,
+      "gridMaximumHz": 8.041,
+      "constantScaledMaximumHz": 8.041,
+      "endpointMaximum": false,
+      "sameSourceAndReceiverWeightMaximumHz": 8.041
+    }
+  ],
+  "tolerances": {
+    "normal_relative": 2e-12,
+    "PSD_absolute": 1e-22,
+    "grid_frequency_Hz": 0.001,
+    "equal_mode_cancellation_relative_to_uncorrelated": 1e-28
+  },
+  "wrong_ratio_max_relative_mismatch": 0.9995851913873202,
+  "scope": "Finite-band synthetic spectra, not observed Earth forcing or receiver calibration."
+}

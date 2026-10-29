@@ -161,7 +161,7 @@
       "tests": 1604,
       "failed": 0
     },
-    "archiveBuild": "VITE_BASE=/brainwave_opensync/archive/ npm run build; emit-route-shells.mjs",
+    "archiveBuild": "passed: VITE_BASE=/brainwave_opensync/archive/ npm run build; 40 route shells + 404",
     "unchangedScopes": [
       "src/engine",
       "src/safety",
@@ -182,5 +182,14 @@
   "finalVisualCorrections": [
     "Portaled sheets outside the clipped workspace after a screenshot caught footer occlusion.",
     "Active chip specificity corrected for filter and Studio Save buttons; default and hover contrast measured at >=4.5:1."
-  ]
+  ],
+  "release": {
+    "applicationSource": "a0ed2e0164f32c1ab61301ca821dc5ec0285555f",
+    "deploymentCommit": "9d60c11752a91b82ecd559ff2f33a4dc9514ce63",
+    "githubCI": "success",
+    "pagesWorkflow": "success",
+    "livePracticeUrl": "https://occult-kranti.github.io/brainwave_opensync/archive/practice-plan/",
+    "liveControls": "7 sessions/week, 45 minutes, owned Gateway recordings, Wave I sequence; 2 explicit bedtime slots",
+    "figmaReview": "https://www.figma.com/design/yEC3aXLr4B2iyjhZ3N8P6w?node-id=4-269"
+  }
 }

@@ -24,7 +24,7 @@ Four independent AI roles contributed: mobile interface implementation, audio en
 - W3C, [Modal Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/): focus containment, Escape, return focus, and an inert background.
 - W3C, [Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html): WCAG 2.2 AA uses 24 CSS pixels with exceptions. This project aims for larger 44-pixel touch targets for key actions; that target is not represented as the AA minimum.
 - [Penpot](https://github.com/penpot/penpot): independent MPL-2.0 open-source design/prototyping platform. It is not described as reverse-engineered Figma. Existing React, CSS, Lucide and disclosure/dialog facilities are the implementation tools; installing a separate editor is unnecessary for the identified fixes.
-- Figma became connected after the implementation rounds. An [editable review file](https://www.figma.com/design/yEC3aXLr4B2iyjhZ3N8P6w) was created for the mobile screens. Composition was still in progress at this source checkpoint; no completed Figma-to-code import is claimed. The implemented interface and browser verification use the actual React application.
+- Figma became connected after the implementation rounds. The [editable mobile review](https://www.figma.com/design/yEC3aXLr4B2iyjhZ3N8P6w?node-id=4-269) contains three checked screens: OBE library, Evening rain player and home-practice builder with timetable. It uses 102 editable text layers, 21 component instances and source fonts/colors. Its 3D contour is labeled as a static study; no automated live capture or Figma-to-code import is claimed. The implemented React application remains the animation, audio and interaction reference.
 
 Practice sources, reading depth, manual hash and official/community distinctions are recorded in `docs/research/home-practice-sources.md`.
 
@@ -45,3 +45,7 @@ Regression coverage includes URL-preserved filters, focus wrapping and return, a
 ## Verification boundaries
 
 Mobile viewport emulation can test layout, controls and the browser audio graph. It does not reproduce a physical phone's Bluetooth codec, headphone firmware, operating-system routing or background restrictions. A source-level loop defect and its regression tests support a bounded fix, not a claim that every possible hardware switching noise has been reproduced.
+
+## Release evidence
+
+Application source `a0ed2e0164f32c1ab61301ca821dc5ec0285555f` passed GitHub CI. Deployment `9d60c11752a91b82ecd559ff2f33a4dc9514ce63` completed the Pages workflow successfully. The live `/archive/practice-plan/` route loaded and its frequency, time-budget and owned-recording controls were exercised; the Wave I sequence generated two explicit bedtime sleep slots. Other deployed applications were opened and retained their expected headings. This documentation-only checkpoint does not change the built application.

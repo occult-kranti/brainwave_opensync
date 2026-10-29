@@ -1,0 +1,8 @@
+{
+  "schema": "input-freeze/1",
+  "round": 3,
+  "phase": "before-result-computation",
+  "fixturesSha256": "7d313045160eb8e5c9b0b745c360eaf396dc6c80c5fbaefb54f7df48acd8b1fa",
+  "contractSha256": "49ffd5d1142b1667ce503185b1cc4266eaf0d2a49f71512d18f8020aa04b9369",
+  "resultsExistAtFreeze": false
+}

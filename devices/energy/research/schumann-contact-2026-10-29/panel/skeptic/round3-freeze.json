@@ -1,0 +1,17 @@
+{
+  "round": 3,
+  "owner": "/root/contact_skeptic",
+  "verdict": "accept-exact-benchmark-zero-power-at-nominal-level",
+  "rankComparisonsExecuted": 192,
+  "files": {
+    "rounds/round3-contract.md": "49ffd5d1142b1667ce503185b1cc4266eaf0d2a49f71512d18f8020aa04b9369",
+    "analysis/round3/fixtures.json": "7d313045160eb8e5c9b0b745c360eaf396dc6c80c5fbaefb54f7df48acd8b1fa",
+    "analysis/round3/model.mjs": "4367a5f72935e146618e55f7d4b543ae574f4a7d726c4b15c67c38c3962308b6",
+    "analysis/round3/results.json": "32ad1f9fd0edb56396be9717e3c208239463ebde48372768173c27c110115b91",
+    "panel/skeptic/round3_exact_rank.py": "c6586279d0943bdd5c128cf913e558d921af0017826d72c4265051b5754c4062",
+    "panel/skeptic/round3-exact-ranks.json": "a4a192f213f294042cf51f76f60d4397cd768e7f21b4020f8d0934d85128c542",
+    "panel/skeptic/round3-source.json": "0dfffdfd033570534432a720fefbc97b5ad484ba0afd9ec55d2c7ee183981162",
+    "panel/skeptic/round3.md": "b39b220e426481e45cfefe6dc31bdcaeda470ab2ff617e93d89d806929dbfdda"
+  },
+  "physicalMeasurements": 0
+}

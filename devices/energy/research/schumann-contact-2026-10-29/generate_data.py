@@ -1,0 +1,85 @@
+"""Compile reviewed summaries, selected source cards and typed relations for the site."""
+import json
+from pathlib import Path
+ROOT = Path(__file__).resolve().parent
+SITE = ROOT.parent.parent
+def read(p): return json.loads(p.read_text())
+rounds = read(ROOT / 'round-summary.json')
+assert len(rounds) == 6 and [r['number'] for r in rounds] == list(range(1, 7))
+for r in rounds:
+    assert (ROOT / 'rounds' / f"round{r['number']}-decision.md").exists()
+sources = {}
+for role in ['history', 'geophysics', 'channeling', 'skeptic']:
+    raw = read(ROOT / 'panel' / role / 'sources.json')
+    for s in raw if isinstance(raw, list) else raw['sources']:
+        sources[s['id']] = dict(s, ledger=f'panel/{role}/sources.json')
+titles = {'GEO-TACZA-2026':'Tacza et al. — Schumann response to HSS/CIR proxy onsets (2026)', 'GEO-KOLOSKOV-2026':'Koloskov et al. — source geometry and Schumann spectra (2026)', 'GEO-BGS-COILS':'British Geological Survey — calibrated induction-coil monitoring'}
+selected = ['H-CH1','H-CH11','H-GW-1983','CH01','CH02','CH04','CH05','CH10','CH11','GEO-TACZA-2026','GEO-KOLOSKOV-2026','GEO-BGS-COILS','SK-WANG-2019','SK-LACY-2026','SK-YUDA-2026','H-HOLO-2026','SK-WINKLER-2014','SK-YUAN-SHOU-2022']
+cards = []
+for sid in selected:
+    s=sources[sid]
+    cards.append({'id':sid,'title':s.get('title',titles.get(sid,sid)),'url':s['url'],'category':s.get('category',s.get('kind','primary source')),'readDepth':s['readDepth'],'finding':s.get('finding',s.get('status','Source assertion only; see detailed ledger.')),'limit':s.get('limit',s.get('limitation',''))})
+cards.append({'id':'OBS-OCT29','title':'Dated October23–29 NOAA/GFZ snapshot and observation coverage','url':'research/schumann-openai-2026-10-29/panel/observations/observation-summary.json','category':'preserved external-data summary','readDepth':'Prior study report, saved numerical summary and source-bound receipt; original raw provider files and download manifest remain linked in that study.','finding':'49 completed three-hour Kp bins endOctober29 03:00UTC. Providers remain separate. These are geomagnetic records, not a calibrated Schumann/contact series.','limit':'Reused dated snapshot; no new acquisition or current station calibration is claimed.'})
+uses = {
+ 'astrology-sim-ant':'Frozen astronomical timing/geometry and explicitly symbolic correspondence labels; no physical coupling imported.',
+ 'astrology-sim':'Historical comparison of calculator scope, not an independent validation dataset.',
+ 'gateway-files':'Correct documentary page mapping and distinguish proposed mechanisms from measurements.',
+ 'occult-corpus-research':'Philological provenance and historical source discovery, not physical evidence.',
+ 'hermetic-timeline':'Context for historical motifs, without identifying ancient literary figures as modern ET agents.',
+ 'resonance-research-atlas':'Prior controls, source/load accounting and ordinary information-leak alternatives.',
+ 'resonant-vessels':'Corrected historical archive; inherited simulations were not re-certified.',
+ 'newton-tesla-research-lab':'Existing same-port source-identity ambiguity; no new numerical reproduction of that older study.',
+ 'channels-ET':'Source-aware ET-attributed discourse corpus and research continuation; no contact ground truth.',
+ 'bashar-index':'Bashar source attribution and official-route ledger; no full transcript import.'}
+repos=[]
+for role in ['history','geophysics','channeling']:
+    raw=read(ROOT/'panel'/role/'repositories.json')
+    for r in raw if isinstance(raw,list) else raw['repositories']:
+        name=r.get('repository',r.get('repo')).split('/')[-1]
+        paths=[f['path'] for f in r.get('inspected',r.get('files',[]))]
+        repos.append({'name':name,'sha':r.get('commit',r.get('revision')),'readDepth':'Selected files: '+', '.join(paths)+'. Exact full/partial depth in the repository ledger.','use':uses[name]})
+repos += [
+ {'name':'open-sync','sha':'02425613cd057406d92c4f3ee33b5fc54a493601','readDepth':'README.md read at pinned revision; no engine, waveform, device or outcome revalidation.','use':'Preserve separate audio carrier, modulation and measured-channel concepts. No preset evidence grade transferred.'},
+ {'name':'brainwave_opensync','sha':'cea53921189656c1fe4a96a2c35af1e54613e916','readDepth':'Existing Energy Observatory architecture, source-bound October report, novelty gate and frozen numerical modules.','use':'Host this additive study while preserving older models, Yang–Mills comparison and reviewed receipts.'}]
+claims=[
+ {'title':'Are recent Schumann “anomalies” evidence of contact?','status':'Unresolved observation; origin unverified','finding':'The carried October23–29 station quick looks do not provide an admitted calibrated paired SR/contact series. The saved49complete Kp bins endOct29 03:00UTC and measure geomagnetic activity, not Schumann mode changes.','missing':'A calibrated, synchronized numeric baseline and predeclared anomaly metric; separate evidence for any claimed sender.','sources':['OBS-OCT29','GEO-TACZA-2026','GEO-BGS-COILS']},
+ {'title':'Do occult or channeling sources actually mention frequencies?','status':'Documented assertions','finding':'Gateway contains a proposed body/ionosphere mechanism. The official Bashar handout lists theta3–8Hz; an authorized transcript attributes40–100cycles/s gamma language. This corrects the older blanket “no Hz” attribution.','missing':'Document attribution does not supply measured transfer, dose, physiological response or verified communication.','sources':['H-GW-1983','CH01','CH02']},
+ {'title':'Does shared EEG/Schumann frequency prove coupling?','status':'Not established','finding':'The inspected2026 spectral paper explicitly lacks simultaneous magnetometer records. Wang2019 tested rotations of roughly35µT fields, a different stimulus from illustrative1pT oscillations.','missing':'Concurrent calibrated channels, artifacts and matched controls; a specified coupling mechanism.','sources':['SK-WANG-2019','SK-LACY-2026','SK-YUDA-2026']},
+ {'title':'Do similar messages identify a common ET source?','status':'Discourse correspondence','finding':'The2026 prospective study uses three channelers and28topic prompts. Semantic organization is an empirical text-analysis result, but origin remains unverified. Its companion qualitative paper shares the dataset.','missing':'Concealed unpredictable information, leakage audit, objective locked scoring, replication and additional source-discriminating evidence.','sources':['CH04','CH05','CH10']},
+ {'title':'Can astrology or Hermetic correspondences improve the test?','status':'Candidate timing controls or cultural interpretation','finding':'UTC, local solar time and astronomical geometry can be frozen nuisance variables. Symbolic classifications are interpretations unless they improve a predeclared held-out prediction against a matched calendar baseline.','missing':'Authenticated original event times, fixed features and external evaluation; relabeling one calendar is not independent evidence.','sources':['H-CH1','H-CH11','SK-YUAN-SHOU-2022']},
+ {'title':'Does a government archive validate the claimed mechanism?','status':'Provenance only','finding':'The1983 Gateway document is an assessment. The1995 AIR evaluation distinguishes disputed laboratory interpretation from operational reliability. Archival custody does not identify extraterrestrial agency.','missing':'Inspectable experiments that discriminate the proposed explanation from ordinary alternatives.','sources':['H-GW-1983','CH11']},
+ {'title':'Is the new holographic framework already demonstrated?','status':'Theoretical proposal','finding':'The inspected Cavaglià–Tuszynski paper proposes neural/Schumann connections and states no data were used. It can suggest a model contract, not certify an effect.','missing':'Dimensioned coupling parameters and independently measured predictions; full theory audit is outstanding.','sources':['H-HOLO-2026']}]
+nodes=[
+ ('hermetic','Hermetic texts','historical motif',0,0,'#source-H-CH1'),('gateway','Gateway assessment','documentary assertion',0,1,'#source-H-GW-1983'),('bashar','Bashar source claims','attributed assertion',0,2,'#source-CH01'),('astrology','Astrology Workbench','calendar / symbolism',0,3,'#repositories'),
+ ('sr','Schumann measurements','electromagnetic observable',1,0,'schumann.html'),('eeg','Geomagnetic EEG study','different stimulus',1,1,'#source-SK-WANG-2019'),('texts','ETI text studies','one shared dataset',1,2,'#source-CH04'),('calendar','Timing & selection','ordinary alternatives',1,3,'contact-methods.html#benchmarks'),
+ ('receiver','Ideal receiver','known-law calculation',2,0,'contact-methods.html#receiver'),('blind','Hidden-target score','synthetic protocol',2,1,'contact-methods.html#protocol'),('causal','Common-driver controls','model identifiability',2,2,'contact-methods.html#benchmarks'),('prior','Prior resonance work','source-identity ambiguity',2,3,'#repositories'),
+ ('coupling','SR → brain coupling','not established here',3,0,'#findings'),('information','External information','not measured here',3,1,'#findings'),('agency','ET sender identity','not identified',3,2,'#findings'),('packet','Paired calibrated data','still required',3,3,'contact-methods.html#protocol')]
+nodes=[dict(id=i,label=l,kind=k,column=c,row=r,href=h) for i,l,k,c,r,h in nodes]
+edges=[]
+def edge(a,b,t,reason,source): edges.append(dict(from_=a,to=b,type=t,reason=reason,source=source))
+edge('hermetic','texts','methodological-analogy','Revelatory narratives are a comparative cultural motif; similarity does not authenticate a modern external communicator.','#source-H-CH1')
+edge('gateway','coupling','documents','The report proposes a body/ionosphere interpretation; the selected passage is not a calibrated coupling experiment.','#source-H-GW-1983')
+edge('bashar','coupling','missing-bridge','The official handout supplies an attributed EEG-band/ionosphere assertion; it does not establish a Schumann-to-brain coupling.','#source-CH01')
+edge('sr','receiver','tests','Faraday arithmetic tests the stipulated uniform-field receiver model; no current station measurement is inferred.','contact-methods.html#receiver')
+edge('eeg','coupling','missing-bridge','Reported responses to geomagnetic-strength directional rotations cannot be transferred to picotesla Schumann oscillations without a new test.','#source-SK-WANG-2019')
+edge('sr','coupling','missing-bridge','Concurrent calibrated neural and geophysical records are absent from the inspected spectral correspondence study.','#source-SK-LACY-2026')
+edge('texts','information','missing-bridge','Sentence similarity measures discourse organization; it does not measure access to hidden unpredictable targets.','#source-CH04')
+edge('texts','bashar','methodological-analogy','Bashar corpus methods and the three-channeler study offer related attribution problems; they are not the same sample or independent source authentication.','#repositories')
+edge('astrology','calendar','methodological-analogy','Astronomical timing can define nuisance covariates; symbolic zodiac labels require separate held-out evaluation.','#repositories')
+edge('calendar','causal','tests','Exact shared-driver and direct-model predictions coincide until independent variation is assumed.','research/schumann-contact-2026-10-29/analysis/round4/report.md')
+edge('blind','information','tests','A fixed concealed-target endpoint can test a specified chance model, conditional on independent assignments and leakage controls.','research/schumann-contact-2026-10-29/analysis/round5/report.md')
+edge('information','agency','missing-bridge','Even above-chance information would not distinguish extraterrestrial agency from matched ordinary leakage or other alternatives.','research/schumann-contact-2026-10-29/analysis/round5/report.md')
+edge('prior','agency','missing-bridge','The prior same-port witness model leaves an ordinary source observationally equivalent to an exotic label.','#repositories')
+edge('receiver','packet','supports','A declared measurement channel supplies one acquisition requirement, not authentication of calibration or event times.','contact-methods.html#setup')
+edge('calendar','packet','supports','Locked timestamps, lag families and eligible non-events are necessary for the intended association analysis.','contact-methods.html#protocol')
+edge('packet','coupling','missing-bridge','A synchronized packet and controls are prerequisites; metadata readiness alone never establishes a biological mechanism.','research/schumann-contact-2026-10-29/protocol.md')
+edge('causal','agency','missing-bridge','Identifiability within a two-column linear model does not authenticate a communicator or an extraterrestrial cause.','research/schumann-contact-2026-10-29/analysis/round4/report.md')
+for e in edges: e['from']=e.pop('from_')
+data={'schema':'contact-review/1','date':'2026-10-29','status':'accepted-scoped','verdict':'Useful connections for testing; no demonstrated Schumann–ET contact link.','scope':'This review distinguishes documentary assertions, measured geophysics, reported experiences, synthetic checks and missing causal or source-identification evidence. No new fundamental theorem, confirmed contact effect or new physical observation is claimed.',
+ 'headlines':[{'label':'Sources','title':'A corrected attribution','body':'Official Bashar material does name frequency bands. That repairs a documentary overstatement; it does not validate those physiological or ionospheric assertions.'},{'label':'Methods','title':'A failed test design retained','body':'The first exact lag-adjusted toy could not reject at the chosen threshold. A separately versioned larger design resolves that specific resolution problem.'},{'label':'Interpretation','title':'Association does not identify agency','body':'Shared timing and ordinary leakage can reproduce observations attributed to a direct or exotic source. The missing discriminator is explicit in every claim card.'}],
+ 'claims':claims,'sources':cards,'repositories':repos,'network':{'nodes':nodes,'edges':edges},'rounds':rounds,
+ 'benchmarks':[r['benchmark'] for r in rounds if 'benchmark' in r],
+ 'protocolSteps':['Define the question and unit: field anomaly, physiological response, information accuracy, or sender identity. Do not substitute one endpoint for another.','Freeze the actual original event time in UTC, clock uncertainty, location, inclusion rules, every eligible session and all misses. Upload and repost dates are not substitutes.','Specify Bx/By or Ez units, sample rate, anti-aliasing, calibrated complex response, noise, station QC, checksum-bound data and matched baseline. A colored screenshot is not a calibrated numeric series.','For hidden information, separate target custodian, participant, scorer and analyst. Lock responses before reveal, retain all trials and audit independent target generation and concealment.','Do not expose a small target through an unsalted hash. Independently audit unpredictable secret nonces, commitment custody and disclosure chronology; a nonceBits declaration does not prove entropy or secrecy.','Predeclare the estimator, lag family, null transformations, nuisance/calendar variables, stopping rule, uncertainty and held-out replication. Check resolution and power before acquisition.','Keep information accuracy and environmental association as separate hypotheses. Audit shared drivers, leakage, missingness and ordinary receiver artifacts before interpreting either.','Treat a schema pass as metadata readiness only. Verify referenced raw bytes and independent audit records; never auto-promote a ready packet into coupling, contact or ET evidence.'],
+ 'roadmap':[{'priority':'P0','task':'Acquire one bounded calibrated environmental packet and its response/noise/QC records.','gate':'Document license, original time base and a matched numeric baseline; otherwise keep recent anomaly unresolved.'},{'priority':'P0','task':'Specify a concealed-target protocol with independent custody and a defensible leakage bound.','gate':'Prospective consent/ethics and actual custody procedures before human data collection; no sessions executed here.'},{'priority':'P1','task':'Evaluate fixed calendar/astronomy covariates against a time-only baseline.','gate':'Authenticated original sessions and untouched held-out data; no post-hoc zodiac/lag search.'},{'priority':'P1','task':'Reproduce the closest2026 SR/EEG or text-analysis result if its data and methods become auditable.','gate':'Label replication; preserve same-dataset dependence and report exact data/control limits.'},{'priority':'P2','task':'Admit a new coupling or novel theorem question only after the prior-art gate.','gate':'Exact residual gap, dimensioned model, matched baseline and falsifier. Another automatic debate cycle is not evidence.'}]}
+(SITE/'data/contact-review.json').write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n')
+print(json.dumps({'rounds':len(rounds),'repositories':len(repos),'selectedSources':len(cards),'nodes':len(nodes),'edges':len(edges)}))

@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "checks": 5,
+  "actual": {
+    "targets": [
+      "copper",
+      "silver",
+      "gold",
+      "iron"
+    ],
+    "publishedDigest": "24d7f03d8dc3c3666969e6fa5bb1fac4736d3f1353c28307ed51b320f9dc42d3",
+    "dictionary": [
+      {
+        "target": "copper",
+        "sha256": "d16f06fe255d801e0639b8d749b815ea9e788af7b9ceba2b773c1dbc8f080442"
+      },
+      {
+        "target": "silver",
+        "sha256": "78cde64c3e47f2cbfd9da721f54aacde33779916683c79de86962898feefac21"
+      },
+      {
+        "target": "gold",
+        "sha256": "24d7f03d8dc3c3666969e6fa5bb1fac4736d3f1353c28307ed51b320f9dc42d3"
+      },
+      {
+        "target": "iron",
+        "sha256": "04e9c0db87e7eebbf8123dae64d169c85540d588a38b4f9f3fbc255c7c6c65a9"
+      }
+    ],
+    "matches": [
+      "gold"
+    ],
+    "evaluatedCandidates": 4,
+    "encoding": "literal UTF-8 without newline",
+    "scope": "Four-element unsalted dictionary disclosure demonstration only; no real targets, secret nonces or salted-security proof"
+  },
+  "scope": "four literal unsalted candidates only; not salted commitment security"
+}

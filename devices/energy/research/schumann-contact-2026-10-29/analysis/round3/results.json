@@ -1,0 +1,1779 @@
+{
+  "schema": "contact-round3-results/1",
+  "status": "PASS",
+  "scope": "exact enumeration of stipulated synthetic phase null; no measured contact or Schumann data",
+  "assertions": 407,
+  "inputSha256": "7d313045160eb8e5c9b0b745c360eaf396dc6c80c5fbaefb54f7df48acd8b1fa",
+  "selection": "Two manually specified integer shapes, no search or tuning of outcomes",
+  "outputs": [
+    {
+      "id": "identical-shape-random-offset",
+      "result": {
+        "groupSize": 32,
+        "lags": [
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3
+        ],
+        "lagResidues": [
+          29,
+          30,
+          31,
+          0,
+          1,
+          2,
+          3
+        ],
+        "alpha": 0.05,
+        "tieTolerance": 1e-12,
+        "null": "Conditional on both fixed shapes, relative offset is uniform over all 32 cyclic offsets; identity included",
+        "pValue": "Exact full-group conservative upper-tail count / 32; no Monte Carlo plus-one adjustment",
+        "statisticConvention": "abs correlation of x[i] and y[(i+offset+lag) mod 32]; indices are synthetic phase, not timestamps",
+        "offsets": [
+          {
+            "offset": 0,
+            "fixedScore": 1,
+            "maximumScore": 1,
+            "fixedCount": 1,
+            "maximumCount": 7,
+            "fixedP": 0.03125,
+            "maximumP": 0.21875,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 1,
+            "fixedScore": 0.8165711307972906,
+            "maximumScore": 1,
+            "fixedCount": 4,
+            "maximumCount": 7,
+            "fixedP": 0.125,
+            "maximumP": 0.21875,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 2,
+            "fixedScore": 0.4163626889004691,
+            "maximumScore": 1,
+            "fixedCount": 22,
+            "maximumCount": 7,
+            "fixedP": 0.6875,
+            "maximumP": 0.21875,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 3,
+            "fixedScore": 0.08806670140698283,
+            "maximumScore": 1,
+            "fixedCount": 28,
+            "maximumCount": 7,
+            "fixedP": 0.875,
+            "maximumP": 0.21875,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 4,
+            "fixedScore": 0.521625846795206,
+            "maximumScore": 0.8165711307972906,
+            "fixedCount": 16,
+            "maximumCount": 16,
+            "fixedP": 0.5,
+            "maximumP": 0.5,
+            "invalidSelectedMinimumCount": 4,
+            "invalidSelectedMinimumP": 0.125
+          },
+          {
+            "offset": 5,
+            "fixedScore": 0.7842626367899952,
+            "maximumScore": 0.7842626367899952,
+            "fixedCount": 6,
+            "maximumCount": 24,
+            "fixedP": 0.1875,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 6,
+            "fixedScore": 0.746743095362168,
+            "maximumScore": 0.7842626367899952,
+            "fixedCount": 8,
+            "maximumCount": 24,
+            "fixedP": 0.25,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 7,
+            "fixedScore": 0.4507556018759772,
+            "maximumScore": 0.7842626367899952,
+            "fixedCount": 20,
+            "maximumCount": 24,
+            "fixedP": 0.625,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 8,
+            "fixedScore": 0.013027618551328822,
+            "maximumScore": 0.7842626367899952,
+            "fixedCount": 32,
+            "maximumCount": 24,
+            "fixedP": 1,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 9,
+            "fixedScore": 0.4121938509640439,
+            "maximumScore": 0.746743095362168,
+            "fixedCount": 24,
+            "maximumCount": 26,
+            "fixedP": 0.75,
+            "maximumP": 0.8125,
+            "invalidSelectedMinimumCount": 8,
+            "invalidSelectedMinimumP": 0.25
+          },
+          {
+            "offset": 10,
+            "fixedScore": 0.6956748306409589,
+            "maximumScore": 0.733194372068786,
+            "fixedCount": 14,
+            "maximumCount": 32,
+            "fixedP": 0.4375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 10,
+            "invalidSelectedMinimumP": 0.3125
+          },
+          {
+            "offset": 11,
+            "fixedScore": 0.733194372068786,
+            "maximumScore": 0.733194372068786,
+            "fixedCount": 10,
+            "maximumCount": 32,
+            "fixedP": 0.3125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 10,
+            "invalidSelectedMinimumP": 0.3125
+          },
+          {
+            "offset": 12,
+            "fixedScore": 0.48723293381969784,
+            "maximumScore": 0.733194372068786,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 10,
+            "invalidSelectedMinimumP": 0.3125
+          },
+          {
+            "offset": 13,
+            "fixedScore": 0.08702449192287652,
+            "maximumScore": 0.8843147472642002,
+            "fixedCount": 30,
+            "maximumCount": 14,
+            "fixedP": 0.9375,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 14,
+            "fixedScore": 0.371547681083898,
+            "maximumScore": 0.8843147472642002,
+            "fixedCount": 26,
+            "maximumCount": 14,
+            "fixedP": 0.8125,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 15,
+            "fixedScore": 0.7300677436164672,
+            "maximumScore": 0.8843147472642002,
+            "fixedCount": 12,
+            "maximumCount": 14,
+            "fixedP": 0.375,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 16,
+            "fixedScore": 0.8843147472642002,
+            "maximumScore": 0.8843147472642002,
+            "fixedCount": 2,
+            "maximumCount": 14,
+            "fixedP": 0.0625,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 17,
+            "fixedScore": 0.7300677436164672,
+            "maximumScore": 0.8843147472642002,
+            "fixedCount": 12,
+            "maximumCount": 14,
+            "fixedP": 0.375,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 18,
+            "fixedScore": 0.3715476810838981,
+            "maximumScore": 0.8843147472642002,
+            "fixedCount": 26,
+            "maximumCount": 14,
+            "fixedP": 0.8125,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 19,
+            "fixedScore": 0.0870244919228765,
+            "maximumScore": 0.8843147472642002,
+            "fixedCount": 30,
+            "maximumCount": 14,
+            "fixedP": 0.9375,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 20,
+            "fixedScore": 0.48723293381969784,
+            "maximumScore": 0.7331943720687862,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 10,
+            "invalidSelectedMinimumP": 0.3125
+          },
+          {
+            "offset": 21,
+            "fixedScore": 0.7331943720687862,
+            "maximumScore": 0.7331943720687862,
+            "fixedCount": 10,
+            "maximumCount": 32,
+            "fixedP": 0.3125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 10,
+            "invalidSelectedMinimumP": 0.3125
+          },
+          {
+            "offset": 22,
+            "fixedScore": 0.6956748306409588,
+            "maximumScore": 0.7331943720687862,
+            "fixedCount": 14,
+            "maximumCount": 32,
+            "fixedP": 0.4375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 10,
+            "invalidSelectedMinimumP": 0.3125
+          },
+          {
+            "offset": 23,
+            "fixedScore": 0.4121938509640437,
+            "maximumScore": 0.7467430953621681,
+            "fixedCount": 24,
+            "maximumCount": 26,
+            "fixedP": 0.75,
+            "maximumP": 0.8125,
+            "invalidSelectedMinimumCount": 8,
+            "invalidSelectedMinimumP": 0.25
+          },
+          {
+            "offset": 24,
+            "fixedScore": 0.013027618551328833,
+            "maximumScore": 0.784262636789995,
+            "fixedCount": 32,
+            "maximumCount": 24,
+            "fixedP": 1,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 25,
+            "fixedScore": 0.4507556018759772,
+            "maximumScore": 0.784262636789995,
+            "fixedCount": 20,
+            "maximumCount": 24,
+            "fixedP": 0.625,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 26,
+            "fixedScore": 0.7467430953621681,
+            "maximumScore": 0.784262636789995,
+            "fixedCount": 8,
+            "maximumCount": 24,
+            "fixedP": 0.25,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 27,
+            "fixedScore": 0.784262636789995,
+            "maximumScore": 0.784262636789995,
+            "fixedCount": 6,
+            "maximumCount": 24,
+            "fixedP": 0.1875,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 28,
+            "fixedScore": 0.521625846795206,
+            "maximumScore": 0.8165711307972906,
+            "fixedCount": 16,
+            "maximumCount": 16,
+            "fixedP": 0.5,
+            "maximumP": 0.5,
+            "invalidSelectedMinimumCount": 4,
+            "invalidSelectedMinimumP": 0.125
+          },
+          {
+            "offset": 29,
+            "fixedScore": 0.08806670140698283,
+            "maximumScore": 1,
+            "fixedCount": 28,
+            "maximumCount": 7,
+            "fixedP": 0.875,
+            "maximumP": 0.21875,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 30,
+            "fixedScore": 0.41636268890046907,
+            "maximumScore": 1,
+            "fixedCount": 22,
+            "maximumCount": 7,
+            "fixedP": 0.6875,
+            "maximumP": 0.21875,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 31,
+            "fixedScore": 0.8165711307972906,
+            "maximumScore": 1,
+            "fixedCount": 4,
+            "maximumCount": 7,
+            "fixedP": 0.125,
+            "maximumP": 0.21875,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          }
+        ],
+        "rejections": {
+          "fixed": {
+            "count": 1,
+            "total": 32,
+            "fraction": 0.03125
+          },
+          "lockedMaximum": {
+            "count": 0,
+            "total": 32,
+            "fraction": 0
+          },
+          "invalidSelectedMinimum": {
+            "count": 7,
+            "total": 32,
+            "fraction": 0.21875
+          }
+        },
+        "globalNullLevelBound": 0.03125,
+        "interpretation": "Global uniform-offset null only, not strong FWER over partial nulls, an empirical time-series null or ET attribution"
+      },
+      "allLags": {
+        "groupSize": 32,
+        "lags": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "lagResidues": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "alpha": 0.05,
+        "tieTolerance": 1e-12,
+        "null": "Conditional on both fixed shapes, relative offset is uniform over all 32 cyclic offsets; identity included",
+        "pValue": "Exact full-group conservative upper-tail count / 32; no Monte Carlo plus-one adjustment",
+        "statisticConvention": "abs correlation of x[i] and y[(i+offset+lag) mod 32]; indices are synthetic phase, not timestamps",
+        "offsets": [
+          {
+            "offset": 0,
+            "fixedScore": 1,
+            "maximumScore": 1,
+            "fixedCount": 1,
+            "maximumCount": 32,
+            "fixedP": 0.03125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 1,
+            "fixedScore": 0.8165711307972906,
+            "maximumScore": 1,
+            "fixedCount": 4,
+            "maximumCount": 32,
+            "fixedP": 0.125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 2,
+            "fixedScore": 0.4163626889004691,
+            "maximumScore": 1,
+            "fixedCount": 22,
+            "maximumCount": 32,
+            "fixedP": 0.6875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 3,
+            "fixedScore": 0.08806670140698283,
+            "maximumScore": 1,
+            "fixedCount": 28,
+            "maximumCount": 32,
+            "fixedP": 0.875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 4,
+            "fixedScore": 0.521625846795206,
+            "maximumScore": 1,
+            "fixedCount": 16,
+            "maximumCount": 32,
+            "fixedP": 0.5,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 5,
+            "fixedScore": 0.7842626367899952,
+            "maximumScore": 1,
+            "fixedCount": 6,
+            "maximumCount": 32,
+            "fixedP": 0.1875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 6,
+            "fixedScore": 0.746743095362168,
+            "maximumScore": 1,
+            "fixedCount": 8,
+            "maximumCount": 32,
+            "fixedP": 0.25,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 7,
+            "fixedScore": 0.4507556018759772,
+            "maximumScore": 1,
+            "fixedCount": 20,
+            "maximumCount": 32,
+            "fixedP": 0.625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 8,
+            "fixedScore": 0.013027618551328822,
+            "maximumScore": 1,
+            "fixedCount": 32,
+            "maximumCount": 32,
+            "fixedP": 1,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 9,
+            "fixedScore": 0.4121938509640439,
+            "maximumScore": 1,
+            "fixedCount": 24,
+            "maximumCount": 32,
+            "fixedP": 0.75,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 10,
+            "fixedScore": 0.6956748306409589,
+            "maximumScore": 1,
+            "fixedCount": 14,
+            "maximumCount": 32,
+            "fixedP": 0.4375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 11,
+            "fixedScore": 0.733194372068786,
+            "maximumScore": 1,
+            "fixedCount": 10,
+            "maximumCount": 32,
+            "fixedP": 0.3125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 12,
+            "fixedScore": 0.48723293381969784,
+            "maximumScore": 1,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 13,
+            "fixedScore": 0.08702449192287652,
+            "maximumScore": 1,
+            "fixedCount": 30,
+            "maximumCount": 32,
+            "fixedP": 0.9375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 14,
+            "fixedScore": 0.371547681083898,
+            "maximumScore": 1,
+            "fixedCount": 26,
+            "maximumCount": 32,
+            "fixedP": 0.8125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 15,
+            "fixedScore": 0.7300677436164672,
+            "maximumScore": 1,
+            "fixedCount": 12,
+            "maximumCount": 32,
+            "fixedP": 0.375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 16,
+            "fixedScore": 0.8843147472642002,
+            "maximumScore": 1,
+            "fixedCount": 2,
+            "maximumCount": 32,
+            "fixedP": 0.0625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 17,
+            "fixedScore": 0.7300677436164672,
+            "maximumScore": 1,
+            "fixedCount": 12,
+            "maximumCount": 32,
+            "fixedP": 0.375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 18,
+            "fixedScore": 0.3715476810838981,
+            "maximumScore": 1,
+            "fixedCount": 26,
+            "maximumCount": 32,
+            "fixedP": 0.8125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 19,
+            "fixedScore": 0.0870244919228765,
+            "maximumScore": 1,
+            "fixedCount": 30,
+            "maximumCount": 32,
+            "fixedP": 0.9375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 20,
+            "fixedScore": 0.48723293381969784,
+            "maximumScore": 1,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 21,
+            "fixedScore": 0.7331943720687862,
+            "maximumScore": 1,
+            "fixedCount": 10,
+            "maximumCount": 32,
+            "fixedP": 0.3125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 22,
+            "fixedScore": 0.6956748306409588,
+            "maximumScore": 1,
+            "fixedCount": 14,
+            "maximumCount": 32,
+            "fixedP": 0.4375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 23,
+            "fixedScore": 0.4121938509640437,
+            "maximumScore": 1,
+            "fixedCount": 24,
+            "maximumCount": 32,
+            "fixedP": 0.75,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 24,
+            "fixedScore": 0.013027618551328833,
+            "maximumScore": 1,
+            "fixedCount": 32,
+            "maximumCount": 32,
+            "fixedP": 1,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 25,
+            "fixedScore": 0.4507556018759772,
+            "maximumScore": 1,
+            "fixedCount": 20,
+            "maximumCount": 32,
+            "fixedP": 0.625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 26,
+            "fixedScore": 0.7467430953621681,
+            "maximumScore": 1,
+            "fixedCount": 8,
+            "maximumCount": 32,
+            "fixedP": 0.25,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 27,
+            "fixedScore": 0.784262636789995,
+            "maximumScore": 1,
+            "fixedCount": 6,
+            "maximumCount": 32,
+            "fixedP": 0.1875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 28,
+            "fixedScore": 0.521625846795206,
+            "maximumScore": 1,
+            "fixedCount": 16,
+            "maximumCount": 32,
+            "fixedP": 0.5,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 29,
+            "fixedScore": 0.08806670140698283,
+            "maximumScore": 1,
+            "fixedCount": 28,
+            "maximumCount": 32,
+            "fixedP": 0.875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 30,
+            "fixedScore": 0.41636268890046907,
+            "maximumScore": 1,
+            "fixedCount": 22,
+            "maximumCount": 32,
+            "fixedP": 0.6875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          },
+          {
+            "offset": 31,
+            "fixedScore": 0.8165711307972906,
+            "maximumScore": 1,
+            "fixedCount": 4,
+            "maximumCount": 32,
+            "fixedP": 0.125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 1,
+            "invalidSelectedMinimumP": 0.03125
+          }
+        ],
+        "rejections": {
+          "fixed": {
+            "count": 1,
+            "total": 32,
+            "fraction": 0.03125
+          },
+          "lockedMaximum": {
+            "count": 0,
+            "total": 32,
+            "fraction": 0
+          },
+          "invalidSelectedMinimum": {
+            "count": 32,
+            "total": 32,
+            "fraction": 1
+          }
+        },
+        "globalNullLevelBound": 0.03125,
+        "interpretation": "Global uniform-offset null only, not strong FWER over partial nulls, an empirical time-series null or ET attribution"
+      }
+    },
+    {
+      "id": "distinct-shape-random-offset",
+      "result": {
+        "groupSize": 32,
+        "lags": [
+          -3,
+          -2,
+          -1,
+          0,
+          1,
+          2,
+          3
+        ],
+        "lagResidues": [
+          29,
+          30,
+          31,
+          0,
+          1,
+          2,
+          3
+        ],
+        "alpha": 0.05,
+        "tieTolerance": 1e-12,
+        "null": "Conditional on both fixed shapes, relative offset is uniform over all 32 cyclic offsets; identity included",
+        "pValue": "Exact full-group conservative upper-tail count / 32; no Monte Carlo plus-one adjustment",
+        "statisticConvention": "abs correlation of x[i] and y[(i+offset+lag) mod 32]; indices are synthetic phase, not timestamps",
+        "offsets": [
+          {
+            "offset": 0,
+            "fixedScore": 0.17393961937665983,
+            "maximumScore": 0.17393961937665983,
+            "fixedCount": 2,
+            "maximumCount": 14,
+            "fixedP": 0.0625,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 1,
+            "fixedScore": 0.1544095568501577,
+            "maximumScore": 0.17393961937665983,
+            "fixedCount": 6,
+            "maximumCount": 14,
+            "fixedP": 0.1875,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 2,
+            "fixedScore": 0.06652427548089802,
+            "maximumScore": 0.17393961937665983,
+            "fixedCount": 22,
+            "maximumCount": 14,
+            "fixedP": 0.6875,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 3,
+            "fixedScore": 0.08971622473111932,
+            "maximumScore": 0.17393961937665983,
+            "fixedCount": 19,
+            "maximumCount": 14,
+            "fixedP": 0.59375,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 4,
+            "fixedScore": 0.14830641231062577,
+            "maximumScore": 0.1544095568501577,
+            "fixedCount": 8,
+            "maximumCount": 24,
+            "fixedP": 0.25,
+            "maximumP": 0.75,
+            "invalidSelectedMinimumCount": 6,
+            "invalidSelectedMinimumP": 0.1875
+          },
+          {
+            "offset": 5,
+            "fixedScore": 0.1483064123106258,
+            "maximumScore": 0.1483064123106258,
+            "fixedCount": 8,
+            "maximumCount": 25,
+            "fixedP": 0.25,
+            "maximumP": 0.78125,
+            "invalidSelectedMinimumCount": 8,
+            "invalidSelectedMinimumP": 0.25
+          },
+          {
+            "offset": 6,
+            "fixedScore": 0.031126037151612787,
+            "maximumScore": 0.15929207248178326,
+            "fixedCount": 30,
+            "maximumCount": 23,
+            "fixedP": 0.9375,
+            "maximumP": 0.71875,
+            "invalidSelectedMinimumCount": 5,
+            "invalidSelectedMinimumP": 0.15625
+          },
+          {
+            "offset": 7,
+            "fixedScore": 0.05187672858602137,
+            "maximumScore": 0.16417458811340876,
+            "fixedCount": 25,
+            "maximumCount": 21,
+            "fixedP": 0.78125,
+            "maximumP": 0.65625,
+            "invalidSelectedMinimumCount": 3,
+            "invalidSelectedMinimumP": 0.09375
+          },
+          {
+            "offset": 8,
+            "fixedScore": 0.12999697869203006,
+            "maximumScore": 0.16417458811340876,
+            "fixedCount": 10,
+            "maximumCount": 21,
+            "fixedP": 0.3125,
+            "maximumP": 0.65625,
+            "invalidSelectedMinimumCount": 3,
+            "invalidSelectedMinimumP": 0.09375
+          },
+          {
+            "offset": 9,
+            "fixedScore": 0.15929207248178326,
+            "maximumScore": 0.16417458811340876,
+            "fixedCount": 5,
+            "maximumCount": 21,
+            "fixedP": 0.15625,
+            "maximumP": 0.65625,
+            "invalidSelectedMinimumCount": 3,
+            "invalidSelectedMinimumP": 0.09375
+          },
+          {
+            "offset": 10,
+            "fixedScore": 0.16417458811340876,
+            "maximumScore": 0.16417458811340876,
+            "fixedCount": 3,
+            "maximumCount": 21,
+            "fixedP": 0.09375,
+            "maximumP": 0.65625,
+            "invalidSelectedMinimumCount": 3,
+            "invalidSelectedMinimumP": 0.09375
+          },
+          {
+            "offset": 11,
+            "fixedScore": 0.06164175984927241,
+            "maximumScore": 0.16417458811340876,
+            "fixedCount": 23,
+            "maximumCount": 21,
+            "fixedP": 0.71875,
+            "maximumP": 0.65625,
+            "invalidSelectedMinimumCount": 3,
+            "invalidSelectedMinimumP": 0.09375
+          },
+          {
+            "offset": 12,
+            "fixedScore": 0.026243521519987337,
+            "maximumScore": 0.16417458811340876,
+            "fixedCount": 31,
+            "maximumCount": 21,
+            "fixedP": 0.96875,
+            "maximumP": 0.65625,
+            "invalidSelectedMinimumCount": 3,
+            "invalidSelectedMinimumP": 0.09375
+          },
+          {
+            "offset": 13,
+            "fixedScore": 0.08483370909949377,
+            "maximumScore": 0.16417458811340876,
+            "fixedCount": 20,
+            "maximumCount": 21,
+            "fixedP": 0.625,
+            "maximumP": 0.65625,
+            "invalidSelectedMinimumCount": 3,
+            "invalidSelectedMinimumP": 0.09375
+          },
+          {
+            "offset": 14,
+            "fixedScore": 0.09459874036274485,
+            "maximumScore": 0.1385413810473747,
+            "fixedCount": 18,
+            "maximumCount": 28,
+            "fixedP": 0.5625,
+            "maximumP": 0.875,
+            "invalidSelectedMinimumCount": 9,
+            "invalidSelectedMinimumP": 0.28125
+          },
+          {
+            "offset": 15,
+            "fixedScore": 0.10436377162599594,
+            "maximumScore": 0.1385413810473747,
+            "fixedCount": 14,
+            "maximumCount": 28,
+            "fixedP": 0.4375,
+            "maximumP": 0.875,
+            "invalidSelectedMinimumCount": 9,
+            "invalidSelectedMinimumP": 0.28125
+          },
+          {
+            "offset": 16,
+            "fixedScore": 0.1385413810473747,
+            "maximumScore": 0.1385413810473747,
+            "fixedCount": 9,
+            "maximumCount": 28,
+            "fixedP": 0.28125,
+            "maximumP": 0.875,
+            "invalidSelectedMinimumCount": 9,
+            "invalidSelectedMinimumP": 0.28125
+          },
+          {
+            "offset": 17,
+            "fixedScore": 0.09948125599437038,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 15,
+            "maximumCount": 14,
+            "fixedP": 0.46875,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 18,
+            "fixedScore": 0.0018309433618596098,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 32,
+            "maximumCount": 14,
+            "fixedP": 1,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 19,
+            "fixedScore": 0.12511446306040447,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 11,
+            "maximumCount": 14,
+            "fixedP": 0.34375,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 20,
+            "fixedScore": 0.17393961937665997,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 2,
+            "maximumCount": 14,
+            "fixedP": 0.0625,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 21,
+            "fixedScore": 0.15929207248178326,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 5,
+            "maximumCount": 14,
+            "fixedP": 0.15625,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 22,
+            "fixedScore": 0.05675924421764691,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 24,
+            "maximumCount": 14,
+            "fixedP": 0.75,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 23,
+            "fixedScore": 0.0323466660595192,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 28,
+            "maximumCount": 14,
+            "fixedP": 0.875,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 24,
+            "fixedScore": 0.03112603715161285,
+            "maximumScore": 0.15929207248178326,
+            "fixedCount": 30,
+            "maximumCount": 23,
+            "fixedP": 0.9375,
+            "maximumP": 0.71875,
+            "invalidSelectedMinimumCount": 5,
+            "invalidSelectedMinimumP": 0.15625
+          },
+          {
+            "offset": 25,
+            "fixedScore": 0.05065609967811502,
+            "maximumScore": 0.1238938341524981,
+            "fixedCount": 26,
+            "maximumCount": 32,
+            "fixedP": 0.8125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 12,
+            "invalidSelectedMinimumP": 0.375
+          },
+          {
+            "offset": 26,
+            "fixedScore": 0.1238938341524981,
+            "maximumScore": 0.1238938341524981,
+            "fixedCount": 12,
+            "maximumCount": 32,
+            "fixedP": 0.375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 12,
+            "invalidSelectedMinimumP": 0.375
+          },
+          {
+            "offset": 27,
+            "fixedScore": 0.0945987403627448,
+            "maximumScore": 0.1238938341524981,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 12,
+            "invalidSelectedMinimumP": 0.375
+          },
+          {
+            "offset": 28,
+            "fixedScore": 0.09459874036274481,
+            "maximumScore": 0.1238938341524981,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 12,
+            "invalidSelectedMinimumP": 0.375
+          },
+          {
+            "offset": 29,
+            "fixedScore": 0.1190113185208725,
+            "maximumScore": 0.17393961937665983,
+            "fixedCount": 13,
+            "maximumCount": 14,
+            "fixedP": 0.40625,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 30,
+            "fixedScore": 0.07506867783624269,
+            "maximumScore": 0.17393961937665983,
+            "fixedCount": 21,
+            "maximumCount": 14,
+            "fixedP": 0.65625,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 31,
+            "fixedScore": 0.046994212954395834,
+            "maximumScore": 0.17393961937665983,
+            "fixedCount": 27,
+            "maximumCount": 14,
+            "fixedP": 0.84375,
+            "maximumP": 0.4375,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          }
+        ],
+        "rejections": {
+          "fixed": {
+            "count": 0,
+            "total": 32,
+            "fraction": 0
+          },
+          "lockedMaximum": {
+            "count": 0,
+            "total": 32,
+            "fraction": 0
+          },
+          "invalidSelectedMinimum": {
+            "count": 0,
+            "total": 32,
+            "fraction": 0
+          }
+        },
+        "globalNullLevelBound": 0.03125,
+        "interpretation": "Global uniform-offset null only, not strong FWER over partial nulls, an empirical time-series null or ET attribution"
+      },
+      "allLags": {
+        "groupSize": 32,
+        "lags": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "lagResidues": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "alpha": 0.05,
+        "tieTolerance": 1e-12,
+        "null": "Conditional on both fixed shapes, relative offset is uniform over all 32 cyclic offsets; identity included",
+        "pValue": "Exact full-group conservative upper-tail count / 32; no Monte Carlo plus-one adjustment",
+        "statisticConvention": "abs correlation of x[i] and y[(i+offset+lag) mod 32]; indices are synthetic phase, not timestamps",
+        "offsets": [
+          {
+            "offset": 0,
+            "fixedScore": 0.17393961937665983,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 2,
+            "maximumCount": 32,
+            "fixedP": 0.0625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 1,
+            "fixedScore": 0.1544095568501577,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 6,
+            "maximumCount": 32,
+            "fixedP": 0.1875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 2,
+            "fixedScore": 0.06652427548089802,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 22,
+            "maximumCount": 32,
+            "fixedP": 0.6875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 3,
+            "fixedScore": 0.08971622473111932,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 19,
+            "maximumCount": 32,
+            "fixedP": 0.59375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 4,
+            "fixedScore": 0.14830641231062577,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 8,
+            "maximumCount": 32,
+            "fixedP": 0.25,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 5,
+            "fixedScore": 0.1483064123106258,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 8,
+            "maximumCount": 32,
+            "fixedP": 0.25,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 6,
+            "fixedScore": 0.031126037151612787,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 30,
+            "maximumCount": 32,
+            "fixedP": 0.9375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 7,
+            "fixedScore": 0.05187672858602137,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 25,
+            "maximumCount": 32,
+            "fixedP": 0.78125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 8,
+            "fixedScore": 0.12999697869203006,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 10,
+            "maximumCount": 32,
+            "fixedP": 0.3125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 9,
+            "fixedScore": 0.15929207248178326,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 5,
+            "maximumCount": 32,
+            "fixedP": 0.15625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 10,
+            "fixedScore": 0.16417458811340876,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 3,
+            "maximumCount": 32,
+            "fixedP": 0.09375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 11,
+            "fixedScore": 0.06164175984927241,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 23,
+            "maximumCount": 32,
+            "fixedP": 0.71875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 12,
+            "fixedScore": 0.026243521519987337,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 31,
+            "maximumCount": 32,
+            "fixedP": 0.96875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 13,
+            "fixedScore": 0.08483370909949377,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 20,
+            "maximumCount": 32,
+            "fixedP": 0.625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 14,
+            "fixedScore": 0.09459874036274485,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 15,
+            "fixedScore": 0.10436377162599594,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 14,
+            "maximumCount": 32,
+            "fixedP": 0.4375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 16,
+            "fixedScore": 0.1385413810473747,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 9,
+            "maximumCount": 32,
+            "fixedP": 0.28125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 17,
+            "fixedScore": 0.09948125599437038,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 15,
+            "maximumCount": 32,
+            "fixedP": 0.46875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 18,
+            "fixedScore": 0.0018309433618596098,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 32,
+            "maximumCount": 32,
+            "fixedP": 1,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 19,
+            "fixedScore": 0.12511446306040447,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 11,
+            "maximumCount": 32,
+            "fixedP": 0.34375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 20,
+            "fixedScore": 0.17393961937665997,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 2,
+            "maximumCount": 32,
+            "fixedP": 0.0625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 21,
+            "fixedScore": 0.15929207248178326,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 5,
+            "maximumCount": 32,
+            "fixedP": 0.15625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 22,
+            "fixedScore": 0.05675924421764691,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 24,
+            "maximumCount": 32,
+            "fixedP": 0.75,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 23,
+            "fixedScore": 0.0323466660595192,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 28,
+            "maximumCount": 32,
+            "fixedP": 0.875,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 24,
+            "fixedScore": 0.03112603715161285,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 30,
+            "maximumCount": 32,
+            "fixedP": 0.9375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 25,
+            "fixedScore": 0.05065609967811502,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 26,
+            "maximumCount": 32,
+            "fixedP": 0.8125,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 26,
+            "fixedScore": 0.1238938341524981,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 12,
+            "maximumCount": 32,
+            "fixedP": 0.375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 27,
+            "fixedScore": 0.0945987403627448,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 28,
+            "fixedScore": 0.09459874036274481,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 18,
+            "maximumCount": 32,
+            "fixedP": 0.5625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 29,
+            "fixedScore": 0.1190113185208725,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 13,
+            "maximumCount": 32,
+            "fixedP": 0.40625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 30,
+            "fixedScore": 0.07506867783624269,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 21,
+            "maximumCount": 32,
+            "fixedP": 0.65625,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          },
+          {
+            "offset": 31,
+            "fixedScore": 0.046994212954395834,
+            "maximumScore": 0.17393961937665997,
+            "fixedCount": 27,
+            "maximumCount": 32,
+            "fixedP": 0.84375,
+            "maximumP": 1,
+            "invalidSelectedMinimumCount": 2,
+            "invalidSelectedMinimumP": 0.0625
+          }
+        ],
+        "rejections": {
+          "fixed": {
+            "count": 0,
+            "total": 32,
+            "fraction": 0
+          },
+          "lockedMaximum": {
+            "count": 0,
+            "total": 32,
+            "fraction": 0
+          },
+          "invalidSelectedMinimum": {
+            "count": 0,
+            "total": 32,
+            "fraction": 0
+          }
+        },
+        "globalNullLevelBound": 0.03125,
+        "interpretation": "Global uniform-offset null only, not strong FWER over partial nulls, an empirical time-series null or ET attribution"
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "name": "constant-x",
+      "rejected": true
+    },
+    {
+      "name": "constant-y",
+      "rejected": true
+    },
+    {
+      "name": "short-x",
+      "rejected": true
+    },
+    {
+      "name": "unequal-y",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite-x",
+      "rejected": true
+    },
+    {
+      "name": "nan-y",
+      "rejected": true
+    },
+    {
+      "name": "string-x",
+      "rejected": true
+    },
+    {
+      "name": "null-x",
+      "rejected": true
+    },
+    {
+      "name": "empty-lags",
+      "rejected": true
+    },
+    {
+      "name": "fractional-lag",
+      "rejected": true
+    },
+    {
+      "name": "aliased-lag",
+      "rejected": true
+    },
+    {
+      "name": "nan-lag",
+      "rejected": true
+    },
+    {
+      "name": "missing-lags",
+      "rejected": true
+    },
+    {
+      "name": "zero-alpha",
+      "rejected": true
+    },
+    {
+      "name": "one-alpha",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite-alpha",
+      "rejected": true
+    }
+  ],
+  "physicalMeasurements": 0
+}

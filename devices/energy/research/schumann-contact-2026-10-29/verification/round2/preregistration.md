@@ -1,0 +1,13 @@
+# Round 2 independent derivation and fixture freeze
+
+The advisor's Round 2 contract was read before implementation. The producer's files were not read before generating these independent Python fixtures. This is a verification of a specified ideal detector model, not new physics, measured Schumann data, human dosimetry or a bound on every magnetoreception mechanism.
+
+For sinusoidal uniform field, flux amplitude per turn is `A sqrt(2) B_rms cos(theta)`. Differentiation multiplies its amplitude by `omega`; conversion back to RMS divides by `sqrt(2)`. Thus coil sensitivity is `omega N A |cos(theta)|`, in V/T. Independently applying the integral law around a circle gives `2 pi r E_rms = pi r² omega B_rms`, with the continuous limit at r=0. Thermal noise follows the stipulated resistor-only model; it omits coil reactance, amplifier and environmental noise and loading.
+
+Inputs use SI and RMS field. Exactly represented odd multiples of 90 degrees mean exact zero sensitivity. Equivalent field noise at zero sensitivity is `null` with `unidentifiable`, including the zero-noise limit if it is later tested; division by zero cannot estimate a field. Field B=0 does not itself remove receiver sensitivity. The 35 microtesla case is only an illustrative amplitude change at the model's fixed frequency, not an assertion that a geomagnetic rotation experiment supplies that sinusoidal stimulus.
+
+Fixture set: 19 finite valid cases, zero f/B/N/A/r controls, orthogonal/reversed/60-degree orientations, doubled field/frequency/turns/area/radius, fourfold resistance/bandwidth, and square-centimetre/millimetre unit scaling. Invalid cases cover negative nonnegative physical inputs, zero resistance/bandwidth, and nonfinite values in every field. RMS/peak convention is independently retained. The contract's relative tolerance is 1e-10; expected zeros use 1e-25 absolute tolerance. Input booleans/numeric strings are rejected by the oracle but not counted as required contract fixtures.
+
+The oracle permits finite signed angles, which are geometric coordinates rather than negative physical amplitudes. No negative-angle fixture is used to impose an extra producer requirement. It also permits T=0 as the ideal-model limit, but the fixed required fixtures use T=300 K. Overflow and underflow extremes are not included in this contract's finite-range certification.
+
+After root is notified of the frozen hash, a bridge may adapt the producer API to these field names without changing fixtures or tolerances. Any failure is preserved before repairs. Numerical agreement certifies only implementation of the assumptions; it establishes neither data calibration nor a contact mechanism.

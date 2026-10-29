@@ -1,0 +1,12 @@
+{
+  "round": 1,
+  "owner": "/root/contact_skeptic",
+  "status": "ready-for-advisor-review",
+  "files": {
+    "sources.json": "3743d8b8c66cc34d292bb2450edde2744d21079d54e1a126c731bb9c31004837",
+    "round1.md": "8f15cd6a87fea48eb7d789a5bff3711253f2e18b645bb8c5af6c8bbd55ddf751"
+  },
+  "empiricalContactSRData": false,
+  "novelTheorem": false,
+  "publication": false
+}

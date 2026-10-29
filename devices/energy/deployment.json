@@ -1,7 +1,7 @@
 {
   "site": "Fieldwork / Energy Observatory",
   "branch": "research/energy-observatory",
-  "commit": "cea53921189656c1fe4a96a2c35af1e54613e916",
+  "commit": "0bf751831d57efcaab797c5e61c26c22199583e6",
   "path": "/brainwave_opensync/devices/energy/",
   "researchDate": "2026-10-21",
   "specialistAgents": 6,
@@ -67,5 +67,14 @@
       "schumannCalibratedSeriesObtained": false
     },
     "overlay": "build-schumann.mjs; historical scientific sources preserved"
+  },
+  "contactReview": {
+    "date": "2026-10-29",
+    "status": "accepted-scoped",
+    "rounds": 6,
+    "panelists": 4,
+    "dedicatedWorkers": 2,
+    "physicalContactEvidence": "not established",
+    "newPhysicalMeasurements": 0
   }
 }

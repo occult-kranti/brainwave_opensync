@@ -1,0 +1,72 @@
+[
+  {
+    "number": 1,
+    "title": "Sources, repository pins and the novelty gate",
+    "question": "Which occult, Schumann and contact links have actually been documented or measured?",
+    "result": "Selected current public repository files and primary studies were inspected. Official Bashar material does name frequency bands; the earlier blanket no-Hz attribution was corrected. No admitted synchronized Schumann/contact dataset or authenticated ET source was found in the inspected material.",
+    "critique": "Recent text-similarity, EEG-spectrum and SR/physiology papers already cover nearby ideas. Proceed as evidence and methods engineering; the next test must specify a physical input and receiver."
+  },
+  {
+    "number": 2,
+    "title": "Dimensioned electromagnetic acquisition",
+    "question": "What can the stated magnetic signal induce in a specified ideal coil?",
+    "result": "The illustrative 1 pT RMS, 7.83 Hz field gives 49.1973 nV RMS for 1,000 turns of 1 m². Producer 65 assertions and 151 independent comparisons passed, including zero-sensitivity cases.",
+    "critique": "A stipulated coil and resistor-only noise model are not a feasible detector, tissue dose, biological response or sender identifier. Next, test timing and lag-selection artifacts."
+  },
+  {
+    "number": 3,
+    "title": "Lag selection exposes a powerless toy",
+    "question": "Does correcting for searched lags control a known finite randomization null?",
+    "result": "One 32-offset fixture gave 7/32 rejections for the invalid selected-lag test. The adjusted test gave none. Independent review proved its minimum possible adjusted p was 7/32, so it could never reject at 0.05. The distinct-shape null fixture and all-lag p = 1 control were retained.",
+    "critique": "Correct calibration alone is not useful sensitivity. Preserve the failure and predeclare a larger group; real calendar dependence still needs its own justified null.",
+    "benchmark": {
+      "label": "Round 3 / preserved limitation",
+      "title": "A correct test can be unable to detect anything.",
+      "result": "Seven searched lags across 32 cyclic offsets force corrected p ≥ 7/32. At α = 0.05 this design cannot reject for any input. The invalid selected-lag test nevertheless rejected 7/32 offsets in one fixture.",
+      "limit": "Zero adjusted rejections are not evidence that an effect is absent. This is a synthetic finite-group demonstration, not an empirical anomaly detector.",
+      "path": "analysis/round3/report.md"
+    }
+  },
+  {
+    "number": 4,
+    "title": "Resolve test granularity; expose a common cause",
+    "question": "Can a larger finite test detect alignment, and does alignment identify a mechanism?",
+    "result": "The separately versioned 256-offset design permits an aligned p = 7/256. Both producer fixtures retain 7/256 adjusted null rejections, with naive counts 77/256 and 75/256. In the shared-driver example, observational rank is 1 with nullity 1; only a stipulated independent perturbation gives rank 2.",
+    "critique": "The sensitivity example is not a population-power estimate. More sensors or calendar labels do not establish the independent-intervention premise. Next, separate information accuracy from agency.",
+    "benchmark": {
+      "label": "Round 4 / two distinct limits",
+      "title": "Better statistical resolution does not identify the cause.",
+      "result": "With 256 offsets, the aligned example reaches p = 7/256 = 0.02734375. Yet X = z, Y = 2z fits both Y = 2X and a shared-driver model. Their observational design has kernel (1, −1). A hypothetical independent perturbation produces rank 2 and Gram determinant 28.",
+      "limit": "The cyclic null and hypothetical intervention are assumptions. These calculations do not validate them for actual field recordings or channeling reports.",
+      "path": "analysis/round4/report.md"
+    }
+  },
+  {
+    "number": 5,
+    "title": "Hidden information, leakage and numerical repair",
+    "question": "What would a fixed concealed-target score establish, and how does leakage change it?",
+    "result": "For 100 actual four-choice guesses under the declared null, the 5% rejection threshold is 33 hits. An ordinary independent leak with probability 0.2 gives the same q = 0.4 hit-count law as any stipulated independent mechanism with q = 0.4. A positive-tail underflow defect was reproduced, archived and repaired before acceptance.",
+    "critique": "At 40 hits and 10 compromised trials, the preselected-subset tail is 0.0472839, while the arbitrary-after-outcome corruption bound is 0.149541. Actual leakage is unknown. Next, require custody, chronology and data provenance without pretending metadata authenticates them.",
+    "benchmark": {
+      "label": "Round 5 / fixed-trial arithmetic",
+      "title": "A score cannot name its information source.",
+      "result": "For 40/100 four-choice guesses, the specified no-information tail is 0.000686592. With m = 10 assumed compromised trials, the preselected-subset model gives 0.0472839 and the arbitrary-outcome-corruption bound gives 0.149541. A 20% perfect-leak mixture has q = 0.4 and the same count distribution as another independent source with q = 0.4.",
+      "limit": "There were no human trials. The actual leakage count is unknown. Exact binomial scoring assumes a guess on every trial; pre-reveal abstentions retained as nonhits require the conservative-reference distinction in the protocol. No ET probability follows.",
+      "path": "analysis/round5/report.md"
+    }
+  },
+  {
+    "number": 6,
+    "title": "Adversarial evidence intake and a prospective protocol",
+    "question": "Can a complete-looking packet incorrectly become authenticated contact evidence?",
+    "result": "The staged validator separates documentary, environmental, information and paired metadata readiness. A fully fabricated packet can satisfy structural requirements but always remains unauthenticated. Actual quick-look/Kp/corpus availability descriptors do not become paired evidence. One published target digest was matched by hashing four candidate strings.",
+    "critique": "Hashes identify checked bytes, not truthful timestamps or secrecy. Declared nonce length does not prove entropy. A ready packet still requires independent calibration and custody review. Stop after these six rounds; acquire discriminating evidence before another discovery cycle.",
+    "benchmark": {
+      "label": "Round 6 / metadata is not authentication",
+      "title": "Keep an attractive packet from certifying itself.",
+      "result": "Malformed units, dates, Nyquist settings, reveal chronology, trial counts and unpaired intervals are challenged independently. Complete fabricated observational metadata can be structurally ready while evidenceAuthenticated remains false. The four-target unsalted-hash demonstration recovers the selected target by enumeration.",
+      "limit": "This is not a cryptographic break or proof that a salted scheme is secure. The code does not fetch or authenticate referenced data, calibrations, randomness, custody or subjective reports.",
+      "path": "analysis/round6/report.md"
+    }
+  }
+]

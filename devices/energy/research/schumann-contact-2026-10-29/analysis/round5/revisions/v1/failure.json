@@ -1,0 +1,16 @@
+{
+  "status": "FAIL-positive-tail-underflow-unlabelled",
+  "request": {
+    "kind": "tail",
+    "n": 1000,
+    "p": 0.25,
+    "h": 1000
+  },
+  "initialResponse": {
+    "ok": true,
+    "result": 0
+  },
+  "exactPositiveCertificate": "P(H>=1000)=(1/4)^1000 > 0",
+  "reportedBy": "parent and independent verifier before producer final freeze",
+  "repairRequired": "Distinguish positive underflow from exact zero and supply finite log probability or reject unsupported numeric-only tail"
+}

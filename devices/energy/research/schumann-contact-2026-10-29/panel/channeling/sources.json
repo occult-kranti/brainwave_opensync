@@ -1,0 +1,187 @@
+{
+  "asOf": "2026-10-29",
+  "sourceCount": 12,
+  "sources": [
+    {
+      "id": "CH01",
+      "title": "Circle of Self Empowerment",
+      "url": "https://bashar.org/handouts/Circle_of_Self_Empowerment.pdf",
+      "date": null,
+      "category": "primary attributed cultural claim",
+      "readDepth": "PDF page3 image locally rendered and inspected; all3 pages text extraction attempted, table is image",
+      "locator": "PDF page3 theta row",
+      "sha256": "c6897b4e09f6541498e55a1c15619432e8003f5f6912f4a9ecd052ebb38245f9",
+      "bytes": 3083706,
+      "status": "documentary assertion; no experimental verification",
+      "limit": "Official-hosted publication proves attribution context, not EEG/ionosphere coupling. Proprietary PDF not republished.",
+      "webRefs": [
+        "turn270view0",
+        "turn269search10"
+      ]
+    },
+    {
+      "id": "CH02",
+      "title": "Conversation with Bashar and Lyssa Royal Holt",
+      "url": "https://www.lyssaroyal.net/uploads/1/5/7/1/15716170/bashar_lyssaqs-dec2020.pdf",
+      "date": "2020-12-12",
+      "category": "participant-published attributed transcript",
+      "readDepth": "PDF text page1 and relevant continuation; full6page extraction retrieved",
+      "locator": "PDF page1 Question1",
+      "status": "publication marked with permission; not independently matched to original audio",
+      "limit": "40–100cycles/s gamma attribution is an assertion; DNA and source claims not experimentally validated.",
+      "webRefs": [
+        "turn270view1"
+      ]
+    },
+    {
+      "id": "CH03",
+      "title": "A Step Along The Way",
+      "url": "https://tv.bashar.org/programs/step-along-the-way",
+      "date": null,
+      "category": "official session catalog",
+      "readDepth": "indexed description",
+      "locator": "Schumann-related Q&A topic",
+      "status": "documents listed question only",
+      "limit": "No full recording accessed. Separate Superphysics7.85Hz transcripts are unverified discovery leads and not admitted as authoritative speech.",
+      "webRefs": [
+        "turn269search1"
+      ]
+    },
+    {
+      "id": "CH04",
+      "title": "Semantic Structure and Correspondence in Prospective Trance-Channeled Communications Attributed to Extraterrestrial Intelligences",
+      "url": "https://doi.org/10.1080/02604027.2026.2656120",
+      "date": "2026-04-12",
+      "category": "primary research",
+      "readDepth": "abstract and selected publisher-indexed introduction, recruitment methods and discussion; directHTML403",
+      "locator": "Abstract; Methods/Recruitment; Discussion",
+      "status": "prior art for semantic corpus comparison",
+      "limit": "No complete data/code/control audit; no origin or Schumann inference.",
+      "webRefs": [
+        "turn261search0",
+        "turn264search1",
+        "turn264search4",
+        "turn265view0"
+      ]
+    },
+    {
+      "id": "CH05",
+      "title": "Qualitative Structure and Meaning in Prospective Trance-Channeled Communications Attributed to Extraterrestrial Intelligences",
+      "url": "https://doi.org/10.1080/02604027.2026.2656119",
+      "date": "2026-04",
+      "category": "primary research",
+      "readDepth": "author abstract and selected publisher-indexed Methods, Q27 and Discussion; directHTML403",
+      "locator": "Q27 verification and Discussion",
+      "status": "same-dataset companion, not independent replication",
+      "limit": "Does not assess truth/source of attributed claims.",
+      "webRefs": [
+        "turn264search2",
+        "turn264search3"
+      ]
+    },
+    {
+      "id": "CH06",
+      "title": "A physiological examination of perceived incorporation during trance",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6384530/",
+      "date": "2019-01-17",
+      "category": "primary research",
+      "readDepth": "indexed primary abstract/results; directPMCcaptcha and publisher403",
+      "locator": "Abstract",
+      "status": "13participant within-subject physiological study",
+      "limit": "No new data replication; no exact Schumann or ET information endpoint.",
+      "webRefs": [
+        "turn248search7",
+        "turn248search9"
+      ]
+    },
+    {
+      "id": "CH07",
+      "title": "Channelers’ Answers to Questions from Scientists: An Exploratory Study",
+      "url": "https://journalofscientificexploration.org/index.php/jse/article/view/2907",
+      "date": "2023-10-19",
+      "category": "primary research",
+      "readDepth": "publisher abstract and metadata; prior repo reading attestation not inherited as new fulltext reading",
+      "locator": "Abstract",
+      "status": "15channelers10questions; little cross-channeler correspondence",
+      "limit": "Theme coherence does not establish accuracy or shared origin.",
+      "webRefs": [
+        "turn253view2"
+      ]
+    },
+    {
+      "id": "CH08",
+      "title": "Brain functional network dynamics in women with alleged mediumship: a controlled study",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41719771/",
+      "date": "2026-06",
+      "onlineDate": "2026-02-02",
+      "category": "primary research",
+      "readDepth": "primary indexed abstract only; directendpointcaptcha",
+      "locator": "Abstract",
+      "status": "14mediums14controls; secondary EEG data analysis",
+      "limit": "Task differences are not external intelligence authentication.",
+      "webRefs": [
+        "turn242search4"
+      ]
+    },
+    {
+      "id": "CH09",
+      "title": "Unveiling the EEG signatures of extrasensory perception during spiritual experiences: A single-case study with a well-renowned channeler",
+      "url": "https://doi.org/10.1016/j.explore.2025.103114",
+      "date": "2025",
+      "category": "primary research",
+      "readDepth": "publisher indexed abstract; directHTML403",
+      "locator": "Abstract/highlights",
+      "status": "single-case EEG report; authors leave ESP unresolved",
+      "limit": "EEG state differences alone cannot eliminate fraud or identify information source.",
+      "webRefs": [
+        "turn242search3"
+      ]
+    },
+    {
+      "id": "CH10",
+      "title": "Is There Someone in the Hereafter? Mediumship Accuracy of 100 Readings Obtained with a Triple Level of Blinding Protocol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36507932/",
+      "date": "2025-06",
+      "onlineDate": "2022-12-12",
+      "category": "primary research",
+      "readDepth": "primary indexed abstract and metadata",
+      "locator": "Abstract",
+      "status": "28mediums100readings; reported65% intended-reading identification",
+      "limit": "Adjacent mediumship task; fulltrial audit not performed; no ET or Schumann exposure.",
+      "webRefs": [
+        "turn248search1"
+      ]
+    },
+    {
+      "id": "CH11",
+      "title": "An Evaluation of Remote Viewing: Research and Applications",
+      "url": "https://nsarchive2.gwu.edu/NSAEBB/NSAEBB438/docs/doc_57.pdf",
+      "date": "1995-09-29",
+      "category": "primary program evaluation archive copy",
+      "readDepth": "183page PDF retrieved by web; selected executive summary textPDFpages2–6, printedE1–E5",
+      "locator": "Executive Summary",
+      "status": "statistical interpretation disputed, operational reliability insufficient",
+      "limit": "Not full183page audit; archival copy not byte-compared to CIA original; agency attribution not established.",
+      "webRefs": [
+        "turn261view0"
+      ]
+    },
+    {
+      "id": "CH12",
+      "title": "Transduction of the Geomagnetic Field as Evidenced from alpha-Band Activity in the Human Brain",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6494972/",
+      "date": "2019-04-26",
+      "category": "primary research",
+      "readDepth": "selected fulltext methods, sham/phantom, EEGanalysis and results",
+      "locator": "Experimental sequence; magnetic stimuli; EEGartifact; Fig3–4 descriptions",
+      "status": "controlled Earth-strength field-rotation EEG experiment",
+      "limit": "About35microtesla field rotated over100ms is not a picotesla Schumann stimulus; no ET/contact outcome.",
+      "webRefs": [
+        "turn253view1",
+        "turn265view2",
+        "turn265view3"
+      ]
+    }
+  ],
+  "searchCoverage": "Bounded primary-source screen, not exhaustive SOTA. No private communications, paid sessions, or full copyrighted transcript imports."
+}

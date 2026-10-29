@@ -1,0 +1,109 @@
+[
+  {
+    "repo": "occult-kranti/resonance-research-atlas",
+    "revision": "aabc79d42adf4b72677fdd8e45fbade76b159192",
+    "revisionDate": "2026-09-27T02:44:15Z",
+    "treeTruncated": false,
+    "license": "MIT newly authored code/diagrams; imported materials retain notices",
+    "files": [
+      {
+        "path": "LICENSE",
+        "blob": "46e14d5303df17f6ab7ed4c56f4d68ad95f9f0c2",
+        "size": 1224,
+        "url": "https://github.com/occult-kranti/resonance-research-atlas/blob/aabc79d42adf4b72677fdd8e45fbade76b159192/LICENSE",
+        "readDepth": "full selected file; no model execution in this round"
+      },
+      {
+        "path": "README.md",
+        "blob": "091fbac90eb939de1f12f13ef57c43c6e38b5572",
+        "size": 8038,
+        "url": "https://github.com/occult-kranti/resonance-research-atlas/blob/aabc79d42adf4b72677fdd8e45fbade76b159192/README.md",
+        "readDepth": "full selected file; no model execution in this round"
+      },
+      {
+        "path": "docs/panel-v4/hypotheses-em.json",
+        "blob": "2fb32e960d4fdd39dc246da7999c855d67e6e33d",
+        "size": 9211,
+        "url": "https://github.com/occult-kranti/resonance-research-atlas/blob/aabc79d42adf4b72677fdd8e45fbade76b159192/docs/panel-v4/hypotheses-em.json",
+        "readDepth": "full selected file; no model execution in this round"
+      },
+      {
+        "path": "research/consciousness-v3/README.md",
+        "blob": "e8a9e81cc4d8bf6af2ffa61e59acb2bcabe42a0b",
+        "size": 3517,
+        "url": "https://github.com/occult-kranti/resonance-research-atlas/blob/aabc79d42adf4b72677fdd8e45fbade76b159192/research/consciousness-v3/README.md",
+        "readDepth": "full selected file; no model execution in this round"
+      }
+    ],
+    "use": "Reuse prior experimental controls and nonidentifiability boundaries; no new reproduction"
+  },
+  {
+    "repo": "occult-kranti/resonant-vessels",
+    "revision": "9249e3d4596cd4f20575120f635ab2073371d18c",
+    "revisionDate": "2026-09-27T02:34:27Z",
+    "treeTruncated": false,
+    "license": "No top-level LICENSE in inspected tree; links and summaries only",
+    "files": [
+      {
+        "path": "README.md",
+        "blob": "cabd9b0a5672cdcb04b8bc74eef3910465ddbe13",
+        "size": 3895,
+        "url": "https://github.com/occult-kranti/resonant-vessels/blob/9249e3d4596cd4f20575120f635ab2073371d18c/README.md",
+        "readDepth": "full selected file; no model execution in this round"
+      },
+      {
+        "path": "research-corrections.html",
+        "blob": "0ffd7cdc385b19c8a924afdb7a4b476845ced6b5",
+        "size": 24814,
+        "url": "https://github.com/occult-kranti/resonant-vessels/blob/9249e3d4596cd4f20575120f635ab2073371d18c/research-corrections.html",
+        "readDepth": "Selected process-interpretation, identifiability, corrected-simulation and source-list sections; not full browser or linked-source audit"
+      }
+    ],
+    "use": "Historical corrected archive; inherited simulations not reproduced"
+  },
+  {
+    "repo": "occult-kranti/newton-tesla-research-lab",
+    "revision": "2faece1d6dde6be63f7758c2754a0369d1a34fce",
+    "revisionDate": "2026-09-27T03:12:19Z",
+    "treeTruncated": false,
+    "license": "MIT",
+    "files": [
+      {
+        "path": "LICENSE",
+        "blob": "d721b9d83e0eb9cbd8760e1b6377c0ed89bd0acd",
+        "size": 1070,
+        "url": "https://github.com/occult-kranti/newton-tesla-research-lab/blob/2faece1d6dde6be63f7758c2754a0369d1a34fce/LICENSE",
+        "readDepth": "full selected file; no model execution in this round"
+      },
+      {
+        "path": "README.md",
+        "blob": "25816ec1f5de2bc432b06b6072e12596e5068731",
+        "size": 5148,
+        "url": "https://github.com/occult-kranti/newton-tesla-research-lab/blob/2faece1d6dde6be63f7758c2754a0369d1a34fce/README.md",
+        "readDepth": "full selected file; no model execution in this round"
+      },
+      {
+        "path": "research/README.md",
+        "blob": "4a30a3b95756d3f835e7badb34c1bbe7090569f9",
+        "size": 3815,
+        "url": "https://github.com/occult-kranti/newton-tesla-research-lab/blob/2faece1d6dde6be63f7758c2754a0369d1a34fce/research/README.md",
+        "readDepth": "full selected file; no model execution in this round"
+      },
+      {
+        "path": "research/R3/report.md",
+        "blob": "4986a0cfb987c9720ea69fdf5e5a2e981f2804e3",
+        "size": 2626,
+        "url": "https://github.com/occult-kranti/newton-tesla-research-lab/blob/2faece1d6dde6be63f7758c2754a0369d1a34fce/research/R3/report.md",
+        "readDepth": "full selected file; no model execution in this round"
+      },
+      {
+        "path": "research/R3/observation-maps.json",
+        "blob": "fa3dcd6d52c713e07d140a61eef5f8d9a8f79e24",
+        "size": 3737,
+        "url": "https://github.com/occult-kranti/newton-tesla-research-lab/blob/2faece1d6dde6be63f7758c2754a0369d1a34fce/research/R3/observation-maps.json",
+        "readDepth": "full selected file; no model execution in this round"
+      }
+    ],
+    "use": "Read R3 witness identity counterexample and observation map; not independently rerun"
+  }
+]

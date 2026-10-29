@@ -1,0 +1,16 @@
+{
+  "id": "SK-HEMERIK-GOEMAN-2018",
+  "title": "Exact testing with random permutations",
+  "authors": "Jesse Hemerik; Jelle Goeman",
+  "onlineDate": "2017-11-30",
+  "issueYear": 2018,
+  "url": "https://link.springer.com/article/10.1007/s11749-017-0571-1",
+  "doi": "10.1007/s11749-017-0571-1",
+  "readDepth": "Primary publisher full HTML selected \u00a7\u00a71,2.1: Definition1,Theorem1 and two proofs; not whole-paper audit",
+  "locator": "\u00a72.1 Definition1 and Theorem1",
+  "finding": "Established finite-transformation-group null-invariance result; no new theorem claimed for our cyclic specialization.",
+  "webRefs": [
+    "turn279view0"
+  ],
+  "retrieved": "2026-10-29"
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PASS-after-preserved-repair",
+  "files_sha256": {
+    "bridge.mjs": "0bca2847456d83fe2685eb9d1555c6b4bf93b1b664fbcbaaf796607729761f81",
+    "check.py": "c509ce5d8af08ab10e8d17688856fda570f90cddcb5273cc50e17540222cfc90",
+    "comparison.json": "8e9828972979dc10c9c773af82dc0dc7e8de3d794eff32237de549fb06eb7b6c",
+    "fixtures.json": "2ada44d7bf824855f125baf41de46690b1a544147a2ea175d2e496bbbd80b38d",
+    "initial-failure-replay.json": "aca9240f27c70268de6451ec15c64121139a1db51f0d1f587287bfd92a35e15b",
+    "oracle.py": "15f7b7648f2c0f41caa1aa13f92d218d2f70239a0a7879c02c13861b341fbdf3",
+    "preregistration.md": "0c66b859b92ffa85a442845631d7866119ada7835606d7eeb41317e004241af8",
+    "report.md": "a14d2b94491fd4f01601ee361f43ec13f4f5c4cbe7d8194204e7e46e606bfc7b"
+  },
+  "model_sha256": "3eb54483c494c969ac692c66abdfbd9a7620cd095298258bbfb49c2033544889"
+}

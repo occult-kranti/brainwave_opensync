@@ -1,0 +1,112 @@
+{
+  "asOf": "2026-10-29",
+  "owner": "/root/contact_skeptic",
+  "sources": [
+    {
+      "id": "SK-LACY-2026",
+      "title": "Schumann-anchored golden ratio organization of human neural oscillations",
+      "authors": "Michael Lacy",
+      "date": "2026-06-02",
+      "url": "https://www.frontiersin.org/journals/computational-neuroscience/articles/10.3389/fncom.2026.1786996/full",
+      "doi": "10.3389/fncom.2026.1786996",
+      "category": "modern-primary-research",
+      "readDepth": "Selected full publisher HTML: abstract, \u00a72.1.6 nulls, \u00a72.1.7 power, \u00a74.1 data, \u00a76.8 limitations, \u00a76.9 future work; not reproduced",
+      "locator": "\u00a7\u00a72.1.6, 4.1, 6.8\u20136.9",
+      "finding": "Reports EEG spectral organization, explicitly lacks concurrent magnetometer measurements; no tested SR coupling or ET attribution. Fixed detection windows and parameterization sensitivity require independent audit.",
+      "status": "authors-result-unreproduced",
+      "retrieved": "2026-10-29",
+      "webRefs": [
+        "turn250view0",
+        "turn255view2",
+        "turn255view4"
+      ]
+    },
+    {
+      "id": "SK-YUDA-2026",
+      "title": "A Feasibility Study for Integrating Schumann Resonance Monitoring, Geomagnetic Activity Indices, and Large-Scale Ambulatory ECG Databases: Toward Synchronized Environmental\u2013Physiological Research",
+      "authors": "Emi Yuda; Junichiro Hayano",
+      "date": "2026-10-24",
+      "url": "https://www.mdpi.com/1424-8220/26/21/6742",
+      "doi": "10.3390/s26216742",
+      "category": "modern-primary-research",
+      "readDepth": "Primary-publisher indexed abstract, highlights, \u00a7\u00a72.9\u20132.10 and data-access statement. Direct HTML open returned429; whole paper and code not audited",
+      "locator": "Abstract; \u00a7\u00a72.9\u20132.10",
+      "finding": "Pipeline feasibility and illustrative simulation; physiological and SR datasets were not paired in time/place. Not empirical SR\u2013HRV coupling. ALLSTAR requires controlled access.",
+      "status": "method-engineering-prior-art",
+      "retrieved": "2026-10-29",
+      "webRefs": [
+        "turn259search0"
+      ]
+    },
+    {
+      "id": "SK-WANG-2019",
+      "title": "Transduction of the Geomagnetic Field as Evidenced from alpha-Band Activity in the Human Brain",
+      "authors": "Connie X. Wang et al.",
+      "date": "2019-03-18",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6494972/",
+      "doi": "10.1523/ENEURO.0483-18.2019",
+      "category": "modern-primary-research",
+      "readDepth": "Primary full-text selected abstract and Materials and Methods part1 (equipment, stimuli, blinding), not raw-data replay",
+      "locator": "Methods: experimental sequence and participant blinding",
+      "finding": "Reports EEG response to roughly35microtesla directional field rotations, with active/sham controls. Does not test picotesla Schumann drive, channeling or ET agency.",
+      "status": "specific-experiment-not-cross-domain-proof",
+      "retrieved": "2026-10-29",
+      "webRefs": [
+        "turn246view1"
+      ]
+    },
+    {
+      "id": "SK-WINKLER-2014",
+      "title": "Permutation inference for the general linear model",
+      "authors": "Anderson M. Winkler et al.",
+      "date": "2014-05-15",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4010955/",
+      "doi": "10.1016/j.neuroimage.2014.01.060",
+      "category": "modern-primary-method",
+      "readDepth": "Primary full-text selected introduction, Theory/Model, p-values and Permutations/exchangeability",
+      "locator": "Introduction; Theory: p-values and Permutations and exchangeability",
+      "finding": "Null invariance/exchangeability determines allowed resampling; serial correlation defeats arbitrary pointwise shuffling. Paper does not itself solve our field-series null.",
+      "status": "established-method-not-new",
+      "retrieved": "2026-10-29",
+      "webRefs": [
+        "turn260view0"
+      ]
+    },
+    {
+      "id": "SK-SCHAWORONKOW-2015",
+      "title": "Power-law dynamics in neuronal and behavioral data introduce spurious correlations",
+      "authors": "Natalie Schaworonkow et al.",
+      "date": "2015-04-30",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25930148/",
+      "doi": "10.1002/hbm.22816",
+      "category": "modern-primary-research",
+      "readDepth": "Primary abstract and author code-repository README only; PMC returned browser check and Wiley unavailable",
+      "locator": "Abstract; https://github.com/neurophysics/spurious_correlations README",
+      "finding": "Temporal dependence can inflate apparent brain/behavior associations; surrogate-code precedent exists. GPL2 code not copied or executed.",
+      "status": "baseline-lead-partial-read",
+      "retrieved": "2026-10-29",
+      "webRefs": [
+        "turn259search1",
+        "turn260view2"
+      ]
+    },
+    {
+      "id": "SK-YUAN-SHOU-2022",
+      "title": "Data-driven causal analysis of observational biological time series",
+      "authors": "Alex Eric Yuan; Wenying Shou",
+      "date": "2022-08-19",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9391047/",
+      "doi": "10.7554/eLife.72518",
+      "category": "primary-methodological-analysis",
+      "readDepth": "Selected full-text abstract, introduction and Dependence/correlation/causality with authors constructed examples; not code replay",
+      "locator": "Dependence, correlation, and causality",
+      "finding": "Observational causal methods depend on identifying assumptions; association and predictive information alone do not establish a directed intervention effect.",
+      "status": "methodological-constraint",
+      "retrieved": "2026-10-29",
+      "webRefs": [
+        "turn250view2"
+      ]
+    }
+  ],
+  "coverage": "Bounded primary-source screen, not exhaustive SOTA ranking; no paired contact/SR dataset acquired."
+}

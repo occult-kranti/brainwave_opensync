@@ -1,6 +1,6 @@
 {
   "sourceCommit": "a8913c825d24299283c9379282ae3876e2a0c0cd",
-  "hostCommit": "cea53921189656c1fe4a96a2c35af1e54613e916",
+  "hostCommit": "0bf751831d57efcaab797c5e61c26c22199583e6",
   "files": {
     ".nojekyll": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "LICENSE": "905389c7a8a3fe4c251a3e8c9edc6f01add44b9d27226c107a4256ef7c042889",
@@ -49,7 +49,7 @@
     "code/src/styles.css": "990af679031ccdeaa51903630e5a93dfd1c680d326a05db7dd1746393f041ba0",
     "code/tests/analysis_test.py": "3041922c6469a0ddd5e4e04b85153bc218d99712c8981d9d8126d7b2542ab9ea",
     "code/tests/model.test.mjs": "0cb2f8903ad9e1cb21aafe997dd81c91b81260cbbe76f74e67639da7ade45bd2",
-    "deployment.json": "2fe3b55e9e2fe82340391b737e115e73c5bfd1dab2421f750117969e23be7f0b",
+    "deployment.json": "cb3d4f90112f9d1b443f6d60a7edfb048b6188d78e027fd936e15516d1f93faa",
     "index.html": "568c9221ff1a0b503fa4b3a243b5aeaab3fc95b0a5e1261d6f42ba6dfa239fc6",
     "research/acquisition-template.json": "a1d9561847143ec295cf047556612a8bcd5e4abe130321268d56e7b87b2b62ce",
     "research/advisor-decision.md": "e38194e4ffe8825b054cd20c2f245536dc6ca690dcc34a218fda94ef6e955541",

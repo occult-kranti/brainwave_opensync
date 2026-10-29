@@ -1,0 +1,2469 @@
+{
+  "schema": "contact-round6-results/1",
+  "status": "PASS",
+  "assertions": 382,
+  "packetCases": 61,
+  "scope": "metadata-only checks and a four-string hash dictionary; no real experiment, authenticated evidence or physical contact claim",
+  "inputBindings": {
+    "schema.json": "f6679aae36c2d4146466e7b564c3f19eebcd50b216ec6f7ad17f42e3a89263a8",
+    "example-packet.json": "8b6e2e8b23ea509263f837714ef1e657e7ee598ad44e7fbbba003aef9c90f75d"
+  },
+  "outputs": [
+    {
+      "id": "fabricated-complete-observational-all-self-attestations-true",
+      "expected": {
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": true
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": true,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": []
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "complete-synthetic-metadata",
+      "expected": {
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "synthetic",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "paired observational readiness requires observational origin; synthetic remains synthetic"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "complete-Ez-channel",
+      "expected": {
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": true
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": true,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": []
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "documentary-only",
+      "expected": {
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment lane is absent"
+          ],
+          "information": [
+            "information lane is absent"
+          ],
+          "paired": [
+            "environment metadata lane is not ready",
+            "information metadata lane is not ready",
+            "paired lane is absent"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 0,
+          "hits": 0,
+          "misses": 0,
+          "abstentions": 0,
+          "nonhits": 0
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "wrong-magnetic-units",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.units must be T for this component"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "wrong-electric-units",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.units must be V/m for this component"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "unknown-component",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.component must be Bx, By or Ez"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "Nyquist-equality",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.bandHz must ascend from nonnegative bounds strictly below Nyquist"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "negative-band",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.bandHz must ascend from nonnegative bounds strictly below Nyquist"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "reversed-band",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.bandHz must ascend from nonnegative bounds strictly below Nyquist"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "nonfinite-band",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.bandHz must ascend from nonnegative bounds strictly below Nyquist"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "zero-sample-rate",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.sampleRateHz must be positive finite",
+            "environment.bandHz must ascend from nonnegative bounds strictly below Nyquist"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "nonfinite-sample-rate",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.sampleRateHz must be positive finite"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "invalid-calendar-date",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.startUtc requires a valid canonical UTC timestamp"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "noncanonical-time",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.startUtc requires a valid canonical UTC timestamp"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "future-environment-end",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.endUtc is after asOfUtc"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "reversed-environment-window",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.startUtc must precede endUtc"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready",
+            "all original event times must lie within the environmental window"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "negative-clock-error",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.clockUncertaintyMs must be nonnegative finite"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "nonfinite-clock-error",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.clockUncertaintyMs must be nonnegative finite"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-calibration-reference",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.calibration requires inert HTTPS URI and 64-hex SHA256"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-noise-reference",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.responseNoise requires inert HTTPS URI and 64-hex SHA256"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "nonHTTPS-record-reference",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.numericRecords requires inert HTTPS URI and 64-hex SHA256"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "malformed-digest",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.qc requires inert HTTPS URI and 64-hex SHA256"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "empty-missingness-rule",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.missingnessRule requires nonempty text"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-estimator",
+      "expected": {
+        "environmentMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [
+            "environment.estimator requires nonempty text"
+          ],
+          "information": [],
+          "paired": [
+            "environment metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "K-fractional",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.K must be a safe integer >= 2"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "K-one",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.K must be a safe integer >= 2"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "N-mismatch",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.N must equal all declared trials including abstentions"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "duplicate-attempt-ID",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[1].id is duplicated"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-attempt-status",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0].status must be hit, miss or abstain"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 0,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "upload-used-as-original-event",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0].eventTimeBasis must be original-event, not upload/repost time"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "repost-used-as-original-event",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0].eventTimeBasis must be original-event, not upload/repost time"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "event-after-response-lock",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0]: event must not follow response lock"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "early-target-reveal",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0]: response lock must strictly precede reveal"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "future-target-reveal",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0].revealUtc is after asOfUtc",
+            "information.trials[0]: nonce reveal must not precede target reveal"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "unsalted-commitment",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.commitmentScheme must be salted-domain-separated-sha256"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-commitment-digest",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0].commitment.sha256 requires 64 hex"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "commitment-after-response",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0]: commitment must strictly precede response lock"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "too-short-nonce",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0].commitment.nonceBits must declare integer >=128"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "fractional-nonce-bits",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0].commitment.nonceBits must declare integer >=128"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "early-nonce-reveal",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0]: nonce reveal must not precede target reveal"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "future-nonce-reveal",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.trials[0].commitment.nonceRevealUtc is after asOfUtc"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "nonfixed-stopping",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.stoppingRule must be fixed-N"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "wrong-target-assumption",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.generationAssumption must declare conditional independent uniform targets"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-generation-audit",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.generationAudit requires inert HTTPS URI and 64-hex SHA256"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-response-archive",
+      "expected": {
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [
+            "information.responseArchive requires inert HTTPS URI and 64-hex SHA256"
+          ],
+          "paired": [
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-crosswalk",
+      "expected": {
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "paired.crosswalk requires inert HTTPS URI and 64-hex SHA256"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "protocol-locked-too-late",
+      "expected": {
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "paired protocol must strictly precede environmental start"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "negative-paired-clock-tolerance",
+      "expected": {
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "paired.maxClockUncertaintyMs must be nonnegative finite"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "nonfinite-paired-clock-tolerance",
+      "expected": {
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "paired.maxClockUncertaintyMs must be nonnegative finite"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "clock-exceeds-paired-tolerance",
+      "expected": {
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "environment clock uncertainty exceeds paired tolerance"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "event-outside-environment-window",
+      "expected": {
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "all original event times must lie within the environmental window"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-calendar-controls",
+      "expected": {
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "paired.calendarControls requires nonempty text"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "missing-fixed-lag-rule",
+      "expected": {
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": true,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [],
+          "environment": [],
+          "information": [],
+          "paired": [
+            "paired.lagRule requires nonempty text"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "invalid-common-asOf-calendar",
+      "expected": {
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [
+            "asOfUtc must be a valid canonical UTC timestamp"
+          ],
+          "documentary": [
+            "asOfUtc must be a valid canonical UTC timestamp"
+          ],
+          "environment": [
+            "asOfUtc must be a valid canonical UTC timestamp"
+          ],
+          "information": [
+            "asOfUtc must be a valid canonical UTC timestamp"
+          ],
+          "paired": [
+            "asOfUtc must be a valid canonical UTC timestamp",
+            "environment metadata lane is not ready",
+            "information metadata lane is not ready"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "wrong-origin",
+      "expected": {
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "verified-contact",
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [
+            "origin must be synthetic or observational"
+          ],
+          "documentary": [
+            "origin must be synthetic or observational"
+          ],
+          "environment": [
+            "origin must be synthetic or observational"
+          ],
+          "information": [
+            "origin must be synthetic or observational"
+          ],
+          "paired": [
+            "origin must be synthetic or observational",
+            "environment metadata lane is not ready",
+            "information metadata lane is not ready",
+            "paired observational readiness requires observational origin; synthetic remains synthetic"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "documentary-asserted-as-fact",
+      "expected": {
+        "documentaryMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": true,
+        "informationMetadataReady": true,
+        "pairedMetadataReady": true,
+        "reasons": {
+          "common": [],
+          "documentary": [
+            "documentary assertions must remain attributed"
+          ],
+          "environment": [],
+          "information": [],
+          "paired": []
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 3,
+          "hits": 1,
+          "misses": 1,
+          "abstentions": 1,
+          "nonhits": 2
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "actual-availability-quicklooks",
+      "expected": {
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [
+            "documentary lane is absent"
+          ],
+          "environment": [
+            "environment.kind must be calibrated-numeric",
+            "environment.component must be Bx, By or Ez",
+            "environment.units must be T for this component",
+            "environment.sampleRateHz must be positive finite",
+            "environment.bandHz must ascend from nonnegative bounds strictly below Nyquist",
+            "environment.startUtc requires a valid canonical UTC timestamp",
+            "environment.endUtc requires a valid canonical UTC timestamp",
+            "environment.clockUncertaintyMs must be nonnegative finite",
+            "environment.numericRecords requires inert HTTPS URI and 64-hex SHA256",
+            "environment.calibration requires inert HTTPS URI and 64-hex SHA256",
+            "environment.responseNoise requires inert HTTPS URI and 64-hex SHA256",
+            "environment.qc requires inert HTTPS URI and 64-hex SHA256",
+            "environment.baseline requires inert HTTPS URI and 64-hex SHA256",
+            "environment.estimator requires nonempty text",
+            "environment.missingnessRule requires nonempty text"
+          ],
+          "information": [
+            "information lane is absent"
+          ],
+          "paired": [
+            "environment metadata lane is not ready",
+            "information metadata lane is not ready",
+            "paired lane is absent"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 0,
+          "hits": 0,
+          "misses": 0,
+          "abstentions": 0,
+          "nonhits": 0
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "actual-availability-Kp",
+      "expected": {
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [
+            "documentary lane is absent"
+          ],
+          "environment": [
+            "environment.kind must be calibrated-numeric",
+            "environment.component must be Bx, By or Ez",
+            "environment.units must be T for this component",
+            "environment.sampleRateHz must be positive finite",
+            "environment.bandHz must ascend from nonnegative bounds strictly below Nyquist",
+            "environment.startUtc requires a valid canonical UTC timestamp",
+            "environment.endUtc requires a valid canonical UTC timestamp",
+            "environment.clockUncertaintyMs must be nonnegative finite",
+            "environment.numericRecords requires inert HTTPS URI and 64-hex SHA256",
+            "environment.calibration requires inert HTTPS URI and 64-hex SHA256",
+            "environment.responseNoise requires inert HTTPS URI and 64-hex SHA256",
+            "environment.qc requires inert HTTPS URI and 64-hex SHA256",
+            "environment.baseline requires inert HTTPS URI and 64-hex SHA256",
+            "environment.estimator requires nonempty text",
+            "environment.missingnessRule requires nonempty text"
+          ],
+          "information": [
+            "information lane is absent"
+          ],
+          "paired": [
+            "environment metadata lane is not ready",
+            "information metadata lane is not ready",
+            "paired lane is absent"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 0,
+          "hits": 0,
+          "misses": 0,
+          "abstentions": 0,
+          "nonhits": 0
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "actual-availability-corpus-text",
+      "expected": {
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [
+            "documentary.source requires inert HTTPS URI and 64-hex SHA256"
+          ],
+          "environment": [
+            "environment lane is absent"
+          ],
+          "information": [
+            "information lane is absent"
+          ],
+          "paired": [
+            "environment metadata lane is not ready",
+            "information metadata lane is not ready",
+            "paired lane is absent"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 0,
+          "hits": 0,
+          "misses": 0,
+          "abstentions": 0,
+          "nonhits": 0
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    },
+    {
+      "id": "constant-7.83-lookup-not-data",
+      "expected": {
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false
+      },
+      "result": {
+        "schemaVersion": 1,
+        "origin": "observational",
+        "documentaryMetadataReady": false,
+        "environmentMetadataReady": false,
+        "informationMetadataReady": false,
+        "pairedMetadataReady": false,
+        "reasons": {
+          "common": [],
+          "documentary": [
+            "documentary lane is absent"
+          ],
+          "environment": [
+            "environment.kind must be calibrated-numeric",
+            "environment.component must be Bx, By or Ez",
+            "environment.units must be T for this component",
+            "environment.sampleRateHz must be positive finite",
+            "environment.bandHz must ascend from nonnegative bounds strictly below Nyquist",
+            "environment.startUtc requires a valid canonical UTC timestamp",
+            "environment.endUtc requires a valid canonical UTC timestamp",
+            "environment.clockUncertaintyMs must be nonnegative finite",
+            "environment.numericRecords requires inert HTTPS URI and 64-hex SHA256",
+            "environment.calibration requires inert HTTPS URI and 64-hex SHA256",
+            "environment.responseNoise requires inert HTTPS URI and 64-hex SHA256",
+            "environment.qc requires inert HTTPS URI and 64-hex SHA256",
+            "environment.baseline requires inert HTTPS URI and 64-hex SHA256",
+            "environment.estimator requires nonempty text",
+            "environment.missingnessRule requires nonempty text"
+          ],
+          "information": [
+            "information lane is absent"
+          ],
+          "paired": [
+            "environment metadata lane is not ready",
+            "information metadata lane is not ready",
+            "paired lane is absent"
+          ]
+        },
+        "declaredAttemptCounts": {
+          "declaredTrials": 0,
+          "hits": 0,
+          "misses": 0,
+          "abstentions": 0,
+          "nonhits": 0
+        },
+        "evidenceAuthenticated": false,
+        "empiricalResult": null,
+        "couplingEstablished": false,
+        "etContactEstablished": false,
+        "scope": "Syntax and internal chronology only. Inert references were not retrieved or hash-matched; declarations and self-attestations do not authenticate any evidence."
+      }
+    }
+  ],
+  "availabilityDescriptors": [
+    {
+      "id": "actual-availability-quicklooks",
+      "availabilityDescription": "Previous source audit obtained Tomsk/Nagycenk image quick looks, not a calibrated numeric paired packet.",
+      "environment": {
+        "kind": "image-quicklook"
+      }
+    },
+    {
+      "id": "actual-availability-Kp",
+      "availabilityDescription": "Previous source audit saved NOAA/GFZ Kp records. Kp is a geomagnetic index, not the specified Bx/By/Ez Schumann channel.",
+      "environment": {
+        "kind": "geomagnetic-index",
+        "component": "Kp",
+        "units": "index"
+      }
+    },
+    {
+      "id": "actual-availability-corpus-text",
+      "availabilityDescription": "Selected public occult/contact corpus texts were inspected by panelists; no original-time, concealed-target information packet or numeric paired station series was acquired.",
+      "documentary": {
+        "readDepth": "selected-passages",
+        "assertionStatus": "attributed"
+      }
+    },
+    {
+      "id": "constant-7.83-lookup-not-data",
+      "availabilityDescription": "A frequency label is not an acquired calibrated record.",
+      "environment": {
+        "kind": "constant-lookup",
+        "valueHz": 7.83
+      }
+    }
+  ],
+  "dictionary": {
+    "targets": [
+      "copper",
+      "silver",
+      "gold",
+      "iron"
+    ],
+    "publishedDigest": "24d7f03d8dc3c3666969e6fa5bb1fac4736d3f1353c28307ed51b320f9dc42d3",
+    "dictionary": [
+      {
+        "target": "copper",
+        "sha256": "d16f06fe255d801e0639b8d749b815ea9e788af7b9ceba2b773c1dbc8f080442"
+      },
+      {
+        "target": "silver",
+        "sha256": "78cde64c3e47f2cbfd9da721f54aacde33779916683c79de86962898feefac21"
+      },
+      {
+        "target": "gold",
+        "sha256": "24d7f03d8dc3c3666969e6fa5bb1fac4736d3f1353c28307ed51b320f9dc42d3"
+      },
+      {
+        "target": "iron",
+        "sha256": "04e9c0db87e7eebbf8123dae64d169c85540d588a38b4f9f3fbc255c7c6c65a9"
+      }
+    ],
+    "matches": [
+      "gold"
+    ],
+    "evaluatedCandidates": 4,
+    "encoding": "literal UTF-8 without newline",
+    "scope": "Four-element unsalted dictionary disclosure demonstration only; no real targets, secret nonces or salted-security proof"
+  },
+  "physicalMeasurements": 0,
+  "humanExperiments": 0
+}

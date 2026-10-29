@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-10-29T06:41:01.213Z",
+  "browser": "153.0.8010.0",
+  "checks": [
+    "Both pages and controls render at 1440 without document overflow",
+    "Both pages and controls render at 390 without document overflow",
+    "Zero signal and zero sensitivity remain distinct",
+    "Export preserves synthetic evidence status",
+    "92 local artifact/navigation links resolve"
+  ],
+  "pageErrors": [],
+  "badResponses": [],
+  "scope": "Local website behavior and source links; no physical observation or contact validation."
+}

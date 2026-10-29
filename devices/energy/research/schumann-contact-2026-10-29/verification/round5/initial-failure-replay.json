@@ -1,0 +1,15 @@
+{
+  "status": "CONFIRMED-PRESERVED-INITIAL-FAILURE",
+  "method": "independent replay of archived producer v1 after repair; not an earlier live verifier run",
+  "input": {
+    "n": 1000,
+    "p": 0.25,
+    "h": 1000
+  },
+  "v1Output": {
+    "value": 0
+  },
+  "exactPositiveCertificate": "(1/4)^1000 > 0",
+  "v1ModelSha256": "f2b0f4f7f32a1a8acc283a2f703577903cece31b123b73e8aecb3e5ca3d8fd84",
+  "currentDisposition": "repaired model checked separately; raw numeric tail rejects positive underflow and qualified API exposes null probability, finite log and positive-underflow status"
+}

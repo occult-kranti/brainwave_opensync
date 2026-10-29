@@ -1,0 +1,32 @@
+// Independent contract-driven adversarial probes, no producer fixture runner import.
+import {readFile,writeFile}from'node:fs/promises';import{createHash}from'node:crypto';
+import{assessPacket}from'../../analysis/round6/model.mjs';
+const base=JSON.parse(await readFile(new URL('../../analysis/round6/example-packet.json',import.meta.url),'utf8'));
+const cases=[];const add=(name,mutate,expected)=>{const packet=structuredClone(base);mutate(packet);cases.push({name,packet,expected});};
+add('fabricated-all-attestations-true',p=>{}, {documentaryMetadataReady:true,environmentMetadataReady:true,informationMetadataReady:true,pairedMetadataReady:true});
+add('synthetic-complete',p=>{p.origin='synthetic'}, {environmentMetadataReady:true,informationMetadataReady:true,pairedMetadataReady:false});
+add('invalid-calendar-date',p=>{p.information.trials[0].eventUtc='2026-02-30T10:00:00.000Z'}, {informationMetadataReady:false,pairedMetadataReady:false});
+add('nyquist-equality',p=>{p.environment.bandHz=[5,64]}, {environmentMetadataReady:false,pairedMetadataReady:false});
+add('wrong-field-units',p=>{p.environment.units='V/m'}, {environmentMetadataReady:false});
+add('infinite-clock-error',p=>{p.environment.clockUncertaintyMs=Infinity}, {environmentMetadataReady:false});
+add('negative-clock-error',p=>{p.environment.clockUncertaintyMs=-1}, {environmentMetadataReady:false});
+add('source-http-reference',p=>{p.environment.numericRecords.uri='http://example.invalid/raw'}, {environmentMetadataReady:false});
+add('invalid-source-digest',p=>{p.environment.calibration.sha256='not-a-hash'}, {environmentMetadataReady:false});
+add('equal-lock-and-reveal',p=>{p.information.trials[0].responseLockedUtc=p.information.trials[0].revealUtc}, {informationMetadataReady:false});
+add('late-commitment',p=>{p.information.trials[0].commitment.committedUtc=p.information.trials[0].responseLockedUtc}, {informationMetadataReady:false});
+add('early-nonce-reveal',p=>{p.information.trials[0].commitment.nonceRevealUtc=p.information.trials[0].responseLockedUtc}, {informationMetadataReady:false});
+add('future-reveal',p=>{p.information.trials[0].revealUtc='2026-11-01T10:00:00.000Z'}, {informationMetadataReady:false});
+add('upload-is-not-event',p=>{p.information.trials[0].eventTimeBasis='upload-date'}, {informationMetadataReady:false});
+add('duplicate-trial-id',p=>{p.information.trials[1].id=p.information.trials[0].id}, {informationMetadataReady:false});
+add('optional-stopping',p=>{p.information.stoppingRule='stop-at-significance'}, {informationMetadataReady:false});
+add('marginal-balance-only',p=>{p.information.generationAssumption='marginally-balanced'}, {informationMetadataReady:false});
+add('unsalted-small-target',p=>{p.information.commitmentScheme='unsalted-sha256'}, {informationMetadataReady:false});
+add('public-zero-length-nonce',p=>{p.information.trials[0].commitment.nonceBits=0}, {informationMetadataReady:false});
+add('protocol-not-before-recording',p=>{p.paired.protocolLockedUtc=p.environment.startUtc}, {pairedMetadataReady:false});
+add('declared-clock-error-exceeds-tolerance',p=>{p.paired.maxClockUncertaintyMs=.5}, {pairedMetadataReady:false});
+add('event-outside-field-window',p=>{p.environment.endUtc='2026-10-28T09:00:00.000Z'}, {environmentMetadataReady:true,informationMetadataReady:true,pairedMetadataReady:false});
+let checks=0;const output=[];
+for(const c of cases){const result=assessPacket(c.packet);for(const[k,v]of Object.entries(c.expected)){if(result[k]!==v)throw Error(c.name+' '+k+': '+JSON.stringify(result));checks++;}for(const[k,v]of Object.entries({evidenceAuthenticated:false,empiricalResult:null,couplingEstablished:false,etContactEstablished:false})){if(result[k]!==v)throw Error('scientific overclaim '+c.name+' '+k);checks++;}output.push({name:c.name,expected:c.expected,result});}
+const model=await readFile(new URL('../../analysis/round6/model.mjs',import.meta.url));
+const receipt={status:'PASS',cases:cases.length,checks,modelSha256:createHash('sha256').update(model).digest('hex'),scope:'Metadata checks only; fabricated observational packet intentionally remains unauthenticated',output};
+await writeFile(new URL('./round6-challenge.json',import.meta.url),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify({status:receipt.status,cases:receipt.cases,checks:receipt.checks,modelSha256:receipt.modelSha256}));

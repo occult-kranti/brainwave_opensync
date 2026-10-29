@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "tailCases": 27,
+  "thresholdCases": 5,
+  "contaminationCases": 37,
+  "leakPmfEntries": 101,
+  "invalidCases": 28,
+  "postrepairPmfPositivityChecks": 1001,
+  "checks": 1671,
+  "max_absolute_probability_error": 8.881784197001252e-16,
+  "max_relative_nonzero_probability_error": 1.565361905246957e-14,
+  "max_absolute_log_error": 4.547473508864641e-12,
+  "failures": [],
+  "thresholdN100K4": {
+    "h": 33,
+    "attainable": true,
+    "tailAtThreshold": 0.04459632521268151,
+    "tailAtPrevious": 0.06934888914174187,
+    "tailAtThresholdInfo": {
+      "probability": 0.04459632521268151,
+      "logProbability": -3.1101038176852143,
+      "status": "finite-positive-rounded"
+    },
+    "tailAtPreviousInfo": {
+      "probability": 0.06934888914174187,
+      "logProbability": -2.668605150493181,
+      "status": "finite-positive-rounded"
+    },
+    "alpha": 0.05
+  },
+  "underflow": {
+    "status": "positive-underflow",
+    "logProbability": -1386.2943611198862,
+    "rawTailRejected": true,
+    "pmfPositiveUnderflowCount": 171
+  },
+  "inputs_sha256": {
+    "verification/round5/oracle.py": "15f7b7648f2c0f41caa1aa13f92d218d2f70239a0a7879c02c13861b341fbdf3",
+    "verification/round5/fixtures.json": "2ada44d7bf824855f125baf41de46690b1a544147a2ea175d2e496bbbd80b38d",
+    "verification/round5/bridge.mjs": "0bca2847456d83fe2685eb9d1555c6b4bf93b1b664fbcbaaf796607729761f81",
+    "analysis/round5/model.mjs": "3eb54483c494c969ac692c66abdfbd9a7620cd095298258bbfb49c2033544889",
+    "analysis/round5/api.mjs": "6f73c459487400ccdf886ec994ae7b3d3b3eefb727e17e62e9ecf6d96e51e70f",
+    "rounds/round5-contract.md": "0048cafeb84d5c36e8286eaee4bd86767d818f3df61fabd87f6fe7b4d37e5c50"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "node": "v24.22.1"
+  },
+  "scope": "known conditional probability and leakage-sensitivity arithmetic; no actual human/contact data or inferred m"
+}

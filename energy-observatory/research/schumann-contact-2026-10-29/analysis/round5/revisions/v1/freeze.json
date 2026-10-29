@@ -1,0 +1,12 @@
+{
+  "schema": "preserved-failed-revision/1",
+  "files": {
+    "failure.json": "8025381639ed3d5f4f39cd5a46536c8ed5b275201018b529c8b42d8ee124d593",
+    "api.mjs": "d4d66ad802b4e90822fb422d6bfe10f8384028aa6b467e264cd1ebf6ad1d91e6",
+    "results.json": "8e2804ba86ea15cac4c90ba6583e92768417fbe2578407ba4ba3af05d5585801",
+    "fixtures.json": "cc489a9d683ff4a230a7195fcd5c825f94e96784b3203149727744f4accea665",
+    "input-freeze.json": "9a2ad7df71af5ee465ee4811898aed7760eee46d2239b946144a18f51fa1741b",
+    "model.mjs": "f2b0f4f7f32a1a8acc283a2f703577903cece31b123b73e8aecb3e5ca3d8fd84",
+    "run.mjs": "a246121ab7514597ccb4457e8557e0bd87bd3c368fe06ef3320785bc5dbd456b"
+  }
+}

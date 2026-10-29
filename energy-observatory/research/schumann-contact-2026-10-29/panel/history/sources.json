@@ -1,0 +1,90 @@
+{
+  "asOf": "2026-10-29",
+  "sources": [
+    {
+      "id": "H-GW-1983",
+      "title": "Analysis and Assessment of Gateway Process",
+      "authors": "Wayne M. McDonnell, U.S. Army",
+      "date": "1983-06-09",
+      "category": "official-archive-copy of historical assessment",
+      "url": "https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo152943/pdf/GOVPUB-D101-PURL-gpo152943.pdf",
+      "sha256": "c97fdf7c5372c1ff740f4ad713177f9828faeb52a345c0313de07a40852541de",
+      "pages": 29,
+      "readDepth": "Visual scan reading: PDF1 (cover assessment), PDF7/printed5 sections7-8, PDF8/printed6 sections9-10, PDF9/printed7 sections10-12; selected sections, not full report",
+      "finding": "The author attributes a whole-body/ionospheric/telepathy mechanism to Bentov, with roughly 6.8-7.5Hz and 40000km numbers; these passages give an assessment/model narrative, not calibrated source-to-receiver evidence.",
+      "status": "Documented historical assertion; mechanism unverified",
+      "correction": "The long-wavelength quotation is section9, PDF8/printed6 in this official scan. The newer gateway-files index attributes it to section8 and scan p9.",
+      "rights": "Official archive accessed; no full scan republished"
+    },
+    {
+      "id": "H-CH1",
+      "title": "Corpus Hermeticum I, Poemandres",
+      "edition": "G.R.S. Mead translation, 1906; electronic witness with JMG editorial additions",
+      "category": "primary historical text in later translation/electronic witness",
+      "url": "https://sacred-texts.com/book/the-corpus-hermeticum/i-poemandres-the-shepherd-of-men",
+      "readDepth": "Sections1-16, electronic text; no manuscript collation",
+      "finding": "A revelatory dialogue and planetary cosmology. Literary speakers and divine Mind are not an identified modern extraterrestrial communicator.",
+      "status": "Cultural/historical comparison",
+      "rights": "Link and short paraphrase only"
+    },
+    {
+      "id": "H-CH11",
+      "title": "Corpus Hermeticum XI, Mind Unto Hermes",
+      "edition": "G.R.S. Mead translation, 1906; electronic witness with JMG editorial additions",
+      "category": "primary historical text in later translation/electronic witness",
+      "url": "https://sacred-texts.com/book/the-corpus-hermeticum/xi-mind-unto-hermes",
+      "readDepth": "Sections1-22 electronic text, especially18-20; no manuscript collation",
+      "finding": "Contemplative expansion beyond bodily/time limits is a historical motif; the passage supplies neither SI electromagnetic quantities nor a measured transfer law.",
+      "status": "Cultural/historical comparison",
+      "rights": "Link and short paraphrase only"
+    },
+    {
+      "id": "H-BEAT-2017",
+      "title": "Binaural Beat: A Failure to Enhance EEG Power and Emotional Arousal",
+      "authors": "López-Caballero and Escera",
+      "date": "2017-11-15",
+      "doi": "10.3389/fnhum.2017.00557",
+      "category": "primary experimental research",
+      "url": "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2017.00557/full",
+      "readDepth": "Primary publisher excerpts: abstract, participants, experimental design, EEG acquisition and results discussion",
+      "finding": "Fourteen participants; specific pink-noise embedded stimulation gave no enhancement of the tested EEG powers or measured arousal. A protocol-specific null, not proof against every possible binaural protocol.",
+      "status": "Restricted prior experimental result"
+    },
+    {
+      "id": "H-MAG-2019",
+      "title": "Transduction of the Geomagnetic Field as Evidenced from alpha-Band Activity in the Human Brain",
+      "authors": "Wang et al.",
+      "date": "2019",
+      "doi": "10.1523/ENEURO.0483-18.2019",
+      "category": "primary experimental research",
+      "url": "https://www.eneuro.org/content/6/2/ENEURO.0483-18.2019",
+      "readDepth": "Publisher search excerpts and authorinstitution metadata; direct full HTML returned403; not full audited",
+      "finding": "Reported alpha desynchronization after Earth-strength field rotations. Rotating approximately geomagnetic-strength fields is not the same stimulus as picotesla-scale ELF cavity fluctuations; no ET endpoint.",
+      "status": "Restricted prior result, dose and protocol comparison required"
+    },
+    {
+      "id": "H-HOLO-2026",
+      "title": "A Unified Holographic Framework for neural computation and consciousness: From lipid membranes to the Schumann resonance",
+      "authors": "Cavaglià and Tuszynski",
+      "date": "Epub2025-12-15; issue2026-01",
+      "doi": "10.1016/j.biosystems.2025.105669",
+      "category": "primary theoretical proposal",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0303264725002795",
+      "readDepth": "Publisher abstract, metadata and data-availability statement only",
+      "finding": "Proposes membrane-water-CSF/EM coupling and falsifiable strategies. Publisher states no data used. Not an experimentally verified connection.",
+      "status": "Contemporary theoretical lead, not confirmed mechanism"
+    },
+    {
+      "id": "H-LACY-2026",
+      "title": "Schumann-anchored golden ratio organization of human neural oscillations",
+      "authors": "Lacy",
+      "date": "2026",
+      "doi": "10.3389/fncom.2026.1786996",
+      "category": "primary EEG analysis",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13269411/",
+      "readDepth": "Search-returned primary body excerpts: terminology, participants/datasets, abstract and availability; not full reanalysis",
+      "finding": "The author explicitly separates near-Schumann frequency naming from demonstrated EM coupling. The discovery meditation dataset is single-subject; additional public EEG validation datasets are used. Concurrent geophysical measurements are required to test coupling.",
+      "status": "New prior-art lead for independent selection/null-model audit; no ET evidence"
+    }
+  ]
+}

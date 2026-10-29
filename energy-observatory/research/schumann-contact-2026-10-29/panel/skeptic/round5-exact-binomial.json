@@ -1,0 +1,140 @@
+{
+  "method": "Fraction+integer binomial coefficients; no producer import",
+  "N": 100,
+  "K": 4,
+  "rows": [
+    {
+      "h": 25,
+      "tail": 0.5383288679185886,
+      "exact": "216265284545313251738588483993294189406785435435897014875715/401734511064747568885490523085290650630550748445698208825344"
+    },
+    {
+      "h": 30,
+      "tail": 0.14954104656657347,
+      "exact": "30037899613266517892647416204887953249084943034998066394929/200867255532373784442745261542645325315275374222849104412672"
+    },
+    {
+      "h": 35,
+      "tail": 0.01642674067388556,
+      "exact": "26396754532043269545853703388193536648517558532976644954467/1606938044258990275541962092341162602522202993782792835301376"
+    },
+    {
+      "h": 40,
+      "tail": 0.0006865922079629911,
+      "exact": "68956946241719424989885392307281546441260036992065207027/100433627766186892221372630771322662657637687111424552206336"
+    },
+    {
+      "h": 50,
+      "tail": 6.638502483476651e-08,
+      "exact": "26669155494016050812424864738823599957115523910708973/401734511064747568885490523085290650630550748445698208825344"
+    },
+    {
+      "h": 100,
+      "tail": 6.223015277861142e-61,
+      "exact": "1/1606938044258990275541962092341162602522202993782792835301376"
+    },
+    {
+      "h": 0,
+      "tail": 1.0,
+      "exact": "1"
+    }
+  ],
+  "threshold": 33,
+  "thresholdTail": "71663531618404346936850987968652837251552698853227903368817/1606938044258990275541962092341162602522202993782792835301376",
+  "priorCountTail": "13929921036120528568706297135281461268537813937687002621199/200867255532373784442745261542645325315275374222849104412672",
+  "leakQ": "2/5",
+  "sensitivity": [
+    {
+      "h": 35,
+      "m": 0,
+      "fixedPreselectedTail": 0.01642674067388556,
+      "arbitraryCorruptionUpperBound": 0.01642674067388556
+    },
+    {
+      "h": 35,
+      "m": 5,
+      "fixedPreselectedTail": 0.08880474737849964,
+      "arbitraryCorruptionUpperBound": 0.14954104656657347
+    },
+    {
+      "h": 35,
+      "m": 10,
+      "fixedPreselectedTail": 0.3078188457028673,
+      "arbitraryCorruptionUpperBound": 0.5383288679185886
+    },
+    {
+      "h": 35,
+      "m": 20,
+      "fixedPreselectedTail": 0.9260137296948556,
+      "arbitraryCorruptionUpperBound": 0.9945792383472011
+    },
+    {
+      "h": 35,
+      "m": 100,
+      "fixedPreselectedTail": 1.0,
+      "arbitraryCorruptionUpperBound": 1.0
+    },
+    {
+      "h": 40,
+      "m": 0,
+      "fixedPreselectedTail": 0.0006865922079629911,
+      "arbitraryCorruptionUpperBound": 0.0006865922079629911
+    },
+    {
+      "h": 40,
+      "m": 5,
+      "fixedPreselectedTail": 0.006927712584309072,
+      "arbitraryCorruptionUpperBound": 0.01642674067388556
+    },
+    {
+      "h": 40,
+      "m": 10,
+      "fixedPreselectedTail": 0.047283885540444937,
+      "arbitraryCorruptionUpperBound": 0.14954104656657347
+    },
+    {
+      "h": 40,
+      "m": 20,
+      "fixedPreselectedTail": 0.5428362539407245,
+      "arbitraryCorruptionUpperBound": 0.900469589894686
+    },
+    {
+      "h": 40,
+      "m": 100,
+      "fixedPreselectedTail": 1.0,
+      "arbitraryCorruptionUpperBound": 1.0
+    },
+    {
+      "h": 50,
+      "m": 0,
+      "fixedPreselectedTail": 6.638502483476651e-08,
+      "arbitraryCorruptionUpperBound": 6.638502483476651e-08
+    },
+    {
+      "h": 50,
+      "m": 5,
+      "fixedPreselectedTail": 2.0125337190303355e-06,
+      "arbitraryCorruptionUpperBound": 1.0921444238941381e-05
+    },
+    {
+      "h": 50,
+      "m": 10,
+      "fixedPreselectedTail": 4.641274380963672e-05,
+      "arbitraryCorruptionUpperBound": 0.0006865922079629911
+    },
+    {
+      "h": 50,
+      "m": 20,
+      "fixedPreselectedTail": 0.008939674293303177,
+      "arbitraryCorruptionUpperBound": 0.14954104656657347
+    },
+    {
+      "h": 50,
+      "m": 100,
+      "fixedPreselectedTail": 1.0,
+      "arbitraryCorruptionUpperBound": 1.0
+    }
+  ],
+  "contractSha256": "9a8da3e67cb8b9ff428bd3232640e54eea6a592c133077029ffa23a0be908957",
+  "humanTrials": 0
+}

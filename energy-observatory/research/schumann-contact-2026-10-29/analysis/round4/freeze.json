@@ -1,0 +1,23 @@
+{
+  "schema": "producer-freeze/1",
+  "round": 4,
+  "status": "frozen",
+  "worker": "contact_engineer",
+  "codeExecuted": true,
+  "physicalMeasurements": 0,
+  "verifierOutputsReadBeforeFreeze": false,
+  "contractSha256": "8466f15a2d3510226a0e7ede458d5f0eb85b004624b10c700f8ff5f9b058b211",
+  "dependencies": {
+    "../round3/model.mjs": "4367a5f72935e146618e55f7d4b543ae574f4a7d726c4b15c67c38c3962308b6",
+    "../round3/fixtures.json": "7d313045160eb8e5c9b0b745c360eaf396dc6c80c5fbaefb54f7df48acd8b1fa"
+  },
+  "files": {
+    "fixtures.json": "bfead7ad55dac68e7823ea408465f31f5b197cdfd1086109c2441f3eb64ca7ef",
+    "input-freeze.json": "734af90a5c6df5c433c7f8e718f6dc23c927f3a2e24feabfec325f1ddf1e176b",
+    "model.mjs": "fca201293dcbe33b27d13600ebf92ee4b4a8769ac99c7d39c3d6ec9c9685db25",
+    "api.mjs": "9011b64ee430146feafc0604e8f6514e4700a50360599ca2e43adc89c6245901",
+    "run.mjs": "aff127685f2ebac7e1b7811882ad813965b834f59c7dbd2cc9213b3040a84a43",
+    "results.json": "cf3e61ddd40d62fbaf8fcaed3673ca7c371afeb5a7c5b102865f27ed80e2e337",
+    "report.md": "339f3bf0b33fb31bf2c31c121eafc127d34b2b74bf2c13093d0002b48dc9c53a"
+  }
+}

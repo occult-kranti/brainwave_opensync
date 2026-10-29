@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "files_sha256": {
+    "bridge.mjs": "490c7ecf3129ccdcdfcad2989802f6849923006162b136ebf0fed514f934699d",
+    "check.py": "d6118c7afd73ff136e59d3f11394c963cf8e59e1a6fd0a50a3f1ca4349f47557",
+    "comparison.json": "596bcbf33b71734242218ae6411f18d7e2f84f57754f7a00f89aef85e320577f",
+    "fixtures.json": "4c9edbdf5b9f1fd1502fc29de9535a06529675cc0c6ad7031ddf34cb3ae1e737",
+    "hash-dictionary-oracle.json": "712f9241c7193709159dce318c2a5458c6af7fd8d74b467baede4ae92ad05c94",
+    "make_fixtures.py": "f4d9254cbb39b90720108fe92dc3a50869bee7cf6ae981eae9d3367076fa4195",
+    "preregistration.md": "6ba006d3d66d3d59ce09ef1db9f5e1ad009353315b2eb9e866e3009340581efc",
+    "report.md": "8bd18d262123c25b16de299f257c0b8a53963e5ab25c8c69ef52d7992f677944"
+  },
+  "model_sha256": "245feda4b36795eb31c91d1a6197e9f63de2749cf8c095a9933627f195287eb2",
+  "schema_sha256": "f6679aae36c2d4146466e7b564c3f19eebcd50b216ec6f7ad17f42e3a89263a8",
+  "clarification": "Advisor abstention clarification reviewed after packet fixture freeze; fixtures and numerical results unchanged; final comparison binds amended contract"
+}

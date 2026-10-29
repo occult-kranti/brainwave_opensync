@@ -1,0 +1,22 @@
+{
+  "round": 6,
+  "owner": "/root/contact_skeptic",
+  "verdict": "accept-metadata-validator-not-authentication",
+  "reviewerCases": 22,
+  "reviewerAssertions": 119,
+  "independentHashComparisons": 5,
+  "files": {
+    "rounds/round6-contract.md": "3cb434cf4d3b4830a4a897aa7c94360bd94044d4e2e418cea1263167e52a43ce",
+    "analysis/round6/model.mjs": "245feda4b36795eb31c91d1a6197e9f63de2749cf8c095a9933627f195287eb2",
+    "analysis/round6/results.json": "e0b79c66dafc433e3ae570dbe25a6071ff237be066f66f97158f164d16df9be9",
+    "analysis/round6/example-packet.json": "8b6e2e8b23ea509263f837714ef1e657e7ee598ad44e7fbbba003aef9c90f75d",
+    "analysis/round6/schema.json": "f6679aae36c2d4146466e7b564c3f19eebcd50b216ec6f7ad17f42e3a89263a8",
+    "panel/skeptic/round6_challenge.mjs": "5d4ee8577420ef943465ab7d1a0ac53e700c73147736435cdcf39a994a6e43f7",
+    "panel/skeptic/round6-challenge.json": "8d3daac5657289fe0371e88a1f5bd16468ece2365969555761a5ff8e11c36e4f",
+    "panel/skeptic/round6-hash-dictionary.json": "d952ea3648d4aefbc8f253b27e970708583ca813b709c6d5e2a0fe9369a2ff3b",
+    "panel/skeptic/round6-hash-comparison.json": "e48d10a204967a35f7ea7c6ea342c0f2afcd2f2cc959fb93a8f3d72089180f67",
+    "panel/skeptic/round6.md": "a24102eec5a6483c4226c48ae7cb4475a79343bf6b1067eb0356f3292fcc9535"
+  },
+  "physicalMeasurements": 0,
+  "humanSessions": 0
+}

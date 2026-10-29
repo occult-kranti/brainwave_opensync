@@ -1,0 +1,38 @@
+{
+  "schema": "contact-round5-fixtures/1",
+  "status": "frozen before outcome calculation",
+  "n": 100,
+  "k": 4,
+  "alpha": 0.05,
+  "hitCounts": [
+    25,
+    30,
+    35,
+    40,
+    50,
+    100,
+    0
+  ],
+  "epsilon": 0.2,
+  "compromisedCounts": [
+    0,
+    5,
+    10,
+    20,
+    100
+  ],
+  "contaminationHitThresholds": [
+    25,
+    30,
+    35,
+    40,
+    50,
+    100,
+    0
+  ],
+  "apiRange": {
+    "nMax": 1000,
+    "kMax": 1000000
+  },
+  "selection": "Advisor-specified fixed lattice and contamination grid; no outcome tuning"
+}

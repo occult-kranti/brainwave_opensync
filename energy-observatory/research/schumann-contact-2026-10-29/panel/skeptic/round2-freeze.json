@@ -1,0 +1,14 @@
+{
+  "round": 2,
+  "owner": "/root/contact_skeptic",
+  "verdict": "accept-ideal-arithmetic-with-scope",
+  "comparisonsExecuted": 4,
+  "files": {
+    "rounds/round2-contract.md": "cf0a4a43401b9c3f53f8ecf5c0d72ecec58050a42d6d2fb969cf6c8622c85d3e",
+    "analysis/round2/model.mjs": "0161eee55b8361ae10bd202becee340084a04f4fb31183e81dc46748a69a817c",
+    "analysis/round2/results.json": "9cec0283ccac92eece9ddbe948a9f54e7fe5cf8e9f76138fea9a492bc8bfaca6",
+    "panel/skeptic/round2-independent-values.json": "0e8a326f76d36bd20c16c6a6ed054877d99f57a0c3569d7f143b46ac0e2b4c45",
+    "panel/skeptic/round2.md": "7d922cda09cf328d3f81fbc10a273c37a2f17c19a521af0ba1a52fe1b3f33759"
+  },
+  "physicalMeasurement": false
+}

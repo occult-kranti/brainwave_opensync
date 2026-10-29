@@ -1,0 +1,495 @@
+{
+  "schema": "contact-round2/1",
+  "status": "PASS",
+  "scope": "synthetic known-law arithmetic; no physical measurements, power, biological effect or contact established",
+  "assertions": 65,
+  "inputs": {
+    "frequencyHz": 7.83,
+    "magneticRmsT": 1e-12,
+    "turns": 1000,
+    "areaM2": 1,
+    "angleDeg": 0,
+    "temperatureK": 300,
+    "resistanceOhm": 1000,
+    "bandwidthHz": 1
+  },
+  "baseline": {
+    "signal": {
+      "voltageRmsV": 4.919734095521616e-8,
+      "sensitivityVPerT": 49197.34095521616,
+      "projection": 1,
+      "magneticConvention": "RMS",
+      "voltageConvention": "RMS"
+    },
+    "noise": {
+      "voltageRmsV": 4.070354775692163e-9,
+      "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+    },
+    "identifiable": true,
+    "equivalentMagneticNoiseRmsT": 8.273525960269612e-14,
+    "status": "ideal-receiver-arithmetic-only"
+  },
+  "circular": {
+    "electricRmsVPerM": 2.4598670477608084e-12,
+    "scope": "ideal circular-path azimuthal field in uniform axial B; not tissue dosimetry"
+  },
+  "controls": [
+    {
+      "name": "zero-field",
+      "inputs": {
+        "frequencyHz": 7.83,
+        "magneticRmsT": 0,
+        "turns": 1000,
+        "areaM2": 1,
+        "angleDeg": 0,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 0,
+          "sensitivityVPerT": 49197.34095521616,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": true,
+        "equivalentMagneticNoiseRmsT": 8.273525960269612e-14,
+        "status": "ideal-receiver-arithmetic-only"
+      }
+    },
+    {
+      "name": "zero-frequency",
+      "inputs": {
+        "frequencyHz": 0,
+        "magneticRmsT": 1e-12,
+        "turns": 1000,
+        "areaM2": 1,
+        "angleDeg": 0,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 0,
+          "sensitivityVPerT": 0,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": false,
+        "equivalentMagneticNoiseRmsT": null,
+        "status": "unidentifiable-zero-sensitivity"
+      }
+    },
+    {
+      "name": "zero-turns",
+      "inputs": {
+        "frequencyHz": 7.83,
+        "magneticRmsT": 1e-12,
+        "turns": 0,
+        "areaM2": 1,
+        "angleDeg": 0,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 0,
+          "sensitivityVPerT": 0,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": false,
+        "equivalentMagneticNoiseRmsT": null,
+        "status": "unidentifiable-zero-sensitivity"
+      }
+    },
+    {
+      "name": "zero-area",
+      "inputs": {
+        "frequencyHz": 7.83,
+        "magneticRmsT": 1e-12,
+        "turns": 1000,
+        "areaM2": 0,
+        "angleDeg": 0,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 0,
+          "sensitivityVPerT": 0,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": false,
+        "equivalentMagneticNoiseRmsT": null,
+        "status": "unidentifiable-zero-sensitivity"
+      }
+    },
+    {
+      "name": "orthogonal",
+      "inputs": {
+        "frequencyHz": 7.83,
+        "magneticRmsT": 1e-12,
+        "turns": 1000,
+        "areaM2": 1,
+        "angleDeg": 90,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 0,
+          "sensitivityVPerT": 0,
+          "projection": 0,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": false,
+        "equivalentMagneticNoiseRmsT": null,
+        "status": "unidentifiable-zero-sensitivity"
+      }
+    },
+    {
+      "name": "double-field",
+      "inputs": {
+        "frequencyHz": 7.83,
+        "magneticRmsT": 2e-12,
+        "turns": 1000,
+        "areaM2": 1,
+        "angleDeg": 0,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 9.839468191043231e-8,
+          "sensitivityVPerT": 49197.34095521616,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": true,
+        "equivalentMagneticNoiseRmsT": 8.273525960269612e-14,
+        "status": "ideal-receiver-arithmetic-only"
+      }
+    },
+    {
+      "name": "double-frequency",
+      "inputs": {
+        "frequencyHz": 15.66,
+        "magneticRmsT": 1e-12,
+        "turns": 1000,
+        "areaM2": 1,
+        "angleDeg": 0,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 9.839468191043231e-8,
+          "sensitivityVPerT": 98394.68191043232,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": true,
+        "equivalentMagneticNoiseRmsT": 4.136762980134806e-14,
+        "status": "ideal-receiver-arithmetic-only"
+      }
+    },
+    {
+      "name": "double-area",
+      "inputs": {
+        "frequencyHz": 7.83,
+        "magneticRmsT": 1e-12,
+        "turns": 1000,
+        "areaM2": 2,
+        "angleDeg": 0,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 9.839468191043231e-8,
+          "sensitivityVPerT": 98394.68191043232,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": true,
+        "equivalentMagneticNoiseRmsT": 4.136762980134806e-14,
+        "status": "ideal-receiver-arithmetic-only"
+      }
+    },
+    {
+      "name": "double-turns",
+      "inputs": {
+        "frequencyHz": 7.83,
+        "magneticRmsT": 1e-12,
+        "turns": 2000,
+        "areaM2": 1,
+        "angleDeg": 0,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 9.839468191043231e-8,
+          "sensitivityVPerT": 98394.68191043232,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": true,
+        "equivalentMagneticNoiseRmsT": 4.136762980134806e-14,
+        "status": "ideal-receiver-arithmetic-only"
+      }
+    },
+    {
+      "name": "opposite-normal",
+      "inputs": {
+        "frequencyHz": 7.83,
+        "magneticRmsT": 1e-12,
+        "turns": 1000,
+        "areaM2": 1,
+        "angleDeg": 180,
+        "temperatureK": 300,
+        "resistanceOhm": 1000,
+        "bandwidthHz": 1
+      },
+      "output": {
+        "signal": {
+          "voltageRmsV": 4.919734095521616e-8,
+          "sensitivityVPerT": 49197.34095521616,
+          "projection": 1,
+          "magneticConvention": "RMS",
+          "voltageConvention": "RMS"
+        },
+        "noise": {
+          "voltageRmsV": 4.070354775692163e-9,
+          "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+        },
+        "identifiable": true,
+        "equivalentMagneticNoiseRmsT": 8.273525960269612e-14,
+        "status": "ideal-receiver-arithmetic-only"
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "key": "frequencyHz",
+      "value": "-1",
+      "rejected": true
+    },
+    {
+      "key": "frequencyHz",
+      "value": "Infinity",
+      "rejected": true
+    },
+    {
+      "key": "frequencyHz",
+      "value": "NaN",
+      "rejected": true
+    },
+    {
+      "key": "magneticRmsT",
+      "value": "-1",
+      "rejected": true
+    },
+    {
+      "key": "magneticRmsT",
+      "value": "Infinity",
+      "rejected": true
+    },
+    {
+      "key": "magneticRmsT",
+      "value": "NaN",
+      "rejected": true
+    },
+    {
+      "key": "turns",
+      "value": "-1",
+      "rejected": true
+    },
+    {
+      "key": "turns",
+      "value": "Infinity",
+      "rejected": true
+    },
+    {
+      "key": "turns",
+      "value": "NaN",
+      "rejected": true
+    },
+    {
+      "key": "areaM2",
+      "value": "-1",
+      "rejected": true
+    },
+    {
+      "key": "areaM2",
+      "value": "Infinity",
+      "rejected": true
+    },
+    {
+      "key": "areaM2",
+      "value": "NaN",
+      "rejected": true
+    },
+    {
+      "key": "temperatureK",
+      "value": "-1",
+      "rejected": true
+    },
+    {
+      "key": "temperatureK",
+      "value": "Infinity",
+      "rejected": true
+    },
+    {
+      "key": "temperatureK",
+      "value": "NaN",
+      "rejected": true
+    },
+    {
+      "key": "resistanceOhm",
+      "value": "-1",
+      "rejected": true
+    },
+    {
+      "key": "resistanceOhm",
+      "value": "Infinity",
+      "rejected": true
+    },
+    {
+      "key": "resistanceOhm",
+      "value": "NaN",
+      "rejected": true
+    },
+    {
+      "key": "bandwidthHz",
+      "value": "-1",
+      "rejected": true
+    },
+    {
+      "key": "bandwidthHz",
+      "value": "Infinity",
+      "rejected": true
+    },
+    {
+      "key": "bandwidthHz",
+      "value": "NaN",
+      "rejected": true
+    },
+    {
+      "patch": {
+        "resistanceOhm": "0"
+      },
+      "rejected": true
+    },
+    {
+      "patch": {
+        "bandwidthHz": "0"
+      },
+      "rejected": true
+    },
+    {
+      "patch": {
+        "turns": "0.5"
+      },
+      "rejected": true
+    },
+    {
+      "patch": {
+        "angleDeg": "Infinity"
+      },
+      "rejected": true
+    },
+    {
+      "patch": {
+        "areaM2": "1e+308"
+      },
+      "rejected": true
+    }
+  ],
+  "derivativeControls": [
+    {
+      "stepSeconds": 0.0001,
+      "voltageRmsV": 4.9197142495157554e-8,
+      "relativeError": 0.0000040339590463670225
+    },
+    {
+      "stepSeconds": 0.00005,
+      "voltageRmsV": 4.9197291340156484e-8,
+      "relativeError": 0.0000010084906767181732
+    },
+    {
+      "stepSeconds": 0.000025,
+      "voltageRmsV": 4.919732855144844e-8,
+      "relativeError": 2.5212272611013143e-7
+    }
+  ],
+  "amplitudeComparison": {
+    "illustrativeFieldT": 0.000035,
+    "referenceFieldT": 1e-12,
+    "ratio": 35000000,
+    "limit": "amplitude ratio only; temporal waveform and biological mechanism not equated"
+  },
+  "limitations": [
+    "uniform field and ideal geometry",
+    "RMS conventions",
+    "Johnson-only white thermal noise in declared bandwidth",
+    "no measured coil calibration, amplifier noise, environment, reactance or loading",
+    "no complete receptor model, no ET source attribution"
+  ]
+}

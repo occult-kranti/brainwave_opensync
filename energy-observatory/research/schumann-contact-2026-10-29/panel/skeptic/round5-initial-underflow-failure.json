@@ -1,0 +1,57 @@
+{
+  "status": "REJECT-zero-tail-without-underflow-status",
+  "modelSha256": "f2b0f4f7f32a1a8acc283a2f703577903cece31b123b73e8aecb3e5ca3d8fd84",
+  "cases": [
+    {
+      "input": {
+        "n": 1000,
+        "k": 4,
+        "h": 1000
+      },
+      "output": {
+        "n": 1000,
+        "k": 4,
+        "h": 1000,
+        "guessProbability": 0.25,
+        "upperTail": 0,
+        "threshold": {
+          "h": 274,
+          "attainable": true,
+          "tailAtThreshold": 0.0440963297165434,
+          "tailAtPrevious": 0.05119467130277776,
+          "alpha": 0.05
+        },
+        "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+        "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+      },
+      "trueTailPositive": true,
+      "exactTailFormula": "4^(-1000)"
+    },
+    {
+      "input": {
+        "n": 100,
+        "k": 1000000,
+        "h": 100
+      },
+      "output": {
+        "n": 100,
+        "k": 1000000,
+        "h": 100,
+        "guessProbability": 0.000001,
+        "upperTail": 0,
+        "threshold": {
+          "h": 1,
+          "attainable": true,
+          "tailAtThreshold": 0.00009999505016169608,
+          "tailAtPrevious": 1,
+          "alpha": 0.05
+        },
+        "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+        "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+      },
+      "trueTailPositive": true,
+      "exactTailFormula": "1000000^(-100)"
+    }
+  ],
+  "scope": "Supported argument range includes true positive tails that underflow to zero; requested guard required"
+}

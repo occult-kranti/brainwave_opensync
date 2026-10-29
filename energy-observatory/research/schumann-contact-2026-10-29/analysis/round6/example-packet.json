@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "origin": "observational",
+  "asOfUtc": "2026-10-29T06:00:00.000Z",
+  "fixtureLabel": "COMPLETELY FABRICATED METADATA; NO OBSERVATIONS",
+  "documentary": {
+    "source": {
+      "uri": "https://example.invalid/fictional/source",
+      "sha256": "94dc81d9c72b101609fb57ba7734b087fc995060c72df2429ae6c70d8353bd1b"
+    },
+    "readDepth": "selected-passages",
+    "assertionStatus": "attributed"
+  },
+  "environment": {
+    "kind": "calibrated-numeric",
+    "component": "Bx",
+    "units": "T",
+    "sampleRateHz": 128,
+    "bandHz": [
+      5,
+      40
+    ],
+    "startUtc": "2026-10-28T00:00:00.000Z",
+    "endUtc": "2026-10-29T00:00:00.000Z",
+    "clockUncertaintyMs": 1,
+    "numericRecords": {
+      "uri": "https://example.invalid/fictional/numeric-records",
+      "sha256": "11fd3be4cfe1e61325157c1f8764833d84b8ee7426635c44f0b9d967a9564deb"
+    },
+    "calibration": {
+      "uri": "https://example.invalid/fictional/calibration",
+      "sha256": "2d12a5447ffe32072e3cd49a952a006c00836e97b9425f4abb881b881330d650"
+    },
+    "responseNoise": {
+      "uri": "https://example.invalid/fictional/response-noise",
+      "sha256": "bd468814a0bf0cc46fb68e0d33587792616327edf06fed926587291b15f016a1"
+    },
+    "qc": {
+      "uri": "https://example.invalid/fictional/qc",
+      "sha256": "301168349337dd0c1a6a60e578b4c06f1ceb7643e493be665743472903ad0f39"
+    },
+    "baseline": {
+      "uri": "https://example.invalid/fictional/baseline",
+      "sha256": "d6a6b12c733758d422efa4ef2339786e1983ca52859e29608699e66ab2a79659"
+    },
+    "estimator": "Fixed demonstration Lorentz-fit specification; no computed fit",
+    "missingnessRule": "Do not interpolate; predeclared coverage exclusions"
+  },
+  "information": {
+    "K": 4,
+    "N": 3,
+    "targetCustody": {
+      "uri": "https://example.invalid/fictional/target-custody",
+      "sha256": "531c2889d3f11abb46a5717c260dc575d1f7ca6739b417d10634a1668a129687"
+    },
+    "responseArchive": {
+      "uri": "https://example.invalid/fictional/responses",
+      "sha256": "8e31b9cb1c64c34548527e899417478f9774f95d49b8eebd8bbe6e1aa2e3c44a"
+    },
+    "scoringPlan": {
+      "uri": "https://example.invalid/fictional/scoring-plan",
+      "sha256": "9f97c7b30cd908dc9d5ef7139eeca46093c84a4831c5347c759ea336d517394f"
+    },
+    "generationAudit": {
+      "uri": "https://example.invalid/fictional/generation-audit",
+      "sha256": "307eef1dff0dbddb876043d18c3fd62c1dc0e225b5c07f6f0c4bef73bff6f52b"
+    },
+    "generationAssumption": "independent-uniform-conditional",
+    "stoppingRule": "fixed-N",
+    "commitmentScheme": "salted-domain-separated-sha256",
+    "trials": [
+      {
+        "id": "fabricated-attempt-1",
+        "status": "hit",
+        "eventTimeBasis": "original-event",
+        "eventUtc": "2026-10-28T10:00:00.000Z",
+        "responseLockedUtc": "2026-10-28T10:01:00.000Z",
+        "revealUtc": "2026-10-28T10:02:00.000Z",
+        "commitment": {
+          "sha256": "f7b87ebeaac314991bda865a33d0c4a9071db95b65e1bcffd55aa3375c3b75e9",
+          "committedUtc": "2026-10-27T12:00:00.000Z",
+          "nonceBits": 128,
+          "nonceRevealUtc": "2026-10-28T10:02:30.000Z"
+        }
+      },
+      {
+        "id": "fabricated-attempt-2",
+        "status": "miss",
+        "eventTimeBasis": "original-event",
+        "eventUtc": "2026-10-28T11:00:00.000Z",
+        "responseLockedUtc": "2026-10-28T11:01:00.000Z",
+        "revealUtc": "2026-10-28T11:02:00.000Z",
+        "commitment": {
+          "sha256": "cddf8ce790003ca02d7ed58fe404c3f52e7296cfd9f7afcac1cb9654199cad95",
+          "committedUtc": "2026-10-27T12:00:00.000Z",
+          "nonceBits": 128,
+          "nonceRevealUtc": "2026-10-28T11:02:30.000Z"
+        }
+      },
+      {
+        "id": "fabricated-attempt-3",
+        "status": "abstain",
+        "eventTimeBasis": "original-event",
+        "eventUtc": "2026-10-28T12:00:00.000Z",
+        "responseLockedUtc": "2026-10-28T12:01:00.000Z",
+        "revealUtc": "2026-10-28T12:02:00.000Z",
+        "commitment": {
+          "sha256": "ae84c294ee8fd62274b530b83719201de1ee60dd69b3977904b6e771a8d17569",
+          "committedUtc": "2026-10-27T12:00:00.000Z",
+          "nonceBits": 128,
+          "nonceRevealUtc": "2026-10-28T12:02:30.000Z"
+        }
+      }
+    ]
+  },
+  "paired": {
+    "crosswalk": {
+      "uri": "https://example.invalid/fictional/crosswalk",
+      "sha256": "4ee33c0c5af9efb15251a25c227050af21b060a7cce35f40705c32bd075845d1"
+    },
+    "protocolLockedUtc": "2026-10-27T00:00:00.000Z",
+    "lagRule": "Fixed zero lag; no search",
+    "nullAssumption": "Explicit independently specified null; existence not certified",
+    "calendarControls": "UTC and local-time strata declared prospectively",
+    "maxClockUncertaintyMs": 2
+  },
+  "selfAttestations": {
+    "independenceVerified": true,
+    "calibrationVerified": true,
+    "custodyVerified": true,
+    "nonceSecret": true,
+    "contactVerified": true
+  }
+}

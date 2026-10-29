@@ -1,0 +1,35 @@
+{
+  "schema": "r6-independent-four-target-dictionary-v1",
+  "encoding": "UTF-8 literal strings; no nonce, salt or secret",
+  "targets": [
+    "copper-ball",
+    "violet-square",
+    "quiet-water",
+    "north-star"
+  ],
+  "sha256": {
+    "copper-ball": "23e39eca7c4c3f7aec9b16a3947686dfce21348ac2dce2484a933623efce2e35",
+    "violet-square": "89ad58c84f621b8e125a3a4cd17879b0bec538d49f73a092340009b3c2571f53",
+    "quiet-water": "3c636c173724620e17cb097e6bcd1e1a51c7cdf5ed37dbb12fa5e1c45c1eca0e",
+    "north-star": "b59e69febb78bfb221db05c452f1e98d4f14a50edde0c7ec8754dda5a7575a9e"
+  },
+  "inversion": [
+    {
+      "publishedDigest": "23e39eca7c4c3f7aec9b16a3947686dfce21348ac2dce2484a933623efce2e35",
+      "recovered": "copper-ball"
+    },
+    {
+      "publishedDigest": "89ad58c84f621b8e125a3a4cd17879b0bec538d49f73a092340009b3c2571f53",
+      "recovered": "violet-square"
+    },
+    {
+      "publishedDigest": "3c636c173724620e17cb097e6bcd1e1a51c7cdf5ed37dbb12fa5e1c45c1eca0e",
+      "recovered": "quiet-water"
+    },
+    {
+      "publishedDigest": "b59e69febb78bfb221db05c452f1e98d4f14a50edde0c7ec8754dda5a7575a9e",
+      "recovered": "north-star"
+    }
+  ],
+  "scope": "enumeration of a four-element known dictionary, not a break of SHA256 and not proof of salted commitment security"
+}

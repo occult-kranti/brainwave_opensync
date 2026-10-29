@@ -1,0 +1,31 @@
+{
+  "schema": "producer-freeze/2",
+  "round": 5,
+  "status": "frozen-repaired",
+  "worker": "contact_engineer",
+  "codeExecuted": true,
+  "physicalMeasurements": 0,
+  "verifierOutputFilesReadBeforeFreeze": false,
+  "reviewerRangeFeedbackReceivedBeforeRepair": true,
+  "preservedInitialFailure": "revisions/v1/failure.json",
+  "contractSha256": "0048cafeb84d5c36e8286eaee4bd86767d818f3df61fabd87f6fe7b4d37e5c50",
+  "files": {
+    "fixtures.json": "cc489a9d683ff4a230a7195fcd5c825f94e96784b3203149727744f4accea665",
+    "input-freeze.json": "9a2ad7df71af5ee465ee4811898aed7760eee46d2239b946144a18f51fa1741b",
+    "model.mjs": "3eb54483c494c969ac692c66abdfbd9a7620cd095298258bbfb49c2033544889",
+    "api.mjs": "6f73c459487400ccdf886ec994ae7b3d3b3eefb727e17e62e9ecf6d96e51e70f",
+    "run.mjs": "b759183508e41093c9c37ace137e05a538351ffc0db901adec1a4b14e8d6c916",
+    "results.json": "b4e02fba49ce50a4d486e1431eae16421a746420692be2bf923c605acdcb2f1f",
+    "report.md": "ce0d9beb6ab6b0b190f6e8032748a96f4e645b692252b9a72295d721e3815c81"
+  },
+  "preservedRevisionFiles": {
+    "revisions/v1/failure.json": "8025381639ed3d5f4f39cd5a46536c8ed5b275201018b529c8b42d8ee124d593",
+    "revisions/v1/api.mjs": "d4d66ad802b4e90822fb422d6bfe10f8384028aa6b467e264cd1ebf6ad1d91e6",
+    "revisions/v1/results.json": "8e2804ba86ea15cac4c90ba6583e92768417fbe2578407ba4ba3af05d5585801",
+    "revisions/v1/fixtures.json": "cc489a9d683ff4a230a7195fcd5c825f94e96784b3203149727744f4accea665",
+    "revisions/v1/input-freeze.json": "9a2ad7df71af5ee465ee4811898aed7760eee46d2239b946144a18f51fa1741b",
+    "revisions/v1/freeze.json": "303b236edc4a1f298776b42574d0655e4326db4398c81a51f5ab3b399fa45a7e",
+    "revisions/v1/model.mjs": "f2b0f4f7f32a1a8acc283a2f703577903cece31b123b73e8aecb3e5ca3d8fd84",
+    "revisions/v1/run.mjs": "a246121ab7514597ccb4457e8557e0bd87bd3c368fe06ef3320785bc5dbd456b"
+  }
+}

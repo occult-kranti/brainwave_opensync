@@ -1,0 +1,11 @@
+{
+  "schema": "input-freeze/1",
+  "round": 6,
+  "phase": "before-implementation-and-outcomes",
+  "contractSha256": "069736feab25c826ef054ff389aff641899b8fd83e12f17c1d3676cb36214ebd",
+  "files": {
+    "schema.json": "f6679aae36c2d4146466e7b564c3f19eebcd50b216ec6f7ad17f42e3a89263a8",
+    "example-packet.json": "8b6e2e8b23ea509263f837714ef1e657e7ee598ad44e7fbbba003aef9c90f75d"
+  },
+  "resultsExistAtFreeze": false
+}

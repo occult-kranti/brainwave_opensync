@@ -1,0 +1,312 @@
+{
+  "status": "PASS",
+  "case_families": 13,
+  "offset_rows": 416,
+  "independent_case_families": 9,
+  "invalid_cases": 16,
+  "comparisons": 3451,
+  "max_absolute_score_error": 4.440892098500626e-16,
+  "exact_ranks_and_pvalues": true,
+  "failures": [],
+  "summaries": [
+    {
+      "id": "identical_integer_shape_fixed",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "lockedMaximum": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "invalidSelectedMinimum": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        }
+      },
+      "minimumNonzeroScoreGap": 0.0014822134387351778
+    },
+    {
+      "id": "identical_integer_shape_seven",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 7,
+          "total": 32,
+          "fraction": 0.21875
+        }
+      },
+      "minimumNonzeroScoreGap": 0.0014822134387351778
+    },
+    {
+      "id": "identical_integer_shape_all",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 32,
+          "total": 32,
+          "fraction": 1
+        }
+      },
+      "minimumNonzeroScoreGap": 0.0014822134387351778
+    },
+    {
+      "id": "distinct_integer_shapes_fixed",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "lockedMaximum": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "invalidSelectedMinimum": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        }
+      },
+      "minimumNonzeroScoreGap": 0.0008250463912134782
+    },
+    {
+      "id": "distinct_integer_shapes_seven",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 7,
+          "total": 32,
+          "fraction": 0.21875
+        }
+      },
+      "minimumNonzeroScoreGap": 0.0008250463912134782
+    },
+    {
+      "id": "distinct_integer_shapes_all",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 32,
+          "total": 32,
+          "fraction": 1
+        }
+      },
+      "minimumNonzeroScoreGap": 0.0008250463912134782
+    },
+    {
+      "id": "tied_periodic_shapes_fixed",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        }
+      },
+      "minimumNonzeroScoreGap": null
+    },
+    {
+      "id": "tied_periodic_shapes_seven",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        }
+      },
+      "minimumNonzeroScoreGap": null
+    },
+    {
+      "id": "tied_periodic_shapes_all",
+      "origin": "independent",
+      "rejections": {
+        "fixed": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        }
+      },
+      "minimumNonzeroScoreGap": null
+    },
+    {
+      "id": "identical-shape-random-offset_seven",
+      "origin": "producer",
+      "rejections": {
+        "fixed": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 7,
+          "total": 32,
+          "fraction": 0.21875
+        }
+      },
+      "minimumNonzeroScoreGap": 0.0010422094841063053
+    },
+    {
+      "id": "identical-shape-random-offset_all",
+      "origin": "producer",
+      "rejections": {
+        "fixed": {
+          "count": 1,
+          "total": 32,
+          "fraction": 0.03125
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 32,
+          "total": 32,
+          "fraction": 1
+        }
+      },
+      "minimumNonzeroScoreGap": 0.0010422094841063053
+    },
+    {
+      "id": "distinct-shape-random-offset_seven",
+      "origin": "producer",
+      "rejections": {
+        "fixed": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        }
+      },
+      "minimumNonzeroScoreGap": 0.001220628907906385
+    },
+    {
+      "id": "distinct-shape-random-offset_all",
+      "origin": "producer",
+      "rejections": {
+        "fixed": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "lockedMaximum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        },
+        "invalidSelectedMinimum": {
+          "count": 0,
+          "total": 32,
+          "fraction": 0
+        }
+      },
+      "minimumNonzeroScoreGap": 0.001220628907906385
+    }
+  ],
+  "inputs_sha256": {
+    "verification/round3/oracle.py": "917687509448c373b61e3290778466c9f4508e477f117f839c9f0cae0a5d2ed5",
+    "verification/round3/fixtures.json": "3a52d275bdde437a296612bb786fcc2c66740ce14b060e086b0d71df193661ac",
+    "verification/round3/bridge.mjs": "4eaedab426d74977b4da4a50c64a5904a4db65f39aaf23014a1fb500679d9db9",
+    "analysis/round3/model.mjs": "4367a5f72935e146618e55f7d4b543ae574f4a7d726c4b15c67c38c3962308b6",
+    "analysis/round3/fixtures.json": "7d313045160eb8e5c9b0b745c360eaf396dc6c80c5fbaefb54f7df48acd8b1fa",
+    "rounds/round3-contract.md": "49ffd5d1142b1667ce503185b1cc4266eaf0d2a49f71512d18f8020aa04b9369"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "node": "v24.22.1"
+  },
+  "scope": "conditional uniform-offset synthetic global null only; not empirical validity or strong FWER"
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "assessment": "Metadata syntax and internal consistency only; no authentication",
+  "common": {
+    "schemaVersion": "integer1",
+    "origin": [
+      "synthetic",
+      "observational"
+    ],
+    "asOfUtc": "canonical valid UTC YYYY-MM-DDTHH:mm:ss.sssZ; complete-record timestamp ceiling"
+  },
+  "reference": {
+    "uri": "nonempty absolute HTTPS URI with hostname; inert/no retrieval",
+    "sha256": "64 hexadecimal characters"
+  },
+  "documentary": {
+    "source": "reference",
+    "readDepth": "nonempty string",
+    "assertionStatus": "attributed"
+  },
+  "environment": {
+    "kind": "calibrated-numeric",
+    "component": [
+      "Bx",
+      "By",
+      "Ez"
+    ],
+    "units": "T for Bx/By, V/m for Ez",
+    "sampleRateHz": "positive finite number",
+    "bandHz": "two finite nonnegative bounds; low < high < sampleRateHz/2",
+    "startUtc": "valid canonical UTC; <endUtc",
+    "endUtc": "valid canonical UTC; <=asOfUtc",
+    "clockUncertaintyMs": "nonnegative finite number",
+    "numericRecords": "reference",
+    "calibration": "reference",
+    "responseNoise": "reference",
+    "qc": "reference",
+    "baseline": "reference",
+    "estimator": "nonempty string",
+    "missingnessRule": "nonempty string"
+  },
+  "information": {
+    "K": "safe integer >=2",
+    "N": "safe integer >=1, equals trial array length",
+    "targetCustody": "reference",
+    "responseArchive": "reference",
+    "scoringPlan": "reference",
+    "generationAudit": "reference",
+    "generationAssumption": "independent-uniform-conditional",
+    "stoppingRule": "fixed-N",
+    "commitmentScheme": "salted-domain-separated-sha256",
+    "trials": [
+      {
+        "id": "unique nonempty string",
+        "status": [
+          "hit",
+          "miss",
+          "abstain"
+        ],
+        "eventTimeBasis": "original-event",
+        "eventUtc": "canonical valid UTC <=responseLockedUtc",
+        "responseLockedUtc": "canonical valid UTC <revealUtc",
+        "revealUtc": "canonical valid UTC <=asOfUtc",
+        "commitment": {
+          "sha256": "64 hex",
+          "committedUtc": "canonical valid UTC <responseLockedUtc and <=asOfUtc",
+          "nonceBits": "safe integer >=128",
+          "nonceRevealUtc": "canonical valid UTC >=revealUtc and <=asOfUtc"
+        }
+      }
+    ]
+  },
+  "paired": {
+    "crosswalk": "reference",
+    "protocolLockedUtc": "canonical valid UTC strictly before earliest information event AND environmental start",
+    "lagRule": "nonempty string",
+    "nullAssumption": "nonempty string",
+    "calendarControls": "nonempty string",
+    "maxClockUncertaintyMs": "nonnegative finite number >=environment.clockUncertaintyMs",
+    "eventWindow": "startUtc <= every eventUtc <= endUtc (inclusive boundaries)",
+    "originRequirement": "observational"
+  },
+  "always": {
+    "evidenceAuthenticated": false,
+    "empiricalResult": null,
+    "couplingEstablished": false,
+    "etContactEstablished": false
+  },
+  "laneFlags": [
+    "documentaryMetadataReady",
+    "environmentMetadataReady",
+    "informationMetadataReady",
+    "pairedMetadataReady"
+  ],
+  "nullMeaning": "Unknown or absent metadata is not measured zero",
+  "cryptoDemo": {
+    "algorithm": "sha256",
+    "encoding": "UTF-8 literal without newline",
+    "targets": [
+      "copper",
+      "silver",
+      "gold",
+      "iron"
+    ],
+    "selectedTarget": "gold",
+    "claim": "4-element unsalted dictionary enumeration only; no salted security proof"
+  }
+}

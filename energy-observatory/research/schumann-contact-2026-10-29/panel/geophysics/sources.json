@@ -1,0 +1,85 @@
+[
+  {
+    "id": "GEO-TACZA-2026",
+    "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2026EA005271",
+    "date": "2026-10-10",
+    "kind": "primary research",
+    "readDepth": "Introduction, methods 2, results 3; selected full-text sections, not supplementary files or data replay",
+    "finding": "173 threshold-defined HSS/CIR proxy onsets; separate geomagnetic association from mechanism. Event validity, month-matched non-event nulls, estimator choice and matched station support matter.",
+    "limitation": "Historical 2005\u20132024 analysis is not recent Oct23\u201329 measurement or ET evidence.",
+    "sourceRef": "turn239view1"
+  },
+  {
+    "id": "GEO-KOLOSKOV-2026",
+    "url": "https://angeo.copernicus.org/articles/44/949/2026/",
+    "date": "2026-09-18",
+    "kind": "primary research",
+    "readDepth": "Introduction, sections 2\u20133 calibration and assumptions",
+    "finding": "Driven peak depends on source geometry under a prescribed cavity; paired modes/components can constrain restricted source parameters.",
+    "limitation": "HTML Eq1 uses duplicated X/Y definitions, and Eq2 distance notation requires reconciliation. No formula was imported or silently repaired.",
+    "sourceRef": "turn239view0"
+  },
+  {
+    "id": "GEO-BGS-COILS",
+    "url": "https://geomag.bgs.ac.uk/research/inductioncoils.html",
+    "date": null,
+    "retrieved": "2026-10-29",
+    "kind": "primary observatory documentation",
+    "readDepth": "Instrument, example spectrogram, data availability and linked NGDC search",
+    "finding": "BGS reports calibrated MFS05 replacement in August2024 at128Hz; annual raw archive advertised.",
+    "limitation": "No current-window numeric packet or calibration file acquired. Its25Hz power-grid description is not accepted as an ordinary integer harmonic of50Hz.",
+    "sourceRef": "turn247view0"
+  },
+  {
+    "id": "GEO-IAR-2018",
+    "url": "https://nora.nerc.ac.uk/id/eprint/520138/",
+    "doi": "10.1029/2018JA025264",
+    "date": "2018",
+    "kind": "primary author/institution research record",
+    "readDepth": "Abstract only; full linked11MB PDF not read",
+    "finding": "Authors report Ionospheric Alfven resonance overlap with Schumann bands as a conventional alternative.",
+    "limitation": "Lead for nuisance modeling, not reproduced occurrence rates or explanation of current anomaly.",
+    "sourceRef": "turn251view1"
+  },
+  {
+    "id": "GEO-WANG-2019",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6494972/",
+    "doi": "10.1523/ENEURO.0483-18.2019",
+    "date": "2019-04-26",
+    "kind": "primary experiment",
+    "readDepth": "Abstract, design, stimulus, blinding and artifact methods; not full independent statistical audit",
+    "finding": "Earth-strength magnetic-vector rotations with active/sham controls and EEG alpha endpoint, not natural pT Schumann exposure or ET information.",
+    "limitation": "35\u00b5T rotational stimulus cannot be equated to a1pT ELF field by matching Hz. No universal biological no-effect bound inferred.",
+    "sourceRef": "turn247view1"
+  },
+  {
+    "id": "GEO-NASA-2011",
+    "url": "https://ntrs.nasa.gov/api/citations/20120000051/downloads/20120000051.pdf",
+    "doi": "10.1029/2011GL049668",
+    "date": "2011",
+    "kind": "primary research NASA manuscript",
+    "readDepth": "Current search abstract and prior study's explicitly inspected formula reference; not re-read fullPDF this round",
+    "finding": "Lightning-excited Earth\u2013ionosphere cavity and observed satellite signatures.",
+    "limitation": "Ideal horizontal wavelength, vacuum c/f and measured lossy dispersion are distinct.",
+    "sourceRef": "turn240search9"
+  },
+  {
+    "id": "GEO-FARADAY",
+    "url": "https://www.feynmanlectures.caltech.edu/II_17.html",
+    "kind": "primary academic lecture",
+    "readDepth": "Section17.1 stationary-loop and Maxwell-Faraday passage",
+    "finding": "Classical induction basis for ideal coil arithmetic; no novel law or biological result.",
+    "sourceRef": "turn274view0"
+  },
+  {
+    "id": "GEO-NIST-NOISE",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7339765/",
+    "doi": "10.6028/jres.122.046",
+    "date": "2017-12-29",
+    "kind": "primary research",
+    "readDepth": "Introduction and Eq1 description; apparatus summary",
+    "finding": "Resistor mean-square voltage4kTRbandwidth; real metrology includes transfer/nonthermal corrections.",
+    "limitation": "Historical measured k is not substituted for the present exact SI constant; no complete receiver noise claim.",
+    "sourceRef": "turn274view1"
+  }
+]

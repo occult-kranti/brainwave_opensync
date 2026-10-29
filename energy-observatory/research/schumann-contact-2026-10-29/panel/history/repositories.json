@@ -1,0 +1,146 @@
+{
+  "retrievedDate": "2026-10-29",
+  "scope": "Five requested public repositories, main-branch selected-file review; not exhaustive file or branch audit",
+  "repositories": [
+    {
+      "repository": "occult-kranti/astrology-sim-ant",
+      "branch": "main",
+      "commit": "5f030c0e2998c0276a0549707b5578614ccdf7d9",
+      "commitDate": "2026-10-05T22:03:17Z",
+      "tree": "90c1bb94bb75ec9330012bc486386d40180288c5",
+      "treeEntries": 691,
+      "blobs": 621,
+      "treeTruncated": false,
+      "inspected": [
+        {
+          "path": "README.md",
+          "blob": "aa9466152531287e7874eb90783cf9c2941f438b",
+          "bytes": 15021,
+          "readingDepth": "full source text",
+          "url": "https://github.com/occult-kranti/astrology-sim-ant/blob/5f030c0e2998c0276a0549707b5578614ccdf7d9/README.md"
+        },
+        {
+          "path": "research/opgraph/notes/20-hostile-audit.md",
+          "blob": "fabaa563bbd4e192c69018c01f1b61c05b10b98e",
+          "bytes": 33910,
+          "readingDepth": "selected introduction and frequency/evidence/causality passages",
+          "url": "https://github.com/occult-kranti/astrology-sim-ant/blob/5f030c0e2998c0276a0549707b5578614ccdf7d9/research/opgraph/notes/20-hostile-audit.md"
+        },
+        {
+          "path": "pages/picatrix/correspondences.html",
+          "blob": "a0f943fe7c56505cba962fcc8f84ffebbbc92ec4",
+          "bytes": 7490,
+          "readingDepth": "full source text",
+          "url": "https://github.com/occult-kranti/astrology-sim-ant/blob/5f030c0e2998c0276a0549707b5578614ccdf7d9/pages/picatrix/correspondences.html"
+        }
+      ],
+      "license": "README: educational/non-commercial framing; third-party MIT notices; no root LICENSE found in tree",
+      "publication": "No upstream edits; no whole proprietary text copied"
+    },
+    {
+      "repository": "occult-kranti/gateway-files",
+      "branch": "main",
+      "commit": "466a6d389f1592fb0b99f4daddd6f0f645ccc5c1",
+      "commitDate": "2026-10-22T01:26:36Z",
+      "tree": "ea339160de10d604210bde14f0c8a6e1f2960eba",
+      "treeEntries": 14,
+      "blobs": 11,
+      "treeTruncated": false,
+      "inspected": [
+        {
+          "path": "README.md",
+          "blob": "40b9f474fcbcaa8d5293bb4b48532b2aed73d183",
+          "bytes": 2813,
+          "readingDepth": "full source text",
+          "url": "https://github.com/occult-kranti/gateway-files/blob/466a6d389f1592fb0b99f4daddd6f0f645ccc5c1/README.md"
+        },
+        {
+          "path": "index.html",
+          "blob": "58a99359aaa71e326d60edf511d730ad4b740893",
+          "bytes": 150145,
+          "readingDepth": "selected Schumann, frequency, physics and attribution passages",
+          "url": "https://github.com/occult-kranti/gateway-files/blob/466a6d389f1592fb0b99f4daddd6f0f645ccc5c1/index.html"
+        },
+        {
+          "path": "archive/FREQUENCY-RESEARCH.md",
+          "blob": "dd2917486fa9b71fdee2aa5e8a6fd5dec8af86aa",
+          "bytes": 7520,
+          "readingDepth": "full source text",
+          "url": "https://github.com/occult-kranti/gateway-files/blob/466a6d389f1592fb0b99f4daddd6f0f645ccc5c1/archive/FREQUENCY-RESEARCH.md"
+        }
+      ],
+      "license": "No root LICENSE found in inspected tree; source links/metadata only; no blanket republication rights inferred",
+      "publication": "No upstream edits; no whole proprietary text copied"
+    },
+    {
+      "repository": "occult-kranti/occult-corpus-research",
+      "branch": "main",
+      "commit": "3f3ad9ea3e3063a80595ca4b58c48b1ca451aded",
+      "commitDate": "2026-08-16T03:54:01Z",
+      "tree": "9d56b82830c252fb4a9292d02e3872fb7338d9b4",
+      "treeEntries": 96,
+      "blobs": 75,
+      "treeTruncated": false,
+      "inspected": [
+        {
+          "path": "research/web_philology_findings.md",
+          "blob": "6dcf6045a6668c9c2a6287a74d7ae0605ee77815",
+          "bytes": 1165,
+          "readingDepth": "full source text",
+          "url": "https://github.com/occult-kranti/occult-corpus-research/blob/3f3ad9ea3e3063a80595ca4b58c48b1ca451aded/research/web_philology_findings.md"
+        },
+        {
+          "path": "handoff/research_handoff.md",
+          "blob": "179b454c4c1b358d1b51e015200f5a7e9e12f5fb",
+          "bytes": 7080,
+          "readingDepth": "full source text",
+          "url": "https://github.com/occult-kranti/occult-corpus-research/blob/3f3ad9ea3e3063a80595ca4b58c48b1ca451aded/handoff/research_handoff.md"
+        }
+      ],
+      "license": "No root LICENSE found in inspected tree; source links/metadata only; no blanket republication rights inferred",
+      "publication": "No upstream edits; no whole proprietary text copied"
+    },
+    {
+      "repository": "occult-kranti/hermetic-timeline",
+      "branch": "main",
+      "commit": "bbf0d8492f2475b38f9f74c3c2ec4a4997a2311f",
+      "commitDate": "2026-06-25T05:59:52Z",
+      "tree": "e9610bdfd621cb8bb2dfabb5b94a98914a3c2005",
+      "treeEntries": 9,
+      "blobs": 9,
+      "treeTruncated": false,
+      "inspected": [
+        {
+          "path": "hermetica.html",
+          "blob": "2ba4bae4122672c69faddc31c4637ddf1ca8f756",
+          "bytes": 15425,
+          "readingDepth": "full source text",
+          "url": "https://github.com/occult-kranti/hermetic-timeline/blob/bbf0d8492f2475b38f9f74c3c2ec4a4997a2311f/hermetica.html"
+        }
+      ],
+      "license": "No root LICENSE found in inspected tree; source links/metadata only; no blanket republication rights inferred",
+      "publication": "No upstream edits; no whole proprietary text copied"
+    },
+    {
+      "repository": "occult-kranti/astrology-sim",
+      "branch": "main",
+      "commit": "6cff760fd970af71911bef4535ca6fbb6d7d71b5",
+      "commitDate": "2026-06-25T05:53:04Z",
+      "tree": "b228ccac61a76cc24b7618776fb1bfa89bcdd824",
+      "treeEntries": 7,
+      "blobs": 7,
+      "treeTruncated": false,
+      "inspected": [
+        {
+          "path": "engine.js",
+          "blob": "5be465e3cbc90506e99d8397c8938e55e9f7f989",
+          "bytes": 10835,
+          "readingDepth": "full source text",
+          "url": "https://github.com/occult-kranti/astrology-sim/blob/6cff760fd970af71911bef4535ca6fbb6d7d71b5/engine.js"
+        }
+      ],
+      "license": "No root LICENSE found in inspected tree; source links/metadata only; no blanket republication rights inferred",
+      "publication": "No upstream edits; no whole proprietary text copied"
+    }
+  ]
+}

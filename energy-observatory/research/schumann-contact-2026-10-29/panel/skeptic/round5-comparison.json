@@ -1,0 +1,8 @@
+{
+  "scope": "N100,K4 named contract only; separate underflow stress receipt governs wider API",
+  "scalarComparisons": 273,
+  "exactThreshold": 33,
+  "maxAbsError": 1.1102230246251565e-16,
+  "maxRelativeError": 6.4717516851549054e-15,
+  "resultsSha256": "b4e02fba49ce50a4d486e1431eae16421a746420692be2bf923c605acdcb2f1f"
+}

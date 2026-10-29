@@ -1,0 +1,25 @@
+{
+  "round": 2,
+  "method": "independent direct Python math from frozen contract; not producer import",
+  "inputs": {
+    "frequency_Hz": 7.83,
+    "B_rms_T": 1e-12,
+    "turns": 1000,
+    "area_m2": 1.0,
+    "path_radius_m": 0.1,
+    "resistance_ohm": 1000.0,
+    "temperature_K": 300.0,
+    "bandwidth_Hz": 1.0
+  },
+  "values": {
+    "coil_emf_rms_V": 4.919734095521616e-08,
+    "ideal_path_E_rms_V_per_m": 2.4598670477608084e-12,
+    "thermal_noise_rms_V": 4.070354775692163e-09,
+    "equivalent_B_noise_rms_T": 8.273525960269612e-14,
+    "illustrative_field_amplitude_ratio": 35000000.0
+  },
+  "contractSha256": "cf0a4a43401b9c3f53f8ecf5c0d72ecec58050a42d6d2fb969cf6c8622c85d3e",
+  "physicalMeasurement": false,
+  "tissueDosimetry": false,
+  "allMechanismBound": false
+}

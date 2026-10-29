@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "files_sha256": {
+    "bridge.mjs": "4eaedab426d74977b4da4a50c64a5904a4db65f39aaf23014a1fb500679d9db9",
+    "check.py": "87d8569d6f49ab37c15db579f664b107ad508ff7194b0629d11b7ed57652e3d4",
+    "comparison.json": "7a8e49453b0ba10c34cebe18431c8c18c527a02453a23feb2cd32e84456cbaa9",
+    "fixtures.json": "3a52d275bdde437a296612bb786fcc2c66740ce14b060e086b0d71df193661ac",
+    "oracle.py": "917687509448c373b61e3290778466c9f4508e477f117f839c9f0cae0a5d2ed5",
+    "preregistration.md": "49bc3d9fb9da789b6c56e9ea0d9354968c170fd4f125c24a82d9a16c3d2abaac",
+    "report.md": "9ff40c0480b3730be9c200037fb23ed405ecb6f45f7208d343299429e7631544"
+  },
+  "model_sha256": "4367a5f72935e146618e55f7d4b543ae574f4a7d726c4b15c67c38c3962308b6"
+}

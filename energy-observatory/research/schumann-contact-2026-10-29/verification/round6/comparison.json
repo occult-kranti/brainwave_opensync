@@ -1,0 +1,853 @@
+{
+  "status": "PASS",
+  "independentPacketCases": 75,
+  "checks": 1141,
+  "nodePythonSha256Comparisons": 8,
+  "failures": [],
+  "summaries": [
+    {
+      "id": "fabricated_observational_complete",
+      "flags": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "complete_synthetic",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "complete_electric_component",
+      "flags": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "documentary_only",
+      "flags": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "environment_only",
+      "flags": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "information_only",
+      "flags": [
+        false,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "no_documentary_independent_lanes",
+      "flags": [
+        false,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "spoofed_verification_fields_ignored",
+      "flags": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "schema_string",
+      "flags": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "invalid_origin",
+      "flags": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "invalid_calendar_asof",
+      "flags": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "noncanonical_asof",
+      "flags": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "http_reference",
+      "flags": [
+        false,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "empty_https_hostname",
+      "flags": [
+        false,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "bad_digest",
+      "flags": [
+        false,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "validated_assertion_label",
+      "flags": [
+        false,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "blank_read_depth",
+      "flags": [
+        false,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "wrong_magnetic_units",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "unknown_component",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "image_kind",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "kp_kind",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "constant_lookup",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "nyquist_equality",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "descending_band",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "negative_band",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "sample_rate_zero",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "boolean_sample_rate",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "invalid_february_date",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "future_environment_end",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "noncanonical_environment_start",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "equal_environment_times",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "negative_clock",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "missing_calibration",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "missing_noise",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "missing_baseline",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "blank_estimator",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "environment_sampleRateHz_NaN",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "environment_sampleRateHz_Infinity",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "environment_sampleRateHz_-Infinity",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "environment_clockUncertaintyMs_NaN",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "environment_clockUncertaintyMs_Infinity",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "environment_clockUncertaintyMs_-Infinity",
+      "flags": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "K_one",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "fractional_K",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "N_zero",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "N_mismatch",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "duplicate_trial_id",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "unknown_status",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "upload_time_basis",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "event_after_lock",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "early_target_reveal",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "future_reveal",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "unsalted_commitment",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "early_nonce_reveal",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "late_commitment",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "short_nonce",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "bad_commitment_hash",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "nonfixed_stopping",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "marginally_uniform_only",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "missing_response_archive",
+      "flags": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "late_protocol",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "missing_crosswalk",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "clock_limit_too_small",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "negative_clock_limit",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "blank_null",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "blank_calendar_controls",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "paired_clock_NaN",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "paired_clock_Infinity",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "paired_clock_-Infinity",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "event_outside_environment",
+      "flags": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "event_on_start_boundary",
+      "flags": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "event_on_end_boundary",
+      "flags": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "actual_quicklook",
+      "flags": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "actual_kp",
+      "flags": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    },
+    {
+      "id": "actual_corpus",
+      "flags": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "authenticated": false,
+      "contactEstablished": false
+    }
+  ],
+  "crypto": {
+    "recovered": "gold",
+    "candidates": 4,
+    "scope": "unsalted known four-element dictionary only; no salted-security proof"
+  },
+  "inputs_sha256": {
+    "verification/round6/make_fixtures.py": "f4d9254cbb39b90720108fe92dc3a50869bee7cf6ae981eae9d3367076fa4195",
+    "verification/round6/fixtures.json": "4c9edbdf5b9f1fd1502fc29de9535a06529675cc0c6ad7031ddf34cb3ae1e737",
+    "verification/round6/hash-dictionary-oracle.json": "712f9241c7193709159dce318c2a5458c6af7fd8d74b467baede4ae92ad05c94",
+    "verification/round6/bridge.mjs": "490c7ecf3129ccdcdfcad2989802f6849923006162b136ebf0fed514f934699d",
+    "analysis/round6/model.mjs": "245feda4b36795eb31c91d1a6197e9f63de2749cf8c095a9933627f195287eb2",
+    "analysis/round6/schema.json": "f6679aae36c2d4146466e7b564c3f19eebcd50b216ec6f7ad17f42e3a89263a8",
+    "rounds/round6-contract.md": "3cb434cf4d3b4830a4a897aa7c94360bd94044d4e2e418cea1263167e52a43ce"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "node": "v24.22.1"
+  },
+  "scope": "schema and chronology declarations only; no authentication, physical observations, contact confirmation or seventh round"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "producer-freeze/1",
+  "round": 3,
+  "status": "frozen",
+  "worker": "contact_engineer",
+  "codeExecuted": true,
+  "physicalMeasurements": 0,
+  "verifierOutputsReadBeforeFreeze": false,
+  "files": {
+    "fixtures.json": "7d313045160eb8e5c9b0b745c360eaf396dc6c80c5fbaefb54f7df48acd8b1fa",
+    "input-freeze.json": "5f6ceddaa96e165f8ac15d132ad9e38aa58fe903a5473dd4bcd2c95f04bcf45b",
+    "model.mjs": "4367a5f72935e146618e55f7d4b543ae574f4a7d726c4b15c67c38c3962308b6",
+    "api.mjs": "c07d6ee869af4804c5850c00cd286afdd93e6b7ee2d5a5632850dcc5dab9ae73",
+    "run.mjs": "32d6218967ef91452fccf257c47165fe2c6dbb192b11c0bd165342010c3ff2e1",
+    "results.json": "32ad1f9fd0edb56396be9717e3c208239463ebde48372768173c27c110115b91",
+    "report.md": "53903b8d15349ef308475f57112e7c3720ac6dfb7466452a6c7cbc3c59859cca"
+  }
+}

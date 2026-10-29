@@ -1,0 +1,22 @@
+{
+  "schema": "producer-freeze/1",
+  "round": 6,
+  "status": "frozen",
+  "worker": "contact_engineer",
+  "codeExecuted": true,
+  "physicalMeasurements": 0,
+  "humanExperiments": 0,
+  "verifierOutputFilesReadBeforeFreeze": false,
+  "contractSha256AfterClarification": "3cb434cf4d3b4830a4a897aa7c94360bd94044d4e2e418cea1263167e52a43ce",
+  "clarification": "Abstentions do not preserve exact binomial equality; gate computes no p-values and original field schema is unchanged",
+  "files": {
+    "schema.json": "f6679aae36c2d4146466e7b564c3f19eebcd50b216ec6f7ad17f42e3a89263a8",
+    "example-packet.json": "8b6e2e8b23ea509263f837714ef1e657e7ee598ad44e7fbbba003aef9c90f75d",
+    "input-freeze.json": "c8edacd2dee180f1017aab52be243a9ef8765704f83b002d9336b7568f26fbbc",
+    "model.mjs": "245feda4b36795eb31c91d1a6197e9f63de2749cf8c095a9933627f195287eb2",
+    "api.mjs": "450675ad1485702d5efc04bf6e8eea5a08461c18cf5fc6f31ed0351d168e6553",
+    "run.mjs": "8825846250456fe03b76d91ec98f7b6e96275ec8346eadb4a3b253826612109d",
+    "results.json": "e0b79c66dafc433e3ae570dbe25a6071ff237be066f66f97158f164d16df9be9",
+    "report.md": "696592e2e5adcd3493f1147e92cf6cbfedc1004cbca5444f97d7031d1e971ccf"
+  }
+}

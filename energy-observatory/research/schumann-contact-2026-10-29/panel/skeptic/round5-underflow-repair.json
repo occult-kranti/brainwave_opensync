@@ -1,0 +1,30 @@
+{
+  "status": "PASS-underflow-stress-repair",
+  "cases": [
+    {
+      "input": {
+        "n": 1000,
+        "k": 4,
+        "h": 1000
+      },
+      "status": "positive-underflow",
+      "logProbability": -1386.2943611198862,
+      "expectedLog": -1386.2943611198905,
+      "numericOnlyApiRejects": true,
+      "contaminationUnderflowTagged": true
+    },
+    {
+      "input": {
+        "n": 100,
+        "k": 1000000,
+        "h": 100
+      },
+      "status": "positive-underflow",
+      "logProbability": -1381.5510557964249,
+      "expectedLog": -1381.5510557964274,
+      "numericOnlyApiRejects": true,
+      "contaminationUnderflowTagged": true
+    }
+  ],
+  "modelSha256": "3eb54483c494c969ac692c66abdfbd9a7620cd095298258bbfb49c2033544889"
+}

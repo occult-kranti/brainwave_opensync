@@ -1,0 +1,17 @@
+{
+  "round": 4,
+  "owner": "/root/contact_skeptic",
+  "verdict": "accept-bounded-synthetic-resolution-and-rank",
+  "rankAndAllLagComparisons": 2048,
+  "files": {
+    "rounds/round4-contract.md": "8466f15a2d3510226a0e7ede458d5f0eb85b004624b10c700f8ff5f9b058b211",
+    "analysis/round4/fixtures.json": "bfead7ad55dac68e7823ea408465f31f5b197cdfd1086109c2441f3eb64ca7ef",
+    "analysis/round4/model.mjs": "fca201293dcbe33b27d13600ebf92ee4b4a8769ac99c7d39c3d6ec9c9685db25",
+    "analysis/round4/results.json": "cf3e61ddd40d62fbaf8fcaed3673ca7c371afeb5a7c5b102865f27ed80e2e337",
+    "panel/skeptic/round4_exact_rank.py": "8a9a7dcc363fffd8919f38edfaf7607ac4fa16532eb0ef0ef89e5a8db5ca3c96",
+    "panel/skeptic/round4-exact-ranks.json": "1168803510b30009938793328366134130e89a7a789c9336468909f59409e9f1",
+    "panel/skeptic/round4-independent-rank.json": "ab11ca42f2e54983f60869cba991f309c26e2f129b79d43f44497cae9faddf97",
+    "panel/skeptic/round4.md": "7a087f414f35c7e1bf1cf19745e7a6672b86efdf4a31e6419e636787de4b4814"
+  },
+  "physicalMeasurements": 0
+}

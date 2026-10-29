@@ -1,0 +1,1910 @@
+{
+  "schema": "r5-independent-exact-binomial-v1",
+  "relativeTolerance": 1e-10,
+  "absoluteTolerance": 1e-14,
+  "tailCases": [
+    {
+      "id": "n100_k4_h0",
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "expected": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n100_k4_h25",
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "expected": {
+        "numerator": "216265284545313251738588483993294189406785435435897014875715",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 0.5383288679185886,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n100_k4_h30",
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "expected": {
+        "numerator": "30037899613266517892647416204887953249084943034998066394929",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.14954104656657347,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n100_k4_h35",
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "expected": {
+        "numerator": "26396754532043269545853703388193536648517558532976644954467",
+        "denominator": "1606938044258990275541962092341162602522202993782792835301376",
+        "value": 0.01642674067388556,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n100_k4_h40",
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "expected": {
+        "numerator": "68956946241719424989885392307281546441260036992065207027",
+        "denominator": "100433627766186892221372630771322662657637687111424552206336",
+        "value": 0.0006865922079629911,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n100_k4_h50",
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "expected": {
+        "numerator": "26669155494016050812424864738823599957115523910708973",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 6.638502483476651e-08,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n100_k4_h100",
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "expected": {
+        "numerator": "1",
+        "denominator": "1606938044258990275541962092341162602522202993782792835301376",
+        "value": 6.223015277861142e-61,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n0_k4_h0",
+      "n": 0,
+      "k": 4,
+      "h": 0,
+      "expected": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n1_k2_h0",
+      "n": 1,
+      "k": 2,
+      "h": 0,
+      "expected": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n1_k2_h1",
+      "n": 1,
+      "k": 2,
+      "h": 1,
+      "expected": {
+        "numerator": "1",
+        "denominator": "2",
+        "value": 0.5,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h0",
+      "n": 8,
+      "k": 3,
+      "h": 0,
+      "expected": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h1",
+      "n": 8,
+      "k": 3,
+      "h": 1,
+      "expected": {
+        "numerator": "6305",
+        "denominator": "6561",
+        "value": 0.9609815576893767,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h2",
+      "n": 8,
+      "k": 3,
+      "h": 2,
+      "expected": {
+        "numerator": "5281",
+        "denominator": "6561",
+        "value": 0.804907788446883,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h3",
+      "n": 8,
+      "k": 3,
+      "h": 3,
+      "expected": {
+        "numerator": "1163",
+        "denominator": "2187",
+        "value": 0.5317786922725194,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h4",
+      "n": 8,
+      "k": 3,
+      "h": 4,
+      "expected": {
+        "numerator": "1697",
+        "denominator": "6561",
+        "value": 0.25864959609815574,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h5",
+      "n": 8,
+      "k": 3,
+      "h": 5,
+      "expected": {
+        "numerator": "577",
+        "denominator": "6561",
+        "value": 0.08794391098917848,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h6",
+      "n": 8,
+      "k": 3,
+      "h": 6,
+      "expected": {
+        "numerator": "43",
+        "denominator": "2187",
+        "value": 0.019661636945587563,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h7",
+      "n": 8,
+      "k": 3,
+      "h": 7,
+      "expected": {
+        "numerator": "17",
+        "denominator": "6561",
+        "value": 0.002591068434689834,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n8_k3_h8",
+      "n": 8,
+      "k": 3,
+      "h": 8,
+      "expected": {
+        "numerator": "1",
+        "denominator": "6561",
+        "value": 0.00015241579027587258,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n12_k2_h0",
+      "n": 12,
+      "k": 2,
+      "h": 0,
+      "expected": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n12_k2_h6",
+      "n": 12,
+      "k": 2,
+      "h": 6,
+      "expected": {
+        "numerator": "1255",
+        "denominator": "2048",
+        "value": 0.61279296875,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n12_k2_h9",
+      "n": 12,
+      "k": 2,
+      "h": 9,
+      "expected": {
+        "numerator": "299",
+        "denominator": "4096",
+        "value": 0.072998046875,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n12_k2_h10",
+      "n": 12,
+      "k": 2,
+      "h": 10,
+      "expected": {
+        "numerator": "79",
+        "denominator": "4096",
+        "value": 0.019287109375,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n12_k2_h12",
+      "n": 12,
+      "k": 2,
+      "h": 12,
+      "expected": {
+        "numerator": "1",
+        "denominator": "4096",
+        "value": 0.000244140625,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n1000_k4_h250",
+      "n": 1000,
+      "k": 4,
+      "h": 250,
+      "expected": {
+        "numerator": "1837502665030067571962863328936071570753781882575013462542741812745954287570431957328062501866753769289342061160413053469885578037793695186299675611960721214448954062960447450930253090589789641638587484638931029068580031529827612562671484073638121609983324310645260328079209019792077096686830827159403609621023239836273079931668649233819634671361269035261934990128378514920651901331529171668786839733229711841731368398434284092880765042113160664721644256547973996133897789536757093889650011823774003794075283774434928410698963062680162910421627518688866284553328905180345286208542452300547587325634067",
+        "denominator": "3587908422732045388227603753680256200069742819027172501492633552580519566851157230802060894739082093495143639496835821167022246752697047910706035488020791204347812160791008750021524348382501402232153968439483945149425483238949636373353657063764573561590781142442574962779519675175728489048005131936572896292005278405764328300074358900247314340654211765638406334897082057203812754132383790367539621353662706218606138066469430620575126317495411976610652794809440372517342430737177251223752561163019705711105638299491437985260899575607251703403602368246332036732360275025713836588061420430068276598407168",
+        "value": 0.5121375599745337,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n1000_k4_h500",
+      "n": 1000,
+      "k": 4,
+      "h": 500,
+      "expected": {
+        "numerator": "459764826478829269019800681949416609866356952838457258827445517590744457716118651242311928302860702474932298513856355195227862781509233136914919369369514214518558365372191399234851867961055547962153570654875205117040899426945160795317431462570689914050445916633902322220132205290340149831553059627748576472526928008240344967903758136194068018527319254971886594861518691640440949871384141050897426438790584236673566650700941740550017176557655105116523133189610154610411909386633625992312376608419978604341781360860069666704191317045307817",
+        "denominator": "3587908422732045388227603753680256200069742819027172501492633552580519566851157230802060894739082093495143639496835821167022246752697047910706035488020791204347812160791008750021524348382501402232153968439483945149425483238949636373353657063764573561590781142442574962779519675175728489048005131936572896292005278405764328300074358900247314340654211765638406334897082057203812754132383790367539621353662706218606138066469430620575126317495411976610652794809440372517342430737177251223752561163019705711105638299491437985260899575607251703403602368246332036732360275025713836588061420430068276598407168",
+        "value": 1.2814285436213479e-64,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "id": "n1000_k4_h1000",
+      "n": 1000,
+      "k": 4,
+      "h": 1000,
+      "expected": {
+        "numerator": "1",
+        "denominator": "114813069527425452423283320117768198402231770208869520047764273682576626139237031385665948631650626991844596463898746277344711896086305533142593135616665318539129989145312280000688779148240044871428926990063486244781615463646388363947317026040466353970904996558162398808944629605623311649536164221970332681344168908984458505602379484807914058900934776500429002716706625830522008132236281291761267883317206598995396418127021779858404042159853183251540889433902091920554957783589672039160081957216630582755380425583726015528348786419432054508915275783882625175435528800822842770817965453762184851149029376",
+        "value": 0.0,
+        "positiveBelowFloatRange": true
+      }
+    }
+  ],
+  "thresholdCases": [
+    {
+      "n": 0,
+      "k": 4,
+      "alphaNumerator": 1,
+      "alphaDenominator": 20,
+      "expected": null
+    },
+    {
+      "n": 1,
+      "k": 2,
+      "alphaNumerator": 1,
+      "alphaDenominator": 20,
+      "expected": null
+    },
+    {
+      "n": 8,
+      "k": 3,
+      "alphaNumerator": 1,
+      "alphaDenominator": 20,
+      "expected": 6
+    },
+    {
+      "n": 12,
+      "k": 2,
+      "alphaNumerator": 1,
+      "alphaDenominator": 20,
+      "expected": 10
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "alphaNumerator": 1,
+      "alphaDenominator": 20,
+      "expected": 33
+    }
+  ],
+  "contaminationCases": [
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 0,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 5,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 10,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 20,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 100,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 0,
+      "fixedSubset": {
+        "numerator": "216265284545313251738588483993294189406785435435897014875715",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 0.5383288679185886,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "216265284545313251738588483993294189406785435435897014875715",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 0.5383288679185886,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 5,
+      "fixedSubset": {
+        "numerator": "330815609830369811945531807652183494527469055432440346601",
+        "denominator": "392318858461667547739736838950479151006397215279002157056",
+        "value": 0.8432314753553785,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "723499420850030832703741501616381440473495656112771446092265",
+        "denominator": "803469022129495137770981046170581301261101496891396417650688",
+        "value": 0.900469589894686,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 10,
+      "fixedSubset": {
+        "numerator": "187394521612718064708147067263169965699926140453516865",
+        "denominator": "191561942608236107294793378393788647952342390272950272",
+        "value": 0.9782450473263322,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "199778402016280929207352556074072869440037780614305529191025",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.9945792383472011,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 20,
+      "fixedSubset": {
+        "numerator": "1461498245499651134861020012224650646531278639515",
+        "denominator": "1461501637330902918203684832716283019655932542976",
+        "value": 0.9999976792148807,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "200867251990222260564278198983198829408735598146649446997725",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.9999999823657095,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 100,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 0,
+      "fixedSubset": {
+        "numerator": "30037899613266517892647416204887953249084943034998066394929",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.14954104656657347,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "30037899613266517892647416204887953249084943034998066394929",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.14954104656657347,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 5,
+      "fixedSubset": {
+        "numerator": "662263230684005360856689387433912487219827458611460183047",
+        "denominator": "1569275433846670190958947355801916604025588861116008628224",
+        "value": 0.4220184783372537,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "216265284545313251738588483993294189406785435435897014875715",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 0.5383288679185886,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 10,
+      "fixedSubset": {
+        "numerator": "292851217114977571365937991323728874564401055264258027",
+        "denominator": "383123885216472214589586756787577295904684780545900544",
+        "value": 0.7643773421996677,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "723499420850030832703741501616381440473495656112771446092265",
+        "denominator": "803469022129495137770981046170581301261101496891396417650688",
+        "value": 0.900469589894686,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 20,
+      "fixedSubset": {
+        "numerator": "1458813505314945133676359056348451536834339206053",
+        "denominator": "1461501637330902918203684832716283019655932542976",
+        "value": 0.9981607054365899,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "401717203974608624002533308180068382411924800219445280695515",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 0.99995691908546,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 100,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 0,
+      "fixedSubset": {
+        "numerator": "26396754532043269545853703388193536648517558532976644954467",
+        "denominator": "1606938044258990275541962092341162602522202993782792835301376",
+        "value": 0.01642674067388556,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "26396754532043269545853703388193536648517558532976644954467",
+        "denominator": "1606938044258990275541962092341162602522202993782792835301376",
+        "value": 0.01642674067388556,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 5,
+      "fixedSubset": {
+        "numerator": "69679554235019486628852491142012638105416765924601831435",
+        "denominator": "784637716923335095479473677900958302012794430558004314112",
+        "value": 0.08880474737849964,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "30037899613266517892647416204887953249084943034998066394929",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.14954104656657347,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 10,
+      "fixedSubset": {
+        "numerator": "471731008434129236235829135032658550129531603522588443",
+        "denominator": "1532495540865888858358347027150309183618739122183602176",
+        "value": 0.3078188457028673,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "216265284545313251738588483993294189406785435435897014875715",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 0.5383288679185886,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 20,
+      "fixedSubset": {
+        "numerator": "1353370582139927622932717209667135097063743996473",
+        "denominator": "1461501637330902918203684832716283019655932542976",
+        "value": 0.9260137296948556,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "199778402016280929207352556074072869440037780614305529191025",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.9945792383472011,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 100,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 0,
+      "fixedSubset": {
+        "numerator": "68956946241719424989885392307281546441260036992065207027",
+        "denominator": "100433627766186892221372630771322662657637687111424552206336",
+        "value": 0.0006865922079629911,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "68956946241719424989885392307281546441260036992065207027",
+        "denominator": "100433627766186892221372630771322662657637687111424552206336",
+        "value": 0.0006865922079629911,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 5,
+      "fixedSubset": {
+        "numerator": "5435744585653328391716522251196481114825383710636500407",
+        "denominator": "784637716923335095479473677900958302012794430558004314112",
+        "value": 0.006927712584309072,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "26396754532043269545853703388193536648517558532976644954467",
+        "denominator": "1606938044258990275541962092341162602522202993782792835301376",
+        "value": 0.01642674067388556,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 10,
+      "fixedSubset": {
+        "numerator": "4528896484096559022002122116892880712546691085623189",
+        "denominator": "95780971304118053647396689196894323976171195136475136",
+        "value": 0.047283885540444937,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "30037899613266517892647416204887953249084943034998066394929",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.14954104656657347,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 20,
+      "fixedSubset": {
+        "numerator": "198339018484235676156938805735967739920667655967",
+        "denominator": "365375409332725729550921208179070754913983135744",
+        "value": 0.5428362539407245,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "723499420850030832703741501616381440473495656112771446092265",
+        "denominator": "803469022129495137770981046170581301261101496891396417650688",
+        "value": 0.900469589894686,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 100,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 0,
+      "fixedSubset": {
+        "numerator": "26669155494016050812424864738823599957115523910708973",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 6.638502483476651e-08,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "26669155494016050812424864738823599957115523910708973",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 6.638502483476651e-08,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 5,
+      "fixedSubset": {
+        "numerator": "1579109862531191153079823601570282004235793570986001",
+        "denominator": "784637716923335095479473677900958302012794430558004314112",
+        "value": 2.0125337190303355e-06,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1096880265363005018740983980004392967812005113552251707",
+        "denominator": "100433627766186892221372630771322662657637687111424552206336",
+        "value": 1.0921444238941381e-05,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 10,
+      "fixedSubset": {
+        "numerator": "8890915365952395419707363001935946910502959593579",
+        "denominator": "191561942608236107294793378393788647952342390272950272",
+        "value": 4.641274380963672e-05,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "68956946241719424989885392307281546441260036992065207027",
+        "denominator": "100433627766186892221372630771322662657637687111424552206336",
+        "value": 0.0006865922079629911,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 20,
+      "fixedSubset": {
+        "numerator": "3266337154216893992099950934587038304312164253",
+        "denominator": "365375409332725729550921208179070754913983135744",
+        "value": 0.008939674293303177,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "30037899613266517892647416204887953249084943034998066394929",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 0.14954104656657347,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 100,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 0,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1606938044258990275541962092341162602522202993782792835301376",
+        "value": 6.223015277861142e-61,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1606938044258990275541962092341162602522202993782792835301376",
+        "value": 6.223015277861142e-61,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 5,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1569275433846670190958947355801916604025588861116008628224",
+        "value": 6.372367644529809e-58,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "2327112167",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 1.158532365483004e-50,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 10,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1532495540865888858358347027150309183618739122183602176",
+        "value": 6.525304467998525e-55,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "265213727652782899",
+        "denominator": "401734511064747568885490523085290650630550748445698208825344",
+        "value": 6.601716316327088e-43,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 20,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1461501637330902918203684832716283019655932542976",
+        "value": 6.842277657836021e-49,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "254434327297920178008884932937",
+        "denominator": "200867255532373784442745261542645325315275374222849104412672",
+        "value": 1.2666789647898236e-30,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 100,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 0,
+      "k": 4,
+      "h": 0,
+      "m": 0,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    },
+    {
+      "n": 8,
+      "k": 3,
+      "h": 5,
+      "m": 8,
+      "fixedSubset": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      },
+      "postOutcomeBound": {
+        "numerator": "1",
+        "denominator": "1",
+        "value": 1.0,
+        "positiveBelowFloatRange": false
+      }
+    }
+  ],
+  "leak": {
+    "n": 100,
+    "k": 4,
+    "epsilon": 0.2,
+    "epsilonExact": "1/5",
+    "q": {
+      "numerator": "2",
+      "denominator": "5",
+      "value": 0.4,
+      "positiveBelowFloatRange": false
+    },
+    "likelihoodIdentity": "Any independent Bernoulli hit model with identical q has identical hit-count law",
+    "pmf": [
+      {
+        "numerator": "515377520732011331036461129765621272702107522001",
+        "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+        "value": 6.533186235000709e-23,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1374340055285363549430563012708323393872286725336",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 4.355457490000473e-21,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "45353221824416997131208579419374671997785461936088",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.437300971700156e-19,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "987692386398414604190764618466381745729550059941472",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 3.1301221161470064e-18,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "15967693580107702767750694665206504889294392635720464",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 5.0603640877709936e-17,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1021932389126892977136044458573216312914841128686109696",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 6.477266032346872e-16,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "2157412821490107396176093856987901105042442382781787136",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 6.837114145255031e-15,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "19313981449530485261005030719701209892760912760141713408",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 6.120845044323552e-14,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "149683356233861260772788988077684376668897073891098278912",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 4.743654909350752e-13,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1020064353593721184525673103936812048410261540591188271104",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 3.2327129752612537e-12,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "30941952059009542597278750819416632135111266731266044223488",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 1.9611792049918273e-11,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "33754856791646773742485909984818144147394109161381139152896",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.069734111813724e-10,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "166899014136475714615624777147156379395448650853495632478208",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 5.28924088619008e-10,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "753185294564608353137178481484603148040999039749108495286272",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.3869394768447537e-09,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "3120339077481948891568310851864784470455567450389163766185984",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 9.88874926121398e-09,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "59633146814099467705527718502304769879817511274104018642665472",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 3.779699717619566e-08,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "42240145659987122958082133939132545331537403819157013205221376",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.338643649990263e-07,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "139144009232898757979564676505377796386240859639576043499552768",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 4.40964967055616e-07,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "427738991345577663418661783331346559261407087040178207794921472",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.3555589728005974e-06,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1230687624222363803520360218707733959980188811834898703129247744",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 3.900204763847333e-06,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "16614282927001911347524862952554408459732548959771132492244844544",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 1.0530552862387799e-05,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "8439000851810494652711041499710175725578437566867876821457698816",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.674426123781028e-05,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "20202456584637244774671887226578905524869592963107947542277521408",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 6.402414053900037e-05,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "45675119234832031664475571120961003795357340612244055312975265792",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.00014475023078382694,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "97694005030057401060128304897611035895625422976188673863863762944",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.0003096046602876298,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "4949829588189574987046500781478959152045021430793559475769097322496",
+        "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+        "value": 0.0006274654448495964,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "380756122168428845157423137036843011695770879291812267366853640192",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.0012066643170184548,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "695702544208981099793810176314231675691038149817138463830794305536",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.002204769369367053,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1209197279220371911546384354069974102986804403253597806182094864384",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.003832099141995116,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "2001429979399236267387118930874439894598848667454230851611743223808",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.006342784786750537,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "15789058726371752776053938232453914724057583932138932273825974321152",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 0.010007504885761957,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "4753695100413000835801185704394727013694756452686990362012121300992",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.015065061118351335,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "6833436706843688701464204450067420082186212400737548645392424370176",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.021656025357630043,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "9387347395260016802011432375850193244215402893942491068417875902464",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.029749691400380664,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "12332397558478845602642469983960057791420235174395037285960738930688",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.03908292791814715,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "77517927510438458073752668470606077546070049667625948654610358992896",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 0.04913282366852784,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "18661723289549999165903420187368129779609456401465506157591382720512",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.05914136182322796,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "21519825054616215254375115171019104610720814589077340433979252146176",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.06819904786822684,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "23785069797207395807467232557442168253954584545822323637556015529984",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.07537789501225071,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "25208108161142881026717408864297682593934773364803146419290136117248",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.07988768360272726,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "128141216485809645219146828393513219852501764604415994298058191929344",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 0.08121914499610604,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "25003164192353101506174990906051359971219856508178730594743061839872",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.07923819024010345,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "23415661703949729981973404181857622830190024348929287382378422992896",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.0742071940343826,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "21055943857815261069061355698414606575984828096711607258572845481984",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.06672894967432853,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "18184678786294998196007534466812614770168715174432751723312912007168",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.05762954744601101,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "75432741632038511035290513343815290898477633316165488630038746103808",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 0.04781118010335728,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "12025509535542371324466603576550263766423970528664063404788785610752",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.03811036095195146,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "9211028580415433354910589973527861608324743383657580480263750680576",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.0291909147717075,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "6780340482805805108475850952735787017239047212970163409083038695424",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.021487756706951355,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "4796975579672134226404683667241645236686128640468687037718612410368",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.01520222243212885,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "81548584854426281848879622343107969023664186887967679641216410976256",
+        "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+        "value": 0.010337511253847617,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "2131989146520948545068748296551842327416057173541638683430494404608",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.006756543303168377,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1339326515122134342414982904244106077479317967994106352411464433664",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.004244495151990391,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "808649971394496206741121753505875367534682546713422703342770978816",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.002562714054031934,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "469216650068411379220157066849088176223828144389269963668027604992",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.001487006920240752,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1308119145645268087522862125761094309472490584357964747195713323008",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 0.0008291190100736314,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "140155622747707295091735227760117247443481134038353365770969284608",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.0004441708982537311,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "72126870185954631392238011946727004532317776581140913379212263424",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.00022857917570952242,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "35648912850529300573175109352980013734363958540104129601219854336",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 0.00011297591443114327,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "16918128132454583322862763760736277704443912527507044556511117312",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 5.3615688204610366e-05,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "38535736301702106457631850788343743660122245201543823712053100544",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 2.442492462654472e-05,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "3369244703973954662962347609909835511267518706145908084113932288",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.0677562678270916e-05,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1412909069408432600597113513833156827305733650964413067531649024",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 4.477687574758772e-06,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "568153911508152791774500672229205919974792367583573508637065216",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.8005516173633156e-06,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "218975986727100555163088800755006448323617891672835623120535552",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 6.939626025254445e-07,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "404263360111570255685702401393858058443602261549850381145604096",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 2.5623234554785646e-07,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "28584277987686785755554715250070771809143594250999521899184128",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 9.058719287045429e-08,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "9670303000809459857600600184103544691650569199343121836539904",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 3.06464135084124e-08,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "3128627441438354659811958883092323282592831211552186476527616",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 9.9150161350746e-09,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "967305102666930909313842359989897053555271485697294369554432",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 3.06551223499891e-09,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1427926580127374199463291102842228983819686478886482164580352",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 9.050559931901544e-10,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "80446567894499954899340343822097407539137266416139840258048",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.549453501944097e-10,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "21601393230930543445193240470748377950323895611741253402624",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 6.845754773738779e-11,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "5523643931196851291921559207132005320630767827659863883776",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.7505126362071763e-11,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1343589064345180043980919807140217510423700282403750674432",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 4.258003709693131e-12,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "7762959038438818031889758885699034504670268298332781674496",
+        "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+        "value": 9.840719684624126e-13,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "68096131916129982735875077944728372847984809634498084864",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.1580525624175715e-13,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "14149845592962074334727288923579921630750090313661939712",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 4.484265064763785e-14,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "2781593578103655638450663634549899123993607497557475328",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 8.815221922185218e-15,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "516413997622619612201810970127407432302610674652020736",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.636581285131433e-15,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "451862247919792160676584598861481503264784340320518144",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 2.8640172489800074e-16,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "14876123388305914754784678151818321095136933014667264",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 4.714431685563799e-17,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "2297937759169206344235031584427220331769119733972992",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 7.282455449244892e-18,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "332231965181090073865305771242489686520836588044288",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.0528851251920327e-18,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "44824947683162946473890461199383529133763666640896",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.4205592958940122e-19,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "28125457369827731120872446242750449652557594755072",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 1.7826626458277802e-20,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "654080403949482119090056889366289526803664994304",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.0728635416602093e-21,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "70169545251285438063301122230866309388898926592",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.223761653888347e-22,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "6910637032323565869870565068191378954967318528",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.1900682954960995e-23,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "621180856838073336617578882534056535277961216",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.9686007150526737e-24,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "253073682415511359362717322513874884742873088",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 1.6040450270799563e-25,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "3708039302791375228757762967236262047514624",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.175124561963338e-26,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "241828650182046210571158454384973611794432",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 7.663855838891335e-28,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "13868309687859280892969660466521784188928",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 4.395042774991447e-29,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "688497644078120328019770377770585030656",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.1819361294283775e-30,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "144946872437499016425214816372754743296",
+        "denominator": "1577721810442023610823457130565572459346412870218046009540557861328125",
+        "value": 9.187099492330012e-32,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1006575503038187614063991780366352384",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 3.189965101503476e-33,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "27672178777682133719972282621755392",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 8.769663509287907e-35,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "564738342401676198366781277995008",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 1.7897272467934505e-36,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "7605903601369376408980219232256",
+        "denominator": "315544362088404722164691426113114491869282574043609201908111572265625",
+        "value": 2.4104070663884854e-38,
+        "positiveBelowFloatRange": false
+      },
+      {
+        "numerator": "1267650600228229401496703205376",
+        "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+        "value": 1.6069380442589903e-40,
+        "positiveBelowFloatRange": false
+      }
+    ],
+    "tails": [
+      {
+        "h": 0,
+        "expected": {
+          "numerator": "1",
+          "denominator": "1",
+          "value": 1.0,
+          "positiveBelowFloatRange": false
+        }
+      },
+      {
+        "h": 25,
+        "expected": {
+          "numerator": "7884179320779002177095907576879177041719150205152573669838486843162624",
+          "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+          "value": 0.9994384648292496,
+          "positiveBelowFloatRange": false
+        }
+      },
+      {
+        "h": 30,
+        "expected": {
+          "numerator": "7772052343065887149011742661140310865442793631226360625637930594992128",
+          "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+          "value": 0.9852246817692688,
+          "positiveBelowFloatRange": false
+        }
+      },
+      {
+        "h": 35,
+        "expected": {
+          "numerator": "6860435130409139586583490657121231338534590538521614280224221710778368",
+          "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+          "value": 0.8696634710889977,
+          "positiveBelowFloatRange": false
+        }
+      },
+      {
+        "h": 40,
+        "expected": {
+          "numerator": "4243477335294035014853147895265023819848749567654276620740750252965888",
+          "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+          "value": 0.5379246591140371,
+          "positiveBelowFloatRange": false
+        }
+      },
+      {
+        "h": 50,
+        "expected": {
+          "numerator": "213774976733573364394085850998587221687919730701047423828729819824128",
+          "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+          "value": 0.027099197757009006,
+          "positiveBelowFloatRange": false
+        }
+      },
+      {
+        "h": 100,
+        "expected": {
+          "numerator": "1267650600228229401496703205376",
+          "denominator": "7888609052210118054117285652827862296732064351090230047702789306640625",
+          "value": 1.6069380442589903e-40,
+          "positiveBelowFloatRange": false
+        }
+      }
+    ]
+  },
+  "invalidCases": [
+    {
+      "id": "negative_n",
+      "patch": {
+        "n": -1
+      }
+    },
+    {
+      "id": "fractional_n",
+      "patch": {
+        "n": 3.5
+      }
+    },
+    {
+      "id": "k_one",
+      "patch": {
+        "k": 1
+      }
+    },
+    {
+      "id": "fractional_k",
+      "patch": {
+        "k": 2.5
+      }
+    },
+    {
+      "id": "fractional_h",
+      "patch": {
+        "h": 2.5
+      }
+    },
+    {
+      "id": "negative_observed_h",
+      "patch": {
+        "h": -1
+      }
+    },
+    {
+      "id": "observed_h_over_n",
+      "patch": {
+        "h": 101
+      }
+    },
+    {
+      "id": "negative_m",
+      "patch": {
+        "m": -1
+      }
+    },
+    {
+      "id": "fractional_m",
+      "patch": {
+        "m": 2.5
+      }
+    },
+    {
+      "id": "m_over_n",
+      "patch": {
+        "m": 101
+      }
+    },
+    {
+      "id": "range_n1001",
+      "patch": {
+        "n": 1001
+      }
+    },
+    {
+      "id": "negative_epsilon",
+      "patch": {
+        "epsilon": -0.1
+      }
+    },
+    {
+      "id": "epsilon_over_one",
+      "patch": {
+        "epsilon": 1.1
+      }
+    },
+    {
+      "id": "n_NaN",
+      "special": {
+        "field": "n",
+        "value": "NaN"
+      }
+    },
+    {
+      "id": "n_Infinity",
+      "special": {
+        "field": "n",
+        "value": "Infinity"
+      }
+    },
+    {
+      "id": "n_-Infinity",
+      "special": {
+        "field": "n",
+        "value": "-Infinity"
+      }
+    },
+    {
+      "id": "k_NaN",
+      "special": {
+        "field": "k",
+        "value": "NaN"
+      }
+    },
+    {
+      "id": "k_Infinity",
+      "special": {
+        "field": "k",
+        "value": "Infinity"
+      }
+    },
+    {
+      "id": "k_-Infinity",
+      "special": {
+        "field": "k",
+        "value": "-Infinity"
+      }
+    },
+    {
+      "id": "h_NaN",
+      "special": {
+        "field": "h",
+        "value": "NaN"
+      }
+    },
+    {
+      "id": "h_Infinity",
+      "special": {
+        "field": "h",
+        "value": "Infinity"
+      }
+    },
+    {
+      "id": "h_-Infinity",
+      "special": {
+        "field": "h",
+        "value": "-Infinity"
+      }
+    },
+    {
+      "id": "m_NaN",
+      "special": {
+        "field": "m",
+        "value": "NaN"
+      }
+    },
+    {
+      "id": "m_Infinity",
+      "special": {
+        "field": "m",
+        "value": "Infinity"
+      }
+    },
+    {
+      "id": "m_-Infinity",
+      "special": {
+        "field": "m",
+        "value": "-Infinity"
+      }
+    },
+    {
+      "id": "epsilon_NaN",
+      "special": {
+        "field": "epsilon",
+        "value": "NaN"
+      }
+    },
+    {
+      "id": "epsilon_Infinity",
+      "special": {
+        "field": "epsilon",
+        "value": "Infinity"
+      }
+    },
+    {
+      "id": "epsilon_-Infinity",
+      "special": {
+        "field": "epsilon",
+        "value": "-Infinity"
+      }
+    }
+  ],
+  "tailConvention": "inclusive P(H>=h); effective h<=0 is1, h>n is0",
+  "observationConvention": "observed integer h is within0..n; effective contamination thresholds may be negative",
+  "scope": "conditional known-law probability benchmark, no human sessions"
+}

@@ -1,0 +1,67 @@
+{
+  "asOf": "2026-10-29",
+  "repositories": [
+    {
+      "repository": "occult-kranti/channels-ET",
+      "branch": "main",
+      "commit": "848a8ee9c258d5a99dfe7fe976df9abaee97e273",
+      "treeTruncated": false,
+      "files": [
+        {
+          "path": "README.md",
+          "blob": "9ff51659d470dc7ab45ba71fea0445a2336af0f0",
+          "bytes": 27036,
+          "readDepth": "selected current collection/method/boundary/continuation sections"
+        },
+        {
+          "path": "research/continuation/HANDOFF.md",
+          "blob": "2abe96f3bee4c54e202c3aae7feb0ca2de60bc9a",
+          "bytes": 6350,
+          "readDepth": "full"
+        },
+        {
+          "path": "research/expansion/literature/claim-evidence-ledger.json",
+          "blob": "a4edf7ab2f84eccc0d4d56d203af1c906d18dbdf",
+          "bytes": 4642,
+          "readDepth": "full ledger"
+        },
+        {
+          "path": "research/transcript-reading/interpretive-findings.json",
+          "blob": "79457db009a3c4753590171ff5d71aadc0d3dcbc",
+          "bytes": 5486,
+          "readDepth": "full derived findings; underlying transcript windows not reread"
+        },
+        {
+          "path": "LICENSE",
+          "blob": "9e01a36bb132fb618029e37c6a3cf4785ceb6d1b",
+          "bytes": 1429,
+          "readDepth": "full"
+        }
+      ],
+      "license": "MIT for code/derived data; proprietary source works excluded",
+      "import": "pinned links and new summaries only; upstream unchanged"
+    },
+    {
+      "repository": "occult-kranti/bashar-index",
+      "branch": "main",
+      "commit": "1d6eb36379ed7730dc0cb2e85d83b9e77205b07b",
+      "treeTruncated": false,
+      "files": [
+        {
+          "path": "README.md",
+          "blob": "7d55171719e8aeb1aa4e53afcf37c15d3a781068",
+          "bytes": 3966,
+          "readDepth": "full"
+        },
+        {
+          "path": "data/official_channels.md",
+          "blob": "235d8d7354044622b6de49e505c1f6f19fb36ff9",
+          "bytes": 6551,
+          "readDepth": "full derivative ledger; historicalSep11access not refreshed as new channel identity check"
+        }
+      ],
+      "license": "README MIT code/derived data and exclusion notice; exact LICENSE blob shared with channels-ET",
+      "import": "pinned links and new summaries only; preserved experiment branche628974ba018c775da41de304bd55afafd16b426 not audited"
+    }
+  ]
+}

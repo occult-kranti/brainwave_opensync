@@ -1,0 +1,665 @@
+{
+  "schema": "independent-r2-faraday-oracle-v1",
+  "scope": "synthetic ideal detector calculation; no tissue or universal magnetoreception bound",
+  "field_convention": "RMS",
+  "theta_convention": "degrees; exact odd multiples of 90 are orthogonal",
+  "relative_tolerance": 1e-10,
+  "absolute_zero_tolerance": 1e-25,
+  "valid_cases": [
+    {
+      "id": "baseline",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 4.919734095521616e-08,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269612e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "zero_field",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 0,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 0.0,
+        "e_rms_v_per_m": 0.0,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269612e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "zero_frequency",
+      "input": {
+        "frequency_hz": 0,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 0.0,
+        "e_rms_v_per_m": 0.0,
+        "sensitivity_v_per_t": 0.0,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": null,
+        "identifiability": "unidentifiable"
+      }
+    },
+    {
+      "id": "zero_turns",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 0,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 0.0,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 0.0,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": null,
+        "identifiability": "unidentifiable"
+      }
+    },
+    {
+      "id": "zero_area",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 0.0,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 0.0,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": null,
+        "identifiability": "unidentifiable"
+      }
+    },
+    {
+      "id": "orthogonal",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 90,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 0.0,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 0.0,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": null,
+        "identifiability": "unidentifiable"
+      }
+    },
+    {
+      "id": "reversed_normal",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 180,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 4.919734095521616e-08,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269612e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "angle_60",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 60,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 2.459867047760809e-08,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 24598.670477608088,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 1.6547051920539218e-13,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "double_field",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 2e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 9.839468191043231e-08,
+        "e_rms_v_per_m": 4.919734095521617e-12,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269612e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "double_frequency",
+      "input": {
+        "frequency_hz": 15.66,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 9.839468191043231e-08,
+        "e_rms_v_per_m": 4.919734095521617e-12,
+        "sensitivity_v_per_t": 98394.68191043232,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 4.136762980134806e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "double_area",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 2,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 9.839468191043231e-08,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 98394.68191043232,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 4.136762980134806e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "double_turns",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 2000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 9.839468191043231e-08,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 98394.68191043232,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 4.136762980134806e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "double_radius",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.2,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 4.919734095521616e-08,
+        "e_rms_v_per_m": 4.919734095521617e-12,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269612e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "zero_radius",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 4.919734095521616e-08,
+        "e_rms_v_per_m": 0.0,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269612e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "fourfold_bandwidth",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 4
+      },
+      "expected": {
+        "v_rms_v": 4.919734095521616e-08,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 8.140709551384326e-09,
+        "equivalent_b_rms_t": 1.6547051920539223e-13,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "fourfold_resistance",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 4000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 4.919734095521616e-08,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 8.140709551384326e-09,
+        "equivalent_b_rms_t": 1.6547051920539223e-13,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "illustrative_35_microtesla",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 3.5e-05,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 1.7219069334325654,
+        "e_rms_v_per_m": 8.609534667162827e-05,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269612e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "one_square_centimetre",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 0.0001,
+        "theta_deg": 0.0,
+        "radius_m": 0.1,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 4.919734095521617e-12,
+        "e_rms_v_per_m": 2.4598670477608084e-12,
+        "sensitivity_v_per_t": 4.9197340955216164,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269611e-10,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    },
+    {
+      "id": "one_millimetre_radius",
+      "input": {
+        "frequency_hz": 7.83,
+        "b_rms_t": 1e-12,
+        "turns": 1000,
+        "area_m2": 1.0,
+        "theta_deg": 0.0,
+        "radius_m": 0.001,
+        "temperature_k": 300,
+        "resistance_ohm": 1000,
+        "bandwidth_hz": 1.0
+      },
+      "expected": {
+        "v_rms_v": 4.919734095521616e-08,
+        "e_rms_v_per_m": 2.459867047760808e-14,
+        "sensitivity_v_per_t": 49197.34095521616,
+        "thermal_v_rms_v": 4.070354775692163e-09,
+        "equivalent_b_rms_t": 8.273525960269612e-14,
+        "identifiability": "identifiable-ideal-receiver"
+      }
+    }
+  ],
+  "invalid_cases": [
+    {
+      "id": "negative_frequency_hz",
+      "field": "frequency_hz",
+      "value": -1,
+      "expected": "reject"
+    },
+    {
+      "id": "negative_b_rms_t",
+      "field": "b_rms_t",
+      "value": -1,
+      "expected": "reject"
+    },
+    {
+      "id": "negative_turns",
+      "field": "turns",
+      "value": -1,
+      "expected": "reject"
+    },
+    {
+      "id": "negative_area_m2",
+      "field": "area_m2",
+      "value": -1,
+      "expected": "reject"
+    },
+    {
+      "id": "negative_radius_m",
+      "field": "radius_m",
+      "value": -1,
+      "expected": "reject"
+    },
+    {
+      "id": "negative_temperature_k",
+      "field": "temperature_k",
+      "value": -1,
+      "expected": "reject"
+    },
+    {
+      "id": "negative_resistance_ohm",
+      "field": "resistance_ohm",
+      "value": -1,
+      "expected": "reject"
+    },
+    {
+      "id": "negative_bandwidth_hz",
+      "field": "bandwidth_hz",
+      "value": -1,
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_frequency_hz",
+      "field": "frequency_hz",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_frequency_hz",
+      "field": "frequency_hz",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_frequency_hz",
+      "field": "frequency_hz",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_b_rms_t",
+      "field": "b_rms_t",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_b_rms_t",
+      "field": "b_rms_t",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_b_rms_t",
+      "field": "b_rms_t",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_turns",
+      "field": "turns",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_turns",
+      "field": "turns",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_turns",
+      "field": "turns",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_area_m2",
+      "field": "area_m2",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_area_m2",
+      "field": "area_m2",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_area_m2",
+      "field": "area_m2",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_theta_deg",
+      "field": "theta_deg",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_theta_deg",
+      "field": "theta_deg",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_theta_deg",
+      "field": "theta_deg",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_radius_m",
+      "field": "radius_m",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_radius_m",
+      "field": "radius_m",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_radius_m",
+      "field": "radius_m",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_temperature_k",
+      "field": "temperature_k",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_temperature_k",
+      "field": "temperature_k",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_temperature_k",
+      "field": "temperature_k",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_resistance_ohm",
+      "field": "resistance_ohm",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_resistance_ohm",
+      "field": "resistance_ohm",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_resistance_ohm",
+      "field": "resistance_ohm",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "NaN_bandwidth_hz",
+      "field": "bandwidth_hz",
+      "special": "NaN",
+      "expected": "reject"
+    },
+    {
+      "id": "Infinity_bandwidth_hz",
+      "field": "bandwidth_hz",
+      "special": "Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "-Infinity_bandwidth_hz",
+      "field": "bandwidth_hz",
+      "special": "-Infinity",
+      "expected": "reject"
+    },
+    {
+      "id": "zero_resistance_ohm",
+      "field": "resistance_ohm",
+      "value": 0,
+      "expected": "reject"
+    },
+    {
+      "id": "zero_bandwidth_hz",
+      "field": "bandwidth_hz",
+      "value": 0,
+      "expected": "reject"
+    }
+  ],
+  "base": {
+    "frequency_hz": 7.83,
+    "b_rms_t": 1e-12,
+    "turns": 1000,
+    "area_m2": 1.0,
+    "theta_deg": 0.0,
+    "radius_m": 0.1,
+    "temperature_k": 300,
+    "resistance_ohm": 1000,
+    "bandwidth_hz": 1.0
+  },
+  "executed_valid_cases": 19,
+  "executed_invalid_cases": 37
+}

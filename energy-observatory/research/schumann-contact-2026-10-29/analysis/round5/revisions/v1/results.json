@@ -1,0 +1,1469 @@
+{
+  "schema": "contact-round5-results/1",
+  "status": "PASS",
+  "assertions": 304,
+  "inputSha256": "cc489a9d683ff4a230a7195fcd5c825f94e96784b3203149727744f4accea665",
+  "scope": "exact binomial-test formulas in bounded binary64 arithmetic; no actual attempts or source attribution",
+  "threshold": {
+    "h": 33,
+    "attainable": true,
+    "tailAtThreshold": 0.04459632521268151,
+    "tailAtPrevious": 0.06934888914174187,
+    "alpha": 0.05
+  },
+  "scores": [
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "guessProbability": 0.25,
+      "upperTail": 0.5383288679185886,
+      "threshold": {
+        "h": 33,
+        "attainable": true,
+        "tailAtThreshold": 0.04459632521268151,
+        "tailAtPrevious": 0.06934888914174187,
+        "alpha": 0.05
+      },
+      "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+      "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "guessProbability": 0.25,
+      "upperTail": 0.14954104656657344,
+      "threshold": {
+        "h": 33,
+        "attainable": true,
+        "tailAtThreshold": 0.04459632521268151,
+        "tailAtPrevious": 0.06934888914174187,
+        "alpha": 0.05
+      },
+      "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+      "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "guessProbability": 0.25,
+      "upperTail": 0.016426740673885554,
+      "threshold": {
+        "h": 33,
+        "attainable": true,
+        "tailAtThreshold": 0.04459632521268151,
+        "tailAtPrevious": 0.06934888914174187,
+        "alpha": 0.05
+      },
+      "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+      "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "guessProbability": 0.25,
+      "upperTail": 0.0006865922079629907,
+      "threshold": {
+        "h": 33,
+        "attainable": true,
+        "tailAtThreshold": 0.04459632521268151,
+        "tailAtPrevious": 0.06934888914174187,
+        "alpha": 0.05
+      },
+      "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+      "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "guessProbability": 0.25,
+      "upperTail": 6.638502483476644e-8,
+      "threshold": {
+        "h": 33,
+        "attainable": true,
+        "tailAtThreshold": 0.04459632521268151,
+        "tailAtPrevious": 0.06934888914174187,
+        "alpha": 0.05
+      },
+      "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+      "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "guessProbability": 0.25,
+      "upperTail": 6.223015277861116e-61,
+      "threshold": {
+        "h": 33,
+        "attainable": true,
+        "tailAtThreshold": 0.04459632521268151,
+        "tailAtPrevious": 0.06934888914174187,
+        "alpha": 0.05
+      },
+      "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+      "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "guessProbability": 0.25,
+      "upperTail": 1,
+      "threshold": {
+        "h": 33,
+        "attainable": true,
+        "tailAtThreshold": 0.04459632521268151,
+        "tailAtPrevious": 0.06934888914174187,
+        "alpha": 0.05
+      },
+      "assumption": "Targets are independent and uniform conditional on the responses and prior history; fixed n, fixed scoring, no selective exclusions or optional stopping",
+      "scope": "Conditional information-score calculation only; no mechanism identification or contact validation"
+    }
+  ],
+  "fullTails": [
+    {
+      "h": 0,
+      "tail": 1
+    },
+    {
+      "h": 1,
+      "tail": 0.9999999999996794
+    },
+    {
+      "h": 2,
+      "tail": 0.9999999999889887
+    },
+    {
+      "h": 3,
+      "tail": 0.9999999998125926
+    },
+    {
+      "h": 4,
+      "tail": 0.9999999978918348
+    },
+    {
+      "h": 5,
+      "tail": 0.9999999823657096
+    },
+    {
+      "h": 6,
+      "tail": 0.9999998829985085
+    },
+    {
+      "h": 7,
+      "tail": 0.9999993585605027
+    },
+    {
+      "h": 8,
+      "tail": 0.9999970110760957
+    },
+    {
+      "h": 9,
+      "tail": 0.9999879145740187
+    },
+    {
+      "h": 10,
+      "tail": 0.99995691908546
+    },
+    {
+      "h": 11,
+      "tail": 0.9998628994368322
+    },
+    {
+      "h": 12,
+      "tail": 0.9996064822133013
+    },
+    {
+      "h": 13,
+      "tail": 0.998972561855128
+    },
+    {
+      "h": 14,
+      "tail": 0.9975421774571983
+    },
+    {
+      "h": 15,
+      "tail": 0.9945792383472012
+    },
+    {
+      "h": 16,
+      "tail": 0.98891673249254
+    },
+    {
+      "h": 17,
+      "tail": 0.9788893783749106
+    },
+    {
+      "h": 18,
+      "tail": 0.9623737362988155
+    },
+    {
+      "h": 19,
+      "tail": 0.9369885827374098
+    },
+    {
+      "h": 20,
+      "tail": 0.900469589894686
+    },
+    {
+      "h": 21,
+      "tail": 0.8511689495570087
+    },
+    {
+      "h": 22,
+      "tail": 0.788564961826625
+    },
+    {
+      "h": 23,
+      "tail": 0.713629885603893
+    },
+    {
+      "h": 24,
+      "tail": 0.6289206690042828
+    },
+    {
+      "h": 25,
+      "tail": 0.5383288679185886
+    },
+    {
+      "h": 26,
+      "tail": 0.44652917615175175
+    },
+    {
+      "h": 27,
+      "tail": 0.35826024176056254
+    },
+    {
+      "h": 28,
+      "tail": 0.27761948688466126
+    },
+    {
+      "h": 29,
+      "tail": 0.20753883086155658
+    },
+    {
+      "h": 30,
+      "tail": 0.14954104656657344
+    },
+    {
+      "h": 31,
+      "tail": 0.1037872389560867
+    },
+    {
+      "h": 32,
+      "tail": 0.06934888914174187
+    },
+    {
+      "h": 33,
+      "tail": 0.04459632521268151
+    },
+    {
+      "h": 34,
+      "tail": 0.0275945641300946
+    },
+    {
+      "h": 35,
+      "tail": 0.016426740673885554
+    },
+    {
+      "h": 36,
+      "tail": 0.009406965929982724
+    },
+    {
+      "h": 37,
+      "tail": 0.005182101500781947
+    },
+    {
+      "h": 38,
+      "tail": 0.0027461436316932107
+    },
+    {
+      "h": 39,
+      "tail": 0.0013999563882494356
+    },
+    {
+      "h": 40,
+      "tail": 0.0006865922079629907
+    },
+    {
+      "h": 41,
+      "tail": 0.00032396541631738113
+    },
+    {
+      "h": 42,
+      "tail": 0.00014707429844147408
+    },
+    {
+      "h": 43,
+      "tail": 0.00006424433054720016
+    },
+    {
+      "h": 44,
+      "tail": 0.00002700294963349561
+    },
+    {
+      "h": 45,
+      "tail": 0.000010921444238941371
+    },
+    {
+      "h": 46,
+      "tail": 0.00000425059755675591
+    },
+    {
+      "h": 47,
+      "tail": 0.000001591926777624023
+    },
+    {
+      "h": 48,
+      "tail": 5.737124366798962e-7
+    },
+    {
+      "h": 49,
+      "tail": 1.9895299174907172e-7
+    },
+    {
+      "h": 50,
+      "tail": 6.638502483476644e-8
+    },
+    {
+      "h": 51,
+      "tail": 2.1311916083902662e-8
+    },
+    {
+      "h": 52,
+      "tail": 6.5821419823131915e-9
+    },
+    {
+      "h": 53,
+      "tail": 1.9554821683523967e-9
+    },
+    {
+      "h": 54,
+      "tail": 5.587546773453642e-10
+    },
+    {
+      "h": 55,
+      "tail": 1.535312694606079e-10
+    },
+    {
+      "h": 56,
+      "tail": 4.055989514122133e-11
+    },
+    {
+      "h": 57,
+      "tail": 1.0299705591385643e-11
+    },
+    {
+      "h": 58,
+      "tail": 2.51345798791915e-12
+    },
+    {
+      "h": 59,
+      "tail": 5.892703617751321e-13
+    },
+    {
+      "h": 60,
+      "tail": 1.3268346743587358e-13
+    },
+    {
+      "h": 61,
+      "tail": 2.868311928082026e-14
+    },
+    {
+      "h": 62,
+      "tail": 5.950802744196585e-15
+    },
+    {
+      "h": 63,
+      "tail": 1.1843492768400083e-15
+    },
+    {
+      "h": 64,
+      "tail": 2.260147172656703e-16
+    },
+    {
+      "h": 65,
+      "tail": 4.133566151436555e-17
+    },
+    {
+      "h": 66,
+      "tail": 7.241066606432376e-18
+    },
+    {
+      "h": 67,
+      "tail": 1.2142442742219658e-18
+    },
+    {
+      "h": 68,
+      "tail": 1.9478179016647372e-19
+    },
+    {
+      "h": 69,
+      "tail": 2.986874127514411e-20
+    },
+    {
+      "h": 70,
+      "tail": 4.374936615614903e-21
+    },
+    {
+      "h": 71,
+      "tail": 6.115654515891619e-22
+    },
+    {
+      "h": 72,
+      "tail": 8.151317496581809e-23
+    },
+    {
+      "h": 73,
+      "tail": 1.0348748937683996e-23
+    },
+    {
+      "h": 74,
+      "tail": 1.250100861027581e-24
+    },
+    {
+      "h": 75,
+      "tail": 1.435085273801793e-25
+    },
+    {
+      "h": 76,
+      "tail": 1.5635635492035118e-26
+    },
+    {
+      "h": 77,
+      "tail": 1.614485065703518e-27
+    },
+    {
+      "h": 78,
+      "tail": 1.5774216426646865e-28
+    },
+    {
+      "h": 79,
+      "tail": 1.4558032928638983e-29
+    },
+    {
+      "h": 80,
+      "tail": 1.2666789647898199e-30
+    },
+    {
+      "h": 81,
+      "tail": 1.036854929530181e-31
+    },
+    {
+      "h": 82,
+      "tail": 7.965865641347201e-33
+    },
+    {
+      "h": 83,
+      "tail": 5.72886296136847e-34
+    },
+    {
+      "h": 84,
+      "tail": 3.845405431441171e-35
+    },
+    {
+      "h": 85,
+      "tail": 2.4010856200410793e-36
+    },
+    {
+      "h": 86,
+      "tail": 1.3893856470802034e-37
+    },
+    {
+      "h": 87,
+      "tail": 7.418387072377407e-39
+    },
+    {
+      "h": 88,
+      "tail": 3.6366490035058193e-40
+    },
+    {
+      "h": 89,
+      "tail": 1.6273278243200416e-41
+    },
+    {
+      "h": 90,
+      "tail": 6.601716316327065e-43
+    },
+    {
+      "h": 91,
+      "tail": 2.408210301328137e-44
+    },
+    {
+      "h": 92,
+      "tail": 7.82120279969095e-46
+    },
+    {
+      "h": 93,
+      "tail": 2.2338234317607885e-47
+    },
+    {
+      "h": 94,
+      "tail": 5.523692093215129e-49
+    },
+    {
+      "h": 95,
+      "tail": 1.1585323654829996e-50
+    },
+    {
+      "h": 96,
+      "tail": 2.003997460577249e-52
+    },
+    {
+      "h": 97,
+      "tail": 2.7448170859841204e-54
+    },
+    {
+      "h": 98,
+      "tail": 2.79108458227349e-56
+    },
+    {
+      "h": 99,
+      "tail": 1.8731275986361962e-58
+    },
+    {
+      "h": 100,
+      "tail": 6.223015277861116e-61
+    },
+    {
+      "h": 101,
+      "tail": 0
+    }
+  ],
+  "leak": {
+    "q": 0.4,
+    "mixturePmf": [
+      6.533186235000811e-23,
+      4.3554574900005385e-21,
+      1.4373009717001776e-19,
+      3.1301221161470534e-18,
+      5.0603640877710676e-17,
+      6.477266032346966e-16,
+      6.837114145255128e-15,
+      6.120845044323638e-14,
+      4.743654909350819e-13,
+      3.2327129752612974e-12,
+      1.961179204991854e-11,
+      1.0697341118137386e-10,
+      5.289240886190152e-10,
+      2.3869394768447868e-9,
+      9.888749261214114e-9,
+      3.7796997176196174e-8,
+      1.338643649990281e-7,
+      4.4096496705562176e-7,
+      0.000001355558972800615,
+      0.0000039002047638473844,
+      0.000010530552862387936,
+      0.00002674426123781063,
+      0.0000640241405390012,
+      0.00014475023078382878,
+      0.0003096046602876337,
+      0.0006274654448496043,
+      0.0012066643170184697,
+      0.0022047693693670804,
+      0.0038320991419951633,
+      0.006342784786750614,
+      0.010007504885762079,
+      0.015065061118351514,
+      0.0216560253576303,
+      0.029749691400381015,
+      0.0390829279181476,
+      0.049132823668528405,
+      0.05914136182322863,
+      0.06819904786822761,
+      0.07537789501225156,
+      0.07988768360272813,
+      0.08121914499610693,
+      0.07923819024010431,
+      0.0742071940343834,
+      0.06672894967432927,
+      0.057629547446011634,
+      0.047811180103357796,
+      0.03811036095195186,
+      0.029190914771707807,
+      0.02148775670695158,
+      0.015202222432129008,
+      0.010337511253847721,
+      0.006756543303168444,
+      0.004244495151990432,
+      0.0025627140540319593,
+      0.0014870069202407663,
+      0.0008291190100736393,
+      0.0004441708982537353,
+      0.0002285791757095246,
+      0.00011297591443114433,
+      0.00005361568820461086,
+      0.000024424924626544944,
+      0.000010677562678271015,
+      0.0000044776875747588115,
+      0.0000018005516173633313,
+      6.939626025254507e-7,
+      2.562323455478587e-7,
+      9.058719287045507e-8,
+      3.0646413508412665e-8,
+      9.915016135074686e-9,
+      3.065512234998936e-9,
+      9.050559931901621e-10,
+      2.5494535019441185e-10,
+      6.845754773738836e-11,
+      1.7505126362071905e-11,
+      4.258003709693165e-12,
+      9.840719684624204e-13,
+      2.1580525624175882e-13,
+      4.484265064763819e-14,
+      8.815221922185283e-15,
+      1.6365812851314454e-15,
+      2.864017248980029e-16,
+      4.714431685563832e-17,
+      7.282455449244941e-18,
+      1.0528851251920396e-18,
+      1.4205592958940218e-19,
+      1.7826626458277922e-20,
+      2.0728635416602232e-21,
+      2.223761653888362e-22,
+      2.1900682954961142e-23,
+      1.968600715052687e-24,
+      1.6040450270799668e-25,
+      1.1751245619633459e-26,
+      7.663855838891385e-28,
+      4.395042774991475e-29,
+      2.1819361294283912e-30,
+      9.187099492330067e-32,
+      3.189965101503495e-33,
+      8.769663509287959e-35,
+      1.7897272467934612e-36,
+      2.4104070663885e-38,
+      1.6069380442589999e-40
+    ],
+    "sameQBinomialPmf": [
+      6.533186235000673e-23,
+      4.35545749000045e-21,
+      1.4373009717001485e-19,
+      3.1301221161469906e-18,
+      5.060364087770969e-17,
+      6.477266032346841e-16,
+      6.837114145254999e-15,
+      6.120845044323523e-14,
+      4.74365490935073e-13,
+      3.232712975261239e-12,
+      1.9611792049918186e-11,
+      1.0697341118137193e-10,
+      5.289240886190057e-10,
+      2.386939476844744e-9,
+      9.88874926121394e-9,
+      3.779699717619551e-8,
+      1.338643649990258e-7,
+      4.4096496705561445e-7,
+      0.0000013555589728005927,
+      0.00000390020476384732,
+      0.000010530552862387765,
+      0.0000267442612378102,
+      0.00006402414053900018,
+      0.00014475023078382653,
+      0.00030960466028762904,
+      0.0006274654448495949,
+      0.0012066643170184517,
+      0.002204769369367048,
+      0.0038320991419951086,
+      0.006342784786750526,
+      0.010007504885761942,
+      0.015065061118351313,
+      0.021656025357630015,
+      0.029749691400380633,
+      0.03908292791814711,
+      0.04913282366852781,
+      0.05914136182322793,
+      0.06819904786822681,
+      0.0753778950122507,
+      0.07988768360272724,
+      0.08121914499610605,
+      0.07923819024010348,
+      0.07420719403438263,
+      0.06672894967432856,
+      0.05762954744601104,
+      0.04781118010335731,
+      0.038110360951951486,
+      0.02919091477170752,
+      0.021487756706951376,
+      0.015202222432128865,
+      0.01033751125384763,
+      0.006756543303168386,
+      0.004244495151990397,
+      0.0025627140540319384,
+      0.0014870069202407544,
+      0.0008291190100736329,
+      0.00044417089825373195,
+      0.0002285791757095229,
+      0.00011297591443114351,
+      0.00005361568820461048,
+      0.00002442492462654478,
+      0.000010677562678270942,
+      0.000004477687574758783,
+      0.00000180055161736332,
+      6.939626025254464e-7,
+      2.562323455478572e-7,
+      9.058719287045457e-8,
+      3.064641350841249e-8,
+      9.915016135074633e-9,
+      3.0655122349989203e-9,
+      9.050559931901575e-10,
+      2.5494535019441055e-10,
+      6.845754773738803e-11,
+      1.7505126362071824e-11,
+      4.2580037096931475e-12,
+      9.840719684624164e-13,
+      2.15805256241758e-13,
+      4.484265064763803e-14,
+      8.815221922185254e-15,
+      1.6365812851314398e-15,
+      2.8640172489800202e-16,
+      4.71443168556382e-17,
+      7.282455449244926e-18,
+      1.0528851251920375e-18,
+      1.420559295894019e-19,
+      1.782662645827789e-20,
+      2.07286354166022e-21,
+      2.223761653888359e-22,
+      2.1900682954961115e-23,
+      1.9686007150526848e-24,
+      1.6040450270799655e-25,
+      1.1751245619633446e-26,
+      7.663855838891379e-28,
+      4.3950427749914726e-29,
+      2.1819361294283905e-30,
+      9.187099492330067e-32,
+      3.189965101503496e-33,
+      8.769663509287961e-35,
+      1.7897272467934616e-36,
+      2.4104070663885005e-38,
+      1.6069380442590007e-40
+    ],
+    "assumption": "Each trial independently has a perfect ordinary leak with probability epsilon, otherwise an independent uniform blind guess",
+    "identity": "Any independent information mechanism with the same per-trial hit probability q has this same binomial hit-count law; hit counts cannot identify the mechanism",
+    "maxPmfDifference": 8.881784197001252e-16
+  },
+  "contaminationGrid": [
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 0,
+      "remainingThreshold": 25,
+      "preselectedSubset": {
+        "tail": 0.5383288679185886,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.5383288679185886,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 5,
+      "remainingThreshold": 20,
+      "preselectedSubset": {
+        "tail": 0.8432314753553785,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.900469589894686,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 10,
+      "remainingThreshold": 15,
+      "preselectedSubset": {
+        "tail": 0.9782450473263322,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.9945792383472012,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 20,
+      "remainingThreshold": 5,
+      "preselectedSubset": {
+        "tail": 0.9999976792148806,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.9999999823657096,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 25,
+      "m": 100,
+      "remainingThreshold": -75,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 0,
+      "remainingThreshold": 30,
+      "preselectedSubset": {
+        "tail": 0.14954104656657344,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.14954104656657344,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 5,
+      "remainingThreshold": 25,
+      "preselectedSubset": {
+        "tail": 0.4220184783372536,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.5383288679185886,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 10,
+      "remainingThreshold": 20,
+      "preselectedSubset": {
+        "tail": 0.7643773421996676,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.900469589894686,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 20,
+      "remainingThreshold": 10,
+      "preselectedSubset": {
+        "tail": 0.9981607054365897,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.99995691908546,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 30,
+      "m": 100,
+      "remainingThreshold": -70,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 0,
+      "remainingThreshold": 35,
+      "preselectedSubset": {
+        "tail": 0.016426740673885554,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.016426740673885554,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 5,
+      "remainingThreshold": 30,
+      "preselectedSubset": {
+        "tail": 0.0888047473784996,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.14954104656657344,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 10,
+      "remainingThreshold": 25,
+      "preselectedSubset": {
+        "tail": 0.3078188457028672,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.5383288679185886,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 20,
+      "remainingThreshold": 15,
+      "preselectedSubset": {
+        "tail": 0.9260137296948556,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.9945792383472012,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 35,
+      "m": 100,
+      "remainingThreshold": -65,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 0,
+      "remainingThreshold": 40,
+      "preselectedSubset": {
+        "tail": 0.0006865922079629907,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.0006865922079629907,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 5,
+      "remainingThreshold": 35,
+      "preselectedSubset": {
+        "tail": 0.006927712584309067,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.016426740673885554,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 10,
+      "remainingThreshold": 30,
+      "preselectedSubset": {
+        "tail": 0.04728388554044491,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.14954104656657344,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 20,
+      "remainingThreshold": 20,
+      "preselectedSubset": {
+        "tail": 0.5428362539407245,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.900469589894686,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 40,
+      "m": 100,
+      "remainingThreshold": -60,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 0,
+      "remainingThreshold": 50,
+      "preselectedSubset": {
+        "tail": 6.638502483476644e-8,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 6.638502483476644e-8,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 5,
+      "remainingThreshold": 45,
+      "preselectedSubset": {
+        "tail": 0.0000020125337190303325,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.000010921444238941371,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 10,
+      "remainingThreshold": 40,
+      "preselectedSubset": {
+        "tail": 0.00004641274380963668,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.0006865922079629907,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 20,
+      "remainingThreshold": 30,
+      "preselectedSubset": {
+        "tail": 0.008939674293303173,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 0.14954104656657344,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 50,
+      "m": 100,
+      "remainingThreshold": -50,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 0,
+      "remainingThreshold": 100,
+      "preselectedSubset": {
+        "tail": 6.223015277861116e-61,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 6.223015277861116e-61,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 5,
+      "remainingThreshold": 95,
+      "preselectedSubset": {
+        "tail": 6.372367644529783e-58,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1.1585323654829996e-50,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 10,
+      "remainingThreshold": 90,
+      "preselectedSubset": {
+        "tail": 6.5253044679985006e-55,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 6.601716316327065e-43,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 20,
+      "remainingThreshold": 80,
+      "preselectedSubset": {
+        "tail": 6.842277657835997e-49,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1.2666789647898199e-30,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 100,
+      "m": 100,
+      "remainingThreshold": 0,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 0,
+      "remainingThreshold": 0,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 5,
+      "remainingThreshold": -5,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 10,
+      "remainingThreshold": -10,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 20,
+      "remainingThreshold": -20,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    },
+    {
+      "n": 100,
+      "k": 4,
+      "h": 0,
+      "m": 100,
+      "remainingThreshold": -100,
+      "preselectedSubset": {
+        "tail": 1,
+        "interpretation": "Fixed/preselected compromised subset of exactly m trials, all correct; remaining n-m independent uniform blind trials. This is the stated worst case for at most m preselected compromised trials."
+      },
+      "arbitraryOutcomeCorruption": {
+        "upperBound": 1,
+        "interpretation": "At most m entries of the underlying n-trial independent blind-guess vector may be changed after outcomes. Success can increase by at most m; this is the corresponding conservative tail bound."
+      },
+      "limitation": "m is an assumed sensitivity parameter, not estimated, measured or certified; do not substitute preselected-subset tail for outcome-dependent corruption"
+    }
+  ],
+  "degenerate": [
+    {
+      "request": {
+        "n": 0,
+        "p": 0.25,
+        "h": 0
+      },
+      "tail": 1
+    },
+    {
+      "request": {
+        "n": 0,
+        "p": 0.25,
+        "h": 1
+      },
+      "tail": 0
+    },
+    {
+      "request": {
+        "n": 100,
+        "p": 0,
+        "h": 0
+      },
+      "tail": 1
+    },
+    {
+      "request": {
+        "n": 100,
+        "p": 0,
+        "h": 1
+      },
+      "tail": 0
+    },
+    {
+      "request": {
+        "n": 100,
+        "p": 1,
+        "h": 100
+      },
+      "tail": 1
+    },
+    {
+      "request": {
+        "n": 100,
+        "p": 1,
+        "h": 101
+      },
+      "tail": 0
+    },
+    {
+      "request": {
+        "n": 100,
+        "p": 0.25,
+        "h": -100
+      },
+      "tail": 1
+    },
+    {
+      "request": {
+        "n": 1000,
+        "p": 0.5,
+        "h": 1000
+      },
+      "tail": 9.332636185032173e-302
+    }
+  ],
+  "invalid": [
+    {
+      "name": "fractional-n",
+      "rejected": true
+    },
+    {
+      "name": "too-large-n",
+      "rejected": true
+    },
+    {
+      "name": "negative-n",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite-n",
+      "rejected": true
+    },
+    {
+      "name": "fractional-h",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite-h",
+      "rejected": true
+    },
+    {
+      "name": "negative-p",
+      "rejected": true
+    },
+    {
+      "name": "large-p",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite-p",
+      "rejected": true
+    },
+    {
+      "name": "fractional-k",
+      "rejected": true
+    },
+    {
+      "name": "small-k",
+      "rejected": true
+    },
+    {
+      "name": "large-k",
+      "rejected": true
+    },
+    {
+      "name": "negative-h",
+      "rejected": true
+    },
+    {
+      "name": "too-large-h",
+      "rejected": true
+    },
+    {
+      "name": "negative-m",
+      "rejected": true
+    },
+    {
+      "name": "large-m",
+      "rejected": true
+    },
+    {
+      "name": "fractional-m",
+      "rejected": true
+    },
+    {
+      "name": "negative-epsilon",
+      "rejected": true
+    },
+    {
+      "name": "large-epsilon",
+      "rejected": true
+    },
+    {
+      "name": "nonfinite-epsilon",
+      "rejected": true
+    },
+    {
+      "name": "zero-alpha",
+      "rejected": true
+    },
+    {
+      "name": "one-alpha",
+      "rejected": true
+    }
+  ],
+  "physicalMeasurements": 0
+}

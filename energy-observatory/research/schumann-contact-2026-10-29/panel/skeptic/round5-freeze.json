@@ -1,0 +1,20 @@
+{
+  "round": 5,
+  "owner": "/root/contact_skeptic",
+  "verdict": "accept-repaired-conditional-probability-benchmark",
+  "scalarComparisons": 273,
+  "extremeTailStressCases": 2,
+  "files": {
+    "rounds/round5-contract.md": "0048cafeb84d5c36e8286eaee4bd86767d818f3df61fabd87f6fe7b4d37e5c50",
+    "analysis/round5/model.mjs": "3eb54483c494c969ac692c66abdfbd9a7620cd095298258bbfb49c2033544889",
+    "analysis/round5/results.json": "b4e02fba49ce50a4d486e1431eae16421a746420692be2bf923c605acdcb2f1f",
+    "panel/skeptic/round5_exact_binomial.py": "1367b4783adfe65091f7c040e77697d6528ec3cf191bced89439875926ab9ac5",
+    "panel/skeptic/round5-exact-binomial.json": "1a793a523901759885639fd8deeb967e7ba5921ec9c35fc0d9cc1accaea25d96",
+    "panel/skeptic/round5_compare.py": "a478f4453d2e95b8f1ebd1c6a7cd765307076ef3aa5b1ce53f8bd0463e22fe17",
+    "panel/skeptic/round5-comparison.json": "8cffe623a098bec99ddb64bcba9e478835ef3570d105a7245d9c5dbd5441e5ee",
+    "panel/skeptic/round5-initial-underflow-failure.json": "fb3b964212a119ceb9fed1f5f048c3ba555b4800c54bf51f9f8b31c50db784c2",
+    "panel/skeptic/round5-underflow-repair.json": "23b2475aa53f4167441dbaa48990c34038aee5482bff7a4a2a0bb2e4309140a1",
+    "panel/skeptic/round5.md": "f4e73ca6de0a899b33dc22d5798e628ddc65953769c538c37f06d8b2e2d80893"
+  },
+  "humanSessions": 0
+}

@@ -1,0 +1,39 @@
+{
+  "method": "Independent Fraction arithmetic, no producer imports",
+  "observationalDesign": {
+    "rows": 5,
+    "columns": 2,
+    "rank": 1,
+    "nullity": 1,
+    "kernel": [
+      1,
+      -1
+    ]
+  },
+  "perturbedCenteredGram": [
+    [
+      "64/5",
+      "10"
+    ],
+    [
+      "10",
+      "10"
+    ]
+  ],
+  "determinant": "28",
+  "perturbedDesign": {
+    "rows": 5,
+    "columns": 2,
+    "rank": 2,
+    "nullity": 0
+  },
+  "predictionDifference": [
+    "2",
+    "0",
+    "-2",
+    "0",
+    "2"
+  ],
+  "contractSha256": "8466f15a2d3510226a0e7ede458d5f0eb85b004624b10c700f8ff5f9b058b211",
+  "physicalIntervention": false
+}

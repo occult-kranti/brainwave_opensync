@@ -1,0 +1,32 @@
+{
+  "kind": "synthetic-ideal-receiver",
+  "inputs": {
+    "frequencyHz": 7.83,
+    "magneticRmsT": 0,
+    "turns": 1000,
+    "areaM2": 1,
+    "angleDeg": 0,
+    "resistanceOhm": 1000,
+    "temperatureK": 300,
+    "bandwidthHz": 1
+  },
+  "result": {
+    "signal": {
+      "voltageRmsV": 0,
+      "sensitivityVPerT": 49197.34095521616,
+      "projection": 1,
+      "magneticConvention": "RMS",
+      "voltageConvention": "RMS"
+    },
+    "noise": {
+      "voltageRmsV": 4.070354775692163e-9,
+      "scope": "classical Johnson voltage across an ideal resistor in a stated bandwidth; omitted receiver/environmental noise and reactance"
+    },
+    "identifiable": true,
+    "equivalentMagneticNoiseRmsT": 8.273525960269612e-14,
+    "status": "ideal-receiver-arithmetic-only"
+  },
+  "physicalMeasurements": 0,
+  "contactEstablished": false,
+  "scope": "Ideal acquisition arithmetic; metadata and simulated outputs do not establish detectability, biology or sender."
+}

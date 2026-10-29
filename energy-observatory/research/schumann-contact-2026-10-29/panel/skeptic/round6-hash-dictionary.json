@@ -1,0 +1,19 @@
+{
+  "method": "Independent Python hashlib SHA256, literal UTF8 bytes no newline",
+  "candidateCount": 4,
+  "hashes": {
+    "copper": "d16f06fe255d801e0639b8d749b815ea9e788af7b9ceba2b773c1dbc8f080442",
+    "silver": "78cde64c3e47f2cbfd9da721f54aacde33779916683c79de86962898feefac21",
+    "gold": "24d7f03d8dc3c3666969e6fa5bb1fac4736d3f1353c28307ed51b320f9dc42d3",
+    "iron": "04e9c0db87e7eebbf8123dae64d169c85540d588a38b4f9f3fbc255c7c6c65a9"
+  },
+  "publishedDigest": "24d7f03d8dc3c3666969e6fa5bb1fac4736d3f1353c28307ed51b320f9dc42d3",
+  "recoveredMatches": [
+    "gold"
+  ],
+  "claims": [
+    "Unsalted commitment to one of four known strings discloses the choice by enumeration",
+    "No claim to cryptographic security of a salted implementation",
+    "No live target or participant information used"
+  ]
+}

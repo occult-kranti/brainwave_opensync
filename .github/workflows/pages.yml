@@ -51,6 +51,8 @@ jobs:
         run: |
           node scripts/prepare-open-sync.mjs
           node integrations/open-sync/scripts/render-previews.mjs
+      - name: Add the shared Cymatic Studio to the preserved suite
+        run: node scripts/integrate-cymatics.mjs integrations/open-sync
       - name: Test and build the preserved suite
         working-directory: integrations/open-sync
         run: npm test -- --reporter=dot && VITE_BASE=/brainwave_opensync/open-sync/ npm run build
@@ -68,6 +70,8 @@ jobs:
       - name: Install previous-release dependencies
         working-directory: legacy-source
         run: npm ci --no-audit --no-fund
+      - name: Add the shared Cymatic Studio to the previous release
+        run: node scripts/integrate-cymatics.mjs legacy-source
       - name: Verify and build the previous release
         working-directory: legacy-source
         run: npm run check && node scripts/emit-route-shells.mjs dist
@@ -93,6 +97,8 @@ jobs:
         with:
           ref: archive/dark-landscapes
           path: archive-source
+      - name: Add the shared Cymatic Studio to the redesigned archive
+        run: node scripts/integrate-cymatics.mjs archive-source
       - name: Verify and build the redesigned archive
         working-directory: archive-source
         run: |
@@ -133,6 +139,7 @@ jobs:
         working-directory: listening-room-source
         run: |
           test "$(git rev-parse HEAD)" = ae4a1ebd6d1449979739edc9b5f84e2f09d39287
+          node ../scripts/integrate-cymatics.mjs .
           npm ci --no-audit --no-fund
           npm run build
           node scripts/emit-route-shells.mjs dist

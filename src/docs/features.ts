@@ -942,18 +942,18 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'Grade A plate physics; any therapeutic reading of the geometry is Grade D and is not made here.',
     simple:
-      'Turns sound into the standing-wave patterns you would see if sand sat on a vibrating plate. Different frequencies draw different figures, from simple lines to intricate webs. This module is in verification and opens soon.',
+      'Explore sand, liquid, and stereo traces in a visual instrument. Change the tone, plate, or sound source and see how the pattern changes. Open the precision lab for more plate controls.',
     deep:
-      'The renderer evaluates the classic square-plate modal superposition cos(nπx)·cos(mπy) − cos(mπx)·cos(nπy), or the generalized sine-mix family, and draws nodal lines as the zero-amplitude level set — the curves where sand physically collects. Mode integers n and m and the mix coefficients are driven from the audio, so frequency maps to pattern complexity. The model is the idealized center-driven free plate of the classic Chladni demonstration, not a claim that sound heals through geometry. Pattern physics is replicated textbook material; therapeutic interpretations are not made anywhere in the module.',
+      'The sand and ink views shade regions of low displacement in an idealized virtual plate driven near its modes. A simply supported square uses sine modes and a circular plate uses Bessel modes with a rim condition. The same frequency can draw a different figure on a different plate. Liquid is an artistic interference field, while Lissajous plots either the two input channels or a synthetic demo. Microphone, tab and file analysis runs locally in the browser.',
     plot: {
-      axes: 'The plate view is spatial: x and y are position on the plate; brightness is vibration amplitude. Dark lines are nodal curves of zero motion.',
-      good: 'Sharp, stable nodal lines while a tone holds; pattern complexity grows with mode numbers.',
-      bad: 'A washed-out or flickering figure means the driving signal is unsteady — check the engine first.',
+      axes: 'Plate views use spatial coordinates; the stereo trace plots paired waveform samples.',
+      good: 'A stable tone and selected plate produce a reproducible sand pattern.',
+      bad: 'An absent or weak input may produce no stereo trace or frequency readout.',
     },
     howTo: [
-      'Open Cymatic Studio and pick 3D PLATE, SAND, or NODAL LINES.',
-      'Drag the plate to orbit; scroll or pinch to zoom; double-click resets the camera.',
-      'Try 5D PHASE to watch displacement and velocity trade places in color.',
+      'Pick a template and switch between Sand, Liquid, Lissajous and Nodal Ink.',
+      'Change the frequency or choose Studio, Mic, File or Tab as the input.',
+      'Freeze the figure, save a PNG or record a short visual clip.',
     ],
   },
   {

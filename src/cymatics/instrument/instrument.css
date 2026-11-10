@@ -134,7 +134,8 @@
 @media (max-width: 520px) {
   .ci-header { align-items:start; flex-direction:column; gap:10px; margin-bottom:14px; }
   .ci-scenes { display:flex; overflow-x:auto; padding-bottom:4px; scroll-snap-type:x proximity; }
-  .ci-scenes button { min-width:125px; scroll-snap-align:start; }
+  .ci-scenes button { flex:none; min-width:140px; width:max-content; scroll-snap-align:start; }
+  .ci-scenes small { white-space:nowrap; }
   .ci-view-picker button { font-size:.66rem; gap:3px; }
   .ci-view-picker button svg { width:12px; height:12px; }
   .ci-controls { display:block; }

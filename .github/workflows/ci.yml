@@ -6,6 +6,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+# Keep locked versions and integrity hashes while using the public registry.
+env:
+  npm_config_registry: https://registry.npmjs.org/
+  npm_config_replace_registry_host: registry.npmmirror.com
+
 concurrency:
   group: ci-${{ github.head_ref || github.ref }}
   cancel-in-progress: true

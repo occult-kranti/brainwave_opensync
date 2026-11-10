@@ -1,7 +1,7 @@
 {
   "current": {
     "branch": "master",
-    "commit": "07d43d359ddadd5961c415693036b4f1e6888695",
+    "commit": "336e3fe74e4513b314333b565455f0afa85eca1c",
     "sourceRelease": "78b0751",
     "path": "/brainwave_opensync/"
   },
@@ -34,29 +34,11 @@
     ],
     "presetCount": 167,
     "filePreviewCount": 159,
-    "runtimePreviewCount": 8,
-    "practiceGuideCount": 167,
-    "obePresetCount": 23,
-    "obeSubgroupCount": 5,
-    "presetGuidanceUpdated": "2026-10-29",
-    "mobileRedesignUpdated": "2026-10-29",
-    "mobileReviewRounds": 3,
-    "homePracticePath": "/brainwave_opensync/archive/practice-plan/",
-    "audioTextureLoopFix": "live overlap joins and stable nature gain updates"
+    "runtimePreviewCount": 8
   },
   "listeningRoom": {
     "branch": "archive/listening-room-2026-10-15",
     "commit": "ae4a1ebd6d1449979739edc9b5f84e2f09d39287",
     "path": "/brainwave_opensync/previous/"
-  },
-  "cymatics": {
-    "sourceCommit": "07d43d359ddadd5961c415693036b4f1e6888695",
-    "editions": [
-      "cymatics/",
-      "archive/cymatics/",
-      "previous/cymatics/",
-      "v2/cymatics/",
-      "open-sync/#/cymatics"
-    ]
   }
 }

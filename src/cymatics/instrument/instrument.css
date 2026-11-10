@@ -50,7 +50,7 @@
 .ci-view-picker button, .ci-segments button, .ci-quick button { display:inline-flex; gap:5px; justify-content:center; align-items:center; min-height:42px; padding:4px 5px; border:1px solid transparent; border-radius:3px; font-size:.75rem; line-height:1.15; font-weight:650; }
 .ci-view-picker button[aria-pressed="true"], .ci-segments button[aria-pressed="true"], .ci-quick button[aria-pressed="true"] { background:var(--ci-hot); color:var(--ci-selected); border-color:var(--ci-hot); }
 .ci-surface { position:relative; min-height:250px; display:grid; place-items:center; isolation:isolate; color:#f6e6d3; background:radial-gradient(ellipse at 52% 45%, #ffffff16, transparent 69%), repeating-linear-gradient(0deg, #ffffff07 0 1px, transparent 1px 33px), repeating-linear-gradient(90deg, #ffffff06 0 1px, transparent 1px 33px), var(--ci-bench); }
-.ci-surface canvas { display:block; width:min(100%, 62vh, 675px); height:auto; aspect-ratio:1; filter:drop-shadow(0 14px 19px #0009); }
+.ci-surface canvas { display:block; width:min(100%, 57vh, 675px); height:auto; aspect-ratio:1; filter:drop-shadow(0 14px 19px #0009); }
 .ci-reticle { position:absolute; inset:10px; z-index:-1; pointer-events:none; }
 .ci-reticle i { position:absolute; border:0 solid #e2c69a75; width:16px; height:16px; }
 .ci-reticle i:nth-child(1) { inset:0 auto auto 0; border-width:1px 0 0 1px; }
@@ -65,7 +65,7 @@
 .ci-surface-status i[data-on="true"] { background:#bce6aa; box-shadow:0 0 8px #bce6aa80; }
 .ci-figure-index { bottom:17px; right:20px; }
 .ci-surface.ci-is-stage, .ci-surface:fullscreen { position:fixed; inset:0; z-index:2000; background:#08080b; }
-.ci-is-stage canvas, .ci-surface:fullscreen canvas { width:min(100vw, 92dvh); filter:none; }
+.ci .ci-surface.ci-is-stage canvas, .ci-surface:fullscreen canvas { width:min(100vw, 92dvh); filter:none; }
 .ci-is-stage :is(.ci-reticle,.ci-figure-label,.ci-surface-status,.ci-figure-index) { display:none; }
 .ci-stage-exit { position:absolute; inset:auto 16px 16px auto; --ci-line:#a6947a; }
 .ci-capture-bar { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding:9px; }

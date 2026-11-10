@@ -67,6 +67,9 @@ export function connectInput(context: AudioContext, input: HTMLAudioElement | Me
   const stream = input instanceof HTMLAudioElement ? undefined : input;
   const source = element ? context.createMediaElementSource(element) : context.createMediaStreamSource(input as MediaStream);
   const spectrum = context.createAnalyser();
+  const stereo = context.createGain();
+  stereo.channelCount = 2;
+  stereo.channelCountMode = 'explicit';
   const splitter = context.createChannelSplitter(2);
   const left = context.createAnalyser();
   const right = context.createAnalyser();
@@ -75,7 +78,8 @@ export function connectInput(context: AudioContext, input: HTMLAudioElement | Me
   left.fftSize = right.fftSize = 2048;
   silence.gain.value = 0;
   source.connect(spectrum);
-  source.connect(splitter);
+  source.connect(stereo);
+  stereo.connect(splitter);
   splitter.connect(left, 0);
   splitter.connect(right, 1);
   spectrum.connect(silence);

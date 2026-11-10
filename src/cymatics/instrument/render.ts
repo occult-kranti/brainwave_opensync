@@ -6,7 +6,7 @@ const TAU = Math.PI * 2;
 const SIZE = 960;
 const CENTER = SIZE / 2;
 const RADIUS = 418;
-const TEXTURE_COUNT = 39000;
+const TEXTURE_COUNT = 78000;
 const TEXTURE = new Float32Array(TEXTURE_COUNT * 3);
 let randomState = 321701;
 function random() {
@@ -74,7 +74,7 @@ function paintGrains(ctx: CanvasRenderingContext2D, look: Look, scene: Scene, pl
   const color = look.effect === 'mono' ? '#fff5e5' : scene.colors[0];
   const ink = look.view === 'ink';
   const print = look.effect === 'halftone';
-  const amount = print ? 98 * 98 : Math.round(15000 + look.detail * 235);
+  const amount = print ? 98 * 98 : Math.round((ink ? 19000 : 26000) + look.detail * 500);
   ctx.fillStyle = color;
   for (let index = 0; index < amount; index++) {
     const x = print ? (index % 98 + 0.5) / 98 : TEXTURE[index * 3];
@@ -91,10 +91,10 @@ function paintGrains(ctx: CanvasRenderingContext2D, look: Look, scene: Scene, pl
     const bottom = sample[row + 75] * (1 - t) + sample[row + 76] * t;
     const delta = v - iy;
     const amplitude = Math.abs(top * (1 - delta) + bottom * delta) / Math.max(max, 1e-8);
-    const threshold = (ink ? 0.014 : 0.031) + look.depth * (ink ? 0.00048 : 0.00098);
+    const threshold = (ink ? 0.018 : 0.059) + look.depth * (ink ? 0.00074 : 0.0017);
     const nodal = Math.exp(-Math.pow(amplitude / threshold, 1.35));
     if (!print && grain > nodal * 0.93 + (ink ? 0.01 : 0.065)) continue;
-    const alpha = (0.10 + nodal * 0.71) * (0.45 + look.light / 115);
+    const alpha = (0.12 + nodal * 0.83) * (0.45 + look.light / 115);
     ctx.globalAlpha = Math.min(1, alpha);
     const size = print ? 1 + nodal * 4.1 : (ink ? 1.3 : 0.65) + grain * (1.2 + nodal * 0.9);
     ctx.fillRect(CENTER - RADIUS + x * 2 * RADIUS, CENTER - RADIUS + y * 2 * RADIUS, size, size);

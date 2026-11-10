@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { Aperture, ArrowDownToLine, AudioLines, ChevronDown, Circle, Focus, Maximize, Mic, Pause, Play, Radio, RotateCcw, SlidersHorizontal, Square, Waves } from 'lucide-react';
+import { Aperture, ArrowDownToLine, ArrowUpRight, AudioLines, ChevronDown, Circle, Focus, Maximize, Mic, Pause, Play, Radio, RotateCcw, SlidersHorizontal, Square, Waves } from 'lucide-react';
 import { VIRTUAL_PLATES } from '../chladni';
 import { bounded, DEFAULT_LOOK, parseLook, QUICK_HZ, SCENES, sceneLook, type Effect, type Input, type Look, type Scene, type View, type Waveform } from './scenes';
 import { signalReader, type Analysers } from './signal';
@@ -87,7 +87,7 @@ function Dial({ name, value, change, max = 100 }: { name: string; value: number;
 export default function Instrument(props: Props) {
   const [look, setLook] = useState(startingLook);
   const [input, setInput] = useState<Input>('tone');
-  const [frozen, setFrozen] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [frozen, setFrozen] = useState(() => globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false);
   const [settings, setSettings] = useState(false);
   const [advanced, setAdvanced] = useState(false);
   const [stage, setStage] = useState(false);
@@ -251,7 +251,7 @@ export default function Instrument(props: Props) {
       <header className="ci-header">
         <div className="ci-heading">
           <span className="ci-kicker"><span /> OPEN SYNC / VISUAL INSTRUMENTS</span>
-          <h1>Cymatic <em>Studio</em></h1>
+          <h1 aria-label="Cymatic Studio">Cymatic <em>Studio</em></h1>
           <p>Play a frequency. Watch it take shape.</p>
         </div>
         <div className="ci-header-actions">
@@ -260,7 +260,7 @@ export default function Instrument(props: Props) {
             if (props.tonePlaying) props.stopTone();
             capture.current?.stop();
             setAdvanced(true);
-          }}>Precision lab <span aria-hidden="true">↗</span></button>
+          }}>Precision lab <ArrowUpRight size={14} aria-hidden="true" /></button>
           <button type="button" className="ci-settings-toggle" onClick={() => setSettings(!settings)} aria-expanded={settings}><SlidersHorizontal size={16} /> Settings</button>
         </div>
       </header>
@@ -323,6 +323,9 @@ export default function Instrument(props: Props) {
               <div className="ci-quick" aria-label="Quick frequencies">
                 {QUICK_HZ.map((hz) => <button type="button" key={hz} aria-pressed={look.hz === hz} onClick={() => commitFrequency(hz)}>{hz}</button>)}
               </div>
+              <button type="button" className="ci-play ci-source-action" disabled={props.sessionRunning || props.panicked} onClick={() => props.tonePlaying ? props.stopTone() : props.playTone(look.hz, look.wave)}>
+            {props.tonePlaying ? <Square size={14} /> : <Play size={14} />} {props.tonePlaying ? 'Stop tone' : 'Hear tone'}
+          </button>
             </>}
             {input === 'studio' && <p className="ci-source-note">{props.sessionRunning ? 'Listening to the active Open Sync session.' : 'Start playback in Open Sync Studio to drive the figure.'}</p>}
             {(input === 'mic' || input === 'tab') && <button className="ci-source-action" type="button" onClick={() => active || waiting ? stop() : void start(input)}><Mic size={16} />{active ? 'Disconnect' : waiting ? 'Cancel connection' : input === 'mic' ? 'Connect microphone' : 'Share tab audio'}</button>}
@@ -376,10 +379,7 @@ export default function Instrument(props: Props) {
         </div>
         <div className="ci-transport-note">{input === 'tone' ? 'Silent until you play a short preview.' : 'Inputs are analyzed locally. External inputs are silent.'}</div>
         <div className="ci-transport-actions">
-          <button type="button" onClick={() => { pickLook(sceneLook(scene)); setFrozen(matchMedia('(prefers-reduced-motion: reduce)').matches); }}> <RotateCcw size={15} /> Reset look</button>
-          {input === 'tone' && <button type="button" className="ci-play" disabled={props.sessionRunning || props.panicked} onClick={() => props.tonePlaying ? props.stopTone() : props.playTone(look.hz, look.wave)}>
-            {props.tonePlaying ? <Square size={14} /> : <Play size={14} />} {props.tonePlaying ? 'Stop tone' : 'Hear tone'}
-          </button>}
+          <button type="button" onClick={() => { pickLook(sceneLook(scene)); setFrozen(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false); }}> <RotateCcw size={15} /> Reset look</button>
         </div>
       </div>
 

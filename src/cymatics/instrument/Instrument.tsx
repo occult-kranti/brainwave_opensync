@@ -324,7 +324,7 @@ export default function Instrument(props: Props) {
                 {QUICK_HZ.map((hz) => <button type="button" key={hz} aria-pressed={look.hz === hz} onClick={() => commitFrequency(hz)}>{hz}</button>)}
               </div>
               <button type="button" className="ci-play ci-source-action" disabled={props.sessionRunning || props.panicked} onClick={() => props.tonePlaying ? props.stopTone() : props.playTone(look.hz, look.wave)}>
-            {props.tonePlaying ? <Square size={14} /> : <Play size={14} />} {props.tonePlaying ? 'Stop tone' : 'Hear tone'}
+            {props.tonePlaying ? <Square size={14} /> : <Play size={14} />} {props.tonePlaying ? 'Stop tone' : 'Hear pattern'}
           </button>
             </>}
             {input === 'studio' && <p className="ci-source-note">{props.sessionRunning ? 'Listening to the active Open Sync session.' : 'Start playback in Open Sync Studio to drive the figure.'}</p>}

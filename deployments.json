@@ -1,7 +1,7 @@
 {
   "current": {
     "branch": "master",
-    "commit": "2d5e563748ed5b2db1bf8d2bbddb098f930d1a1e",
+    "commit": "07d43d359ddadd5961c415693036b4f1e6888695",
     "sourceRelease": "78b0751",
     "path": "/brainwave_opensync/"
   },
@@ -20,7 +20,7 @@
   },
   "archive": {
     "branch": "archive/dark-landscapes",
-    "commit": "a0ed2e0164f32c1ab61301ca821dc5ec0285555f",
+    "commit": "316b889153fcb1c979ddf6f32fb685b99396edb8",
     "path": "/brainwave_opensync/archive/",
     "themes": [
       "Night Country",
@@ -48,5 +48,15 @@
     "branch": "archive/listening-room-2026-10-15",
     "commit": "ae4a1ebd6d1449979739edc9b5f84e2f09d39287",
     "path": "/brainwave_opensync/previous/"
+  },
+  "cymatics": {
+    "sourceCommit": "07d43d359ddadd5961c415693036b4f1e6888695",
+    "editions": [
+      "cymatics/",
+      "archive/cymatics/",
+      "previous/cymatics/",
+      "v2/cymatics/",
+      "open-sync/#/cymatics"
+    ]
   }
 }

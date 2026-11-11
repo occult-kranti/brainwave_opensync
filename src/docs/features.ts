@@ -942,9 +942,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'Grade A plate physics; any therapeutic reading of the geometry is Grade D and is not made here.',
     simple:
-      'Explore sand, liquid, and stereo traces in a visual instrument. Capture a YouTube or Spotify browser tab, or laptop audio where supported. Change the plate and scene to see the signal differently.',
+      'Explore sand, liquid, and stereo traces in a visual instrument. Capture a browser tab or supported laptop audio, then expand waveform, spectrum, and level panels. Analyze a full recording without leaving the page.',
     deep:
-      'The sand and ink views shade regions of low displacement in an idealized virtual plate driven near its modes, with sine modes for a square and Bessel modes for a circular plate. The same frequency can draw a different figure on a different plate. Liquid is an artistic interference field, while Lissajous plots either the two input channels or a synthetic demo. Browser tab, laptop audio, microphone and file analysis runs locally; shared screen frames are not processed or uploaded. System-audio availability depends on the browser and operating system, so use a web player or a configured loopback input when necessary.',
+      'Sand and ink shade low displacement in an idealized virtual plate; liquid is artistic, and Lissajous plots stereo samples. Collapsible panels inspect short signal windows for waveforms, channel spectra, digital levels, stereo relationships and spectral features. A bounded spectrogram shows recent observations, with sampling gaps distinct from silence. Full recording reports reuse the file analysis engine for loudness, tempo, pitch, modulation and loop estimates, with their existing limitations. Analysis stays local, synthetic tone models are labeled, and system capture depends on browser support.',
     plot: {
       axes: 'Plate views use spatial coordinates; the stereo trace plots paired waveform samples.',
       good: 'A stable tone and selected plate produce a reproducible sand pattern.',
@@ -954,6 +954,7 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
       'Pick a template and switch between Sand, Liquid, Lissajous and Nodal Ink.',
       'Choose Browser tab, click Capture browser tab, select the player tab and enable audio sharing.',
       'For desktop apps, try Laptop audio with system audio enabled, or connect a configured default loopback input.',
+      'Expand the live analysis panels, freeze a frame, or export its measurements as JSON.',
       'Freeze the figure, save a PNG or record a short visual clip.',
     ],
   },

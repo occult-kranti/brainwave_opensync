@@ -361,14 +361,29 @@ describe('capture graph feedback and cleanup', () => {
 });
 
 describe('stereo input analysis', () => {
-  function analysis(leftValue: number, rightValue: number): Analysers {
+  function analysis(leftValue: number, rightValue: number, leftSize = 2048, rightSize = 2048): Analysers {
+    const channel = (value: number, fftSize: number) => ({
+      fftSize, frequencyBinCount: fftSize / 2,
+      getFloatTimeDomainData: (data: Float32Array) => data.fill(value),
+      getFloatFrequencyData: (data: Float32Array) => {
+        data.fill(-Infinity);
+        if (value === 0) return;
+        const position = 440 * fftSize / 48000;
+        // A known log-parabolic spectral maximum verifies native FFT spacing
+        // and sub-bin refinement independently of the mono spectrum stub.
+        for (let index = Math.floor(position) - 2; index <= Math.ceil(position) + 2; index++) {
+          data[index] = -20 - 6 * (index - position) ** 2;
+        }
+      },
+    });
     return {
       spectrum: {
         context: { sampleRate: 48000 }, fftSize: 4096, frequencyBinCount: 2048,
-        getFloatFrequencyData: (data: Float32Array) => { data.fill(-100); data[38] = -20; },
+        // Simulate full cancellation in the legacy mono analyser.
+        getFloatFrequencyData: (data: Float32Array) => data.fill(-Infinity),
       },
-      left: { fftSize: 2048, getFloatTimeDomainData: (data: Float32Array) => data.fill(leftValue) },
-      right: { fftSize: 2048, getFloatTimeDomainData: (data: Float32Array) => data.fill(rightValue) },
+      left: channel(leftValue, leftSize),
+      right: channel(rightValue, rightSize),
     } as unknown as Analysers;
   }
 
@@ -376,15 +391,48 @@ describe('stereo input analysis', () => {
     const silent = signalReader()(analysis(0, 0), 100);
     const rightOnly = signalReader()(analysis(0, 0.25), 100);
     expect(silent.level).toBe(0);
+    expect(silent.hz).toBe(0);
+    expect(silent.bands).toEqual([0, 0, 0]);
     expect(rightOnly.level).toBeGreaterThan(0.2);
-    expect(rightOnly.hz).toBeGreaterThan(430);
-    expect(rightOnly.hz).toBeLessThan(450);
+    expect(rightOnly.hz).toBeCloseTo(440, 3);
+    expect(rightOnly.bands[1]).toBeGreaterThan(0.5);
   });
 
-  it('does not cancel the level when stereo channels have opposite polarity', () => {
+  it('preserves the frequency and level when stereo channels have opposite polarity', () => {
     const inPhase = signalReader()(analysis(0.25, 0.25), 100);
     const opposite = signalReader()(analysis(0.25, -0.25), 100);
     expect(opposite.level).toBeGreaterThan(0.3);
     expect(opposite.level).toBeCloseTo(inPhase.level, 8);
+    expect(opposite.hz).toBeCloseTo(440, 3);
+    expect(opposite.hz).toBeCloseTo(inPhase.hz, 8);
+    expect(opposite.bands).toEqual(inPhase.bands);
+  });
+
+  it('maps different native FFT sizes using physical frequency rather than shared bin indices', () => {
+    const signal = signalReader()(analysis(0, 0.25, 2048, 4096), 100);
+    expect(signal.hz).toBeCloseTo(440, 3);
+    expect(signal.level).toBeGreaterThan(0.2);
+    expect(Number.isFinite(signal.level)).toBe(true);
+    const reversed = signalReader()(analysis(0.25, 0, 4096, 2048), 100);
+    expect(reversed.hz).toBeCloseTo(440, 3);
+    expect(reversed.level).toBeCloseTo(signal.level, 8);
+  });
+
+  it('retains a stable detected frequency across successive opposite-phase frames', () => {
+    const read = signalReader();
+    const nodes = analysis(0.25, -0.25);
+    for (let frame = 0; frame < 5; frame++) expect(read(nodes, 100).hz).toBeCloseTo(440, 3);
+  });
+
+  it('does not mistake a 12 kHz waveform for silence by subsampling its zero crossings', () => {
+    const nodes = analysis(0, 0);
+    const samples = (data: Float32Array<ArrayBuffer>) => {
+      for (let i = 0; i < data.length; i++) data[i] = 0.25 * Math.sin(Math.PI * i / 2);
+    };
+    nodes.left.getFloatTimeDomainData = samples;
+    nodes.right.getFloatTimeDomainData = samples;
+    const signal = signalReader()(nodes, 100);
+    expect(signal.level).toBeGreaterThan(0.2);
+    expect(Number.isFinite(signal.level)).toBe(true);
   });
 });

@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Aperture, ArrowDownToLine, ArrowUpRight, AudioLines, ChevronDown, Circle, Focus, Maximize, Mic, Monitor, Pause, Play, Radio, RotateCcw, SlidersHorizontal, Square, Waves } from 'lucide-react';
 import { VIRTUAL_PLATES } from '../chladni';
 import { bounded, DEFAULT_LOOK, parseLook, QUICK_HZ, SCENES, sceneLook, type Effect, type Input, type Look, type Scene, type View, type Waveform } from './scenes';
-import { signalReader, type Analysers } from './signal';
+import { makeDemoSignal, signalReader, type Analysers, type Signal } from './signal';
+import AudioAnalysis from './AudioAnalysis';
+import { useAnalysisSample } from './useAnalysisSample';
 import { createRenderer } from './render';
 import { useInstrumentInput } from './useInstrumentInput';
 import { downloadBlob, startCapture } from './Capture';
@@ -14,8 +16,10 @@ interface Props {
   stopTone: () => void;
   tonePlaying: boolean;
   sessionRunning: boolean;
+  sessionPaused: boolean;
   panicked: boolean;
   advanced: ReactNode;
+  fileAnalysis?: (file: File | null) => ReactNode;
 }
 
 const VIEW_CHOICES: { id: View; label: string; icon: typeof Circle }[] = [
@@ -96,6 +100,8 @@ export default function Instrument(props: Props) {
   const [draftHz, setDraftHz] = useState<string | null>(null);
   const [meter, setMeter] = useState({ hz: 0, level: 0, bands: [0, 0, 0] });
   const [quietInput, setQuietInput] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [fileReportVisited, setFileReportVisited] = useState(false);
   const canvas = useRef<HTMLCanvasElement>(null);
   const surface = useRef<HTMLDivElement>(null);
   const file = useRef<HTMLInputElement>(null);
@@ -103,7 +109,16 @@ export default function Instrument(props: Props) {
   const draw = useRef<ReturnType<typeof createRenderer> | null>(null);
   const time = useRef(0);
   const latest = useRef(props);
-  const { connection, status, filename, active, waiting, sourceLabel, muted, stop, start } = useInstrumentInput(props.panicked);
+  const analysisSignal = useRef<Signal | null>(null);
+  const { connection, status, filename, active, waiting, sourceLabel, sourceVersion, muted, stop, start } = useInstrumentInput(props.panicked);
+  const demo = useMemo(() => makeDemoSignal(look.hz, look.wave), [look.hz, look.wave]);
+  const getAnalysisSignal = useCallback(() => analysisSignal.current, []);
+  const sourceState = props.panicked ? 'idle' : input === 'tone' ? 'demo' : input === 'studio'
+    ? props.sessionRunning ? props.sessionPaused ? 'paused' : 'live' : 'idle'
+    : waiting ? 'waiting' : active ? muted ? 'muted' : 'live' : 'idle';
+  const analysisSourceId = `${input}:${sourceVersion}:${input === 'studio' ? props.sessionRunning : ''}:${props.panicked}`;
+  const receiveSample = useCallback((sample: File) => { setSelectedFile(sample); setFileReportVisited(true); }, []);
+  const audioSample = useAnalysisSample(`${analysisSourceId}:${sourceState === 'live' ? 'live' : 'inactive'}`, receiveSample);
   const liveCapture = input === 'tab' || input === 'system' || input === 'mic';
   const signalPresent = meter.level >= 0.006;
   const checkSilence = liveCapture && active && !waiting && !frozen && !muted && !signalPresent;
@@ -142,6 +157,7 @@ export default function Instrument(props: Props) {
       previous = now;
       const nodes = input === 'studio' ? latest.current.getStudioSignal() : input === 'tone' ? null : connection.current?.nodes;
       const signal = nodes ? read(nodes, look.response) : null;
+      analysisSignal.current = input === 'tone' && !latest.current.panicked ? demo : signal;
       paint(look, scene, plate, time.current, signal);
       if (now - published > 160) {
         published = now;
@@ -152,11 +168,12 @@ export default function Instrument(props: Props) {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [look, scene, plate, frozen, input, connection, advanced, active]);
+  }, [look, scene, plate, frozen, input, connection, advanced, active, demo]);
 
   const pickInput = (next: Input) => {
     if (next === input) return;
     stop();
+    analysisSignal.current = null;
     setQuietInput(false);
     if (props.tonePlaying) props.stopTone();
     setInput(next);
@@ -369,7 +386,7 @@ export default function Instrument(props: Props) {
             {input === 'file' && <>
               <input ref={file} hidden type="file" accept="audio/*,.m4a,.wav,.mp3,.flac,.ogg" onChange={(event) => {
                 const selected = event.target.files?.[0];
-                if (selected) void start('file', selected);
+                if (selected) { setSelectedFile(selected); void start('file', selected); }
                 event.target.value = '';
               }} />
               <button className="ci-source-action" type="button" onClick={() => file.current?.click()}><ArrowDownToLine size={16} /> Choose audio file</button>
@@ -420,6 +437,36 @@ export default function Instrument(props: Props) {
         </div>
       </div>
 
+      <AudioAnalysis
+        getSignal={getAnalysisSignal}
+        sourceId={analysisSourceId}
+        sourceLabel={input === 'tone' ? 'Tone model · synthetic' : sourceLabel || SOURCE_CHOICES.find((choice) => choice.id === input)?.label || 'Audio input'}
+        sourceState={sourceState}
+        frozen={frozen}
+        onToggleFreeze={() => setFrozen((value) => !value)}
+      />
+
+      {props.fileAnalysis && <details className="ci-file-report" onToggle={(event) => {
+        if (event.currentTarget.open) {
+          setFileReportVisited(true);
+          requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+        }
+      }}>
+        <summary><span>06 / RECORDING REPORT</span><strong>Full file analysis</strong><small>{audioSample.recording ? `Sampling audio · ${audioSample.secondsLeft} seconds remaining` : 'Tempo, pitch, loudness, modulation and loop analysis'}</small></summary>
+        <div className="ci-file-report-body">
+          <p>Analyze a complete local recording here. This report uses the file selected above, or a separate file you choose below; it is independent of the current live input. Live panels above inspect short signal windows.</p>
+          <div className="ci-recording-sample">
+            <button type="button" disabled={!audioSample.recording && (!liveCapture || !active || muted || waiting || props.panicked)} onClick={() => {
+              if (audioSample.recording) audioSample.cancel();
+              else audioSample.start(connection.current?.stream ?? null, sourceLabel || 'Live audio');
+            }}>{audioSample.recording ? 'Cancel audio sample' : 'Sample 10 seconds of live audio'}</button>
+            <p role="status">{audioSample.recording ? `Sampling audio locally · ${audioSample.secondsLeft} seconds remaining` : audioSample.status}</p>
+            <small>For a continuous sample, connect Browser tab, Laptop audio or Audio input above. Only audio is sampled; playback and sharing continue. The sample stays in this page’s memory for the report.</small>
+          </div>
+          {fileReportVisited && props.fileAnalysis(selectedFile)}
+        </div>
+      </details>}
+
       {settings && <section className="ci-settings" aria-label="Additional settings">
         <h2>Instrument settings</h2>
         <div className="ci-settings-grid">
@@ -438,7 +485,7 @@ export default function Instrument(props: Props) {
       </section>}
 
       <div className="ci-foot">
-        <details><summary>About the models and templates</summary><p>Plate patterns depend on material, shape, and boundary conditions. Liquid and layer effects are artistic visualizations. Clips save up to 30 seconds of the picture without audio. Press F for fullscreen or H for a clean stage.</p></details>
+        <details><summary>About the models and templates</summary><p>Plate patterns depend on material, shape, and boundary conditions. The visual drive follows a peak within 20–1,200 Hz; analysis panels inspect the full available spectrum. Liquid and layer effects are artistic visualizations. Clips save up to 30 seconds of the picture without audio. Press F for fullscreen or H for a clean stage.</p></details>
         <span role="status">{message}</span>
         <span className="ci-kicker">OPEN SYNC · VISUAL LAB</span>
       </div>

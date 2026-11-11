@@ -163,3 +163,15 @@
   .ci-transport-actions button { flex:1; }
 }
 @media (prefers-reduced-motion: reduce) { .ci *, .ci *::before, .ci *::after { scroll-behavior:auto; transition:none; } }
+
+.ci-file-report { margin-top:16px; border:1px solid var(--ci-line); border-radius:5px; background:var(--ci-panel); }
+.ci-file-report > summary { cursor:pointer; padding:15px 18px; min-height:58px; display:list-item; }
+.ci-file-report > summary span { font:650 .65rem ui-monospace,monospace; letter-spacing:.08em; color:var(--ci-muted); }
+.ci-file-report > summary strong { display:inline; margin-inline:10px; font:500 1.15rem Georgia,serif; }
+.ci-file-report > summary small { display:block; margin:5px 0 0 16px; color:var(--ci-muted); font-size:.75rem; }
+.ci-file-report-body { border-top:1px solid var(--ci-line); padding:clamp(12px,2vw,22px); background:var(--ci-bench); color:#f4eadb; }
+.ci-file-report-body > p { max-width:76ch; margin:0 0 18px; color:#d8c9b9; font-size:.8rem; }
+.ci-recording-sample { padding:13px; margin:0 0 18px; border:1px solid #65564b; border-radius:4px; }
+.ci-recording-sample button { border:1px solid #b9a58c; padding:10px 13px; min-height:44px; border-radius:3px; }
+.ci-recording-sample p { font-size:.78rem; margin:6px 0; }
+.ci-recording-sample small { display:block; color:#d8c9b9; max-width:85ch; }

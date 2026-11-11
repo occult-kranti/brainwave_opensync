@@ -5,6 +5,7 @@ import type { Waveform } from '@/cymatics/instrument/scenes';
 import { makeTone } from '@/cymatics/instrument/signal';
 
 const PrecisionCymatics = lazy(() => import('./PrecisionCymatics'));
+const SampleLab = lazy(() => import('./SampleLab'));
 const TONE_ID = 'cymatics:instrument';
 
 export default function Cymatics() {
@@ -26,7 +27,9 @@ export default function Cymatics() {
     stopTone={() => { if (previewId === TONE_ID) stopPreview(); }}
     tonePlaying={previewId === TONE_ID}
     sessionRunning={running}
+    sessionPaused={paused}
     panicked={panicked}
     advanced={<Suspense fallback={<p role="status">Loading precision lab…</p>}><PrecisionCymatics /></Suspense>}
+    fileAnalysis={(file) => <Suspense fallback={<p role="status">Loading recording analysis…</p>}><SampleLab embedded initialFile={file} /></Suspense>}
   />;
 }

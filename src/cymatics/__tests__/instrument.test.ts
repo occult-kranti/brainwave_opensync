@@ -1,8 +1,19 @@
 import { describe, expect, it } from 'vitest';
 import { DEFAULT_LOOK, parseLook, SCENES, sceneLook } from '../instrument/scenes';
-import { makeTone } from '../instrument/signal';
+import { makeDemoSignal, makeTone } from '../instrument/signal';
 
 describe('cymatic instrument recipes and previews', () => {
+  it('builds bounded stationary demo blocks without rendering or playing a preview', () => {
+    for (const wave of ['sine', 'triangle', 'square', 'sawtooth'] as const) {
+      const signal = makeDemoSignal(NaN, wave);
+      expect(signal.sampleRate).toBe(48000);
+      expect(signal.hz).toBe(440);
+      expect(signal.left.length).toBe(2048);
+      expect(signal.left).toEqual(signal.right);
+      expect(signal.left).not.toBe(signal.right);
+      expect(signal.left.every((value) => Number.isFinite(value) && Math.abs(value) <= 0.551)).toBe(true);
+    }
+  });
   it('round trips every scene without persisting a live input', () => {
     for (const scene of SCENES) {
       const look = sceneLook(scene);

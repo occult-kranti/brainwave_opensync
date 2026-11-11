@@ -13,27 +13,66 @@ export interface Signal {
   right: Float32Array<ArrayBuffer>;
 }
 
+/** A stationary, explicitly synthetic tone model; not a measurement of playback. */
+export function makeDemoSignal(hz: number, kind: 'sine' | 'triangle' | 'square' | 'sawtooth'): Signal {
+  const sampleRate = 48000;
+  const frequency = Number.isFinite(hz) ? Math.max(20, Math.min(1200, hz)) : 440;
+  const left = new Float32Array(2048);
+  const limit = kind === 'sine' ? 1 : Math.min(15, Math.floor(18000 / frequency));
+  for (let harmonic = 1; harmonic <= limit; harmonic++) {
+    if (kind !== 'sawtooth' && harmonic % 2 === 0) continue;
+    const weight = kind === 'triangle' ? (-1) ** ((harmonic - 1) / 2) / harmonic ** 2 :
+      kind === 'sawtooth' ? (-1) ** (harmonic + 1) / harmonic : 1 / harmonic;
+    for (let i = 0; i < left.length; i++) left[i] += weight * Math.sin(2 * Math.PI * frequency * harmonic * i / sampleRate);
+  }
+  for (let i = 0; i < left.length; i++) left[i] = Math.max(-1, Math.min(1, left[i])) * 0.55;
+  return { left, right: new Float32Array(left), sampleRate, hz: frequency, level: 0, bands: [0, 0, 0] };
+}
+
 export function signalReader() {
   let bins = new Float32Array(0);
+  let leftBins = new Float32Array(0);
+  let rightBins = new Float32Array(0);
   let left = new Float32Array(0);
   let right = new Float32Array(0);
   let previousHz = 0;
   let level = 0;
+  // Interpolate native FFT *power* at a physical frequency, not dB values or
+  // array indices. This also handles different left/right FFT resolutions.
+  const powerAt = (data: Float32Array, position: number) => {
+    const index = Math.floor(position);
+    if (index < 0 || index >= data.length) return 0;
+    const fraction = position - index;
+    const first = Number.isFinite(data[index]) ? 10 ** (data[index] / 10) : 0;
+    const second = Number.isFinite(data[index + 1]) ? 10 ** (data[index + 1] / 10) : 0;
+    return first + (second - first) * fraction;
+  };
   return (nodes: Analysers, response: number): Signal => {
-    if (bins.length !== nodes.spectrum.frequencyBinCount) bins = new Float32Array(nodes.spectrum.frequencyBinCount);
+    if (leftBins.length !== nodes.left.frequencyBinCount) leftBins = new Float32Array(nodes.left.frequencyBinCount);
+    if (rightBins.length !== nodes.right.frequencyBinCount) rightBins = new Float32Array(nodes.right.frequencyBinCount);
+    if (bins.length !== Math.max(leftBins.length, rightBins.length)) bins = new Float32Array(Math.max(leftBins.length, rightBins.length));
     if (left.length !== nodes.left.fftSize) left = new Float32Array(nodes.left.fftSize);
     if (right.length !== nodes.right.fftSize) right = new Float32Array(nodes.right.fftSize);
-    nodes.spectrum.getFloatFrequencyData(bins);
+    nodes.left.getFloatFrequencyData(leftBins);
+    nodes.right.getFloatFrequencyData(rightBins);
     nodes.left.getFloatTimeDomainData(left);
     nodes.right.getFloatTimeDomainData(right);
-    const binHz = nodes.spectrum.context.sampleRate / nodes.spectrum.fftSize;
+    const sampleRate = nodes.spectrum.context.sampleRate;
+    const leftBinHz = sampleRate / nodes.left.fftSize;
+    const rightBinHz = sampleRate / nodes.right.fftSize;
+    const binHz = Math.min(leftBinHz, rightBinHz);
     const bands: Signal['bands'] = [0, 0, 0];
     let strongest = -66;
     let peakIndex = 0;
-    for (let index = 1; index < bins.length; index++) {
+    for (let index = 0; index < bins.length; index++) {
       const hz = index * binHz;
-      if (hz > 12000) break;
-      const db = bins[index];
+      if (hz > 12000 + binHz) break;
+      // Averaging channel powers preserves opposite-polarity stereo. Reading
+      // the mono spectrum would cancel that signal before the plate sees it.
+      const power = (powerAt(leftBins, hz / leftBinHz) + powerAt(rightBins, hz / rightBinHz)) / 2;
+      const db = power > 0 ? 10 * Math.log10(power) : -Infinity;
+      bins[index] = db;
+      if (index === 0 || hz > 12000) continue;
       if (hz >= 20 && hz <= 1200 && db > strongest) {
         strongest = db;
         peakIndex = index;
@@ -46,14 +85,16 @@ export function signalReader() {
     const curvature = below + above - 2 * strongest;
     const offset = Number.isFinite(curvature) && curvature < 0 ? Math.max(-0.5, Math.min(0.5, (below - above) / (2 * curvature))) : 0;
     const peak = peakIndex ? (peakIndex + offset) * binHz : 0;
-    let rms = 0;
-    // A right-only recording must drive the visualizer too. Keep stereo power
-    // separate here so opposite-polarity channels cannot cancel the level meter.
-    for (let index = 0; index < left.length; index += 4) rms += (left[index] ** 2 + right[index] ** 2) / 2;
+    let powerLeft = 0, powerRight = 0;
+    // Measure every sample: striding by four can alias e.g. a 12 kHz tone at
+    // 48 kHz into apparent silence and trigger a false no-audio warning.
+    for (let index = 0; index < left.length; index++) powerLeft += left[index] ** 2;
+    for (let index = 0; index < right.length; index++) powerRight += right[index] ** 2;
+    const rms = (powerLeft / Math.max(1, left.length) + powerRight / Math.max(1, right.length)) / 2;
     const factor = 0.08 + response * 0.006;
-    level += (Math.min(1, 2 * Math.sqrt(rms / Math.ceil(left.length / 4))) - level) * factor;
+    level += (Math.min(1, 2 * Math.sqrt(rms)) - level) * factor;
     previousHz = peak && previousHz ? previousHz + (peak - previousHz) * factor : peak;
-    return { hz: previousHz, sampleRate: nodes.spectrum.context.sampleRate, level, bands, left, right };
+    return { hz: previousHz, sampleRate, level, bands, left, right };
   };
 }
 

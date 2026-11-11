@@ -18,4 +18,6 @@ if (!existsSync(resolve(target, 'src/ui/session/useSession.ts'))) {
   wrapper = wrapper.replace('@/ui/session/useSession', '@/ui/session/SessionContext');
 }
 writeFileSync(page, wrapper);
+// Keep the reusable, cancellable file report beside the shared instrument.
+cpSync(resolve(root, 'src/pages/SampleLab.tsx'), resolve(target, 'src/pages/SampleLab.tsx'));
 console.log(`Integrated Cymatic Studio in ${target}`);

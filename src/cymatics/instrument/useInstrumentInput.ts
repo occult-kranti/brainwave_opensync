@@ -37,6 +37,7 @@ export function useInstrumentInput(panicked: boolean) {
   const [muted, setMuted] = useState(false);
   const [waiting, setWaiting] = useState(false);
   const [active, setActive] = useState(false);
+  const [sourceVersion, setSourceVersion] = useState(0);
 
   const clear = useCallback(() => {
     attempt.current++;
@@ -73,6 +74,7 @@ export function useInstrumentInput(panicked: boolean) {
   const start = useCallback(async (input: Input, file?: File) => {
     stop();
     if (panicked) return;
+    setSourceVersion((version) => version + 1);
     const ticket = attempt.current;
     let context: AudioContext | undefined;
     let stream: MediaStream | undefined;
@@ -166,5 +168,5 @@ export function useInstrumentInput(panicked: boolean) {
     }
   }, [panicked, stop]);
 
-  return { connection, status, filename, sourceLabel, muted, active, waiting, stop, start };
+  return { connection, status, filename, sourceLabel, sourceVersion, muted, active, waiting, stop, start };
 }

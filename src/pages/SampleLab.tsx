@@ -111,78 +111,121 @@ type LoadState =
   | { kind: 'error'; fileName: string; message: string }
   | { kind: 'done'; report: AnalysisReport };
 
-export default function SampleLab() {
+interface SampleLabProps {
+  embedded?: boolean;
+  initialFile?: File | null;
+}
+
+export default function SampleLab({ embedded = false, initialFile }: SampleLabProps = {}) {
   const isMobile = useIsMobile();
   const [state, setState] = useState<LoadState>({ kind: 'idle' });
   const abortRef = useRef<AbortController | null>(null);
+  const readerRef = useRef<FileReader | null>(null);
+  const contextRef = useRef<AudioContext | null>(null);
   const failedFileRef = useRef<File | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragOver, setDragOver] = useState(false);
 
-  const loadFile = useCallback((f: File) => {
+  const release = useCallback(() => {
+    // Invalidate callbacks before aborting browser work: reader/decode promises
+    // can finish after replacement, cancellation or an accordion unmount.
     abortRef.current?.abort();
+    abortRef.current = null;
+    const reader = readerRef.current;
+    readerRef.current = null;
+    if (reader?.readyState === FileReader.LOADING) reader.abort();
+    const context = contextRef.current;
+    contextRef.current = null;
+    if (context && context.state !== 'closed') void context.close().catch(() => {});
+  }, []);
+
+  const loadFile = useCallback((f: File) => {
+    release();
     const ac = new AbortController();
     abortRef.current = ac;
+    const current = () => abortRef.current === ac && !ac.signal.aborted;
     failedFileRef.current = f;
     setState({ kind: 'busy', fileName: f.name, fraction: 0, stage: 'reading file' });
     const reader = new FileReader();
-    reader.onerror = () => setState({ kind: 'error', fileName: f.name, message: `Could not read "${f.name}".` });
-    reader.onload = () => {
-      const ctx = new AudioContext();
-      void ctx
-        .decodeAudioData(reader.result as ArrayBuffer)
-        .then(async (buf) => {
-          try {
-            const channels: Float32Array[] = [];
-            for (let c = 0; c < Math.min(2, buf.numberOfChannels); c++) channels.push(buf.getChannelData(c));
-            const report = await analyzeAudio(
-              { channels, sampleRate: buf.sampleRate },
-              {
-                signal: ac.signal,
-                onProgress: (fraction, stage) => {
-                  if (!ac.signal.aborted) setState({ kind: 'busy', fileName: f.name, fraction, stage });
-                },
-              },
-            );
-            report.fileName = f.name;
-            setState({ kind: 'done', report });
-            failedFileRef.current = null;
-          } catch (err) {
-            if (err instanceof AnalysisCancelled) {
-              setState({ kind: 'idle' });
-            } else {
-              setState({
-                kind: 'error',
-                fileName: f.name,
-                message: `Analysis of "${f.name}" failed — the file may be corrupted.`,
-              });
-            }
-          } finally {
-            void ctx.close();
-          }
-        })
-        .catch(() => {
-          setState({
-            kind: 'error',
-            fileName: f.name,
-            message: `Could not decode "${f.name}" — unsupported or corrupted audio file.`,
-          });
-          void ctx.close();
-        });
+    readerRef.current = reader;
+    reader.onerror = () => {
+      if (current()) setState({ kind: 'error', fileName: f.name, message: `Could not read "${f.name}".` });
     };
-    reader.readAsArrayBuffer(f);
-  }, []);
+    reader.onload = () => {
+      if (!current()) return;
+      readerRef.current = null;
+      void (async () => {
+        let context: AudioContext | undefined;
+        let stage: 'decode' | 'analysis' = 'decode';
+        const closeDecodeContext = () => {
+          if (contextRef.current === context) contextRef.current = null;
+          if (context && context.state !== 'closed') void context.close().catch(() => {});
+        };
+        try {
+          context = new AudioContext();
+          contextRef.current = context;
+          const buf = await context.decodeAudioData(reader.result as ArrayBuffer);
+          // Decoding needs a context; the pure DSP report does not. Release the
+          // browser audio resource before potentially long file analysis.
+          closeDecodeContext();
+          if (!current()) return;
+          stage = 'analysis';
+          const channels: Float32Array[] = [];
+          for (let c = 0; c < Math.min(2, buf.numberOfChannels); c++) channels.push(buf.getChannelData(c));
+          const report = await analyzeAudio(
+            { channels, sampleRate: buf.sampleRate },
+            {
+              signal: ac.signal,
+              onProgress: (fraction, step) => {
+                if (current()) setState({ kind: 'busy', fileName: f.name, fraction, stage: step });
+              },
+            },
+          );
+          if (!current()) return;
+          report.fileName = f.name;
+          setState({ kind: 'done', report });
+          failedFileRef.current = null;
+        } catch (err) {
+          if (!current()) return;
+          if (err instanceof AnalysisCancelled) setState({ kind: 'idle' });
+          else setState({
+            kind: 'error', fileName: f.name,
+            message: stage === 'decode'
+              ? `Could not decode "${f.name}" — unsupported or corrupted audio file.`
+              : `Analysis of "${f.name}" failed — the file may be corrupted.`,
+          });
+        } finally {
+          closeDecodeContext();
+        }
+      })();
+    };
+    try { reader.readAsArrayBuffer(f); }
+    catch {
+      if (current()) setState({ kind: 'error', fileName: f.name, message: `Could not read "${f.name}".` });
+    }
+  }, [release]);
 
-  const cancel = useCallback(() => abortRef.current?.abort(), []);
+  const cancel = useCallback(() => {
+    release();
+    setState({ kind: 'idle' });
+  }, [release]);
 
-  useEffect(() => () => abortRef.current?.abort(), []);
+  useEffect(() => release, [release]);
+  useEffect(() => {
+    if (!initialFile) return;
+    let cancelled = false;
+    // Only an opened, mounted file-report panel starts the selected file.
+    queueMicrotask(() => { if (!cancelled) loadFile(initialFile); });
+    return () => { cancelled = true; };
+  }, [initialFile, loadFile]);
 
   const report = state.kind === 'done' ? state.report : null;
 
   return (
     <div
       data-testid="sample-lab"
-      style={{ padding: isMobile ? '20px 16px 40px' : '32px 40px 48px', maxWidth: 1440, margin: '0 auto' }}
+      data-embedded={embedded || undefined}
+      style={{ padding: embedded ? 0 : isMobile ? '20px 16px 40px' : '32px 40px 48px', maxWidth: 1440, margin: '0 auto' }}
       onDragOver={(e) => {
         e.preventDefault();
         setDragOver(true);
@@ -196,7 +239,7 @@ export default function SampleLab() {
       }}
     >
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.24 }}>
-        <h1 className="t-display-lg">Recording analysis</h1>
+        {embedded ? <h3 className="t-display-sm">Complete recording report</h3> : <h1 className="t-display-lg">Recording analysis</h1>}
         <p className="t-body text-2" style={{ marginTop: 8, maxWidth: 760 }}>
           Load any audio file — a song, a sample, or a commercial entrainment product — and see what it
           actually contains, plot by plot. <strong style={{ color: 'var(--text-1)' }}>Local-only:</strong> the
@@ -264,30 +307,34 @@ export default function SampleLab() {
       </motion.div>
 
       {!report && state.kind !== 'busy' && (
-        <button
-          type="button"
-          data-testid="sample-lab-dropzone"
-          onClick={() => inputRef.current?.click()}
-          className="flex flex-col items-center justify-center gap-3"
-          style={{
-            width: '100%',
-            minHeight: 220,
-            background: dragOver ? 'var(--ink-3)' : 'var(--ink-2)',
-            border: `1px dashed ${dragOver ? AMBER : 'var(--line-2)'}`,
-            borderRadius: 4,
-            cursor: 'pointer',
-            color: 'var(--text-2)',
-          }}
-        >
-          <FileAudio size={28} style={{ color: 'var(--text-3)' }} />
-          <span className="t-label" style={{ color: 'var(--text-1)' }}>
-            DROP AN AUDIO FILE HERE — OR CLICK TO PICK
-          </span>
-          <span className="t-caption text-3 flex items-center gap-1">
-            WAV / MP3 / OGG / M4A · decoded locally, never uploaded
+        <div>
+          <button
+            type="button"
+            data-testid="sample-lab-dropzone"
+            onClick={() => inputRef.current?.click()}
+            className="flex flex-col items-center justify-center gap-3"
+            style={{
+              width: '100%',
+              minHeight: 220,
+              background: dragOver ? 'var(--ink-3)' : 'var(--ink-2)',
+              border: `1px dashed ${dragOver ? AMBER : 'var(--line-2)'}`,
+              borderRadius: 4,
+              cursor: 'pointer',
+              color: 'var(--text-2)',
+            }}
+          >
+            <FileAudio size={28} style={{ color: 'var(--text-3)' }} />
+            <span className="t-label" style={{ color: 'var(--text-1)' }}>
+              DROP AN AUDIO FILE HERE — OR CLICK TO PICK
+            </span>
+            <span className="t-caption text-3 flex items-center gap-1">
+              WAV / MP3 / OGG / M4A · decoded locally, never uploaded
+            </span>
+          </button>
+          <div className="flex justify-end" style={{ marginTop: 6 }}>
             <InfoPopover featureId="samplelab-upload" label="About Sample Lab uploads" />
-          </span>
-        </button>
+          </div>
+        </div>
       )}
 
       {report && <ReportView report={report} isMobile={isMobile} />}
@@ -891,14 +938,15 @@ function LoopPanel({ report }: { report: AnalysisReport }) {
       {!loop.evaluated ? (
         <WarningChip tone="amber" icon={false}>NOT EVALUATED — {loop.reason}</WarningChip>
       ) : loop.detected ? (
-        <WarningChip tone="teal">LOOP DETECTED — period ≈ {loop.periodSec?.toFixed(1)} s (score {loop.score.toFixed(2)})</WarningChip>
+        <WarningChip tone="teal">REPETITION CANDIDATE — lag ≈ {loop.periodSec?.toFixed(1)} s (score {loop.score.toFixed(2)})</WarningChip>
       ) : (
         <WarningChip tone="amber" icon={false}>NO EXACT LOOP — {loop.reason}</WarningChip>
       )}
       <canvas ref={ref} style={{ width: '100%', height: 110, display: 'block', marginTop: 12, background: 'var(--ink-0)', border: '1px solid var(--line-1)' }} />
       <p className="t-caption text-3" style={{ marginTop: 8 }}>
-        Self-similarity of 1-s spectral fingerprints at every lag. A ridge at one exact lag means the material
-        repeats — the answer to &quot;is this hour-long file really an hour of content?&quot;
+        Self-similarity of 1-s spectral fingerprints at each tested lag. A high score suggests similar
+        spectral content; a steady tone or unchanging texture can score highly at many lags. Confirm
+        repetition by listening and inspecting the waveform before inferring a loop or edit.
       </p>
     </div>
   );

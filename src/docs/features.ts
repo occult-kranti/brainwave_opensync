@@ -942,9 +942,9 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     grade: 'A',
     gradeScope: 'Grade A plate physics; any therapeutic reading of the geometry is Grade D and is not made here.',
     simple:
-      'Explore sand, liquid, and stereo traces in a visual instrument. Change the tone, plate, or sound source and see how the pattern changes. Open the precision lab for more plate controls.',
+      'Explore sand, liquid, and stereo traces in a visual instrument. Capture a YouTube or Spotify browser tab, or laptop audio where supported. Change the plate and scene to see the signal differently.',
     deep:
-      'The sand and ink views shade regions of low displacement in an idealized virtual plate driven near its modes. A simply supported square uses sine modes and a circular plate uses Bessel modes with a rim condition. The same frequency can draw a different figure on a different plate. Liquid is an artistic interference field, while Lissajous plots either the two input channels or a synthetic demo. Microphone, tab and file analysis runs locally in the browser.',
+      'The sand and ink views shade regions of low displacement in an idealized virtual plate driven near its modes, with sine modes for a square and Bessel modes for a circular plate. The same frequency can draw a different figure on a different plate. Liquid is an artistic interference field, while Lissajous plots either the two input channels or a synthetic demo. Browser tab, laptop audio, microphone and file analysis runs locally; shared screen frames are not processed or uploaded. System-audio availability depends on the browser and operating system, so use a web player or a configured loopback input when necessary.',
     plot: {
       axes: 'Plate views use spatial coordinates; the stereo trace plots paired waveform samples.',
       good: 'A stable tone and selected plate produce a reproducible sand pattern.',
@@ -952,7 +952,8 @@ const FEATURES_MODULES: readonly FeatureEntry[] = [
     },
     howTo: [
       'Pick a template and switch between Sand, Liquid, Lissajous and Nodal Ink.',
-      'Change the frequency or choose Studio, Mic, File or Tab as the input.',
+      'Choose Browser tab, click Capture browser tab, select the player tab and enable audio sharing.',
+      'For desktop apps, try Laptop audio with system audio enabled, or connect a configured default loopback input.',
       'Freeze the figure, save a PNG or record a short visual clip.',
     ],
   },

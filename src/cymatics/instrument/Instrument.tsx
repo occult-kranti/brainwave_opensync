@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { Aperture, ArrowDownToLine, ArrowUpRight, AudioLines, ChevronDown, Circle, Focus, Maximize, Mic, Pause, Play, Radio, RotateCcw, SlidersHorizontal, Square, Waves } from 'lucide-react';
+import { Aperture, ArrowDownToLine, ArrowUpRight, AudioLines, ChevronDown, Circle, Focus, Maximize, Mic, Monitor, Pause, Play, Radio, RotateCcw, SlidersHorizontal, Square, Waves } from 'lucide-react';
 import { VIRTUAL_PLATES } from '../chladni';
 import { bounded, DEFAULT_LOOK, parseLook, QUICK_HZ, SCENES, sceneLook, type Effect, type Input, type Look, type Scene, type View, type Waveform } from './scenes';
 import { signalReader, type Analysers } from './signal';
@@ -25,8 +25,8 @@ const VIEW_CHOICES: { id: View; label: string; icon: typeof Circle }[] = [
   { id: 'ink', label: 'Nodal Ink', icon: Aperture },
 ];
 const SOURCE_CHOICES: { id: Input; label: string }[] = [
-  { id: 'tone', label: 'Tone' }, { id: 'studio', label: 'Studio' }, { id: 'mic', label: 'Mic' },
-  { id: 'file', label: 'File' }, { id: 'tab', label: 'Tab' },
+  { id: 'tone', label: 'Tone' }, { id: 'studio', label: 'Studio' }, { id: 'file', label: 'File' },
+  { id: 'tab', label: 'Browser tab' }, { id: 'system', label: 'Laptop audio' }, { id: 'mic', label: 'Audio input' },
 ];
 const EFFECTS: { id: Effect; name: string }[] = [
   { id: 'natural', name: 'Natural' }, { id: 'mono', name: 'Monochrome' },
@@ -95,6 +95,7 @@ export default function Instrument(props: Props) {
   const [message, setMessage] = useState('');
   const [draftHz, setDraftHz] = useState<string | null>(null);
   const [meter, setMeter] = useState({ hz: 0, level: 0, bands: [0, 0, 0] });
+  const [quietInput, setQuietInput] = useState(false);
   const canvas = useRef<HTMLCanvasElement>(null);
   const surface = useRef<HTMLDivElement>(null);
   const file = useRef<HTMLInputElement>(null);
@@ -102,7 +103,15 @@ export default function Instrument(props: Props) {
   const draw = useRef<ReturnType<typeof createRenderer> | null>(null);
   const time = useRef(0);
   const latest = useRef(props);
-  const { connection, status, filename, active, waiting, stop, start } = useInstrumentInput(props.panicked);
+  const { connection, status, filename, active, waiting, sourceLabel, muted, stop, start } = useInstrumentInput(props.panicked);
+  const liveCapture = input === 'tab' || input === 'system' || input === 'mic';
+  const signalPresent = meter.level >= 0.006;
+  const checkSilence = liveCapture && active && !waiting && !frozen && !muted && !signalPresent;
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setQuietInput(checkSilence), checkSilence ? 5000 : 0);
+    return () => window.clearTimeout(timer);
+  }, [checkSilence]);
 
   useEffect(() => { latest.current = props; }, [props]);
   useEffect(() => () => {
@@ -148,6 +157,7 @@ export default function Instrument(props: Props) {
   const pickInput = (next: Input) => {
     if (next === input) return;
     stop();
+    setQuietInput(false);
     if (props.tonePlaying) props.stopTone();
     setInput(next);
   };
@@ -252,7 +262,7 @@ export default function Instrument(props: Props) {
         <div className="ci-heading">
           <span className="ci-kicker"><span /> OPEN SYNC / VISUAL INSTRUMENTS</span>
           <h1 aria-label="Cymatic Studio">Cymatic <em>Studio</em></h1>
-          <p>Play a frequency. Watch it take shape.</p>
+          <p>Give your music a visible form. Explore a tone or connect live audio.</p>
         </div>
         <div className="ci-header-actions">
           <button type="button" onClick={() => {
@@ -328,7 +338,34 @@ export default function Instrument(props: Props) {
           </button>
             </>}
             {input === 'studio' && <p className="ci-source-note">{props.sessionRunning ? 'Listening to the active Open Sync session.' : 'Start playback in Open Sync Studio to drive the figure.'}</p>}
-            {(input === 'mic' || input === 'tab') && <button className="ci-source-action" type="button" onClick={() => active || waiting ? stop() : void start(input)}><Mic size={16} />{active ? 'Disconnect' : waiting ? 'Cancel connection' : input === 'mic' ? 'Connect microphone' : 'Share tab audio'}</button>}
+            {liveCapture && <div className="ci-live-input">
+              <p className="ci-source-note" id="ci-capture-guide">
+                {input === 'tab'
+                  ? 'For YouTube or Spotify web: open the player in another tab. Capture it below, select that tab and enable Share tab audio.'
+                  : input === 'system'
+                    ? 'For desktop apps: choose Entire screen and enable system audio if your browser offers it. If no audio option appears, use Browser tab or an audio loopback input.'
+                    : 'Connect your default microphone or audio input. For desktop playback on a loopback device, select that device as the system’s default recording input first.'}
+              </p>
+              <button className={`ci-source-action${!active && !waiting ? ' ci-play' : ''}`} type="button" disabled={props.panicked} aria-describedby="ci-capture-guide" onClick={() => {
+                setQuietInput(false);
+                if (active || waiting) stop();
+                else void start(input);
+              }}>
+                {active || waiting ? <Square size={16} /> : input === 'mic' ? <Mic size={16} /> : <Monitor size={16} />}
+                {active ? 'Stop capture' : waiting ? 'Cancel connection' : input === 'mic' ? 'Connect audio input' : input === 'tab' ? 'Capture browser tab' : 'Capture laptop audio'}
+              </button>
+              <div className="ci-input-status" role="status" aria-live="polite" data-state={active ? muted ? 'muted' : 'connected' : waiting ? 'waiting' : 'idle'}>
+                <i aria-hidden="true" />
+                <span>{waiting ? 'Choose a source in the browser’s sharing dialog.' : active ? <><strong>{muted ? 'Audio temporarily muted' : 'Connected'}</strong>{sourceLabel && <small>{sourceLabel}</small>}</> : 'Ready to connect'}</span>
+              </div>
+              {quietInput && checkSilence && <p className="ci-input-hint" role="status">No audio detected yet. Start playback, check the player’s volume and confirm that audio sharing is enabled. Stop capture to select a different source.</p>}
+              {frozen && active && <p className="ci-source-note">Capture is connected. Resume the view to see the live signal.</p>}
+              {(input === 'tab' || input === 'system') && <details className="ci-input-help">
+                <summary>Compatibility &amp; privacy</summary>
+                <p>Use desktop Chrome or Edge for browser-tab audio. Whole-laptop audio depends on the browser and operating system; Windows and ChromeOS commonly offer it. On macOS or Linux, use Spotify web or a configured loopback input.</p>
+                <p>The browser asks for display-sharing permission, but this instrument only analyzes the audio locally. Shared screen frames are not processed or uploaded. Your music keeps playing in its original app; the instrument does not play a second copy.</p>
+              </details>}
+            </div>}
             {input === 'file' && <>
               <input ref={file} hidden type="file" accept="audio/*,.m4a,.wav,.mp3,.flac,.ogg" onChange={(event) => {
                 const selected = event.target.files?.[0];
@@ -372,12 +409,12 @@ export default function Instrument(props: Props) {
       </div>
 
       <div className="ci-transport">
-        <div className="ci-transport-signal"><span className="ci-kicker"><i /> {input.toUpperCase()} INPUT</span>
+        <div className="ci-transport-signal"><span className="ci-kicker"><i /> {SOURCE_CHOICES.find((choice) => choice.id === input)?.label.toUpperCase()} INPUT</span>
           <span className="ci-meter" role="img" aria-label={input === 'tone' ? 'Synthetic tone input' : `Signal level ${Math.round(meter.level * 100)} percent`}>
             {Array.from({ length: 18 }, (_, index) => <i key={index} data-active={index < (input === 'tone' ? (props.tonePlaying ? 11 : 0) : Math.round(meter.level * 18))} />)}
           </span>
         </div>
-        <div className="ci-transport-note">{input === 'tone' ? 'Silent until you play a short preview.' : 'Inputs are analyzed locally. External inputs are silent.'}</div>
+        <div className="ci-transport-note">{input === 'tone' ? 'Silent until you play a short preview.' : liveCapture ? 'Local audio analysis · no extra playback · stop capture any time' : 'Inputs are analyzed locally. Files are analyzed without playback.'}</div>
         <div className="ci-transport-actions">
           <button type="button" onClick={() => { pickLook(sceneLook(scene)); setFrozen(globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false); }}> <RotateCcw size={15} /> Reset look</button>
         </div>

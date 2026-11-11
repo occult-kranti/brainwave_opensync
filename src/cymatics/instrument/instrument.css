@@ -79,6 +79,8 @@
 .ci-controls h2 svg { margin-left:auto; }
 .ci-segments { display:flex; gap:3px; padding:3px; border:1px solid var(--ci-line); border-radius:4px; }
 .ci-segments button { flex:1; min-height:37px; }
+.ci-sources { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); }
+.ci-sources button { min-height:44px; }
 .ci-quick { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:3px; }
 .ci-quick button { min-height:34px; border-color:var(--ci-line); font:650 .68rem ui-monospace,monospace; }
 .ci-frequency, .ci-select, .ci-mix { display:grid; gap:5px; margin-top:9px; font-size:.75rem; color:var(--ci-muted); }
@@ -102,6 +104,18 @@
 .ci-mix span { display:flex; justify-content:space-between; gap:8px; }
 .ci-source-action, .ci-text-button { margin-top:8px; }
 .ci-source-note { font-size:.76rem; margin-top:9px; }
+.ci-live-input { margin-top:10px; }
+.ci-live-input .ci-source-action { min-height:44px; width:100%; }
+.ci-input-status { display:flex; align-items:start; gap:7px; margin-top:11px; color:var(--ci-muted); font-size:.75rem; }
+.ci-input-status > i { width:7px; height:7px; flex:none; margin-top:5px; border-radius:50%; background:var(--ci-line); }
+.ci-input-status[data-state="connected"] > i { background:var(--ci-hot); box-shadow:0 0 0 3px color-mix(in srgb,var(--ci-hot) 16%,transparent); }
+.ci-input-status[data-state="muted"] > i, .ci-input-status[data-state="waiting"] > i { background:var(--ci-brass); }
+.ci-input-status strong { color:var(--ci-ink); font-weight:650; }
+.ci-input-status small { display:block; margin-top:2px; font-size:.72rem; overflow-wrap:anywhere; }
+.ci-input-hint { margin:11px 0 0; border-left:2px solid var(--ci-hot); padding:7px 9px; font-size:.75rem; color:var(--ci-ink); background:color-mix(in srgb,var(--ci-hot) 7%,transparent); }
+.ci-input-help { margin-top:11px; color:var(--ci-muted); font-size:.73rem; }
+.ci-input-help summary { cursor:pointer; width:fit-content; min-height:32px; display:list-item; }
+.ci-input-help p { margin:4px 0 9px; }
 .ci-transport { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 15px; align-items:center; border-block:1px solid var(--ci-line); margin-top:13px; padding:9px 0; }
 .ci-transport-signal { display:grid; gap:3px; }
 .ci-transport-note { color:var(--ci-muted); font-size:.74rem; }

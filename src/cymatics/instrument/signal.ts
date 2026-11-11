@@ -47,7 +47,9 @@ export function signalReader() {
     const offset = Number.isFinite(curvature) && curvature < 0 ? Math.max(-0.5, Math.min(0.5, (below - above) / (2 * curvature))) : 0;
     const peak = peakIndex ? (peakIndex + offset) * binHz : 0;
     let rms = 0;
-    for (let index = 0; index < left.length; index += 4) rms += left[index] ** 2;
+    // A right-only recording must drive the visualizer too. Keep stereo power
+    // separate here so opposite-polarity channels cannot cancel the level meter.
+    for (let index = 0; index < left.length; index += 4) rms += (left[index] ** 2 + right[index] ** 2) / 2;
     const factor = 0.08 + response * 0.006;
     level += (Math.min(1, 2 * Math.sqrt(rms / Math.ceil(left.length / 4))) - level) * factor;
     previousHz = peak && previousHz ? previousHz + (peak - previousHz) * factor : peak;
@@ -65,7 +67,7 @@ export interface Connection {
 export function connectInput(context: AudioContext, input: HTMLAudioElement | MediaStream, url?: string): Connection {
   const element = input instanceof HTMLAudioElement ? input : undefined;
   const stream = input instanceof HTMLAudioElement ? undefined : input;
-  const source = element ? context.createMediaElementSource(element) : context.createMediaStreamSource(input as MediaStream);
+  const source = element ? context.createMediaElementSource(element) : context.createMediaStreamSource(new MediaStream(stream!.getAudioTracks()));
   const spectrum = context.createAnalyser();
   const stereo = context.createGain();
   stereo.channelCount = 2;
@@ -86,9 +88,13 @@ export function connectInput(context: AudioContext, input: HTMLAudioElement | Me
   left.connect(silence);
   right.connect(silence);
   silence.connect(context.destination);
+  let closed = false;
   return {
     nodes: { spectrum, left, right }, element, stream,
     close: () => {
+      if (closed) return;
+      closed = true;
+      for (const node of [source, spectrum, stereo, splitter, left, right, silence]) node.disconnect();
       stream?.getTracks().forEach((track) => track.stop());
       if (element) {
         element.pause();
@@ -96,7 +102,7 @@ export function connectInput(context: AudioContext, input: HTMLAudioElement | Me
         element.load();
       }
       if (url) URL.revokeObjectURL(url);
-      void context.close();
+      if (context.state !== 'closed') void context.close().catch(() => {});
     },
   };
 }

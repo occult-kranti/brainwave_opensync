@@ -79,7 +79,7 @@ Full details: [`CHANGELOG.md`](CHANGELOG.md). How it compares to other open-sour
 | **NanoLab audio** | Four bounded signal conditions, waveform and FFT measurements, quiet shared previews, PCM16 WAV and SHA-256 manifest export at `/nano-lab`; links to the nanoparticle research rounds without inferring magnetic or optical exposure |
 | **Channeled Sources** | Read the supplied Bashar digest analysis, inspect the chosen scale conversion, and open four experimental sound presets at `/channeled` |
 | **Sonic Lab** | 17 mathematical sound generators: Shepard/Risset illusions, Euclidean & prime & golden-ratio rhythms, fractal 1/f^α noise, logistic-map chaos, waveform designer (additive/FM/Chebyshev/phase distortion), tuning systems (JI/12-TET/Bohlen-Pierce), astronomically derived tunings with split grades: *arithmetic A · meaning D* |
-| **Cymatic Studio** | Chladni plate simulator (square/circular/Bessel modes, sand particles, colormaps, audio-reactive) with physics/art honesty labels |
+| **Cymatic Studio** | Chladni plate simulator (square/circular/Bessel modes, sand particles, colormaps, audio-reactive), live YouTube/Spotify tab capture and laptop audio where supported; [capture setup and compatibility](docs/CYMATICS-LIVE-AUDIO.md) |
 | **Frequency Library** | 44 audited frequencies in 7 sets, grade badges, citation popovers, corrected Schumann values |
 | **Presets** | 50 catalog presets, Bashar collection, search, per-step listening, six-second preview files, and saved Studio mixes |
 | **Levels** | Deep Focus ladder (discrete Monroe-style signposts) + an accurate exhibit on the 1983 CIA Gateway report (a *theoretical assessment*, no experiments) |

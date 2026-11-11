@@ -11,7 +11,7 @@ export type View = Scene['motif'];
 export type Shape = 'round' | 'square';
 export type Waveform = 'sine' | 'triangle' | 'square' | 'sawtooth';
 export type Effect = 'natural' | 'mono' | 'mirror' | 'halftone';
-export type Input = 'tone' | 'studio' | 'mic' | 'file' | 'tab';
+export type Input = 'tone' | 'studio' | 'mic' | 'file' | 'tab' | 'system';
 
 export interface Look {
   scene: Scene['id'];

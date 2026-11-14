@@ -55,6 +55,8 @@ export interface AppRoute {
   icon: LucideIcon;
   group: RouteGroup;
   component: ComponentType | LazyExoticComponent<ComponentType>;
+  /** Exhibit chapter displayed in the exhibit navigation. */
+  localNav?: boolean;
   /** Phone bottom-bar tab (max four; everything else lives in MORE). */
   bottomTab?: boolean;
 }
@@ -95,6 +97,13 @@ export const ROUTES: readonly AppRoute[] = [
   r('/replication', 'REPLICATION BAY', 'Replication Bay', Repeat2, 'tools', () => import('@/pages/Replication')),
   // Background reading — grouped behind one disclosure in both navigation layouts.
   r('/levels', 'LEVELS', 'Levels', Gauge, 'research', () => import('@/pages/Levels')),
+  r('/archaeoacoustics', 'ARCHAEOACOUSTICS', 'Archaeoacoustics', Waves, 'research', () => import('@/pages/Archaeoacoustics')),
+  r('/archaeoacoustics/celestial', 'CELESTIAL MUSIC', 'Celestial Music', Waves, 'research', () => import('@/pages/Archaeoacoustics'), { localNav: true }),
+  r('/archaeoacoustics/architecture', 'ANCIENT ACOUSTICS', 'Ancient Acoustics', Waves, 'research', () => import('@/pages/Archaeoacoustics'), { localNav: true }),
+  r('/archaeoacoustics/india', 'INDIAN TEMPLE ACOUSTICS', 'Indian Temple Acoustics', Waves, 'research', () => import('@/pages/Archaeoacoustics'), { localNav: true }),
+  r('/archaeoacoustics/geometry', 'CYMATICS & GEOMETRY', 'Cymatics & Geometry', Waves, 'research', () => import('@/pages/Archaeoacoustics'), { localNav: true }),
+  r('/archaeoacoustics/ritual', 'RITUAL SOUND', 'Ritual Sound', Waves, 'research', () => import('@/pages/Archaeoacoustics'), { localNav: true }),
+  r('/archaeoacoustics/brainwaves', 'SOUND & EEG', 'Sound & EEG', Waves, 'research', () => import('@/pages/Archaeoacoustics'), { localNav: true }),
   r('/knowledge', 'KNOWLEDGE', 'Knowledge', BookMarked, 'research', () => import('@/pages/Knowledge')),
   r('/bashar-research', 'BASHAR RESEARCH', 'Bashar Research', Radio, 'research', () => import('@/pages/BasharResearch')),
   r('/channeled', 'CHANNELED SOURCES', 'Channeled Sources', Radio, 'research', () => import('@/pages/ChanneledSources')),

@@ -56,6 +56,13 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
   { route: '/levels', label: 'Levels' },
   { route: '/analyzer', label: 'Analyzer' },
   { route: '/safety', label: 'Safety' },
+  { route: '/archaeoacoustics', label: 'Archaeoacoustics' },
+  { route: '/archaeoacoustics/celestial', label: 'Celestial Music' },
+  { route: '/archaeoacoustics/architecture', label: 'Ancient Acoustics' },
+  { route: '/archaeoacoustics/india', label: 'Indian Temple Acoustics' },
+  { route: '/archaeoacoustics/geometry', label: 'Cymatics & Geometry' },
+  { route: '/archaeoacoustics/ritual', label: 'Ritual Sound' },
+  { route: '/archaeoacoustics/brainwaves', label: 'Sound & EEG' },
   { route: '/knowledge', label: 'Knowledge' },
   { route: '/about', label: 'About' },
   { route: '/lab', label: 'Experiment Lab' },
@@ -85,6 +92,48 @@ export const APP_SCREENS: readonly { route: string; label: string }[] = [
 ] as const;
 
 const FEATURES_CORE: readonly FeatureEntry[] = [
+  {
+    id: 'archaeoacoustics-exhibit', module: 'Archaeoacoustics', route: '/archaeoacoustics', name: 'Archaeoacoustics',
+    simple: 'Open the exhibit to compare sound, architecture, and frequency claims. Use the chapters to find sources, listening presets, and models.',
+    deep: 'The exhibit links reported measurements, physical calculations, documented practices, and claims awaiting evidence. Browser-generated stimuli have declared frequencies and named mappings. Illustrations and simplified models show their limits beside the relevant sources.',
+    howTo: ['Open the chapter and inspect its source links.', 'Try the related models or listening presets.'],
+  },
+  {
+    id: 'celestial-exhibit', module: 'Celestial Music', route: '/archaeoacoustics/celestial', name: 'Celestial Music',
+    simple: 'Compare the speed of light, the sound wavelength of a tone, and its period. Explore how an interval differs from a numbered harmonic.',
+    deep: 'Wavelength scales with propagation speed divided by frequency. The solar example uses a rounded three millihertz anchor and explicit audible scaling. Schumann frequencies are modes of the Earth–ionosphere electromagnetic cavity.',
+    howTo: ['Open the chapter and inspect its source links.', 'Try the related models or listening presets.'],
+  },
+  {
+    id: 'architecture-exhibit', module: 'Ancient Acoustics', route: '/archaeoacoustics/architecture', name: 'Ancient Acoustics',
+    simple: 'Read measurements from prehistoric chambers, stone circles, staircases, and worship spaces. Use the calculators to investigate idealized echoes.',
+    deep: 'Rectangular room modes use the lossless rigid-wall eigenfrequency expression. The stair model estimates round-trip path delays from regularly spaced point scatterers. Historical measurements depend on source location, receiver location, and acoustic boundary conditions.',
+    howTo: ['Open the chapter and inspect its source links.', 'Try the related models or listening presets.'],
+  },
+  {
+    id: 'india-exhibit', module: 'Indian Temple Acoustics', route: '/archaeoacoustics/india', name: 'Indian Temple Acoustics',
+    simple: 'Find out how solid stone pillars ring and why a musical tonic can vary. Compare published measurements with short synthesized pitches.',
+    deep: 'Selected Hampi pillar frequencies were examined through acoustic response, geometry, and ultrasonic measurements. The exhibit preserves sample scope and separates individual structural modes from inferred tuning. The OM example applies a declared octave transformation to a selected year.',
+    howTo: ['Open the chapter and inspect its source links.', 'Try the related models or listening presets.'],
+  },
+  {
+    id: 'geometry-exhibit', module: 'Cymatics & Geometry', route: '/archaeoacoustics/geometry', name: 'Cymatics & Geometry',
+    simple: 'Compare carved geometry with patterns made on a vibrating plate. Read what a shared symmetry can tell you about the two objects.',
+    deep: 'Virtual plates display modeled nodal patterns whose geometry depends on the selected material and rim condition. Visual comparisons require fixed parameters and a defined similarity measure. Results can be compared with unrelated motifs to quantify chance matches.',
+    howTo: ['Open the chapter and inspect its source links.', 'Try the related models or listening presets.'],
+  },
+  {
+    id: 'ritual-exhibit', module: 'Ritual Sound', route: '/archaeoacoustics/ritual', name: 'Ritual Sound',
+    simple: 'Explore how instruments and rooms shape chants, bells, and other ritual sounds. Follow the sources for each practice and test.',
+    deep: 'Airborne room acoustics, structural vibration, and repertoire are treated as separate aspects of a practice. Source-linked examples include measured conch, singing bowl, and bronze bell behavior. Listening presets use synthetic comparisons with explicit pitch references.',
+    howTo: ['Open the chapter and inspect its source links.', 'Try the related models or listening presets.'],
+  },
+  {
+    id: 'brainwaves-exhibit', module: 'Sound & EEG', route: '/archaeoacoustics/brainwaves', name: 'Sound & EEG',
+    simple: 'Compare a plain pitch with a beat-rate example and read what researchers measured. Open the original EEG papers to see each study’s limits.',
+    deep: 'The examples distinguish a carrier, a channel-frequency difference, and an EEG band. A historical small-cohort EEG study used several unmodulated tones. Label overlap across frequency ranges provides no measurement of coupling or a listening outcome.',
+    howTo: ['Open the chapter and inspect its source links.', 'Try the related models or listening presets.'],
+  },
   {
     id: 'bashar-source-investigation', module: 'Bashar Research', route: '/bashar-research', name: 'Bashar source investigation',
     grade: 'D', gradeScope: 'Unvalidated physical interpretations and original listening recipes. Attribution status is recorded separately from scientific support.',

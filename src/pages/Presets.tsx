@@ -132,6 +132,7 @@ export default function Presets() {
     {!infantOnly && collection === 'hypnosis' && <div className="library-practice-link">{guide('/hypnosis', 'Read the hypnosis practice & research')}</div>}
     {!infantOnly && collection === 'overnight' && <div className="library-practice-link">{guide('/overnight', 'Plan a night with sound, then quiet')}</div>}
     {!infantOnly && collection === 'archive' && <div className="library-practice-link">{guide('/traditions', 'Read the programs & traditions sourcebook')}</div>}
+    {!infantOnly && (collection === 'start' || collection === 'all' || cat === 'Experimental') && <div className="library-practice-link"><Link to="/archaeoacoustics?view=listening">Browse archaeoacoustics listening presets <ArrowRight size={16} /></Link></div>}
     {!infantOnly && collection === 'nano' && <div className="library-practice-link"><Link to="/nano-lab">Open the NanoLab signal bench <ArrowRight size={16} /></Link></div>}
     {previewBlocked && <p className="preset-playback-note" role="status">{previewBlockReason} {unmuteHelp}</p>}
     {previewHint && <p className="preset-playback-note" role="status">{previewHint}</p>}

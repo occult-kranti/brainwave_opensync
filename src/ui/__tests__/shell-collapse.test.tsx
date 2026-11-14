@@ -32,6 +32,7 @@ if (typeof Element !== 'undefined') {
 }
 
 const ALL_ROUTE_PATHS = [
+  '/archaeoacoustics',
   '/',
   '/studio',
   '/library',

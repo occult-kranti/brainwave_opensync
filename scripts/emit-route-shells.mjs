@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.resolve(process.argv[2] ?? path.join(ROOT, 'dist'));
 const src = readFileSync(path.join(ROOT, 'src/app/routes.ts'), 'utf8');
-const routes = [...src.matchAll(/^\s*r\('(\/[a-z0-9-]+)'/gm)].map((m) => m[1]);
+const routes = [...src.matchAll(/^\s*r\('(\/[a-z0-9-]+(?:\/[a-z0-9-]+)*)'/gm)].map((m) => m[1]);
 if (routes.length === 0) {
   console.error('no routes found in src/app/routes.ts');
   process.exit(1);
